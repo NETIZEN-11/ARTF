@@ -16,16 +16,16 @@ const TEST_CONFIG_DIR = path.join('.local', 'vitest', 'config', `worker-${proces
 mockProcessEnv({
   NODE_ENV: 'test',
   CODEX_HOME: './.local/vitest/codex-home',
-  PROMPTFOO_CACHE_TYPE: 'memory',
+  ARTEF_CACHE_TYPE: 'memory',
   IS_TESTING: 'true',
-  PROMPTFOO_CONFIG_DIR: TEST_CONFIG_DIR,
+  ARTEF_CONFIG_DIR: TEST_CONFIG_DIR,
   ANTHROPIC_API_KEY: 'test-anthropic-api-key',
   AZURE_OPENAI_API_HOST: 'test.openai.azure.com',
   AZURE_OPENAI_API_KEY: 'test-azure-api-key',
   AZURE_API_KEY: 'test-azure-api-key',
   HF_API_TOKEN: 'test-hf-token',
   OPENAI_API_KEY: 'test-openai-api-key',
-  PROMPTFOO_REMOTE_GENERATION_URL: undefined,
+  ARTEF_REMOTE_GENERATION_URL: undefined,
 });
 
 /**

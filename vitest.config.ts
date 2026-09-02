@@ -19,8 +19,8 @@ export default defineConfig({
     setupFiles: ['./vitest.setup.ts'],
 
     // Keep successful backend unit-test runs focused on failures. Set
-    // PROMPTFOO_TEST_SHOW_OUTPUT=true when debugging stdout/stderr from tests.
-    silent: process.env.PROMPTFOO_TEST_SHOW_OUTPUT !== 'true',
+    // ARTEF_TEST_SHOW_OUTPUT=true when debugging stdout/stderr from tests.
+    silent: process.env.ARTEF_TEST_SHOW_OUTPUT !== 'true',
 
     // Run tests in random order to catch test isolation issues early.
     // Tests should not depend on execution order or shared state.
@@ -71,7 +71,7 @@ export default defineConfig({
     // worker crash (suspected native libsql teardown / per-worker memory
     // pressure) so this flag can be removed.
     dangerouslyIgnoreUnhandledErrors: Boolean(
-      process.env.CI && process.env.PROMPTFOO_IGNORE_UNHANDLED_TEST_ERRORS === 'true',
+      process.env.CI && process.env.ARTEF_IGNORE_UNHANDLED_TEST_ERRORS === 'true',
     ),
 
     // Coverage configuration

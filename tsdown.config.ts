@@ -30,13 +30,13 @@ try {
 }
 
 // Build-time constants injected into all builds
-// These replace the __PROMPTFOO_*__ placeholders in source files
+// These replace the __ARTEF_*__ placeholders in source files
 // Note: tsdown define requires all values to be strings
 const versionDefines = {
-  __PROMPTFOO_VERSION__: JSON.stringify(packageJson.version),
-  __PROMPTFOO_POSTHOG_KEY__: JSON.stringify(process.env.PROMPTFOO_POSTHOG_KEY || ''),
-  __PROMPTFOO_NODE_ENGINE_RANGE__: JSON.stringify(enginesNode),
-  __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__: JSON.stringify(nodeEngineComparatorSets),
+  __ARTEF_VERSION__: JSON.stringify(packageJson.version),
+  __ARTEF_POSTHOG_KEY__: JSON.stringify(process.env.ARTEF_POSTHOG_KEY || ''),
+  __ARTEF_NODE_ENGINE_RANGE__: JSON.stringify(enginesNode),
+  __ARTEF_NODE_ENGINE_COMPARATOR_SETS__: JSON.stringify(nodeEngineComparatorSets),
 };
 
 // Use `npm run build:clean` to avoid racing concurrent builds in the shared output directory.

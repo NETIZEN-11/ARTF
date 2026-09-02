@@ -1,13 +1,13 @@
 {
-  "name": "promptfoo",
-  "description": "LLM eval & testing toolkit",
+  "name": "artef",
+  "description": "Agent Red-Teaming & Evaluation Framework - LLM eval & testing toolkit",
   "author": "Ian Webster",
   "version": "0.122.2",
   "license": "MIT",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/promptfoo/promptfoo.git"
+    "url": "git+https://github.com/artef/artef.git"
   },
   "main": "./dist/src/index.js",
   "exports": {
@@ -49,8 +49,8 @@
     "node": ">=22.22.0"
   },
   "bin": {
-    "promptfoo": "dist/src/entrypoint.js",
-    "pf": "dist/src/entrypoint.js"
+    "artef": "dist/src/entrypoint.js",
+    "atf": "dist/src/entrypoint.js"
   },
   "scripts": {
     "audit:fix": "npm audit fix && npm audit fix --prefix src/app && npm audit fix --prefix site",
@@ -89,8 +89,8 @@
     "local": "tsx src/localEntrypoint.ts",
     "preversion": "command -v gh >/dev/null 2>&1 || (echo \"Error: GitHub CLI required.\" && exit 1) && [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"main\" ] || (echo \"Error: Must be on main branch to version\" && exit 1) && git pull origin main && git checkout -b \"chore/bump-version-$(date +%s)\"",
     "changelog:release": "node scripts/update-changelog-version.cjs",
-    "postversion": "npm run changelog:release && npm run citation:generate && git add CHANGELOG.md CITATION.cff && git commit --amend --no-edit && gh pr create --repo promptfoo/promptfoo --title \"chore: bump version $npm_package_version\" --body \"\"",
-    "prepublishOnly": "node -e \"if (!process.env.PROMPTFOO_POSTHOG_KEY) { console.error('Error: PROMPTFOO_POSTHOG_KEY must be set'); process.exit(1); }\" && npm run build:clean && npm run build",
+    "postversion": "npm run changelog:release && npm run citation:generate && git add CHANGELOG.md CITATION.cff && git commit --amend --no-edit && gh pr create --repo artef/artef --title \"chore: bump version $npm_package_version\" --body \"\"",
+    "prepublishOnly": "node -e \"if (!process.env.ARTEF_POSTHOG_KEY) { console.error('Error: ARTEF_POSTHOG_KEY must be set'); process.exit(1); }\" && npm run build:clean && npm run build",
     "test:app": "npm --prefix src/app run test --",
     "test:app:browser": "npm --prefix src/app run test:browser --",
     "test:package-artifact": "tsx scripts/testPackageArtifact.ts",
@@ -427,5 +427,5 @@
     ],
     "ignoredBuiltDependencies": []
   },
-  "homepage": "https://promptfoo.dev"
+  "homepage": "https://artef.dev"
 }
