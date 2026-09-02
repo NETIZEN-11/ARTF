@@ -58,6 +58,64 @@ function displayedEvalWasDeleted(
   );
 }
 
+function shouldReloadPinnedEval(
+  fetchId: string | null,
+  scopedEvalId: string | undefined,
+  deletedEvalIds: string[] | undefined,
+): boolean {
+  return fetchId && deletedEvalIds === undefined && scopedEvalId === fetchId;
+}
+
+function shouldNavigateToRoot(
+  fetchId: string | null,
+  deletedEvalIds: string[] | undefined,
+  displayedEvalId: string | null | undefined,
+  newRecentEvals: { evalId: string }[] | null,
+): boolean {
+  if (!newRecentEvals || newRecentEvals.length === 0) {
+    return true;
+  }
+  if (fetchId && deletedEvalIds !== undefined && displayedEvalWasDeleted(fetchId, deletedEvalIds)) {
+    return true;
+  }
+  return false;
+}
+
+function shouldReloadForLatestEval(
+  fetchId: string | null,
+  scopedEvalId: string | undefined,
+  latestEvalId: string,
+  currentEvalId: string | null | undefined,
+): boolean {
+  if (fetchId === null) {
+    return (
+      scopedEvalId === undefined ||
+      scopedEvalId === currentEvalId ||
+      scopedEvalId === latestEvalId
+    );
+  }
+  return scopedEvalId === fetchId;
+}
+
+function handleDeletedEval(
+  fetchId: string | null,
+  deletedEvalIds: string[],
+  displayedEvalId: string | null | undefined,
+  latestEvalId: string,
+  navigateFn: (path: string, options?: { replace?: boolean }) => void,
+  reloadFn: (id: string) => Promise<void>,
+): boolean {
+  if (!displayedEvalWasDeleted(displayedEvalId, deletedEvalIds)) {
+    return false;
+  }
+  if (fetchId) {
+    navigateFn(EVAL_ROUTES.DETAIL(latestEvalId), { replace: true });
+  } else {
+    reloadFn(latestEvalId);
+  }
+  return true;
+}
+
 export default function Eval({ fetchId }: EvalOptions) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -161,6 +219,18 @@ export default function Eval({ fetchId }: EvalOptions) {
     setLoaded(true);
   }, [setAuthor, setConfig, setEvalId, setTable]);
 
+  const reloadInBackground = useCallback(
+    async (id: string) => {
+      setIsStreaming(true);
+      try {
+        await loadEvalById(id, true);
+      } finally {
+        setIsStreaming(false);
+      }
+    },
+    [loadEvalById, setIsStreaming],
+  );
+
   /**
    * Populates the table store from a websocket signal. Explicit /eval/:id routes stay
    * pinned (they only reload when their own eval changes), while the root /eval route
@@ -178,23 +248,10 @@ export default function Eval({ fetchId }: EvalOptions) {
     const deletedEvalIds = 'deletedEvalIds' in data ? data.deletedEvalIds : undefined;
     const scopedEvalId = 'evalId' in data ? data.evalId : undefined;
 
-    // Reload the displayed table in the background, suppressing the page-level loading
-    // flash. Streaming is scoped to the actual reload so signals that don't change the
-    // current view (e.g. a scoped update for a different pinned eval) never toggle the
-    // streaming indicator. loadEvalById sets the eval id itself.
-    const reloadInBackground = async (id: string) => {
-      setIsStreaming(true);
-      try {
-        await loadEvalById(id, true);
-      } finally {
-        setIsStreaming(false);
-      }
-    };
-
     // Pinned /eval/:id route + a scoped update for THIS eval: reload it directly via
     // /eval/:id/table. The recent-evals list is only needed for the dropdown, so fetch it
     // concurrently and don't let a transient /api/results failure drop the pinned eval's refresh.
-    if (fetchId && deletedEvalIds === undefined && scopedEvalId === fetchId) {
+    if (shouldReloadPinnedEval(fetchId, scopedEvalId, deletedEvalIds)) {
       const [recents] = await Promise.all([
         fetchRecentFileEvals({ reportFailure: false }),
         reloadInBackground(fetchId),
@@ -206,20 +263,7 @@ export default function Eval({ fetchId }: EvalOptions) {
     }
 
     const newRecentEvals = await fetchRecentFileEvals({ reportFailure: false });
-    if (!newRecentEvals) {
-      // Recents are unavailable. If the socket told us the pinned eval was deleted, don't strand
-      // the user on a now-gone /eval/:id — fall back to the root route, which reconciles on load.
-      if (
-        fetchId &&
-        deletedEvalIds !== undefined &&
-        displayedEvalWasDeleted(fetchId, deletedEvalIds)
-      ) {
-        clearEvalState();
-        navigate(EVAL_ROUTES.ROOT, { replace: true });
-      }
-      return;
-    }
-    if (newRecentEvals.length === 0) {
+    if (shouldNavigateToRoot(fetchId, deletedEvalIds, fetchId ?? currentEvalIdRef.current, newRecentEvals)) {
       clearEvalState();
       if (fetchId) {
         navigate(EVAL_ROUTES.ROOT, { replace: true });
@@ -227,29 +271,18 @@ export default function Eval({ fetchId }: EvalOptions) {
       return;
     }
 
-    const latestEvalId = newRecentEvals[0].evalId;
+    const latestEvalId = newRecentEvals![0].evalId;
     const displayedEvalId = fetchId ?? currentEvalIdRef.current;
     setDefaultEvalId(latestEvalId);
 
     if (deletedEvalIds) {
-      if (displayedEvalWasDeleted(displayedEvalId, deletedEvalIds)) {
-        if (fetchId) {
-          navigate(EVAL_ROUTES.DETAIL(latestEvalId), { replace: true });
-        } else {
-          await reloadInBackground(latestEvalId);
-        }
+      if (handleDeletedEval(fetchId, deletedEvalIds, displayedEvalId, latestEvalId, navigate, reloadInBackground)) {
+        return;
       }
-      return;
     }
 
     const updatedEvalId = scopedEvalId ?? latestEvalId;
-    const shouldReload =
-      fetchId === null
-        ? scopedEvalId === undefined ||
-          scopedEvalId === currentEvalIdRef.current ||
-          scopedEvalId === latestEvalId
-        : scopedEvalId === fetchId;
-    if (shouldReload) {
+    if (shouldReloadForLatestEval(fetchId, scopedEvalId, latestEvalId, currentEvalIdRef.current)) {
       await reloadInBackground(updatedEvalId);
     }
   };

@@ -196,102 +196,80 @@ export default function AddProviderDialog({
   );
 }
 
+const PROVIDER_PREFIX_MAP: Record<string, string> = {
+  'openai:codex-security': 'codex-security',
+  'openai:': 'openai',
+  'anthropic:': 'anthropic',
+  'bedrock-agent:': 'bedrock-agent',
+  'bedrock:': 'bedrock',
+  'azure:': 'azure',
+  'vertex:': 'vertex',
+  'google:': 'google',
+  'mistral:': 'mistral',
+  'openrouter:': 'openrouter',
+  'groq:': 'groq',
+  'deepseek:': 'deepseek',
+  'perplexity:': 'perplexity',
+  'openinterpreter:': 'openinterpreter',
+  'exec:': 'exec',
+};
+
+const EXACT_PROVIDER_MAP: Record<string, string> = {
+  openinterpreter: 'openinterpreter',
+  http: 'http',
+  websocket: 'websocket',
+  browser: 'browser',
+  mcp: 'mcp',
+};
+
+const FILE_EXTENSION_MAP: Record<string, string> = {
+  '.py': 'python',
+  '.js': 'javascript',
+  '.go': 'go',
+};
+
+const AGENT_FRAMEWORK_KEYWORDS: Array<[string, string]> = [
+  ['langchain', 'langchain'],
+  ['autogen', 'autogen'],
+  ['crewai', 'crewai'],
+  ['llamaindex', 'llamaindex'],
+  ['langgraph', 'langgraph'],
+  ['openai_agents', 'openai-agents-sdk'],
+  ['openai-agents', 'openai-agents-sdk'],
+  ['pydantic_ai', 'pydantic-ai'],
+  ['pydantic-ai', 'pydantic-ai'],
+  ['google_adk', 'google-adk'],
+  ['google-adk', 'google-adk'],
+];
+
 export function getProviderTypeFromId(id: string | undefined): string | undefined {
   if (!id || typeof id !== 'string') {
     return undefined;
   }
 
-  if (id === 'openai:codex-security' || id.startsWith('openai:codex-security:')) {
-    return 'codex-security';
+  // Check exact matches first
+  if (EXACT_PROVIDER_MAP[id]) {
+    return EXACT_PROVIDER_MAP[id];
   }
-  if (id.startsWith('openai:')) {
-    return 'openai';
+
+  // Check prefix matches
+  for (const [prefix, type] of Object.entries(PROVIDER_PREFIX_MAP)) {
+    if (id === prefix.slice(0, -1) || id.startsWith(prefix)) {
+      return type;
+    }
   }
-  if (id.startsWith('anthropic:')) {
-    return 'anthropic';
-  }
-  if (id.startsWith('bedrock:')) {
-    return 'bedrock';
-  }
-  if (id.startsWith('bedrock-agent:')) {
-    return 'bedrock-agent';
-  }
-  if (id.startsWith('azure:')) {
-    return 'azure';
-  }
-  if (id.startsWith('vertex:')) {
-    return 'vertex';
-  }
-  if (id.startsWith('google:')) {
-    return 'google';
-  }
-  if (id.startsWith('mistral:')) {
-    return 'mistral';
-  }
-  if (id.startsWith('openrouter:')) {
-    return 'openrouter';
-  }
-  if (id.startsWith('groq:')) {
-    return 'groq';
-  }
-  if (id.startsWith('deepseek:')) {
-    return 'deepseek';
-  }
-  if (id.startsWith('perplexity:')) {
-    return 'perplexity';
-  }
-  if (id === 'openinterpreter' || id.startsWith('openinterpreter:')) {
-    return 'openinterpreter';
-  }
-  if (id === 'http') {
-    return 'http';
-  }
-  if (id === 'websocket') {
-    return 'websocket';
-  }
-  if (id === 'browser') {
-    return 'browser';
-  }
-  if (id === 'mcp') {
-    return 'mcp';
-  }
-  if (id.startsWith('exec:')) {
-    return 'exec';
-  }
+
+  // Check file:// scheme
   if (id.startsWith('file://')) {
-    if (id.includes('.py')) {
-      return 'python';
+    for (const [ext, type] of Object.entries(FILE_EXTENSION_MAP)) {
+      if (id.includes(ext)) {
+        return type;
+      }
     }
-    if (id.includes('.js')) {
-      return 'javascript';
-    }
-    if (id.includes('.go')) {
-      return 'go';
-    }
-    // Check for agent frameworks
-    if (id.includes('langchain')) {
-      return 'langchain';
-    }
-    if (id.includes('autogen')) {
-      return 'autogen';
-    }
-    if (id.includes('crewai')) {
-      return 'crewai';
-    }
-    if (id.includes('llamaindex')) {
-      return 'llamaindex';
-    }
-    if (id.includes('langgraph')) {
-      return 'langgraph';
-    }
-    if (id.includes('openai_agents') || id.includes('openai-agents')) {
-      return 'openai-agents-sdk';
-    }
-    if (id.includes('pydantic_ai') || id.includes('pydantic-ai')) {
-      return 'pydantic-ai';
-    }
-    if (id.includes('google_adk') || id.includes('google-adk')) {
-      return 'google-adk';
+    for (const [keyword, type] of AGENT_FRAMEWORK_KEYWORDS) {
+      if (id.includes(keyword)) {
+        return type;
+      }
     }
     return 'generic-agent';
   }

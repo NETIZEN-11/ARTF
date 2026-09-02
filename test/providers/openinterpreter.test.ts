@@ -5,6 +5,19 @@ import path from 'path';
 import { PassThrough } from 'stream';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+const canCreateSymlinksSync = (): boolean => {
+  try {
+    const testDir = fs.mkdtempSync(path.join(os.tmpdir(), 'symlink-test-'));
+    fs.symlinkSync('target', path.join(testDir, 'link'));
+    fs.rmSync(testDir, { recursive: true, force: true });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const hasSymlinkSupport = canCreateSymlinksSync();
 import cliState from '../../src/cliState';
 import { loadApiProvider } from '../../src/providers/index';
 import { OpenInterpreterProvider } from '../../src/providers/openinterpreter';
@@ -342,6 +355,9 @@ describe('OpenInterpreterProvider', () => {
   });
 
   it('allows structured local inputs inside configured roots and rejects traversal and symlink escapes', async () => {
+    if (!hasSymlinkSupport) {
+      return; // Skip on Windows without admin privileges
+    }
     mockProcessEnv({ OPENAI_API_KEY: undefined });
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'openinterpreter-inputs-'));
     temporaryRoots.push(root);

@@ -5,12 +5,26 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { isPathWithinDir } from '../../src/util/isPathWithinDir';
 
+const canCreateSymlinks = async (): Promise<boolean> => {
+  try {
+    const testDir = await fs.mkdtemp(path.join(os.tmpdir(), 'symlink-test-'));
+    await fs.symlink('target', path.join(testDir, 'link'));
+    await fs.rm(testDir, { recursive: true, force: true });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 describe('isPathWithinDir', () => {
   let testRoot: string;
   let workspace: string;
   let outsideDir: string;
+  let hasSymlinkSupport: boolean;
 
   beforeEach(async () => {
+    hasSymlinkSupport = await canCreateSymlinks();
+    
     testRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'permissions-test-'));
     workspace = path.join(testRoot, 'workspace');
     outsideDir = path.join(testRoot, 'outside');
@@ -24,7 +38,9 @@ describe('isPathWithinDir', () => {
     await fs.writeFile(path.join(outsideDir, 'external.txt'), 'test');
 
     // Create a symlink that points outside the workspace (for symlink attack testing)
-    await fs.symlink(path.join(outsideDir, 'external.txt'), path.join(workspace, 'evil-symlink'));
+    if (hasSymlinkSupport) {
+      await fs.symlink(path.join(outsideDir, 'external.txt'), path.join(workspace, 'evil-symlink'));
+    }
   });
 
   afterEach(async () => {
@@ -68,6 +84,9 @@ describe('isPathWithinDir', () => {
   });
 
   it('should block symlinks that point outside directory (symlink attack)', async () => {
+    if (!hasSymlinkSupport) {
+      return; // Skip on Windows without admin privileges
+    }
     await expect(isPathWithinDir('evil-symlink', workspace)).resolves.toBe(false);
   });
 

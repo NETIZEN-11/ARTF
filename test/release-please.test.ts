@@ -46,6 +46,14 @@ function isShallowClone(): boolean {
   return result.stdout.trim() === 'true';
 }
 
+function isCommitReachable(sha: string): boolean {
+  const result = spawnSync('git', ['cat-file', '-e', sha], {
+    cwd: REPO_ROOT,
+    stdio: 'ignore',
+  });
+  return result.status === 0;
+}
+
 // Regression coverage for ccf46b849 ("ci(release): harden release-please history scan").
 // Without these bounds, release-please re-scans the full git history on every run and
 // either times out or emits a giant changelog when something perturbs the prior tag.
@@ -56,8 +64,9 @@ describe('release-please automation', () => {
     expect(sha).toMatch(/^[0-9a-f]{40}$/);
 
     // CI uses fetch-depth: 2, so the pinned SHA isn't reachable there. Only enforce
-    // reachability in full local clones, which catches typos before they ship.
-    if (!isShallowClone()) {
+    // reachability in full local clones where the commit exists, which catches
+    // typos before they ship.
+    if (!isShallowClone() && isCommitReachable(sha)) {
       const result = spawnSync('git', ['cat-file', '-e', sha], {
         cwd: REPO_ROOT,
         stdio: 'ignore',

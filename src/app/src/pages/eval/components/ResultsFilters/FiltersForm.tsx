@@ -81,6 +81,78 @@ function DebouncedInput({
   );
 }
 
+function buildTypeOptions(filtersOptions: typeof filters.options): { value: string; label: string }[] {
+  const opts: { value: string; label: string }[] = [];
+  if (filtersOptions.metric.length > 0) {
+    opts.push({ value: 'metric', label: TYPE_LABELS.metric });
+  }
+  opts.push({ value: 'metadata', label: TYPE_LABELS.metadata });
+  if ((filtersOptions.plugin?.length ?? 0) > 0) {
+    opts.push({ value: 'plugin', label: TYPE_LABELS.plugin });
+  }
+  if ((filtersOptions.strategy?.length ?? 0) > 0) {
+    opts.push({ value: 'strategy', label: TYPE_LABELS.strategy });
+  }
+  if ((filtersOptions.severity?.length ?? 0) > 0) {
+    opts.push({ value: 'severity', label: TYPE_LABELS.severity });
+  }
+  if ((filtersOptions.policy?.length ?? 0) > 0) {
+    opts.push({ value: 'policy', label: TYPE_LABELS.policy });
+  }
+  return opts;
+}
+
+function buildOperatorOptions(filterType: ResultsFilter['type']): { value: string; label: string }[] {
+  if (filterType === 'metric') {
+    return [
+      { value: 'is_defined', label: OPERATOR_LABELS.is_defined },
+      { value: 'eq', label: OPERATOR_LABELS.eq },
+      { value: 'neq', label: OPERATOR_LABELS.neq },
+      { value: 'gt', label: OPERATOR_LABELS.gt },
+      { value: 'gte', label: OPERATOR_LABELS.gte },
+      { value: 'lt', label: OPERATOR_LABELS.lt },
+    ];
+  }
+  if (filterType === 'metadata') {
+    return [
+      { value: 'equals', label: OPERATOR_LABELS.equals },
+      { value: 'not_equals', label: OPERATOR_LABELS.not_equals },
+      { value: 'contains', label: OPERATOR_LABELS.contains },
+      { value: 'not_contains', label: OPERATOR_LABELS.not_contains },
+      { value: 'starts_with', label: OPERATOR_LABELS.starts_with },
+      { value: 'ends_with', label: OPERATOR_LABELS.ends_with },
+      { value: 'exists', label: OPERATOR_LABELS.exists },
+      { value: 'not_exists', label: OPERATOR_LABELS.not_exists },
+    ];
+  }
+  if (filterType === 'plugin' || filterType === 'strategy') {
+    return [
+      { value: 'equals', label: OPERATOR_LABELS.equals },
+      { value: 'not_equals', label: OPERATOR_LABELS.not_equals },
+    ];
+  }
+  if (filterType === 'severity') {
+    return [
+      { value: 'equals', label: OPERATOR_LABELS.equals },
+      { value: 'not_equals', label: OPERATOR_LABELS.not_equals },
+      { value: 'gt', label: OPERATOR_LABELS.gt },
+      { value: 'gte', label: OPERATOR_LABELS.gte },
+      { value: 'lt', label: OPERATOR_LABELS.lt },
+      { value: 'lte', label: OPERATOR_LABELS.lte },
+    ];
+  }
+  if (filterType === 'policy') {
+    return [
+      { value: 'equals', label: OPERATOR_LABELS.equals },
+      { value: 'not_equals', label: OPERATOR_LABELS.not_equals },
+    ];
+  }
+  return [
+    { value: 'equals', label: OPERATOR_LABELS.equals },
+    { value: 'not_equals', label: OPERATOR_LABELS.not_equals },
+  ];
+}
+
 function FilterRow({
   filter,
   index,
@@ -231,56 +303,10 @@ function FilterRow({
       : (filterWithSortIndex1?.logicOperator ?? filter.logicOperator ?? 'and');
 
   // Build type options
-  const typeOptions = useMemo(() => {
-    const opts: { value: string; label: string }[] = [];
-    if (filters.options.metric.length > 0) {
-      opts.push({ value: 'metric', label: TYPE_LABELS.metric });
-    }
-    opts.push({ value: 'metadata', label: TYPE_LABELS.metadata });
-    if ((filters.options.plugin?.length ?? 0) > 0) {
-      opts.push({ value: 'plugin', label: TYPE_LABELS.plugin });
-    }
-    if ((filters.options.strategy?.length ?? 0) > 0) {
-      opts.push({ value: 'strategy', label: TYPE_LABELS.strategy });
-    }
-    if ((filters.options.severity?.length ?? 0) > 0) {
-      opts.push({ value: 'severity', label: TYPE_LABELS.severity });
-    }
-    if ((filters.options.policy?.length ?? 0) > 0) {
-      opts.push({ value: 'policy', label: TYPE_LABELS.policy });
-    }
-    return opts;
-  }, [filters.options]);
+  const typeOptions = useMemo(() => buildTypeOptions(filters.options), [filters.options]);
 
   // Build operator options based on type
-  const operatorOptions = useMemo(() => {
-    if (filter.type === 'metric') {
-      return [
-        { value: 'is_defined', label: OPERATOR_LABELS.is_defined },
-        { value: 'eq', label: OPERATOR_LABELS.eq },
-        { value: 'neq', label: OPERATOR_LABELS.neq },
-        { value: 'gt', label: OPERATOR_LABELS.gt },
-        { value: 'gte', label: OPERATOR_LABELS.gte },
-        { value: 'lt', label: OPERATOR_LABELS.lt },
-        { value: 'lte', label: OPERATOR_LABELS.lte },
-      ];
-    }
-    if (filter.type === 'plugin') {
-      return [
-        { value: 'equals', label: OPERATOR_LABELS.equals },
-        { value: 'not_equals', label: OPERATOR_LABELS.not_equals },
-      ];
-    }
-    if (solelyHasEqualsOperator(filter.type)) {
-      return [{ value: 'equals', label: OPERATOR_LABELS.equals }];
-    }
-    return [
-      { value: 'equals', label: OPERATOR_LABELS.equals },
-      { value: 'contains', label: OPERATOR_LABELS.contains },
-      { value: 'not_contains', label: OPERATOR_LABELS.not_contains },
-      { value: 'exists', label: OPERATOR_LABELS.exists },
-    ];
-  }, [filter.type]);
+  const operatorOptions = useMemo(() => buildOperatorOptions(filter.type), [filter.type]);
 
   // Build value options for select types
   const valueOptions = useMemo(() => {

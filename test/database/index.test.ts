@@ -3,6 +3,19 @@ import * as os from 'os';
 import * as path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+const canCreateSymlinksSync = (): boolean => {
+  try {
+    const testDir = fs.mkdtempSync(path.join(os.tmpdir(), 'symlink-test-'));
+    fs.symlinkSync('target', path.join(testDir, 'link'));
+    fs.rmSync(testDir, { recursive: true, force: true });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const hasSymlinkSupport = canCreateSymlinksSync();
 import cliState from '../../src/cliState';
 import {
   closeDb,
@@ -295,6 +308,9 @@ describe('database', () => {
     });
 
     it('should refuse a dangling file symlink to the default user database', () => {
+      if (!hasSymlinkSupport) {
+        return; // Skip on Windows without admin privileges
+      }
       const fakeHomeDir = path.join(tempConfigDir, 'dangling-link-home');
       const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
       const aliasedConfigDir = path.join(tempConfigDir, 'dangling-link-config');
@@ -313,6 +329,9 @@ describe('database', () => {
     });
 
     it('should refuse a relative dangling file symlink chain to the default user database', () => {
+      if (!hasSymlinkSupport) {
+        return; // Skip on Windows without admin privileges
+      }
       const fakeHomeDir = path.join(tempConfigDir, 'relative-link-home');
       const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
       const aliasedConfigDir = path.join(tempConfigDir, 'relative-link-config');
@@ -339,6 +358,9 @@ describe('database', () => {
     });
 
     it('should preserve filesystem semantics for dangling symlinks containing dot-dot', () => {
+      if (!hasSymlinkSupport) {
+        return; // Skip on Windows without admin privileges
+      }
       const fakeHomeDir = path.join(tempConfigDir, 'pivot-link-home');
       const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
       const pivotTarget = path.join(fakeHomeDir, 'subdir');
