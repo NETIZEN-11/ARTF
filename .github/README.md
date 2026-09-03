@@ -2,35 +2,37 @@
 
 This is a fork of promptfoo, rebranded as ARTEF (Agent Red-Teaming & Evaluation Framework).
 
-## Disabled Workflows
+## Removed Workflows
 
-The following workflows have been disabled (set to `workflow_dispatch` only) because they require credentials from the original promptfoo repository:
+The following workflows have been **deleted** because they require credentials from the original promptfoo repository:
 
-- **deploy-launcher.yml** - Requires cloud deployment credentials
-- **docker.yml** - Requires Docker Hub publishing credentials
-- **release-please.yml** - Requires `PROMPTFOOBOT_APP_ID` and `PROMPTFOOBOT_APP_PRIVATE_KEY`
-- **release-please-format.yml** - Requires GitHub App credentials
-- **release-please-sha-drift.yml** - Requires GitHub App credentials
-- **tusk-test-runner-*.yml** - Requires external test service credentials
+- **deploy-launcher.yml** - Cloud deployment (requires deployment credentials)
+- **docker.yml** - Docker Hub publishing (requires Docker Hub credentials)
+- **release-please.yml** - Automated releases (requires `PROMPTFOOBOT_APP_ID` and `PROMPTFOOBOT_APP_PRIVATE_KEY`)
+- **release-please-format.yml** - Release PR formatting (requires GitHub App credentials)
+- **release-please-sha-drift.yml** - SHA validation (requires GitHub App credentials)
+- **tusk-test-runner-app-vitest-unit-tests.yml** - External test runner (requires Tusk credentials)
+- **tusk-test-runner-vitest-unit-tests.yml** - External test runner (requires Tusk credentials)
 
 ## Active Workflows
 
-These workflows remain active:
+These workflows remain active and will work in the fork:
 
-- **main.yml** - Basic CI tests (build, lint, test)
-- **image-actions.yml** - Image optimization
-- **promptfoo-code-scan.yml** - Security scanning
-- **validate-pr-title.yml** - PR title validation
-- **validate-renovate-config.yml** - Renovate config validation
+- **main.yml** - Core CI (build, lint, unit tests)
+- **image-actions.yml** - Automated image optimization
+- **promptfoo-code-scan.yml** - Security vulnerability scanning
+- **validate-pr-title.yml** - PR title format validation
+- **validate-renovate-config.yml** - Renovate bot config validation
 
-## Re-enabling Workflows
+## Adding Workflows Back
 
-If you want to re-enable any disabled workflow:
+If you want to add deployment/publishing workflows:
 
-1. Set up the required credentials in GitHub repository secrets
-2. Change the workflow trigger from `workflow_dispatch:` back to the original trigger (`push:`, `pull_request:`, etc.)
-3. Update any references from `promptfoo` to `artef` in the workflow files
+1. Create new workflow files with your own deployment targets
+2. Configure your own credentials in GitHub repository secrets
+3. Update repository references from `promptfoo` to `artef`
+4. Test in a feature branch before merging to main
 
-## Forked from
+## Forked From
 
 Original repository: [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo)
