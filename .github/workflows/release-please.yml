@@ -1,10 +1,8 @@
 name: release-please
-run-name: promptfoo release by @${{ github.actor }}
+run-name: artef release by @${{ github.actor }}
 
 on:
-  push:
-    branches:
-      - main
+  # Disabled for ARTEF fork - enable if you set up GitHub App credentials
   workflow_dispatch:
     inputs:
       tag_name:
