@@ -14,27 +14,27 @@ const links: { icon: React.ReactElement; text: string; href: string }[] = [
   {
     icon: <BookOpen className="size-4" />,
     text: 'Documentation',
-    href: 'https://www.artef.dev/docs/intro',
+    href: 'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
   },
   {
     icon: <GitBranch className="size-4" />,
     text: 'GitHub Repository',
-    href: 'https://github.com/artef/artef',
+    href: 'https://github.com/NETIZEN-11/ARTF',
   },
   {
     icon: <Bug className="size-4" />,
     text: 'File an Issue',
-    href: 'https://github.com/artef/artef/issues',
+    href: 'https://github.com/NETIZEN-11/ARTF/issues',
   },
   {
     icon: <MessageCircle className="size-4" />,
-    text: 'Join Our Discord Community',
-    href: 'https://discord.gg/artef',
+    text: 'Contact Developer',
+    href: 'mailto:your-email@example.com',
   },
   {
     icon: <Calendar className="size-4" />,
-    text: 'Book a Meeting',
-    href: 'https://cal.com/team/artef/intro2',
+    text: 'GitHub Profile',
+    href: 'https://github.com/NETIZEN-11',
   },
 ];
 
@@ -48,7 +48,7 @@ export default function InfoModal<T extends { open: boolean; onClose: () => void
         <DialogHeader>
           <DialogTitle>About artef</DialogTitle>
           <a
-            href="https://github.com/artef/artef/releases"
+            href="https://github.com/NETIZEN-11/ARTF/releases"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -57,8 +57,8 @@ export default function InfoModal<T extends { open: boolean; onClose: () => void
           </a>
         </DialogHeader>
         <DialogDescription>
-          artef is a MIT licensed open-source tool for evaluating and red-teaming LLMs. We make
-          it easy to track the performance of your models and prompts over time with automated
+          ARTEF (Agent Red-Teaming & Evaluation Framework) is a MIT licensed open-source tool for evaluating and red-teaming LLMs. 
+          Forked and customized by NETIZEN-11. Track the performance of your models and prompts over time with automated
           support for dataset generation and grading.
         </DialogDescription>
         <div className="flex flex-col gap-3 mt-2">
