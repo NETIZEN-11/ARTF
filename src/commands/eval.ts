@@ -6,10 +6,10 @@ import { DEFAULT_MAX_CONCURRENCY } from '../constants';
 import logger from '../logger';
 import { doEval, type EvalCommandOptions, EvalCommandSchema } from '../node/doEval';
 import { MAX_SUGGESTIONS_COUNT } from '../types/index';
+import { artefCommand } from '../util/artefCommand';
 import { collectKeyValueOption, normalizeTagOption } from '../util/cliOptions';
 import invariant from '../util/invariant';
 import { getOutputFileFormat, SUPPORTED_OUTPUT_FILE_FORMATS } from '../util/outputFormats';
-import { artefCommand } from '../util/artefCommand';
 import type { Command } from 'commander';
 
 import type { CommandLineOptions, UnifiedConfig } from '../types/index';

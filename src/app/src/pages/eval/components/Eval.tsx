@@ -1,4 +1,4 @@
-ï»¿import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import EnterpriseBanner from '@app/components/EnterpriseBanner';
 import { Spinner } from '@app/components/ui/spinner';
@@ -288,7 +288,7 @@ export default function Eval({ fetchId }: EvalOptions) {
   };
 
   // Keep the latest handler in a ref so the socket effect only depends on the connection
-  // target (apiBaseUrl) plus the stable setIsStreaming setter â€” never on filterMode/fetchId.
+  // target (apiBaseUrl) plus the stable setIsStreaming setter — never on filterMode/fetchId.
   const handleResultsFileRef = useRef(handleResultsFile);
   handleResultsFileRef.current = handleResultsFile;
 
@@ -492,7 +492,7 @@ export default function Eval({ fetchId }: EvalOptions) {
 
     // socket.io does not await event handlers, so two quickly-emitted events (e.g. the delete
     // and update components of one coalesced signal, or several back-to-back scoped updates)
-    // would otherwise run their async table reloads concurrently â€” and whichever DB response
+    // would otherwise run their async table reloads concurrently — and whichever DB response
     // landed last, possibly an OLDER eval's, would win the table. Serialize the handler runs so
     // events apply in arrival order. The returned promise lets tests await the queued work.
     let pending: Promise<void> = Promise.resolve();

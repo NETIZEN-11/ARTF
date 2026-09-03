@@ -6,13 +6,7 @@ const SAFE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
 
 // Hostnames that all resolve to the local machine.
 // Requests between these are treated as same-origin equivalent.
-const KNOWN_LOCAL_HOSTS = new Set([
-  'localhost',
-  '127.0.0.1',
-  '[::1]',
-  '::1',
-  'local.artef.app',
-]);
+const KNOWN_LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', '::1', 'local.artef.app']);
 
 function isLocalHost(hostname: string): boolean {
   return KNOWN_LOCAL_HOSTS.has(hostname);

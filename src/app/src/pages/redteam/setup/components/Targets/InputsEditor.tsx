@@ -1,4 +1,4 @@
-﻿import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -333,7 +333,7 @@ export default function InputsEditor({
           <p className="text-sm text-muted-foreground">
             See{' '}
             <a
-              href="https://www.artef.dev/docs/red-team/configuration/multi-input/"
+              href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

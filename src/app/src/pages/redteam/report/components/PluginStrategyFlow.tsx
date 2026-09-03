@@ -1,4 +1,4 @@
-﻿// PluginStrategyFlow.tsx
+// PluginStrategyFlow.tsx
 
 import React, { useMemo } from 'react';
 
@@ -353,7 +353,7 @@ const PluginStrategyFlow = ({ failuresByPlugin, passesByPlugin }: PluginStrategy
                   return (
                     <div className="rounded border border-border bg-card px-3 py-2 text-sm shadow-sm">
                       <strong>
-                        {getDisplayName(source.name)} → {getDisplayName(target.name)}
+                        {getDisplayName(source.name)} ? {getDisplayName(target.name)}
                       </strong>
                       : {entry.value} tests
                     </div>

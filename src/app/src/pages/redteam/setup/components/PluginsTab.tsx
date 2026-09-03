@@ -1,4 +1,4 @@
-﻿import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -589,7 +589,7 @@ export default function PluginsTab({
                       feature: 'redteam_config_enterprise_upgrade_clicked',
                       source: 'vertical_suite_card',
                     });
-                    window.open('https://www.artef.dev/pricing/', '_blank');
+                    window.open('https://github.com/NETIZEN-11/ARTF/blob/main/README.md', '_blank');
                   }}
                 />
               ))}

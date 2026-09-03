@@ -1,4 +1,4 @@
-﻿import useApiConfig from '@app/stores/apiConfig';
+import useApiConfig from '@app/stores/apiConfig';
 import { mockCallApiResponse, rejectCallApi, resetCallApiMock } from '@app/tests/apiMocks';
 import { callApi, fetchUserEmail } from '@app/utils/api';
 import { act, renderHook } from '@testing-library/react';

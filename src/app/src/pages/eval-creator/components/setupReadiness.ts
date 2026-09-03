@@ -1,4 +1,4 @@
-ï»¿import { getMissingAssertionVariables } from './assertionPrerequisites';
+import { getMissingAssertionVariables } from './assertionPrerequisites';
 import { getFirstRunnableAssertionValueError } from './assertionValueValidation';
 import type { AssertionOrSet, ProviderOptions, UnifiedConfig } from '@artef/types';
 
@@ -122,7 +122,7 @@ function hasInvalidAssertionValue(testCase: unknown): boolean {
   return Boolean(getFirstRunnableAssertionValueError(testCase.assert));
 }
 
-// Deliberately shallow (top-level) â€” does NOT descend into assert-sets. The
+// Deliberately shallow (top-level) — does NOT descend into assert-sets. The
 // runtime detects comparison assertions (select-best / max-score) only at the top
 // level of test.assert and silently skips any nested inside an assert-set, so the
 // readiness gate mirrors that to avoid falsely blocking a config the runtime runs.
@@ -379,7 +379,7 @@ function getComparisonSetupIssues(
 
   if (hasInsufficientSelectBest || hasInsufficientMaxScore) {
     const label = hasInsufficientSelectBest ? 'Choose best output' : 'Choose highest score';
-    // Route the user to whichever axis is shorter â€” adding to the longer one would not increase
+    // Route the user to whichever axis is shorter — adding to the longer one would not increase
     // outputs per test case.
     issues.push({
       id: 'comparisonOutputs',
@@ -415,8 +415,8 @@ export function extractVariablesFromPrompts(prompts: string[]): string[] {
   return Array.from(variables);
 }
 
-// Match a single Nunjucks tag at a time â€” either an output (`{{ ... }}`) or a block
-// (`{% ... %}`) â€” tolerating whitespace-control markers (`{%-`, `-%}`, `{{-`, `-}}`).
+// Match a single Nunjucks tag at a time — either an output (`{{ ... }}`) or a block
+// (`{% ... %}`) — tolerating whitespace-control markers (`{%-`, `-%}`, `{{-`, `-}}`).
 // Matching one tag per iteration keeps extraction linear; the previous
 // block-spanning regex with several lazy groups backtracked catastrophically on
 // unbalanced `{% for %}` templates (a freeze risk while editing a prompt).

@@ -1,4 +1,4 @@
-﻿import { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { cn } from '@app/lib/utils';
 import { resolveAudioSource, resolveImageSource } from '@app/utils/media';

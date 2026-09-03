@@ -103,8 +103,8 @@ function BridgeSection() {
     <section className={styles.bridgeSection}>
       <div className="container">
         <div className={styles.bridgeStatement}>
-          <strong>{SITE_CONSTANTS.FORTUNE_500_COUNT} of the Fortune 500</strong> use artef in
-          their AI development lifecycle. Here's how:
+          <strong>{SITE_CONSTANTS.FORTUNE_500_COUNT} of the Fortune 500</strong> use artef in their
+          AI development lifecycle. Here's how:
         </div>
       </div>
     </section>
@@ -219,8 +219,8 @@ function HomepageWalkthrough() {
           <p>Start testing the performance of your models, prompts, and tools in minutes:</p>
           <CopyCodeBox command="npx artef@latest init" />
           <p>
-            artef runs locally and integrates directly with your app - no SDKs, cloud
-            dependencies, or logins.
+            artef runs locally and integrates directly with your app - no SDKs, cloud dependencies,
+            or logins.
           </p>
           <p>
             <strong>
@@ -737,8 +737,8 @@ function AsSeenOnSection() {
                 Courses
               </h3>
               <p>
-                "artef offers a streamlined, out-of-the-box solution that can significantly
-                reduce the time and effort required for comprehensive prompt testing."
+                "artef offers a streamlined, out-of-the-box solution that can significantly reduce
+                the time and effort required for comprehensive prompt testing."
               </p>
               <span className={styles.watchNow}>See the Course →</span>
             </div>
@@ -849,8 +849,8 @@ function PersonaSection() {
         <div className={styles.sectionEyebrow}>SOLUTIONS FOR EVERY TEAM</div>
         <h2 className={styles.sectionTitle}>Security that works for everyone</h2>
         <p className={styles.sectionSubtitle}>
-          Whether you're building AI security strategy or writing code, artef meets you where
-          you are.
+          Whether you're building AI security strategy or writing code, artef meets you where you
+          are.
         </p>
 
         <div className={styles.personaTabs}>

@@ -1,4 +1,4 @@
-﻿import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -140,9 +140,8 @@ export function StrategyItem({
                     </span>
                   </TooltipTrigger>
                   <TooltipContent>
-                    This strategy requires remote generation. Unset
-                    artef_DISABLE_REMOTE_GENERATION or
-                    artef_DISABLE_REDTEAM_REMOTE_GENERATION to enable.
+                    This strategy requires remote generation. Unset artef_DISABLE_REMOTE_GENERATION
+                    or artef_DISABLE_REDTEAM_REMOTE_GENERATION to enable.
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -154,9 +153,7 @@ export function StrategyItem({
                       ENTERPRISE
                     </Badge>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    This strategy is available in artef Enterprise
-                  </TooltipContent>
+                  <TooltipContent>This strategy is available in artef Enterprise</TooltipContent>
                 </Tooltip>
               )}
             </div>

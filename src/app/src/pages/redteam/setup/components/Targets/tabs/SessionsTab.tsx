@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -856,7 +856,7 @@ const SessionsTab: React.FC<SessionsTabProps> = ({
       <p className="text-sm text-muted-foreground">
         For more information, see the{' '}
         <a
-          href="https://www.artef.dev/docs/providers/http/#session-management"
+          href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"

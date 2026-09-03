@@ -8,9 +8,9 @@ import logger from '../../logger';
 import telemetry from '../../telemetry';
 import { synthesizeFromTestSuite } from '../../testCase/synthesis';
 import { type TestSuite, type UnifiedConfig } from '../../types/index';
+import { artefCommand } from '../../util/artefCommand';
 import { resolveConfigs } from '../../util/config/load';
 import { printBorder, setupEnv } from '../../util/index';
-import { artefCommand } from '../../util/artefCommand';
 import { loadYaml } from '../../util/yamlLoad';
 import type { Command } from 'commander';
 

@@ -1,6 +1,6 @@
+import { avg, count, eq, gte, lte, sql } from 'drizzle-orm';
 import { getDb } from '../database/index';
-import { evalsTable, evalResultsTable } from '../database/tables';
-import { eq, gte, lte, count, avg, sql } from 'drizzle-orm';
+import { evalResultsTable, evalsTable } from '../database/tables';
 import logger from '../logger';
 
 export interface MetricsSnapshot {
@@ -24,7 +24,9 @@ export async function aggregateMetrics(
   const start = startDate ? Math.floor(startDate.getTime() / 1000) : 0;
   const end = endDate ? Math.floor(endDate.getTime() / 1000) : Math.floor(Date.now() / 1000);
 
-  logger.info(`Aggregating metrics from ${new Date(start * 1000).toISOString()} to ${new Date(end * 1000).toISOString()}`);
+  logger.info(
+    `Aggregating metrics from ${new Date(start * 1000).toISOString()} to ${new Date(end * 1000).toISOString()}`,
+  );
 
   // Get runs in date range
   const runs = await db
@@ -41,7 +43,7 @@ export async function aggregateMetrics(
 
   for (const run of runs) {
     const date = new Date(run.createdAt * 1000).toISOString().split('T')[0];
-    
+
     if (!dailyMetrics.has(date)) {
       dailyMetrics.set(date, {
         date,
@@ -62,9 +64,14 @@ export async function aggregateMetrics(
     const runResults = run.results as { results?: unknown[] } | null;
     if (runResults?.results) {
       for (const result of runResults.results) {
-        const r = result as { success?: boolean; error?: string; latencyMs?: number; cost?: number };
+        const r = result as {
+          success?: boolean;
+          error?: string;
+          latencyMs?: number;
+          cost?: number;
+        };
         metrics.totalTests++;
-        
+
         if (r.success) {
           metrics.passedTests++;
         } else if (r.error) {
@@ -74,8 +81,9 @@ export async function aggregateMetrics(
         }
 
         if (r.latencyMs) {
-          metrics.avgTestDurationMs = 
-            (metrics.avgTestDurationMs * (metrics.totalTests - 1) + r.latencyMs) / metrics.totalTests;
+          metrics.avgTestDurationMs =
+            (metrics.avgTestDurationMs * (metrics.totalTests - 1) + r.latencyMs) /
+            metrics.totalTests;
         }
 
         if (r.cost) {
@@ -94,25 +102,32 @@ export async function getSystemMetrics(): Promise<{
   passRate: number;
   avgLatencyMs: number;
   totalCost: number;
-  queueStats: Record<string, {
-    waiting: number;
-    active: number;
-    completed: number;
-    failed: number;
-  }>;
+  queueStats: Record<
+    string,
+    {
+      waiting: number;
+      active: number;
+      completed: number;
+      failed: number;
+    }
+  >;
 }> {
   const db = await getDb();
 
   const [evalCount, resultStats] = await Promise.all([
     db.select({ count: count() }).from(evalsTable),
-    db.select({
-      total: count(),
-      passed: count(sql`CASE WHEN ${evalResultsTable.success} = 1 THEN 1 END`),
-      failed: count(sql`CASE WHEN ${evalResultsTable.success} = 0 AND ${evalResultsTable.error} IS NULL THEN 1 END`),
-      errors: count(sql`CASE WHEN ${evalResultsTable.error} IS NOT NULL THEN 1 END`),
-      avgLatency: avg(evalResultsTable.latencyMs),
-      totalCost: sql<number>`SUM(${evalResultsTable.cost})`,
-    }).from(evalResultsTable),
+    db
+      .select({
+        total: count(),
+        passed: count(sql`CASE WHEN ${evalResultsTable.success} = 1 THEN 1 END`),
+        failed: count(
+          sql`CASE WHEN ${evalResultsTable.success} = 0 AND ${evalResultsTable.error} IS NULL THEN 1 END`,
+        ),
+        errors: count(sql`CASE WHEN ${evalResultsTable.error} IS NOT NULL THEN 1 END`),
+        avgLatency: avg(evalResultsTable.latencyMs),
+        totalCost: sql<number>`SUM(${evalResultsTable.cost})`,
+      })
+      .from(evalResultsTable),
   ]);
 
   const { getWorkerStats } = await import('../queue/jobs');
@@ -121,9 +136,7 @@ export async function getSystemMetrics(): Promise<{
   return {
     totalEvaluations: evalCount[0]?.count ?? 0,
     totalTestCases: resultStats[0]?.total ?? 0,
-    passRate: resultStats[0]?.total 
-      ? (resultStats[0].passed ?? 0) / resultStats[0].total 
-      : 0,
+    passRate: resultStats[0]?.total ? (resultStats[0].passed ?? 0) / resultStats[0].total : 0,
     avgLatencyMs: Number(resultStats[0]?.avgLatency ?? 0),
     totalCost: Number(resultStats[0]?.totalCost ?? 0),
     queueStats,

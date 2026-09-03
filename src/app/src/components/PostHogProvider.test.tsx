@@ -1,4 +1,4 @@
-﻿import { useContext } from 'react';
+import { useContext } from 'react';
 
 import { useUserStore } from '@app/stores/userStore';
 import { render, screen, waitFor } from '@testing-library/react';

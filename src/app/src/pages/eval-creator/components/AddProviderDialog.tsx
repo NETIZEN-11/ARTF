@@ -1,4 +1,4 @@
-﻿// Import Prism for syntax highlighting in provider configurations
+// Import Prism for syntax highlighting in provider configurations
 import '@app/lib/prism';
 import '@app/pages/redteam/setup/components/Targets/syntax-highlighting.css';
 

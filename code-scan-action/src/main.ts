@@ -116,9 +116,7 @@ function resolveartefVersionInput(): string {
     return defaultartefVersion;
   }
   if (override.length > MAX_VERSION_LENGTH || !EXACT_SEMVER_PATTERN.test(override)) {
-    throw new Error(
-      `Invalid artef-version "${override}": expected an exact version like 0.121.0`,
-    );
+    throw new Error(`Invalid artef-version "${override}": expected an exact version like 0.121.0`);
   }
   return override;
 }

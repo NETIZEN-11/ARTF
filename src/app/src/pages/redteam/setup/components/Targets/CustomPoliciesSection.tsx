@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Button } from '@app/components/ui/button';

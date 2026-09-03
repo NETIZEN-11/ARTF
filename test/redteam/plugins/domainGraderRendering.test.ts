@@ -65,11 +65,7 @@ const RENDERING_GRADERS: [string, string, new () => RenderingGrader][] = [
     'artef:redteam:financial:japan-fiea-suitability',
     FinancialJapanFieaSuitabilityPluginGrader,
   ],
-  [
-    'financial sycophancy',
-    'artef:redteam:financial:sycophancy',
-    FinancialSycophancyPluginGrader,
-  ],
+  ['financial sycophancy', 'artef:redteam:financial:sycophancy', FinancialSycophancyPluginGrader],
   [
     'insurance coverage discrimination',
     'artef:redteam:insurance:coverage-discrimination',

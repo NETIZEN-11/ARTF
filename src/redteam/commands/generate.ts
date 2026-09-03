@@ -22,6 +22,7 @@ import { getProviderIds } from '../../providers/index';
 import { isartefSampleTarget } from '../../providers/shared';
 import telemetry from '../../telemetry';
 import { EMAIL_OK_STATUS } from '../../types/email';
+import { artefCommand } from '../../util/artefCommand';
 import {
   checkCloudPermissions,
   getCloudDatabaseId,
@@ -40,7 +41,6 @@ import { pathExists } from '../../util/file';
 import { getCustomPolicies } from '../../util/generation';
 import { printBorder, renderVarsInObject, setupEnv } from '../../util/index';
 import invariant from '../../util/invariant';
-import { artefCommand } from '../../util/artefCommand';
 import { checkRedteamProbeLimit, MONTHLY_PROBE_LIMIT } from '../../util/redteamProbeLimit';
 import { accumulateTokenUsage } from '../../util/tokenUsageUtils';
 import { isUuid } from '../../util/uuid';

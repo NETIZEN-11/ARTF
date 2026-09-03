@@ -1,4 +1,4 @@
-﻿import { BaseAssertionTypesSchema } from '@artef/types';
+import { BaseAssertionTypesSchema } from '@artef/types';
 import { describe, expect, it } from 'vitest';
 import {
   getAssertionValueError,
@@ -525,7 +525,7 @@ describe('getFirstRunnableAssertionValueError', () => {
 describe('supported assertion type coverage', () => {
   // Guards against drift: `BASE_ASSERTION_TYPES` is a hand-maintained copy of the
   // canonical schema, and `satisfies AssertionType[]` only checks the listed entries
-  // are valid — not that the list is complete. A base type added to the schema but
+  // are valid � not that the list is complete. A base type added to the schema but
   // not mirrored here would be wrongly reported as unsupported, falsely blocking a
   // valid assertion. This test fails if that ever happens.
   it.each(BaseAssertionTypesSchema.options)('treats base type %s as supported', (type) => {

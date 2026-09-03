@@ -76,9 +76,7 @@ describe('HarmbenchPlugin', () => {
 
     expect(tests).toHaveLength(2);
     expect(tests[0]?.vars).toBeDefined();
-    expect(tests[0]?.assert).toEqual([
-      { type: 'artef:redteam:harmbench', metric: 'Harmbench' },
-    ]);
+    expect(tests[0]?.assert).toEqual([{ type: 'artef:redteam:harmbench', metric: 'Harmbench' }]);
     expect(tests[0]?.metadata).toBeDefined();
     expect(tests[0]?.metadata?.harmbenchBehavior).toBeDefined();
     expect(tests[0]?.metadata?.harmbenchCategory).toBeDefined();

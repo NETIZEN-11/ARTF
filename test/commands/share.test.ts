@@ -535,9 +535,7 @@ describe('Share Command', () => {
       vi.mocked(isSharingEnabled).mockImplementation(function () {
         return true;
       });
-      vi.mocked(createShareableUrl).mockResolvedValue(
-        'https://app.artef.dev/eval/test-eval-id',
-      );
+      vi.mocked(createShareableUrl).mockResolvedValue('https://app.artef.dev/eval/test-eval-id');
 
       const shareCmd = program.commands.find((c) => c.name() === 'share');
       await shareCmd?.parseAsync(['node', 'test']);

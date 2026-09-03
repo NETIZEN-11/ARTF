@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { MODEL_AUDIT_ROUTES, REDTEAM_ROUTES, ROUTES } from '@app/constants/routes';
 import { mockMatchMedia, restoreBrowserMocks } from '@app/tests/browserMocks';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

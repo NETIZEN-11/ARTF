@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -130,7 +130,7 @@ function getDisplayedIntents(plugins: readonly ReviewPlugin[]): IntentEntry[] {
         return [];
       }
       if (Array.isArray(entry)) {
-        return [{ display: entry.join(' → '), isMultiStep: true, pluginIndex, entryIndex }];
+        return [{ display: entry.join(' ? '), isMultiStep: true, pluginIndex, entryIndex }];
       }
       return [{ display: entry, isMultiStep: false, pluginIndex, entryIndex }];
     });
@@ -936,7 +936,7 @@ export default function Review({
                     .map(({ display, isMultiStep, pluginIndex, entryIndex }) => {
                       // Truncate long entries for the SR/title label so screen
                       // readers can distinguish multiple Remove buttons.
-                      const shortLabel = display.length > 80 ? `${display.slice(0, 80)}…` : display;
+                      const shortLabel = display.length > 80 ? `${display.slice(0, 80)}�` : display;
                       const key = `${pluginIndex}:${entryIndex}`;
                       return (
                         <div key={key} className="relative rounded-lg bg-muted/50 p-3 pr-8">
@@ -1048,7 +1048,7 @@ export default function Review({
                             className="underline"
                             target="_blank"
                             rel="noopener noreferrer"
-                            to="https://www.artef.dev/docs/red-team/troubleshooting/best-practices/#1-provide-comprehensive-application-details"
+                            to="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
                           >
                             Learn more about red team best practices.
                           </Link>

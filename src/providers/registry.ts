@@ -13,6 +13,7 @@ import { AlibabaChatCompletionProvider, AlibabaEmbeddingProvider } from './aliba
 import { AnthropicCompletionProvider } from './anthropic/completion';
 import { AnthropicMessagesProvider } from './anthropic/messages';
 import { ANTHROPIC_MODELS, looksLikeClaudeModelId } from './anthropic/util';
+import { artefModelProvider } from './artefModel';
 import { createAtlasCloudProvider } from './atlascloud';
 import { AzureAssistantProvider } from './azure/assistant';
 import { AzureChatCompletionProvider } from './azure/chat';
@@ -89,7 +90,6 @@ import { createOrcaRouterProvider } from './orcarouter';
 import { parsePackageProvider } from './packageParser';
 import { createPerplexityProvider } from './perplexity';
 import { PortkeyChatCompletionProvider } from './portkey';
-import { artefModelProvider } from './artefModel';
 import { PythonProvider } from './pythonCompletion';
 import {
   ReplicateImageProvider,
@@ -1750,9 +1750,7 @@ export const providerMap: ProviderFactory[] = [
 ];
 
 function isRedteamProviderPath(providerPath: string): boolean {
-  return (
-    providerPath === 'agentic:memory-poisoning' || providerPath.startsWith('artef:redteam:')
-  );
+  return providerPath === 'agentic:memory-poisoning' || providerPath.startsWith('artef:redteam:');
 }
 
 function isAwsProviderPath(providerPath: string): boolean {

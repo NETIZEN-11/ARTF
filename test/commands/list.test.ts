@@ -179,9 +179,7 @@ describe('list command', () => {
 
       expect(printBorder).toHaveBeenCalledTimes(1);
       expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('artef show eval <id>'));
-      expect(logger.info).toHaveBeenCalledWith(
-        expect.stringContaining('artef show prompt <id>'),
-      );
+      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('artef show prompt <id>'));
     });
   });
 
@@ -242,9 +240,7 @@ describe('list command', () => {
       });
       expect(tableRows[0].raw).toMatch(/\.\.\.$/);
       expect(printBorder).toHaveBeenCalledTimes(1);
-      expect(logger.info).toHaveBeenCalledWith(
-        expect.stringContaining('artef show prompt <id>'),
-      );
+      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('artef show prompt <id>'));
     });
   });
 

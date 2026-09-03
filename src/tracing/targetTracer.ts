@@ -8,15 +8,15 @@
   trace,
 } from '@opentelemetry/api';
 import {
+  artefAttributes,
   GenAIAttributes,
   getGenAITracer,
-  artefAttributes,
   sanitizeBody,
   withGenAISpan,
 } from './genaiTracer';
 import {
-  getActiveTraceparent,
   type artefSpanRole,
+  getActiveTraceparent,
   SPAN_ROLE_ATTRIBUTE,
   withSpanRole,
 } from './spanRoles';

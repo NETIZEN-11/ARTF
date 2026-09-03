@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { mockClipboard, mockObjectUrl } from '@app/tests/browserMocks';
 import { render, screen } from '@testing-library/react';

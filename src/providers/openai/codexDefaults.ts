@@ -104,9 +104,7 @@ function getTempDirectory(): string {
 
 function getCodexDefaultWorkingDir(): string {
   if (!codexDefaultWorkingDir) {
-    codexDefaultWorkingDir = fs.mkdtempSync(
-      path.join(getTempDirectory(), 'artef-codex-default-'),
-    );
+    codexDefaultWorkingDir = fs.mkdtempSync(path.join(getTempDirectory(), 'artef-codex-default-'));
   }
 
   return codexDefaultWorkingDir;

@@ -1,4 +1,4 @@
-﻿import { type Strategy } from '@artef/redteam/constants';
+import { type Strategy } from '@artef/redteam/constants';
 export interface StrategyCardData {
   id: Strategy;
   name: string;

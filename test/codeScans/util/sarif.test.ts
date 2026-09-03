@@ -111,9 +111,7 @@ describe('scanResponseToSarif', () => {
         },
       ],
     });
-    expect(sarif.runs[0].results[0].partialFingerprints.artefFindingHash).toMatch(
-      /^[a-f0-9]{64}$/,
-    );
+    expect(sarif.runs[0].results[0].partialFingerprints.artefFindingHash).toMatch(/^[a-f0-9]{64}$/);
   });
 
   it('omits endLine when the comment range is inverted (startLine > line)', () => {

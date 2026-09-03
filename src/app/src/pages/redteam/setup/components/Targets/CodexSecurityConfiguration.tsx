@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Input } from '@app/components/ui/input';
@@ -160,8 +160,8 @@ export default function CodexSecurityConfiguration({
             <p className="font-semibold">Codex Security SDK</p>
             <p className="mt-1">
               Compare repository scans, finding validation, model reasoning, and estimated cost.
-              Install <code>artef</code> and <code>@openai/codex-security@^0.1.18</code>{' '}
-              together, then use an existing Codex login or OpenAI API key.
+              Install <code>artef</code> and <code>@openai/codex-security@^0.1.18</code> together,
+              then use an existing Codex login or OpenAI API key.
             </p>
           </AlertDescription>
         </AlertContent>

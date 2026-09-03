@@ -1,4 +1,4 @@
-﻿import './syntax-highlighting.css';
+import './syntax-highlighting.css';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -776,11 +776,11 @@ ${exampleRequest}`;
         <p className="mb-2 mt-6 font-medium">Response Parser</p>
         <div className="mb-4 text-sm text-muted-foreground">
           <p>
-            This tells artef how to extract the AI's response from your API. Most APIs return
-            JSON with the actual response nested inside - this parser helps find the right part.
-            Leave empty if your API returns plain text. See{' '}
+            This tells artef how to extract the AI's response from your API. Most APIs return JSON
+            with the actual response nested inside - this parser helps find the right part. Leave
+            empty if your API returns plain text. See{' '}
             <a
-              href="https://www.artef.dev/docs/providers/http/#response-transform"
+              href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

@@ -1,4 +1,4 @@
-﻿import { DEFAULT_CONFIG, useStore } from '@app/stores/evalConfig';
+import { DEFAULT_CONFIG, useStore } from '@app/stores/evalConfig';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

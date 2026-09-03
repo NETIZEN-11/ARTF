@@ -1,7 +1,4 @@
-﻿import {
-  deserializePolicyIdFromMetric,
-  isPolicyMetric,
-} from '@artef/redteam/plugins/policy/utils';
+import { deserializePolicyIdFromMetric, isPolicyMetric } from '@artef/redteam/plugins/policy/utils';
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {

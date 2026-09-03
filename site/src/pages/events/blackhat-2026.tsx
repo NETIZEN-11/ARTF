@@ -233,10 +233,7 @@ export default function BlackHat2026(): React.ReactElement {
       <Head>
         <meta property="og:title" content="artef at Black Hat USA 2026 | AI Security" />
         <meta property="og:description" content={DESCRIPTION} />
-        <meta
-          property="og:image"
-          content="https://www.artef.dev/img/events/blackhat-2026.jpg"
-        />
+        <meta property="og:image" content="https://www.artef.dev/img/events/blackhat-2026.jpg" />
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="1024" />
         <meta property="og:url" content="https://www.artef.dev/events/blackhat-2026" />
@@ -246,10 +243,7 @@ export default function BlackHat2026(): React.ReactElement {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="artef at Black Hat USA 2026 | AI Security" />
         <meta name="twitter:description" content={DESCRIPTION} />
-        <meta
-          name="twitter:image"
-          content="https://www.artef.dev/img/events/blackhat-2026.jpg"
-        />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/blackhat-2026.jpg" />
         <meta name="twitter:site" content="@artef" />
 
         <meta
@@ -278,9 +272,9 @@ export default function BlackHat2026(): React.ReactElement {
                 <span className={styles.titleAccent}>Keep the evidence.</span>
               </h1>
               <p className={styles.heroSubtitle}>
-                Black Hat USA 2026 has ended. artef is part of OpenAI, and we demonstrated
-                attacks against real AI applications at OpenAI booth #2967. Explore the demos below,
-                or get in touch to test your own application.
+                Black Hat USA 2026 has ended. artef is part of OpenAI, and we demonstrated attacks
+                against real AI applications at OpenAI booth #2967. Explore the demos below, or get
+                in touch to test your own application.
               </p>
               <div className={styles.heroButtons}>
                 <a
@@ -436,8 +430,8 @@ export default function BlackHat2026(): React.ReactElement {
               <p className={styles.lineupFrameLabel}>Daybreak</p>
               <p className={styles.lineupFrameBody}>
                 Daybreak brings together OpenAI models, Codex Security, and security partners to
-                help defenders find, verify, and fix vulnerabilities. artef complements that
-                work by testing deployed AI agents.
+                help defenders find, verify, and fix vulnerabilities. artef complements that work by
+                testing deployed AI agents.
               </p>
               <div className={styles.lineupPair}>
                 {LINEUP.map((entry) => (
@@ -519,8 +513,8 @@ export default function BlackHat2026(): React.ReactElement {
           <div className={styles.container}>
             <h2 className={styles.finalTitle}>Missed us at Black Hat?</h2>
             <p className={styles.finalCopy}>
-              The conference is over, but you can still see artef in action. Request a demo to
-              talk through your application.
+              The conference is over, but you can still see artef in action. Request a demo to talk
+              through your application.
             </p>
             <div className={styles.ctaButtons}>
               <Link to="/contact/" className={styles.primaryButton}>

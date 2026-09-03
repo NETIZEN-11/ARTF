@@ -1,4 +1,4 @@
-﻿import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
+import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
 import { displayNameOverrides } from '@artef/redteam/constants';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

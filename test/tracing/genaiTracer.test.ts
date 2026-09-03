@@ -1,13 +1,13 @@
 ﻿import { SpanKind, SpanStatusCode, trace } from '@opentelemetry/api';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+  artefAttributes,
   GenAIAttributes,
   type GenAISpanContext,
   type GenAISpanResult,
   getCurrentSpanId,
   getCurrentTraceId,
   getTraceparent,
-  artefAttributes,
   sanitizeBody,
   setGenAIResponseAttributes,
   withGenAISpan,
@@ -598,10 +598,7 @@ describe('genaiTracer', () => {
 
       expect(mockSpan.setAttribute).toHaveBeenCalledWith(GenAIAttributes.USAGE_INPUT_TOKENS, 100);
       expect(mockSpan.setAttribute).toHaveBeenCalledWith(GenAIAttributes.USAGE_OUTPUT_TOKENS, 50);
-      expect(mockSpan.setAttribute).toHaveBeenCalledWith(
-        artefAttributes.USAGE_TOTAL_TOKENS,
-        150,
-      );
+      expect(mockSpan.setAttribute).toHaveBeenCalledWith(artefAttributes.USAGE_TOTAL_TOKENS, 150);
       expect(mockSpan.setAttribute).toHaveBeenCalledWith(
         artefAttributes.USAGE_CACHED_RESPONSE_TOKENS,
         20,

@@ -217,9 +217,7 @@ describe('EvalResult', () => {
         metadata: { userKey: 'kept', __artef: 'unexpected-string' as any },
       });
 
-      expect(warnSpy).toHaveBeenCalledWith(
-        expect.stringContaining('non-object metadata.__artef'),
-      );
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('non-object metadata.__artef'));
       // Trace linkage takes precedence; non-object value is overwritten (not preserved).
       expect(result.toEvaluateResult()).toMatchObject({
         traceId: 'wins-over-user',

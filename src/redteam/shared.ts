@@ -9,10 +9,10 @@ import logger, { clearLogCallbackIfOwned, setLogCallback, setLogLevel } from '..
 import { doEval } from '../node/doEval';
 import { isCliEventSource } from '../types/eventSource';
 import { checkRemoteHealth } from '../util/apiHealth';
+import { artefCommand } from '../util/artefCommand';
 import { loadDefaultConfig } from '../util/config/default';
 import { pathExists } from '../util/file';
 import { formatDuration } from '../util/formatDuration';
-import { artefCommand } from '../util/artefCommand';
 import { initVerboseToggle } from '../util/verboseToggle';
 import { doGenerateRedteam } from './commands/generate';
 import { getRemoteHealthUrl } from './remoteGeneration';

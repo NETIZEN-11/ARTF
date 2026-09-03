@@ -1,4 +1,4 @@
-﻿/**
+/**
  * IndexedDB-based cache for video thumbnails.
  * Stores generated thumbnails to avoid regenerating them on every page load.
  */

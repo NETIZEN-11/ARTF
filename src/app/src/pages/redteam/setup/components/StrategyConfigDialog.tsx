@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -522,7 +522,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Number of iterations to try (more iterations increase chance of success)
-          {!isCloudEnabled && ' â€” sign in for higher limits'}
+          {!isCloudEnabled && ' — sign in for higher limits'}
         </p>
       </div>
     </div>
@@ -674,7 +674,7 @@ export default function StrategyConfigDialog({
           />
           <p className="text-xs text-muted-foreground">
             Maximum number of back-and-forth exchanges with the model
-            {!isCloudEnabled && ' â€” sign in for higher limits'}
+            {!isCloudEnabled && ' — sign in for higher limits'}
           </p>
         </div>
 
@@ -726,7 +726,7 @@ export default function StrategyConfigDialog({
           />
           <p className="text-xs text-muted-foreground">
             Maximum number of back-and-forth exchanges with the target model.
-            {!isCloudEnabled && ' â€” sign in for higher limits'}
+            {!isCloudEnabled && ' — sign in for higher limits'}
           </p>
         </div>
 
@@ -781,7 +781,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Maximum number of back-and-forth exchanges with the model (default: 5)
-          {!isCloudEnabled && ' â€” sign in for higher limits'}
+          {!isCloudEnabled && ' — sign in for higher limits'}
         </p>
       </div>
 
@@ -826,7 +826,7 @@ export default function StrategyConfigDialog({
         <p className="text-xs text-muted-foreground">
           Number of iterations for the meta-agent to attempt. Agent builds attack taxonomy and makes
           strategic decisions.
-          {!isCloudEnabled && ' â€” sign in for higher limits'}
+          {!isCloudEnabled && ' — sign in for higher limits'}
         </p>
       </div>
     </div>
@@ -857,7 +857,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Maximum depth of the search tree
-          {!isCloudEnabled && ' â€” sign in for higher limits'}
+          {!isCloudEnabled && ' — sign in for higher limits'}
         </p>
       </div>
 
@@ -880,7 +880,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Maximum number of attempts to try (note: higher values are more expensive)
-          {!isCloudEnabled && ' â€” sign in for higher limits'}
+          {!isCloudEnabled && ' — sign in for higher limits'}
         </p>
       </div>
 

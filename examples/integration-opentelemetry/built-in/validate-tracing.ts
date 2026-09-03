@@ -27,7 +27,7 @@ tracerProvider.register();
 
 // Now import providers (after OTEL is set up)
 import { OpenAiChatCompletionProvider } from '../../../src/providers/openai/chat';
-import { GenAIAttributes, artefAttributes } from '../../../src/tracing/genaiTracer';
+import { artefAttributes, GenAIAttributes } from '../../../src/tracing/genaiTracer';
 
 interface ValidationResult {
   name: string;

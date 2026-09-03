@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
@@ -125,9 +125,7 @@ describe('TestCaseGenerateButton', () => {
       await user.hover(iconButton);
 
       await waitFor(() => {
-        expect(screen.getByRole('tooltip')).toHaveTextContent(
-          'Requires artef Cloud connection',
-        );
+        expect(screen.getByRole('tooltip')).toHaveTextContent('Requires artef Cloud connection');
       });
     });
 

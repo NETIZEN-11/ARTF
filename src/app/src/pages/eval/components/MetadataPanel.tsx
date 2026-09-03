@@ -1,4 +1,4 @@
-﻿import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import {
   determinePolicyTypeFromId,

@@ -34,14 +34,8 @@ export default function BSidesSF2025(): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.artef.dev/events/bsides-sf-2025" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          property="og:image"
-          content="https://www.artef.dev/img/events/bsides-sf-2025.jpg"
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.artef.dev/img/events/bsides-sf-2025.jpg"
-        />
+        <meta property="og:image" content="https://www.artef.dev/img/events/bsides-sf-2025.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/bsides-sf-2025.jpg" />
         <meta
           name="keywords"
           content="BSides SF 2025, BSides San Francisco, security conference, AI security, hacker community, RSA week"

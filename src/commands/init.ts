@@ -9,8 +9,8 @@ import { VERSION } from '../constants';
 import logger from '../logger';
 import { initializeProject } from '../onboarding';
 import telemetry from '../telemetry';
-import { fetchWithProxy } from '../util/fetch/index';
 import { artefCommand } from '../util/artefCommand';
+import { fetchWithProxy } from '../util/fetch/index';
 import { EXAMPLE_ALIASES, EXAMPLE_REPLACEMENTS, REMOVED_EXAMPLES } from './exampleAliases';
 import type { Command } from 'commander';
 

@@ -1,4 +1,4 @@
-﻿import '@app/lib/prism';
+import '@app/lib/prism';
 
 import { webcrypto } from 'node:crypto';
 

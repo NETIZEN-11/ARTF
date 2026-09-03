@@ -1,4 +1,4 @@
-﻿import type { ModelAuditCheck } from '@artef/types/modelAudit';
+import type { ModelAuditCheck } from '@artef/types/modelAudit';
 
 import type { ModelAuditScanResults } from '../../../../types/modelAudit';
 

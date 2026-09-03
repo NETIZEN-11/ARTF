@@ -1,4 +1,4 @@
-﻿import { mockWindowOpen } from '@app/tests/browserMocks';
+import { mockWindowOpen } from '@app/tests/browserMocks';
 import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

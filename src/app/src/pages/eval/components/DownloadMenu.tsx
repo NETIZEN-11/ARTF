@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Card, CardContent } from '@app/components/ui/card';
@@ -134,7 +134,8 @@ export function DownloadDialog({ open, onClose }: DownloadDialogProps) {
     successMessage: string,
     options: { skipInvalid?: boolean } = {},
   ) => {
-    const schemaLine = '# yaml-language-server: $schema=https://artef.dev/config-schema.json\n';
+    const schemaLine =
+      '# yaml-language-server: $schema=https://github.com/NETIZEN-11/ARTF/blob/main/README.md';
 
     // Clean top-level empty properties
     const cleanConfig = removeEmpty(configToDownload);

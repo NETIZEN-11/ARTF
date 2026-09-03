@@ -1,4 +1,4 @@
-﻿import { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { callApi } from '@app/utils/api';
 import { EmailValidationStatus, UserEmailStatus } from '../../../types/email';

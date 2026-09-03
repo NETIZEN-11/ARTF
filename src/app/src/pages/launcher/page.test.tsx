@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
 import {
   mockMatchMedia as installMatchMedia,
@@ -125,7 +125,7 @@ describe('LauncherPage', () => {
     await waitFor(() => {
       expect(screen.getByRole('link', { name: /installation guide/i })).toHaveAttribute(
         'href',
-        'https://artef.dev/docs/installation',
+        'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
       );
       expect(screen.getByRole('link', { name: /mkcert installation steps/i })).toHaveAttribute(
         'href',

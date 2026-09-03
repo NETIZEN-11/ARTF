@@ -1,4 +1,4 @@
-﻿import type { Inputs } from '@artef/contracts';
+import type { Inputs } from '@artef/contracts';
 import type { HttpProviderConfig } from '@artef/providers/http';
 import type { PluginConfig, RedteamPlugin, RedteamStrategy } from '@artef/redteam/types';
 import type { ProviderOptions as CoreProviderOptions, TestCase } from '@artef/types';

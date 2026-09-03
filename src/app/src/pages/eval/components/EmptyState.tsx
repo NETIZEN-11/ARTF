@@ -1,4 +1,4 @@
-﻿import logo from '@app/assets/logo.svg';
+import logo from '@app/assets/logo.svg';
 import { Button } from '@app/components/ui/button';
 import { Card } from '@app/components/ui/card';
 import { BarChart2, ExternalLink, Shield } from 'lucide-react';
@@ -30,7 +30,7 @@ const EmptyState = () => {
         </p>
         <div className="mt-4">
           <a
-            href="https://www.artef.dev/docs/getting-started/"
+            href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-sm text-primary hover:underline"

@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import ErrorBoundary from '@app/components/ErrorBoundary';
 import { Button } from '@app/components/ui/button';
@@ -517,7 +517,7 @@ export default function RedTeamSetupPage() {
                 {hasUnsavedChanges ? (
                   <div className="flex items-center justify-between gap-2">
                     <span className="flex items-center gap-1 text-sm text-amber-600 dark:text-amber-500">
-                      <span>●</span> Unsaved changes
+                      <span>?</span> Unsaved changes
                     </span>
                     <Button
                       size="sm"
@@ -615,7 +615,7 @@ export default function RedTeamSetupPage() {
                   {hasUnsavedChanges ? (
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="flex items-center gap-1 text-sm text-amber-600 dark:text-amber-500">
-                        <span>●</span> Unsaved changes
+                        <span>?</span> Unsaved changes
                       </span>
                       <Button
                         size="sm"
@@ -763,8 +763,8 @@ export default function RedTeamSetupPage() {
               <div>
                 <p className="text-sm font-medium">Import YAML File</p>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Import an existing artef redteam YAML configuration. Your application details
-                  will be automatically parsed and pre-filled in the form.
+                  Import an existing artef redteam YAML configuration. Your application details will
+                  be automatically parsed and pre-filled in the form.
                 </p>
                 <input
                   accept=".yml,.yaml"

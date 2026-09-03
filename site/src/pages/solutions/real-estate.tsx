@@ -290,8 +290,8 @@ export default function RealEstate() {
                 <p>
                   Historical redlining patterns persist in automated valuation models. The PAVE Task
                   Force identified algorithmic bias in property appraisals as a key barrier to
-                  housing equity. artef tests your AVM and appraisal AI for demographic
-                  correlation in valuations.
+                  housing equity. artef tests your AVM and appraisal AI for demographic correlation
+                  in valuations.
                 </p>
                 <ul style={{ marginTop: '1.5rem', paddingLeft: '1.25rem' }}>
                   <li>AVM demographic correlation testing</li>

@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -139,7 +139,7 @@ export default function ModelAuditResultLatestPage() {
                 Model Audit scans models for security issues like pickle exploits, unsafe
                 deserialization, and malicious code injection.{' '}
                 <a
-                  href="https://www.artef.dev/docs/model-audit/"
+                  href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary underline underline-offset-2 hover:no-underline"

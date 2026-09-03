@@ -1,4 +1,4 @@
-﻿import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import invariant from '@artef/util/invariant';
 import { useSearchParams } from 'react-router-dom';

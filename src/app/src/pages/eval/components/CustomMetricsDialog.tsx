@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Button } from '@app/components/ui/button';

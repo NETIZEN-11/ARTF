@@ -172,12 +172,7 @@ const MOCK_NPM_CLI_PATH = path.join(
   'npm-cli.js',
 );
 const MOCK_artef_PACKAGE_DIR = path.join(MOCK_INSTALL_DIR, 'node_modules', 'artef');
-const MOCK_artef_ENTRYPOINT = path.join(
-  MOCK_artef_PACKAGE_DIR,
-  'dist',
-  'src',
-  'entrypoint.js',
-);
+const MOCK_artef_ENTRYPOINT = path.join(MOCK_artef_PACKAGE_DIR, 'dist', 'src', 'entrypoint.js');
 
 function expectedInstallArgs(version: string): string[] {
   return [
@@ -793,16 +788,12 @@ describe('code-scan-action main', () => {
 
     it('uses the legacy installed bin entrypoint for older artef-version overrides', async () => {
       mockartefVersionInput('0.100.5');
-      mocks.fs.readFileSync.mockReturnValue(
-        JSON.stringify({ bin: { artef: 'dist/src/main.js' } }),
-      );
+      mocks.fs.readFileSync.mockReturnValue(JSON.stringify({ bin: { artef: 'dist/src/main.js' } }));
 
       const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.args).toEqual(expectedInstallArgs('0.100.5'));
-      expect(artef.entrypoint).toBe(
-        path.join(MOCK_artef_PACKAGE_DIR, 'dist', 'src', 'main.js'),
-      );
+      expect(artef.entrypoint).toBe(path.join(MOCK_artef_PACKAGE_DIR, 'dist', 'src', 'main.js'));
     });
 
     it('supports a string npm package bin declaration', async () => {

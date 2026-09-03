@@ -1,4 +1,4 @@
-﻿import { displayNameOverrides } from '@artef/redteam/constants';
+import { displayNameOverrides } from '@artef/redteam/constants';
 import { beforeEach, describe, expect, it } from 'vitest';
 import {
   categorizePlugins,

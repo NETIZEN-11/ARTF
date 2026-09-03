@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type React from 'react';
 
 import { HelperText } from '@app/components/ui/helper-text';
@@ -139,12 +139,12 @@ export default function ExtensionEditor({
         </table>
       </div>
       <a
-        href="https://www.artef.dev/docs/configuration/reference/#extension-hooks"
+        href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
         target="_blank"
         rel="noopener noreferrer"
         className="mb-4 block text-sm text-primary hover:underline"
       >
-        View documentation →
+        View documentation ?
       </a>
       <div className="space-y-2">
         <Label htmlFor="extension-path">Extension File Path</Label>

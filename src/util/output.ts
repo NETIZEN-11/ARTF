@@ -684,10 +684,7 @@ export async function writeOutput(
     const recoveredResults = evalRecord.resultPersistenceFailed
       ? await collectJsonlResultsAfterPersistenceFailure(jsonlOutputPath, evalRecord)
       : undefined;
-    const tempOutputPath = path.join(
-      path.dirname(jsonlOutputPath),
-      `.artef-${randomUUID()}.tmp`,
-    );
+    const tempOutputPath = path.join(path.dirname(jsonlOutputPath), `.artef-${randomUUID()}.tmp`);
     try {
       try {
         await fsPromises.writeFile(tempOutputPath, '');

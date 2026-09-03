@@ -56,8 +56,7 @@ export function registerValidateartefConfigTool(server: McpServer) {
         }
 
         // Use the same logic as the validate command
-        const configPathsArray =
-          configPaths || (process.cwd() ? ['artefconfig.yaml'] : undefined);
+        const configPathsArray = configPaths || (process.cwd() ? ['artefconfig.yaml'] : undefined);
 
         const { config, testSuite } = await resolveConfigs(
           { config: configPathsArray },

@@ -24,7 +24,7 @@ describe('isPathWithinDir', () => {
 
   beforeEach(async () => {
     hasSymlinkSupport = await canCreateSymlinks();
-    
+
     testRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'permissions-test-'));
     workspace = path.join(testRoot, 'workspace');
     outsideDir = path.join(testRoot, 'outside');

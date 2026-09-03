@@ -130,8 +130,8 @@ export default function SecTor2025(): React.ReactElement {
             <div className={styles.sectionHeader}>
               <h2 className={styles.sectionTitle}>Arsenal Showcase</h2>
               <p className={styles.sectionSubtitle}>
-                artef was selected for the SecTor Arsenal, showcasing open-source security tools
-                to Canada's enterprise security community.
+                artef was selected for the SecTor Arsenal, showcasing open-source security tools to
+                Canada's enterprise security community.
               </p>
             </div>
             <div className={styles.arsenalCard}>

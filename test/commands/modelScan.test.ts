@@ -1740,9 +1740,7 @@ describe('Sharing behavior', () => {
     createShareableModelAuditUrlMock = vi.mocked(shareModule.createShareableModelAuditUrl);
     isModelAuditSharingEnabledMock = vi.mocked(shareModule.isModelAuditSharingEnabled);
     createShareableModelAuditUrlMock.mockReset();
-    createShareableModelAuditUrlMock.mockResolvedValue(
-      'https://app.artef.dev/model-audit/test-id',
-    );
+    createShareableModelAuditUrlMock.mockResolvedValue('https://app.artef.dev/model-audit/test-id');
     isModelAuditSharingEnabledMock.mockReset();
     isModelAuditSharingEnabledMock.mockReturnValue(false);
 

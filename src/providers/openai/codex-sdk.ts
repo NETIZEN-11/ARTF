@@ -8,14 +8,14 @@ import { z } from 'zod';
 import { getEnvString } from '../../envars';
 import {
   addActiveSpanRoleAttribute,
+  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
+  artef_RESOURCE_ATTR_TRACE_ID,
   closeTurnSpan,
   GenAIAttributes,
   type GenAISpanContext,
   type GenAISpanResult,
   getTraceparent,
   openTurnSpan,
-  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
-  artef_RESOURCE_ATTR_TRACE_ID,
   withGenAISpan,
 } from '../../tracing/genaiTracer';
 import { formatRateLimitErrorMessage, HttpRateLimitError } from '../../util/fetch/errors';

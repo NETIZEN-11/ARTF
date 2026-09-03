@@ -1,4 +1,4 @@
-﻿import { Severity } from '@artef/redteam/constants';
+import { Severity } from '@artef/redteam/constants';
 import { del, get, set } from 'idb-keyval';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';

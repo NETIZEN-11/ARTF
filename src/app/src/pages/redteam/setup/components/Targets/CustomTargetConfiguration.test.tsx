@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render as rtlRender, screen } from '@testing-library/react';
@@ -51,7 +51,7 @@ describe('CustomTargetConfiguration', () => {
     expect(screen.getByLabelText(/Target ID/i)).toHaveAttribute('placeholder', 'openinterpreter');
     expect(screen.getByRole('link', { name: 'documentation' })).toHaveAttribute(
       'href',
-      'https://www.artef.dev/docs/providers/openinterpreter/',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
     );
 
     await user.click(screen.getByRole('button', { name: /Examples/i }));

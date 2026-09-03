@@ -1,4 +1,4 @@
-﻿import { getApiBaseUrl } from '@app/utils/api';
+import { getApiBaseUrl } from '@app/utils/api';
 import { FileIcon, ImageIcon, Music, Video } from 'lucide-react';
 
 // ============================================================================

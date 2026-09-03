@@ -1,4 +1,4 @@
-﻿import { HIDDEN_METADATA_KEYS } from '@app/constants';
+import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import { useTestTimers } from '@app/tests/timers';
 import { callApi } from '@app/utils/api';
 import { Severity } from '@artef/redteam/constants';

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -113,9 +113,9 @@ function getAppliedFilterLabel(
       eq: '==',
       neq: '!=',
       gt: '>',
-      gte: '≥',
+      gte: '=',
       lt: '<',
-      lte: '≤',
+      lte: '=',
     };
     const operatorDisplay = operatorSymbols[filter.operator] || filter.operator;
     return `${filter.field} ${operatorDisplay} ${truncatedValue}`;
@@ -1056,7 +1056,7 @@ export default function ResultsView({
                 <span>
                   {totalResultsCount.toLocaleString()} result{totalResultsCount === 1 ? '' : 's'}
                 </span>
-                <span>•</span>
+                <span>�</span>
                 <span>
                   {head.prompts.length} prompt{head.prompts.length === 1 ? '' : 's'}
                 </span>

@@ -5,8 +5,8 @@ import { shouldAttemptRemoteBlobUpload } from '../../blobs/remoteUpload';
 import cliState from '../../cliState';
 import { getEnvBool } from '../../envars';
 import logger from '../../logger';
-import { OpenAiChatCompletionProvider } from '../../providers/openai/chat';
 import { artefChatCompletionProvider } from '../../providers/artef';
+import { OpenAiChatCompletionProvider } from '../../providers/openai/chat';
 import {
   getProviderCallTracingContext,
   type RateLimitRegistry,
@@ -936,9 +936,7 @@ export async function tryUnblocking({
   try {
     // Unblocking is disabled by default, enable via environment variable
     if (!getEnvBool('artef_ENABLE_UNBLOCKING')) {
-      logger.debug(
-        '[Unblocking] Disabled by default (set artef_ENABLE_UNBLOCKING=true to enable)',
-      );
+      logger.debug('[Unblocking] Disabled by default (set artef_ENABLE_UNBLOCKING=true to enable)');
       // Return a response that will not increment numRequests
       return {
         success: false,

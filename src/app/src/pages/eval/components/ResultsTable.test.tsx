@@ -1,4 +1,4 @@
-﻿import { act, StrictMode } from 'react';
+import { act, StrictMode } from 'react';
 
 import { restoreTestTimers, type TestTimers, useTestTimers } from '@app/tests/timers';
 import { renderWithProviders } from '@app/utils/testutils';
@@ -1323,7 +1323,7 @@ describe('ResultsTable Row Navigation', () => {
   // Regression test: the details hash encodes a row's GLOBAL test index, while
   // pagination operates on filtered-table positions. When a filter or search is active
   // and only the hash is present (no `rowId`), the global index must NOT be used to
-  // resolve a page — doing so pages/clamps a global index as if it were a filtered one
+  // resolve a page � doing so pages/clamps a global index as if it were a filtered one
   // and lands on the wrong page. `rowId` is required for page resolution in that case.
   it('does not page by a hash-only deep link when a filter is active', async () => {
     const mockFetchEvalData = setupDeepLinkedTable('/#details-row-51-prompt-1');

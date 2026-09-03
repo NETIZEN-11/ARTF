@@ -1,4 +1,4 @@
-﻿import { renderWithProviders } from '@app/utils/testutils';
+import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -72,7 +72,7 @@ describe('InfoModal', () => {
   it('has correct link hrefs', () => {
     renderWithProviders(<InfoModal open={true} onClose={mockOnClose} />);
     const links = [
-      { text: 'Documentation', href: 'https://www.artef.dev/docs/intro' },
+      { text: 'Documentation', href: 'https://github.com/NETIZEN-11/ARTF/blob/main/README.md' },
       { text: 'GitHub Repository', href: 'https://github.com/artef/artef' },
       { text: 'File an Issue', href: 'https://github.com/artef/artef/issues' },
       { text: 'Join Our Discord Community', href: 'https://discord.gg/artef' },

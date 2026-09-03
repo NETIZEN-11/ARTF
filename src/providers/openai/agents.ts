@@ -576,9 +576,7 @@ function buildTraceMetadata(
   return {
     ...(context?.evaluationId ? { 'evaluation.id': context.evaluationId } : {}),
     ...(context?.testCaseId ? { 'test.case.id': context.testCaseId } : {}),
-    ...(traceContext?.parentSpanId
-      ? { 'artef.parent_span_id': traceContext.parentSpanId }
-      : {}),
+    ...(traceContext?.parentSpanId ? { 'artef.parent_span_id': traceContext.parentSpanId } : {}),
     ...(otlpEndpoint ? { 'artef.otlp_endpoint': otlpEndpoint } : {}),
     ...(otlpFormat === 'protobuf' ? { 'artef.otlp_format': otlpFormat } : {}),
     ...(requestedModel ? { 'artef.request_model': requestedModel } : {}),

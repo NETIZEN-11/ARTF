@@ -1,25 +1,33 @@
 import { Job, Worker } from 'bullmq';
-import { QUEUE_NAMES, getQueue, createWorker, addJob, getQueueStats, pauseQueue, resumeQueue } from './index';
-import { getEnvInt, getEnvBool } from '../envars';
-import logger from '../logger';
-import { evaluateWithSource } from '../node';
-import { writeResultsToDatabase } from '../util/database';
-import { invalidateEvaluationCache, notifyEvaluationChanged } from '../models/evalMutation';
-import { getDb } from '../database/index';
-import { evalsTable, evalResultsTable } from '../database/tables';
 import { eq } from 'drizzle-orm';
-import type { RunEvalOptions, EvaluateResult, UnifiedConfig } from '../types/index';
-import { getActiveTraceparent } from '../tracing/spanRoles';
+import { getDb } from '../database/index';
+import { evalResultsTable, evalsTable } from '../database/tables';
+import { getEnvBool, getEnvInt } from '../envars';
+import logger from '../logger';
+import { invalidateEvaluationCache, notifyEvaluationChanged } from '../models/evalMutation';
+import { evaluateWithSource } from '../node';
 import { generateTraceContextIfNeeded } from '../tracing/evaluatorTracing';
+import { getActiveTraceparent } from '../tracing/spanRoles';
+import { writeResultsToDatabase } from '../util/database';
+import {
+  addJob,
+  createWorker,
+  getQueue,
+  getQueueStats,
+  pauseQueue,
+  QUEUE_NAMES,
+  resumeQueue,
+} from './index';
 
-import type { 
-  EvaluationJobData, 
-  RedteamJobData, 
-  GradingJobData, 
-  MaintenanceJobData,
+import type { EvaluateResult, RunEvalOptions, UnifiedConfig } from '../types/index';
+import type {
+  EvaluationJobData,
   EvaluationJobResult,
+  GradingJobData,
+  GradingJobResult,
+  MaintenanceJobData,
+  RedteamJobData,
   RedteamJobResult,
-  GradingJobResult 
 } from './index';
 
 async function processEvaluationJob(job: Job<EvaluationJobData>): Promise<EvaluationJobResult> {
@@ -71,13 +79,9 @@ async function processEvaluationJob(job: Job<EvaluationJobData>): Promise<Evalua
 }
 
 export function createEvaluationWorker(): Worker<EvaluationJobData> {
-  return createWorker<EvaluationJobData>(
-    QUEUE_NAMES.EVALUATION,
-    processEvaluationJob,
-    {
-      concurrency: getEnvInt('EVAL_WORKER_CONCURRENCY', 2),
-    },
-  );
+  return createWorker<EvaluationJobData>(QUEUE_NAMES.EVALUATION, processEvaluationJob, {
+    concurrency: getEnvInt('EVAL_WORKER_CONCURRENCY', 2),
+  });
 }
 
 export async function queueEvaluation(
@@ -119,13 +123,9 @@ async function processRedteamJob(job: Job<RedteamJobData>): Promise<RedteamJobRe
 }
 
 export function createRedteamWorker(): Worker<RedteamJobData> {
-  return createWorker<RedteamJobData>(
-    QUEUE_NAMES.REDTEAM,
-    processRedteamJob,
-    {
-      concurrency: getEnvInt('REDTEAM_WORKER_CONCURRENCY', 1),
-    },
-  );
+  return createWorker<RedteamJobData>(QUEUE_NAMES.REDTEAM, processRedteamJob, {
+    concurrency: getEnvInt('REDTEAM_WORKER_CONCURRENCY', 1),
+  });
 }
 
 export async function queueRedteam(
@@ -193,13 +193,9 @@ async function processGradingJob(job: Job<GradingJobData>): Promise<GradingJobRe
 }
 
 export function createGradingWorker(): Worker<GradingJobData> {
-  return createWorker<GradingJobData>(
-    QUEUE_NAMES.GRADING,
-    processGradingJob,
-    {
-      concurrency: getEnvInt('GRADING_WORKER_CONCURRENCY', 4),
-    },
-  );
+  return createWorker<GradingJobData>(QUEUE_NAMES.GRADING, processGradingJob, {
+    concurrency: getEnvInt('GRADING_WORKER_CONCURRENCY', 4),
+  });
 }
 
 export async function queueGrading(
@@ -246,13 +242,9 @@ async function processMaintenanceJob(job: Job<MaintenanceJobData>): Promise<{ su
 }
 
 export function createMaintenanceWorker(): Worker<MaintenanceJobData> {
-  return createWorker<MaintenanceJobData>(
-    QUEUE_NAMES.MAINTENANCE,
-    processMaintenanceJob,
-    {
-      concurrency: 1,
-    },
-  );
+  return createWorker<MaintenanceJobData>(QUEUE_NAMES.MAINTENANCE, processMaintenanceJob, {
+    concurrency: 1,
+  });
 }
 
 export async function queueMaintenance(
@@ -270,20 +262,28 @@ export async function queueMaintenance(
   );
 }
 
-export async function getWorkerStats(): Promise<Record<string, {
-  waiting: number;
-  active: number;
-  completed: number;
-  failed: number;
-  delayed: number;
-}>> {
-  const stats: Record<string, {
-    waiting: number;
-    active: number;
-    completed: number;
-    failed: number;
-    delayed: number;
-  }> = {};
+export async function getWorkerStats(): Promise<
+  Record<
+    string,
+    {
+      waiting: number;
+      active: number;
+      completed: number;
+      failed: number;
+      delayed: number;
+    }
+  >
+> {
+  const stats: Record<
+    string,
+    {
+      waiting: number;
+      active: number;
+      completed: number;
+      failed: number;
+      delayed: number;
+    }
+  > = {};
 
   for (const queueName of Object.values(QUEUE_NAMES)) {
     stats[queueName] = await getQueueStats(queueName as never);

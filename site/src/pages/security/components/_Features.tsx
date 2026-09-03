@@ -59,8 +59,8 @@ export default function Features(): React.ReactElement {
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>How it works</h2>
         <p className={styles.featuresSummary}>
-          artef provides a comprehensive solution for managing LLM vulnerabilities throughout
-          your development lifecycle.
+          artef provides a comprehensive solution for managing LLM vulnerabilities throughout your
+          development lifecycle.
         </p>
         <div className={styles.featuresTimeline}>
           {features.map((feature, index) => (

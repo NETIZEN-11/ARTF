@@ -4,9 +4,9 @@ import logger from '../logger';
 import { optimizePromptTestSuite } from '../optimizer/promptOptimizer';
 import telemetry from '../telemetry';
 import { type UnifiedConfig } from '../types/index';
+import { artefCommand } from '../util/artefCommand';
 import { resolveConfigs } from '../util/config/load';
 import { printBorder, setupEnv } from '../util/index';
-import { artefCommand } from '../util/artefCommand';
 
 interface OptimizeOptions {
   config?: string;

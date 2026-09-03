@@ -1,4 +1,4 @@
-﻿import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Card, CardContent } from '@app/components/ui/card';

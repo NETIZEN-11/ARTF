@@ -1,4 +1,4 @@
-ï»¿import { create } from 'zustand';
+import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import {
   looksLikeSecret,
@@ -91,7 +91,7 @@ const NON_SECRET_CREDENTIAL_NAME_PATTERNS = [
 
 // Provider-config subtrees that are model-facing contracts, not credentials.
 // Walking them would corrupt JSON schemas (e.g. a tool parameter literally
-// named `password`). The check fires at the entry point â€” children of an
+// named `password`). The check fires at the entry point — children of an
 // opaque key are protected transitively.
 const OPAQUE_PROVIDER_CONFIG_KEYS = new Set([
   'tools',
@@ -709,8 +709,8 @@ const PROVIDER_OPTION_KEYS = new Set([
 const scrubProviderIdentifier = (value: string, templatePaths?: Set<string>): string =>
   scrubProviderUrl(redactAzureBlobSasTokens(value), templatePaths);
 
-// A provider can be supplied as an options-map keyed by the provider id â€”
-// `{ '<provider-id>': { ...options } }` â€” where the id key itself may embed
+// A provider can be supplied as an options-map keyed by the provider id —
+// `{ '<provider-id>': { ...options } }` — where the id key itself may embed
 // credentials (URL userinfo, an Azure SAS token). Those keys are scrubbed via
 // scrubProviderIdentifier; the values are sanitized via omitProviderCredentials.
 // Only an unambiguous map takes this path: at least one key outside the known

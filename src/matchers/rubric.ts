@@ -324,10 +324,7 @@ export function materializeImageOutputsForGrading(images?: ImageOutput[]): {
     );
   }
 
-  const maxImageBytes = getEnvInt(
-    'artef_GRADING_IMAGE_MAX_BYTES',
-    DEFAULT_GRADING_IMAGE_MAX_BYTES,
-  );
+  const maxImageBytes = getEnvInt('artef_GRADING_IMAGE_MAX_BYTES', DEFAULT_GRADING_IMAGE_MAX_BYTES);
   const maxTotalImageBytes = getEnvInt(
     'artef_GRADING_IMAGE_MAX_TOTAL_BYTES',
     DEFAULT_GRADING_IMAGE_MAX_TOTAL_BYTES,

@@ -1,10 +1,6 @@
 ﻿import logger from '../logger';
 import { convertOpenAIEvalsJsonl, isOpenAIEvalsJsonlRow } from './openaiEvals';
-import {
-  IMPORT_SOURCE_OPENAI_EVALS,
-  IMPORT_SOURCE_artef,
-  type ParsedImportFile,
-} from './types';
+import { IMPORT_SOURCE_artef, IMPORT_SOURCE_OPENAI_EVALS, type ParsedImportFile } from './types';
 
 function tryConvertOpenAIEvals(parsedJson: unknown): ParsedImportFile | undefined {
   if (isOpenAIEvalsJsonlRow(parsedJson)) {

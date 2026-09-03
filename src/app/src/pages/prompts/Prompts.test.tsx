@@ -1,4 +1,4 @@
-﻿import { RenderResult, render, screen, within } from '@testing-library/react';
+import { RenderResult, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';

@@ -5,7 +5,7 @@ import cliState from '../cliState';
 import { getEnvBool } from '../envars';
 import logger from '../logger';
 import telemetry from '../telemetry';
-import { getGenAITracer, artefAttributes } from './genaiTracer';
+import { artefAttributes, getGenAITracer } from './genaiTracer';
 import { SPAN_ROLE_ATTRIBUTE } from './spanRoles';
 
 import type { TestCase, TestSuite } from '../types/index';

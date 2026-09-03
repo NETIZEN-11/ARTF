@@ -1,4 +1,4 @@
-﻿import { create } from 'zustand';
+import { create } from 'zustand';
 import type { ProviderOptions } from '@artef/types';
 
 interface ProvidersState {

@@ -15,8 +15,7 @@ export function addCustom(
     return {
       ...testCase,
       provider: {
-        id:
-          strategyId === 'custom' ? 'artef:redteam:custom' : `artef:redteam:${strategyId}`,
+        id: strategyId === 'custom' ? 'artef:redteam:custom' : `artef:redteam:${strategyId}`,
         config: {
           injectVar,
           variant,

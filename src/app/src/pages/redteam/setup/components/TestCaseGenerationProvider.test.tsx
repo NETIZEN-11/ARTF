@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Unit tests for the TestCaseGenerationProvider component. To run:
  *
  * ```sh

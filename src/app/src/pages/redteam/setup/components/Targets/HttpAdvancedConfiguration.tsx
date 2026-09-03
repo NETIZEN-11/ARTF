@@ -1,4 +1,4 @@
-﻿import '@app/lib/prism';
+import '@app/lib/prism';
 import 'prismjs/themes/prism.css';
 
 import React from 'react';

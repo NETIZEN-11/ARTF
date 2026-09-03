@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Badge } from '@app/components/ui/badge';

@@ -1,9 +1,5 @@
 ﻿import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import {
-  detectInstaller,
-  isRunningUnderNpx,
-  artefCommand,
-} from '../../src/util/artefCommand';
+import { artefCommand, detectInstaller, isRunningUnderNpx } from '../../src/util/artefCommand';
 import { mockProcessEnv } from './utils';
 
 describe('nextCommand', () => {
@@ -138,9 +134,7 @@ describe('nextCommand', () => {
 
     it('should handle subcommands with flags', () => {
       mockProcessEnv({ npm_execpath: '/path/to/npx' });
-      expect(artefCommand('eval -c config.yaml')).toBe(
-        'npx artef@latest eval -c config.yaml',
-      );
+      expect(artefCommand('eval -c config.yaml')).toBe('npx artef@latest eval -c config.yaml');
     });
 
     it('should handle empty subcommand for npx', () => {

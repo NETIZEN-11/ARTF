@@ -1,4 +1,4 @@
-﻿import { mockClipboard, mockDocumentExecCommand, mockWindowOpen } from '@app/tests/browserMocks';
+import { mockClipboard, mockDocumentExecCommand, mockWindowOpen } from '@app/tests/browserMocks';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -256,9 +256,7 @@ describe('ShareModal', () => {
       expect(screen.getByDisplayValue(testUrl)).toBeInTheDocument();
     });
 
-    expect(
-      screen.queryByText(/You need to be logged in to your artef cloud account/),
-    ).toBeNull();
+    expect(screen.queryByText(/You need to be logged in to your artef cloud account/)).toBeNull();
   });
 
   it('refetches domain check and generates new share URL when evalId changes', async () => {

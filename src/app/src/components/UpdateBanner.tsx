@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Alert } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -144,8 +144,7 @@ export default function UpdateBanner() {
           {versionInfo.commandType === 'docker' &&
             !versionInfo.updateCommands?.isCustomContainer && (
               <span className="text-sm text-muted-foreground">
-                If this is a derived image, update its artef base and rebuild before
-                redeploying.
+                If this is a derived image, update its artef base and rebuild before redeploying.
               </span>
             )}
         </div>

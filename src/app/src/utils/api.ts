@@ -1,4 +1,4 @@
-﻿import useApiConfig from '@app/stores/apiConfig';
+import useApiConfig from '@app/stores/apiConfig';
 import type { GetUserIdResponse, GetUserResponse } from '@artef/contracts';
 import type { UpdateEvalAuthorResponse } from '@artef/types/api/eval';
 

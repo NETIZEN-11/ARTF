@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -36,11 +36,11 @@ const OPERATOR_LABELS: Record<ResultsFilter['operator'], string> = {
   exists: 'exists',
   is_defined: 'is defined',
   eq: '=',
-  neq: '≠',
+  neq: '?',
   gt: '>',
-  gte: '≥',
+  gte: '=',
   lt: '<',
-  lte: '≤',
+  lte: '=',
 };
 
 function solelyHasEqualsOperator(type: ResultsFilter['type']): boolean {
@@ -81,7 +81,9 @@ function DebouncedInput({
   );
 }
 
-function buildTypeOptions(filtersOptions: typeof filters.options): { value: string; label: string }[] {
+function buildTypeOptions(
+  filtersOptions: typeof filters.options,
+): { value: string; label: string }[] {
   const opts: { value: string; label: string }[] = [];
   if (filtersOptions.metric.length > 0) {
     opts.push({ value: 'metric', label: TYPE_LABELS.metric });
@@ -102,7 +104,9 @@ function buildTypeOptions(filtersOptions: typeof filters.options): { value: stri
   return opts;
 }
 
-function buildOperatorOptions(filterType: ResultsFilter['type']): { value: string; label: string }[] {
+function buildOperatorOptions(
+  filterType: ResultsFilter['type'],
+): { value: string; label: string }[] {
   if (filterType === 'metric') {
     return [
       { value: 'is_defined', label: OPERATOR_LABELS.is_defined },

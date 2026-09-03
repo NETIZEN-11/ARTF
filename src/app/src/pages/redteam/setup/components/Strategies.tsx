@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import {
@@ -424,7 +424,7 @@ export default function Strategies({ onNext, onBack }: StrategiesProps) {
             these inputs are delivered to maximize attack success rates.{' '}
             <RouterLink
               className="underline"
-              to="https://www.artef.dev/docs/red-team/strategies/"
+              to="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
               target="_blank"
             >
               Learn More

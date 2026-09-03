@@ -1,4 +1,4 @@
-﻿import { Button } from '@app/components/ui/button';
+import { Button } from '@app/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -52,9 +52,10 @@ export default function InfoModal<T extends { open: boolean; onClose: () => void
           </a>
         </DialogHeader>
         <DialogDescription>
-          ARTEF (Agent Red-Teaming & Evaluation Framework) is a MIT licensed open-source tool for evaluating and red-teaming LLMs. 
-          Forked and customized by NETIZEN-11. Track the performance of your models and prompts over time with automated
-          support for dataset generation and grading.
+          ARTEF (Agent Red-Teaming & Evaluation Framework) is a MIT licensed open-source tool for
+          evaluating and red-teaming LLMs. Forked and customized by NETIZEN-11. Track the
+          performance of your models and prompts over time with automated support for dataset
+          generation and grading.
         </DialogDescription>
         <div className="flex flex-col gap-3 mt-2">
           {links.map((item, index) => (

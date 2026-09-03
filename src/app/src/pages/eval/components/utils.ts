@@ -1,4 +1,4 @@
-﻿import { useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 
 import { HUMAN_ASSERTION_TYPE } from '@artef/providers/constants';
 import type { EvaluateTableOutput, PromptMetrics } from '@artef/types';

@@ -405,8 +405,8 @@ export default function Defcon2026(): React.ReactElement {
                 </div>
               </div>
               <p className={styles.runNote}>
-                We demonstrated artef at OpenAI booth #2967 during Black Hat, Aug 4-6, and
-                OpenAI booth #1412 during DEF CON, Aug 7-9.
+                We demonstrated artef at OpenAI booth #2967 during Black Hat, Aug 4-6, and OpenAI
+                booth #1412 during DEF CON, Aug 7-9.
               </p>
               <Link to="/events/blackhat-2026/" className={styles.runLink}>
                 See the Black Hat USA 2026 page

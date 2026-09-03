@@ -1,4 +1,4 @@
-﻿import { Button } from '@app/components/ui/button';
+import { Button } from '@app/components/ui/button';
 import { DatabaseZap, ImageIcon, SearchX } from 'lucide-react';
 
 interface MediaEmptyStateProps {
@@ -48,12 +48,12 @@ export function MediaEmptyState({
           re-run your evaluations.
         </p>
         <a
-          href="https://www.artef.dev/docs/configuration/parameters/#blob-storage"
+          href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 text-sm text-primary hover:underline"
         >
-          Learn more about blob storage →
+          Learn more about blob storage ?
         </a>
       </div>
     );
@@ -70,12 +70,12 @@ export function MediaEmptyState({
         audio provider to get started.
       </p>
       <a
-        href="https://www.artef.dev/docs/providers/"
+        href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 text-sm text-primary hover:underline"
       >
-        View Providers Docs →
+        View Providers Docs ?
       </a>
     </div>
   );

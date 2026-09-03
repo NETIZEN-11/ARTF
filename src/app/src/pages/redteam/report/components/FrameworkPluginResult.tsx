@@ -1,4 +1,4 @@
-﻿import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { EVAL_ROUTES } from '@app/constants/routes';
 import { cn } from '@app/lib/utils';
 import { formatASRForDisplay } from '@app/utils/redteam';

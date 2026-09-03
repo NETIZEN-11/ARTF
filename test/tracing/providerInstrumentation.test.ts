@@ -16,10 +16,10 @@ import { InMemorySpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-tr
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+  artefAttributes,
   GenAIAttributes,
   getCurrentTraceId,
   getTraceparent,
-  artefAttributes,
   withGenAISpan,
 } from '../../src/tracing/genaiTracer';
 import { withTargetSpan } from '../../src/tracing/targetTracer';

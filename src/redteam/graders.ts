@@ -158,8 +158,7 @@ export const GRADERS: Record<RedteamAssertionTypes, RedteamGraderBase> = {
   'artef:redteam:excessive-agency': new ExcessiveAgencyGrader(),
   'artef:redteam:ferpa': new FerpaGrader(),
   'artef:redteam:financial:calculation-error': new FinancialCalculationErrorPluginGrader(),
-  'artef:redteam:financial:compliance-violation':
-    new FinancialComplianceViolationPluginGrader(),
+  'artef:redteam:financial:compliance-violation': new FinancialComplianceViolationPluginGrader(),
   'artef:redteam:financial:confidential-disclosure':
     new FinancialConfidentialDisclosurePluginGrader(),
   'artef:redteam:financial:counterfactual': new FinancialCounterfactualPluginGrader(),
@@ -167,8 +166,7 @@ export const GRADERS: Record<RedteamAssertionTypes, RedteamGraderBase> = {
   'artef:redteam:financial:defamation': new FinancialDefamationPluginGrader(),
   'artef:redteam:financial:hallucination': new FinancialHallucinationPluginGrader(),
   'artef:redteam:financial:impartiality': new FinancialImpartialityPluginGrader(),
-  'artef:redteam:financial:japan-fiea-suitability':
-    new FinancialJapanFieaSuitabilityPluginGrader(),
+  'artef:redteam:financial:japan-fiea-suitability': new FinancialJapanFieaSuitabilityPluginGrader(),
   'artef:redteam:financial:misconduct': new FinancialMisconductPluginGrader(),
   'artef:redteam:financial:sox-compliance': new FinancialSoxCompliancePluginGrader(),
   'artef:redteam:financial:sycophancy': new FinancialSycophancyPluginGrader(),
@@ -190,8 +188,7 @@ export const GRADERS: Record<RedteamAssertionTypes, RedteamGraderBase> = {
   'artef:redteam:harmful:indiscriminate-weapons': new IndiscriminateWeaponsGrader(),
   'artef:redteam:harmful:insults': new InsultsGrader(),
   'artef:redteam:harmful:intellectual-property': new CopyrightViolationGrader(),
-  'artef:redteam:harmful:misinformation-disinformation':
-    new MisinformationDisinformationGrader(),
+  'artef:redteam:harmful:misinformation-disinformation': new MisinformationDisinformationGrader(),
   'artef:redteam:harmful:non-violent-crime': new NonViolentCrimeGrader(),
   'artef:redteam:harmful:privacy': new HarmfulPrivacyGrader(),
   'artef:redteam:harmful:profanity': new ProfanityGrader(),
@@ -217,8 +214,7 @@ export const GRADERS: Record<RedteamAssertionTypes, RedteamGraderBase> = {
   'artef:redteam:model-identification': new ModelIdentificationGrader(),
   'artef:redteam:medical:anchoring-bias': new MedicalAnchoringBiasPluginGrader(),
   'artef:redteam:medical:fda:ai-disclosure': new MedicalFdaAiDisclosurePluginGrader(),
-  'artef:redteam:medical:fda:cyber-access-control':
-    new MedicalFdaCyberAccessControlPluginGrader(),
+  'artef:redteam:medical:fda:cyber-access-control': new MedicalFdaCyberAccessControlPluginGrader(),
   'artef:redteam:medical:fda:cyber-audit-tampering':
     new MedicalFdaCyberAuditTamperingPluginGrader(),
   'artef:redteam:medical:hallucination': new MedicalHallucinationPluginGrader(),
@@ -238,18 +234,13 @@ export const GRADERS: Record<RedteamAssertionTypes, RedteamGraderBase> = {
   'artef:redteam:telecom:tcpa-violation': new TelecomTcpaViolationPluginGrader(),
   'artef:redteam:telecom:unauthorized-changes': new TelecomUnauthorizedChangesPluginGrader(),
   'artef:redteam:telecom:fraud-enablement': new TelecomFraudEnablementPluginGrader(),
-  'artef:redteam:telecom:porting-misinformation':
-    new TelecomPortingMisinformationPluginGrader(),
-  'artef:redteam:telecom:billing-misinformation':
-    new TelecomBillingMisinformationPluginGrader(),
-  'artef:redteam:telecom:coverage-misinformation':
-    new TelecomCoverageMisinformationPluginGrader(),
+  'artef:redteam:telecom:porting-misinformation': new TelecomPortingMisinformationPluginGrader(),
+  'artef:redteam:telecom:billing-misinformation': new TelecomBillingMisinformationPluginGrader(),
+  'artef:redteam:telecom:coverage-misinformation': new TelecomCoverageMisinformationPluginGrader(),
   'artef:redteam:telecom:law-enforcement-request-handling':
     new TelecomLawEnforcementRequestHandlingPluginGrader(),
-  'artef:redteam:telecom:accessibility-violation':
-    new TelecomAccessibilityViolationPluginGrader(),
-  'artef:redteam:teen-safety:harmful-body-ideals':
-    new TeenSafetyHarmfulBodyIdealsPluginGrader(),
+  'artef:redteam:telecom:accessibility-violation': new TelecomAccessibilityViolationPluginGrader(),
+  'artef:redteam:teen-safety:harmful-body-ideals': new TeenSafetyHarmfulBodyIdealsPluginGrader(),
   'artef:redteam:teen-safety:dangerous-content': new TeenSafetyDangerousContentPluginGrader(),
   'artef:redteam:teen-safety:dangerous-roleplay': new TeenSafetyDangerousRoleplayPluginGrader(),
   'artef:redteam:teen-safety:age-restricted-goods-and-services':

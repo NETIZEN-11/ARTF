@@ -1,4 +1,4 @@
-﻿import {
+import {
   looksLikeCredentialHeader,
   looksLikeCredentialValue,
   looksLikeRequestCredentialParameter,

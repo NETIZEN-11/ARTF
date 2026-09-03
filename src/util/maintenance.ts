@@ -1,6 +1,6 @@
+import { eq, lt, sql } from 'drizzle-orm';
 import { getDb } from '../database/index';
-import { evalsTable, evalResultsTable } from '../database/tables';
-import { lt, sql, eq } from 'drizzle-orm';
+import { evalResultsTable, evalsTable } from '../database/tables';
 import { getEnvInt } from '../envars';
 import logger from '../logger';
 
@@ -10,7 +10,9 @@ export async function cleanupOldEvaluations(maxAgeDays: number = 30): Promise<nu
   cutoffDate.setDate(cutoffDate.getDate() - maxAgeDays);
   const cutoffTimestamp = Math.floor(cutoffDate.getTime() / 1000);
 
-  logger.info(`Cleaning up evaluations older than ${maxAgeDays} days (before ${cutoffDate.toISOString()})`);
+  logger.info(
+    `Cleaning up evaluations older than ${maxAgeDays} days (before ${cutoffDate.toISOString()})`,
+  );
 
   const oldEvals = await db
     .select({ id: evalsTable.id })
@@ -24,7 +26,9 @@ export async function cleanupOldEvaluations(maxAgeDays: number = 30): Promise<nu
 
   const evalIds = oldEvals.map((e) => e.id);
 
-  await db.delete(evalResultsTable).where(sql`${evalResultsTable.evalId} IN (${evalIds.join(',')})`);
+  await db
+    .delete(evalResultsTable)
+    .where(sql`${evalResultsTable.evalId} IN (${evalIds.join(',')})`);
   await db.delete(evalsTable).where(sql`${evalsTable.id} IN (${evalIds.join(',')})`);
 
   logger.info(`Cleaned up ${evalIds.length} old evaluations`);

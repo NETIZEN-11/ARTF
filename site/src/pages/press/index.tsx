@@ -241,9 +241,9 @@ const PressContent = () => {
         >
           <SectionHeading id="about-artef">About artef</SectionHeading>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            artef is a leading provider of AI security solutions, helping developers and
-            enterprises build secure, reliable AI applications. Based in {COMPANY_INFO.headquarters}
-            , artef is now part of OpenAI and continues as an open-source AI security project.
+            artef is a leading provider of AI security solutions, helping developers and enterprises
+            build secure, reliable AI applications. Based in {COMPANY_INFO.headquarters}, artef is
+            now part of OpenAI and continues as an open-source AI security project.
           </Typography>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
             Our core product is an open-source pentesting and evaluation framework used by{' '}
@@ -346,10 +346,10 @@ const PressContent = () => {
         >
           <SectionHeading id="educational-resources">Educational Resources</SectionHeading>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            Leading AI platforms have integrated artef into their official educational
-            materials, recognizing it as an essential tool for LLM application development,
-            evaluation, and security. These courses and workshops, developed in partnership with
-            industry leaders, provide comprehensive training on building reliable AI applications.
+            Leading AI platforms have integrated artef into their official educational materials,
+            recognizing it as an essential tool for LLM application development, evaluation, and
+            security. These courses and workshops, developed in partnership with industry leaders,
+            provide comprehensive training on building reliable AI applications.
           </Typography>
           <Grid container spacing={4}>
             {EDUCATIONAL_RESOURCES.map((resource) => (

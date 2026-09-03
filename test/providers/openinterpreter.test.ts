@@ -18,6 +18,7 @@ const canCreateSymlinksSync = (): boolean => {
 };
 
 const hasSymlinkSupport = canCreateSymlinksSync();
+
 import cliState from '../../src/cliState';
 import { loadApiProvider } from '../../src/providers/index';
 import { OpenInterpreterProvider } from '../../src/providers/openinterpreter';

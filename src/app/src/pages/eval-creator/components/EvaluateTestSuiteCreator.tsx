@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { PageContainer, PageHeader } from '@app/components/layout';
 import { Button } from '@app/components/ui/button';

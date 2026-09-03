@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Utilities for resolving media storage references in the UI.
  *
  * Storage refs use format: "storageRef:audio/xxx.mp3" or "storageRef:image/xxx.png"
@@ -101,7 +101,7 @@ export function resolveMediaUrl(value: string | undefined, mimeType: string): st
     return getBlobUrl(value);
   }
 
-  // Storage ref → direct API URL
+  // Storage ref ? direct API URL
   if (isStorageRef(value)) {
     return getMediaUrl(value);
   }
@@ -116,7 +116,7 @@ export function resolveMediaUrl(value: string | undefined, mimeType: string): st
     return value;
   }
 
-  // Base64 data → data URL
+  // Base64 data ? data URL
   return `data:${mimeType};base64,${value}`;
 }
 

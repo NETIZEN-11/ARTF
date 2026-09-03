@@ -1,4 +1,4 @@
-﻿import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
+import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
 import { renderWithProviders } from '@app/utils/testutils';
 import {
   deserializePolicyIdFromMetric,

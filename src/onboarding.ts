@@ -10,8 +10,8 @@ import { getEnvString } from './envars';
 import logger from './logger';
 import { redteamInit } from './redteam/commands/init';
 import telemetry, { type EventProperties } from './telemetry';
-import { pathExists } from './util/file';
 import { artefCommand } from './util/artefCommand';
+import { pathExists } from './util/file';
 import { getNunjucksEngine } from './util/templates';
 
 import type { EnvOverrides } from './types/env';
@@ -760,8 +760,7 @@ export async function initializeProject(directory: string | null, interactive: b
           chalk.bold(runCommand),
       );
       logger.info(
-        chalk.blue('For help or feedback, visit ') +
-          chalk.green('https://www.artef.dev/contact/'),
+        chalk.blue('For help or feedback, visit ') + chalk.green('https://www.artef.dev/contact/'),
       );
       await recordOnboardingStep('early exit');
       process.exitCode = 130;

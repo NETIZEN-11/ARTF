@@ -53,8 +53,7 @@ describe('Global Config', () => {
     describe('when config file exists', () => {
       beforeEach(() => {
         vi.mocked(fs.existsSync).mockImplementation(
-          (path) =>
-            path.toString().includes('artef.yaml') || path.toString().includes('.artef'),
+          (path) => path.toString().includes('artef.yaml') || path.toString().includes('.artef'),
         );
         vi.mocked(fs.readFileSync).mockReturnValue(yaml.dump(mockConfig));
       });

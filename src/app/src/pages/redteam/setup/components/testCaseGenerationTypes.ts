@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Shared types for test case generation.
  *
  * This file exists to prevent circular dependencies between:

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { type EvaluateResult, type GradingResult } from '@artef/types';
 import { render, screen } from '@testing-library/react';
@@ -175,7 +175,7 @@ describe('PluginStrategyFlow', () => {
 
       const tooltipElement = screen.getByTestId('tooltip');
       expect(tooltipElement).toBeInTheDocument();
-      expect(tooltipElement).toHaveTextContent('PluginA → StrategyX: 1 tests');
+      expect(tooltipElement).toHaveTextContent('PluginA ? StrategyX: 1 tests');
     });
 
     it('should handle plugin and strategy IDs with special characters and long names', () => {

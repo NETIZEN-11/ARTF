@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
@@ -49,18 +49,13 @@ function TelemetryTracker() {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      {import.meta.env.VITE_artef_LAUNCHER && (
-        <Route path="/launcher" element={<LauncherPage />} />
-      )}
+      {import.meta.env.VITE_artef_LAUNCHER && <Route path="/launcher" element={<LauncherPage />} />}
       <Route path="/" element={<PageShell />}>
         <Route element={<TelemetryTracker />}>
           <Route
             index
             element={
-              <Navigate
-                to={import.meta.env.VITE_artef_LAUNCHER ? '/launcher' : '/eval'}
-                replace
-              />
+              <Navigate to={import.meta.env.VITE_artef_LAUNCHER ? '/launcher' : '/eval'} replace />
             }
           />
           <Route path="/datasets" element={<DatasetsPage />} />

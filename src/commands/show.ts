@@ -163,9 +163,7 @@ export async function handleDataset(id: string) {
   }
   logger.info(wrapTable(table) as string);
   printBorder();
-  logger.info(
-    `Run ${chalk.green('artef show prompt <id>')} to see details of a specific prompt.`,
-  );
+  logger.info(`Run ${chalk.green('artef show prompt <id>')} to see details of a specific prompt.`);
   logger.info(
     `Run ${chalk.green('artef show eval <id>')} to see details of a specific evaluation.`,
   );

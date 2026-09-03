@@ -1,4 +1,4 @@
-﻿import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
+import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
 import type { Strategy } from '@artef/redteam/constants';
 import type { RedteamStrategy } from '@artef/redteam/types';
 

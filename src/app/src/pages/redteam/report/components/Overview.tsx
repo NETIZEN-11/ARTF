@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { type Plugin as PluginType, Severity } from '@artef/redteam/constants';
 import { isValidPolicyObject, makeInlinePolicyId } from '@artef/redteam/plugins/policy/utils';

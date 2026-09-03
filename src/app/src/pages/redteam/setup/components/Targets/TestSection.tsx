@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';

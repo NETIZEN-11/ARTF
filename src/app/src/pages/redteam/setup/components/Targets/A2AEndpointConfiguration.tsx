@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -57,7 +57,7 @@ type A2AProviderConfig = Record<string, unknown> & {
 
 const A2A_STRUCTURED_CONFIG_KEYS = new Set(['url', 'agentCardUrl', 'auth']);
 
-const A2A_DOC_URL = 'https://www.artef.dev/docs/providers/a2a/';
+const A2A_DOC_URL = 'https://github.com/NETIZEN-11/ARTF/blob/main/README.md';
 
 const A2A_CONFIG_EXAMPLE = {
   mode: 'auto',

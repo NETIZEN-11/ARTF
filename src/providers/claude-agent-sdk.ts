@@ -11,12 +11,12 @@ import { importModule, resolvePackageEntryPoint } from '../esm';
 import logger from '../logger';
 import {
   addActiveSpanRoleAttribute,
+  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
+  artef_RESOURCE_ATTR_TRACE_ID,
   emitTurnMarkerSpan,
   GenAIAttributes,
   getGenAITracer,
   getTraceparent,
-  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
-  artef_RESOURCE_ATTR_TRACE_ID,
   sanitizeBody,
   withGenAISpan,
 } from '../tracing/genaiTracer';

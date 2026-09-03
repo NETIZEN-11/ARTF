@@ -1,4 +1,4 @@
-﻿/// <reference types="vitest/config" />
+/// <reference types="vitest/config" />
 
 import { fileURLToPath } from 'node:url';
 import os from 'os';

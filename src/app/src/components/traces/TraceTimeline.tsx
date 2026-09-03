@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Card } from '@app/components/ui/card';
 import { Collapsible, CollapsibleContent } from '@app/components/ui/collapsible';

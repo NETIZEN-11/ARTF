@@ -1,4 +1,4 @@
-﻿import { mockCallApiResponse, resetCallApiMock } from '@app/tests/apiMocks';
+import { mockCallApiResponse, resetCallApiMock } from '@app/tests/apiMocks';
 import { formatDataGridDate } from '@app/utils/date';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

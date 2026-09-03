@@ -1,4 +1,4 @@
-﻿import { HIDDEN_METADATA_KEYS } from '@app/constants';
+import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

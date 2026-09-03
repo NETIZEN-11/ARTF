@@ -1,4 +1,4 @@
-﻿import useApiConfig from '@app/stores/apiConfig';
+import useApiConfig from '@app/stores/apiConfig';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   getBlobUrl,

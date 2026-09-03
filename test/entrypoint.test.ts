@@ -285,8 +285,7 @@ describe('entrypoint version check logic', () => {
   describe('build-time constant behavior', () => {
     it('uses the fallback range and comparator set when build-time constants are undefined', () => {
       const __artef_NODE_ENGINE_RANGE__: string | undefined = undefined;
-      const __artef_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] | undefined =
-        undefined;
+      const __artef_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] | undefined = undefined;
 
       const fallbackRange =
         typeof __artef_NODE_ENGINE_RANGE__ === 'undefined'

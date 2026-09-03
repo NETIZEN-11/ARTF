@@ -95,8 +95,7 @@ export class OTLPTracingExporter implements TracingExporter {
     const defaultServiceName = getTracingServiceName();
 
     for (const span of spans) {
-      const serviceName =
-        getStringTraceMetadata(span, 'artef.service_name') ?? defaultServiceName;
+      const serviceName = getStringTraceMetadata(span, 'artef.service_name') ?? defaultServiceName;
       const serviceSpans = spansByService.get(serviceName) ?? [];
       serviceSpans.push(span);
       spansByService.set(serviceName, serviceSpans);
@@ -472,8 +471,7 @@ function groupSpansByEndpoint(spans: Span<any>[]): Map<string, SpanExportDestina
   const grouped = new Map<string, SpanExportDestination>();
 
   for (const span of spans) {
-    const endpoint =
-      getStringTraceMetadata(span, 'artef.otlp_endpoint') ?? DEFAULT_OTLP_ENDPOINT;
+    const endpoint = getStringTraceMetadata(span, 'artef.otlp_endpoint') ?? DEFAULT_OTLP_ENDPOINT;
     const format =
       getStringTraceMetadata(span, 'artef.otlp_format') === 'protobuf' ? 'protobuf' : 'json';
     const destinationKey = `${format}:${endpoint}`;

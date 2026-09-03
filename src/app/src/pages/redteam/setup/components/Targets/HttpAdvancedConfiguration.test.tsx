@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { renderWithProviders } from '@app/utils/testutils';
@@ -201,7 +201,7 @@ describe('HttpAdvancedConfiguration', () => {
     const docsLink = screen.getByRole('link', { name: /docs/i });
     expect(docsLink).toHaveAttribute(
       'href',
-      'https://www.artef.dev/docs/providers/http/#token-estimation',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
     );
   });
 

@@ -53,8 +53,7 @@ const rawRedteamProviderFactories: ProviderFactory[] = [
   },
   {
     test: (providerPath: string) =>
-      providerPath === 'artef:redteam:custom' ||
-      providerPath.startsWith('artef:redteam:custom:'),
+      providerPath === 'artef:redteam:custom' || providerPath.startsWith('artef:redteam:custom:'),
     create: async (_providerPath, providerOptions) => {
       const { default: RedteamCustomProvider } = await import('./custom/index');
       return new RedteamCustomProvider(providerOptions.config);
@@ -68,8 +67,7 @@ const rawRedteamProviderFactories: ProviderFactory[] = [
     },
   },
   {
-    test: (providerPath: string) =>
-      providerPath === 'artef:redteam:authoritative-markup-injection',
+    test: (providerPath: string) => providerPath === 'artef:redteam:authoritative-markup-injection',
     create: async (_providerPath, providerOptions) => {
       const { default: RedteamAuthoritativeMarkupInjectionProvider } = await import(
         './authoritativeMarkupInjection'

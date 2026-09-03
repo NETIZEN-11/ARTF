@@ -23,14 +23,8 @@ export default function BSidesSF2026(): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.artef.dev/events/bsides-sf-2026" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          property="og:image"
-          content="https://www.artef.dev/img/events/bsides-sf-2026.jpg"
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.artef.dev/img/events/bsides-sf-2026.jpg"
-        />
+        <meta property="og:image" content="https://www.artef.dev/img/events/bsides-sf-2026.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/bsides-sf-2026.jpg" />
         <meta
           name="keywords"
           content="BSides SF 2026, BSides San Francisco, security conference, AI security, hacker community, RSA week"
@@ -68,8 +62,7 @@ export default function BSidesSF2026(): React.ReactElement {
           <div className={styles.container}>
             <p className={styles.heroSubtitle}>
               Our AI red teaming engineers spent two days on the floor running live demos of how
-              artef secures AI applications—from pre-deployment testing to production
-              monitoring.
+              artef secures AI applications—from pre-deployment testing to production monitoring.
             </p>
 
             <div className={styles.eventDetails}>

@@ -188,10 +188,7 @@ async function loadTraceData(traceId: string): Promise<TraceData | null> {
   );
   const retryDelayMs = Math.min(
     MAX_TRACE_FETCH_RETRY_DELAY_MS,
-    Math.max(
-      0,
-      getEnvInt('artef_TRACE_FETCH_RETRY_DELAY_MS', DEFAULT_TRACE_FETCH_RETRY_DELAY_MS),
-    ),
+    Math.max(0, getEnvInt('artef_TRACE_FETCH_RETRY_DELAY_MS', DEFAULT_TRACE_FETCH_RETRY_DELAY_MS)),
   );
   const stablePolls = Math.min(
     MAX_TRACE_FETCH_STABLE_POLLS,

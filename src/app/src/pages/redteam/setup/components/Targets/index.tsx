@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useTelemetry } from '@app/hooks/useTelemetry';
 import { DEFAULT_HTTP_TARGET, useRedTeamConfig } from '../../hooks/useRedTeamConfig';
@@ -164,7 +164,7 @@ export default function Targets({ onNext, onBack }: TargetsProps) {
           <p>
             For connection details and supported integrations, see the{' '}
             <a
-              href="https://www.artef.dev/docs/providers/"
+              href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

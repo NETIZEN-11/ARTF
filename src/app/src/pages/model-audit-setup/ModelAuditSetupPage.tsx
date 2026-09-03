@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Card, CardContent } from '@app/components/ui/card';
@@ -176,7 +176,7 @@ export default function ModelAuditSetupPage() {
                 <p className="text-sm text-muted-foreground mt-1.5">
                   Configure and run a security scan on ML models.{' '}
                   <a
-                    href="https://www.artef.dev/docs/model-audit/"
+                    href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary underline underline-offset-2 hover:no-underline"

@@ -109,9 +109,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('uses remote materialization for invalid redteam target calls before they reach MCP providers', async () => {
-    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
-      remoteMaterializedCall(),
-    );
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(remoteMaterializedCall());
 
     const target = new FakeMcpProvider([searchCompaniesTool]);
     const wrapped = maybeWrapMcpProviderForRedteam(target, redteamMetadata('harmful:hate'));
@@ -270,14 +268,9 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('passes linked cloud target context to remote materialization', async () => {
-    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
-      remoteMaterializedCall(),
-    );
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(remoteMaterializedCall());
 
-    const target = new FakeMcpProvider(
-      [searchCompaniesTool],
-      'artef://provider/cloud-target-123',
-    );
+    const target = new FakeMcpProvider([searchCompaniesTool], 'artef://provider/cloud-target-123');
     const wrapped = maybeWrapMcpProviderForRedteam(target, redteamMetadata('harmful:hate'));
 
     await wrapped.callApi(searchCompaniesPrompt, redteamContext());
@@ -583,9 +576,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('returns a materialization error when the wrapped provider call fails', async () => {
-    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
-      remoteMaterializedCall(),
-    );
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(remoteMaterializedCall());
 
     const target = new FakeMcpProvider([searchCompaniesTool]);
     vi.spyOn(target, 'callApi').mockRejectedValueOnce(new Error('Target provider failed'));

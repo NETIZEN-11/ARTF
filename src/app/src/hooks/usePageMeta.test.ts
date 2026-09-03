@@ -1,4 +1,4 @@
-﻿import { renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { usePageMeta } from './usePageMeta';
 
@@ -203,10 +203,7 @@ describe('usePageMeta', () => {
 
     expect(document.title).toBe(`${longString} | artef`);
     expect(mockDescriptionTag.setAttribute).toHaveBeenCalledWith('content', longString);
-    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith(
-      'content',
-      `${longString} | artef`,
-    );
+    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', `${longString} | artef`);
     expect(mockOgDescriptionTag.setAttribute).toHaveBeenCalledWith('content', longString);
   });
 

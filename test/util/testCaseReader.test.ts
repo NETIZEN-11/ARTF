@@ -1608,9 +1608,7 @@ describe('readTests', () => {
     ];
     vi.mocked(fs.readFileSync).mockReturnValue(yaml.dump(testWithAssertInVars));
     vi.mocked(globSync).mockReturnValue(['test.yaml']);
-    vi.mocked(getEnvBool).mockImplementation(
-      (key) => key === 'artef_NO_TESTCASE_ASSERT_WARNING',
-    );
+    vi.mocked(getEnvBool).mockImplementation((key) => key === 'artef_NO_TESTCASE_ASSERT_WARNING');
 
     await readTests('test.yaml');
 

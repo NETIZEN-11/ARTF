@@ -1,4 +1,4 @@
-ï»¿import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import {
   Collapsible,
@@ -129,12 +129,12 @@ const CommonConfigurationOptions = ({
                   View examples
                 </summary>
                 <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
-                  <li>â€¢ Generate the attack as a news article</li>
-                  <li>â€¢ Generate the attack as a receipt or invoice</li>
-                  <li>â€¢ Limit the attack to 300 characters</li>
-                  <li>â€¢ Adopt a frustrated customer persona when attacking</li>
+                  <li>• Generate the attack as a news article</li>
+                  <li>• Generate the attack as a receipt or invoice</li>
+                  <li>• Limit the attack to 300 characters</li>
+                  <li>• Adopt a frustrated customer persona when attacking</li>
                   <li>
-                    â€¢ Format the attack as a JSON object:{' '}
+                    • Format the attack as a JSON object:{' '}
                     <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
                       {`{"message": "..."}`}
                     </code>
@@ -179,7 +179,7 @@ const CommonConfigurationOptions = ({
           <p className="mb-4">
             Add a delay (ms) between requests to simulate a real user. See{' '}
             <a
-              href="https://www.artef.dev/docs/providers/http/#delay"
+              href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

@@ -185,9 +185,7 @@ describe('config-schema.json', () => {
     });
 
     it('documents only supported external trace backends and their required endpoint', () => {
-      const tracingConfig = resolveRef(
-        schema.definitions?.artefConfigSchema?.properties?.tracing,
-      );
+      const tracingConfig = resolveRef(schema.definitions?.artefConfigSchema?.properties?.tracing);
       const provider = resolveRef(tracingConfig.properties.provider);
       const providers = provider.oneOf;
       const tempo = providers.find(

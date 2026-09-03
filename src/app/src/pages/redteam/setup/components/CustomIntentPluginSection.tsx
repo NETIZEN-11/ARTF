@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -408,7 +408,7 @@ export default function CustomIntentSection() {
               const isArrayIntent = Array.isArray(intent);
               const value = actualIndex in draftIntents ? draftIntents[actualIndex] : intent;
               const displayValue = isArrayIntent
-                ? (intent as string[]).join(' → ')
+                ? (intent as string[]).join(' ? ')
                 : (value as string);
 
               return (
@@ -548,7 +548,7 @@ export default function CustomIntentSection() {
                 <React.Fragment key={index}>
                   <div className="px-4 py-3">
                     <p className="font-medium">
-                      {Array.isArray(intent) ? intent.join(' → ') : intent}
+                      {Array.isArray(intent) ? intent.join(' ? ') : intent}
                     </p>
                     <p className="mt-0.5 text-sm text-muted-foreground">
                       {Array.isArray(intent)

@@ -1,4 +1,4 @@
-﻿import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
+import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
 import useApiConfig from '@app/stores/apiConfig';
 import { renderWithProviders } from '@app/utils/testutils';
 import { screen, waitFor } from '@testing-library/react';

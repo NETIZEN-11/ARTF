@@ -14,11 +14,11 @@ import { sha256 } from './util/createHash';
 import { isAbortError, isTransientConnectionError } from './util/fetch/errors';
 import { fetchWithRetries, getFetchWithProxyHeaders } from './util/fetch/index';
 import {
+  artef_TEAM_ID_HEADER,
   getCloudAuthHeaderName,
   getCloudBearerToken,
   getCloudTaskTeamId,
   getRequestUrlString,
-  artef_TEAM_ID_HEADER,
 } from './util/fetch/monkeyPatchFetch';
 import { isSecretField, looksLikeSecret, sanitizeUrlForLogging } from './util/sanitizer';
 import { sleep } from './util/time';
@@ -76,8 +76,7 @@ function getCacheInstance() {
     const stores = [];
 
     if (cacheType === 'disk' && enabled) {
-      cachePath =
-        getEnvString('artef_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
+      cachePath = getEnvString('artef_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
 
       if (!fs.existsSync(cachePath)) {
         logger.info(`Creating cache folder at ${cachePath}.`);

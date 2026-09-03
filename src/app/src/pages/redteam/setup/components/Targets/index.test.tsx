@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { useTelemetry } from '@app/hooks/useTelemetry';
@@ -220,7 +220,7 @@ describe('CustomTargetConfiguration - Config Field Handling', () => {
     expect(screen.getByText('Custom Target Configuration')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Custom target documentation' })).toHaveAttribute(
       'href',
-      'https://www.artef.dev/docs/red-team/configuration/#custom-providerstargets',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
     );
   });
 

@@ -335,8 +335,8 @@ export default function TelecomTalks2025(): React.ReactElement {
             <div className={styles.ctaContent}>
               <h2 className={styles.ctaTitle}>Establish Connection</h2>
               <p className={styles.ctaText}>
-                Ready to secure your telecom AI deployments? Start testing with artef's
-                open-source red teaming framework.
+                Ready to secure your telecom AI deployments? Start testing with artef's open-source
+                red teaming framework.
               </p>
               <div className={styles.ctaButtons}>
                 <Link to="/docs/red-team/quickstart/" className={styles.primaryCta}>

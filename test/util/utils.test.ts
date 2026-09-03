@@ -1,11 +1,7 @@
 ﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { mockGlobal, mockProcessEnv } from './utils';
 
-const envKeys = [
-  'artef_TEST_UTIL_ORIGINAL',
-  'artef_TEST_UTIL_OVERRIDE',
-  'artef_TEST_UTIL_CREATED',
-];
+const envKeys = ['artef_TEST_UTIL_ORIGINAL', 'artef_TEST_UTIL_OVERRIDE', 'artef_TEST_UTIL_CREATED'];
 
 const originalEnv = Object.fromEntries(envKeys.map((key) => [key, process.env[key]]));
 const testGlobalName = '__artef_TEST_UTIL_GLOBAL__';

@@ -1,4 +1,4 @@
-﻿import { mockCallApiResponse, rejectCallApi, resetCallApiMock } from '@app/tests/apiMocks';
+import { mockCallApiResponse, rejectCallApi, resetCallApiMock } from '@app/tests/apiMocks';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -28,7 +28,10 @@ describe('EnterpriseBanner', () => {
 
     const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute(
+      'href',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
+    );
   });
 
   it('should not render anything when evalId is provided and cloud is enabled', async () => {
@@ -59,7 +62,10 @@ describe('EnterpriseBanner', () => {
 
     const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute(
+      'href',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
+    );
   });
 
   it('should render the community edition banner when the API call returns a non-OK response', async () => {
@@ -77,7 +83,10 @@ describe('EnterpriseBanner', () => {
 
     const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute(
+      'href',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
+    );
   });
 
   it('should render the community edition banner when the API call throws an exception', async () => {
@@ -95,6 +104,9 @@ describe('EnterpriseBanner', () => {
 
     const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute(
+      'href',
+      'https://github.com/NETIZEN-11/ARTF/blob/main/README.md',
+    );
   });
 });

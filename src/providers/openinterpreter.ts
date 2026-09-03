@@ -521,9 +521,7 @@ export class OpenInterpreterProvider implements ApiProvider {
     if (configuredHome) {
       this.interpreterHome = configuredHome;
     } else {
-      this.temporaryHome = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'artef-openinterpreter-home-'),
-      );
+      this.temporaryHome = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openinterpreter-home-'));
       this.interpreterHome = this.temporaryHome;
     }
 

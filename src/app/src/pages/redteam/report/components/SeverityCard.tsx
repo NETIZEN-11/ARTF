@@ -1,4 +1,4 @@
-﻿import { Card, CardContent } from '@app/components/ui/card';
+import { Card, CardContent } from '@app/components/ui/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { cn } from '@app/lib/utils';
 import { Severity, severityDisplayNames } from '@artef/redteam/constants';

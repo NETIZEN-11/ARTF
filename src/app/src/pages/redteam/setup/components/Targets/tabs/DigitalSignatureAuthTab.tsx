@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -36,7 +36,7 @@ const DigitalSignatureAuthTab: React.FC<DigitalSignatureAuthTabProps> = ({
         Configure signature-based authentication for secure API calls. Your private key is never
         sent to artef and will always be stored locally on your system. See{' '}
         <a
-          href="https://www.artef.dev/docs/providers/http/#digital-signature-authentication"
+          href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
@@ -412,8 +412,8 @@ const DigitalSignatureAuthTab: React.FC<DigitalSignatureAuthTabProps> = ({
                   }}
                 />
                 <p className="text-sm text-muted-foreground">
-                  Password for the JKS keystore. Can also be set via artef_JKS_PASSWORD
-                  environment variable.
+                  Password for the JKS keystore. Can also be set via artef_JKS_PASSWORD environment
+                  variable.
                 </p>
               </div>
 
@@ -533,8 +533,8 @@ const DigitalSignatureAuthTab: React.FC<DigitalSignatureAuthTabProps> = ({
                       }}
                     />
                     <p className="text-sm text-muted-foreground">
-                      Password for the PFX certificate file. Can also be set via
-                      artef_PFX_PASSWORD environment variable.
+                      Password for the PFX certificate file. Can also be set via artef_PFX_PASSWORD
+                      environment variable.
                     </p>
                   </div>
                 </>

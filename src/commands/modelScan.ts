@@ -90,9 +90,7 @@ interface ScanOptions {
  * @internal Exported for testing
  */
 export function createTempOutputPath(): string {
-  const tempDir = mkdtempSync(
-    path.join(os.tmpdir(), `artef-modelscan-${crypto.randomUUID()}-`),
-  );
+  const tempDir = mkdtempSync(path.join(os.tmpdir(), `artef-modelscan-${crypto.randomUUID()}-`));
   return path.join(tempDir, 'results.json');
 }
 

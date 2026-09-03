@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { useApiHealth } from '@app/hooks/useApiHealth';
 import { useTelemetry } from '@app/hooks/useTelemetry';
 import { useToast } from '@app/hooks/useToast';

@@ -620,9 +620,7 @@ describe('OpenCodeSDKProvider', () => {
 
         const result = await provider.callApi('Test prompt');
 
-        expect(result.error).toMatch(
-          /supports permission rules only.*sessions started by artef/,
-        );
+        expect(result.error).toMatch(/supports permission rules only.*sessions started by artef/);
         expect(mockSessionPrompt).not.toHaveBeenCalled();
       });
 

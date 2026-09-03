@@ -1,4 +1,4 @@
-﻿import { renderWithProviders } from '@app/utils/testutils';
+import { renderWithProviders } from '@app/utils/testutils';
 import { Severity } from '@artef/redteam/constants';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

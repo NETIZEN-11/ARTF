@@ -1,4 +1,4 @@
-﻿import remarkGfm from 'remark-gfm';
+import remarkGfm from 'remark-gfm';
 
 /**
  * Stable remark plugins array for ReactMarkdown.

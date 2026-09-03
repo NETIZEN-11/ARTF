@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';

@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Button } from '@app/components/ui/button';
@@ -350,9 +350,9 @@ const TestSuites = ({
                     Risk = Impact + Exploitability + Human Factor + Complexity
                   </p>
                   <div className="mt-2 space-y-0.5 text-xs">
-                    <p>â€¢ Base Severity: {row.original.severity}</p>
+                    <p>• Base Severity: {row.original.severity}</p>
                     <p>
-                      â€¢ Attack Success Rate: {formatASRForDisplay(row.original.attackSuccessRate)}%
+                      • Attack Success Rate: {formatASRForDisplay(row.original.attackSuccessRate)}%
                     </p>
                     <p className="mt-1 italic">
                       Higher exploitability increases risk exponentially
@@ -382,7 +382,7 @@ const TestSuites = ({
                   <p className="text-xs">How difficult this attack is to execute</p>
                   <div className="mt-2 space-y-0.5 text-xs">
                     <p>Strategy: {row.original.worstStrategy}</p>
-                    <p>â€¢ Score: {value.toFixed(0)}/10</p>
+                    <p>• Score: {value.toFixed(0)}/10</p>
                     <p className="mt-1">
                       {value >= 7
                         ? 'Very Hard - Requires automation/tools'

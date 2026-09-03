@@ -1,4 +1,4 @@
-﻿import { callApi } from '@app/utils/api';
+import { callApi } from '@app/utils/api';
 import { useQuery } from '@tanstack/react-query';
 
 export type ApiHealthStatus = 'unknown' | 'connected' | 'blocked' | 'disabled';

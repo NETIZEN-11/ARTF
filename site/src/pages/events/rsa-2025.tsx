@@ -213,8 +213,8 @@ export default function RSA2025(): React.ReactElement {
             <div className={styles.ctaContent}>
               <h2 className={styles.ctaTitle}>We Were Back for RSA 2026</h2>
               <p className={styles.ctaText}>
-                artef returned to RSA Conference 2026 in March. See what we showed on the floor,
-                or get in touch for a walkthrough.
+                artef returned to RSA Conference 2026 in March. See what we showed on the floor, or
+                get in touch for a walkthrough.
               </p>
               <div className={styles.ctaButtons}>
                 <Link to="/events/rsa-2026" className={styles.primaryCta}>

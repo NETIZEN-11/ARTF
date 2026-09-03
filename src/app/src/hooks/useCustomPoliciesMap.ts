@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @fileoverview Hooks for working w/ custom policies. Sharable between artef OSS and artef Cloud.
  */
 

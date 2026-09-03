@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Test for GitHub Issue #2248
  * https://github.com/artef/artef/issues/2248
  *

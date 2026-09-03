@@ -655,10 +655,7 @@ export function setGenAIResponseAttributes(
     span.setAttribute(artefAttributes.CACHE_HIT, result.cacheHit);
   }
   if (result.responseBody) {
-    span.setAttribute(
-      artefAttributes.RESPONSE_BODY,
-      truncateBody(result.responseBody, sanitize),
-    );
+    span.setAttribute(artefAttributes.RESPONSE_BODY, truncateBody(result.responseBody, sanitize));
   }
 
   // Provider-specific additional attributes

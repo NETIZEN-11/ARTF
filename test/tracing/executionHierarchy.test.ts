@@ -7,9 +7,9 @@ import { callGradingProvider } from '../../src/redteam/providers/shared';
 import { withProviderCallTracingContext } from '../../src/scheduler/providerCallExecutionContext';
 import { generateTraceContextIfNeeded } from '../../src/tracing/evaluatorTracing';
 import {
+  artefAttributes,
   GenAIAttributes,
   getGenAITracer,
-  artefAttributes,
   withGenAISpan,
 } from '../../src/tracing/genaiTracer';
 import { isRelevantSpan } from '../../src/tracing/spanFilter';
@@ -412,9 +412,9 @@ describe('test-case execution trace hierarchy', () => {
       withTestCaseSpan(second?.rootSpan, async () => [{ score: 1, success: true }]),
     ]);
 
-    expect(
-      exporter.getFinishedSpans().map((span) => span.attributes['artef.provider.id']),
-    ).toEqual(expect.arrayContaining(['http:target-a', 'http:target-b']));
+    expect(exporter.getFinishedSpans().map((span) => span.attributes['artef.provider.id'])).toEqual(
+      expect.arrayContaining(['http:target-a', 'http:target-b']),
+    );
   });
 
   it('records target exceptions on both the target and test-case spans', async () => {

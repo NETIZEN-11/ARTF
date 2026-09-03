@@ -1,11 +1,11 @@
 ﻿import cliState from '../cliState';
 import logger from '../logger';
 import {
+  artef_FACTUALITY_PROMPT,
   DEFAULT_GRADING_PROMPT,
   GEVAL_PROMPT_EVALUATE,
   GEVAL_PROMPT_STEPS,
   OPENAI_CLOSED_QA_PROMPT,
-  artef_FACTUALITY_PROMPT,
   TRAJECTORY_GOAL_SUCCESS_PROMPT,
 } from '../prompts/index';
 import { getDefaultProviders } from '../providers/defaults';

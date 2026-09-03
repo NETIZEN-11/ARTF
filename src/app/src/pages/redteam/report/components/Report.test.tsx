@@ -1,4 +1,4 @@
-﻿import { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { mockWindowLocation } from '@app/tests/browserMocks';

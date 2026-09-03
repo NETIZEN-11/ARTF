@@ -1,4 +1,4 @@
-﻿import { omitProviderCredentials } from '@app/stores/evalConfig';
+import { omitProviderCredentials } from '@app/stores/evalConfig';
 import { create } from 'zustand';
 import { targetConfigSha256 } from './targetConfigSha256';
 

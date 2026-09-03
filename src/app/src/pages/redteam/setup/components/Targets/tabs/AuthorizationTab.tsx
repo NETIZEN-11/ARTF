@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -486,7 +486,7 @@ const AuthorizationTab: React.FC<AuthorizationTabProps> = ({
                 <p className="text-sm text-muted-foreground">
                   Load a token from a JavaScript, TypeScript, or Python auth file. See{' '}
                   <a
-                    href="https://www.artef.dev/docs/providers/http/#file-based-authentication"
+                    href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
                     target="_blank"
                     rel="noreferrer"
                     className="text-primary hover:underline"
@@ -507,7 +507,7 @@ const AuthorizationTab: React.FC<AuthorizationTabProps> = ({
             Configure signature-based authentication for secure API calls. Your private key is never
             sent to artef and will always be stored locally on your system. See{' '}
             <a
-              href="https://www.artef.dev/docs/providers/http/#digital-signature-authentication"
+              href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
               target="_blank"
               rel="noreferrer"
               className="text-primary hover:underline"

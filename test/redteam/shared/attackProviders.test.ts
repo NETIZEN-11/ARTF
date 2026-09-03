@@ -103,9 +103,7 @@ describe('attackProviders', () => {
     describe('already full IDs', () => {
       it('should return the same ID if already full', () => {
         expect(getAttackProviderFullId('artef:redteam:hydra')).toBe('artef:redteam:hydra');
-        expect(getAttackProviderFullId('artef:redteam:iterative')).toBe(
-          'artef:redteam:iterative',
-        );
+        expect(getAttackProviderFullId('artef:redteam:iterative')).toBe('artef:redteam:iterative');
         expect(getAttackProviderFullId('artef:redteam:iterative:meta')).toBe(
           'artef:redteam:iterative:meta',
         );

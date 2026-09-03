@@ -1,4 +1,4 @@
-﻿import { subCategoryDescriptions } from '@artef/redteam/constants';
+import { subCategoryDescriptions } from '@artef/redteam/constants';
 import { getUnifiedConfig } from '@artef/redteam/sharedFrontend';
 import * as yaml from 'js-yaml';
 import type { RedteamFileConfig } from '@artef/types';
@@ -86,5 +86,5 @@ export function generateOrderedYaml(config: Config): string {
     return line;
   });
 
-  return `# yaml-language-server: $schema=https://artef.dev/config-schema.json\n${updatedLines.join('\n')}`;
+  return `# yaml-language-server: $schema=https://github.com/NETIZEN-11/ARTF/blob/main/README.md'\n')}`;
 }

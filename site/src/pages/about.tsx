@@ -84,9 +84,8 @@ const AboutPageContent = () => {
                 when we were on the front lines.
               </Typography>
               <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-                Based in San Francisco, California, artef is now part of OpenAI. artef
-                remains open source, and we continue to build tools for secure, reliable AI
-                applications.
+                Based in San Francisco, California, artef is now part of OpenAI. artef remains open
+                source, and we continue to build tools for secure, reliable AI applications.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -235,8 +234,8 @@ const AboutPageContent = () => {
               mb: 8,
             }}
           >
-            We're grateful to the investors and operators who backed artef early and helped us
-            build open-source, application-focused AI security.
+            We're grateful to the investors and operators who backed artef early and helped us build
+            open-source, application-focused AI security.
           </Typography>
           <Grid
             container
@@ -348,10 +347,7 @@ const AboutPageContent = () => {
             }}
           >
             <a href="https://github.com/artef/artef/graphs/contributors">
-              <img
-                src="https://contrib.rocks/image?repo=artef/artef"
-                alt="artef Contributors"
-              />
+              <img src="https://contrib.rocks/image?repo=artef/artef" alt="artef Contributors" />
             </a>
           </Box>
         </Box>

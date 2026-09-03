@@ -526,9 +526,7 @@ export async function resolveTeamId(
     const defaultTeam = await getDefaultTeam();
     // Store the default team for future use (scoped to organization)
     cloudConfig.setCurrentTeamId(defaultTeam.id, defaultTeam.organizationId);
-    logger.info(
-      `Using team: ${defaultTeam.name} (use 'artef auth teams set <name>' to change)`,
-    );
+    logger.info(`Using team: ${defaultTeam.name} (use 'artef auth teams set <name>' to change)`);
     return defaultTeam;
   }
 

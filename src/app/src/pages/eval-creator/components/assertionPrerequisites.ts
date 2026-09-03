@@ -1,4 +1,4 @@
-﻿import type { AssertionOrSet } from '@artef/types';
+import type { AssertionOrSet } from '@artef/types';
 
 const CONTEXT_ASSERTION_TYPES = new Set([
   'context-faithfulness',
@@ -35,7 +35,7 @@ export function getRequiredAssertionVariables(assertions: unknown[] | undefined)
   const requiredVariables = ['query'];
   // contextTransform only exists on the regular Assertion variant; getAtomicAssertions
   // unpacks any assert-set wrappers above, so any remaining item with a context type
-  // is an Assertion, but TypeScript can't narrow that through Set.has — read defensively.
+  // is an Assertion, but TypeScript can't narrow that through Set.has � read defensively.
   if (
     contextAssertions.some((assertion) => {
       const contextTransform = (assertion as { contextTransform?: unknown }).contextTransform;

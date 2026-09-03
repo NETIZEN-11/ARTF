@@ -6,8 +6,8 @@ import logger from '../../logger';
 import { redteamInit } from '../../redteam/commands/init';
 import { startServer } from '../../server/server';
 import telemetry from '../../telemetry';
-import { setupEnv } from '../../util/index';
 import { artefCommand } from '../../util/artefCommand';
+import { setupEnv } from '../../util/index';
 import { BrowserBehavior, checkServerRunning, openBrowser } from '../../util/server';
 import type { Command } from 'commander';
 

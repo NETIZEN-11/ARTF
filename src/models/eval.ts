@@ -59,8 +59,8 @@ import {
   queryTestIndicesOptimized,
 } from './evalPerformance';
 import EvalResult, {
-  getResultIndexKey,
   artef_METADATA_KEY,
+  getResultIndexKey,
   persistTraceMetadata,
   stripTraceLinkageFromMetadata,
 } from './evalResult';
@@ -270,10 +270,7 @@ export class EvalQueries {
     }
     // `__artef` is a reserved internal namespace (e.g. trace linkage). Don't expose
     // it through the metadata-values API even though it lives in the same JSON column.
-    if (
-      trimmedKey === artef_METADATA_KEY ||
-      trimmedKey.startsWith(`${artef_METADATA_KEY}.`)
-    ) {
+    if (trimmedKey === artef_METADATA_KEY || trimmedKey.startsWith(`${artef_METADATA_KEY}.`)) {
       return [];
     }
 

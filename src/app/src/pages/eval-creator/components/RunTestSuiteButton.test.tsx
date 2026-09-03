@@ -1,4 +1,4 @@
-﻿import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
+import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
 import { useStore } from '@app/stores/evalConfig';
 import {
   getCallApiMock,

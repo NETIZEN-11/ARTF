@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -48,7 +48,7 @@ const DESCRIPTIONS_BY_TAB: Record<string, React.ReactNode> = {
         malicious payloads targeting specific weaknesses.{' '}
         <RouterLink
           className="underline"
-          to="https://www.artef.dev/docs/red-team/plugins/"
+          to="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
           target="_blank"
         >
           Learn More
@@ -80,10 +80,10 @@ const DESCRIPTIONS_BY_TAB: Record<string, React.ReactNode> = {
           <div>
             <p className="mb-1 font-semibold">Supported file formats:</p>
             <p className="mb-0.5">
-              • <strong>CSV:</strong> First column used, requires header row
+              � <strong>CSV:</strong> First column used, requires header row
             </p>
             <p className="mb-0.5">
-              • <strong>JSON:</strong> Array of strings or nested arrays for multi-step intents
+              � <strong>JSON:</strong> Array of strings or nested arrays for multi-step intents
             </p>
             <p className="mt-2 font-semibold">JSON examples:</p>
             <pre className="mt-0.5 text-xs">
@@ -330,12 +330,12 @@ export default function Plugins({ onNext, onBack }: PluginsProps) {
           displayNameOverrides[missingConfigPlugins[0]] ||
           categoryAliases[missingConfigPlugins[0]] ||
           missingConfigPlugins[0];
-        return `Click the settings button (⚙️) to configure ${pluginName}`;
+        return `Click the settings button (??) to configure ${pluginName}`;
       } else if (missingConfigPlugins.length > 1) {
         const pluginNames = missingConfigPlugins
           .map((plugin) => displayNameOverrides[plugin] || categoryAliases[plugin] || plugin)
           .join(', ');
-        return `Click the settings buttons (⚙️) to configure: ${pluginNames}`;
+        return `Click the settings buttons (??) to configure: ${pluginNames}`;
       }
     }
 

@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import Editor from '@app/components/ui/code-editor';
@@ -101,7 +101,7 @@ const RequestTransformTab: React.FC<RequestTransformTabProps> = ({
       <p className="mb-4">
         Transform the prompt into a specific structure required by your API before sending. See{' '}
         <a
-          href="https://www.artef.dev/docs/providers/http/#request-transform"
+          href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
@@ -162,10 +162,10 @@ const RequestTransformTab: React.FC<RequestTransformTabProps> = ({
             '(prompt: string, vars: Record<string, any>, context: CallApiContextParams) => string | object',
           description: (
             <>
-              â€¢ <strong>prompt</strong>: string - The test prompt input
-              <br />â€¢ <strong>vars</strong>: Record&lt;string, any&gt; - Variables available for
+              • <strong>prompt</strong>: string - The test prompt input
+              <br />• <strong>vars</strong>: Record&lt;string, any&gt; - Variables available for
               substitution
-              <br />â€¢ <strong>context</strong>: CallApiContextParams - Additional context (optional)
+              <br />• <strong>context</strong>: CallApiContextParams - Additional context (optional)
             </>
           ),
           successMessage: 'Transform executed successfully!',

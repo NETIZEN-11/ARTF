@@ -508,10 +508,7 @@ async function runInstalledCompressionEval(consumerDir: string, configDir: strin
       'src',
       'entrypoint.js',
     );
-    assert(
-      fs.existsSync(entrypointPath),
-      `Missing installed artef entrypoint: ${entrypointPath}`,
-    );
+    assert(fs.existsSync(entrypointPath), `Missing installed artef entrypoint: ${entrypointPath}`);
 
     await runAsync(
       process.execPath,

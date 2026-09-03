@@ -1,4 +1,4 @@
-﻿import { Button } from '@app/components/ui/button';
+import { Button } from '@app/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@app/components/ui/dialog';
 import { ChevronRight } from 'lucide-react';
 
@@ -47,7 +47,7 @@ export default function Setup({ open, onClose }: SetupProps) {
         </div>
         <div className="flex items-center justify-between gap-3 border-t border-border pt-3">
           <a
-            href="https://www.artef.dev/docs/red-team/"
+            href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-primary hover:underline"

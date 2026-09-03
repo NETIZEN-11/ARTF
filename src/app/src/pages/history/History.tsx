@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table';
 import { PageContainer } from '@app/components/layout/PageContainer';

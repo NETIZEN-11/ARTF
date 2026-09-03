@@ -121,9 +121,7 @@ describe('logs command', () => {
 
       // wrapTable is called and result is logged
       expect(logger.info).toHaveBeenCalled();
-      expect(logger.info).toHaveBeenCalledWith(
-        expect.stringContaining('artef logs <filename>'),
-      );
+      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('artef logs <filename>'));
     });
 
     it('should filter by type when specified', async () => {

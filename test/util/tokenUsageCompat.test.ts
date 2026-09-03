@@ -131,14 +131,8 @@ describe('tokenUsageCompat', () => {
         { completionDetails: { cacheCreationInputTokens: 17 } },
       ],
       ['artef.usage.cached_response_tokens', { cached: 17 }],
-      [
-        'artef.usage.accepted_prediction_tokens',
-        { completionDetails: { acceptedPrediction: 17 } },
-      ],
-      [
-        'artef.usage.rejected_prediction_tokens',
-        { completionDetails: { rejectedPrediction: 17 } },
-      ],
+      ['artef.usage.accepted_prediction_tokens', { completionDetails: { acceptedPrediction: 17 } }],
+      ['artef.usage.rejected_prediction_tokens', { completionDetails: { rejectedPrediction: 17 } }],
       ['gen_ai.usage.cached_tokens', { cached: 17 }],
       ['gen_ai.usage.reasoning_tokens', { completionDetails: { reasoning: 17 } }],
       ['gen_ai.usage.cache_read_input_tokens', { completionDetails: { cacheReadInputTokens: 17 } }],

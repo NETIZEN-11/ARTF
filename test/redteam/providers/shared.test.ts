@@ -1338,12 +1338,10 @@ describe('shared redteam provider utilities', () => {
     it('preserves analysis usage when no blocking question is found', async () => {
       mockProcessEnv({ artef_ENABLE_UNBLOCKING: 'true' });
       mockedCheckServerFeatureSupport.mockResolvedValue(true);
-      const callApi = vi
-        .spyOn(artefChatCompletionProvider.prototype, 'callApi')
-        .mockResolvedValue({
-          output: { isBlocking: false },
-          tokenUsage: { total: 18, prompt: 11, completion: 7, numRequests: 1 },
-        });
+      const callApi = vi.spyOn(artefChatCompletionProvider.prototype, 'callApi').mockResolvedValue({
+        output: { isBlocking: false },
+        tokenUsage: { total: 18, prompt: 11, completion: 7, numRequests: 1 },
+      });
 
       try {
         const result = await tryUnblocking({
@@ -1364,12 +1362,10 @@ describe('shared redteam provider utilities', () => {
     it('preserves analysis usage when the unblocking provider returns an error', async () => {
       mockProcessEnv({ artef_ENABLE_UNBLOCKING: 'true' });
       mockedCheckServerFeatureSupport.mockResolvedValue(true);
-      const callApi = vi
-        .spyOn(artefChatCompletionProvider.prototype, 'callApi')
-        .mockResolvedValue({
-          error: 'analysis failed after inference',
-          tokenUsage: { total: 13, prompt: 8, completion: 5, numRequests: 1 },
-        });
+      const callApi = vi.spyOn(artefChatCompletionProvider.prototype, 'callApi').mockResolvedValue({
+        error: 'analysis failed after inference',
+        tokenUsage: { total: 13, prompt: 8, completion: 5, numRequests: 1 },
+      });
 
       try {
         const result = await tryUnblocking({

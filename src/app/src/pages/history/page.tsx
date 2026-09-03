@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useEvalHistoryRefresh } from '@app/hooks/useEvalHistoryRefresh';
 import { usePageMeta } from '@app/hooks/usePageMeta';

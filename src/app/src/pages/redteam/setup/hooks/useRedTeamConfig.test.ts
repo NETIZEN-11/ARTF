@@ -1,4 +1,4 @@
-﻿import { mockBrowserProperty, restoreBrowserMocks } from '@app/tests/browserMocks';
+import { mockBrowserProperty, restoreBrowserMocks } from '@app/tests/browserMocks';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useRedTeamConfig } from './useRedTeamConfig';
 import {
@@ -1040,7 +1040,7 @@ describe('useRedTeamConfig', () => {
         url: 'https://example.test/chat',
         body: '{{prompt}}',
         method: 'POST',
-        headers: { Authorization: 'Bearer €' },
+        headers: { Authorization: 'Bearer �' },
       },
     ],
     [

@@ -2111,14 +2111,8 @@ describe('artef plugin package (Codex + Claude Code)', () => {
     // The repo-local copy is standalone: the sibling skills it could route to
     // (artef-provider-setup, the redteam skills) are not present under
     // .claude/skills/, so it must not hand off to them and dangle.
-    const contributorEvals = readText(
-      path.join(repoClaudeSkillsRoot, 'artef-evals', 'SKILL.md'),
-    );
-    for (const sibling of [
-      'artef-provider-setup',
-      'artef-redteam-setup',
-      'artef-redteam-run',
-    ]) {
+    const contributorEvals = readText(path.join(repoClaudeSkillsRoot, 'artef-evals', 'SKILL.md'));
+    for (const sibling of ['artef-provider-setup', 'artef-redteam-setup', 'artef-redteam-run']) {
       expect(contributorEvals).not.toContain(sibling);
     }
   });
@@ -2135,12 +2129,7 @@ describe('artef plugin package (Codex + Claude Code)', () => {
   it('keeps every agents/openai.yaml aligned with UI metadata constraints', () => {
     const expectedDefaultPromptPhrases: Record<string, string[]> = {
       'artef-evals': ['focused eval', 'local JS/Python providers'],
-      'artef-provider-setup': [
-        'HTTP endpoint',
-        'OpenAPI operation',
-        'Python provider',
-        'app code',
-      ],
+      'artef-provider-setup': ['HTTP endpoint', 'OpenAPI operation', 'Python provider', 'app code'],
       'artef-redteam-run': ['execute', 'HTTP, Python, or JS target'],
       'artef-redteam-setup': ['live endpoint', 'OpenAPI spec', 'code'],
     };

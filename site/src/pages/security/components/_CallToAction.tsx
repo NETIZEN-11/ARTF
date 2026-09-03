@@ -9,8 +9,7 @@ export default function CallToAction(): React.ReactElement {
       <div className={styles.container}>
         <h2 className={styles.ctaTitle}>Ready to Secure Your LLM Applications?</h2>
         <p className={styles.ctaDescription}>
-          Try artef today and contact us to discuss how artef can improve your LLM security
-          posture.
+          Try artef today and contact us to discuss how artef can improve your LLM security posture.
         </p>
         <div className={styles.ctaButtons}>
           <Link

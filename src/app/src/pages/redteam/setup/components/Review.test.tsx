@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
 import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
 import { useEmailVerification } from '@app/hooks/useEmailVerification';
@@ -1355,7 +1355,7 @@ Application Details:
 
   describe('Run Now Button - isRunning Integration', () => {
     beforeEach(() => {
-      // These tests rely on real async behavior (button click → API call → state change)
+      // These tests rely on real async behavior (button click ? API call ? state change)
       // so we need to use real timers instead of fake timers
       vi.useRealTimers();
 
@@ -2161,7 +2161,7 @@ Application Details:
 
       expect(screen.getByText('Intents (3)')).toBeInTheDocument();
       expect(screen.getByText('single intent')).toBeInTheDocument();
-      expect(screen.getByText('step one → step two → step three')).toBeInTheDocument();
+      expect(screen.getByText('step one ? step two ? step three')).toBeInTheDocument();
       expect(screen.getByText('another')).toBeInTheDocument();
       expect(screen.getByText('Multi-step intent')).toBeInTheDocument();
     });
@@ -2191,7 +2191,7 @@ Application Details:
       );
 
       // Find the multi-step row and click its delete button.
-      const multiStepRow = screen.getByText('step1 → step2').closest('div');
+      const multiStepRow = screen.getByText('step1 ? step2').closest('div');
       expect(multiStepRow).not.toBeNull();
       const deleteButton = multiStepRow!.querySelector('button');
       expect(deleteButton).not.toBeNull();
@@ -2235,7 +2235,7 @@ Application Details:
       // The header shows only the non-empty entries.
       expect(screen.getByText('Intents (2)')).toBeInTheDocument();
 
-      // Remove "visible two" — its displayed position is 1, but its top-level
+      // Remove "visible two" � its displayed position is 1, but its top-level
       // index is 4. The handler must drop slot 4, not slot 1.
       const targetRow = screen.getByText('visible two').closest('div');
       const deleteButton = targetRow!.querySelector('button');
@@ -2295,14 +2295,14 @@ Application Details:
         />,
       );
 
-      // All three intents should be visible — both plugins are aggregated.
+      // All three intents should be visible � both plugins are aggregated.
       expect(screen.getByText('Intents (3)')).toBeInTheDocument();
       expect(screen.getByText('first plugin a')).toBeInTheDocument();
       expect(screen.getByText('first plugin b')).toBeInTheDocument();
       expect(screen.getByText('second plugin only')).toBeInTheDocument();
 
       // Removing the entry that lives on the second intent plugin must mutate
-      // that plugin only — the first plugin's intents should be preserved.
+      // that plugin only � the first plugin's intents should be preserved.
       const targetRow = screen.getByText('second plugin only').closest('div');
       const deleteButton = targetRow!.querySelector('button');
       clickElement(deleteButton!);

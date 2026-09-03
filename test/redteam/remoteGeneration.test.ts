@@ -492,9 +492,7 @@ describe('getRemoteGenerationUrlForUnaligned', () => {
         },
       };
     });
-    expect(getRemoteGenerationUrlForUnaligned()).toBe(
-      'https://api.artef.app/api/v1/task/harmful',
-    );
+    expect(getRemoteGenerationUrlForUnaligned()).toBe('https://api.artef.app/api/v1/task/harmful');
   });
 });
 

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -22,7 +22,7 @@ interface YamlEditorProps {
 
 // Schema comment that should always be at the top of the YAML file
 const YAML_SCHEMA_COMMENT =
-  '# yaml-language-server: $schema=https://artef.dev/config-schema.json';
+  '# yaml-language-server: $schema=https://github.com/NETIZEN-11/ARTF/blob/main/README.md';
 const YAML_DOWNLOAD_FILE_NAME = 'artefconfig.yaml';
 const EVAL_CLI_COMMAND = `artef eval -c ${YAML_DOWNLOAD_FILE_NAME}`;
 
@@ -184,7 +184,7 @@ const YamlEditorComponent = ({ initialConfig, readOnly = false, initialYaml }: Y
           </div>
           {hasUnsavedChanges && (
             <span className="text-sm text-amber-600 dark:text-amber-400 font-medium">
-              ● Unsaved changes
+              ? Unsaved changes
             </span>
           )}
         </div>

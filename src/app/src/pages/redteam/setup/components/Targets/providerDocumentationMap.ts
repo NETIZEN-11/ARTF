@@ -1,8 +1,8 @@
-﻿/**
+/**
  * Maps provider types to their specific documentation URLs
  */
 
-const BASE_DOCS_URL = 'https://www.artef.dev/docs/providers';
+const BASE_DOCS_URL = 'https://github.com/NETIZEN-11/ARTF/blob/main/README.md';
 
 /**
  * Provider type to documentation URL mapping

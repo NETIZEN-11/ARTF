@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import Prism from './prism';
 
 describe('prism helper', () => {
@@ -13,11 +13,7 @@ describe('prism helper', () => {
   it('can highlight the formats used by the app', () => {
     const json = Prism.highlight('{"name":"artef"}', Prism.languages.json, 'json');
     const yaml = Prism.highlight('name: artef', Prism.languages.yaml, 'yaml');
-    const js = Prism.highlight(
-      'const name = "artef";',
-      Prism.languages.javascript,
-      'javascript',
-    );
+    const js = Prism.highlight('const name = "artef";', Prism.languages.javascript, 'javascript');
 
     expect(json).toContain('token');
     expect(yaml).toContain('token');

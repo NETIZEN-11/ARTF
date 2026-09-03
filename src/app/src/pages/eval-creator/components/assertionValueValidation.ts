@@ -1,4 +1,4 @@
-﻿import type { Assertion, AssertionType } from '@artef/types';
+import type { Assertion, AssertionType } from '@artef/types';
 
 const BASE_ASSERTION_TYPES = [
   'agent-rubric',

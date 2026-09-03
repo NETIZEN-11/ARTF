@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { ToastProvider } from '@app/contexts/ToastContext';
@@ -166,9 +166,7 @@ describe('Plugins', () => {
     renderWithProviders(<Plugins onNext={mockOnNext} onBack={mockOnBack} />);
 
     expect(screen.getByRole('heading', { name: /Plugins/i, level: 1 })).toBeInTheDocument();
-    expect(
-      screen.getByText(/Plugins are artef's modular system for testing/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Plugins are artef's modular system for testing/i)).toBeInTheDocument();
 
     const nextButton = screen.getByRole('button', { name: /Next/i });
     const backButton = screen.getByRole('button', { name: /Back/i });

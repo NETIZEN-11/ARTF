@@ -49,10 +49,7 @@ export default function BlackHat2025(): React.ReactElement {
           property="og:description"
           content="artef was at booth #4712 at Black Hat USA 2025, Aug 5-7 in Las Vegas, with live demos of AI vulnerability testing, automated red teaming, and LLM security scanning."
         />
-        <meta
-          property="og:image"
-          content="https://www.artef.dev/img/events/blackhat-2025.jpg"
-        />
+        <meta property="og:image" content="https://www.artef.dev/img/events/blackhat-2025.jpg" />
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="1024" />
         <meta property="og:url" content="https://www.artef.dev/events/blackhat-2025" />
@@ -65,10 +62,7 @@ export default function BlackHat2025(): React.ReactElement {
           name="twitter:description"
           content="Booth #4712 at Black Hat USA 2025. Live demos of AI vulnerability testing & automated red teaming. Aug 5-7, Las Vegas."
         />
-        <meta
-          name="twitter:image"
-          content="https://www.artef.dev/img/events/blackhat-2025.jpg"
-        />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/blackhat-2025.jpg" />
         <meta name="twitter:site" content="@artef" />
 
         <meta

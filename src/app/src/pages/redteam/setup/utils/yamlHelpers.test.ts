@@ -1,4 +1,4 @@
-﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { generateOrderedYaml } from './yamlHelpers';
 
 import type { Config } from '../types';
@@ -58,7 +58,7 @@ describe('yamlHelpers', () => {
       const result = generateOrderedYaml(mockConfig);
 
       expect(result).toContain('# yaml-language-server:');
-      expect(result).toContain('$schema=https://artef.dev/config-schema.json');
+      expect(result).toContain('$schema=https://github.com/NETIZEN-11/ARTF/blob/main/README.md');
     });
 
     it('should add purpose to redteam config when provided', () => {

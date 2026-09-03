@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -330,7 +330,7 @@ export default function Purpose({ onNext, onBack }: PromptsProps) {
                       Automatically analyze your target to discover its purpose, tools, and
                       limitations.{' '}
                       <a
-                        href="https://artef.dev/docs/red-team/discovery"
+                        href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
                         target="_blank"
                         className="text-primary/80 underline underline-offset-2 hover:text-primary"
                       >

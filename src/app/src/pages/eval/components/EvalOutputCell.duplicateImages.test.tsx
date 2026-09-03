@@ -1,4 +1,4 @@
-﻿import { type TestTimers, useTestTimers } from '@app/tests/timers';
+import { type TestTimers, useTestTimers } from '@app/tests/timers';
 import { renderWithProviders as baseRender } from '@app/utils/testutils';
 import { type EvaluateTableOutput, ResultFailureReason } from '@artef/types';
 import { screen } from '@testing-library/react';

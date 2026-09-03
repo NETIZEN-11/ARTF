@@ -1,4 +1,4 @@
-﻿import * as ReactDOM from 'react-dom/client';
+import * as ReactDOM from 'react-dom/client';
 
 import { mockClipboard } from '@app/tests/browserMocks';
 import { useTestTimers } from '@app/tests/timers';

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { cn } from '@app/lib/utils';
@@ -56,10 +56,10 @@ const EnterpriseBanner = ({ evalId, className }: EnterpriseBannerProps) => {
       <Info className="size-4" />
       <AlertContent>
         <AlertDescription>
-          You're using the community edition of artef's red teaming suite. For advanced
-          capabilities and support, learn more about{' '}
+          You're using the community edition of artef's red teaming suite. For advanced capabilities
+          and support, learn more about{' '}
           <a
-            href="https://www.artef.dev/docs/enterprise/"
+            href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold underline text-primary hover:text-primary/80"

@@ -1,11 +1,7 @@
-﻿import { mockClipboard } from '@app/tests/browserMocks';
+import { mockClipboard } from '@app/tests/browserMocks';
 import { restoreTestTimers, type TestTimers, useTestTimers } from '@app/tests/timers';
 import { renderWithProviders as baseRender } from '@app/utils/testutils';
-import {
-  type AssertionType,
-  type EvaluateTableOutput,
-  ResultFailureReason,
-} from '@artef/types';
+import { type AssertionType, type EvaluateTableOutput, ResultFailureReason } from '@artef/types';
 import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -1257,7 +1253,7 @@ describe('EvalOutputCell', () => {
 
   it('falls back to raw ms when latency is non-finite or negative', () => {
     const cases: { latencyMs: number; expected: string }[] = [
-      { latencyMs: Number.POSITIVE_INFINITY, expected: '∞ ms' },
+      { latencyMs: Number.POSITIVE_INFINITY, expected: '8 ms' },
       { latencyMs: -1234, expected: '-1,234 ms' },
     ];
     for (const { latencyMs, expected } of cases) {

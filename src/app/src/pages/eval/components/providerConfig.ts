@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Utilities for matching provider configs and extracting displayable information.
  *
  * The problem: CompletedPrompt.provider is just a string (e.g., "google:gemini-3-flash-preview"),

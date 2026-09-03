@@ -125,9 +125,9 @@ export default function BSidesSeattle2026(): React.ReactElement {
         <section className={styles.heroContent}>
           <div className={styles.container}>
             <p className={styles.heroSubtitle}>
-              artef engineers ran live demos of AI red teaming: prompt injection, jailbreaks,
-              and data exfiltration against real-world LLM apps. People brought their use cases and
-              left with a testing plan they could run in CI.
+              artef engineers ran live demos of AI red teaming: prompt injection, jailbreaks, and
+              data exfiltration against real-world LLM apps. People brought their use cases and left
+              with a testing plan they could run in CI.
             </p>
 
             <div className={styles.eventDetails}>

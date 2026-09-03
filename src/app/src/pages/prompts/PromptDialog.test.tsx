@@ -1,4 +1,4 @@
-﻿import { mockClipboard } from '@app/tests/browserMocks';
+import { mockClipboard } from '@app/tests/browserMocks';
 import { restoreTestTimers, useTestTimers } from '@app/tests/timers';
 import { act, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';

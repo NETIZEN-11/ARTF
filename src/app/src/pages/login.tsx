@@ -1,4 +1,4 @@
-﻿import { useActionState, useCallback, useEffect, useState } from 'react';
+import { useActionState, useCallback, useEffect, useState } from 'react';
 
 import logoPanda from '@app/assets/logo.svg';
 import { Button } from '@app/components/ui/button';

@@ -1,8 +1,8 @@
-﻿/**
+/**
  * Maps plugin types to their specific documentation URLs
  */
 
-const BASE_DOCS_URL = 'https://www.artef.dev/docs/red-team/plugins';
+const BASE_DOCS_URL = 'https://github.com/NETIZEN-11/ARTF/blob/main/README.md';
 
 /**
  * Plugin type to documentation URL mapping

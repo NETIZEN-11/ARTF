@@ -35,14 +35,8 @@ export default function ScaleUpAI2025(): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.artef.dev/events/scaleup-ai-2025" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          property="og:image"
-          content="https://www.artef.dev/img/events/scaleup-ai-2025.jpg"
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.artef.dev/img/events/scaleup-ai-2025.jpg"
-        />
+        <meta property="og:image" content="https://www.artef.dev/img/events/scaleup-ai-2025.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/scaleup-ai-2025.jpg" />
         <meta
           name="keywords"
           content="ScaleUp:AI 2025, Insight Partners, AI security, artef, Ian Webster, venture capital, AI investment"
@@ -275,8 +269,8 @@ export default function ScaleUpAI2025(): React.ReactElement {
               <h2 className={styles.ctaTitle}>Ready to Secure Your AI?</h2>
               <p className={styles.ctaText}>
                 Join {SITE_CONSTANTS.USER_COUNT_DISPLAY}+ developers and{' '}
-                {SITE_CONSTANTS.FORTUNE_500_COUNT}+ Fortune 500 companies who trust artef to
-                find and fix vulnerabilities in their AI applications.
+                {SITE_CONSTANTS.FORTUNE_500_COUNT}+ Fortune 500 companies who trust artef to find
+                and fix vulnerabilities in their AI applications.
               </p>
               <div className={styles.ctaButtons}>
                 <Link to="/docs/intro" className={styles.primaryCta}>

@@ -1,4 +1,4 @@
-﻿import { mockBrowserProperty } from '@app/tests/browserMocks';
+import { mockBrowserProperty } from '@app/tests/browserMocks';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { callApi, fetchUserEmail, fetchUserId, getApiBaseUrl, updateEvalAuthor } from './api';
 

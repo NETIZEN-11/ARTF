@@ -1,4 +1,4 @@
-﻿import { HUMAN_ASSERTION_TYPE } from '@artef/providers/constants';
+import { HUMAN_ASSERTION_TYPE } from '@artef/providers/constants';
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
@@ -570,7 +570,7 @@ describe('hashVarSchema', () => {
   });
 
   it('should handle variables with unicode characters', () => {
-    const vars = ['变量', 'переменная', '変数'];
+    const vars = ['??', '??????????', '??'];
     expect(hashVarSchema(vars)).toBe(hashVarSchema([...vars].reverse()));
   });
 

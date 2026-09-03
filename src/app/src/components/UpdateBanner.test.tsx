@@ -1,4 +1,4 @@
-﻿import { useVersionCheck } from '@app/hooks/useVersionCheck';
+import { useVersionCheck } from '@app/hooks/useVersionCheck';
 import { mockClipboard, mockDocumentExecCommand } from '@app/tests/browserMocks';
 import { renderWithProviders } from '@app/utils/testutils';
 import { cleanup, screen, waitFor } from '@testing-library/react';

@@ -1,4 +1,4 @@
-﻿import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { type Plugin, type Strategy } from '@artef/redteam/constants';
 import { type RedteamStrategyObject, type StrategyConfig } from '@artef/redteam/types';

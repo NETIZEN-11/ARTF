@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { useStore } from '@app/stores/evalConfig';
 import { testCaseFromCsvRow } from '@artef/csv';
 import { loadYaml } from '@artef/util/yamlLoad';

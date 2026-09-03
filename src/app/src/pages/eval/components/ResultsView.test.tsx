@@ -1,4 +1,4 @@
-﻿import { mockWindowOpen } from '@app/tests/browserMocks';
+import { mockWindowOpen } from '@app/tests/browserMocks';
 import { callApi } from '@app/utils/api';
 import { renderWithProviders } from '@app/utils/testutils';
 import { act, screen, waitFor } from '@testing-library/react';

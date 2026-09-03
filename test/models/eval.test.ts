@@ -1822,9 +1822,9 @@ describe('evaluator', () => {
       );
 
       expect(await EvalQueries.getMetadataValuesFromEval(eval_.id, '__artef')).toEqual([]);
-      expect(
-        await EvalQueries.getMetadataValuesFromEval(eval_.id, '__artef.traceLinkage'),
-      ).toEqual([]);
+      expect(await EvalQueries.getMetadataValuesFromEval(eval_.id, '__artef.traceLinkage')).toEqual(
+        [],
+      );
     });
   });
 

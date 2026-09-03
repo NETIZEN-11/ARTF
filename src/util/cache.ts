@@ -1,6 +1,6 @@
-import { getDb } from '../database/index';
-import { evalsTable, evalResultsTable } from '../database/tables';
 import { eq } from 'drizzle-orm';
+import { getDb } from '../database/index';
+import { evalResultsTable, evalsTable } from '../database/tables';
 import logger from '../logger';
 
 export async function warmCache(evalIds: string[]): Promise<number> {
@@ -33,7 +33,9 @@ export async function warmCache(evalIds: string[]): Promise<number> {
     }
   }
 
-  logger.info(`Cache warming completed: ${warmedCount} results warmed across ${evalIds.length} evaluations`);
+  logger.info(
+    `Cache warming completed: ${warmedCount} results warmed across ${evalIds.length} evaluations`,
+  );
   return warmedCount;
 }
 

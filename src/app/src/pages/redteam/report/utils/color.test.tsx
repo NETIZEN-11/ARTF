@@ -1,4 +1,4 @@
-﻿import { Severity } from '@artef/redteam/constants';
+import { Severity } from '@artef/redteam/constants';
 import { describe, expect, it } from 'vitest';
 import { getProgressColor, getSeverityColor } from './color';
 

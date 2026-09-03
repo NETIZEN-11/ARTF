@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ContextType } from 'react';
 
 import { UserContext } from '@app/contexts/UserContextDef';

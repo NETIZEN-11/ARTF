@@ -1,4 +1,4 @@
-﻿import { Button } from '@app/components/ui/button';
+import { Button } from '@app/components/ui/button';
 import { DownloadIcon } from '@app/components/ui/icons';
 import { formatASRForDisplay } from '@artef/app/src/utils/redteam';
 import {

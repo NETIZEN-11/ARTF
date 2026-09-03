@@ -1,6 +1,6 @@
-import { Queue, Worker, Job, QueueEvents } from 'bullmq';
+import { Job, Queue, QueueEvents, Worker } from 'bullmq';
 import Redis from 'ioredis';
-import { getEnvString, getEnvInt, getEnvBool } from '../envars';
+import { getEnvBool, getEnvInt, getEnvString } from '../envars';
 import logger from '../logger';
 
 export interface QueueConfig {
@@ -14,7 +14,7 @@ export interface QueueConfig {
 }
 
 let redisClient: Redis | null = null;
-let queueInstances: Map<string, Queue> = new Map();
+const queueInstances: Map<string, Queue> = new Map();
 
 export function getQueueConfig(): QueueConfig {
   return {

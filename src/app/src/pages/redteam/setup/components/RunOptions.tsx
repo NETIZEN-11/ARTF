@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Label } from '@app/components/ui/label';
 import { NumberInput } from '@app/components/ui/number-input';
@@ -70,7 +70,7 @@ const isBelowMin = (value: string, min: number) => {
  * Number of test cases
  * - Accepts only digits as the user types (temporary empty state allowed)
  * - onBlur clamps to a minimum of 1 and persists via updateConfig
- * - Prevents non-numeric characters like e/E/+/−/.
+ * - Prevents non-numeric characters like e/E/+/-/.
  */
 export const NumberOfTestCasesInput = ({
   value,
@@ -174,9 +174,9 @@ export const MaxCharsPerMessageInput = ({
 /**
  * Delay between API calls (ms)
  * - Enabled only when maxConcurrency is 1 (mutual exclusivity rule)
- * - Accepts only digits; onBlur clamps to ≥ 0 and persists via updateRunOption
+ * - Accepts only digits; onBlur clamps to = 0 and persists via updateRunOption
  * - If delay > 0, we force maxConcurrency to 1 to uphold exclusivity
- * - Prevents non-numeric characters like e/E/+/−/.
+ * - Prevents non-numeric characters like e/E/+/-/.
  */
 export const DelayBetweenAPICallsInput = ({
   canSetDelay,

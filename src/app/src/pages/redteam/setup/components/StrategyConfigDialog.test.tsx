@@ -1,4 +1,4 @@
-﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { TooltipProvider } from '@app/components/ui/tooltip';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -318,7 +318,7 @@ describe('StrategyConfigDialog', () => {
     );
 
     const numTestsInput = screen.getByLabelText('Maximum Tests Per Plugin');
-    // Bypass browser type="number" validation via the native setter — userEvent
+    // Bypass browser type="number" validation via the native setter � userEvent
     // correctly rejects non-numeric input, but we need to test defensive handling.
     act(() => {
       Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set?.call(

@@ -1,4 +1,4 @@
-﻿import {
+import {
   createMockResponse,
   getCallApiMock,
   mockCallApiResponse,

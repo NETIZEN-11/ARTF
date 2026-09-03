@@ -221,9 +221,7 @@ export function registerRedteamGenerateTool(server: McpServer) {
           );
         }
 
-        logger.debug(
-          `Generating redteam tests with config: ${configPath || 'artefconfig.yaml'}`,
-        );
+        logger.debug(`Generating redteam tests with config: ${configPath || 'artefconfig.yaml'}`);
 
         // Generate test cases with timeout protection
         const startTime = Date.now();

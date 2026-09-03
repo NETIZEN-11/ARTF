@@ -1,4 +1,4 @@
-ï»¿import React from 'react';
+import React from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -438,7 +438,7 @@ const TestCasesSection = ({ varsList, onOpenYamlEditor }: TestCasesSectionProps)
                         {testCase.assert?.length ? (
                           `${testCase.assert.length} assertion${testCase.assert.length === 1 ? '' : 's'}`
                         ) : (
-                          <span className="text-muted-foreground/60">â€”</span>
+                          <span className="text-muted-foreground/60">—</span>
                         )}
                       </td>
                       <td className="px-4 py-3 text-muted-foreground font-mono text-xs">
@@ -447,7 +447,7 @@ const TestCasesSection = ({ varsList, onOpenYamlEditor }: TestCasesSectionProps)
                             .map(([k, v]) => `${k}=${v}`)
                             .join(', ')
                         ) : (
-                          <span className="font-sans text-muted-foreground/60">â€”</span>
+                          <span className="font-sans text-muted-foreground/60">—</span>
                         )}
                       </td>
                       <td className="px-4 py-3 text-right">

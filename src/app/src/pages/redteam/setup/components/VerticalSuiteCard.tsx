@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -133,7 +133,7 @@ export default function VerticalSuiteCard({
       if (onUpgradeClick) {
         onUpgradeClick();
       } else {
-        window.open('https://www.artef.dev/pricing/', '_blank');
+        window.open('https://github.com/NETIZEN-11/ARTF/blob/main/README.md', '_blank');
       }
     },
     [onUpgradeClick],

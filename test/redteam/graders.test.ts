@@ -43,14 +43,10 @@ describe('getGraderById', () => {
     const toxicChatGrader = getGraderById('artef:redteam:toxic-chat');
     expect(toxicChatGrader).toBeInstanceOf(ToxicChatGrader);
 
-    const financialCalculationGrader = getGraderById(
-      'artef:redteam:financial:calculation-error',
-    );
+    const financialCalculationGrader = getGraderById('artef:redteam:financial:calculation-error');
     expect(financialCalculationGrader).toBeInstanceOf(FinancialCalculationErrorPluginGrader);
 
-    const financialComplianceGrader = getGraderById(
-      'artef:redteam:financial:compliance-violation',
-    );
+    const financialComplianceGrader = getGraderById('artef:redteam:financial:compliance-violation');
     expect(financialComplianceGrader).toBeInstanceOf(FinancialComplianceViolationPluginGrader);
 
     const financialDataLeakageGrader = getGraderById('artef:redteam:financial:data-leakage');
@@ -92,9 +88,7 @@ describe('getGraderById', () => {
       'artef:redteam:harmful:misinformation-disinformation',
     );
     expect(misinformationGrader).toBeInstanceOf(MisinformationDisinformationGrader);
-    expect(misinformationGrader?.id).toBe(
-      'artef:redteam:harmful:misinformation-disinformation',
-    );
+    expect(misinformationGrader?.id).toBe('artef:redteam:harmful:misinformation-disinformation');
   });
 
   it('should return harmful grader for IDs starting with artef:redteam:harmful', () => {

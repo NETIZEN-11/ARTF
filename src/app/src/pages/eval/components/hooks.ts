@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Hooks for reading computed values from the table store.
  *
  * This is the recommended practice by Zustand's author (see https://github.com/pmndrs/zustand/issues/132#issuecomment-1688161013).
@@ -9,10 +9,7 @@
 
 import { useCallback, useMemo } from 'react';
 
-import {
-  deserializePolicyIdFromMetric,
-  isPolicyMetric,
-} from '@artef/redteam/plugins/policy/utils';
+import { deserializePolicyIdFromMetric, isPolicyMetric } from '@artef/redteam/plugins/policy/utils';
 import { useTableStore } from './store';
 import type { PromptMetrics } from '@artef/types';
 

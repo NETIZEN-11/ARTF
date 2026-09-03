@@ -32,10 +32,7 @@ export default function AISecuritySummit2025(): React.ReactElement {
           content="artef at AI Security Summit 2025 (Oct 22–23, San Francisco). Community sponsor with Ian Webster on the panel 'Using AI for Offensive Security Testing.'"
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://www.artef.dev/events/ai-security-summit-2025"
-        />
+        <meta property="og:url" content="https://www.artef.dev/events/ai-security-summit-2025" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image"

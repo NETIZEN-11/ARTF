@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 import { renderWithProviders } from '@app/utils/testutils';
 import { Severity, severityDisplayNames } from '@artef/redteam/constants';

@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
@@ -158,7 +158,7 @@ export function FilterChips() {
               </button>
             </TooltipTrigger>
             <TooltipContent>
-              {isActive ? 'Click to remove filter' : `${passRate}% pass rate — Click to filter`}
+              {isActive ? 'Click to remove filter' : `${passRate}% pass rate � Click to filter`}
             </TooltipContent>
           </Tooltip>
         );

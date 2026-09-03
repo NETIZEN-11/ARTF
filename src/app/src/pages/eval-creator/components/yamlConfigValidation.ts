@@ -1,4 +1,4 @@
-﻿import type { UnifiedConfig } from '@artef/types';
+import type { UnifiedConfig } from '@artef/types';
 
 export const INVALID_FULL_CONFIG_YAML_MESSAGE =
   'Invalid YAML configuration. Upload a full configuration with top-level fields such as providers, prompts, and tests. To import individual test cases, use Import CSV or YAML in Test Cases.';

@@ -106,9 +106,7 @@ export class artefModelProvider implements ApiProvider {
 
       const authHeaders = cloudConfig.getAuthHeaders();
       if (!authHeaders) {
-        throw new Error(
-          'No artef auth token available. Please log in with `artef auth login`',
-        );
+        throw new Error('No artef auth token available. Please log in with `artef auth login`');
       }
 
       const body = JSON.stringify(payload);
@@ -149,9 +147,7 @@ export class artefModelProvider implements ApiProvider {
         },
       };
     } catch (error) {
-      logger.error(
-        `[artefModel] Error: ${error instanceof Error ? error.message : String(error)}`,
-      );
+      logger.error(`[artefModel] Error: ${error instanceof Error ? error.message : String(error)}`);
       throw error;
     }
   }

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import logoPanda from '@app/assets/logo.svg';
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
@@ -158,7 +158,7 @@ export default function LauncherPage() {
             <li className="leading-relaxed">
               Check our{' '}
               <a
-                href="https://artef.dev/docs/installation"
+                href="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

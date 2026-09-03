@@ -16,6 +16,7 @@ const canCreateSymlinksSync = (): boolean => {
 };
 
 const hasSymlinkSupport = canCreateSymlinksSync();
+
 import cliState from '../../src/cliState';
 import {
   closeDb,
@@ -294,10 +295,7 @@ describe('database', () => {
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.mkdirSync(aliasedConfigDir, { recursive: true });
       fs.writeFileSync(path.join(defaultConfigDir, 'artef.db'), 'database');
-      fs.linkSync(
-        path.join(defaultConfigDir, 'artef.db'),
-        path.join(aliasedConfigDir, 'artef.db'),
-      );
+      fs.linkSync(path.join(defaultConfigDir, 'artef.db'), path.join(aliasedConfigDir, 'artef.db'));
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
       vi.mocked(getConfigDirectoryPath).mockReturnValue(aliasedConfigDir);
       vi.stubEnv('VITEST', 'true');

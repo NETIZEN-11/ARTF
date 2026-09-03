@@ -1,4 +1,4 @@
-﻿import { render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import EvalsIndexPage from './page';

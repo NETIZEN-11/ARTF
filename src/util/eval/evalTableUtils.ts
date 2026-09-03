@@ -459,8 +459,7 @@ function escapeCsvRowsForFormulaInjection(
   // environment precedence used by the rest of artef without importing the
   // legacy runtime environment module into this node-layer export path.
   const configuredValue =
-    env?.artef_DISABLE_CSV_FORMULA_ESCAPING ??
-    process.env.artef_DISABLE_CSV_FORMULA_ESCAPING;
+    env?.artef_DISABLE_CSV_FORMULA_ESCAPING ?? process.env.artef_DISABLE_CSV_FORMULA_ESCAPING;
   const disableEscaping = ['1', 'true', 'yes', 'yup', 'yeppers'].includes(
     configuredValue?.toLowerCase() ?? '',
   );

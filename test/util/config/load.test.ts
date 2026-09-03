@@ -11,6 +11,7 @@ import logger from '../../../src/logger';
 import { readPrompts } from '../../../src/prompts/index';
 import { loadApiProviders } from '../../../src/providers/index';
 import { type Scenario, type TestCase, type UnifiedConfig } from '../../../src/types/index';
+import { isRunningUnderNpx } from '../../../src/util/artefCommand';
 import {
   ConfigResolutionError,
   combineConfigs,
@@ -22,7 +23,6 @@ import {
   resolveConfigs,
 } from '../../../src/util/config/load';
 import { maybeLoadFromExternalFile } from '../../../src/util/file';
-import { isRunningUnderNpx } from '../../../src/util/artefCommand';
 import { sanitizeTracingConfigForPersistence } from '../../../src/util/sanitizer';
 import { readTests } from '../../../src/util/testCaseReader';
 import { createMockProvider } from '../../factories/provider';

@@ -1,4 +1,4 @@
-﻿import { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Card } from '@app/components/ui/card';
