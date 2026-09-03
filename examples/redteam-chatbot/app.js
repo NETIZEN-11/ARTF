@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const { loadApiProvider } = require('artef');
 
 const app = express();

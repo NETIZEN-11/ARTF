@@ -158,7 +158,7 @@ export function FilterChips() {
               </button>
             </TooltipTrigger>
             <TooltipContent>
-              {isActive ? 'Click to remove filter' : `${passRate}% pass rate — Click to filter`}
+              {isActive ? 'Click to remove filter' : `${passRate}% pass rate ï¿½ Click to filter`}
             </TooltipContent>
           </Tooltip>
         );

@@ -55,7 +55,7 @@ def call_api(prompt: str, options: dict, context: dict) -> dict:
         return {
             "error": (
                 "Inspect CLI command is empty. Set providers[0].config.inspectCommand "
-                "or PROMPTFOO_OSWORLD_INSPECT_COMMAND."
+                "or ARTEF_OSWORLD_INSPECT_COMMAND."
             )
         }
 
@@ -156,7 +156,7 @@ def call_api(prompt: str, options: dict, context: dict) -> dict:
     if parsed_sample_id and sample_id != str(requested_sample_id):
         return {
             "error": (
-                f"Inspect returned sample {sample_id}, but Promptfoo requested "
+                f"Inspect returned sample {sample_id}, but artef requested "
                 f"{requested_sample_id}."
             ),
             "metadata": {
@@ -218,7 +218,7 @@ def call_api(prompt: str, options: dict, context: dict) -> dict:
 
 
 def _inspect_command(config: dict) -> list[str]:
-    env_command = os.environ.get("PROMPTFOO_OSWORLD_INSPECT_COMMAND")
+    env_command = os.environ.get("ARTEF_OSWORLD_INSPECT_COMMAND")
     command = config.get("inspectCommand") or env_command or "inspect"
     if isinstance(command, list):
         return [str(part) for part in command]

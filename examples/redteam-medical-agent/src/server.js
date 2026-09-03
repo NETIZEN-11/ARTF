@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Express server for the medical agent
  */
 

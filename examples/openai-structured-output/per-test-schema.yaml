@@ -1,4 +1,4 @@
-﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 
 # Per-test structured output example
 # Demonstrates using different JSON schemas for different tests with the same prompt

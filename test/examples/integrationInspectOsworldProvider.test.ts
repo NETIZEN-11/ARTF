@@ -435,7 +435,7 @@ print(json.dumps({
       } as any);
 
       expect(result.error).toBe(
-        'Inspect CLI command is empty. Set providers[0].config.inspectCommand or artef_OSWORLD_INSPECT_COMMAND.',
+        'Inspect CLI command is empty. Set providers[0].config.inspectCommand or ARTEF_OSWORLD_INSPECT_COMMAND.',
       );
     } finally {
       await provider.shutdown();

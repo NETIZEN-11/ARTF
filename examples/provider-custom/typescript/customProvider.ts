@@ -1,4 +1,4 @@
-﻿import artef from 'artef';
+import artef from 'artef';
 import type { ApiProvider, ProviderOptions, ProviderResponse } from 'artef';
 
 // import artef from '../../dist/src/index.js';

@@ -1,4 +1,4 @@
-﻿// For TypeScript users:
+// For TypeScript users:
 // To get type checking, uncomment the following line and the satisfies clause below
 // import type { TestCase } from 'artef';
 export default [

@@ -1,4 +1,4 @@
-﻿// GPT Image-2 → QuiverAI vectorize pipeline.
+// GPT Image-2 → QuiverAI vectorize pipeline.
 //
 // Generates a raster image with OpenAI's gpt-image-2 model, then vectorizes it
 // to SVG with QuiverAI Arrow. The whole chain is exposed as a single

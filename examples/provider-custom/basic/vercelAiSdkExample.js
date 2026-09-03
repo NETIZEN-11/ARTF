@@ -1,4 +1,4 @@
-﻿// Example from @Codeshark-NET https://github.com/artef/artef/issues/922
+// Example from @Codeshark-NET https://github.com/artef/artef/issues/922
 // @ts-check
 import { anthropic } from '@ai-sdk/anthropic';
 import { generateObject } from 'ai';

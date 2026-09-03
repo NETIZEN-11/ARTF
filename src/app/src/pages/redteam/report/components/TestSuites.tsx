@@ -21,10 +21,7 @@ import {
   isValidPolicyObject,
   makeInlinePolicyId,
 } from '@artef/redteam/plugins/policy/utils';
-import {
-  calculatePluginRiskScore,
-  prepareTestResultsFromStats,
-} from '@artef/redteam/riskScoring';
+import { calculatePluginRiskScore, prepareTestResultsFromStats } from '@artef/redteam/riskScoring';
 import { getRiskCategorySeverityMap } from '@artef/redteam/sharedFrontend';
 import { Download, ScrollText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -350,9 +347,9 @@ const TestSuites = ({
                     Risk = Impact + Exploitability + Human Factor + Complexity
                   </p>
                   <div className="mt-2 space-y-0.5 text-xs">
-                    <p>• Base Severity: {row.original.severity}</p>
+                    <p>ï¿½ Base Severity: {row.original.severity}</p>
                     <p>
-                      • Attack Success Rate: {formatASRForDisplay(row.original.attackSuccessRate)}%
+                      ï¿½ Attack Success Rate: {formatASRForDisplay(row.original.attackSuccessRate)}%
                     </p>
                     <p className="mt-1 italic">
                       Higher exploitability increases risk exponentially
@@ -382,7 +379,7 @@ const TestSuites = ({
                   <p className="text-xs">How difficult this attack is to execute</p>
                   <div className="mt-2 space-y-0.5 text-xs">
                     <p>Strategy: {row.original.worstStrategy}</p>
-                    <p>• Score: {value.toFixed(0)}/10</p>
+                    <p>ï¿½ Score: {value.toFixed(0)}/10</p>
                     <p className="mt-1">
                       {value >= 7
                         ? 'Very Hard - Requires automation/tools'

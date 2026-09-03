@@ -1056,7 +1056,7 @@ export default function ResultsView({
                 <span>
                   {totalResultsCount.toLocaleString()} result{totalResultsCount === 1 ? '' : 's'}
                 </span>
-                <span>•</span>
+                <span>ï¿½</span>
                 <span>
                   {head.prompts.length} prompt{head.prompts.length === 1 ? '' : 's'}
                 </span>

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Dataset loader for TruthfulQA factuality evaluation
  * Loads the EleutherAI/truthful_qa_mc dataset and formats it for artef
  */

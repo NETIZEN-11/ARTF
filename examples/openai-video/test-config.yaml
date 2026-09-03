@@ -1,4 +1,4 @@
-﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: artef red panda mascot video test
 
 prompts:

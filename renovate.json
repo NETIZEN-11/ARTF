@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["local>artef/renovate-config"],
   "rebaseWhen": "behind-base-branch",

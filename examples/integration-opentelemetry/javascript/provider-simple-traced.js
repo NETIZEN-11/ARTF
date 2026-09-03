@@ -1,4 +1,4 @@
-﻿// provider-simple-traced.js
+// provider-simple-traced.js
 // RAG/Agent provider with intricate OpenTelemetry tracing
 
 const { trace, context, SpanStatusCode } = require('@opentelemetry/api');

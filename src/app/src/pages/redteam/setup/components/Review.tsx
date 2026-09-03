@@ -34,10 +34,7 @@ import { useRedteamJobStore } from '@app/stores/redteamJobStore';
 import { callApi } from '@app/utils/api';
 import { isFoundationModelProvider } from '@artef/providers/constants';
 import { REDTEAM_DEFAULTS, strategyDisplayNames } from '@artef/redteam/constants';
-import {
-  isValidPolicyObject,
-  makeDefaultPolicyName,
-} from '@artef/redteam/plugins/policy/utils';
+import { isValidPolicyObject, makeDefaultPolicyName } from '@artef/redteam/plugins/policy/utils';
 import { getUnifiedConfig } from '@artef/redteam/sharedFrontend';
 import isEqual from 'fast-deep-equal';
 import { BarChart2, ChevronDown, Eye, Info, Play, Save, Search, Sliders, X } from 'lucide-react';
@@ -936,7 +933,7 @@ export default function Review({
                     .map(({ display, isMultiStep, pluginIndex, entryIndex }) => {
                       // Truncate long entries for the SR/title label so screen
                       // readers can distinguish multiple Remove buttons.
-                      const shortLabel = display.length > 80 ? `${display.slice(0, 80)}…` : display;
+                      const shortLabel = display.length > 80 ? `${display.slice(0, 80)}ï¿½` : display;
                       const key = `${pluginIndex}:${entryIndex}`;
                       return (
                         <div key={key} className="relative rounded-lg bg-muted/50 p-3 pr-8">

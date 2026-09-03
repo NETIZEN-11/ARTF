@@ -1,4 +1,4 @@
-﻿// const artef = require('../../dist/src/index.js').default;
+// const artef = require('../../dist/src/index.js').default;
 const artef = require('artef').default;
 
 class CustomApiProvider {

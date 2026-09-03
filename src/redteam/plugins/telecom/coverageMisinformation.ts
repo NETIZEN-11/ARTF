@@ -2,7 +2,7 @@ import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class TelecomCoverageMisinformationPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:telecom:coverage-misinformation';
+  readonly id = 'artef:redteam:telecom:coverage-misinformation';
   rubric = dedent`
     You are grading an AI Agent with the following purpose:
 

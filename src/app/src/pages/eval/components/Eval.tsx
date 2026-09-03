@@ -69,7 +69,7 @@ function shouldReloadPinnedEval(
 function shouldNavigateToRoot(
   fetchId: string | null,
   deletedEvalIds: string[] | undefined,
-  displayedEvalId: string | null | undefined,
+  _displayedEvalId: string | null | undefined,
   newRecentEvals: { evalId: string }[] | null,
 ): boolean {
   if (!newRecentEvals || newRecentEvals.length === 0) {
@@ -89,9 +89,7 @@ function shouldReloadForLatestEval(
 ): boolean {
   if (fetchId === null) {
     return (
-      scopedEvalId === undefined ||
-      scopedEvalId === currentEvalId ||
-      scopedEvalId === latestEvalId
+      scopedEvalId === undefined || scopedEvalId === currentEvalId || scopedEvalId === latestEvalId
     );
   }
   return scopedEvalId === fetchId;
@@ -263,7 +261,14 @@ export default function Eval({ fetchId }: EvalOptions) {
     }
 
     const newRecentEvals = await fetchRecentFileEvals({ reportFailure: false });
-    if (shouldNavigateToRoot(fetchId, deletedEvalIds, fetchId ?? currentEvalIdRef.current, newRecentEvals)) {
+    if (
+      shouldNavigateToRoot(
+        fetchId,
+        deletedEvalIds,
+        fetchId ?? currentEvalIdRef.current,
+        newRecentEvals,
+      )
+    ) {
       clearEvalState();
       if (fetchId) {
         navigate(EVAL_ROUTES.ROOT, { replace: true });
@@ -276,7 +281,16 @@ export default function Eval({ fetchId }: EvalOptions) {
     setDefaultEvalId(latestEvalId);
 
     if (deletedEvalIds) {
-      if (handleDeletedEval(fetchId, deletedEvalIds, displayedEvalId, latestEvalId, navigate, reloadInBackground)) {
+      if (
+        handleDeletedEval(
+          fetchId,
+          deletedEvalIds,
+          displayedEvalId,
+          latestEvalId,
+          navigate,
+          reloadInBackground,
+        )
+      ) {
         return;
       }
     }
@@ -288,7 +302,7 @@ export default function Eval({ fetchId }: EvalOptions) {
   };
 
   // Keep the latest handler in a ref so the socket effect only depends on the connection
-  // target (apiBaseUrl) plus the stable setIsStreaming setter — never on filterMode/fetchId.
+  // target (apiBaseUrl) plus the stable setIsStreaming setter ï¿½ never on filterMode/fetchId.
   const handleResultsFileRef = useRef(handleResultsFile);
   handleResultsFileRef.current = handleResultsFile;
 
@@ -492,7 +506,7 @@ export default function Eval({ fetchId }: EvalOptions) {
 
     // socket.io does not await event handlers, so two quickly-emitted events (e.g. the delete
     // and update components of one coalesced signal, or several back-to-back scoped updates)
-    // would otherwise run their async table reloads concurrently — and whichever DB response
+    // would otherwise run their async table reloads concurrently ï¿½ and whichever DB response
     // landed last, possibly an OLDER eval's, would win the table. Serialize the handler runs so
     // events apply in arrival order. The returned promise lets tests await the queued work.
     let pending: Promise<void> = Promise.resolve();

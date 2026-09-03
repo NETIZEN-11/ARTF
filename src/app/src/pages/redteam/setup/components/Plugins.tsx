@@ -43,9 +43,9 @@ const DESCRIPTIONS_BY_TAB: Record<string, React.ReactNode> = {
   plugins: (
     <div className="space-y-4">
       <p>
-        Plugins are artef's modular system for testing a variety of risks and vulnerabilities in
-        LLM models and LLM-powered applications. Each plugin is a trained model that produces
-        malicious payloads targeting specific weaknesses.{' '}
+        Plugins are artef's modular system for testing a variety of risks and vulnerabilities in LLM
+        models and LLM-powered applications. Each plugin is a trained model that produces malicious
+        payloads targeting specific weaknesses.{' '}
         <RouterLink
           className="underline"
           to="https://github.com/NETIZEN-11/ARTF/blob/main/README.md"
@@ -80,10 +80,10 @@ const DESCRIPTIONS_BY_TAB: Record<string, React.ReactNode> = {
           <div>
             <p className="mb-1 font-semibold">Supported file formats:</p>
             <p className="mb-0.5">
-              • <strong>CSV:</strong> First column used, requires header row
+              ï¿½ <strong>CSV:</strong> First column used, requires header row
             </p>
             <p className="mb-0.5">
-              • <strong>JSON:</strong> Array of strings or nested arrays for multi-step intents
+              ï¿½ <strong>JSON:</strong> Array of strings or nested arrays for multi-step intents
             </p>
             <p className="mt-2 font-semibold">JSON examples:</p>
             <pre className="mt-0.5 text-xs">

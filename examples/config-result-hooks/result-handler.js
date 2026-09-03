@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Example extension hook for processing evaluation results.
  *
  * This handler demonstrates common use cases:

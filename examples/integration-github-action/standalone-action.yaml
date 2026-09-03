@@ -1,4 +1,4 @@
-﻿#
+#
 # This is a standalone github action that runs artef against a change.
 # You'll have to edit it to use the appropriate branches and prompts.
 #

@@ -1,4 +1,4 @@
-﻿const dedent = require('dedent');
+const dedent = require('dedent');
 
 /**
  * Detects MIME type from base64 magic numbers

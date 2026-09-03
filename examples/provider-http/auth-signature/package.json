@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "http-provider-auth-signature",
   "version": "1.0.0",
   "description": "Example HTTP provider with signature authentication",

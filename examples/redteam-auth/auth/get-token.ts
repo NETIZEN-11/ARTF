@@ -1,4 +1,4 @@
-﻿type AuthContext = {
+type AuthContext = {
   vars: Record<string, string>;
 };
 

@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "redteam-chatbot",
   "version": "0.0.0",
   "description": "A simple chatbot for testing multi-turn redteam scenarios in artef",

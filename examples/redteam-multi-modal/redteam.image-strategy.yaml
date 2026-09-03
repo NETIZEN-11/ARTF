@@ -1,4 +1,4 @@
-﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Image Analysis with Multimodal Models
 targets:
   - id: bedrock:amazon.nova-lite-v1:0

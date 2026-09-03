@@ -1,4 +1,4 @@
-﻿# For more information on assertions, see https://artef.dev/docs/configuration/expected-outputs
+# For more information on assertions, see https://artef.dev/docs/configuration/expected-outputs
 - type: icontains
   value: hello
 - type: javascript

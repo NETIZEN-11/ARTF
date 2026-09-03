@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const crypto = require('crypto');
 const fs = require('fs');
 const jks = require('jks-js');

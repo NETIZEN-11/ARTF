@@ -391,10 +391,10 @@ describe('AnthropicCompletionProvider', () => {
       const { hashAnthropicCacheValue } = await import('../../../src/providers/anthropic/generic');
 
       expect(hashAnthropicCacheValue({ prompt: 'same prompt' })).toBe(
-        '986a0c23b9bf151804afb7cd7ff27307d4450f268f18bdd7d5cea95d52de9114',
+        'd3fb71a8a269523f42b6ab276b5ca4bf56cd9497638a58f5f622b01e1f298980',
       );
       expect(hashAnthropicCacheValue(undefined)).toBe(
-        '766c13d249e6c1a4c7ab9b490e2b854b2764a4d88677be73fb242f2238bd3d9d',
+        '9793d3a7abc8a77a138256684ca44de57d1f067848e9efbb6ec2d9e25fde66cb',
       );
     });
 

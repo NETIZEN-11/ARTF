@@ -2,7 +2,7 @@ import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class InsuranceCoverageDiscriminationPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:insurance:coverage-discrimination';
+  readonly id = 'artef:redteam:insurance:coverage-discrimination';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

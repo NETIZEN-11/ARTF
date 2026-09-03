@@ -1,4 +1,4 @@
-﻿export default async function getAuth(context) {
+export default async function getAuth(context) {
   const tokenUrl = 'https://example-app.artef.app/oauth/token';
   const clientId = process.env.artef_TARGET_CLIENT_ID || context.vars.clientId;
   const clientSecret = process.env.artef_TARGET_CLIENT_SECRET || context.vars.clientSecret;
