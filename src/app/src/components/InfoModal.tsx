@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from '@app/components/ui/dialog';
 import { cn } from '@app/lib/utils';
-import { BookOpen, Bug, Calendar, ExternalLink, GitBranch, MessageCircle } from 'lucide-react';
+import { BookOpen, Calendar, ExternalLink, GitBranch, MessageCircle } from 'lucide-react';
 
 const links: { icon: React.ReactElement; text: string; href: string }[] = [
   {
@@ -20,11 +20,6 @@ const links: { icon: React.ReactElement; text: string; href: string }[] = [
     icon: <GitBranch className="size-4" />,
     text: 'GitHub Repository',
     href: 'https://github.com/NETIZEN-11/ARTF',
-  },
-  {
-    icon: <Bug className="size-4" />,
-    text: 'File an Issue',
-    href: 'https://github.com/NETIZEN-11/ARTF/issues',
   },
   {
     icon: <MessageCircle className="size-4" />,
