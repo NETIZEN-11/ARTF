@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-     viewBox="0 0 200 200" xml:space="preserve">
-<style type="text/css">
-    .st0{fill:#FF4444;}
-    .st1{fill:#CC0000;}
-    .st2{fill:#FFFFFF;}
-    .st3{fill:#333333;}
-</style>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<defs>
+  <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#FF4444;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#CC0000;stop-opacity:1" />
+  </linearGradient>
+</defs>
+
 <!-- Shield background -->
-<path class="st0" d="M100,20 L170,50 L170,110 Q170,150 100,180 Q30,150 30,110 L30,50 Z"/>
-<path class="st1" d="M100,25 L165,52 L165,110 Q165,148 100,175 Q35,148 35,110 L35,52 Z"/>
+<path fill="url(#shieldGrad)" d="M100,20 L170,50 L170,110 Q170,150 100,180 Q30,150 30,110 L30,50 Z"/>
 
 <!-- Letters ARTEF -->
-<g class="st2">
+<g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
   <!-- A -->
   <path d="M50,140 L60,100 L70,140 M53,130 L67,130"/>
   <!-- R -->
@@ -26,15 +25,17 @@
 </g>
 
 <!-- Security scan lines -->
-<g class="st3" opacity="0.3">
-  <line x1="30" y1="70" x2="170" y2="70" stroke-width="2"/>
-  <line x1="30" y1="85" x2="170" y2="85" stroke-width="2"/>
-  <line x1="30" y1="155" x2="170" y2="155" stroke-width="2"/>
+<g stroke="#333333" stroke-width="1" opacity="0.3">
+  <line x1="30" y1="70" x2="170" y2="70"/>
+  <line x1="30" y1="85" x2="170" y2="85"/>
+  <line x1="30" y1="155" x2="170" y2="155"/>
 </g>
 
 <!-- Red team target symbol -->
-<circle class="st0" cx="100" cy="60" r="8" fill="none" stroke="#FF4444" stroke-width="2"/>
-<circle class="st0" cx="100" cy="60" r="4" fill="none" stroke="#FF4444" stroke-width="2"/>
-<circle class="st0" cx="100" cy="60" r="1.5" fill="#FF4444"/>
+<g fill="none" stroke="#FFFFFF" stroke-width="2">
+  <circle cx="100" cy="60" r="8"/>
+  <circle cx="100" cy="60" r="4"/>
+</g>
+<circle cx="100" cy="60" r="1.5" fill="#FFFFFF"/>
 
 </svg>
