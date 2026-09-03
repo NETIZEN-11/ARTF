@@ -227,34 +227,34 @@
   /* Layout dimensions */
   --nav-height: 3.5rem; /* Navigation bar height (h-14 = 56px) */
 
-  /* Design tokens - Light mode (aligned with MUI theme) */
-  --background: 210 40% 98%; /* #f8fafc - slate-50 */
-  --foreground: 222.2 47.4% 11.2%; /* #0f172a - slate-900 */
-  --card: 0 0% 100%; /* #ffffff */
-  --card-foreground: 222.2 47.4% 11.2%;
+  /* Design tokens - Light mode (Modern Colorful & Eye-Friendly) */
+  --background: 220 30% 97%; /* Soft blue-gray #F5F7FA */
+  --foreground: 220 15% 15%; /* Softer black #1F2937 */
+  --card: 0 0% 100%; /* Pure white cards */
+  --card-foreground: 220 15% 15%;
   --popover: 0 0% 100%; /* #ffffff */
-  --popover-foreground: 222.2 47.4% 11.2%;
-  --primary: 217.2 91.2% 52.9%; /* #2563eb - blue-600 */
+  --popover-foreground: 220 15% 15%;
+  --primary: 262 83% 58%; /* Vibrant purple #8B5CF6 */
   --primary-foreground: 0 0% 100%; /* #ffffff */
-  --secondary: 210 40% 96.1%; /* #f1f5f9 - slate-100 */
-  --secondary-foreground: 222.2 47.4% 11.2%; /* slate-900 */
-  --muted: 210 40% 96.1%; /* #f1f5f9 - slate-100 */
-  --muted-foreground: 215.4 16.3% 34.9%; /* #475569 - slate-600 */
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
+  --secondary: 200 95% 92%; /* Light cyan #E0F7FA */
+  --secondary-foreground: 220 15% 15%;
+  --muted: 220 15% 94%; /* Lighter gray #F3F4F6 */
+  --muted-foreground: 220 10% 45%; /* Muted text #6B7280 */
+  --accent: 340 82% 60%; /* Pink accent #F472B6 */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%; /* Bright red #EF4444 */
   --destructive-foreground: 0 0% 100%;
-  --border: 214.3 31.8% 91.4%; /* #e2e8f0 - slate-200 */
-  --input: 214.3 31.8% 91.4%;
-  --ring: 217.2 91.2% 52.9%;
-  --radius: 0.5rem;
+  --border: 220 20% 88%; /* Subtle border #E5E7EB */
+  --input: 220 20% 88%;
+  --ring: 262 83% 58%; /* Purple ring */
+  --radius: 0.75rem;
 
-  /* Severity colors */
-  --severity-critical: 0 84% 60%;
-  --severity-high: 0 72% 51%;
-  --severity-medium: 25 95% 53%;
-  --severity-low: 142 76% 36%;
-  --severity-informational: 217 91% 46%;
+  /* Severity colors - Eye-friendly colorful */
+  --severity-critical: 0 75% 58%; /* Bright red #F87171 */
+  --severity-high: 15 90% 60%; /* Orange #FB923C */
+  --severity-medium: 45 95% 55%; /* Yellow #FBBF24 */
+  --severity-low: 142 70% 45%; /* Green #34D399 */
+  --severity-informational: 217 85% 60%; /* Blue #60A5FA */
   font-style: normal;
   font-weight-normal: 400;
   font-weight-bold: 700;
@@ -291,29 +291,29 @@
 /* Dark mode colors - also target html/root for portaled content */
 :root[data-theme='dark'],
 [data-theme='dark'] {
-  /* Design tokens - Dark mode (aligned with MUI theme) */
-  --background: 222.2 20% 7.1%; /* Slightly blue-tinted dark */
-  --foreground: 210 40% 98%; /* Off-white, easier on eyes */
-  --card: 222.2 20% 10%; /* Slightly elevated from background */
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 20% 10%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%; /* #3b82f6 - blue-500 */
+  /* Design tokens - Dark mode (Modern Colorful & Eye-Friendly) */
+  --background: 240 20% 8%; /* Deep blue-black #0F1419 */
+  --foreground: 210 40% 96%; /* Soft white #F3F4F6 */
+  --card: 240 18% 12%; /* Elevated card #1A1F2E */
+  --card-foreground: 210 40% 96%;
+  --popover: 240 18% 12%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 262 80% 65%; /* Lighter purple #A78BFA */
   --primary-foreground: 0 0% 100%;
-  --secondary: 217.2 20% 20%; /* slate-800 equivalent */
-  --secondary-foreground: 210 40% 98%; /* off-white */
-  --muted: 217.2 20% 14%; /* Subtle blue-gray tint */
-  --muted-foreground: 215 20% 55%; /* Lighter, more readable */
-  --accent: 217.2 20% 14%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 50%;
+  --secondary: 200 30% 18%; /* Dark cyan #1E3A47 */
+  --secondary-foreground: 200 95% 85%; /* Light cyan text */
+  --muted: 240 15% 16%; /* Muted gray #25293A */
+  --muted-foreground: 220 15% 60%; /* Lighter muted #9CA3AF */
+  --accent: 340 75% 55%; /* Darker pink #EC4899 */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 55%; /* Softer red #F87171 */
   --destructive-foreground: 0 0% 100%;
-  --border: 217.2 15% 22%; /* Softer, blue-tinted border - NOT pure black */
-  --input: 217.2 15% 22%;
-  --ring: 217.2 91.2% 59.8%;
+  --border: 240 15% 20%; /* Subtle dark border #2D3748 */
+  --input: 240 15% 20%;
+  --ring: 262 80% 65%; /* Purple ring */
 
-  /* Severity colors - Dark mode */
-  --severity-informational: 217 91% 60%;
+  /* Severity colors - Dark mode eye-friendly */
+  --severity-informational: 217 80% 65%; /* Lighter blue #7DD3FC */
 
   /* Keep synced with prefers-color-scheme above */
   --background-color: #1a1a1a;

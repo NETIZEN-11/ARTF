@@ -67,7 +67,7 @@ vi.mock('../../../src/commands/mcp/tools/getEvaluationDetails', () => ({
   registerGetEvaluationDetailsTool: vi.fn(),
 }));
 
-vi.mock('../../../src/commands/mcp/tools/validateartefConfig', () => ({
+vi.mock('../../../src/commands/mcp/tools/validateArtefConfig', () => ({
   registerValidateartefConfigTool: vi.fn(),
 }));
 
@@ -237,7 +237,7 @@ describe('MCP Server', () => {
         '../../../src/commands/mcp/tools/getEvaluationDetails'
       );
       const { registerValidateartefConfigTool } = await import(
-        '../../../src/commands/mcp/tools/validateartefConfig'
+        '../../../src/commands/mcp/tools/validateArtefConfig'
       );
       const { registerTestProviderTool } = await import(
         '../../../src/commands/mcp/tools/testProvider'

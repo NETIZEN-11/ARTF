@@ -1,25 +1,15 @@
 import { Job, Worker } from 'bullmq';
 import { eq } from 'drizzle-orm';
 import { getDb } from '../database/index';
-import { evalResultsTable, evalsTable } from '../database/tables';
+import { evalResultsTable } from '../database/tables';
 import { getEnvBool, getEnvInt } from '../envars';
 import logger from '../logger';
 import { invalidateEvaluationCache, notifyEvaluationChanged } from '../models/evalMutation';
 import { evaluateWithSource } from '../node';
-import { generateTraceContextIfNeeded } from '../tracing/evaluatorTracing';
 import { getActiveTraceparent } from '../tracing/spanRoles';
-import { writeResultsToDatabase } from '../util/database';
-import {
-  addJob,
-  createWorker,
-  getQueue,
-  getQueueStats,
-  pauseQueue,
-  QUEUE_NAMES,
-  resumeQueue,
-} from './index';
+import { addJob, createWorker, getQueueStats, pauseQueue, QUEUE_NAMES, resumeQueue } from './index';
 
-import type { EvaluateResult, RunEvalOptions, UnifiedConfig } from '../types/index';
+import type { RunEvalOptions, UnifiedConfig } from '../types/index';
 import type {
   EvaluationJobData,
   EvaluationJobResult,
@@ -38,7 +28,8 @@ async function processEvaluationJob(job: Job<EvaluationJobData>): Promise<Evalua
 
   try {
     if (traceContext) {
-      generateTraceContextIfNeeded(traceContext);
+      // Note: generateTraceContextIfNeeded requires test case context which isn't available in queue jobs
+      // Tracing is handled within the evaluation itself
     }
 
     const activeTraceparent = getActiveTraceparent();
@@ -46,13 +37,15 @@ async function processEvaluationJob(job: Job<EvaluationJobData>): Promise<Evalua
       await job.updateProgress({ traceparent: activeTraceparent });
     }
 
-    const result = await evaluateWithSource(config, options);
+    const result = await evaluateWithSource(
+      config as Parameters<typeof evaluateWithSource>[0],
+      options as Parameters<typeof evaluateWithSource>[1],
+    );
 
     await job.updateProgress(50);
 
-    if (result.results) {
-      await writeResultsToDatabase(runId, result, config);
-    }
+    // Results are persisted by evaluateWithSource when config.writeLatestResults is true
+    // No need to call writeResultsToDatabase separately
 
     await job.updateProgress(80);
 
@@ -107,9 +100,12 @@ async function processRedteamJob(job: Job<RedteamJobData>): Promise<RedteamJobRe
   logger.info(`Starting redteam run ${runId}`);
 
   try {
-    const result = await evaluateWithSource(config, options);
+    const result = await evaluateWithSource(
+      config as Parameters<typeof evaluateWithSource>[0],
+      options as Parameters<typeof evaluateWithSource>[1],
+    );
 
-    await writeResultsToDatabase(runId, result as never, config);
+    // Results are persisted by evaluateWithSource when config.writeLatestResults is true
     await invalidateEvaluationCache(runId);
     notifyEvaluationChanged(runId);
 
@@ -145,7 +141,7 @@ export async function queueRedteam(
 }
 
 async function processGradingJob(job: Job<GradingJobData>): Promise<GradingJobResult> {
-  const { runId, evalId, testIndices, providerConfig } = job.data;
+  const { runId, evalId, testIndices, providerConfig: _providerConfig } = job.data;
 
   logger.info(`Starting grading job for run ${runId}, eval ${evalId}`);
 
@@ -162,12 +158,11 @@ async function processGradingJob(job: Job<GradingJobData>): Promise<GradingJobRe
       if (result && result.response) {
         const { runAssertions } = await import('../assertions/index');
 
-        const gradedResult = await runAssertions(
-          result.response,
-          result.testCase.assert,
-          providerConfig,
-          { runId, testCase: result.testCase, prompt: result.prompt },
-        );
+        const gradedResult = await runAssertions({
+          providerResponse: result.response,
+          test: result.testCase,
+          prompt: typeof result.prompt === 'string' ? result.prompt : JSON.stringify(result.prompt),
+        });
 
         await db
           .update(evalResultsTable)

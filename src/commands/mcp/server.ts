@@ -18,7 +18,7 @@ import { registerRunAssertionTool } from './tools/runAssertion';
 import { registerRunEvaluationTool } from './tools/runEvaluation';
 import { registerShareEvaluationTool } from './tools/shareEvaluation';
 import { registerTestProviderTool } from './tools/testProvider';
-import { registerValidateartefConfigTool } from './tools/validateartefConfig';
+import { registerValidateartefConfigTool } from './tools/validateArtefConfig';
 
 function setMcpTransport(transport: 'http' | 'stdio'): void {
   Object.assign(process.env, { MCP_TRANSPORT: transport });

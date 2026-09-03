@@ -1,7 +1,9 @@
 import { Job, Queue, QueueEvents, Worker } from 'bullmq';
 import Redis from 'ioredis';
-import { getEnvBool, getEnvInt, getEnvString } from '../envars';
+import { getEnvInt, getEnvString } from '../envars';
 import logger from '../logger';
+
+import type Eval from '../models/eval';
 
 export interface QueueConfig {
   host: string;
@@ -129,6 +131,26 @@ export interface JobResult {
   error?: string;
 }
 
+export interface EvaluationJobResult extends JobResult {
+  runId: string;
+  results: Eval;
+  stats: {
+    totalTests: number;
+    passed: number;
+    failed: number;
+    errors: number;
+  };
+}
+
+export interface GradingJobResult extends JobResult {
+  gradedCount: number;
+}
+
+export interface RedteamJobResult extends JobResult {
+  runId: string;
+  results: Eval;
+}
+
 export function getQueue(name: string): Queue {
   if (!queueInstances.has(name)) {
     const connection = getRedisClient();
@@ -158,7 +180,7 @@ export async function closeQueue(name: string): Promise<void> {
 }
 
 export async function closeAllQueues(): Promise<void> {
-  for (const [name, queue] of queueInstances) {
+  for (const [_name, queue] of queueInstances) {
     await queue.close();
   }
   queueInstances.clear();
