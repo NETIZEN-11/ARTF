@@ -4,6 +4,8 @@ name: Tusk Test Runner - Vitest unit tests (test directory)
 permissions:
   contents: read
 on:
+  # Disabled for ARTEF fork - requires original repo credentials
+  workflow_dispatch:
   workflow_dispatch:
     inputs:
       runId:

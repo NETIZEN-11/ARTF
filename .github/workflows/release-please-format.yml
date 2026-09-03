@@ -8,6 +8,8 @@ run-name: format CHANGELOG on release PR (${{ github.event.pull_request.head.ref
 # inline in the release-please job.
 
 on:
+  # Disabled for ARTEF fork - requires original repo credentials
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
     paths:

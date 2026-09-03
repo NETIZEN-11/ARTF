@@ -1,5 +1,7 @@
 name: 'Deploy local.promptfoo.app'
 on:
+  # Disabled for ARTEF fork - requires original repo credentials
+  workflow_dispatch:
   push:
     branches: ['main']
     paths:

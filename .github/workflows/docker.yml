@@ -16,6 +16,8 @@ run-name: |
   by @${{ github.actor }}
 
 on:
+  # Disabled for ARTEF fork - requires original repo credentials
+  workflow_dispatch:
   workflow_call:
     inputs:
       tag_name:
