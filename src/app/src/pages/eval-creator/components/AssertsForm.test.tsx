@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import AssertsForm from './AssertsForm';
-import type { Assertion, AssertionType } from '@promptfoo/types';
+import type { Assertion, AssertionType } from '@artef/types';
 
 // Mock APIs needed for Radix Select
 HTMLElement.prototype.hasPointerCapture = vi.fn();

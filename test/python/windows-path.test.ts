@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -37,9 +37,9 @@ describe('PythonProvider Windows Path Handling', () => {
     pythonUtils.state.cachedPythonPath = null;
     pythonUtils.state.validationPromise = null;
 
-    restoreEnv = mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: 'false' });
+    restoreEnv = mockProcessEnv({ artef_CACHE_ENABLED: 'false' });
 
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-windows-path-test-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-windows-path-test-'));
 
     pathProvider = createProvider(
       'path_test.py',

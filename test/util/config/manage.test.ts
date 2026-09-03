@@ -1,4 +1,4 @@
-import * as os from 'os';
+﻿import * as os from 'os';
 import * as path from 'path';
 
 import * as yaml from 'js-yaml';
@@ -8,7 +8,7 @@ import {
   refreshConfigDirectoryPathFromEnv,
   setConfigDirectoryPath,
 } from '../../../src/util/config/manage';
-import { writePromptfooConfig } from '../../../src/util/config/writer';
+import { writeartefConfig } from '../../../src/util/config/writer';
 import { mockProcessEnv } from '../../util/utils';
 
 // Create hoisted mock functions for fs
@@ -60,7 +60,7 @@ describe('config management', () => {
   beforeEach(() => {
     vi.resetAllMocks();
     vi.mocked(os.homedir).mockReturnValue('/home/user');
-    restoreEnv = mockProcessEnv({ PROMPTFOO_CONFIG_DIR: undefined });
+    restoreEnv = mockProcessEnv({ artef_CONFIG_DIR: undefined });
     refreshConfigDirectoryPathFromEnv();
     setConfigDirectoryPath(undefined);
   });
@@ -75,7 +75,7 @@ describe('config management', () => {
     it('should return default config path when no custom path set', () => {
       setConfigDirectoryPath(undefined);
       const configPath = getConfigDirectoryPath();
-      expect(configPath).toBe(path.join('/home/user', '.promptfoo'));
+      expect(configPath).toBe(path.join('/home/user', '.artef'));
     });
 
     // Note: The directory creation test cannot verify mkdirSync was called because
@@ -85,13 +85,13 @@ describe('config management', () => {
       mockFs.existsSync.mockReturnValue(false);
       setConfigDirectoryPath(undefined);
       const result = getConfigDirectoryPath(true);
-      expect(result).toBe(path.join('/home/user', '.promptfoo'));
+      expect(result).toBe(path.join('/home/user', '.artef'));
     });
 
     it('should not create directory if it already exists', () => {
       mockFs.existsSync.mockReturnValue(true);
       const result = getConfigDirectoryPath(true);
-      expect(result).toBe(path.join('/home/user', '.promptfoo'));
+      expect(result).toBe(path.join('/home/user', '.artef'));
     });
   });
 
@@ -106,11 +106,11 @@ describe('config management', () => {
     it('should handle undefined path', () => {
       setConfigDirectoryPath(undefined);
       const configPath = getConfigDirectoryPath();
-      expect(configPath).toBe(path.join('/home/user', '.promptfoo'));
+      expect(configPath).toBe(path.join('/home/user', '.artef'));
     });
   });
 
-  describe('writePromptfooConfig', () => {
+  describe('writeartefConfig', () => {
     const outputPath = 'config.yaml';
 
     it('should write config with schema comment', () => {
@@ -119,11 +119,11 @@ describe('config management', () => {
         prompts: ['prompt1'],
       };
 
-      writePromptfooConfig(config, outputPath);
+      writeartefConfig(config, outputPath);
 
       expect(mockFs.writeFileSync).toHaveBeenCalledWith(
         outputPath,
-        `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json\n${yaml.dump(config)}`,
+        `# yaml-language-server: $schema=https://artef.dev/config-schema.json\n${yaml.dump(config)}`,
       );
     });
 
@@ -133,10 +133,10 @@ describe('config management', () => {
       };
       const headerComments = ['Comment 1', 'Comment 2'];
 
-      writePromptfooConfig(config, outputPath, headerComments);
+      writeartefConfig(config, outputPath, headerComments);
 
       const expectedContent =
-        `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json\n` +
+        `# yaml-language-server: $schema=https://artef.dev/config-schema.json\n` +
         `# Comment 1\n# Comment 2\n${yaml.dump(config)}`;
 
       expect(mockFs.writeFileSync).toHaveBeenCalledWith(outputPath, expectedContent);
@@ -144,7 +144,7 @@ describe('config management', () => {
 
     it('should handle empty config', () => {
       const config = {};
-      const result = writePromptfooConfig(config, outputPath);
+      const result = writeartefConfig(config, outputPath);
       expect(result).toEqual({});
     });
 
@@ -155,7 +155,7 @@ describe('config management', () => {
         prompts: ['prompt1'],
       };
 
-      const result = writePromptfooConfig(config, outputPath);
+      const result = writeartefConfig(config, outputPath);
 
       expect(Object.keys(result)[0]).toBe('description');
       expect(Object.keys(result)[1]).toBe('prompts');
@@ -165,7 +165,7 @@ describe('config management', () => {
     it('should handle empty yaml content', () => {
       vi.mocked(yaml.dump).mockReturnValueOnce('');
       const config = { description: 'test' };
-      const result = writePromptfooConfig(config, outputPath);
+      const result = writeartefConfig(config, outputPath);
       expect(result).toEqual(config);
       expect(mockFs.writeFileSync).not.toHaveBeenCalled();
     });

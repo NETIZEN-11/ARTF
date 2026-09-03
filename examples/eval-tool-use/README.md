@@ -1,11 +1,11 @@
-# eval-tool-use (Function and Tool Calling)
+﻿# eval-tool-use (Function and Tool Calling)
 
-This example demonstrates how to evaluate LLM function/tool calling capabilities using promptfoo.
+This example demonstrates how to evaluate LLM function/tool calling capabilities using artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-tool-use
+npx artef@latest init --example eval-tool-use
 cd eval-tool-use
 ```
 
@@ -44,25 +44,25 @@ Each provider implements tool use with different syntax:
 
 The configuration for this example is in:
 
-- `promptfooconfig.yaml` - Main example with OpenAI, Anthropic, and Groq
-- `promptfooconfig.bedrock.yaml` - Example specifically for AWS Bedrock models
+- `artefconfig.yaml` - Main example with OpenAI, Anthropic, and Groq
+- `artefconfig.bedrock.yaml` - Example specifically for AWS Bedrock models
 
 To run the main example:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 To run the Bedrock example:
 
 ```bash
-promptfoo eval -c promptfooconfig.bedrock.yaml
+artef eval -c artefconfig.bedrock.yaml
 ```
 
 After running the evaluation, view the results with:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Example Tool: Weather Function

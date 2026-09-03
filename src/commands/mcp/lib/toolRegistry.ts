@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Tool annotation hints per MCP spec 2025-03-26
  * These help AI agents understand tool behavior for better decision making
  */
@@ -125,7 +125,7 @@ export const TOOL_DEFINITIONS: ToolMetadata[] = [
   {
     name: 'run_evaluation',
     description:
-      'Run an eval from a promptfoo config with optional test case index filtering and pagination',
+      'Run an eval from a artef config with optional test case index filtering and pagination',
     parameters:
       'configPath?: string, testCaseIndices?: number | number[] | {start, end} (zero-based, end exclusive), promptFilter?: string | string[], providerFilter?: string | string[], maxConcurrency?: number (1-20), timeoutMs?: number (1s-5min), resultLimit?: number (1-100, default: 20), resultOffset?: number',
     annotations: { readOnlyHint: false, idempotentHint: false, longRunningHint: true },
@@ -139,9 +139,9 @@ export const TOOL_DEFINITIONS: ToolMetadata[] = [
     category: 'evaluation',
   },
   {
-    name: 'validate_promptfoo_config',
-    description: 'Validate promptfoo configuration files using the same logic as CLI validate',
-    parameters: 'configPaths?: string[] (defaults to promptfooconfig.yaml)',
+    name: 'validate_artef_config',
+    description: 'Validate artef configuration files using the same logic as CLI validate',
+    parameters: 'configPaths?: string[] (defaults to artefconfig.yaml)',
     annotations: { readOnlyHint: true, idempotentHint: true },
     category: 'configuration',
   },
@@ -211,7 +211,7 @@ export const TOOL_DEFINITIONS: ToolMetadata[] = [
   // Debugging Tools
   {
     name: 'list_logs',
-    description: 'List available promptfoo log files with metadata (size, date, type)',
+    description: 'List available artef log files with metadata (size, date, type)',
     parameters:
       'type?: "debug" | "error" | "all" (default: all), page?: number (default: 1), pageSize?: number (1-100, default: 20)',
     annotations: { readOnlyHint: true, idempotentHint: true },
@@ -219,7 +219,7 @@ export const TOOL_DEFINITIONS: ToolMetadata[] = [
   },
   {
     name: 'read_logs',
-    description: 'Read promptfoo log file contents with filtering options for debugging',
+    description: 'Read artef log file contents with filtering options for debugging',
     parameters:
       'file?: string (filename or "latest", default: latest), type?: "debug" | "error" | "all" (default: debug), lines?: number (1-1000, default: 100), head?: boolean (default: false), grep?: string (regex pattern)',
     annotations: { readOnlyHint: true, idempotentHint: true },

@@ -1,17 +1,17 @@
----
+﻿---
 sidebar_label: Looper
-description: Automate LLM testing in CI/CD by integrating Promptfoo with Looper workflows. Configure quality gates, caching, and multi-environment evaluations for production AI pipelines.
+description: Automate LLM testing in CI/CD by integrating artef with Looper workflows. Configure quality gates, caching, and multi-environment evaluations for production AI pipelines.
 ---
 
-# Setting up Promptfoo with Looper
+# Setting up artef with Looper
 
-This guide shows you how to integrate **Promptfoo** evaluations into a Looper CI/CD workflow so that every pull‑request (and optional nightly job) automatically runs your prompt tests.
+This guide shows you how to integrate **artef** evaluations into a Looper CI/CD workflow so that every pull‑request (and optional nightly job) automatically runs your prompt tests.
 
 ## Prerequisites
 
 - A working Looperinstallation with workflow execution enabled
 - A build image (or declared tools) that provides **Node.js `>=22.22.0`** (Node.js 24 LTS recommended) and **jq 1.6+**
-- `promptfooconfig.yaml` and your prompt fixtures (`prompts/**/*.json`) committed to the repository
+- `artefconfig.yaml` and your prompt fixtures (`prompts/**/*.json`) committed to the repository
 
 ## Create `.looper.yml`
 
@@ -27,7 +27,7 @@ tools:
 envs:
   global:
     variables:
-      PROMPTFOO_CACHE_PATH: '${HOME}/.promptfoo/cache'
+      artef_CACHE_PATH: '${HOME}/.artef/cache'
 
 triggers:
   - pr # run on every pull‑request
@@ -37,11 +37,11 @@ triggers:
 flows:
   # ---------- default PR flow ----------
   default:
-    - (name Install Promptfoo) npm install -g promptfoo
+    - (name Install artef) npm install -g artef
 
     - (name Evaluate Prompts) |
-      promptfoo eval \
-      -c promptfooconfig.yaml \
+      artef eval \
+      -c artefconfig.yaml \
       --prompts "prompts/**/*.json" \
       --share \
       -o output.json
@@ -56,7 +56,7 @@ flows:
   nightly:
     - call: default # reuse the logic above
     - (name Upload artefacts) |
-      aws s3 cp output.json s3://your-bucket/promptfoo/output.json
+      aws s3 cp output.json s3://your-bucket/artef/output.json
 ```
 
 ### How it works
@@ -68,11 +68,11 @@ flows:
 | `triggers`              | Determines when the workflow runs (`pr`, `manual`, `cron`, etc.).   |
 | `flows`                 | Ordered shell commands; execution stops on the first non‑zero exit. |
 
-## Caching Promptfoo results
+## Caching artef results
 
 Looper lacks a first‑class cache API. Two common approaches:
 
-1. **Persistent volume** – mount `${HOME}/.promptfoo/cache` on a reusable volume.
+1. **Persistent volume** – mount `${HOME}/.artef/cache` on a reusable volume.
 2. **Persistence tasks** – pull/push the cache at the start and end of the flow:
 
 ## Setting quality thresholds
@@ -94,14 +94,14 @@ Evaluate both staging and production configs and compare failures:
 flows:
   compare-envs:
     - (name Eval‑prod) |
-      promptfoo eval \
-      -c promptfooconfig.prod.yaml \
+      artef eval \
+      -c artefconfig.prod.yaml \
       --prompts "prompts/**/*.json" \
       -o output-prod.json
 
     - (name Eval‑staging) |
-      promptfoo eval \
-      -c promptfooconfig.staging.yaml \
+      artef eval \
+      -c artefconfig.staging.yaml \
       --prompts "prompts/**/*.json" \
       -o output-staging.json
 
@@ -133,11 +133,11 @@ In order to send evaluation results elsewhere, use:
 | `npm: command not found` | Add `nodejs:` under `tools` or use an image with Node pre‑installed.                    |
 | Cache not restored       | Verify the path and that the `files pull` task succeeds.                                |
 | Long‑running jobs        | Split prompt sets into separate flows or raise `timeoutMillis` in the build definition. |
-| API rate limits          | Enable Promptfoo cache and/or rotate API keys.                                          |
+| API rate limits          | Enable artef cache and/or rotate API keys.                                          |
 
 ## Best practices
 
-1. **Incremental testing** – feed `looper diff --name-only prompts/` into `promptfoo eval` to test only changed prompts.
+1. **Incremental testing** – feed `looper diff --name-only prompts/` into `artef eval` to test only changed prompts.
 2. **Semantic version tags** – tag prompt sets/configs so you can roll back easily.
 3. **Secret management** – store API keys in a secret store and inject them as environment variables.
 4. **Reusable library flows** – if multiple repos need the same evaluation, host the flow definition in a central repo and `import` it.

@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: HuggingFace
-description: Use HuggingFace chat models, text classification, embeddings, and NER with promptfoo via the OpenAI-compatible chat API and Inference Providers
+description: Use HuggingFace chat models, text classification, embeddings, and NER with artef via the OpenAI-compatible chat API and Inference Providers
 ---
 
 # HuggingFace
 
-Promptfoo includes support for HuggingFace's [OpenAI-compatible chat API](https://huggingface.co/docs/huggingface_hub/guides/inference#openai-compatibility), [Inference Providers](https://huggingface.co/docs/inference-providers), and [Datasets](https://huggingface.co/docs/datasets).
+artef includes support for HuggingFace's [OpenAI-compatible chat API](https://huggingface.co/docs/huggingface_hub/guides/inference#openai-compatibility), [Inference Providers](https://huggingface.co/docs/inference-providers), and [Datasets](https://huggingface.co/docs/datasets).
 
 To run a model, specify the task type and model name. Supported task types include:
 
@@ -141,7 +141,7 @@ These common HuggingFace config parameters are supported:
 
 Additionally, any other keys on the `config` object are passed through directly to HuggingFace. Be sure to check the specific parameters supported by the model you're using.
 
-The provider also supports these built-in promptfoo parameters:
+The provider also supports these built-in artef parameters:
 
 | Parameter           | Type   | Description                                                                                        |
 | ------------------- | ------ | -------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ Supported environment variables:
 
 The provider can pass through configuration parameters to the API. See [HuggingFace Inference API documentation](https://huggingface.co/docs/api-inference/tasks/overview) for task-specific parameters.
 
-Here's an example of how this provider might appear in your promptfoo config:
+Here's an example of how this provider might appear in your artef config:
 
 ```yaml
 providers:
@@ -206,7 +206,7 @@ Once the endpoint is created, take the `Endpoint URL` shown on the page:
 
 ![huggingface inference endpoint url](/img/docs/huggingface-inference-endpoint.png)
 
-Then set up your promptfoo config like this:
+Then set up your artef config like this:
 
 ```yaml
 description: 'HF private inference endpoint'
@@ -248,4 +248,4 @@ export HF_TOKEN=your_token_here
 
 ## Datasets
 
-Promptfoo can import test cases directly from HuggingFace datasets. See [Loading Test Cases from HuggingFace Datasets](/docs/configuration/huggingface-datasets) for examples and query parameter details.
+artef can import test cases directly from HuggingFace datasets. See [Loading Test Cases from HuggingFace Datasets](/docs/configuration/huggingface-datasets) for examples and query parameter details.

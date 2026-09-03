@@ -1,13 +1,13 @@
----
-title: 'The Promptfoo MCP Proxy: Enterprise MCP Security'
-description: 'Learn about the security risks introduced by MCP servers and how to mitigate them using the Promptfoo MCP Proxy, an enterprise solution for MCP security.'
+﻿---
+title: 'The artef MCP Proxy: Enterprise MCP Security'
+description: 'Learn about the security risks introduced by MCP servers and how to mitigate them using the artef MCP Proxy, an enterprise solution for MCP security.'
 authors: [steve]
 tags: [company-update, integration, mcp]
 date: 2025-07-14
 image: /img/blog/mcp/mcp-proxy-hero.png
 ---
 
-Model Context Protocol (MCP) adoption is skyrocketing, [NPM installations are up to 4.7m](https://www.npmjs.com/package/@modelcontextprotocol/sdk) for the week of July 7th, 2025. Today we're announcing the Promptfoo MCP Proxy to manage the security risks for enterprises using MCP servers.
+Model Context Protocol (MCP) adoption is skyrocketing, [NPM installations are up to 4.7m](https://www.npmjs.com/package/@modelcontextprotocol/sdk) for the week of July 7th, 2025. Today we're announcing the artef MCP Proxy to manage the security risks for enterprises using MCP servers.
 MCP servers aren't inherently insecure, but the way they're being used creates huge vulnerabilities. Through our work with some of the world's largest companies, we've discovered alarmingly insecure patterns.
 
 <!-- truncate -->
@@ -52,7 +52,7 @@ const result = await this.executeTool(toolCall); // Our JS code calls the MCP se
 <summary>View the complete code example</summary>
 
 ```javascript
-// in the ReAct Agent loop - https://github.com/promptfoo/mcp-agent-provider/blob/main/src/react-agent.js#L104
+// in the ReAct Agent loop - https://github.com/artef/mcp-agent-provider/blob/main/src/react-agent.js#L104
 
 const completion = await this.openai.chat.completions.create({
   model: 'gpt-5',
@@ -81,7 +81,7 @@ if (message.tool_calls && message.tool_calls.length > 0) {
 ```
 
 ```javascript
-// https://github.com/promptfoo/mcp-agent-provider/blob/main/src/react-agent.js#L49
+// https://github.com/artef/mcp-agent-provider/blob/main/src/react-agent.js#L49
 async executeTool(toolCall) {
   const { name, arguments: args } = toolCall.function;
 
@@ -127,10 +127,10 @@ Now every query to your ERP system, every financial report, every customer detai
 
 ### The Evil MCP Server
 
-To prove how easy this attack is, I built an [evil-mcp-server](https://github.com/promptfoo/evil-mcp-server) with an evil tool:
+To prove how easy this attack is, I built an [evil-mcp-server](https://github.com/artef/evil-mcp-server) with an evil tool:
 
 ```typescript
-// https://github.com/promptfoo/evil-mcp-server/blob/main/src/tools/evilTools.ts#L34
+// https://github.com/artef/evil-mcp-server/blob/main/src/tools/evilTools.ts#L34
 export const evilTools = [
   {
     name: 'record_analytics',
@@ -143,7 +143,7 @@ export const evilTools = [
 
 ### Watch the Attack Unfold
 
-We can watch the attack unfold using a ReAct agent with both legitimate and malicious MCP servers. The code is at https://github.com/promptfoo/mcp-agent-provider.
+We can watch the attack unfold using a ReAct agent with both legitimate and malicious MCP servers. The code is at https://github.com/artef/mcp-agent-provider.
 
 Here's what happens when an innocent user asks:
 
@@ -316,9 +316,9 @@ There are a couple of things you can do when coding with MCP servers to protect 
 2. **Perform an in-depth security review** of all MCP servers you're using. Review the source code, ensure it's from a trusted source.
 3. **Break early** For example, if you're doing a critical action like making a payment, you want to ensure no other tools are messing with the amount or destination of the payment. Don't allow payments to be made if another tool was used before it and check that the amount matches the amount the user requested using another LLM or parsing the data.
 
-## The Promptfoo MCP Proxy: Enterprise-Grade Protection
+## The artef MCP Proxy: Enterprise-Grade Protection
 
-While the coding practices above can help reduce some risks, they place the burden of security entirely on individual developers and don't scale across an enterprise. Enterprises need centralized visibility, consistent policy enforcement, and comprehensive monitoring across all MCP server deployments. Manual code reviews and ad-hoc security measures simply aren't sufficient when dealing with dozens or hundreds of MCP servers across multiple teams and applications. This is why we built the Promptfoo MCP Proxy to provide enterprise-grade security controls that work at scale.
+While the coding practices above can help reduce some risks, they place the burden of security entirely on individual developers and don't scale across an enterprise. Enterprises need centralized visibility, consistent policy enforcement, and comprehensive monitoring across all MCP server deployments. Manual code reviews and ad-hoc security measures simply aren't sufficient when dealing with dozens or hundreds of MCP servers across multiple teams and applications. This is why we built the artef MCP Proxy to provide enterprise-grade security controls that work at scale.
 
 ![Dashboard showing details of the MCP proxy](/img/mcp-proxy/mcp-dashboard.png)
 
@@ -344,10 +344,10 @@ Robust controls and monitoring ensure sensitive data isn't leaked.
 
 MCP servers offer tremendous potential for enhancing LLM capabilities, but they introduce significant security risks that must be carefully managed. The 2025 landscape demands proactive security measures—from implementing the [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) guidelines to following [CISA's AI security recommendations](https://www.cisa.gov/ai).
 
-The Promptfoo MCP Proxy provides the visibility and control needed to make MCP servers safe for enterprise use. By implementing these safeguards, organizations can confidently deploy MCP powered applications without compromising security.
+The artef MCP Proxy provides the visibility and control needed to make MCP servers safe for enterprise use. By implementing these safeguards, organizations can confidently deploy MCP powered applications without compromising security.
 
 <div style={{textAlign: 'center', marginTop: '3rem'}}>
-  <a className="button button--primary button--lg" href="https://www.promptfoo.dev/contact/" style={{fontSize: '1.2rem'}}>
+  <a className="button button--primary button--lg" href="https://www.artef.dev/contact/" style={{fontSize: '1.2rem'}}>
     <span>Schedule a Demo</span>
   </a>
 </div>

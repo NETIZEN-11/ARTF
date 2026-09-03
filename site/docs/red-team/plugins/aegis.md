@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Aegis
 description: Red team LLM content safety using NVIDIA's Aegis dataset to detect harmful outputs across 13 risk categories including hate speech, violence, and exploitation
 ---
@@ -44,7 +44,7 @@ export HF_TOKEN=your_huggingface_token  # or HF_API_TOKEN
 
 2. Enable the plugin in your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - aegis

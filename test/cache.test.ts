@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import {
@@ -34,8 +34,8 @@ vi.mock('../src/util/config/manage', () => ({
 
 vi.mock('../src/globalConfig/cloud', () => ({
   cloudConfig: {
-    getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.app'),
-    getApiKey: vi.fn(() => process.env.PROMPTFOO_API_KEY),
+    getApiHost: vi.fn().mockReturnValue('https://api.artef.app'),
+    getApiKey: vi.fn(() => process.env.artef_API_KEY),
     getAuthHeaderName: vi.fn().mockReturnValue('Authorization'),
     getCurrentOrganizationId: vi.fn().mockReturnValue('org-1'),
     getCurrentTeamId: vi.fn(),
@@ -222,7 +222,7 @@ describe('cache configuration', () => {
     vi.resetModules();
     mockProcessEnv({ ...originalEnv }, { clear: true });
     // Clear cache type override from test setup
-    mockProcessEnv({ PROMPTFOO_CACHE_TYPE: undefined });
+    mockProcessEnv({ artef_CACHE_TYPE: undefined });
     mkdirSyncMock = vi.spyOn(fs, 'mkdirSync').mockImplementation(() => undefined);
     existsSyncMock = vi.spyOn(fs, 'existsSync').mockReturnValue(false);
   });
@@ -237,7 +237,7 @@ describe('cache configuration', () => {
     mockProcessEnv({ NODE_ENV: 'test' });
     const cacheModule = await import('../src/cache');
     const cache = cacheModule.getCache();
-    // In test environment, promptfoo falls back to an in-memory store instead of disk.
+    // In test environment, artef falls back to an in-memory store instead of disk.
     expect(cache.stores.length).toBeGreaterThan(0);
     expect(cache.stores[0]).toMatchObject({
       iterator: expect.any(Function),
@@ -287,7 +287,7 @@ describe('cache configuration', () => {
   });
 
   it('should clear persistent one-time claims with the disk cache', async () => {
-    mockProcessEnv({ NODE_ENV: 'production', PROMPTFOO_CACHE_PATH: '/custom/cache/path' });
+    mockProcessEnv({ NODE_ENV: 'production', artef_CACHE_PATH: '/custom/cache/path' });
     const openSync = vi.spyOn(fs, 'openSync').mockReturnValue(42);
     const closeSync = vi.spyOn(fs, 'closeSync').mockImplementation(() => undefined);
     const rmSync = vi.spyOn(fs, 'rmSync').mockImplementation(() => undefined);
@@ -308,7 +308,7 @@ describe('cache configuration', () => {
   });
 
   it('should respect custom cache path', async () => {
-    mockProcessEnv({ PROMPTFOO_CACHE_PATH: '/custom/cache/path' });
+    mockProcessEnv({ artef_CACHE_PATH: '/custom/cache/path' });
     mockProcessEnv({ NODE_ENV: 'production' });
     const cacheModule = await import('../src/cache');
     cacheModule.getCache();
@@ -316,9 +316,9 @@ describe('cache configuration', () => {
   });
 
   it('should respect cache configuration from environment', async () => {
-    mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '100' });
-    mockProcessEnv({ PROMPTFOO_CACHE_TTL: '3600' });
-    mockProcessEnv({ PROMPTFOO_CACHE_MAX_SIZE: '1000000' });
+    mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '100' });
+    mockProcessEnv({ artef_CACHE_TTL: '3600' });
+    mockProcessEnv({ artef_CACHE_MAX_SIZE: '1000000' });
     mockProcessEnv({ NODE_ENV: 'production' });
 
     const cacheModule = await import('../src/cache');
@@ -921,7 +921,7 @@ describe('fetchWithCache', () => {
           ...requestOptions,
           headers: {
             Authorization: 'Bearer first-token',
-            'x-promptfoo-team-id': 'first-team',
+            'x-artef-team-id': 'first-team',
             traceparent: '00-0123456789abcdef0123456789abcdef-0123456789abcdef-01',
           },
         },
@@ -933,7 +933,7 @@ describe('fetchWithCache', () => {
           ...requestOptions,
           headers: {
             Authorization: 'Bearer second-token',
-            'x-promptfoo-team-id': 'first-team',
+            'x-artef-team-id': 'first-team',
             traceparent: '00-fedcba9876543210fedcba9876543210-fedcba9876543210-01',
           },
         },
@@ -945,7 +945,7 @@ describe('fetchWithCache', () => {
           ...requestOptions,
           headers: {
             Authorization: 'Bearer second-token',
-            'x-promptfoo-team-id': 'second-team',
+            'x-artef-team-id': 'second-team',
             traceparent: '00-11111111111111111111111111111111-1111111111111111-01',
           },
         },
@@ -1129,12 +1129,12 @@ describe('fetchWithCache', () => {
 
     it('should isolate cloud requests by injected API key without storing the key', async () => {
       const cache = getCache();
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'secret-cloud-token-one' });
+      const restoreEnv = mockProcessEnv({ artef_API_KEY: 'secret-cloud-token-one' });
       mockFetchWithRetries.mockImplementation(() =>
         Promise.resolve(
           mockFetchWithRetriesResponse(true, {
             data:
-              process.env.PROMPTFOO_API_KEY === 'secret-cloud-token-one'
+              process.env.artef_API_KEY === 'secret-cloud-token-one'
                 ? 'cloud token one data'
                 : 'cloud token two data',
           }),
@@ -1149,15 +1149,15 @@ describe('fetchWithCache', () => {
         };
 
         const tokenOneResult = await fetchWithCache(
-          'https://api.promptfoo.app/api/v1/task',
+          'https://api.artef.app/api/v1/task',
           requestOptions,
           1000,
         );
 
-        mockProcessEnv({ PROMPTFOO_API_KEY: 'secret-cloud-token-two' });
+        mockProcessEnv({ artef_API_KEY: 'secret-cloud-token-two' });
 
         const tokenTwoResult = await fetchWithCache(
-          'https://api.promptfoo.app/api/v1/task',
+          'https://api.artef.app/api/v1/task',
           requestOptions,
           1000,
         );
@@ -1189,14 +1189,14 @@ describe('fetchWithCache', () => {
         body: JSON.stringify({ task: 'extract-intent' }),
       };
       const teamOneResult = await fetchWithCache(
-        'https://api.promptfoo.app/api/v1/task',
+        'https://api.artef.app/api/v1/task',
         requestOptions,
         1000,
       );
 
       vi.mocked(cloudConfig.getCurrentTeamId).mockReturnValue('team-two');
       const teamTwoResult = await fetchWithCache(
-        'https://api.promptfoo.app/api/v1/task',
+        'https://api.artef.app/api/v1/task',
         requestOptions,
         1000,
       );
@@ -1216,19 +1216,19 @@ describe('fetchWithCache', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-promptfoo-team-id': 'team-explicit',
+          'x-artef-team-id': 'team-explicit',
         },
         body: JSON.stringify({ task: 'extract-intent' }),
       };
       const firstResult = await fetchWithCache(
-        'https://api.promptfoo.app/api/v1/task',
+        'https://api.artef.app/api/v1/task',
         requestOptions,
         1000,
       );
 
       vi.mocked(cloudConfig.getCurrentTeamId).mockReturnValue('team-two');
       const secondResult = await fetchWithCache(
-        'https://api.promptfoo.app/api/v1/task',
+        'https://api.artef.app/api/v1/task',
         requestOptions,
         1000,
       );
@@ -1240,7 +1240,7 @@ describe('fetchWithCache', () => {
 
     it('should not let the cloud token override a caller-supplied Authorization in the cache key', async () => {
       const cache = getCache();
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'saved-cloud-token-one' });
+      const restoreEnv = mockProcessEnv({ artef_API_KEY: 'saved-cloud-token-one' });
       mockFetchWithRetries.mockResolvedValue(mockFetchWithRetriesResponse(true, { data: 'ok' }));
 
       try {
@@ -1250,14 +1250,14 @@ describe('fetchWithCache', () => {
           body: JSON.stringify({ task: 'same-body' }),
         };
 
-        await fetchWithCache('https://api.promptfoo.app/api/v1/task', requestOptions, 1000);
+        await fetchWithCache('https://api.artef.app/api/v1/task', requestOptions, 1000);
 
         // Rotate the SAVED cloud token. The caller-supplied Authorization is unchanged,
         // so the request actually sent is identical and must hit the same cache key —
         // mirrors monkeyPatchFetch not overriding a caller-supplied Authorization.
-        mockProcessEnv({ PROMPTFOO_API_KEY: 'saved-cloud-token-two' });
+        mockProcessEnv({ artef_API_KEY: 'saved-cloud-token-two' });
 
-        await fetchWithCache('https://api.promptfoo.app/api/v1/task', requestOptions, 1000);
+        await fetchWithCache('https://api.artef.app/api/v1/task', requestOptions, 1000);
 
         // Single network call: the second request was served from cache because the
         // cloud token never entered the key (the caller's Authorization took precedence).
@@ -1277,7 +1277,7 @@ describe('fetchWithCache', () => {
 
     it('should key cloud requests by the configured auth header name, not always Authorization', async () => {
       const cache = getCache();
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'same-cloud-token' });
+      const restoreEnv = mockProcessEnv({ artef_API_KEY: 'same-cloud-token' });
       mockFetchWithRetries.mockResolvedValue(mockFetchWithRetriesResponse(true, { data: 'ok' }));
 
       try {
@@ -1288,13 +1288,13 @@ describe('fetchWithCache', () => {
         };
 
         vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('Authorization');
-        await fetchWithCache('https://api.promptfoo.app/api/v1/task', requestOptions, 1000);
+        await fetchWithCache('https://api.artef.app/api/v1/task', requestOptions, 1000);
 
         // Same token, same body, but a different configured header name — the request
         // actually sent differs (the token is injected under a different header), so this
         // must be a separate cache entry rather than a hit on the Authorization-keyed one.
-        vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-Promptfoo-Api-Key');
-        await fetchWithCache('https://api.promptfoo.app/api/v1/task', requestOptions, 1000);
+        vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-artef-Api-Key');
+        await fetchWithCache('https://api.artef.app/api/v1/task', requestOptions, 1000);
 
         expect(mockFetchWithRetries).toHaveBeenCalledTimes(2);
 
@@ -1311,13 +1311,13 @@ describe('fetchWithCache', () => {
 
     it('should fingerprint the cloud auth value under a custom header name even for a short token', async () => {
       // Regression guard: isSecretField/looksLikeSecret are name/pattern heuristics that
-      // miss a custom header name (e.g. X-Promptfoo-Api-Key normalizes to a name outside
+      // miss a custom header name (e.g. X-artef-Api-Key normalizes to a name outside
       // SECRET_FIELD_NAMES) and a short on-prem token (looksLikeSecret's Bearer pattern
       // requires 20+ chars). getHeadersForCacheKey must fingerprint the injected cloud
       // credential unconditionally, not rely on those heuristics, so a short token under a
       // custom header name is still never embedded raw in the cache key.
       const cache = getCache();
-      vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-Promptfoo-Api-Key');
+      vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-artef-Api-Key');
       mockFetchWithRetries.mockResolvedValue(mockFetchWithRetriesResponse(true, { data: 'ok' }));
 
       try {
@@ -1327,13 +1327,13 @@ describe('fetchWithCache', () => {
           body: JSON.stringify({ task: 'same-body' }),
         };
 
-        const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'short-tok-one' });
-        await fetchWithCache('https://api.promptfoo.app/api/v1/task', requestOptions, 1000);
+        const restoreEnv = mockProcessEnv({ artef_API_KEY: 'short-tok-one' });
+        await fetchWithCache('https://api.artef.app/api/v1/task', requestOptions, 1000);
 
         // Different short token, same everything else — a distinct cache entry proves the
         // token value is incorporated into the key (fingerprinted), not dropped or ignored.
-        mockProcessEnv({ PROMPTFOO_API_KEY: 'short-tok-two' });
-        await fetchWithCache('https://api.promptfoo.app/api/v1/task', requestOptions, 1000);
+        mockProcessEnv({ artef_API_KEY: 'short-tok-two' });
+        await fetchWithCache('https://api.artef.app/api/v1/task', requestOptions, 1000);
 
         expect(mockFetchWithRetries).toHaveBeenCalledTimes(2);
 
@@ -1358,17 +1358,17 @@ describe('fetchWithCache', () => {
       // `!headers.has(cloudAuthHeaderName)` injection guard must not gate fingerprinting —
       // otherwise this falls through to the generic isSecretField/looksLikeSecret
       // heuristics, which miss both a custom header name and a short token.
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'short-tok' });
+      const restoreEnv = mockProcessEnv({ artef_API_KEY: 'short-tok' });
       try {
-        vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-Promptfoo-Api-Key');
+        vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-artef-Api-Key');
 
-        const headers = getHeadersForCacheKey('https://api.promptfoo.app/api/v1/task', {
-          headers: { 'X-Promptfoo-Api-Key': 'Bearer short-tok' },
+        const headers = getHeadersForCacheKey('https://api.artef.app/api/v1/task', {
+          headers: { 'X-artef-Api-Key': 'Bearer short-tok' },
         });
 
-        const entry = headers.find(([name]) => name === 'x-promptfoo-api-key');
+        const entry = headers.find(([name]) => name === 'x-artef-api-key');
         expect(entry).toBeDefined();
-        expect(entry?.[1]).toEqual({ __promptfooSecretFingerprint: expect.any(String) });
+        expect(entry?.[1]).toEqual({ __artefSecretFingerprint: expect.any(String) });
       } finally {
         restoreEnv();
         vi.mocked(cloudConfig.getAuthHeaderName).mockReset().mockReturnValue('Authorization');
@@ -1379,17 +1379,17 @@ describe('fetchWithCache', () => {
       // Regression guard: Headers.entries() always lowercases names, but the header name
       // this function injects under is recorded with whatever casing getAuthHeaderName()
       // returns. A mixed-case configured name must still match at fingerprint time.
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'short-tok' });
+      const restoreEnv = mockProcessEnv({ artef_API_KEY: 'short-tok' });
       try {
-        vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-Promptfoo-Api-Key');
+        vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('X-artef-Api-Key');
 
-        const headers = getHeadersForCacheKey('https://api.promptfoo.app/api/v1/task', {
+        const headers = getHeadersForCacheKey('https://api.artef.app/api/v1/task', {
           headers: { 'Content-Type': 'application/json' },
         });
 
-        const entry = headers.find(([name]) => name === 'x-promptfoo-api-key');
+        const entry = headers.find(([name]) => name === 'x-artef-api-key');
         expect(entry).toBeDefined();
-        expect(entry?.[1]).toEqual({ __promptfooSecretFingerprint: expect.any(String) });
+        expect(entry?.[1]).toEqual({ __artefSecretFingerprint: expect.any(String) });
       } finally {
         restoreEnv();
         vi.mocked(cloudConfig.getAuthHeaderName).mockReset().mockReturnValue('Authorization');

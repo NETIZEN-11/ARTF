@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -123,12 +123,12 @@ describe('poison command', () => {
   });
 
   describe('generatePoisonedDocument', () => {
-    it.each(['PROMPTFOO_DISABLE_REMOTE_GENERATION', 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION'])(
+    it.each(['artef_DISABLE_REMOTE_GENERATION', 'artef_DISABLE_REDTEAM_REMOTE_GENERATION'])(
       'should not send document contents when %s is enabled',
       async (flag) => {
         const restoreEnv = mockProcessEnv({
-          PROMPTFOO_DISABLE_REMOTE_GENERATION: undefined,
-          PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: undefined,
+          artef_DISABLE_REMOTE_GENERATION: undefined,
+          artef_DISABLE_REDTEAM_REMOTE_GENERATION: undefined,
           [flag]: 'true',
         });
         const fetchSpy = vi.spyOn(global, 'fetch');
@@ -310,12 +310,12 @@ describe('poison command', () => {
   });
 
   describe('doPoisonDocuments', () => {
-    it.each(['PROMPTFOO_DISABLE_REMOTE_GENERATION', 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION'])(
+    it.each(['artef_DISABLE_REMOTE_GENERATION', 'artef_DISABLE_REDTEAM_REMOTE_GENERATION'])(
       'should fail before touching the filesystem when %s is enabled',
       async (flag) => {
         const restoreEnv = mockProcessEnv({
-          PROMPTFOO_DISABLE_REMOTE_GENERATION: undefined,
-          PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: undefined,
+          artef_DISABLE_REMOTE_GENERATION: undefined,
+          artef_DISABLE_REDTEAM_REMOTE_GENERATION: undefined,
           [flag]: 'true',
         });
         const fetchSpy = vi.spyOn(global, 'fetch');

@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -6,7 +6,7 @@ import * as path from 'path';
 // value once after loading an argv-provided --env-file, before opening global state. Later eval
 // config/env loading must not move process-global persistence mid-run.
 let configDirectoryPath: string | undefined;
-let environmentConfigDirectoryPath = process.env.PROMPTFOO_CONFIG_DIR;
+let environmentConfigDirectoryPath = process.env.artef_CONFIG_DIR;
 
 // Check if we're in a Node.js environment
 const isNodeEnvironment =
@@ -14,7 +14,7 @@ const isNodeEnvironment =
 
 export function getConfigDirectoryPath(createIfNotExists: boolean = false): string {
   const p =
-    configDirectoryPath || environmentConfigDirectoryPath || path.join(os.homedir(), '.promptfoo');
+    configDirectoryPath || environmentConfigDirectoryPath || path.join(os.homedir(), '.artef');
 
   // Only perform filesystem operations in Node.js environment
   if (createIfNotExists && isNodeEnvironment) {
@@ -30,7 +30,7 @@ export function getConfigDirectoryPath(createIfNotExists: boolean = false): stri
 }
 
 export function refreshConfigDirectoryPathFromEnv(): void {
-  environmentConfigDirectoryPath = process.env.PROMPTFOO_CONFIG_DIR;
+  environmentConfigDirectoryPath = process.env.artef_CONFIG_DIR;
 }
 
 export function setConfigDirectoryPath(newPath: string | undefined): void {

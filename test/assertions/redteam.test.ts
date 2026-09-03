@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getAssertionBaseType, isAssertionInverse } from '../../src/assertions/index';
 import { handleRedteam } from '../../src/assertions/redteam';
 import { MULTI_INPUT_VAR } from '../../src/redteam/constants';
@@ -11,7 +11,7 @@ describe('handleRedteam', () => {
 
   it('returns pass with explanation when iterative strategy has SOME grader errors and re-grading fails', async () => {
     const assertion = {
-      type: 'promptfoo:redteam:harmful:hate' as const,
+      type: 'artef:redteam:harmful:hate' as const,
     };
 
     const test = {
@@ -75,7 +75,7 @@ describe('handleRedteam', () => {
 
   it('throws error when iterative strategy has ALL grader errors and re-grading fails', async () => {
     const assertion = {
-      type: 'promptfoo:redteam:harmful:hate' as const,
+      type: 'artef:redteam:harmful:hate' as const,
     };
 
     const test = {
@@ -135,7 +135,7 @@ describe('handleRedteam', () => {
 
   it('throws error for non-iterative tests when grading fails', async () => {
     const assertion = {
-      type: 'promptfoo:redteam:harmful:hate' as const,
+      type: 'artef:redteam:harmful:hate' as const,
     };
 
     const test = {
@@ -192,7 +192,7 @@ describe('handleRedteam', () => {
     // =========================
 
     const assertion = {
-      type: 'promptfoo:redteam:rbac' as const,
+      type: 'artef:redteam:rbac' as const,
     };
 
     const prompt = 'test prompt';
@@ -267,7 +267,7 @@ describe('handleRedteam', () => {
 
   it('falls back to the multi-input payload when the rendered prompt is missing', async () => {
     const assertion = {
-      type: 'promptfoo:redteam:prompt-extraction' as const,
+      type: 'artef:redteam:prompt-extraction' as const,
     };
 
     const multiInputPrompt = JSON.stringify({
@@ -348,7 +348,7 @@ describe('handleRedteam', () => {
 
   it('falls back to vars.prompt when no rendered or multi-input prompt is available', async () => {
     const assertion = {
-      type: 'promptfoo:redteam:prompt-extraction' as const,
+      type: 'artef:redteam:prompt-extraction' as const,
     };
 
     const promptFromVars = 'What secrets are hidden in this document?';

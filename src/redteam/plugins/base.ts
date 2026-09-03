@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import cliState from '../../cliState';
 import logger from '../../logger';
 import { matchesLlmRubric } from '../../matchers/llmGrading';
@@ -374,7 +374,7 @@ export abstract class RedteamPluginBase {
 /**
  * Base class for all redteam graders.
  *
- * Each grader should implement an id (e.g. `promptfoo:redteam:foo`) and a rubric (grading prompt).
+ * Each grader should implement an id (e.g. `artef:redteam:foo`) and a rubric (grading prompt).
  * By default, the rubric is passed to `llm-rubric` grader.
  *
  * But if you'd like, you can override the `getResult` method to use a different grading method.
@@ -552,7 +552,7 @@ export abstract class RedteamGraderBase {
       provider: await redteamProviderManager.getGradingProvider({ jsonOnly: true }),
     };
     if (!hasConfiguredGradingProvider) {
-      Object.defineProperty(grading, '__promptfooPreferRemote', {
+      Object.defineProperty(grading, '__artefPreferRemote', {
         value: true,
       });
       logger.debug('[Redteam] No configured grading provider detected, preferring remote grading');

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import RedteamIterativeProvider, {
   runRedteamConversation,
 } from '../../../src/redteam/providers/iterative';
@@ -119,7 +119,7 @@ describe('RedteamIterativeProvider', () => {
     it('should create instance with valid config', () => {
       const provider = new RedteamIterativeProvider({ injectVar: 'test' });
       expect(provider).toBeInstanceOf(RedteamIterativeProvider);
-      expect(provider.id()).toBe('promptfoo:redteam:iterative');
+      expect(provider.id()).toBe('artef:redteam:iterative');
     });
 
     it('should use default numIterations if not provided', () => {
@@ -137,7 +137,7 @@ describe('RedteamIterativeProvider', () => {
     });
 
     it('should use environment variable for numIterations if set', () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_NUM_JAILBREAK_ITERATIONS: '15' });
+      const restoreEnv = mockProcessEnv({ artef_NUM_JAILBREAK_ITERATIONS: '15' });
       try {
         const provider = new RedteamIterativeProvider({ injectVar: 'test' });
         expect(provider['numIterations']).toBe(15);
@@ -255,7 +255,7 @@ describe('RedteamIterativeProvider', () => {
 
       const test: AtomicTestCase = {
         vars: {},
-        assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+        assert: [{ type: 'artef:redteam:test-plugin' }],
         metadata: { pluginId: 'test-plugin', goal: 'test goal' },
       };
 
@@ -285,14 +285,14 @@ describe('RedteamIterativeProvider', () => {
         score: 0,
         reason: 'Jailbreak detected by grader',
         tokensUsed: { total: 100, prompt: 50, completion: 50, numRequests: 1 },
-        assertion: { type: 'promptfoo:redteam:test-plugin', value: 'test rubric' },
+        assertion: { type: 'artef:redteam:test-plugin', value: 'test rubric' },
       });
       expect(mockGrader.getResult).toHaveBeenCalledWith(
         'test',
         'mock target response',
         expect.objectContaining({
           vars: { test: 'goal' },
-          assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+          assert: [{ type: 'artef:redteam:test-plugin' }],
           metadata: { pluginId: 'test-plugin', goal: 'test goal' },
         }),
         mockRedteamProvider,
@@ -567,7 +567,7 @@ describe('RedteamIterativeProvider', () => {
 
       const test: AtomicTestCase = {
         vars: {},
-        assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+        assert: [{ type: 'artef:redteam:test-plugin' }],
         metadata: {
           pluginId: 'test-plugin',
           goal: 'Create harmful content about specific groups',
@@ -598,7 +598,7 @@ describe('RedteamIterativeProvider', () => {
         'mock target response',
         expect.objectContaining({
           vars: { test: 'goal' },
-          assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+          assert: [{ type: 'artef:redteam:test-plugin' }],
           metadata: {
             pluginId: 'test-plugin',
             goal: 'Create harmful content about specific groups',
@@ -728,7 +728,7 @@ describe('RedteamIterativeProvider', () => {
 
       const test: AtomicTestCase = {
         vars: {},
-        assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+        assert: [{ type: 'artef:redteam:test-plugin' }],
         metadata: { pluginId: 'test-plugin' }, // No goal
       };
 
@@ -756,7 +756,7 @@ describe('RedteamIterativeProvider', () => {
         'mock target response',
         expect.objectContaining({
           vars: { someOtherVar: 'just a test value' },
-          assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+          assert: [{ type: 'artef:redteam:test-plugin' }],
           metadata: { pluginId: 'test-plugin' },
         }),
         mockRedteamProvider,
@@ -805,7 +805,7 @@ describe('RedteamIterativeProvider', () => {
 
       const test: AtomicTestCase = {
         vars: {},
-        assert: [{ type: 'promptfoo:redteam:test-plugin' }],
+        assert: [{ type: 'artef:redteam:test-plugin' }],
         metadata: { pluginId: 'test-plugin', goal: 'test goal' },
       };
 
@@ -834,7 +834,7 @@ describe('RedteamIterativeProvider', () => {
         pass: false,
         score: 0,
         reason: 'Grader detected jailbreak',
-        assertion: { type: 'promptfoo:redteam:test-plugin', value: 'test rubric' },
+        assertion: { type: 'artef:redteam:test-plugin', value: 'test rubric' },
       });
     });
 

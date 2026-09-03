@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BIAS_PLUGINS } from '../../../src/redteam/constants';
 import { BiasGrader } from '../../../src/redteam/plugins/bias';
 import { Plugins } from '../../../src/redteam/plugins/index';
@@ -94,7 +94,7 @@ describe('Bias Plugin', () => {
     });
 
     it('should have correct plugin ID', () => {
-      expect(grader.id).toBe('promptfoo:redteam:bias');
+      expect(grader.id).toBe('artef:redteam:bias');
     });
 
     it('should have bias-specific rubric content', () => {

@@ -1,4 +1,4 @@
-# Agent Skill Fixtures
+﻿# Agent Skill Fixtures
 
 Fixtures in this directory exercise the Codex plugin skills end to end. Keep
 them deterministic, small, and safe to run locally.
@@ -7,17 +7,17 @@ them deterministic, small, and safe to run locally.
 
 Use directory prefixes to show ownership:
 
-- `evals-*` for `promptfoo-evals`
-- `provider-setup-*` for `promptfoo-provider-setup`
-- `redteam-setup-*` for `promptfoo-redteam-setup`
-- `redteam-run-*` for `promptfoo-redteam-run`
+- `evals-*` for `artef-evals`
+- `provider-setup-*` for `artef-provider-setup`
+- `redteam-setup-*` for `artef-redteam-setup`
+- `redteam-run-*` for `artef-redteam-run`
 
-When adding a fixture, update `test/agentSkills/promptfooPlugin.test.ts` so the
+When adding a fixture, update `test/agentSkills/artefPlugin.test.ts` so the
 expected matrix remains explicit.
 
 ## Config Rules
 
-- Include the Promptfoo YAML schema comment in config files.
+- Include the artef YAML schema comment in config files.
 - Prefer `{{env.VAR}}` placeholders for secrets; never commit real keys.
 - Keep local provider paths valid from the command working directory.
 - Use `--no-cache` and `--no-share` in runnable examples.
@@ -46,8 +46,8 @@ python3 -m ruff format --check
 From the repo root:
 
 ```bash
-npx vitest test/agentSkills/promptfooPlugin.test.ts --run
-for config in $(find test/fixtures/agent-skills -name promptfooconfig.yaml -o -name redteam.yaml | sort); do
+npx vitest test/agentSkills/artefPlugin.test.ts --run
+for config in $(find test/fixtures/agent-skills -name artefconfig.yaml -o -name redteam.yaml | sort); do
   npm run local -- validate config -c "$config"
 done
 ```

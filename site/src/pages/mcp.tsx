@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -19,7 +19,7 @@ function HeroSection() {
       <div className="container">
         <img src="/img/mcp-proxy-dashboard.png" alt="MCP Proxy" className={styles.heroImage} />
         <div className={styles.logoSection}>
-          Promptfoo is trusted by teams at...
+          artef is trusted by teams at...
           <LogoContainer noBackground noBorder />
         </div>
       </div>
@@ -163,7 +163,7 @@ export default function Mcp(): React.ReactElement {
       description="Enterprise-grade MCP proxy for secure AI tool integration. Whitelist approved MCP servers, grant granular permissions, and monitor for PII and sensitive data exposure."
     >
       <Head>
-        <meta property="og:image" content="https://www.promptfoo.dev/img/meta/homepage.png" />
+        <meta property="og:image" content="https://www.artef.dev/img/meta/homepage.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className={styles.pageContainer}>

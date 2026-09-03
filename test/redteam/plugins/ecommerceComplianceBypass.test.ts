@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { EcommerceComplianceBypassGrader } from '../../../src/redteam/plugins/ecommerce/ecommerceComplianceBypass';
 
 vi.mock('../../../src/util/fetch/index.ts');
@@ -39,6 +39,6 @@ describe('EcommerceComplianceBypassGrader', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:ecommerce:compliance-bypass');
+    expect(grader.id).toBe('artef:redteam:ecommerce:compliance-bypass');
   });
 });

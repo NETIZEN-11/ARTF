@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AWS Bedrock Converse API Provider
  *
  * This provider implements the AWS Bedrock Converse API, which provides a unified
@@ -1113,7 +1113,7 @@ export class AwsBedrockConverseProvider extends AwsBedrockGenericProvider implem
       temperature: inferenceConfig?.temperature,
       topP: inferenceConfig?.topP,
       stopSequences: inferenceConfig?.stopSequences,
-      // Promptfoo context from test case if available
+      // artef context from test case if available
       testIndex: context?.testIdx ?? (context?.test?.vars?.__testIdx as number | undefined),
       promptLabel: context?.prompt?.label,
       // W3C Trace Context for linking to evaluation trace

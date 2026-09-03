@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { fetchWithCache } from '../../cache';
 import { getEnvString } from '../../envars';
 import logger from '../../logger';
@@ -14,7 +14,7 @@ import {
   ImageDatasetManager,
 } from './imageDatasetUtils';
 
-const PLUGIN_ID = 'promptfoo:redteam:vlguard';
+const PLUGIN_ID = 'artef:redteam:vlguard';
 const DATASET_BASE_URL = 'https://huggingface.co/datasets/ys-zong/VLGuard/resolve/main';
 const DATASET_SERVER_URL = 'https://datasets-server.huggingface.co/rows';
 

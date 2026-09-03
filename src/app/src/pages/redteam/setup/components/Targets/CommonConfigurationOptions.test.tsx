@@ -1,12 +1,12 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import CommonConfigurationOptions from './CommonConfigurationOptions';
-import type { Inputs } from '@promptfoo/contracts';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { Inputs } from '@artef/contracts';
+import type { ProviderOptions } from '@artef/types';
 
 vi.mock('./ExtensionEditor', () => ({
   default: ({

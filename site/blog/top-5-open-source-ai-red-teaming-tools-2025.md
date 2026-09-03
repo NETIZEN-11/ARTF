@@ -1,6 +1,6 @@
----
+﻿---
 title: 'Top Open Source AI Red-Teaming and Fuzzing Tools in 2025'
-description: 'Compare the top open source AI red teaming tools in 2025. See features, use cases, and real differences across Promptfoo, PyRIT, Garak, FuzzyAI, and promptmap2.'
+description: 'Compare the top open source AI red teaming tools in 2025. See features, use cases, and real differences across artef, PyRIT, Garak, FuzzyAI, and promptmap2.'
 image: /img/blog/top-5-open-source-ai-red-teaming-tools-2025.jpg
 authors: [tabs]
 tags: [red-teaming, open-source, ai-security, tool-comparison]
@@ -39,7 +39,7 @@ I spend a lot of time thinking about what makes AI red teaming software good at 
 
 ### Summary: red teaming for AI security
 
-AI [red teaming](https://www.promptfoo.dev/blog/owasp-red-teaming/) is a proactive and systematic process that uncovers risks and security vulnerabilities in AI systems, preferably before they hit production. In the spirit of traditional red teaming exercises, it simulates adversarial attacks and stress-tests AI models under real-world conditions. The benefits are numerous, which include:
+AI [red teaming](https://www.artef.dev/blog/owasp-red-teaming/) is a proactive and systematic process that uncovers risks and security vulnerabilities in AI systems, preferably before they hit production. In the spirit of traditional red teaming exercises, it simulates adversarial attacks and stress-tests AI models under real-world conditions. The benefits are numerous, which include:
 
 - Evaluation of whether AI models are compliant and adhere to legal, ethical, and safety standards.
 - Regulatory bodies are evolving these to match emerging threats; it is easier to check compliance with tooling that supports industry standards.
@@ -72,7 +72,7 @@ In order to encourage developers to participate in a better AI security culture 
 
 ## What makes a good AI red teaming tool?
 
-Software engineers look for many features, and the core goal is to expose security vulnerabilities. At Promptfoo, we have seen needs grow from solo evals for small projects to comprehensive red teaming requirements for established products.
+Software engineers look for many features, and the core goal is to expose security vulnerabilities. At artef, we have seen needs grow from solo evals for small projects to comprehensive red teaming requirements for established products.
 
 ### Stating the obvious
 
@@ -132,7 +132,7 @@ The point of AI red teaming is to generate a variety of attacks. Tiny tweaks to 
 
 - Prompt phrasing changes.
 - Evasive behavior simulation (such as formatting or emoji tricks).
-- [Multi-turn testing; some jailbreaks depend on a conversation of prompts rather than just one-shot](https://www.promptfoo.dev/docs/red-team/strategies/multi-turn/).
+- [Multi-turn testing; some jailbreaks depend on a conversation of prompts rather than just one-shot](https://www.artef.dev/docs/red-team/strategies/multi-turn/).
 - Mimicry of real-world adversarial behavior by malicious actors.
 
 AI red teaming often revolves around prompts due to the problematic nature of variability caused by all the forms natural language can take. Top-notch AI security would involve the entire context in which artificial intelligence components sit, and not just anything directly related to the AI models themselves.
@@ -149,11 +149,11 @@ After building software for over a decade rebuilding a part of a stack with a si
 
 ## Top open source AI red-teaming and fuzzing tools (2025)
 
-_Note: We build Promptfoo. We include competitors and link to their docs for balance._
+_Note: We build artef. We include competitors and link to their docs for balance._
 
 **What counts as red-teaming here**: We focus on tools that actively generate adversarial attacks, not just evaluation frameworks or defensive guardrails. While evaluations are part of red-teaming workflows, we prioritize tools that expose vulnerabilities through active testing.
 
-### 1. Promptfoo
+### 1. artef
 
 **Overview**: Dev-first framework for AI red teaming and evals with flexible configuration, deep Python integration, and intuitive web UI. Features agent tracing, compliance mapping to OWASP, NIST, MITRE ATLAS, EU AI Act, plus comprehensive MCP testing capabilities.
 
@@ -162,18 +162,18 @@ _Note: We build Promptfoo. We include competitors and link to their docs for bal
 - CLI and polished web interface with model-agnostic testing
 - Deep Python integration alongside JavaScript/TypeScript support
 - Flexible YAML/JSON configuration with programmatic APIs
-- [Agent tracing and debugging capabilities](https://www.promptfoo.dev/docs/guides/evaluate-coding-agents/) for complex workflows
-- [Multi-turn testing via plugins](https://www.promptfoo.dev/docs/red-team/strategies/multi-turn/) and attack strategies
+- [Agent tracing and debugging capabilities](https://www.artef.dev/docs/guides/evaluate-coding-agents/) for complex workflows
+- [Multi-turn testing via plugins](https://www.artef.dev/docs/red-team/strategies/multi-turn/) and attack strategies
 - **Adaptive red teaming**: Smart AI agents generate context-specific attacks from the start, not static prompt lists
 - Active community with extensive plugin ecosystem
 - CI/CD integrations (GitHub Actions, CLI)
-- [Compliance mapping](https://www.promptfoo.dev/model-security/): OWASP, NIST, MITRE ATLAS, EU AI Act
-- [MCP testing and agent plugins](https://www.promptfoo.dev/docs/red-team/plugins/mcp/) for tool abuse scenarios
+- [Compliance mapping](https://www.artef.dev/model-security/): OWASP, NIST, MITRE ATLAS, EU AI Act
+- [MCP testing and agent plugins](https://www.artef.dev/docs/red-team/plugins/mcp/) for tool abuse scenarios
 - **Best For**: Teams needing flexible, production-ready red-teaming with great developer experience
 
-Promptfoo excels at red teaming production applications with its combination of flexibility and usability. The web UI makes results easy to share across teams, while the flexible configuration supports everything from simple tests to complex agent workflows. Strong community support means you're rarely stuck on implementation details.
+artef excels at red teaming production applications with its combination of flexibility and usability. The web UI makes results easy to share across teams, while the flexible configuration supports everything from simple tests to complex agent workflows. Strong community support means you're rarely stuck on implementation details.
 
-The platform extends beyond basic model testing to cover entire AI pipelines, including [agent workflows and MCP integrations](https://www.promptfoo.dev/blog/understanding-mcp/). This comprehensive approach becomes essential as AI systems gain more capabilities and access to external tools.
+The platform extends beyond basic model testing to cover entire AI pipelines, including [agent workflows and MCP integrations](https://www.artef.dev/blog/understanding-mcp/). This comprehensive approach becomes essential as AI systems gain more capabilities and access to external tools.
 
 ### 2. PyRIT (Python Risk Identification Tool)
 
@@ -188,7 +188,7 @@ The platform extends beyond basic model testing to cover entire AI pipelines, in
 - Rich research-oriented architecture with detailed logging
 - **Best For**: Security teams needing programmatic control and research-grade attack orchestration
 
-**Key differences**: Promptfoo focuses on adaptive attack generation with smart AI agents, while PyRIT excels at programmatic orchestration with sophisticated converters and scoring engines. Both support multi-turn attacks, but PyRIT offers more granular control for research scenarios, while Promptfoo emphasizes ease of use and compliance mapping.
+**Key differences**: artef focuses on adaptive attack generation with smart AI agents, while PyRIT excels at programmatic orchestration with sophisticated converters and scoring engines. Both support multi-turn attacks, but PyRIT offers more granular control for research scenarios, while artef emphasizes ease of use and compliance mapping.
 
 **Context**: Microsoft deserves significant credit for open-sourcing their internal AI Red Team tooling and continuing to invest in the open-source community. The Azure integration demonstrates their commitment to making enterprise-grade AI security accessible.
 
@@ -207,7 +207,7 @@ _Links: [Microsoft Blog](https://www.microsoft.com/en-us/security/blog/2024/02/2
 - [HTML reports with z-score grading](https://reference.garak.ai/en/latest/report.html) and comprehensive coverage metrics
 - **Best For**: Security teams needing broad vulnerability coverage with standardized reporting
 
-**Key differences**: Promptfoo emphasizes adaptive attack generation and web-based workflows, while Garak provides comprehensive vulnerability scanning with both static and dynamic capabilities. Garak excels at broad coverage with its extensive probe library and AVID integration, whereas Promptfoo focuses on context-aware testing and compliance mapping.
+**Key differences**: artef emphasizes adaptive attack generation and web-based workflows, while Garak provides comprehensive vulnerability scanning with both static and dynamic capabilities. Garak excels at broad coverage with its extensive probe library and AVID integration, whereas artef focuses on context-aware testing and compliance mapping.
 
 **Context**: NVIDIA's stewardship has significantly enhanced Garak's capabilities and community adoption. Originally created by Leon Derczynski, Garak now benefits from NVIDIA's resources while maintaining its open-source nature. The AVID integration represents a model for shared threat intelligence.
 
@@ -226,7 +226,7 @@ _Links: [GitHub](https://github.com/NVIDIA/garak), [Documentation](https://refer
 - Jupyter notebook examples for integration with research workflows
 - **Best For**: Security teams discovering novel attack vectors through systematic fuzzing
 
-**Key differences**: FuzzyAI specializes in discovering novel vulnerabilities through systematic fuzzing and genetic algorithms, while Promptfoo focuses on context-aware attack generation and compliance workflows. FuzzyAI's strength lies in mutation-based discovery, whereas Promptfoo emphasizes adaptive testing with policy mapping.
+**Key differences**: FuzzyAI specializes in discovering novel vulnerabilities through systematic fuzzing and genetic algorithms, while artef focuses on context-aware attack generation and compliance workflows. FuzzyAI's strength lies in mutation-based discovery, whereas artef emphasizes adaptive testing with policy mapping.
 
 _Links: [GitHub](https://github.com/cyberark/FuzzyAI)_
 
@@ -242,7 +242,7 @@ _Links: [GitHub](https://github.com/cyberark/FuzzyAI)_
 - JSON and console output for integration with security pipelines
 - **Best For**: Application security teams testing their own system prompts for injection vulnerabilities
 
-**Key differences**: promptmap2 is laser-focused on prompt injection vulnerabilities with a specialized dual-AI approach, while Promptfoo provides broader red-teaming coverage. promptmap2 excels at detecting injection attacks in system prompts, whereas Promptfoo offers comprehensive testing across multiple attack vectors with compliance mapping.
+**Key differences**: promptmap2 is laser-focused on prompt injection vulnerabilities with a specialized dual-AI approach, while artef provides broader red-teaming coverage. promptmap2 excels at detecting injection attacks in system prompts, whereas artef offers comprehensive testing across multiple attack vectors with compliance mapping.
 
 _Links: [GitHub](https://github.com/utkusen/promptmap), [Blog Post](https://utkusen.substack.com/p/testing-prompt-injection-attacks)_
 
@@ -256,7 +256,7 @@ _Links: [GitHub](https://github.com/utkusen/promptmap), [Blog Post](https://utku
 
 | Tool           | Focus Area                | Attack Coverage                                 | Multi-turn        | Reports & Export            | CI Support          | Maintenance | License    |
 | -------------- | ------------------------- | ----------------------------------------------- | ----------------- | --------------------------- | ------------------- | ----------- | ---------- |
-| **Promptfoo**  | Red-teaming plus evals    | Jailbreaks, injection, policy violations, MCP   | ✅ Via plugins    | HTML, policy-mapped reports | GitHub Actions, CLI | Active      | MIT/Apache |
+| **artef**  | Red-teaming plus evals    | Jailbreaks, injection, policy violations, MCP   | ✅ Via plugins    | HTML, policy-mapped reports | GitHub Actions, CLI | Active      | MIT/Apache |
 | **PyRIT**      | Orchestration and scoring | Custom scenarios, multi-turn chains             | ✅ Built-in       | JSON logs, programmatic     | Scripts, notebooks  | Active      | MIT        |
 | **Garak**      | Probe scanning            | Jailbreaks, injection, toxicity, hallucinations | ✅ Conversational | HTML with z-scores, AVID    | CLI                 | Active      | Apache 2.0 |
 | **FuzzyAI**    | Fuzzing                   | Mutation, generation-based attacks              | ✅ Multi-strategy | CLI, experimental web UI    | CLI                 | Active      | Apache 2.0 |

@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface ApiConfig {
@@ -13,7 +13,7 @@ interface ApiConfig {
 const useApiConfig = create<ApiConfig>()(
   persist(
     (set) => ({
-      apiBaseUrl: import.meta.env.VITE_PUBLIC_PROMPTFOO_REMOTE_API_BASE_URL || '',
+      apiBaseUrl: import.meta.env.VITE_PUBLIC_artef_REMOTE_API_BASE_URL || '',
       setApiBaseUrl: (apiBaseUrl: string) => set({ apiBaseUrl }),
       persistApiBaseUrl: false,
       enablePersistApiBaseUrl: () => set({ persistApiBaseUrl: true }),

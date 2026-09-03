@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Creating a sidebar enables you to:
  - create an ordered group of docs
  - render a sidebar for each doc of that group
@@ -340,7 +340,7 @@ const redTeamSidebar = [
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
-  promptfoo: [
+  artef: [
     {
       type: 'doc',
       id: 'intro',
@@ -560,7 +560,7 @@ const sidebars = {
     },
     {
       type: 'doc',
-      id: 'write-for-promptfoo',
+      id: 'write-for-artef',
     },
     {
       type: 'doc',

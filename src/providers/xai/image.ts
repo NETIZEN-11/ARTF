@@ -1,4 +1,4 @@
-import { getEnvString } from '../../envars';
+﻿import { getEnvString } from '../../envars';
 import logger from '../../logger';
 import invariant from '../../util/invariant';
 import {
@@ -100,7 +100,7 @@ export class XAIImageProvider extends OpenAiImageProvider {
     }
     // Preserve unknown Grok Imagine slugs as-is rather than silently routing
     // them to the legacy `grok-2-image` model. This avoids surprising downgrades
-    // when xAI publishes new aliases that promptfoo has not yet indexed.
+    // when xAI publishes new aliases that artef has not yet indexed.
     if (this.modelName.startsWith('grok-imagine-')) {
       return this.modelName;
     }
@@ -115,7 +115,7 @@ export class XAIImageProvider extends OpenAiImageProvider {
   ): number {
     // grok-imagine-image-pro is redirected to the quality model after
     // 2026-05-15; any other unrecognized grok-imagine-* slug (e.g. a future
-    // alias promptfoo has not indexed) is priced at the quality tier too,
+    // alias artef has not indexed) is priced at the quality tier too,
     // rather than falling through to legacy grok-2-image pricing.
     const pricingModel =
       model.startsWith('grok-imagine-') && model !== 'grok-imagine-image'

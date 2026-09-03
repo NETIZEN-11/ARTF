@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Bedrock Converse API - MCP Tool Use'
 
 prompts:
@@ -35,11 +35,11 @@ tests:
           - transport
 
   - vars:
-      repo: promptfoo/promptfoo
-      question: How does promptfoo configure providers in an eval?
+      repo: artef/artef
+      question: How does artef configure providers in an eval?
     assert:
       - type: contains-any
         value:
           - provider
-          - promptfoo
+          - artef
           - config

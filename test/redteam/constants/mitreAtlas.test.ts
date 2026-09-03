@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   ALIASED_PLUGIN_MAPPINGS,
   ALIASED_PLUGINS,
@@ -72,7 +72,7 @@ describe('MITRE ATLAS framework mapping', () => {
     );
   });
 
-  it('covers newly-added agentic ATLAS tactics with existing promptfoo checks', () => {
+  it('covers newly-added agentic ATLAS tactics with existing artef checks', () => {
     expect(MITRE_ATLAS_MAPPING['mitre:atlas:persistence'].plugins).toContain(
       'agentic:memory-poisoning',
     );

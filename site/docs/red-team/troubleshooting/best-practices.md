@@ -1,4 +1,4 @@
----
+﻿---
 title: Best Practices for Configuring AI Red Teaming
 description: Improve red team success by enriching context, combining strategies, enabling multi-turn attacks and calibrating graders
 sidebar_label: Best Practices
@@ -21,7 +21,7 @@ Improves: _Attack Success Rate_, _False Positive Rate_, _Coverage_
   **Don't skimp on this!** It is the single most important part of your configuration. Include who the users are, what data and tools they can reach, and what the system must not do.
 
 - Extra context significantly improves the quality of generated test cases and reduces grader confusion. The whole system is tuned to emphasize Application Details.
-- Multi‑line descriptions are encouraged. Promptfoo passes the entire block to our attacker models so it can craft domain‑specific exploits.
+- Multi‑line descriptions are encouraged. artef passes the entire block to our attacker models so it can craft domain‑specific exploits.
 
 ## 2. Use a Diverse Suite of Strategies
 
@@ -78,23 +78,23 @@ Put on your thinking cap and try to make these _as specific as possible_ to your
 | Plugin                                                    | Purpose                                                                             |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | [Intent (Custom Prompts)](/docs/red-team/plugins/intent/) | Supply known "danger phrases" to test. Great for compliance checklists              |
-| [Policy](/docs/red-team/plugins/policy/)                  | Encode organization‑specific rules; Promptfoo crafts attacks that try to break them |
+| [Policy](/docs/red-team/plugins/policy/)                  | Encode organization‑specific rules; artef crafts attacks that try to break them |
 
-Declare them under [`plugins:`](/docs/red-team/plugins/) and pair with your high‑ASR strategies so the Promptfoo attacker can mutate your seed inputs or policy text into sophisticated exploits.
+Declare them under [`plugins:`](/docs/red-team/plugins/) and pair with your high‑ASR strategies so the artef attacker can mutate your seed inputs or policy text into sophisticated exploits.
 
 ## 5. Calibrate Grading
 
 Improves: _False Positive Rate_
 
-Deciding whether LLM outputs are good or bad can be subjective, and Promptfoo can't read your mind.
+Deciding whether LLM outputs are good or bad can be subjective, and artef can't read your mind.
 
 There are two main levers to [reduce false positives](/docs/red-team/troubleshooting/false-positives/): add more context to the purpose, and add grader examples.
 
 1. **Context first**: An under‑specified purpose/application details is the #1 cause of false flags. The models that decide whether the output is OK or not depend on this.
 
-   Your Application Details/Purpose should include all the detail a human red teamer would need to be productive right out of the gate. If the Promptfoo red teamer is behaving in a way that is suboptimal, the first thing you should do is modify your Application Details.
+   Your Application Details/Purpose should include all the detail a human red teamer would need to be productive right out of the gate. If the artef red teamer is behaving in a way that is suboptimal, the first thing you should do is modify your Application Details.
 
-2. **Grader examples**: Teach the evaluator by adding explicit pass/fail examples for edge‑cases. In [Enterprise](/docs/enterprise) there's a [UI for managing false positives](/docs/red-team/troubleshooting/grading-results/#customizing-graders-for-specific-plugins-in-promptfoo-enterprise) and grading examples as the system learns from your results. In open-source you can manually add examples:
+2. **Grader examples**: Teach the evaluator by adding explicit pass/fail examples for edge‑cases. In [Enterprise](/docs/enterprise) there's a [UI for managing false positives](/docs/red-team/troubleshooting/grading-results/#customizing-graders-for-specific-plugins-in-artef-enterprise) and grading examples as the system learns from your results. In open-source you can manually add examples:
 
    ```yaml
    graderExamples:
@@ -119,7 +119,7 @@ There are two main levers to [reduce false positives](/docs/red-team/troubleshoo
 - Use [custom prompts](/docs/red-team/plugins/intent/) and [policies](/docs/red-team/plugins/policy/) to test domain‑specific risks.
 - Calibrate the [grader](/docs/red-team/troubleshooting/grading-results/) with examples, and enable [Retry](/docs/red-team/strategies/retry/) to catch regressions.
 
-Follow these practices and Promptfoo will give you actionable, high‑signal red‑team reports you can trust.
+Follow these practices and artef will give you actionable, high‑signal red‑team reports you can trust.
 
 ## Related Documentation
 

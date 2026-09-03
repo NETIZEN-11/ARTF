@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 // Mock dependencies before importing
 vi.mock('../../../../src/logger', () => ({
@@ -52,15 +52,15 @@ describe('logs MCP tools', () => {
     it('should list log files with pagination', async () => {
       const mockLogFiles = [
         {
-          name: 'promptfoo-debug-2024-01-15_10-30-00.log',
-          path: '/mock/logs/promptfoo-debug-2024-01-15_10-30-00.log',
+          name: 'artef-debug-2024-01-15_10-30-00.log',
+          path: '/mock/logs/artef-debug-2024-01-15_10-30-00.log',
           type: 'debug' as const,
           size: 1024,
           mtime: new Date('2024-01-15T10:30:00Z'),
         },
         {
-          name: 'promptfoo-error-2024-01-15_10-30-00.log',
-          path: '/mock/logs/promptfoo-error-2024-01-15_10-30-00.log',
+          name: 'artef-error-2024-01-15_10-30-00.log',
+          path: '/mock/logs/artef-error-2024-01-15_10-30-00.log',
           type: 'error' as const,
           size: 512,
           mtime: new Date('2024-01-15T10:30:00Z'),
@@ -126,8 +126,8 @@ describe('logs MCP tools', () => {
     it('should filter by log type', async () => {
       const mockLogFiles = [
         {
-          name: 'promptfoo-debug-2024-01-15_10-30-00.log',
-          path: '/mock/logs/promptfoo-debug-2024-01-15_10-30-00.log',
+          name: 'artef-debug-2024-01-15_10-30-00.log',
+          path: '/mock/logs/artef-debug-2024-01-15_10-30-00.log',
           type: 'debug' as const,
           size: 1024,
           mtime: new Date('2024-01-15T10:30:00Z'),
@@ -178,8 +178,8 @@ describe('logs MCP tools', () => {
 
   describe('read_logs tool', () => {
     const mockLogFile = {
-      name: 'promptfoo-debug-2024-01-15_10-30-00.log',
-      path: '/mock/logs/promptfoo-debug-2024-01-15_10-30-00.log',
+      name: 'artef-debug-2024-01-15_10-30-00.log',
+      path: '/mock/logs/artef-debug-2024-01-15_10-30-00.log',
       type: 'debug' as const,
       size: 1024,
       mtime: new Date('2024-01-15T10:30:00Z'),

@@ -1,11 +1,11 @@
-# amazon-bedrock/agents (AWS Bedrock Agents Example)
+﻿# amazon-bedrock/agents (AWS Bedrock Agents Example)
 
-This example demonstrates how to use AWS Bedrock Agents with promptfoo to test and evaluate deployed AI agents, including both single-agent and multi-agent scenarios.
+This example demonstrates how to use AWS Bedrock Agents with artef to test and evaluate deployed AI agents, including both single-agent and multi-agent scenarios.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example amazon-bedrock/agents
+npx artef@latest init --example amazon-bedrock/agents
 cd amazon-bedrock/agents
 ```
 
@@ -46,8 +46,8 @@ cd amazon-bedrock/agents
    Via IAM role (if running on EC2/Lambda)
 
 3. **Choose your configuration**:
-   - `promptfooconfig.yaml`: Basic single-agent configuration
-   - `promptfooconfig.multi-agent.yaml`: Advanced multi-agent system configuration
+   - `artefconfig.yaml`: Basic single-agent configuration
+   - `artefconfig.multi-agent.yaml`: Advanced multi-agent system configuration
 
 ## Running the Examples
 
@@ -55,20 +55,20 @@ cd amazon-bedrock/agents
 
 ```bash
 # Run basic agent evaluation
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 
 # View results in the web UI
-npx promptfoo view
+npx artef view
 ```
 
 ### Multi-Agent Example
 
 ```bash
 # Run multi-agent system evaluation
-npx promptfoo eval -c promptfooconfig.multi-agent.yaml
+npx artef eval -c artefconfig.multi-agent.yaml
 
 # View results in the web UI
-npx promptfoo view
+npx artef view
 ```
 
 ## Configuration Options
@@ -211,5 +211,5 @@ Your AWS credentials need the following permissions:
 ## Learn More
 
 - [AWS Bedrock Agents Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html)
-- [Promptfoo Documentation](https://promptfoo.dev/docs/providers/bedrock/)
+- [artef Documentation](https://artef.dev/docs/providers/bedrock/)
 - [Bedrock Agents Samples](https://github.com/awslabs/amazon-bedrock-agents-samples)

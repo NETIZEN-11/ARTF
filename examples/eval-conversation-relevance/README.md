@@ -1,9 +1,9 @@
-# eval-conversation-relevance (Conversation Relevance)
+﻿# eval-conversation-relevance (Conversation Relevance)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-conversation-relevance
+npx artef@latest init --example eval-conversation-relevance
 cd eval-conversation-relevance
 ```
 
@@ -18,7 +18,7 @@ The conversation relevance metric evaluates whether each response in a conversat
 1. Install dependencies:
 
    ```bash
-   npm install -g promptfoo
+   npm install -g artef
    ```
 
 2. Set your OpenAI API key:
@@ -29,7 +29,7 @@ The conversation relevance metric evaluates whether each response in a conversat
 
 3. Run the evaluation:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 ## Example Test Cases

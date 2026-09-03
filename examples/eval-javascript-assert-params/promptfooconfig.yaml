@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: JavaScript assertion params via config
 
 prompts:
@@ -10,7 +10,7 @@ providers:
 tests:
   - description: Same script, two assertion-local parameter sets
     vars:
-      reply: hello world from promptfoo
+      reply: hello world from artef
     assert:
       - type: javascript
         value: file://assert-length.js

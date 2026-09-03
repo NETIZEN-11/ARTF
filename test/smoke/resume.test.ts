@@ -1,4 +1,4 @@
-/**
+﻿/**
  * End-to-end smoke tests for eval resume functionality.
  *
  * Tests the --resume flag and Ctrl+C (SIGINT) pause/resume flow:
@@ -23,8 +23,8 @@ const FIXTURES_DIR = path.resolve(__dirname, 'fixtures');
 const CONFIGS_DIR = path.resolve(FIXTURES_DIR, 'configs');
 const OUTPUT_DIR = path.resolve(__dirname, '.temp-output-resume');
 // Use a dedicated absolute config dir for resume tests so DB persists between runs.
-// The vitest setup sets PROMPTFOO_CONFIG_DIR to a relative path which can cause issues.
-const RESUME_CONFIG_DIR = path.resolve(OUTPUT_DIR, '.promptfoo-resume-test');
+// The vitest setup sets artef_CONFIG_DIR to a relative path which can cause issues.
+const RESUME_CONFIG_DIR = path.resolve(OUTPUT_DIR, '.artef-resume-test');
 
 /**
  * Helper to run the CLI synchronously and capture output
@@ -40,7 +40,7 @@ function runCli(
       ...process.env,
       ...options.env,
       NO_COLOR: '1',
-      PROMPTFOO_CONFIG_DIR: RESUME_CONFIG_DIR,
+      artef_CONFIG_DIR: RESUME_CONFIG_DIR,
       // Override IS_TESTING from vitest.setup.ts — we need file-based DB for resume persistence
       IS_TESTING: '',
     },
@@ -78,7 +78,7 @@ function spawnCli(
       ...process.env,
       ...options.env,
       NO_COLOR: '1',
-      PROMPTFOO_CONFIG_DIR: RESUME_CONFIG_DIR,
+      artef_CONFIG_DIR: RESUME_CONFIG_DIR,
       // Override IS_TESTING from vitest.setup.ts — we need file-based DB for resume persistence
       IS_TESTING: '',
     },

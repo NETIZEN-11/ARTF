@@ -1,9 +1,9 @@
-# claude-agent-sdk (Claude Agent SDK Examples)
+﻿# claude-agent-sdk (Claude Agent SDK Examples)
 
 The Claude Agent SDK provider (aka Claude Code provider) enables you to run agentic evals with configurable tools, permissions, and environments.
 
 ```bash
-npx promptfoo@latest init --example claude-agent-sdk
+npx artef@latest init --example claude-agent-sdk
 cd claude-agent-sdk
 ```
 
@@ -32,21 +32,21 @@ This example shows Claude Agent SDK in its simplest form - running in a temporar
 **Usage**:
 
 ```bash
-(cd basic && promptfoo eval)
+(cd basic && artef eval)
 ```
 
 #### Counting LLM turns with trace markers
 
-`./basic/promptfooconfig.tracing.yaml` enables OTEL tracing and uses
+`./basic/artefconfig.tracing.yaml` enables OTEL tracing and uses
 `trace-span-count` over the `gen_ai.turn *` marker spans the provider emits (one
 per `assistant` message / LLM round) to assert how many rounds a task took. See
-[Turn marker spans](https://www.promptfoo.dev/docs/tracing/#per-llm-turn-spans)
+[Turn marker spans](https://www.artef.dev/docs/tracing/#per-llm-turn-spans)
 for the per-provider table and the subagent/cache-hit caveats.
 
 ```bash
 # Use --no-cache so the turn-marker spans are re-emitted on every run; a cached
 # response would short-circuit before the tracing code and fail the turn-count assertions.
-(cd basic && promptfoo eval -c promptfooconfig.tracing.yaml --no-cache)
+(cd basic && artef eval -c artefconfig.tracing.yaml --no-cache)
 ```
 
 ### Working Directory
@@ -63,7 +63,7 @@ This example provides Claude Agent SDK with read-only access to a sample project
 **Usage**:
 
 ```bash
-(cd working-dir && promptfoo eval)
+(cd working-dir && artef eval)
 ```
 
 ### Advanced Editing
@@ -84,7 +84,7 @@ This example shows Claude Agent SDK's ability to modify files with:
 **Usage**:
 
 ```bash
-(cd advanced && promptfoo eval)
+(cd advanced && artef eval)
 ```
 
 ### MCP Integration
@@ -100,7 +100,7 @@ This example shows Claude Agent SDK integration with:
 **Usage**:
 
 ```bash
-(cd mcp && promptfoo eval)
+(cd mcp && artef eval)
 ```
 
 ### Structured Output
@@ -116,7 +116,7 @@ This example demonstrates Claude Agent SDK's structured output feature, which re
 **Usage**:
 
 ```bash
-(cd structured-output && promptfoo eval)
+(cd structured-output && artef eval)
 ```
 
 ### Advanced Options
@@ -128,7 +128,7 @@ This example demonstrates advanced Claude Agent SDK configuration options includ
 **Usage**:
 
 ```bash
-(cd advanced-options && promptfoo eval)
+(cd advanced-options && artef eval)
 ```
 
 **Features demonstrated**:
@@ -148,7 +148,7 @@ This example demonstrates handling the `AskUserQuestion` tool in automated evalu
 **Usage**:
 
 ```bash
-(cd ask-user-question && promptfoo eval)
+(cd ask-user-question && artef eval)
 ```
 
 **Features demonstrated**:
@@ -171,12 +171,12 @@ This example demonstrates testing [Agent Skills](https://platform.claude.com/doc
 **Usage**:
 
 ```bash
-(cd skills && promptfoo eval)
+(cd skills && artef eval)
 ```
 
 ### Skill Comparison
 
-This example compares two versions of the same Claude Agent SDK skill against identical review tasks. It is the Claude companion to [`examples/openai-codex-sdk/skill-comparison`](../openai-codex-sdk/skill-comparison) and the runnable form of the [agent-skill testing guide](https://www.promptfoo.dev/docs/guides/test-agent-skills).
+This example compares two versions of the same Claude Agent SDK skill against identical review tasks. It is the Claude companion to [`examples/openai-codex-sdk/skill-comparison`](../openai-codex-sdk/skill-comparison) and the runnable form of the [agent-skill testing guide](https://www.artef.dev/docs/guides/test-agent-skills).
 
 - **Versioned fixtures**: Each provider points at a different `working_dir` with its own `.claude/skills/review-standards/SKILL.md`
 - **Skill filter**: Uses `skills: ['review-standards']` (SDK 0.2.120+) to auto-allow the `Skill` tool
@@ -188,7 +188,7 @@ This example compares two versions of the same Claude Agent SDK skill against id
 **Usage**:
 
 ```bash
-(cd skill-comparison && promptfoo eval --no-cache)
+(cd skill-comparison && artef eval --no-cache)
 ```
 
 ### Plugins
@@ -205,7 +205,7 @@ This example demonstrates loading skills from a [plugin](https://code.claude.com
 **Usage**:
 
 ```bash
-(cd plugins && promptfoo eval)
+(cd plugins && artef eval)
 ```
 
 ### Cyber Espionage Red Team
@@ -223,7 +223,7 @@ This example demonstrates testing AI agents against cyber espionage attack patte
 **Usage**:
 
 ```bash
-(cd cyber-espionage && promptfoo eval)
+(cd cyber-espionage && artef eval)
 ```
 
 > ⚠️ This example is for authorized security testing only. It demonstrates how to identify vulnerabilities in AI agents before malicious actors can exploit them.

@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2024 Promptfoo, Inc
+﻿/**
+ * Copyright (c) 2024 artef, Inc
  * See LICENSE.md for license details
  */
 import dedent from 'dedent';
@@ -7,7 +7,7 @@ import { RedteamGraderBase, RedteamPluginBase } from './base';
 
 import type { Assertion, AssertionValue, ResultSuggestion } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:divergent-repetition';
+const PLUGIN_ID = 'artef:redteam:divergent-repetition';
 
 const DEFAULT_EXAMPLES = dedent`
     <Example>

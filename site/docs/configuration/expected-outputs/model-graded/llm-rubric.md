@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: LLM Rubric
 description: 'Create flexible custom rubrics using natural language to evaluate LLM outputs against specific quality and safety criteria'
 ---
 
 # LLM Rubric
 
-`llm-rubric` is promptfoo's general-purpose grader for "LLM as a judge" evaluation.
+`llm-rubric` is artef's general-purpose grader for "LLM as a judge" evaluation.
 
 It is similar to OpenAI's [model-graded-closedqa](/docs/configuration/expected-outputs) prompt, but can be more effective and robust in certain cases.
 
@@ -93,7 +93,7 @@ By default, `llm-rubric` uses `gpt-5` for grading. You can override this in seve
 1. Using the `--grader` CLI option:
 
    ```sh
-   promptfoo eval --grader openai:gpt-5-mini
+   artef eval --grader openai:gpt-5-mini
    ```
 
 2. Using `test.options` or `defaultTest.options`:
@@ -150,12 +150,12 @@ object there.
 The built-in OpenAI grader already defaults to `temperature=0`, so this override is only needed when you're pointing at a different model or provider whose default differs. GPT-5 series reasoning models ignore `temperature` and do not need it set.
 :::
 
-Custom `llm-rubric` providers can also return a `metadata` object in their `ProviderResponse`. promptfoo copies those keys onto the assertion's `GradingResult.metadata` alongside `renderedGradingPrompt`, which makes per-assertion fields such as upload IDs or trace IDs available in hooks like `afterEach`.
+Custom `llm-rubric` providers can also return a `metadata` object in their `ProviderResponse`. artef copies those keys onto the assertion's `GradingResult.metadata` alongside `renderedGradingPrompt`, which makes per-assertion fields such as upload IDs or trace IDs available in hooks like `afterEach`.
 
 ### OpenAI-compatible judges with thinking output
 
 Some self-hosted OpenAI-compatible judges, including vLLM servers configured with reasoning parsers,
-return hidden reasoning separately from final content. Promptfoo includes that reasoning in provider
+return hidden reasoning separately from final content. artef includes that reasoning in provider
 output by default. For a judge, that can confuse JSON parsing if the reasoning contains scratchpad
 objects before the final `{"pass": ..., "score": ..., "reason": ...}` verdict.
 
@@ -272,11 +272,11 @@ tests:
 
 ### Object handling in rubric prompts
 
-When using `{{output}}` or `{{rubric}}` variables that contain objects, promptfoo automatically converts them to JSON strings by default to prevent display issues. If you need to access specific properties of objects in your rubric prompts, you can enable object property access:
+When using `{{output}}` or `{{rubric}}` variables that contain objects, artef automatically converts them to JSON strings by default to prevent display issues. If you need to access specific properties of objects in your rubric prompts, you can enable object property access:
 
 ```bash
-export PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true
-promptfoo eval
+export artef_DISABLE_OBJECT_STRINGIFY=true
+artef eval
 ```
 
 With this enabled, you can access object properties directly in your rubric prompts:
@@ -309,7 +309,7 @@ The threshold is applied to the score returned by the LLM (which ranges from 0.0
 ## Pass vs. Score Semantics
 
 - PASS is determined by the LLM's boolean `pass` field unless you set a `threshold`.
-- If the model omits `pass`, promptfoo assumes `pass: true` by default.
+- If the model omits `pass`, artef assumes `pass: true` by default.
 - `score` is a numeric metric that does not affect PASS/FAIL unless you set `threshold`.
 - When `threshold` is set, both must be true for the assertion to pass:
   - `pass === true`

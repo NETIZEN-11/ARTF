@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getEnvBool, getEnvInt } from '../../src/envars';
 import {
   calculateCost,
@@ -6,7 +6,7 @@ import {
   getRequestTimeoutMs,
   isOpenAIToolArray,
   isOpenAIToolChoice,
-  isPromptfooSampleTarget,
+  isartefSampleTarget,
   openaiToolChoiceToAnthropic,
   openaiToolChoiceToBedrock,
   openaiToolChoiceToGoogle,
@@ -83,7 +83,7 @@ describe('Shared Provider Functions', () => {
       );
     });
 
-    it('should throw error for invalid JSON when PROMPTFOO_REQUIRE_JSON_PROMPTS is true', () => {
+    it('should throw error for invalid JSON when artef_REQUIRE_JSON_PROMPTS is true', () => {
       vi.mocked(getEnvBool).mockClear();
       vi.mocked(getEnvBool).mockImplementation(function () {
         return true;
@@ -289,36 +289,36 @@ describe('Shared Provider Functions', () => {
     });
   });
 
-  describe('isPromptfooSampleTarget', () => {
-    it('should return true when url includes promptfoo.app', () => {
+  describe('isartefSampleTarget', () => {
+    it('should return true when url includes artef.app', () => {
       const provider = createMockProvider({
-        config: { url: 'https://api.promptfoo.app/v1' },
+        config: { url: 'https://api.artef.app/v1' },
       });
-      expect(isPromptfooSampleTarget(provider)).toBe(true);
+      expect(isartefSampleTarget(provider)).toBe(true);
     });
 
-    it('should return true when url includes promptfoo.dev', () => {
+    it('should return true when url includes artef.dev', () => {
       const provider = createMockProvider({
-        config: { url: 'https://api.promptfoo.dev/v1' },
+        config: { url: 'https://api.artef.dev/v1' },
       });
-      expect(isPromptfooSampleTarget(provider)).toBe(true);
+      expect(isartefSampleTarget(provider)).toBe(true);
     });
 
-    it('should return false when url does not include promptfoo domains', () => {
+    it('should return false when url does not include artef domains', () => {
       const provider = createMockProvider({
         config: { url: 'https://api.other-domain.com/v1' },
       });
-      expect(isPromptfooSampleTarget(provider)).toBe(false);
+      expect(isartefSampleTarget(provider)).toBe(false);
     });
 
     it('should return false when provider.config is undefined', () => {
       const provider = createMockProvider();
-      expect(isPromptfooSampleTarget(provider) ?? false).toBe(false);
+      expect(isartefSampleTarget(provider) ?? false).toBe(false);
     });
 
     it('should return false when provider.config.url is undefined', () => {
       const provider = createMockProvider({ config: {} });
-      expect(isPromptfooSampleTarget(provider) ?? false).toBe(false);
+      expect(isartefSampleTarget(provider) ?? false).toBe(false);
     });
   });
 

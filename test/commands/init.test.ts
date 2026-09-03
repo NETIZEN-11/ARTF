@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 
 import confirm from '@inquirer/confirm';
 import select from '@inquirer/select';
@@ -191,9 +191,9 @@ describe('init command', () => {
         json: () =>
           Promise.resolve({
             tree: [
-              { path: 'examples/provider-http/basic/promptfooconfig.yaml', type: 'blob' },
+              { path: 'examples/provider-http/basic/artefconfig.yaml', type: 'blob' },
               { path: 'examples/provider-http/README.md', type: 'blob' },
-              { path: 'examples/eval-json-output/promptfooconfig.yaml', type: 'blob' },
+              { path: 'examples/eval-json-output/artefconfig.yaml', type: 'blob' },
               { path: 'examples/provider-http/basic/server.js', type: 'blob' },
             ],
           }),
@@ -216,7 +216,7 @@ describe('init command', () => {
         status: 200,
         json: () =>
           Promise.resolve({
-            tree: [{ path: 'examples/config-js/promptfooconfig.js', type: 'blob' }],
+            tree: [{ path: 'examples/config-js/artefconfig.js', type: 'blob' }],
           }),
       });
 
@@ -365,13 +365,13 @@ describe('init command', () => {
 
         expect(result).toEqual('assistant-cli');
         expect(mockFetchWithProxy.mock.calls[0][0]).toContain(
-          '/repos/promptfoo/promptfoo/contents/examples/assistant-cli?ref=0.120.26',
+          '/repos/artef/artef/contents/examples/assistant-cli?ref=0.120.26',
         );
         expect(logger.warn).toHaveBeenCalledWith(
           expect.stringContaining('assistant-cli was removed'),
         );
         expect(logger.info).toHaveBeenCalledWith(
-          expect.stringContaining("legacy 'assistant-cli' example from promptfoo@0.120.26"),
+          expect.stringContaining("legacy 'assistant-cli' example from artef@0.120.26"),
         );
       });
 
@@ -386,7 +386,7 @@ describe('init command', () => {
           status: 200,
           json: () =>
             Promise.resolve({
-              tree: [{ path: 'examples/provider-http/basic/promptfooconfig.yaml', type: 'blob' }],
+              tree: [{ path: 'examples/provider-http/basic/artefconfig.yaml', type: 'blob' }],
             }),
         });
         const mockDefaultRefFailure = createMockResponse({
@@ -426,7 +426,7 @@ describe('init command', () => {
           json: () =>
             Promise.resolve({
               tree: [
-                { path: 'examples/provider-opencode-sdk/basic/promptfooconfig.yaml', type: 'blob' },
+                { path: 'examples/provider-opencode-sdk/basic/artefconfig.yaml', type: 'blob' },
               ],
             }),
         });
@@ -435,8 +435,8 @@ describe('init command', () => {
           json: () =>
             Promise.resolve([
               {
-                download_url: 'https://example.com/promptfooconfig.yaml',
-                name: 'promptfooconfig.yaml',
+                download_url: 'https://example.com/artefconfig.yaml',
+                name: 'artefconfig.yaml',
                 type: 'file',
               },
             ]),
@@ -454,7 +454,7 @@ describe('init command', () => {
           if (requestUrl.includes('/contents/examples/provider-opencode-sdk/basic')) {
             return mockDirectoryResponse;
           }
-          if (requestUrl === 'https://example.com/promptfooconfig.yaml') {
+          if (requestUrl === 'https://example.com/artefconfig.yaml') {
             return mockFileResponse;
           }
           return createMockResponse({
@@ -465,7 +465,7 @@ describe('init command', () => {
         });
 
         vi.mocked(select).mockResolvedValue('provider-opencode-sdk/basic');
-        vi.spyOn(fs, 'readdir').mockResolvedValue(['promptfooconfig.yaml'] as unknown as Awaited<
+        vi.spyOn(fs, 'readdir').mockResolvedValue(['artefconfig.yaml'] as unknown as Awaited<
           ReturnType<typeof fs.readdir>
         >);
         vi.spyOn(fs, 'access').mockImplementation(async (targetPath) => {
@@ -479,7 +479,7 @@ describe('init command', () => {
         expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('Example docs:'));
         expect(logger.info).toHaveBeenCalledWith(
           expect.stringContaining(
-            'https://github.com/promptfoo/promptfoo/tree/main/examples/provider-opencode-sdk/basic',
+            'https://github.com/artef/artef/tree/main/examples/provider-opencode-sdk/basic',
           ),
         );
       });
@@ -499,7 +499,7 @@ describe('init command', () => {
         expect(result).toEqual('nonexistent-example');
 
         expect(loggerSpy).not.toHaveBeenCalledWith(
-          expect.stringContaining('cd nonexistent-example && promptfoo eval'),
+          expect.stringContaining('cd nonexistent-example && artef eval'),
         );
       });
 
@@ -573,7 +573,7 @@ describe('init command', () => {
       const initCmd = program.commands.find((cmd) => cmd.name() === 'init');
       expect(initCmd).toBeDefined();
       expect(initCmd?.description()).toBe(
-        'Set up a new promptfoo project with prompts, providers, and test cases',
+        'Set up a new artef project with prompts, providers, and test cases',
       );
       expect(initCmd?.options).toHaveLength(2);
     });

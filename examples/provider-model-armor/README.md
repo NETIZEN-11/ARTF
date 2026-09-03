@@ -1,11 +1,11 @@
-# provider-model-armor (Google Cloud Model Armor)
+﻿# provider-model-armor (Google Cloud Model Armor)
 
-This directory contains examples for testing Google Cloud Model Armor with Promptfoo.
+This directory contains examples for testing Google Cloud Model Armor with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-model-armor
+npx artef@latest init --example provider-model-armor
 cd provider-model-armor
 ```
 
@@ -71,13 +71,13 @@ Model Armor is a managed service that can screen LLM prompts and responses for:
 Test Model Armor's sanitization API directly using the HTTP provider:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 ```
 
 The direct API configuration:
 
 - Calls the `sanitizeUserPrompt` API directly
-- Maps filter results to Promptfoo's guardrails format
+- Maps filter results to artef's guardrails format
 - Tests both benign and adversarial input prompts
 - Fails closed when Model Armor reports a partial, failed, skipped, or unknown filter result
 
@@ -86,7 +86,7 @@ The direct API configuration:
 Test Gemini models with Model Armor templates:
 
 ```bash
-promptfoo eval -c promptfooconfig.vertex.yaml
+artef eval -c artefconfig.vertex.yaml
 ```
 
 The Vertex configuration:
@@ -97,8 +97,8 @@ The Vertex configuration:
 
 ## Configuration Files
 
-- `promptfooconfig.yaml` - Direct Model Armor API testing (recommended for detailed filter results)
-- `promptfooconfig.vertex.yaml` - Vertex AI integration with Model Armor (recommended for production-like testing)
+- `artefconfig.yaml` - Direct Model Armor API testing (recommended for detailed filter results)
+- `artefconfig.vertex.yaml` - Vertex AI integration with Model Armor (recommended for production-like testing)
 - `transforms/sanitize-response.mjs` - Response transformer for the sanitization API
 - `datasets/model-armor-test.csv` - Test dataset with prompts for each filter type
 
@@ -129,7 +129,7 @@ When Model Armor reports a policy match, you'll see:
 - `guardrails.flaggedInput: true` - The finding came from the input prompt
 - `guardrails.reason` - Detailed explanation of which filters matched
 
-The included configurations test prompt-side protection. Promptfoo currently handles Vertex `finishReason: MODEL_ARMOR` as a provider error, so regular `guardrails` assertions do not grade response-template blocks. For response-side regression tests, call the direct `sanitizeModelResponse` API and point at the response-side export of the transform:
+The included configurations test prompt-side protection. artef currently handles Vertex `finishReason: MODEL_ARMOR` as a provider error, so regular `guardrails` assertions do not grade response-template blocks. For response-side regression tests, call the direct `sanitizeModelResponse` API and point at the response-side export of the transform:
 
 ```yaml
 transformResponse: file://transforms/sanitize-response.mjs:transformModelArmorModelResponse
@@ -152,5 +152,5 @@ gcloud model-armor templates delete basic-safety --location=us-central1
 ## Learn More
 
 - [Model Armor Overview](https://cloud.google.com/security-command-center/docs/model-armor-overview)
-- [Promptfoo Guardrails Documentation](https://www.promptfoo.dev/docs/configuration/expected-outputs/guardrails/)
-- [Testing Guardrails Guide](https://www.promptfoo.dev/docs/guides/testing-guardrails/)
+- [artef Guardrails Documentation](https://www.artef.dev/docs/configuration/expected-outputs/guardrails/)
+- [Testing Guardrails Guide](https://www.artef.dev/docs/guides/testing-guardrails/)

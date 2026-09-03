@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Smoke test - scenarios feature (7.3.1)'
 
 providers:

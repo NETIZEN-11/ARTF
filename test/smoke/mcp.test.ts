@@ -1,4 +1,4 @@
-import { type ChildProcess, spawn } from 'child_process';
+﻿import { type ChildProcess, spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -35,7 +35,7 @@ describe('MCP Stdio Server', () => {
   it('should stay alive and respond to initialize request', async () => {
     child = spawn('node', [CLI_PATH, 'mcp', '--transport', 'stdio'], {
       stdio: ['pipe', 'pipe', 'pipe'],
-      env: { ...process.env, PROMPTFOO_DISABLE_TELEMETRY: 'true' },
+      env: { ...process.env, artef_DISABLE_TELEMETRY: 'true' },
     });
 
     let stdoutData = '';
@@ -103,7 +103,7 @@ describe('MCP Stdio Server', () => {
     }
 
     expect(response.id).toBe(1);
-    expect(response.result.serverInfo.name).toBe('Promptfoo MCP');
+    expect(response.result.serverInfo.name).toBe('artef MCP');
 
     // Verify process is still alive after responding
     expect(hasExited).toBe(false);
@@ -113,7 +113,7 @@ describe('MCP Stdio Server', () => {
   it('should shutdown gracefully on SIGINT', async () => {
     child = spawn('node', [CLI_PATH, 'mcp', '--transport', 'stdio'], {
       stdio: ['pipe', 'pipe', 'pipe'],
-      env: { ...process.env, PROMPTFOO_DISABLE_TELEMETRY: 'true' },
+      env: { ...process.env, artef_DISABLE_TELEMETRY: 'true' },
     });
 
     let stdoutData = '';

@@ -1,9 +1,9 @@
-# provider-abliteration (Abliteration)
+﻿# provider-abliteration (Abliteration)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-abliteration
+npx artef@latest init --example provider-abliteration
 cd provider-abliteration
 ```
 
@@ -22,13 +22,13 @@ cd provider-abliteration
    ```
 
 2. The example uses Abliteration's default `abliterated-model`. Replace it in
-   `promptfooconfig.yaml` only if your account should target a different model.
+   `artefconfig.yaml` only if your account should target a different model.
 
 ## Run
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-See [the Abliteration provider docs](https://www.promptfoo.dev/docs/providers/abliteration/)
+See [the Abliteration provider docs](https://www.artef.dev/docs/providers/abliteration/)
 for safety context and additional configuration options.

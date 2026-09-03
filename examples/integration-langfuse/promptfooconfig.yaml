@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 
 description: 'Langfuse prompt management with labels - demonstrates version-controlled prompt deployment'
 
@@ -6,7 +6,7 @@ description: 'Langfuse prompt management with labels - demonstrates version-cont
 #
 # This example demonstrates how to reference Langfuse prompts using labels
 # instead of version numbers. This allows you to update prompts in Langfuse
-# without changing your promptfoo configuration.
+# without changing your artef configuration.
 #
 # Prerequisites:
 # 1. Set up Langfuse environment variables:

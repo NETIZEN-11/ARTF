@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { matchesFactuality } from '../../src/matchers/llmGrading';
 import { DefaultGradingProvider } from '../../src/providers/openai/defaults';
 import { createMockProvider } from '../factories/provider';
@@ -315,8 +315,8 @@ The submitted answer may either be a subset or superset of the expert answer, or
     );
   });
 
-  it('should use Nunjucks templating when PROMPTFOO_DISABLE_TEMPLATING is set', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'true' });
+  it('should use Nunjucks templating when artef_DISABLE_TEMPLATING is set', async () => {
+    const restoreEnv = mockProcessEnv({ artef_DISABLE_TEMPLATING: 'true' });
     try {
       const input = 'Input {{ var }}';
       const expected = 'Expected {{ var }}';

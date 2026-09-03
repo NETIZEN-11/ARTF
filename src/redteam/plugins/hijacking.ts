@@ -1,7 +1,7 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from './base';
 
-const PLUGIN_ID = 'promptfoo:redteam:hijacking';
+const PLUGIN_ID = 'artef:redteam:hijacking';
 
 export class HijackingGrader extends RedteamGraderBase {
   id = PLUGIN_ID;

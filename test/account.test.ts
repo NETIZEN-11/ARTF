@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { getAuthor, getUserEmail, setUserEmail } from '../src/globalConfig/accounts';
 import { readGlobalConfig, writeGlobalConfigPartial } from '../src/globalConfig/globalConfig';
 
@@ -10,8 +10,8 @@ vi.mock('../src/globalConfig/globalConfig', () => ({
 
 describe('accounts module', () => {
   beforeEach(() => {
-    vi.stubEnv('PROMPTFOO_API_KEY', undefined);
-    vi.stubEnv('PROMPTFOO_AUTHOR', undefined);
+    vi.stubEnv('artef_API_KEY', undefined);
+    vi.stubEnv('artef_AUTHOR', undefined);
     vi.resetModules();
     vi.clearAllMocks();
     vi.mocked(readGlobalConfig).mockReset();
@@ -48,14 +48,14 @@ describe('accounts module', () => {
   });
 
   describe('getAuthor', () => {
-    it('should fall back to PROMPTFOO_AUTHOR env var when no email is set', () => {
-      vi.stubEnv('PROMPTFOO_AUTHOR', 'envAuthor');
+    it('should fall back to artef_AUTHOR env var when no email is set', () => {
+      vi.stubEnv('artef_AUTHOR', 'envAuthor');
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
       expect(getAuthor()).toBe('envAuthor');
     });
 
-    it('should prefer email over PROMPTFOO_AUTHOR env var', () => {
-      vi.stubEnv('PROMPTFOO_AUTHOR', 'envAuthor');
+    it('should prefer email over artef_AUTHOR env var', () => {
+      vi.stubEnv('artef_AUTHOR', 'envAuthor');
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
         account: { email: 'test@example.com' },

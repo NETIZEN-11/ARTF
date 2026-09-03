@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Code scan authentication utilities.
  *
  * Wraps the shared agent auth resolution and adds code-scan-specific
@@ -13,8 +13,8 @@ import type { SocketAuthCredentials } from '../../types/codeScan';
 /**
  * Resolve authentication credentials using waterfall approach:
  * 1. API key from CLI argument or config file (passed as parameter)
- * 2. PROMPTFOO_API_KEY environment variable
- * 3. API key from promptfoo auth (cloudConfig)
+ * 2. artef_API_KEY environment variable
+ * 3. API key from artef auth (cloudConfig)
  * 4. GitHub OIDC token (environment variable)
  * 5. Fork PR context (for fork PRs where OIDC is unavailable)
  *

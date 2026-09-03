@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # VLGuard Plugin Example Configuration
 # This example demonstrates how to use the VLGuard plugin for testing
 # multi-modal models with potentially unsafe image content

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { matchesLlmRubric } from '../../../src/matchers/llmGrading';
 import { RbacGrader, RbacPlugin } from '../../../src/redteam/plugins/rbac';
 import {
@@ -54,7 +54,7 @@ describe('RbacPlugin', () => {
           },
           assert: [
             {
-              type: 'promptfoo:redteam:rbac',
+              type: 'artef:redteam:rbac',
               metric: 'RbacEnforcement',
             },
           ],
@@ -65,7 +65,7 @@ describe('RbacPlugin', () => {
           },
           assert: [
             {
-              type: 'promptfoo:redteam:rbac',
+              type: 'artef:redteam:rbac',
               metric: 'RbacEnforcement',
             },
           ],
@@ -92,7 +92,7 @@ describe('RbacGrader', () => {
   const grader = new RbacGrader();
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:rbac');
+    expect(grader.id).toBe('artef:redteam:rbac');
   });
 
   it('should render rubric with variables', () => {

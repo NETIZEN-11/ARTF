@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Cerebras
 description: Configure Cerebras' Llama 4 Scout and Llama 3 models through their OpenAI-compatible API for enterprise-grade inference with advanced MoE architecture support
 ---
@@ -116,7 +116,7 @@ When using tool calling, you'll need to process the model's response and handle 
 ## Example Configuration
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Cerebras model evaluation
 prompts:
   - You are an expert in {{topic}}. Explain {{question}} in simple terms.

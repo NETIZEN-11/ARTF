@@ -1,6 +1,6 @@
-# provider-elevenlabs (ElevenLabs)
+﻿# provider-elevenlabs (ElevenLabs)
 
-Examples for using promptfoo with [ElevenLabs](https://elevenlabs.io/) audio APIs.
+Examples for using artef with [ElevenLabs](https://elevenlabs.io/) audio APIs.
 
 ## Examples
 

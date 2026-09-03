@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: DeepSeek Benchmark
 description: Compare DeepSeek V3.2 vs GPT-5 vs Llama 4 Maverick performance with custom benchmarks to evaluate code tasks and choose the optimal model for your needs
 ---
@@ -19,7 +19,7 @@ In this guide, we'll create a practical comparison that results in a detailed si
 
 ## Step 1: Project Setup
 
-Create a new directory with a `promptfooconfig.yaml` file:
+Create a new directory with a `artefconfig.yaml` file:
 
 ```sh
 mkdir deepseek-benchmark
@@ -28,9 +28,9 @@ cd deepseek-benchmark
 
 ## Step 2: Model Configuration
 
-Edit your `promptfooconfig.yaml` to include the four models:
+Edit your `artefconfig.yaml` to include the four models:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - 'openai:gpt-5'
   - 'openai:o3-mini'
@@ -121,13 +121,13 @@ tests:
 Execute the benchmark:
 
 ```sh
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 View the results in an interactive interface:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Model Comparison

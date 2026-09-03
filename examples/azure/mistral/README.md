@@ -1,18 +1,18 @@
-# azure/mistral (Azure Mistral Models)
+﻿# azure/mistral (Azure Mistral Models)
 
-This example demonstrates how to use Mistral models on Azure AI Foundry with promptfoo.
+This example demonstrates how to use Mistral models on Azure AI Foundry with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example azure/mistral
+npx artef@latest init --example azure/mistral
 cd azure/mistral
 ```
 
 ## Setup
 
 1. Deploy Mistral models in Azure AI Foundry
-2. Update `promptfooconfig.yaml` with your deployment name and API host
+2. Update `artefconfig.yaml` with your deployment name and API host
 3. Set your environment variables:
 
 ```bash
@@ -33,8 +33,8 @@ export AZURE_API_KEY=your-api-key
 ## Running the Example
 
 ```bash
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 ## Configuration
@@ -43,5 +43,5 @@ The example compares Mistral Large 3 and Mistral Small 2503 on text generation t
 
 ## Documentation
 
-- [Azure Provider Documentation](https://promptfoo.dev/docs/providers/azure/)
+- [Azure Provider Documentation](https://artef.dev/docs/providers/azure/)
 - [Mistral on Azure](https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/)

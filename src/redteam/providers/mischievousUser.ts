@@ -1,5 +1,5 @@
-import { isLoggedIntoCloud } from '../../globalConfig/accounts';
-import { REDTEAM_SIMULATED_USER_TASK_ID } from '../../providers/promptfoo';
+﻿import { isLoggedIntoCloud } from '../../globalConfig/accounts';
+import { REDTEAM_SIMULATED_USER_TASK_ID } from '../../providers/artef';
 import { type Message, SimulatedUser } from '../../providers/simulatedUser';
 import invariant from '../../util/invariant';
 import { accumulateAttackerTokenUsage } from '../../util/tokenUsageUtils';
@@ -7,7 +7,7 @@ import { getLastMessageContent, messagesToRedteamHistory } from './shared';
 
 import type { ProviderResponse, TokenUsage } from '../../types/index';
 
-const PROVIDER_ID = 'promptfoo:redteam:mischievous-user';
+const PROVIDER_ID = 'artef:redteam:mischievous-user';
 
 type Config = {
   injectVar: string;

@@ -1,4 +1,4 @@
-import type { AssistantCreationOptions, FunctionDefinition } from '@azure/openai-assistants';
+﻿import type { AssistantCreationOptions, FunctionDefinition } from '@azure/openai-assistants';
 
 import type { EnvOverrides } from '../../types/env';
 import type { MCPConfig } from '../mcp/types';
@@ -38,7 +38,7 @@ export interface AzureCompletionOptions {
   deployment_id?: string;
   dataSources?: any;
 
-  // Promptfoo supported params
+  // artef supported params
   apiHost?: string;
   apiBaseUrl?: string;
   apiKey?: string;

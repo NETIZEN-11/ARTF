@@ -1,9 +1,9 @@
-# provider-groq (Groq)
+﻿# provider-groq (Groq)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-groq
+npx artef@latest init --example provider-groq
 cd provider-groq
 ```
 
@@ -11,12 +11,12 @@ cd provider-groq
 
 To get started, set your `GROQ_API_KEY` environment variable.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

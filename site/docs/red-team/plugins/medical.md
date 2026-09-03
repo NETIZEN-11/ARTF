@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Medical Plugins
 title: Medical Red-Teaming Plugins - AI Security for Healthcare
 description: Medical red-teaming plugins for testing AI systems in healthcare contexts to identify vulnerabilities in medical AI apps
@@ -249,7 +249,7 @@ These plugins are based on a comprehensive red-teaming workshop with 46 particip
 
 ## Configuration
 
-Add medical plugins to your promptfoo configuration:
+Add medical plugins to your artef configuration:
 
 ```yaml
 redteam:
@@ -281,7 +281,7 @@ For questions about medical plugins:
 
 1. Review the [general red-teaming documentation](/docs/red-team/)
 2. Check the [plugin configuration guide](/docs/red-team/configuration/)
-3. Join our [community discussions](https://github.com/promptfoo/promptfoo/discussions)
+3. Join our [community discussions](https://github.com/artef/artef/discussions)
 4. Consider consulting with medical professionals for healthcare-specific implementations
 
 ## See Also

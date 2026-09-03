@@ -1,6 +1,6 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # AWS Bedrock Agents Provider Example Configuration
-# This example demonstrates how to use AWS Bedrock Agents with promptfoo
+# This example demonstrates how to use AWS Bedrock Agents with artef
 
 description: 'AWS Bedrock Agents test suite'
 

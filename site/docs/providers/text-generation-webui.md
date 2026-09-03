@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Gradio WebUI
 description: "Interface with Oobabooga's text-generation-webui for flexible local model hosting with advanced sampling and generation options"
 ---
 
 # text-generation-webui
 
-promptfoo can run evals on oobabooga's gradio based [text-generation-webui](https://github.com/oobabooga/text-generation-webui)-hosted models through the [OpenAPI API extension](https://github.com/oobabooga/text-generation-webui/wiki/12-%E2%80%90-OpenAI-API).
+artef can run evals on oobabooga's gradio based [text-generation-webui](https://github.com/oobabooga/text-generation-webui)-hosted models through the [OpenAPI API extension](https://github.com/oobabooga/text-generation-webui/wiki/12-%E2%80%90-OpenAI-API).
 
 The text-gen-webui extension can be activated from with the UI or via command line. Here is an example of command line usage.
 
@@ -16,7 +16,7 @@ python server.py --loader <LOADER-NAME> --model <MODEL-NAME> --api
 
 Usage is compatible with the [OpenAI API](/docs/providers/openai).
 
-In promptfoo we can address the API as follows.
+In artef we can address the API as follows.
 
 ```yaml
 providers:

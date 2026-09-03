@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -13,7 +13,7 @@ describe('JsonlFileWriter (real filesystem)', () => {
   let dir: string;
 
   beforeEach(() => {
-    dir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-jsonl-'));
+    dir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-jsonl-'));
   });
 
   afterEach(() => {

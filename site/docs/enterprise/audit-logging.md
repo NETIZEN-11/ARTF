@@ -1,21 +1,21 @@
----
+﻿---
 title: Audit Logging
-description: Track administrative operations in promptfoo Enterprise with comprehensive audit logs for security, compliance, and forensic analysis.
+description: Track administrative operations in artef Enterprise with comprehensive audit logs for security, compliance, and forensic analysis.
 sidebar_label: Audit Logging
 keywords: [audit, logging, security, compliance, enterprise, forensics, admin operations]
 ---
 
 # Audit Logging
 
-Audit Logging is a feature of [Promptfoo Enterprise](/docs/enterprise/) that provides forensic access information at the organization level, user level, team level, and service account level.
+Audit Logging is a feature of [artef Enterprise](/docs/enterprise/) that provides forensic access information at the organization level, user level, team level, and service account level.
 
-Audit Logging answers "who, when, and what" questions about promptfoo resources. These answers can help you evaluate the security of your organization, and they can provide information that you need to satisfy audit and compliance requirements.
+Audit Logging answers "who, when, and what" questions about artef resources. These answers can help you evaluate the security of your organization, and they can provide information that you need to satisfy audit and compliance requirements.
 
 ## Which events are supported by Audit Logging?
 
-Audit Logging captures administrative operations within the promptfoo platform. The system tracks changes to users, teams, roles, permissions, and service accounts within your organization.
+Audit Logging captures administrative operations within the artef platform. The system tracks changes to users, teams, roles, permissions, and service accounts within your organization.
 
-Please note that Audit Logging captures operations in the promptfoo control plane and administrative actions. Evaluation runs, prompt testing, and other data plane operations are tracked separately.
+Please note that Audit Logging captures operations in the artef control plane and administrative actions. Evaluation runs, prompt testing, and other data plane operations are tracked separately.
 
 ## Admin Operation events
 
@@ -159,7 +159,7 @@ The following examples show the contents of various audit log entries:
 
 ## Accessing Audit Logs
 
-Audit logs are accessible through the promptfoo API. For complete API documentation, see the [API Reference](https://www.promptfoo.dev/docs/api-reference/#tag/audit-logs).
+Audit logs are accessible through the artef API. For complete API documentation, see the [API Reference](https://www.artef.dev/docs/api-reference/#tag/audit-logs).
 
 ### API Endpoint
 
@@ -188,7 +188,7 @@ Audit log access requires:
 
 ```bash
 curl -X GET \
-  "https://your-promptfoo-domain.com/api/v1/audit-logs?limit=50&action=login" \
+  "https://your-artef-domain.com/api/v1/audit-logs?limit=50&action=login" \
   -H "Authorization: Bearer YOUR_API_TOKEN"
 ```
 
@@ -222,7 +222,7 @@ curl -X GET \
 
 ## Compliance Usage
 
-Audit logs in promptfoo can help meet various compliance requirements:
+Audit logs in artef can help meet various compliance requirements:
 
 - **SOC 2**: Provides detailed access logs and administrative change tracking
 - **ISO 27001**: Supports access control monitoring and change management requirements
@@ -237,11 +237,11 @@ If you experience issues accessing audit logs:
 2. Check that your API token is valid and has not expired
 3. Ensure your query parameters are properly formatted
 
-For additional support, contact the promptfoo support team with details about your specific use case and any error messages received.
+For additional support, contact the artef support team with details about your specific use case and any error messages received.
 
 ## See Also
 
 - [Service Accounts](service-accounts.md) - Create API tokens for accessing audit logs
 - [Teams](teams.md) - Learn about team management and permissions
 - [Authentication](authentication.md) - Enterprise authentication and security features
-- [API Reference](https://www.promptfoo.dev/docs/api-reference/#tag/audit-logs) - Complete audit logs API documentation
+- [API Reference](https://www.artef.dev/docs/api-reference/#tag/audit-logs) - Complete audit logs API documentation

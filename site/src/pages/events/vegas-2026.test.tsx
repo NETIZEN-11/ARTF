@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 
 import { fireEvent, render, screen } from '@testing-library/react';
@@ -14,14 +14,14 @@ const BLACKHAT_BOOTH = 'Booth #2967';
 const DEFCON_BOOTH = 'Booth #1412';
 const EVENT_REFERENCE_CASES = events.map((event) => [event.id, event] as const);
 const LIVE_EVENT_INVITE =
-  /\b(?:find (?:us|the team|promptfoo)|where to find us|visit (?:us|openai booth)|see promptfoo test|stop by|attending black hat|our booth (?:opens|is open)|what we're demoing|wait for the conference|register now|rsvp)\b/i;
+  /\b(?:find (?:us|the team|artef)|where to find us|visit (?:us|openai booth)|see artef test|stop by|attending black hat|our booth (?:opens|is open)|what we're demoing|wait for the conference|register now|rsvp)\b/i;
 
-// OpenAI was the exhibitor. Promptfoo is part of OpenAI, not a second company sharing a stand.
+// OpenAI was the exhibitor. artef is part of OpenAI, not a second company sharing a stand.
 const BANNED_BRAND_STRINGS = [
   /with OpenAI/i,
   /OpenAI presence/i,
   /OpenAI crew/i,
-  /Promptfoo x DEF CON/i,
+  /artef x DEF CON/i,
 ];
 
 describe('Vegas 2026 event data', () => {
@@ -199,16 +199,16 @@ describe.each([
   });
 
   // The exhibitor of record is OpenAI. The pages must say whose booth it is, and must say
-  // what Promptfoo's relationship to OpenAI actually is, rather than implying two
+  // what artef's relationship to OpenAI actually is, rather than implying two
   // companies sharing a stand.
   it('identifies the booth as an OpenAI booth', () => {
     const { container } = render(<Component />);
     expect(container.textContent ?? '').toMatch(/OpenAI booth/);
   });
 
-  it('states that Promptfoo is part of OpenAI', () => {
+  it('states that artef is part of OpenAI', () => {
     const { container } = render(<Component />);
-    expect(container.textContent ?? '').toMatch(/Promptfoo is part of OpenAI/);
+    expect(container.textContent ?? '').toMatch(/artef is part of OpenAI/);
   });
 
   it.each(BANNED_BRAND_STRINGS)('never says %s', (banned) => {
@@ -296,7 +296,7 @@ describe.each([
     expect(container.querySelectorAll('h1')).toHaveLength(1);
   });
 
-  // There is no Promptfoo party in 2026. The pages are allowed to mention the 2025 one in
+  // There is no artef party in 2026. The pages are allowed to mention the 2025 one in
   // prose, so this asserts the absence of an actual invitation, not of the words. The
   // affordance check is the load-bearing half: prose can negate, a button cannot.
   it('offers no party affordance', () => {
@@ -356,13 +356,13 @@ describe('DEF CON 34 page specifics', () => {
     expect(linkedCta || labelledCta).toBe(true);
   });
 
-  it('describes Daybreak accurately without placing Promptfoo under the initiative', () => {
+  it('describes Daybreak accurately without placing artef under the initiative', () => {
     const { container } = render(<Defcon2026 />);
     const text = container.textContent ?? '';
 
     expect(text).toMatch(/Daybreak brings together OpenAI's cyber-defense work/i);
     expect(text).toMatch(/Codex Security/i);
-    expect(text).toMatch(/Promptfoo tests deployed agents/i);
+    expect(text).toMatch(/artef tests deployed agents/i);
     expect(text).not.toMatch(/three adjacent efforts|not a hierarchy|Daybreak umbrella/i);
   });
 });

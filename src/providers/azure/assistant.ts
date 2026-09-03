@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { fetchWithCache, getCache, isCacheEnabled } from '../../cache';
 import logger from '../../logger';
@@ -107,7 +107,7 @@ interface RunStepsResponse {
   }>;
 }
 
-const AZURE_ASSISTANT_CACHE_KEY_HMAC_KEY = 'promptfoo-azure-assistant-cache-key-v1';
+const AZURE_ASSISTANT_CACHE_KEY_HMAC_KEY = 'artef-azure-assistant-cache-key-v1';
 
 function normalizeAzureAssistantCacheValue(value: unknown, seen = new WeakSet<object>()): unknown {
   if (Array.isArray(value)) {

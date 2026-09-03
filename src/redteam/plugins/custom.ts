@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import logger from '../../logger';
 import { maybeLoadFromExternalFile } from '../../util/file';
@@ -42,7 +42,7 @@ export class CustomPlugin extends RedteamPluginBase {
   static readonly canGenerateRemote = false;
 
   get id(): string {
-    return this.definition.id || `promptfoo:redteam:custom`;
+    return this.definition.id || `artef:redteam:custom`;
   }
 
   constructor(

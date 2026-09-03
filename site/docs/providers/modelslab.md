@@ -1,8 +1,8 @@
----
+﻿---
 title: ModelsLab Provider
 description: Generate images with ModelsLab's text-to-image API including Flux, SDXL, and 200+ community models
 sidebar_position: 63
-keywords: [modelslab, image generation, flux, sdxl, text-to-image, promptfoo provider]
+keywords: [modelslab, image generation, flux, sdxl, text-to-image, artef provider]
 ---
 
 # ModelsLab

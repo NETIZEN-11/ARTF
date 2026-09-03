@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_label: Node API Quick Reference
 sidebar_position: 23
 title: Node API quick reference
-description: Quick lookup for promptfoo's Node.js API, covering common eval, provider, assertion, cache, guardrail, red team, and utility tasks.
+description: Quick lookup for artef's Node.js API, covering common eval, provider, assertion, cache, guardrail, red team, and utility tasks.
 ---
 
 # Node API Quick Reference
 
-Quick lookup guide for the promptfoo Node module API. Find what you need fast.
+Quick lookup guide for the artef Node module API. Find what you need fast.
 
 ## Import Statement
 
@@ -35,7 +35,7 @@ import {
   // Types and utilities
   generateTable,
   isTransformFunction,
-} from 'promptfoo';
+} from 'artef';
 ```
 
 ---
@@ -146,7 +146,7 @@ await evaluate(testSuite, {
 ### Task: Disable Cache
 
 ```typescript
-import { cache } from 'promptfoo';
+import { cache } from 'artef';
 
 cache.disableCache();
 const evalRecord = await evaluate(testSuite);
@@ -339,16 +339,16 @@ for (const p of providers) {
 
 ```bash
 # Caching
-PROMPTFOO_CACHE_ENABLED=true
-PROMPTFOO_CACHE_PATH=~/.promptfoo/cache
-PROMPTFOO_CACHE_TTL=1209600         # Seconds (default: 14 days)
-PROMPTFOO_CACHE_TYPE=disk           # or 'memory'
+artef_CACHE_ENABLED=true
+artef_CACHE_PATH=~/.artef/cache
+artef_CACHE_TTL=1209600         # Seconds (default: 14 days)
+artef_CACHE_TYPE=disk           # or 'memory'
 
 # Logging
 LOG_LEVEL=debug                     # or 'info', 'warn', 'error'
 
 # Disable remote features
-PROMPTFOO_DISABLE_REMOTE_GENERATION=true
+artef_DISABLE_REMOTE_GENERATION=true
 
 # API Keys
 OPENAI_API_KEY=sk-...
@@ -405,7 +405,7 @@ import type {
   Assertion,
   ApiProvider,
   GradingResult,
-} from 'promptfoo';
+} from 'artef';
 ```
 
 ---
@@ -414,8 +414,8 @@ import type {
 
 - **API Reference**: Full documentation at `/docs/usage/node-api-reference`
 - **Examples**: Advanced examples at `/docs/usage/node-api-examples`
-- **Issues**: GitHub issues at https://github.com/promptfoo/promptfoo/issues
-- **Discord**: Community at https://discord.gg/promptfoo
+- **Issues**: GitHub issues at https://github.com/artef/artef/issues
+- **Discord**: Community at https://discord.gg/artef
 
 ---
 

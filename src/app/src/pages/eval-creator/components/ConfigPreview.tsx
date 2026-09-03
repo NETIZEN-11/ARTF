@@ -1,10 +1,10 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@app/components/ui/card';
 import { Tabs, TabsList, TabsTrigger } from '@app/components/ui/tabs';
 import { cn } from '@app/lib/utils';
 import { useStore } from '@app/stores/evalConfig';
-import { UnifiedConfig } from '@promptfoo/types';
+import { UnifiedConfig } from '@artef/types';
 import { Code, Eye } from 'lucide-react';
 import RunTestSuiteButton from './RunTestSuiteButton';
 import YamlEditor from './YamlEditor';

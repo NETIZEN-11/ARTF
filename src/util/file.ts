@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import { access } from 'fs/promises';
 import * as path from 'path';
 
@@ -343,7 +343,7 @@ export function parsePathOrGlob(
   try {
     stats = fs.statSync(path.join(basePath, filename));
   } catch (err) {
-    if (getEnvBool('PROMPTFOO_STRICT_FILES')) {
+    if (getEnvBool('artef_STRICT_FILES')) {
       throw err;
     }
   }

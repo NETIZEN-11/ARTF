@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 import fs from 'fs';
 import { createServer, type Server } from 'http';
 import { AddressInfo } from 'net';
@@ -150,7 +150,7 @@ describe('HttpProvider structured multipart requests', () => {
             {
               kind: 'file',
               name: 'files',
-              filename: 'promptfoo-document.pdf',
+              filename: 'artef-document.pdf',
               source: {
                 type: 'generated',
                 generator: 'basic-document',
@@ -175,7 +175,7 @@ describe('HttpProvider structured multipart requests', () => {
       documentQuery: 'Summarize this upload',
       files: [
         expect.objectContaining({
-          filename: 'promptfoo-document.pdf',
+          filename: 'artef-document.pdf',
           contentType: 'application/pdf',
           prefix: '%PDF-1.4',
         }),
@@ -184,7 +184,7 @@ describe('HttpProvider structured multipart requests', () => {
   });
 
   it('renders path sources with per-test variables before reading local files', async () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-multipart-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-multipart-'));
     tempDirs.push(tempDir);
     const reportPath = path.join(tempDir, 'report-a.txt');
     const standardFileUrl = pathToFileURL(reportPath).toString();
@@ -455,7 +455,7 @@ describe('HttpProvider structured multipart requests', () => {
       expect(normalizeFilePath('C:\\Windows\\Path\\doc.pdf')).toBe('C:\\Windows\\Path\\doc.pdf');
     });
 
-    it('normalizes promptfoo relative shorthand file:// URLs', () => {
+    it('normalizes artef relative shorthand file:// URLs', () => {
       expect(normalizeFilePath('file://relative/path/doc.pdf')).toBe('relative/path/doc.pdf');
       expect(normalizeFilePath('file://./relative/doc.pdf')).toBe('./relative/doc.pdf');
       expect(normalizeFilePath('file://../parent/doc.pdf')).toBe('../parent/doc.pdf');

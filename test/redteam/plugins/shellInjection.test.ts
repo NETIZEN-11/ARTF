@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import {
   DEFAULT_EXAMPLES,
   ShellInjectionPlugin,
@@ -58,7 +58,7 @@ describe('ShellInjectionPlugin', () => {
 
     expect(assertions).toHaveLength(1);
     expect(assertions[0]).toEqual({
-      type: 'promptfoo:redteam:shell-injection',
+      type: 'artef:redteam:shell-injection',
       metric: 'ShellInjection',
     });
   });
@@ -70,7 +70,7 @@ describe('ShellInjectionPlugin', () => {
     expect(tests).toHaveLength(2);
     tests.forEach((test) => {
       expect(test.assert).toHaveLength(1);
-      expect(test.assert?.[0].type).toBe('promptfoo:redteam:shell-injection');
+      expect(test.assert?.[0].type).toBe('artef:redteam:shell-injection');
       expect(test.assert?.[0].metric).toBe('ShellInjection');
     });
   });

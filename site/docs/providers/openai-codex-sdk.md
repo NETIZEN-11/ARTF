@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 41
 title: OpenAI Codex SDK
 description: 'Use OpenAI Codex SDK for evals with thread management, structured output, and Git-aware operations'
@@ -6,13 +6,13 @@ description: 'Use OpenAI Codex SDK for evals with thread management, structured 
 
 # OpenAI Codex SDK
 
-This provider makes OpenAI's Codex SDK available for agent evals in promptfoo. It can evaluate Codex's final response text, token usage, thread/session IDs, heuristic skill usage, and traced shell/MCP/search/file steps. It accepts plain text prompts and JSON-encoded Codex input arrays with `text` and `local_image` items, but it does not expose embeddings, moderation, image generation, or realtime APIs.
+This provider makes OpenAI's Codex SDK available for agent evals in artef. It can evaluate Codex's final response text, token usage, thread/session IDs, heuristic skill usage, and traced shell/MCP/search/file steps. It accepts plain text prompts and JSON-encoded Codex input arrays with `text` and `local_image` items, but it does not expose embeddings, moderation, image generation, or realtime APIs.
 
-The provider runs Codex with an explicit working directory, sandbox policy, approval policy, network/search settings, and a controlled CLI environment. The model output returned to promptfoo is the final Codex text response; if you request JSON schema output, `output` is still a string and your assertions should parse it with `is-json` or `JSON.parse(output)`.
+The provider runs Codex with an explicit working directory, sandbox policy, approval policy, network/search settings, and a controlled CLI environment. The model output returned to artef is the final Codex text response; if you request JSON schema output, `output` is still a string and your assertions should parse it with `is-json` or `JSON.parse(output)`.
 
 :::note
 
-Promptfoo declares `@openai/codex-sdk` as an optional dependency. If your installation omits optional packages or you are running from a source checkout before `npm ci`, install the SDK package manually.
+artef declares `@openai/codex-sdk` as an optional dependency. If your installation omits optional packages or you are running from a source checkout before `npm ci`, install the SDK package manually.
 
 :::
 
@@ -23,20 +23,20 @@ You can reference this provider using either base ID, and you can inline the mod
 - `openai:codex-sdk` or `openai:codex-sdk:<model name>` (full name)
 - `openai:codex` or `openai:codex:<model name>` (alias)
 
-## What Promptfoo Can and Can't Evaluate
+## What artef Can and Can't Evaluate
 
 | Eval surface                       | Supported? | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Final assistant text               | Yes        | Returned in `response.output` as a string.                                                                                                                                                                                                                                                                                                                                                                                                       |
 | Text + local image prompt inputs   | Partial    | Pass plain text as usual, or pass a JSON array of `{"type":"text","text":"..."}` and `{"type":"local_image","path":"/abs/file.png"}` entries. Other JSON prompt shapes are treated as plain text.                                                                                                                                                                                                                                                |
 | JSON schema output                 | Yes        | Pass `output_schema`; use `is-json` and `JSON.parse(output)` in JS assertions because the provider does not auto-parse the final text.                                                                                                                                                                                                                                                                                                           |
-| Token usage and estimated cost     | Yes        | `tokenUsage` is returned when the SDK reports usage, including `completionDetails.reasoning` when Codex reports reasoning output tokens. Cost is estimated only when `config.model` is known to promptfoo's pricing table; GPT-5.6 cost stays undefined because Codex does not report cache-write tokens. Codex's own instruction preamble and tool schemas are included in prompt tokens, so tiny prompts can still report high `input_tokens`. |
+| Token usage and estimated cost     | Yes        | `tokenUsage` is returned when the SDK reports usage, including `completionDetails.reasoning` when Codex reports reasoning output tokens. Cost is estimated only when `config.model` is known to artef's pricing table; GPT-5.6 cost stays undefined because Codex does not report cache-write tokens. Codex's own instruction preamble and tool schemas are included in prompt tokens, so tiny prompts can still report high `input_tokens`. |
 | Session/thread IDs                 | Yes        | `sessionId` is returned from the underlying Codex thread.                                                                                                                                                                                                                                                                                                                                                                                        |
 | Shell/MCP/search/file trajectories | Yes        | Enable `enable_streaming` for provider-level spans. Enable `deep_tracing` to propagate OTEL context into the Codex CLI process.                                                                                                                                                                                                                                                                                                                  |
 | Skill usage assertions             | Partial    | `skill-used` relies on heuristic detection of direct `SKILL.md` command reads, not a first-class SDK skill event.                                                                                                                                                                                                                                                                                                                                |
 | Multi-turn thread persistence      | Partial    | `persist_threads` pools by prompt template + config, not by rendered prompt values. `deep_tracing` disables thread persistence.                                                                                                                                                                                                                                                                                                                  |
 | Embeddings/moderation/image APIs   | No         | Use the standard `openai:*` providers for those API surfaces.                                                                                                                                                                                                                                                                                                                                                                                    |
-| Live partial-token streaming       | No         | `enable_streaming` is used to aggregate Codex events and emit traces; promptfoo still receives the final response after the turn completes.                                                                                                                                                                                                                                                                                                      |
+| Live partial-token streaming       | No         | `enable_streaming` is used to aggregate Codex events and emit traces; artef still receives the final response after the turn completes.                                                                                                                                                                                                                                                                                                      |
 | Sampling knobs                     | Limited    | `model_reasoning_effort` is supported. Direct `temperature`, `top_p`, `max_tokens`, `stop`, and `logprobs` are not exposed by this provider.                                                                                                                                                                                                                                                                                                     |
 
 ## Installation
@@ -47,7 +47,7 @@ The OpenAI Codex SDK provider requires the `@openai/codex-sdk` package to be ins
 npm install @openai/codex-sdk@^0.144.0
 ```
 
-Use Node.js `>=22.22.0`, which matches promptfoo's repo/runtime requirement and the provider's loader checks.
+Use Node.js `>=22.22.0`, which matches artef's repo/runtime requirement and the provider's loader checks.
 
 :::note
 
@@ -67,7 +67,7 @@ Sign in through the Codex CLI first:
 codex
 ```
 
-Then follow the sign-in flow with ChatGPT. When `apiKey`, `OPENAI_API_KEY`, and `CODEX_API_KEY` are all unset, promptfoo's `openai:codex-sdk` provider lets the Codex SDK reuse that existing login state.
+Then follow the sign-in flow with ChatGPT. When `apiKey`, `OPENAI_API_KEY`, and `CODEX_API_KEY` are all unset, artef's `openai:codex-sdk` provider lets the Codex SDK reuse that existing login state.
 
 If you override `cli_env.CODEX_HOME`, that directory must contain a valid Codex login state for ChatGPT-authenticated runs. Otherwise, set `apiKey`, `OPENAI_API_KEY`, or `CODEX_API_KEY`.
 
@@ -93,7 +93,7 @@ export CODEX_API_KEY=your_api_key_here
 
 :::note
 
-ChatGPT login support is specific to the Codex SDK provider. Promptfoo can now use that provider automatically for default text grading and synthesis when Codex is signed in and no higher-priority API credentials are set. Explicit `openai:chat`, `openai:responses`, embedding, and moderation providers still use Platform API credentials, and [ChatGPT subscriptions are billed separately from API usage](https://help.openai.com/en/articles/8156019).
+ChatGPT login support is specific to the Codex SDK provider. artef can now use that provider automatically for default text grading and synthesis when Codex is signed in and no higher-priority API credentials are set. Explicit `openai:chat`, `openai:responses`, embedding, and moderation providers still use Platform API credentials, and [ChatGPT subscriptions are billed separately from API usage](https://help.openai.com/en/articles/8156019).
 
 :::
 
@@ -101,7 +101,7 @@ ChatGPT login support is specific to the Codex SDK provider. Promptfoo can now u
 
 Codex can run OpenAI's frontier models hosted on [Amazon Bedrock](/docs/providers/aws-bedrock/#openai-models) instead of the OpenAI Platform. Set `model_provider: amazon-bedrock`, use the Bedrock model id (the `openai.`-prefixed form), and provide AWS credentials and a Region to the Codex CLI through `cli_env`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -123,7 +123,7 @@ Notes:
 - **Model ids are Bedrock ids**: use `openai.gpt-5.6-sol`, `openai.gpt-5.6-terra`, or `openai.gpt-5.6-luna`, not a bare `gpt-5.6` alias. The Codex Bedrock provider serves frontier models through Bedrock's OpenAI-compatible Responses endpoint (`https://bedrock-mantle.<region>.api.aws/openai/v1/responses`), which is separate from the classic `bedrock-runtime` `InvokeModel` API.
 - **Region matters**: Sol is available in `us-east-1` and `us-east-2`; Terra and Luna also support `us-west-2`. GPT-5.5 remains available in `us-east-1` and `us-east-2`, and GPT-5.4 in `us-east-1`, `us-east-2`, and `us-west-2`. Request model access first.
 - **Use a current Codex CLI**: GPT-5.6 Bedrock catalog support and `max` reasoning require Codex 0.144.0 or later. Codex `ultra` is a multi-agent mode for supported models, not a Responses API reasoning-effort value.
-- **Credentials must reach the Codex CLI**: the Codex CLI reads AWS credentials from its own environment. Because promptfoo runs the CLI with a minimal environment by default, pass `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` (or `AWS_BEARER_TOKEN_BEDROCK`, or `AWS_PROFILE`) and `AWS_REGION` via `cli_env`, or set `inherit_process_env: true`. If you use **temporary credentials** (SSO, STS, assumed roles, or MFA), also forward `AWS_SESSION_TOKEN` — without it the credentials are incomplete and Codex will fail to authenticate. For direct inference, `bedrock:openai.gpt-5.x` uses a Bedrock API key; the AWS SDK credential chain applies to `InvokeModel` models such as `gpt-oss`.
+- **Credentials must reach the Codex CLI**: the Codex CLI reads AWS credentials from its own environment. Because artef runs the CLI with a minimal environment by default, pass `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` (or `AWS_BEARER_TOKEN_BEDROCK`, or `AWS_PROFILE`) and `AWS_REGION` via `cli_env`, or set `inherit_process_env: true`. If you use **temporary credentials** (SSO, STS, assumed roles, or MFA), also forward `AWS_SESSION_TOKEN` — without it the credentials are incomplete and Codex will fail to authenticate. For direct inference, `bedrock:openai.gpt-5.x` uses a Bedrock API key; the AWS SDK credential chain applies to `InvokeModel` models such as `gpt-oss`.
 
 :::warning
 
@@ -137,7 +137,7 @@ Credentials placed in `cli_env` are exposed to the Codex agent's shell environme
 
 By default, the Codex SDK runs in the current working directory and requires that directory to be inside a Git repository unless you disable the check. When you set `working_dir`, relative values are resolved from the directory containing the config file. For pure code-generation evals that should not touch the filesystem, use `sandbox_mode: read-only`.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -153,7 +153,7 @@ The provider creates an ephemeral thread for each eval test case.
 
 Specify which OpenAI model to use for code generation:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openai:codex:gpt-5.5
 
@@ -174,7 +174,7 @@ providers:
 
 Specify a custom working directory for the Codex SDK to operate in. The directory can be a repository subdirectory as long as one of its parent directories contains `.git`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -190,7 +190,7 @@ This allows you to prepare a directory with files before running your tests.
 
 If you need to run in a non-Git directory, you can bypass the Git repository requirement:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -209,7 +209,7 @@ Skipping the Git check removes a safety guard. Use with caution and consider ver
 
 ## Supported Parameters
 
-The provider validates top-level provider config strictly. If you mistype a provider field such as `sandboxMode` instead of `sandbox_mode`, provider loading can fail before any rows run. Prompt-level config is parsed more leniently because promptfoo merges generic test options into `prompt.config`; unrelated keys are ignored there, while invalid values for known Codex fields still return a row-level provider error. Put extra Codex CLI settings that are not listed below under `cli_config`.
+The provider validates top-level provider config strictly. If you mistype a provider field such as `sandboxMode` instead of `sandbox_mode`, provider loading can fail before any rows run. Prompt-level config is parsed more leniently because artef merges generic test options into `prompt.config`; unrelated keys are ignored there, while invalid values for known Codex fields still return a row-level provider error. Put extra Codex CLI settings that are not listed below under `cli_config`.
 
 | Parameter                | Type     | Description                                                                                          | Default              |
 | ------------------------ | -------- | ---------------------------------------------------------------------------------------------------- | -------------------- |
@@ -239,7 +239,7 @@ The provider validates top-level provider config strictly. If you mistype a prov
 | `enable_streaming`       | boolean  | Enable streaming events                                                                              | false                |
 | `deep_tracing`           | boolean  | Enable OpenTelemetry tracing of CLI internals                                                        | false                |
 
-During evaluations, Codex SDK TPM/RPM or `429` throttles participate in promptfoo's adaptive rate-limit scheduler. Promptfoo honors a delay included in SDK errors such as `Please try again in 1.25s.` before retrying, and waits 60 seconds when a transient SDK throttle gives no reset hint. In streaming mode, intermediate SDK error events remain inside the active turn; if the stream does not subsequently complete, Promptfoo returns the last SDK error. Billing or hard-quota errors are returned without retrying.
+During evaluations, Codex SDK TPM/RPM or `429` throttles participate in artef's adaptive rate-limit scheduler. artef honors a delay included in SDK errors such as `Please try again in 1.25s.` before retrying, and waits 60 seconds when a transient SDK throttle gives no reset hint. In streaming mode, intermediate SDK error events remain inside the active turn; if the stream does not subsequently complete, artef returns the last SDK error. Billing or hard-quota errors are returned without retrying.
 
 ### Sandbox Modes
 
@@ -289,7 +289,7 @@ Supported models include:
 `codex-mini-latest` model. Use `openai:responses:gpt-5-codex-mini` when migrating existing API
 evals, or configure it here when running through the Codex SDK.
 
-If you omit `config.model`, the Codex CLI may choose an internal default model alias and the backend may resolve that alias to a different concrete model. The current Codex SDK turn payload exposed to Promptfoo includes `items`, `finalResponse`, and `usage`, but not the backend-resolved model name, so tracing and cost attribution use the requested `config.model` when present and otherwise leave `response.cost` undefined.
+If you omit `config.model`, the Codex CLI may choose an internal default model alias and the backend may resolve that alias to a different concrete model. The current Codex SDK turn payload exposed to artef includes `items`, `finalResponse`, and `usage`, but not the backend-resolved model name, so tracing and cost attribution use the requested `config.model` when present and otherwise leave `response.cost` undefined.
 
 GPT-5.6 and GPT-5.5 model IDs are recognized for routing and usage tracking. GPT-5.5 receives a standard API cost estimate. GPT-5.6 cost stays undefined until Codex exposes cache-write tokens; estimating without them could understate the 1.25x cache-write rate. Batch and Flex discounts, and Priority processing multipliers, are not automatically inferred from Codex runtime settings.
 
@@ -306,7 +306,7 @@ providers:
 
 ## Thread Management
 
-The Codex SDK uses thread-based conversations stored in `~/.codex/sessions`. Promptfoo supports three thread management modes:
+The Codex SDK uses thread-based conversations stored in `~/.codex/sessions`. artef supports three thread management modes:
 
 ### Ephemeral Threads (Default)
 
@@ -353,7 +353,7 @@ providers:
 
 The Codex SDK supports JSON schema output. Specify an `output_schema` to get structured responses:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -411,7 +411,7 @@ providers:
       enable_streaming: true
 ```
 
-When streaming is enabled, the provider processes events like `item.completed` and `turn.completed` to build the final response and emit spans. Promptfoo still waits for the turn to finish before returning `response.output`; this setting does not provide a token-by-token callback stream to assertions.
+When streaming is enabled, the provider processes events like `item.completed` and `turn.completed` to build the final response and emit spans. artef still waits for the turn to finish before returning `response.output`; this setting does not provide a token-by-token callback stream to assertions.
 
 ## Tracing and Observability
 
@@ -421,7 +421,7 @@ The Codex SDK provider supports two levels of tracing:
 
 Enable `enable_streaming` to capture Codex operations as OpenTelemetry spans:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tracing:
   enabled: true
   otlp:
@@ -466,9 +466,9 @@ providers:
       enable_streaming: true
 ```
 
-Promptfoo configures Codex's trace exporter automatically, pointing it at the active OTLP receiver unless you have already configured a different exporter. HTTP JSON, HTTP protobuf, and gRPC collector settings are supported.
+artef configures Codex's trace exporter automatically, pointing it at the active OTLP receiver unless you have already configured a different exporter. HTTP JSON, HTTP protobuf, and gRPC collector settings are supported.
 
-Codex configures its optional log exporter separately through the `config.toml` in `CODEX_HOME`. To also capture logs, point it at Promptfoo's JSON logs receiver using the complete `/v1/logs` endpoint:
+Codex configures its optional log exporter separately through the `config.toml` in `CODEX_HOME`. To also capture logs, point it at artef's JSON logs receiver using the complete `/v1/logs` endpoint:
 
 ```toml title="$CODEX_HOME/config.toml"
 [otel]
@@ -478,7 +478,7 @@ exporter = { otlp-http = { endpoint = "http://127.0.0.1:4318/v1/logs", protocol 
 
 If you override `cli_env.CODEX_HOME`, put this configuration in that directory. The endpoint is the complete logs URL, not merely the OTLP host and port.
 
-Deep tracing injects `TRACEPARENT` and `promptfoo.trace_id` / `promptfoo.parent_span_id` resource attributes into the Codex CLI process so spans and log records remain linked to the correct request. Promptfoo uses a fresh SDK client and thread per call in this mode. The trace exporter is configured automatically; any optional log exporter still needs its own Codex `[otel]` configuration.
+Deep tracing injects `TRACEPARENT` and `artef.trace_id` / `artef.parent_span_id` resource attributes into the Codex CLI process so spans and log records remain linked to the correct request. artef uses a fresh SDK client and thread per call in this mode. The trace exporter is configured automatically; any optional log exporter still needs its own Codex `[otel]` configuration.
 
 :::warning
 
@@ -491,9 +491,9 @@ Deep tracing is **incompatible with thread persistence**. When `deep_tracing: tr
 
 :::warning
 
-Promptfoo applies best-effort redaction to traced command text, command output, agent messages, reasoning text, MCP inputs, and MCP errors before attaching them to span attributes/events. Treat this as defense-in-depth, not a guarantee, and avoid placing production secrets in prompts or local files used by evals.
+artef applies best-effort redaction to traced command text, command output, agent messages, reasoning text, MCP inputs, and MCP errors before attaching them to span attributes/events. Treat this as defense-in-depth, not a guarantee, and avoid placing production secrets in prompts or local files used by evals.
 
-That sanitizer applies to spans promptfoo creates from Codex stream events. If `deep_tracing` causes the Codex CLI itself to emit native OTEL spans, those spans are produced outside promptfoo's sanitizer and may carry additional payloads.
+That sanitizer applies to spans artef creates from Codex stream events. If `deep_tracing` causes the Codex CLI itself to emit native OTEL spans, those spans are produced outside artef's sanitizer and may carry additional payloads.
 
 :::
 
@@ -502,7 +502,7 @@ That sanitizer applies to spans promptfoo creates from Codex stream events. If `
 Run your eval and view traces in your OTLP-compatible backend (Jaeger, Zipkin, etc.):
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 ```
 
 ## Git Repository Requirement
@@ -601,7 +601,7 @@ Collaboration mode is a beta feature. `config.collaboration_mode` is merged into
 
 ### Goals and Subagents
 
-Codex gates optional capabilities behind [feature flags](https://developers.openai.com/codex/config-basic#feature-flags). Set them under `cli_config.features`; Promptfoo forwards the `cli_config` object to the Codex SDK as config overrides.
+Codex gates optional capabilities behind [feature flags](https://developers.openai.com/codex/config-basic#feature-flags). Set them under `cli_config.features`; artef forwards the `cli_config` object to the Codex SDK as config overrides.
 
 ```yaml
 providers:
@@ -638,7 +638,7 @@ Available levels vary by model:
 | `max`     | Deepest single-agent reasoning                  | gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna                                                                                                       |
 | `ultra`   | Proactive multi-agent reasoning using subagents | gpt-5.6-sol, gpt-5.6-terra                                                                                                                     |
 
-Promptfoo validates the allowed enum values, but model-specific support is ultimately enforced by the Codex SDK/runtime. If a value is not supported by the selected model, the provider returns a normal provider error row.
+artef validates the allowed enum values, but model-specific support is ultimately enforced by the Codex SDK/runtime. If a value is not supported by the selected model, the provider returns a normal provider error row.
 
 `ultra` is Codex-specific and uses subagents; do not send it as a Responses API `reasoning.effort` value.
 
@@ -687,7 +687,7 @@ providers:
         PFQA_SECRET_ENV_READ: '{{secretEnvValue}}'
 ```
 
-By default, promptfoo now passes a minimal shell environment (`PATH`, `HOME`, `SHELL`, temp vars, locale vars, and similar OS basics), merges `cli_env`, and injects only the provider's resolved Codex/OpenAI API key from promptfoo-level env overrides. Other config-level `env:` keys are not forwarded to the Codex subprocess; pass those explicitly through `cli_env`. The provider emits a one-time warning if it sees non-auth promptfoo env overrides that are not present in `cli_env`. This keeps Codex agent commands isolated from unrelated process secrets while still leaving a usable shell path.
+By default, artef now passes a minimal shell environment (`PATH`, `HOME`, `SHELL`, temp vars, locale vars, and similar OS basics), merges `cli_env`, and injects only the provider's resolved Codex/OpenAI API key from artef-level env overrides. Other config-level `env:` keys are not forwarded to the Codex subprocess; pass those explicitly through `cli_env`. The provider emits a one-time warning if it sees non-auth artef env overrides that are not present in `cli_env`. This keeps Codex agent commands isolated from unrelated process secrets while still leaving a usable shell path.
 
 Common Codex home and certificate process variables such as `CODEX_HOME` and `SSL_CERT_FILE` are also omitted from that minimal default unless you set them in `cli_env` or enable `inherit_process_env: true`. If those variables are present in the parent process and not forwarded, the provider emits a one-time warning so custom-home or TLS-sensitive evals do not fail silently. SSH agent variables such as `SSH_AUTH_SOCK` and `GIT_SSH_COMMAND` are only included in that warning when network access or live web search is enabled.
 
@@ -704,9 +704,9 @@ providers:
 
 ## Skills
 
-Codex loads [agent skills](https://developers.openai.com/codex/skills) from `.agents/skills/` directories in the `working_dir` hierarchy. Promptfoo does not enable skills via a provider-specific toggle; instead, you point `working_dir` at a repository that already contains the skill files you want Codex to discover.
+Codex loads [agent skills](https://developers.openai.com/codex/skills) from `.agents/skills/` directories in the `working_dir` hierarchy. artef does not enable skills via a provider-specific toggle; instead, you point `working_dir` at a repository that already contains the skill files you want Codex to discover.
 
-Promptfoo exposes inferred skill usage in `response.metadata.skillCalls`. Each entry is derived from Codex command text that directly references a local `SKILL.md` file:
+artef exposes inferred skill usage in `response.metadata.skillCalls`. Each entry is derived from Codex command text that directly references a local `SKILL.md` file:
 
 | Field    | Type   | Description                                           |
 | -------- | ------ | ----------------------------------------------------- |
@@ -714,7 +714,7 @@ Promptfoo exposes inferred skill usage in `response.metadata.skillCalls`. Each e
 | `path`   | string | Skill instruction file path read by Codex             |
 | `source` | string | Evidence source. For Codex this is always `heuristic` |
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Codex skill eval
 
 prompts:
@@ -742,9 +742,9 @@ The `CODEX_SKILLS_WORKING_DIR` and `CODEX_HOME_OVERRIDE` variables are optional.
 
 :::note
 
-`metadata.skillCalls` is a heuristic. The Codex SDK currently does not expose a first-class skill invocation event, so promptfoo infers skill usage from successful shell commands that directly reference `SKILL.md` files under `.agents/skills/<name>/`, absolute `working_dir/.agents/skills/<name>/` paths, the nearest git root's `.agents/skills/<name>/`, `CODEX_HOME/skills/<name>/`, `~/.codex/skills/<name>/`, or `/etc/codex/skills/<name>/`.
+`metadata.skillCalls` is a heuristic. The Codex SDK currently does not expose a first-class skill invocation event, so artef infers skill usage from successful shell commands that directly reference `SKILL.md` files under `.agents/skills/<name>/`, absolute `working_dir/.agents/skills/<name>/` paths, the nearest git root's `.agents/skills/<name>/`, `CODEX_HOME/skills/<name>/`, `~/.codex/skills/<name>/`, or `/etc/codex/skills/<name>/`.
 
-Wildcard paths such as `.agents/skills/*/SKILL.md` are ignored, and absolute `.agents/...` paths outside the active repo are ignored. `metadata.attemptedSkillCalls` is emitted only when promptfoo sees more candidate `SKILL.md` paths than confirmed successful reads; because this is heuristic metadata, attempted and successful lists can overlap when a skill path is retried.
+Wildcard paths such as `.agents/skills/*/SKILL.md` are ignored, and absolute `.agents/...` paths outside the active repo are ignored. `metadata.attemptedSkillCalls` is emitted only when artef sees more candidate `SKILL.md` paths than confirmed successful reads; because this is heuristic metadata, attempted and successful lists can overlap when a skill path is retried.
 
 :::
 
@@ -752,11 +752,11 @@ For reproducible CI runs, use `cli_env.CODEX_HOME` to point Codex at a project-l
 
 For ChatGPT-login runs, that project-local `CODEX_HOME` must already contain auth state. The checked-in sample fixture intentionally does not, so either run those examples with an API key or set `CODEX_HOME_OVERRIDE="$HOME/.codex"` when you want to reuse your local Codex login.
 
-Promptfoo also enriches traced Codex command spans with `promptfoo.skill.*` attributes when it detects skill reads. That makes it easier to debug routing in OTEL backends while keeping the main eval assertion surface on `skill-used`.
+artef also enriches traced Codex command spans with `artef.skill.*` attributes when it detects skill reads. That makes it easier to debug routing in OTEL backends while keeping the main eval assertion surface on `skill-used`.
 
 To trace what Codex does inside a skill, enable `deep_tracing` on the provider and root-level OTLP tracing in your config. That lets you assert on traced shell commands, MCP tool calls, search steps, and reasoning with the standard trace and trajectory assertions:
 
-```yaml title="promptfooconfig.tracing.yaml"
+```yaml title="artefconfig.tracing.yaml"
 description: Codex skill trace eval
 
 prompts:
@@ -825,7 +825,7 @@ This provider automatically caches responses based on:
 To disable caching globally:
 
 ```bash
-export PROMPTFOO_CACHE_ENABLED=false
+export artef_CACHE_ENABLED=false
 ```
 
 To bust the cache for a specific test case, set `options.bustCache: true` in your test configuration:
@@ -843,7 +843,7 @@ tests:
 
 Review multiple files in a codebase with enhanced reasoning:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -869,7 +869,7 @@ tests:
 
 Generate structured bug reports from code:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -908,7 +908,7 @@ prompts:
 
 Use persistent threads for multi-turn conversations:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-sdk
     config:
@@ -936,7 +936,7 @@ This works because all three test cases render from the same prompt template (`{
 - This provider implements `callApi` only. It does not implement embeddings, classification, moderation, image, video, transcription, or realtime APIs.
 - Prompt input arrays are supported only for Codex `text` and `local_image` items. Remote image URLs and other SDK item types are not forwarded by this provider.
 - The provider returns a final response after the Codex turn completes. `enable_streaming` is for event aggregation and tracing, not live partial output in assertions.
-- `output_schema` does not change the response type exposed to promptfoo assertions. `response.output` remains a string.
+- `output_schema` does not change the response type exposed to artef assertions. `response.output` remains a string.
 - `temperature`, `top_p`, `max_tokens`, `stop`, and `logprobs` are not exposed as first-class provider config fields.
 - Cost is estimated only for known model names. If you omit `config.model` or use an unknown model, `response.cost` is undefined.
 - `persist_threads`, `thread_id`, and `thread_pool_size` are ignored when `deep_tracing: true`.
@@ -970,48 +970,48 @@ Choose based on your use case:
 
 ## Examples
 
-See the [examples directory](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk) for complete implementations:
+See the [examples directory](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk) for complete implementations:
 
-- [Basic usage](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk/basic) - Simple code generation
-- [Skills testing](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk/skills) - Evaluate local Codex skills with `skill-used` and traced skill evidence
-- [Thread persistence](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk/thread-persistence) - Reuse one prompt-template thread across multiple tests
-- [Sandbox enforcement](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk/sandbox) - Verify `read-only` mode blocks writes in a sample workspace
-- [Amazon Bedrock](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk/bedrock) - Run Codex against OpenAI GPT-5.6 Sol, Terra, and Luna on Amazon Bedrock
-- [Agentic SDK comparison](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-agentic-sdks) - Side-by-side comparison with Claude Agent SDK
+- [Basic usage](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk/basic) - Simple code generation
+- [Skills testing](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk/skills) - Evaluate local Codex skills with `skill-used` and traced skill evidence
+- [Thread persistence](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk/thread-persistence) - Reuse one prompt-template thread across multiple tests
+- [Sandbox enforcement](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk/sandbox) - Verify `read-only` mode blocks writes in a sample workspace
+- [Amazon Bedrock](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk/bedrock) - Run Codex against OpenAI GPT-5.6 Sol, Terra, and Luna on Amazon Bedrock
+- [Agentic SDK comparison](https://github.com/artef/artef/tree/main/examples/compare-agentic-sdks) - Side-by-side comparison with Claude Agent SDK
 
 ### Verified end-to-end example runs
 
-From the promptfoo repo root, these commands exercise the provider's skill inference, deep tracing, thread persistence, and sandbox enforcement paths.
+From the artef repo root, these commands exercise the provider's skill inference, deep tracing, thread persistence, and sandbox enforcement paths.
 
 ```bash
 # Basic local skill eval with a host Codex login
 CODEX_SKILLS_WORKING_DIR="$PWD/examples/openai-codex-sdk/skills/sample-project" \
 CODEX_HOME_OVERRIDE="$HOME/.codex" \
 npm run local -- eval \
-  -c examples/openai-codex-sdk/skills/promptfooconfig.yaml \
+  -c examples/openai-codex-sdk/skills/artefconfig.yaml \
   --no-cache \
-  -o /tmp/promptfoo-codex-skills.json
+  -o /tmp/artef-codex-skills.json
 
 # Deep-tracing local skill eval with a host Codex login
 CODEX_SKILLS_WORKING_DIR="$PWD/examples/openai-codex-sdk/skills/sample-project" \
 CODEX_HOME_OVERRIDE="$HOME/.codex" \
 npm run local -- eval \
-  -c examples/openai-codex-sdk/skills/promptfooconfig.tracing.yaml \
+  -c examples/openai-codex-sdk/skills/artefconfig.tracing.yaml \
   --no-cache \
-  -o /tmp/promptfoo-codex-skills-tracing.json
+  -o /tmp/artef-codex-skills-tracing.json
 
 # Persistent-thread eval
 npm run local -- eval \
-  -c examples/openai-codex-sdk/thread-persistence/promptfooconfig.yaml \
+  -c examples/openai-codex-sdk/thread-persistence/artefconfig.yaml \
   --no-cache \
-  -o /tmp/promptfoo-codex-thread.json
+  -o /tmp/artef-codex-thread.json
 
 # Read-only sandbox eval
 CODEX_SANDBOX_WORKING_DIR="$PWD/examples/openai-codex-sdk/sandbox/sample-workspace" \
 npm run local -- eval \
-  -c examples/openai-codex-sdk/sandbox/promptfooconfig.yaml \
+  -c examples/openai-codex-sdk/sandbox/artefconfig.yaml \
   --no-cache \
-  -o /tmp/promptfoo-codex-sandbox.json
+  -o /tmp/artef-codex-sandbox.json
 ```
 
 Expected outcomes:

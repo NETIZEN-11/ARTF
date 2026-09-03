@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 12
 sidebar_label: Test Cases
 title: Test Case Configuration - Variables, Assertions, and Data
@@ -26,7 +26,7 @@ Define evaluation scenarios with variables, assertions, and test data.
 
 The simplest way to define tests is directly in your config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       question: 'What is the capital of France?'
@@ -66,7 +66,7 @@ tests:
 
 Set `options.repeat` to a positive integer to run one test case multiple times:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - description: 'Sample a nondeterministic response'
     vars:
@@ -218,7 +218,7 @@ tests:
 
 For larger test suites, store tests in separate files:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests: file://tests.yaml
 ```
 
@@ -235,11 +235,11 @@ tests:
 
 CSV or Excel (XLSX) files are ideal for bulk test data:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests: file://test_cases.csv
 ```
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests: file://test_cases.xlsx
 ```
 
@@ -265,7 +265,7 @@ Excel files (.xlsx and .xls) are supported as an optional feature. To use Excel 
    ```
 
 2. Use Excel files just like CSV files:
-   ```yaml title="promptfooconfig.yaml"
+   ```yaml title="artefconfig.yaml"
    tests: file://test_cases.xlsx
    ```
 
@@ -274,7 +274,7 @@ Excel files (.xlsx and .xls) are supported as an optional feature. To use Excel 
 - `file://test_cases.xlsx#Sheet2` - Select sheet by name
 - `file://test_cases.xlsx#2` - Select sheet by 1-based index (2 = second sheet)
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Use a specific sheet by name
 tests: file://test_cases.xlsx#DataSheet
 
@@ -334,7 +334,7 @@ translated_text,__expected
 "<span>Hola</span> <b>mundo</b>","contains-any: <b>,</span>"
 ```
 
-If you write `"contains-any: <b> </span>"`, promptfoo treats `<b> </span>` as a single search term rather than two separate tags.
+If you write `"contains-any: <b> </span>"`, artef treats `<b> </span>` as a single search term rather than two separate tags.
 
 To match a value that itself contains a comma, wrap that value in double quotes. Because the assertion is inside a quoted CSV cell, write each of those wrapping quotes twice:
 
@@ -363,7 +363,7 @@ At the assertion-string level, escape a literal double quote inside a quoted val
 | `__config:__expected:<key>` or `__config:__expectedN:<key>` | Set configuration for all or specific assertions         | `__config:__expected:threshold`, `__config:__expected2:threshold` |
 
 Using `__metadata` without a key is not supported. Specify the metadata field like `__metadata:category`.
-If a CSV file includes a `__metadata` column without a key, Promptfoo logs a warning and ignores the column.
+If a CSV file includes a `__metadata` column without a key, artef logs a warning and ignores the column.
 
 ### Metadata in CSV
 
@@ -386,12 +386,12 @@ topic,__metadata:tags[]
 Filter tests:
 
 ```bash
-promptfoo eval --filter-metadata category=math
-promptfoo eval --filter-metadata difficulty=easy
-promptfoo eval --filter-metadata tags=ai
+artef eval --filter-metadata category=math
+artef eval --filter-metadata difficulty=easy
+artef eval --filter-metadata tags=ai
 
 # Multiple filters use AND logic (tests must match ALL conditions)
-promptfoo eval --filter-metadata category=math --filter-metadata difficulty=easy
+artef eval --filter-metadata category=math --filter-metadata difficulty=easy
 ```
 
 ### JSON in CSV
@@ -414,7 +414,7 @@ prompts:
 
 Apply the same assertions to all tests loaded from a CSV file using [`defaultTest`](/docs/configuration/guide#default-test-cases):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   assert:
     - type: factuality
@@ -439,7 +439,7 @@ Generate tests programmatically:
 
 ### JavaScript/TypeScript
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests: file://generate_tests.js
 ```
 
@@ -470,7 +470,7 @@ module.exports = async function () {
 
 ### Python
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests: file://generate_tests.py:create_tests
 ```
 
@@ -502,7 +502,7 @@ def create_tests():
 
 Pass configuration to generators:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - path: file://generate_tests.py:create_tests
     config:
@@ -563,7 +563,7 @@ def create_tests(config):
 
 Include images, PDFs, and other files as variables:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       image: file://images/chart.png
@@ -573,9 +573,9 @@ tests:
 
 ### Path Resolution
 
-`file://` paths are resolved relative to your **config file's directory**, not the current working directory. This ensures consistent behavior regardless of where you run `promptfoo` from:
+`file://` paths are resolved relative to your **config file's directory**, not the current working directory. This ensures consistent behavior regardless of where you run `artef` from:
 
-```yaml title="src/tests/promptfooconfig.yaml"
+```yaml title="src/tests/artefconfig.yaml"
 tests:
   - vars:
       # Resolved as src/tests/data/input.json
@@ -637,7 +637,7 @@ In your prompt:
 
 ```
 project/
-├── promptfooconfig.yaml
+├── artefconfig.yaml
 ├── prompts/
 │   └── main_prompt.txt
 └── tests/
@@ -748,13 +748,13 @@ See [SharePoint integration](/docs/integrations/sharepoint) for details on loadi
 
 ### Azure Blob Storage
 
-Promptfoo can read test sets directly from Azure Blob Storage:
+artef can read test sets directly from Azure Blob Storage:
 
 ```yaml
 tests: az://myaccount/evals/tests.json
 ```
 
-Use `az://<account>/<container>/<blob>`. Promptfoo supports CSV, JSON, JSONL, YAML, and YML test-set blobs. Blob names may keep the original extension and append a suffix, such as `tests.json.<sha256>`.
+Use `az://<account>/<container>/<blob>`. artef supports CSV, JSON, JSONL, YAML, and YML test-set blobs. Blob names may keep the original extension and append a suffix, such as `tests.json.<sha256>`.
 
 Authentication uses the first available option:
 
@@ -762,11 +762,11 @@ Authentication uses the first available option:
 2. `AZURE_STORAGE_CONNECTION_STRING`
 3. Azure identity credentials through `DefaultAzureCredential`, such as Azure CLI login, managed identity, or service principal environment variables
 
-When using `AZURE_STORAGE_CONNECTION_STRING`, the storage account comes from the connection string. Keep the `az://` account segment aligned with that account so the URI remains self-describing; Promptfoo rejects clearly mismatched `AccountName` values. Query strings are interpreted as SAS tokens and must include `sig`.
+When using `AZURE_STORAGE_CONNECTION_STRING`, the storage account comes from the connection string. Keep the `az://` account segment aligned with that account so the URI remains self-describing; artef rejects clearly mismatched `AccountName` values. Query strings are interpreted as SAS tokens and must include `sig`.
 
 SAS query strings and `DefaultAzureCredential` use the standard public Azure Blob endpoint for the named account. For Azure Government, Azure operated by 21Vianet, or custom blob endpoints, use `AZURE_STORAGE_CONNECTION_STRING` with the appropriate `EndpointSuffix` or explicit `BlobEndpoint`.
 
-Blob-hosted YAML, JSON, and JSONL files are treated as remote test-case data. Promptfoo does not expand local file references or provider references found inside those blob contents.
+Blob-hosted YAML, JSON, and JSONL files are treated as remote test-case data. artef does not expand local file references or provider references found inside those blob contents.
 
 ### HuggingFace Datasets
 

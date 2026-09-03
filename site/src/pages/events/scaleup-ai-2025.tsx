@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -23,31 +23,31 @@ export default function ScaleUpAI2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at ScaleUp:AI 2025"
-      description="How Promptfoo is restoring trust and security in generative AI. Featured in Insight Partners' ScaleUp:AI 2025 Partner Series."
+      title="artef at ScaleUp:AI 2025"
+      description="How artef is restoring trust and security in generative AI. Featured in Insight Partners' ScaleUp:AI 2025 Partner Series."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at ScaleUp:AI 2025 - Insight Partners" />
+        <meta property="og:title" content="artef at ScaleUp:AI 2025 - Insight Partners" />
         <meta
           property="og:description"
-          content="How Promptfoo is restoring trust and security in generative AI. Ian Webster discusses the future of AI security."
+          content="How artef is restoring trust and security in generative AI. Ian Webster discusses the future of AI security."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/scaleup-ai-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/scaleup-ai-2025" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/scaleup-ai-2025.jpg"
+          content="https://www.artef.dev/img/events/scaleup-ai-2025.jpg"
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/scaleup-ai-2025.jpg"
+          content="https://www.artef.dev/img/events/scaleup-ai-2025.jpg"
         />
         <meta
           name="keywords"
-          content="ScaleUp:AI 2025, Insight Partners, AI security, Promptfoo, Ian Webster, venture capital, AI investment"
+          content="ScaleUp:AI 2025, Insight Partners, AI security, artef, Ian Webster, venture capital, AI investment"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/scaleup-ai-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/scaleup-ai-2025" />
       </Head>
 
       <main className={styles.scaleupPage}>
@@ -75,7 +75,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
           <div className={styles.container}>
             <p className={styles.heroSubtitle}>
               Featured in Insight Partners' ScaleUp:AI 2025 Partner Series. CEO Ian Webster shares
-              how Promptfoo is defining the standard for enterprise AI security.
+              how artef is defining the standard for enterprise AI security.
             </p>
 
             <div className={styles.eventDetails}>
@@ -116,7 +116,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
 
             <div className={styles.heroCtas}>
               <a
-                href="https://www.insightpartners.com/ideas/promptfoo-scale-up-ai/"
+                href="https://www.insightpartners.com/ideas/artef-scale-up-ai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.primaryCta}
@@ -144,7 +144,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
               </blockquote>
               <div className={styles.quoteAttribution}>
                 <div className={styles.quoteAuthor}>Ian Webster</div>
-                <div className={styles.quoteRole}>CEO & Co-founder, Promptfoo</div>
+                <div className={styles.quoteRole}>CEO & Co-founder, artef</div>
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
                 <div className={styles.cardIcon}>🤖</div>
                 <h3>Machines Testing Machines</h3>
                 <p>
-                  Promptfoo's AI models behave like attackers, red teaming applications through chat
+                  artef's AI models behave like attackers, red teaming applications through chat
                   interfaces and APIs to uncover vulnerabilities before deployment.
                 </p>
               </div>
@@ -180,7 +180,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
                 <h3>Rapid Adoption</h3>
                 <p>
                   As featured by Insight Partners: 200,000+ developers and 80+ Fortune 500 companies
-                  use Promptfoo, backed by an $18.4M Series A led by Insight.
+                  use artef, backed by an $18.4M Series A led by Insight.
                 </p>
               </div>
               <div className={styles.highlightCard}>
@@ -217,7 +217,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
                 <div className={styles.keyPointNumber}>02</div>
                 <h3>The Origin</h3>
                 <p>
-                  Ian Webster built the first version of Promptfoo while leading AI products at
+                  Ian Webster built the first version of artef while leading AI products at
                   Discord—shipping to 200 million users taught him "all of the wonderful things, and
                   also the terrible things" that follow.
                 </p>
@@ -256,7 +256,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
                   transformative technology companies.
                 </p>
                 <a
-                  href="https://www.insightpartners.com/ideas/promptfoo-scale-up-ai/"
+                  href="https://www.insightpartners.com/ideas/artef-scale-up-ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.aboutLink}
@@ -275,7 +275,7 @@ export default function ScaleUpAI2025(): React.ReactElement {
               <h2 className={styles.ctaTitle}>Ready to Secure Your AI?</h2>
               <p className={styles.ctaText}>
                 Join {SITE_CONSTANTS.USER_COUNT_DISPLAY}+ developers and{' '}
-                {SITE_CONSTANTS.FORTUNE_500_COUNT}+ Fortune 500 companies who trust Promptfoo to
+                {SITE_CONSTANTS.FORTUNE_500_COUNT}+ Fortune 500 companies who trust artef to
                 find and fix vulnerabilities in their AI applications.
               </p>
               <div className={styles.ctaButtons}>

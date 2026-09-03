@@ -1,9 +1,9 @@
-import { mockClipboard } from '@app/tests/browserMocks';
+﻿import { mockClipboard } from '@app/tests/browserMocks';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import SuggestionsDialog from './SuggestionsDialog';
-import type { GradingResult } from '@promptfoo/types';
+import type { GradingResult } from '@artef/types';
 
 function renderSuggestionsDialog(props: {
   open?: boolean;

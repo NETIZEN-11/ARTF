@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Link from '@docusaurus/Link';
 import styles from '../styles.module.css';
@@ -23,7 +23,7 @@ export default function Hero(): React.ReactElement {
           </Link>
         </div>
         <div className={styles.heroVideo}>
-          <img src="/img/continuous-monitoring.png" alt="Promptfoo LLM Security Overview" />
+          <img src="/img/continuous-monitoring.png" alt="artef LLM Security Overview" />
         </div>
         {/*
         <div className={styles.heroVideo}>
@@ -31,7 +31,7 @@ export default function Hero(): React.ReactElement {
             width="560"
             height="315"
             src="https://www.youtube.com/embed/your-video-id"
-            title="Promptfoo LLM Security Overview"
+            title="artef LLM Security Overview"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

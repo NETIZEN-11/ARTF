@@ -1,4 +1,4 @@
-import crypto from 'node:crypto';
+﻿import crypto from 'node:crypto';
 
 import express from 'express';
 import logger from '../logger';
@@ -12,8 +12,8 @@ import {
   decodeExportTraceServiceRequest,
 } from './protobuf';
 import {
-  PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID,
-  PROMPTFOO_RESOURCE_ATTR_TRACE_ID,
+  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
+  artef_RESOURCE_ATTR_TRACE_ID,
 } from './resourceAttributes';
 import { getTraceStore, type ParsedTrace, type SpanData, type TraceStore } from './store';
 
@@ -508,7 +508,7 @@ export class OTLPReceiver {
     // OTLP service info endpoint
     this.app.get('/v1/traces', (_req, res) => {
       res.status(200).json({
-        service: 'promptfoo-otlp-receiver',
+        service: 'artef-otlp-receiver',
         version: '1.0.0',
         supported_formats: this.acceptFormats,
       });
@@ -769,16 +769,16 @@ export class OTLPReceiver {
   ): ParsedTrace | null {
     // Prefer an inline traceId on the log record (set when the SDK propagated
     // TRACEPARENT into its logs context). Fall back to the resource attribute
-    // promptfoo.trace_id — agent providers inject this via
+    // artef.trace_id — agent providers inject this via
     // OTEL_RESOURCE_ATTRIBUTES because some log signals do not inherit
     // TRACEPARENT. Without either, we can't link anywhere useful.
     const hasValidInlineTraceId = !!log.traceId && !isZeroTraceId(log.traceId);
     const rawTraceId = hasValidInlineTraceId
       ? log.traceId
-      : getStringAttribute(resourceAttributes, PROMPTFOO_RESOURCE_ATTR_TRACE_ID);
+      : getStringAttribute(resourceAttributes, artef_RESOURCE_ATTR_TRACE_ID);
     if (!rawTraceId) {
       logger.debug(
-        `[OtlpReceiver] Dropping log: no traceId and no ${PROMPTFOO_RESOURCE_ATTR_TRACE_ID} resource attribute (scope=${scopeLog.scope?.name ?? 'unknown'}). Ensure TRACEPARENT is propagated or OTEL_RESOURCE_ATTRIBUTES is set by the provider.`,
+        `[OtlpReceiver] Dropping log: no traceId and no ${artef_RESOURCE_ATTR_TRACE_ID} resource attribute (scope=${scopeLog.scope?.name ?? 'unknown'}). Ensure TRACEPARENT is propagated or OTEL_RESOURCE_ATTRIBUTES is set by the provider.`,
       );
       return null;
     }
@@ -817,13 +817,13 @@ export class OTLPReceiver {
 
     // Log's own span_id is the span the log was emitted from, so that span
     // becomes our synthesized span's parent. Fall back to the resource-level
-    // promptfoo.parent_span_id the provider injected. We mint a fresh 16-hex
+    // artef.parent_span_id the provider injected. We mint a fresh 16-hex
     // span id so multiple logs within the same span don't collide on
     // (trace_id, span_id).
     const hasValidInlineSpanId = !!log.spanId && !isZeroSpanId(log.spanId);
     const rawParentSpanId = hasValidInlineSpanId
       ? log.spanId
-      : getStringAttribute(resourceAttributes, PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID);
+      : getStringAttribute(resourceAttributes, artef_RESOURCE_ATTR_PARENT_SPAN_ID);
     const parentSpanId = rawParentSpanId ? this.convertId(rawParentSpanId, 16) : undefined;
 
     const severityIsError =

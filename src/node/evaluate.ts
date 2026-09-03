@@ -1,4 +1,4 @@
-import { evaluateWithSource } from '../evaluate';
+﻿import { evaluateWithSource } from '../evaluate';
 
 import type { EvaluateOptions, EvaluateTestSuite } from '../types';
 
@@ -26,7 +26,7 @@ import type { EvaluateOptions, EvaluateTestSuite } from '../types';
  *
  * @example Basic usage
  * ```typescript
- * import { evaluate } from 'promptfoo';
+ * import { evaluate } from 'artef';
  *
  * const evalRecord = await evaluate({
  *   prompts: ['What is 2+2?'],

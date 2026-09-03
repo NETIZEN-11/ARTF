@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Smoke tests for JS/TS configs, providers, data loading, and script assertions.
  *
  * Tests JavaScript/TypeScript configuration files, custom providers,
@@ -220,7 +220,7 @@ describe('JavaScript/TypeScript Provider Smoke Tests', () => {
     });
 
     it('3.3.3 - TypeScript provider with enum and tsconfig path alias', () => {
-      const configPath = path.join(FRONTEND_TS_PROJECT_DIR, 'promptfooconfig.yaml');
+      const configPath = path.join(FRONTEND_TS_PROJECT_DIR, 'artefconfig.yaml');
       const outputPath = path.join(OUTPUT_DIR, 'ts-provider-frontend-output.json');
 
       const { exitCode, stderr } = runCli(
@@ -228,8 +228,8 @@ describe('JavaScript/TypeScript Provider Smoke Tests', () => {
         {
           cwd: FRONTEND_TS_PROJECT_DIR,
           env: {
-            PROMPTFOO_CONFIG_DIR: path.join(OUTPUT_DIR, 'frontend-ts-config'),
-            PROMPTFOO_LOG_DIR: path.join(OUTPUT_DIR, 'frontend-ts-logs'),
+            artef_CONFIG_DIR: path.join(OUTPUT_DIR, 'frontend-ts-config'),
+            artef_LOG_DIR: path.join(OUTPUT_DIR, 'frontend-ts-logs'),
           },
         },
       );

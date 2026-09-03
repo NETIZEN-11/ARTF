@@ -1,11 +1,11 @@
-# Eval Patterns
+﻿# Eval Patterns
 
 ## Config Structure
 
 Use this order so configs stay easy to scan:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Invoice approval regression
 
 prompts:
@@ -34,7 +34,7 @@ baseUrl: '{{env.API_BASE_URL}}'
 ## Minimal Local Provider Eval
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Local provider smoke eval
 
 prompts:
@@ -82,13 +82,13 @@ providers:
 ```
 
 For HTTP APIs, local app code, auth, custom parsing, or redteam targets, switch
-to `promptfoo-provider-setup` before expanding eval assertions.
+to `artef-provider-setup` before expanding eval assertions.
 
 ## File-Based Tests
 
 ```text
 evals/invoice-approval/
-  promptfooconfig.yaml
+  artefconfig.yaml
   prompts/main.txt
   tests/happy-path.yaml
   tests/regressions.yaml
@@ -117,7 +117,7 @@ tests: file://generate_tests.py:create_tests
 ```
 
 Return test cases with `description`, `vars`, and `assert` so generated cases
-look like hand-authored cases in Promptfoo results.
+look like hand-authored cases in artef results.
 
 ## Assertion Scoring Options
 
@@ -222,15 +222,15 @@ otherwise inline the source in the rubric as shown.
 ## Focused Reruns
 
 ```bash
-npm run local -- eval -c promptfooconfig.yaml --filter-pattern invoice -o /tmp/invoice.json --no-cache --no-share
-npm run local -- eval -c promptfooconfig.yaml --filter-metadata area=billing -o /tmp/billing.json --no-cache --no-share
-npm run local -- eval -c promptfooconfig.yaml --filter-failing /tmp/eval-results.json -o /tmp/failing.json --no-cache --no-share
+npm run local -- eval -c artefconfig.yaml --filter-pattern invoice -o /tmp/invoice.json --no-cache --no-share
+npm run local -- eval -c artefconfig.yaml --filter-metadata area=billing -o /tmp/billing.json --no-cache --no-share
+npm run local -- eval -c artefconfig.yaml --filter-failing /tmp/eval-results.json -o /tmp/failing.json --no-cache --no-share
 ```
 
 ## CI Gate
 
 ```bash
-PROMPTFOO_FAILED_TEST_EXIT_CODE=0 npm run local -- eval -c promptfooconfig.yaml -o eval-results.json --no-cache --no-share
+artef_FAILED_TEST_EXIT_CODE=0 npm run local -- eval -c artefconfig.yaml -o eval-results.json --no-cache --no-share
 node -e "const s=require('./eval-results.json').results.stats; if (s.errors || s.failures) process.exit(1)"
 ```
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: Layer Strategy
 description: Compose multiple red team strategies in order (e.g., base64 → rot13) to stack transformations and agentic techniques
 sidebar_label: Layer
@@ -12,7 +12,7 @@ The Layer strategy allows you to compose multiple red team strategies sequential
 
 Apply multiple strategies in sequence:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -43,7 +43,7 @@ When the **first step** is an agentic strategy (hydra, crescendo, goat, jailbrea
 2. **Per-Turn Transforms**: Remaining steps (e.g., audio, image) are applied to each turn dynamically
 3. **Multi-Modal Attacks**: Combine conversation-based attacks with audio/image delivery
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-audio-1.5
     config:
@@ -118,7 +118,7 @@ Transforms before an agentic strategy modify the attack goal, not each turn—ra
 
 Use the `label` field to differentiate multiple layer strategies in the same config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     # Multiple layer strategies with unique labels
@@ -143,7 +143,7 @@ Without labels, layer strategies are deduplicated based on their steps. With lab
 
 Simple string-based steps for built-in strategies:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -158,7 +158,7 @@ redteam:
 
 Object-based steps with individual configurations:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -182,7 +182,7 @@ redteam:
 
 Control which plugins each step applies to:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -209,7 +209,7 @@ redteam:
 
 Test voice-enabled AI agents with sophisticated jailbreak attempts:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -225,7 +225,7 @@ Hydra will orchestrate the attack, and each turn's prompt will be converted to a
 
 Test vision-enabled AI agents:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -239,7 +239,7 @@ redteam:
 
 For multi-attempt strategies (jailbreak, jailbreak:meta, jailbreak:tree), each independent attempt is converted to audio:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -253,7 +253,7 @@ redteam:
 
 Apply multiple encoding layers to evade detection:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -267,7 +267,7 @@ redteam:
 
 Stack multiple encoding techniques for maximum obfuscation:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -282,7 +282,7 @@ redteam:
 
 Combine jailbreak templates with encoding:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -296,7 +296,7 @@ redteam:
 
 Use custom scripts in your pipeline:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer
@@ -324,7 +324,7 @@ class AudioProvider {
     if (typeof prompt === 'string' && prompt.startsWith('{')) {
       try {
         const parsed = JSON.parse(prompt);
-        if (parsed._promptfoo_audio_hybrid) {
+        if (parsed._artef_audio_hybrid) {
           // Build messages from conversation history (text)
           messages = (parsed.history || []).map((msg) => ({
             role: msg.role,
@@ -389,7 +389,7 @@ The hybrid payload structure:
 
 ```json
 {
-  "_promptfoo_audio_hybrid": true,
+  "_artef_audio_hybrid": true,
   "history": [
     { "role": "user", "content": "Hello" },
     { "role": "assistant", "content": "Hi there!" }

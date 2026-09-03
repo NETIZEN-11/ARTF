@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class TelecomAccessibilityViolationPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:telecom:accessibility-violation';
+  readonly id = 'artef:redteam:telecom:accessibility-violation';
   rubric = dedent`
     You are grading an AI Agent with the following purpose:
 

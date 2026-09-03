@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { EcommercePciDssGrader } from '../../../src/redteam/plugins/ecommerce/ecommercePciDss';
 
 vi.mock('../../../src/util/fetch/index.ts');
@@ -39,6 +39,6 @@ describe('EcommercePciDssGrader', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:ecommerce:pci-dss');
+    expect(grader.id).toBe('artef:redteam:ecommerce:pci-dss');
   });
 });

@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+﻿import { StrictMode } from 'react';
 
 import {
   getCallApiMock,
@@ -51,8 +51,8 @@ describe('useVersionCheck', () => {
       selfHosted: true,
       isNpx: false,
       updateCommands: {
-        primary: 'npm i -g promptfoo@latest',
-        alternative: 'npx promptfoo@latest',
+        primary: 'npm i -g artef@latest',
+        alternative: 'npx artef@latest',
       },
     };
 
@@ -78,11 +78,11 @@ describe('useVersionCheck', () => {
       selfHosted: true,
       isNpx: false,
       updateCommands: {
-        primary: 'npm i -g promptfoo@latest',
-        alternative: 'npx promptfoo@latest',
+        primary: 'npm i -g artef@latest',
+        alternative: 'npx artef@latest',
       },
     };
-    const STORAGE_KEY = 'promptfoo:update:dismissedVersion';
+    const STORAGE_KEY = 'artef:update:dismissedVersion';
 
     localStorage.setItem(STORAGE_KEY, mockVersionInfo.latestVersion);
 
@@ -105,8 +105,8 @@ describe('useVersionCheck', () => {
       selfHosted: true,
       isNpx: false,
       updateCommands: {
-        primary: 'npm i -g promptfoo@latest',
-        alternative: 'npx promptfoo@latest',
+        primary: 'npm i -g artef@latest',
+        alternative: 'npx artef@latest',
       },
     };
 
@@ -122,7 +122,7 @@ describe('useVersionCheck', () => {
       result.current.dismiss();
     });
 
-    expect(localStorage.getItem('promptfoo:update:dismissedVersion')).toBe(
+    expect(localStorage.getItem('artef:update:dismissedVersion')).toBe(
       mockVersionInfo.latestVersion,
     );
     expect(result.current.dismissed).toBe(true);
@@ -142,7 +142,7 @@ describe('useVersionCheck', () => {
     const { result } = renderHook(() => useVersionCheck());
     await waitFor(() => expect(result.current.loading).toBe(false));
 
-    expect(getItemSpy).toHaveBeenCalledWith('promptfoo:update:dismissedVersion');
+    expect(getItemSpy).toHaveBeenCalledWith('artef:update:dismissedVersion');
     expect(result.current.versionInfo).toEqual(versionInfo);
     expect(result.current.error).toBeNull();
     expect(result.current.dismissed).toBe(false);
@@ -167,7 +167,7 @@ describe('useVersionCheck', () => {
     }).not.toThrow();
 
     expect(setItemSpy).toHaveBeenCalledWith(
-      'promptfoo:update:dismissedVersion',
+      'artef:update:dismissedVersion',
       versionInfo.latestVersion,
     );
     expect(result.current.dismissed).toBe(true);
@@ -182,8 +182,8 @@ describe('useVersionCheck', () => {
       selfHosted: true,
       isNpx: false,
       updateCommands: {
-        primary: 'npm i -g promptfoo@latest',
-        alternative: 'npx promptfoo@latest',
+        primary: 'npm i -g artef@latest',
+        alternative: 'npx artef@latest',
       },
     };
 

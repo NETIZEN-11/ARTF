@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How to run CyberSecEval'
 description: "Even top models fail 25-50% of prompt injection attacks. Use Meta's CyberSecEval benchmark to see how vulnerable your LLM really is to these critical security flaws."
 image: /img/blog/cyberseceval/cyberseceval-illustration.jpg
@@ -20,9 +20,9 @@ tags: [research-analysis, meta]
 
 # How to run CyberSecEval
 
-Your LLM's security is only as strong as its weakest prompt. This guide shows you how to use [Promptfoo](https://github.com/promptfoo/promptfoo) to run standardized cybersecurity evaluations against any AI model, including OpenAI, Ollama, and HuggingFace models.
+Your LLM's security is only as strong as its weakest prompt. This guide shows you how to use [artef](https://github.com/artef/artef) to run standardized cybersecurity evaluations against any AI model, including OpenAI, Ollama, and HuggingFace models.
 
-Importantly, Promptfoo also allows you to run these evaluations **on your application** rather than just the base model. This is important because behavior will vary based on how you've wrapped any given model.
+Importantly, artef also allows you to run these evaluations **on your application** rather than just the base model. This is important because behavior will vary based on how you've wrapped any given model.
 
 We'll use Meta's [CyberSecEval benchmark](https://ai.meta.com/research/publications/cyberseceval-3-advancing-the-evaluation-of-cybersecurity-risks-and-capabilities-in-large-language-models/) to test models against prompt injection vulnerabilities. According to Meta, even state-of-the-art models show between 25% and 50% successful prompt injection rates, making this evaluation critical for production deployments.
 
@@ -32,7 +32,7 @@ The end result is a report that shows you how well your model is able to defend 
 
 :::info
 
-To jump straight to the code, [click here](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-cyberseceval).
+To jump straight to the code, [click here](https://github.com/artef/artef/tree/main/examples/redteam-cyberseceval).
 
 :::
 
@@ -51,12 +51,12 @@ CyberSecEval is a benchmark suite designed by Meta to assess cybersecurity vulne
 Before starting, make sure you have:
 
 - **Node.js**: `>=22.22.0` (Node.js 24 LTS recommended; [download](https://nodejs.org/))
-- **Promptfoo**: We'll use `npx` to run commands, so no separate installation is needed
+- **artef**: We'll use `npx` to run commands, so no separate installation is needed
 - **Model Access**: API keys or local setup for the models you want to test
 
 ## Quick Start
 
-Let's set up an evaluation that uses the CyberSecEval dataset.Create a simple configuration file `promptfooconfig.yaml`:
+Let's set up an evaluation that uses the CyberSecEval dataset.Create a simple configuration file `artefconfig.yaml`:
 
 ```yaml
 prompts:
@@ -93,7 +93,7 @@ We'll set up a basic prompt file `prompt.json` that just passes through each pro
 ]
 ```
 
-And lastly, we'll [download the CyberSecEval test cases](https://github.com/promptfoo/promptfoo/blob/main/examples/redteam-cyberseceval/prompt_injection.json) and place them in the same directory as `prompt_injection.json`.
+And lastly, we'll [download the CyberSecEval test cases](https://github.com/artef/artef/blob/main/examples/redteam-cyberseceval/prompt_injection.json) and place them in the same directory as `prompt_injection.json`.
 
 ## Testing Different Models
 
@@ -113,7 +113,7 @@ First, start your Ollama server and pull the model you want to test:
 ollama pull llama3.1
 ```
 
-Then configure Promptfoo to use it:
+Then configure artef to use it:
 
 ```yaml
 targets:
@@ -153,7 +153,7 @@ targets:
 
 ### Other providers
 
-Promptfoo supports a wide range of providers, including Azure, Bedrock, Groq, and more. See the [full list of providers](/docs/providers/) for more information.
+artef supports a wide range of providers, including Azure, Bedrock, Groq, and more. See the [full list of providers](/docs/providers/) for more information.
 
 ## Running the Evaluation
 
@@ -166,19 +166,19 @@ The evaluation process happens in two steps:
 Run the evaluation:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 CyberSecEval is fairly large (about 1000 test cases), so we can run a smaller sample to get a quick sense of the results:
 
 ```bash
-npx promptfoo@latest eval --filter-sample 30
+npx artef@latest eval --filter-sample 30
 ```
 
 View the results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Understanding the Results
@@ -201,9 +201,9 @@ GPT 4o fails to an [indirect prompt injection](/docs/red-team/plugins/indirect-p
 
 ## Using the CyberSecEval Red Team Plugin
 
-Promptfoo includes a built-in [CyberSecEval red team plugin](/docs/red-team/plugins/cyberseceval/) that makes it easy to run CyberSecEval and combine it with other red teaming tests.
+artef includes a built-in [CyberSecEval red team plugin](/docs/red-team/plugins/cyberseceval/) that makes it easy to run CyberSecEval and combine it with other red teaming tests.
 
-Create a configuration file `promptfooconfig.yaml`:
+Create a configuration file `artefconfig.yaml`:
 
 ```yaml
 targets:
@@ -243,7 +243,7 @@ redteam:
 Then, run the red team command in the same directory as your configuration file:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 ## Best Practices
@@ -275,7 +275,7 @@ tests:
 
 ## Next steps
 
-Running CyberSecEval with Promptfoo provides a standardized way to assess and compare the prompt injection vulnerabilities of different LLMs. With even leading models showing significant vulnerability rates, regular testing is crucial for maintaining secure AI systems.
+Running CyberSecEval with artef provides a standardized way to assess and compare the prompt injection vulnerabilities of different LLMs. With even leading models showing significant vulnerability rates, regular testing is crucial for maintaining secure AI systems.
 
 Remember to always combine automated testing with human review and follow security best practices in your AI deployments.
 

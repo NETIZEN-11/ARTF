@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Smoke tests for extension hooks.
  *
  * Verifies that a Python extension hook returning its context does not break
  * function-based prompts — the hook's subprocess JSON round-trip used to drop
  * the non-serializable prompt function, sending raw Python source to the
  * provider instead (regression test for
- * https://github.com/promptfoo/promptfoo/issues/9653).
+ * https://github.com/artef/artef/issues/9653).
  */
 import { spawnSync } from 'child_process';
 import * as fs from 'fs';
@@ -42,8 +42,8 @@ function runCli(
 
 function findPythonPath(): string | undefined {
   const candidates: Array<[string, string[]]> = [];
-  if (process.env.PROMPTFOO_PYTHON) {
-    candidates.push([process.env.PROMPTFOO_PYTHON, ['-c', 'import sys; print(sys.executable)']]);
+  if (process.env.artef_PYTHON) {
+    candidates.push([process.env.artef_PYTHON, ['-c', 'import sys; print(sys.executable)']]);
   }
   if (process.platform === 'win32') {
     candidates.push(['py', ['-3', '-c', 'import sys; print(sys.executable)']]);
@@ -97,11 +97,11 @@ describe('Extension Hook Smoke Tests', () => {
         {
           cwd: path.join(FIXTURES_DIR, 'configs'),
           env: {
-            PROMPTFOO_CONFIG_DIR: OUTPUT_DIR,
-            PROMPTFOO_PYTHON: PYTHON_PATH,
-            PROMPTFOO_DISABLE_SHARING: 'true',
-            PROMPTFOO_DISABLE_TELEMETRY: 'true',
-            PROMPTFOO_DISABLE_UPDATE: 'true',
+            artef_CONFIG_DIR: OUTPUT_DIR,
+            artef_PYTHON: PYTHON_PATH,
+            artef_DISABLE_SHARING: 'true',
+            artef_DISABLE_TELEMETRY: 'true',
+            artef_DISABLE_UPDATE: 'true',
           },
         },
       );

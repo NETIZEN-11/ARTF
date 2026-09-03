@@ -1,4 +1,4 @@
-import '@app/lib/prism';
+﻿import '@app/lib/prism';
 import 'prismjs/themes/prism.css';
 
 import React from 'react';
@@ -11,7 +11,7 @@ import RequestTransformTab from './tabs/RequestTransformTab';
 import SessionsTab from './tabs/SessionsTab';
 import TlsHttpsConfigTab from './tabs/TlsHttpsConfigTab';
 import TokenEstimationTab from './tabs/TokenEstimationTab';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 // Tab values for string-based Radix tabs
 const TabValue = {

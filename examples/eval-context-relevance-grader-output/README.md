@@ -1,4 +1,4 @@
-# eval-context-relevance-grader-output (Context Relevance Grader Output)
+﻿# eval-context-relevance-grader-output (Context Relevance Grader Output)
 
 This example shows how `context-relevance` stores the raw judge response in
 assertion metadata so it can be inspected in View.
@@ -8,10 +8,10 @@ assertion metadata so it can be inspected in View.
 Run it with:
 
 ```bash
-npx promptfoo@latest init --example eval-context-relevance-grader-output
+npx artef@latest init --example eval-context-relevance-grader-output
 cd eval-context-relevance-grader-output
-npx promptfoo@latest eval --no-cache
-npx promptfoo@latest view
+npx artef@latest eval --no-cache
+npx artef@latest view
 ```
 
 ## Inspect

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import logger from '../logger';
 import Eval, { EvalQueries } from '../models/eval';
 import { wrapTable } from '../table';
@@ -53,10 +53,10 @@ export function listCommand(program: Command) {
       printBorder();
 
       logger.info(
-        `Run ${chalk.green('promptfoo show eval <id>')} to see details of a specific evaluation.`,
+        `Run ${chalk.green('artef show eval <id>')} to see details of a specific evaluation.`,
       );
       logger.info(
-        `Run ${chalk.green('promptfoo show prompt <id>')} to see details of a specific prompt.`,
+        `Run ${chalk.green('artef show prompt <id>')} to see details of a specific prompt.`,
       );
     });
 
@@ -95,10 +95,10 @@ export function listCommand(program: Command) {
       logger.info(wrapTable(tableData, columnWidths) as string);
       printBorder();
       logger.info(
-        `Run ${chalk.green('promptfoo show prompt <id>')} to see details of a specific prompt.`,
+        `Run ${chalk.green('artef show prompt <id>')} to see details of a specific prompt.`,
       );
       logger.info(
-        `Run ${chalk.green('promptfoo show eval <id>')} to see details of a specific evaluation.`,
+        `Run ${chalk.green('artef show eval <id>')} to see details of a specific evaluation.`,
       );
     });
 
@@ -144,13 +144,13 @@ export function listCommand(program: Command) {
       logger.info(wrapTable(tableData, columnWidths) as string);
       printBorder();
       logger.info(
-        `Run ${chalk.green('promptfoo show dataset <id>')} to see details of a specific dataset.`,
+        `Run ${chalk.green('artef show dataset <id>')} to see details of a specific dataset.`,
       );
       logger.info(
-        `Run ${chalk.green('promptfoo show prompt <id>')} to see details of a specific prompt.`,
+        `Run ${chalk.green('artef show prompt <id>')} to see details of a specific prompt.`,
       );
       logger.info(
-        `Run ${chalk.green('promptfoo show eval <id>')} to see details of a specific evaluation.`,
+        `Run ${chalk.green('artef show eval <id>')} to see details of a specific evaluation.`,
       );
     });
 }

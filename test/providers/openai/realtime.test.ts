@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, Mock, Mocked, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, Mock, Mocked, vi } from 'vitest';
 import WebSocket from 'ws';
 import { disableCache, enableCache } from '../../../src/cache';
 import logger from '../../../src/logger';
@@ -2353,7 +2353,7 @@ describe('OpenAI Realtime Provider', () => {
 
     it('serializes concurrent persistent-path turns and waits for OPEN before sending', async () => {
       // Regression test for the concurrency race that caused the shipped
-      // promptfooconfig-conversation.yaml example to fail 100% at default
+      // artefconfig-conversation.yaml example to fail 100% at default
       // concurrency=4 with "WebSocket is not open: readyState 0 (CONNECTING)".
       const provider = new OpenAiRealtimeProvider('gpt-4o-realtime-preview', {
         config: { modalities: ['text'], maintainContext: true },
@@ -2961,7 +2961,7 @@ describe('OpenAI Realtime Provider', () => {
       expect(constructedUrl).toBe(
         'wss://api.openai.com/v1/realtime?model=' + encodeURIComponent('gpt-4o-realtime-preview'),
       );
-      expect(wsOptions.headers['X-OpenAI-Originator']).toBe('promptfoo');
+      expect(wsOptions.headers['X-OpenAI-Originator']).toBe('artef');
     });
 
     it('uses the GA realtime wire shape without the beta header', async () => {

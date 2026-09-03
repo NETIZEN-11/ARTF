@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 
 interface PageMetaOptions {
   title: string;
@@ -18,12 +18,12 @@ export function usePageMeta({ title, description, image }: PageMetaOptions) {
     const ogImageTag = document.querySelector('meta[property="og:image"]');
     const defaultOgImage = ogImageTag?.getAttribute('content') || '';
 
-    document.title = `${title} | promptfoo`;
+    document.title = `${title} | artef`;
     if (description && descriptionTag) {
       descriptionTag.setAttribute('content', description);
     }
     if (ogTitleTag) {
-      ogTitleTag.setAttribute('content', `${title} | promptfoo`);
+      ogTitleTag.setAttribute('content', `${title} | artef`);
     }
     if (description && ogDescriptionTag) {
       ogDescriptionTag.setAttribute('content', description);

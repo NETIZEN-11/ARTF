@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import CloseIcon from '@mui/icons-material/Close';
@@ -181,7 +181,7 @@ function StoreContent() {
               fontSize: { xs: '0.95rem', sm: '1.1rem' },
             }}
           >
-            Official Promptfoo merch for the AI testing community
+            Official artef merch for the AI testing community
           </Typography>
         </Box>
 
@@ -197,18 +197,18 @@ function StoreContent() {
 export default function StorePage() {
   return (
     <Layout
-      title="The Prompt Shop | Promptfoo Merch"
-      description="Official Promptfoo merchandise and swag"
+      title="The Prompt Shop | artef Merch"
+      description="Official artef merchandise and swag"
       noFooter
     >
       <Head>
         <meta property="og:title" content="The Prompt Shop" />
-        <meta property="og:description" content="Official Promptfoo merchandise and swag" />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/og/store-og.png" />
+        <meta property="og:description" content="Official artef merchandise and swag" />
+        <meta property="og:image" content="https://www.artef.dev/img/og/store-og.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/og/store-og.png" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/og/store-og.png" />
         <link rel="preconnect" href="https://storefront-api.fourthwall.com" />
       </Head>
       <StoreErrorBoundary>

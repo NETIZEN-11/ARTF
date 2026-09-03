@@ -1,12 +1,12 @@
----
+﻿---
 sidebar_position: 42
 title: OpenAI Codex App Server
-description: Evaluate Codex app-server with streamed agent events, approvals, sandboxing controls, and thread metadata through the Promptfoo JSON-RPC provider guide.
+description: Evaluate Codex app-server with streamed agent events, approvals, sandboxing controls, and thread metadata through the artef JSON-RPC provider guide.
 ---
 
 # OpenAI Codex App Server
 
-This provider starts `codex app-server` as a local child process and drives the Codex app-server JSON-RPC protocol from promptfoo. Use it when you need to eval the rich client surface of Codex: streamed agent items, approvals, skills, plugins, app connector events, command/file trajectories, and thread lifecycle metadata.
+This provider starts `codex app-server` as a local child process and drives the Codex app-server JSON-RPC protocol from artef. Use it when you need to eval the rich client surface of Codex: streamed agent items, approvals, skills, plugins, app connector events, command/file trajectories, and thread lifecycle metadata.
 
 For CI and straightforward automation, prefer the [OpenAI Codex SDK provider](./openai-codex-sdk.md). The app-server protocol is experimental, broader than the SDK, and designed for rich product integrations.
 
@@ -20,13 +20,13 @@ providers:
   - openai:codex-desktop:gpt-5.6-sol
 ```
 
-`openai:codex-desktop` is an alias for the same app-server protocol. Promptfoo starts its own `codex app-server` process; it does not attach to an already-running Codex Desktop app process.
+`openai:codex-desktop` is an alias for the same app-server protocol. artef starts its own `codex app-server` process; it does not attach to an already-running Codex Desktop app process.
 
 ## Codex SDK vs App Server vs Desktop App
 
 Keep this provider separate from the Codex SDK provider. They share Codex concepts, but they expose different runtime contracts.
 
-| Surface            | Best for                                                      | Runtime                                              | Promptfoo provider                                    |
+| Surface            | Best for                                                      | Runtime                                              | artef provider                                    |
 | ------------------ | ------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------- |
 | Codex SDK          | CI, automation, simple agentic coding evals                   | `@openai/codex-sdk` library                          | [`openai:codex-sdk`](./openai-codex-sdk.md)           |
 | Codex Security SDK | Repository scans, validated findings, scan cost, and coverage | `@openai/codex-security` library                     | [`openai:codex-security`](./openai-codex-security.md) |
@@ -35,7 +35,7 @@ Keep this provider separate from the Codex SDK provider. They share Codex concep
 
 Use this provider when the thing being tested depends on app-server-only behavior such as approval request payloads, streamed item notifications, app connector events, plugin/skill metadata, or thread lifecycle operations. Use the SDK provider when you only need final Codex output, thread reuse, structured output, and traced shell/MCP/search/file steps.
 
-## What Promptfoo Can and Can't Evaluate
+## What artef Can and Can't Evaluate
 
 | Eval surface                                    | Supported? | Notes                                                                                                                                       |
 | ----------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,11 +47,11 @@ Use this provider when the thing being tested depends on app-server-only behavio
 | Approval, permission, MCP, and tool requests    | Yes        | `server_request_policy` gives deterministic responses for non-interactive evals.                                                            |
 | Streamed item metadata                          | Yes        | Command, file, MCP, dynamic tool, web search, reasoning, and agent-message items are normalized.                                            |
 | Deep app-server tracing                         | Yes        | Enable `deep_tracing` to inject OTEL env vars into a fresh app-server process per row.                                                      |
-| Live partial output in assertions               | No         | Promptfoo receives the final provider response after the turn completes.                                                                    |
-| Attaching to an existing Desktop app            | No         | Promptfoo owns a separate app-server child process.                                                                                         |
+| Live partial output in assertions               | No         | artef receives the final provider response after the turn completes.                                                                    |
+| Attaching to an existing Desktop app            | No         | artef owns a separate app-server child process.                                                                                         |
 | WebSocket transport                             | No         | The provider uses stdio; app-server WebSocket mode remains experimental upstream.                                                           |
 
-When `service_tier: fast` is used, Promptfoo still reports only the standard model-rate estimate from the returned token ledger. The app-server payload does not expose enough billing metadata to convert Codex fast-mode credit consumption into an exact spend figure.
+When `service_tier: fast` is used, artef still reports only the standard model-rate estimate from the returned token ledger. The app-server payload does not expose enough billing metadata to convert Codex fast-mode credit consumption into an exact spend figure.
 
 ## Setup
 
@@ -68,13 +68,13 @@ You can also authenticate with an API key:
 export OPENAI_API_KEY=your_api_key_here
 ```
 
-Promptfoo also accepts `CODEX_API_KEY` or `config.apiKey`. For reproducible evals, prefer API-key-backed runs or set `cli_env.CODEX_HOME` to a fixture home directory that already contains the intended Codex login state.
+artef also accepts `CODEX_API_KEY` or `config.apiKey`. For reproducible evals, prefer API-key-backed runs or set `cli_env.CODEX_HOME` to a fixture home directory that already contains the intended Codex login state.
 
 ### Run on Amazon Bedrock
 
 Set `model_provider: amazon-bedrock` with a Bedrock model id to run OpenAI's frontier models on [Amazon Bedrock](/docs/providers/aws-bedrock/#openai-models). Provide AWS credentials and a Region to the Codex CLI through `cli_env`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-app-server
     config:
@@ -93,7 +93,7 @@ The same notes as the [Codex SDK Bedrock setup](/docs/providers/openai-codex-sdk
 
 ## Basic Usage
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-app-server:gpt-5.5
     config:
@@ -110,7 +110,7 @@ For downstream coding-agent checks, `raw` also includes SDK-compatible `items` a
 
 ## Safety Defaults
 
-The app-server protocol can expose shell, filesystem, config, plugin, MCP, and app connector surfaces. Promptfoo defaults to deterministic eval behavior:
+The app-server protocol can expose shell, filesystem, config, plugin, MCP, and app connector surfaces. artef defaults to deterministic eval behavior:
 
 | Option                | Default       |
 | --------------------- | ------------- |
@@ -136,7 +136,7 @@ Use `accept`, `acceptForSession`, permission grants, or MCP elicitation acceptan
 
 ## Configuration
 
-The provider validates top-level provider config strictly. Prompt-level config is parsed more leniently because promptfoo merges generic test options into `prompt.config`; unrelated keys are ignored there, while invalid values for known Codex fields still return a row-level provider error.
+The provider validates top-level provider config strictly. Prompt-level config is parsed more leniently because artef merges generic test options into `prompt.config`; unrelated keys are ignored there, while invalid values for known Codex fields still return a row-level provider error.
 
 | Parameter                  | Type          | Description                                                                                                                                                         | Default              |
 | -------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -217,7 +217,7 @@ providers:
 
 ### Goals and Subagents
 
-Codex gates optional capabilities behind [feature flags](https://developers.openai.com/codex/config-basic#feature-flags). Set them under `cli_config.features`, which Promptfoo forwards as `codex app-server -c features.<name>=...` overrides.
+Codex gates optional capabilities behind [feature flags](https://developers.openai.com/codex/config-basic#feature-flags). Set them under `cli_config.features`, which artef forwards as `codex app-server -c features.<name>=...` overrides.
 
 ```yaml
 providers:
@@ -251,7 +251,7 @@ providers:
           content:
             severity: low
           _meta:
-            source: promptfoo
+            source: artef
         permissions:
           scope: session
           strict_auto_review: true
@@ -285,7 +285,7 @@ Legacy `execCommandApproval` and `applyPatchApproval` callbacks are also handled
 
 ## Structured Output
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:codex-app-server:gpt-5.5
     config:
@@ -352,7 +352,7 @@ Command output, tool arguments, and approval metadata are sanitized before they 
 
 ## Tracing
 
-Promptfoo wraps each provider call in a GenAI span. The app-server provider also creates item-level spans for completed command, file, MCP, dynamic tool, reasoning, search, and agent-message items, plus a `gen_ai.turn N` marker span around each Codex `turn/started` -> `turn/completed` notification. Every item span is tagged with `gen_ai.turn.index` so callers can correlate items back to the protocol turn that emitted them.
+artef wraps each provider call in a GenAI span. The app-server provider also creates item-level spans for completed command, file, MCP, dynamic tool, reasoning, search, and agent-message items, plus a `gen_ai.turn N` marker span around each Codex `turn/started` -> `turn/completed` notification. Every item span is tagged with `gen_ai.turn.index` so callers can correlate items back to the protocol turn that emitted them.
 
 To verify that an app-server protocol turn was traced, count the turn markers:
 
@@ -370,14 +370,14 @@ generations and tool execution. App-server notifications do not expose those int
 model-generation boundaries, so these markers cannot distinguish batched from
 sequential tool calls inside a turn.
 
-Enable deeper app-server tracing by setting `deep_tracing: true` with Promptfoo's OpenTelemetry tracing enabled. Promptfoo configures Codex's trace exporter automatically unless you have already selected one, and starts a fresh app-server process for each row so the child process receives the active trace context. Reusable app-server processes and persistent thread pooling are disabled in this mode; explicit `thread_id` resumes are still serialized so parallel rows do not overlap turns on the same Codex thread.
+Enable deeper app-server tracing by setting `deep_tracing: true` with artef's OpenTelemetry tracing enabled. artef configures Codex's trace exporter automatically unless you have already selected one, and starts a fresh app-server process for each row so the child process receives the active trace context. Reusable app-server processes and persistent thread pooling are disabled in this mode; explicit `thread_id` resumes are still serialized so parallel rows do not overlap turns on the same Codex thread.
 
 ## Local Verification
 
 Run from the repository root:
 
 ```bash
-npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml --no-cache
+npm run local -- eval -c examples/openai-codex-app-server/artefconfig.yaml --no-cache
 ```
 
 Use `--env-file .env` if your API key is stored there.

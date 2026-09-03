@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import * as path from 'path';
 
 import dedent from 'dedent';
@@ -69,7 +69,7 @@ describe('Integration: commandLineOptions.envPath', () => {
   beforeAll(() => {
     tempDir = fs.mkdtempSync(path.join(__dirname, 'test-'));
     tempEnvFile = path.join(tempDir, '.env.test');
-    tempConfigFile = path.join(tempDir, 'promptfooconfig.yaml');
+    tempConfigFile = path.join(tempDir, 'artefconfig.yaml');
   });
 
   afterAll(() => {
@@ -237,7 +237,7 @@ tests:
     const relEnvAbs = path.join(subDir, relEnv);
     fs.writeFileSync(relEnvAbs, 'REL=ok');
 
-    const subConfig = path.join(subDir, 'promptfooconfig.yaml');
+    const subConfig = path.join(subDir, 'artefconfig.yaml');
     fs.writeFileSync(
       subConfig,
       `
@@ -316,7 +316,7 @@ tests:
       fs.writeFileSync(envFile1, 'VAR1=val1');
       fs.writeFileSync(envFile2, 'VAR2=val2');
 
-      const subConfig = path.join(subDir, 'promptfooconfig.yaml');
+      const subConfig = path.join(subDir, 'artefconfig.yaml');
       fs.writeFileSync(
         subConfig,
         `

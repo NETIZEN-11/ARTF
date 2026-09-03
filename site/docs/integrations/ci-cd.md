@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: CI/CD
 title: CI/CD Integration for LLM Eval and Security
 description: Automate LLM testing in CI/CD pipelines with GitHub Actions, GitLab CI, and Jenkins for continuous security and quality checks
@@ -15,7 +15,7 @@ keywords:
 
 # CI/CD Integration for LLM Evaluation and Security
 
-Integrate promptfoo into your CI/CD pipelines to automatically evaluate prompts, test for security vulnerabilities, and ensure quality before deployment. This guide covers modern CI/CD workflows for both quality testing and security scanning.
+Integrate artef into your CI/CD pipelines to automatically evaluate prompts, test for security vulnerabilities, and ensure quality before deployment. This guide covers modern CI/CD workflows for both quality testing and security scanning.
 
 ## Why CI/CD for LLM Apps?
 
@@ -33,35 +33,35 @@ For other platforms, here's a basic example:
 
 ```bash
 # Run eval (no global install required)
-npx promptfoo@latest eval -c promptfooconfig.yaml -o results.json
+npx artef@latest eval -c artefconfig.yaml -o results.json
 
 # Run security scan (red teaming)
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 ## Prerequisites
 
 - Node.js `>=22.22.0` installed in your CI environment (Node.js 24 LTS recommended)
 - LLM provider API keys (stored as secure environment variables)
-- A promptfoo configuration file (`promptfooconfig.yaml`)
+- A artef configuration file (`artefconfig.yaml`)
 - (Optional) Docker for containerized environments
 
 ## Core Concepts
 
 ### 1. Eval vs Red Teaming
 
-Promptfoo supports two main CI/CD workflows:
+artef supports two main CI/CD workflows:
 
 **Eval** - Test prompt quality and performance:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml
+npx artef@latest eval -c artefconfig.yaml
 ```
 
 **Red Teaming** - Security vulnerability scanning:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 See our [red team quickstart](/docs/red-team/quickstart) for security testing details.
@@ -69,40 +69,40 @@ See our [red team quickstart](/docs/red-team/quickstart) for security testing de
 #### Attach CI/CD Context with Tags
 
 Use repeatable `--tag key=value` flags to attach pipeline context to an evaluation
-without modifying `promptfooconfig.yaml` or a red team scan template. Tags are saved
+without modifying `artefconfig.yaml` or a red team scan template. Tags are saved
 with the eval and included when results are shared.
 
 ```bash
-npx promptfoo@latest eval --tag ci.run-id="$CI_PIPELINE_ID" --tag git.sha="$CI_COMMIT_SHA"
-npx promptfoo@latest redteam run --tag ci.run-id="$CI_PIPELINE_ID" --tag git.sha="$CI_COMMIT_SHA"
+npx artef@latest eval --tag ci.run-id="$CI_PIPELINE_ID" --tag git.sha="$CI_COMMIT_SHA"
+npx artef@latest redteam run --tag ci.run-id="$CI_PIPELINE_ID" --tag git.sha="$CI_COMMIT_SHA"
 ```
 
-`promptfoo redteam eval` accepts the same `--tag` option when running previously
+`artef redteam eval` accepts the same `--tag` option when running previously
 generated probes from `redteam.yaml`.
 
 ### 2. Output Formats
 
-Promptfoo supports multiple output formats for different CI/CD needs:
+artef supports multiple output formats for different CI/CD needs:
 
 ```bash
 # JSON for programmatic processing
-npx promptfoo@latest eval -o results.json
+npx artef@latest eval -o results.json
 
 # HTML for human-readable reports
-npx promptfoo@latest eval -o report.html
+npx artef@latest eval -o report.html
 
 # JUnit XML for native CI test-report viewers
-npx promptfoo@latest eval -o results.junit.xml
+npx artef@latest eval -o results.junit.xml
 
 # Multiple formats
-npx promptfoo@latest eval -o results.json -o report.html -o results.junit.xml
+npx artef@latest eval -o results.json -o report.html -o results.junit.xml
 ```
 
 Learn more about [output formats and processing](/docs/configuration/outputs).
 
 :::info Enterprise Feature
 
-SonarQube integration is available in [Promptfoo Enterprise](/docs/enterprise/). Use the standard JSON output format and process it for SonarQube import.
+SonarQube integration is available in [artef Enterprise](/docs/enterprise/). Use the standard JSON output format and process it for SonarQube import.
 
 :::
 
@@ -112,10 +112,10 @@ Fail the build when quality thresholds aren't met:
 
 ```bash
 # Fail on any test failures
-npx promptfoo@latest eval --fail-on-error
+npx artef@latest eval --fail-on-error
 
 # Custom threshold checking
-npx promptfoo@latest eval -o results.json
+npx artef@latest eval -o results.json
 PASS_RATE=$(jq '.results.stats.successes / (.results.stats.successes + .results.stats.failures) * 100' results.json)
 if (( $(echo "$PASS_RATE < 95" | bc -l) )); then
   echo "Quality gate failed: Pass rate ${PASS_RATE}% < 95%"
@@ -135,7 +135,7 @@ on:
   pull_request:
     paths:
       - 'prompts/**'
-      - 'promptfooconfig.yaml'
+      - 'artefconfig.yaml'
 
 jobs:
   evaluate:
@@ -148,21 +148,21 @@ jobs:
           node-version: '24'
           cache: 'npm'
 
-      - name: Cache promptfoo
+      - name: Cache artef
         uses: actions/cache@v4
         with:
-          path: ~/.cache/promptfoo
-          key: ${{ runner.os }}-promptfoo-${{ hashFiles('prompts/**') }}
+          path: ~/.cache/artef
+          key: ${{ runner.os }}-artef-${{ hashFiles('prompts/**') }}
           restore-keys: |
-            ${{ runner.os }}-promptfoo-
+            ${{ runner.os }}-artef-
 
       - name: Run eval
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PROMPTFOO_CACHE_PATH: ~/.cache/promptfoo
+          artef_CACHE_PATH: ~/.cache/artef
         run: |
-          npx promptfoo@latest eval \
-            -c promptfooconfig.yaml \
+          npx artef@latest eval \
+            -c artefconfig.yaml \
             --share \
             -o results.json \
             -o report.html
@@ -207,15 +207,15 @@ jobs:
           node-version: '24'
 
       - name: Run red team scan
-        uses: promptfoo/promptfoo-action@v1
+        uses: artef/artef-action@v1
         with:
           type: 'redteam'
-          config: 'promptfooconfig.yaml'
+          config: 'artefconfig.yaml'
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-See also: [Standalone GitHub Action example](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-github-action).
+See also: [Standalone GitHub Action example](https://github.com/artef/artef/tree/main/examples/integration-github-action).
 
 ### GitLab CI
 
@@ -227,19 +227,19 @@ image: node:24
 evaluate:
   script:
     - |
-      npx promptfoo@latest eval \
-        -c promptfooconfig.yaml \
+      npx artef@latest eval \
+        -c artefconfig.yaml \
         --share \
         -o output.json \
         -o report.html \
         -o output.junit.xml
   variables:
     OPENAI_API_KEY: ${OPENAI_API_KEY}
-    PROMPTFOO_CACHE_PATH: .cache/promptfoo
+    artef_CACHE_PATH: .cache/artef
   cache:
-    key: ${CI_COMMIT_REF_SLUG}-promptfoo
+    key: ${CI_COMMIT_REF_SLUG}-artef
     paths:
-      - .cache/promptfoo
+      - .cache/artef
   artifacts:
     reports:
       junit: output.junit.xml
@@ -258,15 +258,15 @@ pipeline {
 
     environment {
         OPENAI_API_KEY = credentials('openai-api-key')
-        PROMPTFOO_CACHE_PATH = "${WORKSPACE}/.cache/promptfoo"
+        artef_CACHE_PATH = "${WORKSPACE}/.cache/artef"
     }
 
     stages {
         stage('Evaluate') {
             steps {
                 sh '''
-                    npx promptfoo@latest eval \
-                        -c promptfooconfig.yaml \
+                    npx artef@latest eval \
+                        -c artefconfig.yaml \
                         --share \
                         -o results.json
                 '''
@@ -302,13 +302,13 @@ pipeline {
 
 ### 1. Docker-based CI/CD
 
-Create a custom Docker image with promptfoo pre-installed:
+Create a custom Docker image with artef pre-installed:
 
 ```dockerfile title="Dockerfile"
 FROM node:24-slim
 WORKDIR /app
 COPY . .
-CMD ["npx", "promptfoo@latest", "eval"]
+CMD ["npx", "artef@latest", "eval"]
 ```
 
 ### 2. Parallel Testing
@@ -323,7 +323,7 @@ strategy:
 steps:
   - name: Test ${{ matrix.model }}
     run: |
-      npx promptfoo@latest eval \
+      npx artef@latest eval \
         --providers.0.config.model=${{ matrix.model }} \
         -o results-${{ matrix.model }}.json
 ```
@@ -344,17 +344,17 @@ jobs:
     steps:
       - name: Full red team scan
         run: |
-          npx promptfoo@latest redteam generate \
+          npx artef@latest redteam generate \
             --plugins harmful,pii,contracts \
             --strategies jailbreak,jailbreak-templates
-          npx promptfoo@latest redteam run
+          npx artef@latest redteam run
 ```
 
 ### 4. SonarQube Integration
 
 :::info Enterprise Feature
 
-Direct SonarQube output format is available in [Promptfoo Enterprise](/docs/enterprise/). For open-source users, export to JSON and transform the results.
+Direct SonarQube output format is available in [artef Enterprise](/docs/enterprise/). For open-source users, export to JSON and transform the results.
 
 :::
 
@@ -362,10 +362,10 @@ For enterprise environments, integrate with SonarQube:
 
 ```yaml
 # Export results for SonarQube processing
-- name: Run promptfoo security scan
+- name: Run artef security scan
   run: |
-    npx promptfoo@latest eval \
-      --config promptfooconfig.yaml \
+    npx artef@latest eval \
+      --config artefconfig.yaml \
       -o results.json
 
 # Transform results for SonarQube (custom script required)
@@ -418,9 +418,9 @@ interface OutputFile {
 }
 ```
 
-`promptfoo eval -o results.json` and `promptfoo export eval <evalId>` use the
+`artef eval -o results.json` and `artef export eval <evalId>` use the
 same eval output envelope. Portable exports created with
-`promptfoo export eval <evalId> --include-media` may add embedded `blobAssets`.
+`artef export eval <evalId> --include-media` may add embedded `blobAssets`.
 
 Example processing script:
 
@@ -457,7 +457,7 @@ PASS_RATE=$(jq '.results.stats.successes / (.results.stats.successes + .results.
 
 # Post to GitHub PR
 gh pr comment --body "
-## Promptfoo Eval Results
+## artef Eval Results
 - Pass rate: ${PASS_RATE}%
 - [View detailed results](${SHARE_URL})
 "
@@ -471,14 +471,14 @@ Optimize CI/CD performance with proper caching:
 ```yaml
 # Set cache location
 env:
-  PROMPTFOO_CACHE_PATH: ~/.cache/promptfoo
-  PROMPTFOO_CACHE_TTL: 86400 # 24 hours
+  artef_CACHE_PATH: ~/.cache/artef
+  artef_CACHE_TTL: 86400 # 24 hours
 
 # Cache configuration
 cache:
-  key: promptfoo-${{ hashFiles('prompts/**', 'promptfooconfig.yaml') }}
+  key: artef-${{ hashFiles('prompts/**', 'artefconfig.yaml') }}
   paths:
-    - ~/.cache/promptfoo
+    - ~/.cache/artef
 ```
 
 ## Security Best Practices
@@ -497,8 +497,8 @@ cache:
    - Enable output stripping for sensitive data:
 
    ```bash
-   export PROMPTFOO_STRIP_RESPONSE_OUTPUT=true
-   export PROMPTFOO_STRIP_TEST_VARS=true
+   export artef_STRIP_RESPONSE_OUTPUT=true
+   export artef_STRIP_TEST_VARS=true
    ```
 
 4. **Audit Logging**
@@ -522,28 +522,28 @@ cache:
 Enable detailed logging:
 
 ```bash
-LOG_LEVEL=debug npx promptfoo@latest eval -c config.yaml
+LOG_LEVEL=debug npx artef@latest eval -c config.yaml
 ```
 
 ## Real-World Examples
 
 ### Automated Testing Examples
 
-- [Self-grading example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-self-grading) - Automated LLM evaluation
-- [Custom grading prompts](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-custom-grading-prompt) - Complex evaluation logic
-- [Store and reuse outputs](https://github.com/promptfoo/promptfoo/tree/main/examples/config-store-and-reuse-outputs) - Multi-step testing
+- [Self-grading example](https://github.com/artef/artef/tree/main/examples/eval-self-grading) - Automated LLM evaluation
+- [Custom grading prompts](https://github.com/artef/artef/tree/main/examples/eval-custom-grading-prompt) - Complex evaluation logic
+- [Store and reuse outputs](https://github.com/artef/artef/tree/main/examples/config-store-and-reuse-outputs) - Multi-step testing
 
 ### Security Examples
 
-- [Red team starter](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-starter) - Basic security testing
-- [RAG red team tests](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-rag) - Customer service red team testing (RBAC, competitors, harmful content)
-- [DoNotAnswer dataset](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-donotanswer) - Harmful content detection
+- [Red team starter](https://github.com/artef/artef/tree/main/examples/redteam-starter) - Basic security testing
+- [RAG red team tests](https://github.com/artef/artef/tree/main/examples/redteam-rag) - Customer service red team testing (RBAC, competitors, harmful content)
+- [DoNotAnswer dataset](https://github.com/artef/artef/tree/main/examples/redteam-donotanswer) - Harmful content detection
 
 ### Integration Examples
 
-- [GitHub Action standalone](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-github-action) - Custom GitHub workflows
-- [JSON output processing](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-json-output) - Result parsing patterns
-- [CSV test data](https://github.com/promptfoo/promptfoo/tree/main/examples/simple-test) - Bulk test management
+- [GitHub Action standalone](https://github.com/artef/artef/tree/main/examples/integration-github-action) - Custom GitHub workflows
+- [JSON output processing](https://github.com/artef/artef/tree/main/examples/eval-json-output) - Result parsing patterns
+- [CSV test data](https://github.com/artef/artef/tree/main/examples/simple-test) - Bulk test management
 
 ## Related Documentation
 

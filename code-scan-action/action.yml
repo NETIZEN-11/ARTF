@@ -1,6 +1,6 @@
-name: 'Promptfoo Code Scan'
+﻿name: 'artef Code Scan'
 description: 'Scan pull requests for LLM security vulnerabilities'
-author: 'Promptfoo, Inc.'
+author: 'artef, Inc.'
 
 branding:
   icon: 'shield'
@@ -8,9 +8,9 @@ branding:
 
 inputs:
   api-host:
-    description: 'Promptfoo API host url'
+    description: 'artef API host url'
     required: false
-    default: https://api.promptfoo.app
+    default: https://api.artef.app
   min-severity:
     description: 'Minimum severity level to report (low|medium|high|critical). Defaults to medium when neither min-severity nor minimum-severity is set.'
     required: false
@@ -34,8 +34,8 @@ inputs:
     description: 'Enable scanning PRs from forked repositories'
     required: false
     default: 'false'
-  promptfoo-version:
-    description: 'Exact promptfoo CLI version to install for scanning (e.g. 0.121.0). Defaults to the version pinned when this action release was built.'
+  artef-version:
+    description: 'Exact artef CLI version to install for scanning (e.g. 0.121.0). Defaults to the version pinned when this action release was built.'
     required: false
   sarif-output-path:
     description: 'Optional path to write SARIF output for upload to GitHub Code Scanning'

@@ -1,6 +1,6 @@
-import { getEnvInt } from '../../../envars';
+﻿import { getEnvInt } from '../../../envars';
 import logger from '../../../logger';
-import { PromptfooHarmfulCompletionProvider } from '../../../providers/promptfoo';
+import { artefHarmfulCompletionProvider } from '../../../providers/artef';
 import { retryWithDeduplication, sampleArray } from '../../../util/generation';
 import { sleep } from '../../../util/time';
 import { trackAdditionalGenerationProvider } from '../../generationTokenUsage';
@@ -22,7 +22,7 @@ async function processPromptForInputs(
   prompt: string,
   inputs: Inputs | undefined,
   plugin: keyof typeof UNALIGNED_PROVIDER_HARM_PLUGINS,
-  provider: PromptfooHarmfulCompletionProvider,
+  provider: artefHarmfulCompletionProvider,
   purpose: string,
   materializationIndex: number,
 ): Promise<{
@@ -78,9 +78,9 @@ export async function getHarmfulTests(
   { provider, purpose, injectVar, n, delayMs = 0, config, targetId }: PluginActionParams,
   plugin: keyof typeof UNALIGNED_PROVIDER_HARM_PLUGINS,
 ): Promise<TestCase[]> {
-  const maxHarmfulTests = getEnvInt('PROMPTFOO_MAX_HARMFUL_TESTS_PER_REQUEST', 5);
+  const maxHarmfulTests = getEnvInt('artef_MAX_HARMFUL_TESTS_PER_REQUEST', 5);
   const unalignedProvider = trackAdditionalGenerationProvider(
-    new PromptfooHarmfulCompletionProvider({
+    new artefHarmfulCompletionProvider({
       purpose,
       n: Math.min(n, maxHarmfulTests),
       harmCategory: plugin,

@@ -1,13 +1,13 @@
-# getting-started (Getting Started Example)
+﻿# getting-started (Getting Started Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example getting-started
+npx artef@latest init --example getting-started
 cd getting-started
 ```
 
-This is a simple example that demonstrates the basic functionality of promptfoo. It tests two different translation prompts across multiple language models.
+This is a simple example that demonstrates the basic functionality of artef. It tests two different translation prompts across multiple language models.
 
 ## Setup
 
@@ -22,7 +22,7 @@ _Tip: you can also put this key in a `.env` file. Be sure not to commit it to gi
 2. Run the evaluation:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ## What's happening?
@@ -33,10 +33,10 @@ This example:
 - Compares outputs between GPT-5.2 and GPT-5 Mini
 - Uses two test cases with different languages and inputs
 
-The configuration in `promptfooconfig.yaml` shows:
+The configuration in `artefconfig.yaml` shows:
 
 - How to define prompts with variables using `{{variable_name}}`
 - How to specify multiple providers (models)
 - How to set up test cases with different variable values
 
-This is the same example shown in the Getting Started guide at https://promptfoo.dev/docs/getting-started
+This is the same example shown in the Getting Started guide at https://artef.dev/docs/getting-started

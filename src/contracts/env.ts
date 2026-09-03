@@ -1,4 +1,4 @@
-import { z } from 'zod';
+﻿import { z } from 'zod';
 
 export const ProviderEnvOverridesSchema = z.object({
   ABLIT_API_BASE_URL: z.string().optional(),
@@ -102,13 +102,13 @@ export const ProviderEnvOverridesSchema = z.object({
   PALM_API_HOST: z.string().optional(),
   PALM_API_KEY: z.string().optional(),
   PORTKEY_API_KEY: z.string().optional(),
-  PROMPTFOO_CA_CERT_PATH: z.string().optional(),
-  PROMPTFOO_PFX_CERT_PATH: z.string().optional(),
-  PROMPTFOO_PFX_PASSWORD: z.string().optional(),
-  PROMPTFOO_JKS_CERT_PATH: z.string().optional(),
-  PROMPTFOO_JKS_PASSWORD: z.string().optional(),
-  PROMPTFOO_JKS_ALIAS: z.string().optional(),
-  PROMPTFOO_INSECURE_SSL: z.string().optional(),
+  artef_CA_CERT_PATH: z.string().optional(),
+  artef_PFX_CERT_PATH: z.string().optional(),
+  artef_PFX_PASSWORD: z.string().optional(),
+  artef_JKS_CERT_PATH: z.string().optional(),
+  artef_JKS_PASSWORD: z.string().optional(),
+  artef_JKS_ALIAS: z.string().optional(),
+  artef_INSECURE_SSL: z.string().optional(),
   QUIVERAI_API_KEY: z.string().optional(),
   REPLICATE_API_KEY: z.string().optional(),
   REPLICATE_API_TOKEN: z.string().optional(),
@@ -141,7 +141,7 @@ export const ProviderEnvOverridesSchema = z.object({
   AWS_SAGEMAKER_TEMPERATURE: z.string().optional(),
   AWS_SAGEMAKER_TOP_P: z.string().optional(),
   AWS_SAGEMAKER_MAX_RETRIES: z.string().optional(),
-  PROMPTFOO_EVAL_TIMEOUT_MS: z.string().optional(),
+  artef_EVAL_TIMEOUT_MS: z.string().optional(),
 });
 
 // The runtime schema silently strips unknown keys at parse time (zod's default

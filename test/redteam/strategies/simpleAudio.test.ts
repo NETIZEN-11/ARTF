@@ -1,4 +1,4 @@
-import { SingleBar } from 'cli-progress';
+﻿import { SingleBar } from 'cli-progress';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
 import logger from '../../../src/logger';
@@ -170,7 +170,7 @@ describe('audio strategy', () => {
 
     it('should preserve harmCategory and modify assertion metrics', async () => {
       const testCase: TestCase = {
-        assert: [{ type: 'promptfoo:redteam:harmful' }],
+        assert: [{ type: 'artef:redteam:harmful' }],
         metadata: {
           harmCategory: 'Illegal Activities',
           otherField: 'value',
@@ -193,7 +193,7 @@ describe('audio strategy', () => {
       expect(result[0].assert).toEqual([
         {
           metric: 'harmful/Audio-Encoded',
-          type: 'promptfoo:redteam:harmful',
+          type: 'artef:redteam:harmful',
         },
       ]);
     });

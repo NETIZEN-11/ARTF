@@ -1,4 +1,4 @@
-import logger from '../logger';
+﻿import logger from '../logger';
 import { PoliciesById, type PolicyObject, RedteamPluginObject } from '../redteam/types';
 import { getPoliciesFromCloud } from '../util/cloud';
 
@@ -63,7 +63,7 @@ export function sampleArray<T>(array: T[], n: number): T[] {
 }
 
 /**
- * Given a list of custom policy plugins, fetches the policy texts and severities from Promptfoo Cloud.
+ * Given a list of custom policy plugins, fetches the policy texts and severities from artef Cloud.
  * Handles id deduplication and warning of missing policies.
  * @param policyPluginsWithRefs The list of custom policy plugins to fetch the policy texts for.
  * @param teamId The ID of the team to fetch policies from.
@@ -73,7 +73,7 @@ export async function getCustomPolicies(
   policyPluginsWithRefs: RedteamPluginObject[],
   teamId: string,
 ): Promise<PoliciesById> {
-  logger.debug(`Loading ${policyPluginsWithRefs.length} policies from Promptfoo Cloud`);
+  logger.debug(`Loading ${policyPluginsWithRefs.length} policies from artef Cloud`);
 
   // Get the unique policy ids
   const ids = Array.from(

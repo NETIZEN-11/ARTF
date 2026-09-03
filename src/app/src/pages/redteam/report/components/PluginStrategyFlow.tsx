@@ -1,8 +1,8 @@
-// PluginStrategyFlow.tsx
+﻿// PluginStrategyFlow.tsx
 
 import React, { useMemo } from 'react';
 
-import { displayNameOverrides } from '@promptfoo/redteam/constants';
+import { displayNameOverrides } from '@artef/redteam/constants';
 import { Layer, Rectangle, ResponsiveContainer, Sankey, Tooltip } from 'recharts';
 import { getPluginIdFromResult, getStrategyIdFromTest, type TestWithMetadata } from './shared';
 

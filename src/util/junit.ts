@@ -1,4 +1,4 @@
-import * as fsPromises from 'fs/promises';
+﻿import * as fsPromises from 'fs/promises';
 
 import { XMLBuilder } from 'fast-xml-parser';
 import { ResultFailureReason } from '../types';
@@ -299,7 +299,7 @@ export async function createJunitXml(evalRecord: Eval): Promise<string> {
     testsuites: {
       '@_errors': errors,
       '@_failures': failures,
-      '@_name': 'promptfoo',
+      '@_name': 'artef',
       '@_skipped': skipped,
       '@_tests': tests,
       '@_time': formatDurationSeconds(totalTimeMs),

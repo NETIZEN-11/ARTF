@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Leetspeak
 title: Leetspeak Strategy
 description: Evaluate AI robustness against leetspeak obfuscation techniques using character substitutions to evade content filtering
@@ -10,9 +10,9 @@ The Leetspeak strategy tests an AI system's ability to resist encoded inputs tha
 
 ## Implementation
 
-Use it in your `promptfooconfig.yaml`:
+Use it in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - leetspeak
 ```

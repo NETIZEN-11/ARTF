@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useRef, useState } from 'react';
 
 import EnterpriseBanner from '@app/components/EnterpriseBanner';
 import { Spinner } from '@app/components/ui/spinner';
@@ -8,7 +8,7 @@ import { ShiftKeyProvider } from '@app/contexts/ShiftKeyContext';
 import { usePageMeta } from '@app/hooks/usePageMeta';
 import useApiConfig from '@app/stores/apiConfig';
 import { callApi } from '@app/utils/api';
-import { type ResultLightweightWithLabel } from '@promptfoo/types';
+import { type ResultLightweightWithLabel } from '@artef/types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { io as SocketIOClient } from 'socket.io-client';
 import EmptyState from './EmptyState';
@@ -511,7 +511,7 @@ export default function Eval({ fetchId }: EvalOptions) {
         return enqueue(data);
       })
       /**
-       * The user has run `promptfoo eval` and a new latest eval
+       * The user has run `artef eval` and a new latest eval
        * result has been received.
        */
       .on('update', (data) => {

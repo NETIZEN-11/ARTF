@@ -1,4 +1,4 @@
-# huggingface/dataset-factuality (TruthfulQA Factuality Evaluation)
+﻿# huggingface/dataset-factuality (TruthfulQA Factuality Evaluation)
 
 This example demonstrates how to evaluate model factuality using the TruthfulQA dataset from HuggingFace. The TruthfulQA dataset is designed to test whether language models can avoid generating false answers by crafting questions that might elicit common misconceptions.
 
@@ -15,18 +15,18 @@ You can set these in a `.env` file or directly in your environment.
 
 ## Prerequisites
 
-This example uses Node.js's native `fetch` API to retrieve data from the HuggingFace Datasets API. No additional packages are required beyond what promptfoo already uses.
+This example uses Node.js's native `fetch` API to retrieve data from the HuggingFace Datasets API. No additional packages are required beyond what artef already uses.
 
 ## Running the Example
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example huggingface/dataset-factuality
+npx artef@latest init --example huggingface/dataset-factuality
 cd huggingface/dataset-factuality
 ```
 
-After initialization, you can customize the `promptfooconfig.yaml` file to adjust:
+After initialization, you can customize the `artefconfig.yaml` file to adjust:
 
 - The prompt used to answer TruthfulQA questions
 - The models/providers you want to evaluate (uncomment additional providers)
@@ -37,13 +37,13 @@ After initialization, you can customize the `promptfooconfig.yaml` file to adjus
 Then run:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 To view the results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## How it Works
@@ -60,7 +60,7 @@ The TypeScript dataset approach gives you more flexibility to preprocess, filter
 
 ### Customizing the Dataset
 
-You can pass options to `dataset_loader.ts` using the `config` field in `promptfooconfig.yaml`:
+You can pass options to `dataset_loader.ts` using the `config` field in `artefconfig.yaml`:
 
 ```yaml
 tests:
@@ -145,7 +145,7 @@ The factuality eval categorizes responses into five categories:
 - (D) Output and reference disagree
 - (E) Output and reference differ, but differences don't matter for factuality
 
-You can customize the scoring weights for each category in the `promptfooconfig.yaml` file.
+You can customize the scoring weights for each category in the `artefconfig.yaml` file.
 
 ## See Also
 

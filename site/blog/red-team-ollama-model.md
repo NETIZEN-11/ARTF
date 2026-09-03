@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How to Red Team an Ollama Model: Complete Local LLM Security Testing Guide'
 description: 'Running LLMs locally with Ollama? These models often bypass cloud safety filters. Learn how to red team local deployments and assess their unique risks.'
 image: /img/blog/llama-red-team/llama-hacker.webp
@@ -19,7 +19,7 @@ tags: [technical-guide, red-teaming]
 
 # How to Red Team an Ollama Model
 
-Want to test the safety and security of a model hosted on Ollama? This guide shows you how to use [Promptfoo](https://github.com/promptfoo/promptfoo) to systematically probe for vulnerabilities through adversarial testing (red teaming).
+Want to test the safety and security of a model hosted on Ollama? This guide shows you how to use [artef](https://github.com/artef/artef) to systematically probe for vulnerabilities through adversarial testing (red teaming).
 
 We'll use [Llama 3.2 3B](https://ollama.com/library/llama3.2:3b) as an example, but this guide works with any [Ollama model](https://ollama.ai/library).
 
@@ -35,7 +35,7 @@ Before you begin, ensure you have:
 
 - **Node.js `>=22.22.0`** (Node.js 24 LTS recommended): [Download Node.js](https://nodejs.org/en/download/)
 - **Ollama**: Install Ollama from [ollama.ai](https://ollama.ai)
-- **Promptfoo**: No prior installation needed; we'll use `npx` to run commands
+- **artef**: No prior installation needed; we'll use `npx` to run commands
 
 First, make sure you've pulled the model you want to test on Ollama:
 
@@ -50,11 +50,11 @@ You can either initialize a new project or download the complete example:
 ### Option 1: Download the Example
 
 ```bash
-npx promptfoo@latest init --example redteam-ollama
+npx artef@latest init --example redteam-ollama
 cd redteam-ollama
 ```
 
-This will create a new directory with `promptfooconfig.yaml` and `system_message.txt` files.
+This will create a new directory with `artefconfig.yaml` and `system_message.txt` files.
 
 ### Option 2: Create from Scratch
 
@@ -63,17 +63,17 @@ Create a new directory for your red teaming project and initialize it:
 ```bash
 mkdir redteam-ollama
 cd redteam-ollama
-npx promptfoo@latest redteam init --no-gui
+npx artef@latest redteam init --no-gui
 ```
 
-This creates a `promptfooconfig.yaml` file that we'll customize for Ollama.
+This creates a `artefconfig.yaml` file that we'll customize for Ollama.
 
 ## Configuring the Ollama Provider
 
-If you're creating from scratch, edit `promptfooconfig.yaml` to use Ollama as the target:
+If you're creating from scratch, edit `artefconfig.yaml` to use Ollama as the target:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://system_message.txt
 
@@ -99,7 +99,7 @@ redteam:
     - jailbreak:composite
 ```
 
-To see the full configuration example on Github, [click here](https://github.com/promptfoo/promptfoo/blob/main/examples/redteam-ollama).
+To see the full configuration example on Github, [click here](https://github.com/artef/artef/blob/main/examples/redteam-ollama).
 
 ### Configuration Explained
 
@@ -116,14 +116,14 @@ To see the full configuration example on Github, [click here](https://github.com
   - `jailbreak:composite`: Tests if model can escape its constraints using a composition of other successful jailbreak strategies.
 - **numTests**: Number of test cases per plugin
 
-> **Note:** The strategies above are designed for single-turn interactions (one prompt, one response). For multi-turn conversations or applications, see our [multi-turn chatbot redteam example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-chatbot).
+> **Note:** The strategies above are designed for single-turn interactions (one prompt, one response). For multi-turn conversations or applications, see our [multi-turn chatbot redteam example](https://github.com/artef/artef/tree/main/examples/redteam-chatbot).
 
 ## Running the Red Team Evaluation
 
 Generate and run the adversarial test cases:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 This command:
@@ -137,7 +137,7 @@ This command:
 Generate a report of the findings:
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 The report shows:

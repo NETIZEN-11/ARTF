@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 type ProviderProps = {
   children?: React.ReactNode;
@@ -11,9 +11,9 @@ export default function docusaurusDefault(value?: string) {
 
   return {
     siteConfig: {
-      title: 'Promptfoo',
+      title: 'artef',
       tagline: 'Test site',
-      url: 'https://www.promptfoo.dev',
+      url: 'https://www.artef.dev',
     },
   };
 }

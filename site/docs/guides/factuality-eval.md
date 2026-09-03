@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_position: 1
 title: Evaluating Factuality
-description: How to evaluate the factual accuracy of LLM outputs against reference information using promptfoo's factuality assertion
+description: How to evaluate the factual accuracy of LLM outputs against reference information using artef's factuality assertion
 ---
 
 # Evaluating factuality
@@ -30,7 +30,7 @@ As LLMs become increasingly integrated into critical applications, ensuring they
 
 - **Identifying hallucinations**: Factuality evaluation helps detect when models "make up" information. _For example, discovering that your product support chatbot fabricates non-existent troubleshooting steps 15% of the time would be a critical finding._
 
-promptfoo's factuality evaluation enables you to systematically measure how well your model outputs align with reference facts, helping you identify and address issues before they reach users.
+artef's factuality evaluation enables you to systematically measure how well your model outputs align with reference facts, helping you identify and address issues before they reach users.
 
 ## Quick Start: Try it today
 
@@ -38,16 +38,16 @@ The fastest way to get started with factuality evaluation is to use our pre-buil
 
 ```bash
 # Initialize the example - this command creates a new directory with all necessary files
-npx promptfoo@latest init --example huggingface/dataset-factuality
+npx artef@latest init --example huggingface/dataset-factuality
 
 # Change into the newly created directory
 cd huggingface/dataset-factuality
 
 # Run the evaluation - this executes the factuality tests using the models specified in the config
-npx promptfoo eval
+npx artef eval
 
 # View the results in an interactive web interface
-npx promptfoo view
+npx artef view
 ```
 
 What these commands do:
@@ -66,13 +66,13 @@ This example:
 
 You can easily customize it by:
 
-- Uncommenting additional providers in `promptfooconfig.yaml` to test more models
+- Uncommenting additional providers in `artefconfig.yaml` to test more models
 - Adjusting the prompt template to change how questions are asked
 - Modifying the factuality scoring weights to match your requirements
 
 ## How factuality evaluation works
 
-promptfoo implements a structured factuality evaluation methodology based on [OpenAI's evals](https://github.com/openai/evals/blob/main/evals/registry/modelgraded/fact.yaml), using the [`factuality`](/docs/configuration/expected-outputs#model-assisted-eval-metrics) assertion type.
+artef implements a structured factuality evaluation methodology based on [OpenAI's evals](https://github.com/openai/evals/blob/main/evals/registry/modelgraded/fact.yaml), using the [`factuality`](/docs/configuration/expected-outputs#model-assisted-eval-metrics) assertion type.
 
 The model-graded factuality check takes the following three inputs:
 
@@ -107,7 +107,7 @@ To set up a simple factuality evaluation for your LLM outputs:
 
 1. **Create a configuration file** with a factuality assertion:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openai:gpt-5-mini
 prompts:
@@ -125,8 +125,8 @@ tests:
 2. **Run your evaluation**:
 
 ```bash
-npx promptfoo eval
-npx promptfoo view
+npx artef eval
+npx artef view
 ```
 
 This will produce a report showing how factually accurate your model's responses are compared to the reference answers.
@@ -135,7 +135,7 @@ This will produce a report showing how factually accurate your model's responses
 
 Factuality evaluation is especially useful for comparing how different models perform on the same facts:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openai:gpt-5-mini
   - openai:gpt-5
@@ -207,7 +207,7 @@ The quality of your reference answers is crucial for accurate factuality evaluat
 
 ### Selecting the Grading Provider
 
-By default, promptfoo uses `gpt-5` for grading. To specify a different grading model:
+By default, artef uses `gpt-5` for grading. To specify a different grading model:
 
 ```yaml
 defaultTest:
@@ -228,7 +228,7 @@ assert:
 Or via the command line:
 
 ```bash
-promptfoo eval --grader openai:gpt-5
+artef eval --grader openai:gpt-5
 ```
 
 ### Customizing Scoring Weights
@@ -248,7 +248,7 @@ defaultTest:
 
 #### Understanding the default scoring weights
 
-By default, promptfoo uses a simple binary scoring system:
+By default, artef uses a simple binary scoring system:
 
 - Categories A, B, C, and E are assigned a score of 1.0 (pass)
 - Category D (disagree) is assigned a score of 0.0 (fail)
@@ -290,7 +290,7 @@ You must implement the following template variables:
 
 - `{{input}}`: The original prompt/question
 - `{{ideal}}`: The reference answer (from the `value` field)
-- `{{completion}}`: The LLM's actual response (provided automatically by promptfoo)
+- `{{completion}}`: The LLM's actual response (provided automatically by artef)
 
 ## Response Formats
 
@@ -325,4 +325,4 @@ When setting up factuality evaluations:
 
 - [Model-graded metrics](/docs/configuration/expected-outputs/model-graded) for more evaluation options
 - [Factuality assertion reference](/docs/configuration/expected-outputs/model-graded/factuality)
-- [TruthfulQA example on GitHub](https://github.com/promptfoo/promptfoo/tree/main/examples/huggingface/dataset-factuality) - Complete code for the TruthfulQA factuality evaluation example
+- [TruthfulQA example on GitHub](https://github.com/artef/artef/tree/main/examples/huggingface/dataset-factuality) - Complete code for the TruthfulQA factuality evaluation example

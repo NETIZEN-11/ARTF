@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+﻿import dotenv from 'dotenv';
 import { getEnvOverrides } from './envOverrides';
 
 import type { EnvOverrides } from './types/env';
@@ -8,7 +8,7 @@ dotenv.config({ quiet: true });
 // Define the supported environment variables and their types
 type EnvVars = {
   //=========================================================================
-  // Core promptfoo configuration
+  // Core artef configuration
   //=========================================================================
   LOG_LEVEL?: 'error' | 'warn' | 'info' | 'debug';
   NODE_ENV?: string;
@@ -16,10 +16,10 @@ type EnvVars = {
   npm_lifecycle_script?: string;
 
   //=========================================================================
-  // promptfoo feature flags
+  // artef feature flags
   //=========================================================================
-  PROMPTFOO_CACHE_ENABLED?: boolean;
-  PROMPTFOO_DISABLE_AJV_STRICT_MODE?: boolean;
+  artef_CACHE_ENABLED?: boolean;
+  artef_DISABLE_AJV_STRICT_MODE?: boolean;
   /**
    * Disables the path-traversal guard applied to `file://` callback
    * references (e.g. `functionToolCallbacks`). When unset (default), callback
@@ -27,58 +27,58 @@ type EnvVars = {
    * restores the legacy unguarded behavior — NOT recommended outside of
    * legacy compatibility scenarios.
    */
-  PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD?: boolean;
-  PROMPTFOO_DISABLE_CONVERSATION_VAR?: boolean;
+  artef_DISABLE_CALLBACK_PATH_GUARD?: boolean;
+  artef_DISABLE_CONVERSATION_VAR?: boolean;
   /** Disable formula-injection escaping of exported eval/redteam result CSVs. */
-  PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING?: boolean;
-  PROMPTFOO_DISABLE_ERROR_LOG?: boolean;
-  PROMPTFOO_DISABLE_DEBUG_LOG?: boolean;
-  PROMPTFOO_DISABLE_JSON_AUTOESCAPE?: boolean;
-  PROMPTFOO_DISABLE_MULTIMEDIA_AS_BASE64?: boolean;
-  PROMPTFOO_DISABLE_OBJECT_STRINGIFY?: boolean;
-  PROMPTFOO_DISABLE_PDF_AS_TEXT?: boolean;
-  PROMPTFOO_DISABLE_REDTEAM_MODERATION?: boolean;
+  artef_DISABLE_CSV_FORMULA_ESCAPING?: boolean;
+  artef_DISABLE_ERROR_LOG?: boolean;
+  artef_DISABLE_DEBUG_LOG?: boolean;
+  artef_DISABLE_JSON_AUTOESCAPE?: boolean;
+  artef_DISABLE_MULTIMEDIA_AS_BASE64?: boolean;
+  artef_DISABLE_OBJECT_STRINGIFY?: boolean;
+  artef_DISABLE_PDF_AS_TEXT?: boolean;
+  artef_DISABLE_REDTEAM_MODERATION?: boolean;
   /**
-   * Disable ALL remote generation (superset of PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION).
-   * Affects: SimulatedUser, red team features, all promptfoo-hosted inference.
+   * Disable ALL remote generation (superset of artef_DISABLE_REDTEAM_REMOTE_GENERATION).
+   * Affects: SimulatedUser, red team features, all artef-hosted inference.
    */
-  PROMPTFOO_DISABLE_REMOTE_GENERATION?: boolean;
+  artef_DISABLE_REMOTE_GENERATION?: boolean;
   /**
-   * Disable remote generation for red team features only (subset of PROMPTFOO_DISABLE_REMOTE_GENERATION).
+   * Disable remote generation for red team features only (subset of artef_DISABLE_REMOTE_GENERATION).
    * Affects: Harmful content generation, red team strategies, red team simulated users.
    * Does NOT affect: Regular (non-redteam) SimulatedUser usage.
    */
-  PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION?: boolean;
-  PROMPTFOO_DISABLE_REF_PARSER?: boolean;
-  PROMPTFOO_DISABLE_SHARE_EMAIL_REQUEST?: boolean;
-  PROMPTFOO_DISABLE_SHARE_WARNING?: boolean;
-  PROMPTFOO_DISABLE_SHARING?: boolean;
-  PROMPTFOO_DISABLE_TELEMETRY?: boolean;
-  PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS?: boolean;
-  PROMPTFOO_DISABLE_TEMPLATING?: boolean;
-  PROMPTFOO_DISABLE_UPDATE?: boolean;
-  PROMPTFOO_DISABLE_VAR_EXPANSION?: boolean;
-  PROMPTFOO_DISABLE_WAL_MODE?: boolean;
-  PROMPTFOO_ENABLE_DATABASE_LOGS?: boolean;
-  PROMPTFOO_EVAL_TIMEOUT_MS?: number;
-  PROMPTFOO_EXPERIMENTAL?: boolean;
-  PROMPTFOO_MAX_EVAL_TIME_MS?: number;
-  PROMPTFOO_NO_TESTCASE_ASSERT_WARNING?: boolean;
-  PROMPTFOO_PYTHON_DEBUG_ENABLED?: boolean;
-  PROMPTFOO_RETRY_5XX?: boolean;
-  PROMPTFOO_OFFICIAL_DOCKER_IMAGE?: boolean;
-  PROMPTFOO_RUNNING_IN_DOCKER?: boolean;
-  PROMPTFOO_SELF_HOSTED?: boolean;
-  PROMPTFOO_SHORT_CIRCUIT_TEST_FAILURES?: boolean;
-  PROMPTFOO_STRICT_FILES?: boolean;
-  PROMPTFOO_STRIP_GRADING_RESULT?: boolean;
-  PROMPTFOO_STRIP_METADATA?: boolean;
-  PROMPTFOO_STRIP_PROMPT_TEXT?: boolean;
-  PROMPTFOO_STRIP_RESPONSE_OUTPUT?: boolean;
-  PROMPTFOO_STRIP_TEST_VARS?: boolean;
-  PROMPTFOO_TELEMETRY_DEBUG?: boolean;
-  PROMPTFOO_TRACING_ENABLED?: boolean;
-  PROMPTFOO_ENABLE_UNBLOCKING?: boolean;
+  artef_DISABLE_REDTEAM_REMOTE_GENERATION?: boolean;
+  artef_DISABLE_REF_PARSER?: boolean;
+  artef_DISABLE_SHARE_EMAIL_REQUEST?: boolean;
+  artef_DISABLE_SHARE_WARNING?: boolean;
+  artef_DISABLE_SHARING?: boolean;
+  artef_DISABLE_TELEMETRY?: boolean;
+  artef_DISABLE_TEMPLATE_ENV_VARS?: boolean;
+  artef_DISABLE_TEMPLATING?: boolean;
+  artef_DISABLE_UPDATE?: boolean;
+  artef_DISABLE_VAR_EXPANSION?: boolean;
+  artef_DISABLE_WAL_MODE?: boolean;
+  artef_ENABLE_DATABASE_LOGS?: boolean;
+  artef_EVAL_TIMEOUT_MS?: number;
+  artef_EXPERIMENTAL?: boolean;
+  artef_MAX_EVAL_TIME_MS?: number;
+  artef_NO_TESTCASE_ASSERT_WARNING?: boolean;
+  artef_PYTHON_DEBUG_ENABLED?: boolean;
+  artef_RETRY_5XX?: boolean;
+  artef_OFFICIAL_DOCKER_IMAGE?: boolean;
+  artef_RUNNING_IN_DOCKER?: boolean;
+  artef_SELF_HOSTED?: boolean;
+  artef_SHORT_CIRCUIT_TEST_FAILURES?: boolean;
+  artef_STRICT_FILES?: boolean;
+  artef_STRIP_GRADING_RESULT?: boolean;
+  artef_STRIP_METADATA?: boolean;
+  artef_STRIP_PROMPT_TEXT?: boolean;
+  artef_STRIP_RESPONSE_OUTPUT?: boolean;
+  artef_STRIP_TEST_VARS?: boolean;
+  artef_TELEMETRY_DEBUG?: boolean;
+  artef_TRACING_ENABLED?: boolean;
+  artef_ENABLE_UNBLOCKING?: boolean;
 
   //=========================================================================
   // OpenTelemetry tracing configuration
@@ -86,82 +86,82 @@ type EnvVars = {
   /**
    * Enable OpenTelemetry tracing for all LLM provider calls.
    */
-  PROMPTFOO_OTEL_ENABLED?: boolean;
+  artef_OTEL_ENABLED?: boolean;
   /**
-   * Service name to use in OTEL traces. Defaults to 'promptfoo'.
+   * Service name to use in OTEL traces. Defaults to 'artef'.
    */
-  PROMPTFOO_OTEL_SERVICE_NAME?: string;
+  artef_OTEL_SERVICE_NAME?: string;
   /**
    * OTLP endpoint URL for exporting traces to external backends.
    */
-  PROMPTFOO_OTEL_ENDPOINT?: string;
+  artef_OTEL_ENDPOINT?: string;
   /**
    * Whether to export traces to the local TraceStore (SQLite). Defaults to true.
    */
-  PROMPTFOO_OTEL_LOCAL_EXPORT?: boolean;
+  artef_OTEL_LOCAL_EXPORT?: boolean;
   /**
    * Enable OTEL debug logging.
    */
-  PROMPTFOO_OTEL_DEBUG?: boolean;
+  artef_OTEL_DEBUG?: boolean;
   /**
    * Standard OTEL environment variable for OTLP endpoint.
    */
   OTEL_EXPORTER_OTLP_ENDPOINT?: string;
 
   //=========================================================================
-  // promptfoo configuration options
+  // artef configuration options
   //=========================================================================
-  PROMPTFOO_ASSERTIONS_MAX_CONCURRENCY?: number;
-  PROMPTFOO_AUTHOR?: string;
-  PROMPTFOO_CACHE_MAX_FILE_COUNT?: number;
-  PROMPTFOO_CACHE_MAX_SIZE?: number;
-  PROMPTFOO_CACHE_PATH?: string;
-  PROMPTFOO_CACHE_TTL?: number;
-  PROMPTFOO_CACHE_TYPE?: 'memory' | 'disk';
-  PROMPTFOO_CLOUD_API_URL?: string;
-  PROMPTFOO_CLOUD_AUTH_HEADER?: string;
-  PROMPTFOO_CONFIG_DIR?: string;
-  PROMPTFOO_CSV_DELIMITER?: string;
-  PROMPTFOO_CSV_STRICT?: boolean;
-  PROMPTFOO_DELAY_MS?: number;
-  PROMPTFOO_FAILED_TEST_EXIT_CODE?: number;
-  PROMPTFOO_INLINE_MEDIA?: boolean;
-  PROMPTFOO_INSECURE_SSL?: boolean | string;
-  PROMPTFOO_JAILBREAK_TEMPERATURE?: string;
-  PROMPTFOO_LOG_DIR?: string;
-  PROMPTFOO_LOG_TO_STDERR?: boolean;
-  PROMPTFOO_MEDIA_PATH?: string;
-  PROMPTFOO_MAX_HARMFUL_TESTS_PER_REQUEST?: number;
-  PROMPTFOO_NUM_JAILBREAK_ITERATIONS?: string;
-  PROMPTFOO_PASS_RATE_THRESHOLD?: number;
-  PROMPTFOO_PROMPT_SEPARATOR?: string;
-  PROMPTFOO_PYTHON?: string;
-  PROMPTFOO_RUBY?: string;
-  PROMPTFOO_REMOTE_API_BASE_URL?: string;
-  PROMPTFOO_REMOTE_APP_BASE_URL?: string;
-  PROMPTFOO_REMOTE_GENERATION_URL?: string;
-  PROMPTFOO_REQUEST_BACKOFF_MS?: number;
-  PROMPTFOO_REQUIRE_JSON_PROMPTS?: boolean;
-  PROMPTFOO_SHARING_APP_BASE_URL?: string;
-  PROMPTFOO_SHARE_CHUNK_SIZE?: number;
-  PROMPTFOO_SHARE_INLINE_BLOBS?: boolean;
-  PROMPTFOO_UNALIGNED_INFERENCE_ENDPOINT?: string;
-  PROMPTFOO_CA_CERT_PATH?: string;
-  PROMPTFOO_PFX_CERT_PATH?: string;
-  PROMPTFOO_PFX_PASSWORD?: string;
-  PROMPTFOO_JKS_CERT_PATH?: string;
-  PROMPTFOO_JKS_PASSWORD?: string;
-  PROMPTFOO_JKS_ALIAS?: string;
+  artef_ASSERTIONS_MAX_CONCURRENCY?: number;
+  artef_AUTHOR?: string;
+  artef_CACHE_MAX_FILE_COUNT?: number;
+  artef_CACHE_MAX_SIZE?: number;
+  artef_CACHE_PATH?: string;
+  artef_CACHE_TTL?: number;
+  artef_CACHE_TYPE?: 'memory' | 'disk';
+  artef_CLOUD_API_URL?: string;
+  artef_CLOUD_AUTH_HEADER?: string;
+  artef_CONFIG_DIR?: string;
+  artef_CSV_DELIMITER?: string;
+  artef_CSV_STRICT?: boolean;
+  artef_DELAY_MS?: number;
+  artef_FAILED_TEST_EXIT_CODE?: number;
+  artef_INLINE_MEDIA?: boolean;
+  artef_INSECURE_SSL?: boolean | string;
+  artef_JAILBREAK_TEMPERATURE?: string;
+  artef_LOG_DIR?: string;
+  artef_LOG_TO_STDERR?: boolean;
+  artef_MEDIA_PATH?: string;
+  artef_MAX_HARMFUL_TESTS_PER_REQUEST?: number;
+  artef_NUM_JAILBREAK_ITERATIONS?: string;
+  artef_PASS_RATE_THRESHOLD?: number;
+  artef_PROMPT_SEPARATOR?: string;
+  artef_PYTHON?: string;
+  artef_RUBY?: string;
+  artef_REMOTE_API_BASE_URL?: string;
+  artef_REMOTE_APP_BASE_URL?: string;
+  artef_REMOTE_GENERATION_URL?: string;
+  artef_REQUEST_BACKOFF_MS?: number;
+  artef_REQUIRE_JSON_PROMPTS?: boolean;
+  artef_SHARING_APP_BASE_URL?: string;
+  artef_SHARE_CHUNK_SIZE?: number;
+  artef_SHARE_INLINE_BLOBS?: boolean;
+  artef_UNALIGNED_INFERENCE_ENDPOINT?: string;
+  artef_CA_CERT_PATH?: string;
+  artef_PFX_CERT_PATH?: string;
+  artef_PFX_PASSWORD?: string;
+  artef_JKS_CERT_PATH?: string;
+  artef_JKS_PASSWORD?: string;
+  artef_JKS_ALIAS?: string;
 
   //=========================================================================
   // Server security
   //=========================================================================
   /**
    * Comma-separated list of trusted origins allowed to make cross-site
-   * mutating requests to the promptfoo server.
+   * mutating requests to the artef server.
    * Example: "https://app.example.com,https://admin.example.com"
    */
-  PROMPTFOO_CSRF_ALLOWED_ORIGINS?: string;
+  artef_CSRF_ALLOWED_ORIGINS?: string;
 
   //=========================================================================
   // HTTP proxy settings
@@ -210,14 +210,14 @@ type EnvVars = {
   MCP_VERBOSE?: boolean;
 
   // Posthog
-  PROMPTFOO_POSTHOG_KEY?: string;
-  PROMPTFOO_POSTHOG_HOST?: string;
+  artef_POSTHOG_KEY?: string;
+  artef_POSTHOG_HOST?: string;
 
   //=========================================================================
   // UI configuration
   //=========================================================================
   VITE_PUBLIC_BASENAME?: string;
-  VITE_PUBLIC_PROMPTFOO_REMOTE_API_BASE_URL?: string;
+  VITE_PUBLIC_artef_REMOTE_API_BASE_URL?: string;
 
   //=========================================================================
   // Continuous Integration
@@ -564,7 +564,7 @@ export function getEnvFloat(key: EnvVarKey, defaultValue?: number): number | und
  * @returns The timeout value in milliseconds, or the default value if not set.
  */
 export function getEvalTimeoutMs(defaultValue: number = 0): number {
-  return getEnvInt('PROMPTFOO_EVAL_TIMEOUT_MS', defaultValue);
+  return getEnvInt('artef_EVAL_TIMEOUT_MS', defaultValue);
 }
 
 /**
@@ -574,7 +574,7 @@ export function getEvalTimeoutMs(defaultValue: number = 0): number {
  * @returns The max duration in milliseconds, or the default value if not set.
  */
 export function getMaxEvalTimeMs(defaultValue: number = 0): number {
-  return getEnvInt('PROMPTFOO_MAX_EVAL_TIME_MS', defaultValue);
+  return getEnvInt('artef_MAX_EVAL_TIME_MS', defaultValue);
 }
 
 /**

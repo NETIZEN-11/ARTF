@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How Much Does Foundation Model Security Matter?'
 description: 'Not all foundation models are created equal when it comes to security. Learn what to look for in model cards and how to assess jailbreak resistance before you build.'
 image: /img/blog/foundation-model-security/artificial_analysis.png
@@ -50,17 +50,17 @@ You can gain a sense of an LLM's performance and security through its system mod
 
 ![o1 jailbreak metrics](/img/blog/foundation-model-security/o1_jailbreak_metrics.png)
 
-Regardless of the robustness of testing, all LLMs have model-layer vulnerabilities, such as prompt injections and jailbreaks, hate speech, hallucinations, specialized advice, and PII leaks from training data. You can learn more about these vulnerabilities in Promptfoo's documentation. As models continue to improve in reasoning, the success rate of these attacks will lower.
+Regardless of the robustness of testing, all LLMs have model-layer vulnerabilities, such as prompt injections and jailbreaks, hate speech, hallucinations, specialized advice, and PII leaks from training data. You can learn more about these vulnerabilities in artef's documentation. As models continue to improve in reasoning, the success rate of these attacks will lower.
 
 You can gain a general sense of which models are more prone to jailbreaking on EasyJailbreak, which measures LLMs on a number of jailbreaking benchmarks. For example, you can assess a model based on its resistance to multilingual jailbreak attempts or DeepInception, where you can jailbreak an LLM through nested character roleplay and imaginative scenarios.
 
 ![easy jailbreak leaderboard](/img/blog/foundation-model-security/easy_jailbreak_leaderboard.png)
 
-Running a Promptfoo red team evaluation of an LLM (before additional guardrails are in place) can also indicate areas where an LLM may be more susceptible to attack. However, successful attacks against an LLM does not mean that the model will be insecure during deployment—[ASR metrics vary significantly based on attempt budget, prompt sets, and judge choice](/blog/asr-not-portable-metric). In subsequent blog posts, we will dive into application-layer configurations that mitigate the risk of model-layer vulnerabilities, as well as address application-layer vulnerabilities such as indirect prompt injection, tool-based vulnerabilities, and chat exfiltration techniques.
+Running a artef red team evaluation of an LLM (before additional guardrails are in place) can also indicate areas where an LLM may be more susceptible to attack. However, successful attacks against an LLM does not mean that the model will be insecure during deployment—[ASR metrics vary significantly based on attempt budget, prompt sets, and judge choice](/blog/asr-not-portable-metric). In subsequent blog posts, we will dive into application-layer configurations that mitigate the risk of model-layer vulnerabilities, as well as address application-layer vulnerabilities such as indirect prompt injection, tool-based vulnerabilities, and chat exfiltration techniques.
 
 ## What's Next?
 
-This post is the first in a six-series guide to securely deploying Generative AI applications. Pulling from our collective experience building, scaling, and securing LLM applications, the team at Promptfoo will walk through the six principles for deploying secure Gen AI applications:
+This post is the first in a six-series guide to securely deploying Generative AI applications. Pulling from our collective experience building, scaling, and securing LLM applications, the team at artef will walk through the six principles for deploying secure Gen AI applications:
 
 1. Foundation model security
 2. RAG architecture for enterprise applications

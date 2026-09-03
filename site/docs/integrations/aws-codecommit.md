@@ -1,30 +1,30 @@
----
+﻿---
 title: AWS CodeCommit Integration
 sidebar_label: AWS CodeCommit
 sidebar_position: 6
-description: Run promptfoo from AWS CodeCommit-backed CodeBuild pipelines, store results as build artifacts, and optionally post scan summaries to CodeCommit pull requests.
+description: Run artef from AWS CodeCommit-backed CodeBuild pipelines, store results as build artifacts, and optionally post scan summaries to CodeCommit pull requests.
 ---
 
 # AWS CodeCommit Integration
 
-This guide shows how to run promptfoo in AWS CodeBuild for repositories hosted in AWS CodeCommit.
+This guide shows how to run artef in AWS CodeBuild for repositories hosted in AWS CodeCommit.
 
 Use this setup when you want to:
 
-- Run `promptfoo eval` on every push or pull request
+- Run `artef eval` on every push or pull request
 - Fail a build when assertions fail
 - Persist JSON/HTML eval reports as CodeBuild artifacts
-- Run `promptfoo code-scans run` against CodeCommit pull requests and post a summary comment back to the pull request
+- Run `artef code-scans run` against CodeCommit pull requests and post a summary comment back to the pull request
 
 ## Prerequisites
 
-- An AWS CodeCommit repository with a promptfoo config such as `promptfooconfig.yaml`
+- An AWS CodeCommit repository with a artef config such as `artefconfig.yaml`
 - An AWS CodeBuild project connected to that repository
 - A [CodeBuild Ubuntu image that supports Node.js 24](https://docs.aws.amazon.com/codebuild/latest/userguide/available-runtimes.html): Ubuntu 22.04 standard 7.0 or Ubuntu 24.04 standard 8.0
 - LLM provider credentials stored in AWS Systems Manager Parameter Store or AWS Secrets Manager
-- A Promptfoo API key if you want to run `promptfoo code-scans run`
+- A artef API key if you want to run `artef code-scans run`
 
-## Run promptfoo eval in CodeBuild
+## Run artef eval in CodeBuild
 
 Create a `buildspec.yml` file in the root of your CodeCommit repository:
 
@@ -33,43 +33,43 @@ version: 0.2
 
 env:
   parameter-store:
-    OPENAI_API_KEY: /promptfoo/openai-api-key
+    OPENAI_API_KEY: /artef/openai-api-key
   variables:
-    PROMPTFOO_CACHE_PATH: .promptfoo/cache
+    artef_CACHE_PATH: .artef/cache
 
 phases:
   install:
     runtime-versions:
       nodejs: 24
     commands:
-      - npm install -g promptfoo
+      - npm install -g artef
   build:
     commands:
       - |
-        promptfoo eval \
-          -c promptfooconfig.yaml \
+        artef eval \
+          -c artefconfig.yaml \
           --share \
           --fail-on-error \
-          -o promptfoo-results.json \
-          -o promptfoo-report.html
+          -o artef-results.json \
+          -o artef-report.html
 
 artifacts:
   files:
-    - promptfoo-results.json
-    - promptfoo-report.html
+    - artef-results.json
+    - artef-report.html
 
 cache:
   paths:
-    - '.promptfoo/cache/**/*'
+    - '.artef/cache/**/*'
 ```
 
 ### What this does
 
 - Loads `OPENAI_API_KEY` from Parameter Store
-- Runs the eval suite defined in `promptfooconfig.yaml`
+- Runs the eval suite defined in `artefconfig.yaml`
 - Fails the CodeBuild build if any assertions fail
 - Saves JSON and HTML reports as build artifacts
-- Caches promptfoo responses between builds
+- Caches artef responses between builds
 
 ## Add a quality gate
 
@@ -81,12 +81,12 @@ phases:
     runtime-versions:
       nodejs: 24
     commands:
-      - npm install -g promptfoo
+      - npm install -g artef
   build:
     commands:
-      - promptfoo eval -c promptfooconfig.yaml --share -o promptfoo-results.json
+      - artef eval -c artefconfig.yaml --share -o artef-results.json
       - |
-        PASS_RATE=$(jq '.results.stats.successes / (.results.stats.successes + .results.stats.failures) * 100' promptfoo-results.json)
+        PASS_RATE=$(jq '.results.stats.successes / (.results.stats.successes + .results.stats.failures) * 100' artef-results.json)
         echo "Pass rate: ${PASS_RATE}%"
         if (( $(echo "${PASS_RATE} < 95" | bc -l) )); then
           echo "Quality gate failed: ${PASS_RATE}% < 95%"
@@ -94,9 +94,9 @@ phases:
         fi
 ```
 
-## Run promptfoo code scans on CodeCommit pull requests
+## Run artef code scans on CodeCommit pull requests
 
-Promptfoo's hosted GitHub Action posts inline review comments on GitHub pull requests, but CodeCommit pull requests are not a first-class target in `promptfoo code-scans run` today.
+artef's hosted GitHub Action posts inline review comments on GitHub pull requests, but CodeCommit pull requests are not a first-class target in `artef code-scans run` today.
 
 For CodeCommit, run the scanner in CodeBuild, save JSON output, and post a summary comment back to the pull request with the AWS CLI.
 
@@ -113,14 +113,14 @@ version: 0.2
 
 env:
   parameter-store:
-    PROMPTFOO_API_KEY: /promptfoo/api-key
+    artef_API_KEY: /artef/api-key
 
 phases:
   install:
     runtime-versions:
       nodejs: 24
     commands:
-      - npm install -g promptfoo
+      - npm install -g artef
       - apt-get update && apt-get install -y jq
   build:
     commands:
@@ -141,16 +141,16 @@ phases:
 
         git fetch origin "${DESTINATION_BRANCH}:${DESTINATION_BRANCH}"
 
-        promptfoo code-scans run . \
+        artef code-scans run . \
           --base "$DESTINATION_BRANCH" \
           --compare "$CODEBUILD_RESOLVED_SOURCE_VERSION" \
           --json \
-          > promptfoo-code-scan.json
+          > artef-code-scan.json
 
         COMMENT_BODY=$(jq -r '
           def sev(c): if c.severity then "\(.severity | ascii_upcase): " else "" end;
           [
-            "## Promptfoo Code Scan",
+            "## artef Code Scan",
             "",
             (.review // "Scan complete."),
             "",
@@ -167,9 +167,9 @@ phases:
               end
             ),
             "",
-            "[View code scanning docs](https://www.promptfoo.dev/docs/code-scanning/cli/)"
+            "[View code scanning docs](https://www.artef.dev/docs/code-scanning/cli/)"
           ] | join("\n")
-        ' promptfoo-code-scan.json)
+        ' artef-code-scan.json)
 
         aws codecommit post-comment-for-pull-request \
           --pull-request-id "$CODECOMMIT_PULL_REQUEST_ID" \
@@ -180,10 +180,10 @@ phases:
 
 artifacts:
   files:
-    - promptfoo-code-scan.json
+    - artef-code-scan.json
 ```
 
-This posts one general pull request comment with the scan summary and up to 20 findings. `PostCommentForPullRequest` also supports file-level locations, but promptfoo's scanner output is currently tuned for GitHub review semantics, so a summary comment is the simplest integration path for CodeCommit.
+This posts one general pull request comment with the scan summary and up to 20 findings. `PostCommentForPullRequest` also supports file-level locations, but artef's scanner output is currently tuned for GitHub review semantics, so a summary comment is the simplest integration path for CodeCommit.
 
 ## IAM permissions
 
@@ -198,7 +198,7 @@ For eval-only builds:
     {
       "Effect": "Allow",
       "Action": ["ssm:GetParameters"],
-      "Resource": "arn:aws:ssm:REGION:ACCOUNT_ID:parameter/promptfoo/*"
+      "Resource": "arn:aws:ssm:REGION:ACCOUNT_ID:parameter/artef/*"
     }
   ]
 }
@@ -216,13 +216,13 @@ For pull request scan comments, add CodeCommit permissions:
 
 ## Troubleshooting
 
-### `promptfoo code-scans run` fails with an auth error
+### `artef code-scans run` fails with an auth error
 
-`promptfoo code-scans run` requires a Promptfoo API key outside of the GitHub Action flow. Store `PROMPTFOO_API_KEY` in Parameter Store or Secrets Manager and expose it to CodeBuild.
+`artef code-scans run` requires a artef API key outside of the GitHub Action flow. Store `artef_API_KEY` in Parameter Store or Secrets Manager and expose it to CodeBuild.
 
 ### The scan compares against the wrong branch
 
-Fetch the destination branch before running `promptfoo code-scans run`, then pass `--base` explicitly. For CodeCommit pull requests, you can read the destination branch from `aws codecommit get-pull-request`.
+Fetch the destination branch before running `artef code-scans run`, then pass `--base` explicitly. For CodeCommit pull requests, you can read the destination branch from `aws codecommit get-pull-request`.
 
 ### No pull request comment appears
 

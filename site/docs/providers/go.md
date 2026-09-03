@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Custom Go (Golang)
-description: Configure custom Go providers to integrate your own Go-based LLM clients, models, and APIs with promptfoo's testing framework for seamless evaluation
+description: Configure custom Go providers to integrate your own Go-based LLM clients, models, and APIs with artef's testing framework for seamless evaluation
 ---
 
 # Custom Go Provider
@@ -16,7 +16,7 @@ The golang provider currently experimental
 You can initialize a new Go provider project using:
 
 ```sh
-promptfoo init --example provider-golang
+artef init --example provider-golang
 ```
 
 ## Provider Interface
@@ -50,7 +50,7 @@ providers:
 Here's a complete example using the OpenAI API:
 
 ```go
-// Package provider implements a promptfoo provider that uses OpenAI's API.
+// Package provider implements a artef provider that uses OpenAI's API.
 package provider
 
 import (
@@ -96,14 +96,14 @@ func CallApi(prompt string, options map[string]interface{}, ctx map[string]inter
 ```
 
 Use a named, importable package as shown above when the provider lives in a regular Go module.
-Promptfoo builds its generated entry point separately and imports the package through the module
+artef builds its generated entry point separately and imports the package through the module
 path from `go.mod`, so repository-wide commands such as `go build ./...` continue to work. The
 `CallApi` symbol must be exported. Existing `package main` providers remain supported, but a provider
 without its own `main` function cannot also be built as a standalone command.
 
 ## Using the Provider
 
-To use the Go provider in your promptfoo configuration:
+To use the Go provider in your artef configuration:
 
 ```yaml
 providers:
@@ -115,5 +115,5 @@ providers:
 Or in the CLI:
 
 ```
-promptfoo eval -p prompt1.txt prompt2.txt -o results.csv -v vars.csv -r 'file://path/to/your/script.go'
+artef eval -p prompt1.txt prompt2.txt -o results.csv -v vars.csv -r 'file://path/to/your/script.go'
 ```

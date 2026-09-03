@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_position: 43
 sidebar_label: Codex Security SDK
 title: OpenAI Codex Security SDK
-description: Compare Codex Security scans, finding validation, model reasoning, repository coverage, token usage, and estimated cost in Promptfoo evals.
+description: Compare Codex Security scans, finding validation, model reasoning, repository coverage, token usage, and estimated cost in artef evals.
 ---
 
 # OpenAI Codex Security SDK
 
-The Codex Security provider runs the `@openai/codex-security` SDK directly as a Promptfoo provider. Use it to compare standard and deep scans, models, reasoning effort, vulnerability recall, finding validation, token usage, and estimated scan cost.
+The Codex Security provider runs the `@openai/codex-security` SDK directly as a artef provider. Use it to compare standard and deep scans, models, reasoning effort, vulnerability recall, finding validation, token usage, and estimated scan cost.
 
 | Provider                                         | Best for                                                        | Provider ID                     |
 | ------------------------------------------------ | --------------------------------------------------------------- | ------------------------------- |
@@ -18,13 +18,13 @@ The Codex Security provider runs the `@openai/codex-security` SDK directly as a 
 
 ## Installation and authentication
 
-Promptfoo declares the SDK as an optional dependency. If optional dependencies were omitted, install Promptfoo and the SDK together so they share the same installation:
+artef declares the SDK as an optional dependency. If optional dependencies were omitted, install artef and the SDK together so they share the same installation:
 
 ```bash
-npm install promptfoo @openai/codex-security@^0.1.18
+npm install artef @openai/codex-security@^0.1.18
 ```
 
-The provider requires `@openai/codex-security` version `0.1.18` or newer. Older SDK releases omit finding validation and can undercount deep-worker token usage and cost. Use Node.js `^22.22.0`, `^24.0.0`, or `^26.0.0` to satisfy both Promptfoo and the SDK. Promptfoo loads the SDK only from its own installation; it does not execute SDK packages found in the target repository or evaluation directory. For a global installation, install both packages together with `npm install -g promptfoo @openai/codex-security@^0.1.18`. Use an existing Codex/ChatGPT login, or set `OPENAI_API_KEY` or `CODEX_API_KEY` in the process environment before starting promptfoo. The native SDK does not support provider-scoped API keys or provider environment overrides; credentials must already be present in the Promptfoo process environment.
+The provider requires `@openai/codex-security` version `0.1.18` or newer. Older SDK releases omit finding validation and can undercount deep-worker token usage and cost. Use Node.js `^22.22.0`, `^24.0.0`, or `^26.0.0` to satisfy both artef and the SDK. artef loads the SDK only from its own installation; it does not execute SDK packages found in the target repository or evaluation directory. For a global installation, install both packages together with `npm install -g artef @openai/codex-security@^0.1.18`. Use an existing Codex/ChatGPT login, or set `OPENAI_API_KEY` or `CODEX_API_KEY` in the process environment before starting artef. The native SDK does not support provider-scoped API keys or provider environment overrides; credentials must already be present in the artef process environment.
 
 Codex Security access, Trusted Access, and model availability depend on the authenticated account and organization.
 
@@ -36,8 +36,8 @@ Choose a security operation, repository path, model, reasoning effort, authentic
 
 ## Compare scan depth, models, and reasoning
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Compare Codex Security scan depth and reasoning
 prompts:
   - Find exploitable authorization, injection, and sensitive-data vulnerabilities.
@@ -86,17 +86,17 @@ Provider IDs support both `openai:codex-security` with `config.model` and `opena
 Run the config without cached results:
 
 ```bash
-npx promptfoo eval -c promptfooconfig.yaml --no-cache
-npx promptfoo view
+npx artef eval -c artefconfig.yaml --no-cache
+npx artef view
 ```
 
 To start with the included intentionally vulnerable fixture:
 
 ```bash
-npx promptfoo@latest init --example openai-codex-security
+npx artef@latest init --example openai-codex-security
 cd openai-codex-security
-npm install promptfoo @openai/codex-security@^0.1.18
-npx promptfoo eval --no-cache
+npm install artef @openai/codex-security@^0.1.18
+npx artef eval --no-cache
 ```
 
 ## Supported operations
@@ -186,7 +186,7 @@ Managed Codex Security scans run with the access required by the security SDK. R
 
 ## Results, cost, and assertions
 
-Repository scans return `ScanResult.toJSON()` in `output`, including `manifest`, `findings`, `coverage`, artifact paths, and SDK cost data. Promptfoo also normalizes SDK-reported values into:
+Repository scans return `ScanResult.toJSON()` in `output`, including `manifest`, `findings`, `coverage`, artifact paths, and SDK cost data. artef also normalizes SDK-reported values into:
 
 - `tokenUsage.prompt`, `tokenUsage.completion`, `tokenUsage.cached`, and `tokenUsage.total`.
 - `tokenUsage.completionDetails.reasoning`, `cacheReadInputTokens`, and `cacheCreationInputTokens` when reported.
@@ -236,13 +236,13 @@ tests:
         metric: ScanLatency
 ```
 
-`cost` assertions require a native scan that reports estimated spend; do not use them for finding validation when the SDK omits usage. Finding output and stored artifacts may include sensitive source-code excerpts; configure Promptfoo retention and sharing accordingly.
+`cost` assertions require a native scan that reports estimated spend; do not use them for finding validation when the SDK omits usage. Finding output and stored artifacts may include sensitive source-code excerpts; configure artef retention and sharing accordingly.
 
 ## Troubleshooting
 
 - **Zero findings with partial coverage:** Inspect `metadata.warnings`, `metadata.coverage.deferred`, and `coverage.json`. Discarded findings or malformed evidence references indicate an incomplete scan, not a clean repository.
 - **Deep scan cost appears too low:** Install SDK version `0.1.18` or newer. Earlier versions can omit independently launched discovery and deduplication workers from token and cost totals.
-- **SDK fails to load:** Install Promptfoo and the SDK together, and use Node.js `^22.22.0`, `^24.0.0`, or `^26.0.0`.
+- **SDK fails to load:** Install artef and the SDK together, and use Node.js `^22.22.0`, `^24.0.0`, or `^26.0.0`.
 - **Authentication or access fails:** Sign in with Codex or set `OPENAI_API_KEY` / `CODEX_API_KEY`; confirm that the account has the required Codex Security and Trusted Access permissions.
 - **Output directory is rejected:** Choose an artifact directory outside the target repository, and use a distinct directory for each provider or eval row.
 - **Diff scan fails:** Set `base_ref`, or use `working_tree: true`; do not combine `working_tree` with `head_ref`.

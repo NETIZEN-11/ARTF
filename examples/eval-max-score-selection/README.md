@@ -1,9 +1,9 @@
-# eval-max-score-selection (Max-Score Selection)
+﻿# eval-max-score-selection (Max-Score Selection)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-max-score-selection
+npx artef@latest init --example eval-max-score-selection
 cd eval-max-score-selection
 ```
 
@@ -53,7 +53,7 @@ The `max-score` assertion provides a deterministic way to select the best output
 
 ```bash
 # Run the main example (requires API keys for OpenAI/Anthropic)
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## How It Works

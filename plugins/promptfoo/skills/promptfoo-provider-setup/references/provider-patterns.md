@@ -1,11 +1,11 @@
-# Provider Setup Patterns
+﻿# Provider Setup Patterns
 
 Use these as starting points; keep secrets in env vars.
 
 ## Live HTTP JSON endpoint
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: HTTP endpoint smoke test
 
 prompts:
@@ -34,7 +34,7 @@ tests:
         value: PONG
 ```
 
-Smoke with `promptfoo eval -c promptfooconfig.yaml -o output.json --no-cache
+Smoke with `artef eval -c artefconfig.yaml -o output.json --no-cache
 --no-share`. Use `stateful: false` for stateless targets. If the app maintains
 conversation state, omit it and map `{{sessionId}}` into the request or configure
 `sessionParser`.
@@ -61,7 +61,7 @@ providers:
 
 ## OpenAI-compatible chat endpoint
 
-Use an HTTP provider when the endpoint is OpenAI-shaped but not one of Promptfoo's native providers.
+Use an HTTP provider when the endpoint is OpenAI-shaped but not one of artef's native providers.
 
 ```yaml
 providers:
@@ -125,7 +125,7 @@ providers:
 Use this for direct local code or custom setup. Pick JavaScript for Node apps and Python for Python app modules.
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Local agent provider smoke test
 prompts:
   - '{{message}}'
@@ -184,8 +184,8 @@ def call_api(prompt: str, options: dict, context: dict) -> dict:
 
 Python providers implement `call_api(prompt, options, context)` unless the id
 uses a custom `file://provider.py:function_name` suffix. Anchor `sys.path` to
-the provider directory before nearby app imports. Use `PROMPTFOO_PYTHON` or
-`config.pythonExecutable` for a venv, `PROMPTFOO_PYTHON_WORKERS` or
+the provider directory before nearby app imports. Use `artef_PYTHON` or
+`config.pythonExecutable` for a venv, `artef_PYTHON_WORKERS` or
 `config.workers` for concurrency, and `config.timeout` for slow SDK calls.
 `validate target` may call providers without vars, so wrappers need harmless defaults.
 
@@ -195,7 +195,7 @@ Use `targets` and preserve the app's real input fields. This gives redteam
 plugins access to the actual authorization and injection surface.
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Multi-input redteam target
 
 targets:
@@ -232,7 +232,7 @@ redteam:
 ```
 
 Do not set `redteam.injectVar` for multi-input mode. Define `inputs` on the
-target; Promptfoo automatically creates the internal combined `__prompt` value
+target; artef automatically creates the internal combined `__prompt` value
 for generation and grading.
 
 ## Hybrid discovery notes
@@ -242,7 +242,7 @@ Use this when static code and a live endpoint are both available. Record the con
 - Static source: route/handler/client file and line range.
 - Expected request: method, path, headers, body/query fields, and auth env var.
 - Safe live probe: exact non-mutating payload and observed response field.
-- Promptfoo mapping: vars to request fields and `transformResponse`.
+- artef mapping: vars to request fields and `transformResponse`.
 - Open questions: mutations, session behavior, rate limits, or missing auth.
 
 Prefer a local wrapper when the static path exposes app logic directly; prefer

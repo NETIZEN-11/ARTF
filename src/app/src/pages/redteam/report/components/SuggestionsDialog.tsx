@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Card, CardContent } from '@app/components/ui/card';
 import {
@@ -10,7 +10,7 @@ import { CopyButton } from '@app/components/ui/copy-button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@app/components/ui/dialog';
 import { cn } from '@app/lib/utils';
 import { ChevronDown } from 'lucide-react';
-import type { GradingResult, ResultSuggestion } from '@promptfoo/types';
+import type { GradingResult, ResultSuggestion } from '@artef/types';
 
 interface SuggestionsDialogProps {
   open: boolean;

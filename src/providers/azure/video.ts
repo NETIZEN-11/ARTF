@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Azure AI Foundry Video Provider for Sora video generation.
  *
  * This provider enables text-to-video and image-to-video generation
@@ -105,7 +105,7 @@ export function calculateAzureVideoCost(seconds: number, cached: boolean = false
  * - Image-to-video generation (with inpaint_items)
  *
  * Videos are generated asynchronously via polling, then downloaded
- * to ~/.promptfoo/media/video/ and served via API routes.
+ * to ~/.artef/media/video/ and served via API routes.
  */
 export class AzureVideoProvider extends AzureGenericProvider {
   declare config: AzureVideoOptions;

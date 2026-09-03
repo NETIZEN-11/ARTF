@@ -1,4 +1,4 @@
-import { mockCallApiResponse, rejectCallApi, resetCallApiMock } from '@app/tests/apiMocks';
+﻿import { mockCallApiResponse, rejectCallApi, resetCallApiMock } from '@app/tests/apiMocks';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -22,13 +22,13 @@ describe('EnterpriseBanner', () => {
     expect(mockCallApi).toHaveBeenCalledWith('/results/share/check-domain?id=test-eval-123');
 
     const bannerText = await screen.findByText(
-      /You're using the community edition of Promptfoo's red teaming suite/i,
+      /You're using the community edition of artef's red teaming suite/i,
     );
     expect(bannerText).toBeInTheDocument();
 
-    const enterpriseLink = screen.getByRole('link', { name: /Promptfoo Enterprise/i });
+    const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
   });
 
   it('should not render anything when evalId is provided and cloud is enabled', async () => {
@@ -53,13 +53,13 @@ describe('EnterpriseBanner', () => {
     expect(mockCallApi).not.toHaveBeenCalled();
 
     const bannerText = await screen.findByText(
-      /You're using the community edition of Promptfoo's red teaming suite/i,
+      /You're using the community edition of artef's red teaming suite/i,
     );
     expect(bannerText).toBeInTheDocument();
 
-    const enterpriseLink = screen.getByRole('link', { name: /Promptfoo Enterprise/i });
+    const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
   });
 
   it('should render the community edition banner when the API call returns a non-OK response', async () => {
@@ -71,13 +71,13 @@ describe('EnterpriseBanner', () => {
     expect(mockCallApi).toHaveBeenCalledWith('/results/share/check-domain?id=test-eval-123');
 
     const bannerText = await screen.findByText(
-      /You're using the community edition of Promptfoo's red teaming suite/i,
+      /You're using the community edition of artef's red teaming suite/i,
     );
     expect(bannerText).toBeInTheDocument();
 
-    const enterpriseLink = screen.getByRole('link', { name: /Promptfoo Enterprise/i });
+    const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
   });
 
   it('should render the community edition banner when the API call throws an exception', async () => {
@@ -89,12 +89,12 @@ describe('EnterpriseBanner', () => {
     expect(mockCallApi).toHaveBeenCalledWith('/results/share/check-domain?id=test-eval-123');
 
     const bannerText = await screen.findByText(
-      /You're using the community edition of Promptfoo's red teaming suite/i,
+      /You're using the community edition of artef's red teaming suite/i,
     );
     expect(bannerText).toBeInTheDocument();
 
-    const enterpriseLink = screen.getByRole('link', { name: /Promptfoo Enterprise/i });
+    const enterpriseLink = screen.getByRole('link', { name: /artef Enterprise/i });
     expect(enterpriseLink).toBeInTheDocument();
-    expect(enterpriseLink).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/enterprise/');
+    expect(enterpriseLink).toHaveAttribute('href', 'https://www.artef.dev/docs/enterprise/');
   });
 });

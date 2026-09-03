@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
 import {
   isBedrockGrokModel,
@@ -472,7 +472,7 @@ describe('bedrock openaiResponses helper', () => {
       expect(body.temperature).toBeUndefined();
     });
 
-    it('honors AWS_BEARER_TOKEN_BEDROCK and AWS_REGION supplied via promptfoo env overrides', () => {
+    it('honors AWS_BEARER_TOKEN_BEDROCK and AWS_REGION supplied via artef env overrides', () => {
       restoreEnv = mockProcessEnv({
         AWS_BEARER_TOKEN_BEDROCK: undefined,
         AWS_BEDROCK_REGION: undefined,
@@ -733,7 +733,7 @@ describe('bedrock openaiResponses helper', () => {
     it('links Grok missing-key errors to the Grok docs section', () => {
       restoreEnv = mockProcessEnv({ AWS_BEARER_TOKEN_BEDROCK: undefined });
       expect(() => createBedrockOpenAiResponsesProvider('xai.grok-4.3', {})).toThrow(
-        'https://www.promptfoo.dev/docs/providers/aws-bedrock/#xai-grok-models',
+        'https://www.artef.dev/docs/providers/aws-bedrock/#xai-grok-models',
       );
     });
 

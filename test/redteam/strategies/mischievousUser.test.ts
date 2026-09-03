@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addMischievousUser } from '../../../src/redteam/strategies/mischievousUser';
 
 import type { TestCase } from '../../../src/types/index';
@@ -16,7 +16,7 @@ describe('Mischievous User Strategy', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].provider).toEqual({
-      id: 'promptfoo:redteam:mischievous-user',
+      id: 'artef:redteam:mischievous-user',
       config: { injectVar: 'instructions', maxTurns: 3 },
     });
     expect(result[0].assert?.[0].metric).toBe('exactMatch/MischievousUser');

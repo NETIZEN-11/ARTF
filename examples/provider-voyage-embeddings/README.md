@@ -1,9 +1,9 @@
-# provider-voyage-embeddings (Voyage Embeddings)
+﻿# provider-voyage-embeddings (Voyage Embeddings)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-voyage-embeddings
+npx artef@latest init --example provider-voyage-embeddings
 cd provider-voyage-embeddings
 ```
 
@@ -11,12 +11,12 @@ cd provider-voyage-embeddings
 
 To get started, set your ANTHROPIC_API_KEY and VOYAGE_API_KEY environment variables.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -11,25 +11,25 @@ export default function RSA2026(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at RSA Conference 2026"
-      description="Recap of Promptfoo at RSA Conference 2026. Live AI red teaming demos, security consultations, and enterprise AI security discussions in San Francisco."
+      title="artef at RSA Conference 2026"
+      description="Recap of artef at RSA Conference 2026. Live AI red teaming demos, security consultations, and enterprise AI security discussions in San Francisco."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at RSA Conference 2026" />
+        <meta property="og:title" content="artef at RSA Conference 2026" />
         <meta
           property="og:description"
-          content="Recap of Promptfoo at RSA Conference 2026. Live AI red teaming demos and enterprise security."
+          content="Recap of artef at RSA Conference 2026. Live AI red teaming demos and enterprise security."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/rsa-2026" />
+        <meta property="og:url" content="https://www.artef.dev/events/rsa-2026" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/events/rsa-2026.jpg" />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/events/rsa-2026.jpg" />
+        <meta property="og:image" content="https://www.artef.dev/img/events/rsa-2026.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/rsa-2026.jpg" />
         <meta
           name="keywords"
           content="RSA Conference 2026, AI security, LLM security, enterprise security, San Francisco, red teaming"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/rsa-2026" />
+        <link rel="canonical" href="https://www.artef.dev/events/rsa-2026" />
       </Head>
 
       <main className={styles.rsaPage}>
@@ -157,7 +157,7 @@ export default function RSA2026(): React.ReactElement {
                   Join our Discord community to connect with our team and our community.
                 </p>
                 <a
-                  href="https://discord.com/invite/promptfoo"
+                  href="https://discord.com/invite/artef"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.secondaryCta}

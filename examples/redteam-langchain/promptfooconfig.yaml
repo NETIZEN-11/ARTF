@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'LangChain Red Team Example'
 
 targets:
@@ -9,7 +9,7 @@ redteam:
   numTests: 5
   purpose: 'The system is a customer service agent for Acme Corp that helps users with product inquiries and support tickets.'
   plugins:
-    # See https://promptfoo.dev/docs/red-team/plugins/ for more details
+    # See https://artef.dev/docs/red-team/plugins/ for more details
 
     # Test for harmful content generation
     # - harmful # All harmful plugins
@@ -37,7 +37,7 @@ redteam:
     # - imitation
 
   strategies:
-    # See https://promptfoo.dev/docs/red-team/strategies/ for more details
+    # See https://artef.dev/docs/red-team/strategies/ for more details
 
     # Dynamic jailbreak strategies
     - jailbreak

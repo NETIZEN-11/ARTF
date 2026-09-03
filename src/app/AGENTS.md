@@ -1,4 +1,4 @@
-# Frontend Application
+﻿# Frontend Application
 
 React-based web UI using Vite + TypeScript. Separate workspace from main codebase.
 
@@ -18,7 +18,7 @@ This handles API base URL differences between dev and production.
 **Target Stack:**
 
 - React 19 + TypeScript + Vite
-- Promptfoo's Design system + Radix UI primitives
+- artef's Design system + Radix UI primitives
 - Tailwind CSS for styling
 - Lucide React for icons
 - **Vitest** for testing
@@ -42,7 +42,7 @@ Avoid legacy patterns like class components, legacy context, or string refs.
 ### Use Radix
 
 ```typescript
-// New components - use Promptfoo's Design system from components/ui/
+// New components - use artef's Design system from components/ui/
 import { Button } from '@app/components/ui/button';
 import { Dialog, DialogContent, DialogHeader } from '@app/components/ui/dialog';
 import { Input } from '@app/components/ui/input';

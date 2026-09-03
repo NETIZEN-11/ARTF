@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { loadApiProvider } from '../../src/providers/index';
 import {
   getPortkeyHeaders,
@@ -62,11 +62,11 @@ describe('getPortkeyHeaders', () => {
     expect(getPortkeyHeaders({})).toEqual({});
   });
 
-  // Non-portkey keys are request body params (max_tokens) or promptfoo bookkeeping
+  // Non-portkey keys are request body params (max_tokens) or artef bookkeeping
   // (basePath). Forwarding them leaked local state and produced invalid header values.
   it.each([
     ['a request body parameter', { max_tokens: 512 }],
-    ['promptfoo bookkeeping', { basePath: '/home/user/my-project' }],
+    ['artef bookkeeping', { basePath: '/home/user/my-project' }],
     ['a provider credential', { apiKey: 'test-api-key' }],
     ['an arbitrary setting', { regularSetting: 'value', customHost: 'custom.host.com' }],
   ])('should not turn %s into a header', (_, foreign) => {
@@ -83,7 +83,7 @@ describe('getPortkeyHeaders', () => {
     expect(() => new Headers(headers)).not.toThrow();
   });
 
-  it('should not emit a header for the promptfoo-only portkeyApiBaseUrl key', () => {
+  it('should not emit a header for the artef-only portkeyApiBaseUrl key', () => {
     const config = {
       portkeyApiKey: 'test-api-key',
       portkeyApiBaseUrl: 'https://gateway.internal/v1',

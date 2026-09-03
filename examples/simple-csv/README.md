@@ -1,13 +1,13 @@
-# simple-csv (Simple CSV Example)
+﻿# simple-csv (Simple CSV Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example simple-csv
+npx artef@latest init --example simple-csv
 cd simple-csv
 ```
 
-This example demonstrates how to use CSV and Excel files for test cases in promptfoo, including working with JSON fields for language translation tasks.
+This example demonstrates how to use CSV and Excel files for test cases in artef, including working with JSON fields for language translation tasks.
 
 ## Features Demonstrated
 
@@ -18,7 +18,7 @@ This example demonstrates how to use CSV and Excel files for test cases in promp
 
 ## Project Structure
 
-- `promptfooconfig.yaml`: Main configuration file
+- `artefconfig.yaml`: Main configuration file
 - `prompts.txt`: Contains two prompt templates:
   1. A formal translator prompt
   2. A conversational language assistant prompt
@@ -35,7 +35,7 @@ To use Excel files instead of CSV:
    npm install read-excel-file
    ```
 
-2. Update `promptfooconfig.yaml` to use the Excel file:
+2. Update `artefconfig.yaml` to use the Excel file:
    ```yaml
    tests: file://tests.xlsx
    ```
@@ -59,13 +59,13 @@ tests: file://tests.xlsx#2
 From the root of this example, you can run the eval as:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 To view the results in your browser:
 
 ```bash
-promptfoo view
+artef view
 ```
 
-For more details on using CSV and Excel files in promptfoo, see our [CSV Format](https://www.promptfoo.dev/docs/configuration/test-cases/#csv-format) documentation.
+For more details on using CSV and Excel files in artef, see our [CSV Format](https://www.artef.dev/docs/configuration/test-cases/#csv-format) documentation.

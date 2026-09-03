@@ -1,4 +1,4 @@
-import { categoryAliases, displayNameOverrides } from '@promptfoo/redteam/constants';
+﻿import { categoryAliases, displayNameOverrides } from '@artef/redteam/constants';
 
 export type TestResultStats = {
   // The count of successful defenses (tests that passed)

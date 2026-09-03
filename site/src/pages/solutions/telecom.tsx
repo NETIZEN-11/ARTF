@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -65,7 +65,7 @@ export default function Telecom() {
       description="Red team voice and text AI agents for CPNI protection, SIM swap prevention, and FCC compliance. Audio-to-audio model testing for IVR systems and voice assistants at carrier scale."
     >
       <Head>
-        <meta property="og:title" content="AI Security for Telecommunications | Promptfoo" />
+        <meta property="og:title" content="AI Security for Telecommunications | artef" />
         <meta
           property="og:description"
           content="Test voice and text AI agents at carrier scale. Audio-to-audio model support for IVR, voice assistants, and customer service AI."
@@ -76,7 +76,7 @@ export default function Telecom() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Security for Telecommunications | Promptfoo" />
+        <meta name="twitter:title" content="AI Security for Telecommunications | artef" />
         <meta
           name="twitter:description"
           content="Test voice and text AI agents at carrier scale. Audio-to-audio model support for IVR, voice assistants, and customer service AI."
@@ -181,7 +181,7 @@ export default function Telecom() {
             <p className={styles.sectionEyebrow}>Voice AI Testing</p>
             <h2 className={styles.sectionTitle}>Test voice AI with the same rigor as text</h2>
             <p className={styles.sectionSubtitle}>
-              Most AI security tools only work with text. But telecom AI is voice-first. Promptfoo's
+              Most AI security tools only work with text. But telecom AI is voice-first. artef's
               audio-to-audio testing lets you red team voice models directly.
             </p>
 

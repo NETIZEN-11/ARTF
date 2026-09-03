@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import DigitalSignatureAuthTab from './tabs/DigitalSignatureAuthTab';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 vi.mock('@app/hooks/useToast', () => ({
   useToast: () => ({
@@ -741,12 +741,12 @@ describe('DigitalSignatureAuthTab', () => {
       const templateInput = screen.getByLabelText('Signature Data Template');
       await user.click(templateInput);
       await user.keyboard('{Control>}a{/Control}');
-      await user.paste('promptfoo-app{{signatureTimestamp}}');
+      await user.paste('artef-app{{signatureTimestamp}}');
 
       expect(mockUpdateCustomTarget).toHaveBeenCalledWith('signatureAuth', {
         enabled: true,
         certificateType: 'pem',
-        signatureDataTemplate: 'promptfoo-app{{signatureTimestamp}}',
+        signatureDataTemplate: 'artef-app{{signatureTimestamp}}',
       });
     });
 

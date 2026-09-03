@@ -1,4 +1,4 @@
-# provider-transformers-local (Fully Local LLM Evaluation)
+﻿# provider-transformers-local (Fully Local LLM Evaluation)
 
 This example demonstrates a completely local LLM evaluation setup using Transformers.js - no API keys or external services required.
 
@@ -13,9 +13,9 @@ npm install @huggingface/transformers
 ## Usage
 
 ```bash
-npx promptfoo@latest init --example provider-transformers-local
+npx artef@latest init --example provider-transformers-local
 cd provider-transformers-local
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## What This Example Shows

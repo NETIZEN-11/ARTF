@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -109,7 +109,7 @@ describe('RedteamGoatProvider', () => {
     mockGetGraderById.mockReturnValue(mockGrader);
     mockGrader.getResult.mockReset();
 
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-goat-provider-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-goat-provider-'));
     mockFetch = vi.fn().mockImplementation(async function () {
       return {
         json: async () => ({
@@ -135,7 +135,7 @@ describe('RedteamGoatProvider', () => {
       maxTurns: 3,
     });
 
-    expect(provider.id()).toBe('promptfoo:redteam:goat');
+    expect(provider.id()).toBe('artef:redteam:goat');
   });
 
   it('should throw error if injectVar is missing', () => {
@@ -303,7 +303,7 @@ describe('RedteamGoatProvider', () => {
     const fileContent = 'multi-input local secret';
     const filePath = createTempFile('multi-input-email.txt', fileContent);
     const fileUrl = `file://${filePath}`;
-    const packageRef = 'package:@promptfoo/fake:getSecret';
+    const packageRef = 'package:@artef/fake:getSecret';
     const attackerGoal = 'hello "quoted"\nnext line';
 
     mockFetch.mockResolvedValue({
@@ -1040,7 +1040,7 @@ describe('RedteamGoatProvider', () => {
       vars: {},
       assert: [
         {
-          type: 'promptfoo:redteam:policy',
+          type: 'artef:redteam:policy',
           metric: 'PolicyViolation:401a805692b3',
         },
       ],
@@ -1055,7 +1055,7 @@ describe('RedteamGoatProvider', () => {
     expect(result.metadata?.storedGraderResult).toBeDefined();
     expect(result.metadata?.storedGraderResult?.assertion).toBeDefined();
     expect(result.metadata?.storedGraderResult?.assertion?.value).toBe(mockRenderedRubric);
-    expect(result.metadata?.storedGraderResult?.assertion?.type).toBe('promptfoo:redteam:policy');
+    expect(result.metadata?.storedGraderResult?.assertion?.type).toBe('artef:redteam:policy');
     expect(result.metadata?.stopReason).toBe('Grader failed');
   });
 
@@ -1073,7 +1073,7 @@ describe('RedteamGoatProvider', () => {
       score: 0,
       reason: 'Test failed',
       assertion: {
-        type: 'promptfoo:redteam:policy' as const,
+        type: 'artef:redteam:policy' as const,
         metric: 'PolicyViolation:test',
         value: 'old value',
       },
@@ -1089,7 +1089,7 @@ describe('RedteamGoatProvider', () => {
       vars: {},
       assert: [
         {
-          type: 'promptfoo:redteam:policy',
+          type: 'artef:redteam:policy',
           metric: 'PolicyViolation:test',
         },
       ],
@@ -1102,7 +1102,7 @@ describe('RedteamGoatProvider', () => {
 
     // Verify that the rubric overrides the old value
     expect(result.metadata?.storedGraderResult?.assertion?.value).toBe(mockRenderedRubric);
-    expect(result.metadata?.storedGraderResult?.assertion?.type).toBe('promptfoo:redteam:policy');
+    expect(result.metadata?.storedGraderResult?.assertion?.type).toBe('artef:redteam:policy');
     expect(result.metadata?.storedGraderResult?.assertion?.metric).toBe('PolicyViolation:test');
   });
 
@@ -1131,7 +1131,7 @@ describe('RedteamGoatProvider', () => {
       vars: {},
       assert: [
         {
-          type: 'promptfoo:redteam:harmful',
+          type: 'artef:redteam:harmful',
           metric: 'Harmful',
         },
       ],
@@ -1144,7 +1144,7 @@ describe('RedteamGoatProvider', () => {
 
     // Should use assertion from test config with rubric as value
     expect(result.metadata?.storedGraderResult?.assertion?.value).toBe(mockRenderedRubric);
-    expect(result.metadata?.storedGraderResult?.assertion?.type).toBe('promptfoo:redteam:harmful');
+    expect(result.metadata?.storedGraderResult?.assertion?.type).toBe('artef:redteam:harmful');
     expect(result.metadata?.storedGraderResult?.assertion?.metric).toBe('Harmful');
   });
 

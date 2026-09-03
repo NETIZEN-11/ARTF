@@ -1,4 +1,4 @@
-import { getEnvString } from '../../envars';
+﻿import { getEnvString } from '../../envars';
 import logger from '../../logger';
 import type { NextFunction, Request, Response } from 'express';
 
@@ -11,7 +11,7 @@ const KNOWN_LOCAL_HOSTS = new Set([
   '127.0.0.1',
   '[::1]',
   '::1',
-  'local.promptfoo.app',
+  'local.artef.app',
 ]);
 
 function isLocalHost(hostname: string): boolean {
@@ -19,7 +19,7 @@ function isLocalHost(hostname: string): boolean {
 }
 
 function getAllowedOrigins(): Set<string> {
-  const envOrigins = getEnvString('PROMPTFOO_CSRF_ALLOWED_ORIGINS', '');
+  const envOrigins = getEnvString('artef_CSRF_ALLOWED_ORIGINS', '');
   if (!envOrigins) {
     return new Set();
   }

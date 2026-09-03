@@ -1,4 +1,4 @@
-# provider-quiverai (QuiverAI SVG Generation, Vectorization & Pipelines)
+﻿# provider-quiverai (QuiverAI SVG Generation, Vectorization & Pipelines)
 
 Compare QuiverAI's Arrow models — including [Arrow 1.1](https://docs.quiver.ai) and Arrow 1.1 Max — across three workflows: text-to-SVG generation, image-to-SVG vectorization, and a chained `GPT Image-2 → QuiverAI vectorize` pipeline. Every workflow is scored with an LLM-as-judge rubric so you can compare quality side-by-side.
 
@@ -7,13 +7,13 @@ Compare QuiverAI's Arrow models — including [Arrow 1.1](https://docs.quiver.ai
 ```bash
 export QUIVERAI_API_KEY=your-api-key
 export OPENAI_API_KEY=your-openai-key  # Required for the pipeline + llm-rubric grader
-npx promptfoo@latest init --example provider-quiverai
+npx artef@latest init --example provider-quiverai
 ```
 
 ## Run the generation suite
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This compares Arrow 1.1, Arrow 1.1 Max, and an Arrow 1.1 variant with `instructions` style guidance side-by-side.
@@ -21,7 +21,7 @@ This compares Arrow 1.1, Arrow 1.1 Max, and an Arrow 1.1 variant with `instructi
 ## Run the vectorize suite
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.vectorize.yaml
+npx artef@latest eval -c artefconfig.vectorize.yaml
 ```
 
 Converts raster reference images into SVGs with both Arrow 1.1 and Arrow 1.1 Max so you can compare fidelity.
@@ -31,7 +31,7 @@ when third-party image hosts change behavior.
 ## Run the GPT Image-2 → QuiverAI pipeline
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.pipeline.yaml
+npx artef@latest eval -c artefconfig.pipeline.yaml
 ```
 
 Chains OpenAI `gpt-image-2` (high-quality raster) with the QuiverAI vectorize endpoint to produce a coherent red-panda icon set. The pipeline is a custom JS provider in [`pipeline-provider.js`](pipeline-provider.js); each call hits both APIs serially, so expect longer wall-clock times than a single-provider eval.
@@ -73,5 +73,5 @@ model- and operation-specific.
 
 ## Learn More
 
-- [QuiverAI Provider Documentation](https://www.promptfoo.dev/docs/providers/quiverai)
+- [QuiverAI Provider Documentation](https://www.artef.dev/docs/providers/quiverai)
 - [QuiverAI API Documentation](https://docs.quiver.ai)

@@ -1,13 +1,13 @@
-# provider-replicate/llama-guard-moderation (LlamaGuard Content Moderation)
+﻿# provider-replicate/llama-guard-moderation (LlamaGuard Content Moderation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-replicate/llama-guard-moderation
+npx artef@latest init --example provider-replicate/llama-guard-moderation
 cd provider-replicate/llama-guard-moderation
 ```
 
-This example demonstrates how to use Meta's LlamaGuard models for content moderation in promptfoo.
+This example demonstrates how to use Meta's LlamaGuard models for content moderation in artef.
 
 ## Features
 
@@ -50,12 +50,12 @@ LlamaGuard monitors these safety categories:
 
 3. Run the evaluation:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 ## LlamaGuard 4
 
-LlamaGuard 4 is a 12B parameter model that adds the S14 category for code interpreter abuse detection. It's the default moderation provider for promptfoo on Replicate.
+LlamaGuard 4 is a 12B parameter model that adds the S14 category for code interpreter abuse detection. It's the default moderation provider for artef on Replicate.
 
 Using LlamaGuard 4:
 

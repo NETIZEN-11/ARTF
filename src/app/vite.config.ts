@@ -1,4 +1,4 @@
-/// <reference types="vitest/config" />
+﻿/// <reference types="vitest/config" />
 
 import { fileURLToPath } from 'node:url';
 import os from 'os';
@@ -57,15 +57,15 @@ const ignoredTestConsolePatterns = [
 ];
 
 const showTestConsoleOutput =
-  process.env.PROMPTFOO_TEST_SHOW_OUTPUT === 'true' ||
-  process.env.PROMPTFOO_APP_TEST_SHOW_OUTPUT === 'true';
+  process.env.artef_TEST_SHOW_OUTPUT === 'true' ||
+  process.env.artef_APP_TEST_SHOW_OUTPUT === 'true';
 
-// These environment variables are inherited from the parent process (main promptfoo server)
+// These environment variables are inherited from the parent process (main artef server)
 // We set VITE_ prefixed variables here so Vite can expose them to the client code
 const remoteApiBaseUrl =
-  process.env.PROMPTFOO_REMOTE_API_BASE_URL ||
+  process.env.artef_REMOTE_API_BASE_URL ||
   (process.env.NODE_ENV === 'development' ? `http://localhost:${API_PORT}` : '');
-Object.assign(process.env, { VITE_PUBLIC_PROMPTFOO_REMOTE_API_BASE_URL: remoteApiBaseUrl });
+Object.assign(process.env, { VITE_PUBLIC_artef_REMOTE_API_BASE_URL: remoteApiBaseUrl });
 
 // https://vitejs.dev/config/
 // Export a plain object here to avoid CI-only type conflicts from multiple Vite installs in the monorepo.
@@ -78,7 +78,7 @@ export default {
   resolve: {
     alias: {
       '@app': path.resolve(__dirname, './src'),
-      '@promptfoo': path.resolve(__dirname, '../'),
+      '@artef': path.resolve(__dirname, '../'),
     },
   },
   optimizeDeps: {
@@ -169,13 +169,13 @@ export default {
     },
   },
   define: {
-    'import.meta.env.VITE_PROMPTFOO_VERSION': JSON.stringify(packageJson.version),
-    'import.meta.env.VITE_PROMPTFOO_DISABLE_TELEMETRY': JSON.stringify(
-      process.env.PROMPTFOO_DISABLE_TELEMETRY || 'false',
+    'import.meta.env.VITE_artef_VERSION': JSON.stringify(packageJson.version),
+    'import.meta.env.VITE_artef_DISABLE_TELEMETRY': JSON.stringify(
+      process.env.artef_DISABLE_TELEMETRY || 'false',
     ),
-    'import.meta.env.VITE_POSTHOG_KEY': JSON.stringify(process.env.PROMPTFOO_POSTHOG_KEY || ''),
+    'import.meta.env.VITE_POSTHOG_KEY': JSON.stringify(process.env.artef_POSTHOG_KEY || ''),
     'import.meta.env.VITE_POSTHOG_HOST': JSON.stringify(
-      process.env.PROMPTFOO_POSTHOG_HOST || 'https://a.promptfoo.app',
+      process.env.artef_POSTHOG_HOST || 'https://a.artef.app',
     ),
     'import.meta.env.VITE_PUBLIC_BASENAME': JSON.stringify(process.env.VITE_PUBLIC_BASENAME || ''),
   },

@@ -1,11 +1,11 @@
-import remarkGfm from 'remark-gfm';
+﻿import remarkGfm from 'remark-gfm';
 
 /**
  * Stable remark plugins array for ReactMarkdown.
  * Using a module-level constant prevents recreating the array on every render,
  * which would cause ReactMarkdown to re-render even when content hasn't changed.
  *
- * @see https://github.com/promptfoo/promptfoo/issues/969
+ * @see https://github.com/artef/artef/issues/969
  */
 export const REMARK_PLUGINS = [remarkGfm];
 

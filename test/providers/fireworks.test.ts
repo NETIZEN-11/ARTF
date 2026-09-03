@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { clearCache } from '../../src/cache';
 import {
   calculateFireworksCost,
@@ -265,7 +265,7 @@ describe('Fireworks AI', () => {
       expect(calculateFireworksCost({ cost: 0.003 }, 10, 5, true)).toBe(0);
     });
 
-    it('returns zero for a Promptfoo cache hit even when token counts are missing', () => {
+    it('returns zero for a artef cache hit even when token counts are missing', () => {
       // `getTokenUsage()` only emits `{ cached, total }` for cache hits, so a
       // strict requirement on `prompt`/`completion` would clobber the
       // superclass's zero-cost contract on repeated evaluations.

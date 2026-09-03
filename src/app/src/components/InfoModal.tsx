@@ -1,4 +1,4 @@
-import { Button } from '@app/components/ui/button';
+﻿import { Button } from '@app/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -14,27 +14,27 @@ const links: { icon: React.ReactElement; text: string; href: string }[] = [
   {
     icon: <BookOpen className="size-4" />,
     text: 'Documentation',
-    href: 'https://www.promptfoo.dev/docs/intro',
+    href: 'https://www.artef.dev/docs/intro',
   },
   {
     icon: <GitBranch className="size-4" />,
     text: 'GitHub Repository',
-    href: 'https://github.com/promptfoo/promptfoo',
+    href: 'https://github.com/artef/artef',
   },
   {
     icon: <Bug className="size-4" />,
     text: 'File an Issue',
-    href: 'https://github.com/promptfoo/promptfoo/issues',
+    href: 'https://github.com/artef/artef/issues',
   },
   {
     icon: <MessageCircle className="size-4" />,
     text: 'Join Our Discord Community',
-    href: 'https://discord.gg/promptfoo',
+    href: 'https://discord.gg/artef',
   },
   {
     icon: <Calendar className="size-4" />,
     text: 'Book a Meeting',
-    href: 'https://cal.com/team/promptfoo/intro2',
+    href: 'https://cal.com/team/artef/intro2',
   },
 ];
 
@@ -46,18 +46,18 @@ export default function InfoModal<T extends { open: boolean; onClose: () => void
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent className="max-w-sm">
         <DialogHeader>
-          <DialogTitle>About Promptfoo</DialogTitle>
+          <DialogTitle>About artef</DialogTitle>
           <a
-            href="https://github.com/promptfoo/promptfoo/releases"
+            href="https://github.com/artef/artef/releases"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            Version {import.meta.env.VITE_PROMPTFOO_VERSION}
+            Version {import.meta.env.VITE_artef_VERSION}
           </a>
         </DialogHeader>
         <DialogDescription>
-          Promptfoo is a MIT licensed open-source tool for evaluating and red-teaming LLMs. We make
+          artef is a MIT licensed open-source tool for evaluating and red-teaming LLMs. We make
           it easy to track the performance of your models and prompts over time with automated
           support for dataset generation and grading.
         </DialogDescription>

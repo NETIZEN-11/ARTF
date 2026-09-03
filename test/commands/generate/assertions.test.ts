@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 import * as yaml from 'js-yaml';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -66,8 +66,8 @@ vi.mock('../../../src/util', () => ({
   setupEnv: vi.fn(),
 }));
 
-vi.mock('../../../src/util/promptfooCommand', () => ({
-  promptfooCommand: vi.fn().mockReturnValue('promptfoo eval'),
+vi.mock('../../../src/util/artefCommand', () => ({
+  artefCommand: vi.fn().mockReturnValue('artef eval'),
   detectInstaller: vi.fn().mockReturnValue('unknown'),
   isRunningUnderNpx: vi.fn().mockReturnValue(false),
 }));

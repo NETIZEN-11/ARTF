@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import { MCPPluginGrader } from '../../../src/redteam/plugins/mcp';
 
 describe('MCPPluginGrader', () => {
@@ -40,7 +40,7 @@ describe('MCPPluginGrader', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:mcp');
+    expect(grader.id).toBe('artef:redteam:mcp');
   });
 
   it('should initialize with empty rubric', () => {

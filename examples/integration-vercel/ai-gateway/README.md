@@ -1,4 +1,4 @@
-# integration-vercel/ai-gateway (Vercel AI Gateway Example)
+﻿# integration-vercel/ai-gateway (Vercel AI Gateway Example)
 
 This example demonstrates how to use [Vercel AI Gateway](https://vercel.com/docs/ai-sdk/ai-gateway) to access multiple AI providers through a unified API.
 
@@ -18,14 +18,14 @@ export VERCEL_AI_GATEWAY_API_KEY=your_api_key
 ## Running the Example
 
 ```bash
-npx promptfoo@latest init --example integration-vercel/ai-gateway
-npx promptfoo eval
+npx artef@latest init --example integration-vercel/ai-gateway
+npx artef eval
 ```
 
 Or run directly:
 
 ```bash
-npx promptfoo eval -c examples/integration-vercel/ai-gateway/promptfooconfig.yaml
+npx artef eval -c examples/integration-vercel/ai-gateway/artefconfig.yaml
 ```
 
 ## What This Example Does
@@ -40,4 +40,4 @@ Each provider answers questions about technical topics, and the assertions verif
 
 ## Documentation
 
-See the [Vercel AI Gateway provider documentation](https://www.promptfoo.dev/docs/providers/vercel) for more details.
+See the [Vercel AI Gateway provider documentation](https://www.artef.dev/docs/providers/vercel) for more details.

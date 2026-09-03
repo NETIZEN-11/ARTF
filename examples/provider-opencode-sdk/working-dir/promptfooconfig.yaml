@@ -1,8 +1,8 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'OpenCode SDK working_dir with default read-only tools'
 
 prompts:
-  - 'Read the local promptfooconfig.yaml in the working directory and report the configured provider_id and model in one sentence.'
+  - 'Read the local artefconfig.yaml in the working directory and report the configured provider_id and model in one sentence.'
 
 providers:
   - id: opencode:sdk

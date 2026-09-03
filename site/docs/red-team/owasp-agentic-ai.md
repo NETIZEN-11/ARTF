@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 22
 description: Red team agentic AI applications against OWASP Top 10 for Agentic Applications to protect autonomous AI systems from goal hijacking, tool misuse, and multi-agent attacks
 ---
@@ -53,7 +53,7 @@ redteam:
     - owasp:agentic:asi05 # Unexpected Code Execution
 ```
 
-To set up the scan through the Promptfoo UI, select the **OWASP Agentic** preset on the Plugins page.
+To set up the scan through the artef UI, select the **OWASP Agentic** preset on the Plugins page.
 
 ## ASI01: Agent Goal Hijack
 

@@ -1,11 +1,11 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 import * as yaml from 'js-yaml';
 import logger from '../../logger';
 import { UnifiedConfig } from '../../types/index';
 import { orderKeys } from '../json';
 
-export function writePromptfooConfig(
+export function writeartefConfig(
   config: Partial<UnifiedConfig>,
   outputPath: string,
   headerComments?: string[],
@@ -26,7 +26,7 @@ export function writePromptfooConfig(
     return orderedConfig;
   }
 
-  const schemaComment = `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json`;
+  const schemaComment = `# yaml-language-server: $schema=https://artef.dev/config-schema.json`;
   const headerCommentLines = headerComments
     ? headerComments.map((comment) => `# ${comment}`).join('\n') + '\n'
     : '';

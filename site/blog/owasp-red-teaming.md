@@ -1,4 +1,4 @@
----
+﻿---
 title: 'OWASP Red Teaming: A Practical Guide to Getting Started'
 description: 'OWASP released the first official red teaming guide for AI systems. Learn the structured methodology that security teams need to test LLMs properly.'
 image: /img/blog/owasp-red-team/ninja_panda.png
@@ -72,7 +72,7 @@ Although our focus here is on OWASP, NIST agrees with this philosophy, too. NIST
 
 For models or applications deployed in the EU, you should also consider the [EU AI Act](https://artificialintelligenceact.eu/) and its requirements for AI security. The Act **requires risk management measures and assurances** that the model or application consistently performs its intended purposes. Beyond risk management, the Act also specifies technical requirements for adversarial testing of general-purpose AI models with systemic risk.
 
-You can learn more about leveraging Promptfoo to red team against the EU AI Act [here](https://www.promptfoo.dev/blog/eu-ai-act/).
+You can learn more about leveraging artef to red team against the EU AI Act [here](https://www.artef.dev/blog/eu-ai-act/).
 
 ### Starting at the Business Level
 
@@ -86,7 +86,7 @@ Next, integrate the AI code of conduct into your goals and metrics as you develo
 
 ### Testing Custom Policies
 
-Promptfoo enables red teaming against AI codes of conduct through [custom policies](/docs/red-team/plugins/policy/). Configure these in your Promptfoo config file:
+artef enables red teaming against AI codes of conduct through [custom policies](/docs/red-team/plugins/policy/). Configure these in your artef config file:
 
 ```yaml
 redteam:
@@ -99,7 +99,7 @@ redteam:
 
 You can then develop specific goals for each red teaming session while using broader criteria to measure overall success. Work with stakeholders to distinguish between acceptable model variance and genuine risks. For example, brand or PR experts can better determine what constitutes brand risk in model outputs.
 
-Customize graders within Promptfoo to align with your organization's requirements:
+Customize graders within artef to align with your organization's requirements:
 
 ```yaml
 plugins:
@@ -116,7 +116,7 @@ plugins:
           reason: 'Books a flight'
 ```
 
-Track and share results with stakeholders using Promptfoo's Enterprise platform to gather feedback and iterate on your KPIs.
+Track and share results with stakeholders using artef's Enterprise platform to gather feedback and iterate on your KPIs.
 
 ## Timing Red Teaming Efforts in the SDLC
 
@@ -152,7 +152,7 @@ strategies:
 
 Running baseline red teams against foundation models is a recommended best practice to identify the foundation model you want to use and understand its inherent security risks.
 
-Promptfoo [also has an entire repository](https://www.promptfoo.dev/models) of foundation model security reports that you can use to get started.
+artef [also has an entire repository](https://www.artef.dev/models) of foundation model security reports that you can use to get started.
 
 ### Pre-Deployment Red Teaming
 
@@ -170,7 +170,7 @@ When conducting post-deployment red teams, you should also consider black-box te
 
 When red teaming an LLM application in a black-box setting, **try to enumerate as much information about the application as possible**. Can you identify the models, extract the system prompts, determine what guardrails are in place, enumerate any frameworks or tools, or determine what the application's policies are?
 
-When testing agents, try using Promptfoo's [tool discovery plugin](https://www.promptfoo.dev/docs/red-team/plugins/tool-discovery/), which attempts to enumerate the tools, functions, and APIs that an agent has access to.
+When testing agents, try using artef's [tool discovery plugin](https://www.artef.dev/docs/red-team/plugins/tool-discovery/), which attempts to enumerate the tools, functions, and APIs that an agent has access to.
 
 Use this information to build more effective red teaming tests that address the most important risks. **Remember, whatever information is exposed to users or the public can be exploited by attackers.**
 
@@ -212,7 +212,7 @@ The [OWASP Top 10 for LLM applications](https://owasp.org/www-project-top-10-for
 9. Misinformation
 10. Unbounded Consumption
 
-Promptfoo covers these risks in its [OWASP Top 10 guide](/docs/red-team/owasp-llm-top-10/) for you to easily identify potential vulnerabilities when running red teams. You can run a red team specifically against the OWASP Top 10 using the OWASP shorthand in your Promptfoo config:
+artef covers these risks in its [OWASP Top 10 guide](/docs/red-team/owasp-llm-top-10/) for you to easily identify potential vulnerabilities when running red teams. You can run a red team specifically against the OWASP Top 10 using the OWASP shorthand in your artef config:
 
 ```yaml
 redteam:
@@ -238,7 +238,7 @@ Guardrails enforce policy constraints on the inputs and/or outputs of an LLM app
 
 In traditional cybersecurity, defense-in-depth strategies use multiple layers of security controls to provide redundancies that ensure multiple layers of defense lie beyond any given exploit. Guardrails in generative AI work much the same way.
 
-Promptfoo offers numerous features for testing guardrails, including:
+artef offers numerous features for testing guardrails, including:
 
 - **Plugins**, which you can use to detect harmful output generation.
 - **Custom policies**, which you can use to test the specific requirements or constraints of your particular application.
@@ -271,7 +271,7 @@ When red teaming a RAG application, you should ask the following questions:
 - Is the response supported by the context?
 - Is the answer relevant to the question?
 
-Promptfoo can help you test the RAG Triad through its evaluation framework, which supports [evaluations of RAG pipelines](/docs/guides/evaluate-rag/) to test for factuality, relevance, and groundedness. You can also use Promptfoo to red team RAG applications through the [data poisoning plugin](/docs/red-team/plugins/rag-poisoning/#background), and even [identify risks](/docs/red-team/plugins/hallucination/) for hallucinations.
+artef can help you test the RAG Triad through its evaluation framework, which supports [evaluations of RAG pipelines](/docs/guides/evaluate-rag/) to test for factuality, relevance, and groundedness. You can also use artef to red team RAG applications through the [data poisoning plugin](/docs/red-team/plugins/rag-poisoning/#background), and even [identify risks](/docs/red-team/plugins/hallucination/) for hallucinations.
 
 ## Assessing Risks in Agents
 
@@ -283,7 +283,7 @@ OWASP highly encourages organizations to robustly test agents and multi-agent sy
 - Data poisoning across model chains
 - Permission and access control bypass through agent interactions
 
-Any agent that relies on "reasoning engines" should be thoroughly red-teamed to ensure that it is not susceptible to manipulation or coercion. It should also be tested for risks of data exfiltration and excessive permissions. You can red team agents using Promptfoo's [how-to guide](/docs/red-team/agents/), which walks through the best plugins to identify vulnerabilities in agentic systems.
+Any agent that relies on "reasoning engines" should be thoroughly red-teamed to ensure that it is not susceptible to manipulation or coercion. It should also be tested for risks of data exfiltration and excessive permissions. You can red team agents using artef's [how-to guide](/docs/red-team/agents/), which walks through the best plugins to identify vulnerabilities in agentic systems.
 
 Agents that rely on reasoning engines may also be more susceptible to Denial of Wallet (DoW) attacks because of the higher inference costs required.
 
@@ -291,9 +291,9 @@ Agents that rely on reasoning engines may also be more susceptible to Denial of 
 When red teaming autonomous agents, consider the technical and organizational controls that would be in place to mitigate the risks for employees, such as the principles of least privilege and separation of duties. Whatever controls you have in place for employees should be enforced and tested against for autonomous agents.
 :::
 
-Promptfoo has written more about the key security concerns in AI agents [here](/blog/agent-security/).
+artef has written more about the key security concerns in AI agents [here](/blog/agent-security/).
 
-## Securing Generative AI Applications with Promptfoo
+## Securing Generative AI Applications with artef
 
 OWASP provides an excellent foundation for AI security with widely recognized standards that are easy to communicate to stakeholders. However, it's just one part of a comprehensive security strategy.
 
@@ -305,6 +305,6 @@ For additional guidance, consider checking out:
 
 Stay updated on generative AI red teaming by:
 
-- [Joining our Discord](https://discord.com/invite/promptfoo)
+- [Joining our Discord](https://discord.com/invite/artef)
 - Following our [blog](/blog/)
-- [Scheduling a demo](/contact/) to learn how Promptfoo can help secure your AI applications
+- [Scheduling a demo](/contact/) to learn how artef can help secure your AI applications

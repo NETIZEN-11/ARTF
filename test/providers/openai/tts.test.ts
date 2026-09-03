@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getCache, getScopedCacheKey, isCacheEnabled } from '../../../src/cache';
 import { OpenAiTtsProvider } from '../../../src/providers/openai/tts';
 import { HttpRateLimitError } from '../../../src/util/fetch/errors';
@@ -41,14 +41,14 @@ describe('OpenAiTtsProvider', () => {
     mockedFetch.mockResolvedValue(audioResponse());
     const provider = new OpenAiTtsProvider(model, { config: { apiKey: 'test-key' } });
 
-    const result = await provider.callApi('Hello from promptfoo');
+    const result = await provider.callApi('Hello from artef');
 
     expect(mockedFetch).toHaveBeenCalledWith(
       'https://api.openai.com/v1/audio/speech',
       expect.objectContaining({
         method: 'POST',
         headers: expect.objectContaining({ Authorization: 'Bearer test-key' }),
-        body: JSON.stringify({ model, input: 'Hello from promptfoo', voice: 'alloy' }),
+        body: JSON.stringify({ model, input: 'Hello from artef', voice: 'alloy' }),
       }),
       expect.any(Number),
       undefined,

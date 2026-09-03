@@ -1,4 +1,4 @@
-import '@app/lib/prism';
+﻿import '@app/lib/prism';
 
 import { webcrypto } from 'node:crypto';
 
@@ -139,7 +139,7 @@ if (typeof HTMLMediaElement !== 'undefined') {
 }
 
 // We can mock the environment variables. For example:
-// process.env.PROMPTFOO_VERSION = '1.0.0';
+// process.env.artef_VERSION = '1.0.0';
 
 // Global fetch mock for all tests
 // This provides default responses for app bootstrap endpoints. Tests should mock

@@ -1,4 +1,4 @@
----
+﻿---
 title: Docker Model Runner
 sidebar_label: Docker Model Runner
 description: Run and evaluate AI models locally with Docker Model Runner for containerized testing, deployment, and benchmarking
@@ -20,10 +20,10 @@ docker model pull ai/llama3.2:3B-Q4_K_M
 3. Test your setup with working examples:
 
 ```bash
-npx promptfoo@latest eval -c https://raw.githubusercontent.com/promptfoo/promptfoo/main/examples/integration-docker/basic/promptfooconfig.comparison.simple.yaml
+npx artef@latest eval -c https://raw.githubusercontent.com/artef/artef/main/examples/integration-docker/basic/artefconfig.comparison.simple.yaml
 ```
 
-For an eval comparing several models with `llm-rubric` and `similar` assertions , see https://raw.githubusercontent.com/promptfoo/promptfoo/main/examples/integration-docker/basic/promptfooconfig.comparison.advanced.yaml.
+For an eval comparing several models with `llm-rubric` and `similar` assertions , see https://raw.githubusercontent.com/artef/artef/main/examples/integration-docker/basic/artefconfig.comparison.advanced.yaml.
 
 ## Models
 
@@ -53,10 +53,10 @@ docker:hf.co/<model_name>             # Defaults to chat
 
 ## Configuration
 
-Configure the provider in your promptfoo configuration file:
+Configure the provider in your artef configuration file:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: docker:ai/smollm3:Q4_K_M
     config:
@@ -84,4 +84,4 @@ Standard OpenAI parameters are supported:
 
 ## Notes
 
-- To conserve system resources, consider running evaluations serially with `promptfoo eval -j 1`.
+- To conserve system resources, consider running evaluations serially with `artef eval -j 1`.

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -25,30 +25,30 @@ export default function HumanX2026(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at HumanX 2026"
-      description="Recap of Promptfoo at HumanX 2026: how AI leaders evaluate and secure LLM apps and agents without slowing teams down."
+      title="artef at HumanX 2026"
+      description="Recap of artef at HumanX 2026: how AI leaders evaluate and secure LLM apps and agents without slowing teams down."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at HumanX 2026 | AI Security" />
+        <meta property="og:title" content="artef at HumanX 2026 | AI Security" />
         <meta
           property="og:description"
-          content="Recap of Promptfoo at HumanX 2026: how AI leaders evaluate and secure LLM apps and agents without slowing teams down. Apr 6-9, Moscone Center South, SF."
+          content="Recap of artef at HumanX 2026: how AI leaders evaluate and secure LLM apps and agents without slowing teams down. Apr 6-9, Moscone Center South, SF."
         />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/events/humanx-2026.jpg" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/humanx-2026" />
+        <meta property="og:image" content="https://www.artef.dev/img/events/humanx-2026.jpg" />
+        <meta property="og:url" content="https://www.artef.dev/events/humanx-2026" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Promptfoo at HumanX 2026 | AI Security" />
+        <meta name="twitter:title" content="artef at HumanX 2026 | AI Security" />
         <meta
           name="twitter:description"
-          content="Recap of Promptfoo at HumanX 2026. AI security demos, enterprise solutions, and conversations with AI leaders."
+          content="Recap of artef at HumanX 2026. AI security demos, enterprise solutions, and conversations with AI leaders."
         />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/events/humanx-2026.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/humanx-2026.jpg" />
         <meta
           name="keywords"
           content="HumanX 2026, AI conference, AI security, LLM security, enterprise AI, San Francisco, AI leadership"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/humanx-2026" />
+        <link rel="canonical" href="https://www.artef.dev/events/humanx-2026" />
       </Head>
 
       <main className={styles.humanxPage}>
@@ -210,7 +210,7 @@ export default function HumanX2026(): React.ReactElement {
                 <Link to="/contact" className={styles.primaryButton}>
                   Schedule a Meeting
                 </Link>
-                <Link to="https://discord.gg/promptfoo" className={styles.secondaryButton}>
+                <Link to="https://discord.gg/artef" className={styles.secondaryButton}>
                   Join our Discord
                 </Link>
               </div>

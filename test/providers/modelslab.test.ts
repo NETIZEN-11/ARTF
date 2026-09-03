@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../src/cache';
 import { ModelsLabImageProvider } from '../../src/providers/modelslab';
 
@@ -307,7 +307,7 @@ describe('ModelsLabImageProvider', () => {
     vi.mocked(isBlobStorageEnabled).mockReturnValue(true);
     vi.mocked(storeBlob).mockResolvedValue({
       ref: {
-        uri: 'promptfoo://blob/abc123',
+        uri: 'artef://blob/abc123',
         hash: 'abc123',
         mimeType: 'image/png',
         sizeBytes: 1024,
@@ -335,10 +335,10 @@ describe('ModelsLabImageProvider', () => {
       testIdx: 1,
     } as unknown as CallApiContextParams);
 
-    expect(result.output).toContain('promptfoo://blob/abc123');
+    expect(result.output).toContain('artef://blob/abc123');
     expect(result.metadata).toEqual(
       expect.objectContaining({
-        blobRef: expect.objectContaining({ uri: 'promptfoo://blob/abc123', hash: 'abc123' }),
+        blobRef: expect.objectContaining({ uri: 'artef://blob/abc123', hash: 'abc123' }),
         blobHash: 'abc123',
       }),
     );

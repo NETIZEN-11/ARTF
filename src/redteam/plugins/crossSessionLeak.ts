@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import logger from '../../logger';
 import { extractJsonObjects } from '../../util/json';
 import { getNunjucksEngine } from '../../util/templates';
@@ -17,7 +17,7 @@ import type {
 } from '../../types/index';
 import type { RedteamGradingContext } from '../grading/types';
 
-const PLUGIN_ID = 'promptfoo:redteam:cross-session-leak';
+const PLUGIN_ID = 'artef:redteam:cross-session-leak';
 
 export const MISSING_METADATA_REASON =
   'crossSessionLeakMatch metadata is missing — test not applicable';

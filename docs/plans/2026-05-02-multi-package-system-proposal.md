@@ -1,14 +1,14 @@
-# Proposal: A Layered Package System for Promptfoo
+﻿# Proposal: A Layered Package System for artef
 
 ## Executive Summary
 
-Promptfoo should move from "one published package that happens to contain many
+artef should move from "one published package that happens to contain many
 systems" to "one familiar full package backed by a small set of explicit package
 layers."
 
 The recommendation is:
 
-1. Keep `promptfoo` as the default full install and compatibility facade.
+1. Keep `artef` as the default full install and compatibility facade.
 2. Create private workspace packages first, then publish only the packages whose
    boundaries prove useful.
 3. Separate the low-dependency evaluation kernel from Node adapters, CLI,
@@ -19,7 +19,7 @@ The recommendation is:
    transition.
 
 This gives lightweight consumers a smaller dependency graph without making the
-normal `npm install promptfoo` experience worse. It also gives the team a safer
+normal `npm install artef` experience worse. It also gives the team a safer
 path to provider packs and future products without forcing a flag day.
 
 ## Why Change
@@ -45,7 +45,7 @@ That makes the root package convenient, but also broad:
   The prototype starts separating that shape by moving the public Node API
   behind `src/node/evaluate.ts`, keeping the internal orchestration in the Node
   layer at `src/evaluate.ts`, and carving a first leaf-safe contract subset into
-  `src/contracts/**` while `promptfoo` remains the facade.
+  `src/contracts/**` while `artef` remains the facade.
 - `src/main.ts` and `src/commands/view.ts` are already outer-shell concerns,
   not core evaluation concerns.
 - Provider loading is centralized enough that optional/provider dependencies are
@@ -66,7 +66,7 @@ architecture well.
 ## Design Principles
 
 1. **One obvious default.**
-   `promptfoo` remains the package most users install.
+   `artef` remains the package most users install.
 
 2. **Narrow leaves, convenient facade.**
    Lightweight consumers should not pay for servers, databases, CLIs, or provider
@@ -81,7 +81,7 @@ architecture well.
    only the packages that survive real use.
 
 5. **Dual-format correctness over format ideology.**
-   Promptfoo already supports both ESM and CommonJS. Public packages should keep
+   artef already supports both ESM and CommonJS. Public packages should keep
    doing that until we intentionally decide otherwise.
 
 6. **Package artifacts are the contract.**
@@ -92,14 +92,14 @@ architecture well.
 
 ```mermaid
 flowchart TD
-  schema["@promptfoo/schema"]
-  core["@promptfoo/core"]
-  node["@promptfoo/node"]
-  redteam["@promptfoo/redteam"]
-  providers["@promptfoo/provider-*"]
-  view["@promptfoo/view-server"]
-  cli["@promptfoo/cli"]
-  facade["promptfoo"]
+  schema["@artef/schema"]
+  core["@artef/core"]
+  node["@artef/node"]
+  redteam["@artef/redteam"]
+  providers["@artef/provider-*"]
+  view["@artef/view-server"]
+  cli["@artef/cli"]
+  facade["artef"]
 
   schema --> core
   core --> node
@@ -115,7 +115,7 @@ flowchart TD
   cli --> facade
 ```
 
-### `@promptfoo/schema`
+### `@artef/schema`
 
 **Purpose**
 
@@ -137,7 +137,7 @@ flowchart TD
 - It is the cleanest shared layer between library, CLI, server, UI, and docs.
 - It is also the safest first extraction.
 
-### `@promptfoo/core`
+### `@artef/core`
 
 **Purpose**
 
@@ -148,7 +148,7 @@ flowchart TD
 
 **May depend on**
 
-- `@promptfoo/schema`
+- `@artef/schema`
 - small domain utilities
 
 **Must not depend on**
@@ -163,7 +163,7 @@ flowchart TD
 - This is the actual reusable engine people mean when they say "the Node package."
 - It should be possible to run it with fake providers and in-memory adapters.
 
-### `@promptfoo/node`
+### `@artef/node`
 
 **Purpose**
 
@@ -177,8 +177,8 @@ flowchart TD
 
 **May depend on**
 
-- `@promptfoo/core`
-- `@promptfoo/schema`
+- `@artef/core`
+- `@artef/schema`
 - Node-only dependencies such as `@libsql/client`, `glob`, `chokidar`, `dotenv`
 
 **Why it exists**
@@ -187,7 +187,7 @@ flowchart TD
 - This gives them that without forcing the same dependencies onto future
   browser-safe or embedded consumers.
 
-### `@promptfoo/redteam`
+### `@artef/redteam`
 
 **Purpose**
 
@@ -195,8 +195,8 @@ flowchart TD
 
 **May depend on**
 
-- `@promptfoo/core`
-- `@promptfoo/node` only where it truly needs Node adapters
+- `@artef/core`
+- `@artef/node` only where it truly needs Node adapters
 - redteam-specific dependencies
 
 **Why it exists**
@@ -204,7 +204,7 @@ flowchart TD
 - Redteam is now a substantial product surface with its own cadence,
   dependencies, docs, and CLI flows.
 
-### `@promptfoo/view-server`
+### `@artef/view-server`
 
 **Purpose**
 
@@ -215,14 +215,14 @@ flowchart TD
 
 **May depend on**
 
-- `@promptfoo/node`
+- `@artef/node`
 - server-specific dependencies
 
 **Why it exists**
 
 - The server is useful, but it is not intrinsic to every library consumer.
 
-### `@promptfoo/cli`
+### `@artef/cli`
 
 **Purpose**
 
@@ -234,30 +234,30 @@ flowchart TD
 
 **May depend on**
 
-- `@promptfoo/node`
-- `@promptfoo/redteam`
-- `@promptfoo/view-server`
+- `@artef/node`
+- `@artef/redteam`
+- `@artef/view-server`
 
 **Why it exists**
 
 - The CLI is a shell around the system, not the system itself.
 
-### `@promptfoo/provider-*`
+### `@artef/provider-*`
 
 **Purpose**
 
 - Provider-specific implementations and SDK dependencies
 - Examples:
-  - `@promptfoo/provider-openai`
-  - `@promptfoo/provider-anthropic`
-  - `@promptfoo/provider-aws`
-  - `@promptfoo/provider-google`
-  - eventually a small `@promptfoo/providers-core` for zero-extra-dependency or
+  - `@artef/provider-openai`
+  - `@artef/provider-anthropic`
+  - `@artef/provider-aws`
+  - `@artef/provider-google`
+  - eventually a small `@artef/providers-core` for zero-extra-dependency or
     very common providers
 
 **May depend on**
 
-- `@promptfoo/core`
+- `@artef/core`
 - provider SDKs owned by that package
 
 **Why it exists**
@@ -271,7 +271,7 @@ flowchart TD
 - First make provider registration explicit and let built-in providers move behind
   the same registry shape internally.
 
-### `promptfoo`
+### `artef`
 
 **Purpose**
 
@@ -282,8 +282,8 @@ flowchart TD
 
 **Behavior**
 
-- Depends on the packages that define the full Promptfoo distribution.
-- Re-exports the stable Node API from `@promptfoo/node`.
+- Depends on the packages that define the full artef distribution.
+- Re-exports the stable Node API from `@artef/node`.
 - Continues to ship the CLI users know.
 - Becomes the migration shield while the rest of the topology matures.
 
@@ -407,8 +407,8 @@ ownership report:
 
 ```text
 dependency                owner                  direct users       transitive size
-@libsql/client             @promptfoo/node        node               ...
-express                    @promptfoo/view-server view-server        ...
+@libsql/client             @artef/node        node               ...
+express                    @artef/view-server view-server        ...
 @anthropic-ai/sdk          provider-anthropic     provider package   ...
 ```
 
@@ -435,8 +435,8 @@ Adopt:
 Do not adopt blindly:
 
 - an immediate package-manager migration
-- runtime-installable provider plugins before Promptfoo needs that product model
-- ESM-only publishing while Promptfoo still supports both `import` and `require`
+- runtime-installable provider plugins before artef needs that product model
+- ESM-only publishing while artef still supports both `import` and `require`
 
 ## Publishing Model
 
@@ -444,8 +444,8 @@ Do not adopt blindly:
 
 Use a fixed-version monorepo release for the first public split:
 
-- all public `@promptfoo/*` packages share the same version
-- `promptfoo` depends on exact matching versions of internal public packages
+- all public `@artef/*` packages share the same version
+- `artef` depends on exact matching versions of internal public packages
 - release notes can still call out package-specific changes
 
 This is easier for users, support, and rollback while boundaries are still
@@ -463,9 +463,9 @@ inventing a second release system immediately:
 4. install packed artifacts into clean temp projects
 5. run ESM, CJS, CLI, server, and upgrade smokes
 6. publish with npm trusted publishing / provenance
-7. publish the `promptfoo` facade last
+7. publish the `artef` facade last
 
-Promptfoo already publishes with provenance in the current release workflow, so
+artef already publishes with provenance in the current release workflow, so
 this should be an extension of the existing release path rather than a parallel
 system.
 
@@ -478,7 +478,7 @@ Before publish, every public package should prove:
 - `import` works
 - `require` works
 - TypeScript resolves exported types
-- `promptfoo` facade still exposes current behavior
+- `artef` facade still exposes current behavior
 - upgrade from the last published version works for the top-level package
 
 The current smoke-test philosophy already says "test the built package, not
@@ -487,7 +487,7 @@ public package.
 
 ## ESM and CommonJS Strategy
 
-Promptfoo should remain dual-mode during the split.
+artef should remain dual-mode during the split.
 
 ### Rules
 
@@ -501,7 +501,7 @@ Promptfoo should remain dual-mode during the split.
 ### Why
 
 Modern Node can load more ESM from CommonJS than older Node versions could, but
-Promptfoo already promises a `require` entrypoint today. Keeping that promise
+artef already promises a `require` entrypoint today. Keeping that promise
 while the package graph changes avoids combining two migrations into one.
 
 ## Developer Experience
@@ -515,7 +515,7 @@ The system should feel no worse locally than the repo does today.
 - package-local test commands when working narrowly
 - no manual linking
 - no publishing knowledge required for ordinary feature work
-- docs/examples keep using `promptfoo` unless a smaller package is the point of
+- docs/examples keep using `artef` unless a smaller package is the point of
   the example
 
 ### Useful Commands
@@ -523,7 +523,7 @@ The system should feel no worse locally than the repo does today.
 ```bash
 npm run build
 npm test
-npm run test:package -- --package @promptfoo/node
+npm run test:package -- --package @artef/node
 npm run deps:ownership
 npm run pack:check
 ```
@@ -569,8 +569,8 @@ become a release engineer.
 
 For users, the story should be simple:
 
-- Install `promptfoo` when you want the normal product.
-- Install `@promptfoo/node` when you want the Node library without the CLI/server.
+- Install `artef` when you want the normal product.
+- Install `@artef/node` when you want the Node library without the CLI/server.
 - Install provider packages only when you want explicit fine-grained control.
 
 ## Migration Plan
@@ -590,7 +590,7 @@ For users, the story should be simple:
 
 - create private workspaces for `schema`, `core`, and `node`
 - move exports and types behind those boundaries
-- keep `promptfoo` behavior unchanged
+- keep `artef` behavior unchanged
 
 **Exit criterion**
 
@@ -604,7 +604,7 @@ For users, the story should be simple:
 
 **Exit criterion**
 
-- `@promptfoo/node` can build and test without CLI/server dependencies.
+- `@artef/node` can build and test without CLI/server dependencies.
 
 ### Phase 3: Make Provider Registration Explicit
 
@@ -620,11 +620,11 @@ For users, the story should be simple:
 
 Recommended first public packages:
 
-1. `@promptfoo/schema`
-2. `@promptfoo/node`
-3. `@promptfoo/view-server`
+1. `@artef/schema`
+2. `@artef/node`
+3. `@artef/view-server`
 
-Keep `promptfoo` as the full facade.
+Keep `artef` as the full facade.
 
 **Exit criterion**
 
@@ -694,7 +694,7 @@ Only publish provider packages where there is a clear benefit:
 | Internal package churn leaks into public API  | Publish only after private boundary use stabilizes                              |
 | Dual ESM/CJS builds become inconsistent       | Artifact smokes for both import modes on every public package                   |
 | Developers slow down in a new monorepo layout | Keep root install/build/test commands as the golden path                        |
-| Provider package count becomes confusing      | Publish provider packs selectively; keep `promptfoo` full install               |
+| Provider package count becomes confusing      | Publish provider packs selectively; keep `artef` full install               |
 | Version skew across packages                  | Start with fixed versions and exact internal deps                               |
 | Release workflow becomes fragile              | Reuse current release pipeline, add package-graph and tarball acceptance checks |
 
@@ -703,7 +703,7 @@ Only publish provider packages where there is a clear benefit:
 1. Approve the layered topology as the target direction.
 2. Approve a private-workspace-first migration rather than immediate public
    package proliferation.
-3. Approve `promptfoo` as the long-lived full facade.
+3. Approve `artef` as the long-lived full facade.
 4. Approve fixed-version public packages for the first release cycle.
 5. Approve dual ESM/CommonJS support for all first-wave public packages.
 6. Approve investment in dependency ownership and package-acceptance CI before
@@ -715,9 +715,9 @@ The first milestone should be deliberately modest:
 
 1. Add dependency ownership reporting.
 2. Create private `packages/schema`, `packages/core`, and `packages/node`.
-3. Move the public Node API behind `@promptfoo/node` while keeping
-   `promptfoo` exports unchanged.
-4. Prove that `@promptfoo/node` can build and test without CLI/server imports.
+3. Move the public Node API behind `@artef/node` while keeping
+   `artef` exports unchanged.
+4. Prove that `@artef/node` can build and test without CLI/server imports.
 5. Add packed-artifact smoke tests for the root package and the private node
    package.
 

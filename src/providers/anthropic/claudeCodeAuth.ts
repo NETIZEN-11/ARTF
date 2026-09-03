@@ -1,4 +1,4 @@
-import { execFileSync } from 'node:child_process';
+﻿import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -59,7 +59,7 @@ export const CLAUDE_CODE_OAUTH_BETA_FEATURES = Object.freeze([
  * product identifier, not the semver. Revisit if OAuth requests start
  * returning 401 after SDK or CLI updates.
  */
-export const CLAUDE_CODE_USER_AGENT = 'claude-cli/1.0.0 (external, promptfoo)';
+export const CLAUDE_CODE_USER_AGENT = 'claude-cli/1.0.0 (external, artef)';
 
 /**
  * The `x-app` header value Claude Code CLI sends. Paired with
@@ -90,7 +90,7 @@ function resolveConfiguredDir(env?: EnvOverrides): string | undefined {
  * Resolves the directory Claude Code stores its config (including
  * `.credentials.json`) in. Honors `CLAUDE_CONFIG_DIR`, the same environment
  * variable the Claude Code CLI itself uses to relocate `~/.claude`, so
- * Promptfoo finds the credential file when a user has customized their
+ * artef finds the credential file when a user has customized their
  * Claude Code config location.
  */
 function resolveConfigDir(env?: EnvOverrides): string {

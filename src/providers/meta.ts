@@ -1,4 +1,4 @@
-import { getEnvString } from '../envars';
+﻿import { getEnvString } from '../envars';
 import { getAnthropicEnvHeaderSuppressions } from './anthropic/generic';
 import { AnthropicMessagesProvider } from './anthropic/messages';
 import { OpenAiChatCompletionProvider } from './openai/chat';
@@ -223,14 +223,14 @@ function assertSupportedMetaRequest(
   // run non-streaming.
   if (body.stream || config.stream) {
     throw new Error(
-      'Meta chat and Responses streaming is not supported by promptfoo; remove `stream` from the provider config.',
+      'Meta chat and Responses streaming is not supported by artef; remove `stream` from the provider config.',
     );
   }
 }
 
 // The base providers seed temperature / top_p / penalties from OPENAI_* env
 // vars whenever those are set. They are OpenAI-scoped tuning knobs; don't let
-// them leak into Meta requests. Promptfoo's deterministic temperature default
+// them leak into Meta requests. artef's deterministic temperature default
 // is kept, sourced from config alone.
 function applyMetaSamplingHygiene(
   body: Record<string, unknown>,
@@ -372,7 +372,7 @@ class MetaProvider extends OpenAiChatCompletionProvider {
   }
 
   // Unlike OpenAI's o-series, Muse Spark accepts temperature (0-2), so keep
-  // promptfoo's deterministic default instead of suppressing the parameter.
+  // artef's deterministic default instead of suppressing the parameter.
   protected override supportsTemperature(): boolean {
     return true;
   }

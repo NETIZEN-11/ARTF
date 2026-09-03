@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Codex SDK running GPT-5.6 Sol, Terra, and Luna on Amazon Bedrock'
 
 prompts:
@@ -15,7 +15,7 @@ providers:
       model_reasoning_effort: max
       sandbox_mode: read-only
       skip_git_repo_check: true
-      # The Codex CLI reads AWS credentials from its own environment. promptfoo runs
+      # The Codex CLI reads AWS credentials from its own environment. artef runs
       # the CLI with a minimal env by default, so forward credentials + region here.
       cli_env:
         AWS_REGION: us-east-2

@@ -1,4 +1,4 @@
-import { eq, sql } from 'drizzle-orm';
+﻿import { eq, sql } from 'drizzle-orm';
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { getDb } from '../../src/database/index';
 import { updateSignalFile, updateSignalFileForDeletedEvals } from '../../src/database/signal';
@@ -767,7 +767,7 @@ describe('evaluator', () => {
 
     it('surfaces trace linkage without leaking the reserved namespace through toEvaluateSummary (export path)', async () => {
       // output.ts serializes JSON/JSONL/CSV via toEvaluateSummary(); assert that path surfaces
-      // traceId/evaluationId at the top level and never emits the internal `__promptfoo` key.
+      // traceId/evaluationId at the top level and never emits the internal `__artef` key.
       const tracedResult = createEvaluateResult({
         traceId: 'export-trace-id',
         evaluationId: 'export-evaluation-id',
@@ -786,8 +786,8 @@ describe('evaluator', () => {
         evaluationId: 'export-evaluation-id',
         metadata: { source: 'export-path' },
       });
-      expect(exportedRow.metadata).not.toHaveProperty('__promptfoo');
-      expect(JSON.stringify(summary)).not.toContain('__promptfoo');
+      expect(exportedRow.metadata).not.toHaveProperty('__artef');
+      expect(JSON.stringify(summary)).not.toContain('__artef');
     });
   });
 
@@ -855,7 +855,7 @@ describe('evaluator', () => {
           evaluationId: eval_.id,
           metadata: {
             source: 'copy-path',
-            __promptfoo: { retained: 'internal-metadata' },
+            __artef: { retained: 'internal-metadata' },
           },
         }),
       );
@@ -866,7 +866,7 @@ describe('evaluator', () => {
       expect(copiedResult.toEvaluateResult()).toMatchObject({
         metadata: {
           source: 'copy-path',
-          __promptfoo: { retained: 'internal-metadata' },
+          __artef: { retained: 'internal-metadata' },
         },
       });
       expect(copiedResult.toEvaluateResult().traceId).toBeUndefined();
@@ -1788,7 +1788,7 @@ describe('evaluator', () => {
       expect(keys).toEqual([]);
     });
 
-    it('hides the reserved __promptfoo namespace from key listings', async () => {
+    it('hides the reserved __artef namespace from key listings', async () => {
       const eval_ = await EvalFactory.create();
 
       const db = await getDb();
@@ -1797,18 +1797,18 @@ describe('evaluator', () => {
           id, eval_id, prompt_idx, test_idx, test_case, prompt, provider,
           success, score, metadata
         ) VALUES
-        ('promptfoo-ns-1', '${eval_.id}', 0, 0, '{}', '{}', '{}', 1, 1.0,
-          '{"userKey": "shown", "__promptfoo": {"traceLinkage": {"traceId": "abc"}}}')`,
+        ('artef-ns-1', '${eval_.id}', 0, 0, '{}', '{}', '{}', 1, 1.0,
+          '{"userKey": "shown", "__artef": {"traceLinkage": {"traceId": "abc"}}}')`,
       );
 
       const keys = await EvalQueries.getMetadataKeysFromEval(eval_.id);
       expect(keys).toContain('userKey');
-      expect(keys).not.toContain('__promptfoo');
+      expect(keys).not.toContain('__artef');
     });
   });
 
   describe('EvalQueries.getMetadataValuesFromEval', () => {
-    it('refuses to return values under the reserved __promptfoo namespace', async () => {
+    it('refuses to return values under the reserved __artef namespace', async () => {
       const eval_ = await EvalFactory.create();
 
       const db = await getDb();
@@ -1817,13 +1817,13 @@ describe('evaluator', () => {
           id, eval_id, prompt_idx, test_idx, test_case, prompt, provider,
           success, score, metadata
         ) VALUES
-        ('promptfoo-val-1', '${eval_.id}', 0, 0, '{}', '{}', '{}', 1, 1.0,
-          '{"__promptfoo": {"traceLinkage": {"traceId": "abc"}}}')`,
+        ('artef-val-1', '${eval_.id}', 0, 0, '{}', '{}', '{}', 1, 1.0,
+          '{"__artef": {"traceLinkage": {"traceId": "abc"}}}')`,
       );
 
-      expect(await EvalQueries.getMetadataValuesFromEval(eval_.id, '__promptfoo')).toEqual([]);
+      expect(await EvalQueries.getMetadataValuesFromEval(eval_.id, '__artef')).toEqual([]);
       expect(
-        await EvalQueries.getMetadataValuesFromEval(eval_.id, '__promptfoo.traceLinkage'),
+        await EvalQueries.getMetadataValuesFromEval(eval_.id, '__artef.traceLinkage'),
       ).toEqual([]);
     });
   });

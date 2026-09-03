@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
@@ -109,18 +109,18 @@ describe('evaluateOptions behavior', () => {
   beforeAll(() => {
     process.exit = vi.fn() as any;
 
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-test-'));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-test-'));
 
     // Build a config file for the tests to use.
-    configPath = path.join(tmpDir, 'promptfooconfig.yaml');
+    configPath = path.join(tmpDir, 'artefconfig.yaml');
     makeConfig(configPath);
 
     // Build a config that has no delay set; a delay set to >0 will override the maxConcurrency value.
-    noDelayConfigPath = path.join(tmpDir, 'promptfooconfig-noDelay.yaml');
+    noDelayConfigPath = path.join(tmpDir, 'artefconfig-noDelay.yaml');
     makeConfig(noDelayConfigPath, { delay: 0 });
 
     // Build a config that has no repeat set; a repeat set to >1 will override the cache value
-    noRepeatConfigPath = path.join(tmpDir, 'promptfooconfig-noRepeat.yaml');
+    noRepeatConfigPath = path.join(tmpDir, 'artefconfig-noRepeat.yaml');
     makeConfig(noRepeatConfigPath, { repeat: 1 });
   });
 
@@ -723,7 +723,7 @@ describe('evaluateOptions behavior', () => {
 
     it('resolves persisted trace-provider credential references when resuming an eval', async () => {
       const restoreEnv = mockProcessEnv({
-        PROMPTFOO_TEST_TEMPO_RESUME_TOKEN: 'resumed-tempo-runtime-secret',
+        artef_TEST_TEMPO_RESUME_TOKEN: 'resumed-tempo-runtime-secret',
       });
       const resumeEval = new Eval(
         {
@@ -735,9 +735,9 @@ describe('evaluateOptions behavior', () => {
             provider: {
               id: 'tempo',
               endpoint: 'https://tempo.example.com',
-              auth: { token: '{{ env.PROMPTFOO_TEST_TEMPO_RESUME_TOKEN }}' },
+              auth: { token: '{{ env.artef_TEST_TEMPO_RESUME_TOKEN }}' },
               headers: {
-                Authorization: 'Bearer {{ env.PROMPTFOO_TEST_TEMPO_RESUME_TOKEN }}',
+                Authorization: 'Bearer {{ env.artef_TEST_TEMPO_RESUME_TOKEN }}',
               },
             },
           },
@@ -755,7 +755,7 @@ describe('evaluateOptions behavior', () => {
           'Bearer resumed-tempo-runtime-secret',
         );
         expect(resumeEval.config.tracing?.provider?.auth?.token).toBe(
-          '{{ env.PROMPTFOO_TEST_TEMPO_RESUME_TOKEN }}',
+          '{{ env.artef_TEST_TEMPO_RESUME_TOKEN }}',
         );
       } finally {
         findByIdSpy.mockRestore();
@@ -765,7 +765,7 @@ describe('evaluateOptions behavior', () => {
 
     it('resolves nested persisted environment references before resuming trace retrieval', async () => {
       const restoreEnv = mockProcessEnv({
-        PROMPTFOO_TEST_TEMPO_SOURCE_SECRET: 'nested-tempo-runtime-secret',
+        artef_TEST_TEMPO_SOURCE_SECRET: 'nested-tempo-runtime-secret',
       });
       const resumeEval = new Eval(
         {
@@ -773,16 +773,16 @@ describe('evaluateOptions behavior', () => {
           prompts: ['Hello'],
           tests: [{ vars: {} }],
           env: {
-            PROMPTFOO_TEST_TEMPO_READER: '{{ env.PROMPTFOO_TEST_TEMPO_SOURCE_SECRET }}',
+            artef_TEST_TEMPO_READER: '{{ env.artef_TEST_TEMPO_SOURCE_SECRET }}',
           },
           tracing: {
             enabled: true,
             provider: {
               id: 'tempo',
               endpoint: 'https://tempo.example.com',
-              auth: { token: '{{ env.PROMPTFOO_TEST_TEMPO_READER }}' },
+              auth: { token: '{{ env.artef_TEST_TEMPO_READER }}' },
               headers: {
-                'X-Tempo-Reader': '{{ env.PROMPTFOO_TEST_TEMPO_READER }}',
+                'X-Tempo-Reader': '{{ env.artef_TEST_TEMPO_READER }}',
               },
             },
           },
@@ -800,7 +800,7 @@ describe('evaluateOptions behavior', () => {
           'nested-tempo-runtime-secret',
         );
         expect(resumeEval.config.env).toEqual({
-          PROMPTFOO_TEST_TEMPO_READER: '{{ env.PROMPTFOO_TEST_TEMPO_SOURCE_SECRET }}',
+          artef_TEST_TEMPO_READER: '{{ env.artef_TEST_TEMPO_SOURCE_SECRET }}',
         });
       } finally {
         findByIdSpy.mockRestore();

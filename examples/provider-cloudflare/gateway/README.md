@@ -1,9 +1,9 @@
-# provider-cloudflare/gateway (Cloudflare AI Gateway)
+﻿# provider-cloudflare/gateway (Cloudflare AI Gateway)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-cloudflare/gateway
+npx artef@latest init --example provider-cloudflare/gateway
 cd provider-cloudflare/gateway
 ```
 
@@ -30,7 +30,7 @@ export GROQ_API_KEY=your_groq_key
 ## Running the Example
 
 ```bash
-npx promptfoo eval -c examples/provider-cloudflare/gateway/promptfooconfig.yaml
+npx artef eval -c examples/provider-cloudflare/gateway/artefconfig.yaml
 ```
 
 ## What This Example Does
@@ -52,4 +52,4 @@ Each provider answers questions about technical topics, and the assertions verif
 
 ## Documentation
 
-See the [Cloudflare AI Gateway provider documentation](https://www.promptfoo.dev/docs/providers/cloudflare-gateway) for more details.
+See the [Cloudflare AI Gateway provider documentation](https://www.artef.dev/docs/providers/cloudflare-gateway) for more details.

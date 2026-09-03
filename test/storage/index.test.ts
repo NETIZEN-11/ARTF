@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   getMediaStorage,
   LocalFileSystemProvider,
@@ -50,7 +50,7 @@ describe('media storage provider injection', () => {
     setMediaStorage(customProvider);
     resetMediaStorage();
 
-    expect(getMediaStorage({ basePath: '/tmp/promptfoo-media-storage-test' })).toBeInstanceOf(
+    expect(getMediaStorage({ basePath: '/tmp/artef-media-storage-test' })).toBeInstanceOf(
       LocalFileSystemProvider,
     );
   });

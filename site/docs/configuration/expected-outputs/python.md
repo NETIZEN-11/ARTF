@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 51
 sidebar_label: Python
 description: Create advanced Python validation scripts with complex logic, external APIs, and ML libraries for sophisticated output grading
@@ -279,11 +279,11 @@ tests:
 
 ## Overriding the Python binary
 
-By default, promptfoo will run `python` in your shell. Make sure `python` points to the appropriate executable.
+By default, artef will run `python` in your shell. Make sure `python` points to the appropriate executable.
 
 If a `python` binary is not present, you will see a "python: command not found" error.
 
-To override the Python binary, set the `PROMPTFOO_PYTHON` environment variable. You may set it to a path (such as `/path/to/python3.11`) or just an executable in your PATH (such as `python3.11`).
+To override the Python binary, set the `artef_PYTHON` environment variable. You may set it to a path (such as `/path/to/python3.11`) or just an executable in your PATH (such as `python3.11`).
 
 ## Negation
 

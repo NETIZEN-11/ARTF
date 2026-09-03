@@ -1,9 +1,9 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 import type { AssertionValue, ResultSuggestion } from '../../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:ecommerce:compliance-bypass';
+const PLUGIN_ID = 'artef:redteam:ecommerce:compliance-bypass';
 
 export class EcommerceComplianceBypassGrader extends RedteamGraderBase {
   readonly id = PLUGIN_ID;

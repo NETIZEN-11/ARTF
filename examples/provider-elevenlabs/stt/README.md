@@ -1,14 +1,14 @@
-# provider-elevenlabs/stt (ElevenLabs Speech-to-Text)
+﻿# provider-elevenlabs/stt (ElevenLabs Speech-to-Text)
 
 This example demonstrates how to use ElevenLabs STT provider for audio transcription testing.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example provider-elevenlabs/stt
+npx artef@latest init --example provider-elevenlabs/stt
 cd provider-elevenlabs/stt
 export ELEVENLABS_API_KEY=your_api_key_here
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Features
@@ -36,7 +36,7 @@ npx promptfoo@latest eval
 
 3. **Run the evaluation**:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 ## Configuration
@@ -336,7 +336,7 @@ tests:
 echo $ELEVENLABS_API_KEY
 
 # Or set it inline
-ELEVENLABS_API_KEY=your_key promptfoo eval
+ELEVENLABS_API_KEY=your_key artef eval
 ```
 
 ### Audio File Not Found

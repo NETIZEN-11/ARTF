@@ -1,10 +1,10 @@
----
+﻿---
 description: Monitor and optimize LLM usage through Helicone's AI gateway with unified access, caching, and comprehensive observability
 ---
 
 # Helicone AI Gateway
 
-[Helicone AI Gateway](https://github.com/Helicone/ai-gateway) is an open-source, self-hosted AI gateway that provides a unified OpenAI-compatible interface for 100+ LLM providers. The Helicone provider in promptfoo allows you to route requests through a locally running Helicone AI Gateway instance.
+[Helicone AI Gateway](https://github.com/Helicone/ai-gateway) is an open-source, self-hosted AI gateway that provides a unified OpenAI-compatible interface for 100+ LLM providers. The Helicone provider in artef allows you to route requests through a locally running Helicone AI Gateway instance.
 
 ## Benefits
 
@@ -35,7 +35,7 @@ The gateway will start on `http://localhost:8080` by default.
 
 ### Installation
 
-No additional dependencies are required. The Helicone provider is built into promptfoo and works with any running Helicone AI Gateway instance.
+No additional dependencies are required. The Helicone provider is built into artef and works with any running Helicone AI Gateway instance.
 
 ## Usage
 
@@ -275,7 +275,7 @@ Built-in rate limiting:
 Enable debug logging to see detailed request/response information:
 
 ```bash
-LOG_LEVEL=debug promptfoo eval
+LOG_LEVEL=debug artef eval
 ```
 
 ## Related Links
@@ -283,4 +283,4 @@ LOG_LEVEL=debug promptfoo eval
 - [Helicone Documentation](https://docs.helicone.ai/)
 - [Helicone Dashboard](https://helicone.ai/dashboard)
 - [Helicone GitHub](https://github.com/Helicone/helicone)
-- [promptfoo Provider Guide](/docs/providers/)
+- [artef Provider Guide](/docs/providers/)

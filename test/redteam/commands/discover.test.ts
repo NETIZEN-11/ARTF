@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
 
@@ -47,23 +47,23 @@ describe('ArgsSchema', () => {
 
 describe('resolveDiscoveryProviderContext', () => {
   it('derives target context from a Cloud provider in a file reference', async () => {
-    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'promptfoo-discover-'));
+    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'artef-discover-'));
     const providerPath = path.join(tempDir, 'targets.yaml');
 
     try {
-      await fs.writeFile(providerPath, 'id: promptfoo://provider/cloud-target-123\n');
+      await fs.writeFile(providerPath, 'id: artef://provider/cloud-target-123\n');
 
       const result = resolveDiscoveryProviderContext(`file://${providerPath}`);
 
       expect(result.cloudTargetId).toBe('cloud-target-123');
-      expect(result.providers).toEqual([{ id: 'promptfoo://provider/cloud-target-123' }]);
+      expect(result.providers).toEqual([{ id: 'artef://provider/cloud-target-123' }]);
     } finally {
       await fs.rm(tempDir, { recursive: true, force: true });
     }
   });
 
   it('derives linked target context from a local provider in a file reference', async () => {
-    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'promptfoo-discover-'));
+    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'artef-discover-'));
     const providerPath = path.join(tempDir, 'targets.yaml');
 
     try {
@@ -72,7 +72,7 @@ describe('resolveDiscoveryProviderContext', () => {
         [
           'id: openai:gpt-4.1-mini',
           'config:',
-          '  linkedTargetId: promptfoo://provider/linked-target-123',
+          '  linkedTargetId: artef://provider/linked-target-123',
           '',
         ].join('\n'),
       );
@@ -83,7 +83,7 @@ describe('resolveDiscoveryProviderContext', () => {
       expect(result.providers).toEqual([
         {
           id: 'openai:gpt-4.1-mini',
-          config: { linkedTargetId: 'promptfoo://provider/linked-target-123' },
+          config: { linkedTargetId: 'artef://provider/linked-target-123' },
         },
       ]);
     } finally {
@@ -344,7 +344,7 @@ describe('doTargetPurposeDiscovery', () => {
 
     // discover.ts must not attach the cloud token itself: the centralized fetch layer
     // injects it only for the configured cloud origin, so a custom
-    // PROMPTFOO_REMOTE_GENERATION_URL can never receive the saved credential.
+    // artef_REMOTE_GENERATION_URL can never receive the saved credential.
     expect(mockedFetchWithProxy).toHaveBeenCalled();
     for (const call of mockedFetchWithProxy.mock.calls) {
       const headers = (call[1]?.headers ?? {}) as Record<string, string>;
@@ -497,7 +497,7 @@ describe('doTargetPurposeDiscovery', () => {
     expect(error.message).toContain(
       'Remote server returned HTTP 400: Unknown task: target-purpose-discovery',
     );
-    expect(error.message).toContain('promptfoo@latest');
+    expect(error.message).toContain('artef@latest');
     // Should not retry — fetch should only be called once
     expect(mockedFetchWithProxy).toHaveBeenCalledTimes(1);
     expect(target.callApi).not.toHaveBeenCalled();
@@ -521,7 +521,7 @@ describe('doTargetPurposeDiscovery', () => {
     const error = await doTargetPurposeDiscovery(target, undefined, false).catch((e) => e);
     expect(error).toBeInstanceOf(Error);
     expect(error.message).toContain('Remote server returned HTTP 401: Unauthorized');
-    expect(error.message).toContain('promptfoo auth login');
+    expect(error.message).toContain('artef auth login');
     expect(mockedFetchWithProxy).toHaveBeenCalledTimes(1);
     expect(target.callApi).not.toHaveBeenCalled();
   });

@@ -1,20 +1,20 @@
----
-name: promptfoo-evals
+﻿---
+name: artef-evals
 description: >
-  Write, refine, run, and QA promptfoo evaluation suites:
-  promptfooconfig.yaml, prompts, providers, vars, tests, assertions, model-graded
+  Write, refine, run, and QA artef evaluation suites:
+  artefconfig.yaml, prompts, providers, vars, tests, assertions, model-graded
   rubrics, transforms, datasets, exports, and CI gates. Use for non-redteam eval
   coverage, regression tests, or new eval matrices. Do not use for adversarial
   redteam plugin or strategy setup.
 ---
 
-# Writing Promptfoo Evals
+# Writing artef Evals
 
-You produce maintainable promptfoo eval suites: clear test cases, deterministic
+You produce maintainable artef eval suites: clear test cases, deterministic
 assertions where possible, model-graded only when needed.
 
 See `references/cheatsheet.md` for the full assertion and provider reference.
-For deep questions about promptfoo features, consult https://www.promptfoo.dev/llms-full.txt
+For deep questions about artef features, consult https://www.artef.dev/llms-full.txt
 
 ## Inputs (infer from repo context if not provided)
 
@@ -28,19 +28,19 @@ If context is insufficient, scaffold with TODO markers and starter tests.
 
 ### 1. Find or create the eval suite
 
-Search for existing configs: `promptfooconfig.yaml`, `promptfooconfig.yml`,
-or any `promptfoo`/`evals` folder. Extend existing suites when possible.
+Search for existing configs: `artefconfig.yaml`, `artefconfig.yml`,
+or any `artef`/`evals` folder. Extend existing suites when possible.
 
 For new suites, use this layout (unless the repo uses another convention):
 
 ```text
 evals/<suite-name>/
-  promptfooconfig.yaml
+  artefconfig.yaml
   prompts/
   tests/
 ```
 
-Always add `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json`
+Always add `# yaml-language-server: $schema=https://artef.dev/config-schema.json`
 at the top of config files.
 
 ### 2. Write prompts
@@ -170,14 +170,14 @@ during development to avoid stale results. Only run eval if credentials are
 available and safe to call.
 
 ```bash
-npx promptfoo@latest validate config -c <config>
-npx promptfoo@latest eval -c <config> -o output.json --no-cache --no-share
+npx artef@latest validate config -c <config>
+npx artef@latest eval -c <config> -o output.json --no-cache --no-share
 ```
 
 For CI/non-UI workflows, prefer the `-o output.json` command and inspect
 `success`, `score`, and `error` fields.
 
-If working in the promptfoo repo itself, prefer the local build:
+If working in the artef repo itself, prefer the local build:
 
 ```bash
 source ~/.nvm/nvm.sh && nvm use

@@ -1,4 +1,4 @@
-import logger from '../logger';
+﻿import logger from '../logger';
 import {
   createSecureTempDirectory,
   removeSecureTempDirectory,
@@ -20,7 +20,7 @@ export async function runPythonCode<T = unknown>(
 ): Promise<T> {
   let tempDirectory: string | undefined;
   try {
-    tempDirectory = await createSecureTempDirectory('promptfoo-python-code-');
+    tempDirectory = await createSecureTempDirectory('artef-python-code-');
     const tempFilePath = await writeSecureTempFile(tempDirectory, 'script.py', code);
     // Necessary to await so temp file doesn't get deleted.
     const result = await runPython<T>(tempFilePath, method, args);

@@ -1,7 +1,7 @@
-import promptfoo from 'promptfoo';
-import type { ApiProvider, ProviderOptions, ProviderResponse } from 'promptfoo';
+﻿import artef from 'artef';
+import type { ApiProvider, ProviderOptions, ProviderResponse } from 'artef';
 
-// import promptfoo from '../../dist/src/index.js';
+// import artef from '../../dist/src/index.js';
 // import type { ApiProvider, ProviderOptions, ProviderResponse } from '../../src/types/providers';
 
 export default class CustomApiProvider implements ApiProvider {
@@ -33,8 +33,8 @@ export default class CustomApiProvider implements ApiProvider {
       temperature: Number.parseFloat(this.config?.temperature) || 0,
     };
 
-    // Fetch the data from the API using promptfoo's cache. You can use your own fetch implementation if preferred.
-    const { data, cached: _cached } = await promptfoo.cache.fetchWithCache(
+    // Fetch the data from the API using artef's cache. You can use your own fetch implementation if preferred.
+    const { data, cached: _cached } = await artef.cache.fetchWithCache(
       'https://api.openai.com/v1/chat/completions',
       {
         method: 'POST',

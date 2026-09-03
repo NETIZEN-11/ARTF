@@ -1,6 +1,6 @@
-# provider-openclaw (OpenClaw Agent Testing)
+﻿# provider-openclaw (OpenClaw Agent Testing)
 
-This example demonstrates how to use promptfoo with OpenClaw, a personal AI assistant framework.
+This example demonstrates how to use artef with OpenClaw, a personal AI assistant framework.
 
 ## Prerequisites
 
@@ -29,14 +29,14 @@ This example demonstrates how to use promptfoo with OpenClaw, a personal AI assi
 ## Setup
 
 ```bash
-npx promptfoo@latest init --example provider-openclaw
+npx artef@latest init --example provider-openclaw
 cd provider-openclaw
 ```
 
 ## Usage
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 The provider auto-detects the gateway URL and bearer auth secret from the active OpenClaw config
@@ -71,7 +71,7 @@ export OPENCLAW_GATEWAY_TOKEN=your-token-here
 # export OPENCLAW_GATEWAY_PASSWORD=your-password-here
 ```
 
-For `openclaw:agent:*`, promptfoo generates an isolated session key per call by default so evals do
+For `openclaw:agent:*`, artef generates an isolated session key per call by default so evals do
 not reuse your persistent OpenClaw `main` session. Set `session_key` explicitly if you want session
 continuity. The WS provider signs OpenClaw's `connect.challenge`, persists issued device tokens,
 and retries once with a cached device token when the gateway recommends it.

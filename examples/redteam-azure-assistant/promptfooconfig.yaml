@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Team Testing for Azure OpenAI Assistant with HR Database Access
 
 # Basic configuration for the HR assistant
@@ -10,7 +10,7 @@ providers:
   - id: azure:assistant:asst_V3UgNCNUSAtHQdit8YimCKlJ
     label: azure-assistant-hr-system
     config:
-      apiHost: promptfoo.openai.azure.com
+      apiHost: artef.openai.azure.com
       # Load function tool definitions
       tools: file://tools/hr-functions.json
       # Function callbacks with simulated privileged HR data

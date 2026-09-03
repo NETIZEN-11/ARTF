@@ -1,10 +1,10 @@
----
-title: 'Join Promptfoo at Hacker Summer Camp 2025'
-description: 'Join Promptfoo at AI Summit, Black Hat, and DEF CON for demos, workshops, and discussions on LLM security and red teaming'
+﻿---
+title: 'Join artef at Hacker Summer Camp 2025'
+description: 'Join artef at AI Summit, Black Hat, and DEF CON for demos, workshops, and discussions on LLM security and red teaming'
 image: /img/blog/hacker-summer-camp-hero.webp
 keywords:
   [
-    promptfoo,
+    artef,
     DEF CON,
     Black Hat,
     AI security,
@@ -22,7 +22,7 @@ authors: [vanessa]
 tags: [company-update, conferences, defcon, blackhat]
 ---
 
-# Join Promptfoo at Hacker Summer Camp 2025
+# Join artef at Hacker Summer Camp 2025
 
 Black Hat + DEF CON USA 2025 will be here before we know it, and we would love to meet you.
 
@@ -37,17 +37,17 @@ This one-day summit before Black Hat is the leading forum for discussing AI inno
 
 ## Meet Us at the Black Hat Business Hall
 
-We'll be in the Black Hat Business Hall on August 6th and 7th. You can also attend our CEO's talk on Wednesday, August 6th at 1:30 PM on the AI Stage, where Ian will showcase how leading enterprises are using Promptfoo to ship LLMs faster and more securely.
+We'll be in the Black Hat Business Hall on August 6th and 7th. You can also attend our CEO's talk on Wednesday, August 6th at 1:30 PM on the AI Stage, where Ian will showcase how leading enterprises are using artef to ship LLMs faster and more securely.
 
 - **Location**: Mandalay Bay Convention Center, Las Vegas
 - **Booth**: AI Zone Pavilion, Booth #4712
 - **Dates**: Wednesday, August 6th and Thursday, August 7th
 
-Want a deeper-dive demo? [Reach out to the team](/contact/) to see Promptfoo in action and learn how the platform can accelerate your AI security strategy.
+Want a deeper-dive demo? [Reach out to the team](/contact/) to see artef in action and learn how the platform can accelerate your AI security strategy.
 
 ## Try the Tool at Arsenal Labs
 
-Watch our security researchers perform demonstrations of prompt injection, jailbreaking, and data exfiltration attacks. See how Promptfoo automatically detects and prevents these threats across GPT, Claude, Gemini, Llama, and other popular models.
+Watch our security researchers perform demonstrations of prompt injection, jailbreaking, and data exfiltration attacks. See how artef automatically detects and prevents these threats across GPT, Claude, Gemini, Llama, and other popular models.
 
 - **Location**: Mandalay Bay Convention Center, Las Vegas
 - **Booth**: Business Hall, Arsenal Lab Station 1
@@ -60,9 +60,9 @@ We'll be at DEF CON all weekend. Come by our booth to meet the team and maybe ev
 - **Location**: Las Vegas Convention Center
 - **Dates**: August 8 - 10, 2025
 
-## Have a Drink On Us at the Promptfoo Community Party
+## Have a Drink On Us at the artef Community Party
 
-We're throwing an open bar [party](https://promptfoo.dev/events/defcon-2025) at the Star Wars-themed Millennium FANDOM BAR for our Promptfoo community members. Space is limited. RSVP now to secure your spot at the AI security party of DEF CON.
+We're throwing an open bar [party](https://artef.dev/events/defcon-2025) at the Star Wars-themed Millennium FANDOM BAR for our artef community members. Space is limited. RSVP now to secure your spot at the AI security party of DEF CON.
 
 <iframe
   src="https://lu.ma/embed/event/evt-68XHWgtMjY47tWT/simple"

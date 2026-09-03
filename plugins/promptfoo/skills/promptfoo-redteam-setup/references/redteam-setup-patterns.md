@@ -1,4 +1,4 @@
-# Redteam Setup Patterns
+﻿# Redteam Setup Patterns
 
 Use these as starting points. Keep initial scans small enough that generated
 cases can be reviewed by a human.
@@ -6,7 +6,7 @@ cases can be reviewed by a human.
 ## Single-input HTTP policy scan
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Travel assistant redteam setup
 
 prompts:
@@ -52,7 +52,7 @@ identity, object IDs, and the response transform exactly as the app expects.
 
 ## Multi-input authorization scan
 
-Define real fields on the target. Promptfoo automatically stores the combined
+Define real fields on the target. artef automatically stores the combined
 payload in `__prompt` and extracts individual vars.
 
 ```yaml
@@ -182,7 +182,7 @@ Use `file://./redteam-generator.mjs` or `file://./redteam-generator.py`; Python
 generators implement `call_api(prompt, options, context)` unless the id uses a
 custom `file://generator.py:function_name` suffix such as
 `file://redteam-generator.py:generate_redteam_invoice_prompt`. If you run
-Promptfoo from the repo root, use a repo-root-relative path.
+artef from the repo root, use a repo-root-relative path.
 
 ```javascript
 export default class DeterministicRedteamGenerator {
@@ -218,12 +218,12 @@ def call_api(prompt, options, context):
 ## Generation QA commands
 
 ```bash
-promptfoo redteam generate -c promptfooconfig.yaml \
+artef redteam generate -c artefconfig.yaml \
   -o /tmp/redteam.yaml --no-cache --force --no-progress-bar --strict
 ```
 
 Choose an output path that does not already exist, or keep `--force`. Avoid
-passing a freshly created empty `mktemp` file as `--output`; Promptfoo reads
+passing a freshly created empty `mktemp` file as `--output`; artef reads
 existing YAML output to compare `metadata.configHash` before generation.
 For local file targets such as `file://./target.js` or `file://./target.py`, put
 the generated YAML next to the source config or use a stable target path. If you

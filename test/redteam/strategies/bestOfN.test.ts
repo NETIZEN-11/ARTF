@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addBestOfNTestCases } from '../../../src/redteam/strategies/bestOfN';
 
 import type { TestCaseWithPlugin } from '../../../src/types/index';
@@ -25,7 +25,7 @@ describe('addBestOfNTestCases', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].provider).toEqual({
-      id: 'promptfoo:redteam:best-of-n',
+      id: 'artef:redteam:best-of-n',
       config: {
         injectVar: 'input',
         useBasicRefusal: true,
@@ -65,7 +65,7 @@ describe('addBestOfNTestCases', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].provider).toEqual({
-      id: 'promptfoo:redteam:best-of-n',
+      id: 'artef:redteam:best-of-n',
       config: {
         injectVar: 'input',
       },
@@ -93,7 +93,7 @@ describe('addBestOfNTestCases', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].provider).toEqual({
-      id: 'promptfoo:redteam:best-of-n',
+      id: 'artef:redteam:best-of-n',
       config: {
         injectVar: 'input',
       },

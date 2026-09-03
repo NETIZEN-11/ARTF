@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 #
 # Model Armor Direct Sanitization API Example
 #
@@ -15,7 +15,7 @@
 #      - MODEL_ARMOR_TEMPLATE
 #      - GCLOUD_ACCESS_TOKEN=$(gcloud auth print-access-token)
 #
-# Run with: promptfoo eval
+# Run with: artef eval
 
 description: Test Model Armor filters via REST API
 

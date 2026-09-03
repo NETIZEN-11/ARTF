@@ -1,4 +1,4 @@
----
+﻿---
 title: OpenAI vs Azure benchmark
 sidebar_label: OpenAI vs Azure Benchmark
 description: Compare OpenAI vs Azure OpenAI performance across speed, cost, and model updates with automated benchmarks to optimize your LLM infrastructure decisions
@@ -15,7 +15,7 @@ Whether you use GPT through the OpenAI or Azure APIs, the results are pretty sim
 - Ease of integration
 - Compliance with data regulations
 
-This guide will walk you through a systematic approach to comparing these models using the `promptfoo` CLI tool.
+This guide will walk you through a systematic approach to comparing these models using the `artef` CLI tool.
 
 The end result will be a side-by-side comparison view that looks like this, which includes timing information and outputs.
 
@@ -26,7 +26,7 @@ The end result will be a side-by-side comparison view that looks like this, whic
 Before we get started, you need the following:
 
 - An API key for OpenAI and Azure OpenAI services.
-- [Install](/docs/getting-started) `promptfoo`.
+- [Install](/docs/getting-started) `artef`.
 
 Additionally, make sure you have the following environment variables set:
 
@@ -40,11 +40,11 @@ export AZURE_API_KEY='...'
 Initialize the example project:
 
 ```sh
-npx promptfoo@latest init --example openai-azure-comparison
+npx artef@latest init --example openai-azure-comparison
 cd openai-azure-comparison
 ```
 
-Open the `promptfooconfig.yaml` and configure both OpenAI and Azure OpenAI as providers. In this example, we'll compare the same model on both services.
+Open the `artefconfig.yaml` and configure both OpenAI and Azure OpenAI as providers. In this example, we'll compare the same model on both services.
 
 ```yaml
 providers:
@@ -75,10 +75,10 @@ tests:
 
 ## Step 3: Run the comparison
 
-Execute the comparison using the `promptfoo eval` command:
+Execute the comparison using the `artef eval` command:
 
 ```
-npx promptfoo@latest eval --no-cache
+npx artef@latest eval --no-cache
 ```
 
 This will run the test cases against both models and output the results.
@@ -87,9 +87,9 @@ We've added the `--no-cache` directive because we care about timings (in order t
 
 ## Step 4: Review results and analyze
 
-After running the eval command, `promptfoo` will generate a report with the responses from both models.
+After running the eval command, `artef` will generate a report with the responses from both models.
 
-Run `npx promptfoo@latest view` to open the viewer:
+Run `npx artef@latest view` to open the viewer:
 
 ![openai and azure comparison](/img/docs/openai-vs-azure-comparison.png)
 

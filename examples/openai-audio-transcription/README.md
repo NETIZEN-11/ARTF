@@ -1,29 +1,29 @@
-# openai-audio-transcription (OpenAI Audio Transcription Example)
+﻿# openai-audio-transcription (OpenAI Audio Transcription Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-audio-transcription
+npx artef@latest init --example openai-audio-transcription
 cd openai-audio-transcription
 ```
 
-A simple example showing how to evaluate OpenAI's audio transcription models (Whisper and GPT-4o) with promptfoo.
+A simple example showing how to evaluate OpenAI's audio transcription models (Whisper and GPT-4o) with artef.
 
 ## Quick Start
 
 ```bash
 # Create this example
-npx promptfoo@latest init --example openai-audio-transcription
+npx artef@latest init --example openai-audio-transcription
 
 # Set your API key
 export OPENAI_API_KEY=your-key-here
 
 # Add your audio files to test (see below)
 # Then run the evaluation
-promptfoo eval
+artef eval
 
 # View the results
-promptfoo view
+artef view
 ```
 
 ## What's in this Example
@@ -45,7 +45,7 @@ This example expects audio files in the example directory. You'll need to provid
 - WAV
 - WEBM
 
-Replace the file paths in `promptfooconfig.yaml` with your actual audio files.
+Replace the file paths in `artefconfig.yaml` with your actual audio files.
 
 ## Key Features
 
@@ -82,4 +82,4 @@ Transcription models charge per minute of audio:
 ## Documentation
 
 - [OpenAI Audio API Documentation](https://platform.openai.com/docs/guides/audio)
-- [promptfoo OpenAI Provider Documentation](https://promptfoo.dev/docs/providers/openai)
+- [artef OpenAI Provider Documentation](https://artef.dev/docs/providers/openai)

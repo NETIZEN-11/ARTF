@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Card, CardContent } from '@app/components/ui/card';
@@ -8,9 +8,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@app/components/ui/tab
 import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
 import { cn } from '@app/lib/utils';
 import { formatASRForDisplay } from '@app/utils/redteam';
-import { displayNameOverrides, subCategoryDescriptions } from '@promptfoo/redteam/constants';
-import { calculateAttackSuccessRate } from '@promptfoo/redteam/metrics';
-import { type RedteamPluginObject } from '@promptfoo/redteam/types';
+import { displayNameOverrides, subCategoryDescriptions } from '@artef/redteam/constants';
+import { calculateAttackSuccessRate } from '@artef/redteam/metrics';
+import { type RedteamPluginObject } from '@artef/redteam/types';
 import { compareByASRDescending } from '../utils/utils';
 import { type CategoryStats, type TestResultStats } from './FrameworkComplianceUtils';
 import { getPluginIdFromResult, getStrategyIdFromTest, type TestWithMetadata } from './shared';

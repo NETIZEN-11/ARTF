@@ -1,4 +1,4 @@
-import confirm from '@inquirer/confirm';
+﻿import confirm from '@inquirer/confirm';
 import chalk from 'chalk';
 import dedent from 'dedent';
 import { cloudConfig } from '../globalConfig/cloud';
@@ -63,7 +63,7 @@ export function shareCommand(program: Command) {
       'Show username/password authentication information in the URL if exists',
       false,
     )
-    // NOTE: Added in 0.109.1 after migrating sharing to promptfoo.app in 0.108.0
+    // NOTE: Added in 0.109.1 after migrating sharing to artef.app in 0.108.0
     .option(
       '-y, --yes',
       'Flag does nothing (maintained for backwards compatibility only - shares are now private by default)',
@@ -107,7 +107,7 @@ export function shareCommand(program: Command) {
 
           if (!latestEval && !latestAudit) {
             logger.error(
-              'Could not load results. Do you need to run `promptfoo eval` or `promptfoo scan-model` first?',
+              'Could not load results. Do you need to run `artef eval` or `artef scan-model` first?',
             );
             process.exitCode = 1;
             return;
@@ -139,7 +139,7 @@ export function shareCommand(program: Command) {
             if (currentConfig && currentConfig.sharing) {
               eval_.config.sharing = currentConfig.sharing;
               logger.debug(
-                `Applied sharing config from promptfooconfig.yaml: ${JSON.stringify(currentConfig.sharing)}`,
+                `Applied sharing config from artefconfig.yaml: ${JSON.stringify(currentConfig.sharing)}`,
               );
             }
           } catch (err) {

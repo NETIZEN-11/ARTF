@@ -1,4 +1,4 @@
----
+﻿---
 title: "How to Red Team Gemini: Complete Security Testing Guide for Google's AI Models"
 description: 'Comprehensive guide to red teaming Google Gemini models for multimodal vulnerabilities across text, vision, and code generation'
 image: /img/blog/red-team-gemini.png
@@ -22,11 +22,11 @@ tags: [technical-guide, red-teaming, google]
 
 Google's Gemini represents a significant advancement in multimodal AI, with models featuring reasoning, huge token contexts, and lightning-fast inference.
 
-But with these powerful capabilities come unique security challenges. This guide shows you how to use [Promptfoo](https://github.com/promptfoo/promptfoo) to systematically test Gemini models for vulnerabilities through adversarial red teaming.
+But with these powerful capabilities come unique security challenges. This guide shows you how to use [artef](https://github.com/artef/artef) to systematically test Gemini models for vulnerabilities through adversarial red teaming.
 
 Gemini's multimodal processing, extended context windows, and thinking capabilities make it particularly important to test comprehensively before production deployment.
 
-You can also jump directly to the [Gemini 2.5 Pro security report](https://www.promptfoo.dev/models/reports/gemini-2.5-pro) and [compare it to other models](https://www.promptfoo.dev/models/compare?base=gemini-2.5-pro).
+You can also jump directly to the [Gemini 2.5 Pro security report](https://www.artef.dev/models/reports/gemini-2.5-pro) and [compare it to other models](https://www.artef.dev/models/compare?base=gemini-2.5-pro).
 
 <!-- truncate -->
 
@@ -45,7 +45,7 @@ Before you begin, ensure you have:
 
 - **Node.js `>=22.22.0`** (Node.js 24 LTS recommended): [Download Node.js](https://nodejs.org/en/download/)
 - **Google AI Studio API Key**: Sign up for a [Google AI Studio account](https://aistudio.google.com/) and obtain an API key
-- **Promptfoo**: No prior installation needed; we'll use `npx` to run commands
+- **artef**: No prior installation needed; we'll use `npx` to run commands
 
 Set your Google AI Studio API key as an environment variable:
 
@@ -60,18 +60,18 @@ export GOOGLE_API_KEY=your_google_api_key
 Initialize a new red teaming project specifically for Gemini 2.5 Pro:
 
 ```bash
-npx promptfoo@latest redteam init gemini-2.5-redteam --no-gui
+npx artef@latest redteam init gemini-2.5-redteam --no-gui
 cd gemini-2.5-redteam
 ```
 
-This creates a `promptfooconfig.yaml` file that we'll customize for Gemini 2.5 Pro.
+This creates a `artefconfig.yaml` file that we'll customize for Gemini 2.5 Pro.
 
 ## Configuring Gemini 2.5 Pro for Red Teaming
 
-Edit your `promptfooconfig.yaml` to target Gemini 2.5 Pro:
+Edit your `artefconfig.yaml` to target Gemini 2.5 Pro:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Team Evaluation for Gemini 2.5 Pro
 
 targets:
@@ -121,7 +121,7 @@ redteam:
 Generate adversarial test cases:
 
 ```bash
-npx promptfoo@latest redteam generate
+npx artef@latest redteam generate
 ```
 
 This creates a `redteam.yaml` file with test cases designed to probe Gemini 2.5 Pro's vulnerabilities.
@@ -131,13 +131,13 @@ This creates a `redteam.yaml` file with test cases designed to probe Gemini 2.5 
 Run the evaluation:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 Or, to make things go quicker with parallel execution:
 
 ```bash
-npx promptfoo@latest redteam run --max-concurrency 30
+npx artef@latest redteam run --max-concurrency 30
 ```
 
 ### Step 3: View the Report
@@ -145,7 +145,7 @@ npx promptfoo@latest redteam run --max-concurrency 30
 View a detailed vulnerability report:
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 ### Report Analysis
@@ -358,8 +358,8 @@ Now that you've red teamed Gemini, consider:
 
 ## Additional Resources
 
-- [Gemini 2.5 Pro Security Report](https://promptfoo.dev/models/reports/gemini-2.5-pro)
-- [Promptfoo Red Team Documentation](/docs/red-team/quickstart/)
+- [Gemini 2.5 Pro Security Report](https://artef.dev/models/reports/gemini-2.5-pro)
+- [artef Red Team Documentation](/docs/red-team/quickstart/)
 - [LLM Vulnerability Types](/docs/red-team/llm-vulnerability-types/)
 - [Red Team Configuration Guide](/docs/red-team/configuration/)
 - [Google AI Studio Documentation](https://ai.google.dev/gemini-api/docs)

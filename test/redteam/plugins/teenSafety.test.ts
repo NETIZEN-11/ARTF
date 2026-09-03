@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { TEEN_SAFETY_PLUGINS } from '../../../src/redteam/constants';
 import { Plugins } from '../../../src/redteam/plugins';
 import { TeenSafetyAgeRestrictedGoodsAndServicesPluginGrader } from '../../../src/redteam/plugins/teenSafety/ageRestrictedGoodsAndServices';
@@ -12,11 +12,11 @@ import {
 import { mockProcessEnv } from '../../util/utils';
 
 describe('teen safety plugins', () => {
-  const originalDisableRemoteGeneration = process.env.PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION;
+  const originalDisableRemoteGeneration = process.env.artef_DISABLE_REDTEAM_REMOTE_GENERATION;
   let provider: MockApiProvider;
 
   beforeEach(() => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: 'true' });
+    mockProcessEnv({ artef_DISABLE_REDTEAM_REMOTE_GENERATION: 'true' });
 
     provider = createMockProvider({
       id: 'mock-provider',
@@ -28,10 +28,10 @@ describe('teen safety plugins', () => {
 
   afterEach(() => {
     if (originalDisableRemoteGeneration === undefined) {
-      mockProcessEnv({ PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: undefined });
+      mockProcessEnv({ artef_DISABLE_REDTEAM_REMOTE_GENERATION: undefined });
     } else {
       mockProcessEnv({
-        PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: originalDisableRemoteGeneration,
+        artef_DISABLE_REDTEAM_REMOTE_GENERATION: originalDisableRemoteGeneration,
       });
     }
   });
@@ -56,7 +56,7 @@ describe('teen safety plugins', () => {
         metadata: { pluginId },
         assert: [
           expect.objectContaining({
-            type: `promptfoo:redteam:${pluginId}`,
+            type: `artef:redteam:${pluginId}`,
           }),
         ],
       });

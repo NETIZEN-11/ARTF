@@ -1,4 +1,4 @@
-import { propagation } from '@opentelemetry/api';
+﻿import { propagation } from '@opentelemetry/api';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import { getEnvBool, getEnvString } from '../../src/envars';
@@ -121,7 +121,7 @@ describe('shouldGenerateRemote', () => {
       if (key === 'OPENAI_API_KEY') {
         return 'sk-123';
       }
-      if (key === 'PROMPTFOO_REMOTE_GENERATION_URL') {
+      if (key === 'artef_REMOTE_GENERATION_URL') {
         return 'https://remote.example.test/api/v1/task';
       }
       return '';
@@ -216,39 +216,39 @@ describe('remote generation error helpers', () => {
 
   it('should include the --remote recovery path when remote generation is implicitly disabled', () => {
     expect(getRemoteGenerationDisabledError('jailbreak:hydra strategy')).toBe(
-      'jailbreak:hydra strategy requires remote generation, which is currently disabled for this configuration. To enable it, run with --remote, set PROMPTFOO_REMOTE_GENERATION_URL to a self-hosted endpoint, or log into Promptfoo Cloud with `promptfoo auth login`.',
+      'jailbreak:hydra strategy requires remote generation, which is currently disabled for this configuration. To enable it, run with --remote, set artef_REMOTE_GENERATION_URL to a self-hosted endpoint, or log into artef Cloud with `artef auth login`.',
     );
   });
 
   it('should list only the active disable flag when one flag is set', () => {
     vi.mocked(getEnvBool).mockImplementation(
-      (key: string) => key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION',
+      (key: string) => key === 'artef_DISABLE_REMOTE_GENERATION',
     );
     expect(getRemoteGenerationExplicitlyDisabledError('Best-of-N strategy')).toBe(
-      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset PROMPTFOO_DISABLE_REMOTE_GENERATION. Once re-enabled, you can point at a self-hosted endpoint with PROMPTFOO_REMOTE_GENERATION_URL or use Promptfoo Cloud via `promptfoo auth login`.',
+      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset artef_DISABLE_REMOTE_GENERATION. Once re-enabled, you can point at a self-hosted endpoint with artef_REMOTE_GENERATION_URL or use artef Cloud via `artef auth login`.',
     );
   });
 
   it('should list only the redteam-specific flag when only that flag is set', () => {
     vi.mocked(getEnvBool).mockImplementation(
-      (key: string) => key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION',
+      (key: string) => key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION',
     );
     expect(getRemoteGenerationExplicitlyDisabledError('Best-of-N strategy')).toBe(
-      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION. Once re-enabled, you can point at a self-hosted endpoint with PROMPTFOO_REMOTE_GENERATION_URL or use Promptfoo Cloud via `promptfoo auth login`.',
+      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset artef_DISABLE_REDTEAM_REMOTE_GENERATION. Once re-enabled, you can point at a self-hosted endpoint with artef_REMOTE_GENERATION_URL or use artef Cloud via `artef auth login`.',
     );
   });
 
   it('should list both disable flags when both are set', () => {
     vi.mocked(getEnvBool).mockReturnValue(true);
     expect(getRemoteGenerationExplicitlyDisabledError('Best-of-N strategy')).toBe(
-      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset PROMPTFOO_DISABLE_REMOTE_GENERATION and PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION. Once re-enabled, you can point at a self-hosted endpoint with PROMPTFOO_REMOTE_GENERATION_URL or use Promptfoo Cloud via `promptfoo auth login`.',
+      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset artef_DISABLE_REMOTE_GENERATION and artef_DISABLE_REDTEAM_REMOTE_GENERATION. Once re-enabled, you can point at a self-hosted endpoint with artef_REMOTE_GENERATION_URL or use artef Cloud via `artef auth login`.',
     );
   });
 
   it('should fall back to a generic "whichever is set" hint when no flag is visible in env', () => {
     vi.mocked(getEnvBool).mockReturnValue(false);
     expect(getRemoteGenerationExplicitlyDisabledError('Best-of-N strategy')).toBe(
-      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION (whichever is set). Once re-enabled, you can point at a self-hosted endpoint with PROMPTFOO_REMOTE_GENERATION_URL or use Promptfoo Cloud via `promptfoo auth login`.',
+      'Best-of-N strategy requires remote generation, which has been explicitly disabled. To enable it, unset artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION (whichever is set). Once re-enabled, you can point at a self-hosted endpoint with artef_REMOTE_GENERATION_URL or use artef Cloud via `artef auth login`.',
     );
   });
 });
@@ -258,21 +258,21 @@ describe('neverGenerateRemote', () => {
     vi.resetAllMocks();
   });
 
-  it('should return true when PROMPTFOO_DISABLE_REMOTE_GENERATION is set', () => {
+  it('should return true when artef_DISABLE_REMOTE_GENERATION is set', () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
     expect(neverGenerateRemote()).toBe(true);
   });
 
-  it('should return true when PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION is set', () => {
+  it('should return true when artef_DISABLE_REDTEAM_REMOTE_GENERATION is set', () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
     expect(neverGenerateRemote()).toBe(true);
   });
 
-  it('should return true when both PROMPTFOO_DISABLE_REMOTE_GENERATION and PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION are set (superset wins)', () => {
+  it('should return true when both artef_DISABLE_REMOTE_GENERATION and artef_DISABLE_REDTEAM_REMOTE_GENERATION are set (superset wins)', () => {
     vi.mocked(getEnvBool).mockImplementation(function () {
       return true;
     });
@@ -286,11 +286,11 @@ describe('neverGenerateRemote', () => {
     expect(neverGenerateRemote()).toBe(false);
   });
 
-  it('should prioritize PROMPTFOO_DISABLE_REMOTE_GENERATION over PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION', () => {
-    // First call checks PROMPTFOO_DISABLE_REMOTE_GENERATION (returns true)
-    // Second call would check PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION (not reached)
+  it('should prioritize artef_DISABLE_REMOTE_GENERATION over artef_DISABLE_REDTEAM_REMOTE_GENERATION', () => {
+    // First call checks artef_DISABLE_REMOTE_GENERATION (returns true)
+    // Second call would check artef_DISABLE_REDTEAM_REMOTE_GENERATION (not reached)
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
     expect(neverGenerateRemote()).toBe(true);
   });
@@ -301,16 +301,16 @@ describe('neverGenerateRemoteForRegularEvals', () => {
     vi.resetAllMocks();
   });
 
-  it('should return true when PROMPTFOO_DISABLE_REMOTE_GENERATION is set', () => {
+  it('should return true when artef_DISABLE_REMOTE_GENERATION is set', () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
     expect(neverGenerateRemoteForRegularEvals()).toBe(true);
   });
 
-  it('should return false when PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION is set (redteam-specific should not affect regular evals)', () => {
+  it('should return false when artef_DISABLE_REDTEAM_REMOTE_GENERATION is set (redteam-specific should not affect regular evals)', () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
     expect(neverGenerateRemoteForRegularEvals()).toBe(false);
   });
@@ -322,14 +322,14 @@ describe('neverGenerateRemoteForRegularEvals', () => {
     expect(neverGenerateRemoteForRegularEvals()).toBe(false);
   });
 
-  it('should only check PROMPTFOO_DISABLE_REMOTE_GENERATION (not the redteam-specific flag)', () => {
+  it('should only check artef_DISABLE_REMOTE_GENERATION (not the redteam-specific flag)', () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
     expect(neverGenerateRemoteForRegularEvals()).toBe(true);
     // Verify getEnvBool was called only once with the correct key
     expect(getEnvBool).toHaveBeenCalledTimes(1);
-    expect(getEnvBool).toHaveBeenCalledWith('PROMPTFOO_DISABLE_REMOTE_GENERATION');
+    expect(getEnvBool).toHaveBeenCalledWith('artef_DISABLE_REMOTE_GENERATION');
   });
 });
 
@@ -338,7 +338,7 @@ describe('getRemoteGenerationUrl', () => {
     vi.resetAllMocks();
   });
 
-  it('should return env URL + /task when PROMPTFOO_REMOTE_GENERATION_URL is set', () => {
+  it('should return env URL + /task when artef_REMOTE_GENERATION_URL is set', () => {
     vi.mocked(getEnvString).mockImplementation(function () {
       return 'https://custom.api.com/task';
     });
@@ -376,7 +376,7 @@ describe('getRemoteGenerationUrl', () => {
       };
     });
 
-    expect(getRemoteGenerationUrl()).toBe('https://api.promptfoo.app/api/v1/task');
+    expect(getRemoteGenerationUrl()).toBe('https://api.artef.app/api/v1/task');
   });
 });
 
@@ -392,7 +392,7 @@ describe('getRemoteHealthUrl', () => {
     expect(getRemoteHealthUrl()).toBeNull();
   });
 
-  it('should return modified env URL with /health path when PROMPTFOO_REMOTE_GENERATION_URL is set', () => {
+  it('should return modified env URL with /health path when artef_REMOTE_GENERATION_URL is set', () => {
     vi.mocked(getEnvBool).mockImplementation(function () {
       return false;
     });
@@ -409,7 +409,7 @@ describe('getRemoteHealthUrl', () => {
     vi.mocked(getEnvString).mockImplementation(function () {
       return 'invalid-url';
     });
-    expect(getRemoteHealthUrl()).toBe('https://api.promptfoo.app/health');
+    expect(getRemoteHealthUrl()).toBe('https://api.artef.app/health');
   });
 
   it('should return cloud API health URL when cloud is enabled', () => {
@@ -447,7 +447,7 @@ describe('getRemoteHealthUrl', () => {
         },
       };
     });
-    expect(getRemoteHealthUrl()).toBe('https://api.promptfoo.app/health');
+    expect(getRemoteHealthUrl()).toBe('https://api.artef.app/health');
   });
 });
 
@@ -456,7 +456,7 @@ describe('getRemoteGenerationUrlForUnaligned', () => {
     vi.resetAllMocks();
   });
 
-  it('should return env URL when PROMPTFOO_UNALIGNED_INFERENCE_ENDPOINT is set', () => {
+  it('should return env URL when artef_UNALIGNED_INFERENCE_ENDPOINT is set', () => {
     vi.mocked(getEnvString).mockImplementation(function () {
       return 'https://custom.api.com/harmful';
     });
@@ -493,7 +493,7 @@ describe('getRemoteGenerationUrlForUnaligned', () => {
       };
     });
     expect(getRemoteGenerationUrlForUnaligned()).toBe(
-      'https://api.promptfoo.app/api/v1/task/harmful',
+      'https://api.artef.app/api/v1/task/harmful',
     );
   });
 });

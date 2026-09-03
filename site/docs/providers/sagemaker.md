@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_label: Amazon SageMaker AI
 title: Amazon SageMaker AI Provider
-description: Evaluate Amazon SageMaker AI endpoints with promptfoo, including JumpStart, Hugging Face, custom container, tuned model, and hosted inference deployments.
+description: Evaluate Amazon SageMaker AI endpoints with artef, including JumpStart, Hugging Face, custom container, tuned model, and hosted inference deployments.
 ---
 
 # Amazon SageMaker AI
@@ -124,8 +124,8 @@ The provider will auto-detect JumpStart endpoints if `'jumpstart'` is in the nam
 
 ### Standard Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Write a tweet about {{topic}}'
 
@@ -154,8 +154,8 @@ tests:
 
 For Llama 3 models deployed via JumpStart:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Generate a creative name for a coffee shop that specializes in {{flavor}} coffee.'
 
@@ -187,8 +187,8 @@ tests:
 
 This example demonstrates advanced response processing with a file-based transform:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Who won the World Series in {{year}}?'
 
@@ -237,8 +237,8 @@ This transform not only extracts the content but also parses it to identify spec
 
 For Mistral 7B models deployed via Hugging Face:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Generate a creative name for a coffee shop that specializes in {{flavor}} coffee.'
 
@@ -270,8 +270,8 @@ tests:
 
 This example shows how to compare Llama and Mistral models side-by-side:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Comparison between Mistral 7B and Llama 3 on SageMaker'
 
 prompts:
@@ -476,7 +476,7 @@ responseFormat:
   path: 'json[0]' # first element of the returned array
 ```
 
-The `embedding:` prefix tells Promptfoo to treat the output as an embedding vector rather than text. This is useful for similarity metrics. You should deploy an embedding model to SageMaker that outputs numerical vectors.
+The `embedding:` prefix tells artef to treat the output as an embedding vector rather than text. This is useful for similarity metrics. You should deploy an embedding model to SageMaker that outputs numerical vectors.
 
 For assertions that require embeddings (like similarity comparisons), you can specify a SageMaker embedding provider:
 
@@ -492,7 +492,7 @@ defaultTest:
 
 ## Environment Variables
 
-Promptfoo will also read certain environment variables to set default generation parameters:
+artef will also read certain environment variables to set default generation parameters:
 
 - `AWS_REGION` or `AWS_DEFAULT_REGION`: Default region for SageMaker API calls
 - `AWS_SAGEMAKER_MAX_TOKENS`: Default maximum number of tokens to generate
@@ -504,7 +504,7 @@ These serve as global defaults for your eval runs. You can use them to avoid rep
 
 ## Caching Support
 
-The SageMaker provider supports the promptfoo caching system, which speeds up repeated evals and reduces cost:
+The SageMaker provider supports the artef caching system, which speeds up repeated evals and reduces cost:
 
 ```yaml
 # Caching is enabled by default. To explicitly configure it:
@@ -526,7 +526,7 @@ When caching is enabled:
 To disable caching for specific test runs:
 
 ```bash
-promptfoo eval --no-cache
+artef eval --no-cache
 ```
 
 ## Rate Limiting with Delays

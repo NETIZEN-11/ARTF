@@ -1,6 +1,6 @@
-import { getEnvString } from '../envars';
+﻿import { getEnvString } from '../envars';
 
-export const PROMPT_DELIMITER = getEnvString('PROMPTFOO_PROMPT_SEPARATOR') || '---';
+export const PROMPT_DELIMITER = getEnvString('artef_PROMPT_SEPARATOR') || '---';
 export const VALID_FILE_EXTENSIONS = [
   '.cjs',
   '.cts',

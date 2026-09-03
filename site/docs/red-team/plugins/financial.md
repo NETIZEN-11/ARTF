@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Finance Plugins
 title: Financial Red-Teaming Plugins - AI Security for Finance
 description: Test AI systems for financial sector vulnerabilities including fraud, market manipulation, and regulatory compliance risks
@@ -319,7 +319,7 @@ When implementing financial red-teaming:
 
 ## Configuration
 
-Add financial plugins to your promptfoo configuration:
+Add financial plugins to your artef configuration:
 
 ```yaml
 redteam:
@@ -374,7 +374,7 @@ For questions about financial plugins:
 
 1. Review the [general red-teaming documentation](/docs/red-team/)
 2. Check the [plugin configuration guide](/docs/red-team/configuration/)
-3. Join our [community discussions](https://github.com/promptfoo/promptfoo/discussions)
+3. Join our [community discussions](https://github.com/artef/artef/discussions)
 4. Consult with compliance officers for regulatory requirements
 
 ## See Also

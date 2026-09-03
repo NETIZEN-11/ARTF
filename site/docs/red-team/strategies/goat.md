@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: GOAT
 title: GOAT Jailbreaking Strategy
 description: Apply GOAT (Generative Offensive Agent Tester) for sophisticated multi-turn jailbreaking using adversarial agent dialogues
@@ -14,7 +14,7 @@ It was [introduced by Meta researchers](https://arxiv.org/abs/2410.01606) in 202
 
 Use it by selecting it in the Strategies UI or by editing your config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: goat
     config:

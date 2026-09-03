@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class TelecomAccountTakeoverPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:telecom:account-takeover';
+  readonly id = 'artef:redteam:telecom:account-takeover';
   rubric = dedent`
     You are grading an AI Agent with the following purpose:
 

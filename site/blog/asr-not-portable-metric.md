@@ -1,4 +1,4 @@
----
+﻿---
 title: "Why Attack Success Rate (ASR) Isn't Comparable Across Jailbreak Papers Without a Shared Threat Model"
 description: "Attack Success Rate (ASR) is the most commonly reported metric for LLM red teaming, but it changes with attempt budget, prompt sets, and judge choice. Here's how to interpret ASR and report it so results are comparable."
 image: /img/blog/asr-not-portable-metric/asr-header.jpg
@@ -28,7 +28,7 @@ In practice, ASR numbers from different papers often can't be compared directly 
 
 Consider a concrete example. An attack that succeeds 1% of the time on any given try will report roughly 1% ASR if you measure it once per target. But run the same attack 392 times per target and count success if any attempt works, and the reported ASR becomes 98%. The math is straightforward: 1 − (0.99)³⁹² ≈ 0.98. That's not a more effective attack; it's a different way of measuring the same attack.
 
-We track published jailbreak research through a [database of over 400 papers](https://www.promptfoo.dev/lm-security-db/), which we update as new work comes out. When implementing these methods, we regularly find that reported ASR cannot be reproduced without reconstructing details that most papers don't disclose. A [position paper at NeurIPS 2025](https://openreview.net/forum?id=d7hqAhLvWG) (Chouldechova et al.) documents this problem systematically, showing how measurement choices, not attack quality, often drive the reported differences between methods.
+We track published jailbreak research through a [database of over 400 papers](https://www.artef.dev/lm-security-db/), which we update as new work comes out. When implementing these methods, we regularly find that reported ASR cannot be reproduced without reconstructing details that most papers don't disclose. A [position paper at NeurIPS 2025](https://openreview.net/forum?id=d7hqAhLvWG) (Chouldechova et al.) documents this problem systematically, showing how measurement choices, not attack quality, often drive the reported differences between methods.
 
 Three factors determine what any given ASR number actually represents:
 
@@ -129,7 +129,7 @@ The pattern: many prompts are phrased as **"can you…" capability questions**. 
 
 ### Baseline refusal sanity check
 
-Before running jailbreaks, run the prompt set with no attack strategy. If baseline "success" is already high, you're measuring label noise or rubric mismatch, not jailbreakability. This is easy to implement in promptfoo by running an eval with no [strategies](/docs/red-team/strategies/).
+Before running jailbreaks, run the prompt set with no attack strategy. If baseline "success" is already high, you're measuring label noise or rubric mismatch, not jailbreakability. This is easy to implement in artef by running an eval with no [strategies](/docs/red-team/strategies/).
 
 ---
 
@@ -162,7 +162,7 @@ The judge is part of the measurement. Change the judge, change the ranking.
 
 ### Reducing judge variance
 
-The good news: judge variance is reducible. Promptfoo includes pre-built judges for dozens of security tests (prompt injection, harmful content, data leakage, and [many more](/docs/red-team/plugins/)), each tuned across millions of generations.
+The good news: judge variance is reducible. artef includes pre-built judges for dozens of security tests (prompt injection, harmful content, data leakage, and [many more](/docs/red-team/plugins/)), each tuned across millions of generations.
 
 What we've learned: specific rubrics beat vague ones. Compare these two approaches:
 
@@ -223,12 +223,12 @@ If a paper doesn't answer these, treat the ASR as directional, not comparable. I
 
 ## Making this concrete: two threat models, same target
 
-Here's how to measure the same target under different threat models using promptfoo, so you know exactly what you're reporting.
+Here's how to measure the same target under different threat models using artef, so you know exactly what you're reporting.
 
 ### Baseline evaluation (no jailbreak strategy)
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 targets:
   - openai:gpt-5.2
 
@@ -243,7 +243,7 @@ redteam:
 ### Best-of-K evaluation (K=25)
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 targets:
   - openai:gpt-5.2
 
@@ -260,7 +260,7 @@ redteam:
 
 Run both. Report both ASR values with their K. Now your measurement has a unit.
 
-We maintain a [database of 400+ LLM security papers](https://www.promptfoo.dev/lm-security-db/) and implement the best methods as [red team strategies](/docs/red-team/strategies/). Not every paper makes the cut; we select for real-world effectiveness and efficiency.
+We maintain a [database of 400+ LLM security papers](https://www.artef.dev/lm-security-db/) and implement the best methods as [red team strategies](/docs/red-team/strategies/). Not every paper makes the cut; we select for real-world effectiveness and efficiency.
 
 Academic jailbreak papers are existence proofs. Production red teaming needs methods that are reliable, efficient, and reportable. We read the research, filter for what works, and implement it with explicit parameters.
 

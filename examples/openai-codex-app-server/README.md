@@ -1,4 +1,4 @@
-# openai-codex-app-server (OpenAI Codex App Server Examples)
+﻿# openai-codex-app-server (OpenAI Codex App Server Examples)
 
 These examples evaluate Codex through the experimental `codex app-server` protocol.
 
@@ -22,30 +22,30 @@ export OPENAI_API_KEY=your_api_key_here
 From this repository:
 
 ```bash
-npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml --no-cache
+npm run local -- eval -c examples/openai-codex-app-server/artefconfig.yaml --no-cache
 ```
 
 With an `.env` file:
 
 ```bash
-npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml --env-file .env --no-cache
+npm run local -- eval -c examples/openai-codex-app-server/artefconfig.yaml --env-file .env --no-cache
 ```
 
 If you initialized this example separately:
 
 ```bash
-npx promptfoo@latest init --example openai-codex-app-server
+npx artef@latest init --example openai-codex-app-server
 cd openai-codex-app-server
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
+npx artef@latest eval -c artefconfig.yaml --no-cache
 ```
 
 ## Included Configs
 
-- `promptfooconfig.yaml` - Read-only structured repo summary.
-- `promptfooconfig.tracing.yaml` - Enables OTEL tracing and asserts on the `gen_ai.turn *` protocol-turn marker spans (see [Turn marker spans](https://www.promptfoo.dev/docs/tracing/#per-llm-turn-spans)).
-- `approval-policy/promptfooconfig.yaml` - Demonstrates deterministic approval request handling.
-- `review-diff/promptfooconfig.yaml` - Uses Codex app-server to review the current git diff.
-- `skills/promptfooconfig.yaml` - Demonstrates explicit skill input items.
+- `artefconfig.yaml` - Read-only structured repo summary.
+- `artefconfig.tracing.yaml` - Enables OTEL tracing and asserts on the `gen_ai.turn *` protocol-turn marker spans (see [Turn marker spans](https://www.artef.dev/docs/tracing/#per-llm-turn-spans)).
+- `approval-policy/artefconfig.yaml` - Demonstrates deterministic approval request handling.
+- `review-diff/artefconfig.yaml` - Uses Codex app-server to review the current git diff.
+- `skills/artefconfig.yaml` - Demonstrates explicit skill input items.
 
 The skills config expects `CODEX_SKILL_CREATOR_PATH` to point at a local
 `skill-creator/SKILL.md` file.

@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 import { encodeExportTraceServiceRequest } from '../../tracing/protobuf';
 import { fetchWithProxy } from '../../util/fetch/index';
 import { getTracingServiceName } from '../tracing';
@@ -10,18 +10,18 @@ const DEFAULT_OTLP_ENDPOINT = 'http://localhost:4318';
 const OTLP_SPAN_KIND_INTERNAL = 1;
 const OTLP_SPAN_KIND_CLIENT = 3;
 const INTERNAL_TRACE_METADATA_KEYS = new Set([
-  'promptfoo.otlp_endpoint',
-  'promptfoo.otlp_format',
-  'promptfoo.model_provider',
-  'promptfoo.parent_span_id',
-  'promptfoo.request_model',
-  'promptfoo.service_name',
+  'artef.otlp_endpoint',
+  'artef.otlp_format',
+  'artef.model_provider',
+  'artef.parent_span_id',
+  'artef.request_model',
+  'artef.service_name',
 ]);
 
 /**
  * OTLP Tracing Exporter for OpenAI Agents.
  *
- * The Agents SDK emits a framework-native span model. Promptfoo needs those spans
+ * The Agents SDK emits a framework-native span model. artef needs those spans
  * normalized into OTLP attributes that its trajectory assertions understand.
  */
 export class OTLPTracingExporter implements TracingExporter {
@@ -96,7 +96,7 @@ export class OTLPTracingExporter implements TracingExporter {
 
     for (const span of spans) {
       const serviceName =
-        getStringTraceMetadata(span, 'promptfoo.service_name') ?? defaultServiceName;
+        getStringTraceMetadata(span, 'artef.service_name') ?? defaultServiceName;
       const serviceSpans = spansByService.get(serviceName) ?? [];
       serviceSpans.push(span);
       spansByService.set(serviceName, serviceSpans);
@@ -128,7 +128,7 @@ export class OTLPTracingExporter implements TracingExporter {
     const traceId = span.traceId || this.generateTraceId();
     const spanId = span.spanId || this.generateSpanId();
     const parentSpanId =
-      span.parentId || getStringTraceMetadata(span, 'promptfoo.parent_span_id') || undefined;
+      span.parentId || getStringTraceMetadata(span, 'artef.parent_span_id') || undefined;
 
     return {
       traceId: this.hexToBase64(traceId, 'trace'),
@@ -240,7 +240,7 @@ export class OTLPTracingExporter implements TracingExporter {
           attributes['gen_ai.usage.output_tokens'] = data.usage.output_tokens;
         }
         if (data.usage && 'total_tokens' in data.usage) {
-          attributes['promptfoo.usage.total_tokens'] = data.usage.total_tokens;
+          attributes['artef.usage.total_tokens'] = data.usage.total_tokens;
         }
         break;
       case 'response':
@@ -290,7 +290,7 @@ export class OTLPTracingExporter implements TracingExporter {
     if (model) {
       attributes['gen_ai.response.model'] = model;
     }
-    const requestedModel = getStringTraceMetadata(span, 'promptfoo.request_model');
+    const requestedModel = getStringTraceMetadata(span, 'artef.request_model');
     if (requestedModel) {
       attributes['gen_ai.request.model'] = requestedModel;
     }
@@ -301,7 +301,7 @@ export class OTLPTracingExporter implements TracingExporter {
 
     setNumericAttribute(attributes, 'gen_ai.usage.input_tokens', usage?.input_tokens);
     setNumericAttribute(attributes, 'gen_ai.usage.output_tokens', usage?.output_tokens);
-    setNumericAttribute(attributes, 'promptfoo.usage.total_tokens', usage?.total_tokens);
+    setNumericAttribute(attributes, 'artef.usage.total_tokens', usage?.total_tokens);
 
     const inputTokenDetails = isRecord(usage?.input_tokens_details)
       ? usage.input_tokens_details
@@ -473,9 +473,9 @@ function groupSpansByEndpoint(spans: Span<any>[]): Map<string, SpanExportDestina
 
   for (const span of spans) {
     const endpoint =
-      getStringTraceMetadata(span, 'promptfoo.otlp_endpoint') ?? DEFAULT_OTLP_ENDPOINT;
+      getStringTraceMetadata(span, 'artef.otlp_endpoint') ?? DEFAULT_OTLP_ENDPOINT;
     const format =
-      getStringTraceMetadata(span, 'promptfoo.otlp_format') === 'protobuf' ? 'protobuf' : 'json';
+      getStringTraceMetadata(span, 'artef.otlp_format') === 'protobuf' ? 'protobuf' : 'json';
     const destinationKey = `${format}:${endpoint}`;
     const destination = grouped.get(destinationKey) ?? { endpoint, format, spans: [] };
     destination.spans.push(span);
@@ -495,7 +495,7 @@ function setGenerationProviderAttribute(
     getStringValue(modelConfig?.provider) ??
     getStringValue(modelConfig?.provider_name) ??
     getStringValue(modelConfig?.providerName) ??
-    getStringTraceMetadata(span, 'promptfoo.model_provider') ??
+    getStringTraceMetadata(span, 'artef.model_provider') ??
     inferProviderFromModel(data.model);
 
   if (provider) {

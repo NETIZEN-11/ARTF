@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+﻿import { spawn } from 'child_process';
 import crypto from 'crypto';
 import { mkdtempSync, rmSync, unlinkSync } from 'fs';
 import fs from 'fs/promises';
@@ -91,7 +91,7 @@ interface ScanOptions {
  */
 export function createTempOutputPath(): string {
   const tempDir = mkdtempSync(
-    path.join(os.tmpdir(), `promptfoo-modelscan-${crypto.randomUUID()}-`),
+    path.join(os.tmpdir(), `artef-modelscan-${crypto.randomUUID()}-`),
   );
   return path.join(tempDir, 'results.json');
 }
@@ -699,7 +699,7 @@ async function processJsonResults(
 
   // Determine if we should share (matches eval command behavior)
   const hasExplicitDisable =
-    options.share === false || options.noShare === true || getEnvBool('PROMPTFOO_DISABLE_SHARING');
+    options.share === false || options.noShare === true || getEnvBool('artef_DISABLE_SHARING');
 
   let wantsToShare: boolean;
   if (hasExplicitDisable) {
@@ -728,7 +728,7 @@ async function processJsonResults(
   }
 
   // Save to user-specified output file if requested. Persisted scans always emit
-  // Promptfoo's normalized JSON payload; use --no-write for raw ModelAudit output.
+  // artef's normalized JSON payload; use --no-write for raw ModelAudit output.
   if (options.output) {
     try {
       await fs.writeFile(options.output, JSON.stringify(results, null, 2));
@@ -940,7 +940,7 @@ export function modelScanCommand(program: Command): void {
       if (!installed) {
         logger.error('ModelAudit is not installed.');
         logger.info(`Please install it using: ${chalk.green('pip install modelaudit')}`);
-        logger.info('For more information, visit: https://www.promptfoo.dev/docs/model-audit/');
+        logger.info('For more information, visit: https://www.artef.dev/docs/model-audit/');
         process.exitCode = 1;
         return;
       }
@@ -953,7 +953,7 @@ export function modelScanCommand(program: Command): void {
 
       const delegationEnv = {
         ...process.env,
-        PROMPTFOO_DELEGATED: 'true',
+        artef_DELEGATED: 'true',
       };
 
       if (options.listScanners) {

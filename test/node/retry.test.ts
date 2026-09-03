@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import { evaluate } from '../../src/evaluator';
 import logger from '../../src/logger';
@@ -736,7 +736,7 @@ describe('retryCommand', () => {
     await expect(retryCommand(originalEval.id, { share: true })).resolves.toBe(retriedEval);
 
     expect(logger.warn).toHaveBeenCalledWith(
-      'Cloud sync failed. Run promptfoo share eval-123 to retry manually.',
+      'Cloud sync failed. Run artef share eval-123 to retry manually.',
     );
   });
 
@@ -754,7 +754,7 @@ describe('retryCommand', () => {
     await expect(retryCommand(originalEval.id, { share: true })).resolves.toBe(retriedEval);
 
     expect(logger.warn).toHaveBeenCalledWith(
-      'Cloud sync failed. Run promptfoo share eval-123 to retry manually.',
+      'Cloud sync failed. Run artef share eval-123 to retry manually.',
     );
   });
 });

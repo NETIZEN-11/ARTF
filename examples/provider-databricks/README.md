@@ -1,13 +1,13 @@
-# provider-databricks (Databricks Provider)
+﻿# provider-databricks (Databricks Provider)
 
-Test Databricks Foundation Model APIs with promptfoo.
+Test Databricks Foundation Model APIs with artef.
 
 ## Getting Started
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-databricks
+npx artef@latest init --example provider-databricks
 cd provider-databricks
 ```
 
@@ -34,10 +34,10 @@ export DATABRICKS_TOKEN=your-databricks-token
 
 ```bash
 # Run the evaluation
-npx promptfoo@latest eval
+npx artef@latest eval
 
 # View results in the web UI
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## What This Example Demonstrates
@@ -52,10 +52,10 @@ npx promptfoo@latest view
 For vision capabilities, use the dedicated configuration:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.vision.yaml
+npx artef@latest eval -c artefconfig.vision.yaml
 ```
 
 ## Learn More
 
 - [Databricks Foundation Model APIs](https://docs.databricks.com/en/machine-learning/foundation-models/index.html)
-- [promptfoo Databricks provider documentation](https://www.promptfoo.dev/docs/providers/databricks)
+- [artef Databricks provider documentation](https://www.artef.dev/docs/providers/databricks)

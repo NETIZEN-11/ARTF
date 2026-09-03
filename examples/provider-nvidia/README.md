@@ -1,9 +1,9 @@
-# provider-nvidia (NVIDIA NIM)
+﻿# provider-nvidia (NVIDIA NIM)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-nvidia
+npx artef@latest init --example provider-nvidia
 cd provider-nvidia
 ```
 
@@ -14,10 +14,10 @@ Set your `NVIDIA_API_KEY` environment variable. You can get a key from [build.nv
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-View the results with `promptfoo view`.
+View the results with `artef view`.
 
 ## What this example does
 

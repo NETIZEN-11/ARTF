@@ -1,9 +1,9 @@
-# amazon-bedrock/video (AWS Bedrock Video Generation)
+﻿# amazon-bedrock/video (AWS Bedrock Video Generation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example amazon-bedrock/video
+npx artef@latest init --example amazon-bedrock/video
 cd amazon-bedrock/video
 ```
 
@@ -13,8 +13,8 @@ Video generation examples using AWS Bedrock's async invoke API.
 
 | Model            | Config                           | Region         | Duration  |
 | ---------------- | -------------------------------- | -------------- | --------- |
-| Amazon Nova Reel | `promptfooconfig.nova-reel.yaml` | us-east-1      | 6s - 2min |
-| Luma Ray 2       | `promptfooconfig.luma-ray.yaml`  | us-west-2 only | 5s or 9s  |
+| Amazon Nova Reel | `artefconfig.nova-reel.yaml` | us-east-1      | 6s - 2min |
+| Luma Ray 2       | `artefconfig.luma-ray.yaml`  | us-west-2 only | 5s or 9s  |
 
 ## Prerequisites
 
@@ -74,10 +74,10 @@ Update `s3OutputUri` in the config file, then run:
 
 ```bash
 # Nova Reel
-npx promptfoo@latest eval -c promptfooconfig.nova-reel.yaml
+npx artef@latest eval -c artefconfig.nova-reel.yaml
 
 # Luma Ray 2
-npx promptfoo@latest eval -c promptfooconfig.luma-ray.yaml
+npx artef@latest eval -c artefconfig.luma-ray.yaml
 ```
 
 ## Model Comparison
@@ -132,4 +132,4 @@ config:
 - [AWS Bedrock Video Generation](https://docs.aws.amazon.com/bedrock/latest/userguide/video-generation.html)
 - [Nova Reel Documentation](https://docs.aws.amazon.com/nova/latest/userguide/video-generation.html)
 - [Luma Ray Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-luma.html)
-- [promptfoo AWS Bedrock Provider](https://promptfoo.dev/docs/providers/aws-bedrock)
+- [artef AWS Bedrock Provider](https://artef.dev/docs/providers/aws-bedrock)

@@ -1,13 +1,13 @@
-# redteam-ollama (Ollama Red Team Example)
+﻿# redteam-ollama (Ollama Red Team Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-ollama
+npx artef@latest init --example redteam-ollama
 cd redteam-ollama
 ```
 
-This example shows how to red team an Ollama model using promptfoo. For a detailed walkthrough, see the [blog post](https://promptfoo.dev/blog/red-team-ollama-model/).
+This example shows how to red team an Ollama model using artef. For a detailed walkthrough, see the [blog post](https://artef.dev/blog/red-team-ollama-model/).
 
 ## Prerequisites
 
@@ -37,20 +37,20 @@ ollama run llama3.2 "Hello, how are you?"
 1. Generate and run the adversarial test cases:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 2. Generate a report:
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
-The report will show vulnerability categories discovered, severity levels, specific test cases that exposed issues, and suggested mitigations. See the [blog post](https://promptfoo.dev/blog/red-team-ollama-model/) for example reports and screenshots.
+The report will show vulnerability categories discovered, severity levels, specific test cases that exposed issues, and suggested mitigations. See the [blog post](https://artef.dev/blog/red-team-ollama-model/) for example reports and screenshots.
 
 ## Configuration
 
-The `promptfooconfig.yaml` file configures:
+The `artefconfig.yaml` file configures:
 
 - Target model (Llama 3.2)
 - System purpose and constraints
@@ -60,7 +60,7 @@ The `promptfooconfig.yaml` file configures:
 
 ## Test Categories
 
-This example tests for various vulnerabilities (see [full list](https://promptfoo.dev/docs/red-team/llm-vulnerability-types/)):
+This example tests for various vulnerabilities (see [full list](https://artef.dev/docs/red-team/llm-vulnerability-types/)):
 
 - Harmful content generation
 - PII leakage
@@ -81,6 +81,6 @@ Based on your test results, consider:
 
 For more details, see:
 
-- [Blog Post](https://promptfoo.dev/blog/red-team-ollama-model/)
-- [Red Team Documentation](https://promptfoo.dev/docs/red-team/quickstart/)
-- [Ollama Provider Guide](https://promptfoo.dev/docs/providers/ollama/)
+- [Blog Post](https://artef.dev/blog/red-team-ollama-model/)
+- [Red Team Documentation](https://artef.dev/docs/red-team/quickstart/)
+- [Ollama Provider Guide](https://artef.dev/docs/providers/ollama/)

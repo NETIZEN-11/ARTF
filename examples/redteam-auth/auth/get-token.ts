@@ -1,4 +1,4 @@
-type AuthContext = {
+﻿type AuthContext = {
   vars: Record<string, string>;
 };
 
@@ -8,10 +8,10 @@ type AuthResponse = {
 };
 
 export default async function getAuth(context: AuthContext) {
-  const tokenUrl = 'https://example-app.promptfoo.app/oauth/token';
-  const clientId = process.env.PROMPTFOO_TARGET_CLIENT_ID || context.vars.clientId;
-  const clientSecret = process.env.PROMPTFOO_TARGET_CLIENT_SECRET || context.vars.clientSecret;
-  const scopes = process.env.PROMPTFOO_TARGET_SCOPES || context.vars.scopes || '';
+  const tokenUrl = 'https://example-app.artef.app/oauth/token';
+  const clientId = process.env.artef_TARGET_CLIENT_ID || context.vars.clientId;
+  const clientSecret = process.env.artef_TARGET_CLIENT_SECRET || context.vars.clientSecret;
+  const scopes = process.env.artef_TARGET_SCOPES || context.vars.scopes || '';
 
   const body = new URLSearchParams({
     grant_type: 'client_credentials',

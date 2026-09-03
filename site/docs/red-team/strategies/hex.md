@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Hex Encoding
 title: Hex Encoding Strategy
 description: Evaluate AI robustness against hexadecimal-encoded attacks designed to bypass content filters and safety mechanisms
@@ -17,9 +17,9 @@ The Hex Encoding strategy tests an AI system's ability to resist ASCII hex-encod
 
 ## Implementation
 
-Use it in your `promptfooconfig.yaml`:
+Use it in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - hex
 ```

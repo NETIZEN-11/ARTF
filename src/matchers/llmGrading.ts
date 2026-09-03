@@ -1,11 +1,11 @@
-import cliState from '../cliState';
+﻿import cliState from '../cliState';
 import logger from '../logger';
 import {
   DEFAULT_GRADING_PROMPT,
   GEVAL_PROMPT_EVALUATE,
   GEVAL_PROMPT_STEPS,
   OPENAI_CLOSED_QA_PROMPT,
-  PROMPTFOO_FACTUALITY_PROMPT,
+  artef_FACTUALITY_PROMPT,
   TRAJECTORY_GOAL_SUCCESS_PROMPT,
 } from '../prompts/index';
 import { getDefaultProviders } from '../providers/defaults';
@@ -39,7 +39,7 @@ import type {
 } from '../types/index';
 
 type LlmRubricGradingConfig = GradingConfig & {
-  __promptfooPreferRemote?: boolean;
+  __artefPreferRemote?: boolean;
 };
 
 const ATTACHED_IMAGE_OUTPUT_PLACEHOLDER =
@@ -188,7 +188,7 @@ export async function matchesLlmRubric(
   // caller injected an implicit default provider but still prefers remote.
   const shouldPreferRemote =
     options?.preferRemote ||
-    (grading as LlmRubricGradingConfig).__promptfooPreferRemote ||
+    (grading as LlmRubricGradingConfig).__artefPreferRemote ||
     !grading.provider;
   const { imageOutputs } = materializeImageOutputsForGrading(options?.providerResponse?.images);
   const gradingOutput = getGradingOutputForImages(llmOutput, imageOutputs);
@@ -319,7 +319,7 @@ export async function matchesFactuality(
   const parsedOutput = tryParse(output);
   const templateVars = { ...(vars || {}), input, ideal: expected, completion: parsedOutput };
 
-  const rubricPrompt = await loadRubricPrompt(grading?.rubricPrompt, PROMPTFOO_FACTUALITY_PROMPT);
+  const rubricPrompt = await loadRubricPrompt(grading?.rubricPrompt, artef_FACTUALITY_PROMPT);
   const prompt = await renderLlmRubricPrompt(rubricPrompt, templateVars);
 
   const finalProvider = await getAndCheckProvider(

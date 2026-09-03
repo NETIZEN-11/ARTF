@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 
 import {
   Collapsible,
@@ -12,8 +12,8 @@ import { cn } from '@app/lib/utils';
 import { ChevronDown } from 'lucide-react';
 import ExtensionEditor from './ExtensionEditor';
 import InputsEditor from './InputsEditor';
-import type { Inputs } from '@promptfoo/contracts';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { Inputs } from '@artef/contracts';
+import type { ProviderOptions } from '@artef/types';
 
 interface CommonConfigurationOptionsProps {
   selectedTarget: ProviderOptions;
@@ -179,7 +179,7 @@ const CommonConfigurationOptions = ({
           <p className="mb-4">
             Add a delay (ms) between requests to simulate a real user. See{' '}
             <a
-              href="https://www.promptfoo.dev/docs/providers/http/#delay"
+              href="https://www.artef.dev/docs/providers/http/#delay"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

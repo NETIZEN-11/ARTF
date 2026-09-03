@@ -1,11 +1,11 @@
----
-displayed_sidebar: promptfoo
+﻿---
+displayed_sidebar: artef
 sidebar_label: Overview
 title: Configuration Overview - Prompts, Tests, and Outputs
-description: Quick overview of promptfoo's core configuration concepts including prompts, test cases, outputs, and common patterns for LLM evaluation.
+description: Quick overview of artef's core configuration concepts including prompts, test cases, outputs, and common patterns for LLM evaluation.
 keywords:
   [
-    promptfoo overview,
+    artef overview,
     configuration basics,
     prompt setup,
     test cases,
@@ -18,7 +18,7 @@ pagination_next: configuration/prompts
 
 # Prompts, tests, and outputs
 
-Configure how promptfoo evaluates your LLM applications.
+Configure how artef evaluates your LLM applications.
 
 :::tip Detailed Documentation
 For comprehensive guides, see the dedicated pages:
@@ -30,7 +30,7 @@ For comprehensive guides, see the dedicated pages:
 
 ## Quick Start
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Define your prompts
 prompts:
   - 'Translate to {{language}}: {{text}}'
@@ -44,7 +44,7 @@ tests:
       - type: contains
         value: Bonjour
 # Run evaluation
-# promptfoo eval
+# artef eval
 ```
 
 ## Core Concepts
@@ -138,13 +138,13 @@ Save and analyze your evaluation results.
 
 ```bash
 # Visual report
-promptfoo eval --output results.html
+artef eval --output results.html
 
 # Data analysis
-promptfoo eval --output results.json
+artef eval --output results.json
 
 # Spreadsheet
-promptfoo eval --output results.csv
+artef eval --output results.csv
 ```
 
 </details>
@@ -155,8 +155,8 @@ promptfoo eval --output results.csv
 
 Here's a real-world example that combines multiple features:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Customer service chatbot evaluation
 
 prompts:

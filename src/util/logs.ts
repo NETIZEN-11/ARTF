@@ -1,4 +1,4 @@
-import fsSync, { createReadStream } from 'fs';
+﻿import fsSync, { createReadStream } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 import readline from 'readline';
@@ -16,11 +16,11 @@ export interface LogFileInfo {
 }
 
 /**
- * Gets the log directory path, respecting PROMPTFOO_LOG_DIR environment variable
+ * Gets the log directory path, respecting artef_LOG_DIR environment variable
  */
 export function getLogDirectory(): string {
   const configDir = getConfigDirectoryPath(true);
-  const customLogDir = getEnvString('PROMPTFOO_LOG_DIR');
+  const customLogDir = getEnvString('artef_LOG_DIR');
   return customLogDir ? path.resolve(customLogDir) : path.join(configDir, 'logs');
 }
 
@@ -42,7 +42,7 @@ export async function getLogFiles(type: 'debug' | 'error' | 'all' = 'all'): Prom
     const logFiles: LogFileInfo[] = [];
 
     for (const file of files) {
-      if (!file.startsWith('promptfoo-') || !file.endsWith('.log')) {
+      if (!file.startsWith('artef-') || !file.endsWith('.log')) {
         continue;
       }
       if (type !== 'all' && !file.includes(`-${type}-`)) {
@@ -88,7 +88,7 @@ export function getLogFilesSync(type: 'debug' | 'error' | 'all' = 'all'): LogFil
     return fsSync
       .readdirSync(logDir)
       .filter((file) => {
-        if (!file.startsWith('promptfoo-') || !file.endsWith('.log')) {
+        if (!file.startsWith('artef-') || !file.endsWith('.log')) {
           return false;
         }
         if (type === 'all') {

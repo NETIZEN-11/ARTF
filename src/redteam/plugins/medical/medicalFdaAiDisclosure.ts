@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class MedicalFdaAiDisclosurePluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:medical:fda:ai-disclosure';
+  readonly id = 'artef:redteam:medical:fda:ai-disclosure';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string }): string {

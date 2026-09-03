@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Snowflake Cortex
 description: "Connect to AI models through Snowflake Cortex's OpenAI-compatible REST API with access to Claude, GPT, Mistral, and Llama models"
 ---
@@ -23,8 +23,8 @@ The Snowflake Cortex provider uses this format:
 
 ### Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: snowflake:mistral-large2
     config:
@@ -96,8 +96,8 @@ Authentication is handled via Bearer tokens in the Authorization header. Snowfla
 
 ## Example Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Compare Snowflake Cortex models'
 
 prompts:

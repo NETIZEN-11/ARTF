@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Smoke tests for CLI binary operations.
  *
  * These tests verify the built CLI binary works correctly.
@@ -68,8 +68,8 @@ function runEntrypoint(
  * exercised with a spoofed `process.version` instead.
  */
 const CI_NODE_EXECUTABLE_VARS: Record<string, string> = {
-  'v20.20.0': 'PROMPTFOO_NODE20_BIN',
-  'v22.22.0': 'PROMPTFOO_MIN_NODE_BIN',
+  'v20.20.0': 'artef_NODE20_BIN',
+  'v22.22.0': 'artef_MIN_NODE_BIN',
 };
 
 function runEntrypointWithNodeVersion(version: string) {
@@ -182,7 +182,7 @@ describe('CLI Smoke Tests', () => {
       const { stdout, exitCode } = runCli(['--help']);
 
       expect(exitCode).toBe(0);
-      expect(stdout).toContain('promptfoo');
+      expect(stdout).toContain('artef');
       expect(stdout).toContain('eval');
       expect(stdout).toContain('Commands:');
     });
@@ -240,10 +240,10 @@ describe('CLI Smoke Tests', () => {
       const { exitCode } = runCli(['init', '--no-interactive'], { cwd: initDir });
 
       expect(exitCode).toBe(0);
-      // Should create a promptfooconfig file
+      // Should create a artefconfig file
       const configExists =
-        fs.existsSync(path.join(initDir, 'promptfooconfig.yaml')) ||
-        fs.existsSync(path.join(initDir, 'promptfooconfig.yml'));
+        fs.existsSync(path.join(initDir, 'artefconfig.yaml')) ||
+        fs.existsSync(path.join(initDir, 'artefconfig.yml'));
       expect(configExists).toBe(true);
     });
   });
@@ -317,7 +317,7 @@ describe('CLI Smoke Tests', () => {
       const { stdout, exitCode } = runEntrypoint(['--help']);
 
       expect(exitCode).toBe(0);
-      expect(stdout).toContain('promptfoo');
+      expect(stdout).toContain('artef');
       expect(stdout).toContain('eval');
       expect(stdout).toContain('Commands:');
     });
@@ -372,7 +372,7 @@ describe('CLI Smoke Tests', () => {
 
       runGit(['init', '-b', 'main'], repoDir);
       runGit(['config', 'user.email', 'smoke@example.com'], repoDir);
-      runGit(['config', 'user.name', 'Promptfoo Smoke Test'], repoDir);
+      runGit(['config', 'user.name', 'artef Smoke Test'], repoDir);
       runGit(['commit', '--allow-empty', '-m', 'baseline'], repoDir);
 
       httpServer = createServer((_request, response) => {
@@ -454,7 +454,7 @@ describe('CLI Smoke Tests', () => {
             env: {
               LOG_LEVEL: 'debug',
               NODE_NO_WARNINGS: '1',
-              PROMPTFOO_DISABLE_UPDATE: 'true',
+              artef_DISABLE_UPDATE: 'true',
             },
           },
         );

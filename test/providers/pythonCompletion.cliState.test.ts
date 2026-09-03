@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Tests for cliState.maxConcurrency propagation to Python worker pool.
  * This is a focused test file to avoid the complex mocking issues in pythonCompletion.test.ts.
  */
@@ -150,7 +150,7 @@ describe('PythonProvider cliState.maxConcurrency', () => {
     );
   });
 
-  it('should prioritize PROMPTFOO_PYTHON_WORKERS over cliState.maxConcurrency', async () => {
+  it('should prioritize artef_PYTHON_WORKERS over cliState.maxConcurrency', async () => {
     cliState.maxConcurrency = 12;
     mockGetEnvInt.mockReturnValue(5);
 
@@ -166,7 +166,7 @@ describe('PythonProvider cliState.maxConcurrency', () => {
     );
   });
 
-  it('should fall back to cliState.maxConcurrency when PROMPTFOO_PYTHON_WORKERS is undefined', async () => {
+  it('should fall back to cliState.maxConcurrency when artef_PYTHON_WORKERS is undefined', async () => {
     cliState.maxConcurrency = 6;
     mockGetEnvInt.mockReturnValue(undefined);
 

@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 import dedent from 'ts-dedent';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -177,7 +177,7 @@ describe('processCsvPrompts', () => {
     `;
 
     vi.mocked(fs.readFileSync).mockReturnValue(csvContent);
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_CSV_DELIMITER: ';' });
+    const restoreEnv = mockProcessEnv({ artef_CSV_DELIMITER: ';' });
     try {
       const result = await processCsvPrompts('prompts.csv', {});
 

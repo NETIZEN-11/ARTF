@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'DeepSeek-R1 vs o1 comparison on MMLU reasoning tasks'
 
 prompts:

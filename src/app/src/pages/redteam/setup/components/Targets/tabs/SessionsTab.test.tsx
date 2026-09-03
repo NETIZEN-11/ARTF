@@ -1,9 +1,9 @@
-import { callApi } from '@app/utils/api';
+﻿import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import SessionsTab from './SessionsTab';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 // Mock the callApi utility
 vi.mock('@app/utils/api', () => ({
@@ -1085,7 +1085,7 @@ describe('SessionsTab', () => {
       });
 
       // Change stateful setting
-      const statefulRadio = screen.getByLabelText(/No .+ Promptfoo should resend/);
+      const statefulRadio = screen.getByLabelText(/No .+ artef should resend/);
       await user.click(statefulRadio);
 
       // Test result should be cleared

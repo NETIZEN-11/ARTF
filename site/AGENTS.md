@@ -1,6 +1,6 @@
-# Documentation Site
+﻿# Documentation Site
 
-Docusaurus-based documentation at [promptfoo.dev](https://www.promptfoo.dev/).
+Docusaurus-based documentation at [artef.dev](https://www.artef.dev/).
 
 **Key rules:**
 
@@ -27,7 +27,7 @@ find site/docs -name "*keyword*"
 ## Terminology
 
 - Use "eval" not "evaluation" in commands
-- "Promptfoo" when referring to the company or product, "promptfoo" when referring to the CLI command or in code
+- "artef" when referring to the company or product, "artef" when referring to the CLI command or in code
 
 ## Front Matter (Required)
 

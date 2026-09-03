@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 24
 description: Red team LLM applications using MITRE ATLAS adversarial ML tactics to protect AI systems from reconnaissance, exfiltration, and impact attacks
 ---
@@ -11,9 +11,9 @@ ATLAS organizes adversarial techniques into tactics that represent the adversary
 
 ## MITRE ATLAS Tactics
 
-ATLAS currently organizes adversarial ML techniques into these tactics. Promptfoo's `mitre:atlas` preset accepts all current tactic aliases; tactics with no direct promptfoo plugin stay in the preset as explicit coverage gaps.
+ATLAS currently organizes adversarial ML techniques into these tactics. artef's `mitre:atlas` preset accepts all current tactic aliases; tactics with no direct artef plugin stay in the preset as explicit coverage gaps.
 
-| ATLAS tactic                                                          | Promptfoo alias                    | Coverage                       |
+| ATLAS tactic                                                          | artef alias                    | Coverage                       |
 | --------------------------------------------------------------------- | ---------------------------------- | ------------------------------ |
 | Reconnaissance                                                        | `mitre:atlas:reconnaissance`       | Mapped checks                  |
 | Resource Development                                                  | `mitre:atlas:resource-development` | Mapped checks                  |
@@ -38,7 +38,7 @@ ATLAS currently organizes adversarial ML techniques into these tactics. Promptfo
 
 ## Scanning for MITRE ATLAS Threats
 
-Promptfoo helps identify ATLAS-aligned vulnerabilities through comprehensive red teaming. To set up ATLAS scanning through the Promptfoo UI, select the MITRE ATLAS option or configure it directly:
+artef helps identify ATLAS-aligned vulnerabilities through comprehensive red teaming. To set up ATLAS scanning through the artef UI, select the MITRE ATLAS option or configure it directly:
 
 ```yaml
 redteam:
@@ -408,11 +408,11 @@ MITRE ATLAS documents real-world attacks against ML systems. For LLMs, examples 
 - **AML.T0086 - Exfiltration via AI Agent Tool Invocation**: Using connected tools to move data out of an AI system
 - **AML.T0110 - AI Agent Tool Poisoning**: Modifying agent tools so future invocations execute attacker-controlled behavior
 
-Promptfoo's plugins map to these specific ATLAS techniques, enabling targeted testing.
+artef's plugins map to these specific ATLAS techniques, enabling targeted testing.
 
 ## What's Next
 
-MITRE ATLAS is actively maintained and updated with new techniques as the threat landscape evolves. Regular testing with Promptfoo helps ensure your LLM applications remain protected against documented adversarial ML tactics.
+MITRE ATLAS is actively maintained and updated with new techniques as the threat landscape evolves. Regular testing with artef helps ensure your LLM applications remain protected against documented adversarial ML tactics.
 
 To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
 

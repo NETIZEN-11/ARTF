@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   Agent,
   AgentInputItem,
   AgentOptions,
@@ -129,7 +129,7 @@ export interface OpenAiAgentsOptions extends OpenAiSharedOptions {
   /**
    * Pass-through options for the underlying SDK run() call.
    *
-   * Promptfoo owns context, maxTurns, signal, and streaming mode. All other
+   * artef owns context, maxTurns, signal, and streaming mode. All other
    * current SDK run options can be supplied here.
    */
   runOptions?: OpenAiAgentsRunOptions;

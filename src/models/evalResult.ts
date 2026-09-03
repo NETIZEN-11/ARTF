@@ -1,4 +1,4 @@
-import { isDeepStrictEqual } from 'node:util';
+﻿import { isDeepStrictEqual } from 'node:util';
 
 import { and, eq, gte, inArray, lt, ne } from 'drizzle-orm';
 import { extractAndStoreBinaryData, isBlobStorageEnabled } from '../blobs/extractor';
@@ -137,7 +137,7 @@ export function sanitizeProvider(
  *
  * This prevents "Converting circular structure to JSON" errors that can occur
  * when Node.js Timeout objects or other non-serializable data leaks into results.
- * See: https://github.com/promptfoo/promptfoo/issues/7266
+ * See: https://github.com/artef/artef/issues/7266
  */
 function sanitizeForDb<T>(obj: T): T {
   if (obj === null || obj === undefined) {
@@ -269,7 +269,7 @@ function redactSensitiveHeaders(
 // arbitrary user-authored test metadata. Does NOT recurse into other keys (e.g. `output`,
 // `audio`, arbitrary model output) — walking arbitrary subtrees risks rewriting user-controlled
 // content that legitimately uses an `http` key (see
-// https://github.com/promptfoo/promptfoo/pull/8876#issuecomment-4315002350).
+// https://github.com/artef/artef/pull/8876#issuecomment-4315002350).
 function redactHttpHeadersOnMetadata<T>(
   metadata: T,
   options?: { legacyHeadersSource?: unknown; redactLegacyHeaders?: boolean },
@@ -405,11 +405,11 @@ function sanitizeGradingResultForDb<T>(gradingResult: T): T {
   return redactHttpHeadersOnGradingResult(gradingResult);
 }
 
-// `__promptfoo` is reserved at the metadata top level for promptfoo-internal namespaced data
+// `__artef` is reserved at the metadata top level for artef-internal namespaced data
 // (currently `traceLinkage`). User-supplied non-object values under this key are overwritten —
 // log so the rare collision is visible. Mirrored in `EvalQueries.getMetadataKeysFromEval` /
 // `getMetadataValuesFromEval`, which hide the namespace from the metadata-discovery API.
-export const PROMPTFOO_METADATA_KEY = '__promptfoo';
+export const artef_METADATA_KEY = '__artef';
 const TRACE_LINKAGE_KEY = 'traceLinkage';
 
 function asRecord(value: unknown): Record<string, unknown> | undefined {
@@ -428,15 +428,15 @@ export function persistTraceMetadata(
   }
 
   const metadataRecord = metadata ?? {};
-  const promptfooMetadata = asRecord(metadataRecord[PROMPTFOO_METADATA_KEY]);
-  if (metadataRecord[PROMPTFOO_METADATA_KEY] !== undefined && promptfooMetadata === undefined) {
+  const artefMetadata = asRecord(metadataRecord[artef_METADATA_KEY]);
+  if (metadataRecord[artef_METADATA_KEY] !== undefined && artefMetadata === undefined) {
     logger.warn(
-      `[EvalResult] Overwriting non-object metadata.${PROMPTFOO_METADATA_KEY} with internal trace linkage; the key is reserved for promptfoo internals.`,
+      `[EvalResult] Overwriting non-object metadata.${artef_METADATA_KEY} with internal trace linkage; the key is reserved for artef internals.`,
     );
   }
-  if (promptfooMetadata && TRACE_LINKAGE_KEY in promptfooMetadata) {
+  if (artefMetadata && TRACE_LINKAGE_KEY in artefMetadata) {
     logger.warn(
-      `[EvalResult] Overwriting metadata.${PROMPTFOO_METADATA_KEY}.${TRACE_LINKAGE_KEY} with internal trace linkage; the path is reserved for promptfoo internals.`,
+      `[EvalResult] Overwriting metadata.${artef_METADATA_KEY}.${TRACE_LINKAGE_KEY} with internal trace linkage; the path is reserved for artef internals.`,
     );
   }
 
@@ -444,8 +444,8 @@ export function persistTraceMetadata(
   // undefined values, and `surfaceTraceMetadata` requires `typeof === 'string'` on read.
   return {
     ...metadataRecord,
-    [PROMPTFOO_METADATA_KEY]: {
-      ...(promptfooMetadata ?? {}),
+    [artef_METADATA_KEY]: {
+      ...(artefMetadata ?? {}),
       [TRACE_LINKAGE_KEY]: { traceId, evaluationId },
     },
   };
@@ -455,16 +455,16 @@ export function stripTraceLinkageFromMetadata<T extends Record<string, unknown> 
   metadata: T,
 ): T {
   const metadataRecord = asRecord(metadata);
-  const promptfooMetadata = asRecord(metadataRecord?.[PROMPTFOO_METADATA_KEY]);
-  if (!metadataRecord || !promptfooMetadata || !(TRACE_LINKAGE_KEY in promptfooMetadata)) {
+  const artefMetadata = asRecord(metadataRecord?.[artef_METADATA_KEY]);
+  if (!metadataRecord || !artefMetadata || !(TRACE_LINKAGE_KEY in artefMetadata)) {
     return metadata;
   }
 
-  const { [TRACE_LINKAGE_KEY]: _traceLinkage, ...remainingPromptfooMetadata } = promptfooMetadata;
+  const { [TRACE_LINKAGE_KEY]: _traceLinkage, ...remainingartefMetadata } = artefMetadata;
   const strippedMetadata = { ...metadataRecord };
-  delete strippedMetadata[PROMPTFOO_METADATA_KEY];
-  if (Object.keys(remainingPromptfooMetadata).length > 0) {
-    strippedMetadata[PROMPTFOO_METADATA_KEY] = remainingPromptfooMetadata;
+  delete strippedMetadata[artef_METADATA_KEY];
+  if (Object.keys(remainingartefMetadata).length > 0) {
+    strippedMetadata[artef_METADATA_KEY] = remainingartefMetadata;
   }
 
   return strippedMetadata as T;
@@ -476,8 +476,8 @@ function surfaceTraceMetadata(metadata: Record<string, unknown> | null | undefin
   metadata: Record<string, unknown>;
 } {
   const metadataRecord = metadata ?? {};
-  const promptfooMetadata = asRecord(metadataRecord[PROMPTFOO_METADATA_KEY]);
-  const traceLinkage = asRecord(promptfooMetadata?.[TRACE_LINKAGE_KEY]);
+  const artefMetadata = asRecord(metadataRecord[artef_METADATA_KEY]);
+  const traceLinkage = asRecord(artefMetadata?.[TRACE_LINKAGE_KEY]);
 
   const traceId = typeof traceLinkage?.traceId === 'string' ? traceLinkage.traceId : undefined;
   const evaluationId =
@@ -486,7 +486,7 @@ function surfaceTraceMetadata(metadata: Record<string, unknown> | null | undefin
   // Strip the reserved namespace whenever a `traceLinkage` entry exists — even if the
   // stored ids are malformed (non-string), the internal namespace must never surface to
   // users. Gate on presence of the key, not on whether the ids read back as valid strings.
-  const hasTraceLinkage = promptfooMetadata != null && TRACE_LINKAGE_KEY in promptfooMetadata;
+  const hasTraceLinkage = artefMetadata != null && TRACE_LINKAGE_KEY in artefMetadata;
   if (!hasTraceLinkage) {
     return { traceId, evaluationId, metadata: metadataRecord };
   }
@@ -529,15 +529,15 @@ function redactSensitiveResultFieldsForDb<
   };
 }
 
-// Read the `PROMPTFOO_STRIP_*` output-projection flags. Shared by the JSONL-artifact
+// Read the `artef_STRIP_*` output-projection flags. Shared by the JSONL-artifact
 // sanitizer and the EvalResult -> EvaluateResult projection so both honor the same env.
 function getStripFlags() {
   return {
-    shouldStripPromptText: getEnvBool('PROMPTFOO_STRIP_PROMPT_TEXT', false),
-    shouldStripResponseOutput: getEnvBool('PROMPTFOO_STRIP_RESPONSE_OUTPUT', false),
-    shouldStripTestVars: getEnvBool('PROMPTFOO_STRIP_TEST_VARS', false),
-    shouldStripGradingResult: getEnvBool('PROMPTFOO_STRIP_GRADING_RESULT', false),
-    shouldStripMetadata: getEnvBool('PROMPTFOO_STRIP_METADATA', false),
+    shouldStripPromptText: getEnvBool('artef_STRIP_PROMPT_TEXT', false),
+    shouldStripResponseOutput: getEnvBool('artef_STRIP_RESPONSE_OUTPUT', false),
+    shouldStripTestVars: getEnvBool('artef_STRIP_TEST_VARS', false),
+    shouldStripGradingResult: getEnvBool('artef_STRIP_GRADING_RESULT', false),
+    shouldStripMetadata: getEnvBool('artef_STRIP_METADATA', false),
   };
 }
 
@@ -545,7 +545,7 @@ function getStripFlags() {
  * Sanitize a result before it is serialized into a JSONL output artifact. This is the
  * JSONL-boundary equivalent of the database-persistence sanitization and must stay in sync
  * with it: it redacts credential-bearing HTTP headers from the response / grading / metadata
- * and applies the `PROMPTFOO_STRIP_*` projections (prompt text, response output, test vars,
+ * and applies the `artef_STRIP_*` projections (prompt text, response output, test vars,
  * grading result, metadata). In-memory rows keep their real values for hooks; only the
  * on-disk copy is sanitized.
  */

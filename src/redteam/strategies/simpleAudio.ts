@@ -1,4 +1,4 @@
-import { Presets, SingleBar } from 'cli-progress';
+﻿import { Presets, SingleBar } from 'cli-progress';
 import { fetchWithCache } from '../../cache';
 import { VERSION } from '../../constants';
 import { getUserEmail } from '../../globalConfig/accounts';
@@ -156,7 +156,7 @@ export async function addAudioToBase64(
       ...testCase,
       assert: testCase.assert?.map((assertion) => ({
         ...assertion,
-        metric: assertion.type?.startsWith('promptfoo:redteam:')
+        metric: assertion.type?.startsWith('artef:redteam:')
           ? `${assertion.type?.split(':').pop() || assertion.metric}/Audio-Encoded`
           : assertion.metric,
       })),

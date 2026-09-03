@@ -1,4 +1,4 @@
----
+﻿---
 title: "Prompt Injection vs Jailbreaking: What's the Difference?"
 description: 'Learn the critical difference between prompt injection and jailbreaking attacks, with real CVEs, production defenses, and test configurations.'
 image: /img/blog/jailbreaking-vs-prompt-injection.jpg
@@ -181,7 +181,7 @@ When an AI agent treats model output as instructions for tool calls, attackers c
 
 ## Testing your defenses
 
-Use these Promptfoo configurations to test your systems against both attacks:
+Use these artef configurations to test your systems against both attacks:
 
 ### Testing jailbreak resistance
 
@@ -307,7 +307,7 @@ tests:
 
 />
 
-Run these tests with: `promptfoo eval -c your-test.yaml`
+Run these tests with: `artef eval -c your-test.yaml`
 
 <CollapsibleCode
 title="Settings Hardening Test (CVE-2025-53773)"

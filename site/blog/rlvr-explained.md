@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Reinforcement Learning with Verifiable Rewards Makes Models Faster, Not Smarter'
 description: 'RLVR trains reasoning models with programmatic verifiers instead of human labels. Recent research suggests most gains come from search compression rather than new capabilities. What actually works.'
 authors: [michael]
@@ -555,7 +555,7 @@ def test_verifier_coverage(verifier, test_cases):
 
 ### Using Evaluation Harnesses
 
-After training, use tools like [Promptfoo](https://promptfoo.dev) or custom scripts to validate your model. These tools test if training worked; they don't provide training rewards.
+After training, use tools like [artef](https://artef.dev) or custom scripts to validate your model. These tools test if training worked; they don't provide training rewards.
 
 ## Open Questions
 

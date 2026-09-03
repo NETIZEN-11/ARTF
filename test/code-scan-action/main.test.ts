@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Main Entry Point Tests
  *
  * Tests for the GitHub Action main entry point, specifically the CLI args construction.
@@ -9,9 +9,9 @@ import * as path from 'node:path';
 import type { PathLike, Stats } from 'node:fs';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-// The action embeds the monorepo's promptfoo version at build time and pins the
+// The action embeds the monorepo's artef version at build time and pins the
 // runtime install to it; read the same source here so assertions track releases.
-import { version as pinnedPromptfooVersion } from '../../package.json';
+import { version as pinnedartefVersion } from '../../package.json';
 import { FileChangeStatus } from '../../src/types/codeScan';
 import { mockProcessEnv } from '../util/utils';
 
@@ -161,7 +161,7 @@ const originalEnv = { ...process.env };
 
 // Matches the deterministic fs.mkdtempSync mock; the install keeps its local
 // prefix and isolated user/global npm config outside the checked-out workspace.
-const MOCK_INSTALL_DIR = path.join(os.tmpdir(), 'promptfoo-install-test');
+const MOCK_INSTALL_DIR = path.join(os.tmpdir(), 'artef-install-test');
 const MOCK_NPM_CLI_PATH = path.join(
   path.dirname(process.execPath),
   '..',
@@ -171,9 +171,9 @@ const MOCK_NPM_CLI_PATH = path.join(
   'bin',
   'npm-cli.js',
 );
-const MOCK_PROMPTFOO_PACKAGE_DIR = path.join(MOCK_INSTALL_DIR, 'node_modules', 'promptfoo');
-const MOCK_PROMPTFOO_ENTRYPOINT = path.join(
-  MOCK_PROMPTFOO_PACKAGE_DIR,
+const MOCK_artef_PACKAGE_DIR = path.join(MOCK_INSTALL_DIR, 'node_modules', 'artef');
+const MOCK_artef_ENTRYPOINT = path.join(
+  MOCK_artef_PACKAGE_DIR,
   'dist',
   'src',
   'entrypoint.js',
@@ -184,7 +184,7 @@ function expectedInstallArgs(version: string): string[] {
     'install',
     '--prefix',
     MOCK_INSTALL_DIR,
-    `promptfoo@${version}`,
+    `artef@${version}`,
     '--ignore-scripts',
     '--registry=https://registry.npmjs.org/',
     '--userconfig',
@@ -194,7 +194,7 @@ function expectedInstallArgs(version: string): string[] {
   ];
 }
 
-interface PromptfooExecCall {
+interface artefExecCall {
   command: string;
   entrypoint: string;
   args: string[];
@@ -208,9 +208,9 @@ interface NpmExecCall {
   options?: { env?: Record<string, string>; cwd?: string };
 }
 
-interface PromptfooAndNpmExecCalls {
+interface artefAndNpmExecCalls {
   npmInstall: NpmExecCall;
-  promptfoo: PromptfooExecCall;
+  artef: artefExecCall;
 }
 
 function setupMocks() {
@@ -258,7 +258,7 @@ function setupMocks() {
     return String(candidate) === MOCK_NPM_CLI_PATH;
   });
   mocks.fs.readFileSync.mockReturnValue(
-    JSON.stringify({ bin: { promptfoo: 'dist/src/entrypoint.js' } }),
+    JSON.stringify({ bin: { artef: 'dist/src/entrypoint.js' } }),
   );
   mocks.fs.realpathSync.mockImplementation((p: string) => p);
   // Default: target file does not exist yet, so writeSarifFile won't trip the symlink check.
@@ -274,7 +274,7 @@ function setupMocks() {
       args: string[] | undefined,
       options: { listeners?: { stdout?: (data: Buffer) => void } } | undefined,
     ) => {
-      if (isPromptfooExecCommand(command, args) && options?.listeners?.stdout) {
+      if (isartefExecCommand(command, args) && options?.listeners?.stdout) {
         const response = JSON.stringify({
           success: true,
           comments: [],
@@ -313,12 +313,12 @@ function setupMocks() {
   mocks.config.generateConfigFile.mockReturnValue('/tmp/test-config.yaml');
 }
 
-function isPromptfooExecCommand(command: unknown, args: unknown): args is string[] {
+function isartefExecCommand(command: unknown, args: unknown): args is string[] {
   return (
     command === process.execPath &&
     Array.isArray(args) &&
     typeof args[0] === 'string' &&
-    args[0].startsWith(`${MOCK_PROMPTFOO_PACKAGE_DIR}${path.sep}`)
+    args[0].startsWith(`${MOCK_artef_PACKAGE_DIR}${path.sep}`)
   );
 }
 
@@ -326,26 +326,26 @@ function getActionNodeExecCalls(): unknown[][] {
   return mocks.exec.exec.mock.calls.filter(([command]) => command === process.execPath);
 }
 
-async function importActionAndGetPromptfooCall(): Promise<PromptfooExecCall> {
+async function importActionAndGetartefCall(): Promise<artefExecCall> {
   await import('../../code-scan-action/src/main');
 
   const call = await vi.waitFor(() => {
-    const promptfooCall = mocks.exec.exec.mock.calls.find(([command, args]) =>
-      isPromptfooExecCommand(command, args),
+    const artefCall = mocks.exec.exec.mock.calls.find(([command, args]) =>
+      isartefExecCommand(command, args),
     );
 
-    if (!promptfooCall || !Array.isArray(promptfooCall[1])) {
-      throw new Error('promptfoo exec call not found');
+    if (!artefCall || !Array.isArray(artefCall[1])) {
+      throw new Error('artef exec call not found');
     }
 
-    return promptfooCall;
+    return artefCall;
   });
 
   return {
     command: call[0],
     entrypoint: call[1][0],
     args: call[1].slice(1),
-    options: call[2] as PromptfooExecCall['options'],
+    options: call[2] as artefExecCall['options'],
   };
 }
 
@@ -360,7 +360,7 @@ function isNpmInstallCall(call: unknown[]): boolean {
     args[2] === '--prefix' &&
     typeof args[3] === 'string' &&
     typeof args[4] === 'string' &&
-    args[4].startsWith('promptfoo@')
+    args[4].startsWith('artef@')
   );
 }
 
@@ -385,20 +385,20 @@ async function importActionAndGetNpmInstallCall(): Promise<NpmExecCall> {
   };
 }
 
-async function importActionAndGetPromptfooAndNpmCalls(): Promise<PromptfooAndNpmExecCalls> {
+async function importActionAndGetartefAndNpmCalls(): Promise<artefAndNpmExecCalls> {
   await import('../../code-scan-action/src/main');
 
   const calls = await vi.waitFor(() => {
-    const promptfooCall = mocks.exec.exec.mock.calls.find(([command, args]) =>
-      isPromptfooExecCommand(command, args),
+    const artefCall = mocks.exec.exec.mock.calls.find(([command, args]) =>
+      isartefExecCommand(command, args),
     );
     const npmCall = mocks.exec.exec.mock.calls.find(isNpmInstallCall);
 
-    if (!promptfooCall || !Array.isArray(promptfooCall[1]) || !npmCall) {
-      throw new Error('expected promptfoo and npm install exec calls not found');
+    if (!artefCall || !Array.isArray(artefCall[1]) || !npmCall) {
+      throw new Error('expected artef and npm install exec calls not found');
     }
 
-    return { npmCall, promptfooCall };
+    return { npmCall, artefCall };
   });
 
   return {
@@ -408,11 +408,11 @@ async function importActionAndGetPromptfooAndNpmCalls(): Promise<PromptfooAndNpm
       args: (calls.npmCall[1] as string[]).slice(1),
       options: calls.npmCall[2] as NpmExecCall['options'],
     },
-    promptfoo: {
-      command: calls.promptfooCall[0],
-      entrypoint: calls.promptfooCall[1][0],
-      args: calls.promptfooCall[1].slice(1),
-      options: calls.promptfooCall[2] as PromptfooExecCall['options'],
+    artef: {
+      command: calls.artefCall[0],
+      entrypoint: calls.artefCall[1][0],
+      args: calls.artefCall[1].slice(1),
+      options: calls.artefCall[2] as artefExecCall['options'],
     },
   };
 }
@@ -423,7 +423,7 @@ function expectCliArg(args: string[], name: string, value: string): void {
   expect(args[argIndex + 1]).toBe(value);
 }
 
-function expectSanitizedExecEnv(options: PromptfooExecCall['options'] | NpmExecCall['options']) {
+function expectSanitizedExecEnv(options: artefExecCall['options'] | NpmExecCall['options']) {
   expect(options?.env).toEqual(expect.any(Object));
   expect(options?.env?.NPM_CONFIG_BEFORE).toBeUndefined();
   expect(options?.env?.npm_config_before).toBeUndefined();
@@ -441,7 +441,7 @@ function mockInheritedActionAuthEnv() {
   });
 }
 
-function expectNoActionAuthEnv(options: PromptfooExecCall['options'] | NpmExecCall['options']) {
+function expectNoActionAuthEnv(options: artefExecCall['options'] | NpmExecCall['options']) {
   expect(options?.env?.ACTIONS_ID_TOKEN_REQUEST_TOKEN).toBeUndefined();
   expect(options?.env?.ACTIONS_ID_TOKEN_REQUEST_URL).toBeUndefined();
   expect(options?.env?.GH_TOKEN).toBeUndefined();
@@ -484,7 +484,7 @@ describe('code-scan-action main', () => {
     it('should pass --base with GITHUB_BASE_REF when set', async () => {
       mockProcessEnv({ GITHUB_BASE_REF: 'feat/my-feature-branch' });
 
-      const { args } = await importActionAndGetPromptfooCall();
+      const { args } = await importActionAndGetartefCall();
 
       expectCliArg(args, '--base', 'feat/my-feature-branch');
     });
@@ -492,7 +492,7 @@ describe('code-scan-action main', () => {
     it('should pass --base with "main" when GITHUB_BASE_REF is not set', async () => {
       mockProcessEnv({ GITHUB_BASE_REF: undefined });
 
-      const { args } = await importActionAndGetPromptfooCall();
+      const { args } = await importActionAndGetartefCall();
 
       expectCliArg(args, '--base', 'main');
     });
@@ -500,17 +500,17 @@ describe('code-scan-action main', () => {
     it('should pass --base for stacked PR base branches', async () => {
       mockProcessEnv({ GITHUB_BASE_REF: 'feat/openai-sora-video-provider' });
 
-      const { args } = await importActionAndGetPromptfooCall();
+      const { args } = await importActionAndGetartefCall();
 
       expectCliArg(args, '--base', 'feat/openai-sora-video-provider');
     });
 
-    it('should not pass NPM_CONFIG_BEFORE to the promptfoo scan command', async () => {
+    it('should not pass NPM_CONFIG_BEFORE to the artef scan command', async () => {
       mockProcessEnv({ GITHUB_BASE_REF: 'main' });
       mockProcessEnv({ NPM_CONFIG_BEFORE: '2026-03-29T00:00:00.000Z' });
       mockProcessEnv({ npm_config_before: '2026-03-29T00:00:00.000Z' });
 
-      const { options } = await importActionAndGetPromptfooCall();
+      const { options } = await importActionAndGetartefCall();
 
       expectSanitizedExecEnv(options);
     });
@@ -529,12 +529,12 @@ describe('code-scan-action main', () => {
       mockProcessEnv({ GITHUB_BASE_REF: 'main' });
       mockInheritedActionAuthEnv();
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.options?.env?.GITHUB_OIDC_TOKEN).toBeUndefined();
       expectNoActionAuthEnv(npmInstall.options);
-      expect(promptfoo.options?.env?.GITHUB_OIDC_TOKEN).toBe('fake-oidc-token');
-      expectNoActionAuthEnv(promptfoo.options);
+      expect(artef.options?.env?.GITHUB_OIDC_TOKEN).toBe('fake-oidc-token');
+      expectNoActionAuthEnv(artef.options);
       expect(process.env.GITHUB_OIDC_TOKEN).toBe('stale-oidc-token');
     });
 
@@ -543,12 +543,12 @@ describe('code-scan-action main', () => {
       mockInheritedActionAuthEnv();
       mocks.core.getIDToken.mockRejectedValue(new Error('OIDC not configured'));
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.options?.env?.GITHUB_OIDC_TOKEN).toBeUndefined();
       expectNoActionAuthEnv(npmInstall.options);
-      expect(promptfoo.options?.env?.GITHUB_OIDC_TOKEN).toBeUndefined();
-      expectNoActionAuthEnv(promptfoo.options);
+      expect(artef.options?.env?.GITHUB_OIDC_TOKEN).toBeUndefined();
+      expectNoActionAuthEnv(artef.options);
       expect(mocks.core.info).toHaveBeenCalledWith(
         'OIDC token not available: Failed to get GitHub OIDC token: OIDC not configured',
       );
@@ -556,7 +556,7 @@ describe('code-scan-action main', () => {
   });
 
   describe('scanner install pinning', () => {
-    function mockPromptfooVersionInput(value: string): void {
+    function mockartefVersionInput(value: string): void {
       mocks.core.getInput.mockImplementation((name: string) => {
         if (name === 'github-token') {
           return 'fake-token';
@@ -564,7 +564,7 @@ describe('code-scan-action main', () => {
         if (name === 'min-severity' || name === 'minimum-severity') {
           return 'medium';
         }
-        if (name === 'promptfoo-version') {
+        if (name === 'artef-version') {
           return value;
         }
         return '';
@@ -574,13 +574,13 @@ describe('code-scan-action main', () => {
     it('runs npm and the scanner under the bundled action Node instead of the workflow Node', async () => {
       mockProcessEnv({ PATH: path.join(os.tmpdir(), 'workflow-node20', 'bin') });
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.command).toBe(process.execPath);
       expect(npmInstall.npmCliPath).toBe(MOCK_NPM_CLI_PATH);
-      expect(npmInstall.args).toEqual(expectedInstallArgs(pinnedPromptfooVersion));
-      expect(promptfoo.command).toBe(process.execPath);
-      expect(promptfoo.entrypoint).toBe(MOCK_PROMPTFOO_ENTRYPOINT);
+      expect(npmInstall.args).toEqual(expectedInstallArgs(pinnedartefVersion));
+      expect(artef.command).toBe(process.execPath);
+      expect(artef.entrypoint).toBe(MOCK_artef_ENTRYPOINT);
       expect(getActionNodeExecCalls()).toHaveLength(2);
     });
 
@@ -604,11 +604,11 @@ describe('code-scan-action main', () => {
         );
       });
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.command).toBe(process.execPath);
       expect(npmInstall.npmCliPath).toBe(workflowNpmCliPath);
-      expect(promptfoo.command).toBe(process.execPath);
+      expect(artef.command).toBe(process.execPath);
     });
 
     it('does not resolve npm from relative PATH entries inside an untrusted checkout', async () => {
@@ -777,53 +777,53 @@ describe('code-scan-action main', () => {
       expect(getActionNodeExecCalls()).toHaveLength(0);
     });
 
-    it('installs the release-pinned promptfoo version with lifecycle scripts disabled and isolated npm config', async () => {
+    it('installs the release-pinned artef version with lifecycle scripts disabled and isolated npm config', async () => {
       const { args } = await importActionAndGetNpmInstallCall();
 
-      expect(args).toEqual(expectedInstallArgs(pinnedPromptfooVersion));
+      expect(args).toEqual(expectedInstallArgs(pinnedartefVersion));
     });
 
-    it('installs an exact promptfoo-version input override', async () => {
-      mockPromptfooVersionInput('0.100.5');
+    it('installs an exact artef-version input override', async () => {
+      mockartefVersionInput('0.100.5');
 
       const { args } = await importActionAndGetNpmInstallCall();
 
       expect(args).toEqual(expectedInstallArgs('0.100.5'));
     });
 
-    it('uses the legacy installed bin entrypoint for older promptfoo-version overrides', async () => {
-      mockPromptfooVersionInput('0.100.5');
+    it('uses the legacy installed bin entrypoint for older artef-version overrides', async () => {
+      mockartefVersionInput('0.100.5');
       mocks.fs.readFileSync.mockReturnValue(
-        JSON.stringify({ bin: { promptfoo: 'dist/src/main.js' } }),
+        JSON.stringify({ bin: { artef: 'dist/src/main.js' } }),
       );
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.args).toEqual(expectedInstallArgs('0.100.5'));
-      expect(promptfoo.entrypoint).toBe(
-        path.join(MOCK_PROMPTFOO_PACKAGE_DIR, 'dist', 'src', 'main.js'),
+      expect(artef.entrypoint).toBe(
+        path.join(MOCK_artef_PACKAGE_DIR, 'dist', 'src', 'main.js'),
       );
     });
 
     it('supports a string npm package bin declaration', async () => {
       mocks.fs.readFileSync.mockReturnValue(JSON.stringify({ bin: './dist/src/entrypoint.js' }));
 
-      const { entrypoint } = await importActionAndGetPromptfooCall();
+      const { entrypoint } = await importActionAndGetartefCall();
 
-      expect(entrypoint).toBe(MOCK_PROMPTFOO_ENTRYPOINT);
+      expect(entrypoint).toBe(MOCK_artef_ENTRYPOINT);
     });
 
     it.each([
-      ['a missing executable', {}, 'does not declare a promptfoo executable'],
-      ['an empty executable', { promptfoo: '' }, 'does not declare a promptfoo executable'],
+      ['a missing executable', {}, 'does not declare a artef executable'],
+      ['an empty executable', { artef: '' }, 'does not declare a artef executable'],
       [
         'an executable outside the installed package',
-        { promptfoo: '../outside.js' },
+        { artef: '../outside.js' },
         'must remain within its package directory',
       ],
       [
         'an absolute executable',
-        { promptfoo: path.join(os.tmpdir(), 'outside.js') },
+        { artef: path.join(os.tmpdir(), 'outside.js') },
         'must remain within its package directory',
       ],
     ])('rejects %s without running the scanner', async (_label, bin, expectedError) => {
@@ -840,7 +840,7 @@ describe('code-scan-action main', () => {
 
     it('rejects an installed executable symlink that resolves outside the package', async () => {
       mocks.fs.realpathSync.mockImplementation((candidate: string) => {
-        return candidate === MOCK_PROMPTFOO_ENTRYPOINT
+        return candidate === MOCK_artef_ENTRYPOINT
           ? path.join(os.tmpdir(), 'outside.js')
           : candidate;
       });
@@ -855,8 +855,8 @@ describe('code-scan-action main', () => {
       expect(getActionNodeExecCalls()).toHaveLength(1);
     });
 
-    it('accepts an exact prerelease promptfoo-version override', async () => {
-      mockPromptfooVersionInput('1.2.3-rc.1');
+    it('accepts an exact prerelease artef-version override', async () => {
+      mockartefVersionInput('1.2.3-rc.1');
 
       const { args } = await importActionAndGetNpmInstallCall();
 
@@ -865,29 +865,29 @@ describe('code-scan-action main', () => {
 
     it('accepts 15-digit numeric components (the cap boundary)', async () => {
       const version = `${'9'.repeat(15)}.0.0`;
-      mockPromptfooVersionInput(version);
+      mockartefVersionInput(version);
 
       const { args } = await importActionAndGetNpmInstallCall();
 
       expect(args).toEqual(expectedInstallArgs(version));
     });
 
-    it('falls back to the release-pinned version when promptfoo-version is whitespace', async () => {
-      mockPromptfooVersionInput('   ');
+    it('falls back to the release-pinned version when artef-version is whitespace', async () => {
+      mockartefVersionInput('   ');
 
       const { args } = await importActionAndGetNpmInstallCall();
 
-      expect(args).toEqual(expectedInstallArgs(pinnedPromptfooVersion));
+      expect(args).toEqual(expectedInstallArgs(pinnedartefVersion));
     });
 
     it('strips NODE_OPTIONS from both the install and scan subprocesses', async () => {
       mockProcessEnv({ GITHUB_BASE_REF: 'main' });
       mockProcessEnv({ NODE_OPTIONS: '--require=/tmp/payload.cjs' });
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.options?.env?.NODE_OPTIONS).toBeUndefined();
-      expect(promptfoo.options?.env?.NODE_OPTIONS).toBeUndefined();
+      expect(artef.options?.env?.NODE_OPTIONS).toBeUndefined();
     });
 
     it('strips private npm tokens from the public install but preserves them for scanner npx', async () => {
@@ -896,12 +896,12 @@ describe('code-scan-action main', () => {
         NPM_TOKEN: 'private-registry-npm-token',
       });
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.options?.env?.NODE_AUTH_TOKEN).toBeUndefined();
       expect(npmInstall.options?.env?.NPM_TOKEN).toBeUndefined();
-      expect(promptfoo.options?.env?.NODE_AUTH_TOKEN).toBe('private-registry-node-token');
-      expect(promptfoo.options?.env?.NPM_TOKEN).toBe('private-registry-npm-token');
+      expect(artef.options?.env?.NODE_AUTH_TOKEN).toBe('private-registry-node-token');
+      expect(artef.options?.env?.NPM_TOKEN).toBe('private-registry-npm-token');
     });
 
     it('strips env-level npm config overrides from the install but not the scan', async () => {
@@ -911,15 +911,15 @@ describe('code-scan-action main', () => {
         NPM_CONFIG_USERCONFIG: '/tmp/attacker-npmrc',
       });
 
-      const { npmInstall, promptfoo } = await importActionAndGetPromptfooAndNpmCalls();
+      const { npmInstall, artef } = await importActionAndGetartefAndNpmCalls();
 
       expect(npmInstall.options?.env?.npm_config_registry).toBeUndefined();
       expect(npmInstall.options?.env?.NPM_CONFIG_USERCONFIG).toBeUndefined();
       // The scan env is intentionally not stripped of npm config: nested npx
       // invocations (MCP) rely on workflow-provided npm settings. Only the
       // documented keys (tokens, --before) are removed there.
-      expect(promptfoo.options?.env?.npm_config_registry).toBe('https://attacker.example/registry');
-      expect(promptfoo.options?.env?.NPM_CONFIG_USERCONFIG).toBe('/tmp/attacker-npmrc');
+      expect(artef.options?.env?.npm_config_registry).toBe('https://attacker.example/registry');
+      expect(artef.options?.env?.NPM_CONFIG_USERCONFIG).toBe('/tmp/attacker-npmrc');
     });
 
     it('runs the install from RUNNER_TEMP so workspace npm config is out of scope', async () => {
@@ -944,7 +944,7 @@ describe('code-scan-action main', () => {
       ['a semver range', '^0.100.0'],
       ['an npm flag smuggled after the version', '0.100.5 --before=2020-01-01'],
       ['an alias to another package', 'npm:malicious-package@1.0.0'],
-      ['a git URL', 'github:attacker/promptfoo'],
+      ['a git URL', 'github:attacker/artef'],
       // Above-MAX_SAFE_INTEGER components are invalid semver that npm reclassifies as
       // a mutable dist-tag lookup; leading zeros are invalid strict semver that npm
       // would loose-parse instead of resolving exactly.
@@ -953,14 +953,14 @@ describe('code-scan-action main', () => {
       ['a leading-zero component', '01.2.3'],
       ['a leading-zero numeric prerelease id', '1.2.3-01'],
       ['an overlong version string', `1.2.3-${'a'.repeat(300)}`],
-    ])('rejects %s as promptfoo-version without running any install', async (_label, value) => {
-      mockPromptfooVersionInput(value);
+    ])('rejects %s as artef-version without running any install', async (_label, value) => {
+      mockartefVersionInput(value);
 
       await import('../../code-scan-action/src/main');
 
       await vi.waitFor(() => {
         expect(mocks.core.setFailed).toHaveBeenCalledWith(
-          expect.stringContaining(`Invalid promptfoo-version "${value}"`),
+          expect.stringContaining(`Invalid artef-version "${value}"`),
         );
       });
 
@@ -988,7 +988,7 @@ describe('code-scan-action main', () => {
 
       await vi.waitFor(() => {
         expect(mocks.core.info).toHaveBeenCalledWith(
-          '🔀 Fork PR detected and enable-fork-prs is false; skipping Promptfoo Code Scan',
+          '🔀 Fork PR detected and enable-fork-prs is false; skipping artef Code Scan',
         );
       });
 
@@ -1007,7 +1007,7 @@ describe('code-scan-action main', () => {
 
       await vi.waitFor(() => {
         expect(mocks.core.info).toHaveBeenCalledWith(
-          '🔀 Fork PR detected and enable-fork-prs is false; skipping Promptfoo Code Scan',
+          '🔀 Fork PR detected and enable-fork-prs is false; skipping artef Code Scan',
         );
       });
 
@@ -1021,7 +1021,7 @@ describe('code-scan-action main', () => {
       setPullRequestRepos('external-contributor/test-repo');
       mocks.core.getBooleanInput.mockReturnValue(true);
 
-      const { args } = await importActionAndGetPromptfooCall();
+      const { args } = await importActionAndGetartefCall();
 
       expectCliArg(args, '--github-pr', 'test-owner/test-repo#123');
       expect(mocks.actionGithub.getPRFiles).toHaveBeenCalled();
@@ -1039,7 +1039,7 @@ describe('code-scan-action main', () => {
         },
       };
 
-      const { args } = await importActionAndGetPromptfooCall();
+      const { args } = await importActionAndGetartefCall();
 
       expectCliArg(args, '--github-pr', 'test-owner/test-repo#123');
       expect(mocks.actionGithub.getPRFiles).toHaveBeenCalled();
@@ -1056,7 +1056,7 @@ describe('code-scan-action main', () => {
           args: string[] | undefined,
           options: { listeners?: { stdout?: (data: Buffer) => void } } | undefined,
         ) => {
-          if (isPromptfooExecCommand(command, args) && options?.listeners?.stdout) {
+          if (isartefExecCommand(command, args) && options?.listeners?.stdout) {
             options.listeners.stdout(
               Buffer.from(
                 JSON.stringify({
@@ -1093,7 +1093,7 @@ describe('code-scan-action main', () => {
             | { listeners?: { stdout?: (data: Buffer) => void; stderr?: (data: Buffer) => void } }
             | undefined,
         ) => {
-          if (isPromptfooExecCommand(command, args) && options?.listeners?.stderr) {
+          if (isartefExecCommand(command, args) && options?.listeners?.stderr) {
             options.listeners.stderr(Buffer.from('Fork PR scanning not authorized'));
             return 1;
           }
@@ -1132,14 +1132,14 @@ describe('code-scan-action main', () => {
       return { createComment, createReview };
     }
 
-    function mockPromptfooScanResponse(response: unknown) {
+    function mockartefScanResponse(response: unknown) {
       mocks.exec.exec.mockImplementation(
         async (
           command: string,
           args: string[] | undefined,
           options: { listeners?: { stdout?: (data: Buffer) => void } } | undefined,
         ) => {
-          if (isPromptfooExecCommand(command, args) && options?.listeners?.stdout) {
+          if (isartefExecCommand(command, args) && options?.listeners?.stdout) {
             options.listeners.stdout(Buffer.from(JSON.stringify(response)));
           }
           return 0;
@@ -1164,9 +1164,9 @@ describe('code-scan-action main', () => {
     }
 
     it('resolves the path against GITHUB_WORKSPACE, creates parent dirs, and exposes the resolved path', async () => {
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
-      const expectedPath = path.resolve('/test/workspace', 'reports/promptfoo-code-scan.sarif');
+      const expectedPath = path.resolve('/test/workspace', 'reports/artef-code-scan.sarif');
       const expectedDir = path.dirname(expectedPath);
 
       await vi.waitFor(() => {
@@ -1187,11 +1187,11 @@ describe('code-scan-action main', () => {
     it('does not write SARIF when a fork PR scan is skipped', async () => {
       setPullRequestRepos('external-contributor/test-repo');
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(mocks.core.info).toHaveBeenCalledWith(
-          '🔀 Fork PR detected and enable-fork-prs is false; skipping Promptfoo Code Scan',
+          '🔀 Fork PR detected and enable-fork-prs is false; skipping artef Code Scan',
         );
       });
 
@@ -1207,7 +1207,7 @@ describe('code-scan-action main', () => {
           args: string[] | undefined,
           options: { listeners?: { stdout?: (data: Buffer) => void } } | undefined,
         ) => {
-          if (isPromptfooExecCommand(command, args) && options?.listeners?.stdout) {
+          if (isartefExecCommand(command, args) && options?.listeners?.stdout) {
             options.listeners.stdout(
               Buffer.from(
                 JSON.stringify({
@@ -1222,7 +1222,7 @@ describe('code-scan-action main', () => {
         },
       );
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(mocks.core.info).toHaveBeenCalledWith(
@@ -1236,7 +1236,7 @@ describe('code-scan-action main', () => {
 
     it('posts file-only findings from ordinary scan responses as general fallback comments', async () => {
       const { createComment, createReview } = mockFallbackPosting();
-      mockPromptfooScanResponse({
+      mockartefScanResponse({
         success: true,
         comments: [
           {
@@ -1249,7 +1249,7 @@ describe('code-scan-action main', () => {
         commentsPosted: false,
       });
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(createComment).toHaveBeenCalled();
@@ -1265,7 +1265,7 @@ describe('code-scan-action main', () => {
 
     it('posts line-level mixed-skip findings as fallback comments and writes SARIF', async () => {
       const { createComment, createReview } = mockFallbackPosting();
-      mockPromptfooScanResponse({
+      mockartefScanResponse({
         success: true,
         comments: [
           {
@@ -1279,7 +1279,7 @@ describe('code-scan-action main', () => {
         skipReason: 'Unexpected mixed response.',
       });
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(createReview).toHaveBeenCalled();
@@ -1312,7 +1312,7 @@ describe('code-scan-action main', () => {
           invalidLineComments: comments,
         }),
       );
-      mockPromptfooScanResponse({
+      mockartefScanResponse({
         success: true,
         comments: [
           {
@@ -1326,7 +1326,7 @@ describe('code-scan-action main', () => {
         skipReason: 'Unexpected mixed response.',
       });
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(createComment).toHaveBeenCalled();
@@ -1342,7 +1342,7 @@ describe('code-scan-action main', () => {
 
     it('posts file-only mixed-skip findings as general fallback comments and writes SARIF', async () => {
       const { createComment, createReview } = mockFallbackPosting();
-      mockPromptfooScanResponse({
+      mockartefScanResponse({
         success: true,
         comments: [
           {
@@ -1356,7 +1356,7 @@ describe('code-scan-action main', () => {
         skipReason: 'Unexpected mixed response.',
       });
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(createComment).toHaveBeenCalled();
@@ -1374,7 +1374,7 @@ describe('code-scan-action main', () => {
 
     it('posts fileless mixed-skip findings as general fallback comments without empty SARIF', async () => {
       const { createComment, createReview } = mockFallbackPosting();
-      mockPromptfooScanResponse({
+      mockartefScanResponse({
         success: true,
         comments: [
           {
@@ -1388,7 +1388,7 @@ describe('code-scan-action main', () => {
         skipReason: 'Unexpected mixed response.',
       });
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(createComment).toHaveBeenCalled();
@@ -1405,7 +1405,7 @@ describe('code-scan-action main', () => {
     });
 
     it('does not process mixed skips with findings that are neither SARIF-reportable nor PR-postable', async () => {
-      mockPromptfooScanResponse({
+      mockartefScanResponse({
         success: true,
         comments: [
           {
@@ -1424,7 +1424,7 @@ describe('code-scan-action main', () => {
         skipReason: 'Fork PR scanning requires maintainer approval.',
       });
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(mocks.core.info).toHaveBeenCalledWith(
@@ -1442,12 +1442,12 @@ describe('code-scan-action main', () => {
     it('does not write SARIF when a setup PR is skipped', async () => {
       mocks.actionGithub.getPRFiles.mockResolvedValue([
         {
-          path: '.github/workflows/promptfoo-code-scan.yml',
+          path: '.github/workflows/artef-code-scan.yml',
           status: FileChangeStatus.ADDED,
         },
       ]);
 
-      await triggerSarifAction('reports/promptfoo-code-scan.sarif');
+      await triggerSarifAction('reports/artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(mocks.core.info).toHaveBeenCalledWith(
@@ -1521,7 +1521,7 @@ describe('code-scan-action main', () => {
     it('refuses to overwrite an existing symlink at the target path', async () => {
       mocks.fs.lstatSync.mockReturnValue({ isSymbolicLink: () => true } as Stats);
 
-      await triggerSarifAction('promptfoo-code-scan.sarif');
+      await triggerSarifAction('artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(mocks.core.warning).toHaveBeenCalledWith(
@@ -1538,7 +1538,7 @@ describe('code-scan-action main', () => {
         throw new Error('disk full');
       });
 
-      await triggerSarifAction('promptfoo-code-scan.sarif');
+      await triggerSarifAction('artef-code-scan.sarif');
 
       await vi.waitFor(() => {
         expect(mocks.core.warning).toHaveBeenCalledWith(
@@ -1573,7 +1573,7 @@ describe('code-scan-action main', () => {
     it('uses min-severity when only min-severity is set', async () => {
       mockSeverityInputs({ 'min-severity': 'critical' });
 
-      await importActionAndGetPromptfooCall();
+      await importActionAndGetartefCall();
 
       expect(mocks.config.generateConfigFile).toHaveBeenCalledWith('critical', undefined);
       expect(mocks.core.warning).not.toHaveBeenCalledWith(expect.stringContaining('min-severity'));
@@ -1582,7 +1582,7 @@ describe('code-scan-action main', () => {
     it('uses minimum-severity when only the alias is set (regression test for #9427)', async () => {
       mockSeverityInputs({ 'minimum-severity': 'critical' });
 
-      await importActionAndGetPromptfooCall();
+      await importActionAndGetartefCall();
 
       expect(mocks.config.generateConfigFile).toHaveBeenCalledWith('critical', undefined);
       expect(mocks.core.warning).not.toHaveBeenCalledWith(expect.stringContaining('min-severity'));
@@ -1591,7 +1591,7 @@ describe('code-scan-action main', () => {
     it('falls back to medium when neither input is set', async () => {
       mockSeverityInputs({});
 
-      await importActionAndGetPromptfooCall();
+      await importActionAndGetartefCall();
 
       expect(mocks.config.generateConfigFile).toHaveBeenCalledWith('medium', undefined);
       expect(mocks.core.warning).not.toHaveBeenCalledWith(expect.stringContaining('min-severity'));
@@ -1600,7 +1600,7 @@ describe('code-scan-action main', () => {
     it('prefers min-severity and warns when both inputs disagree', async () => {
       mockSeverityInputs({ 'min-severity': 'high', 'minimum-severity': 'critical' });
 
-      await importActionAndGetPromptfooCall();
+      await importActionAndGetartefCall();
 
       expect(mocks.config.generateConfigFile).toHaveBeenCalledWith('high', undefined);
       expect(mocks.core.warning).toHaveBeenCalledWith(
@@ -1611,7 +1611,7 @@ describe('code-scan-action main', () => {
     it('does not warn when both inputs are set to the same value', async () => {
       mockSeverityInputs({ 'min-severity': 'high', 'minimum-severity': 'high' });
 
-      await importActionAndGetPromptfooCall();
+      await importActionAndGetartefCall();
 
       expect(mocks.config.generateConfigFile).toHaveBeenCalledWith('high', undefined);
       expect(mocks.core.warning).not.toHaveBeenCalledWith(expect.stringContaining('min-severity'));
@@ -1620,7 +1620,7 @@ describe('code-scan-action main', () => {
     it('trims whitespace from severity inputs', async () => {
       mockSeverityInputs({ 'minimum-severity': '  critical  ' });
 
-      await importActionAndGetPromptfooCall();
+      await importActionAndGetartefCall();
 
       expect(mocks.config.generateConfigFile).toHaveBeenCalledWith('critical', undefined);
     });

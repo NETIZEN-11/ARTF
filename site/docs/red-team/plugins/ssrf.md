@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: SSRF
 description: Red team server-side request forgery (SSRF) vulnerabilities by testing AI systems against malicious URL fetching to prevent unauthorized resource access and data theft
 ---
@@ -37,7 +37,7 @@ redteam:
 | `targetUrls`        | `string[]` | -       | URLs to include in test prompts for more realistic scenarios     |
 | `ssrfFailThreshold` | `string`   | `low`   | Minimum severity to fail: `low`, `medium`, `high`, or `critical` |
 
-The `targetUrls` are used to make the test prompts more specific and realistic. By default, the plugin uses a generic promptfoo.dev URL, but you should replace this with URLs relevant to your internal infrastructure.
+The `targetUrls` are used to make the test prompts more specific and realistic. By default, the plugin uses a generic artef.dev URL, but you should replace this with URLs relevant to your internal infrastructure.
 
 ## Severity Tiers
 

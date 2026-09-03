@@ -1,6 +1,6 @@
-# amazon-bedrock (Amazon Bedrock)
+﻿# amazon-bedrock (Amazon Bedrock)
 
-Examples for using promptfoo with [Amazon Bedrock](https://aws.amazon.com/bedrock/).
+Examples for using artef with [Amazon Bedrock](https://aws.amazon.com/bedrock/).
 
 ## Examples
 

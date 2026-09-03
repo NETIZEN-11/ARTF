@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import semverGt from 'semver/functions/gt.js';
 import semverValid from 'semver/functions/valid.js';
 import { VERSION } from '../../constants';
@@ -7,7 +7,7 @@ import logger from '../../logger';
 import { VersionSchemas } from '../../types/api/version';
 import { getLatestVersion } from '../../updates';
 import { getUpdateCommands } from '../../updates/updateCommands';
-import { isRunningUnderNpx } from '../../util/promptfooCommand';
+import { isRunningUnderNpx } from '../../util/artefCommand';
 import type { Request, Response } from 'express';
 
 /**
@@ -48,9 +48,9 @@ function isUpdateAvailable(latestVersion: string | null, currentVersion: string)
  * 500 fallback handler.
  */
 function buildBaseVersionFields() {
-  const selfHosted = getEnvBool('PROMPTFOO_SELF_HOSTED');
-  const isContainer = getEnvBool('PROMPTFOO_RUNNING_IN_DOCKER');
-  const isOfficialDockerImage = getEnvBool('PROMPTFOO_OFFICIAL_DOCKER_IMAGE');
+  const selfHosted = getEnvBool('artef_SELF_HOSTED');
+  const isContainer = getEnvBool('artef_RUNNING_IN_DOCKER');
+  const isOfficialDockerImage = getEnvBool('artef_OFFICIAL_DOCKER_IMAGE');
   const isNpx = isRunningUnderNpx();
   const updateCommands = getUpdateCommands({ isContainer, isOfficialDockerImage, isNpx });
   return {
@@ -84,7 +84,7 @@ const FAILURE_RETRY_DELAY = 60 * 1000; // 1 minute
 router.get('/', async (_req: Request, res: Response): Promise<void> => {
   try {
     const now = Date.now();
-    const updateChecksDisabled = getEnvBool('PROMPTFOO_DISABLE_UPDATE');
+    const updateChecksDisabled = getEnvBool('artef_DISABLE_UPDATE');
     let latestVersion = updateChecksDisabled ? VERSION : versionCache.latestVersion;
 
     // A wall-clock rollback must not pin stale cache or failure-rate-limit state indefinitely.

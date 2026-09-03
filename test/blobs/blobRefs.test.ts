@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   collectBlobHashes,
   extractBlobHashesFromString,
@@ -8,7 +8,7 @@ import {
 
 const HASH_A = 'a'.repeat(64);
 const HASH_B = 'b'.repeat(64);
-const uri = (hash: string) => `promptfoo://blob/${hash}`;
+const uri = (hash: string) => `artef://blob/${hash}`;
 
 describe('normalizeBlobHash', () => {
   it('lowercases the hash', () => {

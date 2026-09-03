@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import RedteamMischievousUserProvider from '../../../src/redteam/providers/mischievousUser';
 import { createMockProvider } from '../../factories/provider';
 
@@ -11,9 +11,9 @@ vi.mock('../../../src/globalConfig/accounts', async (importOriginal) => ({
   isLoggedIntoCloud: vi.fn(() => true),
 }));
 
-vi.mock('../../../src/providers/promptfoo', async (importOriginal) => ({
+vi.mock('../../../src/providers/artef', async (importOriginal) => ({
   ...(await importOriginal()),
-  PromptfooSimulatedUserProvider: vi.fn(function () {
+  artefSimulatedUserProvider: vi.fn(function () {
     return {
       callApi: mockUserProviderCallApi,
       id: vi.fn(() => 'mock-simulated-user'),
@@ -153,7 +153,7 @@ describe('RedteamMischievousUserProvider', () => {
     });
   });
 
-  it('retains cached logical usage without charging Promptfoo response-cache hits', async () => {
+  it('retains cached logical usage without charging artef response-cache hits', async () => {
     mockUserProviderCallApi.mockResolvedValueOnce({
       cached: true,
       output: 'user response',

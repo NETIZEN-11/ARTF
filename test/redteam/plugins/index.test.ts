@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
 import { VERSION } from '../../../src/constants';
 import logger from '../../../src/logger';
@@ -606,7 +606,7 @@ describe('Plugins', () => {
 
       expect(errorSpy).toHaveBeenCalledWith(
         expect.stringContaining(
-          'Remote plugin generation for ssrf requires remote multi-input materialization support from a newer Promptfoo server.',
+          'Remote plugin generation for ssrf requires remote multi-input materialization support from a newer artef server.',
         ),
       );
       expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('http://test-url'));
@@ -739,7 +739,7 @@ describe('Plugins', () => {
       expect(result![0].assert).toEqual([
         {
           metric: 'Misinformation & Disinformation - Harmful lies and propaganda',
-          type: 'promptfoo:redteam:harmful:misinformation-disinformation',
+          type: 'artef:redteam:harmful:misinformation-disinformation',
         },
       ]);
     });
@@ -840,9 +840,9 @@ describe('Plugins', () => {
         { input: 'pii:direct', expected: 'pii:direct' },
 
         // IDs with prefixes
-        { input: 'promptfoo:redteam:contracts', expected: 'contracts' },
-        { input: 'promptfoo:redteam:harmful:privacy', expected: 'harmful:privacy' },
-        { input: 'promptfoo:redteam:pii:direct', expected: 'pii:direct' },
+        { input: 'artef:redteam:contracts', expected: 'contracts' },
+        { input: 'artef:redteam:harmful:privacy', expected: 'harmful:privacy' },
+        { input: 'artef:redteam:pii:direct', expected: 'pii:direct' },
       ];
 
       // Test each case

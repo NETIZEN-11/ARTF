@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Browser provider - OAuth authentication testing example
 
 # This example demonstrates two modes:
@@ -84,7 +84,7 @@ tests:
 # For OAuth/SSO testing (existing session):
 # 1. Start Chrome with debugging: chrome --remote-debugging-port=9222
 # 2. Log into your application manually
-# 3. Run: npx promptfoo eval --filter-providers existing-session
+# 3. Run: npx artef eval --filter-providers existing-session
 #
 # For normal browser testing:
-# Run: npx promptfoo eval --filter-providers new-browser
+# Run: npx artef eval --filter-providers new-browser

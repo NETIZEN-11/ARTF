@@ -1,11 +1,11 @@
-# provider-amazon-sagemaker (Amazon SageMaker AI Provider)
+﻿# provider-amazon-sagemaker (Amazon SageMaker AI Provider)
 
-This example demonstrates how to evaluate models deployed on Amazon SageMaker AI endpoints using promptfoo.
+This example demonstrates how to evaluate models deployed on Amazon SageMaker AI endpoints using artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-amazon-sagemaker
+npx artef@latest init --example provider-amazon-sagemaker
 cd provider-amazon-sagemaker
 ```
 
@@ -43,23 +43,23 @@ You can set these in a `.env` file or directly in your environment.
 
 This example includes multiple configuration files demonstrating different SageMaker integration patterns:
 
-- **promptfooconfig.openai.yaml**: OpenAI-compatible models on SageMaker
-- **promptfooconfig.jumpstart.yaml**: AWS JumpStart foundation models
-- **promptfooconfig.llama.yaml**: Llama 3.2 models on SageMaker JumpStart
-- **promptfooconfig.mistral.yaml**: Mistral 7B v3 models on SageMaker (Hugging Face)
-- **promptfooconfig.llama-vs-mistral.yaml**: Comparison between Llama and Mistral models
-- **promptfooconfig.embedding.yaml**: Embedding models on SageMaker
-- **promptfooconfig.multimodel.yaml**: Multiple model types on SageMaker
-- **promptfooconfig.transform.yaml**: Transform functions for SageMaker endpoints
+- **artefconfig.openai.yaml**: OpenAI-compatible models on SageMaker
+- **artefconfig.jumpstart.yaml**: AWS JumpStart foundation models
+- **artefconfig.llama.yaml**: Llama 3.2 models on SageMaker JumpStart
+- **artefconfig.mistral.yaml**: Mistral 7B v3 models on SageMaker (Hugging Face)
+- **artefconfig.llama-vs-mistral.yaml**: Comparison between Llama and Mistral models
+- **artefconfig.embedding.yaml**: Embedding models on SageMaker
+- **artefconfig.multimodel.yaml**: Multiple model types on SageMaker
+- **artefconfig.transform.yaml**: Transform functions for SageMaker endpoints
 
 ## Running the Examples
 
 1. Replace the endpoint names in the configuration files with your actual SageMaker endpoints
-2. Run the evaluation using promptfoo:
+2. Run the evaluation using artef:
 
 ```bash
 # Run a specific configuration
-promptfoo eval -c promptfooconfig.jumpstart.yaml
+artef eval -c artefconfig.jumpstart.yaml
 ```
 
 ## Testing Your Setup

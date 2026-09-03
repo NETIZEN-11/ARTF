@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_label: LLM Providers
 description: Configure multiple LLM providers including Claude, GPT, and Gemini models with standardized testing interfaces for comprehensive AI evaluation
 ---
 
 # LLM Providers
 
-Providers in promptfoo are the interfaces to various language models and AI services. They can also be specified as `targets` in your config — the two keys are interchangeable. This guide will help you understand how to configure and use providers in your promptfoo evaluations.
+Providers in artef are the interfaces to various language models and AI services. They can also be specified as `targets` in your config — the two keys are interchangeable. This guide will help you understand how to configure and use providers in your artef evaluations.
 
 ## Quick Start
 
-Here's a basic example of configuring providers in your promptfoo YAML config:
+Here's a basic example of configuring providers in your artef YAML config:
 
 ```yaml
 providers:
@@ -104,11 +104,11 @@ providers:
 | [WebSocket](./websocket.md)                             | WebSocket-based providers                                        | `ws://example.com/ws`                                                                                                 |
 | [Webhook](./webhook.md)                                 | Custom - Webhook integration                                     | `webhook:http://example.com/webhook`                                                                                  |
 | [Echo](./echo.md)                                       | Custom - For testing purposes                                    | `echo`                                                                                                                |
-| [Manual Input](./manual-input.md)                       | Custom - CLI manual entry                                        | `promptfoo:manual-input`                                                                                              |
+| [Manual Input](./manual-input.md)                       | Custom - CLI manual entry                                        | `artef:manual-input`                                                                                              |
 | [Go](./go.md)                                           | Custom - Go file                                                 | `file://path/to/your/script.go`                                                                                       |
 | [Web Browser](./browser.md)                             | Custom - Automate web browser interactions                       | `browser`                                                                                                             |
 | [Sequence](./sequence.md)                               | Custom - Multi-prompt sequencing                                 | `sequence` with config.inputs array                                                                                   |
-| [Simulated User](./simulated-user.md)                   | Custom - Conversation simulator                                  | `promptfoo:simulated-user`                                                                                            |
+| [Simulated User](./simulated-user.md)                   | Custom - Conversation simulator                                  | `artef:simulated-user`                                                                                            |
 | [WatsonX](./watsonx.md)                                 | IBM's WatsonX                                                    | `watsonx:ibm/granite-4-h-small`                                                                                       |
 | [X.AI](./xai.md)                                        | X.AI's models (text, image, video, voice)                        | `xai:grok-4.3`, `xai:image:grok-imagine-image`, `xai:video:grok-imagine-video`, `xai:voice:grok-voice-think-fast-1.0` |
 
@@ -165,7 +165,7 @@ Providers are specified using various syntax options:
 
    Reference in your configuration:
 
-   ```yaml title="promptfooconfig.yaml"
+   ```yaml title="artefconfig.yaml"
    providers:
      - file://provider.yaml # single provider as an object
      - file://providers.yaml # multiple providers as an array
@@ -191,7 +191,7 @@ providers:
 
 ### Overriding Pricing
 
-For providers with built-in token pricing, you can override promptfoo's cost estimates in
+For providers with built-in token pricing, you can override artef's cost estimates in
 `config`:
 
 ```yaml
@@ -209,7 +209,7 @@ both directions. OpenAI audio-capable models also support `audioInputCost` and
 
 ## Custom Integrations
 
-promptfoo supports several types of custom integrations:
+artef supports several types of custom integrations:
 
 1. File-based providers:
 
@@ -285,7 +285,7 @@ providers:
 
 ## Model Context Protocol (MCP)
 
-Promptfoo supports the Model Context Protocol (MCP) for enabling advanced tool use and agentic capabilities in LLM providers. MCP allows you to connect providers to external MCP servers to enable tool orchestration, memory, and more.
+artef supports the Model Context Protocol (MCP) for enabling advanced tool use and agentic capabilities in LLM providers. MCP allows you to connect providers to external MCP servers to enable tool orchestration, memory, and more.
 
 ### Basic MCP Configuration
 
@@ -326,10 +326,10 @@ For detailed MCP documentation and advanced configurations, see the [MCP Integra
 
 ## Advanced Usage
 
-### Linking Custom Providers to Cloud Targets (Promptfoo Cloud)
+### Linking Custom Providers to Cloud Targets (artef Cloud)
 
-:::info Promptfoo Cloud Feature
-This feature is available in [Promptfoo Cloud](/docs/enterprise) deployments.
+:::info artef Cloud Feature
+This feature is available in [artef Cloud](/docs/enterprise) deployments.
 :::
 
 Link custom providers ([Python](/docs/providers/python/), [JavaScript](/docs/providers/custom-api/), [HTTP](/docs/providers/http/)) to cloud targets using `linkedTargetId`. This consolidates findings from multiple eval runs into one dashboard, allowing you to track performance over time and view comprehensive reporting.
@@ -338,33 +338,33 @@ Link custom providers ([Python](/docs/providers/python/), [JavaScript](/docs/pro
 providers:
   - id: 'file://my_provider.py'
     config:
-      linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'
+      linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'
 ```
 
 See [Linking Local Targets to Cloud](/docs/red-team/troubleshooting/linking-targets/) for setup instructions.
 
 ### Using Cloud Targets with Local Config Overrides
 
-:::info Promptfoo Cloud Feature
+:::info artef Cloud Feature
 
-This feature is available in [Promptfoo Cloud](/docs/enterprise) deployments.
+This feature is available in [artef Cloud](/docs/enterprise) deployments.
 
 :::
 
-Cloud targets store provider configurations (API keys, base settings) in Promptfoo Cloud. Reference them using the `promptfoo://provider/` protocol and optionally override specific config values locally.
+Cloud targets store provider configurations (API keys, base settings) in artef Cloud. Reference them using the `artef://provider/` protocol and optionally override specific config values locally.
 
 **Basic usage:**
 
 ```yaml
 providers:
-  - promptfoo://provider/12345-abcd-uuid
+  - artef://provider/12345-abcd-uuid
 ```
 
 **Override cloud config locally:**
 
 ```yaml
 providers:
-  - id: promptfoo://provider/12345-abcd-uuid
+  - id: artef://provider/12345-abcd-uuid
     config:
       temperature: 0.9 # Override cloud temperature
       max_tokens: 2000 # Override cloud max_tokens

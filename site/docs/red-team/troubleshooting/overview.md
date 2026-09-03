@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Overview
 sidebar_position: 1
 description: Red team LLM applications by diagnosing attack generation, connection, and grading issues to prevent security vulnerabilities and ensure robust adversarial testing
@@ -6,7 +6,7 @@ description: Red team LLM applications by diagnosing attack generation, connecti
 
 # Red Team Troubleshooting Guide
 
-Common issues encountered when red teaming LLM applications with promptfoo.
+Common issues encountered when red teaming LLM applications with artef.
 
 | Issue                                                                             | Description                                                                                                                 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 
 description: 'Airline Agent Testing with 31 Customer Personas'
 
@@ -52,7 +52,7 @@ providers:
 
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 10
 

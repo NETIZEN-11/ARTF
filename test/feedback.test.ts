@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { gatherFeedback, sendFeedback } from '../src/feedback';
 import logger from '../src/logger';
 import { fetchWithProxy } from '../src/util/fetch/index';
@@ -65,7 +65,7 @@ describe('Feedback Module', () => {
 
       // Verify fetch was called with correct parameters
       expect(fetchWithProxy).toHaveBeenCalledWith(
-        'https://api.promptfoo.dev/api/feedback',
+        'https://api.artef.dev/api/feedback',
         expect.objectContaining({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

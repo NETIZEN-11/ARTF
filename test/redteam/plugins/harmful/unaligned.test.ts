@@ -1,6 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it, MockInstance, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, MockInstance, vi } from 'vitest';
 import { getEnvBool, getEnvString } from '../../../../src/envars';
-import { PromptfooHarmfulCompletionProvider } from '../../../../src/providers/promptfoo';
+import { artefHarmfulCompletionProvider } from '../../../../src/providers/artef';
 import {
   LLAMA_GUARD_REPLICATE_PROVIDER,
   UNALIGNED_PROVIDER_HARM_PLUGINS,
@@ -24,7 +24,7 @@ describe('harmful plugin', () => {
     if (mockCallApi) {
       mockCallApi.mockRestore();
     }
-    mockCallApi = vi.spyOn(PromptfooHarmfulCompletionProvider.prototype, 'callApi').mockReset();
+    mockCallApi = vi.spyOn(artefHarmfulCompletionProvider.prototype, 'callApi').mockReset();
 
     vi.mocked(getEnvBool).mockReset();
     vi.mocked(getEnvString).mockReset();
@@ -214,7 +214,7 @@ describe('harmful plugin', () => {
       });
 
       const mockOutput = 'Test output';
-      vi.spyOn(PromptfooHarmfulCompletionProvider.prototype, 'callApi').mockResolvedValue({
+      vi.spyOn(artefHarmfulCompletionProvider.prototype, 'callApi').mockResolvedValue({
         output: [mockOutput],
       });
 

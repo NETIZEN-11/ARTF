@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_label: Remediation Reports
 sidebar_position: 55
-title: Remediation Reports in Promptfoo Enterprise
+title: Remediation Reports in artef Enterprise
 description: AI-generated remediation reports with prioritized action items, implementation guidance, and vulnerability-to-fix mappings for LLM security issues
 keywords:
   [
@@ -16,7 +16,7 @@ keywords:
 
 # Remediation Reports
 
-[Promptfoo Enterprise](/docs/enterprise/) automatically generates remediation reports after each red team scan. These reports provide actionable security recommendations with implementation guidance.
+[artef Enterprise](/docs/enterprise/) automatically generates remediation reports after each red team scan. These reports provide actionable security recommendations with implementation guidance.
 
 ## Overview
 
@@ -32,12 +32,12 @@ Remediation reports analyze your scan results and provide:
 
 Remediation reports are automatically generated when:
 
-1. A red team scan completes in the Promptfoo Enterprise UI
-2. A CLI scan is uploaded to the server using `promptfoo share`
+1. A red team scan completes in the artef Enterprise UI
+2. A CLI scan is uploaded to the server using `artef share`
 
 To access a remediation report:
 
-1. Navigate to the **Reports** section in Promptfoo Enterprise
+1. Navigate to the **Reports** section in artef Enterprise
 2. Select the evaluation you want to review
 3. Click on the **Remediation** tab to view the remediation report
 
@@ -199,4 +199,4 @@ Use remediation reports to understand _how_ to fix issues, then track your progr
 
 - [Findings and Reports](./findings.md)
 - [Running Red Teams](./red-teams.md)
-- [API Reference](https://www.promptfoo.dev/docs/api-reference/)
+- [API Reference](https://www.artef.dev/docs/api-reference/)

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 // Mock dependencies before importing the module
 vi.mock('../../../../src/logger', () => ({
@@ -13,7 +13,7 @@ vi.mock('../../../../src/logger', () => ({
 vi.mock('../../../../src/util/config/default', () => ({
   loadDefaultConfig: vi.fn().mockResolvedValue({
     defaultConfig: {},
-    defaultConfigPath: 'promptfooconfig.yaml',
+    defaultConfigPath: 'artefconfig.yaml',
   }),
 }));
 

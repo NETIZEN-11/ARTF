@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Utilities for resolving media storage references in the UI.
  *
  * Storage refs use format: "storageRef:audio/xxx.mp3" or "storageRef:image/xxx.png"
@@ -16,7 +16,7 @@ import useApiConfig from '@app/stores/apiConfig';
 
 /** Prefix for storage references */
 const STORAGE_REF_PREFIX = 'storageRef:';
-const BLOB_REF_PREFIX = 'promptfoo://blob/';
+const BLOB_REF_PREFIX = 'artef://blob/';
 
 export type StorageRefString = `${typeof STORAGE_REF_PREFIX}${string}`;
 export type BlobRefString = `${typeof BLOB_REF_PREFIX}${string}`;

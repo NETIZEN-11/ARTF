@@ -1,11 +1,11 @@
-# provider-cerebras (Cerebras Example (High-Performance LLM Inference))
+﻿# provider-cerebras (Cerebras Example (High-Performance LLM Inference))
 
-This example demonstrates how to use the Cerebras provider with promptfoo to evaluate Cerebras Inference API models, which offer high-performance inference for Llama and other LLM models.
+This example demonstrates how to use the Cerebras provider with artef to evaluate Cerebras Inference API models, which offer high-performance inference for Llama and other LLM models.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-cerebras
+npx artef@latest init --example provider-cerebras
 cd provider-cerebras
 ```
 
@@ -31,22 +31,22 @@ CEREBRAS_API_KEY=your-api-key-here
 
 This repository contains three example configurations demonstrating different Cerebras features:
 
-### 1. Basic Model Evaluation (`promptfooconfig.yaml`)
+### 1. Basic Model Evaluation (`artefconfig.yaml`)
 
 This configuration evaluates two Cerebras models on their ability to explain complex concepts in simple terms.
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 **Expected output:** You'll see a comparison of how each model explains concepts from different domains, with metrics on clarity, accuracy, and response time.
 
-### 2. Structured Outputs (`promptfooconfig-structured.yaml`)
+### 2. Structured Outputs (`artefconfig-structured.yaml`)
 
 The structured output example demonstrates Cerebras's JSON schema enforcement capabilities, ensuring the model returns consistent, structured recipe data with proper types and required fields.
 
 ```bash
-promptfoo eval -c promptfooconfig-structured.yaml
+artef eval -c artefconfig-structured.yaml
 ```
 
 **Expected output:** You'll receive structured JSON outputs for different recipes, with consistent fields like cuisine type, difficulty level, ingredients, and cooking instructions - all following the defined schema.
@@ -78,12 +78,12 @@ Example output:
 }
 ```
 
-### 3. Tool Use (`promptfooconfig-tools.yaml`)
+### 3. Tool Use (`artefconfig-tools.yaml`)
 
 The tool use example demonstrates Cerebras's function calling capabilities with a calculator tool that the model can use to solve math problems.
 
 ```bash
-promptfoo eval -c promptfooconfig-tools.yaml
+artef eval -c artefconfig-tools.yaml
 ```
 
 **Expected output:** The model will use the calculator tool to solve math problems and provide step-by-step explanations of the solution process. For example, when given "15 × 7", it will calculate 105 and explain multiplication concepts.
@@ -103,7 +103,7 @@ Cerebras Inference API offers competitive pricing compared to other inference se
 
 ## Learn More
 
-- [Cerebras Provider Documentation](https://promptfoo.dev/docs/providers/cerebras)
+- [Cerebras Provider Documentation](https://artef.dev/docs/providers/cerebras)
 - [Cerebras API Reference](https://docs.cerebras.ai/)
 - [Cerebras Structured Outputs Guide](https://docs.cerebras.ai/capabilities/structured-outputs/)
 - [Cerebras Tool Use Guide](https://docs.cerebras.ai/capabilities/tool-use/)

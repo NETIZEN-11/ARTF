@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import confirm from '@inquirer/confirm';
@@ -10,19 +10,19 @@ import logger from '../logger';
 import { initializeProject } from '../onboarding';
 import telemetry from '../telemetry';
 import { fetchWithProxy } from '../util/fetch/index';
-import { promptfooCommand } from '../util/promptfooCommand';
+import { artefCommand } from '../util/artefCommand';
 import { EXAMPLE_ALIASES, EXAMPLE_REPLACEMENTS, REMOVED_EXAMPLES } from './exampleAliases';
 import type { Command } from 'commander';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const DEFAULT_EXAMPLE_REFS = [VERSION, 'main'];
 const EXAMPLE_CONFIG_FILENAMES = new Set([
-  'promptfooconfig.yaml',
-  'promptfooconfig.yml',
-  'promptfooconfig.js',
-  'promptfooconfig.cjs',
-  'promptfooconfig.mjs',
-  'promptfooconfig.ts',
+  'artefconfig.yaml',
+  'artefconfig.yml',
+  'artefconfig.js',
+  'artefconfig.cjs',
+  'artefconfig.mjs',
+  'artefconfig.ts',
 ]);
 
 interface GitHubTreeItem {
@@ -39,13 +39,13 @@ interface GitHubContentItem {
 function getGitHubHeaders() {
   return {
     Accept: 'application/vnd.github.v3+json',
-    'User-Agent': 'promptfoo-cli',
+    'User-Agent': 'artef-cli',
   };
 }
 
 async function fetchExamplesTree(ref: string): Promise<GitHubTreeItem[]> {
   const response = await fetchWithProxy(
-    `${GITHUB_API_BASE}/repos/promptfoo/promptfoo/git/trees/${ref}?recursive=1`,
+    `${GITHUB_API_BASE}/repos/artef/artef/git/trees/${ref}?recursive=1`,
     { headers: getGitHubHeaders() },
   );
 
@@ -81,7 +81,7 @@ function extractRunnableExamples(tree: GitHubTreeItem[]): string[] {
   return [...examples].sort((a, b) => a.localeCompare(b));
 }
 
-async function hasRootPromptfooConfig(exampleDir: string): Promise<boolean> {
+async function hasRootartefConfig(exampleDir: string): Promise<boolean> {
   try {
     const entries = await fs.readdir(exampleDir);
     return entries.some((entry) => EXAMPLE_CONFIG_FILENAMES.has(entry));
@@ -101,7 +101,7 @@ async function pathExists(targetPath: string): Promise<boolean> {
 
 function getExampleDocsUrl(exampleName: string, refs: string[]): string {
   const docsRef = isLegacyRefs(refs) ? refs[0] : 'main';
-  return `https://github.com/promptfoo/promptfoo/tree/${docsRef}/examples/${exampleName}`;
+  return `https://github.com/artef/artef/tree/${docsRef}/examples/${exampleName}`;
 }
 
 async function fetchExampleDirectoryContents(
@@ -111,7 +111,7 @@ async function fetchExampleDirectoryContents(
   const failedRefs: string[] = [];
 
   for (const ref of refs) {
-    const url = `${GITHUB_API_BASE}/repos/promptfoo/promptfoo/contents/examples/${dirPath}?ref=${ref}`;
+    const url = `${GITHUB_API_BASE}/repos/artef/artef/contents/examples/${dirPath}?ref=${ref}`;
     const response = await fetchWithProxy(url, {
       headers: getGitHubHeaders(),
     });
@@ -213,7 +213,7 @@ function resolveExampleSelection(example: string): ExampleDownloadSelection {
     logger.warn(chalk.yellow(`Note: ${removedExample.reason}`));
     logger.info(
       chalk.yellow(
-        `Downloading the legacy '${example}' example from promptfoo@${removedExample.legacyRef}.`,
+        `Downloading the legacy '${example}' example from artef@${removedExample.legacyRef}.`,
       ),
     );
     return {
@@ -255,7 +255,7 @@ async function logExampleInstructions(
   const readmeExists = await pathExists(readmePath);
   const docsUrl = getExampleDocsUrl(exampleName, refs);
   const cdCommand = `cd ${examplePath}`;
-  const isRunnableFromRoot = await hasRootPromptfooConfig(examplePath);
+  const isRunnableFromRoot = await hasRootartefConfig(examplePath);
 
   if (exampleName.includes('redteam') || !isRunnableFromRoot) {
     if (readmeExists) {
@@ -276,7 +276,7 @@ async function logExampleInstructions(
     return;
   }
 
-  const runCommand = promptfooCommand('eval');
+  const runCommand = artefCommand('eval');
   if (readmeExists) {
     logger.info(
       dedent`
@@ -360,8 +360,8 @@ export async function handleExampleDownload(
 
           No example downloaded. To get started, try:
 
-            ${chalk.bold('promptfoo init --example')}    (browse and select an example)
-            ${chalk.bold('promptfoo init')}              (create a basic project)
+            ${chalk.bold('artef init --example')}    (browse and select an example)
+            ${chalk.bold('artef init')}              (create a basic project)
 
            `,
         );
@@ -387,18 +387,18 @@ interface InitCommandOptions {
 export function initCommand(program: Command) {
   program
     .command('init [directory]')
-    .description('Set up a new promptfoo project with prompts, providers, and test cases')
+    .description('Set up a new artef project with prompts, providers, and test cases')
     .option('--no-interactive', 'Do not run in interactive mode')
-    .option('--example [name]', 'Download an example from the promptfoo repo')
+    .option('--example [name]', 'Download an example from the artef repo')
     .action(async (directory: string | null, cmdObj: InitCommandOptions) => {
       if (directory === 'redteam' && cmdObj.interactive) {
         const useRedteam = await confirm({
           message:
-            'You specified "redteam" as the directory. Did you mean to write "promptfoo redteam init" instead?',
+            'You specified "redteam" as the directory. Did you mean to write "artef redteam init" instead?',
           default: false,
         });
         if (useRedteam) {
-          logger.warn('Please use "promptfoo redteam init" to initialize a red teaming project.');
+          logger.warn('Please use "artef redteam init" to initialize a red teaming project.');
           return;
         }
       }

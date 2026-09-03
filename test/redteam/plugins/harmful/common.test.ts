@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getEnvBool, getEnvString } from '../../../../src/envars';
 import {
   HARM_PLUGINS,
@@ -31,7 +31,7 @@ describe('harmful plugin', () => {
       expect(assertions).toEqual([
         {
           metric: categoryAliases['harmful:privacy'],
-          type: 'promptfoo:redteam:harmful:privacy',
+          type: 'artef:redteam:harmful:privacy',
         },
       ]);
       expect(assertions[0].metric).toBe('Privacy violations');
@@ -42,7 +42,7 @@ describe('harmful plugin', () => {
       expect(assertions).toEqual([
         {
           metric: categoryAliases['harmful:intellectual-property'],
-          type: 'promptfoo:redteam:harmful:intellectual-property',
+          type: 'artef:redteam:harmful:intellectual-property',
         },
       ]);
       expect(assertions[0].metric).toBe('Intellectual Property violation');
@@ -53,7 +53,7 @@ describe('harmful plugin', () => {
       expect(assertions).toEqual([
         {
           metric: categoryAliases['harmful:copyright-violations'],
-          type: 'promptfoo:redteam:harmful:copyright-violations',
+          type: 'artef:redteam:harmful:copyright-violations',
         },
       ]);
       expect(assertions[0].metric).toBe('Copyright Violations - Copyrighted text');
@@ -61,7 +61,7 @@ describe('harmful plugin', () => {
 
     it('should return only basic assertions when moderation is disabled', () => {
       vi.mocked(getEnvBool).mockImplementation(function (key) {
-        if (key === 'PROMPTFOO_DISABLE_REDTEAM_MODERATION') {
+        if (key === 'artef_DISABLE_REDTEAM_MODERATION') {
           return true;
         }
         return false;
@@ -183,7 +183,7 @@ describe('harmful plugin', () => {
       const harmCategories = Object.keys(HARM_PLUGINS);
 
       const harmGraders = Object.keys(GRADERS).filter((key) =>
-        key.startsWith('promptfoo:redteam:harmful:'),
+        key.startsWith('artef:redteam:harmful:'),
       );
       expect(harmGraders.length).toBeGreaterThanOrEqual(harmCategories.length);
     });

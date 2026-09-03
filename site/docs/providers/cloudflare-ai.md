@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Cloudflare Workers AI
 description: Configure Cloudflare Workers AI's edge-based inference platform with Mistral-7B for low-latency LLM testing and evaluation at the network edge using OpenAI-compatible APIs
 ---
@@ -18,9 +18,9 @@ export CLOUDFLARE_ACCOUNT_ID=your_account_id_here
 export CLOUDFLARE_API_KEY=your_api_key_here
 ```
 
-The Cloudflare account ID is not secret and can be included in your promptfoo configuration file. The API key is secret, so use environment variables instead of hardcoding it in config files.
+The Cloudflare account ID is not secret and can be included in your artef configuration file. The API key is secret, so use environment variables instead of hardcoding it in config files.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - Tell me a funny joke about {{topic}}
 
@@ -142,7 +142,7 @@ Cloudflare is constantly adding new models. See their [official model catalog](h
 
 ### Basic Chat Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: cloudflare-ai:chat:@cf/deepseek-ai/deepseek-r1-distill-qwen-32b
     config:
@@ -153,7 +153,7 @@ providers:
 
 ### Advanced Configuration with Multiple Models
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: cloudflare-ai:chat:@cf/meta/llama-4-scout-17b-16e-instruct
     config:
@@ -173,7 +173,7 @@ providers:
 
 ### Embedding Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: cloudflare-ai:embedding:@cf/google/embeddinggemma-300m
     config:
@@ -197,4 +197,4 @@ providers:
 - [Cloudflare Workers AI Models](https://developers.cloudflare.com/workers-ai/models/) - Complete model catalog
 - [Cloudflare Workers AI OpenAI Compatibility](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/) - OpenAI-compatible endpoints
 - [OpenAI Provider](./openai.md) - For comparison with OpenAI models
-- [Getting Started with Promptfoo](../getting-started.md) - Basic setup guide
+- [Getting Started with artef](../getting-started.md) - Basic setup guide

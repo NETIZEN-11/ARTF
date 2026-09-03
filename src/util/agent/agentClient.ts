@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Client-side agent connection utility.
  *
  * Creates a Socket.IO client pre-configured for the agent protocol:
@@ -103,7 +103,7 @@ export async function createAgentClient<
 
   const host = opts.host ?? cloudConfig?.getApiHost();
   if (!host) {
-    throw new Error('No API host available. Set PROMPTFOO_CLOUD_API_URL or pass host explicitly.');
+    throw new Error('No API host available. Set artef_CLOUD_API_URL or pass host explicitly.');
   }
 
   const auth = opts.auth ?? resolveBaseAuthCredentials();

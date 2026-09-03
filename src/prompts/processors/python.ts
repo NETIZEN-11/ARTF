@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import { PythonShell } from 'python-shell';
 import { getEnvString } from '../../envars';
@@ -66,7 +66,7 @@ export const pythonPromptFunctionLegacy = async (
   };
   const options: PythonShellOptions = {
     mode: 'text',
-    pythonPath: getEnvString('PROMPTFOO_PYTHON', 'python'),
+    pythonPath: getEnvString('artef_PYTHON', 'python'),
     args: [safeJsonStringify(transformedContext) as string],
   };
   logger.debug(`Executing python prompt script ${filePath}`);

@@ -1,19 +1,19 @@
----
+﻿---
 sidebar_position: 55
-description: Implement OpenTelemetry tracing in your LLM evaluations to monitor provider performance, debug workflows, and visualize execution traces directly in Promptfoo's web UI.
+description: Implement OpenTelemetry tracing in your LLM evaluations to monitor provider performance, debug workflows, and visualize execution traces directly in artef's web UI.
 ---
 
 # Tracing
 
-Promptfoo uses OpenTelemetry (OTLP) traces to show what your application did behind each response and bring that information into your evals.
+artef uses OpenTelemetry (OTLP) traces to show what your application did behind each response and bring that information into your evals.
 
 Use traces to check tool calls and execution paths, give graders more context, guide red-team attacks, and explore the full timeline alongside your results.
 
-![traces in promptfoo](/img/docs/trace.png)
+![traces in artef](/img/docs/trace.png)
 
 ## Overview
 
-Promptfoo can receive traces directly from your application or pull them from a tracing service you already use. Those traces give your evals more context about what your application actually did. The built-in receiver works without additional infrastructure during development and testing.
+artef can receive traces directly from your application or pull them from a tracing service you already use. Those traces give your evals more context about what your application actually did. The built-in receiver works without additional infrastructure during development and testing.
 
 Tracing provides visibility into:
 
@@ -30,14 +30,14 @@ Tracing provides visibility into:
 - **Built-in OTLP receiver**: No external collector required for basic usage
 - **Trace-aware assertions**: Check tool usage, execution paths, timing, and errors
 - **Trace-informed grading and attacks**: Give graders and red-team strategies more context
-- **Web UI visualization**: View traces directly in the Promptfoo interface
+- **Web UI visualization**: View traces directly in the artef interface
 - **Automatic correlation**: Traces are linked to specific test cases and evaluations
 - **Flexible forwarding**: Send traces to Jaeger, Tempo, or any OTLP-compatible backend
 - **Existing tracing services**: Pull traces from the service your application already uses
 
 ## Built-in Provider Instrumentation
 
-When tracing is enabled, Promptfoo creates a separate trace for each test-case execution. Each trace has a root span for that execution, with target requests and grading recorded beneath it. Every target receives a child span automatically. If the same test case runs against multiple targets, prompts, or repeats, each run gets its own trace. Multi-turn tests keep their target requests and grading together in the same trace.
+When tracing is enabled, artef creates a separate trace for each test-case execution. Each trace has a root span for that execution, with target requests and grading recorded beneath it. Every target receives a child span automatically. If the same test case runs against multiple targets, prompts, or repeats, each run gets its own trace. Multi-turn tests keep their target requests and grading together in the same trace.
 
 Instrumented model and agent providers add more detailed spans following [GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/). HTTP targets receive their automatic target span, and the application behind that target can add its own child spans using the propagated `traceparent`. Agent providers can distinguish an overall `invoke_agent` run from the individual model calls it contains.
 
@@ -90,18 +90,18 @@ Instrumented model and agent calls can include these attributes on their GenAI s
 - `gen_ai.usage.cache_creation.input_tokens` - Input tokens written to the provider's prompt cache
 - `gen_ai.response.finish_reasons` - Finish/stop reasons
 
-**Promptfoo-specific Attributes:**
+**artef-specific Attributes:**
 
-- `promptfoo.provider.id` - Provider identifier
-- `promptfoo.test.index` - Test case index
-- `promptfoo.prompt.label` - Prompt label
-- `promptfoo.cache_hit` - Whether the response was served from cache
-- `promptfoo.usage.total_tokens` - Total token count reported by the provider
-- `promptfoo.usage.cached_response_tokens` - Tokens associated with a cached Promptfoo response
-- `promptfoo.usage.accepted_prediction_tokens` - Accepted prediction tokens, when available
-- `promptfoo.usage.rejected_prediction_tokens` - Rejected prediction tokens, when available
-- `promptfoo.request.body` - The request body sent to the provider (truncated to 4KB)
-- `promptfoo.response.body` - The response body from the provider (truncated to 4KB)
+- `artef.provider.id` - Provider identifier
+- `artef.test.index` - Test case index
+- `artef.prompt.label` - Prompt label
+- `artef.cache_hit` - Whether the response was served from cache
+- `artef.usage.total_tokens` - Total token count reported by the provider
+- `artef.usage.cached_response_tokens` - Tokens associated with a cached artef response
+- `artef.usage.accepted_prediction_tokens` - Accepted prediction tokens, when available
+- `artef.usage.rejected_prediction_tokens` - Rejected prediction tokens, when available
+- `artef.request.body` - The request body sent to the provider (truncated to 4KB)
+- `artef.response.body` - The response body from the provider (truncated to 4KB)
 
 Grading spans describe each assertion with `gen_ai.evaluation.name`,
 `gen_ai.evaluation.score.value`, and `gen_ai.evaluation.score.label`. When a grader supplies a
@@ -121,17 +121,17 @@ Span: chat gpt-4
 ├─ gen_ai.request.temperature: 0.7
 ├─ gen_ai.usage.input_tokens: 150
 ├─ gen_ai.usage.output_tokens: 85
-├─ promptfoo.usage.total_tokens: 235
+├─ artef.usage.total_tokens: 235
 ├─ gen_ai.response.finish_reasons: ["stop"]
-├─ promptfoo.provider.id: openai:chat:gpt-4
-└─ promptfoo.test.index: 0
+├─ artef.provider.id: openai:chat:gpt-4
+└─ artef.test.index: 0
 ```
 
 ## Quick Start
 
 ### 1. Enable Tracing
 
-Add tracing configuration to your `promptfooconfig.yaml`:
+Add tracing configuration to your `artefconfig.yaml`:
 
 ```yaml
 tracing:
@@ -143,7 +143,7 @@ tracing:
 
 ### 2. Instrument Your Provider
 
-Promptfoo passes a W3C trace context to providers via the `traceparent` field. Use this to create child spans:
+artef passes a W3C trace context to providers via the `traceparent` field. Use this to create child spans:
 
 ```javascript
 const { trace, context, propagation, SpanStatusCode } = require('@opentelemetry/api');
@@ -168,11 +168,11 @@ provider.register();
 const tracer = trace.getTracer('my-provider');
 
 module.exports = {
-  async callApi(prompt, promptfooContext) {
-    // Parse trace context from Promptfoo
-    if (promptfooContext.traceparent) {
+  async callApi(prompt, artefContext) {
+    // Parse trace context from artef
+    if (artefContext.traceparent) {
       const activeContext = propagation.extract(context.active(), {
-        traceparent: promptfooContext.traceparent,
+        traceparent: artefContext.traceparent,
       });
 
       return context.with(activeContext, async () => {
@@ -212,13 +212,13 @@ After running an evaluation, view traces in the web UI:
 1. Run your evaluation:
 
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 2. Open the web UI:
 
    ```bash
-   promptfoo view
+   artef view
    ```
 
 3. Click the magnifying glass (🔎) icon on any test result
@@ -226,7 +226,7 @@ After running an evaluation, view traces in the web UI:
 
 ### 4. Assert on Traced Workflows
 
-Once traces are flowing into Promptfoo, you can evaluate what the agent actually did, not just the final answer:
+Once traces are flowing into artef, you can evaluate what the agent actually did, not just the final answer:
 
 ```yaml
 tests:
@@ -253,7 +253,7 @@ tests:
         provider: openai:gpt-5-mini
 ```
 
-Use trajectory assertions when your spans identify tools, commands, searches, reasoning steps, or messages. Promptfoo also normalizes common command-like tool spans, including OpenAI Agents SDK `exec_command` calls with `cmd` arguments and `shell` calls with `commands` arrays, into command trajectory steps. For traced tool calls, Promptfoo recognizes both generic attributes such as `tool.name` and `tool.arguments` and framework-specific ones such as Vercel AI SDK's `ai.toolCall.name`, `ai.toolCall.args`, `ai.toolCall.arguments`, and `ai.toolCall.input`. If you only need raw span counts, durations, or error detection, use [`trace-span-count`](/docs/configuration/expected-outputs/deterministic/#trace-span-count), [`trace-span-duration`](/docs/configuration/expected-outputs/deterministic/#trace-span-duration), or [`trace-error-spans`](/docs/configuration/expected-outputs/deterministic/#trace-error-spans).
+Use trajectory assertions when your spans identify tools, commands, searches, reasoning steps, or messages. artef also normalizes common command-like tool spans, including OpenAI Agents SDK `exec_command` calls with `cmd` arguments and `shell` calls with `commands` arrays, into command trajectory steps. For traced tool calls, artef recognizes both generic attributes such as `tool.name` and `tool.arguments` and framework-specific ones such as Vercel AI SDK's `ai.toolCall.name`, `ai.toolCall.args`, `ai.toolCall.arguments`, and `ai.toolCall.input`. If you only need raw span counts, durations, or error detection, use [`trace-span-count`](/docs/configuration/expected-outputs/deterministic/#trace-span-count), [`trace-span-duration`](/docs/configuration/expected-outputs/deterministic/#trace-span-duration), or [`trace-error-spans`](/docs/configuration/expected-outputs/deterministic/#trace-error-spans).
 
 ### Turn marker spans {#per-llm-turn-spans}
 
@@ -264,7 +264,7 @@ Several first-party providers expose turn marker spans to trace assertions. Some
 | `anthropic:claude-agent-sdk`     | `gen_ai.turn *`                            | One `assistant` message from the SDK stream; an internal LLM round (includes subagent rounds — see the caveat below)                    |
 | `azure:foundry-agent`            | `gen_ai.turn *`                            | One Responses API invocation in the function-call loop; an internal LLM round (cache hits emit no turn span — see the caveat below)     |
 | `openai:agents` (TypeScript)     | `response *` (preferred) or `generation *` | `openai-agents-js` emits `response <id>` per LLM round; `generation *` is also produced when the SDK includes a `generation`-typed span |
-| `openai-agents` Python (example) | `turn *` (preferred) or `response *`       | `promptfoo_tracing.py` emits `turn N <agent>` per LLM round, plus `response <id>`                                                       |
+| `openai-agents` Python (example) | `turn *` (preferred) or `response *`       | `artef_tracing.py` emits `turn N <agent>` per LLM round, plus `response <id>`                                                       |
 | Google ADK (via `google.adk`)    | `call_llm`                                 | Emitted by ADK's built-in OpenTelemetry instrumentation                                                                                 |
 | `openai:codex-sdk`               | `gen_ai.turn *`                            | One SDK `thread.runStreamed()` turn, including its intermediate tool items                                                              |
 | `openai:codex-app-server`        | `gen_ai.turn *`                            | One app-server `turn/start` lifecycle, including its internal model generations and tool items                                          |
@@ -345,9 +345,9 @@ secrets in test variables when traces are retained.
 
 `redactAttributes` is applied by the **OTLP HTTP receiver** as spans are ingested over
 `/v1/traces` and `/v1/logs`, and to traces fetched through a configured **trace provider**
-before they are saved. Spans emitted by Promptfoo's **built-in provider instrumentation**
+before they are saved. Spans emitted by artef's **built-in provider instrumentation**
 are exported in-process and are **not** filtered by `redactAttributes`; values like
-`promptfoo.request.body` and request headers can therefore be stored in the local trace DB.
+`artef.request.body` and request headers can therefore be stored in the local trace DB.
 A built-in sanitizer masks common credential-shaped keys (`authorization`, `api_key`,
 `token`, `password`, `cookie`, …) when traces are read, but does not prevent those values
 from being stored. Don't rely on `redactAttributes` alone to cover built-in provider spans.
@@ -359,13 +359,13 @@ of days from the local store at the **start of each traced eval**. The default i
 applied only when a `storage` block is present — omit `storage` to keep traces indefinitely, or
 set `retentionDays` to `0` or less to disable pruning. Pruning permanently deletes rows.
 
-When several evaluations run in the same process (e.g. the Promptfoo server), they **share a
+When several evaluations run in the same process (e.g. the artef server), they **share a
 single OTLP receiver**: it starts on first use and stops when the last evaluation finishes. The
 receiver's `host`, `port`, and `acceptFormats` are fixed at first startup, so a later overlapping
 evaluation can't change them; per-evaluation `redactAttributes` and `commandToolNames`, however,
 are tracked per trace so each evaluation's traces use its own policy.
 
-For traces created by an evaluation, Promptfoo stores the evaluation's redaction and
+For traces created by an evaluation, artef stores the evaluation's redaction and
 `commandToolNames` policy with that trace so overlapping evaluations do not change one
 another's results — each trace is redacted with its own policy, not the active receiver's.
 Traces created only when spans arrive at the receiver (no evaluation row) use the
@@ -379,7 +379,7 @@ different container or host and must reach the receiver over the network, set
 
 ### Supported Formats
 
-Promptfoo's OTLP receiver accepts traces in both **JSON** and **protobuf** formats:
+artef's OTLP receiver accepts traces in both **JSON** and **protobuf** formats:
 
 | Format   | Content-Type             | Use Case                                        |
 | -------- | ------------------------ | ----------------------------------------------- |
@@ -394,7 +394,7 @@ You can also configure tracing via environment variables:
 
 ```bash
 # Enable tracing
-export PROMPTFOO_TRACING_ENABLED=true
+export artef_TRACING_ENABLED=true
 
 # Configure OTLP endpoint (for providers)
 export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
@@ -425,16 +425,16 @@ tracing:
 
 ### Pulling Traces From Another Service
 
-If your application already sends traces to another service, you do not need to change where they go. Promptfoo can look up the trace for each request and bring those steps into your eval.
+If your application already sends traces to another service, you do not need to change where they go. artef can look up the trace for each request and bring those steps into your eval.
 
 Here's how it works:
 
-1. Promptfoo includes a `traceparent` header when it calls your application.
+1. artef includes a `traceparent` header when it calls your application.
 2. Your application adds its own steps to that trace and sends them to its usual tracing service.
-3. After the response, Promptfoo pulls the matching trace from that service.
-4. Promptfoo uses the trace in assertions, grading, and red-team strategies, and shows it alongside your results.
+3. After the response, artef pulls the matching trace from that service.
+4. artef uses the trace in assertions, grading, and red-team strategies, and shows it alongside your results.
 
-To pull traces from your tracing service, add it under `tracing.provider` in your configuration. The provider ID identifies the service, and its settings tell Promptfoo how to connect.
+To pull traces from your tracing service, add it under `tracing.provider` in your configuration. The provider ID identifies the service, and its settings tell artef how to connect.
 
 #### Grafana Tempo
 
@@ -454,17 +454,17 @@ tracing:
     timeout: 10000
 ```
 
-After your application responds, Promptfoo waits for `queryDelay` before looking up its trace. Set this long enough for your application to send its spans and for Tempo to make them available. Both `queryDelay` and `timeout` are measured in milliseconds. Tempo supports bearer tokens, username and password authentication, and custom headers such as `X-Scope-OrgID`.
+After your application responds, artef waits for `queryDelay` before looking up its trace. Set this long enough for your application to send its spans and for Tempo to make them available. Both `queryDelay` and `timeout` are measured in milliseconds. Tempo supports bearer tokens, username and password authentication, and custom headers such as `X-Scope-OrgID`.
 
-Use environment variables for tokens, passwords, and authentication headers. Promptfoo keeps these references when it saves an eval, so it can resolve them again if you resume the run. Literal credentials are removed from saved evals and exported results.
+Use environment variables for tokens, passwords, and authentication headers. artef keeps these references when it saves an eval, so it can resolve them again if you resume the run. Literal credentials are removed from saved evals and exported results.
 
-Set `endpoint` to Tempo's base URL, such as `https://tempo.example.com/tempo`. The URL cannot contain credentials, query parameters, or fragments because Promptfoo appends its trace lookup path to that address. Put credentials under `auth` and tenant settings in `headers` instead.
+Set `endpoint` to Tempo's base URL, such as `https://tempo.example.com/tempo`. The URL cannot contain credentials, query parameters, or fragments because artef appends its trace lookup path to that address. Put credentials under `auth` and tenant settings in `headers` instead.
 
-Your application must carry the `traceparent` header into its own traces so Promptfoo can find the right request. Attributes you list in `tracing.otlp.http.redactAttributes` are redacted before fetched traces are saved, including matching values echoed in span names or error messages. Common credential-shaped attributes are masked when traces are displayed or exported; add them to `redactAttributes` if they must also be kept out of local storage.
+Your application must carry the `traceparent` header into its own traces so artef can find the right request. Attributes you list in `tracing.otlp.http.redactAttributes` are redacted before fetched traces are saved, including matching values echoed in span names or error messages. Common credential-shaped attributes are masked when traces are displayed or exported; add them to `redactAttributes` if they must also be kept out of local storage.
 
 #### Braintrust
 
-Promptfoo can retrieve application spans from a Braintrust project's logs:
+artef can retrieve application spans from a Braintrust project's logs:
 
 ```yaml
 tracing:
@@ -477,7 +477,7 @@ tracing:
       token: '{{ env.BRAINTRUST_API_KEY }}'
 ```
 
-Braintrust's native trace identifiers are not necessarily the same as OpenTelemetry trace IDs. Your application must copy the trace ID from Promptfoo's `traceparent` into Braintrust span metadata as `trace_id`, `promptfoo_trace_id`, or `promptfoo.trace_id`. Promptfoo then queries the Braintrust project's recent traces and imports all spans belonging to the matching trace.
+Braintrust's native trace identifiers are not necessarily the same as OpenTelemetry trace IDs. Your application must copy the trace ID from artef's `traceparent` into Braintrust span metadata as `trace_id`, `artef_trace_id`, or `artef.trace_id`. artef then queries the Braintrust project's recent traces and imports all spans belonging to the matching trace.
 
 #### Langfuse
 
@@ -494,13 +494,13 @@ tracing:
       password: '{{ env.LANGFUSE_SECRET_KEY }}'
 ```
 
-Promptfoo queries Langfuse's v2 Observations API using the OpenTelemetry trace ID propagated in `traceparent`. It preserves original OpenTelemetry span and resource attributes, normalizes generation, embedding, tool, agent, workflow, and retrieval observations to GenAI semantic conventions, and imports parent-child relationships, inputs, outputs, models, token usage, and costs. Langfuse Python SDK 4.7.0+, JavaScript SDK 5.4.0+, or an OpenTelemetry exporter configured with the `x-langfuse-ingestion-version: 4` header makes new observations available in real time; older ingestion paths can delay visibility by up to ten minutes. This delay makes earlier versions of Langfuse unusable for fetching traces during an evaluation.
+artef queries Langfuse's v2 Observations API using the OpenTelemetry trace ID propagated in `traceparent`. It preserves original OpenTelemetry span and resource attributes, normalizes generation, embedding, tool, agent, workflow, and retrieval observations to GenAI semantic conventions, and imports parent-child relationships, inputs, outputs, models, token usage, and costs. Langfuse Python SDK 4.7.0+, JavaScript SDK 5.4.0+, or an OpenTelemetry exporter configured with the `x-langfuse-ingestion-version: 4` header makes new observations available in real time; older ingestion paths can delay visibility by up to ten minutes. This delay makes earlier versions of Langfuse unusable for fetching traces during an evaluation.
 
 ## Provider Implementation Guide
 
 ### JavaScript/TypeScript
 
-For complete provider implementation details, see the [JavaScript Provider documentation](/docs/providers/custom-api/). For tracing-specific examples, see the [OpenTelemetry tracing example](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-opentelemetry/javascript).
+For complete provider implementation details, see the [JavaScript Provider documentation](/docs/providers/custom-api/). For tracing-specific examples, see the [OpenTelemetry tracing example](https://github.com/artef/artef/tree/main/examples/integration-opentelemetry/javascript).
 
 Key points:
 
@@ -509,11 +509,11 @@ Key points:
 - Create child spans for each operation
 - Set appropriate span attributes and status
 - Add tool-oriented attributes like `tool.name` or `function.name` when you want to use trajectory assertions
-- If you use Vercel AI SDK telemetry for tool calls, Promptfoo can normalize `ai.toolCall.name` plus the matching `ai.toolCall.args` / `ai.toolCall.arguments` / `ai.toolCall.input` attributes into trajectory tool steps
+- If you use Vercel AI SDK telemetry for tool calls, artef can normalize `ai.toolCall.name` plus the matching `ai.toolCall.args` / `ai.toolCall.arguments` / `ai.toolCall.input` attributes into trajectory tool steps
 
 ### Python
 
-For complete provider implementation details, see the [Python Provider documentation](/docs/providers/python/). For a working example with protobuf tracing, see the [Python OpenTelemetry tracing example](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-opentelemetry/python). For OpenAI Agents SDK workflows, use the built-in [JavaScript provider](/docs/providers/openai-agents) or the [Python SDK guide](/docs/guides/evaluate-openai-agents-python), depending on which SDK you are testing.
+For complete provider implementation details, see the [Python Provider documentation](/docs/providers/python/). For a working example with protobuf tracing, see the [Python OpenTelemetry tracing example](https://github.com/artef/artef/tree/main/examples/integration-opentelemetry/python). For OpenAI Agents SDK workflows, use the built-in [JavaScript provider](/docs/providers/openai-agents) or the [Python SDK guide](/docs/guides/evaluate-openai-agents-python), depending on which SDK you are testing.
 
 :::note
 
@@ -549,11 +549,11 @@ def call_api(prompt, options, context):
     return {"output": your_llm_call(prompt)}
 ```
 
-If you only need provider-level timing for a Python provider, enable the wrapper OTEL path by installing the Python OpenTelemetry packages and setting `PROMPTFOO_ENABLE_OTEL=true`. Add custom child spans only when you want internal workflow visibility such as tools, searches, or multi-step agent trajectories.
+If you only need provider-level timing for a Python provider, enable the wrapper OTEL path by installing the Python OpenTelemetry packages and setting `artef_ENABLE_OTEL=true`. Add custom child spans only when you want internal workflow visibility such as tools, searches, or multi-step agent trajectories.
 
 ## Trace Visualization
 
-Promptfoo includes a built-in trace viewer that displays all collected telemetry data. Since Promptfoo functions as an OTLP receiver, you can view traces directly without configuring external tools like Jaeger or Grafana Tempo.
+artef includes a built-in trace viewer that displays all collected telemetry data. Since artef functions as an OTLP receiver, you can view traces directly without configuring external tools like Jaeger or Grafana Tempo.
 
 The web UI displays traces as a hierarchical timeline showing:
 
@@ -589,9 +589,9 @@ Click the expand icon on any span to reveal a detailed attributes panel showing:
 - **Start** and **End** timestamps with precision
 - **Duration** in a human-readable format
 - **Status** (OK, ERROR, or UNSET)
-- **Span attributes** including GenAI attributes, custom attributes, and Promptfoo-specific data
+- **Span attributes** including GenAI attributes, custom attributes, and artef-specific data
 
-This is useful for inspecting the full request/response bodies (`promptfoo.request.body` and `promptfoo.response.body`) and debugging provider behavior.
+This is useful for inspecting the full request/response bodies (`artef.request.body` and `artef.response.body`) and debugging provider behavior.
 
 Trace reads redact credential-like attribute keys such as authorization headers, cookies, API keys, tokens, secrets, and passwords before displaying or exporting spans. GenAI token counters such as `gen_ai.usage.input_tokens` and application token counters such as `llm.usage.prompt_tokens` and `llm.usage.completion_tokens` remain visible. Avoid placing secrets in custom span attributes because raw attributes may still be retained in the local trace store for internal evaluation workflows.
 
@@ -729,12 +729,12 @@ const extractedContext = propagation.extract(context.active(), request.headers);
 If you see `context.active is not a function`, rename the OpenTelemetry import:
 
 ```javascript
-// Avoid conflict with promptfoo context parameter
+// Avoid conflict with artef context parameter
 const { context: otelContext } = require('@opentelemetry/api');
 
-async callApi(prompt, promptfooContext) {
+async callApi(prompt, artefContext) {
   // Use otelContext for OpenTelemetry
-  // Use promptfooContext for Promptfoo's context
+  // Use artefContext for artef's context
 }
 ```
 
@@ -749,11 +749,11 @@ async callApi(prompt, promptfooContext) {
 Enable debug logs to troubleshoot:
 
 ```bash
-# Promptfoo debug logs
-DEBUG=promptfoo:* promptfoo eval
+# artef debug logs
+DEBUG=artef:* artef eval
 
 # OpenTelemetry debug logs
-OTEL_LOG_LEVEL=debug promptfoo eval
+OTEL_LOG_LEVEL=debug artef eval
 ```
 
 ## Integration Examples
@@ -828,7 +828,7 @@ This creates a feedback loop where:
 
 1. Attack strategy sends a prompt to your application
 2. Your application processes the request, emitting trace spans (LLM calls, guardrails, tool executions, errors)
-3. Promptfoo captures these traces
+3. artef captures these traces
 4. **Traces are formatted and fed back to the attack strategy** for the next iteration
 5. The attack strategy uses this information to craft a better attack
 
@@ -867,7 +867,7 @@ The attacker can now craft a follow-up attack that:
 
 ### Configuration
 
-Enable red team tracing in your `promptfooconfig.yaml`:
+Enable red team tracing in your `artefconfig.yaml`:
 
 ```yaml
 tracing:
@@ -889,7 +889,7 @@ redteam:
     - jailbreak # Iterative strategy that benefits from trace feedback
 ```
 
-Promptfoo automatically selects spans that describe model calls, tool executions, guardrail
+artef automatically selects spans that describe model calls, tool executions, guardrail
 decisions, or errors. It recognizes OpenTelemetry `gen_ai.*` attributes, common tool and
 guardrail attributes, and older `llm.*` attributes. Useful spans are included even when the
 instrumentation marks them as internal, while ordinary HTTP requests and framework handlers
@@ -910,7 +910,7 @@ redteam:
 ```
 
 Span names come from your application's instrumentation, so choose patterns that match the
-names in your traces. An explicit filter can also include an operation that Promptfoo would
+names in your traces. An explicit filter can also include an operation that artef would
 otherwise leave out.
 
 ### Strategy-Specific Configuration
@@ -935,15 +935,15 @@ redteam:
 
 ### Example
 
-See the [red team tracing example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-tracing-example) for a complete working implementation.
+See the [red team tracing example](https://github.com/artef/artef/tree/main/examples/redteam-tracing-example) for a complete working implementation.
 
 For more details on red team testing with tracing, see [How to Red Team LLM Agents](/docs/red-team/agents#trace-based-testing-glass-box).
 
 ## Next Steps
 
-- Explore the [OpenTelemetry tracing example (JavaScript)](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-opentelemetry/javascript)
-- Explore the [OpenTelemetry tracing example (Python)](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-opentelemetry/python) - uses protobuf format
-- Try the [red team tracing example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-tracing-example)
+- Explore the [OpenTelemetry tracing example (JavaScript)](https://github.com/artef/artef/tree/main/examples/integration-opentelemetry/javascript)
+- Explore the [OpenTelemetry tracing example (Python)](https://github.com/artef/artef/tree/main/examples/integration-opentelemetry/python) - uses protobuf format
+- Try the [red team tracing example](https://github.com/artef/artef/tree/main/examples/redteam-tracing-example)
 - Set up forwarding to your observability platform
 - Add custom instrumentation for your use case
 - Use traces to optimize provider performance

@@ -1,4 +1,4 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
@@ -107,7 +107,7 @@ describe('TestCaseGenerateButton', () => {
       expect(screen.getByRole('tooltip')).toHaveTextContent('Generate test case');
     });
 
-    it('should display "Requires Promptfoo Cloud connection" tooltip when API is not connected', async () => {
+    it('should display "Requires artef Cloud connection" tooltip when API is not connected', async () => {
       const user = userEvent.setup();
       mockUseApiHealth.mockReturnValue({
         data: { status: 'disconnected', message: null },
@@ -126,7 +126,7 @@ describe('TestCaseGenerateButton', () => {
 
       await waitFor(() => {
         expect(screen.getByRole('tooltip')).toHaveTextContent(
-          'Requires Promptfoo Cloud connection',
+          'Requires artef Cloud connection',
         );
       });
     });

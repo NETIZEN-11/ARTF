@@ -1,4 +1,4 @@
-# integration-slack (Slack Integration)
+﻿# integration-slack (Slack Integration)
 
 This example shows how to collect human feedback via Slack for evaluating AI responses.
 
@@ -10,12 +10,12 @@ This example shows how to collect human feedback via Slack for evaluating AI res
    npm install @slack/web-api@^8
    ```
 
-   Slack Web API v8 supports `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` through Promptfoo's Slack provider.
+   Slack Web API v8 supports `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` through artef's Slack provider.
 
 2. **Create a Slack App**:
    - Go to https://api.slack.com/apps
    - Click "Create New App" → "From scratch"
-   - Give it a name (e.g., "Promptfoo Evaluator")
+   - Give it a name (e.g., "artef Evaluator")
    - Select your workspace
 
 3. **Add Bot Token Scopes**:
@@ -48,14 +48,14 @@ This example shows how to collect human feedback via Slack for evaluating AI res
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-slack
+npx artef@latest init --example integration-slack
 cd integration-slack
 ```
 
-Then update the channel ID in `promptfooconfig.yaml` and run:
+Then update the channel ID in `artefconfig.yaml` and run:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Configuration
@@ -85,4 +85,4 @@ In Slack:
 
 ## Advanced Usage
 
-For more advanced configurations (specific user feedback, timeout settings, etc.), see the [Slack provider documentation](https://promptfoo.dev/docs/providers/slack).
+For more advanced configurations (specific user feedback, timeout settings, etc.), see the [Slack provider documentation](https://artef.dev/docs/providers/slack).

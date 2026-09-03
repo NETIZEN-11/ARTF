@@ -1,4 +1,4 @@
-import confirm from '@inquirer/confirm';
+﻿import confirm from '@inquirer/confirm';
 import { Command } from 'commander';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { configCommand } from '../../src/commands/config';
@@ -46,7 +46,7 @@ describe('config command', () => {
       expect(setUserEmail).not.toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledWith(
         expect.stringContaining(
-          "Cannot update email while logged in. Email is managed through 'promptfoo auth login'",
+          "Cannot update email while logged in. Email is managed through 'artef auth login'",
         ),
       );
       expect(process.exitCode).toBe(1);
@@ -116,7 +116,7 @@ describe('config command', () => {
       expect(setUserEmail).not.toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledWith(
         expect.stringContaining(
-          "Cannot update email while logged in. Email is managed through 'promptfoo auth login'",
+          "Cannot update email while logged in. Email is managed through 'artef auth login'",
         ),
       );
       expect(process.exitCode).toBe(1);
@@ -258,7 +258,7 @@ describe('config command', () => {
 
       // Verify message was shown
       expect(logger.info).toHaveBeenCalledWith(
-        'No email set. Use "promptfoo config set email <email>" to set one.',
+        'No email set. Use "artef config set email <email>" to set one.',
       );
     });
 
@@ -278,7 +278,7 @@ describe('config command', () => {
       await getEmailCmd?.parseAsync(['node', 'test']);
 
       expect(logger.info).toHaveBeenCalledWith(
-        "Email is managed through 'promptfoo auth login'. Run 'promptfoo auth whoami' to view the current account.",
+        "Email is managed through 'artef auth login'. Run 'artef auth whoami' to view the current account.",
       );
     });
   });

@@ -1,6 +1,6 @@
-# Test Suite
+﻿# Test Suite
 
-**What this is:** Vitest-based test suite for core promptfoo functionality.
+**What this is:** Vitest-based test suite for core artef functionality.
 
 ## Running Tests
 
@@ -389,5 +389,5 @@ it('retries after delay', async () => {
 - Clean up any test data or mocks after each test
 - Run the full test suite before committing changes
 - Test failures should be deterministic
-- For database unit tests, use the shared in-memory DB + schema-reset helpers; use isolated `PROMPTFOO_CONFIG_DIR` only for file-backed persistence, CLI, resume, WAL, or path-behavior tests — see `src/database/AGENTS.md`
+- For database unit tests, use the shared in-memory DB + schema-reset helpers; use isolated `artef_CONFIG_DIR` only for file-backed persistence, CLI, resume, WAL, or path-behavior tests — see `src/database/AGENTS.md`
 - **Use fake timers** for any code involving `setTimeout`, `setInterval`, or timing-sensitive logic

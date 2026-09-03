@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -299,7 +299,7 @@ const TestSection: React.FC<TestSectionProps> = ({
                             <Info className="size-3.5 cursor-help text-muted-foreground" />
                           </TooltipTrigger>
                           <TooltipContent className="text-sm">
-                            This is what promptfoo will use for evaluation. Configure the response
+                            This is what artef will use for evaluation. Configure the response
                             parser if this isn't the plain text output from your API.
                           </TooltipContent>
                         </Tooltip>

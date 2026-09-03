@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 
 export const AGENT_FRAMEWORKS = [
   'langchain',
@@ -15,9 +15,9 @@ export const AGENT_FRAMEWORKS = [
 export const AGENT_TEMPLATE = `import os
 
 """
-GENERIC AGENT TEMPLATE FOR PROMPTFOO
+GENERIC AGENT TEMPLATE FOR artef
 This template works with any Python-based agent framework. Simply implement 
-the call_api function below to connect your agent to promptfoo's evaluation system.
+the call_api function below to connect your agent to artef's evaluation system.
 """
 
 # TODO: Import your agent framework libraries here
@@ -28,14 +28,14 @@ the call_api function below to connect your agent to promptfoo's evaluation syst
 
 def call_api(prompt, options, context):
     """
-    Main entry point for promptfoo evaluation.
+    Main entry point for artef evaluation.
     
-    This is the only function you need to implement. Promptfoo will call this
+    This is the only function you need to implement. artef will call this
     function with test prompts and evaluate the responses.
     
     Args:
-        prompt (str): The input prompt/query from promptfoo
-        options (dict): Additional options from promptfoo config
+        prompt (str): The input prompt/query from artef
+        options (dict): Additional options from artef config
         context (dict): Evaluation context including test variables
     
     Returns:

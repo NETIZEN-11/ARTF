@@ -1,4 +1,4 @@
-import { OpenAiChatCompletionProvider } from '../openai/chat';
+﻿import { OpenAiChatCompletionProvider } from '../openai/chat';
 import { FireworksEmbeddingProvider } from './embedding';
 import {
   buildFireworksProviderConfig,
@@ -47,7 +47,7 @@ export function calculateFireworksCost(
   cached = false,
   cachedInputTokens = 0,
 ): number | undefined {
-  // Promptfoo's own response cache: nothing was sent to the provider, so
+  // artef's own response cache: nothing was sent to the provider, so
   // there's no incremental spend even when token counts are missing.
   if (cached) {
     return 0;

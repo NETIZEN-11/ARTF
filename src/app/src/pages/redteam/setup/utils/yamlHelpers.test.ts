@@ -1,10 +1,10 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { generateOrderedYaml } from './yamlHelpers';
 
 import type { Config } from '../types';
 
 // Mock the external dependencies
-vi.mock('@promptfoo/redteam/constants', () => ({
+vi.mock('@artef/redteam/constants', () => ({
   subCategoryDescriptions: {
     'plugin-1': 'Test plugin 1 description',
     'plugin-2': 'Test plugin 2 description',
@@ -12,7 +12,7 @@ vi.mock('@promptfoo/redteam/constants', () => ({
   },
 }));
 
-vi.mock('@promptfoo/redteam/sharedFrontend', () => ({
+vi.mock('@artef/redteam/sharedFrontend', () => ({
   getUnifiedConfig: vi.fn(),
 }));
 
@@ -20,7 +20,7 @@ vi.mock('js-yaml', () => ({
   dump: vi.fn(),
 }));
 
-import { getUnifiedConfig } from '@promptfoo/redteam/sharedFrontend';
+import { getUnifiedConfig } from '@artef/redteam/sharedFrontend';
 import * as yaml from 'js-yaml';
 
 describe('yamlHelpers', () => {
@@ -58,7 +58,7 @@ describe('yamlHelpers', () => {
       const result = generateOrderedYaml(mockConfig);
 
       expect(result).toContain('# yaml-language-server:');
-      expect(result).toContain('$schema=https://promptfoo.dev/config-schema.json');
+      expect(result).toContain('$schema=https://artef.dev/config-schema.json');
     });
 
     it('should add purpose to redteam config when provided', () => {

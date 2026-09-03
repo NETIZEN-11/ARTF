@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_label: Testing Model Armor
-title: Testing Google Cloud Model Armor with Promptfoo
-description: Learn how to evaluate and tune Google Cloud Model Armor templates and floor settings for LLM safety using Promptfoo's red teaming and guardrail testing.
+title: Testing Google Cloud Model Armor with artef
+description: Learn how to evaluate and tune Google Cloud Model Armor templates and floor settings for LLM safety using artef's red teaming and guardrail testing.
 keywords:
   [
     google cloud model armor,
@@ -19,13 +19,13 @@ keywords:
 
 # Testing Google Cloud Model Armor
 
-Use Promptfoo to test [Model Armor](https://cloud.google.com/security-command-center/docs/model-armor-overview) templates against attacks and legitimate prompts before deployment. Model Armor is a Google Cloud service that screens LLM prompts and responses for security and safety risks across Vertex AI, Gemini, and other services.
+Use artef to test [Model Armor](https://cloud.google.com/security-command-center/docs/model-armor-overview) templates against attacks and legitimate prompts before deployment. Model Armor is a Google Cloud service that screens LLM prompts and responses for security and safety risks across Vertex AI, Gemini, and other services.
 
 ## Quick Start
 
-Start with a Vertex AI prompt template. Prompt-side blocks are the Model Armor signal that Promptfoo's Vertex provider normalizes today:
+Start with a Vertex AI prompt template. Prompt-side blocks are the Model Armor signal that artef's Vertex provider normalizes today:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vertex:gemini-2.5-flash
     config:
@@ -56,18 +56,18 @@ tests:
 Run with:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 `guardrails` passes when the target is not flagged. `not-guardrails` passes when the target is flagged. These assertions grade the returned signal; they do not prove whether an inspect-only policy blocked the request.
 
 ## How It Works
 
-Model Armor can screen prompts and responses. Promptfoo's Vertex provider currently grades the prompt-side signal; use the direct sanitization API for response-side assertions and filter-level details.
+Model Armor can screen prompts and responses. artef's Vertex provider currently grades the prompt-side signal; use the direct sanitization API for response-side assertions and filter-level details.
 
 ```text
 ┌─────────────┐     ┌─────────────┐     ┌─────────┐     ┌─────────────┐     ┌────────┐
-│  Promptfoo  │ ──▶ │ Model Armor │ ──▶ │   LLM   │ ──▶ │ Model Armor │ ──▶ │ Result │
+│  artef  │ ──▶ │ Model Armor │ ──▶ │   LLM   │ ──▶ │ Model Armor │ ──▶ │ Result │
 │   (tests)   │     │   (input)   │     │ (Gemini)│     │  (output)   │     │        │
 └─────────────┘     └─────────────┘     └─────────┘     └─────────────┘     └────────┘
 ```
@@ -158,7 +158,7 @@ The `promptTemplate` screens user prompts before they reach the model. The `resp
 
 Google uses different native signals for the two directions:
 
-- An input block returns `promptFeedback.blockReason: MODEL_ARMOR` with no candidates. Promptfoo normalizes this as `flagged: true` and `flaggedInput: true`.
+- An input block returns `promptFeedback.blockReason: MODEL_ARMOR` with no candidates. artef normalizes this as `flagged: true` and `flaggedInput: true`.
 - A response block returns a candidate with `finishReason: MODEL_ARMOR` and no content. This is distinct from the generic Gemini `SAFETY` finish reason.
 
 Prompt-side blocks can include an optional `blockReasonMessage`; response-side blocks contain no candidate content. Inline Vertex responses do not include detailed per-filter results. Use Cloud Logging or the direct sanitization API when you need the matching filter, confidence, or finding details.
@@ -167,7 +167,7 @@ Google documents that Vertex can skip Model Armor sanitization and continue when
 
 :::warning Response-side assertion limitation
 
-Promptfoo currently normalizes the Model Armor prompt-side signal. A response-side `finishReason: MODEL_ARMOR` follows the generic provider-error path and does not reach a regular `guardrails` assertion. Model Armor's Vertex integration is non-streaming. To grade response-template blocks today, call the sanitization API through a custom target and normalize its result.
+artef currently normalizes the Model Armor prompt-side signal. A response-side `finishReason: MODEL_ARMOR` follows the generic provider-error path and does not reach a regular `guardrails` assertion. Model Armor's Vertex integration is non-streaming. To grade response-template blocks today, call the sanitization API through a custom target and normalize its result.
 
 :::
 
@@ -280,7 +280,7 @@ Access tokens expire after 1 hour. For CI/CD, use service account keys or Worklo
 
 ### Configuration
 
-See the complete example in [`examples/provider-model-armor/promptfooconfig.yaml`](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-model-armor/promptfooconfig.yaml). The key configuration is:
+See the complete example in [`examples/provider-model-armor/artefconfig.yaml`](https://github.com/artef/artef/tree/main/examples/provider-model-armor/artefconfig.yaml). The key configuration is:
 
 ```yaml
 providers:
@@ -296,7 +296,7 @@ providers:
       transformResponse: file://transforms/sanitize-response.mjs
 ```
 
-The response transformer maps Model Armor's filter results to Promptfoo's guardrails format. See [`examples/provider-model-armor/transforms/sanitize-response.mjs`](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-model-armor/transforms/sanitize-response.mjs) for the implementation.
+The response transformer maps Model Armor's filter results to artef's guardrails format. See [`examples/provider-model-armor/transforms/sanitize-response.mjs`](https://github.com/artef/artef/tree/main/examples/provider-model-armor/transforms/sanitize-response.mjs) for the implementation.
 
 Both sanitize endpoints return the same `sanitizationResult` shape, so the finding direction cannot be inferred from the payload. The default export attributes findings to `flaggedInput` for `sanitizeUserPrompt`; when calling `sanitizeModelResponse`, point at the response-side export so findings attribute to `flaggedOutput`:
 
@@ -349,9 +349,9 @@ Treat `filterMatchState: MATCH_FOUND` as the policy signal only when the relevan
 Get started with the complete example:
 
 ```bash
-promptfoo init --example provider-model-armor
+artef init --example provider-model-armor
 cd provider-model-armor
-promptfoo eval
+artef eval
 ```
 
 ## See Also

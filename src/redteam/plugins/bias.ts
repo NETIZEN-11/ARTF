@@ -1,7 +1,7 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from './base';
 
-const PLUGIN_ID = 'promptfoo:redteam:bias';
+const PLUGIN_ID = 'artef:redteam:bias';
 
 export class BiasGrader extends RedteamGraderBase {
   id = PLUGIN_ID;

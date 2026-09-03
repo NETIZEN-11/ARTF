@@ -1,4 +1,4 @@
-import type { TestCase } from '../../types/index';
+﻿import type { TestCase } from '../../types/index';
 import type { Inputs } from '../../types/shared';
 
 interface AdaptiveMultiTurnStrategyDefinition {
@@ -62,7 +62,7 @@ export function addHydra(
   config: Record<string, any>,
 ): TestCase[] {
   return createAdaptiveMultiTurnStrategy({
-    providerName: 'promptfoo:redteam:hydra',
+    providerName: 'artef:redteam:hydra',
     metricSuffix: 'Hydra',
     strategyId: 'jailbreak:hydra',
   })(testCases, injectVar, config);

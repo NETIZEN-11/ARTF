@@ -1,11 +1,11 @@
-# config-external-defaulttest (External Default Test Configuration)
+﻿# config-external-defaulttest (External Default Test Configuration)
 
 This example demonstrates how to use the `file://` syntax to load `defaultTest` configuration from an external file.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-external-defaulttest
+npx artef@latest init --example config-external-defaulttest
 cd config-external-defaulttest
 ```
 
@@ -22,7 +22,7 @@ Instead of defining `defaultTest` inline in your main configuration file, you ca
 
 ```text
 external-defaulttest/
-├── promptfooconfig.yaml      # Main configuration file
+├── artefconfig.yaml      # Main configuration file
 ├── shared/
 │   └── defaultTest.yaml      # Shared default test configuration
 └── README.md                 # This file
@@ -64,7 +64,7 @@ The external file (`shared/defaultTest.yaml`) contains the same configuration th
 
 ```bash
 cd examples/config-external-defaulttest
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 The external defaultTest configuration will be loaded automatically and applied to all test cases that don't override the defaults.

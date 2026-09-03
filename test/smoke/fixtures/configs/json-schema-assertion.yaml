@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Config for testing contains-json with JSON Schema validation
 description: 'Smoke test - JSON schema validation via contains-json'
 

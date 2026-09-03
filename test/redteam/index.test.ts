@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import cliProgress from 'cli-progress';
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -1385,7 +1385,7 @@ describe('synthesize', () => {
       const mockIntentAction = vi.fn().mockResolvedValue([
         {
           vars: { prompt: 'intent1' },
-          assert: [{ type: 'promptfoo:redteam:intent', metric: 'Intent' }],
+          assert: [{ type: 'artef:redteam:intent', metric: 'Intent' }],
           metadata: {
             intent: 'intent1',
             pluginId: 'intent',
@@ -1394,7 +1394,7 @@ describe('synthesize', () => {
         },
         {
           vars: { prompt: 'intent2' },
-          assert: [{ type: 'promptfoo:redteam:intent', metric: 'Intent' }],
+          assert: [{ type: 'artef:redteam:intent', metric: 'Intent' }],
           metadata: {
             intent: 'intent2',
             pluginId: 'intent',
@@ -1406,7 +1406,7 @@ describe('synthesize', () => {
       const mockContractsAction = vi.fn().mockResolvedValue([
         {
           vars: { prompt: 'contract test' },
-          assert: [{ type: 'promptfoo:redteam:contracts', metric: 'Contracts' }],
+          assert: [{ type: 'artef:redteam:contracts', metric: 'Contracts' }],
           metadata: {
             pluginId: 'contracts',
           },
@@ -3161,7 +3161,7 @@ describe('Language configuration', () => {
           vars: { query: 'Test prompt' },
           metadata: {
             policy: policyText,
-            pluginId: 'promptfoo:redteam:policy',
+            pluginId: 'artef:redteam:policy',
           },
         },
       ]);
@@ -3176,7 +3176,7 @@ describe('Language configuration', () => {
         plugins: [{ id: 'policy', numTests: 1 }],
         prompts: ['Test prompt'],
         strategies: [{ id: 'goat' }],
-        targetIds: ['promptfoo://provider/target-123'],
+        targetIds: ['artef://provider/target-123'],
       });
 
       // Verify extractGoalFromPrompt was called with the policy
@@ -3198,7 +3198,7 @@ describe('Language configuration', () => {
       const mockPluginAction = vi.fn().mockResolvedValue([
         {
           vars: { query: 'Test prompt' },
-          metadata: { pluginId: 'promptfoo:redteam:policy' },
+          metadata: { pluginId: 'artef:redteam:policy' },
         },
       ]);
       vi.spyOn(Plugins, 'find').mockReturnValue({
@@ -3232,7 +3232,7 @@ describe('Language configuration', () => {
         {
           vars: { query: 'Test prompt' },
           metadata: {
-            pluginId: 'promptfoo:redteam:other',
+            pluginId: 'artef:redteam:other',
           },
         },
       ]);

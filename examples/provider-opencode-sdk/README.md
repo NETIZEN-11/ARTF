@@ -1,9 +1,9 @@
-# provider-opencode-sdk (OpenCode SDK Examples)
+﻿# provider-opencode-sdk (OpenCode SDK Examples)
 
 The OpenCode SDK provider runs agentic evals through OpenCode, an open-source coding agent with support for hosted and local model providers.
 
 ```bash
-npx promptfoo@latest init --example provider-opencode-sdk
+npx artef@latest init --example provider-opencode-sdk
 cd provider-opencode-sdk
 ```
 
@@ -27,9 +27,9 @@ Configure provider credentials in your shell or `.env`. For example:
 export OPENAI_API_KEY=your_api_key_here
 ```
 
-If promptfoo starts the OpenCode server for you, you can also set `config.apiKey` together with `config.provider_id`. If you use `baseUrl`, the target OpenCode server must already be authenticated.
+If artef starts the OpenCode server for you, you can also set `config.apiKey` together with `config.provider_id`. If you use `baseUrl`, the target OpenCode server must already be authenticated.
 
-If you are validating changes inside this repository, use `npm run local -- eval ...` from the repo root. If you initialized an example with `npx promptfoo@latest init --example provider-opencode-sdk`, run `npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache` from the example directory.
+If you are validating changes inside this repository, use `npm run local -- eval ...` from the repo root. If you initialized an example with `npx artef@latest init --example provider-opencode-sdk`, run `npx artef@latest eval -c artefconfig.yaml --no-cache` from the example directory.
 
 The shipped examples use OpenAI for reproducible QA, but the provider itself is not OpenAI-specific. OpenCode can route to Anthropic, Google, Ollama, LM Studio, and other providers configured in OpenCode.
 
@@ -45,7 +45,7 @@ Chat-only usage in a temporary directory with no filesystem tools.
 
 ```bash
 cd basic
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
+npx artef@latest eval -c artefconfig.yaml --no-cache
 ```
 
 ### Working Directory
@@ -58,7 +58,7 @@ Read-only filesystem access with `working_dir`, using the default `read`, `grep`
 
 ```bash
 cd working-dir
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
+npx artef@latest eval -c artefconfig.yaml --no-cache
 ```
 
 ### Structured Output
@@ -71,12 +71,12 @@ Provider-enforced JSON Schema output using the OpenCode `format` request option.
 
 ```bash
 cd structured-output
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
+npx artef@latest eval -c artefconfig.yaml --no-cache
 ```
 
 ### Permissions
 
-Session-level permission rules mixing simple and pattern-based entries. Promptfoo converts the object config into the `PermissionRuleset` array the OpenCode v2 API expects.
+Session-level permission rules mixing simple and pattern-based entries. artef converts the object config into the `PermissionRuleset` array the OpenCode v2 API expects.
 
 **Location**: `./permissions/`
 
@@ -84,7 +84,7 @@ Session-level permission rules mixing simple and pattern-based entries. Promptfo
 
 ```bash
 cd permissions
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
+npx artef@latest eval -c artefconfig.yaml --no-cache
 ```
 
 ## Provider Configuration
@@ -98,7 +98,7 @@ providers:
       provider_id: openai
       model: gpt-4o-mini
 
-      # Optional: pass credentials directly when promptfoo starts the server
+      # Optional: pass credentials directly when artef starts the server
       apiKey: '{{env.OPENAI_API_KEY}}'
 
       # Read-only local repo access

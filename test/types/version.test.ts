@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { VersionSchemas } from '../../src/types/api/version';
 
@@ -9,8 +9,8 @@ const baseResponse = {
   selfHosted: false,
   isNpx: true,
   updateCommands: {
-    primary: 'npx promptfoo@latest',
-    alternative: 'npm install -g promptfoo@latest',
+    primary: 'npx artef@latest',
+    alternative: 'npm install -g artef@latest',
     commandType: 'npx' as const,
   },
   commandType: 'npx' as const,

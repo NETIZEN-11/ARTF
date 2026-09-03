@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -11,11 +11,11 @@ import {
 import { Input } from '@app/components/ui/input';
 import { Label } from '@app/components/ui/label';
 import { Textarea } from '@app/components/ui/textarea';
-import { categoryAliases, displayNameOverrides } from '@promptfoo/redteam/constants';
+import { categoryAliases, displayNameOverrides } from '@artef/redteam/constants';
 import { Minus, Plus } from 'lucide-react';
 import { useRedTeamConfig } from '../hooks/useRedTeamConfig';
-import type { Plugin } from '@promptfoo/redteam/constants';
-import type { PluginConfig } from '@promptfoo/redteam/types';
+import type { Plugin } from '@artef/redteam/constants';
+import type { PluginConfig } from '@artef/redteam/types';
 
 import type { LocalPluginConfig } from '../types';
 

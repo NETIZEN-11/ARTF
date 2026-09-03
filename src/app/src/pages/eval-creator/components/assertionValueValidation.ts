@@ -1,4 +1,4 @@
-import type { Assertion, AssertionType } from '@promptfoo/types';
+﻿import type { Assertion, AssertionType } from '@artef/types';
 
 const BASE_ASSERTION_TYPES = [
   'agent-rubric',
@@ -77,7 +77,7 @@ function isSupportedAssertionType(type: string): boolean {
     BASE_ASSERTION_TYPE_SET.has(type) ||
     (type.startsWith('not-') && BASE_ASSERTION_TYPE_SET.has(type.slice(4))) ||
     SPECIAL_ASSERTION_TYPES.has(type) ||
-    type.startsWith('promptfoo:redteam:')
+    type.startsWith('artef:redteam:')
   );
 }
 

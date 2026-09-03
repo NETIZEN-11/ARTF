@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Phase 5: Comprehensive provider instrumentation validation tests.
  *
  * These tests verify that OTEL tracing is correctly implemented across
@@ -19,7 +19,7 @@ import {
   GenAIAttributes,
   getCurrentTraceId,
   getTraceparent,
-  PromptfooAttributes,
+  artefAttributes,
   withGenAISpan,
 } from '../../src/tracing/genaiTracer';
 import { withTargetSpan } from '../../src/tracing/targetTracer';
@@ -194,10 +194,10 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
       const span = memoryExporter.getFinishedSpans()[0];
       expect(span.attributes[GenAIAttributes.USAGE_INPUT_TOKENS]).toBe(100);
       expect(span.attributes[GenAIAttributes.USAGE_OUTPUT_TOKENS]).toBe(50);
-      expect(span.attributes[PromptfooAttributes.USAGE_TOTAL_TOKENS]).toBe(150);
+      expect(span.attributes[artefAttributes.USAGE_TOTAL_TOKENS]).toBe(150);
     });
 
-    it('should capture Promptfoo response-cache tokens separately from provider prompt caching', async () => {
+    it('should capture artef response-cache tokens separately from provider prompt caching', async () => {
       const resultExtractor = (): GenAISpanResult => ({
         cacheHit: true,
         tokenUsage: {
@@ -220,7 +220,7 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
       );
 
       const span = memoryExporter.getFinishedSpans()[0];
-      expect(span.attributes[PromptfooAttributes.USAGE_CACHED_RESPONSE_TOKENS]).toBe(150);
+      expect(span.attributes[artefAttributes.USAGE_CACHED_RESPONSE_TOKENS]).toBe(150);
     });
 
     it('should capture reasoning tokens (OpenAI o1 models)', async () => {
@@ -275,8 +275,8 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
       );
 
       const span = memoryExporter.getFinishedSpans()[0];
-      expect(span.attributes[PromptfooAttributes.USAGE_ACCEPTED_PREDICTION_TOKENS]).toBe(25);
-      expect(span.attributes[PromptfooAttributes.USAGE_REJECTED_PREDICTION_TOKENS]).toBe(5);
+      expect(span.attributes[artefAttributes.USAGE_ACCEPTED_PREDICTION_TOKENS]).toBe(25);
+      expect(span.attributes[artefAttributes.USAGE_REJECTED_PREDICTION_TOKENS]).toBe(5);
     });
   });
 
@@ -528,7 +528,7 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
 
         expect(span.attributes[GenAIAttributes.PROVIDER_NAME]).toBe(providerName);
         expect(span.attributes[GenAIAttributes.REQUEST_MODEL]).toBe(model);
-        expect(span.attributes[PromptfooAttributes.PROVIDER_ID]).toBe(`${system}:${model}`);
+        expect(span.attributes[artefAttributes.PROVIDER_ID]).toBe(`${system}:${model}`);
         expect(span.status.code).toBe(SpanStatusCode.OK);
 
         memoryExporter.reset();
@@ -572,7 +572,7 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
     );
   });
 
-  describe('Promptfoo Context Attributes', () => {
+  describe('artef Context Attributes', () => {
     it('should capture eval ID', async () => {
       await withGenAISpan(
         {
@@ -586,7 +586,7 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
       );
 
       const span = memoryExporter.getFinishedSpans()[0];
-      expect(span.attributes[PromptfooAttributes.EVAL_ID]).toBe('eval-abc123');
+      expect(span.attributes[artefAttributes.EVAL_ID]).toBe('eval-abc123');
     });
 
     it('should capture test index', async () => {
@@ -602,7 +602,7 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
       );
 
       const span = memoryExporter.getFinishedSpans()[0];
-      expect(span.attributes[PromptfooAttributes.TEST_INDEX]).toBe(42);
+      expect(span.attributes[artefAttributes.TEST_INDEX]).toBe(42);
     });
 
     it('should capture prompt label', async () => {
@@ -618,7 +618,7 @@ describe('Phase 5: Provider Instrumentation Validation', () => {
       );
 
       const span = memoryExporter.getFinishedSpans()[0];
-      expect(span.attributes[PromptfooAttributes.PROMPT_LABEL]).toBe('summarization-v2');
+      expect(span.attributes[artefAttributes.PROMPT_LABEL]).toBe('summarization-v2');
     });
   });
 

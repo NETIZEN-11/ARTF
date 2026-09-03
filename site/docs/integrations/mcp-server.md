@@ -1,32 +1,32 @@
----
-title: Promptfoo MCP Server
-description: Deploy promptfoo as Model Context Protocol server enabling external AI agents to access evaluation and red teaming capabilities
+﻿---
+title: artef MCP Server
+description: Deploy artef as Model Context Protocol server enabling external AI agents to access evaluation and red teaming capabilities
 sidebar_label: MCP Server
 sidebar_position: 21
 ---
 
-# Promptfoo MCP Server
+# artef MCP Server
 
-Expose promptfoo's eval tools to AI agents via Model Context Protocol (MCP).
+Expose artef's eval tools to AI agents via Model Context Protocol (MCP).
 
 :::info Prerequisites
 
 - Node.js installed on your system
-- A promptfoo project with some evaluations (for testing the connection)
+- A artef project with some evaluations (for testing the connection)
 - Cursor IDE, Claude Desktop, or another MCP-compatible AI tool
-- The optional `@modelcontextprotocol/sdk` runtime package when your promptfoo install omits optional dependencies
+- The optional `@modelcontextprotocol/sdk` runtime package when your artef install omits optional dependencies
 
 :::
 
 For slim installs created with omitted optional dependencies, use a local install that includes
-both promptfoo and the MCP SDK:
+both artef and the MCP SDK:
 
 ```bash
-npm install promptfoo @modelcontextprotocol/sdk
+npm install artef @modelcontextprotocol/sdk
 ```
 
-When using that local slim-install setup, run the MCP commands below as `npx promptfoo ...`
-instead of `npx promptfoo@latest ...` so both packages resolve from the same project.
+When using that local slim-install setup, run the MCP commands below as `npx artef ...`
+instead of `npx artef@latest ...` so both packages resolve from the same project.
 
 ## Quick Start
 
@@ -34,10 +34,10 @@ instead of `npx promptfoo@latest ...` so both packages resolve from the same pro
 
 ```bash
 # For Cursor, Claude Desktop (STDIO transport)
-npx promptfoo@latest mcp --transport stdio
+npx artef@latest mcp --transport stdio
 
 # For web tools (HTTP transport)
-npx promptfoo@latest mcp --transport http --port 3100
+npx artef@latest mcp --transport http --port 3100
 ```
 
 ### 2. Configure Your AI Tool
@@ -47,10 +47,10 @@ npx promptfoo@latest mcp --transport http --port 3100
 ```json title=".cursor/mcp.json"
 {
   "mcpServers": {
-    "promptfoo": {
+    "artef": {
       "command": "npx",
-      "args": ["promptfoo@latest", "mcp", "--transport", "stdio"],
-      "description": "Promptfoo MCP server for LLM evaluation and testing"
+      "args": ["artef@latest", "mcp", "--transport", "stdio"],
+      "description": "artef MCP server for LLM evaluation and testing"
     }
   }
 }
@@ -58,9 +58,9 @@ npx promptfoo@latest mcp --transport http --port 3100
 
 :::warning Development vs Production Configuration
 
-**For regular usage:** Always use `npx promptfoo@latest` as shown above.
+**For regular usage:** Always use `npx artef@latest` as shown above.
 
-**For promptfoo contributors:** The repository's `.cursor/mcp.json` runs from source code for development. It requires the repo's dev dependencies and won't work elsewhere.
+**For artef contributors:** The repository's `.cursor/mcp.json` runs from source code for development. It requires the repo's dev dependencies and won't work elsewhere.
 
 :::
 
@@ -75,10 +75,10 @@ Config file locations:
 ```json title="claude_desktop_config.json"
 {
   "mcpServers": {
-    "promptfoo": {
+    "artef": {
       "command": "npx",
-      "args": ["promptfoo@latest", "mcp", "--transport", "stdio"],
-      "description": "Promptfoo MCP server for LLM evaluation and testing"
+      "args": ["artef@latest", "mcp", "--transport", "stdio"],
+      "description": "artef MCP server for LLM evaluation and testing"
     }
   }
 }
@@ -88,9 +88,9 @@ Config file locations:
 
 ### 3. Test the Connection
 
-After restarting your AI tool, you should see promptfoo tools available. Try asking:
+After restarting your AI tool, you should see artef tools available. Try asking:
 
-> "List my recent evaluations using the promptfoo tools"
+> "List my recent evaluations using the artef tools"
 
 ## Available Tools
 
@@ -114,7 +114,7 @@ After restarting your AI tool, you should see promptfoo tools available. Try ask
 
 ### Configuration & Testing
 
-- **`validate_promptfoo_config`** - Validate configuration files using the same logic as the CLI
+- **`validate_artef_config`** - Validate configuration files using the same logic as the CLI
 - **`test_provider`** - Test AI provider connectivity, credentials, and response quality
 - **`run_assertion`** - Test individual assertion rules against outputs for debugging
 
@@ -128,7 +128,7 @@ Ask your AI assistant:
 
 The AI will use these tools in sequence:
 
-1. `validate_promptfoo_config` - Check your configuration
+1. `validate_artef_config` - Check your configuration
 2. `list_evaluations` - Show recent runs
 3. `run_evaluation` - Execute with test case filtering, such as `{"start": 0, "end": 5}` for the first five zero-based test indices
 
@@ -173,7 +173,7 @@ Choose the appropriate transport based on your use case:
 
 ### 1. Start Small
 
-Begin with simple tools like `list_evaluations` and `validate_promptfoo_config` before moving to more complex operations.
+Begin with simple tools like `list_evaluations` and `validate_artef_config` before moving to more complex operations.
 
 ### 2. Use Filtering
 
@@ -205,29 +205,29 @@ When using redteam tools:
 **Server won't start:**
 
 ```bash
-# Verify promptfoo installation
-npx promptfoo@latest --version
+# Verify artef installation
+npx artef@latest --version
 
-# Check if you have a valid promptfoo project
-npx promptfoo@latest validate
+# Check if you have a valid artef project
+npx artef@latest validate
 
 # Test the MCP server manually
-npx promptfoo@latest mcp --transport stdio
+npx artef@latest mcp --transport stdio
 ```
 
 If the error says `@modelcontextprotocol/sdk` is required, install that optional runtime package
-alongside the promptfoo installation that runs the server. For example, add both packages to the
-same project before using a local `npx promptfoo ...` command:
+alongside the artef installation that runs the server. For example, add both packages to the
+same project before using a local `npx artef ...` command:
 
 ```bash
-npm install promptfoo @modelcontextprotocol/sdk
+npm install artef @modelcontextprotocol/sdk
 ```
 
 **Port conflicts (HTTP mode):**
 
 ```bash
 # Use a different port
-npx promptfoo@latest mcp --transport http --port 8080
+npx artef@latest mcp --transport http --port 8080
 
 # Check what's using port 3100
 lsof -i :3100  # macOS/Linux
@@ -246,7 +246,7 @@ netstat -ano | findstr :3100  # Windows
 **Tools not appearing:**
 
 1. Look for MCP or "tools" indicators in your AI tool's interface
-2. Try asking explicitly: "What promptfoo tools do you have access to?"
+2. Try asking explicitly: "What artef tools do you have access to?"
 3. Check your AI tool's logs for MCP connection errors
 
 ### Tool-Specific Errors
@@ -254,12 +254,12 @@ netstat -ano | findstr :3100  # Windows
 **"Eval not found":**
 
 - Use `list_evaluations` first to see available evaluation IDs
-- Ensure you're in a directory with promptfoo evaluation data
+- Ensure you're in a directory with artef evaluation data
 
 **"Config error":**
 
-- Run `validate_promptfoo_config` to check your configuration
-- Verify `promptfooconfig.yaml` exists and is valid
+- Run `validate_artef_config` to check your configuration
+- Verify `artefconfig.yaml` exists and is valid
 
 **"Provider error":**
 
@@ -289,22 +289,22 @@ const response = await fetch('http://localhost:3100/mcp', {
 
 ### Environment Variables
 
-The MCP server respects all promptfoo environment variables:
+The MCP server respects all artef environment variables:
 
 ```bash
 # Set provider API keys
 export OPENAI_API_KEY=sk-...
 export ANTHROPIC_API_KEY=sk-ant-...
 
-# Configure promptfoo behavior
-export PROMPTFOO_CONFIG_DIR=/path/to/configs
+# Configure artef behavior
+export artef_CONFIG_DIR=/path/to/configs
 
 # Start server with environment
-npx promptfoo@latest mcp --transport stdio
+npx artef@latest mcp --transport stdio
 ```
 
 ## Resources
 
 - [MCP Protocol Documentation](https://modelcontextprotocol.io)
-- [Promptfoo Documentation](https://promptfoo.dev)
-- [Example Configurations](https://github.com/promptfoo/promptfoo/tree/main/examples)
+- [artef Documentation](https://artef.dev)
+- [Example Configurations](https://github.com/artef/artef/tree/main/examples)

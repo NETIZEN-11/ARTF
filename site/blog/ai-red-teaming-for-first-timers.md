@@ -1,4 +1,4 @@
----
+﻿---
 title: 'AI Red Teaming for complete first-timers'
 description: 'A comprehensive guide to AI red teaming for beginners, covering the basics, culture building, and operational feedback loops'
 authors: [tabs]
@@ -46,16 +46,16 @@ As the name would suggest, the focus of AI red teaming is going to revolve aroun
 
 ## Evolving a red team practice
 
-Let's say you got an open-source tool like Promptfoo (😇) and want to evolve your red teaming activities. Here's how I'd level up from no testing at all to something robust:
+Let's say you got an open-source tool like artef (😇) and want to evolve your red teaming activities. Here's how I'd level up from no testing at all to something robust:
 
-| Level                                  | Description                                                           | Characteristics                                                                                                                                                   | Promptfoo Fit                                                             |
+| Level                                  | Description                                                           | Characteristics                                                                                                                                                   | artef Fit                                                             |
 | -------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | **0: No Testing**                      | No structured eval of prompts or outputs                              | - Risks mostly unobserved<br/>- Manual spot-checks                                                                                                                | Not in use                                                                |
 | **1: Ad-hoc testing**                  | Individual, uncoordinated efforts                                     | - Local/manual tests<br/>- No versioning or repeatability                                                                                                         | CLI, local YAML tests, irregular evals                                    |
 | **2: Test Suites**                     | Documented test cases; shared with team. Structure; excellent!        | - Prompts/scenarios versioned<br/>- Reusable YAML tests                                                                                                           | YAML + CLI + basic CI; sharing features                                   |
 | **3: CI/CD Integration**               | Testing integrated into workflows                                     | - Runs on PRs, model changes<br/>- Pass/fail gates, diffs                                                                                                         | GitHub Actions, thresholds, snapshot diffs                                |
 | **4: Feedback-driven risk management** | Testing drives decisions and accountability                           | - Links to risk registers, guardrails<br/>- Observability, regression tracking                                                                                    | Tags, severity scoring, test libraries, integrations                      |
-| **5: Comprehensive AI assurance**      | Red teaming integrated into full AI security and compliance pipelines | - Aligns with AI risk frameworks (e.g. OWASP)<br/>- Guardrails, model compliance, policy testing<br/>- Used by security, ML, and governance teams collaboratively | Promptfoo + guardrails + MCP + integrations with policy enforcement tools |
+| **5: Comprehensive AI assurance**      | Red teaming integrated into full AI security and compliance pipelines | - Aligns with AI risk frameworks (e.g. OWASP)<br/>- Guardrails, model compliance, policy testing<br/>- Used by security, ML, and governance teams collaboratively | artef + guardrails + MCP + integrations with policy enforcement tools |
 
 Around Level 2 is when engineers start to weave in AI security testing into the fabric of the development pipeline; by the time we've hit Level 3 we've hopefully developed a culture of testing and collaborative security. This culture is core to catching vulnerabilities before they hit production; a healthy culture will lead to an excellent feedback loop.
 
@@ -75,13 +75,13 @@ As previously mentioned, a strong red teaming will net the best results. Typical
 
 On that last point - many members of any audience interested in security testing will look for red teaming results - starting from [system cards](/blog/system-cards-go-hard/) all the way down the pipeline to post-production reports.
 
-The team at Promptfoo is invested in making red teaming a repeatable, sharable, and collaborative process.
+The team at artef is invested in making red teaming a repeatable, sharable, and collaborative process.
 
 ## Feedback loops: operational AI red teaming
 
 The following stages describe - practically - an example of AI red teaming operations that can be used to establish a loop. Loops will differ between use cases, particularly at an organizational level.
 
-| Stage             | Description                                                                                                        | Using Promptfoo                                                                                   |
+| Stage             | Description                                                                                                        | Using artef                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
 | **Inputs**        | - Declarative test cases <br/>- Team-submitted concerns, scenarios, or compliance requirements<br/>- User feedback | - Write and version test cases as YAML <br/> - Tag test cases by risk or compliance goal          |
 | **Execution**     | - Prompt test runs (manual or CI) <br/>- Adversarial probing                                                       | - Run tests manually/using CI<br/>- Explore variants                                              |
@@ -90,7 +90,7 @@ The following stages describe - practically - an example of AI red teaming opera
 
 :::tip
 
-Promptfoo works with enterprise clients to fit tooling into their workflows due to each project's custom requirements.
+artef works with enterprise clients to fit tooling into their workflows due to each project's custom requirements.
 
 :::
 
@@ -98,7 +98,7 @@ Promptfoo works with enterprise clients to fit tooling into their workflows due 
 
 Red teaming should not be optional for any system with LLM integration. Numerous are the rewards in making it a continuous, systemic process: software with a reputation of accountability and safety. That earns trust from users in both the product and the brand.
 
-Moving from reactive to resilient is the best thing you can do for the security of your product. If you're considering using a tool like Promptfoo to make your systems more robust—heck yes, go you! 🥳
+Moving from reactive to resilient is the best thing you can do for the security of your product. If you're considering using a tool like artef to make your systems more robust—heck yes, go you! 🥳
 
 ## See Also
 

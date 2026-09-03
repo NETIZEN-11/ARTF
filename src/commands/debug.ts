@@ -1,4 +1,4 @@
-import * as os from 'os';
+﻿import * as os from 'os';
 
 import chalk from 'chalk';
 import { getEnvBool, getEnvString } from '../envars';
@@ -34,8 +34,8 @@ async function doDebug(options: DebugOptions): Promise<void> {
       noProxy: getEnvString('NO_PROXY') || getEnvString('no_proxy'),
       nodeExtra: getEnvString('NODE_EXTRA_CA_CERTS'),
       nodeTls: getEnvString('NODE_TLS_REJECT_UNAUTHORIZED'),
-      telemetryDisabled: getEnvBool('PROMPTFOO_DISABLE_TELEMETRY'),
-      telemetryDebug: getEnvBool('PROMPTFOO_TELEMETRY_DEBUG'),
+      telemetryDisabled: getEnvBool('artef_DISABLE_TELEMETRY'),
+      telemetryDebug: getEnvBool('artef_TELEMETRY_DEBUG'),
     },
     configInfo: {
       defaultConfigPath: options.defaultConfigPath,
@@ -63,14 +63,14 @@ async function doDebug(options: DebugOptions): Promise<void> {
   }
 
   printBorder();
-  logger.info(chalk.bold('Promptfoo Debug Information'));
+  logger.info(chalk.bold('artef Debug Information'));
   printBorder();
   logger.info(JSON.stringify(debugInfo, null, 2));
   printBorder();
 
   logger.info(
     chalk.yellow(
-      'Please include this output when reporting issues on GitHub: https://github.com/promptfoo/promptfoo/issues',
+      'Please include this output when reporting issues on GitHub: https://github.com/artef/artef/issues',
     ),
   );
 }
@@ -83,6 +83,6 @@ export function debugCommand(
   program
     .command('debug')
     .description('Display debug information for troubleshooting')
-    .option('-c, --config [path]', 'Path to configuration file. Defaults to promptfooconfig.yaml')
+    .option('-c, --config [path]', 'Path to configuration file. Defaults to artefconfig.yaml')
     .action((opts) => doDebug({ ...opts, defaultConfig, defaultConfigPath }));
 }

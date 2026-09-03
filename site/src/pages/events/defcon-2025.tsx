@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -27,36 +27,36 @@ export default function Defcon2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo Party at DEF CON 33"
-      description="The Promptfoo party at DEF CON 33, where AI security researchers, hackers, and the open source community traded war stories over drinks."
+      title="artef Party at DEF CON 33"
+      description="The artef party at DEF CON 33, where AI security researchers, hackers, and the open source community traded war stories over drinks."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo Party at DEF CON 33 | AI Security Community" />
+        <meta property="og:title" content="artef Party at DEF CON 33 | AI Security Community" />
         <meta
           property="og:description"
-          content="The AI security party of DEF CON 33. Hackers, researchers, and the Promptfoo team, drinks and demos. August 9, 2025 in Las Vegas."
+          content="The AI security party of DEF CON 33. Hackers, researchers, and the artef team, drinks and demos. August 9, 2025 in Las Vegas."
         />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/events/defcon-2025.jpg" />
+        <meta property="og:image" content="https://www.artef.dev/img/events/defcon-2025.jpg" />
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="1024" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/defcon-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/defcon-2025" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Promptfoo" />
+        <meta property="og:site_name" content="artef" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Promptfoo Party at DEF CON 33" />
+        <meta name="twitter:title" content="artef Party at DEF CON 33" />
         <meta
           name="twitter:description"
           content="The AI security party of DEF CON 33. Drinks were on us. August 9, Las Vegas."
         />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/events/defcon-2025.jpg" />
-        <meta name="twitter:site" content="@promptfoo" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/defcon-2025.jpg" />
+        <meta name="twitter:site" content="@artef" />
 
         <meta
           name="keywords"
           content="DEF CON 33, DEF CON 2025, AI security party, hacker party, LLM security, prompt injection, red team, Las Vegas"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/defcon-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/defcon-2025" />
       </Head>
       <main className={styles.defconPage}>
         {/* Hero Section */}
@@ -67,8 +67,8 @@ export default function Defcon2025(): React.ReactElement {
             <div className={styles.heroContent}>
               <div className={styles.badge}>DEF CON 33</div>
               <h1 className={styles.heroTitle}>
-                <span className={styles.glitch} data-text="PROMPTFOO">
-                  PROMPTFOO
+                <span className={styles.glitch} data-text="artef">
+                  artef
                 </span>
                 <br />
                 <span className={styles.highlight}>PARTY</span>
@@ -265,7 +265,7 @@ export default function Defcon2025(): React.ReactElement {
                 <span className={styles.buttonGlitch}>SEE UPCOMING EVENTS</span>
               </Link>
               <Link to="/docs/intro" className={styles.secondaryButton}>
-                Learn About Promptfoo
+                Learn About artef
               </Link>
             </div>
           </div>

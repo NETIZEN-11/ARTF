@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Editor from '@app/components/ui/code-editor';
 import Prism from '@app/lib/prism';
@@ -33,7 +33,7 @@ const HttpStatusCodeTab: React.FC<HttpStatusCodeTabProps> = ({
         Customize which HTTP status codes are treated as successful responses. By default accepts
         200-299. See{' '}
         <a
-          href="https://www.promptfoo.dev/docs/providers/http/#error-handling"
+          href="https://www.artef.dev/docs/providers/http/#error-handling"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"

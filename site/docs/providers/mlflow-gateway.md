@@ -1,8 +1,8 @@
----
+﻿---
 title: MLflow AI Gateway
 sidebar_label: MLflow Gateway
 sidebar_position: 56
-description: Use MLflow AI Gateway with promptfoo to evaluate models through managed endpoints, server-side credentials, fallbacks, usage tracking, and budget policies.
+description: Use MLflow AI Gateway with artef to evaluate models through managed endpoints, server-side credentials, fallbacks, usage tracking, and budget policies.
 ---
 
 # MLflow AI Gateway
@@ -48,7 +48,7 @@ gateway. If your deployment accepts a Bearer token, set
 
 ## Basic usage
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - mlflow-gateway:my-chat-endpoint
 
@@ -67,7 +67,7 @@ Set the gateway URL:
 
 ```bash
 export MLFLOW_GATEWAY_URL=http://localhost:5000
-promptfoo eval
+artef eval
 ```
 
 ## Configuration options
@@ -109,7 +109,7 @@ providers:
 
 You can compare different gateway endpoints (backed by different models) in a single evaluation:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - mlflow-gateway:gpt-4o-endpoint
   - mlflow-gateway:claude-endpoint
@@ -125,7 +125,7 @@ tests:
 
 ## Model-graded assertions
 
-If your eval uses model-graded assertions such as `llm-rubric`, configure a text grader explicitly so promptfoo does not fall back to its default OpenAI grader:
+If your eval uses model-graded assertions such as `llm-rubric`, configure a text grader explicitly so artef does not fall back to its default OpenAI grader:
 
 ```yaml
 providers:
@@ -139,7 +139,7 @@ defaultTest:
 
 ## Gateway features
 
-These are configured in the MLflow UI — no promptfoo configuration changes needed:
+These are configured in the MLflow UI — no artef configuration changes needed:
 
 - **Fallbacks** — automatic failover to backup models on failure
 - **Traffic splitting** — route percentages of requests to different models for A/B testing

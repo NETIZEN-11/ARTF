@@ -1,4 +1,4 @@
-import {
+﻿import {
   claimCacheKeyOnce,
   type FetchWithCacheResult,
   fetchWithCache,
@@ -1143,7 +1143,7 @@ export class OpenAiResponsesProvider extends OpenAiGenericProvider {
     const isGpt5ProModel = /(^|\/)gpt-5(?:\.\d+)?-pro(?:-|$)/.test(this.getCapabilityModelName());
     const isLongRunningModel = isDeepResearchModel || isGpt5ProModel || body.background === true;
     if (isLongRunningModel) {
-      const evalTimeout = getEnvInt('PROMPTFOO_EVAL_TIMEOUT_MS', 0);
+      const evalTimeout = getEnvInt('artef_EVAL_TIMEOUT_MS', 0);
       timeout = evalTimeout > 0 ? evalTimeout : LONG_RUNNING_MODEL_TIMEOUT_MS;
       logger.debug(`Using timeout of ${timeout}ms for long-running model ${this.modelName}`);
     }

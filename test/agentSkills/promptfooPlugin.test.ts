@@ -1,4 +1,4 @@
-import { execFile, execFileSync } from 'node:child_process';
+﻿import { execFile, execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -11,19 +11,19 @@ import { describe, expect, it } from 'vitest';
 const execFileAsync = promisify(execFile);
 
 const repoRoot = path.resolve(__dirname, '../..');
-const pluginRoot = path.join(repoRoot, 'plugins', 'promptfoo');
+const pluginRoot = path.join(repoRoot, 'plugins', 'artef');
 const repoClaudeSkillsRoot = path.join(repoRoot, '.claude', 'skills');
 const repoCodexSkillsRoot = path.join(repoRoot, '.agents', 'skills');
-const evalsSkillRoot = path.join(pluginRoot, 'skills', 'promptfoo-evals');
-const providerSkillRoot = path.join(pluginRoot, 'skills', 'promptfoo-provider-setup');
-const redteamSetupSkillRoot = path.join(pluginRoot, 'skills', 'promptfoo-redteam-setup');
-const redteamRunSkillRoot = path.join(pluginRoot, 'skills', 'promptfoo-redteam-run');
+const evalsSkillRoot = path.join(pluginRoot, 'skills', 'artef-evals');
+const providerSkillRoot = path.join(pluginRoot, 'skills', 'artef-provider-setup');
+const redteamSetupSkillRoot = path.join(pluginRoot, 'skills', 'artef-redteam-setup');
+const redteamRunSkillRoot = path.join(pluginRoot, 'skills', 'artef-redteam-run');
 const fixtureRoot = path.join(repoRoot, 'test', 'fixtures', 'agent-skills');
 const expectedSkillDirs = [
-  'promptfoo-evals',
-  'promptfoo-provider-setup',
-  'promptfoo-redteam-run',
-  'promptfoo-redteam-setup',
+  'artef-evals',
+  'artef-provider-setup',
+  'artef-redteam-run',
+  'artef-redteam-setup',
 ];
 const expectedPluginVersion = '0.1.1';
 const expectedFixtureDirs = [
@@ -55,7 +55,7 @@ const redteamRunFixtureDirs = [
   'redteam-run-local-error',
 ] as const;
 const fixturePythonExecutable =
-  process.env.PROMPTFOO_PYTHON || (process.platform === 'win32' ? 'python' : 'python3');
+  process.env.artef_PYTHON || (process.platform === 'win32' ? 'python' : 'python3');
 
 type MarketplacePlugin = {
   name: string;
@@ -75,7 +75,7 @@ type OpenAiYaml = {
   };
 };
 
-type PromptfooFixtureConfig = Record<string, unknown> & {
+type artefFixtureConfig = Record<string, unknown> & {
   prompts?: unknown[];
   providers?: unknown[];
   targets?: unknown[];
@@ -196,7 +196,7 @@ function expectProviderFileReferencesExist(
 
 function collectPythonProviderReferencesFromConfig(
   configPath: string,
-  config: PromptfooFixtureConfig,
+  config: artefFixtureConfig,
 ): { absolutePath: string; context: string; functionName: string; reference: string }[] {
   const configDir = path.dirname(configPath);
   const references: {
@@ -283,7 +283,7 @@ function listSkillMarkdownFiles(): string[] {
 }
 
 function expectOpenApiHelperFailure(scriptPath: string, spec: unknown, expectedMessage: string) {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-helper-'));
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-helper-'));
   const specPath = path.join(tempDir, 'openapi.yaml');
   try {
     fs.writeFileSync(specPath, yaml.dump(spec));
@@ -391,7 +391,7 @@ function openApiVendorJsonSpec() {
           requestBody: {
             required: true,
             content: {
-              'application/vnd.promptfoo.note+json': {
+              'application/vnd.artef.note+json': {
                 schema: {
                   type: 'object',
                   required: ['user_id', 'message'],
@@ -407,7 +407,7 @@ function openApiVendorJsonSpec() {
             '200': {
               description: 'Vendor JSON response',
               content: {
-                'application/vnd.promptfoo.response+json': {
+                'application/vnd.artef.response+json': {
                   schema: {
                     type: 'object',
                     properties: {
@@ -1713,14 +1713,14 @@ function openApiUnsafeResponseFieldSpec() {
   };
 }
 
-describe('promptfoo plugin package (Codex + Claude Code)', () => {
+describe('artef plugin package (Codex + Claude Code)', () => {
   it('declares a Codex plugin manifest with a skills directory', () => {
     const manifestPath = path.join(pluginRoot, '.codex-plugin', 'plugin.json');
     const manifest = JSON.parse(readText(manifestPath));
 
-    expect(manifest.name).toBe('promptfoo');
+    expect(manifest.name).toBe('artef');
     expect(manifest.skills).toBe('./skills/');
-    expect(manifest.interface.displayName).toBe('Promptfoo');
+    expect(manifest.interface.displayName).toBe('artef');
     expect(manifest.interface.defaultPrompt).toHaveLength(3);
     expect(manifest.interface.defaultPrompt.every((prompt: string) => prompt.length <= 128)).toBe(
       true,
@@ -1732,8 +1732,8 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
         expect.stringContaining('red teaming'),
       ]),
     );
-    expect(manifest.interface.composerIcon).toBe('./assets/promptfoo-panda.svg');
-    expect(manifest.interface.logo).toBe('./assets/promptfoo-panda.svg');
+    expect(manifest.interface.composerIcon).toBe('./assets/artef-panda.svg');
+    expect(manifest.interface.logo).toBe('./assets/artef-panda.svg');
     expect(manifest.interface.screenshots).toEqual([]);
     expect(fs.existsSync(path.join(pluginRoot, 'skills'))).toBe(true);
     expect(fs.existsSync(evalsSkillRoot)).toBe(true);
@@ -1784,9 +1784,9 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
     expect(manifest.name).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
     expect(manifest.version).toMatch(/^\d+\.\d+\.\d+$/);
     expect(Object.keys(manifest.author).sort()).toEqual(['email', 'name', 'url']);
-    expect(manifest.author.name).toBe('Promptfoo');
+    expect(manifest.author.name).toBe('artef');
     expect(manifest.author.email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    expect(manifest.author.email).toBe('support@promptfoo.dev');
+    expect(manifest.author.email).toBe('support@artef.dev');
     expect(manifest.author.url).toMatch(/^https:\/\//);
     expect(manifest.homepage).toMatch(/^https:\/\//);
     expect(manifest.repository).toMatch(/^https:\/\//);
@@ -1820,29 +1820,29 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       readText(path.join(repoRoot, '.agents', 'plugins', 'marketplace.json')),
     );
     const entry = (marketplace.plugins as MarketplacePlugin[]).find(
-      (plugin) => plugin.name === 'promptfoo',
+      (plugin) => plugin.name === 'artef',
     );
 
-    expect(marketplace.name).toBe('promptfoo');
-    expect(marketplace.interface.displayName).toBe('Promptfoo');
+    expect(marketplace.name).toBe('artef');
+    expect(marketplace.interface.displayName).toBe('artef');
     expect(JSON.stringify(marketplace)).not.toContain('[TODO:');
     expect(marketplace.plugins).toHaveLength(1);
     expect(entry).toBeDefined();
     if (!entry) {
-      throw new Error('Missing promptfoo marketplace entry');
+      throw new Error('Missing artef marketplace entry');
     }
     expect(Object.keys(entry).sort()).toEqual(['category', 'name', 'policy', 'source']);
     expect(Object.keys(entry.source).sort()).toEqual(['path', 'source']);
     expect(Object.keys(entry.policy).sort()).toEqual(['authentication', 'installation']);
     expect(entry).toEqual(
       expect.objectContaining({
-        name: 'promptfoo',
-        source: { source: 'local', path: './plugins/promptfoo' },
+        name: 'artef',
+        source: { source: 'local', path: './plugins/artef' },
         policy: { installation: 'AVAILABLE', authentication: 'ON_INSTALL' },
         category: 'Developer Tools',
       }),
     );
-    expect(path.normalize(entry.source.path)).toBe(path.join('plugins', 'promptfoo'));
+    expect(path.normalize(entry.source.path)).toBe(path.join('plugins', 'artef'));
     expect(
       fs.existsSync(path.join(repoRoot, entry.source.path, '.codex-plugin', 'plugin.json')),
     ).toBe(true);
@@ -1856,8 +1856,8 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       .sort();
 
     expect(skillDirs).toEqual(expectedSkillDirs);
-    expect(skillDirs).not.toContain('promptfoo-skill-selector');
-    expect(skillDirs).not.toContain('promptfoo-meta');
+    expect(skillDirs).not.toContain('artef-skill-selector');
+    expect(skillDirs).not.toContain('artef-meta');
   });
 
   it('keeps the shared plugin bundle file inventory intentionally small', () => {
@@ -1868,21 +1868,21 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
     expect(packagedFiles).toEqual([
       '.claude-plugin/plugin.json',
       '.codex-plugin/plugin.json',
-      'assets/promptfoo-panda.svg',
-      'skills/promptfoo-evals/SKILL.md',
-      'skills/promptfoo-evals/agents/openai.yaml',
-      'skills/promptfoo-evals/references/eval-patterns.md',
-      'skills/promptfoo-provider-setup/SKILL.md',
-      'skills/promptfoo-provider-setup/agents/openai.yaml',
-      'skills/promptfoo-provider-setup/references/provider-patterns.md',
-      'skills/promptfoo-provider-setup/scripts/openapi-operation-to-config.mjs',
-      'skills/promptfoo-redteam-run/SKILL.md',
-      'skills/promptfoo-redteam-run/agents/openai.yaml',
-      'skills/promptfoo-redteam-run/references/redteam-run-patterns.md',
-      'skills/promptfoo-redteam-setup/SKILL.md',
-      'skills/promptfoo-redteam-setup/agents/openai.yaml',
-      'skills/promptfoo-redteam-setup/references/redteam-setup-patterns.md',
-      'skills/promptfoo-redteam-setup/scripts/openapi-operation-to-redteam-config.mjs',
+      'assets/artef-panda.svg',
+      'skills/artef-evals/SKILL.md',
+      'skills/artef-evals/agents/openai.yaml',
+      'skills/artef-evals/references/eval-patterns.md',
+      'skills/artef-provider-setup/SKILL.md',
+      'skills/artef-provider-setup/agents/openai.yaml',
+      'skills/artef-provider-setup/references/provider-patterns.md',
+      'skills/artef-provider-setup/scripts/openapi-operation-to-config.mjs',
+      'skills/artef-redteam-run/SKILL.md',
+      'skills/artef-redteam-run/agents/openai.yaml',
+      'skills/artef-redteam-run/references/redteam-run-patterns.md',
+      'skills/artef-redteam-setup/SKILL.md',
+      'skills/artef-redteam-setup/agents/openai.yaml',
+      'skills/artef-redteam-setup/references/redteam-setup-patterns.md',
+      'skills/artef-redteam-setup/scripts/openapi-operation-to-redteam-config.mjs',
     ]);
   });
 
@@ -1924,8 +1924,8 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
         negatives: string[];
       }
     > = {
-      'promptfoo-evals': {
-        positives: ['non-redteam promptfoo eval suites', 'test cases', 'assertions'],
+      'artef-evals': {
+        positives: ['non-redteam artef eval suites', 'test cases', 'assertions'],
         negatives: [
           'Do not use',
           'connecting a new target/provider',
@@ -1933,15 +1933,15 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
           'redteam plugin/strategy setup',
         ],
       },
-      'promptfoo-provider-setup': {
+      'artef-provider-setup': {
         positives: ['providers or redteam targets', 'live HTTP', 'static-code-derived'],
         negatives: ['Do not', 'choosing eval assertions', 'red team plugins'],
       },
-      'promptfoo-redteam-run': {
+      'artef-redteam-run': {
         positives: ['Run, rerun, inspect', 'generated redteam YAML', 'attack success rate'],
         negatives: ['Do not use', 'initial provider wiring', 'choosing plugins'],
       },
-      'promptfoo-redteam-setup': {
+      'artef-redteam-setup': {
         positives: [
           'purpose',
           'targets',
@@ -1997,15 +1997,15 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
 
     expect(docs).toContain('Via Claude Code marketplace');
     expect(docs).toContain('Via Codex plugin bundle');
-    expect(docs).toContain('/plugin install promptfoo@promptfoo');
+    expect(docs).toContain('/plugin install artef@artef');
     expect(docs).toContain('intentionally no meta selector skill');
     expect(docs).toContain("routes from each skill's");
     expect(docs).toContain('Python providers are first-class');
     expect(docs).toContain('file://provider.py:function_name');
     expect(docs).toContain('local graders');
-    expect(docs).toContain('PROMPTFOO_PYTHON');
-    expect(docs).toContain('copy `plugins/promptfoo`');
-    expect(docs).toContain('plugins/promptfoo');
+    expect(docs).toContain('artef_PYTHON');
+    expect(docs).toContain('copy `plugins/artef`');
+    expect(docs).toContain('plugins/artef');
     expect(docs).toContain('.agents/plugins/marketplace.json');
     expect(docs).toContain('.claude-plugin/marketplace.json');
     for (const skillDir of expectedSkillDirs) {
@@ -2022,27 +2022,27 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
     );
 
     // One plugin identity across both marketplaces: same name, version, and author.
-    expect(codexManifest.name).toBe('promptfoo');
-    expect(claudeManifest.name).toBe('promptfoo');
+    expect(codexManifest.name).toBe('artef');
+    expect(claudeManifest.name).toBe('artef');
     expect(codexManifest.version).toBe(expectedPluginVersion);
     expect(claudeManifest.version).toBe(expectedPluginVersion);
-    expect(claudeManifest.author.name).toBe('Promptfoo');
+    expect(claudeManifest.author.name).toBe('artef');
     expect(JSON.stringify(claudeManifest)).not.toContain('[TODO:');
 
     // The standalone single-skill Claude bundle has been retired in favor of this shared bundle.
-    expect(fs.existsSync(path.join(repoRoot, 'plugins', 'promptfoo-evals'))).toBe(false);
+    expect(fs.existsSync(path.join(repoRoot, 'plugins', 'artef-evals'))).toBe(false);
 
     // Claude marketplace entry — asserted with the same rigor as the Codex marketplace above.
     const claudeMarketplace = JSON.parse(
       readText(path.join(repoRoot, '.claude-plugin', 'marketplace.json')),
     );
-    expect(claudeMarketplace.name).toBe('promptfoo');
-    expect(claudeMarketplace.owner.name).toBe('promptfoo');
+    expect(claudeMarketplace.name).toBe('artef');
+    expect(claudeMarketplace.owner.name).toBe('artef');
     expect(typeof claudeMarketplace.metadata.description).toBe('string');
     expect(claudeMarketplace.plugins).toHaveLength(1);
     expect(JSON.stringify(claudeMarketplace)).not.toContain('[TODO:');
     const claudeEntry = claudeMarketplace.plugins[0];
-    expect(claudeEntry.name).toBe('promptfoo');
+    expect(claudeEntry.name).toBe('artef');
     expect(claudeEntry.license).toBe('MIT');
 
     // Parity guarantee: both marketplaces must resolve to the SAME on-disk bundle.
@@ -2050,10 +2050,10 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       readText(path.join(repoRoot, '.agents', 'plugins', 'marketplace.json')),
     );
     const codexEntry = (codexMarketplace.plugins as MarketplacePlugin[]).find(
-      (plugin) => plugin.name === 'promptfoo',
+      (plugin) => plugin.name === 'artef',
     );
     if (!codexEntry) {
-      throw new Error('Missing promptfoo Codex marketplace entry');
+      throw new Error('Missing artef Codex marketplace entry');
     }
     const claudeBundle = path.resolve(repoRoot, claudeEntry.source);
     expect(claudeBundle).toBe(pluginRoot);
@@ -2085,7 +2085,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       expect(`${evalsSkill}\n${evalsReference}`).toContain(phrase);
     }
     expect(evalsSkill).toContain('If the provider does not work yet, switch to');
-    expect(evalsReference).toContain('promptfoo-provider-setup');
+    expect(evalsReference).toContain('artef-provider-setup');
   });
 
   it('keeps every repo-local Claude skill discoverable through canonical SKILL.md casing', () => {
@@ -2096,7 +2096,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       .sort();
 
     expect(repoLocalSkillDirs).toEqual(
-      expect.arrayContaining(['promptfoo-evals', 'redteam-plugin-development', 'search-params']),
+      expect.arrayContaining(['artef-evals', 'redteam-plugin-development', 'search-params']),
     );
 
     for (const skillDir of repoLocalSkillDirs) {
@@ -2107,17 +2107,17 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
     }
   });
 
-  it('keeps the promptfoo-evals contributor copy self-contained', () => {
+  it('keeps the artef-evals contributor copy self-contained', () => {
     // The repo-local copy is standalone: the sibling skills it could route to
-    // (promptfoo-provider-setup, the redteam skills) are not present under
+    // (artef-provider-setup, the redteam skills) are not present under
     // .claude/skills/, so it must not hand off to them and dangle.
     const contributorEvals = readText(
-      path.join(repoClaudeSkillsRoot, 'promptfoo-evals', 'SKILL.md'),
+      path.join(repoClaudeSkillsRoot, 'artef-evals', 'SKILL.md'),
     );
     for (const sibling of [
-      'promptfoo-provider-setup',
-      'promptfoo-redteam-setup',
-      'promptfoo-redteam-run',
+      'artef-provider-setup',
+      'artef-redteam-setup',
+      'artef-redteam-run',
     ]) {
       expect(contributorEvals).not.toContain(sibling);
     }
@@ -2134,15 +2134,15 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
 
   it('keeps every agents/openai.yaml aligned with UI metadata constraints', () => {
     const expectedDefaultPromptPhrases: Record<string, string[]> = {
-      'promptfoo-evals': ['focused eval', 'local JS/Python providers'],
-      'promptfoo-provider-setup': [
+      'artef-evals': ['focused eval', 'local JS/Python providers'],
+      'artef-provider-setup': [
         'HTTP endpoint',
         'OpenAPI operation',
         'Python provider',
         'app code',
       ],
-      'promptfoo-redteam-run': ['execute', 'HTTP, Python, or JS target'],
-      'promptfoo-redteam-setup': ['live endpoint', 'OpenAPI spec', 'code'],
+      'artef-redteam-run': ['execute', 'HTTP, Python, or JS target'],
+      'artef-redteam-setup': ['live endpoint', 'OpenAPI spec', 'code'],
     };
 
     for (const skillDir of expectedSkillDirs) {
@@ -2163,7 +2163,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       ]);
       expect(Object.keys(metadata.policy).sort()).toEqual(['allow_implicit_invocation']);
       expect(JSON.stringify(metadata)).not.toContain('[TODO:');
-      expect(metadata.interface.display_name).toMatch(/^Promptfoo /);
+      expect(metadata.interface.display_name).toMatch(/^artef /);
       expect(metadata.interface.short_description.length).toBeGreaterThanOrEqual(25);
       expect(metadata.interface.short_description.length).toBeLessThanOrEqual(64);
       expect(metadata.interface.default_prompt).toContain(`$${skillDir}`);
@@ -2211,7 +2211,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
           expect(line, context).toContain('npm run local --');
           expect(line, context).not.toContain('npm run local -- view');
         }
-        if (new RegExp(`${commandLine}npx promptfoo@latest validate `).test(line)) {
+        if (new RegExp(`${commandLine}npx artef@latest validate `).test(line)) {
           expect(line, context).toMatch(/validate (?:config|target) -c /);
         }
         if (new RegExp(`${commandLine}npm run local -- validate `).test(line)) {
@@ -2219,7 +2219,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
         }
         if (
           new RegExp(
-            `${commandLine}(?:npm run local -- eval|npx promptfoo@latest eval|promptfoo eval)\\b`,
+            `${commandLine}(?:npm run local -- eval|npx artef@latest eval|artef eval)\\b`,
           ).test(line)
         ) {
           expect(line, context).toContain('--no-cache');
@@ -2235,7 +2235,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
 
   it('keeps fixture YAML parseable with resolvable local file references', () => {
     const configPaths = listFiles(fixtureRoot, (filePath) =>
-      ['promptfooconfig.yaml', 'redteam.yaml'].includes(path.basename(filePath)),
+      ['artefconfig.yaml', 'redteam.yaml'].includes(path.basename(filePath)),
     );
 
     expect(configPaths).toHaveLength(expectedFixtureDirs.length);
@@ -2246,7 +2246,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
         throw new Error(`Fixture config did not parse to an object: ${configPath}`);
       }
 
-      const typedConfig = config as PromptfooFixtureConfig;
+      const typedConfig = config as artefFixtureConfig;
       const configDir = path.dirname(configPath);
       expect(typeof typedConfig.description).toBe('string');
 
@@ -2278,9 +2278,9 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
     }
   });
 
-  it('keeps Python file providers executable and on the promptfoo function contract', async () => {
+  it('keeps Python file providers executable and on the artef function contract', async () => {
     const configPaths = listFiles(fixtureRoot, (filePath) =>
-      ['promptfooconfig.yaml', 'redteam.yaml'].includes(path.basename(filePath)),
+      ['artefconfig.yaml', 'redteam.yaml'].includes(path.basename(filePath)),
     );
     const pythonReferences = new Map<
       string,
@@ -2292,7 +2292,7 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
       expectRecord(config, `${configPath} fixture config`);
       for (const reference of collectPythonProviderReferencesFromConfig(
         configPath,
-        config as PromptfooFixtureConfig,
+        config as artefFixtureConfig,
       )) {
         pythonReferences.set(`${reference.absolutePath}:${reference.functionName}`, reference);
       }
@@ -2644,16 +2644,16 @@ describe('promptfoo plugin package (Codex + Claude Code)', () => {
   });
 });
 
-describe('promptfoo-evals skill', () => {
+describe('artef-evals skill', () => {
   it('has a routing description with eval scope and provider/redteam boundaries', () => {
     const skill = readText(path.join(evalsSkillRoot, 'SKILL.md'));
 
-    expect(skill).toMatch(/^---\nname: promptfoo-evals\n/);
+    expect(skill).toMatch(/^---\nname: artef-evals\n/);
     expect(skill).toContain('after the target');
     expect(skill).toContain('or provider already works');
     expect(skill).toContain('prompts, vars, test cases, assertions');
     expect(skill).toContain('model-graded rubrics');
-    expect(skill).toContain('non-redteam promptfoo eval suites');
+    expect(skill).toContain('non-redteam artef eval suites');
     expect(skill).toContain('connecting a new target/provider');
     expect(skill).toContain('smoke-testing');
     expect(skill).toContain('redteam plugin/strategy setup');
@@ -2682,8 +2682,8 @@ describe('promptfoo-evals skill', () => {
   it('ships Codex UI metadata for evals', () => {
     const openaiYaml = readText(path.join(evalsSkillRoot, 'agents', 'openai.yaml'));
 
-    expect(openaiYaml).toContain('Promptfoo Evals');
-    expect(openaiYaml).toContain('$promptfoo-evals');
+    expect(openaiYaml).toContain('artef Evals');
+    expect(openaiYaml).toContain('$artef-evals');
     expect(openaiYaml).toContain('allow_implicit_invocation: true');
   });
 
@@ -2700,7 +2700,7 @@ describe('promptfoo-evals skill', () => {
     expect(reference).toContain('openai:chat:gpt-4.1-mini');
     expect(reference).toContain('anthropic:messages:claude-sonnet-4-6');
     expect(reference).toContain('echo');
-    expect(reference).toContain('promptfoo-provider-setup');
+    expect(reference).toContain('artef-provider-setup');
     expect(reference).toContain('File-Based Tests');
     expect(reference).toContain('Dataset-Backed Tests');
     expect(reference).toContain('tests: file://tests.csv');
@@ -2715,7 +2715,7 @@ describe('promptfoo-evals skill', () => {
     expect(reference).toContain('{{env.OPENAI_API_KEY}}');
     expect(reference).toContain('output.replace');
     expect(reference).toContain('Focused Reruns');
-    expect(reference).toContain('PROMPTFOO_FAILED_TEST_EXIT_CODE=0');
+    expect(reference).toContain('artef_FAILED_TEST_EXIT_CODE=0');
     expect(reference).toContain('pass');
     expect(reference).toContain('score');
     expect(reference).toContain('reason');
@@ -2769,11 +2769,11 @@ describe('promptfoo-evals skill', () => {
   ])(
     'ships a runnable/validatable $dir eval fixture',
     ({ dir, snippets, extraFile, providerFile }) => {
-      const config = readText(path.join(fixtureRoot, dir, 'promptfooconfig.yaml'));
+      const config = readText(path.join(fixtureRoot, dir, 'artefconfig.yaml'));
       const provider = readText(path.join(fixtureRoot, dir, providerFile));
 
       expect(config).toContain(
-        '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json',
+        '# yaml-language-server: $schema=https://artef.dev/config-schema.json',
       );
       expect(config).toContain('prompts:');
       expect(config).toContain('providers:');
@@ -2801,11 +2801,11 @@ describe('promptfoo-evals skill', () => {
   );
 });
 
-describe('promptfoo-provider-setup skill', () => {
+describe('artef-provider-setup skill', () => {
   it('has a routing description with positive scope and negative boundaries', () => {
     const skill = readText(path.join(providerSkillRoot, 'SKILL.md'));
 
-    expect(skill).toMatch(/^---\nname: promptfoo-provider-setup\n/);
+    expect(skill).toMatch(/^---\nname: artef-provider-setup\n/);
     expect(skill).toContain('live HTTP');
     expect(skill).toContain('local scripts');
     expect(skill).toContain('static-code-derived provider');
@@ -2830,7 +2830,7 @@ describe('promptfoo-provider-setup skill', () => {
     expect(skill).toContain('constructor `options.config`');
     expect(skill).toContain('file://provider.py:function_name');
     expect(skill).toContain('config.timeout');
-    expect(skill).toContain('PROMPTFOO_PYTHON');
+    expect(skill).toContain('artef_PYTHON');
     expect(skill).toContain('validate target');
     expect(skill).toContain('targets');
     expect(skill).toContain('inputs');
@@ -2841,8 +2841,8 @@ describe('promptfoo-provider-setup skill', () => {
   it('ships Codex UI metadata with an explicit skill mention', () => {
     const openaiYaml = readText(path.join(providerSkillRoot, 'agents', 'openai.yaml'));
 
-    expect(openaiYaml).toContain('Promptfoo Provider Setup');
-    expect(openaiYaml).toContain('$promptfoo-provider-setup');
+    expect(openaiYaml).toContain('artef Provider Setup');
+    expect(openaiYaml).toContain('$artef-provider-setup');
     expect(openaiYaml).toContain('allow_implicit_invocation: true');
   });
 
@@ -2866,8 +2866,8 @@ describe('promptfoo-provider-setup skill', () => {
     expect(reference).toContain('call_api(prompt: str, options: dict, context: dict)');
     expect(reference).toContain('sys.path.insert(0, str(Path(__file__).resolve().parent))');
     expect(reference).toContain('Anchor');
-    expect(reference).toContain('PROMPTFOO_PYTHON');
-    expect(reference).toContain('PROMPTFOO_PYTHON_WORKERS');
+    expect(reference).toContain('artef_PYTHON');
+    expect(reference).toContain('artef_PYTHON_WORKERS');
     expect(reference).toContain('config.pythonExecutable');
     expect(reference).toContain('config.workers');
     expect(reference).toContain('config.timeout');
@@ -2894,7 +2894,7 @@ describe('promptfoo-provider-setup skill', () => {
     expect(reference).toContain('Hybrid discovery notes');
     expect(reference).toContain('Static source: route/handler/client file and line range');
     expect(reference).toContain('Safe live probe: exact non-mutating payload');
-    expect(reference).toContain('Promptfoo mapping: vars to request fields');
+    expect(reference).toContain('artef mapping: vars to request fields');
     expect(reference).toContain('--no-cache');
     expect(reference).toContain('--no-share');
     expect(reference).toContain('rg -n');
@@ -2960,10 +2960,10 @@ describe('promptfoo-provider-setup skill', () => {
       snippets: ['targets:', 'inputs:', 'stateful: false', 'user_id:', 'plugins:', 'strategies:'],
     },
   ])('ships a runnable/validatable $dir fixture', ({ dir, snippets }) => {
-    const config = readText(path.join(fixtureRoot, dir, 'promptfooconfig.yaml'));
+    const config = readText(path.join(fixtureRoot, dir, 'artefconfig.yaml'));
 
     expect(config).toContain(
-      '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json',
+      '# yaml-language-server: $schema=https://artef.dev/config-schema.json',
     );
     expect(config).toContain('description: Provider setup');
 
@@ -3022,7 +3022,7 @@ describe('promptfoo-provider-setup skill', () => {
 
   it('ships an OpenAPI-derived provider fixture with matching operation mapping', () => {
     const config = yaml.load(
-      readText(path.join(fixtureRoot, 'provider-setup-openapi', 'promptfooconfig.yaml')),
+      readText(path.join(fixtureRoot, 'provider-setup-openapi', 'artefconfig.yaml')),
     );
     const spec = yaml.load(
       readText(path.join(fixtureRoot, 'provider-setup-openapi', 'openapi.yaml')),
@@ -3163,7 +3163,7 @@ describe('promptfoo-provider-setup skill', () => {
     const generated = yaml.load(output);
 
     expect(output).toContain(
-      '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json',
+      '# yaml-language-server: $schema=https://artef.dev/config-schema.json',
     );
     expectRecord(generated, 'Generated OpenAPI config');
     const provider = (generated.providers as unknown[])[0];
@@ -3342,7 +3342,7 @@ describe('promptfoo-provider-setup skill', () => {
     });
 
     const conjunctiveAuthTempDir = fs.mkdtempSync(
-      path.join(os.tmpdir(), 'promptfoo-openapi-conjunctive-auth-'),
+      path.join(os.tmpdir(), 'artef-openapi-conjunctive-auth-'),
     );
     try {
       const conjunctiveAuthSpecPath = path.join(conjunctiveAuthTempDir, 'openapi.yaml');
@@ -3485,7 +3485,7 @@ describe('promptfoo-provider-setup skill', () => {
       fs.rmSync(conjunctiveAuthTempDir, { recursive: true, force: true });
     }
 
-    const oauthTempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-oauth-'));
+    const oauthTempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-oauth-'));
     try {
       const oauthSpecPath = path.join(oauthTempDir, 'openapi.yaml');
       fs.writeFileSync(oauthSpecPath, yaml.dump(openApiOAuthSecuritySpec()));
@@ -3710,7 +3710,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('keeps a deterministic smoke message var for OpenAPI operations without prompt inputs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -3781,7 +3781,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('prefers OpenAPI parameter and media examples for provider smoke vars', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExamplePrecedenceSpec()));
@@ -3830,7 +3830,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses vendor +json OpenAPI media types for provider request and response schemas', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiVendorJsonSpec()));
@@ -3854,7 +3854,7 @@ describe('promptfoo-provider-setup skill', () => {
       expectRecord(provider, 'Generated vendor JSON provider');
       expectRecord(provider.config, 'Generated vendor JSON provider config block');
       expect(provider.config.headers).toEqual({
-        'Content-Type': 'application/vnd.promptfoo.note+json',
+        'Content-Type': 'application/vnd.artef.note+json',
       });
       expect(provider.config.body).toEqual({
         user_id: '{{user_id}}',
@@ -3873,7 +3873,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses OpenAPI form-urlencoded request bodies for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiFormUrlEncodedSpec()));
@@ -3916,7 +3916,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses OpenAPI multipart request bodies for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiMultipartSpec()));
@@ -3946,12 +3946,12 @@ describe('promptfoo-provider-setup skill', () => {
           {
             kind: 'file',
             name: 'document',
-            filename: 'promptfoo-document.pdf',
+            filename: 'artef-document.pdf',
             source: {
               type: 'generated',
               generator: 'basic-document',
               format: 'pdf',
-              text: 'Promptfoo generated document for {{document}}.',
+              text: 'artef generated document for {{document}}.',
             },
           },
           { kind: 'field', name: 'question', value: '{{prompt}}' },
@@ -3972,7 +3972,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses OpenAPI text request bodies for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiTextPlainSpec()));
@@ -4011,7 +4011,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('preserves scalar OpenAPI request examples without schemas for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiScalarExampleRequestSpec()));
@@ -4056,7 +4056,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses OpenAPI root array request bodies for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiArrayRequestSpec()));
@@ -4103,7 +4103,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('preserves OpenAPI example-only array request bodies for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExampleOnlyArrayBodySpec()));
@@ -4146,7 +4146,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('extracts first-item fields from OpenAPI array responses for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiArrayResponseSpec()));
@@ -4186,7 +4186,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('extracts first-item fields from OpenAPI example-only array responses for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExampleOnlyArrayResponseSpec()));
@@ -4222,7 +4222,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('quotes unsafe OpenAPI response field accessors for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiUnsafeResponseFieldSpec()));
@@ -4262,7 +4262,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('merges OpenAPI allOf request and response schemas for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiAllOfSpec()));
@@ -4304,7 +4304,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('allows repeated non-cyclic OpenAPI refs for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiRepeatedRefSpec()));
@@ -4344,7 +4344,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('normalizes camelCase OpenAPI identifiers for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiCamelCaseIdSpec()));
@@ -4392,7 +4392,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses the first OpenAPI oneOf/anyOf variant for provider config drafts', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiVariantSpec()));
@@ -4432,7 +4432,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses OpenAPI request body examples when provider schemas are omitted', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExampleOnlyBodySpec()));
@@ -4477,7 +4477,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('uses OpenAPI schema types for provider smoke vars', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiTypedSchemaSpec()));
@@ -4541,7 +4541,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('lets OpenAPI operation parameters override path-item parameters for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiParameterOverrideSpec()));
@@ -4588,7 +4588,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('skips OpenAPI writeOnly response fields for provider response transforms', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiWriteOnlyResponseSpec()));
@@ -4618,7 +4618,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('honors composed OpenAPI visibility flags for provider configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-provider-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-provider-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiComposedVisibilitySpec()));
@@ -4701,7 +4701,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('treats OpenAPI example: null as missing so schema-typed samples fall through', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-null-example-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-null-example-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -4773,7 +4773,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('keeps --auth-prefix from corrupting conjunctive API-key auths', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-auth-prefix-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-auth-prefix-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiConjunctiveAuthSpec()));
@@ -4813,7 +4813,7 @@ describe('promptfoo-provider-setup skill', () => {
   });
 
   it('forces env placeholders for credential-like header, query, and cookie params', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-credential-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-credential-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -4903,11 +4903,11 @@ describe('promptfoo-provider-setup skill', () => {
   });
 });
 
-describe('promptfoo-redteam-setup skill', () => {
+describe('artef-redteam-setup skill', () => {
   it('has a routing description with setup scope and run/provider boundaries', () => {
     const skill = readText(path.join(redteamSetupSkillRoot, 'SKILL.md'));
 
-    expect(skill).toMatch(/^---\nname: promptfoo-redteam-setup\n/);
+    expect(skill).toMatch(/^---\nname: artef-redteam-setup\n/);
     expect(skill).toContain('purpose');
     expect(skill).toContain('plugins');
     expect(skill).toContain('strategies');
@@ -4928,7 +4928,7 @@ describe('promptfoo-redteam-setup skill', () => {
     expect(skill).toContain('Use `jailbreak:hydra` instead when the target is stateful');
     expect(skill).toContain('search route handlers, API clients, tests');
     expect(skill).toContain('object IDs imply `bola`');
-    expect(skill).toContain("Promptfoo's default redteam generation");
+    expect(skill).toContain("artef's default redteam generation");
     expect(skill).toContain('redteam.provider');
     expect(skill).toContain('file://x.py:name');
     expect(skill).toContain('openapi-operation-to-redteam-config.mjs');
@@ -4953,9 +4953,9 @@ describe('promptfoo-redteam-setup skill', () => {
       readText(path.join(redteamRunSkillRoot, 'references', 'redteam-run-patterns.md')),
     ].join('\n');
 
-    expect(redteamMarkdown).toContain("Promptfoo's default redteam generation");
+    expect(redteamMarkdown).toContain("artef's default redteam generation");
     for (const forbidden of [
-      ['PROMPTFOO_DISABLE', 'REMOTE_GENERATION'].join('_'),
+      ['artef_DISABLE', 'REMOTE_GENERATION'].join('_'),
       ['local-only', 'generation'].join(' '),
       ['Local', 'Only', 'QA'].join('-').replace('-QA', ' QA'),
       ['remote', 'only'].join('-'),
@@ -4969,8 +4969,8 @@ describe('promptfoo-redteam-setup skill', () => {
   it('ships Codex UI metadata for redteam setup', () => {
     const openaiYaml = readText(path.join(redteamSetupSkillRoot, 'agents', 'openai.yaml'));
 
-    expect(openaiYaml).toContain('Promptfoo Redteam Setup');
-    expect(openaiYaml).toContain('$promptfoo-redteam-setup');
+    expect(openaiYaml).toContain('artef Redteam Setup');
+    expect(openaiYaml).toContain('$artef-redteam-setup');
     expect(openaiYaml).toContain('allow_implicit_invocation: true');
   });
 
@@ -5107,7 +5107,7 @@ describe('promptfoo-redteam-setup skill', () => {
       ],
     },
   ])('ships a validatable $dir redteam setup fixture', ({ dir, snippets }) => {
-    const config = readText(path.join(fixtureRoot, dir, 'promptfooconfig.yaml'));
+    const config = readText(path.join(fixtureRoot, dir, 'artefconfig.yaml'));
     const generatorPath =
       ['redteam-generator.mjs', 'redteam-generator.py']
         .map((fileName) => path.join(fixtureRoot, dir, fileName))
@@ -5115,7 +5115,7 @@ describe('promptfoo-redteam-setup skill', () => {
     const generator = readText(generatorPath);
 
     expect(config).toContain(
-      '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json',
+      '# yaml-language-server: $schema=https://artef.dev/config-schema.json',
     );
     expect(config).toContain('description: Redteam setup');
     if (generatorPath.endsWith('.mjs')) {
@@ -5137,7 +5137,7 @@ describe('promptfoo-redteam-setup skill', () => {
 
   it('ships a static-code-derived redteam setup fixture with route evidence', () => {
     const config = readText(
-      path.join(fixtureRoot, 'redteam-setup-static-code', 'promptfooconfig.yaml'),
+      path.join(fixtureRoot, 'redteam-setup-static-code', 'artefconfig.yaml'),
     );
     const target = readText(path.join(fixtureRoot, 'redteam-setup-static-code', 'target.mjs'));
     const app = readText(
@@ -5168,7 +5168,7 @@ describe('promptfoo-redteam-setup skill', () => {
 
   it('ships a static-code-derived Python redteam setup fixture with route evidence', () => {
     const config = readText(
-      path.join(fixtureRoot, 'redteam-setup-static-code-python', 'promptfooconfig.yaml'),
+      path.join(fixtureRoot, 'redteam-setup-static-code-python', 'artefconfig.yaml'),
     );
     const target = readText(
       path.join(fixtureRoot, 'redteam-setup-static-code-python', 'target.py'),
@@ -5209,7 +5209,7 @@ describe('promptfoo-redteam-setup skill', () => {
 
   it('ships a live-HTTP redteam setup fixture with auth and multi-input mapping', () => {
     const config = yaml.load(
-      readText(path.join(fixtureRoot, 'redteam-setup-live-http', 'promptfooconfig.yaml')),
+      readText(path.join(fixtureRoot, 'redteam-setup-live-http', 'artefconfig.yaml')),
     );
     expectRecord(config, 'live HTTP redteam setup config');
 
@@ -5279,7 +5279,7 @@ describe('promptfoo-redteam-setup skill', () => {
     const output = runHelper('createInvoiceNote', ['--label', 'generated-openapi-redteam-note']);
     const generated = yaml.load(output);
     expect(output).toContain(
-      '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json',
+      '# yaml-language-server: $schema=https://artef.dev/config-schema.json',
     );
     expectRecord(generated, 'Generated OpenAPI redteam config');
 
@@ -5461,7 +5461,7 @@ describe('promptfoo-redteam-setup skill', () => {
     });
 
     const conjunctiveAuthTempDir = fs.mkdtempSync(
-      path.join(os.tmpdir(), 'promptfoo-openapi-conjunctive-auth-'),
+      path.join(os.tmpdir(), 'artef-openapi-conjunctive-auth-'),
     );
     try {
       const conjunctiveAuthSpecPath = path.join(conjunctiveAuthTempDir, 'openapi.yaml');
@@ -5625,7 +5625,7 @@ describe('promptfoo-redteam-setup skill', () => {
       fs.rmSync(conjunctiveAuthTempDir, { recursive: true, force: true });
     }
 
-    const oauthTempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-oauth-'));
+    const oauthTempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-oauth-'));
     try {
       const oauthSpecPath = path.join(oauthTempDir, 'openapi.yaml');
       fs.writeFileSync(oauthSpecPath, yaml.dump(openApiOAuthSecuritySpec()));
@@ -5813,7 +5813,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('keeps redteam OpenAPI helper plugin inference conservative without identity fields', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -5894,7 +5894,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('prefers OpenAPI parameter and media examples for redteam default vars', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExamplePrecedenceSpec()));
@@ -5950,7 +5950,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses vendor +json OpenAPI media types for redteam request and response schemas', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiVendorJsonSpec()));
@@ -5974,7 +5974,7 @@ describe('promptfoo-redteam-setup skill', () => {
       expectRecord(target, 'Generated vendor JSON redteam target');
       expectRecord(target.config, 'Generated vendor JSON redteam target config');
       expect(target.config.headers).toEqual({
-        'Content-Type': 'application/vnd.promptfoo.note+json',
+        'Content-Type': 'application/vnd.artef.note+json',
       });
       expect(target.config.body).toEqual({
         user_id: '{{user_id}}',
@@ -5993,7 +5993,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses OpenAPI form-urlencoded request bodies for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiFormUrlEncodedSpec()));
@@ -6041,7 +6041,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses OpenAPI multipart request bodies for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiMultipartSpec()));
@@ -6071,12 +6071,12 @@ describe('promptfoo-redteam-setup skill', () => {
           {
             kind: 'file',
             name: 'document',
-            filename: 'promptfoo-document.pdf',
+            filename: 'artef-document.pdf',
             source: {
               type: 'generated',
               generator: 'basic-document',
               format: 'pdf',
-              text: 'Promptfoo generated document for {{document}}.',
+              text: 'artef generated document for {{document}}.',
             },
           },
           { kind: 'field', name: 'question', value: '{{question}}' },
@@ -6102,7 +6102,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses OpenAPI text request bodies for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiTextPlainSpec()));
@@ -6144,7 +6144,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('preserves scalar OpenAPI request examples without schemas for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiScalarExampleRequestSpec()));
@@ -6196,7 +6196,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses OpenAPI root array request bodies for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiArrayRequestSpec()));
@@ -6248,7 +6248,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('preserves OpenAPI example-only array request bodies for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExampleOnlyArrayBodySpec()));
@@ -6296,7 +6296,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('extracts first-item fields from OpenAPI array responses for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiArrayResponseSpec()));
@@ -6340,7 +6340,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('extracts first-item fields from OpenAPI example-only array responses for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExampleOnlyArrayResponseSpec()));
@@ -6380,7 +6380,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('quotes unsafe OpenAPI response field accessors for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiUnsafeResponseFieldSpec()));
@@ -6427,7 +6427,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('merges OpenAPI allOf request and response schemas for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiAllOfSpec()));
@@ -6474,7 +6474,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('allows repeated non-cyclic OpenAPI refs for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiRepeatedRefSpec()));
@@ -6518,7 +6518,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('normalizes camelCase OpenAPI identifiers for redteam RBAC inference', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiCamelCaseIdSpec()));
@@ -6585,7 +6585,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses the first OpenAPI oneOf/anyOf variant for redteam config drafts', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiVariantSpec()));
@@ -6629,7 +6629,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses OpenAPI request body examples when redteam schemas are omitted', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiExampleOnlyBodySpec()));
@@ -6679,7 +6679,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('uses OpenAPI schema types for redteam default vars', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiTypedSchemaSpec()));
@@ -6743,7 +6743,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('lets OpenAPI operation parameters override path-item parameters for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiParameterOverrideSpec()));
@@ -6796,7 +6796,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('skips OpenAPI writeOnly response fields for redteam response transforms', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiWriteOnlyResponseSpec()));
@@ -6826,7 +6826,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('honors composed OpenAPI visibility flags for redteam configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(specPath, yaml.dump(openApiComposedVisibilitySpec()));
@@ -6940,7 +6940,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('does not misclassify non-_id user-like fields as identity fields for RBAC', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-non-id-identity-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-non-id-identity-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -7021,7 +7021,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('adds the bola plugin when object identifiers are present', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-bola-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-bola-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -7099,7 +7099,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('forces env placeholders for credential-like params in redteam target configs', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-redteam-credential-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-redteam-credential-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -7188,7 +7188,7 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 
   it('excludes technical tracing _id fields from RBAC object-field inference', () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openapi-technical-id-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openapi-technical-id-'));
     const specPath = path.join(tempDir, 'openapi.yaml');
     try {
       fs.writeFileSync(
@@ -7262,11 +7262,11 @@ describe('promptfoo-redteam-setup skill', () => {
   });
 });
 
-describe('promptfoo-redteam-run skill', () => {
+describe('artef-redteam-run skill', () => {
   it('has a routing description with run scope and setup/provider boundaries', () => {
     const skill = readText(path.join(redteamRunSkillRoot, 'SKILL.md'));
 
-    expect(skill).toMatch(/^---\nname: promptfoo-redteam-run\n/);
+    expect(skill).toMatch(/^---\nname: artef-redteam-run\n/);
     expect(skill).toContain('Run, rerun, inspect, and QA');
     expect(skill).toContain('generated redteam YAML');
     expect(skill).toContain('attack success rate');
@@ -7291,16 +7291,16 @@ describe('promptfoo-redteam-run skill', () => {
     expect(skill).toContain('Regenerate beside');
     expect(skill).toContain('redteam report');
     // `redteam run` has no --no-share flag (see src/redteam/commands/run.ts);
-    // the skill must route users to PROMPTFOO_DISABLE_SHARING=true instead.
-    expect(skill).toContain('PROMPTFOO_DISABLE_SHARING=true');
+    // the skill must route users to artef_DISABLE_SHARING=true instead.
+    expect(skill).toContain('artef_DISABLE_SHARING=true');
     expect(skill).not.toMatch(/redteam run[^\n]*--no-share/);
   });
 
   it('ships Codex UI metadata for redteam runs', () => {
     const openaiYaml = readText(path.join(redteamRunSkillRoot, 'agents', 'openai.yaml'));
 
-    expect(openaiYaml).toContain('Promptfoo Redteam Run');
-    expect(openaiYaml).toContain('$promptfoo-redteam-run');
+    expect(openaiYaml).toContain('artef Redteam Run');
+    expect(openaiYaml).toContain('$artef-redteam-run');
     expect(openaiYaml).toContain('allow_implicit_invocation: true');
   });
 
@@ -7329,7 +7329,7 @@ describe('promptfoo-redteam-run skill', () => {
     expect(reference).toContain('jq');
     expect(reference).toContain('--filter-failing');
     expect(reference).toContain('--filter-errors-only');
-    expect(reference).toContain('PROMPTFOO_FAILED_TEST_EXIT_CODE=0');
+    expect(reference).toContain('artef_FAILED_TEST_EXIT_CODE=0');
   });
 
   for (const dir of redteamRunFixtureDirs) {
@@ -7396,7 +7396,7 @@ describe('promptfoo-redteam-run skill', () => {
         expectRecord(assertion, `${dir} test ${index} assertion`);
 
         expect(metadata.severity).toBe('high');
-        expect(assertion.type).toBe(`promptfoo:redteam:${metadata.pluginId}`);
+        expect(assertion.type).toBe(`artef:redteam:${metadata.pluginId}`);
         expect(typeof assertion.metric).toBe('string');
         expect(String(assertion.metric).length).toBeGreaterThan(8);
 
@@ -7430,8 +7430,8 @@ describe('promptfoo-redteam-run skill', () => {
         'file://test/fixtures/agent-skills/redteam-run-local-pass/grader.mjs',
         'id: policy',
         'id: rbac',
-        'promptfoo:redteam:policy',
-        'promptfoo:redteam:rbac',
+        'artef:redteam:policy',
+        'artef:redteam:rbac',
       ],
     },
     {
@@ -7445,8 +7445,8 @@ describe('promptfoo-redteam-run skill', () => {
         'file://test/fixtures/agent-skills/redteam-run-local-python-pass/grader.py:grade_redteam',
         'id: policy',
         'id: rbac',
-        'promptfoo:redteam:policy',
-        'promptfoo:redteam:rbac',
+        'artef:redteam:policy',
+        'artef:redteam:rbac',
       ],
     },
     {
@@ -7482,7 +7482,7 @@ describe('promptfoo-redteam-run skill', () => {
     );
 
     expect(config).toContain(
-      '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json',
+      '# yaml-language-server: $schema=https://artef.dev/config-schema.json',
     );
     expect(config).toContain('defaultTest:');
     expect(config).toContain('metadata:');

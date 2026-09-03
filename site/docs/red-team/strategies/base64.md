@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Base64 Encoding
 title: Base64 Encoding Strategy
 description: Identify vulnerabilities in AI systems using base64-encoded payloads that attempt to circumvent input validation and filters
@@ -17,9 +17,9 @@ The Base64 Encoding strategy tests an AI system's ability to resist encoded inpu
 
 ## Implementation
 
-Use it in your `promptfooconfig.yaml`:
+Use it in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - base64
 ```

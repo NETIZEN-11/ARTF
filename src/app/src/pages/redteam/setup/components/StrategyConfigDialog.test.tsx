@@ -1,4 +1,4 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -569,7 +569,7 @@ describe('StrategyConfigDialog', () => {
     expect(customMaxTurnsInput).toHaveValue(8);
 
     const customStatefulSwitch = screen.getByRole('switch', {
-      name: /When enabled, Promptfoo should only send/,
+      name: /When enabled, artef should only send/,
     });
     expect(customStatefulSwitch).toBeChecked();
 
@@ -588,7 +588,7 @@ describe('StrategyConfigDialog', () => {
     expect(goatMaxTurnsInput).toHaveValue(3);
 
     const goatStatefulSwitch = screen.getByRole('switch', {
-      name: /When enabled, Promptfoo should only send/,
+      name: /When enabled, artef should only send/,
     });
     expect(goatStatefulSwitch).not.toBeChecked();
   });
@@ -739,7 +739,7 @@ describe('StrategyConfigDialog', () => {
     expect(maxTurnsInput).toBeNull();
 
     const statefulSwitch = screen.queryByRole('switch', {
-      name: /When enabled, Promptfoo should only send/,
+      name: /When enabled, artef should only send/,
     });
     expect(statefulSwitch).toBeNull();
 

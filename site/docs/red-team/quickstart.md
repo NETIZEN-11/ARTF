@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 2
 sidebar_label: Getting started
 description: Start red teaming LLMs in minutes by scanning 50+ vulnerabilities including jailbreaks, prompt injection, and data exfiltration
@@ -11,7 +11,7 @@ import styles from '@site/src/pages/quickstart.module.css';
 
 # Getting started
 
-Promptfoo is an [open-source](https://github.com/promptfoo/promptfoo) tool for red teaming gen AI applications.
+artef is an [open-source](https://github.com/artef/artef) tool for red teaming gen AI applications.
 
 - **Automatically scans 50+ vulnerability types**:
   - <a href="/docs/red-team/llm-vulnerability-types/#privacy-and-security" className={styles.badge}>Security & data privacy</a>: jailbreaks, injections, RAG poisoning, etc.
@@ -36,30 +36,30 @@ Promptfoo is an [open-source](https://github.com/promptfoo/promptfoo) tool for r
 <Tabs groupId="installation-method">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest redteam setup
+    npx artef@latest redteam setup
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     Install:
     ```bash
-    npm install -g promptfoo
+    npm install -g artef
     ```
 
     Run:
     ```bash
-    promptfoo redteam setup
+    artef redteam setup
     ```
 
   </TabItem>
   <TabItem value="brew" label="brew">
     Install:
     ```bash
-    brew install promptfoo
+    brew install artef
     ```
 
     Run:
     ```bash
-    promptfoo redteam setup
+    artef redteam setup
     ```
 
   </TabItem>
@@ -83,13 +83,13 @@ If you just want to try out a quick example, click "Load Example" at the top of 
 
 ### Configure the target
 
-Next, configure Promptfoo to communicate with your target application or model.
+Next, configure artef to communicate with your target application or model.
 
 :::note
 The target defines the model being tested. Attack generation uses a separate provider (defaults to OpenAI). See [Providers](/docs/red-team/configuration/#providers) to configure a custom attack model.
 :::
 
-Because the Promptfoo scanner runs locally on your machine, it can attack any endpoint accessible from your machine or network.
+Because the artef scanner runs locally on your machine, it can attack any endpoint accessible from your machine or network.
 
 [See below](#alternative-test-specific-prompts-and-models) for more info on how to talk with non-HTTP targets such as models (local or remote) or custom code.
 
@@ -107,7 +107,7 @@ Check off the individual plugins you want to use, or select a preset that includ
 
 Now we select strategies. [Strategies](/docs/red-team/strategies/) are techniques that wrap the generated inputs in a specific attack pattern.
 
-This is how Promptfoo generates more sophisticated jailbreaks and injections.
+This is how artef generates more sophisticated jailbreaks and injections.
 
 ![llm red team setup](/img/docs/setup/strategy.png)
 
@@ -117,13 +117,13 @@ Finally, download the generated configuration file. You'll use this to run the r
 
 ![llm red team setup](/img/docs/setup/review.png)
 
-Save the file as `promptfooconfig.yaml`. Then, navigate to the directory where you saved the file and run `promptfoo redteam run`.
+Save the file as `artefconfig.yaml`. Then, navigate to the directory where you saved the file and run `artef redteam run`.
 
 :::info
 If you don't want to use the UI to start a red team, you can use the `init` command instead:
 
 ```sh
-promptfoo redteam init --no-gui
+artef redteam init --no-gui
 ```
 
 :::
@@ -132,22 +132,22 @@ promptfoo redteam init --no-gui
 
 Now that we've generated the test cases, we're ready to run the adversarial evaluation.
 
-Run this command in the same directory as your `promptfooconfig.yaml` file:
+Run this command in the same directory as your `artefconfig.yaml` file:
 
 <Tabs groupId="installation-method">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest redteam run
+    npx artef@latest redteam run
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo redteam run
+    artef redteam run
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo redteam run
+    artef redteam run
     ```
   </TabItem>
 </Tabs>
@@ -161,22 +161,22 @@ This command will generate several hundred adversarial inputs across many catego
 <Tabs groupId="installation-method">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest redteam report
+    npx artef@latest redteam report
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo redteam report
+    artef redteam report
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo redteam report
+    artef redteam report
     ```
   </TabItem>
 </Tabs>
 
-Promptfoo provides a report view that lets you dig into specific red team failure cases:
+artef provides a report view that lets you dig into specific red team failure cases:
 
 ![llm red team report](/img/riskreport-1@2x.png)
 
@@ -241,11 +241,11 @@ targets:
     label: 'travel-agent-mini'
 ```
 
-Promptfoo supports dozens of model providers. To configure your own application as the target, see [custom targets](/docs/red-team/configuration/#custom-providerstargets). For more information on supported prompt formats, see [prompts](/docs/configuration/prompts).
+artef supports dozens of model providers. To configure your own application as the target, see [custom targets](/docs/red-team/configuration/#custom-providerstargets). For more information on supported prompt formats, see [prompts](/docs/configuration/prompts).
 
 ### Alternative: Talking directly to your app
 
-Promptfoo hooks directly into your existing LLM app to attack targets via Python, Javascript, RAG or agent workflows, HTTP API, and more. See [custom targets](/docs/red-team/configuration/#custom-providerstargets) for details on connecting:
+artef hooks directly into your existing LLM app to attack targets via Python, Javascript, RAG or agent workflows, HTTP API, and more. See [custom targets](/docs/red-team/configuration/#custom-providerstargets) for details on connecting:
 
 - [HTTP requests](/docs/red-team/configuration/#http-requests) to your API
 - [Custom Python scripts](/docs/red-team/configuration/#custom-scripts) for precise control

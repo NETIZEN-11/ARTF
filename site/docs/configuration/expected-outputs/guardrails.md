@@ -1,4 +1,4 @@
----
+﻿---
 title: Guardrails Assertion
 sidebar_position: 101
 sidebar_label: Guardrails
@@ -33,9 +33,9 @@ interface GuardrailResponse {
 
 The programmatic [`guardrails.guard()`, `pii()`, and `harm()` helpers](/docs/usage/node-api-reference#guardrails-api) return classifier results under `results[]`, not this flat provider-response shape. To use one inside a custom target, map `results[0].flagged` into `guardrails.flagged`.
 
-Promptfoo normalizes some structured safety signals in built-in providers. Support is endpoint- and mode-specific, so a vendor name alone is not enough to determine support.
+artef normalizes some structured safety signals in built-in providers. Support is endpoint- and mode-specific, so a vendor name alone is not enough to determine support.
 
-| Promptfoo integration                                                         | Signals currently normalized                                                        | What it does not cover                                                                                           |
+| artef integration                                                         | Signals currently normalized                                                        | What it does not cover                                                                                           |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Azure OpenAI Chat, Completions, Assistants, and selected Foundry Agent errors | Input content-filter errors and output content-filter results                       | Azure Responses uses a different response contract and is not normalized in the same way.                        |
 | AWS Bedrock InvokeModel and non-streaming Converse                            | `amazon-bedrock-guardrailAction` and `stopReason: guardrail_intervened`             | Direction is usually unknown. Streaming, cached, and Bedrock Agents responses do not all expose the same fields. |
@@ -48,7 +48,7 @@ For provider-specific configuration, see [AWS Bedrock](/docs/providers/aws-bedro
 
 :::warning Verify the signal
 
-A pass means Promptfoo did not receive `flagged: true`; it does not prove that a guardrail ran. When the response omits `guardrails`, Promptfoo currently treats it as `flagged: false`, so `guardrails` passes with score 1. Inspect an exported eval result before using this assertion as a release gate.
+A pass means artef did not receive `flagged: true`; it does not prove that a guardrail ran. When the response omits `guardrails`, artef currently treats it as `flagged: false`, so `guardrails` passes with score 1. Inspect an exported eval result before using this assertion as a release gate.
 
 :::
 
@@ -74,7 +74,7 @@ tests:
       - type: not-guardrails
 ```
 
-For an all-benign suite, apply the allowed-content expectation to every test. Do not use this default in a mixed suite: Promptfoo adds default assertions to the `not-guardrails` attack cases too.
+For an all-benign suite, apply the allowed-content expectation to every test. Do not use this default in a mixed suite: artef adds default assertions to the `not-guardrails` attack cases too.
 
 ```yaml
 defaultTest:
@@ -116,7 +116,7 @@ defaultTest:
         purpose: redteam
 ```
 
-`purpose: redteam` does not invert the assertion. When the target reports `flagged: true`, the `guardrails` component still fails with score 0. Promptfoo then **force-passes the entire test** with the reason `Content failed guardrail safety checks` — this supersedes every other component in the test, including the vulnerability grader and any other assertion, no matter how they scored. The intent is to keep a correct block from being reported as a vulnerability.
+`purpose: redteam` does not invert the assertion. When the target reports `flagged: true`, the `guardrails` component still fails with score 0. artef then **force-passes the entire test** with the reason `Content failed guardrail safety checks` — this supersedes every other component in the test, including the vulnerability grader and any other assertion, no matter how they scored. The intent is to keep a correct block from being reported as a vulnerability.
 
 :::danger Only enable this override when `flagged` means the request was actually blocked
 
@@ -134,7 +134,7 @@ See [Testing and Validating Guardrails](/docs/guides/testing-guardrails#comparin
 
 ## How it works
 
-Promptfoo reads guardrail data in this order:
+artef reads guardrail data in this order:
 
 1. `providerResponse.guardrails`
 2. `guardrails` from the final `providerResponse.metadata.redteamHistory` entry
@@ -167,7 +167,7 @@ Keep category scores, assessments, policy IDs, and the original vendor response 
 
 Suppose an application returns a guardrail decision as `allow`, `block`, or `error`. Configure a file-based response transform:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{prompt}}'
 
@@ -230,12 +230,12 @@ export default (json, text, context) => {
 };
 ```
 
-The HTTP provider accepts all status codes by default, so the transform can normalize a structured 4xx safety block. If you configure `validateStatus`, include every status that carries a valid guardrail decision. Expected blocks need a non-empty `output` so Promptfoo can grade the assertion.
+The HTTP provider accepts all status codes by default, so the transform can normalize a structured 4xx safety block. If you configure `validateStatus`, include every status that carries a valid guardrail decision. Expected blocks need a non-empty `output` so artef can grade the assertion.
 
 Verify the normalized data with a fresh exported eval:
 
 ```bash
-promptfoo eval --no-cache -o output.json
+artef eval --no-cache -o output.json
 jq '.results.results[] | {test: .testCase.description, guardrails: .response.guardrails}' output.json
 ```
 

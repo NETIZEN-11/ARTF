@@ -1,4 +1,4 @@
-// Authentication tests: RSA signatures, JKS keystores, OAuth token refresh, file-based auth, bearer/API key auth.
+﻿// Authentication tests: RSA signatures, JKS keystores, OAuth token refresh, file-based auth, bearer/API key auth.
 import './setup';
 
 import crypto from 'crypto';
@@ -274,7 +274,7 @@ describe('RSA signature authentication', () => {
     vi.mocked(fsPromises.readFile).mockResolvedValue(Buffer.from('mock-keystore-data'));
 
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_JKS_PASSWORD: 'env-password',
+      artef_JKS_PASSWORD: 'env-password',
     });
 
     try {
@@ -321,7 +321,7 @@ describe('RSA signature authentication', () => {
     vi.mocked(fsPromises.readFile).mockResolvedValue(Buffer.from('mock-keystore-data'));
 
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_JKS_PASSWORD: 'env-password',
+      artef_JKS_PASSWORD: 'env-password',
     });
 
     try {
@@ -387,12 +387,12 @@ describe('RSA signature authentication', () => {
     vi.mocked(fetchWithCache).mockResolvedValueOnce(mockResponse);
 
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_JKS_PASSWORD: undefined,
+      artef_JKS_PASSWORD: undefined,
     });
     try {
-      expect(process.env.PROMPTFOO_JKS_PASSWORD).toBeUndefined();
+      expect(process.env.artef_JKS_PASSWORD).toBeUndefined();
       await expect(provider.callApi('test')).rejects.toThrow(
-        'JKS keystore password is required. Provide it via config keystorePassword/certificatePassword or PROMPTFOO_JKS_PASSWORD environment variable',
+        'JKS keystore password is required. Provide it via config keystorePassword/certificatePassword or artef_JKS_PASSWORD environment variable',
       );
     } finally {
       restoreEnv();

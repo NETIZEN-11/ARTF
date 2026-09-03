@@ -1,4 +1,4 @@
-import { useVersionCheck } from '@app/hooks/useVersionCheck';
+﻿import { useVersionCheck } from '@app/hooks/useVersionCheck';
 import { mockClipboard, mockDocumentExecCommand } from '@app/tests/browserMocks';
 import { renderWithProviders } from '@app/utils/testutils';
 import { cleanup, screen, waitFor } from '@testing-library/react';
@@ -28,7 +28,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: 'npm',
@@ -50,12 +50,12 @@ describe('UpdateBanner', () => {
     expect(releaseNotesLink).toBeInTheDocument();
     expect(releaseNotesLink).toHaveAttribute(
       'href',
-      'https://github.com/promptfoo/promptfoo/releases/latest',
+      'https://github.com/artef/artef/releases/latest',
     );
 
     const copyCommandButton = screen.getByRole('button', { name: /Copy Update Command/i });
     expect(copyCommandButton).toBeInTheDocument();
-    expect(copyCommandButton).toHaveAttribute('title', 'npm i -g promptfoo@latest');
+    expect(copyCommandButton).toHaveAttribute('title', 'npm i -g artef@latest');
   });
 
   it('should copy the update command to the clipboard and show check icon when the copy command button is clicked', async () => {
@@ -66,7 +66,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: 'npm',
@@ -88,7 +88,7 @@ describe('UpdateBanner', () => {
 
     await user.click(copyCommandButton);
 
-    expect(mockWriteText).toHaveBeenCalledWith('npm i -g promptfoo@latest');
+    expect(mockWriteText).toHaveBeenCalledWith('npm i -g artef@latest');
 
     // After copying, the Check icon should be shown (Lucide icons have lucide-check class)
     await waitFor(() => {
@@ -104,7 +104,7 @@ describe('UpdateBanner', () => {
         updateAvailable: true,
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
-        updateCommands: { primary: 'npm i -g promptfoo@latest', alternative: null },
+        updateCommands: { primary: 'npm i -g artef@latest', alternative: null },
         commandType: 'npm',
         isNpx: false,
       },
@@ -136,7 +136,7 @@ describe('UpdateBanner', () => {
         updateAvailable: true,
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
-        updateCommands: { primary: 'npm i -g promptfoo@latest', alternative: null },
+        updateCommands: { primary: 'npm i -g artef@latest', alternative: null },
         commandType: 'npm',
         isNpx: false,
       },
@@ -155,7 +155,7 @@ describe('UpdateBanner', () => {
 
     await waitFor(() => {
       expect(execCommand).toHaveBeenCalledWith('copy');
-      expect(alertSpy).toHaveBeenCalledWith('Failed to copy. Command: npm i -g promptfoo@latest');
+      expect(alertSpy).toHaveBeenCalledWith('Failed to copy. Command: npm i -g artef@latest');
     });
     expect(screen.queryByRole('button', { name: /^Copied$/i })).not.toBeInTheDocument();
     expect(screen.queryByText(/copied to clipboard/i)).not.toBeInTheDocument();
@@ -167,7 +167,7 @@ describe('UpdateBanner', () => {
         updateAvailable: true,
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
-        updateCommands: { primary: 'npm i -g promptfoo@latest', alternative: null },
+        updateCommands: { primary: 'npm i -g artef@latest', alternative: null },
         commandType: 'npm',
         isNpx: false,
       },
@@ -200,7 +200,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'docker pull ghcr.io/promptfoo/promptfoo:latest',
+          primary: 'docker pull ghcr.io/artef/artef:latest',
           alternative: null,
         },
         commandType: 'docker',
@@ -215,11 +215,11 @@ describe('UpdateBanner', () => {
     renderWithProviders(<UpdateBanner />);
 
     expect(screen.getByText(/If this is a derived image/i)).toHaveTextContent(
-      /update its Promptfoo base and rebuild before redeploying/i,
+      /update its artef base and rebuild before redeploying/i,
     );
     expect(screen.getByRole('button', { name: /Copy Docker Command/i })).toHaveAttribute(
       'title',
-      'docker pull ghcr.io/promptfoo/promptfoo:latest',
+      'docker pull ghcr.io/artef/artef:latest',
     );
   });
 
@@ -244,7 +244,7 @@ describe('UpdateBanner', () => {
     renderWithProviders(<UpdateBanner />);
 
     expect(
-      screen.getByText(/Update the Promptfoo source, dependency, or parent image/i),
+      screen.getByText(/Update the artef source, dependency, or parent image/i),
     ).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Copy/i })).not.toBeInTheDocument();
   });
@@ -258,7 +258,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: 'npm',
@@ -291,7 +291,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: 'npm',
@@ -325,7 +325,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: undefined,
@@ -351,7 +351,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: undefined,
@@ -384,7 +384,7 @@ describe('UpdateBanner', () => {
         latestVersion: '2.0.0',
         currentVersion: '1.9.0',
         updateCommands: {
-          primary: 'npm i -g promptfoo@latest',
+          primary: 'npm i -g artef@latest',
           alternative: null,
         },
         commandType: 'npm',

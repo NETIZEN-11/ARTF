@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import {
   ALIASED_PLUGIN_MAPPINGS,
@@ -103,7 +103,7 @@ export const RedteamPluginObjectSchema = z.object({
         if (!val.startsWith('file://')) {
           ctx.addIssue({
             code: 'custom',
-            message: `Invalid plugin id "${val}". Custom plugins must start with file:// or use a built-in plugin. See https://www.promptfoo.dev/docs/red-team/plugins for available plugins.`,
+            message: `Invalid plugin id "${val}". Custom plugins must start with file:// or use a built-in plugin. See https://www.artef.dev/docs/red-team/plugins for available plugins.`,
           });
         }
       }),
@@ -140,7 +140,7 @@ export const RedteamPluginSchema = z.union([
         if (!val.startsWith('file://')) {
           ctx.addIssue({
             code: 'custom',
-            message: `Invalid plugin id "${val}". Custom plugins must start with file:// or use a built-in plugin. See https://www.promptfoo.dev/docs/red-team/plugins for available plugins.`,
+            message: `Invalid plugin id "${val}". Custom plugins must start with file:// or use a built-in plugin. See https://www.artef.dev/docs/red-team/plugins for available plugins.`,
           });
         }
       }),
@@ -198,7 +198,7 @@ export const RedteamStrategySchema = z.union([
 ]);
 
 /**
- * Schema for `promptfoo redteam generate` command options
+ * Schema for `artef redteam generate` command options
  */
 // NOTE: Remember to edit types/redteam.ts:RedteamCliGenerateOptions if you edit this schema
 export const RedteamGenerateOptionsSchema = z.object({
@@ -261,7 +261,7 @@ export const RedteamGenerateOptionsSchema = z.object({
 });
 
 /**
- * Schema for `redteam` section of promptfooconfig.yaml
+ * Schema for `redteam` section of artefconfig.yaml
  */
 export const RedteamConfigSchema = z
   .object({
@@ -366,7 +366,7 @@ export const RedteamConfigSchema = z
 
       if (Array.isArray(strategyLanguages) && strategyLanguages.length > 0) {
         console.debug(
-          '[DEPRECATED] The "multilingual" strategy is deprecated. Use the top-level "language" config instead. See: https://www.promptfoo.dev/docs/red-team/configuration/#language',
+          '[DEPRECATED] The "multilingual" strategy is deprecated. Use the top-level "language" config instead. See: https://www.artef.dev/docs/red-team/configuration/#language',
         );
 
         if (data.language) {

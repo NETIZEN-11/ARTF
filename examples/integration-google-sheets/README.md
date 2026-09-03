@@ -1,9 +1,9 @@
-# integration-google-sheets (Google Sheets)
+﻿# integration-google-sheets (Google Sheets)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-google-sheets
+npx artef@latest init --example integration-google-sheets
 cd integration-google-sheets
 ```
 
@@ -12,18 +12,18 @@ cd integration-google-sheets
 This example shows how to use an external Google Sheet to run tests. To get
 started, set your OPENAI_API_KEY environment variable.
 
-Next, duplicate the Google Sheet in promptfooconfig.yaml and replace the URL.
+Next, duplicate the Google Sheet in artefconfig.yaml and replace the URL.
 
 Public sheet imports work without extra packages. Private sheet reads and Google Sheets output writes use the optional authenticated Sheets dependency:
 
 ```bash
-npm install promptfoo @googleapis/sheets
+npm install artef @googleapis/sheets
 ```
 
 Then run:
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
-Afterwards, you can view the results by running `npx promptfoo view`
+Afterwards, you can view the results by running `npx artef view`

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import { SITE_CONSTANTS } from '../../constants';
 import styles from './styles.module.css';
 
-const CACHE_KEY = 'github_stars_cache_promptfoo';
+const CACHE_KEY = 'github_stars_cache_artef';
 const CACHE_DURATION = 1000 * 60 * 60 * 24; // 1 day
 const FETCH_TIMEOUT = 5000; // 5 seconds
 
@@ -62,7 +62,7 @@ export default function GitHubStars(): React.ReactElement {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
 
-    fetch('https://api.github.com/repos/promptfoo/promptfoo', {
+    fetch('https://api.github.com/repos/artef/artef', {
       signal: controller.signal,
     })
       .then((res) => res.json())
@@ -88,7 +88,7 @@ export default function GitHubStars(): React.ReactElement {
 
   return (
     <a
-      href="https://github.com/promptfoo/promptfoo#readme"
+      href="https://github.com/artef/artef#readme"
       target="_blank"
       rel="noopener noreferrer"
       className={styles.githubStars}

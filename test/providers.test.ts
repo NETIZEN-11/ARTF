@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -52,10 +52,10 @@ describe('loadApiProvider', () => {
 
     // Mock the cloud utility functions
     vi.mocked(isCloudProvider).mockImplementation((path: string) =>
-      path.startsWith('promptfoo://provider/'),
+      path.startsWith('artef://provider/'),
     );
     vi.mocked(getCloudDatabaseId).mockImplementation((path: string) =>
-      path.slice('promptfoo://provider/'.length),
+      path.slice('artef://provider/'.length),
     );
 
     // Reset maybeLoadConfigFromExternalFile mock to default implementation

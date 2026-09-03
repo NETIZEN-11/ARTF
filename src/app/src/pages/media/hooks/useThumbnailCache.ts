@@ -1,9 +1,9 @@
-/**
+﻿/**
  * IndexedDB-based cache for video thumbnails.
  * Stores generated thumbnails to avoid regenerating them on every page load.
  */
 
-const DB_NAME = 'promptfoo-media-cache';
+const DB_NAME = 'artef-media-cache';
 const DB_VERSION = 1;
 const STORE_NAME = 'thumbnails';
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days

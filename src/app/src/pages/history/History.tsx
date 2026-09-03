@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table';
 import { PageContainer } from '@app/components/layout/PageContainer';
@@ -16,7 +16,7 @@ import {
 } from '@app/components/ui/dialog';
 import { EVAL_ROUTES, ROUTES } from '@app/constants/routes';
 import { Link } from 'react-router-dom';
-import type { StandaloneEval } from '@promptfoo/util/database';
+import type { StandaloneEval } from '@artef/util/database';
 import type { ColumnDef } from '@tanstack/react-table';
 
 interface HistoryProps {
@@ -62,7 +62,7 @@ export default function History({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'promptfoo-eval-history.json';
+    a.download = 'artef-eval-history.json';
     a.click();
 
     setTimeout(() => {
@@ -109,7 +109,7 @@ export default function History({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'promptfoo-eval-history.csv';
+    a.download = 'artef-eval-history.csv';
     a.click();
 
     setTimeout(() => {

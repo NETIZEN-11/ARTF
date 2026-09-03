@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   getSysExecutable,
   runPython,
@@ -48,7 +48,7 @@ describe('wrapper', () => {
   let restoreEnv: () => void;
 
   beforeAll(() => {
-    restoreEnv = mockProcessEnv({ PROMPTFOO_PYTHON: undefined });
+    restoreEnv = mockProcessEnv({ artef_PYTHON: undefined });
   });
 
   afterAll(() => {
@@ -57,7 +57,7 @@ describe('wrapper', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/promptfoo-python-code-test');
+    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/artef-python-code-test');
     vi.mocked(removeSecureTempDirectory).mockResolvedValue(undefined);
     vi.mocked(writeSecureTempFile).mockImplementation(
       async (directory: string, filename: string) => `${directory}/${filename}`,
@@ -74,19 +74,19 @@ describe('wrapper', () => {
       const mockRunPython = vi.fn().mockResolvedValue('cleanup test');
       vi.mocked(runPython).mockImplementation(mockRunPython);
       await runPythonCode('print("cleanup test")', 'main', []);
-      expect(createSecureTempDirectory).toHaveBeenCalledWith('promptfoo-python-code-');
+      expect(createSecureTempDirectory).toHaveBeenCalledWith('artef-python-code-');
       expect(writeSecureTempFile).toHaveBeenCalledWith(
-        '/tmp/promptfoo-python-code-test',
+        '/tmp/artef-python-code-test',
         'script.py',
         'print("cleanup test")',
       );
       expect(mockRunPython).toHaveBeenCalledTimes(1);
       expect(mockRunPython).toHaveBeenCalledWith(
-        '/tmp/promptfoo-python-code-test/script.py',
+        '/tmp/artef-python-code-test/script.py',
         'main',
         [],
       );
-      expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/promptfoo-python-code-test');
+      expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/artef-python-code-test');
     });
     it('should execute Python code from a string and read the output file', async () => {
       const mockOutput = { type: 'final_result', data: 'execution result' };
@@ -97,7 +97,7 @@ describe('wrapper', () => {
       expect(result).toBe('execution result');
       expect(mockRunPython).toHaveBeenCalledWith(expect.stringContaining('.py'), 'main', []);
       expect(writeSecureTempFile).toHaveBeenCalledWith(
-        '/tmp/promptfoo-python-code-test',
+        '/tmp/artef-python-code-test',
         'script.py',
         code,
       );

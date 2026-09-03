@@ -1,4 +1,4 @@
-import type winston from 'winston';
+﻿import type winston from 'winston';
 
 import type { MinimalApiProvider } from '../contracts/prompts';
 import type {
@@ -40,7 +40,7 @@ export type ProvidersConfig = ProviderId | ProviderFunction | ApiProvider | Prov
 export interface RemoteGenerationContext {
   /** Provider IDs used for filtering, retry, and target identity. */
   providerTargetIds: string[];
-  /** Cloud target database ID sent to Promptfoo Cloud task handlers. */
+  /** Cloud target database ID sent to artef Cloud task handlers. */
   cloudTargetId?: string;
 }
 

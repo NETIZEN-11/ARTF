@@ -1,9 +1,9 @@
-# redteam-rag (Redteam Rag)
+﻿# redteam-rag (Redteam Rag)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-rag
+npx artef@latest init --example redteam-rag
 cd redteam-rag
 ```
 
@@ -21,13 +21,13 @@ We check for things like:
 To run the pre-generated eval (`redteam.yaml`):
 
 ```bash
-npx promptfoo@latest redteam eval
+npx artef@latest redteam eval
 ```
 
 To re-generate tests and run the red team eval:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
-If you are not authenticated to Promptfoo Cloud, set `OPENAI_API_KEY` and add `--grader openai:gpt-4.1-mini` to grade locally instead of using cloud grading. Some hosted attack strategies in the pre-generated suite still require Promptfoo Cloud access, so sign in before running the full generated set.
+If you are not authenticated to artef Cloud, set `OPENAI_API_KEY` and add `--grader openai:gpt-4.1-mini` to grade locally instead of using cloud grading. Some hosted attack strategies in the pre-generated suite still require artef Cloud access, so sign in before running the full generated set.

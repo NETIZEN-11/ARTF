@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as evaluatorHelpers from '../../../../src/evaluatorHelpers';
 import { CrescendoProvider, MemorySystem } from '../../../../src/redteam/providers/crescendo/index';
 import { redteamProviderManager, tryUnblocking } from '../../../../src/redteam/providers/shared';
@@ -26,11 +26,11 @@ vi.mock('../../../../src/globalConfig/accounts', async (importOriginal) => ({
   isLoggedIntoCloud: vi.fn().mockReturnValue(true),
 }));
 
-vi.mock('../../../../src/providers/promptfoo', async (importOriginal) => {
+vi.mock('../../../../src/providers/artef', async (importOriginal) => {
   return {
     ...(await importOriginal()),
 
-    PromptfooChatCompletionProvider: vi.fn().mockImplementation(function () {
+    artefChatCompletionProvider: vi.fn().mockImplementation(function () {
       return {
         id: () => 'mock-unblocking',
         callApi: vi.fn(),
@@ -277,7 +277,7 @@ describe('CrescendoProvider', () => {
   });
 
   it('should return correct provider id', () => {
-    expect(crescendoProvider.id()).toBe('promptfoo:redteam:crescendo');
+    expect(crescendoProvider.id()).toBe('artef:redteam:crescendo');
   });
 
   it('should include sessionId from context vars when response is missing it', async () => {

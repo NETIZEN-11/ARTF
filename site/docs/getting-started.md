@@ -1,6 +1,6 @@
----
+﻿---
 title: Getting started
-description: Learn how to set up your first promptfoo config file, create prompts, configure providers, and run your first LLM evaluation.
+description: Learn how to set up your first artef config file, create prompts, configure providers, and run your first LLM evaluation.
 keywords: [getting started, setup, configuration, prompts, providers, evaluation, llm testing]
 sidebar_position: 5
 ---
@@ -12,35 +12,35 @@ import TabItem from '@theme/TabItem';
 
 This guide will walk you through creating a working eval that tests prompts across multiple models and opens a web view for comparing outputs.
 
-After [installing](/docs/installation) promptfoo, you can set up your first config file in a few ways:
+After [installing](/docs/installation) artef, you can set up your first config file in a few ways:
 
 ## Running an example
 
 Set up your first config file with a pre-built example by running this command with [npx](https://nodejs.org/en/download), [npm](https://nodejs.org/en/download), or [brew](https://brew.sh/):
 
-  <Tabs groupId="promptfoo-command">
+  <Tabs groupId="artef-command">
     <TabItem value="npx" label="npx" default>
       ```bash
-      npx promptfoo@latest init --example getting-started
+      npx artef@latest init --example getting-started
       ```
     </TabItem>
     <TabItem value="npm" label="npm">
       ```bash
-      npm install -g promptfoo
-      promptfoo init --example getting-started
+      npm install -g artef
+      artef init --example getting-started
       ```
     </TabItem>
     <TabItem value="brew" label="brew">
       ```bash
-      brew install promptfoo
-      promptfoo init --example getting-started
+      brew install artef
+      artef init --example getting-started
       ```
     </TabItem>
   </Tabs>
 
-This will create a new directory with a [basic example](https://github.com/promptfoo/promptfoo/tree/main/examples/getting-started) that tests translation prompts across different models. The example includes:
+This will create a new directory with a [basic example](https://github.com/artef/artef/tree/main/examples/getting-started) that tests translation prompts across different models. The example includes:
 
-- A configuration file `promptfooconfig.yaml` with sample prompts, providers, and test cases.
+- A configuration file `artefconfig.yaml` with sample prompts, providers, and test cases.
 - A `README.md` file explaining how the example works.
 
 Most providers need authentication. For OpenAI:
@@ -51,70 +51,70 @@ export OPENAI_API_KEY=sk-abc123
 
 Then navigate to the example directory, run the eval, and view results:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
     cd getting-started
-    npx promptfoo@latest eval
-    npx promptfoo@latest view
+    npx artef@latest eval
+    npx artef@latest view
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
     cd getting-started
-    promptfoo eval
-    promptfoo view
+    artef eval
+    artef view
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
     cd getting-started
-    promptfoo eval
-    promptfoo view
+    artef eval
+    artef view
     ```
   </TabItem>
 </Tabs>
 
 ## Set up via the CLI
 
-To start from scratch, run `promptfoo init` to create a config through an interactive CLI walkthrough:
+To start from scratch, run `artef init` to create a config through an interactive CLI walkthrough:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest init
+    npx artef@latest init
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo init
+    artef init
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo init
+    artef init
     ```
   </TabItem>
 </Tabs>
 
 ## Set up via the Web UI
 
-If you prefer a visual interface, run `promptfoo eval setup` to configure your first eval through the web UI:
+If you prefer a visual interface, run `artef eval setup` to configure your first eval through the web UI:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest eval setup
+    npx artef@latest eval setup
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo eval setup
+    artef eval setup
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo eval setup
+    artef eval setup
     ```
   </TabItem>
 </Tabs>
@@ -122,14 +122,14 @@ If you prefer a visual interface, run `promptfoo eval setup` to configure your f
 This opens a browser-based setup flow that walks you through creating prompts, choosing providers, and adding test cases.
 
 <div style={{ textAlign: 'center' }}>   
-  <img src="/img/docs/eval-setup.png" alt="Promptfoo eval setup Web UI" style={{ width: '80%' }} />
+  <img src="/img/docs/eval-setup.png" alt="artef eval setup Web UI" style={{ width: '80%' }} />
 </div>
 
 ## Configuration
 
-Now that you've created an initial configuration, you can update `promptfooconfig.yaml` with your own prompts, providers, and test cases:
+Now that you've created an initial configuration, you can update `artefconfig.yaml` with your own prompts, providers, and test cases:
 
-1. **Set up your prompts**: Open `promptfooconfig.yaml` and add prompts that you want to test. Use double curly braces for variable placeholders: `{{variable_name}}`. For example:
+1. **Set up your prompts**: Open `artefconfig.yaml` and add prompts that you want to test. Use double curly braces for variable placeholders: `{{variable_name}}`. For example:
 
    ```yaml
    prompts:
@@ -138,7 +138,7 @@ Now that you've created an initial configuration, you can update `promptfooconfi
 
    [&raquo; More information on setting up prompts](/docs/configuration/prompts)
 
-2. **Add providers**: Add `providers` to specify AI models you want to test. Promptfoo supports 60+ providers including OpenAI, Anthropic, Google, and many others:
+2. **Add providers**: Add `providers` to specify AI models you want to test. artef supports 60+ providers including OpenAI, Anthropic, Google, and many others:
 
    ```yaml
    providers:
@@ -178,22 +178,22 @@ Now that you've created an initial configuration, you can update `promptfooconfi
 
    [&raquo; More information on setting up tests](/docs/configuration/guide)
 
-4. **Run the evaluation**: Make sure you're in the directory containing `promptfooconfig.yaml`, then run:
+4. **Run the evaluation**: Make sure you're in the directory containing `artefconfig.yaml`, then run:
 
-   <Tabs groupId="promptfoo-command">
+   <Tabs groupId="artef-command">
      <TabItem value="npx" label="npx" default>
        ```bash
-       npx promptfoo@latest eval
+       npx artef@latest eval
        ```
      </TabItem>
      <TabItem value="npm" label="npm">
       ```bash
-      promptfoo eval
+      artef eval
       ```
      </TabItem>
      <TabItem value="brew" label="brew">
       ```bash
-      promptfoo eval
+      artef eval
       ```
      </TabItem>
    </Tabs>
@@ -202,25 +202,25 @@ Now that you've created an initial configuration, you can update `promptfooconfi
 
 5. **Review outputs**: After the evaluation is complete, open the web viewer to review the outputs:
 
-   <Tabs groupId="promptfoo-command">
+   <Tabs groupId="artef-command">
      <TabItem value="npx" label="npx" default>
        ```bash
-       npx promptfoo@latest view
+       npx artef@latest view
        ```
      </TabItem>
      <TabItem value="npm" label="npm">
        ```bash
-       promptfoo view
+       artef view
        ```
      </TabItem>
      <TabItem value="brew" label="brew">
        ```bash
-       promptfoo view
+       artef view
        ```
      </TabItem>
    </Tabs>
 
-![Promptfoo Web UI showing evaluation results](/img/docs/custom-example-view.png)
+![artef Web UI showing evaluation results](/img/docs/custom-example-view.png)
 
 ### Asserts
 
@@ -238,24 +238,24 @@ The examples below cover a few common eval patterns: prompt quality, model quali
 
 ### Prompt quality
 
-In [this example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-self-grading), we evaluate whether adding adjectives to the personality of an assistant bot affects the responses.
+In [this example](https://github.com/artef/artef/tree/main/examples/eval-self-grading), we evaluate whether adding adjectives to the personality of an assistant bot affects the responses.
 
 You can quickly set up this example by running:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest init --example eval-self-grading
+    npx artef@latest init --example eval-self-grading
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo init --example eval-self-grading
+    artef init --example eval-self-grading
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo init --example eval-self-grading
+    artef init --example eval-self-grading
     ```
   </TabItem>
 </Tabs>
@@ -264,7 +264,7 @@ You can quickly set up this example by running:
 <summary>Show YAML file for this example</summary>
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Automatic response evaluation using LLM rubric scoring
 
 # Load prompts
@@ -314,34 +314,34 @@ tests:
 
 </details>
 
-From the newly created directory, run `npx promptfoo@latest eval` to execute this example:
+From the newly created directory, run `npx artef@latest eval` to execute this example:
 
-![promptfoo command line](/img/docs/self-grading.gif)
+![artef command line](/img/docs/self-grading.gif)
 
 This command will evaluate the prompts, substituting variable values, and output the results in your terminal.
 
-You can also output a [spreadsheet](https://docs.google.com/spreadsheets/d/1nanoj3_TniWrDl1Sj-qYqIMD6jwm5FBy15xPFdUTsmI/edit?usp=sharing), [JSON](https://github.com/promptfoo/promptfoo/blob/main/examples/simple-cli/output.json), YAML or HTML.
+You can also output a [spreadsheet](https://docs.google.com/spreadsheets/d/1nanoj3_TniWrDl1Sj-qYqIMD6jwm5FBy15xPFdUTsmI/edit?usp=sharing), [JSON](https://github.com/artef/artef/blob/main/examples/simple-cli/output.json), YAML or HTML.
 
 ### Model quality
 
-In [this next example](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-openai-models), we evaluate the difference between GPT-5.4 and GPT-5.4 Mini outputs for a given prompt:
+In [this next example](https://github.com/artef/artef/tree/main/examples/compare-openai-models), we evaluate the difference between GPT-5.4 and GPT-5.4 Mini outputs for a given prompt:
 
 You can quickly set up this example by running:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest init --example compare-openai-models
+    npx artef@latest init --example compare-openai-models
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo init --example compare-openai-models
+    artef init --example compare-openai-models
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo init --example compare-openai-models
+    artef init --example compare-openai-models
     ```
   </TabItem>
 </Tabs>
@@ -350,7 +350,7 @@ You can quickly set up this example by running:
 <summary>Show YAML file for this example</summary>
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Comparing OpenAI flagship and mini models performance on riddles
 
 prompts:
@@ -433,24 +433,24 @@ tests:
 
 </details>
 
-Navigate to the newly created directory and run `npx promptfoo@latest eval` or `promptfoo eval`. Also note that you can override parameters directly from the command line.
+Navigate to the newly created directory and run `npx artef@latest eval` or `artef eval`. Also note that you can override parameters directly from the command line.
 
 For example, if you run this command:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest eval -r google:gemini-3.1-pro-preview google:gemini-2.5-pro
+    npx artef@latest eval -r google:gemini-3.1-pro-preview google:gemini-2.5-pro
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo eval -r google:gemini-3.1-pro-preview google:gemini-2.5-pro
+    artef eval -r google:gemini-3.1-pro-preview google:gemini-2.5-pro
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo eval -r google:gemini-3.1-pro-preview google:gemini-2.5-pro
+    artef eval -r google:gemini-3.1-pro-preview google:gemini-2.5-pro
     ```
   </TabItem>
 </Tabs>
@@ -461,62 +461,62 @@ It produces the following table, with Gemini models replacing the GPT models in 
 
 A similar approach can be used to run other model comparisons. For example, you can:
 
-- Compare GPT-5.4 reasoning effort settings (see [GPT reasoning effort comparison](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-gpt-reasoning-effort))
-- Compare models with different temperatures (see [GPT temperature comparison](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-gpt-temperature))
+- Compare GPT-5.4 reasoning effort settings (see [GPT reasoning effort comparison](https://github.com/artef/artef/tree/main/examples/compare-gpt-reasoning-effort))
+- Compare models with different temperatures (see [GPT temperature comparison](https://github.com/artef/artef/tree/main/examples/compare-gpt-temperature))
 - Compare open-source models (see [Comparing Open-Source Models](/docs/guides/compare-open-source-models))
 - Compare Retrieval-Augmented Generation (RAG) with LangChain vs. regular GPT (see [LangChain example](/docs/configuration/testing-llm-chains))
 
 ### RAG quality
 
-In [this example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-rag), we evaluate whether RAG outputs are factual, relevant, and grounded in the retrieved context.
+In [this example](https://github.com/artef/artef/tree/main/examples/eval-rag), we evaluate whether RAG outputs are factual, relevant, and grounded in the retrieved context.
 
 You can quickly set up this example by running:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest init --example eval-rag
+    npx artef@latest init --example eval-rag
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo init --example eval-rag
+    artef init --example eval-rag
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo init --example eval-rag
+    artef init --example eval-rag
     ```
   </TabItem>
 </Tabs>
 
-From the newly created directory, run `npx promptfoo@latest eval` or `promptfoo eval` to grade outputs on factuality, answer relevance, context recall, context relevance, and context faithfulness. For a deeper walkthrough, see the [RAG evaluation guide](/docs/guides/evaluate-rag).
+From the newly created directory, run `npx artef@latest eval` or `artef eval` to grade outputs on factuality, answer relevance, context recall, context relevance, and context faithfulness. For a deeper walkthrough, see the [RAG evaluation guide](/docs/guides/evaluate-rag).
 
 ### Agent quality
 
-In [this example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-agents-basic), we evaluate an OpenAI Agents SDK workflow that uses tools for dice rolls, inventory checks, scene descriptions, and character stats.
+In [this example](https://github.com/artef/artef/tree/main/examples/openai-agents-basic), we evaluate an OpenAI Agents SDK workflow that uses tools for dice rolls, inventory checks, scene descriptions, and character stats.
 
 You can quickly set up this example by running:
 
-<Tabs groupId="promptfoo-command">
+<Tabs groupId="artef-command">
   <TabItem value="npx" label="npx" default>
     ```bash
-    npx promptfoo@latest init --example openai-agents-basic
+    npx artef@latest init --example openai-agents-basic
     ```
   </TabItem>
   <TabItem value="npm" label="npm">
     ```bash
-    promptfoo init --example openai-agents-basic
+    artef init --example openai-agents-basic
     ```
   </TabItem>
   <TabItem value="brew" label="brew">
     ```bash
-    promptfoo init --example openai-agents-basic
+    artef init --example openai-agents-basic
     ```
   </TabItem>
 </Tabs>
 
-From the newly created directory, run `npm install`, then `npx promptfoo@latest eval` or `promptfoo eval` to test tool use and response quality across multi-turn scenarios. For task completion and trajectory checks, see the [agent evaluation guide](/docs/guides/evaluate-coding-agents) and [tracing docs](/docs/tracing).
+From the newly created directory, run `npm install`, then `npx artef@latest eval` or `artef eval` to test tool use and response quality across multi-turn scenarios. For task completion and trajectory checks, see the [agent evaluation guide](/docs/guides/evaluate-coding-agents) and [tracing docs](/docs/tracing).
 
 ## Next steps
 
@@ -537,4 +537,4 @@ Now that you've run your first eval, here are some ways to go deeper:
 
 **Learn from examples:**
 
-- [More examples](https://github.com/promptfoo/promptfoo/tree/main/examples) in our GitHub repository
+- [More examples](https://github.com/artef/artef/tree/main/examples) in our GitHub repository

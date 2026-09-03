@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 100
 sidebar_label: Moderation
 description: Implement comprehensive content moderation using multiple APIs to detect and filter harmful, toxic, or policy-violating outputs
@@ -10,7 +10,7 @@ Use the `moderation` assert type to ensure that LLM outputs are safe.
 
 Currently, this supports [OpenAI's moderation model](https://platform.openai.com/docs/guides/moderation), Meta's LlamaGuard models (LlamaGuard 3 and 4) via [Replicate](https://replicate.com/meta/llama-guard-3-8b), and [Azure Content Safety API](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview).
 
-When a moderation provider reports token usage, Promptfoo includes it in assertion token metrics for clean, flagged, and provider-error results. `not-moderation` changes only the verdict; it preserves reported usage. Providers that omit usage do not produce synthetic token counts.
+When a moderation provider reports token usage, artef includes it in assertion token metrics for clean, flagged, and provider-error results. `not-moderation` changes only the verdict; it preserves reported usage. Providers that omit usage do not produce synthetic token counts.
 
 In general, we encourage the use of Meta's LlamaGuard as it substantially outperforms OpenAI's moderation API as well as GPT-4. [See benchmarks](https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard2/MODEL_CARD.md#model-performance).
 
@@ -143,7 +143,7 @@ AZURE_CONTENT_SAFETY_API_KEY=your-api-key
 AZURE_CONTENT_SAFETY_API_VERSION=2024-09-01  # Optional, defaults to this version
 ```
 
-If `AZURE_CONTENT_SAFETY_ENDPOINT` is set, PromptFoo will automatically use the Azure Content Safety service for moderation instead of OpenAI's moderation API.
+If `AZURE_CONTENT_SAFETY_ENDPOINT` is set, artef will automatically use the Azure Content Safety service for moderation instead of OpenAI's moderation API.
 
 Or you can explicitly use the Azure moderation provider in your tests:
 

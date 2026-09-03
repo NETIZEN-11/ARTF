@@ -1,4 +1,4 @@
-import { ExportResultCode } from '@opentelemetry/core';
+﻿import { ExportResultCode } from '@opentelemetry/core';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { LocalSpanExporter } from '../../src/tracing/localSpanExporter';
 import type { ReadableSpan } from '@opentelemetry/sdk-trace-base';
@@ -258,7 +258,7 @@ describe('LocalSpanExporter', () => {
     it('preserves resource attributes and lets span attributes override matching keys', async () => {
       const span = createMockSpan({
         resourceAttributes: {
-          'service.name': 'configured-promptfoo-service',
+          'service.name': 'configured-artef-service',
           'service.version': '1.2.3',
           'deployment.environment': 'resource',
         },
@@ -275,7 +275,7 @@ describe('LocalSpanExporter', () => {
         [
           expect.objectContaining({
             attributes: {
-              'service.name': 'configured-promptfoo-service',
+              'service.name': 'configured-artef-service',
               'service.version': '1.2.3',
               'deployment.environment': 'span',
               'gen_ai.provider.name': 'openai',

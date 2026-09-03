@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { getCache, isCacheEnabled } from '../../cache';
 import logger from '../../logger';
@@ -57,7 +57,7 @@ type FoundryResponseCreateParams = Parameters<
   ReturnType<AzureAIProjectClient['getOpenAIClient']>['responses']['create']
 >[0] & { stream?: false };
 type CachedFoundryAgentResponse = ProviderResponse & {
-  __promptfooFoundryAgent?: Pick<FoundryAgent, 'id' | 'name'>;
+  __artefFoundryAgent?: Pick<FoundryAgent, 'id' | 'name'>;
 };
 type FoundryResponse = OpenAIResponse;
 type ResponseFunctionCallItem = ResponseFunctionToolCall;
@@ -66,7 +66,7 @@ type FunctionToolCallbacks = AzureAssistantOptions['functionToolCallbacks'];
 
 function hashFoundryAgentCacheValue(value: unknown): string {
   const serialized = typeof value === 'string' ? value : JSON.stringify(value);
-  return createHmac('sha256', 'promptfoo:azure-foundry-agent:cache-key:v1')
+  return createHmac('sha256', 'artef:azure-foundry-agent:cache-key:v1')
     .update(serialized ?? String(value))
     .digest('hex');
 }
@@ -571,7 +571,7 @@ export class AzureFoundryAgentProvider extends AzureGenericProvider {
             deploymentName: this.deploymentName,
             cacheKey,
           });
-          const { __promptfooFoundryAgent: cachedAgent, ...response } = cachedResult;
+          const { __artefFoundryAgent: cachedAgent, ...response } = cachedResult;
           if (cachedAgent) {
             span.setAttribute(GenAIAttributes.AGENT_ID, cachedAgent.id);
             span.setAttribute(GenAIAttributes.AGENT_NAME, cachedAgent.name);
@@ -705,7 +705,7 @@ export class AzureFoundryAgentProvider extends AzureGenericProvider {
           const cache = await getCache();
           await cache.set(cacheKey, {
             ...result,
-            __promptfooFoundryAgent: { id: agent.id, name: agent.name },
+            __artefFoundryAgent: { id: agent.id, name: agent.name },
           } satisfies CachedFoundryAgentResponse);
         } catch (error) {
           logger.warn(`Error caching Azure Foundry agent response: ${error}`);

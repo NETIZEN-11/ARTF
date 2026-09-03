@@ -1,7 +1,7 @@
-/**
+﻿/**
  * GitHub Action Entry Point
  *
- * Main entry point for the promptfoo code-scan GitHub Action
+ * Main entry point for the artef code-scan GitHub Action
  */
 
 import * as fs from 'fs';
@@ -12,10 +12,10 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as github from '@actions/github';
 // esbuild inlines (and tree-shakes) this named JSON import at build time, so each
-// action release ships with the promptfoo CLI version that was current in the
+// action release ships with the artef CLI version that was current in the
 // monorepo when the release was built — the runtime install below is pinned to it
 // instead of resolving a mutable dist-tag like `latest`.
-import { version as defaultPromptfooVersion } from '../../package.json';
+import { version as defaultartefVersion } from '../../package.json';
 import { hasPrPostableFindings, prepareComments } from '../../src/codeScan/util/github';
 import { hasSarifReportableFindings, scanResponseToSarif } from '../../src/codeScan/util/sarif';
 import {
@@ -40,7 +40,7 @@ interface ActionInputs {
   githubToken: string;
   enableForkPrs: boolean;
   sarifOutputPath: string | undefined;
-  promptfooVersion: string;
+  artefVersion: string;
 }
 
 interface PullRequestForkPayload {
@@ -110,14 +110,14 @@ const EXACT_SEMVER_PATTERN = new RegExp(
 // semver's own MAX_LENGTH; also bounds regex work on hostile input.
 const MAX_VERSION_LENGTH = 256;
 
-function resolvePromptfooVersionInput(): string {
-  const override = core.getInput('promptfoo-version').trim();
+function resolveartefVersionInput(): string {
+  const override = core.getInput('artef-version').trim();
   if (!override) {
-    return defaultPromptfooVersion;
+    return defaultartefVersion;
   }
   if (override.length > MAX_VERSION_LENGTH || !EXACT_SEMVER_PATTERN.test(override)) {
     throw new Error(
-      `Invalid promptfoo-version "${override}": expected an exact version like 0.121.0`,
+      `Invalid artef-version "${override}": expected an exact version like 0.121.0`,
     );
   }
   return override;
@@ -135,7 +135,7 @@ function getActionInputs(): ActionInputs {
     // core.getInput returns '' when unset; normalize so a falsy check at the call site
     // doesn't have to special-case the empty-string sentinel.
     sarifOutputPath: core.getInput('sarif-output-path').trim() || undefined,
-    promptfooVersion: resolvePromptfooVersionInput(),
+    artefVersion: resolveartefVersionInput(),
   };
 }
 
@@ -161,7 +161,7 @@ function createSubprocessEnv(): Record<string, string> {
 
   // A PR-controlled step running earlier in the workflow can persist
   // NODE_OPTIONS=--require=/path/to/payload.cjs via $GITHUB_ENV; Node preloads that
-  // module into every child node process — npm during the install and promptfoo during
+  // module into every child node process — npm during the install and artef during
   // the scan (when the OIDC token / API key are in scope). Strip it from all
   // subprocesses; the action does not rely on caller-provided NODE_OPTIONS.
   delete env.NODE_OPTIONS;
@@ -204,7 +204,7 @@ function loadGuidance(inputs: ActionInputs): string | undefined {
 }
 
 function isSetupPR(files: FileChange[]): boolean {
-  const setupWorkflowPath = '.github/workflows/promptfoo-code-scan.yml';
+  const setupWorkflowPath = '.github/workflows/artef-code-scan.yml';
   return (
     files.length === 1 &&
     files[0].path === setupWorkflowPath &&
@@ -242,7 +242,7 @@ function shouldSkipForkPullRequest(enableForkPrs: boolean): boolean {
 
 async function authenticateWithOidc(): Promise<string | undefined> {
   try {
-    const oidcToken = await getGitHubOIDCToken('promptfoo');
+    const oidcToken = await getGitHubOIDCToken('artef');
     core.info('🔐 Got OIDC token for server authentication');
     return oidcToken;
   } catch (error) {
@@ -363,7 +363,7 @@ function parseScanOutput(scanOutput: string): ScanResponse {
 // invocation cannot accidentally drop one of them:
 // - exact release-pinned version, never a mutable spec like `latest`
 // - --ignore-scripts: the scanner tree must not execute arbitrary code before the
-//   scan starts (promptfoo and its dependency tree work without lifecycle scripts)
+//   scan starts (artef and its dependency tree work without lifecycle scripts)
 // - sanitized env (createSubprocessEnv) with tokens stripped, plus every env-level
 //   npm config override removed (see below)
 // - cwd and local install prefix outside the checked-out workspace: the workspace
@@ -484,23 +484,23 @@ function resolveNpmCliPath(): string {
   throw new Error('npm CLI not found; install npm or configure Node.js with actions/setup-node');
 }
 
-function resolveInstalledPromptfooEntrypoint(installDir: string): string {
-  const packageDir = path.join(installDir, 'node_modules', 'promptfoo');
+function resolveInstalledartefEntrypoint(installDir: string): string {
+  const packageDir = path.join(installDir, 'node_modules', 'artef');
   const packageManifest = JSON.parse(
     fs.readFileSync(path.join(packageDir, 'package.json'), 'utf-8'),
   ) as {
     bin?: string | Record<string, unknown>;
   };
   const relativeEntrypoint =
-    typeof packageManifest.bin === 'string' ? packageManifest.bin : packageManifest.bin?.promptfoo;
+    typeof packageManifest.bin === 'string' ? packageManifest.bin : packageManifest.bin?.artef;
 
   if (typeof relativeEntrypoint !== 'string' || !relativeEntrypoint) {
-    throw new Error('Installed promptfoo package does not declare a promptfoo executable');
+    throw new Error('Installed artef package does not declare a artef executable');
   }
 
   const entrypoint = path.resolve(packageDir, relativeEntrypoint);
   if (!isFileWithinDirectory(packageDir, entrypoint)) {
-    throw new Error('Installed promptfoo executable must remain within its package directory');
+    throw new Error('Installed artef executable must remain within its package directory');
   }
 
   // npm generally rejects unsafe tar entries, but canonicalizing also prevents a
@@ -508,20 +508,20 @@ function resolveInstalledPromptfooEntrypoint(installDir: string): string {
   const canonicalPackageDir = fs.realpathSync(packageDir);
   const canonicalEntrypoint = fs.realpathSync(entrypoint);
   if (!isFileWithinDirectory(canonicalPackageDir, canonicalEntrypoint)) {
-    throw new Error('Installed promptfoo executable must remain within its package directory');
+    throw new Error('Installed artef executable must remain within its package directory');
   }
 
   return canonicalEntrypoint;
 }
 
-async function installPromptfooCli(promptfooVersion: string): Promise<string> {
+async function installartefCli(artefVersion: string): Promise<string> {
   const installCwd = process.env.RUNNER_TEMP || os.tmpdir();
 
   // npm reads its registry (and other config) from both env vars and user/global
   // .npmrc files. A PR-controlled step running before this action can poison either:
   // set npm_config_registry via $GITHUB_ENV, or write `registry=https://attacker/` to
   // $HOME/.npmrc — redirecting this exact install to an attacker registry whose
-  // promptfoo tarball then runs as the scanner. Close both channels for the install:
+  // artef tarball then runs as the scanner. Close both channels for the install:
   //  - strip every npm_config_*/NPM_CONFIG_* env var, and
   //  - point --userconfig/--globalconfig at fresh empty files so no on-disk .npmrc is
   //    consulted (two distinct paths: npm rejects loading one file as both).
@@ -540,12 +540,12 @@ async function installPromptfooCli(promptfooVersion: string): Promise<string> {
       delete env[key];
     }
   }
-  const installDir = fs.mkdtempSync(path.join(installCwd, 'promptfoo-install-'));
+  const installDir = fs.mkdtempSync(path.join(installCwd, 'artef-install-'));
   const emptyUserConfig = path.join(installDir, 'user');
   const emptyGlobalConfig = path.join(installDir, 'global');
   const npmCliPath = resolveNpmCliPath();
 
-  core.info(`📦 Installing promptfoo@${promptfooVersion}...`);
+  core.info(`📦 Installing artef@${artefVersion}...`);
   await exec.exec(
     process.execPath,
     [
@@ -553,7 +553,7 @@ async function installPromptfooCli(promptfooVersion: string): Promise<string> {
       'install',
       '--prefix',
       installDir,
-      `promptfoo@${promptfooVersion}`,
+      `artef@${artefVersion}`,
       '--ignore-scripts',
       '--registry=https://registry.npmjs.org/',
       '--userconfig',
@@ -563,25 +563,25 @@ async function installPromptfooCli(promptfooVersion: string): Promise<string> {
     ],
     { env, cwd: installCwd },
   );
-  core.info('✅ Promptfoo installed successfully');
+  core.info('✅ artef installed successfully');
 
-  return resolveInstalledPromptfooEntrypoint(installDir);
+  return resolveInstalledartefEntrypoint(installDir);
 }
 
-async function runPromptfooScan(
+async function runartefScan(
   cliArgs: string[],
   oidcToken: string | undefined,
-  promptfooVersion: string,
+  artefVersion: string,
 ): Promise<ScanResponse> {
-  const promptfooEntrypoint = await installPromptfooCli(promptfooVersion);
+  const artefEntrypoint = await installartefCli(artefVersion);
 
-  core.info('🚀 Running promptfoo code-scans run...');
+  core.info('🚀 Running artef code-scans run...');
 
   let scanOutput = '';
   let scanError = '';
   const scanEnv = createScanEnv(oidcToken);
 
-  const exitCode = await exec.exec(process.execPath, [promptfooEntrypoint, ...cliArgs], {
+  const exitCode = await exec.exec(process.execPath, [artefEntrypoint, ...cliArgs], {
     env: scanEnv,
     listeners: {
       stdout: (data: Buffer) => {
@@ -617,12 +617,12 @@ async function runPromptfooScan(
 function getScanResponse(
   cliArgs: string[],
   oidcToken: string | undefined,
-  promptfooVersion: string,
+  artefVersion: string,
 ): Promise<ScanResponse> {
   if (process.env.ACT === 'true') {
     return Promise.resolve(createMockScanResponse());
   }
-  return runPromptfooScan(cliArgs, oidcToken, promptfooVersion);
+  return runartefScan(cliArgs, oidcToken, artefVersion);
 }
 
 function buildCommentBody(comment: Comment): string {
@@ -970,16 +970,16 @@ async function runCodeScan(): Promise<void> {
   const inputs = getActionInputs();
 
   if (shouldSkipForkPullRequest(inputs.enableForkPrs)) {
-    core.info('🔀 Fork PR detected and enable-fork-prs is false; skipping Promptfoo Code Scan');
+    core.info('🔀 Fork PR detected and enable-fork-prs is false; skipping artef Code Scan');
     core.info(
-      'A maintainer can trigger a scan by commenting @promptfoo-scanner, or enable fork PR scans with enable-fork-prs: true',
+      'A maintainer can trigger a scan by commenting @artef-scanner, or enable fork PR scans with enable-fork-prs: true',
     );
     return;
   }
 
   const guidance = loadGuidance(inputs);
 
-  core.info('🔍 Starting Promptfoo Code Scan...');
+  core.info('🔍 Starting artef Code Scan...');
 
   const context = await getGitHubContext(inputs.githubToken);
   core.info(`📋 Scanning PR #${context.number} in ${context.owner}/${context.repo}`);
@@ -1003,7 +1003,7 @@ async function runCodeScan(): Promise<void> {
     await fetchBaseBranch(baseBranch);
 
     const cliArgs = buildCliArgs(inputs.apiHost, finalConfigPath, baseBranch, context);
-    const scanResponse = await getScanResponse(cliArgs, oidcToken, inputs.promptfooVersion);
+    const scanResponse = await getScanResponse(cliArgs, oidcToken, inputs.artefVersion);
 
     await handleScanResponse(scanResponse, inputs, context);
     logActCommentPreview(scanResponse.comments);

@@ -1,9 +1,9 @@
-# provider-http/auth-signature (Setting up an HTTP provider with cryptographically signed requests)
+﻿# provider-http/auth-signature (Setting up an HTTP provider with cryptographically signed requests)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-http/auth-signature
+npx artef@latest init --example provider-http/auth-signature
 cd provider-http/auth-signature
 ```
 
@@ -31,10 +31,10 @@ npm start
 
 ```bash
 # Run test cases
-promptfoo eval --no-cache
+artef eval --no-cache
 
 # View results
-promptfoo view
+artef view
 ```
 
 IMPORTANT: be sure to run with --no-cache when testing! Otherwise it may cache responses from good signatures.

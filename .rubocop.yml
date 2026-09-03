@@ -1,4 +1,4 @@
-# RuboCop configuration for promptfoo Ruby files
+﻿# RuboCop configuration for artef Ruby files
 AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable

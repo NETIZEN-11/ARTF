@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: 'Comparing open-source models'
 description: 'Compare DeepSeek, Mistral, Qwen, and Llama performance on your custom datasets using automated benchmarks to select the best open-source model for your use case'
 ---
@@ -7,7 +7,7 @@ description: 'Compare DeepSeek, Mistral, Qwen, and Llama performance on your cus
 
 When it comes to building LLM apps, there is no one-size-fits-all benchmark. To maximize the quality of your LLM application, consider building your own benchmark to supplement public benchmarks.
 
-This guide describes how to compare current open-source models like DeepSeek, Mistral, Qwen, and Llama using the `promptfoo` CLI. You can mix and match any combination of these models — just include the providers you want to test.
+This guide describes how to compare current open-source models like DeepSeek, Mistral, Qwen, and Llama using the `artef` CLI. You can mix and match any combination of these models — just include the providers you want to test.
 
 The end result is a view that compares the performance of your chosen models side-by-side:
 
@@ -15,19 +15,19 @@ The end result is a view that compares the performance of your chosen models sid
 
 ## Requirements
 
-This guide assumes that you have promptfoo [installed](/docs/installation). It uses OpenRouter for convenience, but you can follow these instructions for any provider.
+This guide assumes that you have artef [installed](/docs/installation). It uses OpenRouter for convenience, but you can follow these instructions for any provider.
 
 ## Set up the config
 
 Initialize a new directory that will contain our prompts and test cases:
 
 ```sh
-npx promptfoo@latest init --example compare-open-source-models
+npx artef@latest init --example compare-open-source-models
 ```
 
-Now let's start editing `promptfooconfig.yaml`. Create a list of models we'd like to compare:
+Now let's start editing `artefconfig.yaml`. Create a list of models we'd like to compare:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openrouter:deepseek/deepseek-v3.2
   - openrouter:mistralai/mistral-small-3.2-24b-instruct
@@ -80,7 +80,7 @@ If you do use external prompt files, they are [Nunjucks templates](https://mozil
 
 Each model has a `config` field where you can specify additional parameters. Let's add `temperature` for each model:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openrouter:deepseek/deepseek-v3.2
     config:
@@ -108,11 +108,11 @@ OPENROUTER_API_KEY=your_openrouter_api_key
 
 ## Add test cases
 
-The `tests` field in the `promptfooconfig.yaml` file is where you add your test cases. Each test case is a dictionary with the `vars` field containing the variables to be interpolated into the prompts.
+The `tests` field in the `artefconfig.yaml` file is where you add your test cases. Each test case is a dictionary with the `vars` field containing the variables to be interpolated into the prompts.
 
 Here are the test cases we will use:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # ...
 tests:
   - vars:
@@ -137,7 +137,7 @@ tests:
 
 Let's set up a few assertions to automatically assess the output for correctness:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # ...
 tests:
   - vars:
@@ -176,22 +176,22 @@ Learn more about setting up test assertions [here](/docs/configuration/expected-
 
 ## Run the comparison
 
-Once your config file is set up, you can run the comparison using the `promptfoo eval` command:
+Once your config file is set up, you can run the comparison using the `artef eval` command:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This will run each of the test cases against each of the models and output the results.
 
-Then, to open the web viewer, run `npx promptfoo@latest view`.
+Then, to open the web viewer, run `npx artef@latest view`.
 
 ![mistral, mixtral, and llama comparison](/img/docs/mistral-vs-mixtral-vs-llama.jpg)
 
 You can also output a JSON, YAML, or CSV by specifying an output file:
 
 ```
-npx promptfoo@latest eval -o output.csv
+npx artef@latest eval -o output.csv
 ```
 
 ## Analyzing the results
@@ -213,7 +213,7 @@ Common differences worth tracking:
 
 If you prefer to run models locally, you can use [Ollama](/docs/providers/ollama) instead of OpenRouter. Just swap the providers:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: ollama:chat:mistral
     config:

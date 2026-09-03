@@ -1,4 +1,4 @@
-import logger from '../logger';
+﻿import logger from '../logger';
 import { sanitizeProviderIdForLog } from './provider';
 import {
   accumulateResponseTokenUsage,
@@ -15,7 +15,7 @@ import type { TokenUsage } from '../types/shared';
  * This class provides only cumulative totals and will be removed in a future version.
  *
  * For new implementations, use the OTEL-based tracing infrastructure:
- * - Enable tracing with `PROMPTFOO_OTEL_ENABLED=true`
+ * - Enable tracing with `artef_OTEL_ENABLED=true`
  * - Use `getTokenUsageFromTrace()` from `src/util/tokenUsageCompat.ts` for per-trace usage
  * - Token usage is automatically captured as GenAI semantic convention span attributes
  *

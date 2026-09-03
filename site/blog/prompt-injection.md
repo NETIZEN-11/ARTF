@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Prompt Injection: A Comprehensive Guide'
 sidebar_label: Prompt injection
 description: 'Prompt injections are the most critical LLM vulnerability. From Microsoft Copilot data theft to ChatGPT jailbreaks, see how these attacks work and how to defend.'
@@ -191,7 +191,7 @@ This approach tends to be more effective than manual red teaming due to the wide
 - **Strict input constraints**: Limit the length and structure of user prompts.
 - **AI-powered detection**: Specialized APIs use machine learning to flag suspicious inputs.
 
-These are commonly referred to as [guardrails](https://www.promptfoo.dev/guardrails/).
+These are commonly referred to as [guardrails](https://www.artef.dev/guardrails/).
 
 Robust system design also plays a key role in mitigation:
 

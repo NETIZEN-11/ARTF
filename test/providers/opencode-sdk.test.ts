@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
 
@@ -62,7 +62,7 @@ const mockCreateOpencodeClient = vi.fn();
 // SDK returns: { id, title, version, time }
 const createMockSessionResponse = (id = 'test-session-123') => ({
   id,
-  title: `promptfoo-${Date.now()}`,
+  title: `artef-${Date.now()}`,
   version: 1,
   time: new Date().toISOString(),
 });
@@ -318,7 +318,7 @@ describe('OpenCodeSDKProvider', () => {
         expect(mockSessionCreate).toHaveBeenCalledTimes(1);
         expect(mockSessionCreate).toHaveBeenCalledWith(
           expect.objectContaining({
-            title: expect.stringMatching(/^promptfoo-\d+$/),
+            title: expect.stringMatching(/^artef-\d+$/),
           }),
         );
 
@@ -407,7 +407,7 @@ describe('OpenCodeSDKProvider', () => {
         expect(mockSessionCreate).toHaveBeenCalledWith(
           expect.objectContaining({
             body: expect.objectContaining({
-              title: expect.stringMatching(/^promptfoo-\d+$/),
+              title: expect.stringMatching(/^artef-\d+$/),
             }),
             query: {
               directory: '/test/dir',
@@ -621,7 +621,7 @@ describe('OpenCodeSDKProvider', () => {
         const result = await provider.callApi('Test prompt');
 
         expect(result.error).toMatch(
-          /supports permission rules only.*sessions started by Promptfoo/,
+          /supports permission rules only.*sessions started by artef/,
         );
         expect(mockSessionPrompt).not.toHaveBeenCalled();
       });
@@ -867,7 +867,7 @@ describe('OpenCodeSDKProvider', () => {
         });
         await provider.callApi('Test prompt');
 
-        expect(tempDirSpy).toHaveBeenCalledWith(expect.stringContaining('promptfoo-opencode-sdk-'));
+        expect(tempDirSpy).toHaveBeenCalledWith(expect.stringContaining('artef-opencode-sdk-'));
         expect(rmSpy).toHaveBeenCalledWith('/tmp/test-temp-dir', {
           recursive: true,
           force: true,

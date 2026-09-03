@@ -1,4 +1,4 @@
-// Core MCP types
+﻿// Core MCP types
 export interface McpCommandOptions {
   port: string;
   transport: string;
@@ -15,7 +15,7 @@ export interface ToolResponse<T = unknown> {
 
 /**
  * Text content for tool responses
- * This is the primary content type used by promptfoo MCP tools
+ * This is the primary content type used by artef MCP tools
  */
 export interface TextContent {
   type: 'text';

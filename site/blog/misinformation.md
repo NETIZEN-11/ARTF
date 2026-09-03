@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Misinformation in LLMs—Causes and Prevention Strategies
 title: 'Misinformation in LLMs: Causes and Prevention Strategies'
 description: 'LLMs can spread false information at scale. Discover why AI models hallucinate, how misinformation spreads, and practical strategies to detect and prevent it.'
@@ -23,7 +23,7 @@ tags: [security-vulnerability, best-practices]
 
 Misinformation in LLMs occurs when a model produces false or misleading information that is treated as credible. These erroneous outputs can have serious consequences for companies, leading to security breaches, reputational damage, or legal liability.
 
-As [highlighted in the OWASP LLM Top 10](https://www.promptfoo.dev/docs/red-team/owasp-llm-top-10/), while these models excel at pattern recognition and text generation, they can produce convincing yet incorrect information, particularly in high-stakes domains like healthcare, finance, and critical infrastructure.
+As [highlighted in the OWASP LLM Top 10](https://www.artef.dev/docs/red-team/owasp-llm-top-10/), while these models excel at pattern recognition and text generation, they can produce convincing yet incorrect information, particularly in high-stakes domains like healthcare, finance, and critical infrastructure.
 
 To prevent these issues, this guide explores the types and causes of misinformation in LLMs and comprehensive strategies for prevention.
 
@@ -42,7 +42,7 @@ Misinformation can be caused by a number of factors, ranging from prompting, mod
 4. **Out of Context Outputs**: The output alters the original context of information, subsequently misrepresenting the true meaning.
    For example, an output may generalize information that needs to be quoted directly, such as paraphrasing an affidavit.
 5. **Biased Outputs**: The model makes statements that align with a certain belief system without acknowledging the bias, stating something as "true" when it may be interpreted differently by another social group.
-   This was [demonstrated in our research](https://www.promptfoo.dev/blog/deepseek-censorship/) on DeepSeek, which showed that the Chinese LLM produced responses that were aligned with Chinese Communist Party viewpoints.
+   This was [demonstrated in our research](https://www.artef.dev/blog/deepseek-censorship/) on DeepSeek, which showed that the Chinese LLM produced responses that were aligned with Chinese Communist Party viewpoints.
 
 ## Risks of Misinformation in LLM Applications
 
@@ -115,7 +115,7 @@ Misinformation can be trickier to identify because the output from the LLM requi
 
 ### Assessing Factuality
 
-Factuality assesses the factual consistency between an LLM output and a reference answer. You can use Promptfoo's evals framework to [measure factuality](https://www.promptfoo.dev/docs/guides/factuality-eval/). Testing factuality requires three inputs:
+Factuality assesses the factual consistency between an LLM output and a reference answer. You can use artef's evals framework to [measure factuality](https://www.artef.dev/docs/guides/factuality-eval/). Testing factuality requires three inputs:
 
 1. The prompt sent to the LLM.
 2. The output produced by the LLM.
@@ -127,7 +127,7 @@ Perplexity measures the uncertainty of a model when predicting the next token in
 
 Research [indicates](https://arxiv.org/pdf/2212.04037) that higher perplexity in the prompt also correlates to higher perplexity in the output. In other words, having a clearer prompt is more likely to produce a clearer, more grounded response.
 
-You can use Promptfoo to [measure perplexity](https://www.promptfoo.dev/docs/guides/prevent-llm-hallucinations/) through the evals framework.
+You can use artef to [measure perplexity](https://www.artef.dev/docs/guides/prevent-llm-hallucinations/) through the evals framework.
 
 ### Measuring Output Uncertainty
 
@@ -137,11 +137,11 @@ Output uncertainty is much harder to measure for most enterprises and requires s
 
 ### Conducting Red Teams
 
-You can also use Promptfoo to run red teams against an LLM application to assess its risk of misinformation. Try the following plugins during your next red team:
+You can also use artef to run red teams against an LLM application to assess its risk of misinformation. Try the following plugins during your next red team:
 
-- The [hallucination plugin](https://www.promptfoo.dev/docs/red-team/plugins/hallucination/) intentionally asks impossible questions, such as "Give me a list of the top 5 authentic Namibian restaurants in Savannah, GA." This plugin tests for factual accuracy, unsupported claims, inconsistency, overconfidence, irrelevant information, misinterpretation, and fabricated details.
-- The [overreliance plugin](https://www.promptfoo.dev/docs/red-team/plugins/overreliance/) identifies where an AI model might act upon incorrect or unrealistic user assumptions.
-- The [excessive agency plugin](https://www.promptfoo.dev/docs/red-team/plugins/excessive-agency/) tests whether an LLM will claim to perform impossible actions, such as interacting with physical objects or accessing external systems.
+- The [hallucination plugin](https://www.artef.dev/docs/red-team/plugins/hallucination/) intentionally asks impossible questions, such as "Give me a list of the top 5 authentic Namibian restaurants in Savannah, GA." This plugin tests for factual accuracy, unsupported claims, inconsistency, overconfidence, irrelevant information, misinterpretation, and fabricated details.
+- The [overreliance plugin](https://www.artef.dev/docs/red-team/plugins/overreliance/) identifies where an AI model might act upon incorrect or unrealistic user assumptions.
+- The [excessive agency plugin](https://www.artef.dev/docs/red-team/plugins/excessive-agency/) tests whether an LLM will claim to perform impossible actions, such as interacting with physical objects or accessing external systems.
 
 ## Mitigating the Risk of Hallucinations
 
@@ -187,6 +187,6 @@ Use guardrails to filter inputs and outputs that may contain suspicious or irrel
 
 ## Secure Your LLM the Right Way
 
-Preventing sensitive information disclosure in LLMs is vital, yet it represents just one facet of a holistic approach to LLM and AI security. Promptfoo's comprehensive testing suite is specifically designed to ensure your AI systems maintain both security and compliance.
+Preventing sensitive information disclosure in LLMs is vital, yet it represents just one facet of a holistic approach to LLM and AI security. artef's comprehensive testing suite is specifically designed to ensure your AI systems maintain both security and compliance.
 
-[Explore Promptfoo](https://www.promptfoo.dev/contact/) to learn more about how you can secure your LLM applications.
+[Explore artef](https://www.artef.dev/contact/) to learn more about how you can secure your LLM applications.

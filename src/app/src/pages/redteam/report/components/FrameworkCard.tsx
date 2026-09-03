@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+﻿import { useCallback, useMemo } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Card, CardContent } from '@app/components/ui/card';
@@ -13,8 +13,8 @@ import {
   riskCategorySeverityMap,
   Severity,
   severityDisplayNames,
-} from '@promptfoo/redteam/constants';
-import { calculateAttackSuccessRate } from '@promptfoo/redteam/metrics';
+} from '@artef/redteam/constants';
+import { calculateAttackSuccessRate } from '@artef/redteam/metrics';
 import { CheckCircle, Info } from 'lucide-react';
 import { compareByASRDescending } from '../utils/utils';
 import {

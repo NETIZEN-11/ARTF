@@ -1,9 +1,9 @@
-# eval-custom-grading-prompt (Custom Grading Prompt)
+﻿# eval-custom-grading-prompt (Custom Grading Prompt)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-custom-grading-prompt
+npx artef@latest init --example eval-custom-grading-prompt
 cd eval-custom-grading-prompt
 ```
 
@@ -11,12 +11,12 @@ cd eval-custom-grading-prompt
 
 To get started, set your OPENAI_API_KEY environment variable.
 
-Next, have a look at the custom prompt in promptfooconfig.yaml.
+Next, have a look at the custom prompt in artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

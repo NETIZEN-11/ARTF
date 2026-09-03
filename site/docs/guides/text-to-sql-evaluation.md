@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Evaluating LLM Text-to-SQL Performance
 description: Compare text-to-SQL accuracy across GPT-5-mini and GPT-5 using automated test cases and schema validation to optimize database query generation performance
 ---
 
 # Evaluating LLM text-to-SQL performance
 
-Promptfoo is a command-line tool that allows you to test and validate text-to-SQL conversions.
+artef is a command-line tool that allows you to test and validate text-to-SQL conversions.
 
 This guide will walk you through setting up an eval harness that will help you improve the quality of your text-to-SQL prompts.
 
@@ -15,7 +15,7 @@ The end result is a view that looks like this:
 
 ## Configuration
 
-Start by creating a `promptfooconfig.yaml` file.
+Start by creating a `artefconfig.yaml` file.
 
 ### Step 1: Define the Prompt(s)
 
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS ShipmentDetails (
 
 ### Final Configuration
 
-Combine all the steps into a final configuration file (`promptfooconfig.yaml`):
+Combine all the steps into a final configuration file (`artefconfig.yaml`):
 
 ```yaml
 description: 'Is-SQL example'
@@ -200,7 +200,7 @@ tests:
 Run your tests:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This will generate a summary of outputs in your terminal.
@@ -210,7 +210,7 @@ This will generate a summary of outputs in your terminal.
 Use the web viewer:
 
 ```
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 This will open your test results and allow you to refine your prompts and compare model performance.

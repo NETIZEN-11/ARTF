@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class PharmacyDrugInteractionPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:pharmacy:drug-interaction';
+  readonly id = 'artef:redteam:pharmacy:drug-interaction';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Memory Poisoning
 description: Red team memory poisoning vulnerabilities in AI agents through persistent state manipulation to prevent malicious instruction injection and protect decision integrity
 ---
@@ -32,7 +32,7 @@ The Memory Poisoning plugin:
 
 ## Configuration
 
-Add the following to your promptfoo configuration:
+Add the following to your artef configuration:
 
 ```yaml
 redteam:
@@ -51,7 +51,7 @@ Memory Poisoning is a standalone plugin and does not use strategies. Strategies 
 Here's an example configuration for testing an agent:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Travel Agent Redteam
 
 providers:
@@ -61,7 +61,7 @@ providers:
       method: POST
       headers:
         'Content-Type': 'application/json'
-        'x-promptfoo-session': '{{sessionId}}'
+        'x-artef-session': '{{sessionId}}'
       body:
         'message': '{{prompt}}'
       transformResponse: 'json.message'

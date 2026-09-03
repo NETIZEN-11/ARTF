@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Custom Strategy Scripts
 title: Custom Strategy Scripts
 description: Build custom red team strategies using JavaScript to programmatically generate, mutate, and chain sophisticated attack patterns
@@ -14,9 +14,9 @@ This page covers **custom strategy scripts**. For the built-in **custom strategy
 
 ## Implementation
 
-Use it in your `promptfooconfig.yaml` like this:
+Use it in your `artefconfig.yaml` like this:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: file://custom-strategy.js
     config:
@@ -66,7 +66,7 @@ The strategy action function receives:
 
 - `testCases`: Array of test cases to transform. By default, this is the entire test suite. You can filter in your strategy implementation to specific plugins, etc.
 - `injectVar`: Variable name to modify in each test case
-- `config`: Optional configuration passed from promptfooconfig.yaml
+- `config`: Optional configuration passed from artefconfig.yaml
 
 ## Related Concepts
 

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Voice Crescendo Provider
  *
  * A multi-turn voice conversation strategy for audio-to-audio red team testing.
@@ -15,7 +15,7 @@
 import dedent from 'dedent';
 import { isLoggedIntoCloud } from '../../../globalConfig/accounts';
 import logger from '../../../logger';
-import { PromptfooChatCompletionProvider } from '../../../providers/promptfoo';
+import { artefChatCompletionProvider } from '../../../providers/artef';
 import { extractFirstJsonObject } from '../../../util/json';
 import { getNunjucksEngine } from '../../../util/templates';
 import { sleep } from '../../../util/time';
@@ -264,13 +264,13 @@ export class VoiceCrescendoProvider implements ApiProvider {
   }
 
   id(): string {
-    return 'promptfoo:redteam:voice-crescendo';
+    return 'artef:redteam:voice-crescendo';
   }
 
   private async getRedTeamProvider(): Promise<ApiProvider> {
     if (!this.redTeamProvider) {
       if (shouldGenerateRemote()) {
-        this.redTeamProvider = new PromptfooChatCompletionProvider({
+        this.redTeamProvider = new artefChatCompletionProvider({
           task: 'voice-crescendo',
           jsonOnly: true,
           preferSmallModel: false,
@@ -290,7 +290,7 @@ export class VoiceCrescendoProvider implements ApiProvider {
   private async getScoringProvider(): Promise<ApiProvider> {
     if (!this.scoringProvider) {
       if (shouldGenerateRemote()) {
-        this.scoringProvider = new PromptfooChatCompletionProvider({
+        this.scoringProvider = new artefChatCompletionProvider({
           task: 'voice-crescendo-eval',
           jsonOnly: true,
           preferSmallModel: false,

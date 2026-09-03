@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from '@app/components/ui/select';
 import { Textarea } from '@app/components/ui/textarea';
-import type { Assertion, AssertionType } from '@promptfoo/types';
+import type { Assertion, AssertionType } from '@artef/types';
 
 interface AssertsFormProps {
   onAdd: (asserts: Assertion[]) => void;

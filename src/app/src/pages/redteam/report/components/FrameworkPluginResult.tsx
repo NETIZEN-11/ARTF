@@ -1,8 +1,8 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
+﻿import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { EVAL_ROUTES } from '@app/constants/routes';
 import { cn } from '@app/lib/utils';
 import { formatASRForDisplay } from '@app/utils/redteam';
-import { riskCategorySeverityMap, Severity } from '@promptfoo/redteam/constants';
+import { riskCategorySeverityMap, Severity } from '@artef/redteam/constants';
 import { CheckCircle, Info, XCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getPluginDisplayName } from './FrameworkComplianceUtils';

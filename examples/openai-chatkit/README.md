@@ -1,11 +1,11 @@
-# openai-chatkit (OpenAI ChatKit Workflow Evaluation)
+﻿# openai-chatkit (OpenAI ChatKit Workflow Evaluation)
 
 Evaluate ChatKit workflows built with OpenAI's Agent Builder using browser automation.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example openai-chatkit
+npx artef@latest init --example openai-chatkit
 cd openai-chatkit
 ```
 
@@ -22,7 +22,7 @@ npx playwright install chromium
    - Click **Publish** on your workflow
    - Copy the workflow ID (e.g., `wf_68ffb83dbfc88190a38103c2bb9f421003f913035dbdb131`)
 
-3. Update `promptfooconfig.yaml` with your workflow ID
+3. Update `artefconfig.yaml` with your workflow ID
 
 ## Environment Variables
 
@@ -31,13 +31,13 @@ npx playwright install chromium
 ## Run the Eval
 
 ```bash
-npx promptfoo@latest eval --max-concurrency 4
+npx artef@latest eval --max-concurrency 4
 ```
 
 View results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Multi-Turn Conversations
@@ -71,7 +71,7 @@ providers:
 
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 5
 
@@ -84,6 +84,6 @@ tests:
 
 ## Learn More
 
-- [ChatKit Provider Documentation](https://www.promptfoo.dev/docs/providers/openai-chatkit/)
-- [Simulated User Provider](https://www.promptfoo.dev/docs/providers/simulated-user/)
+- [ChatKit Provider Documentation](https://www.artef.dev/docs/providers/openai-chatkit/)
+- [Simulated User Provider](https://www.artef.dev/docs/providers/simulated-user/)
 - [OpenAI Agent Builder](https://platform.openai.com/docs/guides/chatkit)

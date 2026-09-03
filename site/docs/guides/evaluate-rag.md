@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 2
 description: Benchmark RAG pipeline performance by evaluating document retrieval accuracy and LLM output quality with factuality and context adherence metrics for 2-step analysis
 ---
@@ -25,9 +25,9 @@ There are several criteria used to evaluate RAG applications:
   - **Context relevance**: Measures how much of the context is necessary to answer a given query. See [`context-relevance`](/docs/configuration/expected-outputs/model-graded/) metric.
 - **Custom metrics**: You know your application better than anyone else. Create test cases that focus on things that matter to you (examples include: whether a certain document is cited, whether the response is too long, etc.)
 
-This guide shows how to use promptfoo to evaluate your RAG app. If you're new to Promptfoo, head to [Getting Started](/docs/getting-started).
+This guide shows how to use artef to evaluate your RAG app. If you're new to artef, head to [Getting Started](/docs/getting-started).
 
-You can also jump to the [full RAG example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-rag-full) on GitHub.
+You can also jump to the [full RAG example](https://github.com/artef/artef/tree/main/examples/eval-rag-full) on GitHub.
 
 ## Evaluating document retrieval
 
@@ -59,20 +59,20 @@ def call_api(query, options, context):
 
 In practice, your retrieval logic is probably more complicated than the above (e.g. query transformations and fanout). Substitute `retrieve.py` with a script of your own that prepares the query and talks to your database.
 
-### How Promptfoo runs Python retrieval scripts
+### How artef runs Python retrieval scripts
 
-The `file://retrieve.py` provider is still run from the normal Node-based Promptfoo CLI. When `promptfoo eval` reaches that provider, it starts a Python worker, imports `retrieve.py`, and calls `call_api(prompt, options, context)` for each test case. The first argument is the rendered prompt, which is the `{{ query }}` value in this example. You do not need a separate Promptfoo Python package or server.
+The `file://retrieve.py` provider is still run from the normal Node-based artef CLI. When `artef eval` reaches that provider, it starts a Python worker, imports `retrieve.py`, and calls `call_api(prompt, options, context)` for each test case. The first argument is the rendered prompt, which is the `{{ query }}` value in this example. You do not need a separate artef Python package or server.
 
-You do need Python 3 and any libraries your retrieval script imports. If the script uses LangChain, Chroma, a database client, or your own package, install those dependencies into the Python environment that Promptfoo will use:
+You do need Python 3 and any libraries your retrieval script imports. If the script uses LangChain, Chroma, a database client, or your own package, install those dependencies into the Python environment that artef will use:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
-If you do not want to activate the virtual environment before running Promptfoo, point the provider at the environment's Python executable:
+If you do not want to activate the virtual environment before running artef, point the provider at the environment's Python executable:
 
 ```yaml
 providers:
@@ -81,7 +81,7 @@ providers:
       pythonExecutable: ./.venv/bin/python
 ```
 
-You can also set `PROMPTFOO_PYTHON=/path/to/python` as a global default when the provider does not specify `pythonExecutable`. See the [Python provider docs](/docs/providers/python#environment-configuration) for more options.
+You can also set `artef_PYTHON=/path/to/python` as a global default when the provider does not specify `pythonExecutable`. See the [Python provider docs](/docs/providers/python#environment-configuration) for more options.
 
 ### Configuration
 
@@ -89,7 +89,7 @@ We will set up an eval that runs a live document retrieval against the vector da
 
 In the example below, we're evaluating a RAG chat bot used on a corporate intranet. We add a couple tests to ensure that the expected substrings appear in the document results.
 
-First, create `promptfooconfig.yaml`. We'll use a placeholder prompt with a single `{{ query }}` variable. This file instructs promptfoo to run several test cases through the retrieval script.
+First, create `artefconfig.yaml`. We'll use a placeholder prompt with a single `{{ query }}` variable. This file instructs artef to run several test cases through the retrieval script.
 
 ```yaml
 prompts:
@@ -130,7 +130,7 @@ providers:
   - file://retrieve_pgvector.py
 ```
 
-Running the eval with `promptfoo eval` will create a comparison view between Pinecone, Milvus, and PGVector:
+Running the eval with `artef eval` will create a comparison view between Pinecone, Milvus, and PGVector:
 
 ![vector db comparison eval](/img/docs/vector-db-comparison.png)
 
@@ -164,7 +164,7 @@ Think carefully and respond to the user concisely and accurately.
 
 Now that we've constructed a prompt, let's set up some test cases. In this example, the eval will format each of these test cases using the prompt template and send it to the LLM API:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts: [file://prompt1.txt]
 providers: [openai:gpt-5-mini]
 tests:
@@ -200,9 +200,9 @@ The `similar` assertion uses embeddings to evaluate the relevancy of the RAG out
 
 You can define a Python script that fetches `context` based on other variables in the test case. This is useful if you want to retrieve specific docs for each test case.
 
-Here's how you can modify the `promptfooconfig.yaml` and create a `load_context.py` script to achieve this:
+Here's how you can modify the `artefconfig.yaml` and create a `load_context.py` script to achieve this:
 
-1. Update the `promptfooconfig.yaml` file:
+1. Update the `artefconfig.yaml` file:
 
 ```yaml
 # ...
@@ -236,12 +236,12 @@ def get_var(var_name, prompt, other_vars):
 
 The `load_context.py` script defines two functions:
 
-- `get_var(var_name, prompt, other_vars)`: This is a special function that promptfoo looks for when loading dynamic variables.
+- `get_var(var_name, prompt, other_vars)`: This is a special function that artef looks for when loading dynamic variables.
   - `retrieve_documents(question: str) -> str`: This function takes the `question` as input and retrieves relevant documents based on the question. You can implement your own logic here to search a vector database or do anything else to fetch context.
 
 ### Run the eval
 
-The `promptfoo eval` command will run the evaluation and check if your tests are passed. Use the web viewer to view the test output. You can click into a test case to see the full prompt, as well as the test outcomes.
+The `artef eval` command will run the evaluation and check if your tests are passed. Use the web viewer to view the test output. You can click into a test case to see the full prompt, as well as the test outcomes.
 
 ![rag eval view test details](/img/docs/rag-eval-view-test-details.gif)
 
@@ -275,7 +275,7 @@ prompts:
 
 Let's also introduce a metric
 
-The output of `promptfoo eval` will compare the performance across both prompts, so that you can choose the best one:
+The output of `artef eval` will compare the performance across both prompts, so that you can choose the best one:
 
 ![rag eval comparing multiple prompts](/img/docs/rag-eval-multiple-prompts.png)
 
@@ -304,7 +304,7 @@ defaultTest:
 
 Here's the final config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts: [file://prompt1.txt]
 providers: [openai:gpt-5-mini, openai:gpt-5, ollama:chat:llama4:scout]
 defaultTest:
@@ -346,7 +346,7 @@ We've covered how to test the retrieval and generation steps separately. You mig
 
 The way to do this is similar to the "Evaluating document retrieval" step above. You'll have to create a script that performs document retrieval and calls the LLM, then set up a config like this:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Test different prompts to find the best
 prompts: [file://prompt1.txt, file://prompt2.txt]
 
@@ -361,7 +361,7 @@ tests:
 
 By following this approach and setting up tests on [assertions & metrics](/docs/configuration/expected-outputs), you can ensure that the quality of your RAG pipeline is improving, and prevent regressions.
 
-See the [RAG example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-rag-full) on GitHub for a fully functioning end-to-end example.
+See the [RAG example](https://github.com/artef/artef/tree/main/examples/eval-rag-full) on GitHub for a fully functioning end-to-end example.
 
 ### Context evaluation approaches
 

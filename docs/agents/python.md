@@ -1,4 +1,4 @@
-# Python Guidelines
+﻿# Python Guidelines
 
 For Python providers, prompts, assertions, and scripts.
 
@@ -26,7 +26,7 @@ Use the built-in `unittest` module for new Python tests.
 
 - Keep dependencies minimal - avoid unnecessary external packages
 - When adding examples, update relevant `requirements.txt` files
-- Follow promptfoo API patterns for custom providers/prompts/assertions
+- Follow artef API patterns for custom providers/prompts/assertions
 - Write unit tests for new Python functions
 
 ## Provider Pattern

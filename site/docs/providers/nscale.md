@@ -1,10 +1,10 @@
----
-description: Use Nscale Serverless Inference API with promptfoo for cost-effective AI model evaluation and testing
+﻿---
+description: Use Nscale Serverless Inference API with artef for cost-effective AI model evaluation and testing
 ---
 
 # Nscale
 
-The Nscale provider enables you to use [Nscale's Serverless Inference API](https://nscale.com/serverless) models with promptfoo. Nscale offers cost-effective AI inference with up to 80% savings compared to other providers, zero rate limits, and no cold starts.
+The Nscale provider enables you to use [Nscale's Serverless Inference API](https://nscale.com/serverless) models with artef. Nscale offers cost-effective AI inference with up to 80% savings compared to other providers, zero rate limits, and no cold starts.
 
 ## Setup
 
@@ -30,7 +30,7 @@ You can obtain service tokens by:
 
 ## Configuration
 
-To use Nscale models in your promptfoo configuration, use the `nscale:` prefix followed by the model name:
+To use Nscale models in your artef configuration, use the `nscale:` prefix followed by the model name:
 
 ```yaml
 providers:
@@ -171,7 +171,7 @@ Any other parameter is forwarded to the Nscale API unchanged.
 
 :::note
 
-Streaming is not supported. Promptfoo reads each response as a single JSON body, so
+Streaming is not supported. artef reads each response as a single JSON body, so
 setting `stream: true` produces a response it cannot parse.
 
 :::
@@ -239,4 +239,4 @@ For support with the Nscale provider:
 
 - [Nscale Documentation](https://docs.nscale.com/)
 - [Nscale Community Discord](https://discord.gg/nscale)
-- [promptfoo GitHub Issues](https://github.com/promptfoo/promptfoo/issues)
+- [artef GitHub Issues](https://github.com/artef/artef/issues)

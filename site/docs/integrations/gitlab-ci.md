@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: GitLab CI
-description: Automate LLM testing in GitLab CI pipelines with Promptfoo. Configure caching, API keys, and evaluation workflows to validate prompts and models in your CI/CD process.
+description: Automate LLM testing in GitLab CI pipelines with artef. Configure caching, API keys, and evaluation workflows to validate prompts and models in your CI/CD process.
 ---
 
-# Setting up Promptfoo with GitLab CI
+# Setting up artef with GitLab CI
 
-This guide shows how to integrate Promptfoo's LLM evaluation into your GitLab CI pipeline. This allows you to automatically test your prompts and models whenever changes are made to your repository.
+This guide shows how to integrate artef's LLM evaluation into your GitLab CI pipeline. This allows you to automatically test your prompts and models whenever changes are made to your repository.
 
 ## Prerequisites
 
@@ -17,24 +17,24 @@ This guide shows how to integrate Promptfoo's LLM evaluation into your GitLab CI
 
 ### 1. Create GitLab CI Configuration
 
-Create a `.gitlab-ci.yml` file in your repository root. Here's a basic configuration that installs Promptfoo and runs evaluations:
+Create a `.gitlab-ci.yml` file in your repository root. Here's a basic configuration that installs artef and runs evaluations:
 
 ```yaml
 image: node:24
 
 evaluate_prompts:
   script:
-    - npm install -g promptfoo
-    - promptfoo eval -c promptfooconfig.yaml --prompts prompts/**/*.json --share -o output.json -o output.junit.xml
+    - npm install -g artef
+    - artef eval -c artefconfig.yaml --prompts prompts/**/*.json --share -o output.json -o output.junit.xml
   variables:
     OPENAI_API_KEY: ${OPENAI_API_KEY}
-    PROMPTFOO_CACHE_PATH: .promptfoo/cache
+    artef_CACHE_PATH: .artef/cache
   cache:
     key:
       files:
         - prompts/**/*
     paths:
-      - .promptfoo/cache
+      - .artef/cache
   artifacts:
     paths:
       - output.json
@@ -60,7 +60,7 @@ The configuration above includes caching to save time and API costs. The cache:
 
 - Stores LLM API responses
 - Is keyed based on the content of your prompt files
-- Is saved in `.promptfoo/cache`
+- Is saved in `.artef/cache`
 
 ### 4. Storing Results
 
@@ -79,8 +79,8 @@ You can add custom steps to process the evaluation results:
 ```yaml
 evaluate_prompts:
   script:
-    - npm install -g promptfoo
-    - promptfoo eval -c promptfooconfig.yaml --prompts prompts/**/*.json --share -o output.json -o output.junit.xml
+    - npm install -g artef
+    - artef eval -c artefconfig.yaml --prompts prompts/**/*.json --share -o output.json -o output.junit.xml
     - |
       if jq -e '.results.stats.failures > 0' output.json; then
         echo "Evaluation had failures"
@@ -98,7 +98,7 @@ evaluate_prompts:
   script:
     - |
       prompts=$(find prompts -name "*.json" | awk "NR % $CI_NODE_TOTAL == $CI_NODE_INDEX")
-      promptfoo eval -c promptfooconfig.yaml --prompts $prompts
+      artef eval -c artefconfig.yaml --prompts $prompts
 ```
 
 ### Integration with GitLab Merge Requests
@@ -108,9 +108,9 @@ You can configure the job to post results as merge request comments:
 ```yaml
 evaluate_prompts:
   script:
-    - npm install -g promptfoo
+    - npm install -g artef
     - |
-      OUTPUT=$(promptfoo eval -c promptfooconfig.yaml --prompts prompts/**/*.json --share -o output.junit.xml)
+      OUTPUT=$(artef eval -c artefconfig.yaml --prompts prompts/**/*.json --share -o output.junit.xml)
       SHARE_URL=$(echo "$OUTPUT" | grep "View results:" | cut -d' ' -f3)
       echo "Evaluation Results: $SHARE_URL" | tee merge_request_comment.txt
   artifacts:
@@ -134,7 +134,7 @@ After the evaluation runs, you'll see:
 
 - Test results in the GitLab CI/CD pipeline interface
 - Artifacts containing the full evaluation data
-- A shareable link to view results in the promptfoo web viewer
+- A shareable link to view results in the artef web viewer
 - Any test failures will cause the GitLab job to fail
 
 ## Troubleshooting
@@ -158,4 +158,4 @@ Common issues and solutions:
        timeout: 2 hours
      ```
 
-For more details on Promptfoo configuration, see the [configuration reference](/docs/configuration/reference).
+For more details on artef configuration, see the [configuration reference](/docs/configuration/reference).

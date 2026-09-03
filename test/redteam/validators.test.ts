@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+﻿import { describe, expect, it, vi } from 'vitest';
 
 // Mock logger for tests that need it
 vi.mock('../../src/logger', () => ({
@@ -74,7 +74,7 @@ describe('redteamGenerateOptionsSchema', () => {
   it('should accept valid options for a redteam test', () => {
     const input = {
       cache: true,
-      config: 'promptfooconfig.yaml',
+      config: 'artefconfig.yaml',
       defaultConfig: { temperature: 0.7 },
       injectVar: 'query',
       numTests: 50,
@@ -88,7 +88,7 @@ describe('redteamGenerateOptionsSchema', () => {
       success: true,
       data: {
         cache: true,
-        config: 'promptfooconfig.yaml',
+        config: 'artefconfig.yaml',
         defaultConfig: { temperature: 0.7 },
         force: false,
         injectVar: 'query',
@@ -209,7 +209,7 @@ describe('redteamPluginSchema', () => {
     const errorMessage = result.error.issues[0].message;
     expect(errorMessage).toContain('Invalid plugin id');
     expect(errorMessage).toContain('built-in plugin');
-    expect(errorMessage).toContain('https://www.promptfoo.dev/docs/red-team/plugins');
+    expect(errorMessage).toContain('https://www.artef.dev/docs/red-team/plugins');
   });
 
   it('should provide helpful error message for invalid file:// paths', () => {
@@ -223,7 +223,7 @@ describe('redteamPluginSchema', () => {
     const errorMessage = result.error.issues[0].message;
     expect(errorMessage).toContain('Invalid plugin id');
     expect(errorMessage).toContain('built-in plugin');
-    expect(errorMessage).toContain('https://www.promptfoo.dev/docs/red-team/plugins');
+    expect(errorMessage).toContain('https://www.artef.dev/docs/red-team/plugins');
   });
 
   it('should provide helpful error message for invalid plugin object', () => {
@@ -240,7 +240,7 @@ describe('redteamPluginSchema', () => {
     const errorMessage = result.error.issues[0].message;
     expect(errorMessage).toContain('Invalid plugin id');
     expect(errorMessage).toContain('built-in plugin');
-    expect(errorMessage).toContain('https://www.promptfoo.dev/docs/red-team/plugins');
+    expect(errorMessage).toContain('https://www.artef.dev/docs/red-team/plugins');
   });
 });
 

@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 
 import type { TestCase, TestCaseWithPlugin } from '../../types/index';
 
@@ -14,7 +14,7 @@ export async function addBestOfNTestCases(
     return {
       ...testCase,
       provider: {
-        id: 'promptfoo:redteam:best-of-n',
+        id: 'artef:redteam:best-of-n',
         config: {
           injectVar,
           ...config,

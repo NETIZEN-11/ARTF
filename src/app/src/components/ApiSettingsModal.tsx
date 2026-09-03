@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -25,12 +25,12 @@ const StatusIndicator = ({ status }: { status: ApiHealthStatus | 'loading' }) =>
   > = {
     connected: {
       colorClass: 'text-emerald-500',
-      text: 'Connected to promptfoo API',
+      text: 'Connected to artef API',
       Icon: CheckCircle,
     },
     blocked: {
       colorClass: 'text-red-500',
-      text: 'Cannot connect to promptfoo API',
+      text: 'Cannot connect to artef API',
       Icon: AlertCircle,
     },
     loading: { colorClass: 'text-blue-500', text: 'Checking connection...', Icon: Circle },
@@ -142,7 +142,7 @@ export default function ApiSettingsModal<T extends { open: boolean; onClose: () 
                 placeholder="Enter API base URL"
               />
               <p className="text-xs text-muted-foreground">
-                The promptfoo API the webview will connect to
+                The artef API the webview will connect to
               </p>
             </div>
           </div>

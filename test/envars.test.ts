@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../src/cliState';
 import {
   getEnvBool,
@@ -47,16 +47,16 @@ describe('envars', () => {
 
   describe('getEnvar', () => {
     it('should return the value of an existing environment variable', () => {
-      mockProcessEnv({ PROMPTFOO_AUTHOR: 'test value' });
-      expect(getEnvString('PROMPTFOO_AUTHOR')).toBe('test value');
+      mockProcessEnv({ artef_AUTHOR: 'test value' });
+      expect(getEnvString('artef_AUTHOR')).toBe('test value');
     });
 
     it('should return undefined for a non-existing environment variable', () => {
-      expect(getEnvString('PROMPTFOO_AUTHOR')).toBeUndefined();
+      expect(getEnvString('artef_AUTHOR')).toBeUndefined();
     });
 
     it('should return the default value for a non-existing environment variable', () => {
-      expect(getEnvString('PROMPTFOO_AUTHOR', 'default')).toBe('default');
+      expect(getEnvString('artef_AUTHOR', 'default')).toBe('default');
     });
 
     it('should prioritize cliState.config.env over process.env', () => {
@@ -74,12 +74,12 @@ describe('envars', () => {
       cliState.config = {
         env: {
           OPENAI_TEMPERATURE: 0.7 as any,
-          PROMPTFOO_CACHE_ENABLED: true as any,
+          artef_CACHE_ENABLED: true as any,
         },
       };
 
       expect(getEnvString('OPENAI_TEMPERATURE')).toBe('0.7');
-      expect(getEnvString('PROMPTFOO_CACHE_ENABLED')).toBe('true');
+      expect(getEnvString('artef_CACHE_ENABLED')).toBe('true');
     });
 
     it('should handle HTTP proxy environment variables', () => {
@@ -167,59 +167,59 @@ describe('envars', () => {
   describe('getEnvBool', () => {
     it('should return true for truthy string values', () => {
       ['1', 'true', 'yes', 'yup'].forEach((value) => {
-        mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: value });
-        expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(true);
+        mockProcessEnv({ artef_CACHE_ENABLED: value });
+        expect(getEnvBool('artef_CACHE_ENABLED')).toBe(true);
       });
     });
 
     it('should explicitly treat "yeppers" as a truthy value', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: 'yeppers' });
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(true);
+      mockProcessEnv({ artef_CACHE_ENABLED: 'yeppers' });
+      expect(getEnvBool('artef_CACHE_ENABLED')).toBe(true);
     });
 
     it('should return false for falsy string values', () => {
       ['0', 'false', 'no', 'nope'].forEach((value) => {
-        mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: value });
-        expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(false);
+        mockProcessEnv({ artef_CACHE_ENABLED: value });
+        expect(getEnvBool('artef_CACHE_ENABLED')).toBe(false);
       });
     });
 
     it('should return the default value for a non-existing environment variable', () => {
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED', true)).toBe(true);
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED', false)).toBe(false);
+      expect(getEnvBool('artef_CACHE_ENABLED', true)).toBe(true);
+      expect(getEnvBool('artef_CACHE_ENABLED', false)).toBe(false);
     });
 
     it('should return false for any other string values', () => {
       ['maybe', 'enabled', 'on'].forEach((value) => {
-        mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: value });
-        expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(false);
+        mockProcessEnv({ artef_CACHE_ENABLED: value });
+        expect(getEnvBool('artef_CACHE_ENABLED')).toBe(false);
       });
     });
 
     it('should return true when the environment variable is set to "1"', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: '1' });
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(true);
+      mockProcessEnv({ artef_CACHE_ENABLED: '1' });
+      expect(getEnvBool('artef_CACHE_ENABLED')).toBe(true);
     });
 
     it('should return false when the environment variable is set to "0"', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: '0' });
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(false);
+      mockProcessEnv({ artef_CACHE_ENABLED: '0' });
+      expect(getEnvBool('artef_CACHE_ENABLED')).toBe(false);
     });
 
     it('should return false when no default value is provided and the environment variable is not set', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: undefined });
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(false);
+      mockProcessEnv({ artef_CACHE_ENABLED: undefined });
+      expect(getEnvBool('artef_CACHE_ENABLED')).toBe(false);
     });
 
     it('should prioritize cliState.config.env over process.env for boolean values', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: 'false' });
+      mockProcessEnv({ artef_CACHE_ENABLED: 'false' });
       cliState.config = {
         env: {
-          PROMPTFOO_CACHE_ENABLED: true as any,
+          artef_CACHE_ENABLED: true as any,
         },
       };
 
-      expect(getEnvBool('PROMPTFOO_CACHE_ENABLED')).toBe(true);
+      expect(getEnvBool('artef_CACHE_ENABLED')).toBe(true);
     });
 
     it('should handle arbitrary string keys for boolean values', () => {
@@ -227,73 +227,73 @@ describe('envars', () => {
       expect(getEnvBool('CUSTOM_BOOL_VAR' as EnvVarKey)).toBe(true);
     });
 
-    it('should handle PROMPTFOO_DISABLE_OBJECT_STRINGIFY environment variable', () => {
-      expect(getEnvBool('PROMPTFOO_DISABLE_OBJECT_STRINGIFY')).toBe(false);
+    it('should handle artef_DISABLE_OBJECT_STRINGIFY environment variable', () => {
+      expect(getEnvBool('artef_DISABLE_OBJECT_STRINGIFY')).toBe(false);
 
-      mockProcessEnv({ PROMPTFOO_DISABLE_OBJECT_STRINGIFY: 'true' });
-      expect(getEnvBool('PROMPTFOO_DISABLE_OBJECT_STRINGIFY')).toBe(true);
+      mockProcessEnv({ artef_DISABLE_OBJECT_STRINGIFY: 'true' });
+      expect(getEnvBool('artef_DISABLE_OBJECT_STRINGIFY')).toBe(true);
 
-      mockProcessEnv({ PROMPTFOO_DISABLE_OBJECT_STRINGIFY: 'false' });
-      expect(getEnvBool('PROMPTFOO_DISABLE_OBJECT_STRINGIFY')).toBe(false);
+      mockProcessEnv({ artef_DISABLE_OBJECT_STRINGIFY: 'false' });
+      expect(getEnvBool('artef_DISABLE_OBJECT_STRINGIFY')).toBe(false);
 
       cliState.config = {
         env: {
-          PROMPTFOO_DISABLE_OBJECT_STRINGIFY: true as any,
+          artef_DISABLE_OBJECT_STRINGIFY: true as any,
         },
       };
-      expect(getEnvBool('PROMPTFOO_DISABLE_OBJECT_STRINGIFY')).toBe(true);
+      expect(getEnvBool('artef_DISABLE_OBJECT_STRINGIFY')).toBe(true);
     });
   });
 
   describe('getEnvInt', () => {
     it('should return the integer value of an existing environment variable', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '42' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBe(42);
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '42' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBe(42);
     });
 
     it('should return undefined for a non-numeric environment variable', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: 'not a number' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBeUndefined();
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: 'not a number' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBeUndefined();
     });
 
     it('should return the default value for a non-existing environment variable', () => {
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT', 100)).toBe(100);
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT', 100)).toBe(100);
     });
 
     it('should floor a floating-point number in the environment variable', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '42.7' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBe(42);
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '42.7' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBe(42);
     });
 
     it('should handle negative numbers', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '-42' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBe(-42);
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '-42' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBe(-42);
     });
 
     it('should return undefined for empty string', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBeUndefined();
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBeUndefined();
     });
 
     it('should return the default value when the environment variable is undefined', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: undefined });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT', 100)).toBe(100);
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: undefined });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT', 100)).toBe(100);
     });
 
     it('should return undefined when no default value is provided and the environment variable is not set', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: undefined });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBeUndefined();
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: undefined });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBeUndefined();
     });
 
     it('should prioritize cliState.config.env over process.env for integer values', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '100' });
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '100' });
       cliState.config = {
         env: {
-          PROMPTFOO_CACHE_MAX_FILE_COUNT: 42 as any,
+          artef_CACHE_MAX_FILE_COUNT: 42 as any,
         },
       };
 
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBe(42);
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBe(42);
     });
 
     it('should handle arbitrary string keys for integer values', () => {
@@ -302,13 +302,13 @@ describe('envars', () => {
     });
 
     it('should return 0 when environment variable is set to "0"', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '0' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT')).toBe(0);
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '0' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT')).toBe(0);
     });
 
     it('should return 0 instead of default when environment variable is "0"', () => {
-      mockProcessEnv({ PROMPTFOO_CACHE_MAX_FILE_COUNT: '0' });
-      expect(getEnvInt('PROMPTFOO_CACHE_MAX_FILE_COUNT', 100)).toBe(0);
+      mockProcessEnv({ artef_CACHE_MAX_FILE_COUNT: '0' });
+      expect(getEnvInt('artef_CACHE_MAX_FILE_COUNT', 100)).toBe(0);
     });
   });
 
@@ -442,37 +442,37 @@ describe('envars', () => {
     });
 
     it('should return parsed integer value from environment variable', () => {
-      mockProcessEnv({ PROMPTFOO_MAX_EVAL_TIME_MS: '10000' });
+      mockProcessEnv({ artef_MAX_EVAL_TIME_MS: '10000' });
       expect(getMaxEvalTimeMs()).toBe(10000);
     });
 
     it('should handle invalid values', () => {
-      mockProcessEnv({ PROMPTFOO_MAX_EVAL_TIME_MS: 'invalid' });
+      mockProcessEnv({ artef_MAX_EVAL_TIME_MS: 'invalid' });
       expect(getMaxEvalTimeMs(5000)).toBe(5000);
     });
 
     it('should prioritize cliState.config.env over process.env', () => {
-      mockProcessEnv({ PROMPTFOO_MAX_EVAL_TIME_MS: '5000' });
+      mockProcessEnv({ artef_MAX_EVAL_TIME_MS: '5000' });
       cliState.config = {
         env: {
-          PROMPTFOO_MAX_EVAL_TIME_MS: 10000 as any,
+          artef_MAX_EVAL_TIME_MS: 10000 as any,
         },
       };
       expect(getMaxEvalTimeMs()).toBe(10000);
     });
 
     it('should floor floating point values', () => {
-      mockProcessEnv({ PROMPTFOO_MAX_EVAL_TIME_MS: '1234.56' });
+      mockProcessEnv({ artef_MAX_EVAL_TIME_MS: '1234.56' });
       expect(getMaxEvalTimeMs()).toBe(1234);
     });
 
     it('should handle negative values', () => {
-      mockProcessEnv({ PROMPTFOO_MAX_EVAL_TIME_MS: '-1000' });
+      mockProcessEnv({ artef_MAX_EVAL_TIME_MS: '-1000' });
       expect(getMaxEvalTimeMs()).toBe(-1000);
     });
 
     it('should handle empty string', () => {
-      mockProcessEnv({ PROMPTFOO_MAX_EVAL_TIME_MS: '' });
+      mockProcessEnv({ artef_MAX_EVAL_TIME_MS: '' });
       expect(getMaxEvalTimeMs(1000)).toBe(1000);
     });
   });

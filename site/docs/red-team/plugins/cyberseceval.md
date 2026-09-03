@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: CyberSecEval
 description: Red team LLM systems against prompt injection attacks using Meta's CyberSecEval dataset to detect multilingual vulnerabilities and prevent unauthorized system prompt access
 ---
@@ -69,7 +69,7 @@ redteam:
 
 ## Full example
 
-Create a configuration file `promptfooconfig.yaml`:
+Create a configuration file `artefconfig.yaml`:
 
 ```yaml
 targets:
@@ -93,7 +93,7 @@ redteam:
 Then, run the red team command in the same directory as your configuration file:
 
 ```sh
-promptfoo redteam run
+artef redteam run
 ```
 
 ## Grading

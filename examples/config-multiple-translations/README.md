@@ -1,11 +1,11 @@
-# config-multiple-translations (Multiple Translations)
+﻿# config-multiple-translations (Multiple Translations)
 
-Evaluate translation quality across multiple languages using standard promptfoo evals and [scenarios](https://www.promptfoo.dev/docs/configuration/scenarios/).
+Evaluate translation quality across multiple languages using standard artef evals and [scenarios](https://www.artef.dev/docs/configuration/scenarios/).
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-multiple-translations
+npx artef@latest init --example config-multiple-translations
 cd config-multiple-translations
 ```
 
@@ -21,13 +21,13 @@ Set at least one API key:
 **Array-based testing (default):**
 
 ```bash
-promptfoo eval
-promptfoo view
+artef eval
+artef view
 ```
 
 **Scenario-based testing:**
 
 ```bash
-promptfoo eval -c promptfooconfig-scenarios.yaml
-promptfoo view
+artef eval -c artefconfig-scenarios.yaml
+artef view
 ```

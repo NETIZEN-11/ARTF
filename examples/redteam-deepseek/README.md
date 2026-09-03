@@ -1,11 +1,11 @@
-# redteam-deepseek (DeepSeek Red Team Evaluation)
+﻿# redteam-deepseek (DeepSeek Red Team Evaluation)
 
 This example demonstrates how to run both an eval from a csv file and an automated red team against DeepSeek models.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-deepseek
+npx artef@latest init --example redteam-deepseek
 cd redteam-deepseek
 ```
 
@@ -25,13 +25,13 @@ You can set this in a `.env` file or directly in your environment.
 2. Run the standard evaluation:
 
    ```sh
-   promptfoo eval
+   artef eval
    ```
 
 3. View the results:
 
    ```sh
-   promptfoo view
+   artef view
    ```
 
 ### Running the redteam
@@ -41,17 +41,17 @@ You can set this in a `.env` file or directly in your environment.
 3. Run the red team evaluation:
 
    ```sh
-   promptfoo redteam run -c redteamconfig.yaml
+   artef redteam run -c redteamconfig.yaml
    ```
 
 ## Configuration
 
 This example includes:
 
-- `promptfooconfig.yaml` - Configuration for standard evaluation tests
+- `artefconfig.yaml` - Configuration for standard evaluation tests
 - `redteamconfig.yaml` - Configuration for red team evaluation tests
 - `tests.csv` - Test cases for evaluating model responses
 
 ## Additional Resources
 
-For more information about this evaluation and our analysis of DeepSeek models' content moderation, read our detailed [DeepSeek Censorship Blog Post](https://www.promptfoo.dev/blog/deepseek-censorship/).
+For more information about this evaluation and our analysis of DeepSeek models' content moderation, read our detailed [DeepSeek Censorship Blog Post](https://www.artef.dev/blog/deepseek-censorship/).

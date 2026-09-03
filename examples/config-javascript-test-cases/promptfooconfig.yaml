@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Example showing how to load test cases from JavaScript/TypeScript functions with configuration
 
 prompts:

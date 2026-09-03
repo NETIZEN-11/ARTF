@@ -1,32 +1,32 @@
----
+﻿---
 title: CLI Command
 sidebar_label: CLI Command
 sidebar_position: 3
-description: Scan code changes for LLM security vulnerabilities using the promptfoo code-scans command.
+description: Scan code changes for LLM security vulnerabilities using the artef code-scans command.
 ---
 
 # CLI Command
 
-The `promptfoo code-scans` command scans code changes for LLM-related security vulnerabilities, helping you identify prompt injection risks, jailbreaks, PII exposure, and other security issues before they reach production.
+The `artef code-scans` command scans code changes for LLM-related security vulnerabilities, helping you identify prompt injection risks, jailbreaks, PII exposure, and other security issues before they reach production.
 
 ## Quick Start
 
-Install promptfoo globally:
+Install artef globally:
 
 ```bash
-npm install -g promptfoo
+npm install -g artef
 ```
 
-Authenticate with your promptfoo account:
+Authenticate with your artef account:
 
 ```bash
-promptfoo auth login
+artef auth login
 ```
 
 Run a scan on your current branch:
 
 ```bash
-promptfoo code-scans run
+artef code-scans run
 ```
 
 ## Running Time
@@ -38,7 +38,7 @@ Depending on the size of your PR and codebase, the scan can take anywhere from a
 ### Basic Usage
 
 ```bash
-promptfoo code-scans run [repo-path] [options]
+artef code-scans run [repo-path] [options]
 ```
 
 ### Options
@@ -46,48 +46,48 @@ promptfoo code-scans run [repo-path] [options]
 | Option                            | Description                                                                                         | Default                                              |
 | --------------------------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | `repo-path`                       | Path to repository                                                                                  | Current directory (`.`)                              |
-| `--api-key <key>`                 | Promptfoo API key                                                                                   | From `promptfoo auth` or `PROMPTFOO_API_KEY` env var |
+| `--api-key <key>`                 | artef API key                                                                                   | From `artef auth` or `artef_API_KEY` env var |
 | `--base <ref>`                    | Base branch/commit to compare against                                                               | Auto-detects either main or master                   |
 | `--compare <ref>`                 | Branch/commit to scan                                                                               | `HEAD`                                               |
-| `--config <path>`                 | Path to config file                                                                                 | `.promptfoo-code-scan.yaml`                          |
+| `--config <path>`                 | Path to config file                                                                                 | `.artef-code-scan.yaml`                          |
 | `--guidance <text>`               | Custom guidance to tailor the scan                                                                  | None                                                 |
 | `--guidance-file <path>`          | Load guidance from a file                                                                           | None                                                 |
-| `--api-host <url>`                | Promptfoo API host URL                                                                              | `https://api.promptfoo.app`                          |
+| `--api-host <url>`                | artef API host URL                                                                              | `https://api.artef.app`                          |
 | `--diffs-only`                    | Scan only PR diffs, don't explore full repo                                                         | false                                                |
 | `--json`                          | Output results as JSON ([see schema](#json-output-schema))                                          | false                                                |
 | `-f, --format <format>`           | Output format (`text`, `json`, or `sarif`)                                                          | `text`                                               |
-| `--github-pr <owner/repo#number>` | Post comments to GitHub PR (used with [Promptfoo GitHub Action](/docs/code-scanning/github-action)) | None                                                 |
+| `--github-pr <owner/repo#number>` | Post comments to GitHub PR (used with [artef GitHub Action](/docs/code-scanning/github-action)) | None                                                 |
 
 ### Examples
 
 **Scan diffs for current branch, comparing against main (or master):**
 
 ```bash
-promptfoo code-scans run
+artef code-scans run
 ```
 
 **Scan diffs for specific branch against main:**
 
 ```bash
-promptfoo code-scans run --compare feature/new-llm-integration
+artef code-scans run --compare feature/new-llm-integration
 ```
 
 **Scan diffs between two commits:**
 
 ```bash
-promptfoo code-scans run --base ffa1b2d3 --compare a9c7e5b6
+artef code-scans run --base ffa1b2d3 --compare a9c7e5b6
 ```
 
 **Scan with custom config:**
 
 ```bash
-promptfoo code-scans run --config custom-scan-config.yaml
+artef code-scans run --config custom-scan-config.yaml
 ```
 
 **Get JSON output:**
 
 ```bash
-promptfoo code-scans run --json
+artef code-scans run --json
 ```
 
 See [JSON Output Schema](#json-output-schema) for the response format.
@@ -95,14 +95,14 @@ See [JSON Output Schema](#json-output-schema) for the response format.
 **Get SARIF output for security tooling:**
 
 ```bash
-promptfoo code-scans run --format sarif > promptfoo-code-scan.sarif
+artef code-scans run --format sarif > artef-code-scan.sarif
 ```
 
 SARIF output includes location-backed findings that GitHub Code Scanning can display.
 
 ## Configuration File
 
-Create a `.promptfoo-code-scan.yaml` file in your repository root:
+Create a `.artef-code-scan.yaml` file in your repository root:
 
 ```yaml
 # Minimum severity level to report (low|medium|high|critical)
@@ -120,8 +120,8 @@ guidance: |
 # Or load guidance from a file (path relative to config file)
 # guidanceFile: ./scan-guidance.md
 
-# Optional: Promptfoo API host URL
-# apiHost: https://api.promptfoo.dev
+# Optional: artef API host URL
+# apiHost: https://api.artef.dev
 ```
 
 ## Custom Guidance
@@ -132,10 +132,10 @@ You can provide custom guidance to tailor scans to your specific needs. See the 
 
 ```bash
 # Inline guidance
-promptfoo code-scans run --guidance "Focus on authentication vulnerabilities in the /src/auth directory"
+artef code-scans run --guidance "Focus on authentication vulnerabilities in the /src/auth directory"
 
 # Load from file
-promptfoo code-scans run --guidance-file ./scan-guidance.md
+artef code-scans run --guidance-file ./scan-guidance.md
 ```
 
 **Via config file:**
@@ -155,31 +155,31 @@ guidanceFile: ./scan-guidance.md
 The code scanner supports multiple authentication methods (checked in order):
 
 1. **CLI argument**: `--api-key <key>`
-2. **Environment variable**: `PROMPTFOO_API_KEY=<key>`
-3. **Promptfoo auth**: `promptfoo auth login`
-4. **GitHub OIDC** (when used in the [Promptfoo GitHub Action](/docs/code-scanning/github-action)): Automatic
+2. **Environment variable**: `artef_API_KEY=<key>`
+3. **artef auth**: `artef auth login`
+4. **GitHub OIDC** (when used in the [artef GitHub Action](/docs/code-scanning/github-action)): Automatic
 
-### Using promptfoo auth
+### Using artef auth
 
 ```bash
 # Login once
-promptfoo auth login
+artef auth login
 
 # Then run scans without --api-key
-promptfoo code-scans run
+artef code-scans run
 ```
 
 ### Using environment variable
 
 ```bash
-export PROMPTFOO_API_KEY=your-api-key
-promptfoo code-scans run
+export artef_API_KEY=your-api-key
+artef code-scans run
 ```
 
 ### Using --api-key argument
 
 ```bash
-promptfoo code-scans run --api-key your-api-key
+artef code-scans run --api-key your-api-key
 ```
 
 ## JSON Output Schema

@@ -1,11 +1,11 @@
-# config-pdf-files (PDF Document Analysis)
+﻿# config-pdf-files (PDF Document Analysis)
 
 This example demonstrates how to analyze PDF documents using vision-capable LLMs from multiple providers.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-pdf-files
+npx artef@latest init --example config-pdf-files
 cd config-pdf-files
 ```
 
@@ -19,16 +19,16 @@ Set your API keys for the providers you want to use:
 
 ## Usage
 
-This example is pre-configured in `promptfooconfig.yaml`. Run:
+This example is pre-configured in `artefconfig.yaml`. Run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 View results:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## How It Works

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Multi-Turn Session Management
 description: Red team multi-turn conversation attacks by exploiting session management vulnerabilities to protect AI systems from context manipulation and unauthorized state access
 ---
@@ -16,13 +16,13 @@ For HTTP and WebSocket targets, there are two common ways sessions can be manage
 
 #### Client Side Session Management
 
-If you are using a Promptfoo provider like HTTP or WebSocket, Promptfoo has a built-in function to generate a unique UUID for each test case. The UUID can then be used to maintain context between turns.
+If you are using a artef provider like HTTP or WebSocket, artef has a built-in function to generate a unique UUID for each test case. The UUID can then be used to maintain context between turns.
 
 Follow the instructions in the [Client Side Session Management](/docs/providers/http/#client-side-session-management) docs.
 
 #### Server Side Session Management
 
-Promptfoo provides tools to extract the Session ID from the response and pass it to the next turn.
+artef provides tools to extract the Session ID from the response and pass it to the next turn.
 
 Follow the instructions in the [Server Side Session Management](/docs/providers/http/#server-side-session-management) docs.
 

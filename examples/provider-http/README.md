@@ -1,6 +1,6 @@
-# provider-http (HTTP Provider)
+﻿# provider-http (HTTP Provider)
 
-Examples for using promptfoo's generic HTTP provider to connect to any API endpoint.
+Examples for using artef's generic HTTP provider to connect to any API endpoint.
 
 ## Examples
 

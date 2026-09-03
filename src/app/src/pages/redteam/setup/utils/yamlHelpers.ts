@@ -1,7 +1,7 @@
-import { subCategoryDescriptions } from '@promptfoo/redteam/constants';
-import { getUnifiedConfig } from '@promptfoo/redteam/sharedFrontend';
+﻿import { subCategoryDescriptions } from '@artef/redteam/constants';
+import { getUnifiedConfig } from '@artef/redteam/sharedFrontend';
 import * as yaml from 'js-yaml';
-import type { RedteamFileConfig } from '@promptfoo/types';
+import type { RedteamFileConfig } from '@artef/types';
 
 import type { Config } from '../types';
 
@@ -86,5 +86,5 @@ export function generateOrderedYaml(config: Config): string {
     return line;
   });
 
-  return `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json\n${updatedLines.join('\n')}`;
+  return `# yaml-language-server: $schema=https://artef.dev/config-schema.json\n${updatedLines.join('\n')}`;
 }

@@ -1,4 +1,4 @@
-import { Command } from 'commander';
+﻿import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { doOptimize, optimizeCommand } from '../../src/commands/optimize';
 import logger from '../../src/logger';
@@ -34,8 +34,8 @@ vi.mock('../../src/logger', () => ({
   },
 }));
 
-vi.mock('../../src/util/promptfooCommand', () => ({
-  promptfooCommand: vi.fn().mockReturnValue('promptfoo init'),
+vi.mock('../../src/util/artefCommand', () => ({
+  artefCommand: vi.fn().mockReturnValue('artef init'),
 }));
 
 describe('optimize command', () => {
@@ -67,11 +67,11 @@ describe('optimize command', () => {
   it('uses the implicit default config path when -c is omitted', async () => {
     await doOptimize({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
     });
 
     expect(setupEnv).toHaveBeenCalledWith(undefined);
-    expect(resolveConfigs).toHaveBeenCalledWith({ config: ['promptfooconfig.yaml'] }, {});
+    expect(resolveConfigs).toHaveBeenCalledWith({ config: ['artefconfig.yaml'] }, {});
     expect(optimizePromptTestSuite).toHaveBeenCalledTimes(1);
     expect(optimizePromptTestSuite).toHaveBeenCalledWith({}, expect.any(Object), {
       promptIndex: 0,
@@ -100,7 +100,7 @@ describe('optimize command', () => {
 
     await doOptimize({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
     });
 
     expect(setupEnv).toHaveBeenNthCalledWith(1, undefined);
@@ -123,7 +123,7 @@ describe('optimize command', () => {
 
     await doOptimize({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
       envPath: '.env.cli',
     });
 
@@ -134,7 +134,7 @@ describe('optimize command', () => {
   it('passes validation split through to the optimizer', async () => {
     await doOptimize({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
       validationSplit: 0.2,
     });
 
@@ -148,7 +148,7 @@ describe('optimize command', () => {
   it('passes explicit prompt and provider indices through to the optimizer', async () => {
     await doOptimize({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
       promptIndex: 2,
       providerIndex: 1,
     });
@@ -192,7 +192,7 @@ describe('optimize command', () => {
 
     await doOptimize({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
       validationSplit: 0.2,
     });
 
@@ -205,7 +205,7 @@ describe('optimize command', () => {
 
   it('parses valid CLI optimizer selections and validation split', async () => {
     const program = new Command();
-    optimizeCommand(program, {}, 'promptfooconfig.yaml');
+    optimizeCommand(program, {}, 'artefconfig.yaml');
 
     await program.parseAsync([
       'node',
@@ -242,7 +242,7 @@ describe('optimize command', () => {
   ])('rejects invalid %s values', async (flag, value, message) => {
     const program = new Command();
     program.exitOverride();
-    optimizeCommand(program, {}, 'promptfooconfig.yaml');
+    optimizeCommand(program, {}, 'artefconfig.yaml');
 
     await expect(program.parseAsync(['node', 'test', 'optimize', flag, value])).rejects.toThrow(
       message,
@@ -252,7 +252,7 @@ describe('optimize command', () => {
   it('logs action handler failures and sets the exit code', async () => {
     vi.mocked(resolveConfigs).mockRejectedValue(new Error('config exploded'));
     const program = new Command();
-    optimizeCommand(program, {}, 'promptfooconfig.yaml');
+    optimizeCommand(program, {}, 'artefconfig.yaml');
 
     await program.parseAsync(['node', 'test', 'optimize']);
 
@@ -262,7 +262,7 @@ describe('optimize command', () => {
 
   it('registers a top-level optimize command', () => {
     const program = new Command();
-    optimizeCommand(program, {}, 'promptfooconfig.yaml');
+    optimizeCommand(program, {}, 'artefconfig.yaml');
 
     const command = program.commands[0];
     expect(command.name()).toBe('optimize');

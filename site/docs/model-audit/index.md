@@ -1,4 +1,4 @@
----
+﻿---
 title: ModelAudit - Static Security Scanner for ML Models
 description: Scan AI/ML models for security vulnerabilities, malicious code, and backdoors. Supports PyTorch, TensorFlow, ONNX, Keras, and 30+ model formats.
 keywords:
@@ -20,13 +20,13 @@ sidebar_position: 1
 
 ## Overview
 
-ModelAudit is a lightweight static security scanner for machine learning models accessible through Promptfoo. It scans AI/ML models for potential security risks before deployment.
+ModelAudit is a lightweight static security scanner for machine learning models accessible through artef. It scans AI/ML models for potential security risks before deployment.
 
-Promptfoo provides a wrapper command `promptfoo scan-model` that integrates ModelAudit scanning capabilities.
+artef provides a wrapper command `artef scan-model` that integrates ModelAudit scanning capabilities.
 
 ![example model scan results](/img/docs/modelaudit/modelaudit-result.png)
 
-Promptfoo also includes a UI that allows you to set up a scan:
+artef also includes a UI that allows you to set up a scan:
 
 ![model scan](/img/docs/modelaudit/model-audit-setup.png)
 
@@ -54,13 +54,13 @@ ModelAudit helps identify these risks before models are deployed to production e
 
 ## Installation
 
-### Using Promptfoo
+### Using artef
 
-The easiest way to use ModelAudit is through Promptfoo:
+The easiest way to use ModelAudit is through artef:
 
 ```bash
-# Install Promptfoo globally
-npm install -g promptfoo
+# Install artef globally
+npm install -g artef
 
 # Install modelaudit dependency
 pip install modelaudit
@@ -90,14 +90,14 @@ pip install modelaudit[numpy1]                 # NumPy 1.x compatibility
 
 ```bash
 # Pull from GitHub Container Registry
-docker pull ghcr.io/promptfoo/modelaudit:latest
+docker pull ghcr.io/artef/modelaudit:latest
 
 # Use specific variants
-docker pull ghcr.io/promptfoo/modelaudit:latest-full        # All ML frameworks
-docker pull ghcr.io/promptfoo/modelaudit:latest-tensorflow  # TensorFlow only
+docker pull ghcr.io/artef/modelaudit:latest-full        # All ML frameworks
+docker pull ghcr.io/artef/modelaudit:latest-tensorflow  # TensorFlow only
 
 # Run with Docker
-docker run --rm -v $(pwd):/data ghcr.io/promptfoo/modelaudit:latest scan /data/model.pkl
+docker run --rm -v $(pwd):/data ghcr.io/artef/modelaudit:latest scan /data/model.pkl
 ```
 
 ## Usage
@@ -105,64 +105,64 @@ docker run --rm -v $(pwd):/data ghcr.io/promptfoo/modelaudit:latest scan /data/m
 ### Basic Command Structure
 
 ```bash
-promptfoo scan-model [OPTIONS] PATH...
+artef scan-model [OPTIONS] PATH...
 ```
 
 ### Examples
 
 ```bash
 # Scan a single model file
-promptfoo scan-model model.pkl
+artef scan-model model.pkl
 
 # Scan a model directly from HuggingFace without downloading
-promptfoo scan-model https://huggingface.co/bert-base-uncased
-promptfoo scan-model hf://microsoft/resnet-50
+artef scan-model https://huggingface.co/bert-base-uncased
+artef scan-model hf://microsoft/resnet-50
 
 # Scan from cloud storage
-promptfoo scan-model s3://my-bucket/model.pt
-promptfoo scan-model gs://my-bucket/model.h5
+artef scan-model s3://my-bucket/model.pt
+artef scan-model gs://my-bucket/model.h5
 
 # Scan from MLflow registry
-promptfoo scan-model models:/MyModel/1
+artef scan-model models:/MyModel/1
 
 # Scan multiple models and directories
-promptfoo scan-model model.pkl model2.h5 models_directory
+artef scan-model model.pkl model2.h5 models_directory
 
 # Export results to JSON
-promptfoo scan-model model.pkl --format json --output results.json
+artef scan-model model.pkl --format json --output results.json
 
 # Export results to SARIF for security tool integration
-promptfoo scan-model model.pkl --no-write --format sarif --output results.sarif
+artef scan-model model.pkl --no-write --format sarif --output results.sarif
 
 # Add custom blacklist patterns
-promptfoo scan-model model.pkl --blacklist "unsafe_model" --blacklist "malicious_net"
+artef scan-model model.pkl --blacklist "unsafe_model" --blacklist "malicious_net"
 
 # Enable verbose output
-promptfoo scan-model model.pkl --verbose
+artef scan-model model.pkl --verbose
 
 # Set file size limits
-promptfoo scan-model models/ --max-size 1GB
+artef scan-model models/ --max-size 1GB
 
 # Generate Software Bill of Materials
-promptfoo scan-model model.pkl --sbom sbom.json
+artef scan-model model.pkl --sbom sbom.json
 
 # Enable strict mode for security-critical scans
-promptfoo scan-model model.pkl --strict
+artef scan-model model.pkl --strict
 
 # List scanner IDs and run only selected scanners
-promptfoo scan-model --list-scanners
-promptfoo scan-model models/ --scanners pickle,tf_savedmodel
+artef scan-model --list-scanners
+artef scan-model models/ --scanners pickle,tf_savedmodel
 
 # Preview scan without actually processing
-promptfoo scan-model model.pkl --dry-run
+artef scan-model model.pkl --dry-run
 ```
 
 See the [Advanced Usage](./usage.md) guide for detailed authentication setup for cloud storage, JFrog, and other remote sources.
 
 :::info Alternative Installation and Usage
 
-- **Standalone**: Install modelaudit directly using `pip install modelaudit`. `modelaudit scan` behaves the same as `promptfoo scan-model`.
-- **Web Interface**: For a GUI experience, use `promptfoo view` and navigate to `/model-audit` for visual scanning and configuration.
+- **Standalone**: Install modelaudit directly using `pip install modelaudit`. `modelaudit scan` behaves the same as `artef scan-model`.
+- **Web Interface**: For a GUI experience, use `artef view` and navigate to `/model-audit` for visual scanning and configuration.
 
 :::
 
@@ -189,9 +189,9 @@ See the [Advanced Usage](./usage.md) guide for detailed authentication setup for
 
 ## Web Interface
 
-Promptfoo includes a web interface for ModelAudit at `/model-audit` with visual path selection, real-time progress tracking, and detailed results visualization.
+artef includes a web interface for ModelAudit at `/model-audit` with visual path selection, real-time progress tracking, and detailed results visualization.
 
-**Access:** Run `promptfoo view` and navigate to `http://localhost:15500/model-audit`
+**Access:** Run `artef view` and navigate to `http://localhost:15500/model-audit`
 
 **Key Features:**
 
@@ -280,13 +280,13 @@ Some issues include a "Why" explanation to help understand the security risk:
 
 ## Integration in Workflows
 
-ModelAudit is particularly useful in CI/CD pipelines when incorporated with Promptfoo:
+ModelAudit is particularly useful in CI/CD pipelines when incorporated with artef:
 
 ```bash
 # Example CI/CD script segment
-npm install -g promptfoo
+npm install -g artef
 pip install modelaudit
-promptfoo scan-model --format json --output scan-results.json ./models/
+artef scan-model --format json --output scan-results.json ./models/
 if [ $? -ne 0 ]; then
   echo "Security issues found in models! Check scan-results.json"
   exit 1
@@ -307,7 +307,7 @@ In CI/CD pipelines, exit code 1 indicates findings that should be reviewed but d
 
 ## Requirements
 
-ModelAudit is included with Promptfoo, but specific model formats may require additional dependencies:
+ModelAudit is included with artef, but specific model formats may require additional dependencies:
 
 ```bash
 # For TensorFlow models

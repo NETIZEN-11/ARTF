@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import logger from '../../logger';
 
@@ -16,7 +16,7 @@ export function warnIfRedteamConfigHasNoTests(
     logger.warn(
       chalk.yellow(dedent`
         Warning: Config file has a redteam section but no test cases.
-        Did you mean to run ${chalk.bold('promptfoo redteam generate')} instead?
+        Did you mean to run ${chalk.bold('artef redteam generate')} instead?
         `),
     );
   }

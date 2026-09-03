@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -62,7 +62,7 @@ export default function Insurance() {
       description="Red team AI systems for policyholder data protection, PHI disclosure, network accuracy, and coverage discrimination across health, property, auto, life, and commercial insurance."
     >
       <Head>
-        <meta property="og:title" content="AI Security for Insurance | Promptfoo" />
+        <meta property="og:title" content="AI Security for Insurance | artef" />
         <meta
           property="og:description"
           content="Red team insurance AI for policyholder data protection, network accuracy, and coverage discrimination testing."
@@ -73,7 +73,7 @@ export default function Insurance() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Security for Insurance | Promptfoo" />
+        <meta name="twitter:title" content="AI Security for Insurance | artef" />
         <meta
           name="twitter:description"
           content="Red team insurance AI for policyholder data protection, network accuracy, and coverage discrimination testing."
@@ -366,7 +366,7 @@ export default function Insurance() {
         {/* Benefits */}
         <section className={styles.benefitsSection}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why insurers choose Promptfoo</h2>
+            <h2 className={styles.sectionTitle}>Why insurers choose artef</h2>
 
             <div className={styles.benefitsList}>
               <div className={styles.benefitItem}>

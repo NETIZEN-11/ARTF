@@ -1,4 +1,4 @@
----
+﻿---
 title: Testing and Validating Guardrails
 description: Test integrated and standalone AI guardrails, normalize provider responses, measure missed attacks and false positives, and run adversarial evals in CI.
 keywords:
@@ -33,7 +33,7 @@ Use the same mixed dataset at either level:
 
 ### Choose the right safety check
 
-These Promptfoo features answer different questions:
+These artef features answer different questions:
 
 | Feature                                                                       | Question answered                                              |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -41,9 +41,9 @@ These Promptfoo features answer different questions:
 | [`moderation`](/docs/configuration/expected-outputs/moderation)               | Does a separate moderation model flag the generated output?    |
 | [`is-refusal`](/docs/configuration/expected-outputs/deterministic#is-refusal) | Does the output look like a model refusal?                     |
 | `guardrails-eval` red-team collection                                         | Which attacks bypass the application or model behavior?        |
-| [Enterprise Adaptive Guardrails](/docs/enterprise/guardrails)                 | How do I enforce Promptfoo-hosted policies at runtime?         |
+| [Enterprise Adaptive Guardrails](/docs/enterprise/guardrails)                 | How do I enforce artef-hosted policies at runtime?         |
 
-Adding a `guardrails` assertion does not enable a provider guardrail. Configure the guardrail on the target first, then verify that its decision reaches Promptfoo.
+Adding a `guardrails` assertion does not enable a provider guardrail. Configure the guardrail on the target first, then verify that its decision reaches artef.
 
 ### How guardrail responses arrive
 
@@ -55,12 +55,12 @@ HTTP status alone does not tell you whether a guardrail fired. Vendors return in
 | [AWS Converse](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html)                 | `stopReason: guardrail_intervened`                                                             | A streamed stop reason arrives near the end of the stream.                                                                      |
 | [Azure OpenAI content filters](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/content-filter) | Input block: HTTP 400 `content_filter`; output block: HTTP 200 `finish_reason: content_filter` | `filtered: false` can still include a detection. `content_filter_error` means filtering was indeterminate.                      |
 | [Model Armor sanitization](https://docs.cloud.google.com/model-armor/sanitize-prompts-responses)                  | HTTP 200 with `filterMatchState` and `invocationResult`                                        | `NO_MATCH_FOUND` is not reliable if execution was partial, failed, or skipped.                                                  |
-| [Vertex AI with Model Armor](https://docs.cloud.google.com/model-armor/model-armor-vertex-integration)            | Input `blockReason: MODEL_ARMOR`; output `finishReason: MODEL_ARMOR`                           | Promptfoo normalizes the input signal. Output blocks become provider errors, and some service failures can continue unscreened. |
+| [Vertex AI with Model Armor](https://docs.cloud.google.com/model-armor/model-armor-vertex-integration)            | Input `blockReason: MODEL_ARMOR`; output `finishReason: MODEL_ARMOR`                           | artef normalizes the input signal. Output blocks become provider errors, and some service failures can continue unscreened. |
 | [Anthropic classifier refusals](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback)      | HTTP 200 with `stop_reason: refusal`                                                           | Ordinary refusal text and HTTP 400 validation failures are different paths.                                                     |
 | [OpenAI safety surfaces](https://developers.openai.com/api/docs/guides/moderation)                                | Moderation results, structured refusals, or platform `content_filter` status                   | Moderation, refusal, and platform filtering are separate signals.                                                               |
-| [Mistral Custom Guardrails](https://docs.mistral.ai/studio-api/safety-moderation)                                 | Pass: HTTP 200; block: HTTP 403 with guardrail results                                         | Promptfoo sends guardrail configuration but does not currently normalize the result for this assertion.                         |
+| [Mistral Custom Guardrails](https://docs.mistral.ai/studio-api/safety-moderation)                                 | Pass: HTTP 200; block: HTTP 403 with guardrail results                                         | artef sends guardrail configuration but does not currently normalize the result for this assertion.                         |
 
-Normalize the outcome into Promptfoo's [four-field GuardrailResponse](/docs/configuration/expected-outputs/guardrails#mapping-provider-responses-to-guardrails). Treat `flagged` as “the target reported a policy trigger,” not necessarily “the HTTP request failed.”
+Normalize the outcome into artef's [four-field GuardrailResponse](/docs/configuration/expected-outputs/guardrails#mapping-provider-responses-to-guardrails). Treat `flagged` as “the target reported a policy trigger,” not necessarily “the HTTP request failed.”
 
 ## Testing Application with Integrated Guardrails
 
@@ -70,7 +70,7 @@ Test the deployed application at least once. A standalone classifier can pass wh
 
 If your application returns a structured guardrail decision, use the [HTTP provider](/docs/providers/http#guardrails-support) and normalize it in `transformResponse`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{prompt}}'
 
@@ -133,7 +133,7 @@ Return expected blocks as a non-empty `output` plus `guardrails`. A provider `er
 Run without cache and inspect the exported provider response:
 
 ```bash
-promptfoo eval --no-cache -o output.json
+artef eval --no-cache -o output.json
 jq '.results.results[] | {test: .testCase.description, guardrails: .response.guardrails}' output.json
 ```
 
@@ -260,13 +260,13 @@ For direct testing without a model call, invoke `ApplyGuardrail` and map `action
 
 `ApplyGuardrail` returns HTTP 200 for both clean and intervened content. A detection-only assessment is not the same as an intervention, so choose whether your benchmark measures policy matches, enforced blocks, or both.
 
-The built-in Bedrock provider usually adds top-level guardrail metadata only on intervention. The benign test above therefore uses Promptfoo's missing-metadata fallback; it does not prove that the guardrail ran. Use a direct `ApplyGuardrail` adapter when every case needs an explicit clean decision.
+The built-in Bedrock provider usually adds top-level guardrail metadata only on intervention. The benign test above therefore uses artef's missing-metadata fallback; it does not prove that the guardrail ran. Use a direct `ApplyGuardrail` adapter when every case needs an explicit clean decision.
 
 ### Testing AWS Bedrock Guardrails with Images
 
 Bedrock Guardrails can evaluate JPEG and PNG images through `ApplyGuardrail`. Images are limited to 4 MB. Decode data URLs to bytes, set the source direction, and map the action exactly as in the text example.
 
-Keep image and text configurations separate so Promptfoo injects the correct variable. For a complete image dataset workflow, see [Multi-Modal Red Teaming with UnsafeBench](/docs/guides/multimodal-red-team/#approach-3-unsafebench-dataset-testing) and the [AWS multimodal guardrail documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-mmfilter.html).
+Keep image and text configurations separate so artef injects the correct variable. For a complete image dataset workflow, see [Multi-Modal Red Teaming with UnsafeBench](/docs/guides/multimodal-red-team/#approach-3-unsafebench-dataset-testing) and the [AWS multimodal guardrail documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-mmfilter.html).
 
 ## Testing NVIDIA NeMo Guardrails
 
@@ -328,7 +328,7 @@ redteam:
 Run the red team with:
 
 ```bash
-promptfoo redteam run --no-cache
+artef redteam run --no-cache
 ```
 
 ## Things to think about

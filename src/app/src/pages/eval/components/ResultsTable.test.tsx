@@ -1,9 +1,9 @@
-import { act, StrictMode } from 'react';
+﻿import { act, StrictMode } from 'react';
 
 import { restoreTestTimers, type TestTimers, useTestTimers } from '@app/tests/timers';
 import { renderWithProviders } from '@app/utils/testutils';
-import { FILE_METADATA_KEY } from '@promptfoo/providers/constants';
-import { EVAL_TABLE_MAX_PAGE_SIZE } from '@promptfoo/types/api/eval';
+import { FILE_METADATA_KEY } from '@artef/providers/constants';
+import { EVAL_TABLE_MAX_PAGE_SIZE } from '@artef/types/api/eval';
 import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -620,7 +620,7 @@ describe('ResultsTable Metrics Display', () => {
                     format: 'jpeg',
                   },
                 },
-                [Symbol.for('promptfoo:file')]: {
+                [Symbol.for('artef:file')]: {
                   imageVar: {
                     path: '/path/to/image.jpg',
                     type: 'image',

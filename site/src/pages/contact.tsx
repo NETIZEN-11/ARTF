@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -27,7 +27,7 @@ const testimonials = [
     logo: '/img/brands/openai-logo.svg',
     logoAlt: 'OpenAI',
     logoClassName: styles.openaiTestimonialLogo,
-    quote: 'Promptfoo is really powerful. It is faster and more straightforward.',
+    quote: 'artef is really powerful. It is faster and more straightforward.',
     source: 'Build Hours',
     cta: 'Watch video',
   },
@@ -41,11 +41,11 @@ const testimonials = [
     cta: 'See course',
   },
   {
-    href: 'https://catalog.workshops.aws/promptfoo/',
+    href: 'https://catalog.workshops.aws/artef/',
     logo: '/img/brands/aws-logo.svg',
     logoAlt: 'AWS',
     logoClassName: styles.awsTestimonialLogo,
-    quote: 'Promptfoo works particularly well with Amazon Bedrock.',
+    quote: 'artef works particularly well with Amazon Bedrock.',
     source: 'Workshops',
     cta: 'View workshop',
   },
@@ -188,11 +188,11 @@ function Contact(): React.ReactElement {
                   <Typography variant="body2" color="text.secondary">
                     Or email{' '}
                     <MuiLink
-                      href="mailto:inquiries@promptfoo.dev"
+                      href="mailto:inquiries@artef.dev"
                       underline="hover"
                       className={styles.emailLink}
                     >
-                      inquiries@promptfoo.dev
+                      inquiries@artef.dev
                     </MuiLink>
                   </Typography>
                 </Box>
@@ -291,7 +291,7 @@ function Contact(): React.ReactElement {
                 </Typography>
                 <Box className={styles.resourceLinks}>
                   <MuiLink
-                    href="https://github.com/promptfoo/promptfoo"
+                    href="https://github.com/artef/artef"
                     target="_blank"
                     rel="noreferrer"
                     className={styles.resourceLink}
@@ -301,7 +301,7 @@ function Contact(): React.ReactElement {
                     <ArrowForwardIcon className={styles.resourceLinkIcon} />
                   </MuiLink>
                   <MuiLink
-                    href="https://discord.gg/promptfoo"
+                    href="https://discord.gg/artef"
                     target="_blank"
                     rel="noreferrer"
                     className={styles.resourceLink}
@@ -331,13 +331,13 @@ export default function Page(): React.ReactElement {
   return (
     <Layout
       title="Contact Enterprise Sales"
-      description="Contact Promptfoo about enterprise AI security solutions, red teaming, guardrails, and compliance."
+      description="Contact artef about enterprise AI security solutions, red teaming, guardrails, and compliance."
     >
       <Head>
-        <meta property="og:title" content="Contact Promptfoo" />
+        <meta property="og:title" content="Contact artef" />
         <meta
           property="og:description"
-          content="Contact Promptfoo about enterprise AI security solutions, red teaming, guardrails, and compliance."
+          content="Contact artef about enterprise AI security solutions, red teaming, guardrails, and compliance."
         />
         <meta property="og:image" content={`${siteUrl}/img/og/contact-og.png`} />
         <meta property="og:image:width" content="1200" />
@@ -345,10 +345,10 @@ export default function Page(): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${siteUrl}/contact`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Promptfoo" />
+        <meta name="twitter:title" content="Contact artef" />
         <meta
           name="twitter:description"
-          content="Contact Promptfoo about enterprise AI security solutions, red teaming, guardrails, and compliance."
+          content="Contact artef about enterprise AI security solutions, red teaming, guardrails, and compliance."
         />
         <meta name="twitter:image" content={`${siteUrl}/img/og/contact-og.png`} />
         <link rel="canonical" href={`${siteUrl}/contact`} />

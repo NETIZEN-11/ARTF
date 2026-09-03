@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -15,7 +15,7 @@ import { mockProcessEnv } from './util/utils';
 import type { ApiProvider } from '../src/types';
 
 function createOutputPath(extension = '.jsonl'): string {
-  return path.join(os.tmpdir(), `promptfoo-evaluate-${randomUUID()}${extension}`);
+  return path.join(os.tmpdir(), `artef-evaluate-${randomUUID()}${extension}`);
 }
 
 function readJsonl(outputPath: string): Array<Record<string, any>> {
@@ -531,9 +531,9 @@ describe('programmatic JSONL output', () => {
 
   it('applies strip projections to recovered streamed rows after persistence fails', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_STRIP_METADATA: 'true',
-      PROMPTFOO_STRIP_RESPONSE_OUTPUT: 'true',
-      PROMPTFOO_STRIP_TEST_VARS: 'true',
+      artef_STRIP_METADATA: 'true',
+      artef_STRIP_RESPONSE_OUTPUT: 'true',
+      artef_STRIP_TEST_VARS: 'true',
     });
     const outputPath = createOutputPath();
     outputPaths.push(outputPath);
@@ -582,8 +582,8 @@ describe('programmatic JSONL output', () => {
 
   it('applies prompt-text and grading-result strip projections to finalized JSONL', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_STRIP_PROMPT_TEXT: 'true',
-      PROMPTFOO_STRIP_GRADING_RESULT: 'true',
+      artef_STRIP_PROMPT_TEXT: 'true',
+      artef_STRIP_GRADING_RESULT: 'true',
     });
     const outputPath = createOutputPath();
     outputPaths.push(outputPath);

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache, getCache, getScopedCacheKey, isCacheEnabled } from '../../../src/cache';
 import {
   formatModerationInput,
@@ -88,9 +88,9 @@ describe('OpenAiModerationProvider', () => {
           method: 'POST',
           headers: expect.objectContaining({
             'Content-Type': 'application/json',
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
             Authorization: 'Bearer test-key',
-            'X-OpenAI-Originator': 'promptfoo',
+            'X-OpenAI-Originator': 'artef',
           }),
           body: expect.stringContaining('"model":"text-moderation-latest"'),
         }),
@@ -873,7 +873,7 @@ describe('OpenAiModerationProvider', () => {
         expect.objectContaining({
           headers: expect.objectContaining({
             'Custom-Header': 'custom-value',
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
           }),
         }),
         expect.any(Number),

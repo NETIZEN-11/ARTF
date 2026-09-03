@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { csrfProtection } from '../../../src/server/middleware/csrfProtection';
 import type { NextFunction, Request, Response } from 'express';
 
@@ -80,11 +80,11 @@ describe('csrfProtection', () => {
       expect(res.status).toHaveBeenCalledWith(403);
     });
 
-    it('allows cross-site from local.promptfoo.app to localhost (localhost equiv)', () => {
+    it('allows cross-site from local.artef.app to localhost (localhost equiv)', () => {
       const req = mockReq({
         headers: {
           'sec-fetch-site': 'cross-site',
-          origin: 'http://local.promptfoo.app:5173',
+          origin: 'http://local.artef.app:5173',
           host: 'localhost:15500',
         },
       });
@@ -108,7 +108,7 @@ describe('csrfProtection', () => {
 
     it('allows cross-site from env var allowlisted origin', () => {
       vi.mocked(getEnvString).mockImplementation((_key: string, defaultValue?: string) => {
-        if (_key === 'PROMPTFOO_CSRF_ALLOWED_ORIGINS') {
+        if (_key === 'artef_CSRF_ALLOWED_ORIGINS') {
           return 'http://allowed.com';
         }
         return defaultValue ?? '';
@@ -169,7 +169,7 @@ describe('csrfProtection', () => {
     it('allows localhost equivalence via Origin fallback', () => {
       const req = mockReq({
         headers: {
-          origin: 'http://local.promptfoo.app:5173',
+          origin: 'http://local.artef.app:5173',
           host: 'localhost:15500',
         },
       });

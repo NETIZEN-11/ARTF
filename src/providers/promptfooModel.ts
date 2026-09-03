@@ -1,4 +1,4 @@
-import { cloudConfig } from '../globalConfig/cloud';
+﻿import { cloudConfig } from '../globalConfig/cloud';
 import logger from '../logger';
 import { fetchWithProviderProxy } from './fetch';
 
@@ -48,29 +48,29 @@ interface ModelApiResponse {
   system_fingerprint?: string;
 }
 
-interface PromptfooModelOptions extends ProviderOptions {
+interface artefModelOptions extends ProviderOptions {
   model: string;
   config?: Record<string, any>;
 }
 
 /**
- * Provider that connects to the PromptfooModel task of the server.
+ * Provider that connects to the artefModel task of the server.
  */
-export class PromptfooModelProvider implements ApiProvider {
+export class artefModelProvider implements ApiProvider {
   private readonly model: string;
   readonly config: Record<string, any>;
 
-  constructor(model: string, options: PromptfooModelOptions = { model: '' }) {
+  constructor(model: string, options: artefModelOptions = { model: '' }) {
     this.model = model || options.model;
     if (!this.model) {
-      throw new Error('Model name is required for PromptfooModelProvider');
+      throw new Error('Model name is required for artefModelProvider');
     }
     this.config = options.config || {};
-    logger.debug(`[PromptfooModel] Initialized with model: ${this.model}`);
+    logger.debug(`[artefModel] Initialized with model: ${this.model}`);
   }
 
   id() {
-    return `promptfoo:model:${this.model}`;
+    return `artef:model:${this.model}`;
   }
 
   async callApi(
@@ -78,7 +78,7 @@ export class PromptfooModelProvider implements ApiProvider {
     _context?: CallApiContextParams,
     _options?: CallApiOptionsParams,
   ): Promise<ProviderResponse> {
-    logger.debug(`[PromptfooModel] Calling API with model: ${this.model}`);
+    logger.debug(`[artefModel] Calling API with model: ${this.model}`);
 
     try {
       // Parse the prompt as chat messages if it's a JSON string
@@ -90,12 +90,12 @@ export class PromptfooModelProvider implements ApiProvider {
         }
       } catch {
         // If parsing fails, assume it's a single user message
-        logger.debug(`[PromptfooModel] Assuming prompt is a single user message`);
+        logger.debug(`[artefModel] Assuming prompt is a single user message`);
         messages = [{ role: 'user', content: prompt }];
       }
 
       const payload = {
-        task: 'promptfoo:model',
+        task: 'artef:model',
         model: this.model,
         messages,
         config: this.config,
@@ -107,12 +107,12 @@ export class PromptfooModelProvider implements ApiProvider {
       const authHeaders = cloudConfig.getAuthHeaders();
       if (!authHeaders) {
         throw new Error(
-          'No Promptfoo auth token available. Please log in with `promptfoo auth login`',
+          'No artef auth token available. Please log in with `artef auth login`',
         );
       }
 
       const body = JSON.stringify(payload);
-      logger.debug('[PromptfooModel] Sending request', { url, payload });
+      logger.debug('[artefModel] Sending request', { url, payload });
       const response = await fetchWithProviderProxy(url, {
         method: 'POST',
         headers: {
@@ -124,16 +124,16 @@ export class PromptfooModelProvider implements ApiProvider {
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`PromptfooModel task API error: ${response.status} ${errorText}`);
+        throw new Error(`artefModel task API error: ${response.status} ${errorText}`);
       }
 
       const data = await response.json();
       if (!data || !data.result) {
-        throw new Error('Invalid response from PromptfooModel task API');
+        throw new Error('Invalid response from artefModel task API');
       }
 
       const modelResponse = data.result as ModelApiResponse;
-      logger.debug('[PromptfooModel] Received response', { modelResponse });
+      logger.debug('[artefModel] Received response', { modelResponse });
 
       // Extract the completion from the choices
       const completionContent = modelResponse.choices?.[0]?.message?.content || '';
@@ -150,7 +150,7 @@ export class PromptfooModelProvider implements ApiProvider {
       };
     } catch (error) {
       logger.error(
-        `[PromptfooModel] Error: ${error instanceof Error ? error.message : String(error)}`,
+        `[artefModel] Error: ${error instanceof Error ? error.message : String(error)}`,
       );
       throw error;
     }

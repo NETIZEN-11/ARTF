@@ -1,4 +1,4 @@
-import { callApi } from '@app/utils/api';
+﻿import { callApi } from '@app/utils/api';
 import { useQuery } from '@tanstack/react-query';
 
 export type ApiHealthStatus = 'unknown' | 'connected' | 'blocked' | 'disabled';
@@ -14,7 +14,7 @@ export type ApiHealthResult = {
 };
 
 /**
- * Checks the health of the connection to Promptfoo Cloud.
+ * Checks the health of the connection to artef Cloud.
  */
 export function useApiHealth() {
   return useQuery<ApiHealthResult, Error>({

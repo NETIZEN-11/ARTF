@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import * as cache from '../../../src/cache';
@@ -914,7 +914,7 @@ describe('GoogleProvider', () => {
           assert: [
             {
               type: 'assert-set',
-              assert: [{ type: 'promptfoo:redteam:ascii-smuggling' }],
+              assert: [{ type: 'artef:redteam:ascii-smuggling' }],
             },
           ],
         },

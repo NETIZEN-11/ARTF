@@ -1,4 +1,4 @@
-import { getEnvBool } from '../envars';
+﻿import { getEnvBool } from '../envars';
 import { cloudConfig } from '../globalConfig/cloud';
 
 /**
@@ -22,7 +22,7 @@ export interface ShouldShareOptions {
  * the eval and retry commands to ensure consistent behavior.
  *
  * Precedence (highest to lowest):
- * 1. Explicit disable (CLI --no-share or PROMPTFOO_DISABLE_SHARING env var)
+ * 1. Explicit disable (CLI --no-share or artef_DISABLE_SHARING env var)
  * 2. Explicit enable (CLI --share)
  * 3. Config file commandLineOptions.share
  * 4. Config file sharing setting
@@ -35,7 +35,7 @@ export interface ShouldShareOptions {
 export function shouldShareResults(opts: ShouldShareOptions): boolean {
   // Check for explicit disable via CLI --no-share, cliShare === false, or env var
   const hasExplicitDisable =
-    opts.cliNoShare === true || opts.cliShare === false || getEnvBool('PROMPTFOO_DISABLE_SHARING');
+    opts.cliNoShare === true || opts.cliShare === false || getEnvBool('artef_DISABLE_SHARING');
 
   if (hasExplicitDisable) {
     return false;

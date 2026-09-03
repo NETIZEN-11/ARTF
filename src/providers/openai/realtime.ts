@@ -1,4 +1,4 @@
-import WebSocket from 'ws';
+﻿import WebSocket from 'ws';
 import logger from '../../logger';
 import { maybeLoadToolsFromExternalFile } from '../../util/index';
 import { sanitizeUrlForLogging } from '../../util/sanitizer';
@@ -510,7 +510,7 @@ export class OpenAiRealtimeProvider extends OpenAiGenericProvider {
           `openai:realtime:${modelName}. ` +
           (modelName === 'gpt-realtime-whisper'
             ? 'Pass it as input_audio_transcription.model inside a conversational session instead.'
-            : 'It uses a separate Realtime session endpoint not yet supported by promptfoo.'),
+            : 'It uses a separate Realtime session endpoint not yet supported by artef.'),
       );
     }
     if (!OpenAiRealtimeProvider.OPENAI_REALTIME_MODEL_NAMES.includes(modelName)) {
@@ -699,7 +699,7 @@ export class OpenAiRealtimeProvider extends OpenAiGenericProvider {
     }
     return {
       ...(omitBearer ? {} : { Authorization: `Bearer ${this.getApiKey()}` }),
-      'User-Agent': 'promptfoo Realtime API Client',
+      'User-Agent': 'artef Realtime API Client',
       Origin: this.getWebSocketOrigin(),
       ...requestHeaders,
     };
@@ -760,7 +760,7 @@ export class OpenAiRealtimeProvider extends OpenAiGenericProvider {
       // Add WebSocket options to bypass potential network issues
       const wsOptions = {
         headers: {
-          'User-Agent': 'promptfoo Realtime API Client',
+          'User-Agent': 'artef Realtime API Client',
           Origin: this.getWebSocketOrigin(),
           ...this.getOpenAiRequestHeaders(),
         },
@@ -1348,7 +1348,7 @@ export class OpenAiRealtimeProvider extends OpenAiGenericProvider {
         functionCallResults: result.functionCallResults,
       };
 
-      // If the response has audio data, format it according to the promptfoo audio interface
+      // If the response has audio data, format it according to the artef audio interface
       if (result.metadata?.audio) {
         // Convert Buffer to base64 string for the audio data
         const audioDataBase64 = result.metadata.audio.data;

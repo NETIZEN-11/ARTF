@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import * as path from 'path';
 import { parse as parsePath } from 'path';
@@ -316,8 +316,8 @@ async function readLocalCsvRows(resolvedVarsPath: string): Promise<CsvRow[]> {
 }
 
 function parseCsvRows(fileContent: string): CsvRow[] {
-  const delimiter = getEnvString('PROMPTFOO_CSV_DELIMITER', ',');
-  const enforceStrict = getEnvBool('PROMPTFOO_CSV_STRICT', false);
+  const delimiter = getEnvString('artef_CSV_DELIMITER', ',');
+  const enforceStrict = getEnvBool('artef_CSV_STRICT', false);
 
   try {
     if (enforceStrict) {
@@ -636,17 +636,17 @@ export async function readTests(
     }
   } else if (tests !== undefined && tests !== null) {
     logger.warn(dedent`
-      Warning: Unsupported 'tests' format in promptfooconfig.yaml.
+      Warning: Unsupported 'tests' format in artefconfig.yaml.
       Expected: string, string[], or TestCase[], but received: ${typeof tests}
 
       Please check your configuration file and ensure the 'tests' field is correctly formatted.
-      For more information, visit: https://promptfoo.dev/docs/configuration/reference/#test-case
+      For more information, visit: https://artef.dev/docs/configuration/reference/#test-case
     `);
   }
 
   if (
     ret.some((testCase) => testCase.vars?.assert) &&
-    !getEnvBool('PROMPTFOO_NO_TESTCASE_ASSERT_WARNING')
+    !getEnvBool('artef_NO_TESTCASE_ASSERT_WARNING')
   ) {
     logger.warn(dedent`
       Warning: Found 'assert' key in vars. This is likely a mistake in your configuration.
@@ -660,7 +660,7 @@ export async function readTests(
             - type: contains
               value: "bar"
 
-      To disable this message, set the environment variable PROMPTFOO_NO_TESTCASE_ASSERT_WARNING=1.
+      To disable this message, set the environment variable artef_NO_TESTCASE_ASSERT_WARNING=1.
     `);
   }
 

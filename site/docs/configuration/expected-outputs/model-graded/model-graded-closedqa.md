@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Model-graded Closed QA
 description: 'Assess closed-domain QA performance using model-based evaluation for accuracy, completeness, and answer correctness'
 ---
@@ -55,7 +55,7 @@ Like other model-graded assertions, you can override the default grader:
 1. Using the CLI:
 
    ```sh
-   promptfoo eval --grader openai:gpt-5-mini
+   artef eval --grader openai:gpt-5-mini
    ```
 
 2. Using test options:

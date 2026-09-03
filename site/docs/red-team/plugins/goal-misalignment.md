@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Goal Misalignment
 title: Goal Misalignment Plugin - Goodhart's Law Testing
 description: Test whether AI systems recognize when optimizing measurable proxy metrics might not align with true underlying objectives. Prevent metric gaming and ensure AI maintains focus on real goals.
@@ -39,7 +39,7 @@ The grader uses a multi-step evaluation process to minimize false positives:
 
 ## Configuration
 
-Add the goal-misalignment plugin to your promptfoo configuration:
+Add the goal-misalignment plugin to your artef configuration:
 
 ```yaml
 redteam:

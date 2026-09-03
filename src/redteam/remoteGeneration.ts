@@ -1,4 +1,4 @@
-import { context, propagation } from '@opentelemetry/api';
+﻿import { context, propagation } from '@opentelemetry/api';
 import cliState from '../cliState';
 import { getEnvBool, getEnvString } from '../envars';
 import { isLoggedIntoCloud } from '../globalConfig/accounts';
@@ -29,7 +29,7 @@ export function providerRemoteGenerationContextPayload(contextOrCloudTargetId?: 
  */
 export function getRemoteGenerationUrl(): string {
   // Check env var first
-  const envUrl = getEnvString('PROMPTFOO_REMOTE_GENERATION_URL');
+  const envUrl = getEnvString('artef_REMOTE_GENERATION_URL');
   if (envUrl) {
     return envUrl;
   }
@@ -39,7 +39,7 @@ export function getRemoteGenerationUrl(): string {
     return cloudConfig.getApiHost() + '/api/v1/task';
   }
   // otherwise use the default
-  return 'https://api.promptfoo.app/api/v1/task';
+  return 'https://api.artef.app/api/v1/task';
 }
 
 /**
@@ -47,7 +47,7 @@ export function getRemoteGenerationUrl(): string {
  *
  * Authentication is injected centrally at the fetch layer (monkeyPatchFetch, mirrored
  * in cache.ts for cache-key parity) and only when the request URL's origin matches the
- * configured Promptfoo Cloud host (cloudConfig.getApiHost(), incl. on-prem). Keeping
+ * configured artef Cloud host (cloudConfig.getApiHost(), incl. on-prem). Keeping
  * this helper auth-free prevents cloud credentials from leaking to custom
  * remote-generation endpoints.
  */
@@ -72,11 +72,11 @@ export function getRemoteGenerationHeaders(
  */
 export function neverGenerateRemote(): boolean {
   // Check the general disable flag first (superset)
-  if (getEnvBool('PROMPTFOO_DISABLE_REMOTE_GENERATION')) {
+  if (getEnvBool('artef_DISABLE_REMOTE_GENERATION')) {
     return true;
   }
   // Fall back to the redteam-specific flag (subset)
-  return getEnvBool('PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION');
+  return getEnvBool('artef_DISABLE_REDTEAM_REMOTE_GENERATION');
 }
 
 /**
@@ -87,7 +87,7 @@ export function neverGenerateRemote(): boolean {
  */
 export function neverGenerateRemoteForRegularEvals(): boolean {
   // Only respect the general disable flag for non-redteam features
-  return getEnvBool('PROMPTFOO_DISABLE_REMOTE_GENERATION');
+  return getEnvBool('artef_DISABLE_REMOTE_GENERATION');
 }
 
 /**
@@ -98,7 +98,7 @@ export function buildRemoteUrl(pathname: string, fallback: string): string | nul
     return null;
   }
 
-  const envUrl = getEnvString('PROMPTFOO_REMOTE_GENERATION_URL');
+  const envUrl = getEnvString('artef_REMOTE_GENERATION_URL');
   if (envUrl) {
     try {
       const url = new URL(envUrl);
@@ -122,7 +122,7 @@ export function buildRemoteUrl(pathname: string, fallback: string): string | nul
  * @returns The health check URL, or null if remote generation is disabled.
  */
 export function getRemoteHealthUrl(): string | null {
-  return buildRemoteUrl('/health', 'https://api.promptfoo.app/health');
+  return buildRemoteUrl('/health', 'https://api.artef.app/health');
 }
 
 /**
@@ -130,30 +130,30 @@ export function getRemoteHealthUrl(): string | null {
  * @returns The version check URL, or null if remote generation is disabled.
  */
 export function getRemoteVersionUrl(): string | null {
-  return buildRemoteUrl('/version', 'https://api.promptfoo.app/version');
+  return buildRemoteUrl('/version', 'https://api.artef.app/version');
 }
 
 export function getRemoteGenerationDisabledError(strategyName: string): string {
   return (
     `${strategyName} requires remote generation, which is currently disabled for this configuration. ` +
-    'To enable it, run with --remote, set PROMPTFOO_REMOTE_GENERATION_URL to a self-hosted endpoint, ' +
-    'or log into Promptfoo Cloud with `promptfoo auth login`.'
+    'To enable it, run with --remote, set artef_REMOTE_GENERATION_URL to a self-hosted endpoint, ' +
+    'or log into artef Cloud with `artef auth login`.'
   );
 }
 
 export function getRemoteGenerationExplicitlyDisabledError(strategyName: string): string {
   const activeFlags = [
-    'PROMPTFOO_DISABLE_REMOTE_GENERATION',
-    'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION',
+    'artef_DISABLE_REMOTE_GENERATION',
+    'artef_DISABLE_REDTEAM_REMOTE_GENERATION',
   ].filter((flag) => getEnvBool(flag));
   const unsetInstruction =
     activeFlags.length > 0
       ? `unset ${activeFlags.join(' and ')}`
-      : 'unset PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION (whichever is set)';
+      : 'unset artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION (whichever is set)';
   return (
     `${strategyName} requires remote generation, which has been explicitly disabled. ` +
     `To enable it, ${unsetInstruction}. ` +
-    'Once re-enabled, you can point at a self-hosted endpoint with PROMPTFOO_REMOTE_GENERATION_URL or use Promptfoo Cloud via `promptfoo auth login`.'
+    'Once re-enabled, you can point at a self-hosted endpoint with artef_REMOTE_GENERATION_URL or use artef Cloud via `artef auth login`.'
   );
 }
 
@@ -167,7 +167,7 @@ export function shouldGenerateRemote(options?: ShouldGenerateRemoteOptions): boo
     return false;
   }
 
-  if (getEnvString('PROMPTFOO_REMOTE_GENERATION_URL')) {
+  if (getEnvString('artef_REMOTE_GENERATION_URL')) {
     return true;
   }
 
@@ -195,7 +195,7 @@ export function shouldGenerateRemote(options?: ShouldGenerateRemoteOptions): boo
  */
 export function getRemoteGenerationUrlForUnaligned(): string {
   // Check env var first
-  const envUrl = getEnvString('PROMPTFOO_UNALIGNED_INFERENCE_ENDPOINT');
+  const envUrl = getEnvString('artef_UNALIGNED_INFERENCE_ENDPOINT');
   if (envUrl) {
     return envUrl;
   }
@@ -205,5 +205,5 @@ export function getRemoteGenerationUrlForUnaligned(): string {
     return cloudConfig.getApiHost() + '/api/v1/task/harmful';
   }
   // otherwise use the default
-  return 'https://api.promptfoo.app/api/v1/task/harmful';
+  return 'https://api.artef.app/api/v1/task/harmful';
 }

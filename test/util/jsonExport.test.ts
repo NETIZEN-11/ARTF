@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -31,7 +31,7 @@ describe('JSON export with improved error handling', () => {
   let mockEval: any;
 
   beforeEach(() => {
-    tempDir = createTempDir('promptfoo-json-test-');
+    tempDir = createTempDir('artef-json-test-');
     tempFilePath = path.join(tempDir, 'test-export.json');
 
     mockEval = {
@@ -108,7 +108,7 @@ describe('JSON export with improved error handling', () => {
         version: 3,
         timestamp: '2025-01-01T00:00:00.000Z',
         prompts: mockEval.prompts,
-        results: [{ response: { output: `promptfoo://blob/${hash}` } }],
+        results: [{ response: { output: `artef://blob/${hash}` } }],
         stats: { successes: 1, failures: 0 },
       });
       vi.spyOn(blobs, 'getBlobByHash').mockResolvedValue({
@@ -145,7 +145,7 @@ describe('JSON export with improved error handling', () => {
           traceId: 'trace-media-export',
           evaluationId: mockEval.id,
           testCaseId: 'trace-media-case',
-          metadata: { attachment: `promptfoo://blob/${hash}` },
+          metadata: { attachment: `artef://blob/${hash}` },
           spans: [],
         },
       ]);
@@ -164,7 +164,7 @@ describe('JSON export with improved error handling', () => {
         await writeOutput(tempFilePath, mockEval, null, { includeMedia: true });
 
         const parsed = JSON.parse(fs.readFileSync(tempFilePath, 'utf8'));
-        expect(parsed.traces[0].metadata.attachment).toBe(`promptfoo://blob/${hash}`);
+        expect(parsed.traces[0].metadata.attachment).toBe(`artef://blob/${hash}`);
         expect(parsed.blobAssets).toEqual([
           {
             hash,
@@ -179,7 +179,7 @@ describe('JSON export with improved error handling', () => {
     });
 
     it('should not embed response blob bytes when response output stripping is enabled', async () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_STRIP_RESPONSE_OUTPUT: 'true' });
+      const restoreEnv = mockProcessEnv({ artef_STRIP_RESPONSE_OUTPUT: 'true' });
       const hash = 'c'.repeat(64);
       const getBlobSpy = vi.spyOn(blobs, 'getBlobByHash');
       mockEval.toEvaluateSummary.mockResolvedValue({
@@ -190,7 +190,7 @@ describe('JSON export with improved error handling', () => {
           {
             response: {
               output: '[output stripped]',
-              metadata: { blobUris: [`promptfoo://blob/${hash}`] },
+              metadata: { blobUris: [`artef://blob/${hash}`] },
             },
           },
         ],
@@ -202,7 +202,7 @@ describe('JSON export with improved error handling', () => {
 
         const parsed = JSON.parse(fs.readFileSync(tempFilePath, 'utf8'));
         expect(parsed.results.results[0].response.metadata.blobUris).toEqual([
-          `promptfoo://blob/${hash}`,
+          `artef://blob/${hash}`,
         ]);
         expect(parsed).not.toHaveProperty('blobAssets');
         expect(getBlobSpy).not.toHaveBeenCalled();
@@ -241,7 +241,7 @@ describe('JSON export with improved error handling', () => {
       const content = fs.readFileSync(tempFilePath, 'utf8');
       const parsed = JSON.parse(content);
 
-      expect(parsed.metadata).toHaveProperty('promptfooVersion');
+      expect(parsed.metadata).toHaveProperty('artefVersion');
       expect(parsed.metadata).toHaveProperty('nodeVersion');
       expect(parsed.metadata).toHaveProperty('platform');
       expect(parsed.metadata).toHaveProperty('exportedAt');

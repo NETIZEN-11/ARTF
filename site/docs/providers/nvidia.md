@@ -1,12 +1,12 @@
----
+﻿---
 title: NVIDIA NIM
 sidebar_position: 58
-description: Use NVIDIA NIM hosted inference APIs with promptfoo to evaluate Llama, Qwen, Nemotron, DeepSeek, and Mistral chat models through OpenAI-compatible endpoints.
+description: Use NVIDIA NIM hosted inference APIs with artef to evaluate Llama, Qwen, Nemotron, DeepSeek, and Mistral chat models through OpenAI-compatible endpoints.
 ---
 
 # NVIDIA NIM
 
-The NVIDIA provider connects promptfoo to [NVIDIA's hosted inference API](https://build.nvidia.com) at `https://integrate.api.nvidia.com/v1`. The endpoint is OpenAI-compatible, so any model NVIDIA exposes through it can be used the same way you'd use OpenAI Chat Completions.
+The NVIDIA provider connects artef to [NVIDIA's hosted inference API](https://build.nvidia.com) at `https://integrate.api.nvidia.com/v1`. The endpoint is OpenAI-compatible, so any model NVIDIA exposes through it can be used the same way you'd use OpenAI Chat Completions.
 
 ## Setup
 
@@ -80,9 +80,9 @@ The full list is on [build.nvidia.com](https://build.nvidia.com). Some commonly 
 
 ## Example
 
-A minimal eval comparing two NIM-hosted models. Uses deterministic assertions so the example runs end-to-end with only `NVIDIA_API_KEY` configured — `llm-rubric` would otherwise fall back to promptfoo's default OpenAI grader and require a separate `OPENAI_API_KEY`.
+A minimal eval comparing two NIM-hosted models. Uses deterministic assertions so the example runs end-to-end with only `NVIDIA_API_KEY` configured — `llm-rubric` would otherwise fall back to artef's default OpenAI grader and require a separate `OPENAI_API_KEY`.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: nvidia:meta/llama-3.3-70b-instruct
     config:

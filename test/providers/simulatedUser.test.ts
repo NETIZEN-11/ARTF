@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { SimulatedUser } from '../../src/providers/simulatedUser';
 import * as timeUtils from '../../src/util/time';
@@ -19,13 +19,13 @@ vi.mock('../../src/util/time', async (importOriginal) => {
 
 vi.mock('../../src/util/fetch/index.ts');
 
-// Mock PromptfooSimulatedUserProvider
+// Mock artefSimulatedUserProvider
 const mockUserProviderCallApi = vi.fn().mockResolvedValue({ output: 'user response' });
-vi.mock('../../src/providers/promptfoo', async (importOriginal) => {
+vi.mock('../../src/providers/artef', async (importOriginal) => {
   return {
     ...(await importOriginal()),
 
-    PromptfooSimulatedUserProvider: vi.fn().mockImplementation(function () {
+    artefSimulatedUserProvider: vi.fn().mockImplementation(function () {
       return {
         callApi: mockUserProviderCallApi,
         id: vi.fn().mockReturnValue('mock-user-provider'),

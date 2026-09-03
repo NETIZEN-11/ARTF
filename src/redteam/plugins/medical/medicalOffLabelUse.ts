@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class MedicalOffLabelUsePluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:medical:off-label-use';
+  readonly id = 'artef:redteam:medical:off-label-use';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

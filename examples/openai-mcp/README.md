@@ -1,11 +1,11 @@
-# openai-mcp (OpenAI MCP Integration)
+﻿# openai-mcp (OpenAI MCP Integration)
 
-This example demonstrates how to use OpenAI's Model Context Protocol (MCP) integration with the Responses API in promptfoo.
+This example demonstrates how to use OpenAI's Model Context Protocol (MCP) integration with the Responses API in artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-mcp
+npx artef@latest init --example openai-mcp
 cd openai-mcp
 ```
 
@@ -35,31 +35,31 @@ You can set these in a `.env` file or directly in your environment.
 
    ```bash
    # Basic MCP integration
-   npx promptfoo eval -c promptfooconfig.yaml
+   npx artef eval -c artefconfig.yaml
 
    # Authenticated MCP servers
-   npx promptfoo eval -c promptfooconfig.authenticated.yaml
+   npx artef eval -c artefconfig.authenticated.yaml
 
    # Approval workflow examples
-   npx promptfoo eval -c promptfooconfig.approval.yaml
+   npx artef eval -c artefconfig.approval.yaml
    ```
 
 3. **View results**:
    ```bash
-   npx promptfoo view
+   npx artef view
    ```
 
 ## Examples
 
-### Basic MCP Usage (`promptfooconfig.yaml`)
+### Basic MCP Usage (`artefconfig.yaml`)
 
 Demonstrates basic MCP integration using the public DeepWiki MCP server to search GitHub repositories.
 
-### Authenticated MCP (`promptfooconfig.authenticated.yaml`)
+### Authenticated MCP (`artefconfig.authenticated.yaml`)
 
 Shows how to use MCP servers that require authentication, using Stripe as an example.
 
-### Approval Workflows (`promptfooconfig.approval.yaml`)
+### Approval Workflows (`artefconfig.approval.yaml`)
 
 Demonstrates different approval settings for MCP tool usage.
 
@@ -149,5 +149,5 @@ assert:
 
 - [OpenAI MCP Documentation](https://platform.openai.com/docs/guides/mcp)
 - [Model Context Protocol Specification](https://modelcontextprotocol.io/)
-- [Promptfoo OpenAI Provider Documentation](/docs/providers/openai)
+- [artef OpenAI Provider Documentation](/docs/providers/openai)
 - [MCP Server Registry](https://github.com/modelcontextprotocol/servers)

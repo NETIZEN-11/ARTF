@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Google Veo video extension (Veo 3.1 only)
 
 prompts:
@@ -24,6 +24,6 @@ tests:
 
 # Note: Video extension uses the explicit Vertex AI provider path.
 # To use this:
-# 1. First generate a video using promptfooconfig.yaml
+# 1. First generate a video using artefconfig.yaml
 # 2. Get the operation ID from the results (metadata.operationName field)
 # 3. Replace YOUR_PROJECT and YOUR_OPERATION_ID above with your values

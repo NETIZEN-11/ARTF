@@ -1,17 +1,17 @@
-# config-extension-api (Custom Extensions Example for promptfoo)
+﻿# config-extension-api (Custom Extensions Example for artef)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-extension-api
+npx artef@latest init --example config-extension-api
 cd config-extension-api
 ```
 
-This example demonstrates how to leverage promptfoo's powerful extensions API to implement custom setup and teardown hooks for individual tests. These extensions can be defined in either Python or JavaScript, providing flexibility for your preferred programming environment.
+This example demonstrates how to leverage artef's powerful extensions API to implement custom setup and teardown hooks for individual tests. These extensions can be defined in either Python or JavaScript, providing flexibility for your preferred programming environment.
 
 ## Extension Hooks Overview
 
-promptfoo supports four types of extension hooks, each triggered at a specific point in the evaluation lifecycle:
+artef supports four types of extension hooks, each triggered at a specific point in the evaluation lifecycle:
 
 1. `beforeAll`: Executed once before the entire test suite begins
 2. `afterAll`: Executed once after the entire test suite completes
@@ -22,11 +22,11 @@ Each hook receives a `hookName` parameter and a `context` object containing rele
 
 The `beforeAll` and `beforeEach` hooks should return the `context` object, while the `afterAll` and `afterEach` hooks should not return anything.
 
-For comprehensive information on implementing and using these hooks, refer to the [Extension Hooks](https://www.promptfoo.dev/docs/configuration/reference/#extension-hooks) section in the official documentation.
+For comprehensive information on implementing and using these hooks, refer to the [Extension Hooks](https://www.artef.dev/docs/configuration/reference/#extension-hooks) section in the official documentation.
 
 ## Configuring Extensions
 
-Specify your extensions in the `promptfooconfig.yaml` file:
+Specify your extensions in the `artefconfig.yaml` file:
 
 ```yaml
 extensions:
@@ -38,7 +38,7 @@ Note: You must include the function name after the file path, separated by a col
 
 ## Why Use Extensions?
 
-Extensions in promptfoo empower you to:
+Extensions in artef empower you to:
 
 1. Enhance test functionality with custom pre- and post-test actions
 2. Dynamically prepare and clean up test environments
@@ -61,11 +61,11 @@ These extensions function similarly to "before" and "after" hooks in popular uni
 To execute this example, use the following command in your terminal:
 
 ```sh
-LOG_LEVEL=debug promptfoo eval
+LOG_LEVEL=debug artef eval
 ```
 
 Then
 
 ```sh
-promptfoo view
+artef view
 ```

@@ -1,17 +1,17 @@
----
+﻿---
 sidebar_label: Mixtral vs GPT
 description: Compare Mixtral vs GPT performance on custom datasets using automated benchmarks and evaluation metrics to identify the optimal model for your use case
 ---
 
 # Mixtral vs GPT: Run a benchmark with your own data
 
-In this guide, we'll walk through the steps to compare three large language models (LLMs): Mixtral, GPT-5-mini, and GPT-5. We will use `promptfoo`, a command-line interface (CLI) tool, to run evaluations and compare the performance of these models based on a set of prompts and test cases.
+In this guide, we'll walk through the steps to compare three large language models (LLMs): Mixtral, GPT-5-mini, and GPT-5. We will use `artef`, a command-line interface (CLI) tool, to run evaluations and compare the performance of these models based on a set of prompts and test cases.
 
 ![mixtral and gpt comparison](/img/docs/mixtral-vs-gpt.png)
 
 ## Requirements
 
-- `promptfoo` CLI installed on your system.
+- `artef` CLI installed on your system.
 - Access to Replicate for Mixtral.
 - Access to OpenAI for GPT-5-mini and GPT-5.
 - API keys for Replicate (`REPLICATE_API_TOKEN`) and OpenAI (`OPENAI_API_KEY`).
@@ -27,9 +27,9 @@ cd mixtral-gpt-comparison
 
 ## Step 2: Configure the models
 
-Create a `promptfooconfig.yaml` with the models you want to compare. Here's an example configuration with Mixtral, GPT-5-mini, and GPT-5:
+Create a `artefconfig.yaml` with the models you want to compare. Here's an example configuration with Mixtral, GPT-5-mini, and GPT-5:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - replicate:mistralai/mixtral-8x22b-instruct-v0.1
   - openai:gpt-5-mini
@@ -60,7 +60,7 @@ Local options such as [ollama](/docs/providers/ollama), [vllm](/docs/providers/v
 
 Customize the behavior of each model by setting parameters such as `max_tokens` or `max_length`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:gpt-5-mini
     // highlight-start
@@ -84,7 +84,7 @@ providers:
 
 Set up the prompts that you want to run for each model. In this case, we'll just use a simple prompt, because we want to compare model performance.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Answer this as best you can: {{query}}'
 ```
@@ -95,7 +95,7 @@ If desired, you can test multiple prompts (just add more to the list), or test [
 
 Define the test cases that you want to use for the evaluation. This includes setting up variables that will be interpolated into the prompts:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       query: 'What is the capital of France?'
@@ -134,18 +134,18 @@ Optionally, you can set up assertions to automatically assess the output for cor
 
 ## Step 5: Run the comparison
 
-With everything configured, run the evaluation using the `promptfoo` CLI:
+With everything configured, run the evaluation using the `artef` CLI:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This command will execute each test case against each configured model and record the results.
 
-To visualize the results, use the `promptfoo` viewer:
+To visualize the results, use the `artef` viewer:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 It will show results like so:
@@ -155,7 +155,7 @@ It will show results like so:
 You can also output the results to a file in various formats, such as JSON, YAML, or CSV:
 
 ```
-npx promptfoo@latest eval -o results.csv
+npx artef@latest eval -o results.csv
 ```
 
 ## Conclusion

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Insurance Plugins
 title: Insurance Red-Teaming Plugins - AI Security for Insurance Systems
 description: Insurance red-teaming plugins for testing AI systems across health, property, auto, life, and commercial insurance contexts
@@ -145,7 +145,7 @@ Tests for discriminatory coverage, underwriting, and claims decisions based on p
 
 ## Configuration
 
-Add insurance plugins to your promptfoo configuration:
+Add insurance plugins to your artef configuration:
 
 ```yaml
 redteam:
@@ -187,7 +187,7 @@ For questions about insurance plugins:
 
 1. Review the [general red-teaming documentation](/docs/red-team/)
 2. Check the [plugin configuration guide](/docs/red-team/configuration/)
-3. Join our [community discussions](https://github.com/promptfoo/promptfoo/discussions)
+3. Join our [community discussions](https://github.com/artef/artef/discussions)
 4. Consider consulting with insurance compliance professionals for implementation guidance
 
 ## See Also

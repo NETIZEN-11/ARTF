@@ -1,4 +1,4 @@
-import { APIError } from '@anthropic-ai/sdk';
+﻿import { APIError } from '@anthropic-ai/sdk';
 import {
   getCache,
   getCacheClearGeneration,
@@ -539,7 +539,7 @@ export class AnthropicMessagesProvider extends AnthropicGenericProvider {
       // Optional request parameters
       maxTokens: this.config.max_tokens,
       temperature: this.config.temperature,
-      // Promptfoo context from test case if available
+      // artef context from test case if available
       testIndex: context?.testIdx ?? (context?.test?.vars?.__testIdx as number | undefined),
       promptLabel: context?.prompt?.label,
       // W3C Trace Context for linking to evaluation trace
@@ -830,7 +830,7 @@ export class AnthropicMessagesProvider extends AnthropicGenericProvider {
 
     // Newer Claude models deprecate manual sampling controls at the model level —
     // `temperature`, `top_p`, and `top_k` are adaptive, and pinning any of them
-    // returns 400 `invalid_request_error` (including promptfoo's built-in
+    // returns 400 `invalid_request_error` (including artef's built-in
     // `temperature` default of 0). Suppress all three and warn once per provider
     // instance when the user supplied any of them via config or the
     // ANTHROPIC_TEMPERATURE env var (the built-in default stays silent to avoid

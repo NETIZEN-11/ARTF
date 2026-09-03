@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_label: FAQ
-description: Evaluate LLM outputs, run red team tests, and automate AI security checks with Promptfoo's open-source framework. Configure assertions and metrics for 50+ providers.
+description: Evaluate LLM outputs, run red team tests, and automate AI security checks with artef's open-source framework. Configure assertions and metrics for 50+ providers.
 ---
 
 # Frequently asked questions
 
-### What is Promptfoo?
+### What is artef?
 
-Promptfoo is a local-first, open-source tool designed to help evaluate (eval) large language models (LLMs). Promptfoo is designed for application developers and for business applications. It features a simple, flexible, and extensible API. With Promptfoo you can:
+artef is a local-first, open-source tool designed to help evaluate (eval) large language models (LLMs). artef is designed for application developers and for business applications. It features a simple, flexible, and extensible API. With artef you can:
 
 1. Systematically test prompts across multiple LLM providers.
 2. Evaluate LLM outputs using various assertion types.
@@ -15,11 +15,11 @@ Promptfoo is a local-first, open-source tool designed to help evaluate (eval) la
 4. Generate adversarial tests for LLM red teaming.
 5. Run as a command-line tool, a library, integrate with testing frameworks, run in your CI/CD pipeline, and view results in the browser.
 
-### What is LLM red teaming, and how does Promptfoo support it?
+### What is LLM red teaming, and how does artef support it?
 
-LLM red teaming is the process of systematically testing LLMs to identify potential vulnerabilities, weaknesses, and unintended behaviors before deployment. Promptfoo supports this by offering a framework for generating and executing adversarial tests, aligned with industry standards like OWASP LLM Top 10 and NIST AI Risk Management Framework.
+LLM red teaming is the process of systematically testing LLMs to identify potential vulnerabilities, weaknesses, and unintended behaviors before deployment. artef supports this by offering a framework for generating and executing adversarial tests, aligned with industry standards like OWASP LLM Top 10 and NIST AI Risk Management Framework.
 
-Promptfoo's red teaming capabilities allow you to:
+artef's red teaming capabilities allow you to:
 
 1. Generate adversarial tests specific to your LLM application.
 2. Execute tests at scale in a pre-deployment environment.
@@ -28,9 +28,9 @@ Promptfoo's red teaming capabilities allow you to:
 
 For more details, see our [LLM Red Teaming Guide](/docs/guides/llm-redteaming).
 
-### Which LLM providers does Promptfoo support?
+### Which LLM providers does artef support?
 
-Promptfoo supports a wide range of LLM providers, including:
+artef supports a wide range of LLM providers, including:
 
 1. OpenAI (GPT-4o, GPT-3.5)
 2. Anthropic (Claude)
@@ -41,27 +41,27 @@ Promptfoo supports a wide range of LLM providers, including:
 7. Hugging Face
 8. Local models and custom API integrations
 
-Promptfoo's flexible architecture allows for easy integration with new or custom LLM providers. For the most up-to-date list and integration instructions, please refer to our [Providers documentation](/docs/providers/).
+artef's flexible architecture allows for easy integration with new or custom LLM providers. For the most up-to-date list and integration instructions, please refer to our [Providers documentation](/docs/providers/).
 
-### Does Promptfoo forward calls to an intermediate server?
+### Does artef forward calls to an intermediate server?
 
-By default, no — the open-source eval runner runs on your machine, and configured provider calls are sent directly to that provider. Promptfoo-operated services may receive data when you opt into a Cloud-backed feature, including hosted generation or grading, red team target/provider setup helpers, red team target/provider test requests, sharing, Cloud sync, hosted reports, telemetry, and account/license checks.
+By default, no — the open-source eval runner runs on your machine, and configured provider calls are sent directly to that provider. artef-operated services may receive data when you opt into a Cloud-backed feature, including hosted generation or grading, red team target/provider setup helpers, red team target/provider test requests, sharing, Cloud sync, hosted reports, telemetry, and account/license checks.
 
-### Does Promptfoo store API keys?
+### Does artef store API keys?
 
-By default, no — API keys are read from local environment variables and are not transmitted on their own. If you paste credentials directly into configs, request examples, red team target/provider setup forms, or shareable eval data, those values are treated like any other config field and may be saved in local artifacts or sent to configured providers, sharing endpoints, or Promptfoo-hosted features that process that data.
+By default, no — API keys are read from local environment variables and are not transmitted on their own. If you paste credentials directly into configs, request examples, red team target/provider setup forms, or shareable eval data, those values are treated like any other config field and may be saved in local artifacts or sent to configured providers, sharing endpoints, or artef-hosted features that process that data.
 
-### Does Promptfoo store LLM inputs and outputs?
+### Does artef store LLM inputs and outputs?
 
 By default, eval results are stored locally. Inputs and outputs may leave your machine when you use hosted generation or grading, sharing, Cloud sync, hosted reports, red team target/provider setup helpers, red team target/provider test requests, or other Cloud-backed features.
 
 ### Do you collect any PII?
 
-We do not collect PII through product analytics. The email or user identifier associated with your local Promptfoo environment may be sent to the relevant Promptfoo-operated endpoint when you sign in to Promptfoo Cloud, share evals, invoke a Cloud-backed feature, or set `PROMPTFOO_DISABLE_TELEMETRY` (which records a one-time opt-out acknowledgment so opt-out usage can be measured). See the [security policy](https://github.com/promptfoo/promptfoo/blob/main/SECURITY.md) for the full list of Cloud-backed features and the data each one sends.
+We do not collect PII through product analytics. The email or user identifier associated with your local artef environment may be sent to the relevant artef-operated endpoint when you sign in to artef Cloud, share evals, invoke a Cloud-backed feature, or set `artef_DISABLE_TELEMETRY` (which records a one-time opt-out acknowledgment so opt-out usage can be measured). See the [security policy](https://github.com/artef/artef/blob/main/SECURITY.md) for the full list of Cloud-backed features and the data each one sends.
 
-### How do I configure Promptfoo for corporate networks or proxies?
+### How do I configure artef for corporate networks or proxies?
 
-Promptfoo proxy settings are configured through environment variables:
+artef proxy settings are configured through environment variables:
 
 1. `HTTP_PROXY`: For HTTP requests
 2. `HTTPS_PROXY`: For HTTPS requests
@@ -88,51 +88,51 @@ Note: Environment variables are specific to your terminal/shell instance. If you
 
 For environments with custom certificate authorities (like corporate environments), configure SSL/TLS settings using these environment variables:
 
-1. `PROMPTFOO_CA_CERT_PATH`: Path to a custom CA certificate bundle. The path can be absolute or relative to your working directory. Invalid paths will log a warning:
+1. `artef_CA_CERT_PATH`: Path to a custom CA certificate bundle. The path can be absolute or relative to your working directory. Invalid paths will log a warning:
 
    ```bash
    # Absolute path
-   export PROMPTFOO_CA_CERT_PATH=/path/to/ca-bundle.crt
+   export artef_CA_CERT_PATH=/path/to/ca-bundle.crt
 
    # Relative path
-   export PROMPTFOO_CA_CERT_PATH=./certs/ca-bundle.crt
+   export artef_CA_CERT_PATH=./certs/ca-bundle.crt
    ```
 
-2. `PROMPTFOO_INSECURE_SSL`: Set to `true` to disable SSL certificate verification:
+2. `artef_INSECURE_SSL`: Set to `true` to disable SSL certificate verification:
    ```bash
-   export PROMPTFOO_INSECURE_SSL=true
+   export artef_INSECURE_SSL=true
    ```
 
 Remember that like all environment variables, these settings are specific to your terminal/shell instance.
 
-### How does Promptfoo integrate with existing development workflows?
+### How does artef integrate with existing development workflows?
 
-Promptfoo can be integrated into CI/CD pipelines via [GitHub Action](https://github.com/promptfoo/promptfoo-action), used with testing frameworks like Jest and Vitest, and incorporated into various stages of the development process.
+artef can be integrated into CI/CD pipelines via [GitHub Action](https://github.com/artef/artef-action), used with testing frameworks like Jest and Vitest, and incorporated into various stages of the development process.
 
-### How can I use Promptfoo in a completely offline environment?
+### How can I use artef in a completely offline environment?
 
 Set the following environment variables before running the CLI to turn off common hosted features:
 
 ```bash
-export PROMPTFOO_DISABLE_TELEMETRY=1
-export PROMPTFOO_DISABLE_UPDATE=1
-export PROMPTFOO_DISABLE_REMOTE_GENERATION=true
-export PROMPTFOO_DISABLE_SHARING=1
-export PROMPTFOO_SELF_HOSTED=1
+export artef_DISABLE_TELEMETRY=1
+export artef_DISABLE_UPDATE=1
+export artef_DISABLE_REMOTE_GENERATION=true
+export artef_DISABLE_SHARING=1
+export artef_SELF_HOSTED=1
 ```
 
 Only configure local or self-hosted LLM providers (e.g., Ollama) so the CLI does not attempt to reach external APIs.
 
-These settings are not a network firewall. For strict offline or air-gapped use, combine local/self-hosted providers with network egress controls or use Promptfoo Enterprise On-Prem.
+These settings are not a network firewall. For strict offline or air-gapped use, combine local/self-hosted providers with network egress controls or use artef Enterprise On-Prem.
 
 ### Do you publish an LLMs.txt?
 
 Yes. The documentation website follows the [LLMs.txt specification](https://llmstxt.org/) so automated tools can easily index our content. You can access the files at:
 
-- [llms.txt](https://www.promptfoo.dev/llms.txt) - Navigation and structure
-- [llms-full.txt](https://www.promptfoo.dev/llms-full.txt) - Complete documentation content
+- [llms.txt](https://www.artef.dev/llms.txt) - Navigation and structure
+- [llms-full.txt](https://www.artef.dev/llms-full.txt) - Complete documentation content
 
-**Usage with AI assistants:** Copy the llms-full.txt content into your AI assistant (ChatGPT, Claude, etc.) for comprehensive promptfoo context when working on LLM evaluations, red-teaming, or configuration questions.
+**Usage with AI assistants:** Copy the llms-full.txt content into your AI assistant (ChatGPT, Claude, etc.) for comprehensive artef context when working on LLM evaluations, red-teaming, or configuration questions.
 
 ### Further Reading
 

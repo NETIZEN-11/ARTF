@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Badge } from '@app/components/ui/badge';
@@ -8,7 +8,7 @@ import { callApi } from '@app/utils/api';
 import { formatDataGridDate } from '@app/utils/date';
 import { formatASRForDisplay } from '@app/utils/redteam';
 import { Link } from 'react-router-dom';
-import type { EvalSummary } from '@promptfoo/types';
+import type { EvalSummary } from '@artef/types';
 import type { ColumnDef } from '@tanstack/react-table';
 
 interface ReportsTableProps {

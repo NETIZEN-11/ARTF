@@ -1,10 +1,10 @@
-# Prompt Processing
+﻿# Prompt Processing
 
 Prompt loading, prompt files, Nunjucks rendering, grading prompts (`grading.ts`), and prompt processors (`processors/`).
 
 ## Template Security
 
-promptfoo renders prompts with Nunjucks (engine in `src/util/templates.ts`). Server-side template injection is a real risk here:
+artef renders prompts with Nunjucks (engine in `src/util/templates.ts`). Server-side template injection is a real risk here:
 
 - **Never render untrusted runtime data as a template.** Model/provider/grader output, remote content, user/test data, and `_conversation` message content must be passed in as data variables or kept literal — never concatenated into the template source.
 - The template-source argument to render helpers must be trusted input only: config, prompt files, or rubric/config text.
@@ -23,7 +23,7 @@ Processors (`processors/{csv,json,jsonl,markdown,javascript,python,executable,ji
 
 ```bash
 npx vitest run test/prompts
-npm run local -- eval -c examples/<relevant-example>/promptfooconfig.yaml --no-cache -o output.json
+npm run local -- eval -c examples/<relevant-example>/artefconfig.yaml --no-cache -o output.json
 ```
 
 Inspect exported results when the change affects rendered prompts, provider inputs, or grading prompts.

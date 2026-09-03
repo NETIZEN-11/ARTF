@@ -1,4 +1,4 @@
-import { spawnSync } from 'node:child_process';
+﻿import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -98,7 +98,7 @@ function formatUnsupportedNodeVersionMessage(
   requiredRange: string,
 ): string {
   return [
-    '\x1b[33mpromptfoo requires a supported Node.js runtime.',
+    '\x1b[33martef requires a supported Node.js runtime.',
     '',
     `Detected: ${currentVersion}`,
     `Required: ${requiredRange}`,
@@ -265,7 +265,7 @@ describe('entrypoint version check logic', () => {
     it('formats a range-aware error message for unsupported versions', () => {
       const errorMessage = formatUnsupportedNodeVersionMessage('v20.9.0', nodeEngineRange);
 
-      expect(errorMessage).toContain('promptfoo requires a supported Node.js runtime');
+      expect(errorMessage).toContain('artef requires a supported Node.js runtime');
       expect(errorMessage).toContain('Detected: v20.9.0');
       expect(errorMessage).toContain(`Required: ${nodeEngineRange}`);
       expect(errorMessage).toContain('Install a supported Node.js version and try again.');
@@ -284,18 +284,18 @@ describe('entrypoint version check logic', () => {
 
   describe('build-time constant behavior', () => {
     it('uses the fallback range and comparator set when build-time constants are undefined', () => {
-      const __PROMPTFOO_NODE_ENGINE_RANGE__: string | undefined = undefined;
-      const __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] | undefined =
+      const __artef_NODE_ENGINE_RANGE__: string | undefined = undefined;
+      const __artef_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] | undefined =
         undefined;
 
       const fallbackRange =
-        typeof __PROMPTFOO_NODE_ENGINE_RANGE__ === 'undefined'
+        typeof __artef_NODE_ENGINE_RANGE__ === 'undefined'
           ? '>=22.22.0'
-          : __PROMPTFOO_NODE_ENGINE_RANGE__;
+          : __artef_NODE_ENGINE_RANGE__;
       const fallbackComparatorSets =
-        typeof __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__ === 'undefined'
+        typeof __artef_NODE_ENGINE_COMPARATOR_SETS__ === 'undefined'
           ? [[{ operator: '>=', version: '22.22.0' }]]
-          : __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__;
+          : __artef_NODE_ENGINE_COMPARATOR_SETS__;
 
       expect(fallbackRange).toBe('>=22.22.0');
       expect(fallbackComparatorSets).toEqual([[{ operator: '>=', version: '22.22.0' }]]);
@@ -305,19 +305,19 @@ describe('entrypoint version check logic', () => {
       // Deliberately NOT the current engine range: if the injected value equalled the
       // fallback, both ternary branches would satisfy the assertions and this test could
       // never fail.
-      const __PROMPTFOO_NODE_ENGINE_RANGE__ = '>=99.1.2';
-      const __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] = [
+      const __artef_NODE_ENGINE_RANGE__ = '>=99.1.2';
+      const __artef_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] = [
         [{ operator: '>=', version: '99.1.2' }],
       ];
 
       const injectedRange =
-        typeof __PROMPTFOO_NODE_ENGINE_RANGE__ === 'undefined'
+        typeof __artef_NODE_ENGINE_RANGE__ === 'undefined'
           ? '>=22.22.0'
-          : __PROMPTFOO_NODE_ENGINE_RANGE__;
+          : __artef_NODE_ENGINE_RANGE__;
       const injectedComparatorSets =
-        typeof __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__ === 'undefined'
+        typeof __artef_NODE_ENGINE_COMPARATOR_SETS__ === 'undefined'
           ? [[{ operator: '>=', version: '22.22.0' }]]
-          : __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__;
+          : __artef_NODE_ENGINE_COMPARATOR_SETS__;
 
       expect(injectedRange).toBe('>=99.1.2');
       expect(injectedComparatorSets).toEqual([[{ operator: '>=', version: '99.1.2' }]]);

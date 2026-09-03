@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Web Search for Recent Positive News with OpenAI Responses API
 prompts:
   - 'Find me something fun or positive that happened recently in the news about {{topic}}. I want to hear about developments or stories from the past week. Make sure to cite your sources.'

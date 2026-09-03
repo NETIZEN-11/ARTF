@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import Link from '@docusaurus/Link';
 import { Editor } from '@monaco-editor/react';
@@ -114,15 +114,15 @@ const ConfigValidator = () => {
   };
 
   return (
-    <Layout title="Config Validator" description="Validate your promptfoo configuration">
+    <Layout title="Config Validator" description="Validate your artef configuration">
       <Container maxWidth="lg" sx={{ mb: 4 }}>
         <Box sx={{ my: 4 }}>
           <Typography variant="h3" component="h1" gutterBottom align="center">
-            Promptfoo Config Validator
+            artef Config Validator
           </Typography>
           <Typography variant="body1" gutterBottom align="center">
             Enter your YAML or JSON configuration below to validate it against the{' '}
-            <Link to="https://github.com/promptfoo/promptfoo/blob/main/site/static/config-schema.json">
+            <Link to="https://github.com/artef/artef/blob/main/site/static/config-schema.json">
               schema
             </Link>
             .

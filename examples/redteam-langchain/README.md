@@ -1,13 +1,13 @@
-# redteam-langchain (LangChain Red Team Example)
+﻿# redteam-langchain (LangChain Red Team Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-langchain
+npx artef@latest init --example redteam-langchain
 cd redteam-langchain
 ```
 
-Example of red teaming a LangChain customer service agent using Promptfoo.
+Example of red teaming a LangChain customer service agent using artef.
 
 ## Setup
 
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 export OPENAI_API_KEY=your_key_here
 
 # Run red team evaluation
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
-See the [LangChain Red Team Guide](https://promptfoo.dev/blog/red-team-langchain) for details.
+See the [LangChain Red Team Guide](https://artef.dev/blog/red-team-langchain) for details.

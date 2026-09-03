@@ -1,8 +1,8 @@
----
+﻿---
 sidebar_label: n8n
 sidebar_position: 42
 title: n8n Provider
-description: Evaluate n8n AI agents and webhook workflows in Promptfoo with templated requests, normalized responses, tool-call metadata, and scoped multi-turn sessions.
+description: Evaluate n8n AI agents and webhook workflows in artef with templated requests, normalized responses, tool-call metadata, and scoped multi-turn sessions.
 ---
 
 # n8n
@@ -10,7 +10,7 @@ description: Evaluate n8n AI agents and webhook workflows in Promptfoo with temp
 The n8n provider enables testing n8n AI agents and workflows via webhook endpoints. It handles common n8n response formats and supports tool call extraction and session management.
 
 :::tip
-Looking to run Promptfoo _from_ n8n? See [Using Promptfoo in n8n Workflows](/docs/integrations/n8n).
+Looking to run artef _from_ n8n? See [Using artef in n8n Workflows](/docs/integrations/n8n).
 :::
 
 ## Basic Usage
@@ -20,7 +20,7 @@ providers:
   - n8n:https://your-n8n-instance.com/webhook/your-workflow-id
 ```
 
-Promptfoo sends a POST request with:
+artef sends a POST request with:
 
 ```json
 {
@@ -110,7 +110,7 @@ providers:
       sessionParser: 'data.sessionId'
 ```
 
-The provider returns extracted session IDs as `response.sessionId`. Promptfoo's multi-turn
+The provider returns extracted session IDs as `response.sessionId`. artef's multi-turn
 strategies scope that value to the current conversation and supply it to subsequent turns as
 `{{sessionId}}`; the provider does not share one implicit session between independent test cases.
 For client-generated sessions, supply `sessionId` in test variables or through `transformVars`.
@@ -121,7 +121,7 @@ Webhook URLs and responses can contain sensitive workflow data. Put authenticati
 templated headers rather than URL query strings or paths, and treat local eval result exports and
 debug logs as sensitive. The provider hides webhook URLs in its display identifier and does not
 cache webhook requests or responses, so tokenized URLs and session-bearing payloads do not enter
-Promptfoo response-cache diagnostics or storage. The shared fetch layer now strips basic-auth
+artef response-cache diagnostics or storage. The shared fetch layer now strips basic-auth
 credentials and known sensitive query parameters (`api_key`, `token`, `signature`, …) before
 writing URLs to debug logs, but path-as-secret URLs (`/webhook/<unguessable-id>`) still appear in
 those logs by design — keep `LOG_LEVEL=debug` output out of shared transcripts when running
@@ -137,13 +137,13 @@ retry budget.
 
 ## n8n Variable Conversion
 
-| n8n Format              | Promptfoo Format |
+| n8n Format              | artef Format |
 | ----------------------- | ---------------- |
 | `{{ $json.query }}`     | `{{query}}`      |
 | `{{ $json.user.name }}` | `{{user.name}}`  |
 
 ## See Also
 
-- [Using Promptfoo in n8n Workflows](/docs/integrations/n8n)
+- [Using artef in n8n Workflows](/docs/integrations/n8n)
 - [HTTP Provider](/docs/providers/http)
 - [Webhook Provider](/docs/providers/webhook)

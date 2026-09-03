@@ -1,4 +1,4 @@
-import { Presets, SingleBar } from 'cli-progress';
+﻿import { Presets, SingleBar } from 'cli-progress';
 import { getEnvString } from '../../envars';
 import logger from '../../logger';
 import { isMediaStorageEnabled, storeMedia } from '../../storage';
@@ -235,7 +235,7 @@ export async function addImageToBase64(
       ...testCase,
       assert: testCase.assert?.map((assertion) => ({
         ...assertion,
-        metric: assertion.type?.startsWith('promptfoo:redteam:')
+        metric: assertion.type?.startsWith('artef:redteam:')
           ? `${assertion.type?.split(':').pop() || assertion.metric}/Image-Encoded`
           : assertion.metric,
       })),

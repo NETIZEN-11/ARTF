@@ -1,4 +1,4 @@
-import { TraceFlags, trace } from '@opentelemetry/api';
+﻿import { TraceFlags, trace } from '@opentelemetry/api';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import {
@@ -230,8 +230,8 @@ describe('provider tracing integration', () => {
     ).resolves.toBe(false);
   });
 
-  it('uses the same service name as the Promptfoo OpenTelemetry configuration', () => {
-    vi.stubEnv('PROMPTFOO_OTEL_SERVICE_NAME', 'support-agent-evals');
+  it('uses the same service name as the artef OpenTelemetry configuration', () => {
+    vi.stubEnv('artef_OTEL_SERVICE_NAME', 'support-agent-evals');
 
     expect(getTracingServiceName()).toBe('support-agent-evals');
   });

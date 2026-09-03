@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Meta Model API
-description: Configure Meta's Model API to evaluate Muse Spark reasoning models with reasoning effort, multimodal input, tool calling, and search grounding in promptfoo
+description: Configure Meta's Model API to evaluate Muse Spark reasoning models with reasoning effort, multimodal input, tool calling, and search grounding in artef
 ---
 
 # Meta Model API
@@ -48,17 +48,17 @@ The provider accepts compatible [OpenAI provider](/docs/providers/openai/) optio
 
 - `reasoning_effort` — `minimal`, `low`, `medium`, `high`, or `xhigh`. When omitted, the model picks its own reasoning depth. Muse Spark does not support `none`; the provider rejects it with a clear error. Reasoning tokens bill at the output rate and count toward the output cap.
 - `max_completion_tokens` — caps generation on the chat endpoint (Meta accepts `max_tokens` only as a deprecated alias; if you set it, the provider forwards it as the canonical `max_completion_tokens`). On the [Responses API](#responses-api) the cap is `max_output_tokens`, and the provider maps `max_completion_tokens`/`max_tokens` onto it. When unset, no cap is sent so reasoning can use the full output budget.
-- `temperature` — supported (0–2, API default 1.0). Promptfoo sends its deterministic default of `0` unless you override it.
+- `temperature` — supported (0–2, API default 1.0). artef sends its deterministic default of `0` unless you override it.
 - `response_format` — structured output with guaranteed JSON schema matching.
 - `tools` / `tool_choice` — parallel tool calling with streamed arguments.
 - `prompt_cache_retention` — `in_memory` or `24h` for prompt caching; cached prompt tokens bill at the cached-input rate.
 - `seed` — best-effort determinism.
 
-Muse Spark does not support `logprobs`, `n > 1`, `stop`, or audio input/output. The provider fails fast for unsupported options instead of surfacing an HTTP 400 per request. OpenAI-compatible `stream` is also rejected because promptfoo expects a complete JSON response on the chat and Responses surfaces. OpenAI-scoped environment defaults (`OPENAI_TEMPERATURE`, `OPENAI_TOP_P`, `OPENAI_MAX_COMPLETION_TOKENS`, penalty variables) are not applied to Meta requests.
+Muse Spark does not support `logprobs`, `n > 1`, `stop`, or audio input/output. The provider fails fast for unsupported options instead of surfacing an HTTP 400 per request. OpenAI-compatible `stream` is also rejected because artef expects a complete JSON response on the chat and Responses surfaces. OpenAI-scoped environment defaults (`OPENAI_TEMPERATURE`, `OPENAI_TOP_P`, `OPENAI_MAX_COMPLETION_TOKENS`, penalty variables) are not applied to Meta requests.
 
 ### Cost Tracking
 
-Promptfoo computes cost from the [published pricing](https://dev.meta.ai/docs/getting-started/pricing-rate-limits) ($1.25 input / $0.15 cached input / $4.25 output per 1M tokens for `muse-spark-1.1`), including the cached-input rate for prompt-cache hits. Override with `cost`, `inputCost`, `outputCost`, or `cacheReadCost` (all in USD per token) if pricing changes or you have custom rates.
+artef computes cost from the [published pricing](https://dev.meta.ai/docs/getting-started/pricing-rate-limits) ($1.25 input / $0.15 cached input / $4.25 output per 1M tokens for `muse-spark-1.1`), including the cached-input rate for prompt-cache hits. Override with `cost`, `inputCost`, `outputCost`, or `cacheReadCost` (all in USD per token) if pricing changes or you have custom rates.
 
 ## Responses API
 
@@ -73,7 +73,7 @@ providers:
         - type: web_search
 ```
 
-With `web_search`, the model grounds answers in real-time web results with inline citations. Web search bills separately ($2.50 per 1,000 queries) and is not included in promptfoo's computed token cost.
+With `web_search`, the model grounds answers in real-time web results with inline citations. Web search bills separately ($2.50 per 1,000 queries) and is not included in artef's computed token cost.
 
 ## Messages API
 
@@ -92,7 +92,7 @@ Muse Spark's reasoning arrives on this surface as encrypted `redacted_thinking` 
 
 ## Using with coding-agent providers
 
-Meta positions Muse Spark as a backend for coding agents, and promptfoo's agentic providers can evaluate those setups end to end. In both recipes, set `apiKey` explicitly: the agent subprocesses inherit your shell environment, and an explicit key guarantees your Meta key is used instead of an ambient `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` that belongs to another service.
+Meta positions Muse Spark as a backend for coding agents, and artef's agentic providers can evaluate those setups end to end. In both recipes, set `apiKey` explicitly: the agent subprocesses inherit your shell environment, and an explicit key guarantees your Meta key is used instead of an ambient `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` that belongs to another service.
 
 ### Codex CLI
 
@@ -156,13 +156,13 @@ prompts:
 
 tests:
   - vars:
-      text: 'Promptfoo is an open-source tool for testing and evaluating LLM apps.'
+      text: 'artef is an open-source tool for testing and evaluating LLM apps.'
 ```
 
 Get started with a runnable example:
 
 ```bash
-npx promptfoo@latest init --example provider-meta
+npx artef@latest init --example provider-meta
 ```
 
 ## API Details

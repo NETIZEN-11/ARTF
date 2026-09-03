@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import type { ContextType } from 'react';
 
 import { UserContext } from '@app/contexts/UserContextDef';
@@ -53,9 +53,9 @@ describe('PylonChat', () => {
     vi.unstubAllEnvs();
   });
 
-  describe('when VITE_PROMPTFOO_NO_CHAT is not set', () => {
+  describe('when VITE_artef_NO_CHAT is not set', () => {
     beforeEach(() => {
-      vi.stubEnv('VITE_PROMPTFOO_NO_CHAT', '');
+      vi.stubEnv('VITE_artef_NO_CHAT', '');
     });
 
     it.each([
@@ -129,9 +129,9 @@ describe('PylonChat', () => {
     });
   });
 
-  describe('when VITE_PROMPTFOO_NO_CHAT is set', () => {
+  describe('when VITE_artef_NO_CHAT is set', () => {
     beforeEach(() => {
-      vi.stubEnv('VITE_PROMPTFOO_NO_CHAT', 'true');
+      vi.stubEnv('VITE_artef_NO_CHAT', 'true');
     });
 
     it('should not set window.pylon', () => {

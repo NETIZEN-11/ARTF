@@ -1,4 +1,4 @@
-import cliState from '../cliState';
+﻿import cliState from '../cliState';
 import logger from '../logger';
 import { loadApiProvider } from '../providers/index';
 import { shouldGenerateRemote } from '../redteam/remoteGeneration';
@@ -130,7 +130,7 @@ async function loadFromProviderOptions(provider: ProviderOptions) {
 
 function isSimulatedUserProviderConfig(provider: GradingConfig['provider']): boolean {
   if (typeof provider === 'string') {
-    return provider === 'promptfoo:simulated-user';
+    return provider === 'artef:simulated-user';
   }
 
   if (!provider || typeof provider !== 'object' || Array.isArray(provider)) {
@@ -138,12 +138,12 @@ function isSimulatedUserProviderConfig(provider: GradingConfig['provider']): boo
   }
 
   if (typeof (provider as ApiProvider).id === 'function') {
-    return (provider as ApiProvider).id() === 'promptfoo:simulated-user';
+    return (provider as ApiProvider).id() === 'artef:simulated-user';
   }
 
   const providerId = (provider as ProviderOptions).id;
   if (typeof providerId === 'string') {
-    return providerId === 'promptfoo:simulated-user';
+    return providerId === 'artef:simulated-user';
   }
 
   return Object.values(provider as ProviderTypeMap).some((providerTypeConfig) =>
@@ -208,7 +208,7 @@ export async function getGradingProvider(
       }
 
       if (isSimulatedUserProviderConfig(candidateProvider)) {
-        logger.debug('[Grading] Skipping promptfoo:simulated-user as an implicit grader fallback');
+        logger.debug('[Grading] Skipping artef:simulated-user as an implicit grader fallback');
         return false;
       }
 

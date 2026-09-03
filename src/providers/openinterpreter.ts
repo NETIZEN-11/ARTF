@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
@@ -522,7 +522,7 @@ export class OpenInterpreterProvider implements ApiProvider {
       this.interpreterHome = configuredHome;
     } else {
       this.temporaryHome = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'promptfoo-openinterpreter-home-'),
+        path.join(os.tmpdir(), 'artef-openinterpreter-home-'),
       );
       this.interpreterHome = this.temporaryHome;
     }
@@ -594,7 +594,7 @@ export class OpenInterpreterProvider implements ApiProvider {
 
       if (!effectiveConfig.working_dir) {
         temporaryWorkspace = fs.mkdtempSync(
-          path.join(os.tmpdir(), 'promptfoo-openinterpreter-workspace-'),
+          path.join(os.tmpdir(), 'artef-openinterpreter-workspace-'),
         );
       }
       const interpreterHome = resolveInterpreterHome(effectiveConfig) ?? this.interpreterHome;

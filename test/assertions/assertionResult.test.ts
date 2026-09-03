@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AssertionsResult, GUARDRAIL_BLOCKED_REASON } from '../../src/assertions/assertionsResult';
 import { mockProcessEnv } from '../util/utils';
 
@@ -28,7 +28,7 @@ describe('AssertionsResult', () => {
   let assertionsResult: AssertionsResult;
 
   beforeEach(() => {
-    mockProcessEnv({ PROMPTFOO_SHORT_CIRCUIT_TEST_FAILURES: undefined });
+    mockProcessEnv({ artef_SHORT_CIRCUIT_TEST_FAILURES: undefined });
     assertionsResult = new AssertionsResult();
   });
 
@@ -56,8 +56,8 @@ describe('AssertionsResult', () => {
     });
   });
 
-  it('handles PROMPTFOO_SHORT_CIRCUIT_TEST_FAILURES', () => {
-    mockProcessEnv({ PROMPTFOO_SHORT_CIRCUIT_TEST_FAILURES: 'true' });
+  it('handles artef_SHORT_CIRCUIT_TEST_FAILURES', () => {
+    mockProcessEnv({ artef_SHORT_CIRCUIT_TEST_FAILURES: 'true' });
     expect(() =>
       assertionsResult.addResult({
         index: 0,

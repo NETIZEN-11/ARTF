@@ -1,7 +1,7 @@
----
+﻿---
 title: Abliteration Provider
 sidebar_label: Abliteration
-description: "Configure Abliteration's OpenAI-compatible chat completions API in Promptfoo for text and multimodal evals."
+description: "Configure Abliteration's OpenAI-compatible chat completions API in artef for text and multimodal evals."
 sidebar_position: 85
 ---
 
@@ -11,7 +11,7 @@ sidebar_position: 85
 **"abliterated"** models - open-weight LLMs where the refusal direction has
 been removed from the residual stream so the model no longer declines
 requests it would ordinarily refuse. It exposes an OpenAI-compatible chat
-completions API, and Promptfoo ships a thin `abliteration:` wrapper around the
+completions API, and artef ships a thin `abliteration:` wrapper around the
 [OpenAI provider](/docs/providers/openai/) for it.
 
 :::warning Safety
@@ -41,8 +41,8 @@ Provider config values take precedence over environment variables.
 
 ## Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: abliteration:abliterated-model
     config:
@@ -60,7 +60,7 @@ Abliteration speaks the OpenAI chat-completions protocol, so most options
 from the [OpenAI provider](/docs/providers/openai/) work here too, including
 sampling options, structured output, and multimodal messages.
 
-Abliteration responses can include `reasoning_content`. Promptfoo hides this
+Abliteration responses can include `reasoning_content`. artef hides this
 thinking output by default for this provider. Set `showThinking: true` in the
 provider config if you want it included in eval outputs.
 
@@ -81,8 +81,8 @@ provider config if you want it included in eval outputs.
 ]
 ```
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://prompt.json
 

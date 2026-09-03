@@ -1,15 +1,15 @@
-# Examples
+﻿# Examples
 
-Self-contained example configurations for `npx promptfoo@latest init --example <name>`.
+Self-contained example configurations for `npx artef@latest init --example <name>`.
 
 ## CRITICAL: Test with Local Build
 
 ```bash
 # Correct - tests your changes
-npm run local -- eval -c examples/my-example/promptfooconfig.yaml
+npm run local -- eval -c examples/my-example/artefconfig.yaml
 
 # Wrong - tests published version
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Example Structure
@@ -18,13 +18,13 @@ Each example needs:
 
 1. Directory with clear name
 2. `README.md` starting with `# folder-name (Human Readable Name)`
-3. `promptfooconfig.yaml` with schema reference
-4. Instructions using `npx promptfoo@latest init --example <name>`
+3. `artefconfig.yaml` with schema reference
+4. Instructions using `npx artef@latest init --example <name>`
 
 ## Configuration Format
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Short description (3-10 words)
 prompts:
   - ...
@@ -82,7 +82,7 @@ Some providers require specific message structures (e.g., exactly one system + o
 ```
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 prompts:
   - file://prompts/chat.json
 ```

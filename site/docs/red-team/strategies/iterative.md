@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Iterative Jailbreaks
 title: Iterative Jailbreaks Strategy
 description: Apply iterative refinement techniques to systematically evolve prompts that probe and bypass AI safety constraints effectively
@@ -10,9 +10,9 @@ The Iterative Jailbreaks strategy is a technique designed to systematically prob
 
 ## Implementation
 
-Add it to your `promptfooconfig.yaml`:
+Add it to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   # Basic usage
   - jailbreak
@@ -27,7 +27,7 @@ strategies:
 You can also override the number of iterations via an environment variable:
 
 ```bash
-PROMPTFOO_NUM_JAILBREAK_ITERATIONS=5
+artef_NUM_JAILBREAK_ITERATIONS=5
 ```
 
 ## How It Works
@@ -52,7 +52,7 @@ This strategy is medium cost since it makes multiple API calls per test. We reco
 
 When using `transformVars` with `context.uuid`, each iteration automatically gets a new UUID. This prevents conversation history from affecting subsequent attempts.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     transformVars: '{ ...vars, sessionId: context.uuid }'

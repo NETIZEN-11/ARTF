@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: GPT Image-2 → QuiverAI vectorize pipeline (red panda icon set)
 
 # The prompt describes the icon. The custom JS provider chains:
@@ -40,7 +40,7 @@ defaultTest:
       SVG: {{ output }}
       Criteria: {{ rubric }}
 
-# Promptfoo's red panda mascot drives the icon set. The pipeline should produce
+# artef's red panda mascot drives the icon set. The pipeline should produce
 # clean editable SVGs that share a consistent style across the set.
 tests:
   - vars:

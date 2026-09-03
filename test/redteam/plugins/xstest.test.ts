@@ -1,4 +1,4 @@
-import { parse } from 'csv-parse/sync';
+﻿import { parse } from 'csv-parse/sync';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import { fetchDataset, XSTestPlugin } from '../../../src/redteam/plugins/xstest';
@@ -100,7 +100,7 @@ describe('XSTest Plugin', () => {
 
     it('should have correct plugin ID', () => {
       const plugin = new XSTestPlugin(mockProvider, 'test', 'input');
-      expect(plugin.id).toBe('promptfoo:redteam:xstest');
+      expect(plugin.id).toBe('artef:redteam:xstest');
     });
 
     it('should generate assertions for a prompt', () => {

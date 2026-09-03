@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_label: Azure Pipelines
-description: Integrate promptfoo LLM testing with Azure Pipelines CI/CD using step-by-step setup, environment variables, and matrix testing configurations for automated AI evaluation
+description: Integrate artef LLM testing with Azure Pipelines CI/CD using step-by-step setup, environment variables, and matrix testing configurations for automated AI evaluation
 ---
 
 # Azure Pipelines Integration
 
-This guide demonstrates how to set up promptfoo with Azure Pipelines to run evaluations as part of your CI pipeline.
+This guide demonstrates how to set up artef with Azure Pipelines to run evaluations as part of your CI pipeline.
 
 ## Prerequisites
 
-- A GitHub or Azure DevOps repository with a promptfoo project
+- A GitHub or Azure DevOps repository with a artef project
 - An Azure DevOps account with permission to create pipelines
 - API keys for your LLM providers stored as [Azure Pipeline variables](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/variables)
 
@@ -44,12 +44,12 @@ steps:
 
   - script: |
       npm ci
-      npm install -g promptfoo
+      npm install -g artef
     displayName: 'Install dependencies'
 
   - script: |
-      npx promptfoo eval -o promptfoo-results.json -o promptfoo-results.junit.xml
-    displayName: 'Run promptfoo evaluations'
+      npx artef eval -o artef-results.json -o artef-results.junit.xml
+    displayName: 'Run artef evaluations'
     env:
       OPENAI_API_KEY: $(OPENAI_API_KEY)
       ANTHROPIC_API_KEY: $(ANTHROPIC_API_KEY)
@@ -58,16 +58,16 @@ steps:
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: 'JUnit'
-      testResultsFiles: 'promptfoo-results.junit.xml'
+      testResultsFiles: 'artef-results.junit.xml'
       mergeTestResults: true
-      testRunTitle: 'Promptfoo Evaluation Results'
+      testRunTitle: 'artef Evaluation Results'
     condition: succeededOrFailed()
     displayName: 'Publish test results'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: 'promptfoo-results.json'
-      artifactName: 'promptfoo-results'
+      pathtoPublish: 'artef-results.json'
+      artifactName: 'artef-results'
     condition: succeededOrFailed()
     displayName: 'Publish evaluation results'
 ```
@@ -85,12 +85,12 @@ Store your LLM provider API keys as [secret pipeline variables](https://learn.mi
 
 ### Fail the Pipeline on Failed Assertions
 
-You can configure the pipeline to fail when promptfoo assertions don't pass by modifying the script step:
+You can configure the pipeline to fail when artef assertions don't pass by modifying the script step:
 
 ```yaml
 - script: |
-    npx promptfoo eval --fail-on-error -o promptfoo-results.junit.xml
-  displayName: 'Run promptfoo evaluations'
+    npx artef eval --fail-on-error -o artef-results.junit.xml
+  displayName: 'Run artef evaluations'
   env:
     OPENAI_API_KEY: $(OPENAI_API_KEY)
 ```
@@ -101,8 +101,8 @@ If you want to customize where results are stored:
 
 ```yaml
 - script: |
-    npx promptfoo eval --output-path $(Build.ArtifactStagingDirectory)/promptfoo-results.json
-  displayName: 'Run promptfoo evaluations'
+    npx artef eval --output-path $(Build.ArtifactStagingDirectory)/artef-results.json
+  displayName: 'Run artef evaluations'
 ```
 
 ### Run on Pull Requests
@@ -122,7 +122,7 @@ pr:
 
 ### Conditional Execution
 
-Run promptfoo only when certain files change:
+Run artef only when certain files change:
 
 ```yaml
 steps:
@@ -133,12 +133,12 @@ steps:
 
   - script: |
       npm ci
-      npm install -g promptfoo
+      npm install -g artef
     displayName: 'Install dependencies'
 
   - script: |
-      npx promptfoo eval
-    displayName: 'Run promptfoo evaluations'
+      npx artef eval
+    displayName: 'Run artef evaluations'
     condition: |
       and(
         succeeded(),
@@ -169,7 +169,7 @@ strategy:
 
 steps:
   - script: |
-      npx promptfoo eval --providers.0.config.model=$(MODEL)
+      npx artef eval --providers.0.config.model=$(MODEL)
     displayName: 'Test with $(MODEL)'
     env:
       OPENAI_API_KEY: $(OPENAI_API_KEY)
@@ -183,6 +183,6 @@ If you encounter issues with your Azure Pipelines integration:
 - **Check logs**: Review detailed logs in Azure DevOps to identify errors
 - **Verify API keys**: Ensure your API keys are correctly set as pipeline variables
 - **Permissions**: Make sure the pipeline has access to read your configuration files
-- **Node.js version**: Promptfoo requires Node.js `>=22.22.0`
+- **Node.js version**: artef requires Node.js `>=22.22.0`
 
 If you're getting timeouts during evaluations, you may need to adjust the pipeline timeout settings or consider using a [self-hosted agent](https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/agents) for better stability with long-running evaluations.

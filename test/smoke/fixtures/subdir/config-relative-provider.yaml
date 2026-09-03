@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test 10.2.1: Provider path relative to config file, NOT cwd
 # Bug #6503: Provider paths resolved from CWD instead of config directory
 #
@@ -8,7 +8,7 @@
 description: 'Regression test - provider path resolution relative to config'
 
 providers:
-  # This relative path should work regardless of where promptfoo is run from
+  # This relative path should work regardless of where artef is run from
   - file://./local-provider.js
 
 prompts:

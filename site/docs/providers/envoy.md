@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Envoy AI Gateway
 description: "Connect to AI models through Envoy AI Gateway's OpenAI-compatible proxy with unified API management and routing capabilities"
 ---
@@ -23,8 +23,8 @@ The Envoy provider uses this format:
 
 ### Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: envoy:my-model
     config:

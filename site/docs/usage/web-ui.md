@@ -1,8 +1,8 @@
----
+﻿---
 title: Using the web viewer
 sidebar_position: 30
 sidebar_label: Web viewer
-description: Compare LLM outputs side-by-side, rate responses for training data, share evaluations, and analyze results with Promptfoo's interactive web viewer.
+description: Compare LLM outputs side-by-side, rate responses for training data, share evaluations, and analyze results with artef's interactive web viewer.
 ---
 
 # Using the web viewer
@@ -10,12 +10,12 @@ description: Compare LLM outputs side-by-side, rate responses for training data,
 After [running an eval](/docs/getting-started), view results in your browser:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
-See [`promptfoo view`](/docs/usage/command-line#promptfoo-view) for CLI options.
+See [`artef view`](/docs/usage/command-line#artef-view) for CLI options.
 
-![promptfoo web viewer](/img/docs/web-ui-viewer.png)
+![artef web viewer](/img/docs/web-ui-viewer.png)
 
 ## Keyboard Shortcuts
 
@@ -113,18 +113,18 @@ Compare two prompts head-to-head. Click to select prompts.
 
 ### Cloud
 
-Free at [promptfoo.app](https://promptfoo.app/welcome). Links are private to your organization.
+Free at [artef.app](https://artef.app/welcome). Links are private to your organization.
 
 ```sh
-promptfoo auth login -k YOUR_API_KEY
-promptfoo share
+artef auth login -k YOUR_API_KEY
+artef share
 ```
 
 ### Self-hosted
 
 For [self-hosted deployments](/docs/usage/self-hosting):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 sharing:
   apiBaseUrl: http://your-server:3000
   appBaseUrl: http://your-server:3000

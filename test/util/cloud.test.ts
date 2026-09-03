@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 import { cloudConfig } from '../../src/globalConfig/cloud';
 import * as cloudModule from '../../src/util/cloud';
 import {
@@ -97,7 +97,7 @@ describe('cloud utils', () => {
 
     it('should use the configured custom auth header name', async () => {
       mockCloudConfig.getAuthHeaders.mockReturnValue({
-        'X-Promptfoo-Api-Key': 'Bearer test-api-key',
+        'X-artef-Api-Key': 'Bearer test-api-key',
       });
 
       const path = 'test/path';
@@ -109,7 +109,7 @@ describe('cloud utils', () => {
         method: 'GET',
         body: undefined,
         headers: {
-          'X-Promptfoo-Api-Key': 'Bearer test-api-key',
+          'X-artef-Api-Key': 'Bearer test-api-key',
           'Content-Type': 'application/json',
         },
       });
@@ -410,7 +410,7 @@ describe('cloud utils', () => {
       const result = await getEvalConfigFromCloud('eval-config-id');
 
       expect(result.description).toBe('My Cloud Eval Config');
-      expect(result.providers).toEqual([`promptfoo://provider/${providerId}`]);
+      expect(result.providers).toEqual([`artef://provider/${providerId}`]);
       expect(result.prompts).toEqual(['Hello {{name}}']);
       expect(result.tests).toEqual([{ vars: { name: 'World' } }]);
       expect(result.commandLineOptions).toEqual({
@@ -437,7 +437,7 @@ describe('cloud utils', () => {
           Promise.resolve({
             config: {
               description: 'Cloud Eval',
-              providers: ['promptfoo://provider/12345678-1234-4234-8234-123456789abc'],
+              providers: ['artef://provider/12345678-1234-4234-8234-123456789abc'],
               prompts: ['Say hello'],
             },
           }),
@@ -845,7 +845,7 @@ describe('cloud utils', () => {
       mockCloudConfig.isEnabled.mockReturnValue(false);
 
       await expect(getPoliciesFromCloud(['policy-1'], 'team-123')).rejects.toThrow(
-        'Could not fetch policies from cloud. Cloud config is not enabled. Please run `promptfoo auth login` to login.',
+        'Could not fetch policies from cloud. Cloud config is not enabled. Please run `artef auth login` to login.',
       );
 
       expect(mockFetchWithProxy).not.toHaveBeenCalled();
@@ -1504,7 +1504,7 @@ describe('cloud utils', () => {
     });
 
     it('should accept valid linkedTargetId when cloud is enabled', async () => {
-      const validLinkedTargetId = 'promptfoo://provider/12345678-1234-1234-1234-123456789abc';
+      const validLinkedTargetId = 'artef://provider/12345678-1234-1234-1234-123456789abc';
       const mockProvider = {
         config: {
           id: 'test-provider',
@@ -1531,7 +1531,7 @@ describe('cloud utils', () => {
 
     it('should warn but not fail when cloud is disabled', async () => {
       mockCloudConfig.isEnabled.mockReturnValue(false);
-      const validLinkedTargetId = 'promptfoo://provider/12345678-1234-1234-1234-123456789abc';
+      const validLinkedTargetId = 'artef://provider/12345678-1234-1234-1234-123456789abc';
 
       await expect(validateLinkedTargetId(validLinkedTargetId)).resolves.toBeUndefined();
 
@@ -1546,12 +1546,12 @@ describe('cloud utils', () => {
 
       await expect(promise).rejects.toThrow('Invalid linkedTargetId format');
       await expect(promise).rejects.toThrow(invalidPrefix);
-      await expect(promise).rejects.toThrow('promptfoo://provider/');
+      await expect(promise).rejects.toThrow('artef://provider/');
       await expect(promise).rejects.toThrow('To get a valid linkedTargetId:');
     });
 
     it('should throw error when target does not exist in cloud', async () => {
-      const validLinkedTargetId = 'promptfoo://provider/12345678-1234-1234-1234-123456789abc';
+      const validLinkedTargetId = 'artef://provider/12345678-1234-1234-1234-123456789abc';
 
       mockFetchWithProxy.mockRejectedValueOnce(new Error('Not found'));
 
@@ -1560,11 +1560,11 @@ describe('cloud utils', () => {
       await expect(promise).rejects.toThrow('linkedTargetId not found');
       await expect(promise).rejects.toThrow(validLinkedTargetId);
       await expect(promise).rejects.toThrow('Troubleshooting steps');
-      await expect(promise).rejects.toThrow('promptfoo auth status');
+      await expect(promise).rejects.toThrow('artef auth status');
     });
 
     it('should throw error when API returns non-ok response', async () => {
-      const validLinkedTargetId = 'promptfoo://provider/12345678-1234-1234-1234-123456789abc';
+      const validLinkedTargetId = 'artef://provider/12345678-1234-1234-1234-123456789abc';
 
       mockFetchWithProxy.mockResolvedValueOnce({
         ok: false,
@@ -1581,7 +1581,7 @@ describe('cloud utils', () => {
 
     it('should accept any ID format after valid prefix (defers to cloud)', async () => {
       // Cloud API will validate the actual format - we just check prefix
-      const linkedTargetId = 'promptfoo://provider/any-id-format-here';
+      const linkedTargetId = 'artef://provider/any-id-format-here';
       const mockProvider = {
         config: {
           id: 'test-provider',

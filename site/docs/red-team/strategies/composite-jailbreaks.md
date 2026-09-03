@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Single Turn Composite
 title: Composite Jailbreaks Strategy
 description: Stack multiple research-proven jailbreak methods including DAN, AIM, and role-play for compound attack effectiveness
@@ -12,16 +12,16 @@ It works by chaining together individual techniques in different combinations to
 
 ## Implementation
 
-Add it to your `promptfooconfig.yaml`:
+Add it to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - jailbreak:composite
 ```
 
 You can customize the behavior with these options:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: jailbreak:composite
     config:
@@ -33,7 +33,7 @@ strategies:
 
 For fine-grained control over which techniques and evasions are combined, use the pipeline configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: jailbreak:composite
     config:

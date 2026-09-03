@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -3995,7 +3995,7 @@ describe('runAssertion', () => {
       expect(result.metadata).toBeTruthy();
     });
 
-    // Regression for https://github.com/promptfoo/promptfoo/issues/7861: the
+    // Regression for https://github.com/artef/artef/issues/7861: the
     // reporter claimed defaultTest llm-rubric rubrics sent raw {{var}} text to
     // the grader. In reality the assertion pipeline renders the value before
     // grading — so the grading LLM DOES receive the substituted string. Prove

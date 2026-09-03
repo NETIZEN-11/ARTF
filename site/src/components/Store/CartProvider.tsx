@@ -1,10 +1,10 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+﻿import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 import { useCart } from './useFourthwall';
 
 import type { FourthwallCart, FourthwallProduct } from './types';
 
-const COUPON_STORAGE_KEY = 'promptfoo_coupon_code';
+const COUPON_STORAGE_KEY = 'artef_coupon_code';
 
 interface CartContextValue {
   // Cart state

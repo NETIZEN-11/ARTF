@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   calculateObservableOpenAIToolCost,
   calculateOpenAIUsageCost,
@@ -912,7 +912,7 @@ describe('OpenAI billing helpers', () => {
     ).toBeCloseTo((10 * 0.13) / 1e6, 12);
   });
 
-  it('does not bill promptfoo cache hits again', () => {
+  it('does not bill artef cache hits again', () => {
     expect(
       calculateOpenAIUsageCost(
         'gpt-5-mini',

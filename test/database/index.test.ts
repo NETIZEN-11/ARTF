@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -110,7 +110,7 @@ describe('database', () => {
     vi.mocked(getEnvBool).mockReset();
     await closeDb();
     cliState.config = undefined;
-    tempConfigDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-db-index-'));
+    tempConfigDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-db-index-'));
     vi.mocked(getConfigDirectoryPath).mockReturnValue(tempConfigDir);
     vi.mocked(getEnvBool).mockImplementation((key) => {
       if (key === 'IS_TESTING') {
@@ -132,7 +132,7 @@ describe('database', () => {
       const configPath = '/test/config/path';
       vi.mocked(getConfigDirectoryPath).mockReturnValue(configPath);
 
-      expect(getDbPath()).toBe(path.resolve(configPath, 'promptfoo.db'));
+      expect(getDbPath()).toBe(path.resolve(configPath, 'artef.db'));
     });
 
     it('should allow a missing isolated database directory', () => {
@@ -145,21 +145,21 @@ describe('database', () => {
       });
       vi.stubEnv('VITEST', 'true');
 
-      expect(getDbPath()).toBe(path.join(configPath, 'promptfoo.db'));
+      expect(getDbPath()).toBe(path.join(configPath, 'artef.db'));
       expect(fs.existsSync(configPath)).toBe(true);
     });
 
     it('should refuse to use the default user database when the process is running tests', () => {
-      vi.mocked(getConfigDirectoryPath).mockReturnValue(path.join(os.homedir(), '.promptfoo'));
+      vi.mocked(getConfigDirectoryPath).mockReturnValue(path.join(os.homedir(), '.artef'));
       vi.stubEnv('VITEST', 'true');
 
       expect(() => withTestRunnerMarkers({}, () => getDbPath())).toThrow(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
     });
 
     it('should allow the default user database when only NODE_ENV is test', () => {
-      const defaultConfigDir = path.join(os.homedir(), '.promptfoo');
+      const defaultConfigDir = path.join(os.homedir(), '.artef');
       vi.mocked(getConfigDirectoryPath).mockReturnValue(defaultConfigDir);
       vi.stubEnv('NODE_ENV', 'test');
       vi.stubEnv('VITEST', undefined);
@@ -167,11 +167,11 @@ describe('database', () => {
 
       const dbPath = withTestRunnerMarkers({}, () => getDbPath());
 
-      expect(dbPath).toBe(path.join(defaultConfigDir, 'promptfoo.db'));
+      expect(dbPath).toBe(path.join(defaultConfigDir, 'artef.db'));
     });
 
-    it('should not use Promptfoo env overrides to identify a test process', () => {
-      const defaultConfigDir = path.join(os.homedir(), '.promptfoo');
+    it('should not use artef env overrides to identify a test process', () => {
+      const defaultConfigDir = path.join(os.homedir(), '.artef');
       vi.mocked(getConfigDirectoryPath).mockReturnValue(defaultConfigDir);
       cliState.config = { env: { VITEST: 'true', JEST_WORKER_ID: '1' } };
       vi.stubEnv('VITEST', undefined);
@@ -179,11 +179,11 @@ describe('database', () => {
 
       const dbPath = withTestRunnerMarkers({}, () => getDbPath());
 
-      expect(dbPath).toBe(path.join(defaultConfigDir, 'promptfoo.db'));
+      expect(dbPath).toBe(path.join(defaultConfigDir, 'artef.db'));
     });
 
     it('should detect Vitest after the process environment is cleared', () => {
-      vi.mocked(getConfigDirectoryPath).mockReturnValue(path.join(os.homedir(), '.promptfoo'));
+      vi.mocked(getConfigDirectoryPath).mockReturnValue(path.join(os.homedir(), '.artef'));
       const restoreEnv = mockProcessEnv({}, { clear: true });
       let error: unknown;
 
@@ -197,12 +197,12 @@ describe('database', () => {
 
       expect(error).toBeInstanceOf(Error);
       expect((error as Error).message).toContain(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
     });
 
     it('should detect Jest after the process environment is cleared', () => {
-      vi.mocked(getConfigDirectoryPath).mockReturnValue(path.join(os.homedir(), '.promptfoo'));
+      vi.mocked(getConfigDirectoryPath).mockReturnValue(path.join(os.homedir(), '.artef'));
       const restoreEnv = mockProcessEnv({}, { clear: true });
       let error: unknown;
 
@@ -216,12 +216,12 @@ describe('database', () => {
 
       expect(error).toBeInstanceOf(Error);
       expect((error as Error).message).toContain(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
     });
 
     it('should not identify generic Jest workers as test processes', () => {
-      const defaultConfigDir = path.join(os.homedir(), '.promptfoo');
+      const defaultConfigDir = path.join(os.homedir(), '.artef');
       vi.mocked(getConfigDirectoryPath).mockReturnValue(defaultConfigDir);
       vi.stubEnv('NODE_ENV', 'production');
       vi.stubEnv('VITEST', undefined);
@@ -229,23 +229,23 @@ describe('database', () => {
 
       const dbPath = withTestRunnerMarkers({}, () => getDbPath());
 
-      expect(dbPath).toBe(path.join(defaultConfigDir, 'promptfoo.db'));
+      expect(dbPath).toBe(path.join(defaultConfigDir, 'artef.db'));
     });
 
     it.each(['', '0', 'false'])('should ignore VITEST=%j outside Vitest', (value) => {
-      const defaultConfigDir = path.join(os.homedir(), '.promptfoo');
+      const defaultConfigDir = path.join(os.homedir(), '.artef');
       vi.mocked(getConfigDirectoryPath).mockReturnValue(defaultConfigDir);
       vi.stubEnv('VITEST', value);
       vi.stubEnv('JEST_WORKER_ID', undefined);
 
       const dbPath = withTestRunnerMarkers({}, () => getDbPath());
 
-      expect(dbPath).toBe(path.join(defaultConfigDir, 'promptfoo.db'));
+      expect(dbPath).toBe(path.join(defaultConfigDir, 'artef.db'));
     });
 
     it('should refuse an alias that resolves to the default user database', () => {
       const fakeHomeDir = path.join(tempConfigDir, 'home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
       const aliasedConfigDir = path.join(tempConfigDir, 'aliased-config');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.symlinkSync(
@@ -258,14 +258,14 @@ describe('database', () => {
       vi.stubEnv('VITEST', 'true');
 
       expect(() => getDbPath()).toThrow(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
     });
 
     it('should refuse an alias that resolves to a missing default database directory', () => {
       const fakeHomeDir = path.join(tempConfigDir, 'missing-home');
       const aliasedHomeDir = path.join(tempConfigDir, 'aliased-home');
-      const aliasedConfigDir = path.join(aliasedHomeDir, '.promptfoo');
+      const aliasedConfigDir = path.join(aliasedHomeDir, '.artef');
       fs.mkdirSync(fakeHomeDir);
       fs.symlinkSync(
         fakeHomeDir,
@@ -282,28 +282,28 @@ describe('database', () => {
       vi.stubEnv('VITEST', 'true');
 
       expect(() => getDbPath()).toThrow(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
-      expect(fs.existsSync(path.join(fakeHomeDir, '.promptfoo', 'promptfoo.db'))).toBe(false);
+      expect(fs.existsSync(path.join(fakeHomeDir, '.artef', 'artef.db'))).toBe(false);
     });
 
     it('should refuse a hard link to the default user database', () => {
       const fakeHomeDir = path.join(tempConfigDir, 'hard-link-home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
       const aliasedConfigDir = path.join(tempConfigDir, 'hard-link-config');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.mkdirSync(aliasedConfigDir, { recursive: true });
-      fs.writeFileSync(path.join(defaultConfigDir, 'promptfoo.db'), 'database');
+      fs.writeFileSync(path.join(defaultConfigDir, 'artef.db'), 'database');
       fs.linkSync(
-        path.join(defaultConfigDir, 'promptfoo.db'),
-        path.join(aliasedConfigDir, 'promptfoo.db'),
+        path.join(defaultConfigDir, 'artef.db'),
+        path.join(aliasedConfigDir, 'artef.db'),
       );
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
       vi.mocked(getConfigDirectoryPath).mockReturnValue(aliasedConfigDir);
       vi.stubEnv('VITEST', 'true');
 
       expect(() => getDbPath()).toThrow(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
     });
 
@@ -312,18 +312,18 @@ describe('database', () => {
         return; // Skip on Windows without admin privileges
       }
       const fakeHomeDir = path.join(tempConfigDir, 'dangling-link-home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
       const aliasedConfigDir = path.join(tempConfigDir, 'dangling-link-config');
-      const defaultDbPath = path.join(defaultConfigDir, 'promptfoo.db');
+      const defaultDbPath = path.join(defaultConfigDir, 'artef.db');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.mkdirSync(aliasedConfigDir, { recursive: true });
-      fs.symlinkSync(defaultDbPath, path.join(aliasedConfigDir, 'promptfoo.db'), 'file');
+      fs.symlinkSync(defaultDbPath, path.join(aliasedConfigDir, 'artef.db'), 'file');
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
       vi.mocked(getConfigDirectoryPath).mockReturnValue(aliasedConfigDir);
       vi.stubEnv('VITEST', 'true');
 
       expect(() => getDbPath()).toThrow(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
       expect(fs.existsSync(defaultDbPath)).toBe(false);
     });
@@ -333,18 +333,18 @@ describe('database', () => {
         return; // Skip on Windows without admin privileges
       }
       const fakeHomeDir = path.join(tempConfigDir, 'relative-link-home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
       const aliasedConfigDir = path.join(tempConfigDir, 'relative-link-config');
       const linkDirectory = path.join(tempConfigDir, 'relative-link-hop');
-      const defaultDbPath = path.join(defaultConfigDir, 'promptfoo.db');
-      const intermediateDbPath = path.join(linkDirectory, 'promptfoo.db');
+      const defaultDbPath = path.join(defaultConfigDir, 'artef.db');
+      const intermediateDbPath = path.join(linkDirectory, 'artef.db');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.mkdirSync(aliasedConfigDir, { recursive: true });
       fs.mkdirSync(linkDirectory, { recursive: true });
       fs.symlinkSync(path.relative(linkDirectory, defaultDbPath), intermediateDbPath, 'file');
       fs.symlinkSync(
         path.relative(aliasedConfigDir, intermediateDbPath),
-        path.join(aliasedConfigDir, 'promptfoo.db'),
+        path.join(aliasedConfigDir, 'artef.db'),
         'file',
       );
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
@@ -352,7 +352,7 @@ describe('database', () => {
       vi.stubEnv('VITEST', 'true');
 
       expect(() => getDbPath()).toThrow(
-        'Refusing to open the default Promptfoo database while running tests',
+        'Refusing to open the default artef database while running tests',
       );
       expect(fs.existsSync(defaultDbPath)).toBe(false);
     });
@@ -362,11 +362,11 @@ describe('database', () => {
         return; // Skip on Windows without admin privileges
       }
       const fakeHomeDir = path.join(tempConfigDir, 'pivot-link-home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
       const pivotTarget = path.join(fakeHomeDir, 'subdir');
       const aliasedConfigDir = path.join(tempConfigDir, 'pivot-link-config');
-      const isolatedConfigDir = path.join(aliasedConfigDir, '.promptfoo');
-      const defaultDbPath = path.join(defaultConfigDir, 'promptfoo.db');
+      const isolatedConfigDir = path.join(aliasedConfigDir, '.artef');
+      const defaultDbPath = path.join(defaultConfigDir, 'artef.db');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.mkdirSync(pivotTarget, { recursive: true });
       fs.mkdirSync(aliasedConfigDir, { recursive: true });
@@ -377,15 +377,15 @@ describe('database', () => {
         process.platform === 'win32' ? 'junction' : 'dir',
       );
       fs.symlinkSync(
-        ['pivot', '..', '.promptfoo', 'promptfoo.db'].join(path.sep),
-        path.join(aliasedConfigDir, 'promptfoo.db'),
+        ['pivot', '..', '.artef', 'artef.db'].join(path.sep),
+        path.join(aliasedConfigDir, 'artef.db'),
         'file',
       );
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
       vi.mocked(getConfigDirectoryPath).mockReturnValue(aliasedConfigDir);
       vi.stubEnv('VITEST', 'true');
 
-      const linkTarget = fs.readlinkSync(path.join(aliasedConfigDir, 'promptfoo.db'));
+      const linkTarget = fs.readlinkSync(path.join(aliasedConfigDir, 'artef.db'));
       const pivotedConfigDir = path.isAbsolute(linkTarget)
         ? path.dirname(linkTarget)
         : `${aliasedConfigDir}${path.sep}${path.dirname(linkTarget)}`;
@@ -394,17 +394,17 @@ describe('database', () => {
 
       if (reachesDefaultConfig) {
         expect(() => getDbPath()).toThrow(
-          'Refusing to open the default Promptfoo database while running tests',
+          'Refusing to open the default artef database while running tests',
         );
       } else {
-        expect(getDbPath()).toBe(path.join(aliasedConfigDir, 'promptfoo.db'));
+        expect(getDbPath()).toBe(path.join(aliasedConfigDir, 'artef.db'));
       }
       expect(fs.existsSync(defaultDbPath)).toBe(false);
     });
 
     it('should fail closed when stat-based identity checks error', () => {
       const fakeHomeDir = path.join(tempConfigDir, 'eio-home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
       const aliasedConfigDir = path.join(tempConfigDir, 'eio-aliased-config');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
       fs.symlinkSync(
@@ -430,7 +430,7 @@ describe('database', () => {
     it('should fail closed when realpath-based identity checks error', () => {
       const fakeHomeDir = path.join(tempConfigDir, 'estale-home');
       const aliasedConfigDir = path.join(tempConfigDir, 'estale-aliased-config');
-      fs.mkdirSync(path.join(fakeHomeDir, '.promptfoo'), { recursive: true });
+      fs.mkdirSync(path.join(fakeHomeDir, '.artef'), { recursive: true });
       fs.mkdirSync(aliasedConfigDir, { recursive: true });
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
       vi.mocked(getConfigDirectoryPath).mockReturnValue(aliasedConfigDir);
@@ -452,14 +452,14 @@ describe('database', () => {
 
     it('should respect filesystem case sensitivity for existing databases', () => {
       const fakeHomeDir = path.join(tempConfigDir, 'case-home');
-      const defaultConfigDir = path.join(fakeHomeDir, '.promptfoo');
-      const differentlyCasedConfigDir = path.join(fakeHomeDir, '.PROMPTFOO');
+      const defaultConfigDir = path.join(fakeHomeDir, '.artef');
+      const differentlyCasedConfigDir = path.join(fakeHomeDir, '.artef');
       fs.mkdirSync(defaultConfigDir, { recursive: true });
-      fs.writeFileSync(path.join(defaultConfigDir, 'promptfoo.db'), 'default database');
+      fs.writeFileSync(path.join(defaultConfigDir, 'artef.db'), 'default database');
       const isCaseInsensitive = fs.existsSync(differentlyCasedConfigDir);
       if (!isCaseInsensitive) {
         fs.mkdirSync(differentlyCasedConfigDir);
-        fs.writeFileSync(path.join(differentlyCasedConfigDir, 'promptfoo.db'), 'other database');
+        fs.writeFileSync(path.join(differentlyCasedConfigDir, 'artef.db'), 'other database');
       }
 
       vi.mocked(os.homedir).mockReturnValue(fakeHomeDir);
@@ -468,10 +468,10 @@ describe('database', () => {
 
       if (isCaseInsensitive) {
         expect(() => getDbPath()).toThrow(
-          'Refusing to open the default Promptfoo database while running tests',
+          'Refusing to open the default artef database while running tests',
         );
       } else {
-        expect(getDbPath()).toBe(path.join(differentlyCasedConfigDir, 'promptfoo.db'));
+        expect(getDbPath()).toBe(path.join(differentlyCasedConfigDir, 'artef.db'));
       }
     });
   });
@@ -485,7 +485,7 @@ describe('database', () => {
     });
 
     it('should allow the default signal path for in-memory tests', () => {
-      const defaultConfigDir = path.join(os.homedir(), '.promptfoo');
+      const defaultConfigDir = path.join(os.homedir(), '.artef');
       vi.mocked(getConfigDirectoryPath).mockReturnValue(defaultConfigDir);
       vi.stubEnv('VITEST', 'true');
 
@@ -641,7 +641,7 @@ describe('database', () => {
   describe('DrizzleLogWriter', () => {
     it('should log debug message when database logs enabled', () => {
       vi.mocked(getEnvBool).mockImplementation((key) => {
-        if (key === 'PROMPTFOO_ENABLE_DATABASE_LOGS') {
+        if (key === 'artef_ENABLE_DATABASE_LOGS') {
           return true;
         }
         return false;

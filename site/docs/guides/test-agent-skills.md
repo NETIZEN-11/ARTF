@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_position: 66
 title: Test Agent Skills
-description: Compare Claude, Codex, and other skill versions with Promptfoo evals that measure invocation, task quality, cost, latency, and trace evidence.
+description: Compare Claude, Codex, and other skill versions with artef evals that measure invocation, task quality, cost, latency, and trace evidence.
 ---
 
 # Test Agent Skills
@@ -11,7 +11,7 @@ Skills are local instructions that teach an agent when and how to use a capabili
 1. Does the agent use the skill when the task calls for it?
 2. Does that skill version lead to better work?
 
-Promptfoo can answer both questions by running the same tasks against each version side by side. Keep the model, task files, and permissions the same, swap only the `SKILL.md`, and compare the results.
+artef can answer both questions by running the same tasks against each version side by side. Keep the model, task files, and permissions the same, swap only the `SKILL.md`, and compare the results.
 
 For a bundle with neighboring skills, add one more question:
 
@@ -23,7 +23,7 @@ In this example, we're comparing two versions of a `review-standards` skill. Eac
 
 ```text
 skill-eval/
-├── promptfooconfig.yaml
+├── artefconfig.yaml
 └── fixtures/
     ├── v1/
     │   ├── .claude/skills/review-standards/SKILL.md
@@ -39,7 +39,7 @@ For Codex or OpenCode, use `.agents/skills/review-standards/SKILL.md` instead of
 
 We'll start with the [Claude Agent SDK provider](/docs/providers/claude-agent-sdk). The prompt asks for a short JSON review so the outputs are easy to score, and the two providers differ only in `working_dir`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Compare Claude skill versions
 
 prompts:
@@ -99,7 +99,7 @@ Next, add a few tasks that represent how the skill will really be used:
 
 ```yaml
 defaultTest:
-  # By default, Promptfoo fans each YAML-list var into one test case per
+  # By default, artef fans each YAML-list var into one test case per
   # element (matrix expansion), which would split each comparison test in
   # two. Disable that here so `expectedIssues` reaches the assertion intact.
   options:
@@ -126,7 +126,7 @@ See [Passing Arrays to Assertions](/docs/configuration/test-cases#passing-arrays
 
 ## Add Assertions
 
-Assertions tell Promptfoo what "better" means for this comparison. It helps to add them one layer at a time.
+Assertions tell artef what "better" means for this comparison. It helps to add them one layer at a time.
 
 ### Check That the Skill Was Used
 
@@ -139,7 +139,7 @@ defaultTest:
       value: review-standards
 ```
 
-Claude exposes `Skill` tool calls directly, and Promptfoo normalizes them into the [`skill-used`](/docs/configuration/expected-outputs/deterministic/#skill-used) assertion. This distinguishes a good answer that happened without the skill from one that was produced through the workflow you intended to test.
+Claude exposes `Skill` tool calls directly, and artef normalizes them into the [`skill-used`](/docs/configuration/expected-outputs/deterministic/#skill-used) assertion. This distinguishes a good answer that happened without the skill from one that was produced through the workflow you intended to test.
 
 ### Score the Output
 
@@ -181,7 +181,7 @@ defaultTest:
 
 These checks are useful when two skill versions are both correct but one is much more expensive or slower.
 
-If you want Promptfoo to mark the strongest output for each test case, add [`max-score`](/docs/configuration/expected-outputs/model-graded/max-score):
+If you want artef to mark the strongest output for each test case, add [`max-score`](/docs/configuration/expected-outputs/model-graded/max-score):
 
 ```yaml
 defaultTest:
@@ -246,13 +246,13 @@ providers:
         CODEX_HOME: ./codex-home
 ```
 
-Codex discovers project skills from `.agents/skills/` under each `working_dir`. Its `skill-used` signal is inferred from successful reads of the matching `SKILL.md`, so keep `enable_streaming: true` while developing the eval if you want Promptfoo to collect that evidence. The earlier JavaScript assertion should use `JSON.parse(output)` with Codex because `output_schema` keeps `output` as a JSON string rather than a parsed object.
+Codex discovers project skills from `.agents/skills/` under each `working_dir`. Its `skill-used` signal is inferred from successful reads of the matching `SKILL.md`, so keep `enable_streaming: true` while developing the eval if you want artef to collect that evidence. The earlier JavaScript assertion should use `JSON.parse(output)` with Codex because `output_schema` keeps `output` as a JSON string rather than a parsed object.
 
 For managed security workflows rather than general local skills, use the [Codex Security SDK provider](/docs/providers/openai-codex-security). It runs native standard, deep, and diff scans plus finding validation, and returns structured findings, coverage, token usage, and estimated scan cost.
 
-The runnable [`skill-comparison` example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-sdk/skill-comparison) uses the same approach, with a YAML anchor to share the schema between v1 and v2.
+The runnable [`skill-comparison` example](https://github.com/artef/artef/tree/main/examples/openai-codex-sdk/skill-comparison) uses the same approach, with a YAML anchor to share the schema between v1 and v2.
 
-There is a [matching Claude example](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk/skill-comparison) that uses `output_format` and the `skills:` filter so you can run the same comparison against either provider.
+There is a [matching Claude example](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk/skill-comparison) that uses `output_format` and the `skills:` filter so you can run the same comparison against either provider.
 
 ## Use the Same Eval With OpenCode
 
@@ -317,10 +317,10 @@ providers:
 
 OpenCode discovers `.agents/skills/` directories in the working-directory
 hierarchy, then loads the matching skill through its native `skill` tool.
-Promptfoo normalizes those tool calls into
+artef normalizes those tool calls into
 [`skill-used`](/docs/configuration/expected-outputs/deterministic/#skill-used),
 so the same routing assertion works without a provider-specific heuristic.
-OpenCode's structured output reaches Promptfoo as JSON text, which the shared
+OpenCode's structured output reaches artef as JSON text, which the shared
 JavaScript assertion above already handles.
 
 ## Add Trace Evidence When Needed
@@ -364,10 +364,10 @@ Use [Codex app-server](/docs/providers/openai-codex-app-server) when you need to
 
 ## Run the Eval
 
-Run the config the same way you would any other Promptfoo eval:
+Run the config the same way you would any other artef eval:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml
+npx artef@latest eval -c artefconfig.yaml
 ```
 
 From there, add only the options that help answer your current question:
@@ -375,11 +375,11 @@ From there, add only the options that help answer your current question:
 - Add `--repeat 3` when you want a better sample of nondeterministic agent behavior.
 - Add `--no-cache` while iterating on the skill text and you want fresh runs.
 - Add `-o results.json` when you want to inspect or compare results outside the terminal.
-- Run `npx promptfoo@latest view` when the side-by-side web view is more useful than the CLI table.
+- Run `npx artef@latest view` when the side-by-side web view is more useful than the CLI table.
 
 In the web view, the comparison is easy to inspect side by side:
 
-![Promptfoo web UI comparing two Codex skill versions](/img/docs/codex-skill-comparison.png)
+![artef web UI comparing two Codex skill versions](/img/docs/codex-skill-comparison.png)
 
 ## Decide Which Skill Wins
 
@@ -416,18 +416,18 @@ tests:
       request: Write a regression eval for this existing provider.
     assert:
       - type: skill-used
-        value: promptfoo-evals
+        value: artef-evals
       - type: not-skill-used
-        value: promptfoo-provider-setup
+        value: artef-provider-setup
 
   - description: Provider wiring does not become eval authoring
     vars:
       request: Connect this HTTP endpoint and verify one safe smoke call.
     assert:
       - type: skill-used
-        value: promptfoo-provider-setup
+        value: artef-provider-setup
       - type: not-skill-used
-        value: promptfoo-evals
+        value: artef-evals
 ```
 
 The useful bundle eval has three layers:

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Unit tests for the TestCaseGenerationProvider component. To run:
  *
  * ```sh
@@ -8,14 +8,14 @@
 
 import { ToastProvider } from '@app/contexts/ToastContext';
 import { callApi } from '@app/utils/api';
-import { Plugin, Strategy } from '@promptfoo/redteam/constants';
+import { Plugin, Strategy } from '@artef/redteam/constants';
 import { within } from '@testing-library/dom';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useRedTeamTargetConfigValidation } from '../hooks/useRedTeamTargetConfigValidation';
 import { TestCaseGenerationProvider, useTestCaseGeneration } from './TestCaseGenerationProvider';
-import type { PluginConfig } from '@promptfoo/redteam/types';
+import type { PluginConfig } from '@artef/redteam/types';
 
 // ===================================================================
 // Mocks

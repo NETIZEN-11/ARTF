@@ -1,4 +1,4 @@
----
+﻿---
 title: UnsafeBench
 description: Evaluate multimodal AI safety using UnsafeBench's curated unsafe images across violence, hate, and explicit content categories
 keywords: [red team, multi-modal, image, safety, content moderation, unsafe content]
@@ -27,7 +27,7 @@ export HF_TOKEN=your_huggingface_token  # or HF_API_TOKEN
 
 2. Enable the plugin in your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - unsafebench # Use all categories
@@ -65,7 +65,7 @@ The UnsafeBench dataset contains 3,271 unsafe images across the following catego
 
 The UnsafeBench plugin supports the following configuration options:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - name: unsafebench
@@ -120,7 +120,7 @@ Create a JSON prompt file to properly handle images:
 
 Reference this JSON prompt in your complete configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://image-prompt.json
 

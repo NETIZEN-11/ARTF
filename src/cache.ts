@@ -1,4 +1,4 @@
-import { AsyncLocalStorage } from 'node:async_hooks';
+﻿import { AsyncLocalStorage } from 'node:async_hooks';
 import crypto from 'node:crypto';
 import fs from 'fs';
 import path from 'path';
@@ -18,7 +18,7 @@ import {
   getCloudBearerToken,
   getCloudTaskTeamId,
   getRequestUrlString,
-  PROMPTFOO_TEAM_ID_HEADER,
+  artef_TEAM_ID_HEADER,
 } from './util/fetch/monkeyPatchFetch';
 import { isSecretField, looksLikeSecret, sanitizeUrlForLogging } from './util/sanitizer';
 import { sleep } from './util/time';
@@ -33,20 +33,20 @@ let cacheClearGeneration = 0;
 const cacheNamespaceStorage = new AsyncLocalStorage<{ namespace: string }>();
 const cacheEnabledStorage = new AsyncLocalStorage<{ enabled: boolean }>();
 
-let enabled = getEnvBool('PROMPTFOO_CACHE_ENABLED', true);
+let enabled = getEnvBool('artef_CACHE_ENABLED', true);
 
 const cacheType =
-  getEnvString('PROMPTFOO_CACHE_TYPE') || (getEnvString('NODE_ENV') === 'test' ? 'memory' : 'disk');
+  getEnvString('artef_CACHE_TYPE') || (getEnvString('NODE_ENV') === 'test' ? 'memory' : 'disk');
 
 /** Default cache TTL: 14 days in seconds */
 const DEFAULT_CACHE_TTL_SECONDS = 60 * 60 * 24 * 14;
 
 /**
  * Get the cache TTL in milliseconds.
- * Reads from PROMPTFOO_CACHE_TTL environment variable (in seconds) or uses default.
+ * Reads from artef_CACHE_TTL environment variable (in seconds) or uses default.
  */
 export function getCacheTtlMs(): number {
-  return getEnvInt('PROMPTFOO_CACHE_TTL', DEFAULT_CACHE_TTL_SECONDS) * 1000;
+  return getEnvInt('artef_CACHE_TTL', DEFAULT_CACHE_TTL_SECONDS) * 1000;
 }
 
 /**
@@ -56,7 +56,7 @@ export function getCacheTtlMs(): number {
  *
  * @example
  * ```typescript
- * import { cache } from 'promptfoo';
+ * import { cache } from 'artef';
  *
  * const cacheInstance = cache.getCache();
  * const value = await cacheInstance.get('my-key');
@@ -77,7 +77,7 @@ function getCacheInstance() {
 
     if (cacheType === 'disk' && enabled) {
       cachePath =
-        getEnvString('PROMPTFOO_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
+        getEnvString('artef_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
 
       if (!fs.existsSync(cachePath)) {
         logger.info(`Creating cache folder at ${cachePath}.`);
@@ -247,7 +247,7 @@ async function clearNamespacedCache(cache: Cache, namespace: string) {
  *
  * @example
  * ```typescript
- * import { cache, evaluate } from 'promptfoo';
+ * import { cache, evaluate } from 'artef';
  *
  * // Run v1 and v2 evals with separate caches
  * const v1Results = await cache.withCacheNamespace('v1', async () => {
@@ -314,22 +314,22 @@ const inflightFetchResponses = new Map<string, Promise<SerializedFetchResponse>>
 const claimedCacheKeys = new Set<string>();
 const IGNORED_FETCH_CACHE_OPTION_KEYS = new Set(['method', 'signal']);
 const IGNORED_FETCH_CACHE_HEADERS = new Set(['traceparent', 'tracestate']);
-const FETCH_CACHE_SECRET_HMAC_CONTEXT = 'promptfoo:fetch-cache-secret-key';
+const FETCH_CACHE_SECRET_HMAC_CONTEXT = 'artef:fetch-cache-secret-key';
 // A fixed, compiled-in salt (NOT a secret). It must be deterministic across
 // processes so that a request carrying a static secret — or a binary body —
 // hashes to the same on-disk cache key on every run and stays cacheable. A
-// per-process random key broke that: each `promptfoo eval` run produced a new
+// per-process random key broke that: each `artef eval` run produced a new
 // key and re-hit the upstream endpoint. The salt only domain-separates the
 // one-way HMAC so raw secrets are never written into the cache key; it does not
 // need to be unpredictable, and this matches the pre-existing (pre-isolation)
 // behavior of hashing the value directly.
-const FETCH_CACHE_SECRET_HMAC_SALT = 'promptfoo:fetch-cache-secret-hmac-salt:v1';
+const FETCH_CACHE_SECRET_HMAC_SALT = 'artef:fetch-cache-secret-hmac-salt:v1';
 const abortSignalIds = new WeakMap<AbortSignal, number>();
 let nextAbortSignalId = 0;
 
 function fingerprintFetchCacheSecret(value: string) {
   return {
-    __promptfooSecretFingerprint: crypto
+    __artefSecretFingerprint: crypto
       .createHmac('sha256', FETCH_CACHE_SECRET_HMAC_SALT)
       .update(FETCH_CACHE_SECRET_HMAC_CONTEXT)
       .update('\0')
@@ -454,8 +454,8 @@ export function getHeadersForCacheKey(url: RequestInfo, options: RequestInit) {
   }
 
   const cloudTaskTeamId = getCloudTaskTeamId(url);
-  if (cloudTaskTeamId && !headers.has(PROMPTFOO_TEAM_ID_HEADER)) {
-    headers.set(PROMPTFOO_TEAM_ID_HEADER, cloudTaskTeamId);
+  if (cloudTaskTeamId && !headers.has(artef_TEAM_ID_HEADER)) {
+    headers.set(artef_TEAM_ID_HEADER, cloudTaskTeamId);
   }
 
   return Array.from(headers.entries())
@@ -611,7 +611,7 @@ export function claimCacheKeyOnce(cacheKey: string): boolean {
 
   if (cacheType === 'disk' && getEffectiveCacheEnabled()) {
     const cachePath =
-      getEnvString('PROMPTFOO_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
+      getEnvString('artef_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
     const claimsPath = path.join(cachePath, 'claims');
     try {
       fs.mkdirSync(claimsPath, { recursive: true });
@@ -818,7 +818,7 @@ async function prepareFetchResponse(
  *
  * @example
  * ```typescript
- * import { cache } from 'promptfoo';
+ * import { cache } from 'artef';
  *
  * // Fetch with 1-hour TTL
  * const result = await cache.fetchWithCache(
@@ -935,7 +935,7 @@ export async function fetchWithCache<T = unknown>(
  *
  * @example
  * ```typescript
- * import { cache } from 'promptfoo';
+ * import { cache } from 'artef';
  * cache.enableCache();
  * ```
  */
@@ -950,7 +950,7 @@ export function enableCache() {
  *
  * @example
  * ```typescript
- * import { cache, evaluate } from 'promptfoo';
+ * import { cache, evaluate } from 'artef';
  *
  * cache.disableCache();
  * const results = await evaluate(testSuite);  // Always fresh
@@ -968,7 +968,7 @@ export function disableCache() {
  *
  * @example
  * ```typescript
- * import { cache, evaluate } from 'promptfoo';
+ * import { cache, evaluate } from 'artef';
  *
  * await cache.clearCache();
  * const results = await evaluate(testSuite);  // Refetches all
@@ -981,7 +981,7 @@ export async function clearCache() {
   claimedCacheKeys.clear();
   if (cacheType === 'disk') {
     const cachePath =
-      getEnvString('PROMPTFOO_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
+      getEnvString('artef_CACHE_PATH') || path.join(getConfigDirectoryPath(), 'cache');
     fs.rmSync(path.join(cachePath, 'claims'), { force: true, recursive: true });
   }
   return result;
@@ -994,7 +994,7 @@ export async function clearCache() {
  *
  * @example
  * ```typescript
- * import { cache } from 'promptfoo';
+ * import { cache } from 'artef';
  *
  * if (cache.isCacheEnabled()) {
  *   console.log('Cache is active');

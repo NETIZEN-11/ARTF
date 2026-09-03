@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import chalk from 'chalk';
@@ -188,11 +188,11 @@ export const winstonLogger = winston.createLogger({
     new winston.transports.Console({
       level: getEnvString('LOG_LEVEL', 'info'),
       // Commands that print a machine-readable payload (SARIF/JSON) to stdout
-      // set PROMPTFOO_LOG_TO_STDERR so log lines are routed to stderr and
+      // set artef_LOG_TO_STDERR so log lines are routed to stderr and
       // cannot corrupt that payload. Read via getEnvString (not getEnvBool):
       // this runs at module init, and getEnvString is the only envars export
       // logger init already depends on, so partial test mocks stay valid.
-      ...(getEnvString('PROMPTFOO_LOG_TO_STDERR') === 'true'
+      ...(getEnvString('artef_LOG_TO_STDERR') === 'true'
         ? { stderrLevels: Object.keys(LOG_LEVELS) }
         : {}),
       format: winston.format.combine(winston.format.simple(), consoleFormatter),
@@ -222,12 +222,12 @@ export function isDebugEnabled(): boolean {
 
 /**
  * Creates log directory and cleans up old log files
- * Respects PROMPTFOO_LOG_DIR environment variable to customize log location
+ * Respects artef_LOG_DIR environment variable to customize log location
  */
 function setupLogDirectory(): string {
   const configDir = getConfigDirectoryPath(true);
-  const logDir = getEnvString('PROMPTFOO_LOG_DIR')
-    ? path.resolve(getEnvString('PROMPTFOO_LOG_DIR')!)
+  const logDir = getEnvString('artef_LOG_DIR')
+    ? path.resolve(getEnvString('artef_LOG_DIR')!)
     : path.join(configDir, 'logs');
 
   if (!fs.existsSync(logDir)) {
@@ -264,7 +264,7 @@ function createRunLogFile(
 ): string {
   const logDir = setupLogDirectory();
   const timestamp = date.toISOString().replace(/[:.]/g, '-').replace('T', '_').split('.')[0];
-  const logFile = path.join(logDir, `promptfoo-${level}-${timestamp}.log`);
+  const logFile = path.join(logDir, `artef-${level}-${timestamp}.log`);
   return logFile;
 }
 
@@ -274,7 +274,7 @@ function createRunLogFile(
 export function initializeRunLogging(): void {
   try {
     const date = new Date();
-    if (!getEnvBool('PROMPTFOO_DISABLE_DEBUG_LOG', false)) {
+    if (!getEnvBool('artef_DISABLE_DEBUG_LOG', false)) {
       cliState.debugLogFile = createRunLogFile('debug', { date });
       const runLogTransport = new winston.transports.File({
         filename: cliState.debugLogFile,
@@ -284,7 +284,7 @@ export function initializeRunLogging(): void {
       winstonLogger.add(runLogTransport);
     }
 
-    if (!getEnvBool('PROMPTFOO_DISABLE_ERROR_LOG', false)) {
+    if (!getEnvBool('artef_DISABLE_ERROR_LOG', false)) {
       cliState.errorLogFile = createRunLogFile('error', { date });
       const errorLogTransport = new winston.transports.File({
         filename: cliState.errorLogFile,

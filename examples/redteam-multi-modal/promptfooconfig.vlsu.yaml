@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # VLSU Plugin Example Configuration
 # This example demonstrates how to use the VLSU plugin for testing
 # compositional safety - where individually safe images and text combine to produce harmful outputs

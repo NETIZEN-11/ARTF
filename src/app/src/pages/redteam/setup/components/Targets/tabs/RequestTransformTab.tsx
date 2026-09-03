@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import Editor from '@app/components/ui/code-editor';
@@ -101,7 +101,7 @@ const RequestTransformTab: React.FC<RequestTransformTabProps> = ({
       <p className="mb-4">
         Transform the prompt into a specific structure required by your API before sending. See{' '}
         <a
-          href="https://www.promptfoo.dev/docs/providers/http/#request-transform"
+          href="https://www.artef.dev/docs/providers/http/#request-transform"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"

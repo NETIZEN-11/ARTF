@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { getOutputFileFormat, SUPPORTED_OUTPUT_FILE_FORMATS } from '../../src/util/outputFormats';
 
 describe('outputFormats', () => {
@@ -7,7 +7,7 @@ describe('outputFormats', () => {
     expect(getOutputFileFormat('reports/ci.RESULTS.JUNIT.XML')).toBe('junit.xml');
   });
 
-  it('keeps Promptfoo XML separate from JUnit XML routing', () => {
+  it('keeps artef XML separate from JUnit XML routing', () => {
     expect(getOutputFileFormat('results.xml')).toBe('xml');
     expect(getOutputFileFormat('results.junit')).toBeUndefined();
   });

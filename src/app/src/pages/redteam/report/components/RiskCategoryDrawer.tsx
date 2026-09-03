@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -11,7 +11,7 @@ import { Sheet, SheetContent, SheetTitle } from '@app/components/ui/sheet';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@app/components/ui/tabs';
 import { cn } from '@app/lib/utils';
 import { getActualPrompt } from '@app/utils/providerResponse';
-import { categoryAliases, displayNameOverrides } from '@promptfoo/redteam/constants';
+import { categoryAliases, displayNameOverrides } from '@artef/redteam/constants';
 import { ChevronDown, Lightbulb } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ChatMessages, { type Message } from '../../../eval/components/ChatMessages';
@@ -19,7 +19,7 @@ import EvalOutputPromptDialog from '../../../eval/components/EvalOutputPromptDia
 import PluginStrategyFlow from './PluginStrategyFlow';
 import SuggestionsDialog from './SuggestionsDialog';
 import { getPassRateStyles, getStrategyIdFromTest, type TestWithMetadata } from './shared';
-import type { GradingResult } from '@promptfoo/types';
+import type { GradingResult } from '@artef/types';
 
 interface RiskCategoryDrawerProps {
   open: boolean;

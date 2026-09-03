@@ -1,11 +1,11 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 
 import { Card } from '@app/components/ui/card';
 import { Collapsible, CollapsibleContent } from '@app/components/ui/collapsible';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { cn } from '@app/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import type { TraceData, TraceSpan } from '@promptfoo/types';
+import type { TraceData, TraceSpan } from '@artef/types';
 
 // Use TraceSpan from base types
 type SpanData = TraceSpan;

@@ -1,4 +1,4 @@
-import type { TestCase } from '../../types/index';
+﻿import type { TestCase } from '../../types/index';
 
 export function addCustom(
   testCases: TestCase[],
@@ -16,7 +16,7 @@ export function addCustom(
       ...testCase,
       provider: {
         id:
-          strategyId === 'custom' ? 'promptfoo:redteam:custom' : `promptfoo:redteam:${strategyId}`,
+          strategyId === 'custom' ? 'artef:redteam:custom' : `artef:redteam:${strategyId}`,
         config: {
           injectVar,
           variant,

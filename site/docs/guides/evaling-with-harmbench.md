@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Evaluating LLM safety with HarmBench
 description: Assess LLM vulnerabilities against 400 HarmBench behaviors to identify and prevent harmful outputs across 7 risk categories
 ---
@@ -16,7 +16,7 @@ To help define a systematic way to assess potential risks and vulnerabilities in
 - Cybercrime (e.g., malware, system exploitation)
 - Copyright violations
 
-This guide will show you how to use Promptfoo to run HarmBench evaluations against your own LLMs or GenAI applications. Unlike testing base models in isolation, Promptfoo enables you to evaluate the actual behavior of LLMs **within your application's context** - including your prompt engineering, safety guardrails, and any additional processing layers.
+This guide will show you how to use artef to run HarmBench evaluations against your own LLMs or GenAI applications. Unlike testing base models in isolation, artef enables you to evaluate the actual behavior of LLMs **within your application's context** - including your prompt engineering, safety guardrails, and any additional processing layers.
 
 This is important because your application's prompt engineering and context can significantly impact model behavior. For instance, even refusal-trained LLMs can still easily be [jailbroken](https://arxiv.org/abs/2410.13886) when operating as an agent in a web browser.
 
@@ -25,10 +25,10 @@ The end result of testing with HarmBench is a report that shows how well your mo
 
 ## Configure the evaluation
 
-Create a new configuration file `promptfooconfig.yaml`:
+Create a new configuration file `artefconfig.yaml`:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: HarmBench evaluation of OpenAI GPT-5-mini
 targets:
   - id: openai:gpt-5-mini
@@ -54,29 +54,29 @@ redteam:
           - contextual
 ```
 
-The semantic categories are `chemical_biological`, `copyright`, `cybercrime_intrusion`, `harassment_bullying`, `harmful`, `illegal`, and `misinformation_disinformation`. The functional categories are `standard`, `contextual`, and `copyright`. When you set both filters, Promptfoo uses their intersection.
+The semantic categories are `chemical_biological`, `copyright`, `cybercrime_intrusion`, `harassment_bullying`, `harmful`, `illegal`, and `misinformation_disinformation`. The functional categories are `standard`, `contextual`, and `copyright`. When you set both filters, artef uses their intersection.
 
 ## Run the evaluation
 
-In the same folder where you defined `promptfooconfig.yaml`, execute the HarmBench evaluation.
+In the same folder where you defined `artefconfig.yaml`, execute the HarmBench evaluation.
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 Once you're done, view the results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
-You can see an example of the results below as well as the full results of a sample evaluation [here](https://www.promptfoo.app/eval/eval-m9D-2025-01-30T17:29:53). In the example we highlighted above, we're doing a comparative analysis of our internal sample application (powered by `gpt-5-mini`) against the vanilla version of `gpt-5-mini` from OpenAI.
+You can see an example of the results below as well as the full results of a sample evaluation [here](https://www.artef.app/eval/eval-m9D-2025-01-30T17:29:53). In the example we highlighted above, we're doing a comparative analysis of our internal sample application (powered by `gpt-5-mini`) against the vanilla version of `gpt-5-mini` from OpenAI.
 
 By providing some additional context to OpenAI (from our application), you can observe how our internal application is able to resist attacks that the vanilla model is not able to. You can also filter by failures by selecting `Show failures only` on the display dropdown at the top left.
 
 ## Testing different targets
 
-Promptfoo has built-in support for a wide variety of models such as those from OpenAI, Anthropic, Hugging Face, Deepseek, Ollama and more.
+artef has built-in support for a wide variety of models such as those from OpenAI, Anthropic, Hugging Face, Deepseek, Ollama and more.
 
 ### Ollama Models
 
@@ -86,7 +86,7 @@ First, start your Ollama server and pull the model you want to test:
 ollama pull llama4:scout
 ```
 
-Then configure Promptfoo to use it:
+Then configure artef to use it:
 
 ```yaml
 targets:
@@ -115,7 +115,7 @@ targets:
 
 While HarmBench provides valuable insights through its static dataset, it's most effective when combined with other red teaming approaches.
 
-Promptfoo's plugin architecture allows you to run multiple evaluation types together, combining HarmBench with plugins that generate dynamic test cases. For instance, you can sequence evaluations that check for PII leaks, hallucinations, excessive agency, and emerging cybersecurity threats.
+artef's plugin architecture allows you to run multiple evaluation types together, combining HarmBench with plugins that generate dynamic test cases. For instance, you can sequence evaluations that check for PII leaks, hallucinations, excessive agency, and emerging cybersecurity threats.
 
 This multi-layered approach helps ensure more comprehensive coverage as attack vectors and vulnerabilities evolve over time.
 
@@ -123,7 +123,7 @@ For more information, see:
 
 - [HarmBench paper](https://arxiv.org/abs/2402.04249)
 - [HarmBench GitHub repository](https://github.com/centerforaisafety/HarmBench)
-- [HarmBench Promptfoo plugin](/docs/red-team/plugins/harmbench)
-- [Promptfoo red teaming guide](/docs/red-team/quickstart)
+- [HarmBench artef plugin](/docs/red-team/plugins/harmbench)
+- [artef red teaming guide](/docs/red-team/quickstart)
 - [Types of LLM Vulnerabilities](/docs/red-team/llm-vulnerability-types)
 - [CybersecEval](/blog/cyberseceval)

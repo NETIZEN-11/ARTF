@@ -1,25 +1,25 @@
----
+﻿---
 sidebar_label: Findings and Reports
 sidebar_position: 50
-title: Findings and Reports in Promptfoo Enterprise
-description: Analyze vulnerability findings with severity scoring, remediation tracking, and compliance reporting in Promptfoo Enterprise
+title: Findings and Reports in artef Enterprise
+description: Analyze vulnerability findings with severity scoring, remediation tracking, and compliance reporting in artef Enterprise
 keywords:
   [findings, security reports, llm vulnerabilities, red team results, vulnerability management]
 ---
 
 # Findings and Reports
 
-[Promptfoo Enterprise](/docs/enterprise/) allows you to review findings and reports from scans within the Promptfoo Enterprise application.
+[artef Enterprise](/docs/enterprise/) allows you to review findings and reports from scans within the artef Enterprise application.
 
 ## How Grading Works
 
-Grading is the process of evaluating the success of a red team attack. Promptfoo grades results based on the application context that is provided when creating a target. These results are subsequently compiled in the dashboard, vulnerabilities view, reports, and evaluations sections.
+Grading is the process of evaluating the success of a red team attack. artef grades results based on the application context that is provided when creating a target. These results are subsequently compiled in the dashboard, vulnerabilities view, reports, and evaluations sections.
 
 ## Reviewing the Dashboard
 
 The dashboard is the main page for reviewing findings and reports in a centralized view. It displays a summary of all the scans that have been run, including the number of findings and reports generated.
 
-![Promptfoo Cloud Dashboard](/img/enterprise-docs/promptfoo-dashboard.png)
+![artef Cloud Dashboard](/img/enterprise-docs/artef-dashboard.png)
 
 ## Viewing Vulnerabilities
 
@@ -71,17 +71,17 @@ The "Evals" section will display all of the evaluations and let you filter and s
 
 ![Filtering evaluations interface](/img/enterprise-docs/filter-evals.png)
 
-You can also search for findings [using Promptfoo's API](https://www.promptfoo.dev/docs/api-reference/#tag/default/GET/api/v1/results).
+You can also search for findings [using artef's API](https://www.artef.dev/docs/api-reference/#tag/default/GET/api/v1/results).
 
 ## Sharing Findings
 
-There are several ways to share findings outside of the Promptfoo application:
+There are several ways to share findings outside of the artef application:
 
 - **Export Vulnerabilities**: Export vulnerability data as CSV, SARIF, or Colang format from the "Vulnerabilities" section. See [Exporting Vulnerabilities](#exporting-vulnerabilities) above for format details.
 - **Export Eval Results**: Export eval results as CSV or JSON from the "Evals" section.
 - **Download Vulnerability Reports**: Download point-in-time vulnerability reports for each scan in the "Reports" section. These reports are exported as a PDF.
-- **Use the Promptfoo API**: Use the [Promptfoo API](https://www.promptfoo.dev/docs/api-reference/) to export findings, reports, and eval results.
-- **Share via URL**: Generate shareable URLs for your evaluation results using the `promptfoo share` command. [Learn more about sharing options](/docs/usage/sharing.md).
+- **Use the artef API**: Use the [artef API](https://www.artef.dev/docs/api-reference/) to export findings, reports, and eval results.
+- **Share via URL**: Generate shareable URLs for your evaluation results using the `artef share` command. [Learn more about sharing options](/docs/usage/sharing.md).
 
 ## See Also
 

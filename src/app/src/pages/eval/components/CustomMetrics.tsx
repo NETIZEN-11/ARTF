@@ -1,10 +1,10 @@
-import {
+﻿import {
   deserializePolicyIdFromMetric,
   determinePolicyTypeFromId,
   formatPolicyIdentifierAsMetric,
   isPolicyMetric,
   makeCustomPolicyCloudUrl,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import './CustomMetrics.css';
 
 import { useState } from 'react';
@@ -113,7 +113,7 @@ const CustomMetrics = ({
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-primary hover:underline"
                     >
-                      <span>View policy in Promptfoo Cloud</span>
+                      <span>View policy in artef Cloud</span>
                       <ExternalLink className="size-3.5" />
                     </a>
                   </p>

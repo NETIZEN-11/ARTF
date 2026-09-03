@@ -1,6 +1,6 @@
-# Regression test for GitHub Issue #7334
+﻿# Regression test for GitHub Issue #7334
 # Dynamic variables should be resolved when passed to assertion functions
-# https://github.com/promptfoo/promptfoo/issues/7334
+# https://github.com/artef/artef/issues/7334
 
 providers:
   - echo

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: OpenRouter
 description: "Access 300+ models through OpenRouter's unified API gateway with configurable routing, proxy support, and OpenAI-compatible requests"
 ---
@@ -33,8 +33,8 @@ For the full catalog of 300+ models and current pricing, visit [OpenRouter Model
 
 ## Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: openrouter:openai/gpt-5.4
     config:
@@ -55,7 +55,7 @@ If you route OpenRouter traffic through a proxy or OpenRouter-compatible gateway
 
 The same pattern applies to `apiKeyEnvar` — set it to read your API key from a custom environment variable name (default `OPENROUTER_API_KEY`).
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openrouter:openai/gpt-5.4
     config:
@@ -75,7 +75,7 @@ providers:
 
 Some models like Gemini 2.5 Pro include thinking tokens in their responses. You can control whether these are shown using the `showThinking` parameter:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openrouter:google/gemini-2.5-pro
     config:

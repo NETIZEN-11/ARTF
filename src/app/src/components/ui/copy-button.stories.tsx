@@ -1,4 +1,4 @@
-import { CopyButton } from './copy-button';
+﻿import { CopyButton } from './copy-button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof CopyButton> = {
@@ -50,7 +50,7 @@ export const Sizes: Story = {
 // With code block
 export const WithCodeBlock: Story = {
   render: () => {
-    const code = 'npx promptfoo eval -c config.yaml';
+    const code = 'npx artef eval -c config.yaml';
     return (
       <div className="flex items-center gap-2 rounded-md bg-muted p-3 font-mono text-sm">
         <span className="flex-1">{code}</span>

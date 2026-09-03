@@ -1,4 +1,4 @@
-# ARTEF: Agent Red-Teaming & Evaluation Framework
+﻿# ARTEF: Agent Red-Teaming & Evaluation Framework
 
 <p align="center">
   <a href="https://npmjs.com/package/artef"><img src="https://img.shields.io/npm/v/artef" alt="npm"></a>
@@ -20,12 +20,12 @@
   <a href="https://discord.gg/artef">Discord</a>
 </p>
 
-> ARTEF (formerly Promptfoo) is now part of OpenAI. ARTEF remains open source and MIT licensed. Read the [company update](https://www.artef.dev/blog/artef-joining-openai/).
+> ARTEF (formerly artef) is now part of OpenAI. ARTEF remains open source and MIT licensed. Read the [company update](https://www.artef.dev/blog/artef-joining-openai/).
 
 ## Quick Start
 
 Requires [Node.js](https://nodejs.org/en/download) `>=22.22.0` for npm and npx usage. Node.js 24 LTS
-is recommended; see the [runtime support guide](https://www.promptfoo.dev/docs/installation/#nodejs-runtime-support).
+is recommended; see the [runtime support guide](https://www.artef.dev/docs/installation/#nodejs-runtime-support).
 
 ```sh
 npm install -g artef

@@ -1,11 +1,11 @@
-# google-imagen (Google Imagen)
+﻿# google-imagen (Google Imagen)
 
 This example demonstrates Google image generation models, including both Imagen and Gemini native image generation.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-imagen
+npx artef@latest init --example google-imagen
 cd google-imagen
 ```
 
@@ -88,7 +88,7 @@ Use the GA ids above; Google shut down the `gemini-3.1-flash-image-preview` and 
 ## Running the Example
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Notes
@@ -114,14 +114,14 @@ npx promptfoo@latest eval
 
 ## Advanced Configuration
 
-See `promptfooconfig-advanced.yaml` for examples of platform-specific configurations that take advantage of each platform's unique capabilities.
+See `artefconfig-advanced.yaml` for examples of platform-specific configurations that take advantage of each platform's unique capabilities.
 
 ## Gemini Native Image Generation
 
 Gemini models can generate images natively using the `generateContent` API with `responseModalities` set to include images. This is different from Imagen which uses a dedicated image generation endpoint.
 
-See `promptfooconfig-gemini.yaml` for Gemini native image generation examples.
-See `promptfooconfig-gemini-grounding.yaml` for Google Search-grounded Gemini image generation.
+See `artefconfig-gemini.yaml` for Gemini native image generation examples.
+See `artefconfig-gemini-grounding.yaml` for Google Search-grounded Gemini image generation.
 
 Key differences from Imagen:
 

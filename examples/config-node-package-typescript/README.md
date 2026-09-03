@@ -1,13 +1,13 @@
-# config-node-package-typescript (Node Package TypeScript)
+﻿# config-node-package-typescript (Node Package TypeScript)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-node-package-typescript
+npx artef@latest init --example config-node-package-typescript
 cd config-node-package-typescript
 ```
 
-This example demonstrates using promptfoo from a TypeScript script.
+This example demonstrates using artef from a TypeScript script.
 
 ## Prerequisites
 
@@ -42,9 +42,9 @@ npx tsx src/full-eval.ts
 
 The TypeScript script will:
 
-- Run evaluations with full type safety using the promptfoo API
+- Run evaluations with full type safety using the artef API
 - Save results to `output.json`
 - Display evaluation metrics in the console
-- Demonstrate TypeScript integration patterns for promptfoo
+- Demonstrate TypeScript integration patterns for artef
 
-View detailed results with `promptfoo view`.
+View detailed results with `artef view`.

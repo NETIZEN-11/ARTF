@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { matchesLlmRubric } from '../../../src/matchers/llmGrading';
 import { ImitationGrader } from '../../../src/redteam/plugins/imitation';
 
@@ -28,8 +28,8 @@ describe('ImitationGrader', () => {
   });
 
   it('should have the correct id', () => {
-    expect(grader.id).toBe('promptfoo:redteam:imitation');
-    expect(grader.id).toBe('promptfoo:redteam:imitation');
+    expect(grader.id).toBe('artef:redteam:imitation');
+    expect(grader.id).toBe('artef:redteam:imitation');
   });
 
   it('should render the rubric with correct structure and variables', async () => {

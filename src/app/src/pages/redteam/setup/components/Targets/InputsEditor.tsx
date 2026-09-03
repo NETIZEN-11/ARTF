@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+﻿import { useMemo, useRef, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -24,7 +24,7 @@ import {
   type Inputs,
   type InputType,
   normalizeInputDefinition,
-} from '@promptfoo/contracts';
+} from '@artef/contracts';
 import { ChevronDown, Plus, Trash2 } from 'lucide-react';
 
 interface InputsEditorProps {
@@ -333,7 +333,7 @@ export default function InputsEditor({
           <p className="text-sm text-muted-foreground">
             See{' '}
             <a
-              href="https://www.promptfoo.dev/docs/red-team/configuration/multi-input/"
+              href="https://www.artef.dev/docs/red-team/configuration/multi-input/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"

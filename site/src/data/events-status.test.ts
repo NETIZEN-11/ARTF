@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 /**
  * `events.ts` derives initial statuses at module scope from the build timestamp. These
@@ -104,7 +104,7 @@ describe('event status rollover', () => {
 
     expect(event?.status).toBe('past');
     expect(`${event?.description ?? ''} ${event?.fullDescription ?? ''}`).not.toMatch(
-      /\b(?:find (?:us|promptfoo)|join us|meet us|stop by|visit(?: us)?|see you(?: at)?|register now|rsvp)\b/i,
+      /\b(?:find (?:us|artef)|join us|meet us|stop by|visit(?: us)?|see you(?: at)?|register now|rsvp)\b/i,
     );
   });
 

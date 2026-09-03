@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import cliState from '../../cliState';
 import { getEnvBool, getEnvInt } from '../../envars';
@@ -147,9 +147,9 @@ export class MCPClient {
     const serverKey = server.name || server.url || server.path || 'default';
     const { Client } = await loadMcpClientSdk();
     const client = new Client({
-      name: 'promptfoo-MCP',
+      name: 'artef-MCP',
       version: '1.0.0',
-      description: 'Promptfoo MCP client for connecting to MCP servers during LLM evaluations',
+      description: 'artef MCP client for connecting to MCP servers during LLM evaluations',
     });
 
     let transport: StdioClientTransport | SSEClientTransport | StreamableHTTPClientTransport;

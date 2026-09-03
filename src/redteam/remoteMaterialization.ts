@@ -1,10 +1,10 @@
-import { getInputType, type Inputs } from '../types/shared';
+﻿import { getInputType, type Inputs } from '../types/shared';
 import { getRemoteGenerationUrl } from './remoteGeneration';
 
 import type { VarValue } from '../types';
 import type { MaterializedInputMetadata, MaterializedInputVariablesResult } from './inputVariables';
 
-export const REMOTE_MATERIALIZATION_CONTEXT_VAR = '__promptfooRemoteMaterialization';
+export const REMOTE_MATERIALIZATION_CONTEXT_VAR = '__artefRemoteMaterialization';
 
 export interface RemoteMaterializationRequestContext {
   injectVar?: string;
@@ -109,9 +109,9 @@ export function requiresRemoteMaterialization(inputs: Inputs | undefined): boole
 
 export function getRemoteMaterializationUpgradeError(operation: string): string {
   return (
-    `${operation} requires remote multi-input materialization support from a newer Promptfoo server. ` +
+    `${operation} requires remote multi-input materialization support from a newer artef server. ` +
     `Current remote endpoint: ${getRemoteMaterializationHost()}. ` +
-    'Upgrade the Promptfoo server you are connected to and try again.'
+    'Upgrade the artef server you are connected to and try again.'
   );
 }
 

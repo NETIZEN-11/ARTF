@@ -1,6 +1,6 @@
-# huggingface/chat (HuggingFace Chat Completions)
+﻿# huggingface/chat (HuggingFace Chat Completions)
 
-This example demonstrates how to use HuggingFace's OpenAI-compatible chat completions API with promptfoo.
+This example demonstrates how to use HuggingFace's OpenAI-compatible chat completions API with artef.
 
 ## Setup
 
@@ -15,8 +15,8 @@ Get your token from [huggingface.co/settings/tokens](https://huggingface.co/sett
 ## Usage
 
 ```bash
-npx promptfoo@latest init --example huggingface/chat
-npx promptfoo@latest eval
+npx artef@latest init --example huggingface/chat
+npx artef@latest eval
 ```
 
 ## Provider format

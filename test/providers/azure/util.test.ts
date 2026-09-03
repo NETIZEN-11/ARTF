@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { AZURE_MODELS } from '../../../src/providers/azure/defaults';
 import { calculateAzureCost, throwConfigurationError } from '../../../src/providers/azure/util';
 
@@ -6,7 +6,7 @@ describe('throwConfigurationError', () => {
   it('throws error with formatted message and docs link', () => {
     const message = 'Test error message';
     expect(() => throwConfigurationError(message)).toThrow(
-      `${message}\n\nSee https://www.promptfoo.dev/docs/providers/azure/ to learn more about Azure configuration.`,
+      `${message}\n\nSee https://www.artef.dev/docs/providers/azure/ to learn more about Azure configuration.`,
     );
   });
 });

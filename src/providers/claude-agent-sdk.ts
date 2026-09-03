@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+﻿import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import type { Stats } from 'node:fs';
@@ -15,8 +15,8 @@ import {
   GenAIAttributes,
   getGenAITracer,
   getTraceparent,
-  PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID,
-  PROMPTFOO_RESOURCE_ATTR_TRACE_ID,
+  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
+  artef_RESOURCE_ATTR_TRACE_ID,
   sanitizeBody,
   withGenAISpan,
 } from '../tracing/genaiTracer';
@@ -101,17 +101,17 @@ const REDACTED_SUBAGENT_TRANSCRIPT =
 const ABORTED_BEFORE_START_ERROR = 'Claude Agent SDK call aborted before it started';
 
 /**
- * Append promptfoo-specific resource-attribute kvs to a W3C-style
+ * Append artef-specific resource-attribute kvs to a W3C-style
  * `OTEL_RESOURCE_ATTRIBUTES` string, removing trailing whitespace/commas from
  * the existing value and stripping any previous occurrence of our keys so the
  * producer can't double-up. Returns the new string. Exported for tests.
  */
-export function appendPromptfooResourceAttrs(
+export function appendartefResourceAttrs(
   existing: string | undefined,
   traceId: string,
   parentSpanId: string,
 ): string {
-  const incoming = `${PROMPTFOO_RESOURCE_ATTR_TRACE_ID}=${traceId},${PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID}=${parentSpanId}`;
+  const incoming = `${artef_RESOURCE_ATTR_TRACE_ID}=${traceId},${artef_RESOURCE_ATTR_PARENT_SPAN_ID}=${parentSpanId}`;
   if (!existing) {
     return incoming;
   }
@@ -121,8 +121,8 @@ export function appendPromptfooResourceAttrs(
     .filter(
       (pair) =>
         pair.length > 0 &&
-        !pair.startsWith(`${PROMPTFOO_RESOURCE_ATTR_TRACE_ID}=`) &&
-        !pair.startsWith(`${PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID}=`),
+        !pair.startsWith(`${artef_RESOURCE_ATTR_TRACE_ID}=`) &&
+        !pair.startsWith(`${artef_RESOURCE_ATTR_PARENT_SPAN_ID}=`),
     )
     .join(',');
   return cleaned.length > 0 ? `${cleaned},${incoming}` : incoming;
@@ -349,11 +349,11 @@ async function loadClaudeCodeSDK(): Promise<typeof import('@anthropic-ai/claude-
       To use the Claude Agent SDK provider, install it with:
         npm install @anthropic-ai/claude-agent-sdk
 
-      If the package is already installed elsewhere, run promptfoo from the
+      If the package is already installed elsewhere, run artef from the
       project root (or point the config at that root) so node_modules is on
       the resolution path.
 
-      For more information, see: https://www.promptfoo.dev/docs/providers/claude-agent-sdk/`,
+      For more information, see: https://www.artef.dev/docs/providers/claude-agent-sdk/`,
     );
   }
 
@@ -374,7 +374,7 @@ async function loadClaudeCodeSDK(): Promise<typeof import('@anthropic-ai/claude-
       Try reinstalling:
         npm install @anthropic-ai/claude-agent-sdk
 
-      For more information, see: https://www.promptfoo.dev/docs/providers/claude-agent-sdk/`,
+      For more information, see: https://www.artef.dev/docs/providers/claude-agent-sdk/`,
     );
   }
 }
@@ -402,7 +402,7 @@ export interface ClaudeCodeOptions {
 
   /**
    * Enable the Claude subprocess's native model, tool, and subagent OpenTelemetry spans.
-   * Existing OTEL environment settings take precedence over Promptfoo's local defaults.
+   * Existing OTEL environment settings take precedence over artef's local defaults.
    * @default false
    */
   deep_tracing?: boolean;
@@ -667,7 +667,7 @@ export interface ClaudeCodeOptions {
    * Policy-tier settings supplied by the embedding parent. Loaded into the
    * managed-settings layer (above HKCU, below IT-controlled sources), so
    * user/project settings cannot widen restrictions set here. Use this when
-   * promptfoo runs inside an app that derives lockdown configuration from
+   * artef runs inside an app that derives lockdown configuration from
    * its own enterprise policy and needs to enforce it on the SDK subprocess
    * without writing root-owned files.
    *
@@ -1092,7 +1092,7 @@ function createAskUserQuestionCanUseTool(
  * Two independent concerns layer here, on different hook events, so both apply:
  * a PostToolUse hook that redacts raw background-agent transcripts, and a
  * PreToolUse hook that answers AskUserQuestion under `dontAsk`. In both cases
- * promptfoo's hook goes first and the user's configured matchers stay installed
+ * artef's hook goes first and the user's configured matchers stay installed
  * behind it, so an explicit user denial still wins.
  */
 function buildClaudeHooks(config: ClaudeCodeOptions): ClaudeCodeOptions['hooks'] {
@@ -1444,7 +1444,7 @@ export class ClaudeCodeSDKProvider implements ApiProvider {
       env.OTEL_EXPORTER_OTLP_ENDPOINT ??= receiverExport?.endpoint ?? 'http://127.0.0.1:4318';
       env.OTEL_EXPORTER_OTLP_PROTOCOL ??=
         receiverExport?.format === 'json' ? 'http/json' : 'http/protobuf';
-      // The SDK's five-second default is longer than Promptfoo's three-second fetch delay.
+      // The SDK's five-second default is longer than artef's three-second fetch delay.
       env.OTEL_TRACES_EXPORT_INTERVAL ??= '1000';
     }
 
@@ -1794,7 +1794,7 @@ export class ClaudeCodeSDKProvider implements ApiProvider {
       }
     } else if (isTempDir) {
       // use a temp dir
-      workingDir = await fs.mkdtemp(path.join(os.tmpdir(), 'promptfoo-claude-agent-sdk-'));
+      workingDir = await fs.mkdtemp(path.join(os.tmpdir(), 'artef-claude-agent-sdk-'));
     }
 
     // Make sure we didn't already abort
@@ -1877,12 +1877,12 @@ export class ClaudeCodeSDKProvider implements ApiProvider {
           }
           // Some SDK telemetry signals (logs in particular) do not inherit
           // TRACEPARENT into their OTEL context. Encode the trace + parent span
-          // IDs as resource attributes too — promptfoo's OTLP /v1/logs receiver
+          // IDs as resource attributes too — artef's OTLP /v1/logs receiver
           // reads these to link log-derived spans to the evaluation trace.
           // traceparent format: "version-traceId-spanId-flags".
           const [, tpTraceId, tpSpanId] = traceparent ? traceparent.split('-') : [];
           if (tpTraceId && tpSpanId) {
-            env.OTEL_RESOURCE_ATTRIBUTES = appendPromptfooResourceAttrs(
+            env.OTEL_RESOURCE_ATTRIBUTES = appendartefResourceAttrs(
               env.OTEL_RESOURCE_ATTRIBUTES,
               tpTraceId,
               tpSpanId,
@@ -2001,7 +2001,7 @@ export class ClaudeCodeSDKProvider implements ApiProvider {
           // the pre-0.2.126 position heuristic still applies — the main agent's
           // result is the last one in the stream). Otherwise we'd return the
           // first sub-agent's summary and skip the main agent's actual final
-          // response. See https://github.com/promptfoo/promptfoo/issues/9054.
+          // response. See https://github.com/artef/artef/issues/9054.
           let lastResultMsg: SDKResultMessage | undefined;
           let lastMainResultMsg: SDKResultMessage | undefined;
           let resultMsgCount = 0;
@@ -2313,17 +2313,17 @@ export class ClaudeCodeSDKProvider implements ApiProvider {
           const metadata = response.metadata ?? {};
           const additional: Record<string, string | number | boolean> = {};
           if (typeof metadata.numTurns === 'number') {
-            additional['promptfoo.agent.num_turns'] = metadata.numTurns;
+            additional['artef.agent.num_turns'] = metadata.numTurns;
           }
           if (typeof metadata.durationApiMs === 'number') {
-            additional['promptfoo.agent.duration_api_ms'] = metadata.durationApiMs;
+            additional['artef.agent.duration_api_ms'] = metadata.durationApiMs;
           }
           if (typeof response.cost === 'number' && response.cost > 0) {
-            additional['promptfoo.agent.cost_usd'] = response.cost;
+            additional['artef.agent.cost_usd'] = response.cost;
           }
           const toolCalls = metadata.toolCalls;
           if (Array.isArray(toolCalls) && toolCalls.length > 0) {
-            additional['promptfoo.agent.tool_call_count'] = toolCalls.length;
+            additional['artef.agent.tool_call_count'] = toolCalls.length;
           }
           // Response model: the SDK reports per-model usage keyed by model name.
           // Pick the key with the largest token usage rather than iteration order —

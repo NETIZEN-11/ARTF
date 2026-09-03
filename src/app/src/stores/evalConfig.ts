@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import {
   looksLikeSecret,
@@ -1358,7 +1358,7 @@ export const useStore = create<EvalConfigState>()(
       },
     }),
     {
-      name: 'promptfoo',
+      name: 'artef',
       skipHydration: true,
       partialize: (state) => ({
         config: omitPersistedSensitiveValues(state.config),

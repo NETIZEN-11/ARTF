@@ -1,8 +1,8 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: OpenAI HTTP provider streaming example
 
 # This example shows how to use OpenAI's streaming API via HTTP provider, but this
-# approach is NOT RECOMMENDED. Promptfoo tool waits for the
+# approach is NOT RECOMMENDED. artef tool waits for the
 # entire response to complete anyway, so you get no streaming benefits.
 #
 # 🎯 RECOMMENDED: Use the built-in OpenAI provider instead: openai:responses:gpt-5-mini

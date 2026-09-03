@@ -1,13 +1,13 @@
-# eval-assertion-scoring-override (Assertion Scoring Function Override Example)
+﻿# eval-assertion-scoring-override (Assertion Scoring Function Override Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-assertion-scoring-override
+npx artef@latest init --example eval-assertion-scoring-override
 cd eval-assertion-scoring-override
 ```
 
-This example demonstrates different ways to define and override the default scoring function in promptfoo. It shows three patterns for implementing and referencing scoring functions:
+This example demonstrates different ways to define and override the default scoring function in artef. It shows three patterns for implementing and referencing scoring functions:
 
 1. A global override in the `defaultTest` section of the config
 2. A named export in a JavaScript file
@@ -18,18 +18,18 @@ This example demonstrates different ways to define and override the default scor
 Initialize the example:
 
 ```bash
-npx promptfoo@latest init --example eval-assertion-scoring-override
+npx artef@latest init --example eval-assertion-scoring-override
 ```
 
 Run the evaluation:
 
 ```bash
 cd eval-assertion-scoring-override
-promptfoo eval
+artef eval
 ```
 
 View the results:
 
 ```bash
-promptfoo view
+artef view
 ```

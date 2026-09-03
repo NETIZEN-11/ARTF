@@ -1,10 +1,10 @@
----
+﻿---
 title: 'Real-Time Fact Checking for LLM Outputs'
-description: 'Promptfoo now supports web search in assertions, so you can verify time-sensitive information like stock prices, weather, and case citations during testing.'
+description: 'artef now supports web search in assertions, so you can verify time-sensitive information like stock prices, weather, and case citations during testing.'
 image: /img/blog/search-rubric-assertions/title.jpg
 image_alt: 'Search rubric assertion verifying current information'
 slug: llm-search-rubric-assertions
-keywords: [promptfoo, LLM testing, web search, fact checking, real-time verification, assertions]
+keywords: [artef, LLM testing, web search, fact checking, real-time verification, assertions]
 date: 2025-11-28
 authors: [michael]
 tags: [feature-announcement, evaluation, best-practices]
@@ -18,7 +18,7 @@ None of these errors looked obviously wrong on the page. They read like normal l
 
 This is the core problem: LLMs sound confident even when they are wrong or stale. Traditional assertions can check format and style, but they cannot independently verify that an answer matches the world **right now**.
 
-Promptfoo's new [`search-rubric`](/docs/configuration/expected-outputs/model-graded/search-rubric) assertion does that. It lets a separate "judge" model with web search verify time-sensitive facts in your evals.
+artef's new [`search-rubric`](/docs/configuration/expected-outputs/model-graded/search-rubric) assertion does that. It lets a separate "judge" model with web search verify time-sensitive facts in your evals.
 
 <!-- truncate -->
 
@@ -56,9 +56,9 @@ Conceptually, [`search-rubric`](/docs/configuration/expected-outputs/model-grade
 At a high level:
 
 1. Your system under test (SUT) produces an output.
-2. You give Promptfoo a rubric like:
+2. You give artef a rubric like:
    `"Provides the current AAPL stock price within 2% and includes the currency."`
-3. Promptfoo sends the SUT output and rubric to a grading model that has web search turned on.
+3. artef sends the SUT output and rubric to a grading model that has web search turned on.
 4. The grading model decides when to call search based on the rubric.
 5. It returns a JSON object like `{ pass: boolean, score: number, reason: string }`.
 
@@ -66,7 +66,7 @@ You do not write any of the search logic yourself. You just describe what "corre
 
 ### Minimal example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'What is the current stock price of {{company}}?'
 
@@ -87,7 +87,7 @@ tests:
         threshold: 0.8
 ```
 
-When this runs, Promptfoo uses a separate search-enabled model as the grader. If the SUT hallucinates or returns a stale training-data price, the assertion fails with an explanation.
+When this runs, artef uses a separate search-enabled model as the grader. If the SUT hallucinates or returns a stale training-data price, the assertion fails with an explanation.
 
 **What to expect:** Models like `gpt-4o-mini` without web search will often refuse to answer real-time questions ("I don't have access to real-time data"). The search-rubric grader correctly flags this as a failure since no actual price was provided. To test models that confidently answer (and potentially hallucinate), use a more capable model or one with web search enabled as the SUT.
 
@@ -104,7 +104,7 @@ For people who care about the plumbing:
   value: 'Names Satya Nadella as the current CEO of Microsoft'
 ```
 
-### 2. Promptfoo picks a grading provider
+### 2. artef picks a grading provider
 
 It prefers a provider with web search configured:
 
@@ -119,7 +119,7 @@ It prefers a provider with web search configured:
 
 ### 3. It sends a grading prompt
 
-Internally, Promptfoo uses a web-search-aware rubric prompt that looks roughly like:
+Internally, artef uses a web-search-aware rubric prompt that looks roughly like:
 
 ```
 You are grading output according to a user-specified rubric. You may search
@@ -146,7 +146,7 @@ The prompt instructs the grader to call web search when the rubric references:
 - "Latest" or "current" versions
 - News, elections, or other time-sensitive facts
 
-### 5. Promptfoo parses the JSON result
+### 5. artef parses the JSON result
 
 - `pass` is a boolean decision.
 - `score` is a 0.0-1.0 confidence score.
@@ -288,7 +288,7 @@ Prices change, so treat these as ballpark numbers and always check the provider'
 
 ---
 
-## Configuring grading in Promptfoo
+## Configuring grading in artef
 
 You have two knobs:
 
@@ -318,7 +318,7 @@ tests:
 
 ### Relying on defaults
 
-If you do not specify a `grading.provider`, Promptfoo will try to pick a sensible default based on available API keys and built-in defaults:
+If you do not specify a `grading.provider`, artef will try to pick a sensible default based on available API keys and built-in defaults:
 
 - If you have OpenAI configured, it prefers a Responses model with web search.
 - If you have Anthropic configured, it may default to a Claude 4 or 4.5 model with `web_search_20250305`.
@@ -348,10 +348,10 @@ That sounds expensive, but you rarely need search for all tests. For example, a 
 During development, you can enable caching:
 
 ```bash
-promptfoo eval --cache
+artef eval --cache
 ```
 
-Promptfoo will reuse previous grading outputs so you do not pay or wait for repeated web searches while you iterate.
+artef will reuse previous grading outputs so you do not pay or wait for repeated web searches while you iterate.
 
 ---
 
@@ -387,10 +387,10 @@ The grader is still an LLM with its own failure modes. Search reduces hallucinat
 From scratch:
 
 ```bash
-npm install -g promptfoo@latest
+npm install -g artef@latest
 
 # or, if you use npx
-npx promptfoo init
+npx artef init
 ```
 
 Then add a simple search-backed check:
@@ -429,7 +429,7 @@ tests:
 Run it:
 
 ```bash
-npx promptfoo eval -c simple-search-test.yaml
+npx artef eval -c simple-search-test.yaml
 ```
 
 You will see not just pass or fail, but detailed reasons from the grading model about what it found on the web.
@@ -459,6 +459,6 @@ You can read the full configuration reference in the [Search-Rubric documentatio
     "name": "Michael"
   },
   "keywords": "LLM testing, web search, fact checking, real-time verification",
-  "description": "Promptfoo's search-rubric assertion uses models with web search to verify time-sensitive facts like stock prices, weather, software versions, and legal citations during testing."
+  "description": "artef's search-rubric assertion uses models with web search to verify time-sensitive facts like stock prices, weather, software versions, and legal citations during testing."
 }
 `}} />

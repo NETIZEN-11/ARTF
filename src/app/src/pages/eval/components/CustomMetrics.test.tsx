@@ -1,10 +1,10 @@
-import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
+﻿import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
 import { renderWithProviders } from '@app/utils/testutils';
 import {
   deserializePolicyIdFromMetric,
   formatPolicyIdentifierAsMetric,
   isPolicyMetric,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -31,7 +31,7 @@ vi.mock('@app/hooks/useCustomPoliciesMap', () => ({
   useCustomPoliciesMap: vi.fn(() => ({})),
 }));
 
-vi.mock('@promptfoo/redteam/plugins/policy/utils', () => ({
+vi.mock('@artef/redteam/plugins/policy/utils', () => ({
   isPolicyMetric: vi.fn(() => false),
   deserializePolicyIdFromMetric: vi.fn(),
   formatPolicyIdentifierAsMetric: vi.fn((name) => name),

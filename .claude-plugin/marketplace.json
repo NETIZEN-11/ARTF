@@ -1,20 +1,20 @@
-{
-  "name": "promptfoo",
+﻿{
+  "name": "artef",
   "owner": {
-    "name": "promptfoo"
+    "name": "artef"
   },
   "metadata": {
-    "description": "Agent skills for connecting, evaluating, and red teaming LLM applications with promptfoo"
+    "description": "Agent skills for connecting, evaluating, and red teaming LLM applications with artef"
   },
   "plugins": [
     {
-      "name": "promptfoo",
-      "source": "./plugins/promptfoo",
-      "description": "Connect providers and targets, write eval suites, and set up or run red team scans with promptfoo",
-      "homepage": "https://www.promptfoo.dev/docs/integrations/agent-skill",
-      "repository": "https://github.com/promptfoo/promptfoo",
+      "name": "artef",
+      "source": "./plugins/artef",
+      "description": "Connect providers and targets, write eval suites, and set up or run red team scans with artef",
+      "homepage": "https://www.artef.dev/docs/integrations/agent-skill",
+      "repository": "https://github.com/artef/artef",
       "license": "MIT",
-      "keywords": ["eval", "redteam", "provider", "testing", "llm", "promptfoo"],
+      "keywords": ["eval", "redteam", "provider", "testing", "llm", "artef"],
       "category": "productivity"
     }
   ]

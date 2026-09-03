@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -22,7 +22,7 @@ function HeroSection() {
           className={clsx(styles.heroImage, styles.heroImageGitHubScanner)}
         />
         <div className={styles.logoSection}>
-          Promptfoo is trusted by teams at...
+          artef is trusted by teams at...
           <LogoContainer className={styles.heroLogos} noBackground noBorder />
         </div>
       </div>
@@ -42,7 +42,7 @@ function GitHubActionHeader() {
           <div className={styles.heroButtons}>
             <Link
               className={clsx('button button--primary button--lg', styles.buttonPrimary)}
-              to="https://github.com/apps/promptfoo-scanner"
+              to="https://github.com/apps/artef-scanner"
             >
               <GitHubIcon />
               Install on GitHub
@@ -199,7 +199,7 @@ function CallToActionSection() {
         <div className={styles.finalCTAButtons}>
           <Link
             className={clsx('button button--primary button--lg', styles.buttonPrimary)}
-            to="https://github.com/apps/promptfoo-scanner"
+            to="https://github.com/apps/artef-scanner"
           >
             <GitHubIcon />
             Install on GitHub
@@ -225,7 +225,7 @@ export default function GitHubAction(): React.ReactElement {
       <Head>
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/docs/code-scanning/github.png"
+          content="https://www.artef.dev/img/docs/code-scanning/github.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>

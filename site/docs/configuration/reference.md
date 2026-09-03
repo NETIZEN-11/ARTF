@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_position: 2
 sidebar_label: Reference
 title: Configuration Reference - Complete API Documentation
-description: Comprehensive reference for all promptfoo configuration options, properties, and settings. Complete API documentation for evaluation setup.
+description: Comprehensive reference for all artef configuration options, properties, and settings. Complete API documentation for evaluation setup.
 keywords:
   [
-    promptfoo reference,
+    artef reference,
     configuration API,
     evaluation options,
     provider settings,
@@ -18,18 +18,18 @@ pagination_next: configuration/prompts
 
 # Reference
 
-Here is the main structure of the promptfoo configuration file:
+Here is the main structure of the artef configuration file:
 
 ### Config
 
 | Property                        | Type                                                                                                                                                  | Required                       | Description                                                                                                                                                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | description                     | string                                                                                                                                                | No                             | Optional description of what your LLM is trying to do                                                                                                                                                                           |
-| tags                            | Record\<string, string\>                                                                                                                              | No                             | Optional tags to describe the test suite (e.g. `env: production`, `application: chatbot`). Use `promptfoo eval --tag` for run-specific tags.                                                                                    |
+| tags                            | Record\<string, string\>                                                                                                                              | No                             | Optional tags to describe the test suite (e.g. `env: production`, `application: chatbot`). Use `artef eval --tag` for run-specific tags.                                                                                    |
 | providers                       | [ProvidersConfig](#providersconfig)                                                                                                                   | Yes, unless `targets` is set   | One or more [LLM APIs](/docs/providers) to use. Exactly one of `providers` or `targets` must be set.                                                                                                                            |
 | targets                         | [ProvidersConfig](#providersconfig)                                                                                                                   | Yes, unless `providers` is set | Alias for `providers`, commonly used in [red team](/docs/red-team) configs. Exactly one of `targets` or `providers` must be set.                                                                                                |
 | prompts                         | string \| string[] \| Record\<string, string\> \| Prompt[]                                                                                            | Yes                            | One or more [prompts](/docs/configuration/prompts) to load                                                                                                                                                                      |
-| tests                           | string \| (string \| [Test Case](#test-case) \| [Test Generator Config](#test-generator-config))[] \| [Test Generator Config](#test-generator-config) | No                             | Path to a [test file](/docs/configuration/test-cases), inline tests, or a generator. If omitted, promptfoo runs each prompt/provider pair once with empty vars.                                                                 |
+| tests                           | string \| (string \| [Test Case](#test-case) \| [Test Generator Config](#test-generator-config))[] \| [Test Generator Config](#test-generator-config) | No                             | Path to a [test file](/docs/configuration/test-cases), inline tests, or a generator. If omitted, artef runs each prompt/provider pair once with empty vars.                                                                 |
 | scenarios                       | (string \| [Scenario](#scenario))[]                                                                                                                   | No                             | [Scenario](/docs/configuration/scenarios) files or inline scenario definitions                                                                                                                                                  |
 | defaultTest                     | `file://${string}` \| Partial [Test Case](#test-case)                                                                                                 | No                             | Sets the [default properties](/docs/configuration/guide#default-test-cases) for each test case. Can be an inline object or a `file://` path to an external YAML/JSON file.                                                      |
 | outputPath                      | string \| string[]                                                                                                                                    | No                             | Where to write output. Writes to console/web viewer if not set. See [output formats](/docs/configuration/outputs).                                                                                                              |
@@ -40,7 +40,7 @@ Here is the main structure of the promptfoo configuration file:
 | extensions                      | string[] \| null                                                                                                                                      | No                             | List of [extension files](#extension-hooks) to load. Each extension is a file path with a function name. Can be Python (.py) or JavaScript (.js) files. Supported hooks are 'beforeAll', 'afterAll', 'beforeEach', 'afterEach'. |
 | metadata                        | Record\<string, any\>                                                                                                                                 | No                             | Arbitrary metadata stored with the eval config                                                                                                                                                                                  |
 | redteam                         | RedteamConfig                                                                                                                                         | No                             | [Red team](/docs/red-team/configuration) configuration                                                                                                                                                                          |
-| writeLatestResults              | boolean                                                                                                                                               | No                             | Write latest results to promptfoo storage so they can be viewed in the web UI                                                                                                                                                   |
+| writeLatestResults              | boolean                                                                                                                                               | No                             | Write latest results to artef storage so they can be viewed in the web UI                                                                                                                                                   |
 | tracing                         | TracingConfig                                                                                                                                         | No                             | [OpenTelemetry tracing](/docs/tracing) configuration                                                                                                                                                                            |
 | evaluateOptions.maxConcurrency  | number                                                                                                                                                | No                             | Maximum number of concurrent requests. Defaults to 4                                                                                                                                                                            |
 | evaluateOptions.repeat          | number                                                                                                                                                | No                             | Number of times to run each test case. Defaults to 1                                                                                                                                                                            |
@@ -58,11 +58,11 @@ A test case represents a single example input that is fed into all prompts and p
 | Property                       | Type                                                              | Required | Description                                                                                                                                                                                                                     |
 | ------------------------------ | ----------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | description                    | string                                                            | No       | Description of what you're testing                                                                                                                                                                                              |
-| vars                           | Record\<string, [VarValue](#varvalue)\> \| string \| string[]     | No       | Key-value pairs to substitute in the prompt. If `vars` is a string or string array, promptfoo loads test vars from those file paths. See [Test Case Configuration](/docs/configuration/test-cases) for loading vars from files. |
+| vars                           | Record\<string, [VarValue](#varvalue)\> \| string \| string[]     | No       | Key-value pairs to substitute in the prompt. If `vars` is a string or string array, artef loads test vars from those file paths. See [Test Case Configuration](/docs/configuration/test-cases) for loading vars from files. |
 | provider                       | string \| ProviderOptions \| ApiProvider                          | No       | Override the default [provider](/docs/providers) for this specific test case                                                                                                                                                    |
 | providers                      | string[]                                                          | No       | Filter which providers this test runs against. Supports labels, IDs, and wildcards (e.g., `openai:*`). See [filtering tests by provider](/docs/configuration/test-cases#filtering-tests-by-provider).                           |
 | prompts                        | string[]                                                          | No       | Filter this test to run only with specific prompts (by label or ID). Supports wildcards like `Math:*`. See [Filtering Tests by Prompt](/docs/configuration/test-cases#filtering-tests-by-prompt).                               |
-| providerOutput                 | string \| Record\<string, unknown\>                               | No       | Precomputed provider output. When set, promptfoo skips calling the provider and runs assertions directly against this output.                                                                                                   |
+| providerOutput                 | string \| Record\<string, unknown\>                               | No       | Precomputed provider output. When set, artef skips calling the provider and runs assertions directly against this output.                                                                                                   |
 | assert                         | ([Assertion](#assertion) \| [Assertion Set](#assertion-set))[]    | No       | List of automatic checks to run on the LLM output. See [assertions & metrics](/docs/configuration/expected-outputs) for all available types.                                                                                    |
 | assertScoringFunction          | `file://` JavaScript/Python path \| function                      | No       | Custom scoring function that combines named assertion scores into the final grading result.                                                                                                                                     |
 | threshold                      | number                                                            | No       | Test will fail if the combined score of assertions is less than this number                                                                                                                                                     |
@@ -77,7 +77,7 @@ A test case represents a single example input that is fed into all prompts and p
 | options.rubricPrompt           | string \| string[] \| ChatMessage[]                               | No       | Custom prompt for [model-graded](/docs/configuration/expected-outputs/model-graded) assertions                                                                                                                                  |
 | options.factuality             | object                                                            | No       | Score weights for factuality assertions (`subset`, `superset`, `agree`, `disagree`, `differButFactual`)                                                                                                                         |
 | options.disableVarExpansion    | boolean                                                           | No       | If true, arrays in `vars` are not expanded into multiple test cases                                                                                                                                                             |
-| options.disableConversationVar | boolean                                                           | No       | If true, promptfoo does not include the implicit `_conversation` variable in the prompt                                                                                                                                         |
+| options.disableConversationVar | boolean                                                           | No       | If true, artef does not include the implicit `_conversation` variable in the prompt                                                                                                                                         |
 | options.disableDefaultAsserts  | boolean                                                           | No       | If true, this test case does not inherit assertions from `defaultTest.assert`; other `defaultTest` properties still apply                                                                                                       |
 | options.runSerially            | boolean                                                           | No       | If true, run this test case without concurrency regardless of global settings                                                                                                                                                   |
 | options.storeOutputAs          | string                                                            | No       | The output of this test will be stored as a variable, which can be used in subsequent tests. See [multi-turn conversations](/docs/configuration/chat#using-storeoutputas).                                                      |
@@ -216,7 +216,7 @@ Set default values for command-line options. These defaults will be used unless 
 | noShare                  | boolean            | Disable sharing, overriding config-based sharing                                                                                                                                                    |
 | **Caching & Storage**    |                    |                                                                                                                                                                                                     |
 | cache                    | boolean            | Whether to use disk [cache](/docs/configuration/caching) for results (default: true)                                                                                                                |
-| write                    | boolean            | Whether to write results to promptfoo directory (default: true)                                                                                                                                     |
+| write                    | boolean            | Whether to write results to artef directory (default: true)                                                                                                                                     |
 | **Other Options**        |                    |                                                                                                                                                                                                     |
 | watch                    | boolean            | Whether to watch for config changes and re-run automatically                                                                                                                                        |
 | retryErrors              | boolean            | Retry all ERROR results from the latest eval                                                                                                                                                        |
@@ -224,8 +224,8 @@ Set default values for command-line options. These defaults will be used unless 
 
 #### Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - prompt1.txt
   - prompt2.txt
@@ -266,14 +266,14 @@ commandLineOptions:
     max_tokens: '1000'
 ```
 
-With this configuration, running `npx promptfoo eval` will use these defaults. You can still override them:
+With this configuration, running `npx artef eval` will use these defaults. You can still override them:
 
 ```bash
 # Uses maxConcurrency: 10 from config
-npx promptfoo eval
+npx artef eval
 
 # Overrides maxConcurrency to 5
-npx promptfoo eval --max-concurrency 5
+npx artef eval --max-concurrency 5
 ```
 
 ### AssertionValueFunctionContext
@@ -343,15 +343,15 @@ interface TraceData {
 
 :::note
 
-promptfoo supports `.js` and `.json` file extensions in addition to `.yaml`.
+artef supports `.js` and `.json` file extensions in addition to `.yaml`.
 
-It automatically loads `promptfooconfig.*`, but you can use a custom config file with `promptfoo eval -c path/to/config`.
+It automatically loads `artefconfig.*`, but you can use a custom config file with `artef eval -c path/to/config`.
 
 :::
 
 ## Extension Hooks
 
-Promptfoo supports extension hooks that allow you to run custom code that modifies the evaluation state at specific points in the evaluation lifecycle. These hooks are defined in extension files specified in the `extensions` property of the configuration.
+artef supports extension hooks that allow you to run custom code that modifies the evaluation state at specific points in the evaluation lifecycle. These hooks are defined in extension files specified in the `extensions` property of the configuration.
 
 ### Available Hooks
 
@@ -385,13 +385,13 @@ export async function extensionHook(hookName, context) {
 }
 ```
 
-See the working [stateful-session-management example](https://github.com/promptfoo/promptfoo/tree/main/examples/config-stateful-session-management) for a complete implementation.
+See the working [stateful-session-management example](https://github.com/artef/artef/tree/main/examples/config-stateful-session-management) for a complete implementation.
 
 #### Test-Time Session Definition
 
 Session ids returned by your provider in `response.sessionId` will be used as the session id for the test case. If the provider does not return a session id, the test variables (`vars.sessionId`) will be used as fallback.
 
-**For HTTP providers**, you extract session IDs from server responses using a `sessionParser` configuration. The session parser tells promptfoo how to extract the session ID from response headers or body, which then becomes `response.sessionId`. For example:
+**For HTTP providers**, you extract session IDs from server responses using a `sessionParser` configuration. The session parser tells artef how to extract the session ID from response headers or body, which then becomes `response.sessionId`. For example:
 
 ```yaml
 providers:
@@ -465,7 +465,7 @@ Note: The `sessionIds` array only contains defined session IDs - any iterations 
 To implement these hooks, create a JavaScript or Python file with a function that handles the hooks you want to use. Then, specify the path to this file and the function name in the `extensions` array in your configuration.
 
 :::note
-A custom function name receives all event types (`beforeAll`, `afterAll`, `beforeEach`, `afterEach`) with the legacy `(hookName, context)` calling convention. If the function name is exactly one of the hook names, promptfoo only runs it for that hook and calls it as `(context, { hookName })`.
+A custom function name receives all event types (`beforeAll`, `afterAll`, `beforeEach`, `afterEach`) with the legacy `(hookName, context)` calling convention. If the function name is exactly one of the hook names, artef only runs it for that hook and calls it as `(context, { hookName })`.
 :::
 
 Example configuration:
@@ -477,7 +477,7 @@ extensions:
 ```
 
 :::important
-When specifying an extension in the configuration, you must include the function name after the file path, separated by a colon (`:`). This tells promptfoo which function to call in the extension file.
+When specifying an extension in the configuration, you must include the function name after the file path, separated by a colon (`:`). This tells artef which function to call in the extension file.
 :::
 
 Python example extension file:
@@ -574,7 +574,7 @@ async function extensionHook(hookName, context) {
 module.exports = extensionHook;
 ```
 
-These hooks provide powerful extensibility to your promptfoo evaluations, allowing you to implement custom logic for setup, teardown, logging, or integration with other systems. The extension function receives the `hookName` and a `context` object, which contains relevant data for each hook type. You can use this information to perform actions specific to each stage of the evaluation process.
+These hooks provide powerful extensibility to your artef evaluations, allowing you to implement custom logic for setup, teardown, logging, or integration with other systems. The extension function receives the `hookName` and a `context` object, which contains relevant data for each hook type. You can use this information to perform actions specific to each stage of the evaluation process.
 
 The `beforeAll`, `beforeEach`, and `afterEach` hooks may mutate specific properties of their respective `context` arguments in order to modify evaluation state. To persist these changes, the hook must return the modified context.
 
@@ -636,7 +636,7 @@ interface GuardrailResponse {
 }
 ```
 
-For a custom target, set `flagged` explicitly. `flaggedInput: true` or `flaggedOutput: true` without `flagged: true` is diagnostic only and does not fail the assertion. If both the top-level object and the final `metadata.redteamHistory` guardrail entry are absent, Promptfoo currently treats the response as unflagged; this does not prove that a guardrail ran.
+For a custom target, set `flagged` explicitly. `flaggedInput: true` or `flaggedOutput: true` without `flagged: true` is diagnostic only and does not fail the assertion. If both the top-level object and the final `metadata.redteamHistory` guardrail entry are absent, artef currently treats the response as unflagged; this does not prove that a guardrail ran.
 
 ## Transformation Pipeline
 
@@ -952,7 +952,7 @@ interface TestSuiteConfig {
   // Red team configuration
   redteam?: RedteamConfig;
 
-  // Whether to write latest results to promptfoo storage. This enables you to use the web viewer.
+  // Whether to write latest results to artef storage. This enables you to use the web viewer.
   writeLatestResults?: boolean;
 
   // OpenTelemetry tracing configuration

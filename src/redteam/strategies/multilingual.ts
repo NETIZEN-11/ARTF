@@ -1,4 +1,4 @@
-import async from 'async';
+﻿import async from 'async';
 import { Presets, SingleBar } from 'cli-progress';
 import dedent from 'dedent';
 import cliState from '../../cliState';
@@ -21,7 +21,7 @@ import type { StrategyRuntimeContext } from './types';
  * The global language config applies to all plugins and strategies, providing the same functionality
  * with a simpler architecture.
  *
- * Migration guide: https://www.promptfoo.dev/docs/red-team/configuration/#language
+ * Migration guide: https://www.artef.dev/docs/red-team/configuration/#language
  *
  * Example:
  * ```yaml
@@ -534,8 +534,8 @@ export async function translateBatch(
 }
 
 /**
- * Cloud-consumed: promptfoo-cloud's server/src/task/multilingual.ts imports this
- * via @promptfoo/redteam/strategies/multilingual. Keep the export (and file)
+ * Cloud-consumed: artef-cloud's server/src/task/multilingual.ts imports this
+ * via @artef/redteam/strategies/multilingual. Keep the export (and file)
  * even if in-repo references disappear.
  */
 export async function addMultilingual(
@@ -546,7 +546,7 @@ export async function addMultilingual(
 ): Promise<TestCase[]> {
   // Deprecation warning - this strategy will be removed in a future version
   logger.debug(
-    '[DEPRECATED] The "multilingual" strategy is deprecated. Use the top-level "language" config instead. See: https://www.promptfoo.dev/docs/red-team/configuration/#language',
+    '[DEPRECATED] The "multilingual" strategy is deprecated. Use the top-level "language" config instead. See: https://www.artef.dev/docs/red-team/configuration/#language',
   );
 
   // Check if tests were already generated with language modifiers
@@ -620,7 +620,7 @@ export async function addMultilingual(
         ...testCase,
         assert: testCase.assert?.map((assertion) => ({
           ...assertion,
-          metric: assertion.type?.startsWith('promptfoo:redteam:')
+          metric: assertion.type?.startsWith('artef:redteam:')
             ? `${assertion.type?.split(':').pop() || assertion.metric}/Multilingual-${lang.toUpperCase()}`
             : assertion.metric,
         })),

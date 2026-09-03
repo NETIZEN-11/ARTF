@@ -1,9 +1,9 @@
-# redteam-xstest (XSTest Plugin Example)
+﻿# redteam-xstest (XSTest Plugin Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-xstest
+npx artef@latest init --example redteam-xstest
 cd redteam-xstest
 ```
 
@@ -26,7 +26,7 @@ The benchmark focuses on testing whether language models can:
 ## Running the Example
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 ```
 
 ## Data Source

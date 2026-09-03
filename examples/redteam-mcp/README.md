@@ -1,11 +1,11 @@
-# redteam-mcp (Red Team Model Context Protocol)
+﻿# redteam-mcp (Red Team Model Context Protocol)
 
 This example demonstrates red teaming an AI assistant that uses Model Context Protocol (MCP) for tool use capabilities. The example focuses on testing various attack vectors specific to MCP implementations, such as function call exploits, system prompt leakage, unauthorized tool discovery, and other MCP-specific vulnerabilities.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-mcp
+npx artef@latest init --example redteam-mcp
 cd redteam-mcp
 ```
 
@@ -30,7 +30,7 @@ export ANTHROPIC_API_KEY=your_anthropic_key_here
 1. Initialize the example:
 
    ```bash
-   npx promptfoo@latest init --example redteam-mcp
+   npx artef@latest init --example redteam-mcp
    ```
 
 2. Navigate to the example directory:
@@ -41,7 +41,7 @@ export ANTHROPIC_API_KEY=your_anthropic_key_here
 
 3. Run the red team evaluation:
    ```bash
-   npx promptfoo redteam run
+   npx artef redteam run
    ```
 
 ## What This Example Tests
@@ -62,7 +62,7 @@ This example evaluates an AI customer support agent implementing MCP with the fo
 This example is configured to test the Anthropic Claude 4 Sonnet model with MCP enabled. The MCP server is specified as:
 
 ```text
-https://customer-service-mcp-server-example.promptfoo.app/mcp
+https://customer-service-mcp-server-example.artef.app/mcp
 ```
 
 ## Testing Strategies
@@ -79,7 +79,7 @@ After running the evaluation, you'll see a report showing which attack vectors w
 
 ## Customization
 
-You can modify the `promptfooconfig.yaml` file to:
+You can modify the `artefconfig.yaml` file to:
 
 - Test different providers (recommended: `anthropic:claude-sonnet-4-6`)
 - Add or remove red team plugins

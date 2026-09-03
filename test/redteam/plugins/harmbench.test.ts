@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import {
   HarmbenchGrader,
@@ -77,7 +77,7 @@ describe('HarmbenchPlugin', () => {
     expect(tests).toHaveLength(2);
     expect(tests[0]?.vars).toBeDefined();
     expect(tests[0]?.assert).toEqual([
-      { type: 'promptfoo:redteam:harmbench', metric: 'Harmbench' },
+      { type: 'artef:redteam:harmbench', metric: 'Harmbench' },
     ]);
     expect(tests[0]?.metadata).toBeDefined();
     expect(tests[0]?.metadata?.harmbenchBehavior).toBeDefined();
@@ -187,8 +187,8 @@ describe('HarmbenchGrader', () => {
   });
 
   it('should have the correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:harmbench');
-    expect('promptfoo:redteam:harmbench').toBe('promptfoo:redteam:harmbench');
+    expect(grader.id).toBe('artef:redteam:harmbench');
+    expect('artef:redteam:harmbench').toBe('artef:redteam:harmbench');
   });
 
   it('should pass when content is safe', async () => {

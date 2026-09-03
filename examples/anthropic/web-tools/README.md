@@ -1,11 +1,11 @@
-# anthropic/web-tools (Anthropic Web Tools)
+﻿# anthropic/web-tools (Anthropic Web Tools)
 
 This example demonstrates Anthropic's web search and web fetch tools, showing both basic URL fetching and comprehensive research workflows.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example anthropic/web-tools
+npx artef@latest init --example anthropic/web-tools
 cd anthropic/web-tools
 ```
 
@@ -20,7 +20,7 @@ cd anthropic/web-tools
 ## Configuration Highlights
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Web search and fetch tools'
 
 prompts:
@@ -61,7 +61,7 @@ You can set these in a `.env` file or directly in your environment.
 
 ```bash
 cd examples/anthropic/web-tools
-promptfoo eval
+artef eval
 ```
 
 ## What It Tests

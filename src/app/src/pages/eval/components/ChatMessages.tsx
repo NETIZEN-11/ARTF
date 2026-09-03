@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 
 import { cn } from '@app/lib/utils';
 import { resolveAudioSource, resolveImageSource } from '@app/utils/media';
-import invariant from '@promptfoo/util/invariant';
+import invariant from '@artef/util/invariant';
 import { Crosshair, Swords } from 'lucide-react';
 
 interface BaseMessage {

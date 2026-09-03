@@ -1,4 +1,4 @@
-import { getEnvString } from '../envars';
+﻿import { getEnvString } from '../envars';
 import { createNscaleImageProvider } from './nscale/image';
 import { OpenAiChatCompletionProvider } from './openai/chat';
 import { OpenAiCompletionProvider } from './openai/completion';
@@ -16,7 +16,7 @@ import type { ApiProvider, ProviderOptions } from '../types/index';
  * Documentation: https://docs.nscale.com/
  */
 /**
- * Config keys promptfoo consumes itself rather than forwarding to the model.
+ * Config keys artef consumes itself rather than forwarding to the model.
  *
  * `passthrough` is serialized verbatim into the request body, so anything spread
  * into it is sent to Nscale as a model parameter. Spreading the whole user config
@@ -54,7 +54,7 @@ export function createNscaleProvider(
 
   const config = options.config?.config || {};
 
-  // Split the user's config into settings promptfoo handles (auth, routing,
+  // Split the user's config into settings artef handles (auth, routing,
   // headers, cost overrides) and genuine model parameters, so only the latter
   // reach the request body.
   const { passthrough: explicitPassthrough, ...configOptions } = config;

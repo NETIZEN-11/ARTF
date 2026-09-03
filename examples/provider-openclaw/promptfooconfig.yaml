@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: OpenClaw provider end-to-end test
 
 prompts:
@@ -32,7 +32,7 @@ tests:
 # WebSocket Agent (native WS RPC protocol):
 #  - id: openclaw:agent:main
 #    config:
-#      session_key: promptfoo-eval
+#      session_key: artef-eval
 #      thinking_level: adaptive
 #      timeoutMs: 60000
 #

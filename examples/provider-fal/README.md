@@ -1,13 +1,13 @@
-# provider-fal (fal.ai Image Generation Example)
+﻿# provider-fal (fal.ai Image Generation Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-fal
+npx artef@latest init --example provider-fal
 cd provider-fal
 ```
 
-Demonstrates how to evaluate and compare image generation models using promptfoo.
+Demonstrates how to evaluate and compare image generation models using artef.
 
 ## Setup
 
@@ -22,7 +22,7 @@ Demonstrates how to evaluate and compare image generation models using promptfoo
    ```
 4. **Run the evaluation**:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 ## What This Example Shows
@@ -43,14 +43,14 @@ The evaluation generates a comparison table showing:
 ## View Results
 
 ```bash
-promptfoo view
+artef view
 ```
 
 Opens the web interface to browse generated images and compare model outputs.
 
 ## Customize the Example
 
-Edit `promptfooconfig.yaml` to:
+Edit `artefconfig.yaml` to:
 
 - Try different models from [fal.ai/models](https://fal.ai/models)
 - Add your own prompts
@@ -60,5 +60,5 @@ Edit `promptfooconfig.yaml` to:
 
 ## Documentation
 
-- [promptfoo fal provider](https://promptfoo.dev/docs/providers/fal)
+- [artef fal provider](https://artef.dev/docs/providers/fal)
 - [fal.ai models](https://fal.ai/models)

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -11,8 +11,8 @@ import {
 import { HelperText } from '@app/components/ui/helper-text';
 import { Input } from '@app/components/ui/input';
 import { Label } from '@app/components/ui/label';
-import { isJavascriptFile } from '@promptfoo/util/fileExtensions';
-import type { ProviderOptions } from '@promptfoo/types';
+import { isJavascriptFile } from '@artef/util/fileExtensions';
+import type { ProviderOptions } from '@artef/types';
 
 interface AddLocalProviderDialogProps {
   open: boolean;
@@ -70,7 +70,7 @@ const AddLocalProviderDialog = ({ open, onClose, onAdd }: AddLocalProviderDialog
         <div className="space-y-4 py-4">
           <p className="text-sm text-muted-foreground">
             Enter the absolute path to your local provider implementation (.py, .js or .rb file).
-            This file will be referenced in your promptfoo configuration.
+            This file will be referenced in your artef configuration.
           </p>
 
           <div className="space-y-2">

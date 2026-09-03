@@ -1,12 +1,12 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: LLM-as-judge on MAI-generated images (vision rubric)
 
 # Grade generated images with a vision-capable LLM. The grader must receive the
 # actual image, so run this with inline media so {{output}} is a base64 data URL
-# the vision model can read (otherwise the output is a promptfoo://blob/... ref
+# the vision model can read (otherwise the output is a artef://blob/... ref
 # that the grader's API can't fetch):
 #
-#   PROMPTFOO_INLINE_MEDIA=true promptfoo eval --no-cache
+#   artef_INLINE_MEDIA=true artef eval --no-cache
 #
 # Requires AZURE_API_HOST + AZURE_API_KEY (image provider) and OPENAI_API_KEY
 # (vision grader).

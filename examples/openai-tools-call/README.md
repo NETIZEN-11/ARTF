@@ -1,6 +1,6 @@
-# openai-tools-call (OpenAI Tools Call Example)
+﻿# openai-tools-call (OpenAI Tools Call Example)
 
-This example demonstrates how to use promptfoo to evaluate OpenAI's tools calling capabilities. It shows how to define and test tool usage with the Chat Completions API.
+This example demonstrates how to use artef to evaluate OpenAI's tools calling capabilities. It shows how to define and test tool usage with the Chat Completions API.
 
 ## Features Demonstrated
 
@@ -22,15 +22,15 @@ You can set this in a `.env` file or directly in your environment.
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-tools-call
+npx artef@latest init --example openai-tools-call
 # and then
 cd openai-tools-call
 
 # Run the evaluation
-npx promptfoo eval
+npx artef eval
 
 # View the results
-npx promptfoo view
+npx artef view
 ```
 
 ## What This Example Does
@@ -54,4 +54,4 @@ The configuration defines a custom tool for getting weather information. It then
 For more details, see:
 
 - [OpenAI Tools documentation](https://platform.openai.com/docs/guides/function-calling)
-- [promptfoo OpenAI Provider documentation](https://promptfoo.dev/docs/providers/openai#using-tools-and-functions)
+- [artef OpenAI Provider documentation](https://artef.dev/docs/providers/openai#using-tools-and-functions)

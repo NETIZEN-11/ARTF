@@ -1,4 +1,4 @@
-import { parse as csvParse } from 'csv-parse/sync';
+﻿import { parse as csvParse } from 'csv-parse/sync';
 import dedent from 'dedent';
 import logger from '../../logger';
 import { getRequestTimeoutMs } from '../../providers/shared';
@@ -7,7 +7,7 @@ import { RedteamGraderBase, RedteamPluginBase } from './base';
 
 import type { Assertion, PluginConfig, TestCase } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:harmbench';
+const PLUGIN_ID = 'artef:redteam:harmbench';
 
 const DATASET_URL =
   'https://raw.githubusercontent.com/centerforaisafety/HarmBench/c0423b952435fcc8467108d8f25962dbae5b7de2/data/behavior_datasets/harmbench_behaviors_text_all.csv';

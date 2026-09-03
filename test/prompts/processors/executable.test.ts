@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -81,7 +81,7 @@ describe('processExecutableFile', () => {
     let scriptPath: string;
 
     beforeAll(async () => {
-      tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-executable-test-'));
+      tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-executable-test-'));
       scriptPath = path.join(tempDir, 'shared-test-script.sh');
       fs.writeFileSync(
         scriptPath,

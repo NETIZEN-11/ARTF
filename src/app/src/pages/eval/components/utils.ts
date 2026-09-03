@@ -1,7 +1,7 @@
-import { useSyncExternalStore } from 'react';
+﻿import { useSyncExternalStore } from 'react';
 
-import { HUMAN_ASSERTION_TYPE } from '@promptfoo/providers/constants';
-import type { EvaluateTableOutput, PromptMetrics } from '@promptfoo/types';
+import { HUMAN_ASSERTION_TYPE } from '@artef/providers/constants';
+import type { EvaluateTableOutput, PromptMetrics } from '@artef/types';
 
 const EVAL_OUTPUT_PROMPT_HASH_PATTERN = /^#details-row-(\d+)-prompt-(\d+)$/;
 

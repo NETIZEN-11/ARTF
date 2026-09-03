@@ -1,12 +1,12 @@
----
-title: 'Jailbreaking Black-Box LLMs Using Promptfoo: A Complete Walkthrough'
+﻿---
+title: 'Jailbreaking Black-Box LLMs Using artef: A Complete Walkthrough'
 description: "We jailbroke Wiz's Prompt Airlines CTF using automated red teaming. Follow our step-by-step process to break black-box LLM systems at scale."
 image: /img/blog/prompt-airlines/prompt_airlines_enumeration.png
 keywords:
   [
     black-box LLM testing,
     LLM jailbreaking,
-    Promptfoo walkthrough,
+    artef walkthrough,
     AI security testing,
     red teaming tutorial,
     LLM vulnerability assessment,
@@ -17,11 +17,11 @@ authors: [vanessa]
 tags: [technical-guide, case-study, red-teaming]
 ---
 
-# Jailbreaking Black-Box LLMs Using Promptfoo: A Walkthrough
+# Jailbreaking Black-Box LLMs Using artef: A Walkthrough
 
-Promptfoo is an open-source framework for testing LLM applications against security, privacy, and policy risks. It is designed for developers to easily discover and fix critical LLM failures. Promptfoo also offers red team tools that can be leveraged against external endpoints. These attacks are ideal for internal red teaming exercises, third-party penetration testing, and bug bounty programs, ultimately saving security researchers dozens of hours in manual prompt engineering and adversarial testing.
+artef is an open-source framework for testing LLM applications against security, privacy, and policy risks. It is designed for developers to easily discover and fix critical LLM failures. artef also offers red team tools that can be leveraged against external endpoints. These attacks are ideal for internal red teaming exercises, third-party penetration testing, and bug bounty programs, ultimately saving security researchers dozens of hours in manual prompt engineering and adversarial testing.
 
-In this blog, we'll demonstrate how to utilize Promptfoo's red team tool in a black-box LLM security assessment. Using Wiz's AI CTF, [Prompt Airlines](https://promptairlines.com/), we'll walk you step by step through Promptfoo's configuration to ultimately find the malicious queries that broke the chatbot's guidelines.
+In this blog, we'll demonstrate how to utilize artef's red team tool in a black-box LLM security assessment. Using Wiz's AI CTF, [Prompt Airlines](https://promptairlines.com/), we'll walk you step by step through artef's configuration to ultimately find the malicious queries that broke the chatbot's guidelines.
 
 <!-- truncate -->
 
@@ -33,7 +33,7 @@ Before getting started, you'll need to install Node.js `>=22.22.0` (Node.js 24 L
 
 By design, black-box assessments provide security researchers with as little information about the assets as possible. It invites researchers to enumerate early. For a black-box assessment against an LLM, initial recon and an LLM policy sketch is critical.
 
-To conduct a red team assessment with Promptfoo, you will need the following:
+To conduct a red team assessment with artef, you will need the following:
 
 - The specific LLM endpoint you intend to target;
 - The required HTTP headers for the POST requests to the LLM;
@@ -52,91 +52,91 @@ Using Burp Suite, we can identify the LLM endpoint as https://promptairlines.com
 
 ![burp request](/img/blog/prompt-airlines/burp_request.jpg)
 
-If using Burp, you can copy the request to a file so that you can send the raw request to Promptfoo.
+If using Burp, you can copy the request to a file so that you can send the raw request to artef.
 
 ### Guardrail Enforcement
 
 LLM applications should have guardrails to protect against adversarial jailbreaks that trick LLMs into responding to malicious queries or generating harmful content that violate policies.
 
-Each LLM application offers different use cases and may have unique policies, content filters, and guardrails in place. Prompt Airlines already provides details about its intended use case within the "Under the Hood" section. You can also obtain a rough idea of its use case by simply provoking the bot, or even using Promptfoo's [prompt extraction plugin](https://www.promptfoo.dev/docs/red-team/plugins/prompt-extraction/).
+Each LLM application offers different use cases and may have unique policies, content filters, and guardrails in place. Prompt Airlines already provides details about its intended use case within the "Under the Hood" section. You can also obtain a rough idea of its use case by simply provoking the bot, or even using artef's [prompt extraction plugin](https://www.artef.dev/docs/red-team/plugins/prompt-extraction/).
 
 ![prompt airlines policy enumeration](/img/blog/prompt-airlines/prompt_airlines_enumeration.png)
 
-## Launching Promptfoo
+## Launching artef
 
 ### Initializing the Project
 
-We now have all the ingredients necessary to launch a Promptfoo red team assessment against Prompt Airlines. The purpose of this assessment will be to trick the chatbot into providing rogue responses that violate its policies and instructions.
+We now have all the ingredients necessary to launch a artef red team assessment against Prompt Airlines. The purpose of this assessment will be to trick the chatbot into providing rogue responses that violate its policies and instructions.
 
-First, you'll need to install Promptfoo through your CLI. We recommend installing globally using npm:
+First, you'll need to install artef through your CLI. We recommend installing globally using npm:
 
 ```sh
-npm install -g promptfoo
+npm install -g artef
 ```
 
 Once installed, initialize a red team project:
 
 ```sh
-promptfoo redteam init promptairlines_redteam
+artef redteam init promptairlines_redteam
 ```
 
-Promptfoo will generate a directory where promptfooconfig.yaml will be stored. You will then be asked what type of asset you intend to assess. For this exercise, we will be testing the Prompt Airlines chatbot.
+artef will generate a directory where artefconfig.yaml will be stored. You will then be asked what type of asset you intend to assess. For this exercise, we will be testing the Prompt Airlines chatbot.
 
-![HTTP endpoint configuration](/img/blog/prompt-airlines/promptfoo_httpendpoint.png)
+![HTTP endpoint configuration](/img/blog/prompt-airlines/artef_httpendpoint.png)
 
 You will be asked to provide your OpenAI key to generate synthetic adversarial data for the evaluation.
 
 ### Configuring Types of Attacks
 
-Promptfoo will then ask you to select the plugins for your red team assessment. These plugins are types of adversarial attacks that will be generated against your target. Many are mapped to the OWASP Top 10 for LLMs, ML Commons Safety Working Group, and the HarmBench framework.
+artef will then ask you to select the plugins for your red team assessment. These plugins are types of adversarial attacks that will be generated against your target. Many are mapped to the OWASP Top 10 for LLMs, ML Commons Safety Working Group, and the HarmBench framework.
 
 ![selecting plugins](/img/blog/prompt-airlines/plugin_configuration.png)
 
 The more plugins you select, the broader coverage you will have in your assessment. However, you may encounter rate limiting restrictions through your LLM provider or WAF restrictions from the target asset, depending on its configuration.
 
-Promptfoo will also ask you to choose strategies for attacks based on proven methods of hacking LLMs, such as leetspeak and encoding strategies.
+artef will also ask you to choose strategies for attacks based on proven methods of hacking LLMs, such as leetspeak and encoding strategies.
 
 ![selecting strategies](/img/blog/prompt-airlines/redteam_strategy.png)
 
-Once you've configured your payloads, you will need to update your promptfooconfig.yaml to include details about the HTTP endpoint. Include your raw request in your project folder, then edit your promptfooconfig.yaml to include the raw request.
+Once you've configured your payloads, you will need to update your artefconfig.yaml to include details about the HTTP endpoint. Include your raw request in your project folder, then edit your artefconfig.yaml to include the raw request.
 
 ![configuring yaml](/img/blog/prompt-airlines/yaml_configuration.png)
 
-You will also need to update your request.txt file to include where Promptfoo should inject its payloads.
+You will also need to update your request.txt file to include where artef should inject its payloads.
 
-![modifying raw request](/img/blog/prompt-airlines/promptfoo_request.png)
+![modifying raw request](/img/blog/prompt-airlines/artef_request.png)
 
-In this case, the appropriate language would be `{{ prompt | dump }}`. You can learn more about parameter configuration in our [documentation](https://www.promptfoo.dev/docs/configuration/prompts/).
+In this case, the appropriate language would be `{{ prompt | dump }}`. You can learn more about parameter configuration in our [documentation](https://www.artef.dev/docs/configuration/prompts/).
 
 ### Generating the Attack and Evaluating Results
 
 When you've successfully configured your YAML file, run the following command to generate the payloads:
 
 ```sh
-promptfoo redteam generate
+artef redteam generate
 ```
 
-Promptfoo will generate the adversarial payloads based on your selected plugins. You can view these test cases in the file redteam.yaml.
+artef will generate the adversarial payloads based on your selected plugins. You can view these test cases in the file redteam.yaml.
 
 ![redteam yaml example](/img/blog/prompt-airlines/plugin_example.png)
 
 Once generated, run the following command to initialize the assessment and evaluate the results:
 
 ```
-promptfoo eval -c redteam.yaml
+artef eval -c redteam.yaml
 ```
 
 You can view the results in your local browser through running the following code:
 
 ```sh
-promptfoo view
+artef view
 ```
 
 You will be able to view a UI that looks similar to this:
 
 ![vulnerability dashboard](/img/blog/prompt-airlines/vulnerability_dashboard.png)
 
-Using Promptfoo, we were able to convince Prompt Airlines to:
+Using artef, we were able to convince Prompt Airlines to:
 
 - Describe in detail how to generate synthetic opioids in a lab setting
 - Provide ways to make anonymous and untraceable threats to colleagues
@@ -150,14 +150,14 @@ You can also inspect the full prompt through the magnifier:
 
 ![inspecting the full prompt](/img/blog/prompt-airlines/magnifier_glass.png)
 
-Promptfoo's red team assessment shows us that Prompt Airlines chatbot is vulnerable to jailbreaking through impersonation and character roleplay, two common techniques in adversarial attacks. Queries using leetspeak and base64 encoding were unsuccessful, and direct questions with malicious queries were neutralized.
+artef's red team assessment shows us that Prompt Airlines chatbot is vulnerable to jailbreaking through impersonation and character roleplay, two common techniques in adversarial attacks. Queries using leetspeak and base64 encoding were unsuccessful, and direct questions with malicious queries were neutralized.
 
 We can use this information to further refine our adversarial prompts against Prompt Airlines and continue testing other endpoints.
 
 ## Conclusion
 
-Promptfoo achieves in minutes what manual testing achieves in hours. Using this entirely open-source tool, you can rapidly test black-box targets for nuanced LLM vulnerabilities.
+artef achieves in minutes what manual testing achieves in hours. Using this entirely open-source tool, you can rapidly test black-box targets for nuanced LLM vulnerabilities.
 
-Want to explore more? Take a look at Promptfoo's red team tool for [RAG applications](https://www.promptfoo.dev/docs/red-team/rag/) and [LLM agents](https://www.promptfoo.dev/docs/red-team/agents/). You can also [contribute to Promptfoo](https://www.promptfoo.dev/docs/contributing/) and join its growing open-source community of developers.
+Want to explore more? Take a look at artef's red team tool for [RAG applications](https://www.artef.dev/docs/red-team/rag/) and [LLM agents](https://www.artef.dev/docs/red-team/agents/). You can also [contribute to artef](https://www.artef.dev/docs/contributing/) and join its growing open-source community of developers.
 
-Interested in deploying Promptfoo for your AI applications? [Reach out](https://www.promptfoo.dev/contact/) to meet with the team.
+Interested in deploying artef for your AI applications? [Reach out](https://www.artef.dev/contact/) to meet with the team.

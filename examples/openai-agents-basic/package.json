@@ -1,13 +1,13 @@
-{
-  "name": "@promptfoo/openai-agents-basic-example",
+﻿{
+  "name": "@artef/openai-agents-basic-example",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "description": "D&D adventure game with OpenAI Agents SDK - dungeon master with dice rolling and character management",
   "type": "module",
   "scripts": {
-    "eval": "promptfoo eval",
-    "view": "promptfoo view"
+    "eval": "artef eval",
+    "view": "artef view"
   },
   "dependencies": {
     "@openai/agents": "^0.11.3",

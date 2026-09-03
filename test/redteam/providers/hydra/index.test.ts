@@ -1,6 +1,6 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+﻿import { afterEach, beforeAll, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import * as evaluatorHelpers from '../../../../src/evaluatorHelpers';
-import { PromptfooChatCompletionProvider } from '../../../../src/providers/promptfoo';
+import { artefChatCompletionProvider } from '../../../../src/providers/artef';
 import {
   neverGenerateRemote,
   shouldGenerateRemote,
@@ -49,10 +49,10 @@ const mockApplyRuntimeTransforms = vi.hoisted(() =>
   })),
 );
 
-vi.mock('../../../../src/providers/promptfoo', async (importOriginal) => {
+vi.mock('../../../../src/providers/artef', async (importOriginal) => {
   return {
     ...(await importOriginal()),
-    PromptfooChatCompletionProvider: vi.fn(),
+    artefChatCompletionProvider: vi.fn(),
   };
 });
 
@@ -146,7 +146,7 @@ describe('HydraProvider', () => {
     };
 
     // Setup mocks
-    (PromptfooChatCompletionProvider as Mock).mockImplementation(function () {
+    (artefChatCompletionProvider as Mock).mockImplementation(function () {
       return mockAgentProvider;
     });
     mockGetGraderById.mockImplementation(function () {
@@ -219,7 +219,7 @@ describe('HydraProvider', () => {
       expect(() => {
         new HydraProvider({ injectVar: 'input' });
       }).toThrow(
-        'jailbreak:hydra strategy requires remote generation, which is currently disabled for this configuration. To enable it, run with --remote, set PROMPTFOO_REMOTE_GENERATION_URL to a self-hosted endpoint, or log into Promptfoo Cloud with `promptfoo auth login`.',
+        'jailbreak:hydra strategy requires remote generation, which is currently disabled for this configuration. To enable it, run with --remote, set artef_REMOTE_GENERATION_URL to a self-hosted endpoint, or log into artef Cloud with `artef auth login`.',
       );
     });
 
@@ -232,7 +232,7 @@ describe('HydraProvider', () => {
       expect(() => {
         new HydraProvider({ injectVar: 'input' });
       }).toThrow(
-        /jailbreak:hydra strategy requires remote generation, which has been explicitly disabled\. To enable it, unset (PROMPTFOO_DISABLE_REMOTE_GENERATION|PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION)/,
+        /jailbreak:hydra strategy requires remote generation, which has been explicitly disabled\. To enable it, unset (artef_DISABLE_REMOTE_GENERATION|artef_DISABLE_REDTEAM_REMOTE_GENERATION)/,
       );
     });
 
@@ -252,7 +252,7 @@ describe('HydraProvider', () => {
     it('should create agent provider with correct config', () => {
       new HydraProvider({ injectVar: 'input', targetId: 'cloud-target-123' });
 
-      expect(PromptfooChatCompletionProvider).toHaveBeenCalledWith({
+      expect(artefChatCompletionProvider).toHaveBeenCalledWith({
         task: 'hydra-decision',
         jsonOnly: true,
         preferSmallModel: false,
@@ -264,7 +264,7 @@ describe('HydraProvider', () => {
   describe('id()', () => {
     it('should return correct provider id', () => {
       const provider = new HydraProvider({ injectVar: 'input' });
-      expect(provider.id()).toBe('promptfoo:redteam:hydra');
+      expect(provider.id()).toBe('artef:redteam:hydra');
     });
   });
 

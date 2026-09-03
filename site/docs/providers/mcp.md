@@ -1,12 +1,12 @@
----
+﻿---
 sidebar_label: MCP (Model Context Protocol)
 title: MCP Provider
-description: Use Model Context Protocol (MCP) servers as providers in promptfoo for testing agentic systems and tool-calling capabilities
+description: Use Model Context Protocol (MCP) servers as providers in artef for testing agentic systems and tool-calling capabilities
 ---
 
 # MCP (Model Context Protocol) Provider
 
-The `mcp` provider allows you to use Model Context Protocol (MCP) servers directly as providers in promptfoo. This is particularly useful for red teaming and testing agentic systems that rely on MCP tools for function calling, data access, and external integrations.
+The `mcp` provider allows you to use Model Context Protocol (MCP) servers directly as providers in artef. This is particularly useful for red teaming and testing agentic systems that rely on MCP tools for function calling, data access, and external integrations.
 
 Unlike the [MCP integration for other providers](../integrations/mcp.md), the MCP provider treats the MCP server itself as the target system under test, allowing you to evaluate security vulnerabilities and robustness of MCP-based applications.
 
@@ -17,13 +17,13 @@ To use the MCP provider, you need to have an MCP server running. This can be a l
 ### Prerequisites
 
 1. An MCP server (local or remote)
-2. Node.js dependencies for MCP SDK (automatically handled by promptfoo)
+2. Node.js dependencies for MCP SDK (automatically handled by artef)
 
 ## Basic Configuration
 
 The most basic MCP provider configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: mcp
     config:
@@ -275,7 +275,7 @@ providers:
 
 ### Response Transforms
 
-Use `transformResponse` when the MCP tool result needs to be reshaped before Promptfoo evaluates it.
+Use `transformResponse` when the MCP tool result needs to be reshaped before artef evaluates it.
 This is useful when a tool returns structured content, multiple content blocks, or metadata that you
 want to promote into a `ProviderResponse`.
 
@@ -297,7 +297,7 @@ providers:
 The transform receives three arguments:
 
 - `result`: The raw MCP SDK tool result
-- `content`: Promptfoo's normalized string representation of the tool result
+- `content`: artef's normalized string representation of the tool result
 - `context`: Tool-call metadata with `toolName`, `toolArgs`, and `originalPayload`
 
 You can provide the transform as a JavaScript expression, a function, or a file reference:
@@ -315,7 +315,7 @@ module.exports = (result, content, context) => ({
 
 Return a primitive value to set `output`, or return a full `ProviderResponse` object when you need
 fields such as `metadata`, `guardrails`, or `sessionId`.
-Function and file-based transforms may be async; Promptfoo awaits them before evaluating the tool
+Function and file-based transforms may be async; artef awaits them before evaluating the tool
 result.
 
 ### Timeout Configuration
@@ -382,8 +382,8 @@ The MCP provider expects prompts to be formatted as JSON tool calls. The expecte
 
 ### Example Test Case
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Testing MCP payment processing system
 
 providers:
@@ -415,8 +415,8 @@ tests:
 
 The MCP provider is particularly powerful for red team testing of agentic systems. Here's a recommended configuration for comprehensive security testing:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: MCP Red Team Security Testing
 
 providers:
@@ -520,15 +520,15 @@ This will log:
 
 For complete working examples, see:
 
-- [Basic MCP Red Team Testing](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-mcp)
-- [MCP Authentication](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-mcp-auth) - OAuth and other authentication methods
-- [Simple MCP Integration](https://github.com/promptfoo/promptfoo/tree/main/examples/simple-mcp)
+- [Basic MCP Red Team Testing](https://github.com/artef/artef/tree/main/examples/redteam-mcp)
+- [MCP Authentication](https://github.com/artef/artef/tree/main/examples/redteam-mcp-auth) - OAuth and other authentication methods
+- [Simple MCP Integration](https://github.com/artef/artef/tree/main/examples/simple-mcp)
 
 You can initialize these examples with:
 
 ```bash
-npx promptfoo@latest init --example redteam-mcp
-npx promptfoo@latest init --example redteam-mcp-auth
+npx artef@latest init --example redteam-mcp
+npx artef@latest init --example redteam-mcp-auth
 ```
 
 ## See Also

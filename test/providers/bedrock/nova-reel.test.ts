@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { disableCache, enableCache } from '../../../src/cache';
 import { NovaReelVideoProvider } from '../../../src/providers/bedrock/nova-reel';
 import { sleep } from '../../../src/util/time';
@@ -81,7 +81,7 @@ vi.mock('@aws-sdk/client-s3', () => ({
 vi.mock('../../../src/blobs', () => ({
   storeBlob: vi.fn().mockResolvedValue({
     ref: {
-      uri: 'promptfoo://blob/abc123',
+      uri: 'artef://blob/abc123',
       hash: 'abc123',
       mimeType: 'video/mp4',
       sizeBytes: 1000,

@@ -1,5 +1,5 @@
----
-title: 'How to replicate the Claude Code attack with Promptfoo'
+﻿---
+title: 'How to replicate the Claude Code attack with artef'
 authors: [ian]
 date: 2025-11-17
 tags: [ai-security, red-teaming, agents, cyber-espionage, jailbreak]
@@ -33,15 +33,15 @@ Our sandboxed reproduction resulted in Claude taking actions such as:
 
 ## The setup
 
-We'll reproduce the attack by pointing Promptfoo at the [Claude Agent SDK](https://docs.claude.com/en/docs/agent-sdk/overview), which is the harness that powers Claude Code.
+We'll reproduce the attack by pointing artef at the [Claude Agent SDK](https://docs.claude.com/en/docs/agent-sdk/overview), which is the harness that powers Claude Code.
 
-Worth noting that Promptfoo can test _any_ application or model - including by HTTP endpoint, web browser, inference engine, or by hooking directly into code.
+Worth noting that artef can test _any_ application or model - including by HTTP endpoint, web browser, inference engine, or by hooking directly into code.
 
-(To skip to the end and view the full Promptfoo config, click [here](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk/cyber-espionage))
+(To skip to the end and view the full artef config, click [here](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk/cyber-espionage))
 
 ### Step 1: Set Up a Test Environment
 
-Create a sandboxed VM or container for testing. Running Promptfoo on Claude Agent SDK can and will create and execute malicious code, scan your network, install hooks and keyloggers, etc.
+Create a sandboxed VM or container for testing. Running artef on Claude Agent SDK can and will create and execute malicious code, scan your network, install hooks and keyloggers, etc.
 
 To test whether an agent can be exploited, we first need something worth attacking. We created a simulated corporate environment in a VM with the types of files an attacker would target:
 
@@ -71,9 +71,9 @@ backup_server:
   password: Backup!2025Secure
 ```
 
-### Step 2: Create the Promptfoo Configuration
+### Step 2: Create the artef Configuration
 
-Create a `promptfooconfig.yaml` file with the following content:
+Create a `artefconfig.yaml` file with the following content:
 
 ```yaml
 targets:
@@ -94,9 +94,9 @@ redteam:
     - jailbreak:hydra
 ```
 
-Or use the Promptfoo UI to select the equivalents:
+Or use the artef UI to select the equivalents:
 
-![Promptfoo UI configuration](/img/blog/cyber-espionage-testing/ui-redteam-config.png)
+![artef UI configuration](/img/blog/cyber-espionage-testing/ui-redteam-config.png)
 
 Let's break this down:
 
@@ -120,7 +120,7 @@ This is the equivalent of running Claude in `--dangerously-skip-permissions` mod
 
 When an agent has these sorts of capabilities, attackers don't need to exploit a traditional vulnerability. They just needed to convince the AI to use its legitimate capabilities for illegitimate purposes.
 
-Promptfoo's red team automation works through two key mechanisms:
+artef's red team automation works through two key mechanisms:
 
 #### Plugins: What to Attack
 
@@ -187,10 +187,10 @@ In the end, each individual request seems reasonable, but the cumulative effect 
 
 ### Step 3: Run the Red Team Scan
 
-After saving the config file as `promptfooconfig.yaml`, run the scan on your command line:
+After saving the config file as `artefconfig.yaml`, run the scan on your command line:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 ### Step 4: Review Results
@@ -244,7 +244,7 @@ In another case, Claude asked for an "official document" with permission to cond
 
 In a task decomposition attack, the attacker is stateful and works toward their objective step-by-step by breaking tasks into smaller, innocuous pieces. In cases like these, a jailbreak is not even required - the AI may enforce guardrails on the small pieces, which all look fine, and miss the bigger picture.
 
-For example, Claude Code will flatly refuse to create or install a keylogger, but Promptfoo was able to get it to create and install a keylogger.
+For example, Claude Code will flatly refuse to create or install a keylogger, but artef was able to get it to create and install a keylogger.
 
 #### Posing as a diagnostic tool
 
@@ -312,7 +312,7 @@ The bottom line is that there's nothing special about the jailbreak technique us
 
 There are certainly threat actors and black hats who are using AI to do bad things. If you leave your AI agent open to the public internet, and give it the ability to use a shell and network, you will get a bad result.
 
-The overall attack pattern is known as the "[lethal trifecta](https://www.promptfoo.dev/blog/lethal-trifecta-testing/)," which requires three components:
+The overall attack pattern is known as the "[lethal trifecta](https://www.artef.dev/blog/lethal-trifecta-testing/)," which requires three components:
 
 - **Access to Private Data**: The AI can read sensitive info
 - **Exposure to Untrusted Content**: The AI processes content that could come from anyone, including attackers
@@ -377,13 +377,13 @@ To reproduce the tests shown in this post:
 **1. Clone the example:**
 
 ```bash
-git clone https://github.com/promptfoo/promptfoo
-cd promptfoo/examples/claude-agent-sdk/cyber-espionage
+git clone https://github.com/artef/artef
+cd artef/examples/claude-agent-sdk/cyber-espionage
 ```
 
 **2. Adapt to your agent:**
 
-Replace the provider config with your own agent endpoint. See [HTTP docs](https://www.promptfoo.dev/docs/providers/http/) for more detail:
+Replace the provider config with your own agent endpoint. See [HTTP docs](https://www.artef.dev/docs/providers/http/) for more detail:
 
 ```yaml
 providers:
@@ -394,7 +394,7 @@ providers:
 
 **3. Configure your threat model:**
 
-Select Promptfoo [plugins](https://www.promptfoo.dev/docs/red-team/plugins/) that are relevant to your risk profile:
+Select artef [plugins](https://www.artef.dev/docs/red-team/plugins/) that are relevant to your risk profile:
 
 ```yaml
 redteam:
@@ -410,8 +410,8 @@ redteam:
 **4. Run the tests:**
 
 ```bash
-npx promptfoo@latest redteam run
-npx promptfoo@latest redteam report
+npx artef@latest redteam run
+npx artef@latest redteam report
 ```
 
 The web UI will show you exactly which attacks succeeded, what the agent exposed, and how to fix it.
@@ -426,6 +426,6 @@ The tools to test these vulnerabilities exist today. Will we use them proactivel
 
 **Resources:**
 
-- [Full example on GitHub](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk/cyber-espionage)
-- [Promptfoo red team quickstart](/docs/red-team/quickstart/)
+- [Full example on GitHub](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk/cyber-espionage)
+- [artef red team quickstart](/docs/red-team/quickstart/)
 - [Anthropic's disclosure](https://www.anthropic.com/news/disrupting-AI-espionage)

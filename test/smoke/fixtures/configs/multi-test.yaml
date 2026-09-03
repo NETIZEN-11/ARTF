@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Config with multiple tests for filter testing
 description: 'Smoke test - multiple tests for filtering'
 

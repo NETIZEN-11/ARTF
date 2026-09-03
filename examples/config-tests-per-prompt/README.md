@@ -1,10 +1,10 @@
-# config-tests-per-prompt (Filter Tests by Prompt)
+﻿# config-tests-per-prompt (Filter Tests by Prompt)
 
 This example demonstrates how to run specific tests only with specific prompts using the test-level `prompts` field.
 
 ## Overview
 
-By default, promptfoo runs each test against all prompts (a cartesian product). The `prompts` field on test cases lets you break this pattern and associate specific tests with specific prompts.
+By default, artef runs each test against all prompts (a cartesian product). The `prompts` field on test cases lets you break this pattern and associate specific tests with specific prompts.
 
 ## Use Cases
 
@@ -15,8 +15,8 @@ By default, promptfoo runs each test against all prompts (a cartesian product). 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example config-tests-per-prompt
-npx promptfoo@latest eval
+npx artef@latest init --example config-tests-per-prompt
+npx artef@latest eval
 ```
 
 ## Key Features
@@ -51,4 +51,4 @@ tests:
 
 ## Learn More
 
-See the [Filtering Tests by Prompt documentation](https://www.promptfoo.dev/docs/configuration/test-cases#filtering-tests-by-prompt) for more details.
+See the [Filtering Tests by Prompt documentation](https://www.artef.dev/docs/configuration/test-cases#filtering-tests-by-prompt) for more details.

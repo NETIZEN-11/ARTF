@@ -1,4 +1,4 @@
-import { act } from 'react';
+﻿import { act } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 
@@ -6,7 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SITE_CONSTANTS } from '../../constants';
 import GitHubStars from './index';
 
-const CACHE_KEY = 'github_stars_cache_promptfoo';
+const CACHE_KEY = 'github_stars_cache_artef';
 const BUILD_TIME_COUNT = SITE_CONSTANTS.GITHUB_STARS_DISPLAY;
 
 function seedCache(stars: string, ageMs = 0) {

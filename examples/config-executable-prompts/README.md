@@ -1,13 +1,13 @@
-# config-executable-prompts (Executable Prompts)
+﻿# config-executable-prompts (Executable Prompts)
 
-This example demonstrates how to use executable scripts and binaries as prompt generators in promptfoo.
+This example demonstrates how to use executable scripts and binaries as prompt generators in artef.
 
 To initialize and run it:
 
 ```bash
-npx promptfoo@latest init --example config-executable-prompts
+npx artef@latest init --example config-executable-prompts
 cd config-executable-prompts
-promptfoo eval
+artef eval
 ```
 
 ## Prerequisites
@@ -19,7 +19,7 @@ promptfoo eval
 
 ## Overview
 
-Promptfoo supports using any executable (shell scripts, Python scripts, binaries, etc.) to dynamically generate prompts. This is useful when you need to:
+artef supports using any executable (shell scripts, Python scripts, binaries, etc.) to dynamically generate prompts. This is useful when you need to:
 
 - Generate prompts based on external data sources
 - Create context-aware prompts dynamically

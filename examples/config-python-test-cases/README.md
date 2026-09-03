@@ -1,9 +1,9 @@
-# config-python-test-cases (Python Test Cases with Configuration)
+﻿# config-python-test-cases (Python Test Cases with Configuration)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-python-test-cases
+npx artef@latest init --example config-python-test-cases
 cd config-python-test-cases
 ```
 
@@ -45,7 +45,7 @@ tests:
 Run the evaluation with:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ## Features Demonstrated

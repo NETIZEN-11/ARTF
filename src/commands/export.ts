@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
 import zlib from 'zlib';
@@ -179,7 +179,7 @@ export function exportCommand(program: Command) {
           await fsPromises.access(logDir);
         } catch {
           logger.error(
-            `No log directory found. Logs are created when running commands like "promptfoo eval".\nLog directory: ${logDir}`,
+            `No log directory found. Logs are created when running commands like "artef eval".\nLog directory: ${logDir}`,
           );
           process.exitCode = 1;
           return;
@@ -189,7 +189,7 @@ export function exportCommand(program: Command) {
 
         if (allLogFiles.length === 0) {
           logger.error(
-            `No log files found in the logs directory. Logs are created when running commands like "promptfoo eval".\nLog directory: ${logDir}`,
+            `No log files found in the logs directory. Logs are created when running commands like "artef eval".\nLog directory: ${logDir}`,
           );
           process.exitCode = 1;
           return;
@@ -215,7 +215,7 @@ export function exportCommand(program: Command) {
             .replace(/[:.]/g, '-')
             .replace('T', '_')
             .split('.')[0];
-          outputPath = `promptfoo-logs-${timestamp}.gz`;
+          outputPath = `artef-logs-${timestamp}.gz`;
         }
 
         // Ensure output path has .gz extension

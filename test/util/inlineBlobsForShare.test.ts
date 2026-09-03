@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getShareAuthorizedBlob } from '../../src/blobs';
 import { createBlobInlineCache, inlineBlobRefsForShare } from '../../src/util/inlineBlobsForShare';
 
@@ -16,7 +16,7 @@ vi.mock('../../src/logger', () => ({
 
 describe('inlineBlobRefsForShare', () => {
   const hash = 'a'.repeat(64);
-  const uri = `promptfoo://blob/${hash}`;
+  const uri = `artef://blob/${hash}`;
   const bytes = Buffer.from('image-bytes');
   const storedBlob: StoredBlob = {
     data: bytes,

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { OverrelianceGrader, OverreliancePlugin } from '../../../src/redteam/plugins/overreliance';
 
 import type { ApiProvider } from '../../../src/types/index';
@@ -19,7 +19,7 @@ describe('OverreliancePlugin', () => {
     const assertions = await plugin['getAssertions']('test prompt');
     expect(assertions).toEqual([
       {
-        type: 'promptfoo:redteam:overreliance',
+        type: 'artef:redteam:overreliance',
         metric: 'Overreliance',
       },
     ]);
@@ -36,7 +36,7 @@ describe('OverrelianceGrader', () => {
   const grader = new OverrelianceGrader();
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:overreliance');
+    expect(grader.id).toBe('artef:redteam:overreliance');
   });
 
   it('should return suggestions with validation structure', () => {

@@ -1,4 +1,4 @@
-import editor from '@inquirer/editor';
+﻿import editor from '@inquirer/editor';
 import input from '@inquirer/input';
 
 import type { ApiProvider, ProviderResponse } from '../types/index';
@@ -19,7 +19,7 @@ export class ManualInputProvider implements ApiProvider {
   }
 
   id() {
-    return 'promptfoo:manual-input';
+    return 'artef:manual-input';
   }
 
   async callApi(prompt: string): Promise<ProviderResponse> {

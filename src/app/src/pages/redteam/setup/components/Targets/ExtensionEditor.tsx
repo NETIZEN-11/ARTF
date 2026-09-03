@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type React from 'react';
 
 import { HelperText } from '@app/components/ui/helper-text';
 import { Input } from '@app/components/ui/input';
 import { Label } from '@app/components/ui/label';
 import { cn } from '@app/lib/utils';
-import { isJavascriptFile } from '@promptfoo/util/fileExtensions';
+import { isJavascriptFile } from '@artef/util/fileExtensions';
 import { SetupSection } from '../SetupSection';
 
 interface ValidationError {
@@ -139,7 +139,7 @@ export default function ExtensionEditor({
         </table>
       </div>
       <a
-        href="https://www.promptfoo.dev/docs/configuration/reference/#extension-hooks"
+        href="https://www.artef.dev/docs/configuration/reference/#extension-hooks"
         target="_blank"
         rel="noopener noreferrer"
         className="mb-4 block text-sm text-primary hover:underline"

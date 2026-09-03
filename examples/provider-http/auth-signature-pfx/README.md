@@ -1,9 +1,9 @@
-# provider-http/auth-signature-pfx (HTTP provider with PFX certificate signature authentication)
+﻿# provider-http/auth-signature-pfx (HTTP provider with PFX certificate signature authentication)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-http/auth-signature-pfx
+npx artef@latest init --example provider-http/auth-signature-pfx
 cd provider-http/auth-signature-pfx
 ```
 
@@ -36,7 +36,7 @@ npm install
 ```bash
 # First, create a private key and certificate
 openssl req -x509 -newkey rsa:2048 -keyout private.key -out certificate.crt \
-  -days 365 -nodes -subj "/CN=PromptFoo Test/O=Test/C=US"
+  -days 365 -nodes -subj "/CN=artef Test/O=Test/C=US"
 
 # Then, create a PFX file from the key and certificate
 openssl pkcs12 -export -out certificate.pfx -inkey private.key -in certificate.crt \
@@ -51,7 +51,7 @@ rm private.key certificate.crt
 ```bash
 # Create a private key and certificate (keep both files)
 openssl req -x509 -newkey rsa:2048 -keyout private.key -out certificate.crt \
-  -days 365 -nodes -subj "/CN=PromptFoo Test/O=Test/C=US"
+  -days 365 -nodes -subj "/CN=artef Test/O=Test/C=US"
 
 # No cleanup needed - both files are used directly
 ```
@@ -66,7 +66,7 @@ npm start
 
 The example includes two configuration files demonstrating different certificate formats:
 
-### Option A: PFX Certificate (`promptfooconfig.yaml`)
+### Option A: PFX Certificate (`artefconfig.yaml`)
 
 ```yaml
 signatureAuth:
@@ -75,10 +75,10 @@ signatureAuth:
   pfxPassword: password
   signatureAlgorithm: SHA256
   signatureValidityMs: 300000
-  signatureDataTemplate: 'promptfoo-app{{signatureTimestamp}}'
+  signatureDataTemplate: 'artef-app{{signatureTimestamp}}'
 ```
 
-### Option B: Separate CRT/KEY Files (`promptfooconfig-crt-key.yaml`)
+### Option B: Separate CRT/KEY Files (`artefconfig-crt-key.yaml`)
 
 ```yaml
 signatureAuth:
@@ -87,7 +87,7 @@ signatureAuth:
   keyPath: ./private.key
   signatureAlgorithm: SHA256
   signatureValidityMs: 300000
-  signatureDataTemplate: 'promptfoo-app{{signatureTimestamp}}'
+  signatureDataTemplate: 'artef-app{{signatureTimestamp}}'
 ```
 
 **Important**: In production, use environment variables for passwords and secure key management practices.
@@ -98,13 +98,13 @@ Note, for this example to work, you will need to set the environment variable `N
 
 ```bash
 # Run test cases with PFX certificate
-NODE_TLS_REJECT_UNAUTHORIZED=0 promptfoo eval --no-cache
+NODE_TLS_REJECT_UNAUTHORIZED=0 artef eval --no-cache
 
 # Or run with separate CRT/KEY files
-NODE_TLS_REJECT_UNAUTHORIZED=0 promptfoo eval -c promptfooconfig-crt-key.yaml --no-cache
+NODE_TLS_REJECT_UNAUTHORIZED=0 artef eval -c artefconfig-crt-key.yaml --no-cache
 
 # View results
-promptfoo view
+artef view
 ```
 
 **IMPORTANT**: Be sure to run with `--no-cache` when testing! Otherwise it may cache responses from good signatures.
@@ -112,7 +112,7 @@ promptfoo view
 ## How it Works
 
 1. The server loads the certificate (either from PFX file or separate CRT/KEY files) and extracts the public key for signature verification
-2. The promptfoo HTTP provider uses the same certificate to generate signatures
+2. The artef HTTP provider uses the same certificate to generate signatures
 3. Incoming requests must include signature headers (`signature`, `timestamp`, `client-id`)
 4. The server validates the timestamp and verifies the signature using the public key
 5. Only requests with valid signatures are processed
@@ -121,7 +121,7 @@ promptfoo view
 
 This example uses hardcoded values for simplicity. In production, you should use:
 
-- `PROMPTFOO_PFX_PASSWORD` - Password for the PFX certificate file (when using PFX option)
+- `artef_PFX_PASSWORD` - Password for the PFX certificate file (when using PFX option)
 
 ## About Certificate Formats
 
@@ -145,4 +145,4 @@ Alternatively, you can use separate certificate and key files:
 
 This approach is common in Unix/Linux environments and provides flexibility in managing certificates and keys separately.
 
-Both formats are supported by the promptfoo HTTP provider for cryptographic signature generation and verification.
+Both formats are supported by the artef HTTP provider for cryptographic signature generation and verification.

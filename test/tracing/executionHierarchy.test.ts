@@ -1,4 +1,4 @@
-import { SpanStatusCode } from '@opentelemetry/api';
+﻿import { SpanStatusCode } from '@opentelemetry/api';
 import { InMemorySpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -9,7 +9,7 @@ import { generateTraceContextIfNeeded } from '../../src/tracing/evaluatorTracing
 import {
   GenAIAttributes,
   getGenAITracer,
-  PromptfooAttributes,
+  artefAttributes,
   withGenAISpan,
 } from '../../src/tracing/genaiTracer';
 import { isRelevantSpan } from '../../src/tracing/spanFilter';
@@ -79,15 +79,15 @@ describe('test-case execution trace hierarchy', () => {
     await withTestCaseSpan(traceContext?.rootSpan, async () => [{ score: 1, success: true }]);
 
     const [root] = exporter.getFinishedSpans();
-    expect(root.name).toBe('promptfoo.test_case');
+    expect(root.name).toBe('artef.test_case');
     expect(root.parentSpanContext).toBeUndefined();
     expect(root.attributes).toMatchObject({
       [SPAN_ROLE_ATTRIBUTE]: 'test_case',
-      'promptfoo.provider.id': 'python:customer.py',
-      'promptfoo.prompt.index': 3,
-      'promptfoo.repeat.index': 4,
-      'promptfoo.test.success': true,
-      'promptfoo.test.score': 1,
+      'artef.provider.id': 'python:customer.py',
+      'artef.prompt.index': 3,
+      'artef.repeat.index': 4,
+      'artef.test.success': true,
+      'artef.test.score': 1,
     });
   });
 
@@ -276,7 +276,7 @@ describe('test-case execution trace hierarchy', () => {
 
     expect(providerSpan.parentSpanContext?.spanId).toBe(graderSpan.spanContext().spanId);
     expect(modelSpan.parentSpanContext?.spanId).toBe(providerSpan.spanContext().spanId);
-    expect(graderSpan.attributes[PromptfooAttributes.TEST_INDEX]).toBe(6);
+    expect(graderSpan.attributes[artefAttributes.TEST_INDEX]).toBe(6);
     expect(providerSpan.attributes[SPAN_ROLE_ATTRIBUTE]).toBe('grader');
     expect(modelSpan.attributes[SPAN_ROLE_ATTRIBUTE]).toBe('grader');
     expect(isRelevantSpan({ attributes: modelSpan.attributes })).toBe(false);
@@ -306,7 +306,7 @@ describe('test-case execution trace hierarchy', () => {
     ]);
     expect(spans[0].attributes).toMatchObject({
       [SPAN_ROLE_ATTRIBUTE]: 'target',
-      'promptfoo.target.type': 'http',
+      'artef.target.type': 'http',
     });
     expect(spans[0].attributes).not.toHaveProperty(GenAIAttributes.OPERATION_NAME);
     expect(spans[0].attributes).not.toHaveProperty(GenAIAttributes.REQUEST_MODEL);
@@ -390,8 +390,8 @@ describe('test-case execution trace hierarchy', () => {
     await Promise.resolve();
 
     const [finishedRoot] = exporter.getFinishedSpans();
-    expect(finishedRoot.attributes['promptfoo.test.success']).toBe(true);
-    expect(finishedRoot.attributes['promptfoo.test.score']).toBe(1);
+    expect(finishedRoot.attributes['artef.test.success']).toBe(true);
+    expect(finishedRoot.attributes['artef.test.score']).toBe(1);
   });
 
   it('creates independent root traces for separate targets using the same test case', async () => {
@@ -413,7 +413,7 @@ describe('test-case execution trace hierarchy', () => {
     ]);
 
     expect(
-      exporter.getFinishedSpans().map((span) => span.attributes['promptfoo.provider.id']),
+      exporter.getFinishedSpans().map((span) => span.attributes['artef.provider.id']),
     ).toEqual(expect.arrayContaining(['http:target-a', 'http:target-b']));
   });
 

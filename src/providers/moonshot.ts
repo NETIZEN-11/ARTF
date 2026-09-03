@@ -1,4 +1,4 @@
-import { getEnvString } from '../envars';
+﻿import { getEnvString } from '../envars';
 import { renderVarsInObject } from '../util/index';
 import { OpenAiChatCompletionProvider } from './openai/chat';
 import { clampCachedTokens } from './shared';
@@ -43,7 +43,7 @@ function getProviderEnvString(env: EnvOverrides | undefined, key: EnvVarKey): st
 // is allowed for this model"). They emit `reasoning_content` (which counts
 // against the output budget) and default to a large server-side budget (32k
 // for K2.x, 131k for K3). The moonshot-v1 generation models accept arbitrary
-// sampling params, so they keep promptfoo's defaults.
+// sampling params, so they keep artef's defaults.
 // https://platform.kimi.ai/docs/guide/kimi-k3-quickstart
 // https://platform.kimi.ai/docs/guide/use-kimi-k2-thinking-model
 function pinsSamplingParams(modelName: string): boolean {
@@ -157,7 +157,7 @@ class MoonshotProvider extends OpenAiChatCompletionProvider {
     };
   }
 
-  // Strip the sampling params promptfoo injects (temperature defaults to 0,
+  // Strip the sampling params artef injects (temperature defaults to 0,
   // max_tokens to 1024, and top_p / penalties can leak from OPENAI_* env vars)
   // for Kimi models, which reject any non-default value and need the larger
   // server-side token budget for reasoning. Anything the user sets explicitly
@@ -222,7 +222,7 @@ class MoonshotProvider extends OpenAiChatCompletionProvider {
     return result;
   }
 
-  // promptfoo has no Moonshot price table, so cost comes from user-provided
+  // artef has no Moonshot price table, so cost comes from user-provided
   // rates. Cached tokens live in the documented top-level usage.cached_tokens;
   // the OpenAI-style prompt_tokens_details mirror is undocumented.
   // https://platform.kimi.ai/docs/api/chat

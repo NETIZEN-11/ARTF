@@ -1,7 +1,7 @@
----
-name: promptfoo-redteam-setup
+﻿---
+name: artef-redteam-setup
 description: >
-  Create or refine promptfoo redteam setup configs: purpose, targets, plugins,
+  Create or refine artef redteam setup configs: purpose, targets, plugins,
   strategies, frameworks, multi-input target inputs, policy text, grader
   guidance, contexts, and static-code-derived target/threat mapping. Use when
   preparing a red team scan plan from live probes, code evidence, or provider
@@ -10,7 +10,7 @@ description: >
   redteam scan.
 ---
 
-# Promptfoo Redteam Setup
+# artef Redteam Setup
 
 Build a small, explicit redteam config that matches the real app threat model.
 Start with a narrow scan that can be generated and inspected, then expand.
@@ -43,7 +43,7 @@ Infer these from the repo, docs, or user prompt:
   existing tests, SDK clients, or provider wrappers.
 - First-pass scope: risk categories the user cares about most.
 
-If target wiring is missing, use `promptfoo-provider-setup` first or create a
+If target wiring is missing, use `artef-provider-setup` first or create a
 TODO-marked target block and validate it before generation.
 
 ## Workflow
@@ -93,7 +93,7 @@ Pick 2-5 plugins from the app's real risks:
   telecom, teen-safety, or pharmacy plugins only when that domain is real.
 
 For `policy`, include inline policy text unless the user intentionally references
-a resolved Promptfoo Cloud policy object.
+a resolved artef Cloud policy object.
 
 ### 4. Choose strategies conservatively
 
@@ -105,14 +105,14 @@ a resolved Promptfoo Cloud policy object.
 
 ### 5. Configure generation and grading
 
-- Use Promptfoo's default redteam generation unless a specific generator or
+- Use artef's default redteam generation unless a specific generator or
   model is needed for reproducibility, cost, or fixture QA.
 - When using `redteam.provider: file://...`, make the path valid from the
   command working directory; JavaScript providers expose `callApi`, while Python
   providers expose `call_api` or the function named in a `file://x.py:name`
   suffix. Run commands from the repo root unless the project convention says
   otherwise.
-- For deterministic QA, use a small local file provider that returns Promptfoo's
+- For deterministic QA, use a small local file provider that returns artef's
   expected prompt format.
 - Use high-value plugins such as `bola` and `bfla` whenever target evidence
   shows object IDs, ownership checks, or authorization boundaries.
@@ -123,19 +123,19 @@ a resolved Promptfoo Cloud policy object.
 
 ### 6. Validate and generate
 
-From the promptfoo repo:
+From the artef repo:
 
 ```bash
-npm run local -- validate config -c path/to/promptfooconfig.yaml
-npm run local -- validate target -c path/to/promptfooconfig.yaml
-npm run local -- redteam generate -c path/to/promptfooconfig.yaml -o /tmp/redteam.yaml --no-cache --force --no-progress-bar --strict
+npm run local -- validate config -c path/to/artefconfig.yaml
+npm run local -- validate target -c path/to/artefconfig.yaml
+npm run local -- redteam generate -c path/to/artefconfig.yaml -o /tmp/redteam.yaml --no-cache --force --no-progress-bar --strict
 ```
 
 Outside the repo (installed plugin or your own project), use the published CLI:
 
 ```bash
-npx promptfoo@latest validate config -c path/to/promptfooconfig.yaml
-npx promptfoo@latest redteam generate -c path/to/promptfooconfig.yaml -o /tmp/redteam.yaml --no-cache --force --no-progress-bar --strict
+npx artef@latest validate config -c path/to/artefconfig.yaml
+npx artef@latest redteam generate -c path/to/artefconfig.yaml -o /tmp/redteam.yaml --no-cache --force --no-progress-bar --strict
 ```
 
 Use a non-precreated output path or keep `--force`; `redteam generate` reads an
@@ -186,7 +186,7 @@ targets:
 
 When done, state:
 
-- Target mode and whether `promptfoo-provider-setup` was needed
+- Target mode and whether `artef-provider-setup` was needed
 - Purpose summary and selected plugin/strategy rationale
 - Files created or changed
 - Validation/generation commands run and generated test count

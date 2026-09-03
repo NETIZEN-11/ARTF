@@ -1,4 +1,4 @@
-import * as path from 'path';
+﻿import * as path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { runAssertion } from '../../src/assertions/index';
@@ -1184,7 +1184,7 @@ describe('JavaScript file references', () => {
 
       const packageAssertion: Assertion = {
         type: 'javascript',
-        value: 'package:@promptfoo/fake:assertionFunction',
+        value: 'package:@artef/fake:assertionFunction',
       };
 
       const provider = new OpenAiChatCompletionProvider('gpt-4o-mini');

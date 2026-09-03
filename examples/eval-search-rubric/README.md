@@ -1,9 +1,9 @@
-# eval-search-rubric (Search Rubric)
+﻿# eval-search-rubric (Search Rubric)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-search-rubric
+npx artef@latest init --example eval-search-rubric
 cd eval-search-rubric
 ```
 
@@ -22,7 +22,7 @@ The `search-rubric` assertion allows you to verify facts by searching the web in
 ## Running the Example
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
 ## How It Works
@@ -62,5 +62,5 @@ assert:
 ## Notes
 
 - Search rubric assertions add latency (2-5 seconds per assertion)
-- Use caching during development: `npx promptfoo eval --cache`
+- Use caching during development: `npx artef eval --cache`
 - Be specific with your search queries for better results

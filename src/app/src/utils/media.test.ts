@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   downloadFile,
   downloadMediaItem,
@@ -268,9 +268,9 @@ describe('resolveVideoSource', () => {
   });
 
   describe('blob reference resolution', () => {
-    it('resolves promptfoo:// blob URI in blobRef string', () => {
+    it('resolves artef:// blob URI in blobRef string', () => {
       const result = resolveVideoSource({
-        blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+        blobRef: 'artef://blob/abc123def456789012345678901234567890',
       });
 
       expect(result).toEqual({
@@ -294,7 +294,7 @@ describe('resolveVideoSource', () => {
 
     it('resolves blobRef object with uri', () => {
       const result = resolveVideoSource({
-        blobRef: { uri: 'promptfoo://blob/abc123def456789012345678901234567890' },
+        blobRef: { uri: 'artef://blob/abc123def456789012345678901234567890' },
       });
 
       expect(result).toEqual({
@@ -461,7 +461,7 @@ describe('resolveVideoSource', () => {
     it('should return an object with the resolved poster URL when the video object includes a thumbnail field with a blob URI, HTTP(S) URL, or legacy API path', () => {
       const videoObject1 = {
         url: 'https://example.com/test.mp4',
-        thumbnail: 'promptfoo://blob/thumbnail-blob-hash',
+        thumbnail: 'artef://blob/thumbnail-blob-hash',
       };
       const result1 = resolveVideoSource(videoObject1);
       expect(result1?.poster).toBe('/api/blobs/thumbnail-blob-hash');
@@ -502,7 +502,7 @@ describe('resolveVideoSource', () => {
   describe('priority order', () => {
     it('prefers blobRef over storageRef', () => {
       const result = resolveVideoSource({
-        blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+        blobRef: 'artef://blob/abc123def456789012345678901234567890',
         storageRef: { key: 'video/other.mp4' },
         url: 'https://example.com/video.mp4',
       });
@@ -580,7 +580,7 @@ describe('resolveVideoSource', () => {
       vi.mocked(useApiConfig.getState).mockReturnValue(mockState('https://api.example.com'));
 
       const result = resolveVideoSource({
-        blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+        blobRef: 'artef://blob/abc123def456789012345678901234567890',
       });
 
       expect(result?.src).toBe(
@@ -671,8 +671,8 @@ describe('resolveBlobUri security', () => {
     expect(resolveBlobUri(dataUri)).toBe(dataUri);
   });
 
-  it('should convert promptfoo://blob/ URIs', () => {
-    expect(resolveBlobUri('promptfoo://blob/abc123')).toBe('/api/blobs/abc123');
+  it('should convert artef://blob/ URIs', () => {
+    expect(resolveBlobUri('artef://blob/abc123')).toBe('/api/blobs/abc123');
   });
 
   it('should convert storageRef: URIs', () => {
@@ -703,8 +703,8 @@ describe('resolveImageSource security', () => {
     expect(resolveImageSource(dataUri)).toBe(dataUri);
   });
 
-  it('should return promptfoo blob references', () => {
-    expect(resolveImageSource('promptfoo://blob/abc123')).toBe('/api/blobs/abc123');
+  it('should return artef blob references', () => {
+    expect(resolveImageSource('artef://blob/abc123')).toBe('/api/blobs/abc123');
   });
 
   it('should return storage references', () => {
@@ -723,7 +723,7 @@ describe('resolveImageSource security', () => {
 
   it('should resolve blobRef from image object', () => {
     const result = resolveImageSource({
-      blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+      blobRef: 'artef://blob/abc123def456789012345678901234567890',
     });
     expect(result).toBe('/api/blobs/abc123def456789012345678901234567890');
   });
@@ -781,7 +781,7 @@ describe('resolveAudioSource', () => {
 
   it('should resolve blobRef and return audio source with type', () => {
     const result = resolveAudioSource({
-      blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+      blobRef: 'artef://blob/abc123def456789012345678901234567890',
     });
 
     expect(result).toEqual({
@@ -792,7 +792,7 @@ describe('resolveAudioSource', () => {
 
   it('should resolve blobRef with custom format', () => {
     const result = resolveAudioSource({
-      blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+      blobRef: 'artef://blob/abc123def456789012345678901234567890',
       format: 'wav',
     });
 
@@ -868,7 +868,7 @@ describe('resolveAudioSource', () => {
 
   it('should prefer blobRef over data', () => {
     const result = resolveAudioSource({
-      blobRef: 'promptfoo://blob/abc123def456789012345678901234567890',
+      blobRef: 'artef://blob/abc123def456789012345678901234567890',
       data: 'SGVsbG8gV29ybGQ=',
     });
 
@@ -899,15 +899,15 @@ describe('normalizeMediaText', () => {
     vi.mocked(useApiConfig.getState).mockReturnValue(mockState(''));
   });
 
-  it('should replace promptfoo://blob/ URIs with /api/blobs/', () => {
-    const text = 'Check this image: promptfoo://blob/abc123def456789012345678901234567890';
+  it('should replace artef://blob/ URIs with /api/blobs/', () => {
+    const text = 'Check this image: artef://blob/abc123def456789012345678901234567890';
     const result = normalizeMediaText(text);
     expect(result).toBe('Check this image: /api/blobs/abc123def456789012345678901234567890');
   });
 
-  it('should replace multiple promptfoo://blob/ URIs', () => {
+  it('should replace multiple artef://blob/ URIs', () => {
     const text =
-      'Image 1: promptfoo://blob/abc123def456789012345678901234567890 and Image 2: promptfoo://blob/def456abc123789012345678901234567890';
+      'Image 1: artef://blob/abc123def456789012345678901234567890 and Image 2: artef://blob/def456abc123789012345678901234567890';
     const result = normalizeMediaText(text);
     expect(result).toBe(
       'Image 1: /api/blobs/abc123def456789012345678901234567890 and Image 2: /api/blobs/def456abc123789012345678901234567890',
@@ -932,9 +932,9 @@ describe('normalizeMediaText', () => {
     expect(result).toBe('File 1: /api/media/images/a.png and File 2: /api/media/videos/b.mp4');
   });
 
-  it('should replace both promptfoo://blob/ and storageRef: URIs in same text', () => {
+  it('should replace both artef://blob/ and storageRef: URIs in same text', () => {
     const text =
-      'Image: promptfoo://blob/abc123def456789012345678901234567890 and Video: storageRef:videos/test.mp4';
+      'Image: artef://blob/abc123def456789012345678901234567890 and Video: storageRef:videos/test.mp4';
     const result = normalizeMediaText(text);
     expect(result).toBe(
       'Image: /api/blobs/abc123def456789012345678901234567890 and Video: /api/media/videos/test.mp4',
@@ -954,7 +954,7 @@ describe('normalizeMediaText', () => {
   it('should prepend apiBaseUrl when configured', () => {
     vi.mocked(useApiConfig.getState).mockReturnValue(mockState('https://api.example.com'));
 
-    const text = 'Image: promptfoo://blob/abc123def456789012345678901234567890';
+    const text = 'Image: artef://blob/abc123def456789012345678901234567890';
     const result = normalizeMediaText(text);
     expect(result).toBe(
       'Image: https://api.example.com/api/blobs/abc123def456789012345678901234567890',

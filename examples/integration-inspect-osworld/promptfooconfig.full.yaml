@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Full OSWorld via Inspect benchmark with tracing
 prompts:
   - '{{prompt}}'
@@ -10,7 +10,7 @@ providers:
       task: inspect_evals/osworld
       taskParameters:
         include_connected: true
-      # Promptfoo's Python worker timeout, in milliseconds.
+      # artef's Python worker timeout, in milliseconds.
       timeout: 7500000
       # Inspect subprocess timeout, in seconds.
       timeoutSeconds: 7200

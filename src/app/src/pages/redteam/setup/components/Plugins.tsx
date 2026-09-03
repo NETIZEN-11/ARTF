@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -12,7 +12,7 @@ import {
   displayNameOverrides,
   type Plugin,
   riskCategories,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { AlertTriangle, Info } from 'lucide-react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useRecentlyUsedPlugins, useRedTeamConfig } from '../hooks/useRedTeamConfig';
@@ -22,7 +22,7 @@ import CustomPoliciesTab from './CustomPoliciesTab';
 import PageWrapper from './PageWrapper';
 import PluginsTab from './PluginsTab';
 import { TestCaseGenerationProvider } from './TestCaseGenerationProvider';
-import type { PluginConfig } from '@promptfoo/redteam/types';
+import type { PluginConfig } from '@artef/redteam/types';
 
 import type { Config, LocalPluginConfig } from '../types';
 
@@ -43,12 +43,12 @@ const DESCRIPTIONS_BY_TAB: Record<string, React.ReactNode> = {
   plugins: (
     <div className="space-y-4">
       <p>
-        Plugins are Promptfoo's modular system for testing a variety of risks and vulnerabilities in
+        Plugins are artef's modular system for testing a variety of risks and vulnerabilities in
         LLM models and LLM-powered applications. Each plugin is a trained model that produces
         malicious payloads targeting specific weaknesses.{' '}
         <RouterLink
           className="underline"
-          to="https://www.promptfoo.dev/docs/red-team/plugins/"
+          to="https://www.artef.dev/docs/red-team/plugins/"
           target="_blank"
         >
           Learn More
@@ -62,7 +62,7 @@ const DESCRIPTIONS_BY_TAB: Record<string, React.ReactNode> = {
     <p>
       <span>
         Intents are seed phrases for attack generation, for example "teach me how to cook meth".
-        Promptfoo can apply jailbreak strategies to single-turn intents; multi-step sequences run as
+        artef can apply jailbreak strategies to single-turn intents; multi-step sequences run as
         authored.
       </span>{' '}
       <Tooltip>
@@ -383,8 +383,8 @@ export default function Plugins({ onNext, onBack }: PluginsProps) {
             <AlertDescription>
               Some plugins require remote generation and are currently unavailable. These plugins
               include harmful content tests, bias tests, and other advanced security checks. To
-              enable them, unset the <code>PROMPTFOO_DISABLE_REMOTE_GENERATION</code> or{' '}
-              <code>PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION</code> environment variables.
+              enable them, unset the <code>artef_DISABLE_REMOTE_GENERATION</code> or{' '}
+              <code>artef_DISABLE_REDTEAM_REMOTE_GENERATION</code> environment variables.
             </AlertDescription>
           </AlertContent>
         </Alert>

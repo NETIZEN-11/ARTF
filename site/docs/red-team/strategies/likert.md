@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Likert-based Jailbreaks
 title: Likert-based Jailbreaks Strategy
 description: Exploit academic framing and Likert scale formats to circumvent AI safety by disguising harmful requests as research surveys
@@ -8,13 +8,13 @@ description: Exploit academic framing and Likert scale formats to circumvent AI 
 
 The Likert-based Jailbreaks strategy is an advanced technique that leverages an LLM's evaluation capabilities by framing inputs within academic research and scoring frameworks. This strategy exploits the model's understanding of content evaluation using Likert scales - rating systems commonly used in research and surveys to measure responses on a numerical scale.
 
-Promptfoo implements a single-turn adaptation of [Unit 42's Bad Likert Judge technique](https://unit42.paloaltonetworks.com/multi-turn-technique-jailbreaks-llms/). Our implementation transforms the multi-turn approach into an agent-based, single-turn framework using Likert scales for academic evaluation.
+artef implements a single-turn adaptation of [Unit 42's Bad Likert Judge technique](https://unit42.paloaltonetworks.com/multi-turn-technique-jailbreaks-llms/). Our implementation transforms the multi-turn approach into an agent-based, single-turn framework using Likert scales for academic evaluation.
 
 ## Implementation
 
-Basic usage in `promptfooconfig.yaml`:
+Basic usage in `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - jailbreak:likert
 ```

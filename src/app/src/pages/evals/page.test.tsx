@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+﻿import { render } from '@testing-library/react';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import EvalsIndexPage from './page';
@@ -53,14 +53,14 @@ describe('EvalsIndexPage', () => {
     expect(navigate).toHaveBeenCalledWith('/eval/test-eval-id');
   });
 
-  it("should set the page title to 'Evals | promptfoo' and description to 'Browse evaluation runs' when rendered", () => {
+  it("should set the page title to 'Evals | artef' and description to 'Browse evaluation runs' when rendered", () => {
     render(
       <MemoryRouter>
         <EvalsIndexPage />
       </MemoryRouter>,
     );
 
-    expect(document.title).toBe('Evals | promptfoo');
+    expect(document.title).toBe('Evals | artef');
 
     const updatedDescriptionMeta = document.querySelector('meta[name="description"]');
     expect(updatedDescriptionMeta?.getAttribute('content')).toBe('Browse evaluation runs');

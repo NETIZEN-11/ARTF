@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import { evaluate } from '../evaluator';
 import logger from '../logger';
 import Eval from '../models/eval';
@@ -677,7 +677,7 @@ function cloneOptimizationTestSuite(testSuite: TestSuite): TestSuite {
 
 /**
  * Detects whether `defaultTest` carries enough configuration to be a runnable test
- * on its own. `promptfoo eval` synthesizes a single implicit `[{}]` test case when no
+ * on its own. `artef eval` synthesizes a single implicit `[{}]` test case when no
  * `tests` or `scenarios` are configured and merges `defaultTest` into it (see
  * `getInitialTests` in `src/evaluator.ts`), so a `defaultTest` with assertions
  * or variables produces one runnable row. An assertion scoring function only

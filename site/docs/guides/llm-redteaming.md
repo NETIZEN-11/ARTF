@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: How to Red Team LLM Applications
 description: Protect your LLM applications from prompt injection, jailbreaks, and data leaks with automated red teaming tests that identify 20+ vulnerability types and security risks
 ---
 
 # How to red team LLM applications
 
-Promptfoo is a popular open source evaluation framework that includes LLM red team and penetration testing capabilities.
+artef is a popular open source evaluation framework that includes LLM red team and penetration testing capabilities.
 
 This guide shows you how to automatically generate adversarial tests specifically for your app. The red team covers a wide range of potential vulnerabilities and failure modes, including:
 
@@ -59,22 +59,22 @@ First, install [Node.js](https://nodejs.org/en/download/package-manager/) `>=22.
 Then create a new project for your red teaming needs:
 
 ```sh
-npx promptfoo@latest redteam init my-redteam-project --no-gui
+npx artef@latest redteam init my-redteam-project --no-gui
 ```
 
 The `init` command will guide you through setting up a redteam for your use case, and includes several useful defaults to quickly get you started.
 
-It will create a `promptfooconfig.yaml` config file where we’ll do most of our setup.
+It will create a `artefconfig.yaml` config file where we’ll do most of our setup.
 
 ## Getting started
 
-Edit `my-redteam-project/promptfooconfig.yaml` to set up the prompt and the LLM you want to test. See the [configuration guide](/docs/red-team/configuration/) for more information.
+Edit `my-redteam-project/artefconfig.yaml` to set up the prompt and the LLM you want to test. See the [configuration guide](/docs/red-team/configuration/) for more information.
 
 Run the eval:
 
 ```sh
 cd my-redteam-project
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 This will create a file `redteam.yaml` with adversarial test cases and run them through your application.
@@ -82,12 +82,12 @@ This will create a file `redteam.yaml` with adversarial test cases and run them 
 And view the results:
 
 ```sh
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 ## Step 1: Configure your prompts
 
-The easiest way to get started is to edit `promptfooconfig.yaml` to include your prompt(s).
+The easiest way to get started is to edit `artefconfig.yaml` to include your prompt(s).
 
 In this example, let's pretend we're building a trip planner app. I’ll set a prompt and include `{{variables}}` to indicate placeholders that will be replaced by user inputs:
 
@@ -114,7 +114,7 @@ In most cases your prompt will be more complex, in which case you could create a
 ]
 ```
 
-And then reference the file from `promptfooconfig.yaml`:
+And then reference the file from `artefconfig.yaml`:
 
 ```yaml
 prompts:
@@ -155,11 +155,11 @@ function getPrompt(context) {
 
 ## Step 2: Configure your targets
 
-LLMs are configured with the `targets` property in `promptfooconfig.yaml`. An LLM target can be a known LLM API (such as OpenAI, Anthropic, Ollama, etc.) or a custom RAG or agent flow you've built yourself.
+LLMs are configured with the `targets` property in `artefconfig.yaml`. An LLM target can be a known LLM API (such as OpenAI, Anthropic, Ollama, etc.) or a custom RAG or agent flow you've built yourself.
 
 ### LLM APIs
 
-Promptfoo supports [many LLM providers](/docs/providers) including OpenAI, Anthropic, Mistral, Azure, Groq, Perplexity, Cohere, and more. In most cases all you need to do is set the appropriate API key environment variable.
+artef supports [many LLM providers](/docs/providers) including OpenAI, Anthropic, Mistral, Azure, Groq, Perplexity, Cohere, and more. In most cases all you need to do is set the appropriate API key environment variable.
 
 You should choose at least one target. If desired, set multiple in order to compare their performance in the red team eval. In this example, we’re comparing performance of GPT, Claude, and Llama:
 
@@ -249,10 +249,10 @@ For more information, see [Overriding the LLM grader](/docs/configuration/expect
 
 ## Step 3: Generate adversarial test cases
 
-Now that you've configured everything, the next step is to generate the red teaming inputs. This is done by running the `promptfoo redteam generate` command:
+Now that you've configured everything, the next step is to generate the red teaming inputs. This is done by running the `artef redteam generate` command:
 
 ```sh
-npx promptfoo@latest redteam generate
+npx artef@latest redteam generate
 ```
 
 This command works by reading your prompts and targets and then generating a set of adversarial inputs that stress-test your prompts/models in a variety of situations. Test generation usually takes about 5 minutes.
@@ -303,7 +303,7 @@ It also tests for a variety of harmful input and output scenarios from the [ML C
 By default, all of the above will be included in the redteam. To use specific types of tests, use `--plugins`:
 
 ```yaml
-npx promptfoo@latest redteam generate --plugins 'harmful,hijacking'
+npx artef@latest redteam generate --plugins 'harmful,hijacking'
 ```
 
 The following plugins are enabled by default:
@@ -326,14 +326,14 @@ These additional plugins can be optionally enabled:
 | ----------- | ----------------------------------------------------------- |
 | competitors | Tests if the model recommends alternatives to your service. |
 
-The adversarial test cases will be written to `promptfooconfig.yaml`.
+The adversarial test cases will be written to `artefconfig.yaml`.
 
 ## Step 4: Run the pentest
 
 Now that all the red team tests are ready, run the eval:
 
 ```
-npx promptfoo@latest redteam eval
+npx artef@latest redteam eval
 ```
 
 This will take a while, usually ~15 minutes or so depending on how many plugins you have chosen.
@@ -343,7 +343,7 @@ This will take a while, usually ~15 minutes or so depending on how many plugins 
 Use the web viewer to review the flagged outputs and understand the failure cases.
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 This will open a view that displays red team test results lets you dig into specific vulnerabilities:

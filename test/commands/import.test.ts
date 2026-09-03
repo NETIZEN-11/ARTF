@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { createClient } from '@libsql/client/node';
@@ -91,7 +91,7 @@ describe('importCommand', () => {
       const importCmd = program.commands.find((cmd) => cmd.name() === 'import');
       expect(importCmd).toBeDefined();
       expect(importCmd!.description()).toBe(
-        'Import a Promptfoo eval JSON export or an OpenAI Evals JSONL export',
+        'Import a artef eval JSON export or an OpenAI Evals JSONL export',
       );
     });
   });
@@ -377,7 +377,7 @@ describe('importCommand', () => {
     });
 
     it('should import embedded blob assets before recording result references', async () => {
-      const blobDir = createTempDir('promptfoo-import-blobs-');
+      const blobDir = createTempDir('artef-import-blobs-');
       setBlobStorageProvider(new FilesystemBlobStorageProvider({ basePath: blobDir }));
 
       try {
@@ -385,7 +385,7 @@ describe('importCommand', () => {
         const sampleData = JSON.parse(fs.readFileSync(sampleFilePath, 'utf-8'));
         const data = Buffer.from('portable image from eval export');
         const hash = sha256(data);
-        sampleData.results.results[0].response = { output: `promptfoo://blob/${hash}` };
+        sampleData.results.results[0].response = { output: `artef://blob/${hash}` };
         sampleData.blobAssets = [
           {
             hash,
@@ -422,7 +422,7 @@ describe('importCommand', () => {
     });
 
     it('should downgrade active embedded blob MIME types during import', async () => {
-      const blobDir = createTempDir('promptfoo-import-active-mime-blobs-');
+      const blobDir = createTempDir('artef-import-active-mime-blobs-');
       setBlobStorageProvider(new FilesystemBlobStorageProvider({ basePath: blobDir }));
 
       try {
@@ -433,7 +433,7 @@ describe('importCommand', () => {
         const svgData = Buffer.from('<svg onload="alert(document.domain)" />');
         const svgHash = sha256(svgData);
         sampleData.results.results[0].response = {
-          output: `promptfoo://blob/${htmlHash} promptfoo://blob/${svgHash}`,
+          output: `artef://blob/${htmlHash} artef://blob/${svgHash}`,
         };
         sampleData.blobAssets = [
           {
@@ -466,7 +466,7 @@ describe('importCommand', () => {
     });
 
     it('should import embedded blob assets referenced only by traces', async () => {
-      const blobDir = createTempDir('promptfoo-import-trace-blobs-');
+      const blobDir = createTempDir('artef-import-trace-blobs-');
       setBlobStorageProvider(new FilesystemBlobStorageProvider({ basePath: blobDir }));
 
       try {
@@ -479,7 +479,7 @@ describe('importCommand', () => {
             traceId: 'trace-media-import',
             evaluationId: sampleData.evalId,
             testCaseId: 'trace-media-case',
-            metadata: { attachment: `promptfoo://blob/${hash}` },
+            metadata: { attachment: `artef://blob/${hash}` },
             spans: [],
           },
         ];
@@ -533,7 +533,7 @@ describe('importCommand', () => {
     });
 
     it('should ignore unreferenced embedded blob assets before validation and storage', async () => {
-      const blobDir = createTempDir('promptfoo-import-filtered-blobs-');
+      const blobDir = createTempDir('artef-import-filtered-blobs-');
       const provider = new FilesystemBlobStorageProvider({ basePath: blobDir });
       const storeSpy = vi.spyOn(provider, 'store');
       setBlobStorageProvider(provider);
@@ -546,7 +546,7 @@ describe('importCommand', () => {
         const unreferencedHash = sha256(Buffer.from('expected orphan bytes'));
         const tamperedOrphanData = Buffer.from('tampered orphan bytes');
         sampleData.results.results[0].response = {
-          output: `promptfoo://blob/${referencedHash}`,
+          output: `artef://blob/${referencedHash}`,
         };
         sampleData.blobAssets = [
           {
@@ -582,7 +582,7 @@ describe('importCommand', () => {
     });
 
     it('should reject embedded blob assets whose bytes do not match the exported hash', async () => {
-      const blobDir = createTempDir('promptfoo-import-corrupt-blobs-');
+      const blobDir = createTempDir('artef-import-corrupt-blobs-');
       setBlobStorageProvider(new FilesystemBlobStorageProvider({ basePath: blobDir }));
 
       try {
@@ -590,7 +590,7 @@ describe('importCommand', () => {
         const sampleData = JSON.parse(fs.readFileSync(sampleFilePath, 'utf-8'));
         const data = Buffer.from('wrong bytes');
         const hash = 'f'.repeat(64);
-        sampleData.results.results[0].response = { output: `promptfoo://blob/${hash}` };
+        sampleData.results.results[0].response = { output: `artef://blob/${hash}` };
         sampleData.blobAssets = [
           {
             hash,
@@ -618,7 +618,7 @@ describe('importCommand', () => {
     });
 
     it('should reject embedded blob assets that exceed the import size limit', async () => {
-      const blobDir = createTempDir('promptfoo-import-oversized-blobs-');
+      const blobDir = createTempDir('artef-import-oversized-blobs-');
       setBlobStorageProvider(new FilesystemBlobStorageProvider({ basePath: blobDir }));
 
       try {
@@ -626,7 +626,7 @@ describe('importCommand', () => {
         const sampleData = JSON.parse(fs.readFileSync(sampleFilePath, 'utf-8'));
         const data = Buffer.from('small bytes claiming to be huge');
         const hash = 'a'.repeat(64);
-        sampleData.results.results[0].response = { output: `promptfoo://blob/${hash}` };
+        sampleData.results.results[0].response = { output: `artef://blob/${hash}` };
         sampleData.blobAssets = [
           {
             hash,
@@ -671,7 +671,7 @@ describe('importCommand', () => {
       // Simulate a cloud-authed importer with a different local identity. The
       // imported eval's historical author must still win — this is a
       // regression test for PR #7760.
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_API_KEY: 'fake-test-api-key' });
+      const restoreEnv = mockProcessEnv({ artef_API_KEY: 'fake-test-api-key' });
       try {
         const sampleFilePath = path.join(__dirname, '../__fixtures__/sample-export.json');
         const sampleData = JSON.parse(fs.readFileSync(sampleFilePath, 'utf-8'));
@@ -1306,7 +1306,7 @@ describe('importCommand', () => {
       const replacementData = structuredClone(sampleData);
       const badData = Buffer.from('wrong replacement bytes');
       const hash = 'f'.repeat(64);
-      replacementData.results.results[0].response = { output: `promptfoo://blob/${hash}` };
+      replacementData.results.results[0].response = { output: `artef://blob/${hash}` };
       replacementData.blobAssets = [
         {
           hash,
@@ -1354,7 +1354,7 @@ describe('importCommand', () => {
     });
 
     it('should keep the existing eval when a --force replacement cannot store embedded media', async () => {
-      const blobDir = createTempDir('promptfoo-import-force-store-failure-');
+      const blobDir = createTempDir('artef-import-force-store-failure-');
       const provider = new FilesystemBlobStorageProvider({ basePath: blobDir });
       setBlobStorageProvider(provider);
 
@@ -1365,7 +1365,7 @@ describe('importCommand', () => {
         const replacementBlob = Buffer.from('valid replacement bytes');
         const replacementHash = sha256(replacementBlob);
         replacementData.results.results[0].response = {
-          output: `promptfoo://blob/${replacementHash}`,
+          output: `artef://blob/${replacementHash}`,
         };
         replacementData.blobAssets = [
           {

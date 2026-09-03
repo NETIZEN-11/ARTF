@@ -1,4 +1,4 @@
-import { Router } from 'express';
+﻿import { Router } from 'express';
 import { z } from 'zod';
 import cliState from '../../cliState';
 import logger from '../../logger';
@@ -343,7 +343,7 @@ redteamRouter.post('/cancel', async (_req: Request, res: Response): Promise<void
 });
 
 /**
- * Proxies requests to Promptfoo Cloud to invoke tasks.
+ * Proxies requests to artef Cloud to invoke tasks.
  *
  * This route is defined last such that it acts as a catch-all for tasks.
  *

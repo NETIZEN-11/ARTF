@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Jailbreaking LLMs: A Comprehensive Guide (With Examples)'
 description: 'From simple prompt tricks to sophisticated context manipulation, discover how LLM jailbreaks actually work. Essential reading for anyone building with AI.'
 image: /img/blog/jailbreak-llms/get-out-of-jail-free.jpg
@@ -599,28 +599,28 @@ The key to these conversational attacks is their ability to build upon each resp
 
 ## Discovering new jailbreaks
 
-Promptfoo is an open-source tool that helps developers algorithmically test their LLM applications with application-specific jailbreaks.
+artef is an open-source tool that helps developers algorithmically test their LLM applications with application-specific jailbreaks.
 
 It works by using adversarial LLM models to generate prompts designed to bypass the model's security measures, which are then fed to your application.
 
 :::tip
-For a full guide on how to use Promptfoo, check out the [Promptfoo quickstart](/docs/red-team/quickstart/).
+For a full guide on how to use artef, check out the [artef quickstart](/docs/red-team/quickstart/).
 :::
 
-### Setting Up Promptfoo
+### Setting Up artef
 
 1. Installation:
 
 Requires [Node.js](https://nodejs.org/en/download/) `>=22.22.0`. Node.js 24 LTS is recommended.
 
 ```bash
-npm install -g promptfoo
+npm install -g artef
 ```
 
 2. Initialize a new security testing project:
 
 ```bash
-promptfoo redteam setup
+artef redteam setup
 ```
 
 ### Configuration Steps
@@ -638,7 +638,7 @@ And select the security testing plugins you want to use.
 Once configured, you can run security tests using:
 
 ```bash
-promptfoo redteam run
+artef redteam run
 ```
 
 Review test results and implement necessary security improvements based on findings.
@@ -728,7 +728,7 @@ Even with all these input protections, we need to carefully validate our model's
 Just as companies run fire drills, we need to regularly test our defenses. This involves:
 
 - Regular red team exercises to find vulnerabilities
-- Automated testing with tools like [promptfoo](/docs/red-team/)
+- Automated testing with tools like [artef](/docs/red-team/)
 - Continuous monitoring for new attack patterns
 - Regular updates to defense mechanisms
 

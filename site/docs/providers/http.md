@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: HTTP API
 description: Configure HTTP/HTTPS endpoints for custom LLM integrations with dynamic request transforms, variable substitution, and multi-provider API compatibility
 ---
@@ -40,7 +40,7 @@ tests:
       language: 'French'
 ```
 
-When available, Promptfoo also injects runtime variables such as `{{evaluationId}}`, which is useful for correlating downstream logs with a specific eval run:
+When available, artef also injects runtime variables such as `{{evaluationId}}`, which is useful for correlating downstream logs with a specific eval run:
 
 ```yaml
 body:
@@ -76,7 +76,7 @@ providers:
 ## Sending multipart/form-data
 
 Use `multipart.parts` when the target API expects form fields or file uploads.
-Promptfoo builds a fresh `FormData` body for every request and automatically sets the
+artef builds a fresh `FormData` body for every request and automatically sets the
 multipart boundary. Do not set `Content-Type: multipart/form-data` yourself unless
 you are using [raw HTTP request mode](#sending-a-raw-http-request).
 
@@ -97,11 +97,11 @@ providers:
         parts:
           - kind: file
             name: files
-            filename: promptfoo-document.pdf
+            filename: artef-document.pdf
             source:
               type: generated
               format: pdf
-              text: 'Promptfoo generated document for multipart testing.'
+              text: 'artef generated document for multipart testing.'
           - kind: field
             name: documentQuery
             value: '{{prompt}}'
@@ -113,8 +113,8 @@ tests. Supported formats are `pdf`, `png`, `jpeg`, and `jpg` (alias for `jpeg`).
 
 ### Uploading local files
 
-Use a `path` source to upload a file from the machine running promptfoo. Relative
-paths resolve from the promptfoo config directory.
+Use a `path` source to upload a file from the machine running artef. Relative
+paths resolve from the artef config directory.
 
 ```yaml
 providers:
@@ -183,7 +183,7 @@ providers:
       transformResponse: 'json.text'
 ```
 
-This path is relative to the directory containing the Promptfoo config file.
+This path is relative to the directory containing the artef config file.
 
 Then create a file at `path/to/request.txt`:
 
@@ -256,7 +256,7 @@ providers:
 
 ## Using as a library
 
-If you are using promptfoo as a [node library](/docs/usage/node-package/), you can provide the equivalent provider config:
+If you are using artef as a [node library](/docs/usage/node-package/), you can provide the equivalent provider config:
 
 ```javascript
 {
@@ -447,7 +447,7 @@ This expression will be evaluated with three variables available:
 
 #### Function parser
 
-When using promptfoo as a Node.js library, you can provide a function as the response. You may return a string or an object of type `ProviderResponse`.
+When using artef as a Node.js library, you can provide a function as the response. You may return a string or an object of type `ProviderResponse`.
 
 parser:
 
@@ -538,7 +538,7 @@ export const BaseTokenUsageSchema = z.object({
 
 #### File-based parser
 
-You can use a JavaScript file as a response parser by specifying the file path with the `file://` prefix. The file path is resolved relative to the directory containing the promptfoo configuration file.
+You can use a JavaScript file as a response parser by specifying the file path with the `file://` prefix. The file path is resolved relative to the directory containing the artef configuration file.
 
 ```yaml
 providers:
@@ -681,7 +681,7 @@ tests:
 
 ## Tool Calling
 
-The HTTP provider supports tool calling through the `tools`, `tool_choice`, and `transformToolsFormat` config options. Define your tools and tool choice in OpenAI format, then set `transformToolsFormat` to the target provider's format (`openai`, `anthropic`, `bedrock`, or `google`). Promptfoo converts `tools` and `tool_choice` before injecting them into your request body via `{{tools}}` and `{{tool_choice}}`.
+The HTTP provider supports tool calling through the `tools`, `tool_choice`, and `transformToolsFormat` config options. Define your tools and tool choice in OpenAI format, then set `transformToolsFormat` to the target provider's format (`openai`, `anthropic`, `bedrock`, or `google`). artef converts `tools` and `tool_choice` before injecting them into your request body via `{{tools}}` and `{{tool_choice}}`.
 
 Setting `transformToolsFormat` is especially important when the HTTP provider is used as a guardrails provider, so that managed tool calls are formatted correctly for the target API.
 
@@ -745,7 +745,7 @@ Use `openai` or omit for OpenAI-compatible APIs where no conversion is needed.
 
 **Why tool_choice needs transformation:** Each provider represents tool choice differently:
 
-| OpenAI (Promptfoo default) | Anthropic          | Bedrock        | Google                                        |
+| OpenAI (artef default) | Anthropic          | Bedrock        | Google                                        |
 | -------------------------- | ------------------ | -------------- | --------------------------------------------- |
 | `"auto"`                   | `{ type: "auto" }` | `{ auto: {} }` | `{ functionCallingConfig: { mode: "AUTO" } }` |
 | `"required"`               | `{ type: "any" }`  | `{ any: {} }`  | `{ functionCallingConfig: { mode: "ANY" } }`  |
@@ -1425,7 +1425,7 @@ def get_auth(context):
 
 ### Digital Signature Authentication
 
-For APIs requiring cryptographic request signing, the HTTP provider supports digital signatures with PEM, JKS (Java KeyStore), and PFX certificate formats. The private key is **never sent to Promptfoo** and remains stored locally.
+For APIs requiring cryptographic request signing, the HTTP provider supports digital signatures with PEM, JKS (Java KeyStore), and PFX certificate formats. The private key is **never sent to artef** and remains stored locally.
 
 #### Basic Usage (PEM)
 
@@ -1465,7 +1465,7 @@ signatureAuth:
 signatureAuth:
   type: jks
   keystorePath: '/path/to/keystore.jks'
-  keystorePassword: '{{env.JKS_PASSWORD}}' # Or use PROMPTFOO_JKS_PASSWORD env var
+  keystorePassword: '{{env.JKS_PASSWORD}}' # Or use artef_JKS_PASSWORD env var
   keyAlias: 'your-key-alias' # Optional: uses first available if not specified
 ```
 
@@ -1475,7 +1475,7 @@ signatureAuth:
 signatureAuth:
   type: pfx
   pfxPath: '/path/to/certificate.pfx'
-  pfxPassword: '{{env.PFX_PASSWORD}}' # Or use PROMPTFOO_PFX_PASSWORD env var
+  pfxPassword: '{{env.PFX_PASSWORD}}' # Or use artef_PFX_PASSWORD env var
   # OR use separate certificate and key files:
   # certPath: '/path/to/certificate.crt'
   # keyPath: '/path/to/private.key'
@@ -1562,10 +1562,10 @@ providers:
 | privateKey               | string | No\*     | -                          | Inline PEM private key string (PEM only)               |
 | keystorePath             | string | No\*     | -                          | Path to JKS keystore file (JKS only)                   |
 | keystoreContent          | string | No\*     | -                          | Base64-encoded JKS keystore content (JKS only)         |
-| keystorePassword         | string | No       | -                          | JKS password (or use `PROMPTFOO_JKS_PASSWORD` env var) |
+| keystorePassword         | string | No       | -                          | JKS password (or use `artef_JKS_PASSWORD` env var) |
 | keyAlias                 | string | No       | First available            | JKS key alias (JKS only)                               |
 | pfxPath                  | string | No\*     | -                          | Path to PFX certificate file (PFX only)                |
-| pfxPassword              | string | No       | -                          | PFX password (or use `PROMPTFOO_PFX_PASSWORD` env var) |
+| pfxPassword              | string | No       | -                          | PFX password (or use `artef_PFX_PASSWORD` env var) |
 | certPath                 | string | No\*     | -                          | Path to certificate file (PFX alternative)             |
 | keyPath                  | string | No\*     | -                          | Path to private key file (PFX alternative)             |
 | certContent              | string | No\*     | -                          | Base64-encoded certificate content (PFX alternative)   |
@@ -1663,7 +1663,7 @@ Response header names are normalized to lowercase, so a server that returns `X-S
 
 ### Client-side session management
 
-If you want the Promptfoo client to send a unique session or conversation ID with each test case, you can add a `transformVars` option to your Promptfoo or redteam config. This is useful for multi-turn evals or multi-turn redteam attacks where the provider maintains a conversation state.
+If you want the artef client to send a unique session or conversation ID with each test case, you can add a `transformVars` option to your artef or redteam config. This is useful for multi-turn evals or multi-turn redteam attacks where the provider maintains a conversation state.
 
 For example:
 
@@ -1681,7 +1681,7 @@ providers:
     config:
       url: 'https://example.com/api'
       headers:
-        'x-promptfoo-session': '{{sessionId}}'
+        'x-artef-session': '{{sessionId}}'
       body:
         user_message: '{{prompt}}'
 ```
@@ -1722,7 +1722,7 @@ These are retried up to 3 times with exponential backoff (1s, 2s, 4s). The statu
 By default, only the transient errors above are retried. To enable retries for all 5xx responses:
 
 ```bash
-PROMPTFOO_RETRY_5XX=true promptfoo eval
+artef_RETRY_5XX=true artef eval
 ```
 
 ## Streaming Responses
@@ -1735,7 +1735,7 @@ Streaming responses typically use one of these formats:
 - **Chunked JSON**: Multiple JSON objects sent sequentially, often separated by newlines or delimiters.
 - **HTTP chunked transfer encoding**: Standard HTTP mechanism for streaming arbitrary data.
 
-Promptfoo offers full support for HTTP targets that stream responses in these formats. WebSocket requests are also supported via the [WebSocket Provider](./websocket.md). However, synchronous REST/HTTP requests are often preferable for the following reasons:
+artef offers full support for HTTP targets that stream responses in these formats. WebSocket requests are also supported via the [WebSocket Provider](./websocket.md). However, synchronous REST/HTTP requests are often preferable for the following reasons:
 
 - Streaming formats vary widely and often require custom parsing logic in `transformResponse`.
 - Evals wait for the full response before scoring, so progressive tokens may not be surfaced.

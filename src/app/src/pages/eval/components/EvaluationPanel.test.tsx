@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { EvaluationPanel } from './EvaluationPanel';
-import type { GradingResult } from '@promptfoo/types';
+import type { GradingResult } from '@artef/types';
 
 describe('EvaluationPanel', () => {
   it('renders nothing when gradingResults is undefined', () => {
@@ -135,7 +135,7 @@ describe('EvaluationPanel', () => {
         score: 1,
         reason: 'Test passed',
         assertion: {
-          type: 'promptfoo:redteam:policy',
+          type: 'artef:redteam:policy',
           value: 'test policy',
         },
         metadata: {
@@ -150,7 +150,7 @@ describe('EvaluationPanel', () => {
     render(<EvaluationPanel gradingResults={gradingResults} />);
 
     expect(screen.getByText('Grading Prompts')).toBeInTheDocument();
-    expect(screen.getByText('promptfoo:redteam:policy - Full Grading Prompt')).toBeInTheDocument();
+    expect(screen.getByText('artef:redteam:policy - Full Grading Prompt')).toBeInTheDocument();
   });
 
   it('does not render grading prompts section when no renderedGradingPrompt', () => {
@@ -208,7 +208,7 @@ describe('EvaluationPanel', () => {
         score: 0,
         reason: 'Test failed',
         assertion: {
-          type: 'promptfoo:redteam:policy',
+          type: 'artef:redteam:policy',
         },
         metadata: {
           renderedGradingPrompt: gradingPrompt,
@@ -219,7 +219,7 @@ describe('EvaluationPanel', () => {
     render(<EvaluationPanel gradingResults={gradingResults} />);
 
     // Click the accordion to expand
-    const accordionSummary = screen.getByText('promptfoo:redteam:policy - Full Grading Prompt');
+    const accordionSummary = screen.getByText('artef:redteam:policy - Full Grading Prompt');
     await userEvent.click(accordionSummary);
 
     // Verify the formatted JSON is displayed
@@ -256,22 +256,22 @@ describe('EvaluationPanel', () => {
         pass: true,
         score: 1,
         reason: 'First passed',
-        assertion: { type: 'promptfoo:redteam:policy' },
+        assertion: { type: 'artef:redteam:policy' },
         metadata: { renderedGradingPrompt: '{"test": 1}' },
       },
       {
         pass: false,
         score: 0,
         reason: 'Second failed',
-        assertion: { type: 'promptfoo:redteam:harmful' },
+        assertion: { type: 'artef:redteam:harmful' },
         metadata: { renderedGradingPrompt: '{"test": 2}' },
       },
     ];
 
     render(<EvaluationPanel gradingResults={gradingResults} />);
 
-    expect(screen.getByText('promptfoo:redteam:policy - Full Grading Prompt')).toBeInTheDocument();
-    expect(screen.getByText('promptfoo:redteam:harmful - Full Grading Prompt')).toBeInTheDocument();
+    expect(screen.getByText('artef:redteam:policy - Full Grading Prompt')).toBeInTheDocument();
+    expect(screen.getByText('artef:redteam:harmful - Full Grading Prompt')).toBeInTheDocument();
   });
 
   it('renders assert-set rows as a nested hierarchy with assertion type and value labels', () => {

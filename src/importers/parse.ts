@@ -1,8 +1,8 @@
-import logger from '../logger';
+﻿import logger from '../logger';
 import { convertOpenAIEvalsJsonl, isOpenAIEvalsJsonlRow } from './openaiEvals';
 import {
   IMPORT_SOURCE_OPENAI_EVALS,
-  IMPORT_SOURCE_PROMPTFOO,
+  IMPORT_SOURCE_artef,
   type ParsedImportFile,
 } from './types';
 
@@ -65,7 +65,7 @@ export function parseImportFile(fileContent: string): ParsedImportFile {
       const invalidRowIndex = parsedRows.findIndex((row) => !isOpenAIEvalsJsonlRow(row));
       throw new Error(
         `File parsed as JSONL but line ${invalidRowIndex + 1} is not a valid OpenAI Evals row. ` +
-          `Expected a promptfoo eval JSON export or an OpenAI Evals JSONL export.`,
+          `Expected a artef eval JSON export or an OpenAI Evals JSONL export.`,
       );
     }
     throw jsonError;
@@ -76,7 +76,7 @@ export function parseImportFile(fileContent: string): ParsedImportFile {
     return openaiResult;
   }
   return {
-    source: IMPORT_SOURCE_PROMPTFOO,
+    source: IMPORT_SOURCE_artef,
     evalData: parsedJson,
   };
 }

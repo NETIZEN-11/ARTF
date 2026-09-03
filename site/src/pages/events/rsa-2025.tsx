@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -22,25 +22,25 @@ export default function RSA2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at RSA Conference 2025"
-      description="Recap of Promptfoo at RSA Conference 2025. AI red teaming demos and enterprise AI security discussions."
+      title="artef at RSA Conference 2025"
+      description="Recap of artef at RSA Conference 2025. AI red teaming demos and enterprise AI security discussions."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at RSA Conference 2025" />
+        <meta property="og:title" content="artef at RSA Conference 2025" />
         <meta
           property="og:description"
-          content="Recap of Promptfoo at RSA Conference 2025. AI red teaming demos and enterprise security."
+          content="Recap of artef at RSA Conference 2025. AI red teaming demos and enterprise security."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/rsa-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/rsa-2025" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/events/rsa-2025.jpg" />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/events/rsa-2025.jpg" />
+        <meta property="og:image" content="https://www.artef.dev/img/events/rsa-2025.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/rsa-2025.jpg" />
         <meta
           name="keywords"
           content="RSA Conference 2025, AI security, LLM security, enterprise security, San Francisco, red teaming"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/rsa-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/rsa-2025" />
       </Head>
 
       <main className={styles.rsaPage}>
@@ -139,7 +139,7 @@ export default function RSA2025(): React.ReactElement {
                 <h3>Enterprise Connections</h3>
                 <p>
                   Connected with Fortune 500 security teams, discussing their AI security challenges
-                  and how Promptfoo helps protect production AI systems.
+                  and how artef helps protect production AI systems.
                 </p>
               </div>
               <div className={styles.recapCard}>
@@ -213,7 +213,7 @@ export default function RSA2025(): React.ReactElement {
             <div className={styles.ctaContent}>
               <h2 className={styles.ctaTitle}>We Were Back for RSA 2026</h2>
               <p className={styles.ctaText}>
-                Promptfoo returned to RSA Conference 2026 in March. See what we showed on the floor,
+                artef returned to RSA Conference 2026 in March. See what we showed on the floor,
                 or get in touch for a walkthrough.
               </p>
               <div className={styles.ctaButtons}>

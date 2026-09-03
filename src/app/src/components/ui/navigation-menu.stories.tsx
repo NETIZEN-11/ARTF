@@ -1,4 +1,4 @@
-import { cn } from '@app/lib/utils';
+﻿import { cn } from '@app/lib/utils';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -61,7 +61,7 @@ export const Default: Story = {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="#"
                   >
-                    <div className="mb-2 mt-4 text-lg font-medium">Promptfoo</div>
+                    <div className="mb-2 mt-4 text-lg font-medium">artef</div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Test and evaluate LLM outputs with a comprehensive framework.
                     </p>
@@ -271,7 +271,7 @@ export const AppHeader: Story = {
   render: () => (
     <div className="flex items-center justify-between p-4 border-b">
       <div className="flex items-center gap-6">
-        <span className="font-semibold text-lg">Promptfoo</span>
+        <span className="font-semibold text-lg">artef</span>
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -309,7 +309,7 @@ export const EndAligned: Story = {
   render: () => (
     <div className="flex items-center justify-between p-4 border-b">
       <div className="flex items-center gap-6">
-        <span className="font-semibold text-lg">Promptfoo</span>
+        <span className="font-semibold text-lg">artef</span>
       </div>
       <NavigationMenu>
         <NavigationMenuList>

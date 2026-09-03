@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { context as otelContext, propagation, ROOT_CONTEXT, trace } from '@opentelemetry/api';
 import { getCache, isCacheEnabled } from '../cache';
@@ -117,7 +117,7 @@ async function createGatewayInstance(
 }
 
 /**
- * Maps Vercel AI SDK usage to promptfoo TokenUsage format.
+ * Maps Vercel AI SDK usage to artef TokenUsage format.
  */
 function mapTokenUsage(usage?: {
   promptTokens?: number;
@@ -195,7 +195,7 @@ function pickGenerateOptions(config: VercelAiConfig) {
 
 function fingerprintGatewayIdentity(value: string) {
   return createHmac('sha256', value)
-    .update('promptfoo:vercel-gateway-cache-identity')
+    .update('artef:vercel-gateway-cache-identity')
     .digest('hex');
 }
 

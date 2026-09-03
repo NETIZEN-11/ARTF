@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Multi-turn Jailbreaks
 title: Multi-turn Jailbreaks Strategy
 description: Execute multi-turn attack sequences that gradually escalate harmful content to bypass conversation-level safety mechanisms
@@ -32,9 +32,9 @@ Multi-turn jailbreaks operate by:
 
 When the strategy hits a refusal, it backtracks to an earlier point in the conversation.
 
-## Use in Promptfoo
+## Use in artef
 
-Promptfoo supports five types of multi-turn [strategies](/docs/red-team/strategies/):
+artef supports five types of multi-turn [strategies](/docs/red-team/strategies/):
 
 #### 1. Crescendo
 
@@ -60,7 +60,7 @@ Simulates a persistent, creative user who tries different phrasings and approach
 
 Multi-turn strategies can be enabled either in the UI Strategies page, or by adding them to your YAML config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   # ...
 
@@ -74,7 +74,7 @@ redteam:
 
 Or tune them with the following parameters:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: crescendo
@@ -114,7 +114,7 @@ If your system maintains a conversation history and only expects the latest mess
 
 By default, both Crescendo and GOAT strategies stop immediately upon finding a successful attack. You can configure them to continue searching for additional successful attacks until `maxTurns` is reached:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: crescendo
     config:
@@ -158,8 +158,8 @@ Keep disabled (default) when:
 Enable unblocking by setting an environment variable before running your red team:
 
 ```bash
-export PROMPTFOO_ENABLE_UNBLOCKING=true
-promptfoo redteam run
+export artef_ENABLE_UNBLOCKING=true
+artef redteam run
 ```
 
 **Example blocking scenarios:**

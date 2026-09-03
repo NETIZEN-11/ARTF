@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GitHub Utilities
  *
  * Helper functions for GitHub integration.
@@ -44,7 +44,7 @@ function hasInlineCommentLocation(comment: Comment): boolean {
 /**
  * Parse GitHub PR string
  *
- * @param prString - GitHub PR string in format: owner/repo#number (e.g., promptfoo/promptfoo#123)
+ * @param prString - GitHub PR string in format: owner/repo#number (e.g., artef/artef#123)
  * @returns Parsed PR object or null if invalid format
  */
 export function parseGitHubPr(prString: string): ParsedGitHubPR | null {
@@ -109,8 +109,8 @@ export function prepareComments(
   // Append minimum severity threshold if provided
   if (minimumSeverity && reviewBody) {
     const severityFormatted = formatSeverity(minimumSeverity as CodeScanSeverity, 'plain');
-    reviewBody += `\n\n<sub>Minimum severity threshold: ${severityFormatted} | To re-scan after changes, comment \`@promptfoo-scanner\`</sub>`;
-    reviewBody += `\n<sub>[Learn more](https://www.promptfoo.dev/docs/code-scanning/)</sub>`;
+    reviewBody += `\n\n<sub>Minimum severity threshold: ${severityFormatted} | To re-scan after changes, comment \`@artef-scanner\`</sub>`;
+    reviewBody += `\n<sub>[Learn more](https://www.artef.dev/docs/code-scanning/)</sub>`;
   }
 
   return {

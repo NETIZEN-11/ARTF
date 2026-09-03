@@ -1,7 +1,7 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Bedrock Llama Text Models'
 
-# For Llama 3.2 Vision models, see promptfooconfig.llama-vision.yaml
+# For Llama 3.2 Vision models, see artefconfig.llama-vision.yaml
 
 prompts:
   - 'Translate to {{language}}: {{input}}'

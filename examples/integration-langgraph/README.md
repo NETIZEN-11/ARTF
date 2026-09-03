@@ -1,11 +1,11 @@
-# integration-langgraph (LangGraph Integration)
+﻿# integration-langgraph (LangGraph Integration)
 
-This example demonstrates how to use LangGraph with Promptfoo, including a research agent setup, structured output, and red teaming or evaluation.
+This example demonstrates how to use LangGraph with artef, including a research agent setup, structured output, and red teaming or evaluation.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-langgraph
+npx artef@latest init --example integration-langgraph
 cd integration-langgraph
 ```
 
@@ -36,17 +36,17 @@ Or install individually:
 pip install langgraph langchain langchain-openai python-dotenv
 ```
 
-Install promptfoo CLI:
+Install artef CLI:
 
 ```bash
-npm install -g promptfoo
+npm install -g artef
 ```
 
 ## Files
 
 - `agent.py`: Defines the LangGraph Research Agent, using a StateGraph that processes user queries and summarizes AI research trends.
-- `provider.py`: Wraps the agent logic into a callable function for Promptfoo, exposing a call_api() handler.
-- `promptfooconfig.yaml`: Configures Promptfoo to:
+- `provider.py`: Wraps the agent logic into a callable function for artef, exposing a call_api() handler.
+- `artefconfig.yaml`: Configures artef to:
 
 - Provide test prompts
 - Call the LangGraph provider
@@ -55,13 +55,13 @@ npm install -g promptfoo
 Run the evaluation:
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
 Explore results in browser:
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
 ---

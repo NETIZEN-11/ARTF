@@ -1,14 +1,14 @@
-# provider-elevenlabs/isolation (ElevenLabs Audio Isolation)
+﻿# provider-elevenlabs/isolation (ElevenLabs Audio Isolation)
 
 Remove background noise from audio files to extract clean speech using ElevenLabs audio isolation.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example provider-elevenlabs/isolation
+npx artef@latest init --example provider-elevenlabs/isolation
 cd provider-elevenlabs/isolation
 export ELEVENLABS_API_KEY=your_api_key_here
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## What this tests

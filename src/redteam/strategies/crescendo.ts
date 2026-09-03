@@ -1,4 +1,4 @@
-import type { TestCase } from '../../types/index';
+﻿import type { TestCase } from '../../types/index';
 import type { Inputs } from '../../types/shared';
 
 export function addCrescendo(
@@ -15,7 +15,7 @@ export function addCrescendo(
     return {
       ...testCase,
       provider: {
-        id: 'promptfoo:redteam:crescendo',
+        id: 'artef:redteam:crescendo',
         config: {
           injectVar,
           ...config,

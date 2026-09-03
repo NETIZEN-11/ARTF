@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -12,7 +12,7 @@ import {
 } from '@app/components/ui/dialog';
 import { EVAL_ROUTES, ROUTES } from '@app/constants/routes';
 import { Link } from 'react-router-dom';
-import type { ServerPromptWithMetadata } from '@promptfoo/types';
+import type { ServerPromptWithMetadata } from '@artef/types';
 
 interface PromptDialogProps {
   openDialog: boolean;

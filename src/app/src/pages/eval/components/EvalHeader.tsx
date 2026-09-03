@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import {
@@ -29,7 +29,7 @@ import { EvalIdChip } from './EvalIdChip';
 import EvalSelectorDialog from './EvalSelectorDialog';
 import EvalSelectorKeyboardShortcut from './EvalSelectorKeyboardShortcut';
 import { useTableStore } from './store';
-import type { ResultLightweightWithLabel } from '@promptfoo/types';
+import type { ResultLightweightWithLabel } from '@artef/types';
 
 export type ActiveView = 'results' | 'report';
 

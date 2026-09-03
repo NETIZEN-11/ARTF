@@ -1,4 +1,4 @@
----
+﻿---
 title: How to Choose the Right LLM Temperature Setting
 sidebar_label: Choosing the right temperature for your LLM
 description: Learn how to find the optimal LLM temperature setting by running systematic evaluations. Compare temperature 0.1-1.0 for creativity vs consistency.
@@ -28,13 +28,13 @@ By running a temperature eval, you can make data-driven decisions that balance t
 
 ## Prerequisites
 
-Before setting up an evaluation, create a new directory and a `promptfooconfig.yaml` file. For more information on getting started with promptfoo, refer to the [getting started guide](/docs/getting-started).
+Before setting up an evaluation, create a new directory and a `artefconfig.yaml` file. For more information on getting started with artef, refer to the [getting started guide](/docs/getting-started).
 
 ## Evaluating
 
 Here's an example configuration that compares the outputs of Claude Sonnet 4.6 at a low temperature (0.2) and a high temperature (0.9):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Respond to the following instruction: {{message}}'
 
@@ -68,14 +68,14 @@ The `tests` section includes our test cases that will be run against both temper
 To run the evaluation, use the following command:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This command shows the outputs side-by-side in the command line.
 
 ## Adding automated checks
 
-To automatically check for expected outputs, you can define assertions in your test cases. Assertions allow you to specify the criteria that the LLM output should meet, and `promptfoo` will evaluate the output against these criteria.
+To automatically check for expected outputs, you can define assertions in your test cases. Assertions allow you to specify the criteria that the LLM output should meet, and `artef` will evaluate the output against these criteria.
 
 For the example of Henry VIII's grandchildren, you might want to ensure that the output is factually correct. You can use a `model-graded-closedqa` assertion to automatically check that the output does not contain any hallucinated information.
 
@@ -116,7 +116,7 @@ It's worth spending a few minutes to set up these automated checks. They help st
 After the evaluation is complete, you can use the web viewer to review the outputs and compare the performance at different temperatures:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Evaluating randomness
@@ -126,7 +126,7 @@ LLMs are inherently nondeterministic, which means their outputs will vary with e
 The `eval` command has a parameter, `repeat`, which runs each test multiple times:
 
 ```
-promptfoo eval --repeat 3
+artef eval --repeat 3
 ```
 
 The above command runs the LLM three times for each test case, helping you get a more complete sample of how it performs at a given temperature.

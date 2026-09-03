@@ -1,11 +1,11 @@
-# ollama (Ollama Examples)
+﻿# ollama (Ollama Examples)
 
-This directory contains examples demonstrating different capabilities of Ollama with promptfoo.
+This directory contains examples demonstrating different capabilities of Ollama with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example ollama
+npx artef@latest init --example ollama
 cd ollama
 ```
 
@@ -29,20 +29,20 @@ This directory contains two different Ollama examples:
 
 ### 1. Model Comparison (Default)
 
-**Config**: `promptfooconfig.yaml`
+**Config**: `artefconfig.yaml`
 
 Compares different Ollama models (llama4:scout, llama2-uncensored) with OpenAI models using various prompts and assertions.
 
 **Running**:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 Or with a specific config:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml
+npx artef@latest eval -c artefconfig.yaml
 ```
 
 **What this tests**:
@@ -52,18 +52,18 @@ npx promptfoo@latest eval -c promptfooconfig.yaml
 - Validates models don't refuse legitimate queries
 - Demonstrates prompt format differences (Llama vs OpenAI)
 
-**Tutorial**: See the accompanying guide at https://promptfoo.dev/docs/guides/censored-vs-uncensored-ollama/
+**Tutorial**: See the accompanying guide at https://artef.dev/docs/guides/censored-vs-uncensored-ollama/
 
 ### 2. Function Calling
 
-**Config**: `promptfooconfig.function-calling.yaml`
+**Config**: `artefconfig.function-calling.yaml`
 
 Demonstrates Ollama's function calling capabilities using a tiny 1B parameter model.
 
 **Running**:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.function-calling.yaml
+npx artef@latest eval -c artefconfig.function-calling.yaml
 ```
 
 **What this tests**:
@@ -100,7 +100,7 @@ Each test generates a tool call:
 
 ### For Comparison Example
 
-Edit the prompts and test cases in `promptfooconfig.yaml`. You can modify:
+Edit the prompts and test cases in `artefconfig.yaml`. You can modify:
 
 - Models being compared
 - Test questions in the `tests` section
@@ -109,7 +109,7 @@ Edit the prompts and test cases in `promptfooconfig.yaml`. You can modify:
 
 ### For Function Calling Example
 
-Edit `promptfooconfig.function-calling.yaml` to:
+Edit `artefconfig.function-calling.yaml` to:
 
 - Change the test cities
 - Modify the tool definition in `get_current_weather.yaml`
@@ -121,8 +121,8 @@ Edit `promptfooconfig.function-calling.yaml` to:
 ```text
 examples/ollama/
 ├── README.md                              # This file
-├── promptfooconfig.yaml                   # Model comparison (default)
-├── promptfooconfig.function-calling.yaml  # Function calling example
+├── artefconfig.yaml                   # Model comparison (default)
+├── artefconfig.function-calling.yaml  # Function calling example
 ├── prompts/
 │   ├── llama_prompt.txt                   # Llama-style prompt format
 │   └── openai_prompt.json                 # OpenAI chat format
@@ -135,7 +135,7 @@ examples/ollama/
 After running an evaluation, view the results in the web UI:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 This opens an interactive comparison showing:

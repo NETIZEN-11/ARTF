@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Shared API-key gating for the two Codex providers (`openai:codex-sdk` and
  * `openai:codex-app-server`). Both spawn the Codex CLI and must decide identically whether the
  * resolved Codex/OpenAI API key belongs to the active backend. When routing through a
@@ -19,7 +19,7 @@ export interface CodexApiKeyGatingConfig {
 /**
  * Whether the provider routes inference through a non-OpenAI Codex model provider
  * (e.g. `amazon-bedrock`). When it does, the model id belongs to that provider's namespace and
- * an ambient OpenAI/Codex key is unrelated to the active backend, so promptfoo's OpenAI model
+ * an ambient OpenAI/Codex key is unrelated to the active backend, so artef's OpenAI model
  * allowlist no longer applies and the key must not be injected.
  */
 export function usesCustomModelProvider(config: CodexApiKeyGatingConfig): boolean {

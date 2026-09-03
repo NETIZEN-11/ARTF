@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 
 import ErrorBoundary from '@app/components/ErrorBoundary';
 import { Button } from '@app/components/ui/button';
@@ -24,7 +24,7 @@ import {
   getPrimaryTokenUsageLabel,
   getTokenUsageTotal,
 } from '@app/utils/tokenUsage';
-import { FILE_METADATA_KEY, HUMAN_ASSERTION_TYPE } from '@promptfoo/providers/constants';
+import { FILE_METADATA_KEY, HUMAN_ASSERTION_TYPE } from '@artef/providers/constants';
 import {
   type EvalResultsFilterMode,
   type EvaluateTable,
@@ -33,9 +33,9 @@ import {
   type GradingResult,
   type ProviderOptions,
   type Vars,
-} from '@promptfoo/types';
-import { EVAL_TABLE_MAX_PAGE_SIZE } from '@promptfoo/types/api/eval';
-import invariant from '@promptfoo/util/invariant';
+} from '@artef/types';
+import { EVAL_TABLE_MAX_PAGE_SIZE } from '@artef/types/api/eval';
+import invariant from '@artef/util/invariant';
 import {
   createColumnHelper,
   flexRender,
@@ -68,7 +68,7 @@ import './ResultsTable.css';
 
 import { NumberInput } from '@app/components/ui/number-input';
 import { isBlobRef, isStorageRef, resolveAudioUrl } from '@app/utils/mediaStorage';
-import { isEncodingStrategy } from '@promptfoo/redteam/constants/strategies';
+import { isEncodingStrategy } from '@artef/redteam/constants/strategies';
 import { useMetricsGetter, usePassingTestCounts, usePassRates, useTestCounts } from './hooks';
 import {
   getNamedMetricTotals,

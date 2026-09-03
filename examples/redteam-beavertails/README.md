@@ -1,4 +1,4 @@
-# redteam-beavertails (BeaverTails Red Team Testing)
+﻿# redteam-beavertails (BeaverTails Red Team Testing)
 
 This example demonstrates how to use the BeaverTails plugin for red team testing, including subcategory filtering.
 
@@ -11,7 +11,7 @@ The BeaverTails plugin uses the [BeaverTails dataset](https://huggingface.co/dat
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-beavertails
+npx artef@latest init --example redteam-beavertails
 cd redteam-beavertails
 ```
 
@@ -19,8 +19,8 @@ cd redteam-beavertails
 
 This example includes two configuration files:
 
-1. **`promptfooconfig.yaml`** - Basic evaluation using HuggingFace dataset directly
-2. **`promptfooconfig-subcategories.yaml`** - Red team generation with subcategory filtering
+1. **`artefconfig.yaml`** - Basic evaluation using HuggingFace dataset directly
+2. **`artefconfig-subcategories.yaml`** - Red team generation with subcategory filtering
 
 ## Setup
 
@@ -43,13 +43,13 @@ This example includes two configuration files:
 Run the basic evaluation using the BeaverTails-Evaluation dataset:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 View results:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ### Red Team with Subcategory Filtering
@@ -57,7 +57,7 @@ promptfoo view
 Generate test cases with subcategory filtering:
 
 ```bash
-promptfoo redteam generate -c promptfooconfig-subcategories.yaml
+artef redteam generate -c artefconfig-subcategories.yaml
 ```
 
 This will create a `redteam.yaml` file with filtered test cases.
@@ -65,18 +65,18 @@ This will create a `redteam.yaml` file with filtered test cases.
 Then evaluate your model:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 View results:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Subcategory Filtering
 
-The `promptfooconfig-subcategories.yaml` configuration shows two approaches:
+The `artefconfig-subcategories.yaml` configuration shows two approaches:
 
 1. **Basic usage** - Tests all harmful categories:
 
@@ -115,5 +115,5 @@ The `promptfooconfig-subcategories.yaml` configuration shows two approaches:
 
 ## Learn More
 
-- [BeaverTails Plugin Documentation](https://promptfoo.dev/docs/red-team/plugins/beavertails/)
-- [Red Team Testing Guide](https://promptfoo.dev/docs/red-team/quickstart/)
+- [BeaverTails Plugin Documentation](https://artef.dev/docs/red-team/plugins/beavertails/)
+- [Red Team Testing Guide](https://artef.dev/docs/red-team/quickstart/)

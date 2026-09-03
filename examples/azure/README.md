@@ -1,6 +1,6 @@
-# azure (Azure AI Examples)
+﻿# azure (Azure AI Examples)
 
-This directory contains examples for using Azure AI services with promptfoo, including Azure OpenAI, Azure AI Foundry, and third-party models available through Microsoft Foundry.
+This directory contains examples for using Azure AI services with artef, including Azure OpenAI, Azure AI Foundry, and third-party models available through Microsoft Foundry.
 
 ## Available Examples
 
@@ -26,20 +26,20 @@ This directory contains examples for using Azure AI services with promptfoo, inc
 
 ```bash
 # Azure OpenAI basic example
-npx promptfoo@latest init --example azure/openai
+npx artef@latest init --example azure/openai
 
 # Azure Assistants with tools
-npx promptfoo@latest init --example azure/assistant
+npx artef@latest init --example azure/assistant
 
 # Azure AI Foundry Agents
-npx promptfoo@latest init --example azure/foundry-agent
+npx artef@latest init --example azure/foundry-agent
 
 # Third-party models
-npx promptfoo@latest init --example azure/claude
-npx promptfoo@latest init --example azure/llama
-npx promptfoo@latest init --example azure/deepseek
-npx promptfoo@latest init --example azure/mistral
-npx promptfoo@latest init --example azure/comparison
+npx artef@latest init --example azure/claude
+npx artef@latest init --example azure/llama
+npx artef@latest init --example azure/deepseek
+npx artef@latest init --example azure/mistral
+npx artef@latest init --example azure/comparison
 ```
 
 ## Environment Variables
@@ -62,6 +62,6 @@ export AZURE_TENANT_ID=your-tenant-id
 
 ## Documentation
 
-- [Azure Provider Documentation](https://promptfoo.dev/docs/providers/azure/)
+- [Azure Provider Documentation](https://artef.dev/docs/providers/azure/)
 - [Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/)
 - [Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/)

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -21,9 +21,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tool
 import { useToast } from '@app/hooks/useToast';
 import { cn } from '@app/lib/utils';
 import { useStore } from '@app/stores/evalConfig';
-import { testCaseFromCsvRow } from '@promptfoo/csv';
+import { testCaseFromCsvRow } from '@artef/csv';
 import TestCaseDialog from './TestCaseDialog';
-import type { CsvRow, TestCase, TestGeneratorConfig } from '@promptfoo/types';
+import type { CsvRow, TestCase, TestGeneratorConfig } from '@artef/types';
 
 interface TestCasesSectionProps {
   varsList: string[];
@@ -89,7 +89,7 @@ async function parseCsvFile(text: string): Promise<TestCase[]> {
 }
 
 async function parseYamlFile(text: string): Promise<TestCase[]> {
-  const { loadYaml } = await import('@promptfoo/util/yamlLoad');
+  const { loadYaml } = await import('@artef/util/yamlLoad');
   const parsedYaml = loadYaml(text);
 
   if (Array.isArray(parsedYaml)) {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table';
 import { PageContainer } from '@app/components/layout/PageContainer';
@@ -8,7 +8,7 @@ import { EVAL_ROUTES } from '@app/constants/routes';
 import { formatDataGridDate } from '@app/utils/date';
 import { Link, useSearchParams } from 'react-router-dom';
 import PromptDialog from './PromptDialog';
-import type { ServerPromptWithMetadata } from '@promptfoo/types';
+import type { ServerPromptWithMetadata } from '@artef/types';
 import type { ColumnDef } from '@tanstack/react-table';
 
 interface PromptsProps {

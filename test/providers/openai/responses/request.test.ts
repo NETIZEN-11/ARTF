@@ -1,4 +1,4 @@
-// Load-bearing: registers shared vi.mock / beforeEach hooks before any
+﻿// Load-bearing: registers shared vi.mock / beforeEach hooks before any
 // module-under-test import below. See ./setup.ts for details.
 import './setup';
 
@@ -61,7 +61,7 @@ describe('OpenAiResponsesProvider request building', () => {
         headers: expect.objectContaining({
           'Content-Type': 'application/json',
           Authorization: 'Bearer test-key',
-          'X-OpenAI-Originator': 'promptfoo',
+          'X-OpenAI-Originator': 'artef',
         }),
       }),
       expect.any(Number),
@@ -216,7 +216,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should honor the eval timeout for a background response on a standard model', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '600000' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '600000' });
     vi.mocked(cache.fetchWithCache).mockResolvedValue({
       data: { id: 'resp_background', status: 'completed', output: [], usage: null },
       cached: false,
@@ -1800,7 +1800,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should bound polling retries by the overall background deadline', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '20' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '20' });
     const deleteFromCache = vi.fn().mockResolvedValue(undefined);
     vi.mocked(cache.fetchWithCache).mockImplementation(async (url, options) => {
       if (String(url).endsWith('/responses') && options?.method === 'POST') {
@@ -1838,7 +1838,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should include background creation time in the overall polling deadline', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '100' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '100' });
     const originalNow = Date.now;
     let now = originalNow();
     const timeouts: number[] = [];
@@ -1880,7 +1880,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should preserve a shareable queued background response after a local polling timeout', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '10' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '10' });
     let now = Date.now();
     const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => now);
     const deleteFromCache = vi.fn().mockResolvedValue(undefined);
@@ -1957,7 +1957,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should preserve the polling deadline of a late background subscriber', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '140' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '140' });
     let now = Date.now();
     const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => now);
     let notifyFirstPoll: (() => void) | undefined;
@@ -2037,7 +2037,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should cancel and evict an upstream background response when polling times out', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '10' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '10' });
     let now = Date.now();
     const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => now);
     const deleteFromCache = vi.fn().mockResolvedValue(undefined);
@@ -2380,7 +2380,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should preserve the overall deadline while replacing a stale cached background job', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '100' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '100' });
     const originalNow = Date.now;
     let now = originalNow();
     const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => now);
@@ -2906,7 +2906,7 @@ describe('OpenAiResponsesProvider request building', () => {
 
   it('should cancel a streamed background job when its response ID arrives after the previous grace period', async () => {
     vi.useFakeTimers();
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '3000' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '3000' });
     const controller = new AbortController();
     vi.mocked(fetchWithRetries).mockImplementationOnce(async (_url, options) => {
       const signal = options?.signal;
@@ -3013,7 +3013,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should cancel a streamed background request when it times out after response creation', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '20' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '20' });
     vi.mocked(fetchWithRetries).mockImplementationOnce(async (_url, options) => {
       const signal = options?.signal;
       const stream = new ReadableStream({
@@ -3060,7 +3060,7 @@ describe('OpenAiResponsesProvider request building', () => {
   });
 
   it('should cancel a streamed background job whose response ID arrives after the eval timeout', async () => {
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '20' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '20' });
     vi.mocked(fetchWithRetries).mockImplementationOnce(async (_url, options) => {
       const signal = options?.signal;
       return new Response(
@@ -3141,7 +3141,7 @@ describe('OpenAiResponsesProvider request building', () => {
 
   it('should bound cleanup of an accepted background stream that never emits a response ID', async () => {
     vi.useFakeTimers();
-    setOpenAiEnv({ PROMPTFOO_EVAL_TIMEOUT_MS: '600000' });
+    setOpenAiEnv({ artef_EVAL_TIMEOUT_MS: '600000' });
     const controller = new AbortController();
     let upstreamSignal: AbortSignal | undefined;
     let notifyStarted: (() => void) | undefined;

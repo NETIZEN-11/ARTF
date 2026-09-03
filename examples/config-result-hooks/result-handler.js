@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Example extension hook for processing evaluation results.
  *
  * This handler demonstrates common use cases:
@@ -7,9 +7,9 @@
  * - Sending metrics to monitoring systems
  *
  * Usage:
- *   promptfoo eval -x file://result-handler.js:afterAll
+ *   artef eval -x file://result-handler.js:afterAll
  *
- * Or in promptfooconfig.yaml:
+ * Or in artefconfig.yaml:
  *   extensions:
  *     - file://result-handler.js:afterAll
  */
@@ -77,7 +77,7 @@ module.exports = {
 
     // Example: Send metrics to monitoring
     // await sendToDatadog({
-    //   metric: 'promptfoo.eval.success_rate',
+    //   metric: 'artef.eval.success_rate',
     //   value: successRate,
     //   tags: [`eval_id:${evalId}`]
     // });

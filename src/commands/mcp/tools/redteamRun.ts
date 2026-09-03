@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { DEFAULT_MAX_CONCURRENCY } from '../../../constants';
 import logger from '../../../logger';
@@ -37,8 +37,8 @@ export function registerRedteamRunTool(server: McpServer) {
         .optional()
         .describe(
           dedent`
-            Path to the promptfoo configuration file.
-            Defaults to "promptfooconfig.yaml" in current directory.
+            Path to the artef configuration file.
+            Defaults to "artefconfig.yaml" in current directory.
             Example: "./my-redteam-config.yaml"
           `,
         ),
@@ -136,7 +136,7 @@ export function registerRedteamRunTool(server: McpServer) {
           eventSource: 'mcp',
         };
 
-        logger.debug(`Running redteam scan with config: ${configPath || 'promptfooconfig.yaml'}`);
+        logger.debug(`Running redteam scan with config: ${configPath || 'artefconfig.yaml'}`);
 
         // Run the redteam scan with timeout protection
         const startTime = Date.now();
@@ -166,7 +166,7 @@ export function registerRedteamRunTool(server: McpServer) {
             status: 'completed',
             duration: endTime - startTime,
             timestamp: new Date().toISOString(),
-            configPath: configPath || 'promptfooconfig.yaml',
+            configPath: configPath || 'artefconfig.yaml',
             outputPath: output || 'redteam.yaml',
           },
           configuration: {
@@ -251,7 +251,7 @@ export function registerRedteamRunTool(server: McpServer) {
 
         const errorData = {
           configuration: {
-            configPath: args.configPath || 'promptfooconfig.yaml',
+            configPath: args.configPath || 'artefconfig.yaml',
             output: args.output,
             force: args.force,
             maxConcurrency: args.maxConcurrency,
@@ -270,7 +270,7 @@ export function registerRedteamRunTool(server: McpServer) {
               'Ensure your config file has a "redteam" section with plugins and targets',
               'Check that provider credentials are properly configured',
               'Verify your targets/providers have proper labels',
-              'Consider running "promptfoo redteam init" to create a proper config',
+              'Consider running "artef redteam init" to create a proper config',
             ],
             exampleConfig: {
               basic: dedent`

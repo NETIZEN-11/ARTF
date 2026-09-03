@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Test Databricks Foundation Model APIs
 
 prompts:
@@ -15,7 +15,7 @@ providers:
       workspaceUrl: https://your-workspace.cloud.databricks.com
       # Track usage for cost attribution
       usageContext:
-        project: 'promptfoo-example'
+        project: 'artef-example'
         team: 'engineering'
 
 tests:

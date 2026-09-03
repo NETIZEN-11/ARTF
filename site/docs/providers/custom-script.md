@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Custom Scripts
-description: Configure custom shell commands and scripts as LLM providers to test chains, Python frameworks, and unsupported APIs with promptfoo's testing framework
+description: Configure custom shell commands and scripts as LLM providers to test chains, Python frameworks, and unsupported APIs with artef's testing framework
 ---
 
 # Custom Scripts
 
-You may use any shell command as an API provider. This is particularly useful when you want to use a language or framework that is not directly supported by promptfoo.
+You may use any shell command as an API provider. This is particularly useful when you want to use a language or framework that is not directly supported by artef.
 
 While Script Providers are particularly useful for evaluating chains, they can generally be used to test your prompts if they are implemented in Python or some other language.
 
@@ -39,7 +39,7 @@ providers:
 Or in the CLI:
 
 ```
-promptfoo eval -p prompt1.txt prompt2.txt -o results.csv  -v vars.csv -r 'exec: python chain.py'
+artef eval -p prompt1.txt prompt2.txt -o results.csv  -v vars.csv -r 'exec: python chain.py'
 ```
 
 In the above example, `chain.py` is a Python script that takes a prompt as an argument, executes an LLM chain, and outputs the result.

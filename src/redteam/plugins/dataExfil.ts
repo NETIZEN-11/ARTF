@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import logger from '../../logger';
 import { checkExfilTracking } from '../strategies/indirectWebPwn';
 import { RedteamGraderBase } from './base';
@@ -6,7 +6,7 @@ import { RedteamGraderBase } from './base';
 import type { ApiProvider, AssertionValue, AtomicTestCase, GradingResult } from '../../types/index';
 import type { RedteamGradingContext } from '../grading/types';
 
-const PLUGIN_ID = 'promptfoo:redteam:data-exfil';
+const PLUGIN_ID = 'artef:redteam:data-exfil';
 
 export class DataExfilGrader extends RedteamGraderBase {
   id = PLUGIN_ID;

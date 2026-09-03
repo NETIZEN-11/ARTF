@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Qwen vs Llama vs GPT
 description: Compare Qwen3 32B vs GPT-5 vs Llama 4 Maverick performance on customer support tasks with custom benchmarks to optimize your chatbot's response quality
 ---
@@ -34,9 +34,9 @@ cd qwen-benchmark
 
 ## Step 2: Configure the Models
 
-Create a `promptfooconfig.yaml` with the models you want to compare. Here's an example configuration with Qwen, GPT-5, and Llama:
+Create a `artefconfig.yaml` with the models you want to compare. Here's an example configuration with Qwen, GPT-5, and Llama:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - 'openai:gpt-5'
   - 'openrouter:meta-llama/llama-4-maverick'
@@ -54,7 +54,7 @@ export OPENAI_API_KEY=your_openai_api_key
 
 Customize the behavior of each model by setting parameters such as `max_tokens` or `max_length`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:gpt-5
     config:
@@ -73,7 +73,7 @@ providers:
 
 Set up the prompts that you want to run for each model. In this case, we'll just use a single simple prompt, because we want to compare model performance.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'You are a helpful customer support chatbot for Acme, Inc. You respond concisely in 1 or 2 sentences. Customer query: {{query}}'
 ```
@@ -154,20 +154,20 @@ To learn more, see [assertions and metrics](/docs/configuration/expected-outputs
 
 ## Step 5: Run the Comparison
 
-With everything configured, run the evaluation using the `promptfoo` CLI:
+With everything configured, run the evaluation using the `artef` CLI:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This command will execute each test case against each configured model and record the results.
 
 ![qwen gpt comparison](/img/docs/qwen-eval.png)
 
-To visualize the results, use the `promptfoo` viewer:
+To visualize the results, use the `artef` viewer:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 It will show results like so:
@@ -177,7 +177,7 @@ It will show results like so:
 You can also output the results to a file in various formats, such as JSON, YAML, or CSV:
 
 ```
-npx promptfoo@latest eval -o results.csv
+npx artef@latest eval -o results.csv
 ```
 
 ## Conclusion

@@ -1,4 +1,4 @@
-import * as fsPromises from 'fs/promises';
+﻿import * as fsPromises from 'fs/promises';
 import * as path from 'path';
 import process from 'process';
 
@@ -42,7 +42,7 @@ import { PromptSchema } from '../../validators/prompts';
 import { filterPrompts } from '../eval/filterPrompts';
 import { filterProviderConfigs, getProviderIdAndLabel } from '../eval/filterProviders';
 import { filterTests } from '../eval/filterTests';
-import { promptfooCommand } from '../promptfooCommand';
+import { artefCommand } from '../artefCommand';
 import { preserveTracingCredentialReferences } from '../sanitizer';
 import { readTest, readTests } from '../testCaseReader';
 import {
@@ -181,12 +181,12 @@ export function resolveCliProvidersWithConfig(
 }
 
 export async function dereferenceConfig(rawConfig: UnifiedConfig): Promise<UnifiedConfig> {
-  if (getEnvBool('PROMPTFOO_DISABLE_REF_PARSER')) {
+  if (getEnvBool('artef_DISABLE_REF_PARSER')) {
     return rawConfig;
   }
 
   // Track and delete tools[i].function for each tool, preserving the rest of the properties
-  // https://github.com/promptfoo/promptfoo/issues/364
+  // https://github.com/artef/artef/issues/364
 
   // Remove parameters from functions and tools to prevent dereferencing
   const extractFunctionParameters = (functions: { parameters?: object }[]) => {
@@ -302,10 +302,10 @@ export async function dereferenceConfig(rawConfig: UnifiedConfig): Promise<Unifi
  * @returns The config with env templates rendered
  */
 export function renderConfigEnvTemplates<T extends { env?: Record<string, string> }>(config: T): T {
-  // Respect PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS - use empty object if disabled
+  // Respect artef_DISABLE_TEMPLATE_ENV_VARS - use empty object if disabled
   const processEnvDisabled = getEnvBool(
-    'PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS',
-    getEnvBool('PROMPTFOO_SELF_HOSTED', false),
+    'artef_DISABLE_TEMPLATE_ENV_VARS',
+    getEnvBool('artef_SELF_HOSTED', false),
   );
   const baseEnvForFirstPass = processEnvDisabled ? {} : process.env;
 
@@ -511,7 +511,7 @@ function providerDedupeKey(provider: unknown, functionIds: Map<Function, number>
         id = functionIds.size;
         functionIds.set(value, id);
       }
-      return { __promptfooFunctionReference: id };
+      return { __artefFunctionReference: id };
     });
   } catch {
     return provider;
@@ -535,7 +535,7 @@ export async function combineConfigs(configPaths: string[]): Promise<UnifiedConf
 
     if (globPaths.length === 0) {
       throw new Error(
-        `No configuration file found at ${configPath}. Run "${promptfooCommand('init')}" to create one or pass --config path/to/promptfooconfig.yaml.`,
+        `No configuration file found at ${configPath}. Run "${artefCommand('init')}" to create one or pass --config path/to/artefconfig.yaml.`,
       );
     }
     for (const globPath of globPaths) {
@@ -592,7 +592,7 @@ export async function combineConfigs(configPaths: string[]): Promise<UnifiedConf
   }
   if (extensions.length > 1 && configs.length > 1) {
     console.warn(
-      'Warning: Multiple configurations and extensions detected. Currently, all extensions are run across all configs and do not respect their original promptfooconfig. Please file an issue on our GitHub repository if you need support for this use case.',
+      'Warning: Multiple configurations and extensions detected. Currently, all extensions are run across all configs and do not respect their original artefconfig. Please file an issue on our GitHub repository if you need support for this use case.',
     );
   }
 
@@ -852,7 +852,7 @@ export async function resolveConfigs(
     tests: cmdObj.tests || cmdObj.vars || fileConfig.tests || defaultConfig.tests || [],
     scenarios: fileConfig.scenarios || defaultConfig.scenarios,
     env: fileConfig.env || defaultConfig.env,
-    sharing: getEnvBool('PROMPTFOO_DISABLE_SHARING')
+    sharing: getEnvBool('artef_DISABLE_SHARING')
       ? false
       : (fileConfig.sharing ?? defaultConfig.sharing),
     defaultTest: processedDefaultTest
@@ -879,19 +879,19 @@ export async function resolveConfigs(
   if (!hasConfigFile && !hasPrompts && !hasProviders && !isCI()) {
     const extList = DEFAULT_CONFIG_EXTENSIONS.join(', ');
     const cliMessage = dedent`
-      ${chalk.yellow.bold('⚠️  No promptfooconfig found')}
+      ${chalk.yellow.bold('⚠️  No artefconfig found')}
 
-      ${chalk.white(`Searched in ${chalk.bold(process.cwd())} for promptfooconfig.{${extList}}`)}
+      ${chalk.white(`Searched in ${chalk.bold(process.cwd())} for artefconfig.{${extList}}`)}
 
       ${chalk.white('Try running with:')}
 
-      ${chalk.cyan(`${promptfooCommand('')} eval -c ${chalk.bold('path/to/promptfooconfig.yaml')}`)}
+      ${chalk.cyan(`${artefCommand('')} eval -c ${chalk.bold('path/to/artefconfig.yaml')}`)}
 
       ${chalk.white('Or create a config with:')}
 
-      ${chalk.green(promptfooCommand('init'))}
+      ${chalk.green(artefCommand('init'))}
     `;
-    failConfigResolution('No promptfooconfig found', {
+    failConfigResolution('No artefconfig found', {
       cliMessage,
       logLevel: 'warn',
     });

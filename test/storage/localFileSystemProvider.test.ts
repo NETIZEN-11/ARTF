@@ -1,4 +1,4 @@
-import * as fs from 'node:fs';
+﻿import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import { afterEach, describe, expect, it } from 'vitest';
@@ -24,18 +24,18 @@ describe('LocalFileSystemProvider', () => {
   });
 
   it('prevents path traversal in exists()', async () => {
-    tempDir = createTempDir('promptfoo-media-');
+    tempDir = createTempDir('artef-media-');
     const provider = new LocalFileSystemProvider({ basePath: tempDir });
 
     await expect(provider.exists('../outside.txt')).resolves.toBe(false);
   });
 
   it('prevents path traversal in retrieve()', async () => {
-    tempDir = createTempDir('promptfoo-media-');
+    tempDir = createTempDir('artef-media-');
 
     const outsidePath = path.join(
       path.dirname(tempDir),
-      `promptfoo-outside-${Date.now()}-${Math.random().toString(16).slice(2)}.txt`,
+      `artef-outside-${Date.now()}-${Math.random().toString(16).slice(2)}.txt`,
     );
     extraFilesToCleanup.push(outsidePath);
     fs.writeFileSync(outsidePath, 'secret', 'utf8');
@@ -47,7 +47,7 @@ describe('LocalFileSystemProvider', () => {
   });
 
   it('stores and retrieves media under the base path', async () => {
-    tempDir = createTempDir('promptfoo-media-');
+    tempDir = createTempDir('artef-media-');
     const provider = new LocalFileSystemProvider({ basePath: tempDir });
 
     const payload = Buffer.from('hello');

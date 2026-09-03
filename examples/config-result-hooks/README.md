@@ -1,4 +1,4 @@
-# config-result-hooks (Process Evaluation Results)
+﻿# config-result-hooks (Process Evaluation Results)
 
 This example shows how to use extension hooks to process evaluation results programmatically. Use this to:
 
@@ -10,8 +10,8 @@ This example shows how to use extension hooks to process evaluation results prog
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example config-result-hooks
-npx promptfoo@latest eval
+npx artef@latest init --example config-result-hooks
+npx artef@latest eval
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npx promptfoo@latest eval
 ### Via Configuration File
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 extensions:
   - file://result-handler.js:afterAll
 ```
@@ -28,10 +28,10 @@ extensions:
 
 ```bash
 # Run with a one-off extension
-promptfoo eval -x file://result-handler.js:afterAll
+artef eval -x file://result-handler.js:afterAll
 
 # Combine with config file extensions
-promptfoo eval -x file://alert-on-failure.js:afterAll
+artef eval -x file://alert-on-failure.js:afterAll
 ```
 
 ## Extension Hooks
@@ -63,4 +63,4 @@ The `afterAll` hook receives:
 
 - `result-handler.js` - JavaScript handler with monitoring examples
 - `result-handler.py` - Python handler with webhook integration
-- `promptfooconfig.yaml` - Configuration using the extension
+- `artefconfig.yaml` - Configuration using the extension

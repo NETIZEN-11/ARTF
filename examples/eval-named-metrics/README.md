@@ -1,18 +1,18 @@
-# eval-named-metrics (Named Metrics Example)
+﻿# eval-named-metrics (Named Metrics Example)
 
-This example demonstrates custom metric naming and derivation in promptfoo.
+This example demonstrates custom metric naming and derivation in artef.
 
 ## Setup
 
 ```bash
-npx promptfoo@latest init --example eval-named-metrics
+npx artef@latest init --example eval-named-metrics
 cd eval-named-metrics
 ```
 
 ## Run
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ## Features Demonstrated

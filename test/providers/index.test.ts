@@ -1,4 +1,4 @@
-import child_process from 'child_process';
+﻿import child_process from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import Stream from 'stream';
@@ -147,12 +147,12 @@ vi.mock('../../src/globalConfig/accounts', async (importOriginal) => ({
 
 vi.mock('../../src/globalConfig/cloud', () => {
   return {
-    CLOUD_API_HOST: 'https://api.promptfoo.app',
-    API_HOST: 'https://api.promptfoo.app',
+    CLOUD_API_HOST: 'https://api.artef.app',
+    API_HOST: 'https://api.artef.app',
     CloudConfig: vi.fn(),
     cloudConfig: {
       isEnabled: vi.fn().mockReturnValue(false),
-      getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.dev'),
+      getApiHost: vi.fn().mockReturnValue('https://api.artef.dev'),
       getApiKey: vi.fn().mockReturnValue('test-api-key'),
     },
   };
@@ -938,24 +938,24 @@ describe('loadApiProvider', () => {
     expect(provider.id()).toBe('python:script.py:default');
   });
 
-  it('loadApiProvider with promptfoo:redteam:iterative', async () => {
-    const provider = await loadApiProvider('promptfoo:redteam:iterative', {
+  it('loadApiProvider with artef:redteam:iterative', async () => {
+    const provider = await loadApiProvider('artef:redteam:iterative', {
       options: { config: { injectVar: 'foo' } },
     });
     expect(provider).toBeInstanceOf(RedteamIterativeProvider);
-    expect(provider.id()).toBe('promptfoo:redteam:iterative');
+    expect(provider.id()).toBe('artef:redteam:iterative');
   });
 
-  it('loadApiProvider with promptfoo:redteam:iterative:tree', async () => {
-    const provider = await loadApiProvider('promptfoo:redteam:iterative:tree', {
+  it('loadApiProvider with artef:redteam:iterative:tree', async () => {
+    const provider = await loadApiProvider('artef:redteam:iterative:tree', {
       options: { config: { injectVar: 'foo' } },
     });
     expect(provider).toBeInstanceOf(RedteamIterativeTreeProvider);
-    expect(provider.id()).toBe('promptfoo:redteam:iterative:tree');
+    expect(provider.id()).toBe('artef:redteam:iterative:tree');
   });
 
-  it('loadApiProvider with promptfoo:redteam:iterative:image', async () => {
-    const provider = await loadApiProvider('promptfoo:redteam:iterative:image', {
+  it('loadApiProvider with artef:redteam:iterative:image', async () => {
+    const provider = await loadApiProvider('artef:redteam:iterative:image', {
       options: {
         config: {
           injectVar: 'imageUrl',
@@ -963,15 +963,15 @@ describe('loadApiProvider', () => {
       },
     });
     expect(provider).toBeInstanceOf(RedteamImageIterativeProvider);
-    expect(provider.id()).toBe('promptfoo:redteam:iterative:image');
+    expect(provider.id()).toBe('artef:redteam:iterative:image');
   });
 
-  it('loadApiProvider with promptfoo:redteam:goat', async () => {
-    const provider = await loadApiProvider('promptfoo:redteam:goat', {
+  it('loadApiProvider with artef:redteam:goat', async () => {
+    const provider = await loadApiProvider('artef:redteam:goat', {
       options: { config: { injectVar: 'goal' } },
     });
     expect(provider).toBeInstanceOf(RedteamGoatProvider);
-    expect(provider.id()).toBe('promptfoo:redteam:goat');
+    expect(provider.id()).toBe('artef:redteam:goat');
   });
 
   it('loadApiProvider with RawProviderConfig', async () => {
@@ -1668,7 +1668,7 @@ describe('loadApiProvider', () => {
         ${chalk.white(dedent`
           Please check your configuration and ensure the provider is correctly specified.
 
-          For more information on supported providers, visit: `)} ${chalk.cyan('https://promptfoo.dev/docs/providers/')}
+          For more information on supported providers, visit: `)} ${chalk.cyan('https://artef.dev/docs/providers/')}
       `,
     );
     mockError.mockRestore();
@@ -1777,14 +1777,14 @@ describe('loadApiProvider', () => {
       const mockYamlContent = dedent`
         id: 'openai:gpt-5.1-mini'
         config:
-          linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'`;
+          linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'`;
       const mockReadFileSync = vi.mocked(fs.readFileSync);
       mockReadFileSync.mockReturnValue(mockYamlContent);
 
       const provider = await loadApiProvider('file://path/to/provider.yaml');
       expect(provider.id()).toBe('openai:gpt-5.1-mini');
       expect(validateLinkedTargetId).toHaveBeenCalledWith(
-        'promptfoo://provider/12345678-1234-1234-1234-123456789abc',
+        'artef://provider/12345678-1234-1234-1234-123456789abc',
       );
     });
 
@@ -1792,19 +1792,19 @@ describe('loadApiProvider', () => {
       const { validateLinkedTargetId } = await import('../../src/util/cloud');
       vi.mocked(validateLinkedTargetId).mockRejectedValue(
         new Error(
-          "Target promptfoo://provider/12345678-1234-1234-1234-123456789abc not found in cloud or you don't have access to it",
+          "Target artef://provider/12345678-1234-1234-1234-123456789abc not found in cloud or you don't have access to it",
         ),
       );
 
       const mockYamlContent = dedent`
         id: 'openai:gpt-5.1-mini'
         config:
-          linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'`;
+          linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'`;
       const mockReadFileSync = vi.mocked(fs.readFileSync);
       mockReadFileSync.mockReturnValue(mockYamlContent);
 
       await expect(loadApiProvider('file://path/to/provider.yaml')).rejects.toThrow(
-        "Target promptfoo://provider/12345678-1234-1234-1234-123456789abc not found in cloud or you don't have access to it",
+        "Target artef://provider/12345678-1234-1234-1234-123456789abc not found in cloud or you don't have access to it",
       );
     });
 

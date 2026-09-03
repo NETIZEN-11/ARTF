@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Integration tests for OpenTelemetry tracing infrastructure.
  *
  * These tests verify that the OTEL SDK can be initialized and that
@@ -12,7 +12,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vites
 import {
   GenAIAttributes,
   getGenAITracer,
-  PromptfooAttributes,
+  artefAttributes,
   withGenAISpan,
 } from '../../src/tracing/genaiTracer';
 
@@ -83,15 +83,15 @@ describe('OpenTelemetry Tracing Integration', () => {
       expect(span.attributes[GenAIAttributes.REQUEST_MAX_TOKENS]).toBe(1000);
       expect(span.attributes[GenAIAttributes.REQUEST_TEMPERATURE]).toBe(0.7);
 
-      // Verify Promptfoo attributes
-      expect(span.attributes[PromptfooAttributes.PROVIDER_ID]).toBe('openai:gpt-4');
-      expect(span.attributes[PromptfooAttributes.TEST_INDEX]).toBe(5);
-      expect(span.attributes[PromptfooAttributes.PROMPT_LABEL]).toBe('test-prompt');
+      // Verify artef attributes
+      expect(span.attributes[artefAttributes.PROVIDER_ID]).toBe('openai:gpt-4');
+      expect(span.attributes[artefAttributes.TEST_INDEX]).toBe(5);
+      expect(span.attributes[artefAttributes.PROMPT_LABEL]).toBe('test-prompt');
 
       // Verify response attributes
       expect(span.attributes[GenAIAttributes.USAGE_INPUT_TOKENS]).toBe(10);
       expect(span.attributes[GenAIAttributes.USAGE_OUTPUT_TOKENS]).toBe(5);
-      expect(span.attributes[PromptfooAttributes.USAGE_TOTAL_TOKENS]).toBe(15);
+      expect(span.attributes[artefAttributes.USAGE_TOTAL_TOKENS]).toBe(15);
       expect(span.attributes[GenAIAttributes.RESPONSE_FINISH_REASONS]).toEqual(['stop']);
 
       // Verify span status
@@ -257,8 +257,8 @@ describe('OpenTelemetry Tracing Integration', () => {
       const spans = memoryExporter.getFinishedSpans();
       const span = spans[0];
 
-      expect(span.attributes[PromptfooAttributes.USAGE_ACCEPTED_PREDICTION_TOKENS]).toBe(25);
-      expect(span.attributes[PromptfooAttributes.USAGE_REJECTED_PREDICTION_TOKENS]).toBe(5);
+      expect(span.attributes[artefAttributes.USAGE_ACCEPTED_PREDICTION_TOKENS]).toBe(25);
+      expect(span.attributes[artefAttributes.USAGE_REJECTED_PREDICTION_TOKENS]).toBe(5);
     });
 
     it('should capture cached tokens', async () => {
@@ -288,7 +288,7 @@ describe('OpenTelemetry Tracing Integration', () => {
       const spans = memoryExporter.getFinishedSpans();
       const span = spans[0];
 
-      expect(span.attributes[PromptfooAttributes.USAGE_CACHED_RESPONSE_TOKENS]).toBe(150);
+      expect(span.attributes[artefAttributes.USAGE_CACHED_RESPONSE_TOKENS]).toBe(150);
     });
   });
 });

@@ -1,11 +1,11 @@
-# openai-codex-sdk (OpenAI Codex SDK Examples)
+﻿# openai-codex-sdk (OpenAI Codex SDK Examples)
 
 The OpenAI Codex SDK provider enables agentic code analysis and generation evals with thread-based conversations and Git-aware operations.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-codex-sdk
+npx artef@latest init --example openai-codex-sdk
 cd openai-codex-sdk
 ```
 
@@ -35,7 +35,7 @@ export OPENAI_API_KEY=your_api_key_here
 export CODEX_API_KEY=your_api_key_here
 ```
 
-When no `apiKey`, `OPENAI_API_KEY`, or `CODEX_API_KEY` is set, promptfoo will let the Codex SDK reuse an existing Codex login.
+When no `apiKey`, `OPENAI_API_KEY`, or `CODEX_API_KEY` is set, artef will let the Codex SDK reuse an existing Codex login.
 
 ## Examples
 
@@ -50,7 +50,7 @@ This basic example uses only deterministic string assertions, so it can run with
 **Usage**:
 
 ```bash
-(cd basic && promptfoo eval)
+(cd basic && artef eval)
 ```
 
 ### Skills Testing
@@ -59,26 +59,26 @@ This example demonstrates evaluating a local Codex skill stored under `.agents/s
 
 - **Local skill discovery**: Codex discovers `SKILL.md` from the sample project's `.agents/skills/` directory
 - **Skill assertions**: Verifies confirmed skill usage with the `skill-used` assertion over normalized `metadata.skillCalls`
-- **Trace assertions**: `promptfooconfig.tracing.yaml` enables OTEL deep tracing and asserts on the traced command that reads `SKILL.md`
+- **Trace assertions**: `artefconfig.tracing.yaml` enables OTEL deep tracing and asserts on the traced command that reads `SKILL.md`
 - **Isolated Codex home**: Uses a project-local `CODEX_HOME` so personal skills and config do not leak into the eval
-- **Controlled shell environment**: Promptfoo now passes a minimal shell environment by default, so the tracing config can override `CODEX_HOME` without inheriting unrelated process secrets while still preserving a usable `PATH`
+- **Controlled shell environment**: artef now passes a minimal shell environment by default, so the tracing config can override `CODEX_HOME` without inheriting unrelated process secrets while still preserving a usable `PATH`
 
-`metadata.skillCalls` only includes confirmed successful skill reads. When Promptfoo sees more candidate `SKILL.md` paths than confirmed successful reads, it also emits `metadata.attemptedSkillCalls` for debugging.
+`metadata.skillCalls` only includes confirmed successful skill reads. When artef sees more candidate `SKILL.md` paths than confirmed successful reads, it also emits `metadata.attemptedSkillCalls` for debugging.
 
-`metadata.skillCalls` and `metadata.attemptedSkillCalls` are heuristic: Promptfoo infers them from direct command references to `SKILL.md`. Wildcard paths are ignored, and absolute `.agents/...` paths outside the active repo are ignored.
+`metadata.skillCalls` and `metadata.attemptedSkillCalls` are heuristic: artef infers them from direct command references to `SKILL.md`. Wildcard paths are ignored, and absolute `.agents/...` paths outside the active repo are ignored.
 
 **Location**: `./skills/`
 
 **Usage**:
 
 ```bash
-(cd skills && promptfoo eval)
+(cd skills && artef eval)
 
 # Trace the skill's internal command activity
-(cd skills && promptfoo eval -c promptfooconfig.tracing.yaml)
+(cd skills && artef eval -c artefconfig.tracing.yaml)
 ```
 
-Relative `working_dir` values resolve from the config file's directory, so the sample project path stays stable regardless of where you invoke `promptfoo eval`. Codex resolves `CODEX_HOME` itself, so set `CODEX_HOME_OVERRIDE` to an absolute path when you run these configs from another working directory or need Codex to use a different home directory.
+Relative `working_dir` values resolve from the config file's directory, so the sample project path stays stable regardless of where you invoke `artef eval`. Codex resolves `CODEX_HOME` itself, so set `CODEX_HOME_OVERRIDE` to an absolute path when you run these configs from another working directory or need Codex to use a different home directory.
 The checked-in relative paths stay local to the config directory so the examples remain self-contained.
 
 The checked-in `sample-codex-home` fixture is intentionally empty of auth state. Use it with `OPENAI_API_KEY`/`CODEX_API_KEY`, or point `CODEX_HOME_OVERRIDE` at `$HOME/.codex` when you want to reuse a local Codex login.
@@ -96,12 +96,12 @@ This example compares two versions of the same local Codex skill against identic
 **Usage**:
 
 ```bash
-(cd skill-comparison && promptfoo eval --no-cache)
+(cd skill-comparison && artef eval --no-cache)
 ```
 
 If you run this config from the repo root, set `CODEX_SKILL_COMPARE_V1_DIR` and `CODEX_SKILL_COMPARE_V2_DIR` to the absolute fixture paths first.
 
-If your network requires proxy or custom certificate environment variables such as `HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`, `NO_PROXY`, `SSL_CERT_FILE`, or `NODE_EXTRA_CA_CERTS`, pass them through `config.cli_env` or set `inherit_process_env: true` in the provider config. Promptfoo intentionally does not forward the full process environment to Codex by default.
+If your network requires proxy or custom certificate environment variables such as `HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`, `NO_PROXY`, `SSL_CERT_FILE`, or `NODE_EXTRA_CA_CERTS`, pass them through `config.cli_env` or set `inherit_process_env: true` in the provider config. artef intentionally does not forward the full process environment to Codex by default.
 
 ### Thread Persistence
 
@@ -112,7 +112,7 @@ This example demonstrates `persist_threads: true` with one prompt template and m
 **Usage**:
 
 ```bash
-(cd thread-persistence && promptfoo eval)
+(cd thread-persistence && artef eval)
 ```
 
 ### Sandbox Enforcement
@@ -124,7 +124,7 @@ This example runs Codex in `read-only` mode and asks it to create a file. The as
 **Usage**:
 
 ```bash
-(cd sandbox && promptfoo eval)
+(cd sandbox && artef eval)
 ```
 
 If you run this config from the repo root, set `CODEX_SANDBOX_WORKING_DIR="$PWD/examples/openai-codex-sdk/sandbox/sample-workspace"`.
@@ -138,7 +138,7 @@ This example runs Codex against GPT-5.6 Sol, Terra, and Luna hosted on Amazon Be
 **Usage**:
 
 ```bash
-(cd bedrock && promptfoo eval --no-cache)
+(cd bedrock && artef eval --no-cache)
 ```
 
 Export `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` first; they are forwarded to the Codex CLI via `config.cli_env`.
@@ -153,4 +153,4 @@ Export `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` first; they are forwarded
 
 ## Configuration Options
 
-See [documentation](https://www.promptfoo.dev/docs/providers/openai-codex-sdk/) for full details.
+See [documentation](https://www.artef.dev/docs/providers/openai-codex-sdk/) for full details.

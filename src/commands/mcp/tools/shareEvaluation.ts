@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { cloudConfig } from '../../../globalConfig/cloud';
 import logger from '../../../logger';
@@ -141,12 +141,12 @@ export function registerShareEvaluationTool(server: McpServer) {
                 cloudSetup:
                   isCloudEnabled === false
                     ? [
-                        'Sign up or log in at https://promptfoo.app',
-                        'Follow instructions at https://promptfoo.app/welcome to login via CLI',
-                        'Configure sharing in your promptfooconfig.yaml',
+                        'Sign up or log in at https://artef.app',
+                        'Follow instructions at https://artef.app/welcome to login via CLI',
+                        'Configure sharing in your artefconfig.yaml',
                       ]
                     : null,
-                configHelp: 'Enable sharing by adding "sharing: true" to your promptfooconfig.yaml',
+                configHelp: 'Enable sharing by adding "sharing: true" to your artefconfig.yaml',
               },
             },
             dedent`
@@ -154,7 +154,7 @@ export function registerShareEvaluationTool(server: McpServer) {
               ${
                 isCloudEnabled === false
                   ? 'You need a cloud account to share evaluations securely.'
-                  : 'Check your sharing configuration in promptfooconfig.yaml.'
+                  : 'Check your sharing configuration in artefconfig.yaml.'
               }
             `,
           );
@@ -247,7 +247,7 @@ export function registerShareEvaluationTool(server: McpServer) {
               'Evaluation not completed or corrupted',
             ],
             configurationTips: [
-              'Ensure sharing is enabled in promptfooconfig.yaml',
+              'Ensure sharing is enabled in artefconfig.yaml',
               'Check cloud authentication status',
               'Verify evaluation exists and completed successfully',
               'Check network connectivity to sharing service',

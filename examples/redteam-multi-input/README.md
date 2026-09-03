@@ -1,24 +1,24 @@
-# redteam-multi-input (Redteam: Multi-Input)
+﻿# redteam-multi-input (Redteam: Multi-Input)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-multi-input
+npx artef@latest init --example redteam-multi-input
 cd redteam-multi-input
 ```
 
 ## What this example shows
 
-This example demonstrates Promptfoo's multi-input red team mode against a local custom provider that simulates an intentionally vulnerable document-analysis workflow.
+This example demonstrates artef's multi-input red team mode against a local custom provider that simulates an intentionally vulnerable document-analysis workflow.
 
 The target accepts two coordinated inputs:
 
 - `document` - the uploaded document or fetched web page content
 - `query` - the user's question about that content
 
-Promptfoo combines these fields into its internal `__prompt` payload automatically. You should not add a manual `prompt` field or set `injectVar` yourself for this example.
+artef combines these fields into its internal `__prompt` payload automatically. You should not add a manual `prompt` field or set `injectVar` yourself for this example.
 
-Promptfoo generates attacks across both fields at the same time so you can test issues like:
+artef generates attacks across both fields at the same time so you can test issues like:
 
 - indirect prompt injection embedded in documents or web pages
 - prompt disclosure and internal-note leakage
@@ -28,12 +28,12 @@ For the `indirect-prompt-injection` plugin, this example sets `indirectInjection
 
 ## Prerequisites
 
-- `OPENAI_API_KEY` set in your environment so Promptfoo can generate red-team attacks
+- `OPENAI_API_KEY` set in your environment so artef can generate red-team attacks
 
 ## Run the example
 
 ```bash
-promptfoo redteam run --no-cache
+artef redteam run --no-cache
 ```
 
 The local provider in [`documentAssistantProvider.cjs`](./documentAssistantProvider.cjs) is intentionally insecure. It trusts instructions embedded in `document` content and may reveal hidden instructions or internal notes instead of answering the user's `query`, so this example should produce findings.
@@ -55,9 +55,9 @@ with a seemingly normal user query like:
 What are the key takeaways from this memo?
 ```
 
-Multi-input mode helps Promptfoo generate and test these coordinated combinations.
+Multi-input mode helps artef generate and test these coordinated combinations.
 
 ## Files
 
-- `promptfooconfig.yaml` - multi-input red team configuration
+- `artefconfig.yaml` - multi-input red team configuration
 - `documentAssistantProvider.cjs` - local target that reads `context.vars.document` and `context.vars.query`

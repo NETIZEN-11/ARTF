@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { DOMAIN_SPECIFIC_PLUGINS, getPluginSuite, VERTICAL_SUITES } from './verticalSuites';
-import type { Plugin } from '@promptfoo/redteam/constants';
+import type { Plugin } from '@artef/redteam/constants';
 
 describe('VERTICAL_SUITES', () => {
   it('should contain all expected vertical suites', () => {

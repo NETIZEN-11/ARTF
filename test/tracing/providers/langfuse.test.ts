@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../../src/util/fetch/index', () => ({
   fetchWithProxy: vi.fn(),
@@ -136,7 +136,7 @@ describe('LangfuseProvider', () => {
         'gen_ai.usage.input_tokens': 98,
         'gen_ai.usage.output_tokens': 68,
         'langfuse.usage.total_tokens': 166,
-        'promptfoo.usage.total_tokens': 166,
+        'artef.usage.total_tokens': 166,
         'langfuse.cost.input': 0.00049,
         'langfuse.cost.output': 0.00204,
         'langfuse.cost.total': 0.00253,
@@ -369,7 +369,7 @@ describe('LangfuseProvider', () => {
         'gen_ai.usage.reasoning.output_tokens': 12,
         'gen_ai.usage.cache_read.input_tokens': 40,
         'gen_ai.usage.cache_creation.input_tokens': 10,
-        'promptfoo.usage.total_tokens': 150,
+        'artef.usage.total_tokens': 150,
       }),
     );
   });

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Cohere
 description: Configure Cohere chat models for RAG-optimized inference, with current Command A, Aya, and Command R variants plus flexible prompt truncation controls
 ---
@@ -11,7 +11,7 @@ The `cohere` provider is an interface to Cohere AI's [chat inference API](https:
 
 First, set the `COHERE_API_KEY` environment variable with your Cohere API key.
 
-Next, edit the promptfoo configuration file to point to the Cohere provider.
+Next, edit the artef configuration file to point to the Cohere provider.
 
 - `cohere:<model name>` - uses the specified Cohere model (for example, `command-a-03-2025`).
 
@@ -96,7 +96,7 @@ connectors:
 
 Cohere provides embedding capabilities that can be used for various natural language processing tasks, including similarity comparisons. To use Cohere's embedding model in your evaluations, you can configure it as follows:
 
-1. In your `promptfooconfig.yaml` file, add the embedding configuration under the `defaultTest` section:
+1. In your `artefconfig.yaml` file, add the embedding configuration under the `defaultTest` section:
 
 ```yaml
 defaultTest:

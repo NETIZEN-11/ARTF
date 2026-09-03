@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+﻿import { EventEmitter } from 'events';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
 import zlib from 'zlib';
@@ -27,7 +27,7 @@ vi.mock('../../src/util/output', async (importOriginal) => {
       config: evalRecord.config,
       shareableUrl,
       metadata: {
-        promptfooVersion: '1.0.0',
+        artefVersion: '1.0.0',
         nodeVersion: 'v20.0.0',
         platform: 'linux',
         arch: 'x64',
@@ -197,7 +197,7 @@ describe('exportCommand', () => {
       config: { test: 'config' },
       shareableUrl: null,
       metadata: {
-        promptfooVersion: '1.0.0',
+        artefVersion: '1.0.0',
         nodeVersion: 'v20.0.0',
         platform: 'linux',
         arch: 'x64',
@@ -251,7 +251,7 @@ describe('exportCommand', () => {
       await program.parseAsync(['node', 'test', 'export', 'logs']);
 
       expect(logger.error).toHaveBeenCalledWith(
-        `No log directory found. Logs are created when running commands like "promptfoo eval".\nLog directory: ${mockLogDir}`,
+        `No log directory found. Logs are created when running commands like "artef eval".\nLog directory: ${mockLogDir}`,
       );
       expect(process.exitCode).toBe(1);
     });
@@ -264,7 +264,7 @@ describe('exportCommand', () => {
       await program.parseAsync(['node', 'test', 'export', 'logs']);
 
       expect(logger.error).toHaveBeenCalledWith(
-        `No log files found in the logs directory. Logs are created when running commands like "promptfoo eval".\nLog directory: ${mockLogDir}`,
+        `No log files found in the logs directory. Logs are created when running commands like "artef eval".\nLog directory: ${mockLogDir}`,
       );
       expect(process.exitCode).toBe(1);
     });
@@ -272,8 +272,8 @@ describe('exportCommand', () => {
     it('should handle invalid count parameter', async () => {
       mockGetLogFiles.mockResolvedValue([
         {
-          name: 'promptfoo-debug-2025-01-01.log',
-          path: '/test/config/logs/promptfoo-debug-2025-01-01.log',
+          name: 'artef-debug-2025-01-01.log',
+          path: '/test/config/logs/artef-debug-2025-01-01.log',
           mtime: new Date(),
           type: 'debug',
           size: 1024,
@@ -291,8 +291,8 @@ describe('exportCommand', () => {
     it('should handle zero count parameter', async () => {
       mockGetLogFiles.mockResolvedValue([
         {
-          name: 'promptfoo-debug-2025-01-01.log',
-          path: '/test/config/logs/promptfoo-debug-2025-01-01.log',
+          name: 'artef-debug-2025-01-01.log',
+          path: '/test/config/logs/artef-debug-2025-01-01.log',
           mtime: new Date(),
           type: 'debug',
           size: 1024,
@@ -308,7 +308,7 @@ describe('exportCommand', () => {
     });
 
     it('should archive log files using async fs helpers', async () => {
-      const logPath = '/test/config/logs/promptfoo-debug-2025-01-01.log';
+      const logPath = '/test/config/logs/artef-debug-2025-01-01.log';
       const output = new EventEmitter() as EventEmitter & {
         on: typeof EventEmitter.prototype.on;
       };
@@ -323,7 +323,7 @@ describe('exportCommand', () => {
       vi.mocked(zlib.createGzip).mockReturnValue(gzip as unknown as zlib.Gzip);
       mockGetLogFiles.mockResolvedValue([
         {
-          name: 'promptfoo-debug-2025-01-01.log',
+          name: 'artef-debug-2025-01-01.log',
           path: logPath,
           mtime: new Date('2025-01-01T00:00:00.000Z'),
           type: 'debug',

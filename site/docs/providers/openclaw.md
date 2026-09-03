@@ -1,4 +1,4 @@
----
+﻿---
 title: OpenClaw
 sidebar_label: OpenClaw
 sidebar_position: 42
@@ -76,8 +76,8 @@ Requires `gateway.http.endpoints.chatCompletions.enabled=true`.
 - `openclaw:main` - Explicitly targets the main agent
 - `openclaw:<agent-id>` - Targets a specific agent by ID
 
-Promptfoo sends OpenClaw's current slash-style model id (`openclaw/<agent-id>`) to the gateway
-while keeping the `openclaw:<agent-id>` promptfoo provider syntax for compatibility.
+artef sends OpenClaw's current slash-style model id (`openclaw/<agent-id>`) to the gateway
+while keeping the `openclaw:<agent-id>` artef provider syntax for compatibility.
 
 ### Responses
 
@@ -113,7 +113,7 @@ target, and `config.backend_model` can override the backend embedding model with
 ### WebSocket Agent
 
 Uses the native OpenClaw WebSocket RPC protocol for full agent streaming. Connects directly to the gateway's WS port without requiring HTTP endpoint enablement.
-Promptfoo includes a stable device identity, signs the gateway `connect.challenge` nonce, persists
+artef includes a stable device identity, signs the gateway `connect.challenge` nonce, persists
 issued `hello-ok.auth.deviceToken` values, and retries once with a cached device token when the
 gateway reports an `AUTH_TOKEN_MISMATCH`.
 
@@ -154,7 +154,7 @@ includes:
 - `gateway.tls.enabled` for `https://` / `wss://`
 - `gateway.mode=remote` via `gateway.remote.url`
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openclaw:main
 ```
@@ -163,7 +163,7 @@ providers:
 
 Override auto-detection with explicit config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openclaw:main
     config:
@@ -189,7 +189,7 @@ export OPENCLAW_GATEWAY_TOKEN=your-token-here
 # export OPENCLAW_GATEWAY_PASSWORD=your-password-here
 ```
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openclaw:main
 ```
@@ -210,8 +210,8 @@ providers:
 | session_key          | -                         | Session identifier for continuity; otherwise WS uses an isolated per-call session        |
 | thinking_level       | -                         | WS Agent reasoning level: `off`, `minimal`, `low`, `medium`, `high`, `xhigh`, `adaptive` |
 | extra_system_prompt  | -                         | WS Agent-only extra system prompt injected as `extraSystemPrompt`                        |
-| device_identity_path | -                         | WS Agent device keypair path (default: promptfoo config directory)                       |
-| device_auth_path     | -                         | WS Agent issued-device-token cache path (default: promptfoo config directory)            |
+| device_identity_path | -                         | WS Agent device keypair path (default: artef config directory)                       |
+| device_auth_path     | -                         | WS Agent issued-device-token cache path (default: artef config directory)            |
 | device_token         | -                         | Explicit WS device token for paired-device auth                                          |
 | device_family        | -                         | Optional device metadata included in the signed WS device payload                        |
 | disable_device_auth  | -                         | WS Agent break-glass option to omit device identity                                      |
@@ -225,7 +225,7 @@ providers:
 
 ### Basic Usage
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'What is the capital of {{country}}?'
 
@@ -246,14 +246,14 @@ tests:
 `minimal`, `low`, `medium`, `high`, `xhigh`, and `adaptive`, though model support still depends on
 the upstream provider/model combination.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Analyze the pros and cons of {{topic}}'
 
 providers:
   - id: openclaw:agent:main
     config:
-      session_key: promptfoo-eval
+      session_key: artef-eval
       thinking_level: adaptive
       timeoutMs: 60000
 
@@ -264,7 +264,7 @@ tests:
 
 ### Using Responses API
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Summarize: {{text}}'
 
@@ -278,7 +278,7 @@ tests:
 
 ### Using Embeddings
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{text}}'
 
@@ -289,7 +289,7 @@ providers:
 
 tests:
   - vars:
-      text: Promptfoo routes this through OpenClaw.
+      text: artef routes this through OpenClaw.
 ```
 
 ### Backend Model Override
@@ -297,33 +297,33 @@ tests:
 Use `backend_model` when you want the selected OpenClaw agent to run a specific provider/model for
 this eval without changing the agent's normal default model.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openclaw:main
     config:
       backend_model: openai/gpt-5.6-terra
 ```
 
-For billing, OpenClaw's visible `model` remains the agent target (`openclaw/<agent-id>`). Promptfoo
+For billing, OpenClaw's visible `model` remains the agent target (`openclaw/<agent-id>`). artef
 can estimate OpenAI token spend only when `backend_model` or `model_override` names the actual
 OpenAI backend model, such as `openai/gpt-5.6-terra` or `gpt-5.6-terra`. Use a current OpenClaw
 installation and run `openclaw models list --provider openai` to verify that the selected tier is
 present in its catalog. Current OpenClaw HTTP responses omit cache-write usage, so GPT-5.6 cost
-estimates include the available token counts only. Promptfoo leaves `cost` unset when the backend
+estimates include the available token counts only. artef leaves `cost` unset when the backend
 model is selected only inside OpenClaw's own agent config.
 
 ### WebSocket Agent
 
-Promptfoo uses an isolated session key per call unless you set `session_key` explicitly.
+artef uses an isolated session key per call unless you set `session_key` explicitly.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{task}}'
 
 providers:
   - id: openclaw:agent:main
     config:
-      session_key: promptfoo-eval
+      session_key: artef-eval
       timeoutMs: 60000
 
 tests:
@@ -333,7 +333,7 @@ tests:
 
 ### Tool Invoke
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{}'
 
@@ -348,7 +348,7 @@ tests:
 
 If a tool exposes sub-actions, add `config.action`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{}'
 
@@ -368,10 +368,10 @@ providers:
 - WS agent auth failures on password-mode gateways: use `auth_password` or
   `OPENCLAW_GATEWAY_PASSWORD`, not `auth_token`.
 - WS `DEVICE_AUTH_*` errors usually mean an old or incompatible device identity/signature. Remove
-  only the promptfoo OpenClaw device identity/cache files you configured, then pair again.
+  only the artef OpenClaw device identity/cache files you configured, then pair again.
 - If you use unusual proxying or a nonstandard gateway URL, set `gateway_url` explicitly instead of
   relying on auto-detection.
 
 ## See Also
 
-For a complete example, see [examples/provider-openclaw](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-openclaw).
+For a complete example, see [examples/provider-openclaw](https://github.com/artef/artef/tree/main/examples/provider-openclaw).

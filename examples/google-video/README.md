@@ -1,11 +1,11 @@
-# google-video (Google Video)
+﻿# google-video (Google Video)
 
 This example demonstrates Google Veo video generation models for AI-powered video creation from text prompts.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-video
+npx artef@latest init --example google-video
 cd google-video
 ```
 
@@ -46,7 +46,7 @@ export GOOGLE_PROJECT_ID=your-project-id
 ## Running the Example
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Configuration Options
@@ -67,19 +67,19 @@ npx promptfoo@latest eval
 
 ### Text-to-Video
 
-Generate videos from text prompts (see `promptfooconfig.yaml`).
+Generate videos from text prompts (see `artefconfig.yaml`).
 
 ### Image-to-Video
 
-Generate videos from a starting image (see `promptfooconfig-image.yaml`).
+Generate videos from a starting image (see `artefconfig-image.yaml`).
 
 ### Video Extension (Veo 3.1)
 
-Extend previously generated Veo videos using the explicit Vertex provider path and an operation ID (see `promptfooconfig-extension.yaml`).
+Extend previously generated Veo videos using the explicit Vertex provider path and an operation ID (see `artefconfig-extension.yaml`).
 
 ## Notes
 
-- Generated videos are stored in promptfoo's blob storage system
+- Generated videos are stored in artef's blob storage system
 - Videos use content-addressable hashing for automatic deduplication
 - Use `--no-cache` flag to force regeneration
 - Videos are served via the local server for viewing in the UI

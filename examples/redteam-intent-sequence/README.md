@@ -1,9 +1,9 @@
-# redteam-intent-sequence (Redteam Intent Sequence)
+﻿# redteam-intent-sequence (Redteam Intent Sequence)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-intent-sequence
+npx artef@latest init --example redteam-intent-sequence
 cd redteam-intent-sequence
 ```
 

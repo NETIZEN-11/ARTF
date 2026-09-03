@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import {
   DEFAULT_OPENAI_ORIGINATOR,
   OPENAI_ORIGINATOR_HEADER,
@@ -92,7 +92,7 @@ describe('OpenAI Provider', () => {
           'openai-organization': 'custom-org',
         }),
       ).toEqual({
-        'X-OpenAI-Originator': 'promptfoo',
+        'X-OpenAI-Originator': 'artef',
         'openai-organization': 'custom-org',
       });
     });

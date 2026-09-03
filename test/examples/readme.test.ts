@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { globSync } from 'glob';
@@ -8,7 +8,7 @@ const rootDir = path.join(__dirname, '../..');
 const examplesDir = path.join(rootDir, 'examples');
 
 // Examples with their own dependencies get a node_modules directory when run
-// locally; those vendored READMEs are not promptfoo examples.
+// locally; those vendored READMEs are not artef examples.
 const IGNORE_VENDORED = ['**/node_modules/**'];
 
 const readmeFiles = globSync('**/README.md', {
@@ -21,7 +21,7 @@ function getExampleName(readmePath: string): string {
 }
 
 function isLeafExample(dirPath: string): boolean {
-  return globSync('promptfooconfig.*', { cwd: dirPath, ignore: IGNORE_VENDORED }).length > 0;
+  return globSync('artefconfig.*', { cwd: dirPath, ignore: IGNORE_VENDORED }).length > 0;
 }
 
 function hasSubExamples(dirPath: string): boolean {
@@ -160,7 +160,7 @@ describe('Example README standards', () => {
 
     if (isLeaf) {
       it('should have init command with correct example name', () => {
-        const expectedInit = `npx promptfoo@latest init --example ${exampleName}`;
+        const expectedInit = `npx artef@latest init --example ${exampleName}`;
         expect(content).toContain(expectedInit);
       });
 

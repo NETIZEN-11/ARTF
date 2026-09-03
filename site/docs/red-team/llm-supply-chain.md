@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 10002
 description: Secure your LLM supply chain with static model scanning and dynamic behavioral testing to detect trojans, backdoors, model drift, and safety regressions
 keywords:
@@ -21,7 +21,7 @@ Traditional software supply chain security relies on deterministic verification:
 
 LLM supply chains break this model. A model file can pass every static check and still exhibit dangerous behavior. An API endpoint can change behavior overnight without any notification. A fine-tuned model can look identical to its base but have degraded safety training.
 
-OWASP identifies supply chain vulnerabilities as [LLM03](./owasp-llm-top-10.md#3-supply-chain-vulnerabilities-llm03) in the LLM Top 10. This guide establishes a framework for thinking about LLM supply chain security and shows how to implement defenses using Promptfoo.
+OWASP identifies supply chain vulnerabilities as [LLM03](./owasp-llm-top-10.md#3-supply-chain-vulnerabilities-llm03) in the LLM Top 10. This guide establishes a framework for thinking about LLM supply chain security and shows how to implement defenses using artef.
 
 ![LLM Supply Chain Security](/img/docs/llm-supply-chain.svg)
 
@@ -78,16 +78,16 @@ Scan model files when:
 
 ```bash
 # Scan a local model file
-promptfoo scan-model ./models/llama-3-8b.pt
+artef scan-model ./models/llama-3-8b.pt
 
 # Scan directly from HuggingFace without downloading
-promptfoo scan-model hf://meta-llama/Llama-3-8B
+artef scan-model hf://meta-llama/Llama-3-8B
 
 # Scan from cloud storage
-promptfoo scan-model s3://my-bucket/models/custom-finetune.safetensors
+artef scan-model s3://my-bucket/models/custom-finetune.safetensors
 
 # Scan with strict mode for security-critical deployments
-promptfoo scan-model ./models/ --strict
+artef scan-model ./models/ --strict
 ```
 
 ### What Static Scanning Detects
@@ -125,12 +125,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           pip install modelaudit
 
       - name: Scan models
         run: |
-          promptfoo scan-model ./models/ \
+          artef scan-model ./models/ \
             --strict \
             --no-write \
             --format sarif \
@@ -202,7 +202,7 @@ redteam:
 Run the baseline and save results:
 
 ```bash
-promptfoo redteam run -c security-baseline.yaml --output baseline-results.json
+artef redteam run -c security-baseline.yaml --output baseline-results.json
 ```
 
 ### Detecting Model Drift
@@ -227,13 +227,13 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          npx promptfoo redteam run -c security-baseline.yaml \
+          npx artef redteam run -c security-baseline.yaml \
             --output current-results.json
 
       - name: Compare against baseline
         run: |
           # Fail if failure rate increased by more than 5%
-          npx promptfoo redteam compare \
+          npx artef redteam compare \
             --baseline baseline-results.json \
             --current current-results.json \
             --threshold 0.05
@@ -285,7 +285,7 @@ redteam:
 Run acceptance tests before deployment:
 
 ```bash
-promptfoo redteam run -c vendor-acceptance.yaml \
+artef redteam run -c vendor-acceptance.yaml \
   --var CANDIDATE_MODEL=anthropic:claude-sonnet-4-20250514
 ```
 
@@ -414,12 +414,12 @@ jobs:
         if: hashFiles('models/**') != ''
         run: |
           pip install modelaudit
-          promptfoo scan-model ./models/ --strict
+          artef scan-model ./models/ --strict
 
       - name: Dynamic security tests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: npx promptfoo redteam run -c security-baseline.yaml
+        run: npx artef redteam run -c security-baseline.yaml
 
   deploy:
     needs: security-gate

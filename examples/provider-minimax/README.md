@@ -1,6 +1,6 @@
-# provider-minimax (MiniMax Provider)
+﻿# provider-minimax (MiniMax Provider)
 
-This example evaluates MiniMax's OpenAI-compatible chat models with promptfoo.
+This example evaluates MiniMax's OpenAI-compatible chat models with artef.
 
 ## Setup
 
@@ -14,9 +14,9 @@ export MINIMAX_API_KEY=your-api-key-here
 ## Run
 
 ```bash
-npx promptfoo@latest init --example provider-minimax
+npx artef@latest init --example provider-minimax
 cd provider-minimax
-promptfoo eval
+artef eval
 ```
 
 The included config compares the flagship M3 model with the previous-generation M2.7 on a simple factual prompt.

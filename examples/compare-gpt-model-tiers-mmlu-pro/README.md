@@ -1,9 +1,9 @@
-# compare-gpt-model-tiers-mmlu-pro (GPT Model Tiers MMLU-Pro Comparison)
+﻿# compare-gpt-model-tiers-mmlu-pro (GPT Model Tiers MMLU-Pro Comparison)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example compare-gpt-model-tiers-mmlu-pro
+npx artef@latest init --example compare-gpt-model-tiers-mmlu-pro
 cd compare-gpt-model-tiers-mmlu-pro
 ```
 
@@ -11,7 +11,7 @@ This example demonstrates how to benchmark full, mini, and nano OpenAI GPT model
 
 ## Prerequisites
 
-- promptfoo CLI installed (`npm install -g promptfoo` or `brew install promptfoo`)
+- artef CLI installed (`npm install -g artef` or `brew install artef`)
 - OpenAI API key set as `OPENAI_API_KEY`
 - Hugging Face account and access token (optional for public MMLU-Pro data, useful for higher rate limits)
 
@@ -35,23 +35,23 @@ For higher rate limits or private datasets, authenticate with Hugging Face:
 
 ## Running the Eval
 
-1. Get a local copy of the promptfooconfig:
+1. Get a local copy of the artefconfig:
 
    ```bash
-   npx promptfoo@latest init --example compare-gpt-model-tiers-mmlu-pro
+   npx artef@latest init --example compare-gpt-model-tiers-mmlu-pro
    cd compare-gpt-model-tiers-mmlu-pro
    ```
 
 2. Run the evaluation:
 
    ```bash
-   npx promptfoo@latest eval
+   npx artef@latest eval
    ```
 
 3. View the results:
 
    ```bash
-   npx promptfoo@latest view
+   npx artef@latest view
    ```
 
 ## What's Being Tested
@@ -60,7 +60,7 @@ This comparison evaluates all three models on 100 MMLU-Pro questions spanning ma
 
 ## Test Structure
 
-The configuration in `promptfooconfig.yaml` includes:
+The configuration in `artefconfig.yaml` includes:
 
 1. **Prompt Template**: Renders all available MMLU-Pro options dynamically and asks for a final answer in a fixed format
 2. **Quality Checks**:
@@ -72,7 +72,7 @@ The configuration in `promptfooconfig.yaml` includes:
 
 ## Customizing
 
-You can modify the test by editing `promptfooconfig.yaml`:
+You can modify the test by editing `artefconfig.yaml`:
 
 1. **Evaluate more MMLU-Pro questions**:
 
@@ -99,5 +99,5 @@ You can modify the test by editing `promptfooconfig.yaml`:
 
 ## Additional Resources
 
-- [OpenAI provider documentation](https://promptfoo.dev/docs/providers/openai)
+- [OpenAI provider documentation](https://artef.dev/docs/providers/openai)
 - [MMLU-Pro benchmark details](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)

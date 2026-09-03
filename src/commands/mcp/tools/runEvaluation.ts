@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import logger from '../../../logger';
 import { doEval } from '../../../node/doEval';
@@ -15,16 +15,16 @@ import type { CommandLineOptions } from '../../../types/index';
 import type { InternalEvaluateOptions } from '../../../types/internal';
 
 /**
- * Run an eval from a promptfoo config with optional test case filtering
+ * Run an eval from a artef config with optional test case filtering
  *
  * Use this tool to:
- * - Test specific test cases from a promptfoo configuration
+ * - Test specific test cases from a artef configuration
  * - Debug individual test scenarios without running full evals
  * - Validate changes to prompts, providers, or assertions quickly
  * - Run targeted evals during development and testing
  *
  * Features:
- * - Load any promptfoo configuration file
+ * - Load any artef configuration file
  * - Select specific test cases by index or range
  * - Filter by specific prompts and/or providers
  * - Run full eval pipeline with all assertions and scoring
@@ -45,8 +45,8 @@ export function registerRunEvaluationTool(server: McpServer) {
         .optional()
         .describe(
           dedent`
-            Path to the promptfoo configuration file.
-            Defaults to "promptfooconfig.yaml" in current directory.
+            Path to the artef configuration file.
+            Defaults to "artefconfig.yaml" in current directory.
             Example: "./my-config.yaml"
           `,
         ),
@@ -182,7 +182,7 @@ export function registerRunEvaluationTool(server: McpServer) {
         // Manual filtering path: handle test case, prompt, and provider filtering locally
         // to avoid process.exit(1) and maintain MCP backwards compatibility
         if (testCaseIndices !== undefined || promptFilter || providerFilter) {
-          const configPaths = configPath ? [configPath] : ['promptfooconfig.yaml'];
+          const configPaths = configPath ? [configPath] : ['artefconfig.yaml'];
           const { config, testSuite } = await resolveConfigs(
             {
               config: configPaths,
@@ -347,7 +347,7 @@ export function registerRunEvaluationTool(server: McpServer) {
               timestamp: new Date().toISOString(),
             },
             configuration: {
-              configPath: configPath || 'promptfooconfig.yaml',
+              configPath: configPath || 'artefconfig.yaml',
               testCases: {
                 total: testSuite.tests?.length || 0,
                 filtered: filteredTestSuite.tests?.length || 0,
@@ -400,7 +400,7 @@ export function registerRunEvaluationTool(server: McpServer) {
         } else {
           // For simple cases without any filtering, use doEval directly
           const cmdObj: Partial<CommandLineOptions & Command> = {
-            config: configPath ? [configPath] : ['promptfooconfig.yaml'],
+            config: configPath ? [configPath] : ['artefconfig.yaml'],
             maxConcurrency,
             repeat,
             delay,
@@ -416,7 +416,7 @@ export function registerRunEvaluationTool(server: McpServer) {
             showProgressBar: false, // Disable for MCP usage
           };
 
-          logger.debug(`Running evaluation with config: ${configPath || 'promptfooconfig.yaml'}`);
+          logger.debug(`Running evaluation with config: ${configPath || 'artefconfig.yaml'}`);
 
           // Run the evaluation using the existing doEval function
           const startTime = Date.now();
@@ -446,7 +446,7 @@ export function registerRunEvaluationTool(server: McpServer) {
               timestamp: new Date().toISOString(),
             },
             configuration: {
-              configPath: configPath || 'promptfooconfig.yaml',
+              configPath: configPath || 'artefconfig.yaml',
               testCases: {
                 total: summary.results.length,
                 filters: {
@@ -488,7 +488,7 @@ export function registerRunEvaluationTool(server: McpServer) {
 
         const errorData = {
           configuration: {
-            configPath: args.configPath || 'promptfooconfig.yaml',
+            configPath: args.configPath || 'artefconfig.yaml',
             testCaseIndices: args.testCaseIndices,
             promptFilter: args.promptFilter,
             providerFilter: args.providerFilter,
@@ -504,7 +504,7 @@ export function registerRunEvaluationTool(server: McpServer) {
               'Timeout issues with slow providers',
             ],
             configurationTips: [
-              'Ensure promptfooconfig.yaml exists and is valid',
+              'Ensure artefconfig.yaml exists and is valid',
               'Check that provider credentials are properly configured',
               'Verify test case indices are within bounds',
               'Use exact provider IDs and prompt labels for filtering',

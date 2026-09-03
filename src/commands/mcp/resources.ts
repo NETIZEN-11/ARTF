@@ -1,4 +1,4 @@
-import { loadDefaultConfig } from '../../util/config/default';
+﻿import { loadDefaultConfig } from '../../util/config/default';
 import { initializeToolRegistry, toolRegistry } from './lib/toolRegistry';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
@@ -10,13 +10,13 @@ initializeToolRegistry();
  */
 export function registerResources(server: McpServer) {
   // Resources with proper namespacing
-  server.resource('promptfoo-config', 'promptfoo://config/default', async () => {
+  server.resource('artef-config', 'artef://config/default', async () => {
     try {
       const { defaultConfig } = await loadDefaultConfig();
       return {
         contents: [
           {
-            uri: 'promptfoo://config/default',
+            uri: 'artef://config/default',
             text: JSON.stringify(defaultConfig, null, 2),
           },
         ],
@@ -25,7 +25,7 @@ export function registerResources(server: McpServer) {
       return {
         contents: [
           {
-            uri: 'promptfoo://config/default',
+            uri: 'artef://config/default',
             text: JSON.stringify(
               {
                 error: `Failed to load default config: ${error instanceof Error ? error.message : 'Unknown error'}`,
@@ -39,14 +39,14 @@ export function registerResources(server: McpServer) {
     }
   });
 
-  server.resource('promptfoo-docs', 'promptfoo://docs/tools', async () => {
+  server.resource('artef-docs', 'artef://docs/tools', async () => {
     // Auto-generate documentation from the tool registry
     const toolDocs = toolRegistry.generateDocs();
 
     return {
       contents: [
         {
-          uri: 'promptfoo://docs/tools',
+          uri: 'artef://docs/tools',
           text: JSON.stringify(toolDocs, null, 2),
         },
       ],

@@ -1,4 +1,4 @@
-import useApiConfig from '@app/stores/apiConfig';
+﻿import useApiConfig from '@app/stores/apiConfig';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   getBlobUrl,
@@ -57,14 +57,14 @@ describe('mediaStorage', () => {
 
   describe('isBlobRef', () => {
     it('should return true for valid blob references', () => {
-      expect(isBlobRef('promptfoo://blob/abc123')).toBe(true);
-      expect(isBlobRef('promptfoo://blob/xyz456def789')).toBe(true);
+      expect(isBlobRef('artef://blob/abc123')).toBe(true);
+      expect(isBlobRef('artef://blob/xyz456def789')).toBe(true);
     });
 
     it('should return false for non-blob references', () => {
       expect(isBlobRef('storageRef:audio/test.mp3')).toBe(false);
       expect(isBlobRef('blob/abc123')).toBe(false);
-      expect(isBlobRef('promptfoo://other/path')).toBe(false);
+      expect(isBlobRef('artef://other/path')).toBe(false);
       expect(isBlobRef('')).toBe(false);
     });
 
@@ -90,21 +90,21 @@ describe('mediaStorage', () => {
       expect(parseStorageRef('audio/test.mp3')).toBe(null);
       expect(parseStorageRef('data:audio/mp3;base64,abc')).toBe(null);
       expect(parseStorageRef('')).toBe(null);
-      expect(parseStorageRef('promptfoo://blob/abc123')).toBe(null);
+      expect(parseStorageRef('artef://blob/abc123')).toBe(null);
     });
   });
 
   describe('parseBlobRef', () => {
     it('should parse valid blob references', () => {
-      expect(parseBlobRef('promptfoo://blob/abc123')).toBe('abc123');
-      expect(parseBlobRef('promptfoo://blob/xyz456def789')).toBe('xyz456def789');
+      expect(parseBlobRef('artef://blob/abc123')).toBe('abc123');
+      expect(parseBlobRef('artef://blob/xyz456def789')).toBe('xyz456def789');
     });
 
     it('should return null for invalid blob references', () => {
       expect(parseBlobRef('blob/abc123')).toBe(null);
       expect(parseBlobRef('storageRef:audio/test.mp3')).toBe(null);
       expect(parseBlobRef('')).toBe(null);
-      expect(parseBlobRef('promptfoo://other/path')).toBe(null);
+      expect(parseBlobRef('artef://other/path')).toBe(null);
     });
   });
 
@@ -140,8 +140,8 @@ describe('mediaStorage', () => {
 
   describe('getBlobUrl', () => {
     it('should generate correct blob URLs for valid blob refs', () => {
-      expect(getBlobUrl('promptfoo://blob/abc123')).toBe('http://localhost:15500/api/blobs/abc123');
-      expect(getBlobUrl('promptfoo://blob/xyz456')).toBe('http://localhost:15500/api/blobs/xyz456');
+      expect(getBlobUrl('artef://blob/abc123')).toBe('http://localhost:15500/api/blobs/abc123');
+      expect(getBlobUrl('artef://blob/xyz456')).toBe('http://localhost:15500/api/blobs/xyz456');
     });
 
     it('should return null for invalid blob refs', () => {
@@ -155,7 +155,7 @@ describe('mediaStorage', () => {
         apiBaseUrl: 'https://production.example.com',
       } as ReturnType<typeof useApiConfig.getState>);
 
-      expect(getBlobUrl('promptfoo://blob/abc123')).toBe(
+      expect(getBlobUrl('artef://blob/abc123')).toBe(
         'https://production.example.com/api/blobs/abc123',
       );
     });
@@ -168,7 +168,7 @@ describe('mediaStorage', () => {
     });
 
     it('should resolve blob references', () => {
-      expect(resolveMediaUrl('promptfoo://blob/abc123', 'audio/mp3')).toBe(
+      expect(resolveMediaUrl('artef://blob/abc123', 'audio/mp3')).toBe(
         'http://localhost:15500/api/blobs/abc123',
       );
     });
@@ -338,13 +338,13 @@ describe('mediaStorage', () => {
     });
 
     it('should handle blob refs with various hash formats', () => {
-      expect(parseBlobRef('promptfoo://blob/abc123def456')).toBe('abc123def456');
-      expect(parseBlobRef('promptfoo://blob/hash-with-dashes')).toBe('hash-with-dashes');
-      expect(parseBlobRef('promptfoo://blob/UPPERCASE123')).toBe('UPPERCASE123');
+      expect(parseBlobRef('artef://blob/abc123def456')).toBe('abc123def456');
+      expect(parseBlobRef('artef://blob/hash-with-dashes')).toBe('hash-with-dashes');
+      expect(parseBlobRef('artef://blob/UPPERCASE123')).toBe('UPPERCASE123');
     });
 
     it('should prioritize blob refs over storage refs in resolveMediaUrl', () => {
-      const blobRef = 'promptfoo://blob/abc123';
+      const blobRef = 'artef://blob/abc123';
       expect(resolveMediaUrl(blobRef, 'audio/mp3')).toBe('http://localhost:15500/api/blobs/abc123');
     });
 

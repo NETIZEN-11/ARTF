@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 
 import chalk from 'chalk';
 import * as yaml from 'js-yaml';
@@ -10,7 +10,7 @@ import { synthesizeFromTestSuite } from '../../testCase/synthesis';
 import { type TestSuite, type UnifiedConfig } from '../../types/index';
 import { resolveConfigs } from '../../util/config/load';
 import { printBorder, setupEnv } from '../../util/index';
-import { promptfooCommand } from '../../util/promptfooCommand';
+import { artefCommand } from '../../util/artefCommand';
 import { loadYaml } from '../../util/yamlLoad';
 import type { Command } from 'commander';
 
@@ -48,7 +48,7 @@ export async function doGenerateDataset(options: DatasetGenerateOptions): Promis
     testSuite = resolved.testSuite;
   } else {
     throw new Error(
-      `Could not find a config file. Pass --config path/to/promptfooconfig.yaml or run "${promptfooCommand(
+      `Could not find a config file. Pass --config path/to/artefconfig.yaml or run "${artefCommand(
         'init',
       )}" to create one.`,
     );
@@ -104,12 +104,12 @@ export async function doGenerateDataset(options: DatasetGenerateOptions): Promis
     existingConfig.tests = [...testsArray, ...configAddition.tests];
     await fs.writeFile(configPath, yaml.dump(existingConfig));
     logger.info(`Wrote ${results.length} new test cases to ${configPath}`);
-    const runCommand = promptfooCommand('eval');
+    const runCommand = artefCommand('eval');
     logger.info(chalk.green(`Run ${chalk.bold(runCommand)} to run the generated tests`));
   } else {
     logger.info(
       `Copy the above test cases or run ${chalk.greenBright(
-        'promptfoo generate dataset --write',
+        'artef generate dataset --write',
       )} to write directly to the config`,
     );
   }
@@ -136,9 +136,9 @@ export function generateDatasetCommand(
       '-i, --instructions [instructions]',
       'Additional instructions to follow while generating test cases',
     )
-    .option('-c, --config [path]', 'Path to configuration file. Defaults to promptfooconfig.yaml')
+    .option('-c, --config [path]', 'Path to configuration file. Defaults to artefconfig.yaml')
     .option('-o, --output [path]', 'Path to output file. Supports CSV and YAML output.')
-    .option('-w, --write', 'Write results to promptfoo configuration file')
+    .option('-w, --write', 'Write results to artef configuration file')
     .option(
       '--provider <provider>',
       `Provider to use for generating adversarial tests. Defaults to the default grading provider.`,

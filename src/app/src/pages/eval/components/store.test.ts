@@ -1,7 +1,7 @@
-import { HIDDEN_METADATA_KEYS } from '@app/constants';
+﻿import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import { useTestTimers } from '@app/tests/timers';
 import { callApi } from '@app/utils/api';
-import { Severity } from '@promptfoo/redteam/constants';
+import { Severity } from '@artef/redteam/constants';
 import { act } from '@testing-library/react';
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { type ResultsFilter, useTableStore } from './store';
@@ -11,7 +11,7 @@ import type {
   EvaluateTableOutput,
   PromptMetrics,
   ResultsFile,
-} from '@promptfoo/types';
+} from '@artef/types';
 
 // Mock crypto.randomUUID
 const mockRandomUUID = vi.fn<() => `${string}-${string}-${string}-${string}-${string}`>();
@@ -2549,7 +2549,7 @@ describe('useTableStore', () => {
 
     it('should store and return only non-hidden metadata keys when the API response includes both hidden and non-hidden keys', async () => {
       const mockEvalId = 'test-eval-id';
-      const allKeys = ['visibleKey1', '_promptfooFileMetadata', 'visibleKey2', 'citations'];
+      const allKeys = ['visibleKey1', '_artefFileMetadata', 'visibleKey2', 'citations'];
       const expectedVisibleKeys = allKeys.filter((key) => !HIDDEN_METADATA_KEYS.includes(key));
 
       (callApi as Mock).mockResolvedValue({

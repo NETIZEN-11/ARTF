@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { disableCache, enableCache } from '../../../src/cache';
 import {
   cleanAssistantResponse,
@@ -91,7 +91,7 @@ function getGeneratedHTML(provider: OpenAiChatKitProvider): string {
                 'Authorization': 'Bearer ${apiKey}',
                 'Content-Type': 'application/json',
                 'OpenAI-Beta': 'chatkit_beta=v1',
-                'X-OpenAI-Originator': 'promptfoo'
+                'X-OpenAI-Originator': 'artef'
               },
               body: JSON.stringify({
                 workflow: { id: '${workflowId}'${versionClause} },

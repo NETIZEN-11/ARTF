@@ -1,4 +1,4 @@
-import './setup';
+﻿import './setup';
 
 import { randomUUID } from 'crypto';
 import * as fs from 'fs';
@@ -78,7 +78,7 @@ describeEvaluator('evaluator execution control', () => {
   });
 
   it('closes JSONL writers after evaluation', async () => {
-    const outputPath = path.join(os.tmpdir(), `promptfoo-evaluator-${randomUUID()}.jsonl`);
+    const outputPath = path.join(os.tmpdir(), `artef-evaluator-${randomUUID()}.jsonl`);
     const closeSpy = vi.spyOn(JsonlFileWriter.prototype, 'close');
     const provider: ApiProvider = {
       id: vi.fn().mockReturnValue('test-provider'),
@@ -109,7 +109,7 @@ describeEvaluator('evaluator execution control', () => {
   });
 
   it('continues cleanup and recovers a JSONL close failure when results persisted', async () => {
-    const outputPath = path.join(os.tmpdir(), `promptfoo-evaluator-${randomUUID()}.jsonl`);
+    const outputPath = path.join(os.tmpdir(), `artef-evaluator-${randomUUID()}.jsonl`);
     const originalClose = JsonlFileWriter.prototype.close;
     const closeSpy = vi
       .spyOn(JsonlFileWriter.prototype, 'close')
@@ -148,7 +148,7 @@ describeEvaluator('evaluator execution control', () => {
   });
 
   it('appends JSONL rows when resuming an evaluation', async () => {
-    const outputPath = path.join(os.tmpdir(), `promptfoo-evaluator-${randomUUID()}.jsonl`);
+    const outputPath = path.join(os.tmpdir(), `artef-evaluator-${randomUUID()}.jsonl`);
     const provider: ApiProvider = {
       id: vi.fn().mockReturnValue('test-provider'),
       callApi: vi.fn().mockResolvedValue({
@@ -193,7 +193,7 @@ describeEvaluator('evaluator execution control', () => {
         const messages = JSON.parse(String(prompt)) as Array<{ content: string }>;
         const judgeInput = messages.at(-1)?.content;
         expect(judgeInput).toContain(svg);
-        expect(judgeInput).not.toContain('promptfoo://blob/');
+        expect(judgeInput).not.toContain('artef://blob/');
         return {
           output: JSON.stringify({ pass: true, score: 1, reason: 'saw raw SVG' }),
           tokenUsage: createEmptyTokenUsage(),
@@ -219,7 +219,7 @@ describeEvaluator('evaluator execution control', () => {
       expect.objectContaining({
         output: svg,
         metadata: expect.objectContaining({
-          blobUris: [expect.stringMatching(/^promptfoo:\/\/blob\/[a-f0-9]{64}$/)],
+          blobUris: [expect.stringMatching(/^artef:\/\/blob\/[a-f0-9]{64}$/)],
         }),
       }),
     );

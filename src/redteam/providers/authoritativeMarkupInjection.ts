@@ -1,4 +1,4 @@
-import { VERSION } from '../../constants';
+﻿import { VERSION } from '../../constants';
 import { renderPrompt } from '../../evaluatorHelpers';
 import { getUserEmail } from '../../globalConfig/accounts';
 import logger from '../../logger';
@@ -36,7 +36,7 @@ export default class AuthoritativeMarkupInjectionProvider implements ApiProvider
   readonly config: AuthoritativeMarkupInjectionConfig;
 
   id() {
-    return 'promptfoo:redteam:authoritative-markup-injection';
+    return 'artef:redteam:authoritative-markup-injection';
   }
 
   constructor(

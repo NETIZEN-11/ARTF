@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { SsrfGrader, type SsrfSeverity } from '../../../src/redteam/plugins/ssrf';
 
 describe('SsrfGrader', () => {
@@ -46,7 +46,7 @@ describe('SsrfGrader', () => {
 
   describe('plugin id', () => {
     it('should have correct plugin id', () => {
-      expect(grader.id).toBe('promptfoo:redteam:ssrf');
+      expect(grader.id).toBe('artef:redteam:ssrf');
     });
   });
 });

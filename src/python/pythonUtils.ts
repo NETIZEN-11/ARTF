@@ -1,4 +1,4 @@
-import { execFile } from 'child_process';
+﻿import { execFile } from 'child_process';
 import fs from 'fs/promises';
 import path from 'path';
 import { promisify } from 'util';
@@ -35,7 +35,7 @@ export function getEnvInt(key: string): number | undefined {
 
 /**
  * Resolves the Python executable path from explicit config and environment.
- * This centralizes the fallback logic: configPath > PROMPTFOO_PYTHON env var.
+ * This centralizes the fallback logic: configPath > artef_PYTHON env var.
  *
  * Note: Does NOT apply the final 'python' default - that's handled by
  * validatePythonPath. This preserves the distinction between "explicitly
@@ -49,7 +49,7 @@ export function getConfiguredPythonPath(configPath?: string): string | undefined
   if (configPath) {
     return configPath;
   }
-  const envPath = getEnvString('PROMPTFOO_PYTHON');
+  const envPath = getEnvString('artef_PYTHON');
   return envPath || undefined;
 }
 
@@ -252,7 +252,7 @@ export async function validatePythonPath(pythonPath: string, isExplicit: boolean
         if (isExplicit) {
           const error = new Error(
             `Python 3 not found. Tried "${pythonPath}" ` +
-              `Please ensure Python 3 is installed and set the PROMPTFOO_PYTHON environment variable ` +
+              `Please ensure Python 3 is installed and set the artef_PYTHON environment variable ` +
               `to your Python 3 executable path (e.g., '${process.platform === 'win32' ? 'C:\\Python39\\python.exe' : '/usr/bin/python3'}').`,
           );
           // Clear promise on error to allow retry
@@ -270,7 +270,7 @@ export async function validatePythonPath(pythonPath: string, isExplicit: boolean
 
         const error = new Error(
           `Python 3 not found. Tried "${pythonPath}", sys.executable detection, and fallback commands. ` +
-            `Please ensure Python 3 is installed and set the PROMPTFOO_PYTHON environment variable ` +
+            `Please ensure Python 3 is installed and set the artef_PYTHON environment variable ` +
             `to your Python 3 executable path (e.g., '${process.platform === 'win32' ? 'C:\\Python39\\python.exe' : '/usr/bin/python3'}').`,
         );
         // Clear promise on error to allow retry
@@ -313,7 +313,7 @@ export async function runPython<T = unknown>(
   pythonPath = await validatePythonPath(pythonPath, typeof customPath === 'string');
 
   try {
-    tempDirectory = await createSecureTempDirectory('promptfoo-python-');
+    tempDirectory = await createSecureTempDirectory('artef-python-');
     const tempJsonPath = await writeSecureTempFile(
       tempDirectory,
       'input.json',
@@ -327,7 +327,7 @@ export async function runPython<T = unknown>(
       pythonPath,
       scriptPath: getWrapperDir('python'),
       // When `inherit` is used, `import pdb; pdb.set_trace()` will work.
-      ...(getEnvBool('PROMPTFOO_PYTHON_DEBUG_ENABLED') && { stdio: 'inherit' }),
+      ...(getEnvBool('artef_PYTHON_DEBUG_ENABLED') && { stdio: 'inherit' }),
     };
 
     logger.debug('[Python] Running script', { scriptPath: absPath, method });

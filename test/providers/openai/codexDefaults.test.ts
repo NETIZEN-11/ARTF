@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
@@ -64,7 +64,7 @@ describe('Codex default providers', () => {
     mockProcessEnv({ CODEX_API_KEY: undefined });
     mockProcessEnv({ OPENAI_API_KEY: undefined });
 
-    codexHome = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-codex-defaults-'));
+    codexHome = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-codex-defaults-'));
     mockProcessEnv({ CODEX_HOME: codexHome });
 
     const { clearCodexDefaultProvidersForTesting } = await import(
@@ -164,9 +164,9 @@ describe('Codex default providers', () => {
       sandbox_mode: 'read-only',
       skip_git_repo_check: true,
     });
-    expect(providers.gradingProvider.config.working_dir).toMatch(/promptfoo-codex-default-/);
+    expect(providers.gradingProvider.config.working_dir).toMatch(/artef-codex-default-/);
     expect(providers.gradingProvider.config.working_dir).not.toBe(
-      path.join(os.tmpdir(), 'promptfoo-codex-default'),
+      path.join(os.tmpdir(), 'artef-codex-default'),
     );
     expect(providers.gradingJsonProvider.config.working_dir).toBe(
       providers.gradingProvider.config.working_dir,

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Data URL parsing and manipulation utilities for vision model support
  * Implements RFC 2397 data URL parsing
  *
@@ -25,7 +25,7 @@
  * - **Google Gemini**: Expects raw base64 in inlineData.data field
  *
  * These utilities enable transparent conversion between formats, allowing
- * promptfoo to generate data URLs from file:// inputs while providers
+ * artef to generate data URLs from file:// inputs while providers
  * automatically convert to their required format.
  *
  * ## Limitations and Edge Cases

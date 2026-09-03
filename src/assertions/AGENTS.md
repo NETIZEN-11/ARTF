@@ -1,7 +1,7 @@
-# Assertions
+﻿# Assertions
 
 Assertion handlers turn provider outputs, traces, scripts, and model-graded checks into
-Promptfoo pass/fail scores.
+artef pass/fail scores.
 
 ## Rules
 

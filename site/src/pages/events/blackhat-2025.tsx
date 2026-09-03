@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 
 import Cal, { getCalApi } from '@calcom/embed-react';
 import Head from '@docusaurus/Head';
@@ -18,7 +18,7 @@ export default function BlackHat2025(): React.ReactElement {
   useEffect(() => {
     // Cal.com setup
     (async function () {
-      const cal = await getCalApi({ namespace: 'promptfoo-at-blackhat' });
+      const cal = await getCalApi({ namespace: 'artef-at-blackhat' });
       cal('ui', { hideEventTypeDetails: false, layout: 'month_view' });
     })();
   }, []);
@@ -40,42 +40,42 @@ export default function BlackHat2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at Black Hat USA 2025"
-      description="Promptfoo was at Black Hat USA 2025, booth #4712, with live demos of AI security testing and red teaming for enterprise LLM applications."
+      title="artef at Black Hat USA 2025"
+      description="artef was at Black Hat USA 2025, booth #4712, with live demos of AI security testing and red teaming for enterprise LLM applications."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at Black Hat USA 2025 | AI Security" />
+        <meta property="og:title" content="artef at Black Hat USA 2025 | AI Security" />
         <meta
           property="og:description"
-          content="Promptfoo was at booth #4712 at Black Hat USA 2025, Aug 5-7 in Las Vegas, with live demos of AI vulnerability testing, automated red teaming, and LLM security scanning."
+          content="artef was at booth #4712 at Black Hat USA 2025, Aug 5-7 in Las Vegas, with live demos of AI vulnerability testing, automated red teaming, and LLM security scanning."
         />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/blackhat-2025.jpg"
+          content="https://www.artef.dev/img/events/blackhat-2025.jpg"
         />
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="1024" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/blackhat-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/blackhat-2025" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Promptfoo" />
+        <meta property="og:site_name" content="artef" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Promptfoo at Black Hat USA 2025 | AI Security" />
+        <meta name="twitter:title" content="artef at Black Hat USA 2025 | AI Security" />
         <meta
           name="twitter:description"
           content="Booth #4712 at Black Hat USA 2025. Live demos of AI vulnerability testing & automated red teaming. Aug 5-7, Las Vegas."
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/blackhat-2025.jpg"
+          content="https://www.artef.dev/img/events/blackhat-2025.jpg"
         />
-        <meta name="twitter:site" content="@promptfoo" />
+        <meta name="twitter:site" content="@artef" />
 
         <meta
           name="keywords"
           content="Black Hat USA 2025, AI security, LLM security, prompt injection, jailbreaking, red teaming, AI vulnerability testing, OWASP LLM Top 10"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/blackhat-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/blackhat-2025" />
       </Head>
       <main className={styles.blackhatPage}>
         {/* Hero Section */}
@@ -91,7 +91,7 @@ export default function BlackHat2025(): React.ReactElement {
                 </span>
               </h1>
               <p className={styles.heroSubtitle}>
-                We were at Black Hat USA showing how Promptfoo helps security teams find and fix LLM
+                We were at Black Hat USA showing how artef helps security teams find and fix LLM
                 vulnerabilities before attackers do.
               </p>
               <div className={styles.heroButtons}>
@@ -183,14 +183,14 @@ export default function BlackHat2025(): React.ReactElement {
                   </svg>
                   <span style={{ fontWeight: 'bold', color: '#ff6b6b' }}>
                     <Link
-                      to="https://www.blackhat.com/us-25/arsenal/schedule/index.html#promptfoo-44648"
+                      to="https://www.blackhat.com/us-25/arsenal/schedule/index.html#artef-44648"
                       style={{ color: 'inherit' }}
                     >
                       Arsenal Labs - Aug 6
                     </Link>
                     {' & '}
                     <Link
-                      to="https://www.blackhat.com/us-25/arsenal/schedule/#promptfoo-47875"
+                      to="https://www.blackhat.com/us-25/arsenal/schedule/#artef-47875"
                       style={{ color: 'inherit' }}
                     >
                       7
@@ -238,7 +238,7 @@ export default function BlackHat2025(): React.ReactElement {
                       <h3>Real-Time Attack Demonstrations</h3>
                       <p>
                         Our security researchers demonstrated prompt injection, jailbreaking, and
-                        data exfiltration attacks, and how Promptfoo detects these threats early,
+                        data exfiltration attacks, and how artef detects these threats early,
                         reproduces them in testing, and tracks fixes over time.
                       </p>
                       <div className={styles.demoTag}>LIVE DEMO</div>
@@ -314,12 +314,12 @@ export default function BlackHat2025(): React.ReactElement {
             <h2 className={styles.sectionTitle}>Meet us at Black Hat</h2>
             <p className={styles.calendarSubtitle}>
               Black Hat USA 2025 is over, but the demo still stands. Book a 30-minute slot to see
-              Promptfoo in action and how to find and fix vulnerabilities in your LLM applications.
+              artef in action and how to find and fix vulnerabilities in your LLM applications.
             </p>
             <div className={styles.calendarWrapper}>
               <Cal
-                namespace="promptfoo-at-blackhat"
-                calLink="team/promptfoo/promptfoo-at-blackhat"
+                namespace="artef-at-blackhat"
+                calLink="team/artef/artef-at-blackhat"
                 style={{ width: '100%', height: '100%', overflow: 'scroll' }}
                 config={{ layout: 'month_view' }}
               />
@@ -330,7 +330,7 @@ export default function BlackHat2025(): React.ReactElement {
         {/* Why Meet Us Section */}
         <section className={styles.whySection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Why Security Teams Choose Promptfoo</h2>
+            <h2 className={styles.sectionTitle}>Why Security Teams Choose artef</h2>
             <div className={styles.statsGrid}>
               <div className={styles.stat}>
                 <div className={styles.statNumber}>{`${SITE_CONSTANTS.USER_COUNT_DISPLAY}+`}</div>
@@ -357,7 +357,7 @@ export default function BlackHat2025(): React.ReactElement {
           <div className={styles.container}>
             <h2>Don't Leave Your AI Vulnerable</h2>
             <p>
-              Join hundreds of security teams who trust Promptfoo to protect their LLM applications.
+              Join hundreds of security teams who trust artef to protect their LLM applications.
             </p>
             <div className={styles.ctaButtons}>
               <a

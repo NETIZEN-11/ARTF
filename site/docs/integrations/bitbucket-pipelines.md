@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_label: Bitbucket Pipelines
-description: Integrate promptfoo LLM testing with Bitbucket Pipelines CI/CD to automate evaluations, track results, and catch regressions in your AI models using built-in assertions
+description: Integrate artef LLM testing with Bitbucket Pipelines CI/CD to automate evaluations, track results, and catch regressions in your AI models using built-in assertions
 ---
 
 # Bitbucket Pipelines Integration
 
-This guide demonstrates how to set up promptfoo with Bitbucket Pipelines to run evaluations as part of your CI pipeline.
+This guide demonstrates how to set up artef with Bitbucket Pipelines to run evaluations as part of your CI pipeline.
 
 ## Prerequisites
 
-- A Bitbucket repository with a promptfoo project
+- A Bitbucket repository with a artef project
 - Bitbucket Pipelines enabled for your repository
 - API keys for your LLM providers stored as [Bitbucket repository variables](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/)
 
@@ -23,16 +23,16 @@ image: node:24
 pipelines:
   default:
     - step:
-        name: Promptfoo Evaluation
+        name: artef Evaluation
         caches:
           - node
         script:
           - npm ci
-          - npm install -g promptfoo
-          - npx promptfoo eval -o promptfoo-results.json -o promptfoo-results.junit.xml
+          - npm install -g artef
+          - npx artef eval -o artef-results.json -o artef-results.junit.xml
         artifacts:
-          - promptfoo-results.json
-          - promptfoo-results.junit.xml
+          - artef-results.json
+          - artef-results.junit.xml
 ```
 
 ## Environment Variables
@@ -48,13 +48,13 @@ Store your LLM provider API keys as repository variables in Bitbucket:
 
 ### Fail the Pipeline on Failed Assertions
 
-You can configure the pipeline to fail when promptfoo assertions don't pass:
+You can configure the pipeline to fail when artef assertions don't pass:
 
 ```yaml
 script:
   - npm ci
-  - npm install -g promptfoo
-  - npx promptfoo eval --fail-on-error
+  - npm install -g artef
+  - npx artef eval --fail-on-error
 ```
 
 ### Custom Evaluation Configurations
@@ -64,8 +64,8 @@ Run evaluations with specific configuration files:
 ```yaml
 script:
   - npm ci
-  - npm install -g promptfoo
-  - npx promptfoo eval --config custom-config.yaml
+  - npm install -g artef
+  - npx artef eval --config custom-config.yaml
 ```
 
 ### Run on Pull Requests
@@ -76,19 +76,19 @@ Configure different behavior for pull requests:
 pipelines:
   default:
     - step:
-        name: Promptfoo Evaluation
+        name: artef Evaluation
         script:
           - npm ci
-          - npm install -g promptfoo
-          - npx promptfoo eval
+          - npm install -g artef
+          - npx artef eval
   pull-requests:
     '**':
       - step:
-          name: Promptfoo PR Evaluation
+          name: artef PR Evaluation
           script:
             - npm ci
-            - npm install -g promptfoo
-            - npx promptfoo eval --fail-on-error
+            - npm install -g artef
+            - npx artef eval --fail-on-error
 ```
 
 ### Scheduled Evaluations
@@ -99,19 +99,19 @@ Run evaluations on a schedule:
 pipelines:
   default:
     - step:
-        name: Promptfoo Evaluation
+        name: artef Evaluation
         script:
           - npm ci
-          - npm install -g promptfoo
-          - npx promptfoo eval
+          - npm install -g artef
+          - npx artef eval
   custom:
     nightly-evaluation:
       - step:
           name: Nightly Evaluation
           script:
             - npm ci
-            - npm install -g promptfoo
-            - npx promptfoo eval
+            - npm install -g artef
+            - npx artef eval
   schedules:
     - cron: '0 0 * * *' # Run at midnight UTC every day
       pipeline: custom.nightly-evaluation
@@ -134,18 +134,18 @@ pipelines:
             name: Evaluate with GPT-4
             script:
               - npm ci
-              - npm install -g promptfoo
-              - npx promptfoo eval --providers.0.config.model=gpt-4
+              - npm install -g artef
+              - npx artef eval --providers.0.config.model=gpt-4
             artifacts:
-              - promptfoo-results-gpt4.json
+              - artef-results-gpt4.json
         - step:
             name: Evaluate with Claude
             script:
               - npm ci
-              - npm install -g promptfoo
-              - npx promptfoo eval --providers.0.config.model=claude-3-opus-20240229
+              - npm install -g artef
+              - npx artef eval --providers.0.config.model=claude-3-opus-20240229
             artifacts:
-              - promptfoo-results-claude.json
+              - artef-results-claude.json
 ```
 
 ### Using Pipes
@@ -158,15 +158,15 @@ image: node:24
 pipelines:
   default:
     - step:
-        name: Promptfoo Evaluation
+        name: artef Evaluation
         script:
           - npm ci
-          - npm install -g promptfoo
-          - npx promptfoo eval -o promptfoo-results.junit.xml
+          - npm install -g artef
+          - npx artef eval -o artef-results.junit.xml
         after-script:
           - pipe: atlassian/junit-report:0.3.0
             variables:
-              REPORT_PATHS: 'promptfoo-results.junit.xml'
+              REPORT_PATHS: 'artef-results.junit.xml'
 ```
 
 ## Troubleshooting

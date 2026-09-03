@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 
 import Editor from '@app/components/ui/code-editor';
 import { HelperText } from '@app/components/ui/helper-text';
@@ -198,7 +198,7 @@ const WebSocketEndpointConfiguration = ({
             <p className="text-sm text-muted-foreground">
               Extract specific data from the WebSocket messages. See{' '}
               <a
-                href="https://www.promptfoo.dev/docs/providers/websocket/#streaming-responses"
+                href="https://www.artef.dev/docs/providers/websocket/#streaming-responses"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

@@ -1,4 +1,4 @@
-import { trace } from '@opentelemetry/api';
+﻿import { trace } from '@opentelemetry/api';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../src/cache';
 import logger from '../../src/logger';
@@ -202,7 +202,7 @@ describe('docker model runner provider', () => {
 
           expect(attributes).toMatchObject({
             'gen_ai.provider.name': 'docker',
-            'promptfoo.provider.id': 'customer:custom-label',
+            'artef.provider.id': 'customer:custom-label',
           });
         } finally {
           getTracer.mockRestore();

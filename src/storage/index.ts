@@ -1,5 +1,5 @@
-/**
- * Media storage module for promptfoo.
+﻿/**
+ * Media storage module for artef.
  *
  * Provides abstraction for storing binary media (audio, images, video)
  * separately from the main database.
@@ -40,7 +40,7 @@ let defaultProvider: MediaStorageProvider | null = null;
  */
 export function getMediaStorage(config?: LocalStorageConfig): MediaStorageProvider {
   if (!defaultProvider) {
-    const basePath = config?.basePath || getEnvString('PROMPTFOO_MEDIA_PATH');
+    const basePath = config?.basePath || getEnvString('artef_MEDIA_PATH');
     defaultProvider = new LocalFileSystemProvider({ basePath });
     logger.debug(`[MediaStorage] Initialized local storage provider`);
   }
@@ -90,9 +90,9 @@ export async function mediaExists(key: string): Promise<boolean> {
  * Check if media storage should be used based on config/env
  *
  * Returns true if media storage is enabled (default for new installs).
- * Set PROMPTFOO_INLINE_MEDIA=true to disable and use legacy inline base64.
+ * Set artef_INLINE_MEDIA=true to disable and use legacy inline base64.
  */
 export function isMediaStorageEnabled(): boolean {
-  const inline = getEnvString('PROMPTFOO_INLINE_MEDIA');
+  const inline = getEnvString('artef_INLINE_MEDIA');
   return inline !== 'true' && inline !== '1';
 }

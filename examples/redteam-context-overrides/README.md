@@ -1,9 +1,9 @@
-# redteam-context-overrides (Redteam Context Overrides)
+﻿# redteam-context-overrides (Redteam Context Overrides)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-context-overrides
+npx artef@latest init --example redteam-context-overrides
 cd redteam-context-overrides
 ```
 
@@ -21,13 +21,13 @@ The example uses the built-in `echo` provider so the target is deterministic and
 To generate a small red team config:
 
 ```bash
-promptfoo redteam generate -c promptfooconfig.yaml -o redteam.yaml --force --no-cache
+artef redteam generate -c artefconfig.yaml -o redteam.yaml --force --no-cache
 ```
 
 If you want to force local generation with an `OPENAI_API_KEY` from `.env`, run:
 
 ```bash
-PROMPTFOO_DISABLE_REMOTE_GENERATION=true promptfoo redteam generate -c promptfooconfig.yaml -o redteam.yaml --force --no-cache --env-file .env
+artef_DISABLE_REMOTE_GENERATION=true artef redteam generate -c artefconfig.yaml -o redteam.yaml --force --no-cache --env-file .env
 ```
 
 Then inspect `redteam.yaml`. Generated test metadata should show each resolved context purpose:
@@ -38,5 +38,5 @@ Then inspect `redteam.yaml`. Generated test metadata should show each resolved c
 To run the generated eval:
 
 ```bash
-promptfoo redteam eval -c redteam.yaml --no-cache
+artef redteam eval -c redteam.yaml --no-cache
 ```

@@ -1,4 +1,4 @@
-import { useActionState, useCallback, useEffect, useState } from 'react';
+﻿import { useActionState, useCallback, useEffect, useState } from 'react';
 
 import logoPanda from '@app/assets/logo.svg';
 import { Button } from '@app/components/ui/button';
@@ -69,8 +69,8 @@ export default function LoginPage() {
   const { email, isLoading, setEmail, fetchEmail } = useUserStore();
 
   usePageMeta({
-    title: 'Login to Promptfoo',
-    description: 'Sign in to access your Promptfoo workspace',
+    title: 'Login to artef',
+    description: 'Sign in to access your artef workspace',
   });
 
   useEffect(() => {
@@ -128,14 +128,14 @@ export default function LoginPage() {
           {/* Logo and Header */}
           <div className="mb-8 flex flex-col items-center space-y-4 text-center">
             <div className="flex items-center gap-2">
-              <img src={logoPanda} alt="Promptfoo" className="size-10" />
-              <h1 className="text-2xl font-semibold tracking-tight">promptfoo</h1>
+              <img src={logoPanda} alt="artef" className="size-10" />
+              <h1 className="text-2xl font-semibold tracking-tight">artef</h1>
             </div>
 
             <h2 className="text-xl text-foreground">
               {new URLSearchParams(location.search).get('type') === 'report'
                 ? 'View Report'
-                : 'Welcome to Promptfoo'}
+                : 'Welcome to artef'}
             </h2>
 
             <p className="max-w-sm text-sm text-muted-foreground">
@@ -145,7 +145,7 @@ export default function LoginPage() {
                   {' '}
                   Don't have one?{' '}
                   <a
-                    href="https://promptfoo.app/welcome"
+                    href="https://artef.app/welcome"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary underline underline-offset-2 hover:no-underline"
@@ -203,7 +203,7 @@ export default function LoginPage() {
                   id="customUrl"
                   name="customUrl"
                   type="url"
-                  defaultValue="https://www.promptfoo.app"
+                  defaultValue="https://www.artef.app"
                   disabled={isPending}
                 />
                 <p className="text-xs text-muted-foreground">
@@ -231,7 +231,7 @@ export default function LoginPage() {
               <p className="text-sm text-muted-foreground">Don't have an API key?</p>
 
               <a
-                href="https://promptfoo.app/welcome"
+                href="https://artef.app/welcome"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-sm text-primary hover:underline"

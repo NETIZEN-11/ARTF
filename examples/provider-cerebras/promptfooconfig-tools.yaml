@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Function calling with Llama 4 for mathematical problem solving
 prompts:
   - file://tool_prompts.txt

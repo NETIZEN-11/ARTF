@@ -1,6 +1,6 @@
-# openai-vision (OpenAI Vision Model Example)
+﻿# openai-vision (OpenAI Vision Model Example)
 
-This example demonstrates how to use promptfoo to evaluate OpenAI's vision capabilities, allowing you to test models on their ability to analyze and describe images.
+This example demonstrates how to use artef to evaluate OpenAI's vision capabilities, allowing you to test models on their ability to analyze and describe images.
 
 ## Features Demonstrated
 
@@ -22,15 +22,15 @@ You can set this in a `.env` file or directly in your environment.
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-vision
+npx artef@latest init --example openai-vision
 # and then
 cd openai-vision
 
 # Run the evaluation
-npx promptfoo eval
+npx artef eval
 
 # View the results
-npx promptfoo view
+npx artef view
 ```
 
 ## Example Configuration
@@ -54,4 +54,4 @@ This example:
 For more information, see:
 
 - [OpenAI Vision API Documentation](https://platform.openai.com/docs/guides/vision)
-- [promptfoo OpenAI Provider Documentation](https://promptfoo.dev/docs/providers/openai#sending-images-in-prompts)
+- [artef OpenAI Provider Documentation](https://artef.dev/docs/providers/openai#sending-images-in-prompts)

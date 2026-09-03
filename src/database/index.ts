@@ -1,4 +1,4 @@
-import { AsyncLocalStorage } from 'node:async_hooks';
+﻿import { AsyncLocalStorage } from 'node:async_hooks';
 import { pathToFileURL } from 'node:url';
 import * as fs from 'fs';
 import * as os from 'os';
@@ -24,7 +24,7 @@ type Drizzle = ReturnType<typeof import('drizzle-orm/libsql/node').drizzle>;
 
 export class DrizzleLogWriter implements LogWriter {
   write(message: string) {
-    if (getEnvBool('PROMPTFOO_ENABLE_DATABASE_LOGS', false)) {
+    if (getEnvBool('artef_ENABLE_DATABASE_LOGS', false)) {
       logger.debug(`Drizzle: ${message}`);
     }
   }
@@ -120,7 +120,7 @@ function databasePathsReferToSameFile(firstPath: string, secondPath: string): bo
 
 export function getDbPath() {
   const configDirectoryPath = getConfigDirectoryPath();
-  const dbPath = path.resolve(configDirectoryPath, 'promptfoo.db');
+  const dbPath = path.resolve(configDirectoryPath, 'artef.db');
   // Runner-owned globals survive helpers that clear process.env; JEST_WORKER_ID alone does not
   // identify Jest because the generic jest-worker package sets it for ordinary tasks.
   const isTestProcess =
@@ -130,11 +130,11 @@ export function getDbPath() {
   const assertSafeTestPath = () => {
     if (
       isTestProcess &&
-      databasePathsReferToSameFile(dbPath, path.resolve(os.homedir(), '.promptfoo', 'promptfoo.db'))
+      databasePathsReferToSameFile(dbPath, path.resolve(os.homedir(), '.artef', 'artef.db'))
     ) {
       throw new Error(
-        'Refusing to open the default Promptfoo database while running tests. ' +
-          'Set IS_TESTING=true for an in-memory database or set PROMPTFOO_CONFIG_DIR to a test-only directory.',
+        'Refusing to open the default artef database while running tests. ' +
+          'Set IS_TESTING=true for an in-memory database or set artef_CONFIG_DIR to a test-only directory.',
       );
     }
   };
@@ -157,7 +157,7 @@ async function configureDatabase(client: Client, skipWalMode: boolean): Promise<
   await client.execute('PRAGMA busy_timeout = 5000');
 
   // Configure WAL mode unless explicitly disabled or using in-memory database
-  if (!skipWalMode && !getEnvBool('PROMPTFOO_DISABLE_WAL_MODE', false)) {
+  if (!skipWalMode && !getEnvBool('artef_DISABLE_WAL_MODE', false)) {
     try {
       // Enable WAL mode for better concurrency
       await client.execute('PRAGMA journal_mode = WAL');
@@ -172,7 +172,7 @@ async function configureDatabase(client: Client, skipWalMode: boolean): Promise<
         logger.warn(
           `Failed to enable WAL mode (got '${journalMode}'). ` +
             'Database performance may be reduced. This can happen on network filesystems. ' +
-            'Set PROMPTFOO_DISABLE_WAL_MODE=true to suppress this warning.',
+            'Set artef_DISABLE_WAL_MODE=true to suppress this warning.',
         );
       }
 
@@ -184,7 +184,7 @@ async function configureDatabase(client: Client, skipWalMode: boolean): Promise<
         `Error configuring SQLite WAL mode: ${err}. ` +
           'Database will use default journal mode. Performance may be reduced. ' +
           'This can happen on network filesystems or certain containerized environments. ' +
-          'Set PROMPTFOO_DISABLE_WAL_MODE=true to suppress this warning.',
+          'Set artef_DISABLE_WAL_MODE=true to suppress this warning.',
       );
     }
   }
@@ -365,7 +365,7 @@ export async function closeDb() {
   if (sqliteInstance) {
     try {
       // Attempt to checkpoint WAL file before closing
-      if (!sqliteInstanceIsTesting && !getEnvBool('PROMPTFOO_DISABLE_WAL_MODE', false)) {
+      if (!sqliteInstanceIsTesting && !getEnvBool('artef_DISABLE_WAL_MODE', false)) {
         try {
           await sqliteInstance.execute('PRAGMA wal_checkpoint(TRUNCATE)');
           logger.debug('Successfully checkpointed WAL file before closing');

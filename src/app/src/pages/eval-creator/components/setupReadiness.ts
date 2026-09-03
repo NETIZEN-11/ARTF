@@ -1,6 +1,6 @@
-import { getMissingAssertionVariables } from './assertionPrerequisites';
+﻿import { getMissingAssertionVariables } from './assertionPrerequisites';
 import { getFirstRunnableAssertionValueError } from './assertionValueValidation';
-import type { AssertionOrSet, ProviderOptions, UnifiedConfig } from '@promptfoo/types';
+import type { AssertionOrSet, ProviderOptions, UnifiedConfig } from '@artef/types';
 
 export type SetupStepId = 1 | 2 | 3 | 4;
 

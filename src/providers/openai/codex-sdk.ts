@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
@@ -14,8 +14,8 @@ import {
   type GenAISpanResult,
   getTraceparent,
   openTurnSpan,
-  PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID,
-  PROMPTFOO_RESOURCE_ATTR_TRACE_ID,
+  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
+  artef_RESOURCE_ATTR_TRACE_ID,
   withGenAISpan,
 } from '../../tracing/genaiTracer';
 import { formatRateLimitErrorMessage, HttpRateLimitError } from '../../util/fetch/errors';
@@ -56,13 +56,13 @@ import type {
   ProviderResponse,
 } from '../../types/index';
 
-function appendPromptfooResourceAttrs(
+function appendartefResourceAttrs(
   existing: string | undefined,
   traceId: string,
   parentSpanId: string,
 ): string {
-  const traceKey = PROMPTFOO_RESOURCE_ATTR_TRACE_ID;
-  const parentSpanKey = PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID;
+  const traceKey = artef_RESOURCE_ATTR_TRACE_ID;
+  const parentSpanKey = artef_RESOURCE_ATTR_PARENT_SPAN_ID;
   const incoming = `${traceKey}=${traceId},${parentSpanKey}=${parentSpanId}`;
   if (!existing) {
     return incoming;
@@ -231,13 +231,13 @@ const COMMON_OPTIONAL_PROCESS_ENV_KEYS = [
 
 export interface OpenAICodexSDKConfig {
   /**
-   * Internal promptfoo config base path. Accepted for loader compatibility but not
+   * Internal artef config base path. Accepted for loader compatibility but not
    * forwarded to the Codex SDK constructor.
    */
   basePath?: string;
 
   /**
-   * Internal prompt wrapper/provider metadata merged into prompt configs by promptfoo.
+   * Internal prompt wrapper/provider metadata merged into prompt configs by artef.
    * Accepted for compatibility but not forwarded to the Codex SDK constructor.
    */
   prefix?: string;
@@ -292,7 +292,7 @@ export interface OpenAICodexSDKConfig {
    * on Amazon Bedrock (combine with `model: 'openai.gpt-5.6-sol'` and AWS credentials in `cli_env`).
    * Equivalent to setting `cli_config: { model_provider: '<value>' }`.
    *
-   * @see https://www.promptfoo.dev/docs/providers/aws-bedrock/
+   * @see https://www.artef.dev/docs/providers/aws-bedrock/
    */
   model_provider?: string;
 
@@ -364,7 +364,7 @@ export interface OpenAICodexSDKConfig {
 
   /**
    * Environment variables to pass to Codex CLI
-   * By default, Promptfoo passes a minimal shell environment plus provider credentials.
+   * By default, artef passes a minimal shell environment plus provider credentials.
    * Set inherit_process_env: true to merge the full Node.js process environment.
    */
   cli_env?: Record<string, string | number | boolean>;
@@ -384,7 +384,7 @@ export interface OpenAICodexSDKConfig {
    * Enable deep tracing of Codex CLI operations.
    * When enabled, injects OTEL environment variables so the Codex CLI
    * exports its internal spans to the local OTLP receiver.
-   * Requires tracing.enabled and tracing.otlp.http.enabled in promptfooconfig.
+   * Requires tracing.enabled and tracing.otlp.http.enabled in artefconfig.
    *
    * IMPORTANT: Deep tracing is INCOMPATIBLE with thread persistence.
    * When enabled, persist_threads, thread_id, and thread_pool_size are ignored
@@ -623,7 +623,7 @@ async function loadCodexSDK(): Promise<any> {
 
       Requires Node.js >=22.22.0.
 
-      For more information, see: https://www.promptfoo.dev/docs/providers/openai-codex-sdk/`,
+      For more information, see: https://www.artef.dev/docs/providers/openai-codex-sdk/`,
     );
   }
 
@@ -644,7 +644,7 @@ async function loadCodexSDK(): Promise<any> {
       Try reinstalling:
         npm install @openai/codex-sdk
 
-      For more information, see: https://www.promptfoo.dev/docs/providers/openai-codex-sdk/`,
+      For more information, see: https://www.artef.dev/docs/providers/openai-codex-sdk/`,
     );
   }
 }
@@ -798,7 +798,7 @@ export class OpenAICodexSDKProvider implements ApiProvider {
 
     if (ignoredProviderEnvKeys.length > 0 && !this.ignoredProviderEnvWarningShown) {
       logger.warn(
-        '[CodexSDK] Ignoring promptfoo-level env overrides for the Codex CLI process. ' +
+        '[CodexSDK] Ignoring artef-level env overrides for the Codex CLI process. ' +
           'Move these keys into config.cli_env if Codex shell commands need them.',
         { envKeys: ignoredProviderEnvKeys },
       );
@@ -851,7 +851,7 @@ export class OpenAICodexSDKProvider implements ApiProvider {
         sortedEnv.TRACEPARENT = traceparent;
         const [, tpTraceId, tpSpanId] = traceparent.split('-');
         if (tpTraceId && tpSpanId) {
-          sortedEnv.OTEL_RESOURCE_ATTRIBUTES = appendPromptfooResourceAttrs(
+          sortedEnv.OTEL_RESOURCE_ATTRIBUTES = appendartefResourceAttrs(
             sortedEnv.OTEL_RESOURCE_ATTRIBUTES,
             tpTraceId,
             tpSpanId,
@@ -1122,7 +1122,7 @@ export class OpenAICodexSDKProvider implements ApiProvider {
     skillRootPrefixes: readonly string[] = [],
   ): Promise<any> {
     const { events } = await thread.runStreamed(prompt, runOptions);
-    const tracer = trace.getTracer('promptfoo.codex-sdk');
+    const tracer = trace.getTracer('artef.codex-sdk');
     const state = this.createCodexStreamingState(prompt);
 
     try {
@@ -1669,14 +1669,14 @@ export class OpenAICodexSDKProvider implements ApiProvider {
 
     const skills = Array.from(skillCandidates.values());
     const attrs: Record<string, string | number | boolean> = {
-      'promptfoo.skill.count': skills.length,
-      'promptfoo.skill.names': skills.map((skill) => skill.name).join(','),
-      'promptfoo.skill.paths': skills.map((skill) => skill.path).join(','),
+      'artef.skill.count': skills.length,
+      'artef.skill.names': skills.map((skill) => skill.name).join(','),
+      'artef.skill.paths': skills.map((skill) => skill.path).join(','),
     };
 
     if (skills.length === 1) {
-      attrs['promptfoo.skill.name'] = skills[0].name;
-      attrs['promptfoo.skill.path'] = skills[0].path;
+      attrs['artef.skill.name'] = skills[0].name;
+      attrs['artef.skill.path'] = skills[0].path;
     }
 
     return attrs;
@@ -2052,7 +2052,7 @@ export class OpenAICodexSDKProvider implements ApiProvider {
       ...this.config,
       ...context?.prompt?.config,
     };
-    // Promptfoo may attach the live target provider object to prompt config for
+    // artef may attach the live target provider object to prompt config for
     // generic provider workflows. Codex accepts this key for loader compatibility,
     // but runtime variable rendering must not recurse into provider methods.
     delete mergedConfig.provider;
@@ -2217,7 +2217,7 @@ export class OpenAICodexSDKProvider implements ApiProvider {
     const promptInput = this.parsePromptInput(prompt);
 
     if (apiKey) {
-      logger.debug('[CodexSDK] Using explicit API credentials from promptfoo config/environment');
+      logger.debug('[CodexSDK] Using explicit API credentials from artef config/environment');
     } else {
       logger.debug(
         '[CodexSDK] No explicit API credentials configured; deferring auth resolution to Codex SDK login state',

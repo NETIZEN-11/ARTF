@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Agent Rubric
 description: 'Use coding-agent graders to verify outputs against files, tools, and other runtime evidence'
 ---
@@ -40,7 +40,7 @@ Install and authenticate the [OpenAI Codex SDK provider](/docs/providers/openai-
 
 ## Supported agent providers
 
-`agent-rubric` accepts the coding-agent runtimes that promptfoo can run as providers:
+`agent-rubric` accepts the coding-agent runtimes that artef can run as providers:
 
 | Runtime                 | Provider ID                                             |
 | ----------------------- | ------------------------------------------------------- |

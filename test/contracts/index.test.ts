@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   BaseTokenUsageSchema,
   buildInputPromptDescription,
@@ -44,7 +44,7 @@ describe('contracts leaf surface', () => {
     });
 
     it('re-exports the api/common and api/user DTOs through the barrel', () => {
-      // The browser API client imports these from `@promptfoo/contracts`, so a
+      // The browser API client imports these from `@artef/contracts`, so a
       // future `export *` name collision in the barrel must not silently drop them.
       expect(EmailSchema.safeParse('user@example.com').success).toBe(true);
       expect(EmailSchema.safeParse('not-an-email').success).toBe(false);

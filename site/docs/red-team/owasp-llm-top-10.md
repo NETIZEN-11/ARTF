@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 20
 description: Red team LLM apps against OWASP Top 10 vulnerabilities to protect AI systems from injection, data leakage, and supply chain attacks
 ---
@@ -24,17 +24,17 @@ The current top 10 are:
 
 ## Scanning for OWASP Top 10
 
-This guide will walk through how to use Promptfoo's features to test for and mitigate OWASP risks.
+This guide will walk through how to use artef's features to test for and mitigate OWASP risks.
 
-Promptfoo is an open-source tool that helps identify and remediate many of the vulnerabilities outlined in the OWASP LLM Top 10. OWASP has also [listed Promptfoo](https://genai.owasp.org/ai-security-solutions-landscape/) as a security solution for Generative AI.
+artef is an open-source tool that helps identify and remediate many of the vulnerabilities outlined in the OWASP LLM Top 10. OWASP has also [listed artef](https://genai.owasp.org/ai-security-solutions-landscape/) as a security solution for Generative AI.
 
 The end result is a comprehensive report card that enumerates the OWASP Top 10 vulnerabilities and their severities:
 
-![Promptfoo OWASP LLM Top 10](/img/docs/compliance.png)
+![artef OWASP LLM Top 10](/img/docs/compliance.png)
 
-To set up the scan through the Promptfoo UI, select the OWASP LLM Top 10 option in the list of presets on the Plugins page.
+To set up the scan through the artef UI, select the OWASP LLM Top 10 option in the list of presets on the Plugins page.
 
-![Promptfoo OWASP LLM Top 10 configuration](/img/docs/owasp-selection.png)
+![artef OWASP LLM Top 10 configuration](/img/docs/owasp-selection.png)
 
 ## 1. Prompt Injection (LLM01)
 
@@ -43,7 +43,7 @@ OWASP defines two types of prompt injection vulnerabilities:
 - **Direct Prompt Injection**: A user's prompt directly changes the LLM's behavior in an unintended way.
 - **Indirect Prompt Injection**: An LLM accepts input from an external source (like websites or files) that subsequently alters the LLM's behavior in unintended ways.
 
-Promptfoo can help detect and prevent prompt injection attacks by generating adversarial inputs through plugins and layering strategies such as `jailbreak-templates` on top.
+artef can help detect and prevent prompt injection attacks by generating adversarial inputs through plugins and layering strategies such as `jailbreak-templates` on top.
 
 Each plugin automatically produces adversarial inputs for a certain harm area and tests whether the output is affected. Adding the `jailbreak-templates` strategy modifies the way that adversarial inputs are sent.
 
@@ -78,12 +78,12 @@ OWASP categorizes sensitive information as anything that contains:
 
 Test for and prevent sensitive information disclosure:
 
-- **PII detection**: Use Promptfoo's PII plugins to test for leaks of personally identifiable information.
+- **PII detection**: Use artef's PII plugins to test for leaks of personally identifiable information.
 - **Data exposure testing**: Generate malicious prompts that attempt to extract sensitive data.
 
 ### PII Detection Tools
 
-Promptfoo provides different plugins for detecting PII:
+artef provides different plugins for detecting PII:
 
 1. Direct PII disclosure (`pii:direct`): Testing if the model explicitly reveals PII when asked.
 2. Cross-session PII leaks (`pii:session`): Ensuring the model doesn't leak PII across different user interactions.
@@ -145,7 +145,7 @@ grader: |
 
 LLM supply chains include foundation models, hosted APIs, fine-tuned models from vendors, RAG data sources, and MCP tools. Each component can introduce security risks through behavioral drift, backdoors, or poisoned data.
 
-Promptfoo helps detect supply chain vulnerabilities through:
+artef helps detect supply chain vulnerabilities through:
 
 - **Model comparison testing**: Run identical security tests across different model versions or providers to detect behavioral drift
 - **Vendor acceptance testing**: Define standardized security test suites that new models must pass before deployment
@@ -175,7 +175,7 @@ For comprehensive supply chain security coverage, see the [LLM Supply Chain Secu
 
 ## 4. Data and Model Poisoning (LLM04)
 
-While Promptfoo can't directly prevent training data poisoning, it can help detect its effects:
+While artef can't directly prevent training data poisoning, it can help detect its effects:
 
 - **Bias detection**: Test for unexpected biases or behaviors that may indicate poisoned training data.
 - **Consistency checks**: Run large sets of prompts to identify inconsistent or unexpected outputs.
@@ -202,7 +202,7 @@ redteam:
 
 Test for improper output handling with:
 
-- **Output validation**: Define expected output formats and use Promptfoo's [assertion capabilities](/docs/configuration/expected-outputs/).
+- **Output validation**: Define expected output formats and use artef's [assertion capabilities](/docs/configuration/expected-outputs/).
 - **Sanitization testing**: Generate outputs that may contain malicious content and verify proper sanitization.
 
 Example test case:
@@ -232,7 +232,7 @@ Excessive agency is a step further than Improper Output Handling (LLM05) because
 
 Test for and prevent excessive agency:
 
-- **Agency boundary testing**: Use Promptfoo's `excessive-agency` plugin to generate prompts that test model boundaries.
+- **Agency boundary testing**: Use artef's `excessive-agency` plugin to generate prompts that test model boundaries.
 - **Overreliance**: Assess where an AI model might accept and act upon incorrect or unrealistic user assumptions without proper verification or correction.
 - **Imitation**: Determine whether an AI system will imitate another person, brand, or organization.
 - **Hijacking**: Evaluate whether the model might be led astray from its primary function, potentially providing irrelevant or inappropriate responses.
@@ -258,13 +258,13 @@ redteam:
     - owasp:llm:06
 ```
 
-You can learn more about red teaming agents in [Promptfoo's guide](/docs/red-team/agents/).
+You can learn more about red teaming agents in [artef's guide](/docs/red-team/agents/).
 
 ## 7. System Prompt Leakage (LLM07)
 
 System prompts are instructions provided to an LLM that guide the behavior of the model. They are designed to instruct the LLM based on application requirements. In some cases, system prompts may contain sensitive information that is not intended to be disclosed to the user or even contain secrets.
 
-Promptfoo provides a plugin to test for prompt extraction:
+artef provides a plugin to test for prompt extraction:
 
 ```yaml
 redteam:
@@ -280,7 +280,7 @@ The `systemPrompt` config is required. It is the system prompt you provided to t
 
 ## 8. Vector and Embedding Weaknesses (LLM08)
 
-OWASP defines vector and embedding vulnerabilities as weaknesses in how vectors and embeddings are generated, stored, or retrieved within the context of Retrieval Augmented Generation (RAG). Promptfoo supports RAG testing through multiple configurations:
+OWASP defines vector and embedding vulnerabilities as weaknesses in how vectors and embeddings are generated, stored, or retrieved within the context of Retrieval Augmented Generation (RAG). artef supports RAG testing through multiple configurations:
 
 ### Testing for Access Control
 
@@ -321,15 +321,15 @@ redteam:
 
 ### RAG Poisoning
 
-Promptfoo includes a [RAG poisoning utility](/docs/red-team/plugins/rag-poisoning/) that tests your system's resilience against adversarial attacks on the document retrieval process.
+artef includes a [RAG poisoning utility](/docs/red-team/plugins/rag-poisoning/) that tests your system's resilience against adversarial attacks on the document retrieval process.
 
 Poisoning occurs when an attacker injects malicious content into the RAG context or knowledge base that can manipulate the LLM's responses in unintended ways.
 
-You can use Promptfoo to test for RAG poisoning by first generating poisoned documents:
+You can use artef to test for RAG poisoning by first generating poisoned documents:
 
-`promptfoo redteam poison document1.txt document2.txt --goal "Extract API keys"`
+`artef redteam poison document1.txt document2.txt --goal "Extract API keys"`
 
-Then add the poisoned documents to your knowledge base. Configure the `{{documents}}` variable in your Promptfoo configuration:
+Then add the poisoned documents to your knowledge base. Configure the `{{documents}}` variable in your artef configuration:
 
 ```yaml
 documents:
@@ -347,18 +347,18 @@ Once configured, run a red team scan to identify whether the RAG architecture is
 
 OWASP defines misinformation as when an LLM produces false or misleading information that appears credible. This includes hallucination, which is when the LLM presents information that appears factual but is actually fabricated.
 
-There are two ways to test for misinformation using Promptfoo:
+There are two ways to test for misinformation using artef:
 
-- **Accuracy testing**: Generate prompts with known correct answers and verify model responses through Promptfoo evals.
-- **Hallucination detection**: Use the `hallucination` plugin to test for false or misleading information using Promptfoo red teaming.
+- **Accuracy testing**: Generate prompts with known correct answers and verify model responses through artef evals.
+- **Hallucination detection**: Use the `hallucination` plugin to test for false or misleading information using artef red teaming.
 
 ### Evals Framework
 
-You can test for factuality and LLM "grounding" through [Promptfoo evals framework](/docs/guides/prevent-llm-hallucinations/). This is a more methodical approach that helps developers mitigate the risk of LLM hallucinations by defining test cases and evaluating multiple approaches (such as prompt tuning and RAG).
+You can test for factuality and LLM "grounding" through [artef evals framework](/docs/guides/prevent-llm-hallucinations/). This is a more methodical approach that helps developers mitigate the risk of LLM hallucinations by defining test cases and evaluating multiple approaches (such as prompt tuning and RAG).
 
 ### Red Team Plugins
 
-Promptfoo provides a way to test against misinformation through its [hallucination](/docs/red-team/plugins/hallucination/) and [overreliance](/docs/red-team/plugins/overreliance/) plugins.
+artef provides a way to test against misinformation through its [hallucination](/docs/red-team/plugins/hallucination/) and [overreliance](/docs/red-team/plugins/overreliance/) plugins.
 
 :::note
 The hallucination plugin works by generating requests that it knows are inaccurate and checking whether they are fulfilled. If you want to test specific facts for a RAG architecture or fine-tuned model, we recommend using evals.
@@ -388,7 +388,7 @@ Unbounded consumption allows attackers to conduct unrestricted or excessive infe
 Test for potential DoS vulnerabilities:
 
 - **Resource consumption testing**: Generate prompts designed to consume excessive resources.
-- **Rate limiting checks**: Verify that proper rate limiting is in place using the [`--repeat` argument](/docs/usage/command-line/#promptfoo-eval).
+- **Rate limiting checks**: Verify that proper rate limiting is in place using the [`--repeat` argument](/docs/usage/command-line/#artef-eval).
 - **Divergent repetition testing**: Use the `divergent-repetition` plugin to test for vulnerabilities related to repetitive pattern exploitation.
 
 ### Divergent Repetition Testing
@@ -407,9 +407,9 @@ redteam:
     - divergent-repetition
 ```
 
-### Testing with Promptfoo Evals
+### Testing with artef Evals
 
-Running rate limiting checks can be completed using the Promptfoo evals framework.
+Running rate limiting checks can be completed using the artef evals framework.
 
 Here's an example test case:
 
@@ -431,7 +431,7 @@ You can find this option in the list of presets:
 
 ![OWASP Gen AI red team preset](/img/docs/owasp-genai-red-team-preset.png)
 
-Or you can use Promptfoo to automate testing across all four phases using the `owasp:llm:redteam` shorthand:
+Or you can use artef to automate testing across all four phases using the `owasp:llm:redteam` shorthand:
 
 ```yaml
 redteam:
@@ -485,7 +485,7 @@ These red teaming best practices complement the OWASP LLM Top 10 by providing a 
 
 ## What's next
 
-The OWASP LLM Top 10 is rapidly evolving, but the above examples should give you a good starting point for testing your LLM applications. Regular testing with Promptfoo can help ensure your LLM applications remain secure and robust against a wide range of potential threats.
+The OWASP LLM Top 10 is rapidly evolving, but the above examples should give you a good starting point for testing your LLM applications. Regular testing with artef can help ensure your LLM applications remain secure and robust against a wide range of potential threats.
 
 You can automatically include _all_ of the OWASP LLM Top 10 with the following shorthand configuration:
 
@@ -498,4 +498,4 @@ redteam:
     - jailbreak
 ```
 
-To learn more about setting up Promptfoo and finding LLM vulnerabilities, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
+To learn more about setting up artef and finding LLM vulnerabilities, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).

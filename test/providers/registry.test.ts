@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { isFoundationModelProvider } from '../../src/providers/constants';
@@ -98,16 +98,16 @@ describe('Provider Registry', () => {
         // accidentally mutates the returned factories cannot corrupt the
         // shared module-scoped providerMap.
         const before = providerMap.length;
-        const withRedteam = await getProviderFactories('promptfoo:redteam:crescendo');
+        const withRedteam = await getProviderFactories('artef:redteam:crescendo');
         expect(withRedteam).not.toBe(providerMap);
         expect(providerMap.length).toBe(before);
       });
 
       it('loads redteam factories for a redteam path', async () => {
-        const factories = await getProviderFactories('promptfoo:redteam:crescendo');
+        const factories = await getProviderFactories('artef:redteam:crescendo');
 
         expect(factories.length).toBeGreaterThan(providerMap.length);
-        expect(factories.some((f) => f.test('promptfoo:redteam:crescendo'))).toBe(true);
+        expect(factories.some((f) => f.test('artef:redteam:crescendo'))).toBe(true);
         // Base provider factories are still present
         expect(factories.some((f) => f.test('echo'))).toBe(true);
       });
@@ -124,17 +124,17 @@ describe('Provider Registry', () => {
         // module. Node's ESM cache should deduplicate the load so every call
         // sees the same factory references and there are no duplicates.
         const [a, b, c] = await Promise.all([
-          getProviderFactories('promptfoo:redteam:crescendo'),
-          getProviderFactories('promptfoo:redteam:crescendo'),
-          getProviderFactories('promptfoo:redteam:crescendo'),
+          getProviderFactories('artef:redteam:crescendo'),
+          getProviderFactories('artef:redteam:crescendo'),
+          getProviderFactories('artef:redteam:crescendo'),
         ]);
-        const aCres = a.find((f) => f.test('promptfoo:redteam:crescendo'));
-        const bCres = b.find((f) => f.test('promptfoo:redteam:crescendo'));
-        const cCres = c.find((f) => f.test('promptfoo:redteam:crescendo'));
+        const aCres = a.find((f) => f.test('artef:redteam:crescendo'));
+        const bCres = b.find((f) => f.test('artef:redteam:crescendo'));
+        const cCres = c.find((f) => f.test('artef:redteam:crescendo'));
         expect(aCres).toBeDefined();
         expect(aCres).toBe(bCres);
         expect(bCres).toBe(cCres);
-        expect(a.filter((f) => f.test('promptfoo:redteam:crescendo')).length).toBe(1);
+        expect(a.filter((f) => f.test('artef:redteam:crescendo')).length).toBe(1);
       });
 
       it.each([
@@ -477,7 +477,7 @@ describe('Provider Registry', () => {
       // This test only smoke-tests the getProviderFactories → redteam family
       // → factory.test → factory.create chain so a regression at the registry
       // boundary (e.g. the family is wired up but never loaded) fails here.
-      const path = 'promptfoo:redteam:crescendo';
+      const path = 'artef:redteam:crescendo';
       const factory = (await getProviderFactories(path)).find((f) => f.test(path));
       expect(factory).toBeDefined();
 
@@ -560,7 +560,7 @@ describe('Provider Registry', () => {
 
     it('resolves the anthropic shorthand for models not yet in the catalog', async () => {
       // The shorthand used to require an exact ANTHROPIC_MODELS entry, so every new Claude
-      // release broke `anthropic:<model>` until promptfoo shipped a catalog update — while
+      // release broke `anthropic:<model>` until artef shipped a catalog update — while
       // `anthropic:messages:<model>` worked fine for the same id.
       const factory = providerMap.find((f) => f.test('anthropic:claude-haiku-5'));
       const options = { ...mockProviderOptions, id: undefined };
@@ -1339,13 +1339,13 @@ describe('Provider Registry', () => {
 
       let caught: unknown;
       try {
-        await reloadedGetProviderFactories('promptfoo:redteam:crescendo');
+        await reloadedGetProviderFactories('artef:redteam:crescendo');
       } catch (err) {
         caught = err;
       }
       expect(caught).toBeInstanceOf(Error);
       expect((caught as Error).message).toContain(
-        "Failed to load provider family for 'promptfoo:redteam:crescendo'",
+        "Failed to load provider family for 'artef:redteam:crescendo'",
       );
       expect((caught as Error).message).toContain('simulated registry load failure');
       expect((caught as Error).cause).toBe(cause);

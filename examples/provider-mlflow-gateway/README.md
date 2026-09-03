@@ -1,11 +1,11 @@
-# provider-mlflow-gateway (MLflow AI Gateway)
+﻿# provider-mlflow-gateway (MLflow AI Gateway)
 
-This example demonstrates how to use [MLflow AI Gateway](https://mlflow.org/docs/latest/genai/governance/ai-gateway/) as an LLM provider in promptfoo.
+This example demonstrates how to use [MLflow AI Gateway](https://mlflow.org/docs/latest/genai/governance/ai-gateway/) as an LLM provider in artef.
 
 To get started:
 
 ```bash
-npx promptfoo@latest init --example provider-mlflow-gateway
+npx artef@latest init --example provider-mlflow-gateway
 ```
 
 ## Setup
@@ -28,12 +28,12 @@ export MLFLOW_GATEWAY_URL=http://localhost:5000
 4. Run the evaluation:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 ```
 
 ## Configuration
 
-Update `my-chat-endpoint` in `promptfooconfig.yaml` with the name of the gateway endpoint you created.
+Update `my-chat-endpoint` in `artefconfig.yaml` with the name of the gateway endpoint you created.
 The example also uses that endpoint as the `llm-rubric` grader, so it runs without a separate OpenAI API key.
 
-See the [MLflow Gateway provider docs](https://www.promptfoo.dev/docs/providers/mlflow-gateway/) for all configuration options.
+See the [MLflow Gateway provider docs](https://www.artef.dev/docs/providers/mlflow-gateway/) for all configuration options.

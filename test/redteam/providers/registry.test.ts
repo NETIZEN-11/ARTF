@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getProviderFactories } from '../../../src/providers/registry';
 import {
   redteamProviderFactories,
@@ -43,29 +43,29 @@ describe('redteamProviderFactories', () => {
   });
 
   const cases: Array<{ path: string; expectedId: string }> = [
-    { path: 'agentic:memory-poisoning', expectedId: 'promptfoo:redteam:agentic:memory-poisoning' },
+    { path: 'agentic:memory-poisoning', expectedId: 'artef:redteam:agentic:memory-poisoning' },
     {
-      path: 'promptfoo:redteam:authoritative-markup-injection',
-      expectedId: 'promptfoo:redteam:authoritative-markup-injection',
+      path: 'artef:redteam:authoritative-markup-injection',
+      expectedId: 'artef:redteam:authoritative-markup-injection',
     },
-    { path: 'promptfoo:redteam:best-of-n', expectedId: 'promptfoo:redteam:best-of-n' },
-    { path: 'promptfoo:redteam:crescendo', expectedId: 'promptfoo:redteam:crescendo' },
-    { path: 'promptfoo:redteam:custom', expectedId: 'promptfoo:redteam:custom' },
-    { path: 'promptfoo:redteam:custom:my-strategy', expectedId: 'promptfoo:redteam:custom' },
-    { path: 'promptfoo:redteam:goat', expectedId: 'promptfoo:redteam:goat' },
-    { path: 'promptfoo:redteam:hydra', expectedId: 'promptfoo:redteam:hydra' },
-    { path: 'promptfoo:redteam:goblin', expectedId: 'promptfoo:redteam:goblin' },
+    { path: 'artef:redteam:best-of-n', expectedId: 'artef:redteam:best-of-n' },
+    { path: 'artef:redteam:crescendo', expectedId: 'artef:redteam:crescendo' },
+    { path: 'artef:redteam:custom', expectedId: 'artef:redteam:custom' },
+    { path: 'artef:redteam:custom:my-strategy', expectedId: 'artef:redteam:custom' },
+    { path: 'artef:redteam:goat', expectedId: 'artef:redteam:goat' },
+    { path: 'artef:redteam:hydra', expectedId: 'artef:redteam:hydra' },
+    { path: 'artef:redteam:goblin', expectedId: 'artef:redteam:goblin' },
     {
-      path: 'promptfoo:redteam:indirect-web-pwn',
-      expectedId: 'promptfoo:redteam:indirect-web-pwn',
+      path: 'artef:redteam:indirect-web-pwn',
+      expectedId: 'artef:redteam:indirect-web-pwn',
     },
-    { path: 'promptfoo:redteam:iterative', expectedId: 'promptfoo:redteam:iterative' },
-    { path: 'promptfoo:redteam:iterative:image', expectedId: 'promptfoo:redteam:iterative:image' },
-    { path: 'promptfoo:redteam:iterative:meta', expectedId: 'promptfoo:redteam:iterative:meta' },
-    { path: 'promptfoo:redteam:iterative:tree', expectedId: 'promptfoo:redteam:iterative:tree' },
+    { path: 'artef:redteam:iterative', expectedId: 'artef:redteam:iterative' },
+    { path: 'artef:redteam:iterative:image', expectedId: 'artef:redteam:iterative:image' },
+    { path: 'artef:redteam:iterative:meta', expectedId: 'artef:redteam:iterative:meta' },
+    { path: 'artef:redteam:iterative:tree', expectedId: 'artef:redteam:iterative:tree' },
     {
-      path: 'promptfoo:redteam:mischievous-user',
-      expectedId: 'promptfoo:redteam:mischievous-user',
+      path: 'artef:redteam:mischievous-user',
+      expectedId: 'artef:redteam:mischievous-user',
     },
   ];
 
@@ -73,7 +73,7 @@ describe('redteamProviderFactories', () => {
   // isRedteamProviderPath (the canHandle predicate in src/providers/registry)
   // fails the corresponding row instead of silently passing because the
   // isolated factory array still matched. Without this, a tightened prefix
-  // (e.g. `promptfoo:redteam:attack:`) could break real dispatch for 12 of
+  // (e.g. `artef:redteam:attack:`) could break real dispatch for 12 of
   // 14 paths while leaving these tests green.
   it.each(cases)('$path dispatches via getProviderFactories', async ({ path, expectedId }) => {
     const factories = await getProviderFactories(path);
@@ -88,8 +88,8 @@ describe('redteamProviderFactories', () => {
     // Unknown redteam-shaped IDs still take the family-load branch via
     // canHandle (the prefix matches), so we route through getProviderFactories
     // to confirm no factory claims them at that boundary either.
-    const factories = await getProviderFactories('promptfoo:redteam:does-not-exist');
-    const factory = factories.find((f) => f.test('promptfoo:redteam:does-not-exist'));
+    const factories = await getProviderFactories('artef:redteam:does-not-exist');
+    const factory = factories.find((f) => f.test('artef:redteam:does-not-exist'));
     expect(factory).toBeUndefined();
   });
 
@@ -98,7 +98,7 @@ describe('redteamProviderFactories', () => {
     // withErrorContext cases below) and the registry-boundary view. A
     // regression where the family stopped returning the full array would be
     // caught here without having to invert the per-path loop.
-    const factories = await getProviderFactories('promptfoo:redteam:crescendo');
+    const factories = await getProviderFactories('artef:redteam:crescendo');
     for (const redteamFactory of redteamProviderFactories) {
       expect(factories).toContain(redteamFactory);
     }
@@ -110,15 +110,15 @@ describe('redteamProviderFactories', () => {
     // from silently breaking dispatch without a matching failing test.
     it.each([
       'agentic:memory-poisoning',
-      'promptfoo:redteam:crescendo',
-      'promptfoo:redteam:custom',
-      'promptfoo:redteam:custom:my-strategy',
+      'artef:redteam:crescendo',
+      'artef:redteam:custom',
+      'artef:redteam:custom:my-strategy',
     ])('dispatches %s to at least one factory', (path) => {
       const factory = redteamProviderFactories.find((f) => f.test(path));
       expect(factory).toBeDefined();
     });
 
-    it.each(['openai:gpt-4', 'anthropic:claude-3', 'agentic:other', 'promptfoo:other', ''])(
+    it.each(['openai:gpt-4', 'anthropic:claude-3', 'agentic:other', 'artef:other', ''])(
       'does not dispatch %s',
       (path) => {
         const factory = redteamProviderFactories.find((f) => f.test(path));
@@ -129,7 +129,7 @@ describe('redteamProviderFactories', () => {
 
   describe('withErrorContext', () => {
     it('wraps constructor failures with the requested provider path', async () => {
-      const customPath = 'promptfoo:redteam:custom';
+      const customPath = 'artef:redteam:custom';
       const factory = redteamProviderFactories.find((f) => f.test(customPath));
 
       const brokenConfig: ProviderOptions = {
@@ -138,12 +138,12 @@ describe('redteamProviderFactories', () => {
       };
 
       await expect(factory!.create(customPath, brokenConfig, mockContext)).rejects.toThrow(
-        /Failed to load redteam provider 'promptfoo:redteam:custom'.*strategyText/,
+        /Failed to load redteam provider 'artef:redteam:custom'.*strategyText/,
       );
     });
 
     it('preserves the original error via { cause }', async () => {
-      const customPath = 'promptfoo:redteam:custom';
+      const customPath = 'artef:redteam:custom';
       const factory = redteamProviderFactories.find((f) => f.test(customPath));
 
       const brokenConfig: ProviderOptions = {

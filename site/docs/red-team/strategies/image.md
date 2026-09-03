@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Image Inputs
 title: Image Jailbreaking Strategy
 description: Probe vision-language model security with image-encoded text attacks targeting content filter and safety mechanism bypasses
@@ -42,10 +42,10 @@ iVBORw0KGgoAAAANSUhEUgAAA...
 
 ## Implementation
 
-Use it in your promptfooconfig.yaml like this:
+Use it in your artefconfig.yaml like this:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Multi-modal redteam'
 targets:
   - bedrock:amazon.nova-lite-v1:0
@@ -92,7 +92,7 @@ You should update the prompt.json to match the prompt format of your LLM provide
 :::
 
 :::note
-The `{{image}}` syntax in the examples is a Nunjucks template variable. When promptfoo processes your prompt, it replaces `{{image}}` with the base64-encoded image data.
+The `{{image}}` syntax in the examples is a Nunjucks template variable. When artef processes your prompt, it replaces `{{image}}` with the base64-encoded image data.
 :::
 
 :::tip

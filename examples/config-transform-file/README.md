@@ -1,9 +1,9 @@
-# config-transform-file (Transform File)
+﻿# config-transform-file (Transform File)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-transform-file
+npx artef@latest init --example config-transform-file
 cd config-transform-file
 ```
 
@@ -11,12 +11,12 @@ cd config-transform-file
 
 To get started, set your OPENAI_API_KEY environment variable.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

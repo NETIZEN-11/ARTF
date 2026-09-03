@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+﻿import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import FoundationModelConfiguration from './FoundationModelConfiguration';
@@ -132,7 +132,7 @@ describe('FoundationModelConfiguration', () => {
     const documentationLink = screen.getByRole('link', { name: /OpenAI documentation/ });
     expect(documentationLink).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/openai',
+      'https://www.artef.dev/docs/providers/openai',
     );
   });
 
@@ -205,7 +205,7 @@ describe('FoundationModelConfiguration', () => {
     const documentationLink = screen.getByRole('link', { name: /OpenRouter documentation/ });
     expect(documentationLink).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/openrouter',
+      'https://www.artef.dev/docs/providers/openrouter',
     );
   });
 
@@ -256,7 +256,7 @@ describe('FoundationModelConfiguration', () => {
     let documentationLink = screen.getByRole('link', { name: /OpenAI documentation/ });
     expect(documentationLink).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/openai',
+      'https://www.artef.dev/docs/providers/openai',
     );
 
     act(() => {
@@ -277,7 +277,7 @@ describe('FoundationModelConfiguration', () => {
     documentationLink = screen.getByRole('link', { name: /Google Vertex AI documentation/ });
     expect(documentationLink).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/vertex',
+      'https://www.artef.dev/docs/providers/vertex',
     );
   });
 
@@ -299,7 +299,7 @@ describe('FoundationModelConfiguration', () => {
     const documentationLink = screen.getByRole('link', { name: /Google AI Studio documentation/ });
     expect(documentationLink).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/google',
+      'https://www.artef.dev/docs/providers/google',
     );
   });
 

@@ -1,11 +1,11 @@
----
+﻿---
 title: 'Evaluating ElevenLabs Voice AI'
-description: 'Step-by-step guide for testing ElevenLabs voice AI with Promptfoo - from TTS quality testing to conversational agent evaluation'
+description: 'Step-by-step guide for testing ElevenLabs voice AI with artef - from TTS quality testing to conversational agent evaluation'
 ---
 
 # Evaluating ElevenLabs voice AI
 
-This guide walks you through testing ElevenLabs voice AI capabilities using Promptfoo, from basic text-to-speech quality testing to advanced conversational agent evaluation.
+This guide walks you through testing ElevenLabs voice AI capabilities using artef, from basic text-to-speech quality testing to advanced conversational agent evaluation.
 
 ## Part 1: Text-to-Speech Quality Testing
 
@@ -13,16 +13,16 @@ Let's start by comparing different voice models and measuring their quality.
 
 ### Step 1: Setup
 
-Install Promptfoo and set your API key:
+Install artef and set your API key:
 
 ```sh
-npm install -g promptfoo
+npm install -g artef
 export ELEVENLABS_API_KEY=your_api_key_here
 ```
 
 ### Step 2: Create Your First Config
 
-Create `promptfooconfig.yaml`:
+Create `artefconfig.yaml`:
 
 ```yaml
 description: 'Compare ElevenLabs TTS models for customer service greetings'
@@ -58,7 +58,7 @@ tests:
 ### Step 3: Run Your First Eval
 
 ```sh
-promptfoo eval
+artef eval
 ```
 
 You'll see results comparing both models:
@@ -78,7 +78,7 @@ You'll see results comparing both models:
 Open the web UI to listen to the audio:
 
 ```sh
-promptfoo view
+artef view
 ```
 
 ## Part 2: Voice Customization
@@ -152,8 +152,8 @@ tests:
 Run the eval:
 
 ```sh
-promptfoo eval
-promptfoo view  # Compare the different voice styles
+artef eval
+artef view  # Compare the different voice styles
 ```
 
 ## Part 3: Speech-to-Text Accuracy
@@ -223,7 +223,7 @@ tests:
 Run the STT eval:
 
 ```sh
-promptfoo eval -c stt-accuracy.yaml
+artef eval -c stt-accuracy.yaml
 ```
 
 ## Part 4: Conversational Agent Testing
@@ -331,7 +331,7 @@ tests:
 Run the agent eval:
 
 ```sh
-promptfoo eval -c agent-test.yaml
+artef eval -c agent-test.yaml
 ```
 
 ### Step 8: Review Agent Performance
@@ -339,7 +339,7 @@ promptfoo eval -c agent-test.yaml
 View detailed results:
 
 ```sh
-promptfoo view
+artef view
 ```
 
 In the web UI, you'll see:
@@ -427,7 +427,7 @@ tests:
 Run with tool mocking:
 
 ```sh
-promptfoo eval -c agent-with-tools.yaml
+artef eval -c agent-with-tools.yaml
 ```
 
 ## Next Steps
@@ -450,13 +450,13 @@ You've learned to:
 
 Check out complete examples:
 
-- [examples/provider-elevenlabs/tts-advanced](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-elevenlabs/tts-advanced)
-- [examples/provider-elevenlabs/agents](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-elevenlabs/agents)
+- [examples/provider-elevenlabs/tts-advanced](https://github.com/artef/artef/tree/main/examples/provider-elevenlabs/tts-advanced)
+- [examples/provider-elevenlabs/agents](https://github.com/artef/artef/tree/main/examples/provider-elevenlabs/agents)
 
 ### Resources
 
 - [ElevenLabs Provider Reference](/docs/providers/elevenlabs)
-- [Promptfoo Documentation](https://www.promptfoo.dev/docs/intro)
+- [artef Documentation](https://www.artef.dev/docs/intro)
 - [ElevenLabs API Docs](https://elevenlabs.io/docs)
 
 ## Troubleshooting
@@ -492,6 +492,6 @@ Check out complete examples:
 
 ### Getting Help
 
-- [GitHub Issues](https://github.com/promptfoo/promptfoo/issues)
-- [Discord Community](https://discord.gg/promptfoo)
+- [GitHub Issues](https://github.com/artef/artef/issues)
+- [Discord Community](https://discord.gg/artef)
 - [ElevenLabs Support](https://elevenlabs.io/support)

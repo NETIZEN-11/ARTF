@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Config with many tests for resume E2E testing
 # Uses delay + echo provider so we can reliably interrupt and resume
 description: 'E2E test - resume with many test cases'

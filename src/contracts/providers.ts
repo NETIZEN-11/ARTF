@@ -1,4 +1,4 @@
-import type { BlobRef } from './blobs.js';
+﻿import type { BlobRef } from './blobs.js';
 import type { TokenUsage, VarValue } from './shared.js';
 
 /**
@@ -42,12 +42,12 @@ export interface ProviderResponse {
   incurredCost?: number;
   error?: string;
   /**
-   * Indicates that a remote Promptfoo server already materialized multi-input vars
+   * Indicates that a remote artef server already materialized multi-input vars
    * for this response. When true, callers must not re-materialize locally.
    */
   materializationHandled?: boolean;
   /**
-   * Materialized per-input vars returned by a remote Promptfoo server.
+   * Materialized per-input vars returned by a remote artef server.
    */
   materializedVars?: Record<string, string>;
   /**
@@ -84,7 +84,7 @@ export interface ProviderResponse {
   raw?: string | any;
   output?: string | any;
   /**
-   * Input materialization metadata returned by a remote Promptfoo server.
+   * Input materialization metadata returned by a remote artef server.
    */
   inputMaterialization?: Record<string, unknown>;
   /**

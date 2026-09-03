@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 
 import { useUserStore } from '@app/stores/userStore';
 import posthog from 'posthog-js';
@@ -7,7 +7,7 @@ import { PostHogContext, type PostHogContextType } from './PostHogContext';
 // PostHog configuration - using the same key system as the backend
 const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY;
 const POSTHOG_HOST = import.meta.env.VITE_POSTHOG_HOST;
-const DISABLE_TELEMETRY = import.meta.env.VITE_PROMPTFOO_DISABLE_TELEMETRY;
+const DISABLE_TELEMETRY = import.meta.env.VITE_artef_DISABLE_TELEMETRY;
 
 interface PostHogProviderProps {
   children: React.ReactNode;

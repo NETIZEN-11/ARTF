@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_label: Node API Reference
 sidebar_position: 21
 title: Node API reference
-description: Reference guide for promptfoo's Node.js APIs, including evals, providers, assertions, caching, guardrails, red teaming, and utilities.
+description: Reference guide for artef's Node.js APIs, including evals, providers, assertions, caching, guardrails, red teaming, and utilities.
 ---
 
 # Node Module API Reference
 
-This guide documents the **Node.js module API** for advanced programmatic usage of promptfoo. It covers all publicly exported functions, namespaces, and types.
+This guide documents the **Node.js module API** for advanced programmatic usage of artef. It covers all publicly exported functions, namespaces, and types.
 
 :::info
 For standard YAML-based evaluation configuration, see [Configuration Guide](/docs/configuration/guide). This API reference is for users building programmatic evaluation workflows directly in JavaScript/TypeScript.
@@ -15,7 +15,7 @@ For standard YAML-based evaluation configuration, see [Configuration Guide](/doc
 
 ## Overview
 
-The promptfoo Node module provides programmatic access to:
+The artef Node module provides programmatic access to:
 
 - **Core evaluation engine** (`evaluate()`)
 - **Provider management** (load and resolve LLM providers)
@@ -44,7 +44,7 @@ async function evaluate(testSuite: EvaluateTestSuite, options?: EvaluateOptions)
 **Example:**
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['What is 2+2?'],
@@ -117,7 +117,7 @@ async function loadApiProvider(
 **Example:**
 
 ```typescript
-import { loadApiProvider } from 'promptfoo';
+import { loadApiProvider } from 'artef';
 
 const openaiProvider = await loadApiProvider('openai:chat:gpt-5.5', {
   env: { OPENAI_API_KEY: process.env.MY_SECRET_KEY },
@@ -164,7 +164,7 @@ async function loadApiProviders(
 **Example:**
 
 ```typescript
-import { loadApiProviders } from 'promptfoo';
+import { loadApiProviders } from 'artef';
 
 const providers = await loadApiProviders([
   'openai:chat:gpt-5.5',
@@ -231,7 +231,7 @@ interface GradingResult {
 **Example: Custom Assertion Logic**
 
 ```typescript
-import { assertions } from 'promptfoo';
+import { assertions } from 'artef';
 
 const result = await assertions.runAssertion({
   assertion: {
@@ -284,7 +284,7 @@ interface AssertionValueFunctionContext {
 **Using Trace Data:**
 
 ```typescript
-import { assertions } from 'promptfoo';
+import { assertions } from 'artef';
 
 const result = await assertions.runAssertion({
   assertion: {
@@ -354,7 +354,7 @@ interface GradingResult {
 **Example:**
 
 ```typescript
-import { assertions } from 'promptfoo';
+import { assertions } from 'artef';
 
 const result = await assertions.runAssertions({
   assertions: [
@@ -375,7 +375,7 @@ result.componentResults?.forEach((r) => console.log(`  ${r.assertion?.type}: ${r
 
 ## Cache API
 
-Control promptfoo's caching layer for LLM provider calls.
+Control artef's caching layer for LLM provider calls.
 
 ### `enableCache()`
 
@@ -388,7 +388,7 @@ export function enableCache(): void;
 **Example:**
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 cache.enableCache();
 ```
@@ -406,7 +406,7 @@ export function disableCache(): void;
 **Example:**
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 // Disable for fresh results
 cache.disableCache();
@@ -437,7 +437,7 @@ export async function clearCache(): Promise<void>;
 **Example:**
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 // Clear old cache
 await cache.clearCache();
@@ -466,7 +466,7 @@ export function withCacheNamespace<T>(
 **Example:**
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 // Run v1 and v2 evals with separate caches
 const v1Results = await cache.withCacheNamespace('v1', async () => {
@@ -516,7 +516,7 @@ export async function fetchWithCache<T>(
 **Example:**
 
 ```typescript
-import { cache } from 'promptfoo';
+import { cache } from 'artef';
 
 const result = await cache.fetchWithCache(
   'https://api.example.com/data',
@@ -533,23 +533,23 @@ console.log(result.data); // the fetched data
 Set cache location and TTL via environment variables:
 
 ```bash
-# Cache directory (default: ~/.promptfoo/cache)
-export PROMPTFOO_CACHE_PATH=/path/to/cache
+# Cache directory (default: ~/.artef/cache)
+export artef_CACHE_PATH=/path/to/cache
 
 # Cache TTL in seconds (default: 1209600 = 14 days)
-export PROMPTFOO_CACHE_TTL=1209600
+export artef_CACHE_TTL=1209600
 
 # Disable cache via env
-export PROMPTFOO_CACHE_ENABLED=false
+export artef_CACHE_ENABLED=false
 ```
 
 ---
 
 ## Guardrails API
 
-Content safety and security helpers. `guard()`, `pii()`, and `harm()` call the configured Promptfoo guardrails service and return classifier results; `adaptive()` returns an adapted prompt and modification list. None returns the flat `ProviderResponse.guardrails` object consumed by the [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails).
+Content safety and security helpers. `guard()`, `pii()`, and `harm()` call the configured artef guardrails service and return classifier results; `adaptive()` returns an adapted prompt and modification list. None returns the flat `ProviderResponse.guardrails` object consumed by the [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails).
 
-Requests use the standard Promptfoo response cache. The service base URL comes from `PROMPTFOO_REMOTE_API_BASE_URL`, the configured Promptfoo Cloud host, or the public API host, in that order. Treat the input as data sent to that service.
+Requests use the standard artef response cache. The service base URL comes from `artef_REMOTE_API_BASE_URL`, the configured artef Cloud host, or the public API host, in that order. Treat the input as data sent to that service.
 
 ### `guardrails.guard(input)`
 
@@ -583,7 +583,7 @@ interface GuardResult {
 **Example:**
 
 ```typescript
-import { guardrails } from 'promptfoo';
+import { guardrails } from 'artef';
 
 const result = await guardrails.guard('This is a test message');
 
@@ -612,7 +612,7 @@ async function pii(input: string): Promise<GuardResult>;
 **Example:**
 
 ```typescript
-import { guardrails } from 'promptfoo';
+import { guardrails } from 'artef';
 
 const result = await guardrails.pii('John Doe, john@example.com, SSN: 123-45-6789');
 
@@ -712,7 +712,7 @@ Plugins['sql-injection']; // SQL injection
 **Creating Custom Plugins:**
 
 ```typescript
-import { redteam } from 'promptfoo';
+import { redteam } from 'artef';
 
 class MyCustomPlugin extends redteam.Base.Plugin {
   async run(params: RedteamPluginRunParams): Promise<RedteamPluginResult> {
@@ -759,7 +759,7 @@ const {
 **Example:**
 
 ```typescript
-import { redteam } from 'promptfoo';
+import { redteam } from 'artef';
 
 const purpose = await redteam.Extractors.extractSystemPurpose({
   prompt: 'You are a helpful assistant...',
@@ -818,7 +818,7 @@ export function generateTable(
 **Example:**
 
 ```typescript
-import { evaluate, generateTable } from 'promptfoo';
+import { evaluate, generateTable } from 'artef';
 
 const evalRecord = await evaluate(testSuite);
 const table = await evalRecord.getTable();
@@ -838,7 +838,7 @@ export function isTransformFunction(value: unknown): value is TransformFunction;
 **Example:**
 
 ```typescript
-import { isTransformFunction } from 'promptfoo';
+import { isTransformFunction } from 'artef';
 
 const maybeTransform = (x) => x.toUpperCase();
 console.log(isTransformFunction(maybeTransform)); // true
@@ -853,7 +853,7 @@ console.log(isTransformFunction(maybeTransform)); // true
 Dynamically generate test cases:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const generateTests = (questions) => {
   return questions.map((q) => ({
@@ -886,7 +886,7 @@ const evalRecord = await evaluate({
 Use provider response data in assertions:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Analyze: {{ text }}'],
@@ -919,7 +919,7 @@ const evalRecord = await evaluate({
 Load providers and test in parallel:
 
 ```typescript
-import { assertions, loadApiProviders } from 'promptfoo';
+import { assertions, loadApiProviders } from 'artef';
 
 const providers = await loadApiProviders([
   'openai:chat:gpt-5.5',
@@ -952,7 +952,7 @@ for (const provider of providers) {
 Compare two model versions with isolated caches:
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 async function compareModels(oldVersion, newVersion, testSuite) {
   const oldEval = await cache.withCacheNamespace(`model-${oldVersion}`, () =>
@@ -984,7 +984,7 @@ async function compareModels(oldVersion, newVersion, testSuite) {
 
 ## Type Definitions
 
-All types are exported from `promptfoo` and available in TypeScript:
+All types are exported from `artef` and available in TypeScript:
 
 ```typescript
 import type {
@@ -1017,7 +1017,7 @@ import type {
   BeforeAllExtensionHookContext,
   AfterEachExtensionHookContext,
   // ... and more
-} from 'promptfoo';
+} from 'artef';
 ```
 
 ---
@@ -1039,7 +1039,7 @@ import type {
 
 ### Internal APIs (Don't use directly)
 
-- Functions not exported from main `promptfoo` module
+- Functions not exported from main `artef` module
 - Test utilities
 - CLI-specific functions
 
@@ -1051,7 +1051,7 @@ import type {
 
 ```typescript
 // Clear cache if stale
-import { cache } from 'promptfoo';
+import { cache } from 'artef';
 await cache.clearCache();
 
 // Or disable for development
@@ -1061,7 +1061,7 @@ cache.disableCache();
 **Type errors with custom assertions?**
 
 ```typescript
-import type { AssertionValueFunctionContext } from 'promptfoo';
+import type { AssertionValueFunctionContext } from 'artef';
 
 // Type-safe context usage
 value: (output, context: AssertionValueFunctionContext) => {
@@ -1086,7 +1086,7 @@ const result = await assertions.runAssertion({
 
 ## Examples Repository
 
-Find runnable examples in the [promptfoo examples](https://github.com/promptfoo/promptfoo/tree/main/examples) directory.
+Find runnable examples in the [artef examples](https://github.com/artef/artef/tree/main/examples) directory.
 
 ---
 

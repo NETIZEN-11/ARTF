@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Google Vertex
 title: Google Vertex AI Provider
 description: Use Google Vertex AI models including Gemini, Claude, Llama, and specialized models for text, code, and embeddings in your evals
@@ -36,7 +36,7 @@ ends December 31, 2026; their published standard rates are $1.50/1M input and
 $7.50/1M output starting January 1, 2027.
 
 These models ignore the deprecated `temperature`, `topP`, and `topK` sampling
-controls, which promptfoo removes automatically. Configure reasoning with
+controls, which artef removes automatically. Configure reasoning with
 `generationConfig.thinkingConfig.thinkingLevel`; Gemini 3.7 Flash supports `LOW`,
 `MEDIUM`, and `HIGH`, but not `MINIMAL` or the legacy `thinkingBudget` setting.
 
@@ -64,12 +64,12 @@ Anthropic's Claude models are available with the following versions:
 
 - `vertex:claude-fable-5` - Claude Fable 5 with a 1M-token context window and always-on adaptive thinking
 
-Promptfoo omits unsupported `temperature`, `top_p`, and `top_k` values for the adaptive-only
+artef omits unsupported `temperature`, `top_p`, and `top_k` values for the adaptive-only
 Claude models — Fable 5, Mythos 5, Opus 5, Sonnet 5, and Opus 4.7/4.8 (see their entries below).
 Regional and multi-region Vertex endpoints carry a
 [10% price premium](https://cloud.google.com/blog/products/ai-machine-learning/global-endpoint-for-claude-models-generally-available-on-vertex-ai)
 over the global endpoint for Claude 4.5 and later models (Sonnet 4.5+, Haiku 4.5,
-Opus 4.5+, and the Claude 5 models including Sonnet 5); promptfoo includes that
+Opus 4.5+, and the Claude 5 models including Sonnet 5); artef includes that
 premium in cost calculations unless `config.region` is `global`.
 
 Claude 5 models also require provider data sharing on Vertex — without it requests
@@ -89,15 +89,15 @@ and the model ID because Google does not publish one in its public model catalog
 
 **Claude 4.8:**
 
-- `vertex:claude-opus-4-8` - Claude 4.8 Opus, Anthropic's most capable model for complex reasoning and agentic coding. Use `config.region: global` for the global endpoint; US and EU multi-region endpoints are also supported where enabled on your project. Like Opus 4.7, promptfoo automatically omits `temperature`, `top_p`, and `top_k` (deprecated for this model).
+- `vertex:claude-opus-4-8` - Claude 4.8 Opus, Anthropic's most capable model for complex reasoning and agentic coding. Use `config.region: global` for the global endpoint; US and EU multi-region endpoints are also supported where enabled on your project. Like Opus 4.7, artef automatically omits `temperature`, `top_p`, and `top_k` (deprecated for this model).
 
 **Claude Opus 5:**
 
-- `vertex:claude-opus-5` - Claude Opus 5, the Opus-tier Claude 5 model for complex agentic coding and long-horizon work, with a 1M-token context window and the full `low`–`max` effort ladder. Use `config.region: global` for the global endpoint; US and EU multi-region endpoints are also supported where enabled on your project. Like Opus 4.7/4.8, promptfoo automatically omits `temperature`, `top_p`, and `top_k` (deprecated for this model). Thinking is on by default, and `thinking: { type: 'disabled' }` is only accepted at `effort` `high` or below.
+- `vertex:claude-opus-5` - Claude Opus 5, the Opus-tier Claude 5 model for complex agentic coding and long-horizon work, with a 1M-token context window and the full `low`–`max` effort ladder. Use `config.region: global` for the global endpoint; US and EU multi-region endpoints are also supported where enabled on your project. Like Opus 4.7/4.8, artef automatically omits `temperature`, `top_p`, and `top_k` (deprecated for this model). Thinking is on by default, and `thinking: { type: 'disabled' }` is only accepted at `effort` `high` or below.
 
 **Claude Sonnet 5:**
 
-- `vertex:claude-sonnet-5` - Claude Sonnet 5, the most agentic Sonnet, with a 1M-token context window and effort levels. Use `config.region: global` for the global endpoint; US and EU multi-region endpoints are also supported where enabled on your project. Like Opus 4.7/4.8, promptfoo automatically omits `temperature`, `top_p`, and `top_k` (deprecated for this model).
+- `vertex:claude-sonnet-5` - Claude Sonnet 5, the most agentic Sonnet, with a 1M-token context window and effort levels. Use `config.region: global` for the global endpoint; US and EU multi-region endpoints are also supported where enabled on your project. Like Opus 4.7/4.8, artef automatically omits `temperature`, `top_p`, and `top_k` (deprecated for this model).
 
 **Claude 4.7:**
 
@@ -387,7 +387,7 @@ Express mode is automatic when an API key is available. If you need OAuth/ADC fe
 
 #### Environment Variables
 
-Promptfoo automatically loads environment variables from your shell or a `.env` file. Create a `.env` file in your project root:
+artef automatically loads environment variables from your shell or a `.env` file. Create a `.env` file in your project root:
 
 ```bash
 # .env
@@ -487,7 +487,7 @@ providers:
 After completing authentication, create a simple evaluation:
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 providers:
   - vertex:gemini-2.5-flash
 
@@ -510,7 +510,7 @@ tests:
 Run the eval:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ### 2. Multi-Model Comparison
@@ -564,9 +564,9 @@ jobs:
       - uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-      - name: Run promptfoo tests
+      - name: Run artef tests
         run: |
-          npx promptfoo@latest eval
+          npx artef@latest eval
         env:
           GOOGLE_CLOUD_PROJECT: ${{ vars.GCP_PROJECT_ID }}
           GOOGLE_CLOUD_LOCATION: us-central1
@@ -657,7 +657,7 @@ See [Google's SafetySetting API documentation](https://ai.google.dev/api/generat
 - Available in `us-central1` region
 - Quota limits vary by model version
 - Requires specific endpoint format for API calls
-- Only supports unary (non-streaming) responses in promptfoo
+- Only supports unary (non-streaming) responses in artef
 
 #### Llama Model Considerations
 
@@ -672,7 +672,7 @@ See [Google's SafetySetting API documentation](https://ai.google.dev/api/generat
 - Support for text, code, and analysis tasks
 - Tool use (function calling) capabilities
 - Available in multiple regions (us-east5, europe-west1, asia-southeast1) plus the `global` endpoint for Opus 4.7
-- Claude Opus 4.7 and 4.8: promptfoo automatically omits deprecated sampling parameters and converts configured manual thinking (`type: enabled`) to adaptive thinking before forwarding the request to Vertex's `rawPredict` endpoint
+- Claude Opus 4.7 and 4.8: artef automatically omits deprecated sampling parameters and converts configured manual thinking (`type: enabled`) to adaptive thinking before forwarding the request to Vertex's `rawPredict` endpoint
 - Quota limits vary by model version (20-245 QPM)
 
 ## Advanced Usage
@@ -710,8 +710,8 @@ defaultTest:
 | `publisher`                        | Model publisher                                                    | `google`                             |
 | `context`                          | Model context                                                      | None                                 |
 | `cost`                             | Legacy per-token override applied to both input and output pricing | None                                 |
-| `inputCost`                        | Override input token pricing in promptfoo cost estimates           | None                                 |
-| `outputCost`                       | Override output token pricing in promptfoo cost estimates          | None                                 |
+| `inputCost`                        | Override input token pricing in artef cost estimates           | None                                 |
+| `outputCost`                       | Override output token pricing in artef cost estimates          | None                                 |
 | `examples`                         | Few-shot examples                                                  | None                                 |
 | `safetySettings`                   | Content filtering                                                  | None                                 |
 | `generationConfig.temperature`     | Randomness control                                                 | None                                 |
@@ -824,7 +824,7 @@ providers:
       tools: 'file://tools.json' # Supports variable substitution
 ```
 
-For practical examples of function calling with Vertex AI models, see the [google-vertex-tools example](https://github.com/promptfoo/promptfoo/tree/main/examples/google-vertex-tools) which demonstrates both basic tool declarations and callback execution.
+For practical examples of function calling with Vertex AI models, see the [google-vertex-tools example](https://github.com/artef/artef/tree/main/examples/google-vertex-tools) which demonstrates both basic tool declarations and callback execution.
 
 ### System Instructions
 
@@ -1176,13 +1176,13 @@ tests:
       - type: not-guardrails
 ```
 
-For a prompt-side block, Promptfoo normalizes:
+For a prompt-side block, artef normalizes:
 
 - `flagged: true` - Content was flagged
 - `flaggedInput: true` - The input prompt was blocked (Model Armor `blockReason: MODEL_ARMOR`)
 - `reason` - The Model Armor block reason message
 
-Google signals a response-template block with candidate `finishReason: MODEL_ARMOR`, not the generic Gemini `SAFETY` reason. Promptfoo sends the response-template configuration but currently handles this finish reason as a provider error, so it does not reach a regular `guardrails` assertion. Model Armor's Vertex integration is non-streaming. To grade response-side blocks, call the sanitization API through a custom target and normalize its result.
+Google signals a response-template block with candidate `finishReason: MODEL_ARMOR`, not the generic Gemini `SAFETY` reason. artef sends the response-template configuration but currently handles this finish reason as a provider error, so it does not reach a regular `guardrails` assertion. Model Armor's Vertex integration is non-streaming. To grade response-side blocks, call the sanitization API through a custom target and normalize its result.
 
 Inline Vertex responses do not include detailed per-filter results. Google also documents cases where an unavailable or failed Model Armor service is skipped and the request continues unscreened. Use Cloud Logging or the standalone sanitization API when you need execution evidence, filter matches, confidence, and findings. See the [`guardrails` assertion reference](/docs/configuration/expected-outputs/guardrails) for exact polarity and missing-signal behavior.
 
@@ -1192,7 +1192,7 @@ If you configure Model Armor floor settings at the project or organization level
 
 For more details, see:
 
-- [Testing Google Cloud Model Armor Guide](/docs/guides/google-cloud-model-armor/) - Complete guide on testing Model Armor with Promptfoo
+- [Testing Google Cloud Model Armor Guide](/docs/guides/google-cloud-model-armor/) - Complete guide on testing Model Armor with artef
 - [Model Armor Documentation](https://cloud.google.com/security-command-center/docs/model-armor-overview) - Official Google Cloud docs
 
 ## Supported Features
@@ -1219,6 +1219,6 @@ For image generation, use the [Google AI Studio provider](/docs/providers/google
 ## See Also
 
 - [Google AI Studio Provider](/docs/providers/google) - For direct Google AI Studio integration
-- [Vertex AI Examples](https://github.com/promptfoo/promptfoo/tree/main/examples) - Browse working examples for Vertex AI
+- [Vertex AI Examples](https://github.com/artef/artef/tree/main/examples) - Browse working examples for Vertex AI
 - [Google Cloud Documentation](https://cloud.google.com/vertex-ai/generative-ai/docs) - Official Vertex AI documentation
 - [Model Garden](https://console.cloud.google.com/vertex-ai/publishers) - Access and enable additional models

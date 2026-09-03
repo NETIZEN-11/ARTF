@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import { PythonShell } from 'python-shell';
@@ -139,7 +139,7 @@ export class PythonWorker {
     let tempDirectory: string | undefined;
 
     try {
-      tempDirectory = await createSecureTempDirectory('promptfoo-worker-');
+      tempDirectory = await createSecureTempDirectory('artef-worker-');
       const requestFile = await writeSecureTempFile(
         tempDirectory,
         'request.json',

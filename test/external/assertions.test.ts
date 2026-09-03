@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+﻿import { describe, expect, it, vi } from 'vitest';
 import { handleConversationRelevance } from '../../src/external/assertions/deepeval';
 import { createMockProvider as createFactoryProvider } from '../factories/provider';
 
@@ -291,7 +291,7 @@ describe('handleConversationRelevance', () => {
     expect(result.score).toBe(1);
   });
 
-  // https://github.com/promptfoo/promptfoo/issues/10141
+  // https://github.com/artef/artef/issues/10141
   it('should use the DeepEval default threshold when threshold is omitted for Issue #10141', async () => {
     const provider = createMockProvider('no');
     const params: AssertionParams = {

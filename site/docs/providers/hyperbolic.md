@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 42
 description: Configure Hyperbolic's OpenAI-compatible API to access DeepSeek, Qwen, and other specialized LLMs for text, image, and audio generation through a unified endpoint
 ---
@@ -92,7 +92,7 @@ hyperbolic:audio:<model_name>
 
 ## Configuration
 
-Configure the provider in your promptfoo configuration file:
+Configure the provider in your artef configuration file:
 
 ```yaml
 providers:
@@ -110,7 +110,7 @@ providers:
 | Parameter                         | Description                                                                                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `apiKey`                          | Your Hyperbolic API key                                                                                                              |
-| `cost`, `inputCost`, `outputCost` | Override promptfoo's pricing estimates. Use `inputCost` and `outputCost` for asymmetric pricing; `cost` remains the shared fallback. |
+| `cost`, `inputCost`, `outputCost` | Override artef's pricing estimates. Use `inputCost` and `outputCost` for asymmetric pricing; `cost` remains the shared fallback. |
 | `temperature`                     | Controls the randomness of the output (0.0 to 2.0)                                                                                   |
 | `max_tokens`                      | The maximum number of tokens to generate                                                                                             |
 | `top_p`                           | Controls nucleus sampling (0.0 to 1.0)                                                                                               |
@@ -275,7 +275,7 @@ Hyperbolic offers competitive pricing across all model types (rates as of Januar
 Test your setup with working examples:
 
 ```bash
-npx promptfoo@latest init --example provider-hyperbolic
+npx artef@latest init --example provider-hyperbolic
 ```
 
 This includes tested configurations for text generation, image creation, audio synthesis, and vision tasks.

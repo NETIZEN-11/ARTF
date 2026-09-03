@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+﻿import { useContext } from 'react';
 
 import { useUserStore } from '@app/stores/userStore';
 import { render, screen, waitFor } from '@testing-library/react';
@@ -59,7 +59,7 @@ describe('PostHogProvider', () => {
     beforeEach(() => {
       vi.stubEnv('VITE_POSTHOG_KEY', 'test-posthog-key');
       vi.stubEnv('VITE_POSTHOG_HOST', 'https://test.posthog.com');
-      vi.stubEnv('VITE_PROMPTFOO_DISABLE_TELEMETRY', 'false');
+      vi.stubEnv('VITE_artef_DISABLE_TELEMETRY', 'false');
     });
 
     it('should initialize PostHog, fetch user data, and provide context when telemetry is enabled', async () => {

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Run Command Registration
  *
  * Registers the 'run' subcommand with Commander.
@@ -17,11 +17,11 @@ export function runCommand(program: Command): void {
     .command('run')
     .description('Scan code changes for LLM security vulnerabilities')
     .argument('[repo-path]', 'Repository path to scan', '.')
-    .option('--api-key <key>', 'Promptfoo API key for authentication')
+    .option('--api-key <key>', 'artef API key for authentication')
     .option('--base <ref>', 'Base branch or commit to compare against')
     .option('--compare <ref>', 'Compare branch or commit')
     .option('-c, --config <path>', 'Path to config file')
-    .option('--api-host <url>', 'Promptfoo API host URL (default: https://api.promptfoo.app)')
+    .option('--api-host <url>', 'artef API host URL (default: https://api.artef.app)')
     .option('--diffs-only', 'Scan only PR diffs, skip filesystem exploration')
     .option('--json', 'Output results as JSON')
     .option('-f, --format <format>', 'Output format (text|json|sarif)', 'text')

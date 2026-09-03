@@ -1,4 +1,4 @@
-import { getEnvBool } from '../envars';
+﻿import { getEnvBool } from '../envars';
 import { isLoggedIntoCloud } from '../globalConfig/accounts';
 import { cloudConfig } from '../globalConfig/cloud';
 import logger from '../logger';
@@ -11,7 +11,7 @@ interface RemoteBlobUploadTarget {
 }
 
 function buildRemoteUploadTarget(): RemoteBlobUploadTarget | null {
-  if (getEnvBool('PROMPTFOO_DISABLE_SHARING')) {
+  if (getEnvBool('artef_DISABLE_SHARING')) {
     return null;
   }
 

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: False Positives
 description: Red team false positive detection by enhancing grader context and scoring precision to prevent inaccurate vulnerability assessments in AI security testing workflows
 ---
@@ -7,11 +7,11 @@ description: Red team false positive detection by enhancing grader context and s
 
 False positives occur when a test case is marked as passing when it should have been marked as failing or vice versa. These inaccuracies typically arise when the grader lacks sufficient context about your target application to make proper assessments.
 
-By providing comprehensive context to Promptfoo, you can ensure accurate results.
+By providing comprehensive context to artef, you can ensure accurate results.
 
 ## Understanding How the Grader Makes Decisions
 
-When you run a red team scan against a target, Promptfoo evaluates the results and determines whether the output passes or fails. These results are determined by a model, `gpt-5` by default.
+When you run a red team scan against a target, artef evaluates the results and determines whether the output passes or fails. These results are determined by a model, `gpt-5` by default.
 
 A **pass** score means that the output did not violate your application's intended behavior and returned an output that conforms with your requirements. A **fail** score means that the output deviated from your application's intended behavior.
 
@@ -57,11 +57,11 @@ When you provide vague descriptions like the one above, the grader lacks the nec
 
 ### 2. Calibrate Graders with Custom Examples
 
-#### In Promptfoo Enterprise
+#### In artef Enterprise
 
 Plugin-specific examples can be used for advanced grading. Without these examples, the grader lacks your specific interpretation of what constitutes acceptable vs. unacceptable outputs.
 
-Within Promptfoo Enterprise, you should customize the grader at the plugin level by providing clear examples of what you consider passing and failing outputs, along with your reasoning.
+Within artef Enterprise, you should customize the grader at the plugin level by providing clear examples of what you consider passing and failing outputs, along with your reasoning.
 
 The more detailed your examples, the better the grader can align with your expectations.
 
@@ -71,7 +71,7 @@ The more detailed your examples, the better the grader can align with your expec
 
 #### In Open Source
 
-You can configure the graders for specific plugins within the open source by modifying your `promptfooconfig.yaml` file:
+You can configure the graders for specific plugins within the open source by modifying your `artefconfig.yaml` file:
 
 ```yaml
 plugins:

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 23
 description: Red team LLM applications against NIST AI Risk Management Framework measures to ensure trustworthy AI development and deployment
 ---
@@ -7,7 +7,7 @@ description: Red team LLM applications against NIST AI Risk Management Framework
 
 The NIST AI Risk Management Framework (AI RMF) is a voluntary framework developed by the U.S. National Institute of Standards and Technology to help organizations manage risks associated with artificial intelligence systems. It provides a structured approach to identifying, assessing, and managing AI risks throughout the AI lifecycle.
 
-The framework is organized into four core functions: Govern, Map, Measure, and Manage. Promptfoo's red teaming capabilities focus primarily on the **Measure** function, which involves testing and evaluating AI systems against specific risk metrics.
+The framework is organized into four core functions: Govern, Map, Measure, and Manage. artef's red teaming capabilities focus primarily on the **Measure** function, which involves testing and evaluating AI systems against specific risk metrics.
 
 ## Framework Structure
 
@@ -48,9 +48,9 @@ The NIST AI RMF organizes risk measurement into categories:
 
 ## Scanning for NIST AI RMF Compliance
 
-Promptfoo helps test AI systems against NIST AI RMF measures through automated red teaming. The framework's emphasis on measurement and testing aligns well with automated security testing.
+artef helps test AI systems against NIST AI RMF measures through automated red teaming. The framework's emphasis on measurement and testing aligns well with automated security testing.
 
-To set up NIST AI RMF scanning, select the NIST AI RMF option in the Promptfoo UI or configure it directly:
+To set up NIST AI RMF scanning, select the NIST AI RMF option in the artef UI or configure it directly:
 
 ```yaml
 redteam:
@@ -397,18 +397,18 @@ redteam:
 
 ## Best Practices for NIST AI RMF Compliance
 
-When testing for NIST AI RMF compliance with Promptfoo:
+When testing for NIST AI RMF compliance with artef:
 
 1. **Document your testing**: NIST emphasizes documentation of testing methodologies (MEASURE 2.1)
 2. **Regular evaluation**: Set up continuous testing to meet the "regularly assessed" requirements
 3. **Representative testing**: Ensure test conditions match deployment contexts (MEASURE 2.2)
-4. **Risk tracking**: Use Promptfoo's reporting features to track identified risks over time (MEASURE 3.1)
+4. **Risk tracking**: Use artef's reporting features to track identified risks over time (MEASURE 3.1)
 5. **Stakeholder feedback**: Combine automated testing with manual review and user feedback (MEASURE 3.3)
 6. **Holistic approach**: Test across all four core functions (Govern, Map, Measure, Manage), not just Measure
 
 ## Limitations of Automated Testing
 
-While Promptfoo helps automate many NIST AI RMF measures, some requirements need additional processes:
+While artef helps automate many NIST AI RMF measures, some requirements need additional processes:
 
 - **MEASURE 2.12**: Environmental impact assessment requires infrastructure monitoring
 - **MEASURE 3.3**: Stakeholder feedback processes require organizational procedures
@@ -418,7 +418,7 @@ Automated red teaming should be part of a comprehensive NIST AI RMF compliance p
 
 ## What's Next
 
-The NIST AI RMF is regularly updated to reflect emerging AI risks and best practices. Regular testing with Promptfoo helps ensure ongoing compliance with the framework's measurement requirements.
+The NIST AI RMF is regularly updated to reflect emerging AI risks and best practices. Regular testing with artef helps ensure ongoing compliance with the framework's measurement requirements.
 
 To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
 

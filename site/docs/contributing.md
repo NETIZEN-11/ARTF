@@ -1,22 +1,22 @@
----
-title: Contributing to promptfoo
+﻿---
+title: Contributing to artef
 sidebar_label: Contributing
-description: Contribute to promptfoo by submitting code, documentation, providers, and features following our development guidelines
+description: Contribute to artef by submitting code, documentation, providers, and features following our development guidelines
 ---
 
-We welcome contributions from the community to help make promptfoo better. This guide will help you get started. If you have any questions, please reach out to us on [Discord](https://discord.gg/promptfoo) or through a [GitHub issue](https://github.com/promptfoo/promptfoo/issues/new).
+We welcome contributions from the community to help make artef better. This guide will help you get started. If you have any questions, please reach out to us on [Discord](https://discord.gg/artef) or through a [GitHub issue](https://github.com/artef/artef/issues/new).
 
 ## Project Overview
 
-Promptfoo is an MIT-licensed tool for testing and evaluating LLM apps.
+artef is an MIT-licensed tool for testing and evaluating LLM apps.
 
 ### How to Contribute
 
-There are several ways to contribute to promptfoo:
+There are several ways to contribute to artef:
 
 1. **Submit Pull Requests**: Anyone can contribute by forking the repository and submitting pull requests. You don't need to be a collaborator to contribute code or documentation changes.
 
-2. **Report Issues**: Help us by reporting bugs or suggesting improvements through GitHub issues or [Discord](https://discord.gg/promptfoo).
+2. **Report Issues**: Help us by reporting bugs or suggesting improvements through GitHub issues or [Discord](https://discord.gg/artef).
 
 3. **Improve Documentation**: Documentation improvements are always welcome, including fixing typos, adding examples, or writing guides.
 
@@ -25,16 +25,16 @@ We particularly welcome contributions in the following areas:
 - Bug fixes
 - Documentation updates, including examples and guides
 - Updates to providers including new models, new capabilities (tool use, function calling, JSON mode, file uploads, etc.)
-- Features that improve the user experience of promptfoo, especially relating to RAGs, Agents, and synthetic data generation.
+- Features that improve the user experience of artef, especially relating to RAGs, Agents, and synthetic data generation.
 
 ## Getting Started
 
-1. Fork the repository on GitHub by clicking the "Fork" button at the top right of the [promptfoo repository](https://github.com/promptfoo/promptfoo).
+1. Fork the repository on GitHub by clicking the "Fork" button at the top right of the [artef repository](https://github.com/artef/artef).
 2. Clone your fork locally:
 
    ```bash
-   git clone https://github.com/[your-username]/promptfoo.git
-   cd promptfoo
+   git clone https://github.com/[your-username]/artef.git
+   cd artef
    ```
 
 3. Set up your development environment:
@@ -90,7 +90,7 @@ We particularly welcome contributions in the following areas:
 
    :::
 
-If you're not sure where to start, check out our [good first issues](https://github.com/promptfoo/promptfoo/issues?q=state%3Aopen%20label%3Agood-first-issue%20is%3Aissue) or join our [Discord community](https://discord.gg/promptfoo) for guidance.
+If you're not sure where to start, check out our [good first issues](https://github.com/artef/artef/issues?q=state%3Aopen%20label%3Agood-first-issue%20is%3Aissue) or join our [Discord community](https://discord.gg/artef) for guidance.
 
 ## Development Workflow
 
@@ -114,7 +114,7 @@ If you're not sure where to start, check out our [good first issues](https://git
    git push origin your-branch-name
    ```
 
-4. [Open a pull request](https://github.com/promptfoo/promptfoo/compare) (PR) against the `main` branch of the promptfoo repository.
+4. [Open a pull request](https://github.com/artef/artef/compare) (PR) against the `main` branch of the artef repository.
 
 When opening a pull request:
 
@@ -203,11 +203,11 @@ npm run build:watch
 
 ### Running the CLI During Development
 
-We recommend using `npm link` to link your local `promptfoo` package to the global `promptfoo` command:
+We recommend using `npm link` to link your local `artef` package to the global `artef` command:
 
 ```bash
 npm link
-promptfoo eval --config examples/provider-cloudflare/ai/chat_config.yaml
+artef eval --config examples/provider-cloudflare/ai/chat_config.yaml
 ```
 
 Alternatively, you can use `npm run local` to run your local build directly:
@@ -216,14 +216,14 @@ Alternatively, you can use `npm run local` to run your local build directly:
 npm run local -- eval --config examples/provider-cloudflare/ai/chat_config.yaml
 ```
 
-**Important:** Always use `--` before flags so they're passed to promptfoo, not npm.
+**Important:** Always use `--` before flags so they're passed to artef, not npm.
 
-When working on a new feature, we recommend setting up a local `promptfooconfig.yaml` that tests your feature. Think of this as an end-to-end test for your feature.
+When working on a new feature, we recommend setting up a local `artefconfig.yaml` that tests your feature. Think of this as an end-to-end test for your feature.
 
 Here's a simple example:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: openai:gpt-5
 prompts:
@@ -242,7 +242,7 @@ Providers are defined in TypeScript. We also provide language bindings for Pytho
 
 Before writing code, check whether the service already works through the `openai` provider. For an OpenAI-compatible endpoint, set `apiBaseUrl`, `OPENAI_API_BASE_URL`, or `OPENAI_BASE_URL`. If that is all the service needs, contribute docs or an example that uses the generic path; do not add a new provider prefix or registry entry.
 
-A _dedicated provider_ adds its own `id:` prefix and registry entry. Promptfoo maintains that code, and a dedicated name signals a baseline of trust to users. To keep the registry useful, dedicated providers must meet the following bar.
+A _dedicated provider_ adds its own `id:` prefix and registry entry. artef maintains that code, and a dedicated name signals a baseline of trust to users. To keep the registry useful, dedicated providers must meet the following bar.
 
 ### Provider eligibility
 
@@ -256,7 +256,7 @@ We review aggregators, gateways, and resellers case by case against this same ba
 
 To contribute a dedicated provider:
 
-1. Confirm it meets the eligibility criteria above and doesn't already exist in Promptfoo.
+1. Confirm it meets the eligibility criteria above and doesn't already exist in artef.
 
 2. Implement the provider in `src/providers/yourProviderName.ts` following our [Custom API Provider Docs](/docs/providers/custom-api/). Please use our cache `src/cache.ts` to store responses. If your provider requires a new dependency, please add it as an optional dependency.
 
@@ -368,7 +368,7 @@ To test the entire thing end-to-end, build the project and run it:
 
 ```bash
 npm run build
-promptfoo view
+artef view
 # Or: npm run dev
 ```
 
@@ -380,7 +380,7 @@ This will not update the web UI if you make further changes to the code. You hav
 
 ## Python Contributions
 
-While promptfoo is primarily written in TypeScript, we support custom Python prompts, providers, asserts, and many examples in Python. We strive to keep our Python codebase simple and minimal, without external dependencies. Please adhere to these guidelines:
+While artef is primarily written in TypeScript, we support custom Python prompts, providers, asserts, and many examples in Python. We strive to keep our Python codebase simple and minimal, without external dependencies. Please adhere to these guidelines:
 
 - Use Python 3.9 or later
 - For linting and formatting, use `ruff`. Run `ruff check --fix` and `ruff format` before submitting changes
@@ -426,7 +426,7 @@ This will generate static content in the `build` directory that can be served us
 
 ### Database
 
-Promptfoo uses SQLite as its default database, managed through the Drizzle ORM. By default, the database is stored in `~/.promptfoo/`. You can override this location by setting `PROMPTFOO_CONFIG_DIR`. The database schema is defined in `src/database/tables.ts` and migrations are stored in `drizzle/`. Note that the migrations are all generated and you should not access these files directly.
+artef uses SQLite as its default database, managed through the Drizzle ORM. By default, the database is stored in `~/.artef/`. You can override this location by setting `artef_CONFIG_DIR`. The database schema is defined in `src/database/tables.ts` and migrations are stored in `drizzle/`. Note that the migrations are all generated and you should not access these files directly.
 
 #### Main Tables
 
@@ -464,7 +464,7 @@ This project uses [release-please](https://github.com/googleapis/release-please)
 2. release-please creates/updates a release PR with changelog entries, version bumps, and updated `package.json`
 3. When merged, a GitHub release is created and the npm package is published
 
-For urgent releases, contact maintainers on [Discord](https://discord.gg/promptfoo).
+For urgent releases, contact maintainers on [Discord](https://discord.gg/artef).
 
 ## AI-Assisted Contributions
 
@@ -526,7 +526,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) format for PR t
 If you need help or have questions, you can:
 
 - Open an issue on GitHub.
-- Join our [Discord community](https://discord.gg/promptfoo).
+- Join our [Discord community](https://discord.gg/artef).
 
 ## Code of Conduct
 

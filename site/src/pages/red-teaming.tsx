@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -32,7 +32,7 @@ function HeroSection() {
           className={styles.heroImage}
         />
         <div className={styles.logoSection}>
-          Promptfoo is trusted by teams at...
+          artef is trusted by teams at...
           <LogoContainer noBackground noBorder className={styles.heroLogos} />
         </div>
         <h2>Move beyond fuzzing and canned attacks</h2>
@@ -149,8 +149,8 @@ function DifferentiatorsSection() {
   return (
     <section className={styles.benefitsSection}>
       <div className="container">
-        <div className={styles.sectionEyebrow}>THE PROMPTFOO ADVANTAGE</div>
-        <h2 className={styles.sectionTitle}>Why teams choose Promptfoo for red teaming</h2>
+        <div className={styles.sectionEyebrow}>THE artef ADVANTAGE</div>
+        <h2 className={styles.sectionTitle}>Why teams choose artef for red teaming</h2>
         <p className={styles.sectionSubtitle}>
           Battle-tested technology that scales from startups to Fortune 500 enterprises
         </p>
@@ -387,7 +387,7 @@ export default function RedTeaming(): React.ReactElement {
       description="The most widely adopted platform for AI red teaming. Generate adaptive attacks for your specific application, not just static jailbreak tests. Detect prompt injections, PII leaks, jailbreaks, and more."
     >
       <Head>
-        <meta property="og:image" content="https://www.promptfoo.dev/img/meta/homepage.png" />
+        <meta property="og:image" content="https://www.artef.dev/img/meta/homepage.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className={styles.pageContainer}>

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { ALL_PLUGINS, ALL_STRATEGIES } from '../../src/redteam/constants';
 import { BlobsSchemas } from '../../src/types/api/blobs';
 import {
@@ -701,7 +701,7 @@ describe('API schema red-team coverage', () => {
       expect(
         UserSchemas.Login.Request.safeParse({
           apiKey: '',
-          apiHost: 'https://api.promptfoo.dev',
+          apiHost: 'https://api.artef.dev',
         }).success,
       ).toBe(false);
       expect(
@@ -715,7 +715,7 @@ describe('API schema red-team coverage', () => {
           success: false,
           user: { id: 'u', name: 'User', email: 'u@example.com' },
           organization: { id: 'o', name: 'Org' },
-          app: { url: 'https://app.promptfoo.dev' },
+          app: { url: 'https://app.artef.dev' },
         }).success,
       ).toBe(false);
     });
@@ -761,7 +761,7 @@ describe('API schema red-team coverage', () => {
           selfHosted: false,
           isNpx: true,
           updateCommands: {
-            primary: 'npx promptfoo@latest',
+            primary: 'npx artef@latest',
             alternative: null,
             commandType: 'npx',
           },
@@ -776,7 +776,7 @@ describe('API schema red-team coverage', () => {
           selfHosted: false,
           isNpx: true,
           updateCommands: {
-            primary: 'brew upgrade promptfoo',
+            primary: 'brew upgrade artef',
             alternative: null,
             commandType: 'brew',
           },

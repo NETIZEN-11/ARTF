@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -12,7 +12,7 @@ import { Input } from '@app/components/ui/input';
 import { Label } from '@app/components/ui/label';
 import AssertsForm from './AssertsForm';
 import VarsForm from './VarsForm';
-import type { Assertion, TestCase } from '@promptfoo/types';
+import type { Assertion, TestCase } from '@artef/types';
 
 interface TestCaseFormProps {
   open: boolean;

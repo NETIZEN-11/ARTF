@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -23,33 +23,33 @@ export default function AISecuritySummit2025(): React.ReactElement {
   return (
     <Layout
       title="AI Security Summit 2025"
-      description="Promptfoo at AI Security Summit 2025 (Oct 22–23) at The Westin St. Francis, San Francisco. Ian Webster joins the panel 'Using AI for Offensive Security Testing.'"
+      description="artef at AI Security Summit 2025 (Oct 22–23) at The Westin St. Francis, San Francisco. Ian Webster joins the panel 'Using AI for Offensive Security Testing.'"
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at AI Security Summit 2025" />
+        <meta property="og:title" content="artef at AI Security Summit 2025" />
         <meta
           property="og:description"
-          content="Promptfoo at AI Security Summit 2025 (Oct 22–23, San Francisco). Community sponsor with Ian Webster on the panel 'Using AI for Offensive Security Testing.'"
+          content="artef at AI Security Summit 2025 (Oct 22–23, San Francisco). Community sponsor with Ian Webster on the panel 'Using AI for Offensive Security Testing.'"
         />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://www.promptfoo.dev/events/ai-security-summit-2025"
+          content="https://www.artef.dev/events/ai-security-summit-2025"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/ai-security-summit-2025.jpg"
+          content="https://www.artef.dev/img/events/ai-security-summit-2025.jpg"
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/ai-security-summit-2025.jpg"
+          content="https://www.artef.dev/img/events/ai-security-summit-2025.jpg"
         />
         <meta
           name="keywords"
           content="AI Security Summit 2025, LLM security, AI red teaming, San Francisco, AI vulnerabilities, machine learning security"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/ai-security-summit-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/ai-security-summit-2025" />
       </Head>
 
       <main className={styles.summitPage}>
@@ -147,7 +147,7 @@ export default function AISecuritySummit2025(): React.ReactElement {
               <div className={styles.speakerInfo}>
                 <div className={styles.speakerBadge}>Panel Speaker</div>
                 <h3 className={styles.speakerName}>Ian Webster</h3>
-                <p className={styles.speakerRole}>CEO & Co-founder, Promptfoo</p>
+                <p className={styles.speakerRole}>CEO & Co-founder, artef</p>
                 <p className={styles.speakerBio}>
                   Ian joined industry leaders for the panel "Using AI for Offensive Security
                   Testing," covering how teams can use automation to discover LLM and agent
@@ -283,14 +283,14 @@ export default function AISecuritySummit2025(): React.ReactElement {
             <div className={styles.ctaContent}>
               <h2 className={styles.ctaTitle}>Secure Your AI</h2>
               <p className={styles.ctaText}>
-                Start red teaming your LLM applications today with Promptfoo's open-source security
+                Start red teaming your LLM applications today with artef's open-source security
                 testing framework.
               </p>
               <div className={styles.ctaButtons}>
                 <Link to="/docs/red-team/quickstart/" className={styles.primaryCta}>
                   Get Started
                 </Link>
-                <Link to="https://github.com/promptfoo/promptfoo" className={styles.secondaryCta}>
+                <Link to="https://github.com/artef/artef" className={styles.secondaryCta}>
                   Star on GitHub
                 </Link>
               </div>

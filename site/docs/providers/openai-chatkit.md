@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 42
 title: OpenAI ChatKit
 description: 'Evaluate ChatKit workflows built with Agent Builder using browser automation'
@@ -40,7 +40,7 @@ Use `version="draft"` for testing, or omit version to use the latest published v
 
 ### Step 3: Create Your Eval Config
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: ChatKit workflow eval
 
 prompts:
@@ -67,13 +67,13 @@ npx playwright install chromium
 export OPENAI_API_KEY=sk-...
 
 # Run the eval
-npx promptfoo eval
+npx artef eval
 ```
 
 View results:
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
 ## Configuration Options
@@ -82,7 +82,7 @@ npx promptfoo view
 | ------------------ | ----------------------------------------------- | ------------------------ |
 | `workflowId`       | ChatKit workflow ID from Agent Builder          | From provider ID         |
 | `version`          | Workflow version                                | Latest                   |
-| `userId`           | User ID sent to ChatKit session                 | `'promptfoo-eval'`       |
+| `userId`           | User ID sent to ChatKit session                 | `'artef-eval'`       |
 | `timeout`          | Response timeout in milliseconds                | 120000 (2 min)           |
 | `headless`         | Run browser in headless mode                    | true                     |
 | `usePool`          | Enable browser pooling for concurrency          | true                     |
@@ -124,7 +124,7 @@ providers:
 Run with matching concurrency:
 
 ```bash
-npx promptfoo eval --max-concurrency 10
+npx artef eval --max-concurrency 10
 ```
 
 :::tip
@@ -173,7 +173,7 @@ providers:
 
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 5
 
@@ -193,7 +193,7 @@ tests:
 Run with:
 
 ```bash
-npx promptfoo eval --max-concurrency 1
+npx artef eval --max-concurrency 1
 ```
 
 The simulated user will interact with the ChatKit workflow for multiple turns, allowing you to test how the workflow handles realistic conversations.
@@ -230,7 +230,7 @@ Set `maxApprovals` to limit approval interactions per message (default: 5).
 
 Test changes between workflow versions by configuring multiple providers:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Compare workflow v2 vs v3
 
 prompts:
@@ -264,15 +264,15 @@ tests:
 Run the eval to see responses side by side:
 
 ```bash
-npx promptfoo eval
-npx promptfoo view
+npx artef eval
+npx artef view
 ```
 
 This helps verify that new versions maintain quality and don't regress on important behaviors.
 
 ## Complete Example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: ChatKit customer support eval
 
 prompts:
@@ -304,7 +304,7 @@ tests:
 Run:
 
 ```bash
-npx promptfoo eval --max-concurrency 4
+npx artef eval --max-concurrency 4
 ```
 
 ## Troubleshooting
@@ -352,11 +352,11 @@ ChatKit workflows require browser automation because they don't expose a direct 
 | Variable                    | Description                            |
 | --------------------------- | -------------------------------------- |
 | `OPENAI_API_KEY`            | Required                               |
-| `PROMPTFOO_MAX_CONCURRENCY` | Auto-sets `poolSize` if not configured |
+| `artef_MAX_CONCURRENCY` | Auto-sets `poolSize` if not configured |
 
 ## Security Testing
 
-OpenAI recommends [running evals](https://platform.openai.com/docs/guides/safety-building-agents) as a key safety practice when building agents. Use promptfoo to test your ChatKit workflows for vulnerabilities.
+OpenAI recommends [running evals](https://platform.openai.com/docs/guides/safety-building-agents) as a key safety practice when building agents. Use artef to test your ChatKit workflows for vulnerabilities.
 
 ### Prompt Injection
 

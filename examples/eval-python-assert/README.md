@@ -1,11 +1,11 @@
-# eval-python-assert (Python Assertions)
+﻿# eval-python-assert (Python Assertions)
 
-Example configurations for testing LLM outputs using Python assertions with promptfoo.
+Example configurations for testing LLM outputs using Python assertions with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-python-assert
+npx artef@latest init --example eval-python-assert
 cd eval-python-assert
 ```
 
@@ -31,19 +31,19 @@ This example demonstrates how to use Python assertions for custom output validat
 
 This example includes two different approaches:
 
-### External Python Files (`promptfooconfig-external.yaml`)
+### External Python Files (`artefconfig-external.yaml`)
 
 Uses external Python files for complex assertion logic:
 
-- `promptfooconfig-external.yaml` - Configuration with external Python assertions
+- `artefconfig-external.yaml` - Configuration with external Python assertions
 - `assert.py` - Basic assertion function with detailed scoring
 - `assert_with_config.py` - Configuration-based assertion function
 
-### Inline Python Code (`promptfooconfig-inline.yaml`)
+### Inline Python Code (`artefconfig-inline.yaml`)
 
 Demonstrates inline Python assertions directly in the configuration:
 
-- `promptfooconfig-inline.yaml` - Configuration with inline Python code
+- `artefconfig-inline.yaml` - Configuration with inline Python code
 - Shows simple boolean checks and complex scoring logic
 
 ## Running the Examples
@@ -51,19 +51,19 @@ Demonstrates inline Python assertions directly in the configuration:
 1. **External Python assertions example:**
 
    ```sh
-   promptfoo eval -c promptfooconfig-external.yaml
+   artef eval -c artefconfig-external.yaml
    ```
 
 2. **Inline Python assertions example:**
 
    ```sh
-   promptfoo eval -c promptfooconfig-inline.yaml
+   artef eval -c artefconfig-inline.yaml
    ```
 
 3. **View results:**
 
    ```sh
-   promptfoo view
+   artef view
    ```
 
 ## Python Assertion Patterns
@@ -106,6 +106,6 @@ def get_assert(output, context):
 
 ## Learn More
 
-- [Python Assertions Documentation](https://www.promptfoo.dev/docs/configuration/expected-outputs/python/)
-- [promptfoo Configuration Guide](https://www.promptfoo.dev/docs/configuration/guide/)
-- [Assertion Types](https://www.promptfoo.dev/docs/configuration/expected-outputs/)
+- [Python Assertions Documentation](https://www.artef.dev/docs/configuration/expected-outputs/python/)
+- [artef Configuration Guide](https://www.artef.dev/docs/configuration/guide/)
+- [Assertion Types](https://www.artef.dev/docs/configuration/expected-outputs/)

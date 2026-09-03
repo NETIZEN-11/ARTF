@@ -1,4 +1,4 @@
-import React, { useCallback, useId, useMemo } from 'react';
+﻿import React, { useCallback, useId, useMemo } from 'react';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import useCloudConfig from '@app/hooks/useCloudConfig';
@@ -17,7 +17,7 @@ import {
   type GradingResult,
   type ImageOutput,
   ResultFailureReason,
-} from '@promptfoo/types';
+} from '@artef/types';
 import { diffJson, diffSentences, diffWords } from 'diff';
 import {
   Check,
@@ -1359,7 +1359,7 @@ function EvalOutputCell({
   // Memoized to maintain stable reference across renders, preventing
   // unnecessary re-renders of markdown components that use this callback.
   // Uses functional update to avoid stale closure issues.
-  // @see https://github.com/promptfoo/promptfoo/issues/969
+  // @see https://github.com/artef/artef/issues/969
   const toggleLightbox = useCallback((url?: string) => {
     setLightboxImage(url ?? null);
     setLightboxOpen((prev) => !prev);
@@ -1368,7 +1368,7 @@ function EvalOutputCell({
   // Memoized components object for ReactMarkdown to prevent re-renders.
   // Creating this inline would cause ReactMarkdown to re-render on every
   // parent render, even when content hasn't changed.
-  // @see https://github.com/promptfoo/promptfoo/issues/969
+  // @see https://github.com/artef/artef/issues/969
   const markdownComponents = useMemo(
     () => ({
       img: ({ src, alt }: { src?: string; alt?: string }) => (

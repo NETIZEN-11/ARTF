@@ -1,4 +1,4 @@
-export interface Article {
+﻿export interface Article {
   publication: string;
   title: string;
   link: string;
@@ -98,11 +98,11 @@ export const FEATURED_PODCASTS: Podcast[] = [
     link: 'https://open.spotify.com/episode/6iZPyhhdOgXSjxKsJmiTPn',
   },
   {
-    title: "Breaking AI to Fix It: Ian Webster's Journey from Discord's Clyde to Promptfoo",
+    title: "Breaking AI to Fix It: Ian Webster's Journey from Discord's Clyde to artef",
     source: 'Latent Space: The AI Engineer Podcast',
     date: 'October 24, 2025',
     description:
-      "Ian talks with swyx and Alessio about shipping Discord's Clyde, why Promptfoo shifted from evals to AI security, and what red teaming looks like for agents and RAG applications.",
+      "Ian talks with swyx and Alessio about shipping Discord's Clyde, why artef shifted from evals to AI security, and what red teaming looks like for agents and RAG applications.",
     link: 'https://www.youtube.com/watch?v=-uiF1txQxV8',
   },
   {
@@ -110,7 +110,7 @@ export const FEATURED_PODCASTS: Podcast[] = [
     source: 'TBPN',
     date: 'July 29, 2025',
     description:
-      "Ian Webster joins TBPN to discuss Promptfoo's mission and what it takes to secure LLM apps and integrations, including automated red teaming to uncover data leaks and unintended behaviors.",
+      "Ian Webster joins TBPN to discuss artef's mission and what it takes to secure LLM apps and integrations, including automated red teaming to uncover data leaks and unintended behaviors.",
     link: 'https://share.transistor.fm/s/ac30bba6',
   },
   {
@@ -118,7 +118,7 @@ export const FEATURED_PODCASTS: Podcast[] = [
     source: 'AI + a16z',
     date: 'February 28, 2025',
     description:
-      "In this episode, a16z partner Joel de la Garza speaks with a trio of security experts, including Promptfoo founder Ian Webster, about the security implications of the DeepSeek reasoning model. Ian's segment focuses on vulnerabilities within DeepSeek itself, and how users can protect themselves against backdoors, jailbreaks, and censorship.",
+      "In this episode, a16z partner Joel de la Garza speaks with a trio of security experts, including artef founder Ian Webster, about the security implications of the DeepSeek reasoning model. Ian's segment focuses on vulnerabilities within DeepSeek itself, and how users can protect themselves against backdoors, jailbreaks, and censorship.",
     link: 'https://a16z.com/podcast/what-deepseek-means-for-cybersecurity/',
   },
   {
@@ -126,7 +126,7 @@ export const FEATURED_PODCASTS: Podcast[] = [
     source: 'CyberBytes with Steffen Foley',
     date: 'December 5, 2024',
     description:
-      "A deep dive into Ian's evolution from shipping Gen AI products as an engineer to launching a cybersecurity company, the fascinating origin of Promptfoo, and key insights on the latest AI security trends.",
+      "A deep dive into Ian's evolution from shipping Gen AI products as an engineer to launching a cybersecurity company, the fascinating origin of artef, and key insights on the latest AI security trends.",
     link: 'https://open.spotify.com/episode/6bdzElwFgZoBHjRrYyqHoN',
   },
   {
@@ -134,7 +134,7 @@ export const FEATURED_PODCASTS: Podcast[] = [
     source: 'a16z Podcast',
     date: 'August 2, 2024',
     description:
-      'a16z General Partner Anjney Midha speaks with Promptfoo founder and CEO Ian Webster about the importance of red-teaming for AI safety and security, and how bringing those capabilities to more organizations will lead to safer, more predictable generative AI applications.',
+      'a16z General Partner Anjney Midha speaks with artef founder and CEO Ian Webster about the importance of red-teaming for AI safety and security, and how bringing those capabilities to more organizations will lead to safer, more predictable generative AI applications.',
     link: 'https://a16z.com/podcast/securing-ai-by-democratizing-red-teams/',
   },
 ];
@@ -145,7 +145,7 @@ export const EDUCATIONAL_RESOURCES: EducationalResource[] = [
     source: 'OpenAI',
     year: '2024',
     description:
-      'Featured in OpenAI\'s Build Hour series, where they highlight that "Promptfoo is really powerful because you can iterate on prompts, configure tests in YAML, and view everything locally... it\'s faster and more straightforward."',
+      'Featured in OpenAI\'s Build Hour series, where they highlight that "artef is really powerful because you can iterate on prompts, configure tests in YAML, and view everything locally... it\'s faster and more straightforward."',
     duration: '60 Minutes',
     link: 'https://vimeo.com/1023317525',
   },
@@ -154,7 +154,7 @@ export const EDUCATIONAL_RESOURCES: EducationalResource[] = [
     source: 'Anthropic',
     year: '2024',
     description:
-      'A comprehensive nine-lesson course covering everything from basic evaluations to advanced model-graded techniques. Anthropic notes that "Promptfoo offers a streamlined, out-of-the-box solution that can significantly reduce the time and effort required for comprehensive prompt testing."',
+      'A comprehensive nine-lesson course covering everything from basic evaluations to advanced model-graded techniques. Anthropic notes that "artef offers a streamlined, out-of-the-box solution that can significantly reduce the time and effort required for comprehensive prompt testing."',
     duration: '6 Hours',
     link: 'https://github.com/anthropics/courses/tree/master/prompt_evaluations',
   },
@@ -163,16 +163,16 @@ export const EDUCATIONAL_RESOURCES: EducationalResource[] = [
     source: 'Amazon Web Services',
     year: '2025',
     description:
-      'A comprehensive workshop designed to equip you with the knowledge and practical skills needed to effectively evaluate and improve Large Language Model (LLM) applications using Amazon Bedrock and Promptfoo. The course covers everything from basic setup to advanced evaluation techniques.',
+      'A comprehensive workshop designed to equip you with the knowledge and practical skills needed to effectively evaluate and improve Large Language Model (LLM) applications using Amazon Bedrock and artef. The course covers everything from basic setup to advanced evaluation techniques.',
     duration: '3 Hours',
-    link: 'https://catalog.us-east-1.prod.workshops.aws/promptfoo/en-US',
+    link: 'https://catalog.us-east-1.prod.workshops.aws/artef/en-US',
   },
   {
     title: 'Move to the Best LLM Model for Your App',
     source: 'IBM Skills Network',
     year: '2024',
     description:
-      'A hands-on guided project that teaches developers how to master model selection using Promptfoo. Learn to adapt to new models, handle pricing changes effectively, and perform regression testing through practical scenarios.',
+      'A hands-on guided project that teaches developers how to master model selection using artef. Learn to adapt to new models, handle pricing changes effectively, and perform regression testing through practical scenarios.',
     duration: '2 Hours',
     link: 'https://cognitiveclass.ai/courses/move-to-the-best-llm-model-for-your-app',
   },
@@ -180,12 +180,12 @@ export const EDUCATIONAL_RESOURCES: EducationalResource[] = [
 
 export const TECHNICAL_CONTENT: TechnicalContent[] = [
   {
-    title: 'Does your LLM thing work? (& how we use promptfoo)',
+    title: 'Does your LLM thing work? (& how we use artef)',
     source: 'Semgrep Engineering Blog',
     date: 'September 6, 2024',
     description:
-      "A detailed blog post by Semgrep's AI team explains their approach to evaluating LLM features and why they adopted Promptfoo as part of their workflow.",
-    link: 'http://semgrep.dev/blog/2024/does-your-llm-thing-work-how-we-use-promptfoo/',
+      "A detailed blog post by Semgrep's AI team explains their approach to evaluating LLM features and why they adopted artef as part of their workflow.",
+    link: 'http://semgrep.dev/blog/2024/does-your-llm-thing-work-how-we-use-artef/',
   },
 ];
 
@@ -207,5 +207,5 @@ export const COMPANY_INFO = {
   headquarters: 'San Francisco, California',
   affiliation: 'OpenAI',
   earlySupporters: 'Insight Partners, Andreessen Horowitz, and industry leaders',
-  contactEmail: 'inquiries@promptfoo.dev',
+  contactEmail: 'inquiries@artef.dev',
 };

@@ -1,4 +1,4 @@
-import { Command } from 'commander';
+﻿import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { EmailValidationError } from '../../../src/globalConfig/accounts';
 import logger from '../../../src/logger';
@@ -115,7 +115,7 @@ describe('redteamRunCommand', () => {
 
     // Should log error message
     expect(logger.error).toHaveBeenCalledWith(
-      `Target ID (-t) can only be used when -c is used. To use a cloud target inside of a config set the id of the target to promptfoo://provider/${targetUUID}. `,
+      `Target ID (-t) can only be used when -c is used. To use a cloud target inside of a config set the id of the target to artef://provider/${targetUUID}. `,
     );
 
     // Should set exit code to 1
@@ -140,7 +140,7 @@ describe('redteamRunCommand', () => {
 
     // Should log error message
     expect(logger.error).toHaveBeenCalledWith(
-      `Target ID (-t) can only be used when -c is used. To use a cloud target inside of a config set the id of the target to promptfoo://provider/${targetUUID}. `,
+      `Target ID (-t) can only be used when -c is used. To use a cloud target inside of a config set the id of the target to artef://provider/${targetUUID}. `,
     );
 
     // Should set exit code to 1
@@ -212,7 +212,7 @@ describe('redteamRunCommand', () => {
     // Verify that a target was added to the config with the CLOUD_PROVIDER_PREFIX
     expect(mockConfig.targets).toEqual([
       {
-        id: `promptfoo://provider/${targetUUID}`,
+        id: `artef://provider/${targetUUID}`,
         config: {},
       },
     ]);

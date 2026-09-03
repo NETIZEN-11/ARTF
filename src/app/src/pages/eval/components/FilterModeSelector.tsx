@@ -1,4 +1,4 @@
-import {
+﻿import {
   Select,
   SelectContent,
   SelectItem,
@@ -7,7 +7,7 @@ import {
 } from '@app/components/ui/select';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { cn } from '@app/lib/utils';
-import type { EvalResultsFilterMode } from '@promptfoo/types';
+import type { EvalResultsFilterMode } from '@artef/types';
 
 interface FilterModeSelectorProps {
   filterMode: EvalResultsFilterMode;

@@ -1,4 +1,4 @@
----
+﻿---
 title: SharePoint Integration
 sidebar_label: SharePoint
 description: Import LLM test cases from Microsoft SharePoint. Configure certificate-based authentication and load test data from SharePoint CSV files.
@@ -6,7 +6,7 @@ description: Import LLM test cases from Microsoft SharePoint. Configure certific
 
 # SharePoint Integration
 
-promptfoo allows you to import eval test cases directly from Microsoft SharePoint CSV files using certificate-based authentication with Azure AD.
+artef allows you to import eval test cases directly from Microsoft SharePoint CSV files using certificate-based authentication with Azure AD.
 
 ## Prerequisites
 
@@ -52,8 +52,8 @@ promptfoo allows you to import eval test cases directly from Microsoft SharePoin
 
 Once authentication is configured, specify the SharePoint CSV file URL in your configuration:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'SharePoint CSV Import Example'
 prompts:
   - 'Please translate the following text to {{language}}: {{input}}'

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import { formatDuration } from '../../util/formatDuration';
 
 import type { TokenUsage } from '../../types/index';
@@ -127,17 +127,17 @@ function getGuidanceLines({
     return [];
   }
 
-  const lines = ['', `» View results: ${chalk.green.bold('promptfoo view')}`];
+  const lines = ['', `» View results: ${chalk.green.bold('artef view')}`];
 
   if (!hasExplicitDisable) {
     lines.push(
       cloudEnabled
-        ? `» Create shareable URL: ${chalk.green.bold('promptfoo share')}`
-        : `» Share with your team: ${chalk.green.bold('https://promptfoo.app')}`,
+        ? `» Create shareable URL: ${chalk.green.bold('artef share')}`
+        : `» Share with your team: ${chalk.green.bold('https://artef.app')}`,
     );
   }
 
-  lines.push(`» Feedback: ${chalk.green.bold('https://promptfoo.dev/feedback')}`);
+  lines.push(`» Feedback: ${chalk.green.bold('https://artef.dev/feedback')}`);
   return lines;
 }
 

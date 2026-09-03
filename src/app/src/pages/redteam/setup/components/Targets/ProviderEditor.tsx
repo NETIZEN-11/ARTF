@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+﻿import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -113,7 +113,7 @@ export default function ProviderEditor({
           'A target is the specific LLM or endpoint you want to evaluate in your red teaming process.'}{' '}
         For connection details and supported integrations, see the{' '}
         <a
-          href="https://www.promptfoo.dev/docs/providers/"
+          href="https://www.artef.dev/docs/providers/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"

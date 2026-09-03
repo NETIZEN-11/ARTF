@@ -1,4 +1,4 @@
-import { parseDataUrl } from '../../util/dataUrl';
+﻿import { parseDataUrl } from '../../util/dataUrl';
 import { calculateCost as calculateCostBase } from '../shared';
 import type Anthropic from '@anthropic-ai/sdk';
 
@@ -383,7 +383,7 @@ export function isDisabledThinkingRejectedAtEffort(
  * Used by the `anthropic:<model>` shorthand so a model released after this build still
  * resolves instead of being rejected at config load. Anthropic is the authority on which
  * ids exist and returns a clear `not_found_error` for one that does not, so gating the
- * shorthand on a local catalog only delays that answer to the next promptfoo release.
+ * shorthand on a local catalog only delays that answer to the next artef release.
  *
  * The shape check is what keeps a genuine typo (`anthropic:sonnet-5`) failing at config
  * load with the usage message, rather than surfacing as a request-time 404.
@@ -423,7 +423,7 @@ export function normalizeAnthropicModelName(modelName: string): string {
 /**
  * Claude Opus 4.7/4.8 and Claude 5+ models deprecate manual sampling controls at the model
  * level — `temperature`, `top_p`, and `top_k` return 400 `invalid_request_error` (including
- * promptfoo's built-in `temperature` default of 0). Shared by the Anthropic, Bedrock, Vertex,
+ * artef's built-in `temperature` default of 0). Shared by the Anthropic, Bedrock, Vertex,
  * and Azure providers. Known families use the capability table above; the generation fallback
  * keeps newly released Claude 5+ family names safe before their model-specific rows land.
  * Arbitrary deployment and inference-profile aliases cannot safely use the fallback.
@@ -774,7 +774,7 @@ export function getTokenUsage(data: any, cached: boolean): Partial<TokenUsage> {
       if (thinkingTokens != null || hasCacheDetails) {
         usage.completionDetails = {
           ...(thinkingTokens != null && { reasoning: toTokenCount(thinkingTokens) }),
-          // Cache *input* token counts go under completionDetails because Promptfoo's
+          // Cache *input* token counts go under completionDetails because artef's
           // TokenUsage contract has no input-details field.
           ...(hasCacheDetails && {
             cacheReadInputTokens: cacheRead,
@@ -826,7 +826,7 @@ interface ServerToolSpec {
 }
 
 /**
- * Anthropic server tools promptfoo rebuilds from config, keyed by tool `type`.
+ * Anthropic server tools artef rebuilds from config, keyed by tool `type`.
  *
  * A Map rather than an object literal so a config with a prototype-shaped `type`
  * (`constructor`, `toString`, `__proto__`, …) misses cleanly and falls through to

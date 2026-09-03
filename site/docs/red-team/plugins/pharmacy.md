@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Pharmacy Plugins
 title: Pharmacy Red-Teaming Plugins - AI Security for Pharmacy Systems
 description: Pharmacy red-teaming plugins for testing AI systems in pharmaceutical contexts to identify vulnerabilities in pharmacy AI applications
@@ -108,7 +108,7 @@ Tests adherence to DEA regulations for controlled substance prescribing, dispens
 
 ## Configuration
 
-Add pharmacy plugins to your promptfoo configuration:
+Add pharmacy plugins to your artef configuration:
 
 ```yaml
 redteam:
@@ -144,7 +144,7 @@ For questions about pharmacy plugins:
 
 1. Review the [general red-teaming documentation](/docs/red-team/)
 2. Check the [plugin configuration guide](/docs/red-team/configuration/)
-3. Join our [community discussions](https://github.com/promptfoo/promptfoo/discussions)
+3. Join our [community discussions](https://github.com/artef/artef/discussions)
 4. Consider consulting with pharmacy professionals for implementation guidance
 
 ## See Also

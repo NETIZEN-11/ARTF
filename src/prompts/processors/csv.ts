@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 import { type Options, parse } from 'csv-parse/sync';
 import { getEnvBool, getEnvString } from '../../envars';
@@ -26,8 +26,8 @@ export async function processCsvPrompts(
 ): Promise<Prompt[]> {
   const content = fs.readFileSync(filePath, 'utf8');
 
-  const delimiter = getEnvString('PROMPTFOO_CSV_DELIMITER', ',');
-  const enforceStrict = getEnvBool('PROMPTFOO_CSV_STRICT', false);
+  const delimiter = getEnvString('artef_CSV_DELIMITER', ',');
+  const enforceStrict = getEnvBool('artef_CSV_STRICT', false);
 
   if (!content.includes(delimiter)) {
     const lines = content.split(/\r?\n/).filter((line) => line.trim());

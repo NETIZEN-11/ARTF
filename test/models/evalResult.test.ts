@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import logger from '../../src/logger';
 import { runDbMigrations } from '../../src/migrate';
 import EvalResult, { sanitizeProvider } from '../../src/models/evalResult';
@@ -207,18 +207,18 @@ describe('EvalResult', () => {
       });
     });
 
-    it('warns and overwrites when user metadata.__promptfoo is non-object', async () => {
+    it('warns and overwrites when user metadata.__artef is non-object', async () => {
       const warnSpy = vi.spyOn(logger, 'warn');
 
-      const result = await EvalResult.createFromEvaluateResult('test-eval-non-object-promptfoo', {
+      const result = await EvalResult.createFromEvaluateResult('test-eval-non-object-artef', {
         ...mockEvaluateResult,
         traceId: 'wins-over-user',
         evaluationId: 'wins-over-user',
-        metadata: { userKey: 'kept', __promptfoo: 'unexpected-string' as any },
+        metadata: { userKey: 'kept', __artef: 'unexpected-string' as any },
       });
 
       expect(warnSpy).toHaveBeenCalledWith(
-        expect.stringContaining('non-object metadata.__promptfoo'),
+        expect.stringContaining('non-object metadata.__artef'),
       );
       // Trace linkage takes precedence; non-object value is overwritten (not preserved).
       expect(result.toEvaluateResult()).toMatchObject({
@@ -228,7 +228,7 @@ describe('EvalResult', () => {
       });
       // The read-side strip happens on findById, not just construction.
       const retrieved = await EvalResult.findById(result.id);
-      expect(retrieved?.metadata).not.toHaveProperty('__promptfoo');
+      expect(retrieved?.metadata).not.toHaveProperty('__artef');
       expect(retrieved?.toEvaluateResult().metadata).toEqual({ userKey: 'kept' });
     });
 
@@ -240,7 +240,7 @@ describe('EvalResult', () => {
         traceId: 'internal-trace',
         evaluationId: 'internal-evaluation',
         metadata: {
-          __promptfoo: {
+          __artef: {
             traceLinkage: { traceId: 'user-trace', evaluationId: 'user-evaluation' },
             retained: 'user-metadata',
           },
@@ -248,12 +248,12 @@ describe('EvalResult', () => {
       });
 
       expect(warnSpy).toHaveBeenCalledWith(
-        expect.stringContaining('metadata.__promptfoo.traceLinkage'),
+        expect.stringContaining('metadata.__artef.traceLinkage'),
       );
       expect(result.toEvaluateResult()).toMatchObject({
         traceId: 'internal-trace',
         evaluationId: 'internal-evaluation',
-        metadata: { __promptfoo: { retained: 'user-metadata' } },
+        metadata: { __artef: { retained: 'user-metadata' } },
       });
     });
 
@@ -261,7 +261,7 @@ describe('EvalResult', () => {
       const result = await EvalResult.createFromEvaluateResult('test-eval-injected-linkage', {
         ...mockEvaluateResult,
         metadata: {
-          __promptfoo: {
+          __artef: {
             traceLinkage: { traceId: 'user-trace', evaluationId: 'user-evaluation' },
             retained: 'user-metadata',
           },
@@ -270,7 +270,7 @@ describe('EvalResult', () => {
 
       const retrieved = await EvalResult.findById(result.id);
       expect(retrieved?.toEvaluateResult()).toMatchObject({
-        metadata: { __promptfoo: { retained: 'user-metadata' } },
+        metadata: { __artef: { retained: 'user-metadata' } },
       });
       expect(retrieved?.traceId).toBeUndefined();
       expect(retrieved?.evaluationId).toBeUndefined();
@@ -289,7 +289,7 @@ describe('EvalResult', () => {
         metadata: { source: 'eval-only-test' },
       });
       expect(retrieved?.toEvaluateResult().traceId).toBeUndefined();
-      expect(retrieved?.metadata).not.toHaveProperty('__promptfoo');
+      expect(retrieved?.metadata).not.toHaveProperty('__artef');
     });
 
     it('preserves user metadata alongside persisted trace linkage', async () => {
@@ -300,14 +300,14 @@ describe('EvalResult', () => {
         metadata: {
           __traceId: 'user-trace-id',
           __evaluationId: 'user-evaluation-id',
-          __promptfoo: { source: 'user' },
+          __artef: { source: 'user' },
         },
       });
 
       expect(result.metadata).toEqual({
         __traceId: 'user-trace-id',
         __evaluationId: 'user-evaluation-id',
-        __promptfoo: { source: 'user' },
+        __artef: { source: 'user' },
       });
       expect(result.toEvaluateResult()).toMatchObject({
         traceId: 'single-trace-id',
@@ -315,7 +315,7 @@ describe('EvalResult', () => {
         metadata: {
           __traceId: 'user-trace-id',
           __evaluationId: 'user-evaluation-id',
-          __promptfoo: { source: 'user' },
+          __artef: { source: 'user' },
         },
       });
     });
@@ -1096,7 +1096,7 @@ describe('EvalResult', () => {
         evaluationId: 'persisted-evaluation-id',
         metadata: { source: 'pre-save' },
       });
-      expect(retrieved?.metadata).not.toHaveProperty('__promptfoo');
+      expect(retrieved?.metadata).not.toHaveProperty('__artef');
     });
 
     it('persists trace linkage on the save() INSERT branch', async () => {
@@ -1123,12 +1123,12 @@ describe('EvalResult', () => {
         evaluationId: 'insert-evaluation-id',
         metadata: { source: 'insert' },
       });
-      expect(retrieved?.metadata).not.toHaveProperty('__promptfoo');
+      expect(retrieved?.metadata).not.toHaveProperty('__artef');
     });
 
     it('strips the reserved namespace even when stored trace ids are malformed (non-string)', async () => {
       // Guards against a corrupted/hand-written row: malformed ids don't surface, but the
-      // internal `__promptfoo` namespace must never leak back into user-visible metadata.
+      // internal `__artef` namespace must never leak back into user-visible metadata.
       const result = await EvalResult.createFromEvaluateResult('test-eval-malformed-linkage', {
         ...mockEvaluateResult,
         traceId: 123 as unknown as string,
@@ -1139,7 +1139,7 @@ describe('EvalResult', () => {
       const retrieved = await EvalResult.findById(result.id);
       expect(retrieved?.toEvaluateResult().traceId).toBeUndefined();
       expect(retrieved?.toEvaluateResult().evaluationId).toBeUndefined();
-      expect(retrieved?.metadata).not.toHaveProperty('__promptfoo');
+      expect(retrieved?.metadata).not.toHaveProperty('__artef');
       expect(retrieved?.metadata).toEqual({ source: 'malformed' });
     });
 
@@ -1354,7 +1354,7 @@ describe('EvalResult', () => {
     });
 
     it('should strip nested provider response metadata when metadata stripping is enabled', () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_STRIP_METADATA: 'true' });
+      const restoreEnv = mockProcessEnv({ artef_STRIP_METADATA: 'true' });
 
       try {
         const result = new EvalResult({
@@ -1401,8 +1401,8 @@ describe('EvalResult', () => {
 
     it('should strip nested test-case metadata when metadata stripping is enabled', () => {
       const restoreEnv = mockProcessEnv({
-        PROMPTFOO_STRIP_METADATA: 'true',
-        PROMPTFOO_STRIP_TEST_VARS: 'true',
+        artef_STRIP_METADATA: 'true',
+        artef_STRIP_TEST_VARS: 'true',
       });
 
       try {

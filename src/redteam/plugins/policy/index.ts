@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import invariant from '../../../util/invariant';
 import { type PolicyObject } from '../../types';
 import { RedteamGraderBase, RedteamPluginBase } from '../base';
@@ -16,7 +16,7 @@ import type {
 } from '../../../types/index';
 import type { RedteamGradingContext } from '../../grading/types';
 
-const PLUGIN_ID = 'promptfoo:redteam:policy';
+const PLUGIN_ID = 'artef:redteam:policy';
 
 export class PolicyPlugin extends RedteamPluginBase {
   readonly id = PLUGIN_ID;
@@ -25,11 +25,11 @@ export class PolicyPlugin extends RedteamPluginBase {
    */
   private policy: Required<PolicyObject>['text'];
   /**
-   * The ID of the policy; available if the policy is loaded from Promptfoo Cloud.
+   * The ID of the policy; available if the policy is loaded from artef Cloud.
    */
   public policyId: PolicyObject['id'];
   /**
-   * The name of the policy; available if the policy is loaded from Promptfoo Cloud.
+   * The name of the policy; available if the policy is loaded from artef Cloud.
    */
   private name?: PolicyObject['name'];
 
@@ -54,7 +54,7 @@ export class PolicyPlugin extends RedteamPluginBase {
       this.policyId = makeInlinePolicyIdSync(this.policy); // Generate a unique ID for the inline policy
     }
     // Edge case: this state should not be reached b/c `createPluginFactory` validates the config
-    // prior to instantiating the plugin. This state is reached within Promptfoo Cloud, so display an
+    // prior to instantiating the plugin. This state is reached within artef Cloud, so display an
     // error message which is meaningful to a developer debugging the issue.
     else {
       invariant(

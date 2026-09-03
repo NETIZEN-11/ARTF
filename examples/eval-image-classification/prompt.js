@@ -1,10 +1,10 @@
-const dedent = require('dedent');
+﻿const dedent = require('dedent');
 
 /**
  * Detects MIME type from base64 magic numbers
  *
  * Note: This is duplicated from src/evaluatorHelpers.ts to keep the example
- * self-contained and runnable without dependencies on core promptfoo internals.
+ * self-contained and runnable without dependencies on core artef internals.
  *
  * Magic numbers (base64-encoded file signatures):
  * - JPEG: /9j/

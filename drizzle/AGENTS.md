@@ -1,4 +1,4 @@
-# Database Migrations
+﻿# Database Migrations
 
 **What this is:** Drizzle ORM migration files for SQLite database. Auto-generated SQL that applies schema changes.
 
@@ -33,9 +33,9 @@ npm run db:studio    # Open GUI at localhost:4983
 
 ## Database Location
 
-Default: `~/.promptfoo/promptfoo.db` (SQLite file)
+Default: `~/.artef/artef.db` (SQLite file)
 
-Override the config directory with `PROMPTFOO_CONFIG_DIR`; the database file is `promptfoo.db` inside that directory.
+Override the config directory with `artef_CONFIG_DIR`; the database file is `artef.db` inside that directory.
 
 **NEVER delete the database.** You may read from it but deletion destroys user data.
 
@@ -51,8 +51,8 @@ Workaround: Create new table, copy data, drop old table, rename new table.
 
 1. **Always review generated SQL** before applying
 2. **Never edit applied migrations** - create new migration instead
-3. **Backup before major changes:** `sqlite3 ~/.promptfoo/promptfoo.db ".backup backup.db"`
-4. **Test schema changes with isolated storage**: unit tests should use the shared in-memory DB; CLI, resume, WAL, and path-behavior tests may use an isolated `PROMPTFOO_CONFIG_DIR`
+3. **Backup before major changes:** `sqlite3 ~/.artef/artef.db ".backup backup.db"`
+4. **Test schema changes with isolated storage**: unit tests should use the shared in-memory DB; CLI, resume, WAL, and path-behavior tests may use an isolated `artef_CONFIG_DIR`
 
 ## What's Stored
 

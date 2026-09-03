@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -104,7 +104,7 @@ describe('Python Utils', () => {
     // Set default mock return values
     vi.mocked(getEnvString).mockReturnValue('');
     vi.mocked(getEnvBool).mockReturnValue(false);
-    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/promptfoo-python-test');
+    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/artef-python-test');
     vi.mocked(removeSecureTempDirectory).mockResolvedValue(undefined);
     vi.mocked(writeSecureTempFile).mockImplementation(
       async (directory: string, filename: string) => `${directory}/${filename}`,
@@ -117,16 +117,16 @@ describe('Python Utils', () => {
       expect(result).toBe('/custom/python/path');
     });
 
-    it('should return PROMPTFOO_PYTHON when config path is not provided', () => {
+    it('should return artef_PYTHON when config path is not provided', () => {
       vi.mocked(getEnvString).mockReturnValue('/env/python/path');
 
       const result = pythonUtils.getConfiguredPythonPath(undefined);
 
       expect(result).toBe('/env/python/path');
-      expect(getEnvString).toHaveBeenCalledWith('PROMPTFOO_PYTHON');
+      expect(getEnvString).toHaveBeenCalledWith('artef_PYTHON');
     });
 
-    it('should prioritize config path over PROMPTFOO_PYTHON', () => {
+    it('should prioritize config path over artef_PYTHON', () => {
       vi.mocked(getEnvString).mockReturnValue('/env/python/path');
 
       const result = pythonUtils.getConfiguredPythonPath('/config/python/path');
@@ -150,7 +150,7 @@ describe('Python Utils', () => {
       expect(result).toBeUndefined();
     });
 
-    it('should return PROMPTFOO_PYTHON when config is empty string', () => {
+    it('should return artef_PYTHON when config is empty string', () => {
       vi.mocked(getEnvString).mockReturnValue('/env/python');
 
       const result = pythonUtils.getConfiguredPythonPath('');
@@ -434,7 +434,7 @@ describe('Python Utils', () => {
     });
 
     describe('environment variable handling', () => {
-      it('should use PROMPTFOO_PYTHON environment variable when provided', async () => {
+      it('should use artef_PYTHON environment variable when provided', async () => {
         vi.mocked(getEnvString).mockReturnValue('/custom/python/path');
         mockExecFileAsync.mockResolvedValue({ stdout: 'Python 3.8.10\n', stderr: '' });
 
@@ -535,20 +535,20 @@ describe('Python Utils', () => {
       const result = await pythonUtils.runPython(scriptPath, 'test_method', [1, 2, 3]);
 
       expect(result).toBe(42);
-      expect(createSecureTempDirectory).toHaveBeenCalledWith('promptfoo-python-');
+      expect(createSecureTempDirectory).toHaveBeenCalledWith('artef-python-');
       expect(writeSecureTempFile).toHaveBeenNthCalledWith(
         1,
-        '/tmp/promptfoo-python-test',
+        '/tmp/artef-python-test',
         'input.json',
         '[1,2,3]',
       );
       expect(writeSecureTempFile).toHaveBeenNthCalledWith(
         2,
-        '/tmp/promptfoo-python-test',
+        '/tmp/artef-python-test',
         'output.json',
         '',
       );
-      expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/promptfoo-python-test');
+      expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/artef-python-test');
       expect(PythonShell).toHaveBeenCalledWith(
         'wrapper.py',
         expect.objectContaining({
@@ -667,7 +667,7 @@ describe('Python Utils', () => {
         pythonUtils.runPython('/path/to/script.py', 'test_method', []),
       ).rejects.toThrow();
 
-      expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/promptfoo-python-test');
+      expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/artef-python-test');
     });
   });
 });

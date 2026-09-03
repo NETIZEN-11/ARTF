@@ -1,18 +1,18 @@
-import logger from '../logger';
+﻿import logger from '../logger';
 import { readGlobalConfig, writeGlobalConfigPartial } from './globalConfig';
 
-export const CLOUD_API_HOST = 'https://api.promptfoo.app';
+export const CLOUD_API_HOST = 'https://api.artef.app';
 
 const CLOUD_HOSTNAMES = new Set([
   new URL(CLOUD_API_HOST).hostname,
-  new URL('https://www.promptfoo.app').hostname,
-  new URL('https://promptfoo.app').hostname,
+  new URL('https://www.artef.app').hostname,
+  new URL('https://artef.app').hostname,
 ]);
 
 // Free customers created before this date are grandfathered into auto-share.
 export const SHARING_CUTOFF_DATE = new Date('2026-03-09T00:00:00Z');
 
-function isPromptfooCloudHost(url: string): boolean {
+function isartefCloudHost(url: string): boolean {
   try {
     const hostname = new URL(url).hostname.toLowerCase().replace(/\.$/, '');
     return CLOUD_HOSTNAMES.has(hostname);
@@ -29,9 +29,9 @@ function warnOnceAboutLegacyApiHost(): void {
   }
   hasWarnedAboutLegacyApiHost = true;
   logger.warn(
-    'Ignoring the API_HOST environment variable for Promptfoo Cloud routing. ' +
-      'To point at a self-hosted deployment, use PROMPTFOO_CLOUD_API_URL or ' +
-      '`promptfoo auth login --host <url>`.',
+    'Ignoring the API_HOST environment variable for artef Cloud routing. ' +
+      'To point at a self-hosted deployment, use artef_CLOUD_API_URL or ' +
+      '`artef auth login --host <url>`.',
   );
 }
 
@@ -112,7 +112,7 @@ export class CloudConfig {
   private readConfig(): CloudConfigState {
     const savedConfig = readGlobalConfig()?.cloud || {};
     return {
-      appUrl: savedConfig.appUrl || 'https://www.promptfoo.app',
+      appUrl: savedConfig.appUrl || 'https://www.artef.app',
       apiHost: savedConfig.apiHost,
       apiKey: savedConfig.apiKey,
       authHeaderName: savedConfig.authHeaderName,
@@ -124,36 +124,36 @@ export class CloudConfig {
   }
 
   /**
-   * Returns the API key from config file or PROMPTFOO_API_KEY environment variable.
+   * Returns the API key from config file or artef_API_KEY environment variable.
    * Config file takes precedence over environment variable.
    */
   private resolveApiKey(): string | undefined {
-    return this.config.apiKey || process.env.PROMPTFOO_API_KEY;
+    return this.config.apiKey || process.env.artef_API_KEY;
   }
 
   /**
-   * Returns the API host from config file, PROMPTFOO_CLOUD_API_URL environment variable,
+   * Returns the API host from config file, artef_CLOUD_API_URL environment variable,
    * or defaults to the standard cloud API host.
    * Config file takes precedence over environment variable.
    *
    * Trailing slashes are stripped so callers that append a path (e.g.
    * `${getApiHost()}/api/v1/...`) never produce a double slash. On-prem hosts
-   * entered via `promptfoo auth login --host https://host/` commonly include one.
+   * entered via `artef auth login --host https://host/` commonly include one.
    */
   private resolveApiHost(): string {
     // The generic API_HOST env var is intentionally NOT consulted: the cloud
     // origin decides where monkeyPatchFetch sends the saved bearer token, and
     // env files routinely define API_HOST for the app under test. Self-hosted
-    // deployments must use `promptfoo auth login --api-host <url>` or
-    // PROMPTFOO_CLOUD_API_URL. process.env is read directly (not
+    // deployments must use `artef auth login --api-host <url>` or
+    // artef_CLOUD_API_URL. process.env is read directly (not
     // getEnvString) so an eval config's `env` block can never influence it.
-    const host = this.config.apiHost || process.env.PROMPTFOO_CLOUD_API_URL || CLOUD_API_HOST;
+    const host = this.config.apiHost || process.env.artef_CLOUD_API_URL || CLOUD_API_HOST;
     // monkeyPatchFetch resolves the host on every request, including evals that
     // never touch Cloud, so only warn when a Cloud credential is actually in
     // play — that's the only case where the legacy variable ever had an effect.
     if (
       !this.config.apiHost &&
-      !process.env.PROMPTFOO_CLOUD_API_URL &&
+      !process.env.artef_CLOUD_API_URL &&
       process.env.API_HOST &&
       this.resolveApiKey()
     ) {
@@ -164,15 +164,15 @@ export class CloudConfig {
 
   /**
    * Returns the header name used to carry the Cloud API credential, from config file,
-   * PROMPTFOO_CLOUD_AUTH_HEADER environment variable, or the default `Authorization`.
+   * artef_CLOUD_AUTH_HEADER environment variable, or the default `Authorization`.
    * Config file takes precedence over environment variable, matching resolveApiHost().
    *
    * process.env is read directly (not getEnvString) for the same reason as
-   * PROMPTFOO_CLOUD_API_URL: an eval config's `env` block must never be able to
+   * artef_CLOUD_API_URL: an eval config's `env` block must never be able to
    * influence Cloud auth routing.
    */
   private resolveAuthHeaderName(): string {
-    return this.config.authHeaderName || process.env.PROMPTFOO_CLOUD_AUTH_HEADER || 'Authorization';
+    return this.config.authHeaderName || process.env.artef_CLOUD_AUTH_HEADER || 'Authorization';
   }
 
   isEnabled(): boolean {
@@ -278,7 +278,7 @@ export class CloudConfig {
     // auto-sharing to the on-prem Report Server when the server omits the field
     // or returns false because it has no licence-check logic. The validated app
     // URL keeps hosted Cloud behind an API proxy on the public-cloud license gate.
-    const isPublicCloud = isPromptfooCloudHost(apiHost) || isPromptfooCloudHost(app.url);
+    const isPublicCloud = isartefCloudHost(apiHost) || isartefCloudHost(app.url);
     if (!isPublicCloud) {
       this.setSharing(true);
     } else if (typeof hasActiveLicense === 'boolean') {

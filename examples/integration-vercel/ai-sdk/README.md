@@ -1,6 +1,6 @@
-# integration-vercel/ai-sdk (Vercel AI SDK Provider)
+﻿# integration-vercel/ai-sdk (Vercel AI SDK Provider)
 
-Demonstrates dynamic prompt construction using the [Vercel AI SDK](https://ai-sdk.dev) with promptfoo's provider prompt reporting feature.
+Demonstrates dynamic prompt construction using the [Vercel AI SDK](https://ai-sdk.dev) with artef's provider prompt reporting feature.
 
 ## Why This Matters
 
@@ -11,7 +11,7 @@ Modern LLM applications dynamically construct prompts with:
 - **Retrieved context** from RAG pipelines
 - **User preferences** and safety guardrails
 
-Without prompt reporting, promptfoo shows `{{topic}}` as the prompt, making it impossible to debug what was actually sent or run assertions on the real prompt content.
+Without prompt reporting, artef shows `{{topic}}` as the prompt, making it impossible to debug what was actually sent or run assertions on the real prompt content.
 
 ## How It Works
 
@@ -39,17 +39,17 @@ return {
 ## Running the Example
 
 ```bash
-npx promptfoo@latest init --example integration-vercel/ai-sdk
+npx artef@latest init --example integration-vercel/ai-sdk
 cd integration-vercel/ai-sdk
 npm install
 export OPENAI_API_KEY=sk-...
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 ## What You'll See
 
-In the promptfoo UI, click any result to see **"Actual Prompt Sent"** showing the full dynamically-constructed prompt instead of just `{{topic}}`.
+In the artef UI, click any result to see **"Actual Prompt Sent"** showing the full dynamically-constructed prompt instead of just `{{topic}}`.
 
 **Input:**
 
@@ -87,7 +87,7 @@ Focus on:
 | File                   | Description                                                   |
 | ---------------------- | ------------------------------------------------------------- |
 | `aiSdkProvider.mjs`    | Provider using Vercel AI SDK with dynamic prompt construction |
-| `promptfooconfig.yaml` | Test cases showcasing different personas and task types       |
+| `artefconfig.yaml` | Test cases showcasing different personas and task types       |
 | `package.json`         | Dependencies (`ai`, `@ai-sdk/openai`)                         |
 
 ## Adapting for Your Use Case
@@ -116,9 +116,9 @@ return {
 ## Learn More
 
 - [Vercel AI SDK Documentation](https://ai-sdk.dev)
-- [promptfoo Custom Providers](https://promptfoo.dev/docs/providers/custom-api)
-- [Promptfoo tracing and trajectory assertions](https://promptfoo.dev/docs/tracing/)
+- [artef Custom Providers](https://artef.dev/docs/providers/custom-api)
+- [artef tracing and trajectory assertions](https://artef.dev/docs/tracing/)
 
 ## Tool Telemetry
 
-If you enable Vercel AI SDK `experimental_telemetry` for tool-calling workflows, Promptfoo trajectory assertions can normalize the SDK's tool-call spans from `ai.toolCall.name` plus the matching `ai.toolCall.args`, `ai.toolCall.arguments`, or `ai.toolCall.input` attributes.
+If you enable Vercel AI SDK `experimental_telemetry` for tool-calling workflows, artef trajectory assertions can normalize the SDK's tool-call spans from `ai.toolCall.name` plus the matching `ai.toolCall.args`, `ai.toolCall.arguments`, or `ai.toolCall.input` attributes.

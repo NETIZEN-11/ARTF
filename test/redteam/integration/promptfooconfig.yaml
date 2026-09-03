@@ -1,10 +1,10 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Redteam integration test
 targets:
   - id: http
     label: test-chatbot
     config:
-      url: https://acme-cx-chatbot.promptfoo.dev/chat
+      url: https://acme-cx-chatbot.artef.dev/chat
       method: POST
       headers:
         Content-Type: application/json

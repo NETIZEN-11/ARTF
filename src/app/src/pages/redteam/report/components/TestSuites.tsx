@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Button } from '@app/components/ui/button';
@@ -14,25 +14,25 @@ import {
   severityDisplayNames,
   severityRiskScores,
   subCategoryDescriptions,
-} from '@promptfoo/redteam/constants';
-import { calculateAttackSuccessRate } from '@promptfoo/redteam/metrics';
+} from '@artef/redteam/constants';
+import { calculateAttackSuccessRate } from '@artef/redteam/metrics';
 import {
   formatPolicyIdentifierAsMetric,
   isValidPolicyObject,
   makeInlinePolicyId,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import {
   calculatePluginRiskScore,
   prepareTestResultsFromStats,
-} from '@promptfoo/redteam/riskScoring';
-import { getRiskCategorySeverityMap } from '@promptfoo/redteam/sharedFrontend';
+} from '@artef/redteam/riskScoring';
+import { getRiskCategorySeverityMap } from '@artef/redteam/sharedFrontend';
 import { Download, ScrollText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { getSeverityColor } from '../utils/color';
 import { type TestResultStats } from './FrameworkComplianceUtils';
 import { getStrategyIdFromTest } from './shared';
 import { useReportStore } from './store';
-import type { RedteamPluginObject } from '@promptfoo/redteam/types';
+import type { RedteamPluginObject } from '@artef/redteam/types';
 import type { ColumnDef, SortingState } from '@tanstack/react-table';
 
 interface TestSuitesProps {

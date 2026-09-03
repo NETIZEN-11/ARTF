@@ -1,15 +1,15 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { mockWindowLocation } from '@app/tests/browserMocks';
 import { callApi } from '@app/utils/api';
-import { ResultFailureReason } from '@promptfoo/types';
+import { ResultFailureReason } from '@artef/types';
 import { render, renderHook, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import App from './Report';
-import type { EvaluateResult, GradingResult, ResultsFile } from '@promptfoo/types';
+import type { EvaluateResult, GradingResult, ResultsFile } from '@artef/types';
 
 // Helper to render with all needed providers
 const renderWithProviders = (ui: React.ReactElement) => {

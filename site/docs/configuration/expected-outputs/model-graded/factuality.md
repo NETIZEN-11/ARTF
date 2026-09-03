@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Factuality
 description: 'Validate factual accuracy of LLM responses using AI-powered fact-checking against verified knowledge bases and sources'
 ---
@@ -36,7 +36,7 @@ By default, options A, B, C, and E are considered passing grades, while D is con
 
 Here's a complete example showing how to use factuality checks:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'What is the capital of {{state}}?'
 providers:
@@ -77,7 +77,7 @@ Like other model-graded assertions, you can override the default grader:
 1. Using the CLI:
 
    ```sh
-   promptfoo eval --grader openai:gpt-5-mini
+   artef eval --grader openai:gpt-5-mini
    ```
 
 2. Using test options:
@@ -103,7 +103,7 @@ You can customize the evaluation prompt using the `rubricPrompt` property. The p
 
 - `{{input}}`: The original prompt/question
 - `{{ideal}}`: The reference answer (from the `value` field)
-- `{{completion}}`: The LLM's actual response (provided automatically by promptfoo)
+- `{{completion}}`: The LLM's actual response (provided automatically by artef)
 
 Your custom prompt should instruct the model to either:
 

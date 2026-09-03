@@ -1,10 +1,10 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Internal Company RAG
 targets:
   - id: http
     label: internal-knowledge-rag
     config:
-      url: https://redpanda-internal-rag-example.promptfoo.app/chat
+      url: https://redpanda-internal-rag-example.artef.app/chat
       method: POST
       headers:
         Content-Type: application/json

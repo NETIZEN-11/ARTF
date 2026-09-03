@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 22
 sidebar_label: Assertions & metrics
 title: Assertions and Metrics - LLM Output Validation
@@ -21,7 +21,7 @@ Assertions are used to compare the LLM output against expected values or conditi
 
 Different types of assertions can be used to validate the output in various ways, such as checking for equality, JSON structure, similarity, or custom functions.
 
-In machine learning, "Accuracy" is a metric that measures the proportion of correct predictions made by a model out of the total number of predictions. With `promptfoo`, accuracy is defined as the proportion of prompts that produce the expected or desired output.
+In machine learning, "Accuracy" is a metric that measures the proportion of correct predictions made by a model out of the total number of predictions. With `artef`, accuracy is defined as the proportion of prompts that produce the expected or desired output.
 
 ## Using assertions
 
@@ -185,7 +185,7 @@ See [Model-graded evals](/docs/configuration/expected-outputs/model-graded), [cl
 | [factuality](/docs/configuration/expected-outputs/model-graded)                                      | LLM output adheres to the given facts, using Factuality method from OpenAI eval  |
 | [model-graded-closedqa](/docs/configuration/expected-outputs/model-graded)                           | LLM output adheres to given criteria, using Closed QA method from OpenAI eval    |
 | [pi](/docs/configuration/expected-outputs/model-graded/pi)                                           | Alternative scoring approach that uses a dedicated model for evaluating criteria |
-| [select-best](https://promptfoo.dev/docs/configuration/expected-outputs/model-graded)                | Compare multiple outputs for a test case and pick the best one                   |
+| [select-best](https://artef.dev/docs/configuration/expected-outputs/model-graded)                | Compare multiple outputs for a test case and pick the best one                   |
 | [max-score](/docs/configuration/expected-outputs/model-graded/max-score)                             | Select output with highest aggregate score from other assertions                 |
 
 ## Weighted assertions
@@ -297,7 +297,7 @@ type ScoringFunction = (
 
 When assertions use `weight`, each named score passed into the scoring function is already normalized as a weighted average. Eval outputs also include `namedScoreWeights` so downstream consumers can recover the weighted denominator when needed.
 
-See the [custom assertion scoring example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-assertion-scoring-override) for complete implementations in JavaScript and Python.
+See the [custom assertion scoring example](https://github.com/artef/artef/tree/main/examples/eval-assertion-scoring-override) for complete implementations in JavaScript and Python.
 
 ## Load assertions from external file
 
@@ -315,7 +315,7 @@ The `value` of an assertion can be loaded directly from a file using the `file:/
 
 If the file ends in `.js`, the Javascript is executed:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 - assert:
     - type: javascript
       value: file://path/to/assert.js
@@ -359,7 +359,7 @@ You can also use Javascript files in non-`javascript`-type asserts. For example,
 
 If the file ends in `.py`, the Python is executed:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 - assert:
     - type: python
       value: file://path/to/assert.py
@@ -431,7 +431,7 @@ When the `__expected` field is provided, the success and failure statistics in t
 
 To run multiple assertions, use column names `__expected1`, `__expected2`, `__expected3`, etc.
 
-For more advanced test cases, we recommend using a testing framework like [Jest or Vitest](/docs/integrations/jest) or [Mocha](/docs/integrations/mocha-chai) and using promptfoo [as a library](/docs/usage/node-package).
+For more advanced test cases, we recommend using a testing framework like [Jest or Vitest](/docs/integrations/jest) or [Mocha](/docs/integrations/mocha-chai) and using artef [as a library](/docs/usage/node-package).
 
 ## Reusing assertions with templates
 
@@ -507,7 +507,7 @@ These metrics will be shown in the UI:
 
 ![llm eval metrics](/img/docs/named-metrics.png)
 
-See [named metrics example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-named-metrics).
+See [named metrics example](https://github.com/artef/artef/tree/main/examples/eval-named-metrics).
 
 ## Creating derived metrics
 
@@ -640,15 +640,15 @@ derivedMetrics:
 - The `__count` variable is per prompt-provider combination (number of test cases)
 - Functions receive a copy of the context - return values, don't mutate
 - To avoid division by zero: `value: 'numerator / (denominator + 0.0001)'`
-- Debug errors with: `LOG_LEVEL=debug promptfoo eval`
+- Debug errors with: `LOG_LEVEL=debug artef eval`
 - No circular dependency protection - order your metrics carefully
 
 Derived metrics appear in all outputs alongside regular metrics - in the web UI metrics column, JSON `namedScores`, and CSV columns.
 
 See also:
 
-- [Named metrics example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-named-metrics) - Basic named metrics usage
-- [F-score example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-f-score) - Complete F1 score implementation
+- [Named metrics example](https://github.com/artef/artef/tree/main/examples/eval-named-metrics) - Basic named metrics usage
+- [F-score example](https://github.com/artef/artef/tree/main/examples/eval-f-score) - Complete F1 score implementation
 - [MathJS documentation](https://mathjs.org/docs/expressions/syntax.html) - Expression syntax reference
 
 ## Running assertions directly on outputs
@@ -677,12 +677,12 @@ And create a list of assertions (`asserts.yaml`):
 Then run the eval command:
 
 ```
-promptfoo eval --assertions asserts.yaml --model-outputs outputs.json
+artef eval --assertions asserts.yaml --model-outputs outputs.json
 ```
 
 ### Tagging outputs
 
-Promptfoo accepts a slightly more complex JSON structure that includes an `output` field for the model's output and a `tags` field for the associated tags. These tags are shown in the web UI as a comma-separated list. It's useful if you want to keep track of certain output attributes:
+artef accepts a slightly more complex JSON structure that includes an `output` field for the model's output and a `tags` field for the associated tags. These tags are shown in the web UI as a comma-separated list. It's useful if you want to keep track of certain output attributes:
 
 ```json
 [
@@ -694,4 +694,4 @@ Promptfoo accepts a slightly more complex JSON structure that includes an `outpu
 
 ### Processing and formatting outputs
 
-If you need to do any processing/formatting of outputs, use a [Javascript provider](/docs/providers/custom-api/), [Python provider](https://promptfoo.dev/docs/providers/python/), or [custom script](/docs/providers/custom-script/).
+If you need to do any processing/formatting of outputs, use a [Javascript provider](/docs/providers/custom-api/), [Python provider](https://artef.dev/docs/providers/python/), or [custom script](/docs/providers/custom-script/).

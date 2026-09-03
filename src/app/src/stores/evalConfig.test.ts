@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import { DEFAULT_CONFIG, useStore } from './evalConfig';
 
 describe('evalConfig store', () => {
@@ -74,7 +74,7 @@ describe('evalConfig store', () => {
         AWS_BEDROCK_REGION: 'us-east-1',
       });
 
-      const persistedState = JSON.parse(localStorage.getItem('promptfoo') || '{}');
+      const persistedState = JSON.parse(localStorage.getItem('artef') || '{}');
       expect(persistedState.state.config.description).toBe('Session config');
       // Sensitive keys (API keys/secrets/tokens) are stripped; non-sensitive
       // configuration values like hostnames and region names are preserved.
@@ -96,7 +96,7 @@ describe('evalConfig store', () => {
         },
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.env).toEqual({
         SERVICE_REGION: 'us-east-1',
         PUBLIC_URL: 'https://api.example.test/v1',
@@ -130,7 +130,7 @@ describe('evalConfig store', () => {
         'inline-session-key',
       );
 
-      const persistedState = JSON.parse(localStorage.getItem('promptfoo') || '{}');
+      const persistedState = JSON.parse(localStorage.getItem('artef') || '{}');
       expect(persistedState.state.config.providers[0].config).toEqual({
         headers: { 'x-request-id': 'visible-id' },
         temperature: 0.2,
@@ -178,7 +178,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persistedConfig = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persistedConfig = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persistedConfig.targets[0].config).toEqual({ endpoint: 'https://example.com' });
       expect(persistedConfig.defaultTest.provider.config).toEqual({
         endpoint: 'https://example.com',
@@ -259,7 +259,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.defaultTest.assert[0].config).toEqual({
         endpoint: 'https://grader.example.com?token=[REDACTED]',
         mode: 'strict',
@@ -309,7 +309,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tests[0].metadata).toEqual({
         pluginConfig: {
           headers: { 'X-Visible': 'kept' },
@@ -383,7 +383,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.env).toEqual({ NORMAL_ENV: 'visible-env' });
       expect(persisted.defaultTest.vars).toEqual({ visible: 'default-visible' });
       expect(persisted.tests[0].vars).toEqual({
@@ -433,7 +433,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.env).toEqual({ SAFE_SETTING: 'visible-root' });
       expect(persisted.providers[0]).toEqual({
         id: 'http',
@@ -461,7 +461,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0].config.url).toContain('/services/T/B/[REDACTED]');
       expect(persisted.providers[0].config.label).toContain(
         '/sk-zyxwvutsrqponmlkjihgfedcba0987654321',
@@ -486,7 +486,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers).toEqual([
         'https://hooks.slack.com/services/T000/B000/[REDACTED]',
         'webhook:https://discord.com/api/webhooks/1234/[REDACTED]',
@@ -510,7 +510,7 @@ describe('evalConfig store', () => {
         scenarios: ['az://account/container/scenarios.yaml?sig=scenario-reference-secret&sp=r'],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.prompts[0]).not.toContain('prompt-reference-secret');
       expect(persisted.tests[0]).toContain('az://account/container/tests.yaml?sp=r&sig=');
       expect(persisted.tests[0]).toContain('se=2026-06-01');
@@ -527,7 +527,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const legacyPromptPath = Object.keys(persisted.prompts).find((key) =>
         key.includes('prompts.txt'),
       );
@@ -560,7 +560,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0]['token-counter'].config).toEqual({
         queryParams: { region: 'us' },
         body: { nested: {}, prompt: 'visible-prompt' },
@@ -574,7 +574,7 @@ describe('evalConfig store', () => {
 
     it('removes sensitive environment values from previously persisted browser state on rehydrate', async () => {
       localStorage.setItem(
-        'promptfoo',
+        'artef',
         JSON.stringify({
           state: {
             config: {
@@ -615,7 +615,7 @@ describe('evalConfig store', () => {
         temperature: 0.4,
       });
 
-      const persistedState = JSON.parse(localStorage.getItem('promptfoo') || '{}');
+      const persistedState = JSON.parse(localStorage.getItem('artef') || '{}');
       expect(persistedState.state.config.env).toEqual({
         OPENAI_API_HOST: 'https://api.example.com',
       });
@@ -660,7 +660,7 @@ describe('evalConfig store', () => {
         } as any,
       });
 
-      const persistedState = JSON.parse(localStorage.getItem('promptfoo') || '{}');
+      const persistedState = JSON.parse(localStorage.getItem('artef') || '{}');
       expect(persistedState.state.config.providers[0].config).toEqual({
         endpoint: 'https://example.com',
         timeoutMs: 5000,
@@ -692,7 +692,7 @@ describe('evalConfig store', () => {
         ],
       });
 
-      const persistedState = JSON.parse(localStorage.getItem('promptfoo') || '{}');
+      const persistedState = JSON.parse(localStorage.getItem('artef') || '{}');
       expect(persistedState.state.config.providers[0].config).toEqual({
         endpoint: 'https://example.com',
       });
@@ -748,7 +748,7 @@ describe('evalConfig store', () => {
         } as any,
       });
 
-      const persistedState = JSON.parse(localStorage.getItem('promptfoo') || '{}');
+      const persistedState = JSON.parse(localStorage.getItem('artef') || '{}');
       expect(persistedState.state.config.providers[0].config).toEqual({
         apiKeyEnvar: 'CUSTOM_HTTP_API_KEY',
         auth: {
@@ -819,7 +819,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.env).toEqual({ NORMAL_ENV: 'visible-root' });
       expect(persisted.providers[0]).toEqual({
         id: 'watsonx',
@@ -857,7 +857,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0]).toEqual({
         id: 'http',
         config: {
@@ -897,7 +897,7 @@ describe('evalConfig store', () => {
         } as any,
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0].config).toEqual({
         keyFilename: '/var/run/secrets/service-account.json',
         googleAuthOptions: { keyFilename: '/var/run/secrets/another.json' },
@@ -950,7 +950,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.prompts[0]).toBe('Plain string prompt');
       expect(persisted.prompts[1]).toEqual({
         raw: 'Hello {{name}}',
@@ -998,7 +998,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tracing.enabled).toBe(true);
       expect(persisted.tracing.forwarding.endpoint).toContain('otel.example.com/v1/traces');
       expect(persisted.tracing.forwarding.headers).toEqual({
@@ -1053,7 +1053,7 @@ describe('evalConfig store', () => {
 
         expect(JSON.stringify(useStore.getState().config.tracing)).toContain(secret);
 
-        const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+        const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
         expect(persisted.tracing).toEqual({
           enabled: true,
           queryDelay: 1250,
@@ -1098,7 +1098,7 @@ describe('evalConfig store', () => {
         },
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tracing.provider).toEqual({
         id: 'tempo',
         endpoint: 'https://tempo.example.com',
@@ -1128,7 +1128,7 @@ describe('evalConfig store', () => {
         },
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(useStore.getState().config.tracing?.provider?.endpoint).toBe(endpoint);
       expect(persisted.tracing.provider.endpoint).toBe('https://tempo.example.com/tempo');
       expect(JSON.stringify(persisted)).not.toContain('endpoint-secret');
@@ -1147,7 +1147,7 @@ describe('evalConfig store', () => {
         },
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(useStore.getState().config.tracing?.provider?.endpoint).toBe(endpoint);
       expect(persisted.tracing.provider.endpoint).toBe(
         'https://tempo.example.com/tempo/%5BREDACTED%5D/traces',
@@ -1173,7 +1173,7 @@ describe('evalConfig store', () => {
         },
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tracing.forwarding.headers).toEqual({});
       expect(persisted.tracing.provider.auth).toEqual({});
       expect(persisted.tracing.provider.headers).toEqual({});
@@ -1184,7 +1184,7 @@ describe('evalConfig store', () => {
 
     it('removes previously persisted tracing provider credentials during rehydration', async () => {
       localStorage.setItem(
-        'promptfoo',
+        'artef',
         JSON.stringify({
           state: {
             config: {
@@ -1216,7 +1216,7 @@ describe('evalConfig store', () => {
       };
       expect(useStore.getState().config.tracing?.provider).toEqual(expectedProvider);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tracing.provider).toEqual(expectedProvider);
       expect(JSON.stringify(persisted)).not.toContain('previously-persisted-tempo-token');
       expect(JSON.stringify(persisted)).not.toContain('previously-persisted-header');
@@ -1306,7 +1306,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const cfg = persisted.providers[0].config;
       expect(cfg.url).toBe('https://api.example.com/v1/predict');
       expect(cfg.request).toContain('Authorization: [REDACTED]');
@@ -1374,7 +1374,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const serialized = JSON.stringify(persisted);
       expect(serialized).not.toContain('browser-user');
       expect(serialized).not.toContain('browser-password');
@@ -1398,7 +1398,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.sharing).toEqual({
         apiBaseUrl: 'https://[REDACTED]@share.example.com?api_key=[REDACTED]&region=us',
         appBaseUrl: 'https://app.example.com/evals?token=[REDACTED]&theme=dark',
@@ -1420,7 +1420,7 @@ describe('evalConfig store', () => {
         scenarios: [{ tests: [{ providers: [provider] }] }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers).toEqual([{ [scrubbedProvider]: { config: { region: 'us' } } }]);
       expect(persisted.defaultTest.providers).toEqual([scrubbedProvider]);
       expect(persisted.tests[0].providers).toEqual([scrubbedProvider]);
@@ -1456,7 +1456,7 @@ describe('evalConfig store', () => {
         scenarios: [{ tests: [{ providers: providerMaps }] }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.defaultTest.providers).toEqual(scrubbedProviderMaps);
       expect(persisted.tests[0].providers).toEqual(scrubbedProviderMaps);
       expect(persisted.scenarios[0].tests[0].providers).toEqual(scrubbedProviderMaps);
@@ -1489,7 +1489,7 @@ describe('evalConfig store', () => {
         tests: [{ providers: [providerMap] }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const expectedEntry = {
         [scrubbedUserinfoOnlyProvider]: { config: { region: 'eu' } },
         prompts: ['Hello {{topic}}'],
@@ -1522,7 +1522,7 @@ describe('evalConfig store', () => {
         scenarios: [{ tests: [{ providers: [provider] }] }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const expectedConfig = {
         headers: { 'x-request-id': 'visible-id' },
         endpoint: 'https://example.com',
@@ -1561,7 +1561,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tests[0].providers.config).toEqual({ endpoint: 'https://example.com' });
       const persistedJson = JSON.stringify(persisted);
       expect(persistedJson).not.toContain('single-provider-secret');
@@ -1574,7 +1574,7 @@ describe('evalConfig store', () => {
         tests: [{ providers: ['openai:gpt-4o', 'file://provider.py'] }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tests[0].providers).toEqual(['openai:gpt-4o', 'file://provider.py']);
     });
 
@@ -1593,7 +1593,7 @@ describe('evalConfig store', () => {
         redteam: { provider: providerMap },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.defaultTest.provider).toEqual(scrubbedProviderMap);
       expect(persisted.tests[0].provider).toEqual(scrubbedProviderMap);
       expect(persisted.tests[0].assert[0].provider).toEqual(scrubbedProviderMap);
@@ -1612,7 +1612,7 @@ describe('evalConfig store', () => {
         tests: [{ providers: [{ id: 'http', apiKey: 'filter-stray-credential' }] }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers).toEqual([{ id: 'http' }]);
       expect(persisted.targets).toEqual([{ id: 'http' }]);
       expect(persisted.tests[0].providers).toEqual([{ id: 'http' }]);
@@ -1635,7 +1635,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0].headers).toEqual({ 'Content-Type': 'application/json' });
       expect(JSON.stringify(persisted)).not.toContain('short-header-credential');
     });
@@ -1657,7 +1657,7 @@ describe('evalConfig store', () => {
         providers: [{ id: 'openai:gpt-4', config: {}, stray: 'unrelated', tools }],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0].tools).toEqual(tools);
     });
 
@@ -1670,7 +1670,7 @@ describe('evalConfig store', () => {
         providerPromptMap: { [provider]: ['main'] },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providerPromptMap).toEqual({
         'https://[REDACTED]@api.example.com/v1?token=[REDACTED]&region=us': ['main'],
       });
@@ -1692,7 +1692,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.commandLineOptions).toEqual({
         grader: 'https://[REDACTED]@grader.example.com/v1?api_key=[REDACTED]&mode=strict',
         providers: [
@@ -1732,7 +1732,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const serialized = JSON.stringify(persisted);
       expect(serialized).not.toContain('form-body-secret');
       expect(serialized).not.toContain('form-password-secret');
@@ -1770,7 +1770,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const config = persisted.providers[0].config;
       expect(config.auth.token).toBe('{{ api_token | trim }}');
       expect(config.headers).toEqual({ Authorization: 'Bearer {{ env.API_TOKEN | trim }}' });
@@ -1803,7 +1803,7 @@ describe('evalConfig store', () => {
         ],
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers[0].config.tls).toEqual({
         cert: '-----BEGIN CERTIFICATE-----inline-cert-pem-secret-----END CERTIFICATE-----',
         ca: '-----BEGIN CERTIFICATE-----inline-ca-secret-----END CERTIFICATE-----',
@@ -1824,7 +1824,7 @@ describe('evalConfig store', () => {
 
       useStore.getState().setConfig({ providers: [cyclic as any] } as any);
 
-      const serialized = localStorage.getItem('promptfoo') ?? '';
+      const serialized = localStorage.getItem('artef') ?? '';
       expect(serialized).not.toContain('cyclic-leak-secret');
       const persisted = JSON.parse(serialized).state.config;
       // Walker resolves the cycle by dropping the offending subtree, and the
@@ -1848,7 +1848,7 @@ describe('evalConfig store', () => {
         providers: [sharedProvider as any, sharedProvider as any],
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.providers).toEqual([
         { id: 'http', config: { endpoint: 'https://api.example.com' } },
         { id: 'http', config: { endpoint: 'https://api.example.com' } },
@@ -1925,7 +1925,7 @@ describe('evalConfig store', () => {
         ],
       });
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       const providerCfg = persisted.providers[0].config;
       expect(providerCfg.apiKey).toBeUndefined();
       expect(providerCfg.tools[0].function.parameters.properties).toEqual({
@@ -1993,7 +1993,7 @@ describe('evalConfig store', () => {
         ],
       });
 
-      const persistedConfig = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persistedConfig = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persistedConfig.providers[0].config).toEqual({
         auth: {
           type: 'api_key',
@@ -2030,7 +2030,7 @@ describe('evalConfig store', () => {
         ],
       } as any);
 
-      let persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      let persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tests[0]).toEqual({
         path: 'file://generate-tests.ts',
         config: {
@@ -2048,7 +2048,7 @@ describe('evalConfig store', () => {
         },
       } as any);
 
-      persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(persisted.tests).toEqual({
         path: 'file://generate-tests.py',
         config: { split: 'validation' },
@@ -2190,7 +2190,7 @@ describe('evalConfig store', () => {
 
       expect(useStore.getState().getTestSuite().tracing).toEqual(tracing);
 
-      const persisted = JSON.parse(localStorage.getItem('promptfoo') || '{}').state.config;
+      const persisted = JSON.parse(localStorage.getItem('artef') || '{}').state.config;
       expect(JSON.stringify(persisted.tracing)).not.toContain('browser-runtime-secret');
       expect(persisted.tracing.provider.headers).toEqual({ 'X-Scope-OrgID': 'tenant-a' });
     });

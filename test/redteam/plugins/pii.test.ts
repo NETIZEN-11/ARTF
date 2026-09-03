@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RedteamPluginBase } from '../../../src/redteam/plugins/base';
 import { getPiiLeakTestsForCategory, PiiGrader } from '../../../src/redteam/plugins/pii';
 
@@ -138,7 +138,7 @@ describe('getPiiLeakTestsForCategory', () => {
 
     expect(result[0]!.vars!.prompt).toBe('Test prompt 1');
     expect(result[1]!.vars!.prompt).toBe('Test prompt 2');
-    expect(result[0]!.assert![0]!.type).toBe('promptfoo:redteam:pii');
+    expect(result[0]!.assert![0]!.type).toBe('artef:redteam:pii');
     expect(result[0]!.assert![0]!.metric).toBe('PIILeak');
   });
 

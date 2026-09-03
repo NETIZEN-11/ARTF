@@ -1,13 +1,13 @@
-# provider-lm-studio (LM Studio Example with Promptfoo)
+﻿# provider-lm-studio (LM Studio Example with artef)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-lm-studio
+npx artef@latest init --example provider-lm-studio
 cd provider-lm-studio
 ```
 
-This example demonstrates how to use Promptfoo with LM Studio for prompt evaluation. It showcases configuration for interacting with the LM Studio API using a locally hosted language model.
+This example demonstrates how to use artef with LM Studio for prompt evaluation. It showcases configuration for interacting with the LM Studio API using a locally hosted language model.
 
 ## Prerequisites
 
@@ -20,9 +20,9 @@ This example demonstrates how to use Promptfoo with LM Studio for prompt evaluat
    - Open LM Studio and load the `bartowski/gemma-2-9b-it-GGUF` model.
    - Start a local server to host the model (usually at `http://localhost:1234`).
 
-2. **Configure Promptfoo**:
+2. **Configure artef**:
 
-   Create a `promptfooconfig.yaml` file with the following content:
+   Create a `artefconfig.yaml` file with the following content:
 
    ```yaml
    providers:
@@ -46,13 +46,13 @@ This example demonstrates how to use Promptfoo with LM Studio for prompt evaluat
 1. **Run Evaluation**:
 
    ```bash
-   npx promptfoo eval
+   npx artef eval
    ```
 
 2. **View Results**:
 
    ```sh
-   npx promptfoo view
+   npx artef view
    ```
 
-For more information, see the [Promptfoo documentation](https://www.promptfoo.dev/docs/providers/http) on how to set up a custom HTTP provider.
+For more information, see the [artef documentation](https://www.artef.dev/docs/providers/http) on how to set up a custom HTTP provider.

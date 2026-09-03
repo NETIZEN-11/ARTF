@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 8
 description: 'Identify and block prompt injection attacks using advanced model-based classification for enhanced security protection'
 ---
@@ -40,7 +40,7 @@ env:
   WITHPI_API_KEY: your_api_key_here
 ```
 
-in your promptfoo config
+in your artef config
 
 ## How to use it
 

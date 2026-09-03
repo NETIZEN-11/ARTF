@@ -1,14 +1,14 @@
----
+﻿---
 sidebar_position: 65
 title: Evaluate Coding Agents
-description: Evaluate Codex, Claude, OpenCode, Open Interpreter, and plain LLM coding agents with promptfoo, including sandboxing, tracing, and assertions.
+description: Evaluate Codex, Claude, OpenCode, Open Interpreter, and plain LLM coding agents with artef, including sandboxing, tracing, and assertions.
 ---
 
 # Evaluate Coding Agents
 
 Coding agents present a different evaluation challenge than standard LLMs. A chat model transforms input to output in one step. An agent decides what to do, does it, observes the result, and iterates—often dozens of times before producing a final answer.
 
-This guide covers coding agent evals with promptfoo: [OpenAI Codex SDK](/docs/providers/openai-codex-sdk), [OpenAI Codex app-server](/docs/providers/openai-codex-app-server), [Claude Agent SDK](/docs/providers/claude-agent-sdk), [OpenCode SDK](/docs/providers/opencode-sdk), [Open Interpreter](/docs/providers/openinterpreter), and plain LLM baselines.
+This guide covers coding agent evals with artef: [OpenAI Codex SDK](/docs/providers/openai-codex-sdk), [OpenAI Codex app-server](/docs/providers/openai-codex-app-server), [Claude Agent SDK](/docs/providers/claude-agent-sdk), [OpenCode SDK](/docs/providers/opencode-sdk), [Open Interpreter](/docs/providers/openinterpreter), and plain LLM baselines.
 
 ## Why agent evals are different
 
@@ -37,10 +37,10 @@ Choose the provider by the runtime boundary you need to evaluate:
 | **OpenAI Codex SDK**        | CI, automation, structured coding outputs, thread reuse                                         | `@openai/codex-sdk` library                              | Git repo check, filesystem sandbox, network/search off unless enabled, minimal env  |
 | **OpenAI Codex app-server** | Rich-client protocol behavior, streamed items, approvals, skills, plugins, app connector events | Local `codex app-server` JSON-RPC process                | Read-only sandbox, approvals declined, ephemeral threads, minimal env               |
 | **Claude Agent SDK**        | Claude Code-compatible workflows, MCP-heavy tasks, local skills                                 | `@anthropic-ai/claude-agent-sdk` library                 | No tools by default; configured working dirs are read-only until write tools opt in |
-| **OpenCode SDK**            | Provider-agnostic coding agent comparisons                                                      | OpenCode SDK with a promptfoo-started or existing server | Temporary workspace by default; working dirs start with read-only tools             |
+| **OpenCode SDK**            | Provider-agnostic coding agent comparisons                                                      | OpenCode SDK with a artef-started or existing server | Temporary workspace by default; working dirs start with read-only tools             |
 | **Open Interpreter**        | Multi-backend coding agent and harness comparisons                                              | Local `interpreter app-server` JSON-RPC process          | Read-only sandbox, approvals declined, ephemeral threads, minimal env               |
 
-`openai:codex-desktop` is an alias for the app-server protocol provider. Promptfoo starts its own `codex app-server` child process; it does not attach to an already-running Codex Desktop app window or reuse Desktop UI state.
+`openai:codex-desktop` is an alias for the app-server protocol provider. artef starts its own `codex app-server` child process; it does not attach to an already-running Codex Desktop app window or reuse Desktop UI state.
 
 Across the coding-agent providers, relative `working_dir` values resolve from the directory containing the config file. That keeps configs portable when you run the same eval from the example directory, the repo root, or CI.
 
@@ -53,7 +53,7 @@ Codex SDK's `output_schema` guarantees valid JSON, making the response structure
 <details>
 <summary>Configuration</summary>
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Security audit
 
 prompts:
@@ -128,7 +128,7 @@ A plain LLM given the same prompt will explain how to do a security audit rather
 
 Use Codex app-server when the behavior under test lives in the client protocol, not just the final text. Approval requests, item events, app connector events, plugin metadata, and thread lifecycle details are examples of app-server-specific surfaces.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Codex app-server command approval eval
 
 prompts:
@@ -167,7 +167,7 @@ tests:
           };
 ```
 
-This eval is not asking whether the final message sounds reasonable. It checks whether the runtime requested command approval and whether promptfoo answered without a human in the loop. Keep these tests in disposable or read-only workspaces unless the expected side effect is part of the test.
+This eval is not asking whether the final message sounds reasonable. It checks whether the runtime requested command approval and whether artef answered without a human in the loop. Keep these tests in disposable or read-only workspaces unless the expected side effect is part of the test.
 
 ### Refactoring with test verification
 
@@ -176,7 +176,7 @@ Claude Agent SDK defaults to read-only tools when `working_dir` is set. To modif
 <details>
 <summary>Configuration</summary>
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Refactor with test verification
 
 prompts:
@@ -214,7 +214,7 @@ The agent's output is its final text response describing what it did, not the fi
 
 When you need to verify behavior rather than the agent's self-report, tracing is the better fit. It lets you assert that the agent actually ran tests, executed commands, or took multiple reasoning steps:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tracing:
   enabled: true
   otlp:
@@ -250,7 +250,7 @@ When tasks span multiple files, use `llm-rubric` to evaluate semantic completion
 <details>
 <summary>Configuration</summary>
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Add rate limiting to Flask API
 
 prompts:
@@ -382,8 +382,8 @@ Run coding agent evals like integration tests. A useful PR or release check incl
 For local provider work, validate configs before running expensive evals:
 
 ```bash
-npm run local -- validate config -c examples/openai-codex-app-server/promptfooconfig.yaml
-npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml --no-cache
+npm run local -- validate config -c examples/openai-codex-app-server/artefconfig.yaml
+npm run local -- eval -c examples/openai-codex-app-server/artefconfig.yaml --no-cache
 ```
 
 ## Evaluation principles
@@ -404,8 +404,8 @@ npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml -
 - [OpenAI Codex app-server provider](/docs/providers/openai-codex-app-server)
 - [Claude Agent SDK provider](/docs/providers/claude-agent-sdk)
 - [OpenCode SDK provider](/docs/providers/opencode-sdk)
-- [Codex app-server examples](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-codex-app-server)
-- [Agentic SDK comparison example](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-agentic-sdks)
+- [Codex app-server examples](https://github.com/artef/artef/tree/main/examples/openai-codex-app-server)
+- [Agentic SDK comparison example](https://github.com/artef/artef/tree/main/examples/compare-agentic-sdks)
 - [Red Team Coding Agents](/docs/red-team/coding-agents/)
 - [Sandboxed code evals](/docs/guides/sandboxed-code-evals)
 - [Tracing](/docs/tracing/)

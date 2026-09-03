@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { sleep } from '../../src/util/time';
 import { mockProcessEnv } from '../util/utils';
 
@@ -188,7 +188,7 @@ describe('OpenTelemetry Tracing Integration', () => {
   });
 
   it('should respect environment variable for enabling tracing', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_TRACING_ENABLED: 'true' });
+    const restoreEnv = mockProcessEnv({ artef_TRACING_ENABLED: 'true' });
     try {
       const config: Partial<EvaluateTestSuite> = {
         providers: ['mock-traced-provider'],

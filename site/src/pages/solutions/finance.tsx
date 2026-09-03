@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -61,7 +61,7 @@ export default function Finance() {
       description="Red team AI systems for FINRA, SEC, and SR 11-7 compliance. Test for MNPI disclosure, market manipulation, and financial misconduct."
     >
       <Head>
-        <meta property="og:title" content="AI Security for Financial Services | Promptfoo" />
+        <meta property="og:title" content="AI Security for Financial Services | artef" />
         <meta
           property="og:description"
           content="Red team AI for FINRA, SEC, and model risk management compliance."
@@ -72,7 +72,7 @@ export default function Finance() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Security for Financial Services | Promptfoo" />
+        <meta name="twitter:title" content="AI Security for Financial Services | artef" />
         <meta
           name="twitter:description"
           content="Red team AI for FINRA, SEC, and model risk management compliance."
@@ -269,7 +269,7 @@ export default function Finance() {
                 <h3>SR 11-7 validation support</h3>
                 <p>
                   Model risk management requirements demand documented adversarial testing with
-                  systematic vulnerability identification. Promptfoo provides the structured test
+                  systematic vulnerability identification. artef provides the structured test
                   methodology, severity-rated findings, and reproducible documentation that
                   examiners expect.
                 </p>
@@ -317,7 +317,7 @@ export default function Finance() {
         {/* Benefits */}
         <section className={styles.benefitsSection}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why financial institutions choose Promptfoo</h2>
+            <h2 className={styles.sectionTitle}>Why financial institutions choose artef</h2>
 
             <div className={styles.benefitsList}>
               <div className={styles.benefitItem}>

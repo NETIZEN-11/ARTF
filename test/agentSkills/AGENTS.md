@@ -1,18 +1,18 @@
-# Agent Skill Tests
+﻿# Agent Skill Tests
 
-`test/agentSkills/promptfooPlugin.test.ts` is the contract suite for the
-Promptfoo plugin bundle (shared across Codex and Claude Code).
+`test/agentSkills/artefPlugin.test.ts` is the contract suite for the
+artef plugin bundle (shared across Codex and Claude Code).
 
 ## What To Protect
 
-- The shared `plugins/promptfoo` bundle has exactly four skills: evals, provider
+- The shared `plugins/artef` bundle has exactly four skills: evals, provider
   setup, redteam setup, and redteam run.
 - The bundle ships both a `.codex-plugin/plugin.json` and a
   `.claude-plugin/plugin.json`, and is exposed by both
   `.agents/plugins/marketplace.json` (Codex) and the repo-root
   `.claude-plugin/marketplace.json` (Claude Code) with matching plugin name
-  `promptfoo`.
-- The repo-local `.claude/skills/promptfoo-evals` is a self-contained
+  `artef`.
+- The repo-local `.claude/skills/artef-evals` is a self-contained
   contributor copy (no cross-skill routing) and is intentionally independent of
   the published bundle's eval skill, since the sibling skills are not present in
   `.claude/skills/`.
@@ -34,7 +34,7 @@ Run from the repo root:
 
 ```bash
 source ~/.nvm/nvm.sh && nvm use
-npx vitest test/agentSkills/promptfooPlugin.test.ts --run
+npx vitest test/agentSkills/artefPlugin.test.ts --run
 ```
 
 For Python fixture edits, also run the same Ruff command as CI:
@@ -45,13 +45,13 @@ python3 -m ruff format --check
 ```
 
 If you add or rename a fixture directory, update the expected fixture matrix in
-`promptfooPlugin.test.ts` and validate every fixture config:
+`artefPlugin.test.ts` and validate every fixture config:
 
 ```bash
-for config in $(find test/fixtures/agent-skills -name promptfooconfig.yaml -o -name redteam.yaml | sort); do
+for config in $(find test/fixtures/agent-skills -name artefconfig.yaml -o -name redteam.yaml | sort); do
   npm run local -- validate config -c "$config"
 done
 ```
 
-For bundle behavior changes, also run a live Promptfoo skill eval with positive
+For bundle behavior changes, also run a live artef skill eval with positive
 and near-miss routing prompts, following `site/docs/guides/test-agent-skills.md`.

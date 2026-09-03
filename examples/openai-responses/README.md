@@ -1,21 +1,21 @@
-# openai-responses (OpenAI Responses API Examples)
+﻿# openai-responses (OpenAI Responses API Examples)
 
-This directory contains examples for testing OpenAI's Responses API with promptfoo.
+This directory contains examples for testing OpenAI's Responses API with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-responses
+npx artef@latest init --example openai-responses
 cd openai-responses
 ```
 
 ## Examples
 
-### Basic Responses API (`promptfooconfig.yaml`)
+### Basic Responses API (`artefconfig.yaml`)
 
 Basic example showing how to use the Responses API with GPT-5.5, the GPT-5.4 family (`gpt-5.4-mini`, `gpt-5.4-nano`), and a GPT-4.1 comparison model.
 
-### External Response Format (`promptfooconfig.external-format.yaml`)
+### External Response Format (`artefconfig.external-format.yaml`)
 
 Example demonstrating how to load `response_format` configuration from external files. This is useful for:
 
@@ -28,11 +28,11 @@ This example compares inline vs. external file approach:
 - **Inline**: JSON schema defined directly in the config
 - **External**: JSON schema loaded from `response_format.json` using `file://` syntax
 
-### Function Calling (`promptfooconfig.function-call.yaml`)
+### Function Calling (`artefconfig.function-call.yaml`)
 
 Example demonstrating function calling capabilities with the Responses API.
 
-### Function Callbacks (`promptfooconfig.function-callback.yaml`)
+### Function Callbacks (`artefconfig.function-callback.yaml`)
 
 Example showing how to use function callbacks to execute functions locally instead of just returning the function call. This allows you to:
 
@@ -46,11 +46,11 @@ Key differences from regular function calling:
 - Functions are executed locally and results are returned
 - Perfect for testing tool-using AI agents
 
-### Reasoning Models (`promptfooconfig.reasoning.yaml`)
+### Reasoning Models (`artefconfig.reasoning.yaml`)
 
 Example showing how to use reasoning models (o1, o3, etc.) with specific configurations.
 
-### GPT-5.1 (`promptfooconfig.gpt-5.1.yaml`)
+### GPT-5.1 (`artefconfig.gpt-5.1.yaml`)
 
 Example demonstrating GPT-5.1's key features including:
 
@@ -59,7 +59,7 @@ Example demonstrating GPT-5.1's key features including:
 - **Reasoning effort levels**: Compare `none`, `medium`, and `high` reasoning modes
 - **Coding tasks**: Optimized for coding and problem-solving workflows
 
-### GPT-5.2 (`promptfooconfig.gpt-5.2.yaml`)
+### GPT-5.2 (`artefconfig.gpt-5.2.yaml`)
 
 Example comparing GPT-5.2 with different reasoning effort levels:
 
@@ -67,32 +67,32 @@ Example comparing GPT-5.2 with different reasoning effort levels:
 - **medium**: Balanced reasoning for most tasks
 - **high**: Maximum reasoning for complex problem-solving
 
-### GPT-5.5 (`promptfooconfig.gpt-5.5.yaml`)
+### GPT-5.5 (`artefconfig.gpt-5.5.yaml`)
 
 Example comparing GPT-5.5 standard and pro models with different Responses API reasoning settings.
 
-### GPT-5.6 (`promptfooconfig.gpt-5.6.yaml`)
+### GPT-5.6 (`artefconfig.gpt-5.6.yaml`)
 
 Example comparing the Sol, Terra, and Luna tiers. The `gpt-5.6` alias routes to Sol. All tiers support `max` reasoning; Codex `ultra` is available for Sol and Terra rather than as a Responses API reasoning value.
 
-### Image Processing (`promptfooconfig.image.yaml`)
+### Image Processing (`artefconfig.image.yaml`)
 
 Example demonstrating image input capabilities with vision models.
 
-### Web Search (`promptfooconfig.web-search.yaml`)
+### Web Search (`artefconfig.web-search.yaml`)
 
 Example showing web search capabilities.
 
-### Prompt Caching (`promptfooconfig.prompt-cache.yaml`)
+### Prompt Caching (`artefconfig.prompt-cache.yaml`)
 
 Example combining `prompt_cache_key`, `prompt_cache_retention`, and included
 `web_search_call.results` payloads in a Responses request.
 
-### Codex Models (`promptfooconfig.codex.yaml`)
+### Codex Models (`artefconfig.codex.yaml`)
 
 Example using Codex models for code generation tasks.
 
-### MCP (Model Context Protocol) (`promptfooconfig.mcp.yaml`)
+### MCP (Model Context Protocol) (`artefconfig.mcp.yaml`)
 
 Example demonstrating OpenAI's MCP integration with remote MCP servers. This example uses the DeepWiki MCP server to query GitHub repositories.
 
@@ -109,37 +109,37 @@ To run any of these examples:
 
 ```bash
 # Basic Responses API example
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 
 # External response format example
-npx promptfoo eval -c promptfooconfig.external-format.yaml
+npx artef eval -c artefconfig.external-format.yaml
 
 # MCP example
-npx promptfoo eval -c promptfooconfig.mcp.yaml
+npx artef eval -c artefconfig.mcp.yaml
 
 # Function calling example
-npx promptfoo eval -c promptfooconfig.function-call.yaml
+npx artef eval -c artefconfig.function-call.yaml
 
 # Function callbacks example
-npx promptfoo eval -c promptfooconfig.function-callback.yaml
+npx artef eval -c artefconfig.function-callback.yaml
 
 # Reasoning models example
-npx promptfoo eval -c promptfooconfig.reasoning.yaml
+npx artef eval -c artefconfig.reasoning.yaml
 
 # GPT-5.1 example
-npx promptfoo eval -c promptfooconfig.gpt-5.1.yaml
+npx artef eval -c artefconfig.gpt-5.1.yaml
 
 # GPT-5.2 example
-npx promptfoo eval -c promptfooconfig.gpt-5.2.yaml
+npx artef eval -c artefconfig.gpt-5.2.yaml
 
 # GPT-5.5 example
-npx promptfoo eval -c promptfooconfig.gpt-5.5.yaml
+npx artef eval -c artefconfig.gpt-5.5.yaml
 
 # GPT-5.6 example
-npx promptfoo eval -c promptfooconfig.gpt-5.6.yaml
+npx artef eval -c artefconfig.gpt-5.6.yaml
 
 # Prompt caching example
-npx promptfoo eval -c promptfooconfig.prompt-cache.yaml
+npx artef eval -c artefconfig.prompt-cache.yaml
 
 ```
 

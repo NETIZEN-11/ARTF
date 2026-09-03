@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addGoblin } from '../../../src/redteam/strategies/goblin';
 
 import type { TestCase } from '../../../src/types/index';
@@ -17,7 +17,7 @@ describe('addGoblin', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].provider).toMatchObject({
-      id: 'promptfoo:redteam:goblin',
+      id: 'artef:redteam:goblin',
       config: {
         injectVar: 'input',
         maxTurns: 5,

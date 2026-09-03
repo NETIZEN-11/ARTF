@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+﻿import { describe, expect, it, vi } from 'vitest';
 import {
   extractMarkdownImageSources,
   normalizeImageSrcForComparison,
@@ -8,8 +8,8 @@ import {
 // Helper function to handle string image resolution (extracted to reduce complexity)
 function resolveImageString(image: string): string | undefined {
   // Handle blob URIs
-  if (image.includes('promptfoo://blob/')) {
-    const match = image.match(/promptfoo:\/\/blob\/([a-f0-9]{32,64})/i);
+  if (image.includes('artef://blob/')) {
+    const match = image.match(/artef:\/\/blob\/([a-f0-9]{32,64})/i);
     if (match) {
       return `/api/blobs/${match[1]}`;
     }
@@ -51,7 +51,7 @@ function resolveImageObject(image: {
   }
   // Check blobRef
   if (image.blobRef?.uri) {
-    const match = image.blobRef.uri.match(/promptfoo:\/\/blob\/([a-f0-9]{32,64})/i);
+    const match = image.blobRef.uri.match(/artef:\/\/blob\/([a-f0-9]{32,64})/i);
     if (match) {
       return `/api/blobs/${match[1]}`;
     }
@@ -64,7 +64,7 @@ vi.mock('@app/utils/media', () => ({
   normalizeMediaText: (text: string) => {
     // Simplified normalization - replace blob URIs and storage refs with API paths
     return text
-      .replace(/promptfoo:\/\/blob\/([a-f0-9]{32,64})/gi, '/api/blobs/$1')
+      .replace(/artef:\/\/blob\/([a-f0-9]{32,64})/gi, '/api/blobs/$1')
       .replace(/storageRef:\/?([^\s)'"`]+)/gi, '/api/media/$1');
   },
   resolveImageSource: (
@@ -101,7 +101,7 @@ describe('normalizeImageSrcForComparison', () => {
   });
 
   it('normalizes blob URIs to API paths', () => {
-    const blobUri = 'promptfoo://blob/abc123def456abc123def456abc123de';
+    const blobUri = 'artef://blob/abc123def456abc123def456abc123de';
     const result = normalizeImageSrcForComparison(blobUri);
     expect(result).toBe('/api/blobs/abc123def456abc123def456abc123de');
   });
@@ -130,7 +130,7 @@ describe('normalizeImageSrcForComparison', () => {
   });
 
   it('normalizes blob URIs within text containing other content', () => {
-    const text = 'Some text promptfoo://blob/fedcba9876543210fedcba9876543210 more text';
+    const text = 'Some text artef://blob/fedcba9876543210fedcba9876543210 more text';
     const result = normalizeImageSrcForComparison(text);
     // normalizeMediaText replaces the blob URI
     expect(result).toContain('/api/blobs/fedcba9876543210fedcba9876543210');
@@ -202,7 +202,7 @@ describe('extractMarkdownImageSources', () => {
   });
 
   it('extracts blob URI images', () => {
-    const blobUri = 'promptfoo://blob/abc123def456abc123def456abc123de';
+    const blobUri = 'artef://blob/abc123def456abc123def456abc123de';
     const markdown = `![Alt](${blobUri})`;
     const sources = extractMarkdownImageSources(markdown);
     // Blob URIs should be normalized to API paths
@@ -303,8 +303,8 @@ describe('extractMarkdownImageSources', () => {
     // If two URLs normalize to the same thing, they should be deduplicated
     const blobHash = 'abc123def456abc123def456abc123de';
     const markdown = `
-      ![Blob1](promptfoo://blob/${blobHash})
-      ![Blob2](promptfoo://blob/${blobHash})
+      ![Blob1](artef://blob/${blobHash})
+      ![Blob2](artef://blob/${blobHash})
     `;
     const sources = extractMarkdownImageSources(markdown);
     expect(sources).toEqual([`/api/blobs/${blobHash}`]);
@@ -334,7 +334,7 @@ describe('resolveEvalImageOutputSource', () => {
   it('falls back to resolveImageSource for blob refs', () => {
     const image = {
       data: 'base64data',
-      blobRef: { uri: 'promptfoo://blob/abc123def456abc123def456abc123de', hash: 'abc123' },
+      blobRef: { uri: 'artef://blob/abc123def456abc123def456abc123de', hash: 'abc123' },
     } as any;
     const result = resolveEvalImageOutputSource(image);
     expect(result).toBe('/api/blobs/abc123def456abc123def456abc123de');
@@ -354,7 +354,7 @@ describe('resolveEvalImageOutputSource', () => {
 
   it('handles image with only blobRef', () => {
     const image = {
-      blobRef: { uri: 'promptfoo://blob/fedcba9876543210fedcba9876543210', hash: 'fedcba98' },
+      blobRef: { uri: 'artef://blob/fedcba9876543210fedcba9876543210', hash: 'fedcba98' },
     } as any;
     const result = resolveEvalImageOutputSource(image);
     expect(result).toBe('/api/blobs/fedcba9876543210fedcba9876543210');

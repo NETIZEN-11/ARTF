@@ -1,4 +1,4 @@
-import type { Server } from 'node:http';
+﻿import type { Server } from 'node:http';
 
 import request from 'supertest';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -66,7 +66,7 @@ describe('Providers Routes', () => {
     // Default to the non-cloud path so host-dependent assertions are deterministic
     // regardless of the machine's cloud-login state.
     vi.mocked(cloudConfig.isEnabled).mockReturnValue(false);
-    vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://api.promptfoo.app');
+    vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://api.artef.app');
     vi.mocked(cloudConfig.getAuthHeaders).mockReturnValue(undefined);
   });
 
@@ -468,7 +468,7 @@ describe('Providers Routes', () => {
       expect(response.status).toBe(200);
       expect(response.body).toEqual(generatedConfig);
       expect(mockedFetchWithProxy).toHaveBeenCalledWith(
-        'https://api.promptfoo.app/api/v1/http-provider-generator',
+        'https://api.artef.app/api/v1/http-provider-generator',
         expect.objectContaining({
           method: 'POST',
           body: JSON.stringify({
@@ -505,7 +505,7 @@ describe('Providers Routes', () => {
       const [calledUrl, calledOpts] = mockedFetchWithProxy.mock.calls[0];
       // Trailing slash on the configured host is normalized (no //api/v1).
       expect(calledUrl).toBe('https://onprem.example.com/api/v1/http-provider-generator');
-      expect(calledUrl).not.toContain('api.promptfoo.app');
+      expect(calledUrl).not.toContain('api.artef.app');
       expect((calledOpts?.headers as Record<string, string>)?.Authorization).toBe(
         'Bearer test-onprem-key',
       );
@@ -525,7 +525,7 @@ describe('Providers Routes', () => {
 
       expect(response.status).toBe(200);
       const [calledUrl, calledOpts] = mockedFetchWithProxy.mock.calls[0];
-      expect(calledUrl).toBe('https://api.promptfoo.app/api/v1/http-provider-generator');
+      expect(calledUrl).toBe('https://api.artef.app/api/v1/http-provider-generator');
       expect((calledOpts?.headers as Record<string, string>)?.Authorization).toBeUndefined();
     });
 
@@ -533,7 +533,7 @@ describe('Providers Routes', () => {
       vi.mocked(cloudConfig.isEnabled).mockReturnValue(true);
       vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://onprem.example.com/');
       vi.mocked(cloudConfig.getAuthHeaders).mockReturnValue({
-        'X-Promptfoo-Api-Key': 'Bearer test-onprem-key',
+        'X-artef-Api-Key': 'Bearer test-onprem-key',
       });
 
       mockedFetchWithProxy.mockResolvedValue({
@@ -549,7 +549,7 @@ describe('Providers Routes', () => {
       expect(response.status).toBe(200);
       const [, calledOpts] = mockedFetchWithProxy.mock.calls[0];
       const headers = calledOpts?.headers as Record<string, string>;
-      expect(headers?.['X-Promptfoo-Api-Key']).toBe('Bearer test-onprem-key');
+      expect(headers?.['X-artef-Api-Key']).toBe('Bearer test-onprem-key');
       expect(headers?.Authorization).toBeUndefined();
     });
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: Slack Provider
 sidebar_label: Slack
 description: Enable human-in-the-loop evaluations with the Slack provider for collecting expert feedback, comparing human vs AI responses, and building golden datasets through Slack channels or direct messages
@@ -205,7 +205,7 @@ tests:
       topic: 'machine learning'
   - vars:
       topic: 'blockchain technology'
-# Run with: promptfoo eval -j 1
+# Run with: artef eval -j 1
 ```
 
 ### Expert Review with Specific User
@@ -252,7 +252,7 @@ prompts:
 ### Custom Message Formatting
 
 ```javascript
-// promptfooconfig.js
+// artefconfig.js
 module.exports = {
   providers: [
     {
@@ -273,7 +273,7 @@ module.exports = {
 1. **Concurrency**: Run Slack evaluations with `-j 1` to ensure messages are sent sequentially
 
    ```bash
-   promptfoo eval -j 1
+   artef eval -j 1
    ```
 
 2. **Timeouts**: Set appropriate timeouts based on expected response time
@@ -422,7 +422,7 @@ prompts:
 Use multiple parallel evaluations to test bot performance:
 
 ```bash
-promptfoo eval -c bot-test-config.yaml -j 10
+artef eval -c bot-test-config.yaml -j 10
 ```
 
 #### 4. A/B Testing Different Bots
@@ -556,7 +556,7 @@ tests:
       - type: contains
         value: upgrade
 # Run evaluation
-# promptfoo eval -j 1 --no-progress-bar
+# artef eval -j 1 --no-progress-bar
 ```
 
 ## Testing Your Setup
@@ -582,7 +582,7 @@ tests:
            value: success
    ```
 
-4. Run: `npx promptfoo eval -j 1`
+4. Run: `npx artef eval -j 1`
 5. Reply in Slack within 30 seconds
 
 ### Common Issues

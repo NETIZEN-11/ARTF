@@ -1,6 +1,6 @@
-# config-websockets (WebSocket Provider)
+﻿# config-websockets (WebSocket Provider)
 
-Examples for using promptfoo's WebSocket provider.
+Examples for using artef's WebSocket provider.
 
 ## Examples
 

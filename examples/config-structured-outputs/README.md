@@ -1,9 +1,9 @@
-# config-structured-outputs (Multi-Provider Structured Outputs)
+﻿# config-structured-outputs (Multi-Provider Structured Outputs)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-structured-outputs
+npx artef@latest init --example config-structured-outputs
 cd config-structured-outputs
 ```
 
@@ -24,7 +24,7 @@ This example requires at least one of the following API keys:
 
 - `OPENAI_API_KEY` - Your OpenAI API key for testing with GPT models
 - `ANTHROPIC_API_KEY` - Your Anthropic API key for testing with Claude models
-- For Azure OpenAI: See [Azure OpenAI provider docs](https://promptfoo.dev/docs/providers/azure) for required credentials
+- For Azure OpenAI: See [Azure OpenAI provider docs](https://artef.dev/docs/providers/azure) for required credentials
 
 You can set these in a `.env` file or directly in your environment:
 
@@ -68,18 +68,18 @@ providers:
 
 ## Getting Started
 
-1. Review and customize `promptfooconfig.yaml` as needed
+1. Review and customize `artefconfig.yaml` as needed
 2. Remove any providers you don't have API keys for
 3. Run the evaluation:
 
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 4. View the results:
 
    ```bash
-   promptfoo view
+   artef view
    ```
 
 ## What You'll Learn
@@ -93,4 +93,4 @@ providers:
 
 - [OpenAI Structured Outputs Documentation](https://platform.openai.com/docs/guides/structured-outputs)
 - [Anthropic Structured Outputs Documentation](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs)
-- [promptfoo Structured Outputs Guide](https://promptfoo.dev/docs/)
+- [artef Structured Outputs Guide](https://artef.dev/docs/)

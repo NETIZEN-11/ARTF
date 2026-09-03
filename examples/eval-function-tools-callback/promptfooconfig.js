@@ -1,4 +1,4 @@
-module.exports = /** @type {import('promptfoo').TestSuiteConfig} */ ({
+﻿module.exports = /** @type {import('artef').TestSuiteConfig} */ ({
   prompts: [
     'Please add the following numbers together: {{a}} and {{b}}',
     'What is the sum of {{a}} and {{b}}?',

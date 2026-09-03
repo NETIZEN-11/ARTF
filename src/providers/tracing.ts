@@ -1,4 +1,4 @@
-import { trace } from '@opentelemetry/api';
+﻿import { trace } from '@opentelemetry/api';
 import cliState from '../cliState';
 import { getOtelConfigFromEnv } from '../tracing/otelConfig';
 import { getTraceStore } from '../tracing/store';
@@ -61,7 +61,7 @@ export function getConfiguredTracingExport(): ConfiguredTracingExport | undefine
   return { endpoint: `http://${urlHost}:${receiver.port ?? 4318}`, format };
 }
 
-/** Only suppress Promptfoo spans when subprocess exports can reach the live receiver. */
+/** Only suppress artef spans when subprocess exports can reach the live receiver. */
 export function isActiveTracingExport(endpoint?: string, protocol?: string): boolean {
   const receiver = cliState.activeOtlpReceiver;
   const format =
@@ -106,7 +106,7 @@ function getPositiveExportTimeout(value: string | undefined, fallback: number): 
   return Number.isSafeInteger(timeout) && timeout > 0 ? timeout : fallback;
 }
 
-/** Wait until a subprocess span is stored under its Promptfoo provider span. */
+/** Wait until a subprocess span is stored under its artef provider span. */
 export async function waitForNativeTraceExport(
   traceId: string,
   parentSpanId: string,
@@ -148,7 +148,7 @@ export function getTracingEndpoint(): string {
   return getConfiguredTracingEndpoint() ?? 'http://127.0.0.1:4318';
 }
 
-/** Keep SDK-exported spans grouped with Promptfoo's configured service resource. */
+/** Keep SDK-exported spans grouped with artef's configured service resource. */
 export function getTracingServiceName(): string {
   return getOtelConfigFromEnv().serviceName;
 }

@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import { create } from 'zustand';
 import { useProvidersStore } from './providersStore';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 describe('useProvidersStore', () => {
   beforeEach(() => {

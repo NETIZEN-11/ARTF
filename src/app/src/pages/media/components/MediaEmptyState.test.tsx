@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { MediaEmptyState } from './MediaEmptyState';
@@ -19,7 +19,7 @@ describe('MediaEmptyState', () => {
 
       const link = screen.getByRole('link', { name: /View Providers Docs/i });
       expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/providers/');
+      expect(link).toHaveAttribute('href', 'https://www.artef.dev/docs/providers/');
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });
@@ -84,7 +84,7 @@ describe('MediaEmptyState', () => {
       render(<MediaEmptyState hasFilters={false} blobStorageEnabled={false} />);
 
       expect(screen.getByText('Blob storage is not enabled')).toBeInTheDocument();
-      expect(screen.getByText(/PROMPTFOO_ENABLE_BLOB_STORAGE/)).toBeInTheDocument();
+      expect(screen.getByText(/artef_ENABLE_BLOB_STORAGE/)).toBeInTheDocument();
     });
 
     it('renders the blob storage docs link', () => {

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: OpenAI Agents SDK advanced TypeScript features
 
 prompts:
@@ -46,7 +46,7 @@ tests:
           args:
             order_id: '123'
 
-  - description: Read Promptfoo vars through SDK local context
+  - description: Read artef vars through SDK local context
     vars:
       customer_tier: gold
       query: What customer tier am I on?

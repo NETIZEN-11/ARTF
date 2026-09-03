@@ -1,4 +1,4 @@
----
+﻿---
 title: Multi-Modal Red Teaming
 description: Red team multimodal AI systems using adversarial text, images, audio, and video inputs to identify cross-modal vulnerabilities
 keywords:
@@ -24,7 +24,7 @@ keywords:
 
 # Multi-Modal Red Teaming
 
-Large language models with multi-modal capabilities (vision, audio, etc.) present unique security challenges compared to text-only models. This guide demonstrates how to use promptfoo to test multi-modal models against adversarial inputs using different approaches for vision and audio content.
+Large language models with multi-modal capabilities (vision, audio, etc.) present unique security challenges compared to text-only models. This guide demonstrates how to use artef to test multi-modal models against adversarial inputs using different approaches for vision and audio content.
 
 ## Quick Start
 
@@ -32,7 +32,7 @@ To get started immediately with our example:
 
 ```bash
 # Install the example
-npx promptfoo@latest init --example redteam-multi-modal
+npx artef@latest init --example redteam-multi-modal
 
 # Navigate to the example directory
 cd redteam-multi-modal
@@ -41,21 +41,21 @@ cd redteam-multi-modal
 npm install sharp
 
 # Run the static image red team
-npx promptfoo@latest redteam run -c promptfooconfig.static-image.yaml
+npx artef@latest redteam run -c artefconfig.static-image.yaml
 
 # Run the image strategy red team
-npx promptfoo@latest redteam run -c promptfooconfig.image-strategy.yaml
+npx artef@latest redteam run -c artefconfig.image-strategy.yaml
 
 # Run the UnsafeBench red team
-npx promptfoo@latest redteam run -c promptfooconfig.unsafebench.yaml
+npx artef@latest redteam run -c artefconfig.unsafebench.yaml
 
 # Run the VLGuard red team
-npx promptfoo@latest redteam run -c promptfooconfig.vlguard.yaml
+npx artef@latest redteam run -c artefconfig.vlguard.yaml
 ```
 
 ## Multi-Modal Red Teaming Approaches
 
-promptfoo supports multiple approaches for red teaming multi-modal models:
+artef supports multiple approaches for red teaming multi-modal models:
 
 ### Visual Content Strategies
 
@@ -111,10 +111,10 @@ This approach keeps an image constant while varying text prompts to test differe
 
 ### Configuration
 
-Create a configuration file named `promptfooconfig.static-image.yaml`:
+Create a configuration file named `artefconfig.static-image.yaml`:
 
-```yaml title="promptfooconfig.static-image.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.static-image.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Image Analysis with Multimodal Models
 
 prompts:
@@ -159,7 +159,7 @@ Make sure your purpose statement relates to the image content you're using. This
 
 ### Creating Effective Purpose Statements
 
-For effective multi-modal red teaming, your `purpose` statement must specifically describe the image content (e.g., "You analyze this image of Barack Obama speaking at a podium during a press conference"), as promptfoo otherwise generates tests unrelated to what's actually in the image. Concrete, detailed descriptions enable targeted adversarial prompts that truly test how the model handles problematic requests about sensitive visual content.
+For effective multi-modal red teaming, your `purpose` statement must specifically describe the image content (e.g., "You analyze this image of Barack Obama speaking at a podium during a press conference"), as artef otherwise generates tests unrelated to what's actually in the image. Concrete, detailed descriptions enable targeted adversarial prompts that truly test how the model handles problematic requests about sensitive visual content.
 
 ### Create the Prompt Template
 
@@ -201,7 +201,7 @@ The prompt template format varies between providers. Adjust the template to matc
 Run your red team test with:
 
 ```bash
-npx promptfoo@latest redteam run -c promptfooconfig.static-image.yaml
+npx artef@latest redteam run -c artefconfig.static-image.yaml
 ```
 
 ## Approach 2: Text-to-Image Conversion (Image Strategy)
@@ -210,10 +210,10 @@ This approach converts potentially harmful text into images to test if the model
 
 ### Configuration
 
-Create a configuration file named `promptfooconfig.image-strategy.yaml`:
+Create a configuration file named `artefconfig.image-strategy.yaml`:
 
-```yaml title="promptfooconfig.image-strategy.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.image-strategy.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Image Analysis with Multimodal Models
 
 prompts:
@@ -271,7 +271,7 @@ The image strategy:
 Run your test with:
 
 ```bash
-npx promptfoo@latest redteam run -c promptfooconfig.image-strategy.yaml
+npx artef@latest redteam run -c artefconfig.image-strategy.yaml
 ```
 
 ## Approach 3: UnsafeBench Dataset Testing
@@ -286,10 +286,10 @@ This approach uses real unsafe images from the UnsafeBench dataset to test how m
 
 ### Configuration
 
-Create a configuration file named `promptfooconfig.unsafebench.yaml`:
+Create a configuration file named `artefconfig.unsafebench.yaml`:
 
-```yaml title="promptfooconfig.unsafebench.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.unsafebench.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: UnsafeBench Multi-Modal Model Evaluation
 
 targets:
@@ -392,7 +392,7 @@ export HF_TOKEN=your_huggingface_token
 Then run your test:
 
 ```bash
-npx promptfoo@latest redteam run -c promptfooconfig.unsafebench.yaml
+npx artef@latest redteam run -c artefconfig.unsafebench.yaml
 ```
 
 ### Customizing UnsafeBench
@@ -433,8 +433,8 @@ The VLGuard plugin provides an alternative dataset for multi-modal safety testin
 
 ### VLGuard Configuration
 
-```yaml title="promptfooconfig.vlguard.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.vlguard.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: VLGuard Multi-Modal Model Evaluation
 
 targets:
@@ -477,8 +477,8 @@ See the [VLGuard plugin documentation](/docs/red-team/plugins/vlguard) for confi
 
 To use the audio strategy for red teaming, create a configuration file:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Audio Analysis with Multimodal Models
 
 prompts:
@@ -545,7 +545,7 @@ Run the audio strategy red team:
 
 ```bash
 # Generate and evaluate in one step
-npx promptfoo@latest redteam run -c promptfooconfig.yaml
+npx artef@latest redteam run -c artefconfig.yaml
 ```
 
 ## Using Custom Providers
@@ -571,7 +571,7 @@ Media strategies put raw base64 in `context.vars[redteam.injectVar]`, not a read
 | -------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `image`  | PNG base64 with no `data:` prefix                | Wrap as `data:image/png;base64,...` for APIs that expect data URLs. The original text is also available as `context.vars.image_text`.                                                                                                        |
 | `audio`  | MP3 base64 with no `data:` prefix                | Audio conversion uses remote generation. Forward it as your API's audio input type, usually with MIME type `audio/mpeg` or format `mp3`.                                                                                                     |
-| `video`  | MP4 base64 when local FFmpeg generation succeeds | For a real MP4 payload, install FFmpeg and set `PROMPTFOO_DISABLE_REMOTE_GENERATION=true` or `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true`. If generation falls back, the value may decode to the original text instead of video bytes. |
+| `video`  | MP4 base64 when local FFmpeg generation succeeds | For a real MP4 payload, install FFmpeg and set `artef_DISABLE_REMOTE_GENERATION=true` or `artef_DISABLE_REDTEAM_REMOTE_GENERATION=true`. If generation falls back, the value may decode to the original text instead of video bytes. |
 
 Static variables and dataset-driven media may already be `data:` URLs or use a different MIME type, so check the value before prepending a media prefix.
 

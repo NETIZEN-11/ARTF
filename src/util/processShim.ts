@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Browser-safe process shim module.
  *
  * This module provides a shimmed process object that works in both Node.js and browser
@@ -7,7 +7,7 @@
  * features are accessed.
  *
  * This separation is necessary because:
- * 1. The promptfoo webui imports httpTransforms.ts which needs getProcessShim()
+ * 1. The artef webui imports httpTransforms.ts which needs getProcessShim()
  * 2. httpTransforms.ts is designed to be frontend-importable for testing transforms in the UI
  * 3. The Node.js implementation uses createRequire from 'node:module' which doesn't exist in browsers
  *

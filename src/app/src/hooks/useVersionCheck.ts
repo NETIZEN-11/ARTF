@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 import { callApi } from '@app/utils/api';
 
@@ -25,7 +25,7 @@ interface UseVersionCheckResult {
   dismiss: () => void;
 }
 
-const STORAGE_KEY = 'promptfoo:update:dismissedVersion';
+const STORAGE_KEY = 'artef:update:dismissedVersion';
 const RETRY_DELAY_MS = 5 * 60 * 1000;
 
 // localStorage throws in Safari private mode and when storage is disabled or full. Dismissal

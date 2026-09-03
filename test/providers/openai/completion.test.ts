@@ -1,4 +1,4 @@
-import { trace } from '@opentelemetry/api';
+﻿import { trace } from '@opentelemetry/api';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { disableCache, enableCache, fetchWithCache } from '../../../src/cache';
 import logger from '../../../src/logger';
@@ -106,8 +106,8 @@ describe('OpenAI Provider', () => {
           'gen_ai.request.frequency_penalty': 0,
           'gen_ai.usage.input_tokens': 5,
           'gen_ai.usage.output_tokens': 5,
-          'promptfoo.test.index': 7,
-          'promptfoo.usage.total_tokens': 10,
+          'artef.test.index': 7,
+          'artef.usage.total_tokens': 10,
         });
       } finally {
         restore();
@@ -403,7 +403,7 @@ describe('OpenAI Provider', () => {
         expect.objectContaining({
           headers: expect.objectContaining({
             'Content-Type': 'application/json',
-            'X-OpenAI-Originator': 'promptfoo',
+            'X-OpenAI-Originator': 'artef',
             'X-Test-Header': 'test-value',
           }),
         }),

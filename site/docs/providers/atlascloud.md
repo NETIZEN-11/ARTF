@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Atlas Cloud
-description: "Access Atlas Cloud's OpenAI-compatible LLM API to evaluate models from DeepSeek, Qwen, Kimi, GLM, and more through promptfoo"
+description: "Access Atlas Cloud's OpenAI-compatible LLM API to evaluate models from DeepSeek, Qwen, Kimi, GLM, and more through artef"
 ---
 
 # Atlas Cloud
 
-[Atlas Cloud](https://www.atlascloud.ai/) is an AI API aggregation platform that provides unified access to 300+ AI models through one API key and billing account. Its LLM chat API is OpenAI-compatible, so it integrates with promptfoo using the same request shape as the OpenAI chat provider.
+[Atlas Cloud](https://www.atlascloud.ai/) is an AI API aggregation platform that provides unified access to 300+ AI models through one API key and billing account. Its LLM chat API is OpenAI-compatible, so it integrates with artef using the same request shape as the OpenAI chat provider.
 
 ## Setup
 
@@ -20,8 +20,8 @@ You can also pass `apiKey` directly in the provider config, but using an environ
 
 ## Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: atlascloud:deepseek-ai/DeepSeek-V3-0324
     config:
@@ -47,7 +47,7 @@ By default, the Atlas Cloud provider sends chat requests to `https://api.atlascl
 
 ## Configuration Options
 
-Atlas Cloud supports the standard OpenAI chat options already available in promptfoo, including:
+Atlas Cloud supports the standard OpenAI chat options already available in artef, including:
 
 - `temperature`
 - `max_tokens`
@@ -63,9 +63,9 @@ For the full shared option set, see the [OpenAI provider documentation](/docs/pr
 
 ## Custom Base URL or API Key Variable
 
-If you route Atlas Cloud through a proxy or internal gateway, override `apiBaseUrl`. You can also instruct promptfoo to read the Bearer token from a different environment variable by setting `apiKeyEnvar`.
+If you route Atlas Cloud through a proxy or internal gateway, override `apiBaseUrl`. You can also instruct artef to read the Bearer token from a different environment variable by setting `apiKeyEnvar`.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: atlascloud:deepseek-ai/DeepSeek-V3-0324
     config:
@@ -94,7 +94,7 @@ Use the exact model ID shown in the Atlas Cloud model library or docs.
 
 ## Example
 
-See the runnable example in [`examples/provider-atlascloud`](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-atlascloud).
+See the runnable example in [`examples/provider-atlascloud`](https://github.com/artef/artef/tree/main/examples/provider-atlascloud).
 
 ## Additional Resources
 

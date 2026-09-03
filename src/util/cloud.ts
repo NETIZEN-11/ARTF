@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { CLOUD_PROVIDER_PREFIX } from '../constants';
 import { cloudConfig } from '../globalConfig/cloud';
 import logger from '../logger';
@@ -17,7 +17,7 @@ const PERMISSION_CHECK_SERVER_FEATURE_NAME = 'config-permission-check-endpoint';
 const PERMISSION_CHECK_SERVER_FEATURE_DATE = '2025-09-03T14:49:11Z';
 
 /**
- * Makes an authenticated HTTP request to the PromptFoo Cloud API.
+ * Makes an authenticated HTTP request to the artef Cloud API.
  * @param path - The API endpoint path (with or without leading slash)
  * @param method - HTTP method (GET, POST, PUT, DELETE, etc.)
  * @param body - Optional request body that will be JSON stringified
@@ -43,7 +43,7 @@ export function makeRequest(path: string, method: string, body?: any): Promise<R
 }
 
 /**
- * Fetches a provider configuration from PromptFoo Cloud by its ID.
+ * Fetches a provider configuration from artef Cloud by its ID.
  * @param id - The unique identifier of the cloud provider
  * @returns Promise resolving to provider options with guaranteed id field
  * @throws Error if cloud is not enabled, provider not found, or request fails
@@ -51,7 +51,7 @@ export function makeRequest(path: string, method: string, body?: any): Promise<R
 export async function getProviderFromCloud(id: string): Promise<ProviderOptions & { id: string }> {
   if (!cloudConfig.isEnabled()) {
     throw new Error(
-      `Could not fetch Provider ${id} from cloud. Cloud config is not enabled. Please run \`promptfoo auth login\` to login.`,
+      `Could not fetch Provider ${id} from cloud. Cloud config is not enabled. Please run \`artef auth login\` to login.`,
     );
   }
   try {
@@ -210,7 +210,7 @@ function normalizeEvalConfig(config: Record<string, unknown>): UnifiedConfig {
 }
 
 /**
- * Fetches a unified configuration from PromptFoo Cloud for red team operations.
+ * Fetches a unified configuration from artef Cloud for red team operations.
  * @param id - The unique identifier of the cloud configuration
  * @param providerId - Optional provider ID to filter the configuration
  * @returns Promise resolving to a unified configuration object
@@ -219,7 +219,7 @@ function normalizeEvalConfig(config: Record<string, unknown>): UnifiedConfig {
 export async function getConfigFromCloud(id: string, providerId?: string): Promise<UnifiedConfig> {
   if (!cloudConfig.isEnabled()) {
     throw new Error(
-      `Could not fetch Config ${id} from cloud. Cloud config is not enabled. Please run \`promptfoo auth login\` to login.`,
+      `Could not fetch Config ${id} from cloud. Cloud config is not enabled. Please run \`artef auth login\` to login.`,
     );
   }
   try {
@@ -236,7 +236,7 @@ export async function getConfigFromCloud(id: string, providerId?: string): Promi
 }
 
 /**
- * Fetches an eval configuration from PromptFoo Cloud by ID.
+ * Fetches an eval configuration from artef Cloud by ID.
  * The response may contain legacy eval fields, which are normalized into UnifiedConfig.
  * @param id - The unique identifier of the cloud eval configuration
  * @returns Promise resolving to a normalized unified configuration object
@@ -245,7 +245,7 @@ export async function getConfigFromCloud(id: string, providerId?: string): Promi
 export async function getEvalConfigFromCloud(id: string): Promise<UnifiedConfig> {
   if (!cloudConfig.isEnabled()) {
     throw new Error(
-      `Could not fetch Config ${id} from cloud. Cloud config is not enabled. Please run \`promptfoo auth login\` to login.`,
+      `Could not fetch Config ${id} from cloud. Cloud config is not enabled. Please run \`artef auth login\` to login.`,
     );
   }
   try {
@@ -296,7 +296,7 @@ export async function getPluginSeverityOverridesFromCloud(cloudProviderId: strin
 } | null> {
   if (!cloudConfig.isEnabled()) {
     throw new Error(
-      `Could not fetch plugin severity overrides from cloud. Cloud config is not enabled. Please run \`promptfoo auth login\` to login.`,
+      `Could not fetch plugin severity overrides from cloud. Cloud config is not enabled. Please run \`artef auth login\` to login.`,
     );
   }
   try {
@@ -351,7 +351,7 @@ export async function getPluginSeverityOverridesFromCloud(cloudProviderId: strin
 }
 
 /**
- * Retrieves all teams for the current user from Promptfoo Cloud.
+ * Retrieves all teams for the current user from artef Cloud.
  * @returns Promise resolving to an array of team objects
  * @throws Error if the request fails
  */
@@ -387,7 +387,7 @@ export async function getUserTeams(
 }
 
 /**
- * Retrieves the default team for the current user from Promptfoo Cloud.
+ * Retrieves the default team for the current user from artef Cloud.
  * The default team is determined as the oldest team by creation date.
  * @returns Promise resolving to an object with team id, name, organizationId, and createdAt
  * @throws Error if the request fails or no teams are found
@@ -527,7 +527,7 @@ export async function resolveTeamId(
     // Store the default team for future use (scoped to organization)
     cloudConfig.setCurrentTeamId(defaultTeam.id, defaultTeam.organizationId);
     logger.info(
-      `Using team: ${defaultTeam.name} (use 'promptfoo auth teams set <name>' to change)`,
+      `Using team: ${defaultTeam.name} (use 'artef auth teams set <name>' to change)`,
     );
     return defaultTeam;
   }
@@ -559,7 +559,7 @@ function convertErrorsToReadableMessage(
 
 /**
  * Validates that the current user has necessary permissions for the given configuration.
- * Checks with PromptFoo Cloud to ensure providers and other resources can be accessed.
+ * Checks with artef Cloud to ensure providers and other resources can be accessed.
  * Gracefully degrades if cloud is disabled or server doesn't support permission checking.
  * @param config - The configuration to validate permissions for
  * @throws ConfigPermissionError if permissions are insufficient (403 responses)
@@ -685,7 +685,7 @@ export async function canCreateTargets(teamId: string | undefined): Promise<bool
 }
 
 /**
- * Given a list of policy IDs, fetches custom policies from Promptfoo Cloud.
+ * Given a list of policy IDs, fetches custom policies from artef Cloud.
  * @param ids - The IDs of the policies to fetch.
  * @param teamId - The ID of the team to fetch policies from. Note that all policies must belong to this team.
  * @returns A map of policy IDs to their texts and severities.
@@ -693,7 +693,7 @@ export async function canCreateTargets(teamId: string | undefined): Promise<bool
 export async function getPoliciesFromCloud(ids: string[], teamId: string): Promise<PoliciesById> {
   if (!cloudConfig.isEnabled()) {
     throw new Error(
-      `Could not fetch policies from cloud. Cloud config is not enabled. Please run \`promptfoo auth login\` to login.`,
+      `Could not fetch policies from cloud. Cloud config is not enabled. Please run \`artef auth login\` to login.`,
     );
   }
   try {
@@ -735,7 +735,7 @@ export async function getPoliciesFromCloud(ids: string[], teamId: string): Promi
 
 /**
  * Validates linkedTargetId format and existence.
- * linkedTargetId is a Promptfoo Cloud feature that links custom provider results
+ * linkedTargetId is a artef Cloud feature that links custom provider results
  * to an existing target instead of creating duplicates.
  *
  * Validates the prefix and checks existence in cloud. Format validation
@@ -745,7 +745,7 @@ export async function getPoliciesFromCloud(ids: string[], teamId: string): Promi
  * @throws Error if validation fails
  */
 export async function validateLinkedTargetId(linkedTargetId: string): Promise<void> {
-  // Validate format: promptfoo://provider/{id}
+  // Validate format: artef://provider/{id}
   if (!isCloudProvider(linkedTargetId)) {
     const apiHost = cloudConfig.getApiHost();
     const appHost = apiHost.replace('/api', '').replace(':3201', '');
@@ -763,7 +763,7 @@ export async function validateLinkedTargetId(linkedTargetId: string): Promise<vo
         - View comprehensive reporting in the cloud dashboard
 
         To get a valid linkedTargetId:
-        1. Log in to Promptfoo Cloud: ${appHost}
+        1. Log in to artef Cloud: ${appHost}
         2. Navigate to Targets page: ${appHost}/redteam/targets
         3. Find the target you want to link to and copy its ID
         4. Format as: ${CLOUD_PROVIDER_PREFIX}<target-id>
@@ -775,7 +775,7 @@ export async function validateLinkedTargetId(linkedTargetId: string): Promise<vo
   if (!cloudConfig.isEnabled()) {
     logger.warn('[Cloud] linkedTargetId specified but cloud is not configured', {
       linkedTargetId,
-      suggestion: "Run 'promptfoo auth login' to enable cloud features",
+      suggestion: "Run 'artef auth login' to enable cloud features",
     });
     return;
   }
@@ -802,11 +802,11 @@ export async function validateLinkedTargetId(linkedTargetId: string): Promise<vo
       dedent`
         linkedTargetId not found: "${linkedTargetId}"
 
-        This target doesn't exist in your Promptfoo Cloud organization or you don't have access to it.
+        This target doesn't exist in your artef Cloud organization or you don't have access to it.
 
         Troubleshooting steps:
         1. Verify you're logged in to the correct organization
-           Run: promptfoo auth status
+           Run: artef auth status
 
         2. Check that the target exists in your cloud dashboard:
            ${appHost}/redteam/targets

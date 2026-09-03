@@ -1,12 +1,12 @@
----
+﻿---
 title: Evaluate Google ADK Agents
-description: Evaluate Google ADK Python agents with Promptfoo tracing, sessions, tools, callbacks, plugins, artifacts, and workflow-agent checks.
+description: Evaluate Google ADK Python agents with artef tracing, sessions, tools, callbacks, plugins, artifacts, and workflow-agent checks.
 sidebar_position: 27
 ---
 
 # Evaluate Google ADK Agents
 
-Use Google ADK's Python SDK with Promptfoo by wrapping your app as a Python provider. That keeps the ADK runtime in process, so Promptfoo can inspect the same sessions, artifacts, and native OpenTelemetry spans that the agent produced.
+Use Google ADK's Python SDK with artef by wrapping your app as a Python provider. That keeps the ADK runtime in process, so artef can inspect the same sessions, artifacts, and native OpenTelemetry spans that the agent produced.
 
 :::note
 This guide targets stable ADK 1.x. Google's public docs also advertise ADK Python 2.0 beta releases, but those releases have breaking API and session-schema changes. Validate a 2.0 integration separately before moving production evals onto it.
@@ -15,7 +15,7 @@ This guide targets stable ADK 1.x. Google's public docs also advertise ADK Pytho
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example integration-google-adk
+npx artef@latest init --example integration-google-adk
 cd integration-google-adk
 
 python3 -m venv .venv
@@ -23,9 +23,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 export GOOGLE_API_KEY=your_google_api_key_here
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
-npx promptfoo@latest eval -c promptfooconfig.workflow.yaml --no-cache
-npx promptfoo@latest view
+npx artef@latest eval -c artefconfig.yaml --no-cache
+npx artef@latest eval -c artefconfig.workflow.yaml --no-cache
+npx artef@latest view
 ```
 
 The example defaults to `gemini-2.5-flash`. If you want to use another ADK-supported model, set `ADK_MODEL`. Provider-style model strings such as `openai/gpt-5.4-mini` require the optional ADK extensions:
@@ -35,15 +35,15 @@ pip install 'google-adk[extensions]>=1.32.0,<2'
 export ADK_MODEL=openai/gpt-5.4-mini
 ```
 
-If Promptfoo runs outside the activated virtual environment, set the interpreter explicitly:
+If artef runs outside the activated virtual environment, set the interpreter explicitly:
 
 ```bash
-PROMPTFOO_PYTHON=.venv/bin/python npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
+artef_PYTHON=.venv/bin/python npx artef@latest eval -c artefconfig.yaml --no-cache
 ```
 
 ## What The Example Covers
 
-`promptfooconfig.yaml` evaluates one conversational task across three user turns against a single `Agent`:
+`artefconfig.yaml` evaluates one conversational task across three user turns against a single `Agent`:
 
 ```python title="agent.py"
 root_agent = Agent(
@@ -56,15 +56,15 @@ root_agent = Agent(
 app = App(name=APP_NAME, root_agent=root_agent, plugins=[audit_plugin])
 ```
 
-The runtime wires up an `InMemorySessionService`, an `InMemoryArtifactService`, an app-wide `BasePlugin` (`AuditPlugin`), and the native ADK OpenTelemetry exporter. `promptfooconfig.workflow.yaml` evaluates a `SequentialAgent` flow with two child agents and asserts that the weather lookup runs before the briefing.
+The runtime wires up an `InMemorySessionService`, an `InMemoryArtifactService`, an app-wide `BasePlugin` (`AuditPlugin`), and the native ADK OpenTelemetry exporter. `artefconfig.workflow.yaml` evaluates a `SequentialAgent` flow with two child agents and asserts that the weather lookup runs before the briefing.
 
 ## Why Use A Python Provider
 
-An in-process Python provider lets one Promptfoo row drive a multi-turn task, read session state, load artifacts, observe plugin and callback side effects, and assert against ADK's native trajectory spans — all without going over the wire. The HTTP shape around `adk api_server` cannot expose any of those without a parallel inspection channel.
+An in-process Python provider lets one artef row drive a multi-turn task, read session state, load artifacts, observe plugin and callback side effects, and assert against ADK's native trajectory spans — all without going over the wire. The HTTP shape around `adk api_server` cannot expose any of those without a parallel inspection channel.
 
 Pick the HTTP provider when the deployed HTTP contract itself is what you want to validate (auth, request shape, status codes). Pick the Python provider for everything else.
 
-## How Native ADK Tracing Fits Promptfoo
+## How Native ADK Tracing Fits artef
 
 ADK 1.x already emits OpenTelemetry spans such as:
 
@@ -73,7 +73,7 @@ ADK 1.x already emits OpenTelemetry spans such as:
 - `call_llm`
 - `execute_tool get_weather`
 
-The example provider preserves Promptfoo's W3C `traceparent`, starts a small provider span beneath it, and exports ADK's child spans to Promptfoo's built-in OTLP receiver. ADK already records `gen_ai.tool.name` and tool-call arguments, so Promptfoo can normalize them into trajectory steps without a custom span translator.
+The example provider preserves artef's W3C `traceparent`, starts a small provider span beneath it, and exports ADK's child spans to artef's built-in OTLP receiver. ADK already records `gen_ai.tool.name` and tool-call arguments, so artef can normalize them into trajectory steps without a custom span translator.
 
 ```yaml
 assert:
@@ -100,7 +100,7 @@ Use `trace-span-count` and `trace-error-spans` alongside trajectory assertions w
 
 After the eval, inspect the row in the Trace Timeline. The bundled conversational run should show:
 
-- one Promptfoo provider span beneath the injected parent trace
+- one artef provider span beneath the injected parent trace
 - `invoke_agent weather_agent` once per user turn
 - `call_llm` spans around the model hops
 - `execute_tool get_weather`
@@ -171,11 +171,11 @@ The same provider shape covers the rest of the stable ADK 1.x surface. Map each 
 | multi-agent trees                    | one `trace-span-count` per `invoke_agent <name>` you require               |
 | long-running / resumable apps        | `contains` on `session_state` snapshots before and after resume            |
 
-ADK ships its own `adk eval` stack — use it for ADK-native eval sets and ADK-specific metrics. Promptfoo is the better fit when one harness has to compare ADK against other frameworks, run red teams against the same surface, or assert on OpenTelemetry traces alongside the final output.
+ADK ships its own `adk eval` stack — use it for ADK-native eval sets and ADK-specific metrics. artef is the better fit when one harness has to compare ADK against other frameworks, run red teams against the same surface, or assert on OpenTelemetry traces alongside the final output.
 
 ## Production Notes
 
-- Keep the provider span small. ADK emits the framework spans; the wrapper only has to preserve Promptfoo's parent trace and flush before the worker exits.
+- Keep the provider span small. ADK emits the framework spans; the wrapper only has to preserve artef's parent trace and flush before the worker exits.
 - The bundled example uses in-memory services so runs are deterministic. Swap in your real `SessionService`, `ArtifactService`, or `MemoryService` when persistence is part of the behavior under test.
 - Reach for state and artifact assertions first; reserve model-graded assertions for outcomes that actually require semantics (tone, factuality, refusal quality).
 - The optional `google-adk[extensions]` set adds hundreds of MB of LiteLLM and provider SDKs. Install it only when you need provider-prefixed model strings (`openai/...`, `anthropic/...`), and expect upstream warnings unrelated to your eval.

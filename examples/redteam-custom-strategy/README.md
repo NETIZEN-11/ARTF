@@ -1,9 +1,9 @@
-# redteam-custom-strategy (Custom Red Team Strategy Example)
+﻿# redteam-custom-strategy (Custom Red Team Strategy Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-custom-strategy
+npx artef@latest init --example redteam-custom-strategy
 cd redteam-custom-strategy
 ```
 
@@ -11,7 +11,7 @@ A simple example showing how to create a custom red team strategy that prepends 
 
 ## Usage
 
-The example is configured in `promptfooconfig.yaml` and uses:
+The example is configured in `artefconfig.yaml` and uses:
 
 - A basic prompt template
 - GPT-4o-mini as the target model
@@ -20,13 +20,13 @@ The example is configured in `promptfooconfig.yaml` and uses:
 Run the evaluation:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 View results:
 
 ```bash
-promptfoo view
+artef view
 ```
 
-For more details on custom strategies, check out the [docs](https://www.promptfoo.dev/docs/red-team/strategies/custom/).
+For more details on custom strategies, check out the [docs](https://www.artef.dev/docs/red-team/strategies/custom/).

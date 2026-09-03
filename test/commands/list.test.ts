@@ -1,4 +1,4 @@
-import { Command } from 'commander';
+﻿import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { listCommand } from '../../src/commands/list';
 import logger from '../../src/logger';
@@ -178,9 +178,9 @@ describe('list command', () => {
       });
 
       expect(printBorder).toHaveBeenCalledTimes(1);
-      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('promptfoo show eval <id>'));
+      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('artef show eval <id>'));
       expect(logger.info).toHaveBeenCalledWith(
-        expect.stringContaining('promptfoo show prompt <id>'),
+        expect.stringContaining('artef show prompt <id>'),
       );
     });
   });
@@ -243,7 +243,7 @@ describe('list command', () => {
       expect(tableRows[0].raw).toMatch(/\.\.\.$/);
       expect(printBorder).toHaveBeenCalledTimes(1);
       expect(logger.info).toHaveBeenCalledWith(
-        expect.stringContaining('promptfoo show prompt <id>'),
+        expect.stringContaining('artef show prompt <id>'),
       );
     });
   });

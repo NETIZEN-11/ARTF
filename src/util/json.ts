@@ -1,4 +1,4 @@
-import Ajv from 'ajv';
+﻿import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { getEnvBool, getEnvString } from '../envars';
 import invariant from '../util/invariant';
@@ -18,7 +18,7 @@ export function resetAjv(): void {
 export function getAjv(): Ajv {
   if (!ajvInstance) {
     const ajvOptions: ConstructorParameters<typeof Ajv>[0] = {
-      strictSchema: !getEnvBool('PROMPTFOO_DISABLE_AJV_STRICT_MODE'),
+      strictSchema: !getEnvBool('artef_DISABLE_AJV_STRICT_MODE'),
     };
     ajvInstance = new Ajv(ajvOptions);
     addFormats(ajvInstance);

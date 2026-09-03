@@ -1,9 +1,9 @@
-# xai/video (xAI Grok Video Generation)
+﻿# xai/video (xAI Grok Video Generation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example xai/video
+npx artef@latest init --example xai/video
 cd xai/video
 ```
 
@@ -20,7 +20,7 @@ export XAI_API_KEY=your_api_key_here
 2. Run the evaluation:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Configuration Options
@@ -78,5 +78,5 @@ providers:
 
 ## See Also
 
-- [xAI Provider Documentation](https://promptfoo.dev/docs/providers/xai)
+- [xAI Provider Documentation](https://artef.dev/docs/providers/xai)
 - [xAI Grok Imagine API](https://docs.x.ai/docs/guides/video-generations-and-edits)

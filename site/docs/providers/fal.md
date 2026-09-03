@@ -1,8 +1,8 @@
----
+﻿---
 title: fal.ai Provider
 description: Integrate fal.ai's fast image generation models including Flux and Stable Diffusion for visual AI testing and evaluation
 sidebar_position: 42
-keywords: [fal.ai, image generation, AI images, flux, imagen, ideogram, promptfoo provider]
+keywords: [fal.ai, image generation, AI images, flux, imagen, ideogram, artef provider]
 ---
 
 # fal.ai
@@ -63,9 +63,9 @@ Browse all models at [fal.ai/models](https://fal.ai/models?categories=text-to-im
 
 Provider config values are sent to the fal model as input, except for `apiKey` and the optional `client` block. Use `client` for options that should be passed to the underlying `@fal-ai/client` SDK instead of the model endpoint.
 
-For example, `@fal-ai/client` proxy URLs are browser-only when passed as a string. To route promptfoo's Node.js CLI requests through a proxy, use the object form and set `when: always`:
+For example, `@fal-ai/client` proxy URLs are browser-only when passed as a string. To route artef's Node.js CLI requests through a proxy, use the object form and set `when: always`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: fal:image:fal-ai/flux/schnell
     config:
@@ -77,7 +77,7 @@ providers:
 
 ## Configuration
 
-Configure the fal provider in your promptfoo configuration file. Here's an example using [`fal-ai/flux/schnell`](https://fal.ai/models/fal-ai/flux/schnell):
+Configure the fal provider in your artef configuration file. Here's an example using [`fal-ai/flux/schnell`](https://fal.ai/models/fal-ai/flux/schnell):
 
 :::info
 
@@ -87,7 +87,7 @@ Configuration parameters vary by model. For example, `fast-sdxl` supports additi
 
 ### Basic Setup
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: fal:image:fal-ai/flux/schnell
     config:
@@ -101,7 +101,7 @@ providers:
 
 ### Advanced Options
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: fal:image:fal-ai/flux/dev
     config:

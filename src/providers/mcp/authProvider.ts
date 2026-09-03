@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 import { getOAuthToken } from './util';
 import type { OAuthClientProvider } from '@modelcontextprotocol/sdk/client/auth.js';
 import type {
@@ -25,7 +25,7 @@ const TOKEN_BUFFER_MS = 60000; // 60 seconds before expiry
  * Fetches tokens directly from the configured tokenUrl, bypassing the SDK's OAuth discovery
  * which requires authorization_endpoint (only needed for interactive flows).
  */
-export class PromptfooOAuthClientProvider implements OAuthClientProvider {
+export class artefOAuthClientProvider implements OAuthClientProvider {
   private _tokens?: OAuthTokens;
   private _clientMetadata: OAuthClientMetadata;
   private _clientInfo: OAuthClientInformationMixed;
@@ -49,7 +49,7 @@ export class PromptfooOAuthClientProvider implements OAuthClientProvider {
     // redirect_uris is required by the schema but empty for non-interactive flows
     this._clientMetadata = {
       redirect_uris: [],
-      client_name: 'promptfoo-mcp-client',
+      client_name: 'artef-mcp-client',
       grant_types: [auth.grantType],
       token_endpoint_auth_method: auth.clientSecret ? 'client_secret_basic' : 'none',
     };

@@ -1,13 +1,13 @@
-# eval-image-classification (Image Classification Example with Promptfoo)
+﻿# eval-image-classification (Image Classification Example with artef)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-image-classification
+npx artef@latest init --example eval-image-classification
 cd eval-image-classification
 ```
 
-This example demonstrates how to use Promptfoo for image classification tasks using the Fashion MNIST dataset. The example uses GPT-4o and GPT-4o-mini with a structured json schema to analyze images, including classification, color analysis, and additional attributes.
+This example demonstrates how to use artef for image classification tasks using the Fashion MNIST dataset. The example uses GPT-4o and GPT-4o-mini with a structured json schema to analyze images, including classification, color analysis, and additional attributes.
 
 ## Getting Started
 
@@ -20,13 +20,13 @@ This example demonstrates how to use Promptfoo for image classification tasks us
 2. Run the evaluation:
 
    ```sh
-   npx promptfoo@latest eval
+   npx artef@latest eval
    ```
 
 3. View the results:
 
    ```sh
-   npx promptfoo@latest view
+   npx artef@latest view
    ```
 
 4. Optionally, re-generate or update the dataset:
@@ -44,7 +44,7 @@ This example demonstrates how to use Promptfoo for image classification tasks us
    This script creates a CSV file with 100 random images from the Fashion MNIST dataset and their labels. A CSV with 10 sample images is included so you can skip this step if preferred.
 
 5. Experiment with the configuration:
-   - Modify the JSON schema in `promptfooconfig.yaml` to add or adjust required fields
+   - Modify the JSON schema in `artefconfig.yaml` to add or adjust required fields
    - Try different models such as llama3.2 or Claude Sonnet 4.6 by changing the provider in the config
    - Adjust the system prompt to improve classification accuracy
    - Add additional assertions to validate model outputs

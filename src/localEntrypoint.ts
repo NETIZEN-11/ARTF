@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Development CLI entrypoint used by `npm run local`.
  *
  * Keep the local TypeScript execution path aligned with the shipped entrypoint for
@@ -13,7 +13,7 @@ if (requestsStructuredCodeScanOutput(process.argv.slice(2))) {
   // Match the shipped entrypoint: quiet the logger AND route whatever it still
   // emits (error-level survives LOG_LEVEL=error) to stderr, so it cannot corrupt
   // the SARIF/JSON payload on stdout.
-  Object.assign(process.env, { LOG_LEVEL: 'error', PROMPTFOO_LOG_TO_STDERR: 'true' });
+  Object.assign(process.env, { LOG_LEVEL: 'error', artef_LOG_TO_STDERR: 'true' });
 }
 
 process.argv[1] = fileURLToPath(new URL('./main.ts', import.meta.url));

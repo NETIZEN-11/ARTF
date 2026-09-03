@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+﻿import { exec } from 'child_process';
 import { promisify } from 'util';
 
 import chalk from 'chalk';
@@ -13,21 +13,21 @@ const execAsync = promisify(exec);
 
 export async function getLatestVersion() {
   const response = await fetchWithTimeout(
-    `https://api.promptfoo.dev/api/latestVersion`,
+    `https://api.artef.dev/api/latestVersion`,
     {
-      headers: { 'x-promptfoo-silent': 'true' },
+      headers: { 'x-artef-silent': 'true' },
     },
     10000,
   );
   if (!response.ok) {
-    throw new Error(`Failed to fetch package information for promptfoo`);
+    throw new Error(`Failed to fetch package information for artef`);
   }
   const data = (await response.json()) as { latestVersion: string };
   return data.latestVersion;
 }
 
 export async function checkForUpdates(): Promise<boolean> {
-  if (getEnvBool('PROMPTFOO_DISABLE_UPDATE')) {
+  if (getEnvBool('artef_DISABLE_UPDATE')) {
     return false;
   }
 
@@ -40,22 +40,22 @@ export async function checkForUpdates(): Promise<boolean> {
   if (semverGt(latestVersion, VERSION)) {
     const border = '='.repeat(TERMINAL_MAX_WIDTH);
     const updateCommands = getUpdateCommands({
-      isContainer: getEnvBool('PROMPTFOO_RUNNING_IN_DOCKER'),
-      isOfficialDockerImage: getEnvBool('PROMPTFOO_OFFICIAL_DOCKER_IMAGE'),
+      isContainer: getEnvBool('artef_RUNNING_IN_DOCKER'),
+      isOfficialDockerImage: getEnvBool('artef_OFFICIAL_DOCKER_IMAGE'),
       // Preserve the existing npx-first CLI guidance while sharing Docker command policy.
       isNpx: true,
     });
 
     const updateInstruction = updateCommands.isCustomContainer
-      ? 'Update the Promptfoo source, dependency, or parent image, then rebuild and redeploy the container.'
+      ? 'Update the artef source, dependency, or parent image, then rebuild and redeploy the container.'
       : updateCommands.commandType === 'docker'
-        ? `Run ${chalk.green(updateCommands.primary)}. If this is a derived image, update its Promptfoo base and rebuild it. Then redeploy the container.`
+        ? `Run ${chalk.green(updateCommands.primary)}. If this is a derived image, update its artef base and rebuild it. Then redeploy the container.`
         : `Please run ${chalk.green(updateCommands.primary)}${
             updateCommands.alternative ? ` or ${chalk.green(updateCommands.alternative)}` : ''
           } to update.`;
     logger.info(
       `\n${border}
-${chalk.yellow('⚠️')} The current version of promptfoo ${chalk.yellow(
+${chalk.yellow('⚠️')} The current version of artef ${chalk.yellow(
         VERSION,
       )} is lower than the latest available version ${chalk.green(latestVersion)}.
 
@@ -72,7 +72,7 @@ export async function getModelAuditLatestVersion(): Promise<string | null> {
     const response = await fetchWithTimeout(
       'https://pypi.org/pypi/modelaudit/json',
       {
-        headers: { 'x-promptfoo-silent': 'true' },
+        headers: { 'x-artef-silent': 'true' },
       },
       10000,
     );
@@ -98,7 +98,7 @@ export async function getModelAuditCurrentVersion(): Promise<string | null> {
 }
 
 export async function checkModelAuditUpdates(): Promise<boolean> {
-  if (getEnvBool('PROMPTFOO_DISABLE_UPDATE')) {
+  if (getEnvBool('artef_DISABLE_UPDATE')) {
     return false;
   }
 

@@ -1,4 +1,4 @@
-import { type ChildProcessWithoutNullStreams, spawn } from 'child_process';
+﻿import { type ChildProcessWithoutNullStreams, spawn } from 'child_process';
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
@@ -875,8 +875,8 @@ class CodexAppServerConnection {
       'initialize',
       {
         clientInfo: {
-          name: 'promptfoo_codex_app_server',
-          title: 'Promptfoo Codex App Server Provider',
+          name: 'artef_codex_app_server',
+          title: 'artef Codex App Server Provider',
           version: VERSION,
         },
         capabilities: {
@@ -1324,7 +1324,7 @@ export class OpenAICodexAppServerProvider implements ApiProvider {
       this.config,
       context?.prompt?.config as CodexAppServerConfig | undefined,
     );
-    // Promptfoo may attach the live target provider object to prompt config for
+    // artef may attach the live target provider object to prompt config for
     // generic provider workflows. Codex accepts this key for loader compatibility,
     // but runtime variable rendering must not recurse into provider methods.
     delete mergedConfig.provider;
@@ -1611,7 +1611,7 @@ export class OpenAICodexAppServerProvider implements ApiProvider {
 
     if (ignoredProviderEnvKeys.length > 0 && !this.ignoredProviderEnvWarningShown) {
       logger.warn(
-        '[CodexAppServer] Ignoring promptfoo-level env overrides for the Codex app-server process. ' +
+        '[CodexAppServer] Ignoring artef-level env overrides for the Codex app-server process. ' +
           'Move these keys into config.cli_env if Codex shell commands need them.',
         { envKeys: ignoredProviderEnvKeys },
       );
@@ -2353,7 +2353,7 @@ export class OpenAICodexAppServerProvider implements ApiProvider {
       ...(config.approvals_reviewer ? { approvalsReviewer: config.approvals_reviewer } : {}),
       sandbox: config.sandbox_mode ?? 'read-only',
       ...(Object.keys(config.cli_config ?? {}).length > 0 ? { config: config.cli_config } : {}),
-      serviceName: 'promptfoo',
+      serviceName: 'artef',
       ...(config.base_instructions ? { baseInstructions: config.base_instructions } : {}),
       ...(config.developer_instructions
         ? { developerInstructions: config.developer_instructions }
@@ -2894,7 +2894,7 @@ export class OpenAICodexAppServerProvider implements ApiProvider {
       case 'item/tool/call':
         return this.buildDynamicToolResponse(message.params, policy.dynamic_tools);
       case 'account/chatgptAuthTokens/refresh':
-        throw new Error('ChatGPT auth token refresh requests are not supported by promptfoo');
+        throw new Error('ChatGPT auth token refresh requests are not supported by artef');
       default:
         throw new Error(`Unsupported codex app-server request: ${message.method ?? 'unknown'}`);
     }
@@ -3567,7 +3567,7 @@ export class OpenAICodexAppServerProvider implements ApiProvider {
   }
 
   private startItemSpan(item: any, itemId: string, startTime?: number, turnIndex?: number): Span {
-    return trace.getTracer('promptfoo.codex-app-server').startSpan(this.getSpanNameForItem(item), {
+    return trace.getTracer('artef.codex-app-server').startSpan(this.getSpanNameForItem(item), {
       kind: SpanKind.INTERNAL,
       ...(startTime === undefined ? {} : { startTime }),
       attributes: addActiveSpanRoleAttribute({
@@ -3597,7 +3597,7 @@ export class OpenAICodexAppServerProvider implements ApiProvider {
       state.tokenUsage = undefined;
     }
     openTurnSpan(state, {
-      tracer: trace.getTracer('promptfoo.codex-app-server'),
+      tracer: trace.getTracer('artef.codex-app-server'),
       eventTime,
       system: 'openai',
       logLabel: 'CodexAppServer',

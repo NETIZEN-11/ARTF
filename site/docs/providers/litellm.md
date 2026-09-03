@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_label: LiteLLM
 title: LiteLLM Provider - Access 400+ LLMs with Unified API
-description: Use LiteLLM with promptfoo to evaluate 400+ language models through a unified OpenAI-compatible interface. Supports chat, completion, and embedding models.
+description: Use LiteLLM with artef to evaluate 400+ language models through a unified OpenAI-compatible interface. Supports chat, completion, and embedding models.
 keywords:
   [
     litellm,
@@ -15,7 +15,7 @@ keywords:
     llama,
     mistral,
     embeddings,
-    promptfoo,
+    artef,
   ]
 ---
 
@@ -25,7 +25,7 @@ keywords:
 
 ## Usage
 
-You can use LiteLLM with promptfoo in three ways:
+You can use LiteLLM with artef in three ways:
 
 ### 1. Dedicated LiteLLM provider
 
@@ -173,8 +173,8 @@ defaultTest:
 
 Here's a complete example using multiple LiteLLM models:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: LiteLLM evaluation example
 
 providers:

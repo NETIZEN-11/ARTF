@@ -1,4 +1,4 @@
----
+﻿---
 title: 'AI Safety vs AI Security in LLM Applications: What Teams Must Know'
 description: 'AI safety vs AI security for LLM apps. Clear examples, test configs, and OWASP-aligned defenses so teams prevent harmful outputs and block adversaries.'
 image: /img/blog/ai-safety-vs-security/safety-vs-security-core.jpg
@@ -346,9 +346,9 @@ Under the EU AI Act, GPAI systemic-risk duties apply from August 2, 2025. Maximu
 
 ## Show Me the Code
 
-Enough theory. Here's how to actually test this stuff using Promptfoo:
+Enough theory. Here's how to actually test this stuff using artef:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # AI Safety vs Security Testing with LLM-as-a-Judge
 description: 'Using LLM rubrics to evaluate both safety and security comprehensively'
 
@@ -420,7 +420,7 @@ tests:
           - Exposes configuration details
 ```
 
-Run it: `npx promptfoo@latest eval`
+Run it: `npx artef@latest eval`
 
 ### Why LLM-as-a-Judge?
 
@@ -716,10 +716,10 @@ The fix isn't picking one or the other. You need both, implemented by the right 
 
 ## Test Like You Mean It
 
-Here's a beefier Promptfoo config that catches more issues:
+Here's a beefier artef config that catches more issues:
 
-```yaml title="promptfooconfig.yaml"
-# promptfooconfig.yaml
+```yaml title="artefconfig.yaml"
+# artefconfig.yaml
 description: 'Comprehensive safety and security testing'
 
 prompts:
@@ -768,7 +768,7 @@ tests:
         value: 'alert('
 ```
 
-Run with: `npx promptfoo@latest eval -c promptfooconfig.yaml`
+Run with: `npx artef@latest eval -c artefconfig.yaml`
 
 ## OWASP Mapping for the Nerds
 
@@ -832,7 +832,7 @@ As of August 2025, here's what's actually working:
    - Security failures = Data breaches and bankruptcy
    - Both failures = Trending on Twitter (not the good kind)
 
-Want to automate this testing? [Promptfoo's red teaming tools](/docs/red-team) handle both safety and security testing out of the box, aligned with [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/), [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework), and [MITRE ATLAS](https://atlas.mitre.org/) guidelines.
+Want to automate this testing? [artef's red teaming tools](/docs/red-team) handle both safety and security testing out of the box, aligned with [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/), [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework), and [MITRE ATLAS](https://atlas.mitre.org/) guidelines.
 
 Now go forth and build AIs that are both safe AND secure. Your lawyers will thank you.
 
@@ -858,9 +858,9 @@ AI safety protects people from harmful model outputs during normal operation (bi
 
 No, but they use similar techniques. Jailbreaking targets safety mechanisms to make models produce prohibited content. Prompt injection targets security to make models perform unauthorized actions or reveal sensitive data. The same attack technique can serve either purpose depending on the attacker's goal.
 
-### How do I test for both AI safety and security with Promptfoo?
+### How do I test for both AI safety and security with artef?
 
-Promptfoo supports both safety and security testing through its red teaming capabilities. Use safety-focused plugins to test for harmful outputs, bias, and toxicity. Use security-focused strategies to test for prompt injection, data exfiltration, and excessive agency. The configuration examples in this article show how to implement both types of testing in a single evaluation suite.
+artef supports both safety and security testing through its red teaming capabilities. Use safety-focused plugins to test for harmful outputs, bias, and toxicity. Use security-focused strategies to test for prompt injection, data exfiltration, and excessive agency. The configuration examples in this article show how to implement both types of testing in a single evaluation suite.
 
 ---
 

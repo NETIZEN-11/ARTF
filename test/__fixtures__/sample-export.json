@@ -1,4 +1,4 @@
-{
+﻿{
   "evalId": "eval-WJi-2025-10-01T20:08:11",
   "results": {
     "version": 3,
@@ -218,7 +218,7 @@
           "riddle": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?"
         },
         "metadata": {
-          "_promptfooFileMetadata": {}
+          "_artefFileMetadata": {}
         },
         "failureReason": 1
       },
@@ -350,7 +350,7 @@
           "riddle": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?"
         },
         "metadata": {
-          "_promptfooFileMetadata": {}
+          "_artefFileMetadata": {}
         },
         "failureReason": 1
       },
@@ -469,7 +469,7 @@
           "riddle": "You see a boat filled with people. It has not sunk, but when you look again you don't see a single person on the boat. Why?"
         },
         "metadata": {
-          "_promptfooFileMetadata": {}
+          "_artefFileMetadata": {}
         },
         "failureReason": 1
       },
@@ -588,7 +588,7 @@
           "riddle": "You see a boat filled with people. It has not sunk, but when you look again you don't see a single person on the boat. Why?"
         },
         "metadata": {
-          "_promptfooFileMetadata": {}
+          "_artefFileMetadata": {}
         },
         "failureReason": 1
       }
@@ -681,12 +681,12 @@
   },
   "shareableUrl": null,
   "metadata": {
-    "promptfooVersion": "0.118.10",
+    "artefVersion": "0.118.10",
     "nodeVersion": "v24.4.1",
     "platform": "darwin",
     "arch": "arm64",
     "exportedAt": "2025-10-01T20:08:52.710Z",
     "evaluationCreatedAt": "2025-10-01T20:08:11.168Z",
-    "author": "steve@promptfoo.dev"
+    "author": "steve@artef.dev"
   }
 }

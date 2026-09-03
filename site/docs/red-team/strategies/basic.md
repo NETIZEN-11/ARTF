@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Basic
 title: Basic Strategy
 description: Configure inclusion of original plugin-generated test cases in evaluation outputs for baseline comparison and analysis
@@ -18,7 +18,7 @@ The basic strategy accepts the following configuration options:
 
 Example usage:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   language: ['es', 'fr'] # Test in Spanish and French
   strategies:
@@ -31,7 +31,7 @@ redteam:
 
 ## How It Works
 
-By default, promptfoo will:
+By default, artef will:
 
 1. Generate test cases from enabled plugins
 2. Apply each strategy to generate additional test cases

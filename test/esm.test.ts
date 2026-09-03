@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
@@ -110,7 +110,7 @@ describe('ESM utilities', () => {
     ])(
       'imports modules referenced with an uppercase .$extension extension',
       async ({ extension, source, value }) => {
-        const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-esm-case-test-'));
+        const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-esm-case-test-'));
         const lowerCasePath = path.join(tempDir, `provider.${extension.toLowerCase()}`);
         const upperCasePath = path.join(tempDir, `provider.${extension}`);
         fs.writeFileSync(lowerCasePath, source);
@@ -125,7 +125,7 @@ describe('ESM utilities', () => {
     );
 
     it('does not substitute a different module on case-sensitive file systems', async () => {
-      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-esm-case-test-'));
+      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-esm-case-test-'));
       const lowerCasePath = path.join(tempDir, 'provider.js');
       const upperCasePath = path.join(tempDir, 'provider.JS');
       fs.writeFileSync(lowerCasePath, "module.exports = { value: 'lower' };");
@@ -159,7 +159,7 @@ describe('ESM utilities', () => {
     });
 
     it('imports package-less TypeScript modules with extensionless transitive imports', async () => {
-      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-esm-test-'));
+      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-esm-test-'));
       const helperPath = path.join(tempDir, 'helper.ts');
       const modulePath = path.join(tempDir, 'provider.ts');
 
@@ -266,7 +266,7 @@ describe('ESM utilities', () => {
         // A missing bare specifier names the package, never the entry module's path,
         // so the ENOENT normalization must not claim the config file itself is absent.
         name: 'missing bare package dependency',
-        source: "import 'promptfoo-not-a-real-package';",
+        source: "import 'artef-not-a-real-package';",
         error: { code: 'ERR_MODULE_NOT_FOUND' },
       },
       {
@@ -281,7 +281,7 @@ describe('ESM utilities', () => {
         error: { message: 'config initialization failed' },
       },
     ])('preserves and logs a $name in an existing module', async ({ source, error }) => {
-      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-esm-error-test-'));
+      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-esm-error-test-'));
       const modulePath = path.join(tempDir, 'config.mjs');
       fs.writeFileSync(modulePath, source);
 

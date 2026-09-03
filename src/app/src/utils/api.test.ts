@@ -1,4 +1,4 @@
-import { mockBrowserProperty } from '@app/tests/browserMocks';
+﻿import { mockBrowserProperty } from '@app/tests/browserMocks';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { callApi, fetchUserEmail, fetchUserId, getApiBaseUrl, updateEvalAuthor } from './api';
 
@@ -51,13 +51,13 @@ describe('getApiBaseUrl', () => {
   });
 
   it('handles apiBaseUrl with path component', () => {
-    vi.mocked(useApiConfig.getState).mockReturnValue(mockState('https://example.com/promptfoo'));
-    expect(getApiBaseUrl()).toBe('https://example.com/promptfoo');
+    vi.mocked(useApiConfig.getState).mockReturnValue(mockState('https://example.com/artef'));
+    expect(getApiBaseUrl()).toBe('https://example.com/artef');
   });
 
   it('handles apiBaseUrl with path and trailing slash', () => {
-    vi.mocked(useApiConfig.getState).mockReturnValue(mockState('https://example.com/promptfoo/'));
-    expect(getApiBaseUrl()).toBe('https://example.com/promptfoo');
+    vi.mocked(useApiConfig.getState).mockReturnValue(mockState('https://example.com/artef/'));
+    expect(getApiBaseUrl()).toBe('https://example.com/artef');
   });
 
   it('handles relative apiBaseUrl', () => {

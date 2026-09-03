@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_label: Travis CI
-description: Set up automated LLM testing in Travis CI pipelines with promptfoo. Configure environment variables, artifacts storage, and continuous evaluation of AI prompts and outputs.
+description: Set up automated LLM testing in Travis CI pipelines with artef. Configure environment variables, artifacts storage, and continuous evaluation of AI prompts and outputs.
 ---
 
 # Travis CI Integration
 
-This guide demonstrates how to set up promptfoo with Travis CI to run evaluations as part of your CI pipeline.
+This guide demonstrates how to set up artef with Travis CI to run evaluations as part of your CI pipeline.
 
 ## Prerequisites
 
-- A GitHub repository with a promptfoo project
+- A GitHub repository with a artef project
 - A Travis CI account connected to your repository
 - Node.js `>=22.22.0` (Node.js 24 LTS recommended)
 - API keys for your LLM providers stored as [Travis CI environment variables](https://docs.travis-ci.com/user/environment-variables/)
@@ -28,13 +28,13 @@ cache:
     - node_modules
 
 before_install:
-  - npm install -g promptfoo
+  - npm install -g artef
 
 install:
   - npm ci
 
 script:
-  - npx promptfoo eval
+  - npx artef eval
 
 after_success:
   - echo "Prompt evaluation completed successfully"
@@ -45,7 +45,7 @@ after_failure:
 # Save evaluation results as artifacts
 before_deploy:
   - mkdir -p artifacts
-  - cp promptfoo-results.json artifacts/
+  - cp artef-results.json artifacts/
 
 deploy:
   provider: s3
@@ -69,11 +69,11 @@ Store your LLM provider API keys as environment variables in Travis CI:
 
 ### Fail the Build on Failed Assertions
 
-You can configure the pipeline to fail when promptfoo assertions don't pass:
+You can configure the pipeline to fail when artef assertions don't pass:
 
 ```yaml
 script:
-  - npx promptfoo eval --fail-on-error
+  - npx artef eval --fail-on-error
 ```
 
 ### Testing on Multiple Node.js Versions
@@ -87,7 +87,7 @@ node_js:
   - '24'
 
 script:
-  - npx promptfoo eval
+  - npx artef eval
 ```
 
 ### Running on Different Platforms
@@ -104,7 +104,7 @@ os:
   - osx
 
 script:
-  - npx promptfoo eval
+  - npx artef eval
 ```
 
 ### Conditional Builds
@@ -120,7 +120,7 @@ node_js:
 if: branch = main OR type = pull_request
 
 script:
-  - npx promptfoo eval
+  - npx artef eval
 ```
 
 ### Custom Build Stages
@@ -141,11 +141,11 @@ jobs:
     - stage: test
       script: npm test
     - stage: evaluate
-      script: npx promptfoo eval
+      script: npx artef eval
       env:
         - MODEL=gpt-4
     - stage: evaluate
-      script: npx promptfoo eval
+      script: npx artef eval
       env:
         - MODEL=claude-3-opus-20240229
 ```

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -16,7 +16,7 @@ import { Textarea } from '@app/components/ui/textarea';
 import { cn } from '@app/lib/utils';
 import { CloudUpload, Eye, Plus, Trash2, Upload, X } from 'lucide-react';
 import { useRedTeamConfig } from '../hooks/useRedTeamConfig';
-import type { PluginConfig } from '@promptfoo/redteam/types';
+import type { PluginConfig } from '@artef/redteam/types';
 
 import type { LocalPluginConfig } from '../types';
 

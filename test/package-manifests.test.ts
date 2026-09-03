@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import path from 'node:path';
 
 import { minVersion, satisfies, subset, validRange } from 'semver';
@@ -174,7 +174,7 @@ describe('package manifests', () => {
   });
 
   it('keeps the pull-request code scan on its known-good Node release', () => {
-    const workflowPath = '.github/workflows/promptfoo-code-scan.yml';
+    const workflowPath = '.github/workflows/artef-code-scan.yml';
     const workflow = fs.readFileSync(path.join(process.cwd(), workflowPath), 'utf8');
     const renovateConfig = readPackageJson<{
       packageRules?: Array<{
@@ -1214,7 +1214,7 @@ describe('package manifests', () => {
 
   it('does not import jsdom from root src/', () => {
     // Guards against re-introducing jsdom into the CLI startup graph, which
-    // previously broke `npx promptfoo` on Node 24 via ERR_REQUIRE_ASYNC_MODULE.
+    // previously broke `npx artef` on Node 24 via ERR_REQUIRE_ASYNC_MODULE.
     // The src/app workspace is excluded because it legitimately uses jsdom
     // as a browser test environment.
     const srcDir = path.join(process.cwd(), 'src');

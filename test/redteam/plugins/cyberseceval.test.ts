@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CyberSecEvalPlugin } from '../../../src/redteam/plugins/cyberseceval';
 import { fetchWithTimeout } from '../../../src/util/fetch/index';
 import { createMockProvider, type MockApiProvider } from '../../factories/provider';
@@ -32,7 +32,7 @@ describe('CyberSecEvalPlugin', () => {
   });
 
   it('should have the correct plugin ID', () => {
-    expect(plugin.id).toBe('promptfoo:redteam:cyberseceval');
+    expect(plugin.id).toBe('artef:redteam:cyberseceval');
   });
 
   it('should set canGenerateRemote to false', () => {

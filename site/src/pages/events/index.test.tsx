@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 
@@ -47,7 +47,7 @@ describe('event index live status', () => {
 
     const initialUpcomingCount = getUpcomingCount();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Promptfoo at Black Hat USA 2026' }),
+      screen.getByRole('heading', { level: 2, name: 'artef at Black Hat USA 2026' }),
     ).toBeInTheDocument();
 
     act(() => {
@@ -56,7 +56,7 @@ describe('event index live status', () => {
 
     expect(getUpcomingCount()).toBe(initialUpcomingCount - 1);
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Promptfoo at DEF CON 34' }),
+      screen.getByRole('heading', { level: 2, name: 'artef at DEF CON 34' }),
     ).toBeInTheDocument();
 
     fireEvent.click(getUpcomingFilterButton());
@@ -71,7 +71,7 @@ describe('event index live status', () => {
 
     const initialUpcomingCount = getUpcomingCount();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Promptfoo at DEF CON 34' }),
+      screen.getByRole('heading', { level: 2, name: 'artef at DEF CON 34' }),
     ).toBeInTheDocument();
 
     act(() => {
@@ -80,7 +80,7 @@ describe('event index live status', () => {
 
     expect(getUpcomingCount()).toBe(initialUpcomingCount - 1);
     expect(
-      screen.queryByRole('heading', { level: 2, name: 'Promptfoo at DEF CON 34' }),
+      screen.queryByRole('heading', { level: 2, name: 'artef at DEF CON 34' }),
     ).not.toBeInTheDocument();
 
     fireEvent.click(getUpcomingFilterButton());
@@ -109,10 +109,10 @@ describe('event index live status', () => {
 
       expect(errors).toEqual([]);
       expect(
-        screen.getByRole('heading', { level: 2, name: 'Promptfoo at DEF CON 34' }),
+        screen.getByRole('heading', { level: 2, name: 'artef at DEF CON 34' }),
       ).toBeInTheDocument();
       expect(
-        screen.queryByRole('heading', { level: 2, name: 'Promptfoo at Black Hat USA 2026' }),
+        screen.queryByRole('heading', { level: 2, name: 'artef at Black Hat USA 2026' }),
       ).not.toBeInTheDocument();
     } finally {
       await act(async () => {

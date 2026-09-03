@@ -1,4 +1,4 @@
-import { afterAll, beforeEach, describe, expect, it, Mock, Mocked, MockedClass, vi } from 'vitest';
+﻿import { afterAll, beforeEach, describe, expect, it, Mock, Mocked, MockedClass, vi } from 'vitest';
 import { evaluate } from '../../src/evaluator';
 import logger from '../../src/logger';
 import Eval from '../../src/models/eval';
@@ -24,7 +24,7 @@ vi.mock('../../src/globalConfig/cloud', async (importOriginal) => {
     ...(await importOriginal()),
 
     cloudConfig: {
-      getApiHost: vi.fn(() => 'https://api.promptfoo.app'),
+      getApiHost: vi.fn(() => 'https://api.artef.app'),
       getApiKey: vi.fn(() => 'test-api-key'),
       getAuthHeaders: vi.fn(() => ({ Authorization: 'Bearer test-api-key' })),
       isEnabled: vi.fn(() => true),

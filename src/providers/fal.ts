@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { getCache, isCacheEnabled } from '../cache';
 import { getEnvString } from '../envars';
@@ -30,7 +30,7 @@ interface FalResult<T = unknown> {
   requestId: string;
 }
 
-const FAL_CACHE_KEY_HMAC_KEY = 'promptfoo:fal:cache-key:v1';
+const FAL_CACHE_KEY_HMAC_KEY = 'artef:fal:cache-key:v1';
 
 function sortObject(obj: any, seen = new WeakSet<object>()): any {
   if (obj === null || obj === undefined) {

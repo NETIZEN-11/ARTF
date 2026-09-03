@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   getOtelConfigFromEnv,
   getOtelConfigFromYaml,
@@ -35,16 +35,16 @@ describe('otelConfig', () => {
 
       expect(config).toEqual({
         enabled: false,
-        serviceName: 'promptfoo',
+        serviceName: 'artef',
         endpoint: undefined,
         localExport: true,
         debug: false,
       });
     });
 
-    it('should read PROMPTFOO_OTEL_ENABLED', () => {
+    it('should read artef_OTEL_ENABLED', () => {
       mockedGetEnvBool.mockImplementation((key, defaultVal) => {
-        if (key === 'PROMPTFOO_OTEL_ENABLED') {
+        if (key === 'artef_OTEL_ENABLED') {
           return true;
         }
         return defaultVal ?? false;
@@ -56,10 +56,10 @@ describe('otelConfig', () => {
       expect(config.enabled).toBe(true);
     });
 
-    it('should read PROMPTFOO_OTEL_SERVICE_NAME', () => {
+    it('should read artef_OTEL_SERVICE_NAME', () => {
       mockedGetEnvBool.mockImplementation((_key, defaultVal) => defaultVal ?? false);
       mockedGetEnvString.mockImplementation((key, defaultVal) => {
-        if (key === 'PROMPTFOO_OTEL_SERVICE_NAME') {
+        if (key === 'artef_OTEL_SERVICE_NAME') {
           return 'my-service';
         }
         return defaultVal;
@@ -70,10 +70,10 @@ describe('otelConfig', () => {
       expect(config.serviceName).toBe('my-service');
     });
 
-    it('should prefer PROMPTFOO_OTEL_ENDPOINT over OTEL_EXPORTER_OTLP_ENDPOINT', () => {
+    it('should prefer artef_OTEL_ENDPOINT over OTEL_EXPORTER_OTLP_ENDPOINT', () => {
       mockedGetEnvBool.mockImplementation((_key, defaultVal) => defaultVal ?? false);
       mockedGetEnvString.mockImplementation((key, defaultVal) => {
-        if (key === 'PROMPTFOO_OTEL_ENDPOINT') {
+        if (key === 'artef_OTEL_ENDPOINT') {
           return 'http://custom:4318';
         }
         if (key === 'OTEL_EXPORTER_OTLP_ENDPOINT') {
@@ -90,7 +90,7 @@ describe('otelConfig', () => {
     it('should fall back to OTEL_EXPORTER_OTLP_ENDPOINT', () => {
       mockedGetEnvBool.mockImplementation((_key, defaultVal) => defaultVal ?? false);
       mockedGetEnvString.mockImplementation(((key: string, defaultVal?: string) => {
-        if (key === 'PROMPTFOO_OTEL_ENDPOINT') {
+        if (key === 'artef_OTEL_ENDPOINT') {
           return defaultVal;
         }
         if (key === 'OTEL_EXPORTER_OTLP_ENDPOINT') {
@@ -104,9 +104,9 @@ describe('otelConfig', () => {
       expect(config.endpoint).toBe('http://standard:4318');
     });
 
-    it('should read PROMPTFOO_OTEL_LOCAL_EXPORT', () => {
+    it('should read artef_OTEL_LOCAL_EXPORT', () => {
       mockedGetEnvBool.mockImplementation((key, defaultVal) => {
-        if (key === 'PROMPTFOO_OTEL_LOCAL_EXPORT') {
+        if (key === 'artef_OTEL_LOCAL_EXPORT') {
           return false;
         }
         return defaultVal ?? false;
@@ -118,9 +118,9 @@ describe('otelConfig', () => {
       expect(config.localExport).toBe(false);
     });
 
-    it('should read PROMPTFOO_OTEL_DEBUG', () => {
+    it('should read artef_OTEL_DEBUG', () => {
       mockedGetEnvBool.mockImplementation((key, defaultVal) => {
-        if (key === 'PROMPTFOO_OTEL_DEBUG') {
+        if (key === 'artef_OTEL_DEBUG') {
           return true;
         }
         return defaultVal ?? false;
@@ -184,7 +184,7 @@ describe('otelConfig', () => {
   describe('mergeOtelConfigs', () => {
     const defaultEnvConfig: OtelConfig = {
       enabled: false,
-      serviceName: 'promptfoo',
+      serviceName: 'artef',
       endpoint: undefined,
       localExport: true,
       debug: false,

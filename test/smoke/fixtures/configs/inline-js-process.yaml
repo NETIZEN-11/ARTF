@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test 10.1.3: Inline JS with process.mainModule shim
 # Bug #6606: Inline transforms using process.mainModule.require broke in 0.120.0
 #

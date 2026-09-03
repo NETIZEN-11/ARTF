@@ -1,9 +1,9 @@
-# provider-replicate/image-generation (State-of-the-Art Image Generation)
+﻿# provider-replicate/image-generation (State-of-the-Art Image Generation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-replicate/image-generation
+npx artef@latest init --example provider-replicate/image-generation
 cd provider-replicate/image-generation
 ```
 
@@ -32,23 +32,23 @@ This example tests:
 ### Full Test Suite (8 different image types across 5 models = 40 images)
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ### Quick Test (2 images with the best model)
 
 ```bash
-promptfoo eval --filter-providers flux-1.1-pro-ultra --max-concurrency 1
+artef eval --filter-providers flux-1.1-pro-ultra --max-concurrency 1
 ```
 
 ### Test Specific Image Types
 
 ```bash
 # Test only portraits
-promptfoo eval --filter-tests "Photorealistic portrait"
+artef eval --filter-tests "Photorealistic portrait"
 
 # Test only landscapes and architecture
-promptfoo eval --filter-tests "landscape|architecture"
+artef eval --filter-tests "landscape|architecture"
 ```
 
 ## Image Types Tested
@@ -108,7 +108,7 @@ extensions:
 Or run with the included configuration:
 
 ```bash
-promptfoo eval -c promptfooconfig-with-download.yaml
+artef eval -c artefconfig-with-download.yaml
 ```
 
 Downloaded images will be saved as:

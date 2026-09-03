@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -9,9 +9,9 @@ import { useToast } from '@app/hooks/useToast';
 import Prism from '@app/lib/prism';
 import { cn } from '@app/lib/utils';
 import { useStore } from '@app/stores/evalConfig';
-import { loadYaml } from '@promptfoo/util/yamlLoad';
+import { loadYaml } from '@artef/util/yamlLoad';
 import * as yaml from 'js-yaml';
-import type { UnifiedConfig } from '@promptfoo/types';
+import type { UnifiedConfig } from '@artef/types';
 import 'prismjs/themes/prism.css';
 
 interface YamlEditorProps {
@@ -22,9 +22,9 @@ interface YamlEditorProps {
 
 // Schema comment that should always be at the top of the YAML file
 const YAML_SCHEMA_COMMENT =
-  '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json';
-const YAML_DOWNLOAD_FILE_NAME = 'promptfooconfig.yaml';
-const EVAL_CLI_COMMAND = `promptfoo eval -c ${YAML_DOWNLOAD_FILE_NAME}`;
+  '# yaml-language-server: $schema=https://artef.dev/config-schema.json';
+const YAML_DOWNLOAD_FILE_NAME = 'artefconfig.yaml';
+const EVAL_CLI_COMMAND = `artef eval -c ${YAML_DOWNLOAD_FILE_NAME}`;
 
 // Ensure the schema comment is at the top of YAML content
 const ensureSchemaComment = (yamlContent: string): string => {

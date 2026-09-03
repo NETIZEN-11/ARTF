@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { sleep } from '../../../../src/util/time';
 import {
   createMockProvider,
@@ -108,7 +108,7 @@ describe('VoiceCrescendoProvider', () => {
 
   it('should have correct ID', () => {
     const provider = new VoiceCrescendoProvider({ injectVar: 'goal' });
-    expect(provider.id()).toBe('promptfoo:redteam:voice-crescendo');
+    expect(provider.id()).toBe('artef:redteam:voice-crescendo');
   });
 
   it('should return error when no target provider configured', async () => {

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { isMissingPackageImportError } from '../../src/util/packageImportErrors';
 
 describe('isMissingPackageImportError', () => {
@@ -19,7 +19,7 @@ describe('isMissingPackageImportError', () => {
   });
 
   it('ignores import failures for unrelated packages', () => {
-    const error = new Error('Cannot find package @promptfoo/unrelated');
+    const error = new Error('Cannot find package @artef/unrelated');
 
     expect(isMissingPackageImportError(error, '@googleapis/sheets')).toBe(false);
   });

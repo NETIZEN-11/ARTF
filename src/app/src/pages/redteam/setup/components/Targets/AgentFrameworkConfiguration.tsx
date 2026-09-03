@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -67,7 +67,7 @@ const frameworkInfo: Record<string, { name: string; description: string; pip: st
   'generic-agent': {
     name: 'Other Agent',
     description:
-      'Any agent framework - promptfoo is fully customizable and supports all agent frameworks',
+      'Any agent framework - artef is fully customizable and supports all agent frameworks',
     pip: '# Install your agent framework dependencies',
   },
 };
@@ -147,7 +147,7 @@ export default function AgentFrameworkConfiguration({
             <p className="mb-3">{frameworkDetails.description}</p>
             {agentType === 'generic-agent' ? (
               <p className="italic">
-                <strong>Tip:</strong> Promptfoo works with ANY Python-based agent framework. Simply
+                <strong>Tip:</strong> artef works with ANY Python-based agent framework. Simply
                 implement the call_api function in your Python file to connect your agent.
               </p>
             ) : (
@@ -178,7 +178,7 @@ export default function AgentFrameworkConfiguration({
         <div>
           <h3 className="mb-2 text-lg font-semibold">Quickstart Template</h3>
           <p className="mb-4 max-w-[1000px] text-muted-foreground">
-            Want to see how it works? Promptfoo can generate a starter template for{' '}
+            Want to see how it works? artef can generate a starter template for{' '}
             {frameworkDetails.name} that shows you how to connect your agent to the red team
             evaluation system. You can use this as a starting point and customize it to fit your
             needs.

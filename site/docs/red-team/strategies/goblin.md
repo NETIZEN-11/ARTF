@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Goblin Multi-turn
 title: Goblin Multi-turn Strategy
 description: Adaptive multi-turn jailbreak agent focused on encoding, math, and logic techniques
@@ -12,7 +12,7 @@ Goblin is designed to complement Hydra. Whereas Hydra is more likely to expose w
 
 ## Implementation
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: jailbreak:goblin
@@ -23,7 +23,7 @@ redteam:
 ```
 
 ::::info Cloud Required
-Goblin relies on Promptfoo Cloud for its attacker agent and scan-wide learnings. Set `PROMPTFOO_REMOTE_GENERATION_URL` or sign in to Promptfoo Cloud before running this strategy.
+Goblin relies on artef Cloud for its attacker agent and scan-wide learnings. Set `artef_REMOTE_GENERATION_URL` or sign in to artef Cloud before running this strategy.
 ::::
 
 ## Configuration Options

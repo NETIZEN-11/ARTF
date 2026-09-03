@@ -1,4 +1,4 @@
----
+﻿---
 title: '1,156 Questions Censored by DeepSeek'
 description: 'Analysis of DeepSeek-R1 censorship using 1,156 political prompts exposing CCP content filtering and bias detection patterns'
 image: /img/blog/deepseek/deepseek_panda.png
@@ -24,7 +24,7 @@ DeepSeek-R1 is a blockbuster open-source model that is now at the top of the [U.
 
 As a Chinese company, DeepSeek is beholden to CCP policy. This is reflected even in the open-source model, prompting [concerns](https://www.nbcnews.com/tech/tech-news/china-ai-assistant-deepseek-rcna189385) about censorship and other influence.
 
-Today we're publishing a [dataset of prompts](https://huggingface.co/datasets/promptfoo/CCP-sensitive-prompts) covering sensitive topics that are likely to be censored by the CCP. These topics include perennial issues like Taiwanese independence, historical narratives around the Cultural Revolution, and questions about Xi Jinping.
+Today we're publishing a [dataset of prompts](https://huggingface.co/datasets/artef/CCP-sensitive-prompts) covering sensitive topics that are likely to be censored by the CCP. These topics include perennial issues like Taiwanese independence, historical narratives around the Cultural Revolution, and questions about Xi Jinping.
 
 In this post, we'll
 
@@ -37,13 +37,13 @@ In this post, we'll
 
 ## Creating the Dataset
 
-We created the CCP-sensitive-prompts dataset by seeding questions and extending it via [synthetic data generation](https://www.promptfoo.dev/docs/configuration/datasets/).
+We created the CCP-sensitive-prompts dataset by seeding questions and extending it via [synthetic data generation](https://www.artef.dev/docs/configuration/datasets/).
 
-The dataset is published on [HuggingFace](https://huggingface.co/datasets/promptfoo/CCP-sensitive-prompts) and [Google Sheets](https://docs.google.com/spreadsheets/d/1gkCuApXHaMO5C8d9abYJg5sZLxkbGzcx40N6J4krAm8/edit?usp=sharing). It contains 1,360 prompts, with approximately 20 prompts per sensitive topic.
+The dataset is published on [HuggingFace](https://huggingface.co/datasets/artef/CCP-sensitive-prompts) and [Google Sheets](https://docs.google.com/spreadsheets/d/1gkCuApXHaMO5C8d9abYJg5sZLxkbGzcx40N6J4krAm8/edit?usp=sharing). It contains 1,360 prompts, with approximately 20 prompts per sensitive topic.
 
 ## Setting Up the Evaluation
 
-We'll run this evaluation using [Promptfoo](https://www.promptfoo.dev/docs/getting-started/). Running 1000+ prompts through DeepSeek only requires a couple of lines of YAML:
+We'll run this evaluation using [artef](https://www.artef.dev/docs/getting-started/). Running 1000+ prompts through DeepSeek only requires a couple of lines of YAML:
 
 ```yaml
 description: 'DeepSeek Sensitive Prompts'
@@ -90,25 +90,25 @@ providers:
 tests: file://tests.csv
 ```
 
-Running it via Promptfoo eval shows that **about 85% of this dataset is censored by DeepSeek**:
+Running it via artef eval shows that **about 85% of this dataset is censored by DeepSeek**:
 
 ![Another DeepSeek Refusal Based on Chinese Censorship Prompts](/img/blog/deepseek/first_canned_refusal.png)
 
-Here's a link to the [eval results](https://www.promptfoo.app/eval/eval-0l1-2025-01-28T19:28:13). The ~15% of prompts that were not refused were generally not China-specific enough.
+Here's a link to the [eval results](https://www.artef.app/eval/eval-0l1-2025-01-28T19:28:13). The ~15% of prompts that were not refused were generally not China-specific enough.
 
-Run this eval yourself by pointing it to the [HuggingFace dataset](https://huggingface.co/datasets/promptfoo/CCP-sensitive-prompts), downloading [the CSV file](https://docs.google.com/spreadsheets/d/1gkCuApXHaMO5C8d9abYJg5sZLxkbGzcx40N6J4krAm8/edit?gid=1854643394#gid=1854643394), or running it directly through a [Google Sheets integration](https://www.promptfoo.dev/docs/integrations/google-sheets/).
+Run this eval yourself by pointing it to the [HuggingFace dataset](https://huggingface.co/datasets/artef/CCP-sensitive-prompts), downloading [the CSV file](https://docs.google.com/spreadsheets/d/1gkCuApXHaMO5C8d9abYJg5sZLxkbGzcx40N6J4krAm8/edit?gid=1854643394#gid=1854643394), or running it directly through a [Google Sheets integration](https://www.artef.dev/docs/integrations/google-sheets/).
 
-You can also run this eval directly through the [Promptfoo command line](/docs/getting-started/):
+You can also run this eval directly through the [artef command line](/docs/getting-started/):
 
 ```
-npx promptfoo@latest init --example redteam-deepseek
+npx artef@latest init --example redteam-deepseek
 ```
 
 ## Jailbreaking DeepSeek
 
-Promptfoo has [red teaming](https://www.promptfoo.dev/docs/red-team/quickstart/) capabilities that exploit models to find new jailbreaks for specific topics.
+artef has [red teaming](https://www.artef.dev/docs/red-team/quickstart/) capabilities that exploit models to find new jailbreaks for specific topics.
 
-The setup can be done [through the UI](https://www.promptfoo.dev/docs/red-team/quickstart/#provide-application-details), or we can just update the config file we used above.
+The setup can be done [through the UI](https://www.artef.dev/docs/red-team/quickstart/#provide-application-details), or we can just update the config file we used above.
 
 ```yaml
 description: 'DeepSeek Sensitive Topics Red Team'
@@ -132,10 +132,10 @@ redteam:
 
 In the above example, we've extracted our censored prompts into a single-column CSV file. Then, we apply a handful of jailbreak strategies:
 
-1. An [iterative](https://www.promptfoo.dev/docs/red-team/strategies/iterative/) jailbreak that uses an attacker-judge loop to search for a jailbreak prompt.
+1. An [iterative](https://www.artef.dev/docs/red-team/strategies/iterative/) jailbreak that uses an attacker-judge loop to search for a jailbreak prompt.
 2. A [tree-based technique](https://arxiv.org/abs/2312.02119) that behaves similarly.
-3. A "[composite](https://www.promptfoo.dev/docs/red-team/strategies/composite-jailbreaks/) jailbreak approach that stacks known simple jailbreaks on top of each other, resulting in a higher attack success rate.
-4. [Crescendo](https://www.promptfoo.dev/docs/red-team/strategies/multi-turn/) and [GOAT](https://www.promptfoo.dev/docs/red-team/strategies/goat/) jailbreaks from Microsoft Research and Meta AI, respectively. These are conversational jailbreaks that trick the model over the course of a back-and-forth dialogue.
+3. A "[composite](https://www.artef.dev/docs/red-team/strategies/composite-jailbreaks/) jailbreak approach that stacks known simple jailbreaks on top of each other, resulting in a higher attack success rate.
+4. [Crescendo](https://www.artef.dev/docs/red-team/strategies/multi-turn/) and [GOAT](https://www.artef.dev/docs/red-team/strategies/goat/) jailbreaks from Microsoft Research and Meta AI, respectively. These are conversational jailbreaks that trick the model over the course of a back-and-forth dialogue.
 
 ## DeepSeek Jailbreak Results
 
@@ -171,4 +171,4 @@ Next up: 1,156 prompts censored by ChatGPT 😉
 
 ---
 
-**Want to reach out?** [Email](mailto:ian@promptfoo.dev) / [X](https://x.com/iwebst) / [LinkedIn](https://www.linkedin.com/in/ianww/)
+**Want to reach out?** [Email](mailto:ian@artef.dev) / [X](https://x.com/iwebst) / [LinkedIn](https://www.linkedin.com/in/ianww/)

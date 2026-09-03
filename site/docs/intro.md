@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_position: 1
 description: Evaluate and secure LLM applications with automated testing, red teaming, and benchmarking. Compare outputs across 50+ providers.
 ---
 
 # Intro
 
-`promptfoo` is an [open-source](https://github.com/promptfoo/promptfoo) CLI and library for evaluating and red-teaming LLM apps.
+`artef` is an [open-source](https://github.com/artef/artef) CLI and library for evaluating and red-teaming LLM apps.
 
-With promptfoo, you can:
+With artef, you can:
 
 - **Build reliable prompts, models, and RAGs** with benchmarks specific to your use-case
 - **Secure your apps** with automated [red teaming](/docs/red-team) and pentesting
@@ -25,7 +25,7 @@ The goal: **test-driven LLM development**, not trial-and-error.
 
 :::
 
-promptfoo produces matrix views that let you quickly evaluate outputs across many prompts.
+artef produces matrix views that let you quickly evaluate outputs across many prompts.
 
 Here's an example of a side-by-side comparison of multiple prompts and inputs:
 
@@ -33,17 +33,17 @@ Here's an example of a side-by-side comparison of multiple prompts and inputs:
 
 It works on the command line too.
 
-![promptfoo command line evaluation](/img/docs/self-grading-cli.jpg)
+![artef command line evaluation](/img/docs/self-grading-cli.jpg)
 
-Promptfoo also produces high-level vulnerability and risk reports:
+artef also produces high-level vulnerability and risk reports:
 
 ![gen ai red team](/img/docs/redteam-dashboard.jpg)
 
-## Why choose promptfoo?
+## Why choose artef?
 
-There are many different ways to evaluate prompts. Here are some reasons to consider promptfoo:
+There are many different ways to evaluate prompts. Here are some reasons to consider artef:
 
-- **Developer friendly**: promptfoo is fast, with quality-of-life features like live reloads and caching.
+- **Developer friendly**: artef is fast, with quality-of-life features like live reloads and caching.
 - **Battle-tested**: Originally built for LLM apps serving over 10 million users in production. Our tooling is flexible and can be adapted to many setups.
 - **Simple, declarative test cases**: Define evals without writing code or working with heavy notebooks.
 - **Language agnostic**: Use Python, Javascript, or any other language.
@@ -55,7 +55,7 @@ There are many different ways to evaluate prompts. Here are some reasons to cons
 
 Test-driven prompt engineering is much more effective than trial-and-error.
 
-[Serious LLM development requires a systematic approach to prompt engineering](https://www.ianww.com/blog/2023/05/21/prompt-engineering-framework). Promptfoo streamlines the process of evaluating and improving language model performance.
+[Serious LLM development requires a systematic approach to prompt engineering](https://www.ianww.com/blog/2023/05/21/prompt-engineering-framework). artef streamlines the process of evaluating and improving language model performance.
 
 1. **Define test cases**: Identify core use cases and failure modes. Prepare a set of prompts and test cases that represent these scenarios.
 2. **Configure evaluation**: Set up your evaluation by specifying prompts, test cases, and API providers.

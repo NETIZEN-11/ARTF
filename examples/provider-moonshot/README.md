@@ -1,9 +1,9 @@
-# provider-moonshot (Moonshot AI / Kimi)
+﻿# provider-moonshot (Moonshot AI / Kimi)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-moonshot
+npx artef@latest init --example provider-moonshot
 cd provider-moonshot
 ```
 
@@ -14,10 +14,10 @@ Set your `MOONSHOT_API_KEY` environment variable. You can get a key from the [Ki
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-View the results with `promptfoo view`.
+View the results with `artef view`.
 
 ## What this shows
 

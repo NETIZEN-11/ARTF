@@ -1,4 +1,4 @@
-/**
+﻿/**
  * xAI Voice Agent API Provider
  *
  * Provides real-time voice conversations with Grok models via WebSocket.
@@ -419,7 +419,7 @@ export class XAIVoiceProvider implements ApiProvider {
       const ws = new WebSocket(wsUrl, {
         headers: {
           Authorization: `Bearer ${this.getApiKey()}`,
-          'User-Agent': 'promptfoo xAI Voice Client',
+          'User-Agent': 'artef xAI Voice Client',
         },
         handshakeTimeout: 10000,
       });

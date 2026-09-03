@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import { SpanStatusCode, trace } from '@opentelemetry/api';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -473,9 +473,9 @@ describe('MCPClient', () => {
       await mcpClient.initialize();
 
       expect(Client).toHaveBeenCalledWith({
-        name: 'promptfoo-MCP',
+        name: 'artef-MCP',
         version: '1.0.0',
-        description: 'Promptfoo MCP client for connecting to MCP servers during LLM evaluations',
+        description: 'artef MCP client for connecting to MCP servers during LLM evaluations',
       });
     });
 
@@ -503,7 +503,7 @@ describe('MCPClient', () => {
       expect(typeof description).toBe('string');
       expect(description.length).toBeGreaterThan(0);
       // Case-insensitive check for key terms
-      expect(description.toLowerCase()).toContain('promptfoo');
+      expect(description.toLowerCase()).toContain('artef');
       expect(description).toContain('MCP');
     });
 

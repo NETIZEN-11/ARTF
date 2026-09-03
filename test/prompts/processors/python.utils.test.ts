@@ -1,4 +1,4 @@
-import { PythonShell } from 'python-shell';
+﻿import { PythonShell } from 'python-shell';
 import { describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import {
@@ -71,7 +71,7 @@ describe('pythonPromptFunction', () => {
     await expect(pythonPromptFunctionLegacy(filePath, context)).resolves.toBe('mocked result');
     expect(mockPythonShellRun).toHaveBeenCalledWith(filePath, {
       mode: 'text',
-      pythonPath: process.env.PROMPTFOO_PYTHON || 'python',
+      pythonPath: process.env.artef_PYTHON || 'python',
       args: [
         JSON.stringify({
           vars: context.vars,

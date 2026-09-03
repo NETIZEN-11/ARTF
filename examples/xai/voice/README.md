@@ -1,6 +1,6 @@
-# xai/voice (xAI Grok Voice Agent)
+﻿# xai/voice (xAI Grok Voice Agent)
 
-This example demonstrates how to use xAI's Grok Voice Agent API with promptfoo for evaluating real-time voice AI conversations.
+This example demonstrates how to use xAI's Grok Voice Agent API with artef for evaluating real-time voice AI conversations.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ This example demonstrates how to use xAI's Grok Voice Agent API with promptfoo f
 ## Setup
 
 ```bash
-npx promptfoo@latest init --example xai/voice
+npx artef@latest init --example xai/voice
 cd xai/voice
 export XAI_API_KEY=your-api-key
 ```
@@ -18,7 +18,7 @@ export XAI_API_KEY=your-api-key
 ## Run
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Configuration Options
@@ -68,7 +68,7 @@ tools:
 **Load from external file:**
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 config:
   tools: file://tools.yaml
 ```

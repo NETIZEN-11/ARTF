@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   clearCache,
   disableCache,
@@ -215,8 +215,8 @@ describe('AnthropicCompletionProvider', () => {
       expect(create).toHaveBeenCalledTimes(3);
     });
 
-    it('expires unlabeled completion cache entries using PROMPTFOO_CACHE_TTL', async () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_CACHE_TTL: '1' });
+    it('expires unlabeled completion cache entries using artef_CACHE_TTL', async () => {
+      const restoreEnv = mockProcessEnv({ artef_CACHE_TTL: '1' });
       const now = vi.spyOn(Date, 'now').mockReturnValue(1_000);
       const provider = new AnthropicCompletionProvider('claude-1', {
         config: { apiKey: 'sk-ant-tenant-a' },
@@ -276,8 +276,8 @@ describe('AnthropicCompletionProvider', () => {
       expect(create).toHaveBeenCalledTimes(2);
     });
 
-    it('keeps unlabeled completion cache entries when PROMPTFOO_CACHE_TTL is zero', async () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_CACHE_TTL: '0' });
+    it('keeps unlabeled completion cache entries when artef_CACHE_TTL is zero', async () => {
+      const restoreEnv = mockProcessEnv({ artef_CACHE_TTL: '0' });
       const now = vi.spyOn(Date, 'now').mockReturnValue(1_000);
       const provider = new AnthropicCompletionProvider('claude-1', {
         config: { apiKey: 'sk-ant-tenant-a' },

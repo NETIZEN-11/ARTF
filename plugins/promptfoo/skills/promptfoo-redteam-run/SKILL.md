@@ -1,15 +1,15 @@
----
-name: promptfoo-redteam-run
+﻿---
+name: artef-redteam-run
 description: >
-  Run, rerun, inspect, and QA promptfoo redteam scans from generated redteam YAML
-  or an existing redteam setup config. Use when executing `promptfoo redteam
-  eval` or `promptfoo redteam run`, exporting results, triaging attack success
+  Run, rerun, inspect, and QA artef redteam scans from generated redteam YAML
+  or an existing redteam setup config. Use when executing `artef redteam
+  eval` or `artef redteam run`, exporting results, triaging attack success
   rate, grader failures, target errors, filter/rerun commands, reports, or CI
   gates. Do not use for initial provider wiring or for choosing plugins and
   strategies before generation.
 ---
 
-# Promptfoo Redteam Run
+# artef Redteam Run
 
 Execute redteam probes reproducibly, inspect the output artifact, and rerun only
 the slice that needs attention. Prefer evaluating existing generated tests with
@@ -32,8 +32,8 @@ Infer these from the repo or user prompt:
 - Desired output: JSON/YAML/HTML export, report, CI gate, failure triage, or
   rerun of a previous result.
 
-If a target or generated tests are missing, use `promptfoo-provider-setup` or
-`promptfoo-redteam-setup` first.
+If a target or generated tests are missing, use `artef-provider-setup` or
+`artef-redteam-setup` first.
 
 ## Workflow
 
@@ -47,17 +47,17 @@ If a target or generated tests are missing, use `promptfoo-provider-setup` or
   specific generator/grader or deterministic QA behavior.
 - Disable cloud sharing by default for internal targets. `redteam eval` and
   `retry` accept `--no-share`; `redteam run` does not currently expose that
-  flag, so export `PROMPTFOO_DISABLE_SHARING=true` for the whole invocation or
+  flag, so export `artef_DISABLE_SHARING=true` for the whole invocation or
   split into `redteam generate` + `redteam eval --no-share`. Only re-enable
   sharing when the user explicitly asks for a cloud URL.
 
 ### 2. Preflight
 
 Use the CLI form that matches your environment for every command below: from the
-promptfoo repo, `npm run local -- redteam …` (align Node first with
+artef repo, `npm run local -- redteam …` (align Node first with
 `source ~/.nvm/nvm.sh && nvm use`); outside the repo (an installed plugin or your
-own app project), `npx promptfoo@latest redteam …`, or a globally installed
-`promptfoo redteam …`.
+own app project), `npx artef@latest redteam …`, or a globally installed
+`artef redteam …`.
 
 Validate first:
 
@@ -65,7 +65,7 @@ Validate first:
 npm run local -- validate config -c path/to/redteam.yaml
 npm run local -- validate target -c path/to/redteam.yaml
 # Outside the repo:
-npx promptfoo@latest validate config -c path/to/redteam.yaml
+npx artef@latest validate config -c path/to/redteam.yaml
 ```
 
 Check that generated tests include `assert`, `metadata.pluginId`,
@@ -88,14 +88,14 @@ Evaluate generated tests:
 ```bash
 npm run local -- redteam eval -c path/to/redteam.yaml -o /tmp/redteam-results.json --no-cache --no-share --no-progress-bar
 # Outside the repo:
-npx promptfoo@latest redteam eval -c path/to/redteam.yaml -o /tmp/redteam-results.json --no-cache --no-share --no-progress-bar
+npx artef@latest redteam eval -c path/to/redteam.yaml -o /tmp/redteam-results.json --no-cache --no-share --no-progress-bar
 ```
 
 Generate and evaluate in one command only when needed. `redteam run` has no
 `--no-share` flag, so disable sharing via the environment variable:
 
 ```bash
-PROMPTFOO_DISABLE_SHARING=true npm run local -- redteam run -c path/to/promptfooconfig.yaml --force --no-cache --no-progress-bar
+artef_DISABLE_SHARING=true npm run local -- redteam run -c path/to/artefconfig.yaml --force --no-cache --no-progress-bar
 ```
 
 For fragile targets, set `-j 1` and add `--delay` rather than allowing broad
@@ -129,12 +129,12 @@ npm run local -- redteam eval -c path/to/redteam.yaml --filter-metadata pluginId
 ```
 
 For error-only reruns that should update the original evaluation in place, use
-`promptfoo retry <evalId>` instead of creating another eval.
+`artef retry <evalId>` instead of creating another eval.
 
 ### 6. Report or gate
 
 Use `redteam report` for interactive triage after results are written. It starts
-or reuses the local Promptfoo UI, so ask before running it unless the user
+or reuses the local artef UI, so ask before running it unless the user
 explicitly requested the report UI:
 
 ```bash
@@ -149,18 +149,18 @@ the app's risk tolerance and track category-level changes with
 
 ```bash
 # WRONG: regenerates probes when you only wanted a comparable rerun
-promptfoo redteam run
+artef redteam run
 
 # BETTER: reuse generated tests
-promptfoo redteam eval -c redteam.yaml -o results.json --no-cache --no-share
+artef redteam eval -c redteam.yaml -o results.json --no-cache --no-share
 ```
 
 ```bash
 # WRONG: broad rerun after a flaky target error
-promptfoo redteam eval -c redteam.yaml
+artef redteam eval -c redteam.yaml
 
 # BETTER: rerun only target/grader errors from the prior result
-promptfoo redteam eval -c redteam.yaml --filter-errors-only results.json -o errors-rerun.json --no-cache --no-share
+artef redteam eval -c redteam.yaml --filter-errors-only results.json -o errors-rerun.json --no-cache --no-share
 ```
 
 ## Output Contract

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 0
 sidebar_label: Testing LLM Chains
 slug: /configuration/testing-llm-chains
@@ -19,9 +19,9 @@ This page explains how to test an LLM chain. At a high level, you have these opt
 
 ## Unit testing LLM chains
 
-As mentioned above, the easiest way to test is one prompt at a time. This can be done pretty easily with a basic promptfoo [configuration](/docs/configuration/guide).
+As mentioned above, the easiest way to test is one prompt at a time. This can be done pretty easily with a basic artef [configuration](/docs/configuration/guide).
 
-Create a `promptfooconfig.yaml` for the first step of your chain. After configuring test cases for that step, create a new set of test cases for step 2 and so on.
+Create a `artefconfig.yaml` for the first step of your chain. After configuring test cases for that step, create a new set of test cases for step 2 and so on.
 
 ## End-to-end testing for LLM chains
 
@@ -57,7 +57,7 @@ This script is set up so that we can run it like this:
 python langchain_example.py "What is 2+2?"
 ```
 
-Now, let's configure promptfoo to run this LangChain script with a bunch of test cases:
+Now, let's configure artef to run this LangChain script with a bunch of test cases:
 
 ```yaml
 prompts: file://prompt.txt
@@ -84,13 +84,13 @@ tests:
 For an in-depth look at configuration, see the [guide](/docs/configuration/guide). Note the following:
 
 - **prompts**: `prompt.txt` is just a file that contains `{{question}}`, since we're passing the question directly through to the provider.
-- **providers**: We list GPT-5.4 in order to compare its outputs with LangChain's LLMMathChain. We also use the `exec` directive to make promptfoo run the Python script in its eval.
+- **providers**: We list GPT-5.4 in order to compare its outputs with LangChain's LLMMathChain. We also use the `exec` directive to make artef run the Python script in its eval.
 
 In this example, the end result is a side-by-side comparison of GPT-5.4 vs. LangChain math performance:
 
 ![langchain eval](/img/docs/langchain-eval.png)
 
-View the [full example on Github](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-langchain).
+View the [full example on Github](https://github.com/artef/artef/tree/main/examples/integration-langchain).
 
 ### Using a custom provider
 
@@ -140,7 +140,7 @@ module.exports = ChainProvider;
 
 Note that you can always write the logic directly in Javascript if you're comfortable with the language.
 
-Now, we can set up a promptfoo config pointing to `chainProvider.js`:
+Now, we can set up a artef config pointing to `chainProvider.js`:
 
 ```yaml
 prompts:
@@ -159,7 +159,7 @@ tests:
       input: How's it going?
 ```
 
-promptfoo will pass the full constructed prompts to `chainProvider.js` and the Python script, with variables substituted. In this case, the script will be called _# prompts_ \* _# test cases_ = 2 \* 2 = 4 times.
+artef will pass the full constructed prompts to `chainProvider.js` and the Python script, with variables substituted. In this case, the script will be called _# prompts_ \* _# test cases_ = 2 \* 2 = 4 times.
 
 Using this approach, you can test your LLM chain end-to-end, view results in the [web view](/docs/usage/web-ui), set up [continuous testing](/docs/integrations/github-action), and so on.
 

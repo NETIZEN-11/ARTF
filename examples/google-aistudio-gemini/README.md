@@ -1,17 +1,17 @@
-# google-aistudio-gemini (Google AI Studio (Gemini and Gemma) Example)
+﻿# google-aistudio-gemini (Google AI Studio (Gemini and Gemma) Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-aistudio-gemini
+npx artef@latest init --example google-aistudio-gemini
 cd google-aistudio-gemini
 ```
 
-This example demonstrates using Google's Gemini and Gemma models with promptfoo to evaluate math puzzle-solving capabilities.
+This example demonstrates using Google's Gemini and Gemma models with artef to evaluate math puzzle-solving capabilities.
 
 ## Prerequisites
 
-- promptfoo CLI installed (`npm install -g promptfoo` or `brew install promptfoo`)
+- artef CLI installed (`npm install -g artef` or `brew install artef`)
 - Google AI Studio API key set as `GOOGLE_API_KEY`
 
 ## Available Models
@@ -56,7 +56,7 @@ The `system-instruction.txt` file contains reusable instructions that can be:
 
 ## Image Understanding Example
 
-This example also includes an image understanding configuration (`promptfooconfig.image.yaml`) that demonstrates:
+This example also includes an image understanding configuration (`artefconfig.image.yaml`) that demonstrates:
 
 - **Multimodal capabilities**: Using Gemini models to analyze and compare images
 - **Image file handling**: Loading images using the `file://` prefix
@@ -69,21 +69,21 @@ Images should be placed on separate lines in the prompt. The `file://` prefix au
 1. Get a local copy of the configuration:
 
 ```sh
-promptfoo init --example google-aistudio-gemini
+artef init --example google-aistudio-gemini
 ```
 
 2. Run the examples:
 
 ```sh
 # Basic math puzzle evaluation across multiple Gemini and Gemma models
-promptfoo eval
+artef eval
 
 # Image understanding and comparison evaluation
-promptfoo eval -c promptfooconfig.image.yaml
+artef eval -c artefconfig.image.yaml
 ```
 
 3. View the results:
 
 ```sh
-promptfoo view
+artef view
 ```

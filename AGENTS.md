@@ -1,10 +1,10 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 Guidance for AI agents working on this TypeScript codebase.
 
 ## Project Overview
 
-Promptfoo is an open-source framework for evaluating and testing LLM applications.
+artef is an open-source framework for evaluating and testing LLM applications.
 
 ## Project Structure
 
@@ -114,7 +114,7 @@ npm run local -- eval -c config.yaml --env-file .env
 OPENAI_API_KEY=sk-... npm run local -- eval -c config.yaml
 
 # Disable remote generation for testing
-PROMPTFOO_DISABLE_REMOTE_GENERATION=true npm run local -- eval -c config.yaml
+artef_DISABLE_REMOTE_GENERATION=true npm run local -- eval -c config.yaml
 ```
 
 **Never commit the `.env` file or expose API keys in code or commit messages.**
@@ -126,7 +126,7 @@ PROMPTFOO_DISABLE_REMOTE_GENERATION=true npm run local -- eval -c config.yaml
 **Always use `--no-cache` during development** to ensure fresh results:
 
 ```bash
-npm run local -- eval -c examples/my-example/promptfooconfig.yaml --no-cache
+npm run local -- eval -c examples/my-example/artefconfig.yaml --no-cache
 ```
 
 **Export and inspect results** to verify pass/fail/errors:
@@ -166,7 +166,7 @@ Confirm the final `main` state is green, or that the only remaining failure is a
 For behavior changes, do not stop at unit tests. Run the actual CLI or example with the local build. For eval and redteam work, prefer:
 
 ```bash
-npm run local -- eval -c path/to/promptfooconfig.yaml --no-cache -o output.json
+npm run local -- eval -c path/to/artefconfig.yaml --no-cache -o output.json
 ```
 
 Add `--env-file .env` only when the eval needs local credentials and the file exists.
@@ -205,11 +205,11 @@ npm run local -- eval -c config.yaml --no-cache
 
 **View results in web UI:** First check if the Web UI is running on port 3000, then ask user before starting. Use `npm run dev` for localhost:3000.
 
-**Cache:** Located at `~/.promptfoo/cache` by default, unless overridden with
-`PROMPTFOO_CACHE_PATH` or `PROMPTFOO_CONFIG_DIR`. **NEVER delete or clear the cache
+**Cache:** Located at `~/.artef/cache` by default, unless overridden with
+`artef_CACHE_PATH` or `artef_CONFIG_DIR`. **NEVER delete or clear the cache
 without explicit permission.** Use `--no-cache` flag instead.
 
-**Database:** Located at `~/.promptfoo/promptfoo.db` (SQLite). You may read from it but **NEVER delete it**.
+**Database:** Located at `~/.artef/artef.db` (SQLite). You may read from it but **NEVER delete it**.
 
 ## Git Workflow (CRITICAL)
 
@@ -363,7 +363,7 @@ When it fails on your PR:
 
 - **Actually dead?** Delete the code. That's the point of the check.
 - **Loaded by convention or path string** (worker, browser replacement, fixture)? Add an `entry` in `knip.jsonc` with a comment stating the loading mechanism.
-- **Consumed by promptfoo-cloud?** The cloud repo compiles `@promptfoo/*` directly from this repo's `src/`, so an export can be load-bearing with zero references here. Add it to the appropriate allowlist in `knip.jsonc` with a comment naming the consuming cloud path.
+- **Consumed by artef-cloud?** The cloud repo compiles `@artef/*` directly from this repo's `src/`, so an export can be load-bearing with zero references here. Add it to the appropriate allowlist in `knip.jsonc` with a comment naming the consuming cloud path.
 
 Every allowlist entry in `knip.jsonc` must have a comment explaining why it exists — never remove an entry (or a "dead" export it protects) without checking its stated consumer first. Config-drift hints are not enforced in CI; maintainers can audit them periodically with `npm run knip -- --treat-config-hints-as-errors`.
 
@@ -371,7 +371,7 @@ Every allowlist entry in `knip.jsonc` must have a comment explaining why it exis
 
 For security, model scanning, redteam, and coding-agent work, test like an attacker first. Look for false negatives, bypasses, hidden payloads, unsafe tool use, prompt injection, exfiltration, cache misuse, and evidence gaps. When a bypass is found, add a focused regression test before or alongside the fix.
 
-For demo/example apps used to show red teaming, do not harden away all interesting findings unless explicitly asked. A slightly vulnerable sample app is useful when the goal is to demonstrate Promptfoo's ability to find real breaks.
+For demo/example apps used to show red teaming, do not harden away all interesting findings unless explicitly asked. A slightly vulnerable sample app is useful when the goal is to demonstrate artef's ability to find real breaks.
 
 ## Review Guidelines
 

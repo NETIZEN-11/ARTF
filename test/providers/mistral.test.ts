@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache, getCache, isCacheEnabled, withCacheNamespace } from '../../src/cache';
 import logger from '../../src/logger';
 import {
@@ -149,7 +149,7 @@ describe('Mistral', () => {
           method: 'POST',
           headers: expect.objectContaining({
             'Content-Type': 'application/json',
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
             Authorization: expect.stringContaining('Bearer '),
           }),
           body: expect.stringContaining('"messages":[{"role":"user","content":"Test prompt"}]'),
@@ -713,7 +713,7 @@ describe('Mistral', () => {
       expect(fetchCall[1]).toEqual(
         expect.objectContaining({
           headers: expect.objectContaining({
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
           }),
         }),
       );
@@ -1041,7 +1041,7 @@ describe('Mistral', () => {
           method: 'POST',
           headers: expect.objectContaining({
             'Content-Type': 'application/json',
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
             Authorization: expect.stringContaining('Bearer '),
           }),
           body: expect.stringContaining('"input":"Test text"'),
@@ -1186,7 +1186,7 @@ describe('Mistral', () => {
       expect(vi.mocked(fetchWithCache).mock.calls[0][1]).toEqual(
         expect.objectContaining({
           headers: expect.objectContaining({
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
           }),
         }),
       );

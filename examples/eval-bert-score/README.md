@@ -1,9 +1,9 @@
-# eval-bert-score (BERTScore Evaluation)
+﻿# eval-bert-score (BERTScore Evaluation)
 
 Use BERTScore to measure semantic similarity between LLM outputs and reference text.
 
 ```bash
-npx promptfoo@latest init --example eval-bert-score
+npx artef@latest init --example eval-bert-score
 cd eval-bert-score
 ```
 
@@ -20,7 +20,7 @@ Note: First run will download the BERT model (~1.4GB).
 ### Basic Example
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 tests:
   - vars:
       text: 'Hello world'
@@ -31,14 +31,14 @@ tests:
         threshold: 0.7 # Pass if similarity > 70%
 ```
 
-Run: `promptfoo eval`
+Run: `artef eval`
 
 ### Advanced Example
 
 Compare against multiple valid references:
 
 ```yaml
-# promptfooconfig-advanced.yaml
+# artefconfig-advanced.yaml
 assert:
   - type: python
     value: |
@@ -55,7 +55,7 @@ assert:
       return max(scores)  # Use best match
 ```
 
-Run: `promptfoo eval -c promptfooconfig-advanced.yaml`
+Run: `artef eval -c artefconfig-advanced.yaml`
 
 ## How It Works
 

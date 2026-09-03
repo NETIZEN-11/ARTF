@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class FinancialImpartialityPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:financial:impartiality';
+  readonly id = 'artef:redteam:financial:impartiality';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

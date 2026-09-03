@@ -1,11 +1,11 @@
-#
-# This is a standalone github action that runs promptfoo against a change.
+﻿#
+# This is a standalone github action that runs artef against a change.
 # You'll have to edit it to use the appropriate branches and prompts.
 #
 # For an easier to use packaged action, see:
 #
-# https://promptfoo.dev/docs/integrations/github-action
-# https://github.com/promptfoo/promptfoo-action
+# https://artef.dev/docs/integrations/github-action
+# https://github.com/artef/artef-action
 #
 name: LLM Prompt Evaluation
 
@@ -31,27 +31,27 @@ jobs:
           ref: ${{ github.head_ref }}
           path: head
 
-      - name: Cache promptfoo data
+      - name: Cache artef data
         id: cache
         uses: actions/cache@v4
         with:
-          path: ~/.cache/promptfoo
-          key: ${{ runner.os }}-promptfoo-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.cache/artef
+          key: ${{ runner.os }}-artef-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-promptfoo-
+            ${{ runner.os }}-artef-
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      - name: Run promptfoo evaluation
+      - name: Run artef evaluation
         id: eval
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PROMPTFOO_CACHE_PATH: ~/.cache/promptfoo
+          artef_CACHE_PATH: ~/.cache/artef
         run: |
-          npx promptfoo eval -c head/prompts/promptfooconfig.yaml --prompts base/prompts/prompt1.json head/prompts/prompt1.json -o output.json --share
+          npx artef eval -c head/prompts/artefconfig.yaml --prompts base/prompts/prompt1.json head/prompts/prompt1.json -o output.json --share
           echo "OUTPUT_JSON_PATH=$GITHUB_WORKSPACE/output.json" >> $GITHUB_ENV
 
       - name: Comment PR

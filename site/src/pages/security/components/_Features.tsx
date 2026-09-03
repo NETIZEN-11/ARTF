@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Link from '@docusaurus/Link';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -59,7 +59,7 @@ export default function Features(): React.ReactElement {
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>How it works</h2>
         <p className={styles.featuresSummary}>
-          Promptfoo provides a comprehensive solution for managing LLM vulnerabilities throughout
+          artef provides a comprehensive solution for managing LLM vulnerabilities throughout
           your development lifecycle.
         </p>
         <div className={styles.featuresTimeline}>

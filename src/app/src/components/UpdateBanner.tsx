@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 
 import { Alert } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -144,7 +144,7 @@ export default function UpdateBanner() {
           {versionInfo.commandType === 'docker' &&
             !versionInfo.updateCommands?.isCustomContainer && (
               <span className="text-sm text-muted-foreground">
-                If this is a derived image, update its Promptfoo base and rebuild before
+                If this is a derived image, update its artef base and rebuild before
                 redeploying.
               </span>
             )}
@@ -153,7 +153,7 @@ export default function UpdateBanner() {
       <div className="flex flex-wrap items-center gap-2 sm:justify-end">
         <Button variant="ghost" size="sm" asChild className="gap-1.5 text-xs">
           <a
-            href="https://github.com/promptfoo/promptfoo/releases/latest"
+            href="https://github.com/artef/artef/releases/latest"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -162,11 +162,11 @@ export default function UpdateBanner() {
           </a>
         </Button>
         {/* Custom containers have no copyable command: the image owner has to update the
-            Promptfoo source or parent image and rebuild. Without this branch the banner would
+            artef source or parent image and rebuild. Without this branch the banner would
             render version numbers and no instruction at all. */}
         {versionInfo?.updateCommands?.isCustomContainer ? (
           <span className="text-xs text-muted-foreground">
-            Update the Promptfoo source, dependency, or parent image, then rebuild and redeploy the
+            Update the artef source, dependency, or parent image, then rebuild and redeploy the
             container.
           </span>
         ) : (

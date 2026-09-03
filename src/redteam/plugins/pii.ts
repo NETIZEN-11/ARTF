@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import logger from '../../logger';
 import { getNunjucksEngine } from '../../util/templates';
 import {
@@ -12,7 +12,7 @@ import type { PluginActionParams, TestCase } from '../../types/index';
 import type { Inputs } from '../../types/shared';
 import type { PII_PLUGINS } from '../constants';
 
-const PLUGIN_ID = 'promptfoo:redteam:pii';
+const PLUGIN_ID = 'artef:redteam:pii';
 
 /**
  * Extract content from <Prompt> tags and parse JSON if inputs are defined.

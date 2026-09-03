@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_position: 22
-description: Red team LLM applications for privacy, access-control, and personal data handling risks with Promptfoo's gdpr preset
+description: Red team LLM applications for privacy, access-control, and personal data handling risks with artef's gdpr preset
 ---
 
 # Data Protection Testing
 
-Promptfoo includes a `gdpr` preset that groups privacy, access-control, and security checks often used when reviewing AI systems against EU data protection requirements. Use it to surface technical issues around personal data handling, sensitive data exposure, deletion flows, and automated decision-making.
+artef includes a `gdpr` preset that groups privacy, access-control, and security checks often used when reviewing AI systems against EU data protection requirements. Use it to surface technical issues around personal data handling, sensitive data exposure, deletion flows, and automated decision-making.
 
 This preset is intended for technical testing and risk discovery. It does not certify legal compliance, provide legal advice, or replace review by privacy counsel.
 
@@ -23,9 +23,9 @@ This guide maps the preset to seven GDPR articles that are particularly relevant
 
 ## Scanning for Data Protection Risks
 
-Promptfoo helps identify privacy, access-control, and personal-data handling issues through comprehensive red teaming.
+artef helps identify privacy, access-control, and personal-data handling issues through comprehensive red teaming.
 
-To set up the scan through the Promptfoo UI, select the GDPR preset on the Plugins page. The configuration identifier remains `gdpr` for compatibility.
+To set up the scan through the artef UI, select the GDPR preset on the Plugins page. The configuration identifier remains `gdpr` for compatibility.
 
 You can include all checks in this preset with the following configuration:
 
@@ -415,9 +415,9 @@ redteam:
 
 ## What's Next
 
-Data protection expectations for AI systems continue to evolve. Regular testing with Promptfoo can help surface privacy and access-control issues, but it should be paired with legal review and operational controls.
+Data protection expectations for AI systems continue to evolve. Regular testing with artef can help surface privacy and access-control issues, but it should be paired with legal review and operational controls.
 
-Remember that Promptfoo's testing capabilities complement but don't replace:
+Remember that artef's testing capabilities complement but don't replace:
 
 - Legal review by qualified data protection officers or lawyers
 - Privacy impact assessments (PIAs/DPIAs)

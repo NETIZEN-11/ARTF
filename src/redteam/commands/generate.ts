@@ -1,4 +1,4 @@
-import { createHash, randomUUID } from 'crypto';
+﻿import { createHash, randomUUID } from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -19,7 +19,7 @@ import {
 import { cloudConfig } from '../../globalConfig/cloud';
 import logger from '../../logger';
 import { getProviderIds } from '../../providers/index';
-import { isPromptfooSampleTarget } from '../../providers/shared';
+import { isartefSampleTarget } from '../../providers/shared';
 import telemetry from '../../telemetry';
 import { EMAIL_OK_STATUS } from '../../types/email';
 import {
@@ -35,12 +35,12 @@ import {
   logConfigResolutionError,
   resolveConfigs,
 } from '../../util/config/load';
-import { writePromptfooConfig } from '../../util/config/writer';
+import { writeartefConfig } from '../../util/config/writer';
 import { pathExists } from '../../util/file';
 import { getCustomPolicies } from '../../util/generation';
 import { printBorder, renderVarsInObject, setupEnv } from '../../util/index';
 import invariant from '../../util/invariant';
-import { promptfooCommand } from '../../util/promptfooCommand';
+import { artefCommand } from '../../util/artefCommand';
 import { checkRedteamProbeLimit, MONTHLY_PROBE_LIMIT } from '../../util/redteamProbeLimit';
 import { accumulateTokenUsage } from '../../util/tokenUsageUtils';
 import { isUuid } from '../../util/uuid';
@@ -293,11 +293,11 @@ async function doGenerateRedteamInternal(
 
       You've used ${chalk.bold(probeLimitResult.used.toLocaleString())} of your ${chalk.bold(MONTHLY_PROBE_LIMIT.toLocaleString())} free monthly probes.
 
-      To continue, please log in to Promptfoo Cloud:
+      To continue, please log in to artef Cloud:
 
-        ${chalk.cyan('promptfoo auth login')}
+        ${chalk.cyan('artef auth login')}
 
-      For enterprise plans, contact ${chalk.cyan('inquiries@promptfoo.dev')}
+      For enterprise plans, contact ${chalk.cyan('inquiries@artef.dev')}
     `);
     throw new ProbeLimitExceededError(probeLimitResult.used, MONTHLY_PROBE_LIMIT);
   }
@@ -318,7 +318,7 @@ async function doGenerateRedteamInternal(
     await fs.mkdir(path.dirname(tmpFile), { recursive: true });
     await fs.writeFile(tmpFile, yaml.dump(options.configFromCloud));
     configPath = tmpFile;
-    logger.debug(`Using Promptfoo Cloud-originated config at ${tmpFile}`);
+    logger.debug(`Using artef Cloud-originated config at ${tmpFile}`);
   }
 
   // Skip generation when a YAML output already matches the current config hash.
@@ -416,7 +416,7 @@ async function doGenerateRedteamInternal(
     logger.info(
       chalk.red(
         `\nCan't generate without configuration - run ${chalk.yellow.bold(
-          promptfooCommand('redteam init'),
+          artefCommand('redteam init'),
         )} first`,
       ),
     );
@@ -440,7 +440,7 @@ async function doGenerateRedteamInternal(
     numTestsExisting: (testSuite.tests || []).length,
     plugins: redteamConfig?.plugins?.map((p) => (typeof p === 'string' ? p : p.id)) || [],
     strategies: redteamConfig?.strategies?.map((s) => (typeof s === 'string' ? s : s.id)) || [],
-    isPromptfooSampleTarget: testSuite.providers.some(isPromptfooSampleTarget),
+    isartefSampleTarget: testSuite.providers.some(isartefSampleTarget),
   });
   telemetry.record('redteam generate', {
     phase: 'started',
@@ -448,7 +448,7 @@ async function doGenerateRedteamInternal(
     numTestsExisting: (testSuite.tests || []).length,
     plugins: redteamConfig?.plugins?.map((p) => (typeof p === 'string' ? p : p.id)) || [],
     strategies: redteamConfig?.strategies?.map((s) => (typeof s === 'string' ? s : s.id)) || [],
-    isPromptfooSampleTarget: testSuite.providers.some(isPromptfooSampleTarget),
+    isartefSampleTarget: testSuite.providers.some(isartefSampleTarget),
   });
 
   let plugins: RedteamPluginObject[] = [];
@@ -523,7 +523,7 @@ async function doGenerateRedteamInternal(
   }
 
   // Resolve policy references.
-  // Each reference is an id of the policy record stored in Promptfoo Cloud; load their respective texts.
+  // Each reference is an id of the policy record stored in artef Cloud; load their respective texts.
   // Only reusable policies (with UUID ids) need to be fetched; inline policies already have their text.
   const policyPluginsWithRefs = plugins.filter(
     (plugin) =>
@@ -925,7 +925,7 @@ async function doGenerateRedteamInternal(
         strategies: strategyObjs,
       });
 
-      ret = writePromptfooConfig(updatedYaml, options.output, headerComments);
+      ret = writeartefConfig(updatedYaml, options.output, headerComments);
       printBorder();
       const relativeOutputPath = path.relative(process.cwd(), options.output);
       logger.info(`Wrote ${redteamTests.length} test cases to ${relativeOutputPath}`);
@@ -936,8 +936,8 @@ async function doGenerateRedteamInternal(
             chalk.green(
               `Run ${chalk.bold(
                 relativeOutputPath === 'redteam.yaml'
-                  ? promptfooCommand('redteam eval')
-                  : promptfooCommand(`redteam eval -c ${relativeOutputPath}`),
+                  ? artefCommand('redteam eval')
+                  : artefCommand(`redteam eval -c ${relativeOutputPath}`),
               )} to run the red team!`,
             ),
         );
@@ -994,13 +994,13 @@ async function doGenerateRedteamInternal(
         isUpdate: true,
       });
 
-      ret = writePromptfooConfig(existingConfig, configPath, headerComments);
+      ret = writeartefConfig(existingConfig, configPath, headerComments);
       logger.info(
         `\nWrote ${redteamTests.length} new test cases to ${path.relative(process.cwd(), configPath)}`,
       );
-      const command = configPath.endsWith('promptfooconfig.yaml')
-        ? promptfooCommand('eval')
-        : promptfooCommand(`eval -c ${path.relative(process.cwd(), configPath)}`);
+      const command = configPath.endsWith('artefconfig.yaml')
+        ? artefCommand('eval')
+        : artefCommand(`eval -c ${path.relative(process.cwd(), configPath)}`);
       logger.info('\n' + chalk.green(`Run ${chalk.bold(`${command}`)} to run the red team!`));
     } else {
       const author = getAuthor();
@@ -1016,7 +1016,7 @@ async function doGenerateRedteamInternal(
         strategies: strategyObjs,
       });
 
-      ret = writePromptfooConfig(
+      ret = writeartefConfig(
         {
           ...(options.description ? { description: options.description } : {}),
           metadata: {
@@ -1038,7 +1038,7 @@ async function doGenerateRedteamInternal(
       numTestsGenerated: redteamTests.length,
       plugins: plugins.map((p) => p.id),
       strategies: strategies.map((s) => (typeof s === 'string' ? s : s.id)),
-      isPromptfooSampleTarget: testSuite.providers.some(isPromptfooSampleTarget),
+      isartefSampleTarget: testSuite.providers.some(isartefSampleTarget),
     });
     telemetry.record('redteam generate', {
       phase: 'completed',
@@ -1048,7 +1048,7 @@ async function doGenerateRedteamInternal(
       numTestsGenerated: redteamTests.length,
       plugins: plugins.map((p) => p.id),
       strategies: strategies.map((s) => (typeof s === 'string' ? s : s.id)),
-      isPromptfooSampleTarget: testSuite.providers.some(isPromptfooSampleTarget),
+      isartefSampleTarget: testSuite.providers.some(isartefSampleTarget),
     });
 
     return ret;
@@ -1068,10 +1068,10 @@ export function redteamGenerateCommand(
     .description('Generate adversarial test cases')
     .option(
       '-c, --config [path]',
-      'Path to configuration file or cloud config UUID. Defaults to promptfooconfig.yaml',
+      'Path to configuration file or cloud config UUID. Defaults to artefconfig.yaml',
     )
     .option('-o, --output [path]', 'Path to output file')
-    .option('-w, --write', 'Write results to promptfoo configuration file', false)
+    .option('-w, --write', 'Write results to artef configuration file', false)
     .option('-t, --target <id>', 'Cloud provider target ID to run the scan on')
     .option('-d, --description <text>', 'Custom description/name for the generated tests')
     .option(

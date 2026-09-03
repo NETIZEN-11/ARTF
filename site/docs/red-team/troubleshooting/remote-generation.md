@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Remote Generation Errors
 description: Red team remote API connectivity issues by diagnosing network blocks and security policies to ensure secure access for LLM adversarial testing workflows
 ---
@@ -9,10 +9,10 @@ You may encounter connection issues due to corporate firewalls or security polic
 
 ## Checking Connectivity
 
-To verify if you can reach our API, try accessing Promptfoo's version endpoint:
+To verify if you can reach our API, try accessing artef's version endpoint:
 
 ```bash
-curl https://api.promptfoo.app/version
+curl https://api.artef.app/version
 ```
 
 You should receive a response like:
@@ -23,25 +23,25 @@ You should receive a response like:
 }
 ```
 
-If this request fails or times out, it likely means your network is blocking access to our API. You can also try opening `https://api.promptfoo.app/version` in your browser to see if you can reach the page.
+If this request fails or times out, it likely means your network is blocking access to our API. You can also try opening `https://api.artef.app/version` in your browser to see if you can reach the page.
 
 ## Common Solutions
 
-1. **Check with IT**: Since promptfoo generates adversarial content for security testing, our API endpoints may be blocked by corporate security policies. Contact your IT department to:
-   - Allowlist `api.promptfoo.app`
+1. **Check with IT**: Since artef generates adversarial content for security testing, our API endpoints may be blocked by corporate security policies. Contact your IT department to:
+   - Allowlist `api.artef.app`
    - Allow HTTPS traffic to our endpoints
    - Review security logs for blocked requests
 
-2. **Use a Different Network**: Try running promptfoo on:
+2. **Use a Different Network**: Try running artef on:
    - A personal network
    - Mobile hotspot
    - Development environment outside corporate network
 
-3. **Configure Proxy**: If you need to use a corporate proxy, you can configure it using environment variables. Promptfoo uses Node.js's [Unidici](https://undici.nodejs.org/#/docs/api/ProxyAgent.md) to handle proxy configuration. It automatically detects and uses standard proxy environment variables. The proxy URL format is: `[protocol://][user:password@]host[:port]`
+3. **Configure Proxy**: If you need to use a corporate proxy, you can configure it using environment variables. artef uses Node.js's [Unidici](https://undici.nodejs.org/#/docs/api/ProxyAgent.md) to handle proxy configuration. It automatically detects and uses standard proxy environment variables. The proxy URL format is: `[protocol://][user:password@]host[:port]`
 
    ```bash
    export HTTPS_PROXY=http://proxy.company.com:8080
-   promptfoo eval
+   artef eval
    ```
 
 ## Alternative Options

@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: CircleCI
-description: Automate LLM testing in CircleCI pipelines with promptfoo. Configure caching, API keys, and evaluation workflows to validate prompts and models in CI/CD environments.
+description: Automate LLM testing in CircleCI pipelines with artef. Configure caching, API keys, and evaluation workflows to validate prompts and models in CI/CD environments.
 ---
 
-# Setting up Promptfoo with CircleCI
+# Setting up artef with CircleCI
 
-This guide shows how to integrate promptfoo's LLM evaluation into your CircleCI pipeline. This allows you to automatically test your prompts and models whenever changes are made to your repository.
+This guide shows how to integrate artef's LLM evaluation into your CircleCI pipeline. This allows you to automatically test your prompts and models whenever changes are made to your repository.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ This guide shows how to integrate promptfoo's LLM evaluation into your CircleCI 
 
 ### 1. Create CircleCI Configuration
 
-Create a `.circleci/config.yml` file in your repository. Here's a basic configuration that installs promptfoo and runs evaluations:
+Create a `.circleci/config.yml` file in your repository. Here's a basic configuration that installs artef and runs evaluations:
 
     ```yaml
     version: 2.1
@@ -30,25 +30,25 @@ Create a `.circleci/config.yml` file in your repository. Here's a basic configur
 
           - restore_cache:
               keys:
-                - promptfoo-cache-v1-{{ .Branch }}-{{ checksum "prompts/**/*" }}
-                - promptfoo-cache-v1-{{ .Branch }}
-                - promptfoo-cache-v1-
+                - artef-cache-v1-{{ .Branch }}-{{ checksum "prompts/**/*" }}
+                - artef-cache-v1-{{ .Branch }}
+                - artef-cache-v1-
 
           - run:
-              name: Install promptfoo
-              command: npm install -g promptfoo
+              name: Install artef
+              command: npm install -g artef
 
           - run:
               name: Run prompt evaluation
-              command: promptfoo eval -c promptfooconfig.yaml --prompts prompts/**/*.json --share -o output.json
+              command: artef eval -c artefconfig.yaml --prompts prompts/**/*.json --share -o output.json
               environment:
                 OPENAI_API_KEY: ${OPENAI_API_KEY}
-                PROMPTFOO_CACHE_PATH: ~/.promptfoo/cache
+                artef_CACHE_PATH: ~/.artef/cache
 
           - save_cache:
-              key: promptfoo-cache-v1-{{ .Branch }}-{{ checksum "prompts/**/*" }}
+              key: artef-cache-v1-{{ .Branch }}-{{ checksum "prompts/**/*" }}
               paths:
-                - ~/.promptfoo/cache
+                - ~/.artef/cache
 
           - store_artifacts:
               path: output.json
@@ -77,7 +77,7 @@ The configuration above includes caching to save time and API costs. The cache:
 
 - Stores LLM API responses
 - Is keyed by branch and content hash
-- Is saved in `~/.promptfoo/cache`
+- Is saved in `~/.artef/cache`
 
 ### 4. Storing Results
 
@@ -116,7 +116,7 @@ For large test suites, you can parallelize evaluations:
               name: Split tests
               command: |
                 prompts=$(find prompts -name "*.json" | circleci tests split)
-                promptfoo eval -c promptfooconfig.yaml --prompts $prompts
+                artef eval -c artefconfig.yaml --prompts $prompts
     ```
 
 ## Example Output
@@ -125,7 +125,7 @@ After the evaluation runs, you'll see:
 
 - Test results in the CircleCI UI
 - Artifacts containing the full evaluation data
-- A shareable link to view results in the promptfoo web viewer
+- A shareable link to view results in the artef web viewer
 - Any test failures will cause the CircleCI job to fail
 
 ## Troubleshooting
@@ -146,4 +146,4 @@ Common issues and solutions:
    - Adjust the `no_output_timeout` setting in your job
    - Consider splitting tests into smaller batches
 
-For more details on promptfoo configuration, see the [configuration reference](/docs/configuration/reference).
+For more details on artef configuration, see the [configuration reference](/docs/configuration/reference).

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Citation
 title: Authority-based Jailbreaking Strategy
 description: Bypass AI safety using academic citation exploitation that frames harmful content as legitimate research or scholarly inquiry
@@ -10,16 +10,16 @@ The Citation strategy is a red teaming technique that uses academic citations an
 
 This approach exploits LLM bias toward authority. It was introduced in [research](https://arxiv.org/pdf/2411.11407) studying how LLMs respond to harmful requests when they're framed in an academic context.
 
-Use it like so in your `promptfooconfig.yaml`:
+Use it like so in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - citation
 ```
 
 You can apply it to specific plugins by adding a `plugins` config. For example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - citation:
     plugins:

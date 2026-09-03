@@ -1,11 +1,11 @@
-# azure/openai (Azure OpenAI)
+﻿# azure/openai (Azure OpenAI)
 
-This example demonstrates how to use Azure OpenAI with promptfoo, including text generation and vision capabilities.
+This example demonstrates how to use Azure OpenAI with artef, including text generation and vision capabilities.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example azure/openai
+npx artef@latest init --example azure/openai
 cd azure/openai
 ```
 
@@ -37,15 +37,15 @@ You can set these in a `.env` file or directly in your environment.
 ### Basic Text Generation
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 # or
-npx promptfoo@latest eval -c promptfooconfig.yaml
+npx artef@latest eval -c artefconfig.yaml
 ```
 
 ### Vision Models
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.vision.yaml
+npx artef@latest eval -c artefconfig.vision.yaml
 ```
 
 Demonstrates three ways to provide images to vision models:
@@ -64,6 +64,6 @@ If you get a 401 error:
 
 ## Additional Resources
 
-- [Azure OpenAI Provider Documentation](https://promptfoo.dev/docs/providers/azure/)
+- [Azure OpenAI Provider Documentation](https://artef.dev/docs/providers/azure/)
 - [Azure OpenAI Service Documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/)
 - [Azure OpenAI Vision Documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/gpt-with-vision)

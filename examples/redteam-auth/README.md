@@ -1,18 +1,18 @@
-# redteam-auth (Red Team Authentication)
+﻿# redteam-auth (Red Team Authentication)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-auth
+npx artef@latest init --example redteam-auth
 cd redteam-auth
 ```
 
 This example demonstrates how to configure authentication for red team evaluations against HTTP endpoints. It includes three configuration files showing different authentication methods:
 
-1. **OAuth 2.0** (`promptfooconfig.oauth.yaml`) - Client credentials flow for server-to-server authentication
-2. **API Key** (`promptfooconfig.api_key.yaml`) - API key authentication via headers
-3. **File Auth** (`promptfooconfig.file.yaml`) - Custom token loading via JavaScript, TypeScript, or Python
-4. **Digital Signature** (`promptfooconfig.digital_signature.yaml`) - Digital signature authentication using private keys
+1. **OAuth 2.0** (`artefconfig.oauth.yaml`) - Client credentials flow for server-to-server authentication
+2. **API Key** (`artefconfig.api_key.yaml`) - API key authentication via headers
+3. **File Auth** (`artefconfig.file.yaml`) - Custom token loading via JavaScript, TypeScript, or Python
+4. **Digital Signature** (`artefconfig.digital_signature.yaml`) - Digital signature authentication using private keys
 
 ## Overview
 
@@ -22,49 +22,49 @@ When running red team evaluations against protected HTTP endpoints, you need to 
 
 ### OAuth Authentication
 
-The `promptfooconfig.oauth.yaml` file demonstrates OAuth 2.0 client credentials flow:
+The `artefconfig.oauth.yaml` file demonstrates OAuth 2.0 client credentials flow:
 
 ```yaml
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=bearer
+      url: https://example-app.artef.app/minnow/chat?auth_type=bearer
       method: POST
       auth:
         type: oauth
         grantType: client_credentials
-        clientId: '{{env.PROMPTFOO_TARGET_CLIENT_ID}}'
-        clientSecret: '{{env.PROMPTFOO_TARGET_CLIENT_SECRET}}'
-        tokenUrl: https://example-app.promptfoo.app/oauth/token
+        clientId: '{{env.artef_TARGET_CLIENT_ID}}'
+        clientSecret: '{{env.artef_TARGET_CLIENT_SECRET}}'
+        tokenUrl: https://example-app.artef.app/oauth/token
         scopes: []
 ```
 
 ### API Key Authentication
 
-The `promptfooconfig.api_key.yaml` file demonstrates API key authentication:
+The `artefconfig.api_key.yaml` file demonstrates API key authentication:
 
 ```yaml
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=api_key
+      url: https://example-app.artef.app/minnow/chat?auth_type=api_key
       method: POST
       auth:
         type: api_key
-        value: '{{env.PROMPTFOO_TARGET_API_KEY}}'
+        value: '{{env.artef_TARGET_API_KEY}}'
         placement: header
         keyName: X-API-Key
 ```
 
 ### File Authentication
 
-The `promptfooconfig.file.yaml` file demonstrates file-based authentication:
+The `artefconfig.file.yaml` file demonstrates file-based authentication:
 
 ```yaml
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=bearer
+      url: https://example-app.artef.app/minnow/chat?auth_type=bearer
       method: POST
       headers:
         Content-Type: application/json
@@ -76,7 +76,7 @@ targets:
         path: ./auth/get-token.js
 ```
 
-The bundled auth scripts simulate the client credentials grant used by the OAuth example. They call `https://example-app.promptfoo.app/oauth/token`, return the `access_token` as `token`, and convert `expires_in` into the optional `expiration` field.
+The bundled auth scripts simulate the client credentials grant used by the OAuth example. They call `https://example-app.artef.app/oauth/token`, return the `access_token` as `token`, and convert `expires_in` into the optional `expiration` field.
 
 The auth file returns an object shaped like:
 
@@ -95,13 +95,13 @@ You can also use:
 
 ### Digital Signature Authentication
 
-The `promptfooconfig.digital_signature.yaml` file demonstrates digital signature authentication:
+The `artefconfig.digital_signature.yaml` file demonstrates digital signature authentication:
 
 ```yaml
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=digital_signature
+      url: https://example-app.artef.app/minnow/chat?auth_type=digital_signature
       method: POST
       headers:
         'timestamp': '{{signatureTimestamp}}'
@@ -111,9 +111,9 @@ targets:
         certificateType: pem
         keyInputType: base64
         type: pem
-        privateKey: '{{env.PROMPTFOO_AUTH_PRIVATE_KEY}}'
+        privateKey: '{{env.artef_AUTH_PRIVATE_KEY}}'
         signatureValidityMs: 80000
-        signatureDataTemplate: 'promptfoo-app{{signatureTimestamp}}'
+        signatureDataTemplate: 'artef-app{{signatureTimestamp}}'
 ```
 
 ## Environment Variables
@@ -122,22 +122,22 @@ This example requires environment variables depending on which authentication me
 
 ### For OAuth Authentication
 
-- `PROMPTFOO_TARGET_CLIENT_ID` - Your OAuth client ID
-- `PROMPTFOO_TARGET_CLIENT_SECRET` - Your OAuth client secret
+- `artef_TARGET_CLIENT_ID` - Your OAuth client ID
+- `artef_TARGET_CLIENT_SECRET` - Your OAuth client secret
 
 ### For API Key Authentication
 
-- `PROMPTFOO_TARGET_API_KEY` - Your API key
+- `artef_TARGET_API_KEY` - Your API key
 
 ### For File Authentication
 
-- `PROMPTFOO_TARGET_CLIENT_ID` - OAuth client ID used by the bundled auth scripts
-- `PROMPTFOO_TARGET_CLIENT_SECRET` - OAuth client secret used by the bundled auth scripts
-- `PROMPTFOO_TARGET_SCOPES` - Optional space-delimited OAuth scopes
+- `artef_TARGET_CLIENT_ID` - OAuth client ID used by the bundled auth scripts
+- `artef_TARGET_CLIENT_SECRET` - OAuth client secret used by the bundled auth scripts
+- `artef_TARGET_SCOPES` - Optional space-delimited OAuth scopes
 
 ### For Digital Signature Authentication
 
-- `PROMPTFOO_AUTH_PRIVATE_KEY` - Your base64-encoded private key (PEM format)
+- `artef_AUTH_PRIVATE_KEY` - Your base64-encoded private key (PEM format)
 
 NOTE: The values for these environment variables are available upon request.
 
@@ -147,41 +147,41 @@ NOTE: The values for these environment variables are available upon request.
 
 ```bash
 # For OAuth
-export PROMPTFOO_TARGET_CLIENT_ID=your-client-id
-export PROMPTFOO_TARGET_CLIENT_SECRET=your-client-secret
+export artef_TARGET_CLIENT_ID=your-client-id
+export artef_TARGET_CLIENT_SECRET=your-client-secret
 
 # For API Key
-export PROMPTFOO_TARGET_API_KEY=your-api-key
+export artef_TARGET_API_KEY=your-api-key
 
 # For File Auth
-export PROMPTFOO_TARGET_CLIENT_ID=your-client-id
-export PROMPTFOO_TARGET_CLIENT_SECRET=your-client-secret
-export PROMPTFOO_TARGET_SCOPES=
+export artef_TARGET_CLIENT_ID=your-client-id
+export artef_TARGET_CLIENT_SECRET=your-client-secret
+export artef_TARGET_SCOPES=
 
 # For Digital Signature
-export PROMPTFOO_AUTH_PRIVATE_KEY=your-base64-encoded-private-key
+export artef_AUTH_PRIVATE_KEY=your-base64-encoded-private-key
 ```
 
 2. **Run the red team evaluation:**
 
 ```bash
 # Using OAuth configuration
-promptfoo redteam run -c promptfooconfig.oauth.yaml
+artef redteam run -c artefconfig.oauth.yaml
 
 # Using API Key configuration
-promptfoo redteam run -c promptfooconfig.api_key.yaml
+artef redteam run -c artefconfig.api_key.yaml
 
 # Using file-based authentication
-promptfoo redteam run -c promptfooconfig.file.yaml
+artef redteam run -c artefconfig.file.yaml
 
 # Using Digital Signature configuration
-promptfoo redteam run -c promptfooconfig.digital_signature.yaml
+artef redteam run -c artefconfig.digital_signature.yaml
 ```
 
 3. **View the results:**
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## How It Works
@@ -207,7 +207,7 @@ When using API key authentication:
 When using digital signature authentication:
 
 1. A timestamp is generated for each request
-2. The signature data is constructed using the `signatureDataTemplate` (e.g., `promptfoo-app{{signatureTimestamp}}`)
+2. The signature data is constructed using the `signatureDataTemplate` (e.g., `artef-app{{signatureTimestamp}}`)
 3. The data is signed using the private key from the environment variable
 4. The timestamp and signature are added to request headers
 5. The signature is valid for the duration specified by `signatureValidityMs` (80 seconds in the example)
@@ -216,7 +216,7 @@ When using digital signature authentication:
 
 When using file-based authentication:
 
-1. Promptfoo loads the configured JavaScript, TypeScript, or Python file
+1. artef loads the configured JavaScript, TypeScript, or Python file
 2. The auth function performs its own client credentials token request
 3. It returns a `token` and optional `expiration`
 4. The token is cached on the provider instance

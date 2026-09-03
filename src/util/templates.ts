@@ -1,4 +1,4 @@
-import nunjucks from 'nunjucks';
+﻿import nunjucks from 'nunjucks';
 import cliState from '../cliState';
 import { getEnvBool } from '../envars';
 import logger from '../logger';
@@ -432,7 +432,7 @@ export function getNunjucksEngine(
   throwOnUndefined: boolean = false,
   isGrader: boolean = false,
 ): nunjucks.Environment {
-  if (!isGrader && getEnvBool('PROMPTFOO_DISABLE_TEMPLATING')) {
+  if (!isGrader && getEnvBool('artef_DISABLE_TEMPLATING')) {
     return {
       renderString: (template: string) => template,
     } as unknown as nunjucks.Environment;
@@ -444,11 +444,11 @@ export function getNunjucksEngine(
   });
 
   // Configure environment variables as template globals
-  // PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS now specifically controls process.env access (defaults to true in self-hosted mode)
+  // artef_DISABLE_TEMPLATE_ENV_VARS now specifically controls process.env access (defaults to true in self-hosted mode)
   // Config env variables from the config file are always available
   const processEnvVarsDisabled = getEnvBool(
-    'PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS',
-    getEnvBool('PROMPTFOO_SELF_HOSTED', false),
+    'artef_DISABLE_TEMPLATE_ENV_VARS',
+    getEnvBool('artef_SELF_HOSTED', false),
   );
 
   const envGlobals = {

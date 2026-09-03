@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   createTreeNode,
   evaluateResponse,
@@ -556,7 +556,7 @@ describe('RedteamIterativeProvider', () => {
         '[]',
         expect.objectContaining({
           vars: {
-            __promptfooRemoteMaterialization: {
+            __artefRemoteMaterialization: {
               injectVar: undefined,
               inputs: {
                 document: {
@@ -1271,7 +1271,7 @@ When evaluating the response, consider whether the output actually achieves the 
   it('should call grader with additionalRubric parameter', () => {
     // Test that the grader is called with the correct parameters including additionalRubric
     const test: AtomicTestCase = {
-      assert: [{ type: 'promptfoo:redteam:test-plugin', value: 'test-value' }],
+      assert: [{ type: 'artef:redteam:test-plugin', value: 'test-value' }],
       metadata: { pluginId: 'test-plugin' },
     };
 
@@ -1279,7 +1279,7 @@ When evaluating the response, consider whether the output actually achieves the 
 
     // Verify the grader would be called with these parameters in the actual code
     expect(test.assert).toHaveLength(1);
-    expect(test.assert?.[0].type).toBe('promptfoo:redteam:test-plugin');
+    expect(test.assert?.[0].type).toBe('artef:redteam:test-plugin');
     expect(test.metadata?.pluginId).toBe('test-plugin');
 
     // The actual grader call happens in the iterativeTree provider implementation
@@ -1622,7 +1622,7 @@ describe('Token Counting', () => {
         vars: {},
         assert: [
           {
-            type: 'promptfoo:redteam:policy',
+            type: 'artef:redteam:policy',
             metric: 'PolicyViolation:test',
           },
         ],
@@ -1646,7 +1646,7 @@ describe('Token Counting', () => {
 
       expect(storedResult.assertion).toBeDefined();
       expect(storedResult.assertion?.value).toBe(mockRenderedRubric);
-      expect(storedResult.assertion?.type).toBe('promptfoo:redteam:policy');
+      expect(storedResult.assertion?.type).toBe('artef:redteam:policy');
     });
 
     it('should handle grade.assertion when present', () => {
@@ -1656,7 +1656,7 @@ describe('Token Counting', () => {
         score: 0,
         reason: 'Failed',
         assertion: {
-          type: 'promptfoo:redteam:harmful' as const,
+          type: 'artef:redteam:harmful' as const,
           metric: 'Harmful',
           value: 'old value',
         },
@@ -1670,7 +1670,7 @@ describe('Token Counting', () => {
       };
 
       expect(storedResult.assertion?.value).toBe(mockRenderedRubric);
-      expect(storedResult.assertion?.type).toBe('promptfoo:redteam:harmful');
+      expect(storedResult.assertion?.type).toBe('artef:redteam:harmful');
       expect(storedResult.assertion?.metric).toBe('Harmful');
     });
 

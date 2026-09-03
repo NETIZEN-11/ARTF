@@ -1,4 +1,4 @@
-import { omitProviderCredentials } from '@app/stores/evalConfig';
+﻿import { omitProviderCredentials } from '@app/stores/evalConfig';
 import { create } from 'zustand';
 import { targetConfigSha256 } from './targetConfigSha256';
 
@@ -616,13 +616,13 @@ const persistTargetConfigErrorFromRemoteEvent = (error: string, existingMarker?:
 
 if (typeof window !== 'undefined') {
   const targetConfigWindow = window as Window & {
-    __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
-    __promptfooTargetConfigValidationChannel?: BroadcastChannel;
+    __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+    __artefTargetConfigValidationChannel?: BroadcastChannel;
   };
-  if (targetConfigWindow.__promptfooTargetConfigValidationStorageListener) {
+  if (targetConfigWindow.__artefTargetConfigValidationStorageListener) {
     window.removeEventListener(
       'storage',
-      targetConfigWindow.__promptfooTargetConfigValidationStorageListener,
+      targetConfigWindow.__artefTargetConfigValidationStorageListener,
     );
   }
   const handleStorage = (event: StorageEvent) => {
@@ -717,11 +717,11 @@ if (typeof window !== 'undefined') {
       persistTargetConfigError(targetConfigError, false, event.newValue);
     }
   };
-  targetConfigWindow.__promptfooTargetConfigValidationStorageListener = handleStorage;
+  targetConfigWindow.__artefTargetConfigValidationStorageListener = handleStorage;
   window.addEventListener('storage', handleStorage);
 
   try {
-    targetConfigWindow.__promptfooTargetConfigValidationChannel?.close();
+    targetConfigWindow.__artefTargetConfigValidationChannel?.close();
   } catch {}
   try {
     targetConfigValidationChannel = new BroadcastChannel(TARGET_CONFIG_VALIDATION_STORAGE_KEY);
@@ -780,6 +780,6 @@ if (typeof window !== 'undefined') {
         persistTargetConfigError(targetConfigError, false, event.data);
       }
     });
-    targetConfigWindow.__promptfooTargetConfigValidationChannel = targetConfigValidationChannel;
+    targetConfigWindow.__artefTargetConfigValidationChannel = targetConfigValidationChannel;
   } catch {}
 }

@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+﻿import { EventEmitter } from 'events';
 
 import { getEnvBool, getEnvInt } from '../envars';
 import logger from '../logger';
@@ -29,11 +29,11 @@ export class RateLimitRegistry extends EventEmitter {
   constructor(options: RateLimitRegistryOptions) {
     super();
     this.maxConcurrency = options.maxConcurrency;
-    this.minConcurrency = options.minConcurrency ?? getEnvInt('PROMPTFOO_MIN_CONCURRENCY', 1);
+    this.minConcurrency = options.minConcurrency ?? getEnvInt('artef_MIN_CONCURRENCY', 1);
     // Queue timeout: 0 means disabled, default is 5 minutes
     this.queueTimeoutMs =
-      options.queueTimeoutMs ?? getEnvInt('PROMPTFOO_SCHEDULER_QUEUE_TIMEOUT_MS', 5 * 60 * 1000);
-    this.enabled = !getEnvBool('PROMPTFOO_DISABLE_ADAPTIVE_SCHEDULER', false);
+      options.queueTimeoutMs ?? getEnvInt('artef_SCHEDULER_QUEUE_TIMEOUT_MS', 5 * 60 * 1000);
+    this.enabled = !getEnvBool('artef_DISABLE_ADAPTIVE_SCHEDULER', false);
   }
 
   /**

@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { clampCachedTokens } from '../shared';
 import { AZURE_MODELS } from './defaults';
 
@@ -115,7 +115,7 @@ export function throwConfigurationError(message: string): never {
   throw new Error(dedent`
     ${message}
 
-    See https://www.promptfoo.dev/docs/providers/azure/ to learn more about Azure configuration.
+    See https://www.artef.dev/docs/providers/azure/ to learn more about Azure configuration.
   `);
 }
 

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Mistral AI
 title: Mistral AI Provider - Complete Guide to Models, Reasoning, and API Integration
 description: Configure Mistral AI Magistral reasoning models with multimodal capabilities, function calling, and OpenAI-compatible APIs
@@ -173,7 +173,7 @@ providers:
 
 :::note
 
-Mistral's `config.guardrails` field enables upstream inline input guardrails, but it does not enable Promptfoo's [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails). Promptfoo sends the configuration without normalizing successful or HTTP 403 guardrail results into the required top-level response. Use a custom target or transform to assert on the native result. If `block_on_error` is enabled, distinguish a moderation-service failure from a policy violation instead of counting both as a match. Call a moderation endpoint separately for output filtering.
+Mistral's `config.guardrails` field enables upstream inline input guardrails, but it does not enable artef's [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails). artef sends the configuration without normalizing successful or HTTP 403 guardrail results into the required top-level response. Use a custom target or transform to assert on the native result. If `block_on_error` is enabled, distinguish a moderation-service failure from a policy violation instead of counting both as a match. Call a moderation endpoint separately for output filtering.
 
 :::
 
@@ -234,7 +234,7 @@ standalone Magistral Small reasoning snapshot. Enable Small 4's reasoning with
 
 #### Legacy Models (Deprecated or Retired)
 
-promptfoo keeps these IDs so it can cost-score cached results. **Retired** IDs return an error if you call them today; **deprecated** IDs still work until their retirement date.
+artef keeps these IDs so it can cost-score cached results. **Retired** IDs return an error if you call them today; **deprecated** IDs still work until their retirement date.
 
 1. `open-mistral-7b`, `mistral-tiny`, `mistral-tiny-2312` (retired)
 2. `mistral-small-2402` (retired)
@@ -662,7 +662,7 @@ providers:
 1. **Enable debug logging**:
 
    ```bash
-   export DEBUG=promptfoo:*
+   export DEBUG=artef:*
    ```
 
 2. **Test with simple prompts first**:
@@ -692,39 +692,39 @@ providers:
 
 Ready-to-use examples are available in our GitHub repository:
 
-### 📋 [Complete Mistral Example Collection](https://github.com/promptfoo/promptfoo/tree/main/examples/mistral)
+### 📋 [Complete Mistral Example Collection](https://github.com/artef/artef/tree/main/examples/mistral)
 
 Run any of these examples locally:
 
 ```bash
-npx promptfoo@latest init --example mistral
+npx artef@latest init --example mistral
 ```
 
 **Individual Examples:**
 
-- **[AIME2024 Mathematical Reasoning](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.aime2024.yaml)** - Evaluate Magistral models on advanced mathematical competition problems
-- **[Model Comparison](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.comparison.yaml)** - Compare reasoning across Magistral and traditional models
-- **[Function Calling](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.tool-use.yaml)** - Demonstrate tool use and function calling
-- **[JSON Mode](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.json-mode.yaml)** - Structured output generation
-- **[Code Generation](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.code-generation.yaml)** - Multi-language code generation with Codestral
-- **[Reasoning Tasks](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.reasoning.yaml)** - Advanced step-by-step problem solving
-- **[Multimodal](https://github.com/promptfoo/promptfoo/blob/main/examples/mistral/promptfooconfig.multimodal.yaml)** - Vision capabilities with a current multimodal model (`mistral-large-2512`)
+- **[AIME2024 Mathematical Reasoning](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.aime2024.yaml)** - Evaluate Magistral models on advanced mathematical competition problems
+- **[Model Comparison](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.comparison.yaml)** - Compare reasoning across Magistral and traditional models
+- **[Function Calling](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.tool-use.yaml)** - Demonstrate tool use and function calling
+- **[JSON Mode](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.json-mode.yaml)** - Structured output generation
+- **[Code Generation](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.code-generation.yaml)** - Multi-language code generation with Codestral
+- **[Reasoning Tasks](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.reasoning.yaml)** - Advanced step-by-step problem solving
+- **[Multimodal](https://github.com/artef/artef/blob/main/examples/mistral/artefconfig.multimodal.yaml)** - Vision capabilities with a current multimodal model (`mistral-large-2512`)
 
 ### Quick Start
 
 ```bash
 # Try the basic comparison
-npx promptfoo@latest eval -c https://raw.githubusercontent.com/promptfoo/promptfoo/main/examples/mistral/promptfooconfig.comparison.yaml
+npx artef@latest eval -c https://raw.githubusercontent.com/artef/artef/main/examples/mistral/artefconfig.comparison.yaml
 
 # Test mathematical reasoning with Magistral models
-npx promptfoo@latest eval -c https://raw.githubusercontent.com/promptfoo/promptfoo/main/examples/mistral/promptfooconfig.aime2024.yaml
+npx artef@latest eval -c https://raw.githubusercontent.com/artef/artef/main/examples/mistral/artefconfig.aime2024.yaml
 
 # Test reasoning capabilities
-npx promptfoo@latest eval -c https://raw.githubusercontent.com/promptfoo/promptfoo/main/examples/mistral/promptfooconfig.reasoning.yaml
+npx artef@latest eval -c https://raw.githubusercontent.com/artef/artef/main/examples/mistral/artefconfig.reasoning.yaml
 ```
 
 :::tip Contribute Examples
 
-Found a great use case? [Contribute your example](https://github.com/promptfoo/promptfoo/tree/main/examples) to help the community!
+Found a great use case? [Contribute your example](https://github.com/artef/artef/tree/main/examples) to help the community!
 
 :::

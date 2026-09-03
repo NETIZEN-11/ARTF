@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import {
   initializeToolRegistry,
   TOOL_DEFINITIONS,
@@ -34,7 +34,7 @@ describe('ToolRegistry', () => {
         'get_evaluation_details',
         'run_evaluation',
         'share_evaluation',
-        'validate_promptfoo_config',
+        'validate_artef_config',
         'test_provider',
         'run_assertion',
         'generate_dataset',
@@ -55,7 +55,7 @@ describe('ToolRegistry', () => {
       const readOnlyTools = [
         'list_evaluations',
         'get_evaluation_details',
-        'validate_promptfoo_config',
+        'validate_artef_config',
         'test_provider',
         'run_assertion',
         'compare_providers',

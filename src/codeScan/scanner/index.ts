@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Core Scan Execution Logic
  *
  * Main entry point for scanner module - orchestrates the complete scan process.
@@ -168,7 +168,7 @@ export async function executeScan(repoPath: string, options: ScanOptions): Promi
       const parsed = parseGitHubPr(options.githubPr);
       if (!parsed) {
         throw new Error(
-          `Invalid --github-pr format: "${options.githubPr}". Expected format: owner/repo#number (e.g., promptfoo/promptfoo#123)`,
+          `Invalid --github-pr format: "${options.githubPr}". Expected format: owner/repo#number (e.g., artef/artef#123)`,
         );
       }
       parsedPR = parsed;

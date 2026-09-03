@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import GroupIcon from '@mui/icons-material/Group';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -22,15 +22,15 @@ const reasons = [
     icon: <GroupIcon className={styles.statIcon} />,
     stat: '200+',
     title: 'Companies',
-    description: 'Trust Promptfoo for LLM security & testing',
+    description: 'Trust artef for LLM security & testing',
   },
 ];
 
-export default function WhyPromptfoo(): React.ReactElement {
+export default function Whyartef(): React.ReactElement {
   return (
-    <section className={`${styles.section} ${styles.whyPromptfooSection}`}>
+    <section className={`${styles.section} ${styles.whyartefSection}`}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>Why Promptfoo Leads in LLM Security</h2>
+        <h2 className={styles.sectionTitle}>Why artef Leads in LLM Security</h2>
         <div className={styles.statsGrid}>
           {reasons.map((reason, index) => (
             <div key={index} className={styles.statItem}>

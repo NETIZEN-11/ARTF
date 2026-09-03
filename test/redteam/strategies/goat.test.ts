@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addGoatTestCases } from '../../../src/redteam/strategies/goat';
 
 import type { AssertionType, TestCaseWithPlugin } from '../../../src/types/index';
@@ -24,7 +24,7 @@ describe('GOAT Strategy', () => {
     const result = await addGoatTestCases(testCases, 'goal', {});
 
     expect(result[0].provider).toEqual({
-      id: 'promptfoo:redteam:goat',
+      id: 'artef:redteam:goat',
       config: {
         injectVar: 'goal',
       },

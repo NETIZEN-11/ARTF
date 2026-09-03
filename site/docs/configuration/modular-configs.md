@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_position: 999
 sidebar_label: Managing Large Configs
-title: Managing Large Promptfoo Configurations
-description: Learn how to structure, organize, and modularize large promptfoo configurations for better maintainability and reusability.
+title: Managing Large artef Configurations
+description: Learn how to structure, organize, and modularize large artef configurations for better maintainability and reusability.
 keywords:
   [
-    promptfoo configuration,
+    artef configuration,
     modular configs,
     large configuration,
     configuration management,
@@ -18,14 +18,14 @@ keywords:
 
 # Managing Large Configurations
 
-As your Promptfoo evaluations grow more complex, you'll need strategies to keep your configurations manageable, maintainable, and reusable. This guide covers best practices for organizing large configurations and making them modular.
+As your artef evaluations grow more complex, you'll need strategies to keep your configurations manageable, maintainable, and reusable. This guide covers best practices for organizing large configurations and making them modular.
 
 ## Separate Configuration Files
 
 Split your configuration into multiple files based on functionality:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Main evaluation configuration
 prompts: file://configs/prompts.yaml
 providers: file://configs/providers.yaml
@@ -71,8 +71,8 @@ assert:
 
 Organize test cases by domain or functionality:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Multi-domain evaluation
 prompts: file://prompts/
 providers: file://providers.yaml
@@ -106,8 +106,8 @@ tests:
 
 Create environment-specific configurations:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Production evaluation
 prompts: file://prompts/
 providers: file://configs/providers-prod.yaml
@@ -142,8 +142,8 @@ LOG_LEVEL: info
 
 Use YAML references to avoid repetition:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Evaluation with reusable components
 prompts: file://prompts/
 providers: file://providers.yaml
@@ -188,7 +188,7 @@ tests:
 
 Use JavaScript configurations for complex logic:
 
-```javascript title="promptfooconfig.js"
+```javascript title="artefconfig.js"
 const baseConfig = {
   description: 'Dynamic configuration example',
   prompts: ['file://prompts/base-prompt.txt'],
@@ -235,10 +235,10 @@ module.exports = {
 
 ## TypeScript Configuration
 
-Promptfoo configs can be written in TypeScript:
+artef configs can be written in TypeScript:
 
-```typescript title="promptfooconfig.ts"
-import type { UnifiedConfig } from 'promptfoo';
+```typescript title="artefconfig.ts"
+import type { UnifiedConfig } from 'artef';
 
 const config: UnifiedConfig = {
   description: 'My evaluation suite',
@@ -274,12 +274,12 @@ npm install tsx
 Run with `NODE_OPTIONS`:
 
 ```bash
-NODE_OPTIONS="--import tsx" promptfoo eval -c promptfooconfig.ts
+NODE_OPTIONS="--import tsx" artef eval -c artefconfig.ts
 ```
 
 ### Dynamic Schema Generation
 
-Share Zod schemas between your application and promptfoo:
+Share Zod schemas between your application and artef:
 
 ```typescript title="src/schemas/response.ts"
 import { z } from 'zod';
@@ -291,9 +291,9 @@ export const ResponseSchema = z.object({
 });
 ```
 
-```typescript title="promptfooconfig.ts"
+```typescript title="artefconfig.ts"
 import { zodResponseFormat } from 'openai/helpers/zod.mjs';
-import type { UnifiedConfig } from 'promptfoo';
+import type { UnifiedConfig } from 'artef';
 import { ResponseSchema } from './src/schemas/response';
 
 const responseFormat = zodResponseFormat(ResponseSchema, 'response');
@@ -319,13 +319,13 @@ const config: UnifiedConfig = {
 export default config;
 ```
 
-See the [ts-config example](https://github.com/promptfoo/promptfoo/tree/main/examples/config-ts) for a complete implementation.
+See the [ts-config example](https://github.com/artef/artef/tree/main/examples/config-ts) for a complete implementation.
 
 ## Conditional Configuration Loading
 
 Create configurations that adapt based on environment:
 
-```javascript title="promptfooconfig.js"
+```javascript title="artefconfig.js"
 const isQuickTest = process.env.TEST_MODE === 'quick';
 const isComprehensive = process.env.TEST_MODE === 'comprehensive';
 
@@ -372,7 +372,7 @@ Organize your configuration files in a logical hierarchy:
 
 ```
 project/
-├── promptfooconfig.yaml              # Main configuration
+├── artefconfig.yaml              # Main configuration
 ├── configs/
 │   ├── providers/
 │   │   ├── development.yaml

@@ -1,4 +1,4 @@
-import { isDeepStrictEqual } from 'node:util';
+﻿import { isDeepStrictEqual } from 'node:util';
 
 import { getEnvBool } from '../envars';
 import { isGradingResult } from '../types/index';
@@ -301,7 +301,7 @@ export class AssertionsResult {
 
     this.failedReason = result.reason;
 
-    if (getEnvBool('PROMPTFOO_SHORT_CIRCUIT_TEST_FAILURES')) {
+    if (getEnvBool('artef_SHORT_CIRCUIT_TEST_FAILURES')) {
       throw new Error(result.reason);
     }
   }

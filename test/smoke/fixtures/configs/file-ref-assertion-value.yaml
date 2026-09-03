@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test for #6253: file:// references in assertion values use script output
 description: 'Regression test - file:// references in assertion values'
 

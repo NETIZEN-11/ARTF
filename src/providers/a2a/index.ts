@@ -1,4 +1,4 @@
-import crypto from 'node:crypto';
+﻿import crypto from 'node:crypto';
 
 import logger from '../../logger';
 import { fetchWithTimeout } from '../../util/fetch/index';
@@ -63,19 +63,19 @@ const AGENT_ROLES = new Set(['agent', 'assistant', 'model', 'role_agent']);
 const MEDIA_STRATEGY_DEFAULTS = {
   audio: {
     fallbackVarName: 'audio',
-    filename: 'promptfoo-audio.mp3',
+    filename: 'artef-audio.mp3',
     injectVarMetadataKey: 'audioInjectVar',
     mediaType: 'audio/mpeg',
   },
   image: {
     fallbackVarName: 'image',
-    filename: 'promptfoo-image.png',
+    filename: 'artef-image.png',
     injectVarMetadataKey: 'imageInjectVar',
     mediaType: 'image/png',
   },
   video: {
     fallbackVarName: 'video',
-    filename: 'promptfoo-video.mp4',
+    filename: 'artef-video.mp4',
     injectVarMetadataKey: 'videoInjectVar',
     mediaType: 'video/mp4',
   },
@@ -205,7 +205,7 @@ function generateMessageId(prompt: string, context?: CallApiContextParams): stri
     testCaseId: context?.testCaseId,
     testIdx: context?.testIdx,
   };
-  return `promptfoo-${crypto.createHash('sha256').update(JSON.stringify(identity)).digest('hex').slice(0, 24)}`;
+  return `artef-${crypto.createHash('sha256').update(JSON.stringify(identity)).digest('hex').slice(0, 24)}`;
 }
 
 function getSessionId(context?: CallApiContextParams): string | undefined {

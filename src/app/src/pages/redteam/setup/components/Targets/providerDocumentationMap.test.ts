@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { getProviderDocumentationUrl, hasSpecificDocumentation } from './providerDocumentationMap';
 
 describe('hasSpecificDocumentation', () => {
@@ -49,7 +49,7 @@ describe('hasSpecificDocumentation', () => {
     'links %s to the Codex Security provider documentation',
     (providerType) => {
       expect(getProviderDocumentationUrl(providerType)).toBe(
-        'https://www.promptfoo.dev/docs/providers/openai-codex-security',
+        'https://www.artef.dev/docs/providers/openai-codex-security',
       );
     },
   );

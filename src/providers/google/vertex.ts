@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { getCache, isCacheEnabled } from '../../cache';
 import cliState from '../../cliState';
@@ -145,7 +145,7 @@ function getVertexApiHost(
 
 function getVertexBodyCacheKey(prefix: string, body: unknown, apiHost: string): string {
   const serialized = typeof body === 'string' ? body : JSON.stringify(body);
-  return `${prefix}:${createHmac('sha256', 'promptfoo:vertex:cache-key:v1')
+  return `${prefix}:${createHmac('sha256', 'artef:vertex:cache-key:v1')
     .update(apiHost)
     .update('\0')
     .update(serialized)
@@ -693,7 +693,7 @@ export class VertexChatProvider extends GoogleGenericProvider {
       try {
         // Default to non-streaming (generateContent) since:
         // 1. Model Armor floor settings only work with non-streaming endpoint
-        // 2. Promptfoo collects full responses for evaluation anyway
+        // 2. artef collects full responses for evaluation anyway
         // Set streaming: true to use streamGenerateContent if needed
         const endpoint = config.streaming === true ? 'streamGenerateContent' : 'generateContent';
 

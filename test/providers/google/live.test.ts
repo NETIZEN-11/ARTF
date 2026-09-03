@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import dedent from 'dedent';
 import { afterEach, beforeEach, describe, expect, it, Mocked, vi } from 'vitest';
@@ -2691,9 +2691,9 @@ describe('GoogleLiveProvider', () => {
       expect(mockStderr.on).toHaveBeenCalledWith('data', expect.any(Function));
     });
 
-    it('should use the PROMPTFOO_PYTHON env variable when available', async () => {
-      const originalEnv = process.env.PROMPTFOO_PYTHON;
-      mockProcessEnv({ PROMPTFOO_PYTHON: '/env/python3' });
+    it('should use the artef_PYTHON env variable when available', async () => {
+      const originalEnv = process.env.artef_PYTHON;
+      mockProcessEnv({ artef_PYTHON: '/env/python3' });
 
       const mockSpawn = vi.mocked((await import('child_process')).spawn);
       const validatePythonPathMock = vi.mocked(
@@ -2735,9 +2735,9 @@ describe('GoogleLiveProvider', () => {
         ]);
       } finally {
         if (originalEnv) {
-          mockProcessEnv({ PROMPTFOO_PYTHON: originalEnv });
+          mockProcessEnv({ artef_PYTHON: originalEnv });
         } else {
-          mockProcessEnv({ PROMPTFOO_PYTHON: undefined });
+          mockProcessEnv({ artef_PYTHON: undefined });
         }
       }
     });

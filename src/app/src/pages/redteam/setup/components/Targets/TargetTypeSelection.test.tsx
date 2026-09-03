@@ -1,4 +1,4 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -365,7 +365,7 @@ describe('TargetTypeSelection', () => {
 
   describe('Custom provider persistence (Issue #6729)', () => {
     it('should show target type section when custom provider is selected (empty id with providerType="custom")', async () => {
-      // This test verifies the fix for https://github.com/promptfoo/promptfoo/issues/6729
+      // This test verifies the fix for https://github.com/artef/artef/issues/6729
       // Custom providers have empty id but providerType is set to 'custom'
       const mockSetProviderType = vi.fn();
       mockUseRedTeamConfig.mockReturnValue({

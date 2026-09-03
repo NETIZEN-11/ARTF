@@ -1,11 +1,11 @@
-# redteam-multi-modal (Multi-Modal Red Team Testing)
+﻿# redteam-multi-modal (Multi-Modal Red Team Testing)
 
-This example demonstrates how to use promptfoo's red teaming capabilities with multi-modal models, showing three different approaches to testing model safety and robustness against adversarial inputs involving images.
+This example demonstrates how to use artef's red teaming capabilities with multi-modal models, showing three different approaches to testing model safety and robustness against adversarial inputs involving images.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-multi-modal
+npx artef@latest init --example redteam-multi-modal
 cd redteam-multi-modal
 ```
 
@@ -14,35 +14,35 @@ cd redteam-multi-modal
 1. Install dependencies:
 
    ```bash
-   npm install promptfoo sharp
+   npm install artef sharp
    ```
 
 2. Set up environment variables (see next section)
 3. Run the static image example:
 
    ```bash
-   npx promptfoo@latest redteam eval -c redteam.static-image.yaml
+   npx artef@latest redteam eval -c redteam.static-image.yaml
    ```
 
 4. Run the image strategy example:
 
    ```bash
-   npx promptfoo@latest redteam eval -c redteam.image-strategy.yaml
+   npx artef@latest redteam eval -c redteam.image-strategy.yaml
    ```
 
 5. Run the UnsafeBench example:
 
    ```bash
-   npx promptfoo@latest redteam eval -c redteam.unsafebench.yaml
+   npx artef@latest redteam eval -c redteam.unsafebench.yaml
    ```
 
 6. Run the VLGuard example:
 
    ```bash
-   npx promptfoo@latest redteam eval -c redteam.vlguard.yaml
+   npx artef@latest redteam eval -c redteam.vlguard.yaml
    ```
 
-7. Review results in the promptfoo interface
+7. Review results in the artef interface
 
 ## Environment Variables
 
@@ -62,7 +62,7 @@ You can set these in a `.env` file or directly in your environment.
 
 This example provides four different approaches to red team testing with multi-modal models:
 
-### 1. Static Image Example (`promptfooconfig.static-image.yaml`)
+### 1. Static Image Example (`artefconfig.static-image.yaml`)
 
 This configuration demonstrates how to red team a multi-modal model by keeping a static image (in this example, Buzz Aldrin on the moon) constant while varying the text prompt to test different potential attack vectors. The adversarial prompts are injected into the `question` variable.
 
@@ -72,9 +72,9 @@ Key features:
 - Varies the text prompts using various harmful content plugins
 - Tests how the model handles potentially harmful requests in the context of image analysis
 
-### 2. Image Strategy Example (`promptfooconfig.image-strategy.yaml`)
+### 2. Image Strategy Example (`artefconfig.image-strategy.yaml`)
 
-This configuration demonstrates how to use promptfoo's image strategy for red teaming. Instead of attacking through text prompts, this approach converts potentially harmful text into images (text-to-image) and then sends those images to the model. This can help identify if models process text differently when it's embedded in an image rather than presented as plain text.
+This configuration demonstrates how to use artef's image strategy for red teaming. Instead of attacking through text prompts, this approach converts potentially harmful text into images (text-to-image) and then sends those images to the model. This can help identify if models process text differently when it's embedded in an image rather than presented as plain text.
 
 Key features:
 
@@ -82,7 +82,7 @@ Key features:
 - Converts harmful text content into images using the image strategy
 - Tests if harmful content embedded in images can bypass model safety filters
 
-### 3. UnsafeBench Example (`promptfooconfig.unsafebench.yaml`)
+### 3. UnsafeBench Example (`artefconfig.unsafebench.yaml`)
 
 This configuration uses the UnsafeBench plugin to evaluate multi-modal models against potentially unsafe imagery from the UnsafeBench dataset. It tests how well models detect and refuse to engage with harmful content across various categories.
 
@@ -93,7 +93,7 @@ Key features:
 - Filters images by category (Violence, Sexual, Hate, etc.)
 - Tests if models appropriately refuse to engage with harmful visual content
 
-### 4. VLGuard Example (`promptfooconfig.vlguard.yaml`)
+### 4. VLGuard Example (`artefconfig.vlguard.yaml`)
 
 This configuration uses the VLGuard plugin to evaluate multi-modal models against potentially unsafe imagery from the VLGuard dataset. It provides focused testing of content moderation capabilities with a smaller, curated dataset of 442 images.
 
@@ -152,14 +152,14 @@ Important notes about the image strategy:
 ### Running the Static Image Example
 
 ```bash
-npx promptfoo@latest redteam eval -c redteam.static-image.yaml
+npx artef@latest redteam eval -c redteam.static-image.yaml
 ```
 
 ### Running the Image Strategy Example
 
 ```bash
 npm install sharp # Required for the image strategy
-npx promptfoo@latest redteam eval -c redteam.image-strategy.yaml
+npx artef@latest redteam eval -c redteam.image-strategy.yaml
 ```
 
 ### Running the UnsafeBench Example
@@ -173,8 +173,8 @@ export HF_TOKEN=your_huggingface_token
 Then run:
 
 ```bash
-npx promptfoo@latest redteam generate -c promptfooconfig.unsafebench.yaml
-npx promptfoo@latest redteam eval -c redteam.yaml
+npx artef@latest redteam generate -c artefconfig.unsafebench.yaml
+npx artef@latest redteam eval -c redteam.yaml
 ```
 
 ### Running the VLGuard Example
@@ -182,14 +182,14 @@ npx promptfoo@latest redteam eval -c redteam.yaml
 The VLGuard example works similarly to UnsafeBench but with a smaller, more focused dataset:
 
 ```bash
-npx promptfoo@latest redteam eval -c redteam.vlguard.yaml
+npx artef@latest redteam eval -c redteam.vlguard.yaml
 ```
 
 Or generate fresh test cases:
 
 ```bash
-npx promptfoo@latest redteam generate -c promptfooconfig.vlguard.yaml
-npx promptfoo@latest redteam eval -c redteam.yaml
+npx artef@latest redteam generate -c artefconfig.vlguard.yaml
+npx artef@latest redteam eval -c redteam.yaml
 ```
 
 ## Additional Configuration Options
@@ -206,7 +206,7 @@ redteam:
     You are a helpful assistant for NASA that can answer questions about this photo of Buzz Aldrin on the moon.
 ```
 
-For more information on how the image strategy works, refer to the [Image Inputs strategy documentation](https://promptfoo.dev/docs/red-team/strategies/image).
+For more information on how the image strategy works, refer to the [Image Inputs strategy documentation](https://artef.dev/docs/red-team/strategies/image).
 
 ## Supported Models
 

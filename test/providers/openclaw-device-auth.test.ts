@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -25,7 +25,7 @@ describe('OpenClaw device auth', () => {
   });
 
   function makeTempPath(fileName: string): string {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-openclaw-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-openclaw-'));
     tempDirs.push(tempDir);
     return path.join(tempDir, fileName);
   }
@@ -42,10 +42,10 @@ describe('OpenClaw device auth', () => {
         token: 'token',
         nonce: 'nonce',
         platform: 'Darwin',
-        deviceFamily: 'PromptFoo',
+        deviceFamily: 'artef',
       }),
     ).toBe(
-      'v3|device-id|gateway-client|cli|operator|operator.read,operator.write|123|token|nonce|darwin|promptfoo',
+      'v3|device-id|gateway-client|cli|operator|operator.read,operator.write|123|token|nonce|darwin|artef',
     );
   });
 
@@ -73,7 +73,7 @@ describe('OpenClaw device auth', () => {
       nonce: 'challenge',
       token: 'token',
       platform: 'linux',
-      deviceFamily: 'promptfoo',
+      deviceFamily: 'artef',
     });
     const payload = buildOpenClawDeviceAuthPayloadV3({
       deviceId: identity.deviceId,
@@ -85,7 +85,7 @@ describe('OpenClaw device auth', () => {
       token: 'token',
       nonce: 'challenge',
       platform: 'linux',
-      deviceFamily: 'promptfoo',
+      deviceFamily: 'artef',
     });
 
     expect(

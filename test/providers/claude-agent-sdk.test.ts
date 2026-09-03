@@ -1,4 +1,4 @@
-import { EventEmitter } from 'node:events';
+﻿import { EventEmitter } from 'node:events';
 import path from 'node:path';
 import { PassThrough } from 'node:stream';
 import fs from 'fs';
@@ -759,7 +759,7 @@ describe('ClaudeCodeSDKProvider', () => {
         // Inverse of the previous test: sub-agent finishes successfully but the
         // main agent ultimately errors. The main agent's outcome must win —
         // otherwise we'd mask main-agent failures behind a green sub-agent
-        // summary. See https://github.com/promptfoo/promptfoo/issues/9054.
+        // summary. See https://github.com/artef/artef/issues/9054.
         const subAgentResult: Partial<SDKMessage> = {
           type: 'result',
           subtype: 'success',
@@ -1982,7 +1982,7 @@ describe('ClaudeCodeSDKProvider', () => {
         }
       });
 
-      it('injects promptfoo.trace_id and promptfoo.parent_span_id as OTEL_RESOURCE_ATTRIBUTES', async () => {
+      it('injects artef.trace_id and artef.parent_span_id as OTEL_RESOURCE_ATTRIBUTES', async () => {
         mockQuery.mockReturnValue(createMockResponse('ok'));
 
         const provider = new ClaudeCodeSDKProvider({
@@ -1998,7 +1998,7 @@ describe('ClaudeCodeSDKProvider', () => {
 
         const callArgs = mockQuery.mock.calls.at(-1)?.[0];
         expect(callArgs.options.env.OTEL_RESOURCE_ATTRIBUTES).toBe(
-          `promptfoo.trace_id=${traceId},promptfoo.parent_span_id=${spanId}`,
+          `artef.trace_id=${traceId},artef.parent_span_id=${spanId}`,
         );
       });
 
@@ -2023,11 +2023,11 @@ describe('ClaudeCodeSDKProvider', () => {
 
         const callArgs = mockQuery.mock.calls.at(-1)?.[0];
         expect(callArgs.options.env.OTEL_RESOURCE_ATTRIBUTES).toBe(
-          `deployment.environment=prod,service.owner=team-x,promptfoo.trace_id=${traceId},promptfoo.parent_span_id=${spanId}`,
+          `deployment.environment=prod,service.owner=team-x,artef.trace_id=${traceId},artef.parent_span_id=${spanId}`,
         );
       });
 
-      it('overrides a user-provided promptfoo.trace_id rather than duplicating it', async () => {
+      it('overrides a user-provided artef.trace_id rather than duplicating it', async () => {
         mockQuery.mockReturnValue(createMockResponse('ok'));
 
         const provider = new ClaudeCodeSDKProvider({
@@ -2035,7 +2035,7 @@ describe('ClaudeCodeSDKProvider', () => {
           config: {
             env: {
               OTEL_RESOURCE_ATTRIBUTES:
-                'promptfoo.trace_id=stale,promptfoo.parent_span_id=stale,other.key=keep',
+                'artef.trace_id=stale,artef.parent_span_id=stale,other.key=keep',
             },
           },
         });
@@ -2049,13 +2049,13 @@ describe('ClaudeCodeSDKProvider', () => {
 
         const callArgs = mockQuery.mock.calls.at(-1)?.[0];
         const attrs = callArgs.options.env.OTEL_RESOURCE_ATTRIBUTES as string;
-        // User's `other.key` is kept; the stale promptfoo.* kvs are stripped;
+        // User's `other.key` is kept; the stale artef.* kvs are stripped;
         // the fresh values land at the end so last-wins semantics in OTEL
         // parsers pick ours even for parsers that don't dedupe.
         expect(attrs).toBe(
-          `other.key=keep,promptfoo.trace_id=${traceId},promptfoo.parent_span_id=${spanId}`,
+          `other.key=keep,artef.trace_id=${traceId},artef.parent_span_id=${spanId}`,
         );
-        expect(attrs.match(/promptfoo\.trace_id=/g)?.length).toBe(1);
+        expect(attrs.match(/artef\.trace_id=/g)?.length).toBe(1);
       });
 
       it('skips OTEL_RESOURCE_ATTRIBUTES entirely when traceparent is malformed', async () => {
@@ -2086,7 +2086,7 @@ describe('ClaudeCodeSDKProvider', () => {
         await provider.callApi('Test prompt');
 
         expect(tempDirSpy).toHaveBeenCalledWith(
-          expect.stringContaining('promptfoo-claude-agent-sdk-'),
+          expect.stringContaining('artef-claude-agent-sdk-'),
         );
         expect(rmSyncSpy).toHaveBeenCalledWith('/tmp/test-temp-dir', {
           recursive: true,
@@ -4099,7 +4099,7 @@ describe('ClaudeCodeSDKProvider', () => {
             config: {
               extra_args: {
                 verbose: null, // Boolean flag
-                name: 'promptfoo-eval',
+                name: 'artef-eval',
               },
             },
             env: { ANTHROPIC_API_KEY: 'test-api-key' },
@@ -4111,7 +4111,7 @@ describe('ClaudeCodeSDKProvider', () => {
             options: expect.objectContaining({
               extraArgs: {
                 verbose: null,
-                name: 'promptfoo-eval',
+                name: 'artef-eval',
               },
             }),
           });
@@ -4322,7 +4322,7 @@ describe('ClaudeCodeSDKProvider', () => {
 
           const provider = new ClaudeCodeSDKProvider({
             config: {
-              title: 'promptfoo eval — release regression',
+              title: 'artef eval — release regression',
             },
             env: { ANTHROPIC_API_KEY: 'test-api-key' },
           });
@@ -4331,7 +4331,7 @@ describe('ClaudeCodeSDKProvider', () => {
           expect(mockQuery).toHaveBeenCalledWith({
             prompt: 'Test prompt',
             options: expect.objectContaining({
-              title: 'promptfoo eval — release regression',
+              title: 'artef eval — release regression',
             }),
           });
         });

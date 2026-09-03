@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Example base config that can be used to generate additional assertions
 providers:
   - openai:gpt-4.1-mini

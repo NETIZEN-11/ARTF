@@ -1,4 +1,4 @@
-import {
+﻿import {
   createMockResponse,
   getCallApiMock,
   mockCallApiResponse,
@@ -27,7 +27,7 @@ describe('useCloudConfig', () => {
   });
 
   it('should initialize with isLoading=true, data=null, and error=null', () => {
-    mockCallApiResponse({ appUrl: 'https://app.promptfoo.com', isEnabled: true });
+    mockCallApiResponse({ appUrl: 'https://app.artef.com', isEnabled: true });
 
     const { result } = renderHook(() => useCloudConfig());
 
@@ -38,7 +38,7 @@ describe('useCloudConfig', () => {
 
   it('should set data and isLoading=false on successful API call', async () => {
     const mockCloudConfig = {
-      appUrl: 'https://app.promptfoo.com',
+      appUrl: 'https://app.artef.com',
       isEnabled: true,
     };
 
@@ -103,7 +103,7 @@ describe('useCloudConfig', () => {
 
   it('should fetch cloud config on mount', async () => {
     const mockCloudConfig = {
-      appUrl: 'https://app.promptfoo.com',
+      appUrl: 'https://app.artef.com',
       isEnabled: false,
     };
 
@@ -121,12 +121,12 @@ describe('useCloudConfig', () => {
   describe('refetch', () => {
     it('should refetch data when refetch is called', async () => {
       const initialConfig = {
-        appUrl: 'https://app.promptfoo.com',
+        appUrl: 'https://app.artef.com',
         isEnabled: true,
       };
 
       const updatedConfig = {
-        appUrl: 'https://new.promptfoo.com',
+        appUrl: 'https://new.artef.com',
         isEnabled: false,
       };
 
@@ -160,7 +160,7 @@ describe('useCloudConfig', () => {
 
     it('should set isLoading=true during refetch and back to false after completion', async () => {
       const mockCloudConfig = {
-        appUrl: 'https://app.promptfoo.com',
+        appUrl: 'https://app.artef.com',
         isEnabled: true,
       };
 
@@ -201,7 +201,7 @@ describe('useCloudConfig', () => {
 
     it('should handle errors during refetch', async () => {
       const mockCloudConfig = {
-        appUrl: 'https://app.promptfoo.com',
+        appUrl: 'https://app.artef.com',
         isEnabled: true,
       };
 
@@ -249,7 +249,7 @@ describe('useCloudConfig', () => {
       expect(result.current.error).toBe('Initial fetch failed');
 
       const mockCloudConfig = {
-        appUrl: 'https://app.promptfoo.com',
+        appUrl: 'https://app.artef.com',
         isEnabled: true,
       };
 
@@ -273,7 +273,7 @@ describe('useCloudConfig', () => {
 
   it('should only call the API once on mount and not on rerender', async () => {
     const mockCloudConfig = {
-      appUrl: 'https://app.promptfoo.com',
+      appUrl: 'https://app.artef.com',
       isEnabled: true,
     };
 

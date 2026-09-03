@@ -1,7 +1,7 @@
-interface:
-  display_name: 'Promptfoo Redteam Run'
+﻿interface:
+  display_name: 'artef Redteam Run'
   short_description: 'Run and triage red team scans'
-  default_prompt: 'Use $promptfoo-redteam-run to execute this generated redteam scan with its HTTP, Python, or JS target and summarize failures.'
+  default_prompt: 'Use $artef-redteam-run to execute this generated redteam scan with its HTTP, Python, or JS target and summarize failures.'
 
 policy:
   allow_implicit_invocation: true

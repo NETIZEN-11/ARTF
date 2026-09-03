@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../src/cache';
 import cliState from '../../src/cliState';
 import { getEnvBool, getEnvInt, getEnvString } from '../../src/envars';
@@ -17,7 +17,7 @@ vi.mock('../../src/globalConfig/cloud', async (importOriginal) => {
         return false;
       }
       getApiHost() {
-        return 'https://api.promptfoo.app';
+        return 'https://api.artef.app';
       }
     },
   };
@@ -48,7 +48,7 @@ describe('materializeMcpToolCallRemote', () => {
 
   it('returns normalized MCP JSON from the remote task server', async () => {
     vi.mocked(getEnvString).mockImplementation((key: string) =>
-      key === 'PROMPTFOO_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
+      key === 'artef_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
     );
     vi.mocked(fetchWithCache).mockResolvedValue({
       data: {
@@ -112,7 +112,7 @@ describe('materializeMcpToolCallRemote', () => {
 
   it('preserves cache provenance from remote MCP materialization responses', async () => {
     vi.mocked(getEnvString).mockImplementation((key: string) =>
-      key === 'PROMPTFOO_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
+      key === 'artef_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
     );
     vi.mocked(fetchWithCache).mockResolvedValue({
       cached: true,
@@ -140,7 +140,7 @@ describe('materializeMcpToolCallRemote', () => {
 
   it('returns undefined when remote generation is explicitly disabled', async () => {
     vi.mocked(getEnvBool).mockImplementation(
-      (key: string) => key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION',
+      (key: string) => key === 'artef_DISABLE_REMOTE_GENERATION',
     );
 
     await expect(
@@ -154,7 +154,7 @@ describe('materializeMcpToolCallRemote', () => {
 
   it('includes target context in the remote task body', async () => {
     vi.mocked(getEnvString).mockImplementation((key: string) =>
-      key === 'PROMPTFOO_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
+      key === 'artef_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
     );
     vi.mocked(fetchWithCache).mockResolvedValue({
       data: {
@@ -180,7 +180,7 @@ describe('materializeMcpToolCallRemote', () => {
 
   it('rejects invalid remote materialization output', async () => {
     vi.mocked(getEnvString).mockImplementation((key: string) =>
-      key === 'PROMPTFOO_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
+      key === 'artef_REMOTE_GENERATION_URL' ? 'https://remote.example.test/task' : '',
     );
     vi.mocked(fetchWithCache).mockResolvedValue({
       data: {

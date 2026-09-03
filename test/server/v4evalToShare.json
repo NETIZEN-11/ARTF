@@ -1,10 +1,10 @@
-{
+﻿{
   "createdAt": 1727905040496,
   "id": "eval-2024-10-02T21:37:20-kMQ",
   "config": {
     "tags": {},
     "description": "A translator built with LLM",
-    "prompts": ["file:///Users/steve/src/promptfoo/examples/simple-csv/prompts.txt"],
+    "prompts": ["file:///Users/steve/src/artef/examples/simple-csv/prompts.txt"],
     "providers": ["openai:gpt-4o-mini"],
     "tests": [
       {

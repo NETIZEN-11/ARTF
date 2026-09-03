@@ -1,4 +1,4 @@
-import { execFile } from 'child_process';
+﻿import { execFile } from 'child_process';
 import fs from 'fs/promises';
 import path from 'path';
 import { promisify } from 'util';
@@ -269,7 +269,7 @@ export async function validateRubyPath(rubyPath: string, isExplicit: boolean): P
         if (isExplicit) {
           const error = new Error(
             `Ruby not found. Tried "${rubyPath}" ` +
-              `Please ensure Ruby is installed and set the PROMPTFOO_RUBY environment variable ` +
+              `Please ensure Ruby is installed and set the artef_RUBY environment variable ` +
               `to your Ruby executable path (e.g., '${process.platform === 'win32' ? 'C:\\Ruby32\\bin\\ruby.exe' : '/usr/bin/ruby'}').`,
           );
           // Clear promise on error to allow retry
@@ -287,7 +287,7 @@ export async function validateRubyPath(rubyPath: string, isExplicit: boolean): P
 
         const error = new Error(
           `Ruby not found. Tried "${rubyPath}", ruby executable detection, and fallback commands. ` +
-            `Please ensure Ruby is installed and set the PROMPTFOO_RUBY environment variable ` +
+            `Please ensure Ruby is installed and set the artef_RUBY environment variable ` +
             `to your Ruby executable path (e.g., '${process.platform === 'win32' ? 'C:\\Ruby32\\bin\\ruby.exe' : '/usr/bin/ruby'}').`,
         );
         // Clear promise on error to allow retry
@@ -323,7 +323,7 @@ export async function runRuby<T = unknown>(
   options: { rubyExecutable?: string } = {},
 ): Promise<T> {
   const absPath = path.resolve(scriptPath);
-  const customPath = options.rubyExecutable || getEnvString('PROMPTFOO_RUBY');
+  const customPath = options.rubyExecutable || getEnvString('artef_RUBY');
   let rubyPath = customPath || 'ruby';
   let tempDirectory: string | undefined;
 
@@ -332,7 +332,7 @@ export async function runRuby<T = unknown>(
   const wrapperPath = path.join(getWrapperDir('ruby'), 'wrapper.rb');
 
   try {
-    tempDirectory = await createSecureTempDirectory('promptfoo-ruby-');
+    tempDirectory = await createSecureTempDirectory('artef-ruby-');
     const tempJsonPath = await writeSecureTempFile(
       tempDirectory,
       'input.json',

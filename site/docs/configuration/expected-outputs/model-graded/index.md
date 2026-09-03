@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_position: 7
 description: 'Comprehensive overview of model-graded evaluation techniques leveraging AI models to assess quality, safety, and accuracy'
 ---
 
 # Model-graded metrics
 
-promptfoo supports several types of model-graded assertions:
+artef supports several types of model-graded assertions:
 
 Output-based:
 
-- [`llm-rubric`](/docs/configuration/expected-outputs/model-graded/llm-rubric) - Promptfoo's general-purpose grader; uses an LLM to evaluate outputs against custom criteria or rubrics.
+- [`llm-rubric`](/docs/configuration/expected-outputs/model-graded/llm-rubric) - artef's general-purpose grader; uses an LLM to evaluate outputs against custom criteria or rubrics.
 - [`agent-rubric`](/docs/configuration/expected-outputs/model-graded/agent-rubric) - Like `llm-rubric`, but uses a coding-agent grader that can inspect configured workspace and tool evidence.
 - [`search-rubric`](/docs/configuration/expected-outputs/model-graded/search-rubric) - Like `llm-rubric` but with web search capabilities for verifying current information.
 - [`model-graded-closedqa`](/docs/configuration/expected-outputs/model-graded/model-graded-closedqa) - Checks if LLM answers meet specific requirements using OpenAI's public evals prompts.
@@ -63,7 +63,7 @@ assert:
 
 Use `trajectory:goal-success` when you care about whether an agent actually completed a task, not just whether it used a specific tool or produced a plausible final sentence.
 
-This assertion requires trace data. Promptfoo summarizes the traced trajectory, includes the final output, and asks a grading model whether the run achieved the goal you specify.
+This assertion requires trace data. artef summarizes the traced trajectory, includes the final output, and asks a grading model whether the run achieved the goal you specify.
 
 ```yaml
 tests:
@@ -142,7 +142,7 @@ This produces German reasoning: `{"reason": "Die Antwort ist hilfreich und klar.
 
 For more language options and alternative approaches, see the [llm-rubric language guide](/docs/configuration/expected-outputs/model-graded/llm-rubric#non-english-evaluation).
 
-Here's an example output that indicates PASS/FAIL based on LLM assessment ([see example setup and outputs](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-self-grading)):
+Here's an example output that indicates PASS/FAIL based on LLM assessment ([see example setup and outputs](https://github.com/artef/artef/tree/main/examples/eval-self-grading)):
 
 [![LLM prompt quality evaluation with PASS/FAIL expectations](https://user-images.githubusercontent.com/310310/236690475-b05205e8-483e-4a6d-bb84-41c2b06a1247.png)](https://user-images.githubusercontent.com/310310/236690475-b05205e8-483e-4a6d-bb84-41c2b06a1247.png)
 
@@ -224,7 +224,7 @@ tests:
 
 ## Overriding the LLM grader
 
-By default, model-graded asserts use promptfoo's built-in grading provider. Promptfoo chooses that
+By default, model-graded asserts use artef's built-in grading provider. artef chooses that
 provider from the credentials available in the environment; for example, OpenAI, Anthropic, Gemini,
 Mistral, GitHub Models, Azure OpenAI, and Codex login credentials can each activate a different
 default. If you do not have access to the selected default or prefer a different judge, you can
@@ -233,7 +233,7 @@ override the grader. There are several ways to do this, depending on your prefer
 1. Using the `--grader` CLI option:
 
    ```
-   promptfoo eval --grader openai:gpt-5.6
+   artef eval --grader openai:gpt-5.6
    ```
 
 2. Using `test.options` or `defaultTest.options` on a per-test or testsuite basis:
@@ -286,7 +286,7 @@ The built-in OpenAI grader already uses `temperature=0` by default, so you only 
 overriding the grader with a custom `provider` block that would otherwise inherit a non-zero
 default. GPT-5 series reasoning models ignore `temperature` entirely.
 
-The built-in OpenAI grader may spend hidden reasoning tokens internally, but promptfoo receives the
+The built-in OpenAI grader may spend hidden reasoning tokens internally, but artef receives the
 final grader output without private reasoning text prepended to the output string. The
 `showThinking: false` guidance below is for OpenAI-compatible or local judge providers that return
 reasoning fields such as `reasoning` or `reasoning_content`.
@@ -298,7 +298,7 @@ Also note that [custom providers](/docs/providers/custom-api) are supported as w
 
 Self-hosted OpenAI-compatible judges such as [vLLM](/docs/providers/vllm), LocalAI, and llamafile
 can return reasoning in a separate field while putting the final answer in `content`. Set
-`showThinking: false` on the judge provider so promptfoo uses only the final `content` for grading:
+`showThinking: false` on the judge provider so artef uses only the final `content` for grading:
 
 ```yaml
 defaultTest:
@@ -361,8 +361,8 @@ The rubric prompt has two built-in variables that you may use:
 When `{{output}}` or `{{rubric}}` contain objects, they are automatically converted to JSON strings by default to prevent display issues. To access object properties directly (e.g., `{{output.text}}`), enable object property access:
 
 ```bash
-export PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true
-promptfoo eval
+export artef_DISABLE_OBJECT_STRINGIFY=true
+artef eval
 ```
 
 For details, see the [object template handling guide](/docs/usage/troubleshooting#object-template-handling).
@@ -387,7 +387,7 @@ defaultTest:
       ]
 ```
 
-See the [full example](https://github.com/promptfoo/promptfoo/blob/main/examples/eval-custom-grading-prompt/promptfooconfig.yaml).
+See the [full example](https://github.com/artef/artef/blob/main/examples/eval-custom-grading-prompt/artefconfig.yaml).
 
 ### Image-based rubric prompts
 

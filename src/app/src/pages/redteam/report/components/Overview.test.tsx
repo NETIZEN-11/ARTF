@@ -1,15 +1,15 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
-import { Severity, severityDisplayNames } from '@promptfoo/redteam/constants';
+import { Severity, severityDisplayNames } from '@artef/redteam/constants';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import Overview from './Overview';
 import { useReportStore } from './store';
-import type { RedteamPluginObject } from '@promptfoo/redteam/types';
+import type { RedteamPluginObject } from '@artef/redteam/types';
 
-vi.mock('@promptfoo/redteam/plugins/policy/utils', () => ({
+vi.mock('@artef/redteam/plugins/policy/utils', () => ({
   isValidPolicyObject: vi.fn((policy: unknown) => {
     return typeof policy === 'object' && policy !== null && 'id' in policy;
   }),

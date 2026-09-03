@@ -1,4 +1,4 @@
-import {
+﻿import {
   context,
   propagation,
   ROOT_CONTEXT,
@@ -10,13 +10,13 @@ import {
 import {
   GenAIAttributes,
   getGenAITracer,
-  PromptfooAttributes,
+  artefAttributes,
   sanitizeBody,
   withGenAISpan,
 } from './genaiTracer';
 import {
   getActiveTraceparent,
-  type PromptfooSpanRole,
+  type artefSpanRole,
   SPAN_ROLE_ATTRIBUTE,
   withSpanRole,
 } from './spanRoles';
@@ -24,12 +24,12 @@ import {
 import type { ApiProvider, CallApiContextParams, ProviderResponse } from '../types/index';
 
 export const TargetAttributes = {
-  TARGET_TYPE: 'promptfoo.target.type',
-  TARGET_LABEL: 'promptfoo.target.label',
+  TARGET_TYPE: 'artef.target.type',
+  TARGET_LABEL: 'artef.target.label',
 } as const;
 
 export const GraderAttributes = {
-  GRADER_ID: 'promptfoo.grader.id',
+  GRADER_ID: 'artef.grader.id',
 } as const;
 
 const MAX_GRADING_EXPLANATION_LENGTH = 1024;
@@ -44,7 +44,7 @@ export interface TargetSpanContext {
   promptLabel?: string;
   evalId?: string;
   testIndex?: number;
-  role?: Extract<PromptfooSpanRole, 'target' | 'grader'>;
+  role?: Extract<artefSpanRole, 'target' | 'grader'>;
 }
 
 /** Keep one recorded test-case root active until immediate or deferred grading has finished. */
@@ -77,10 +77,10 @@ export async function withTestCaseSpan<T>(
     const row = Array.isArray(result) ? result[0] : undefined;
     if (row && typeof row === 'object') {
       if ('success' in row && typeof row.success === 'boolean') {
-        rootSpan.setAttribute('promptfoo.test.success', row.success);
+        rootSpan.setAttribute('artef.test.success', row.success);
       }
       if ('score' in row && typeof row.score === 'number') {
-        rootSpan.setAttribute('promptfoo.test.score', row.score);
+        rootSpan.setAttribute('artef.test.score', row.score);
       }
       if ('error' in row && row.error) {
         rootSpan.setStatus({ code: SpanStatusCode.ERROR, message: String(row.error) });
@@ -115,7 +115,7 @@ export async function withTargetSpan<T>(
       : propagation.extract(ROOT_CONTEXT, { traceparent: ctx.traceparent });
   const role = ctx.role ?? 'target';
   const attributes: Record<string, string | number> = {
-    [PromptfooAttributes.PROVIDER_ID]: ctx.providerId,
+    [artefAttributes.PROVIDER_ID]: ctx.providerId,
     [SPAN_ROLE_ATTRIBUTE]: role,
   };
 
@@ -126,13 +126,13 @@ export async function withTargetSpan<T>(
     }
   }
   if (ctx.promptLabel) {
-    attributes[PromptfooAttributes.PROMPT_LABEL] = ctx.promptLabel;
+    attributes[artefAttributes.PROMPT_LABEL] = ctx.promptLabel;
   }
   if (ctx.evalId) {
-    attributes[PromptfooAttributes.EVAL_ID] = ctx.evalId;
+    attributes[artefAttributes.EVAL_ID] = ctx.evalId;
   }
   if (ctx.testIndex !== undefined) {
-    attributes[PromptfooAttributes.TEST_INDEX] = ctx.testIndex;
+    attributes[artefAttributes.TEST_INDEX] = ctx.testIndex;
   }
 
   return getGenAITracer().startActiveSpan(
@@ -145,7 +145,7 @@ export async function withTargetSpan<T>(
       try {
         const result = await withSpanRole(role, () => fn(span));
         if (result && typeof result === 'object' && 'cached' in result) {
-          span.setAttribute(PromptfooAttributes.CACHE_HIT, Boolean(result.cached));
+          span.setAttribute(artefAttributes.CACHE_HIT, Boolean(result.cached));
         }
         if (result && typeof result === 'object' && 'error' in result && result.error) {
           const message = String(result.error);
@@ -175,7 +175,7 @@ interface TracedProviderCallOptions {
   provider: ApiProvider;
   callContext?: CallApiContextParams;
   operationName?: 'embeddings';
-  role?: Extract<PromptfooSpanRole, 'target' | 'grader'>;
+  role?: Extract<artefSpanRole, 'target' | 'grader'>;
   promptLabel?: string;
   evalId?: string;
   testIndex?: number;
@@ -305,10 +305,10 @@ export async function withGraderSpan<T>(ctx: GraderSpanContext, fn: () => Promis
     [SPAN_ROLE_ATTRIBUTE]: 'grader',
   };
   if (ctx.evalId) {
-    attributes[PromptfooAttributes.EVAL_ID] = ctx.evalId;
+    attributes[artefAttributes.EVAL_ID] = ctx.evalId;
   }
   if (ctx.testIndex !== undefined) {
-    attributes[PromptfooAttributes.TEST_INDEX] = ctx.testIndex;
+    attributes[artefAttributes.TEST_INDEX] = ctx.testIndex;
   }
 
   return getGenAITracer().startActiveSpan(

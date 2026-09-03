@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import Ajv from 'ajv';
@@ -820,7 +820,7 @@ describe('CommandLineOptionsSchema suggestionsCount', () => {
 
 describe('TestSuiteConfigSchema', () => {
   const rootDir = path.join(__dirname, '../..');
-  const configFiles = globSync(`${rootDir}/examples/**/promptfooconfig.{yaml,yml,json}`, {
+  const configFiles = globSync(`${rootDir}/examples/**/artefconfig.{yaml,yml,json}`, {
     windowsPathsNoEscape: true,
   });
 

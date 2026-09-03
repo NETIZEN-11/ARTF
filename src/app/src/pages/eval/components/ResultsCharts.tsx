@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@app/components/ui/dialog';
 import {
@@ -27,7 +27,7 @@ import {
 import { ErrorBoundary } from 'react-error-boundary';
 import { usePassRates } from './hooks';
 import { useTableStore } from './store';
-import type { EvaluateTable, UnifiedConfig } from '@promptfoo/types';
+import type { EvaluateTable, UnifiedConfig } from '@artef/types';
 
 interface ResultsChartsProps {
   scores: number[];
@@ -703,7 +703,7 @@ function ResultsCharts({ scores }: ResultsChartsProps) {
 
   // TODO(Will): Release performance over time chart; it's been hidden for 10 months.
   // useEffect(() => {
-  //   if (config?.description && import.meta.env.VITE_PROMPTFOO_EXPERIMENTAL) {
+  //   if (config?.description && import.meta.env.VITE_artef_EXPERIMENTAL) {
   //     const filteredEvals = recentEvals.filter(
   //       (evaluation) => evaluation.description === config.description,
   //     );

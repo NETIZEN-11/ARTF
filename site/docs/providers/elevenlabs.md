@@ -1,4 +1,4 @@
----
+﻿---
 title: 'ElevenLabs'
 description: 'Test ElevenLabs AI audio capabilities: Text-to-Speech, Speech-to-Text, Conversational Agents, and audio processing tools'
 ---
@@ -20,11 +20,11 @@ Get started with ElevenLabs in 3 steps:
 1. **Install and authenticate:**
 
    ```sh
-   npm install -g promptfoo
+   npm install -g artef
    export ELEVENLABS_API_KEY=your_api_key_here
    ```
 
-2. **Create a config file** (`promptfooconfig.yaml`):
+2. **Create a config file** (`artefconfig.yaml`):
 
    ```yaml
    prompts:
@@ -45,10 +45,10 @@ Get started with ElevenLabs in 3 steps:
 3. **Run your first eval:**
 
    ```sh
-   promptfoo eval
+   artef eval
    ```
 
-   View results with `promptfoo view` or in the web UI.
+   View results with `artef view` or in the web UI.
 
 ## Setup
 
@@ -834,13 +834,13 @@ Solution: Increase Node.js memory:
 
 ```sh
 export NODE_OPTIONS="--max-old-space-size=4096"
-promptfoo eval
+artef eval
 ```
 
 Or run fewer concurrent tests:
 
 ```sh
-promptfoo eval --max-concurrency 2
+artef eval --max-concurrency 2
 ```
 
 ### Voice Not Found
@@ -877,14 +877,14 @@ For exact costs, check your [ElevenLabs billing dashboard](https://elevenlabs.io
 
 Complete working examples:
 
-- [TTS Basic](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-elevenlabs/tts) - Simple voice generation
-- [TTS Advanced](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-elevenlabs/tts-advanced) - Voice design, streaming, pronunciation
-- [STT](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-elevenlabs/stt) - Transcription with diarization
-- [Agents Basic](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-elevenlabs/agents) - Simple agent testing
+- [TTS Basic](https://github.com/artef/artef/tree/main/examples/provider-elevenlabs/tts) - Simple voice generation
+- [TTS Advanced](https://github.com/artef/artef/tree/main/examples/provider-elevenlabs/tts-advanced) - Voice design, streaming, pronunciation
+- [STT](https://github.com/artef/artef/tree/main/examples/provider-elevenlabs/stt) - Transcription with diarization
+- [Agents Basic](https://github.com/artef/artef/tree/main/examples/provider-elevenlabs/agents) - Simple agent testing
 
 ## Learn More
 
-### Promptfoo Resources
+### artef Resources
 
 - [Evaluating ElevenLabs voice AI](/docs/guides/evaluate-elevenlabs/) - Step-by-step tutorial
 

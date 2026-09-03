@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import * as yaml from 'js-yaml';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -54,7 +54,7 @@ describe('Global Config', () => {
       beforeEach(() => {
         vi.mocked(fs.existsSync).mockImplementation(
           (path) =>
-            path.toString().includes('promptfoo.yaml') || path.toString().includes('.promptfoo'),
+            path.toString().includes('artef.yaml') || path.toString().includes('.artef'),
         );
         vi.mocked(fs.readFileSync).mockReturnValue(yaml.dump(mockConfig));
       });
@@ -62,7 +62,7 @@ describe('Global Config', () => {
       it('should read and parse the existing config file', () => {
         const result = globalConfig.readGlobalConfig();
         expect(fs.readFileSync).toHaveBeenCalledWith(
-          expect.stringContaining('promptfoo.yaml'),
+          expect.stringContaining('artef.yaml'),
           'utf-8',
         );
         expect(result).toEqual(mockConfig);
@@ -92,7 +92,7 @@ describe('Global Config', () => {
         expect(result.account).toEqual(configWithoutId.account);
         // Should have written the config with the new ID
         expect(fs.writeFileSync).toHaveBeenCalledWith(
-          expect.stringContaining('promptfoo.yaml'),
+          expect.stringContaining('artef.yaml'),
           expect.stringContaining(`id: ${result.id}`),
         );
       });
@@ -112,7 +112,7 @@ describe('Global Config', () => {
         expect(fs.mkdirSync).toHaveBeenCalledWith(expect.any(String), { recursive: true });
         expect(fs.writeFileSync).toHaveBeenCalledTimes(1);
         expect(fs.writeFileSync).toHaveBeenCalledWith(
-          expect.stringContaining('promptfoo.yaml'),
+          expect.stringContaining('artef.yaml'),
           expect.any(String),
         );
         expect(result).toEqual({ id: expect.any(String) });
@@ -139,7 +139,7 @@ describe('Global Config', () => {
       });
 
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.stringContaining('promptfoo.yaml'),
+        expect.stringContaining('artef.yaml'),
         expect.stringContaining('account:'),
       );
     });
@@ -165,7 +165,7 @@ describe('Global Config', () => {
       globalConfig.writeGlobalConfigPartial(partialConfig);
 
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.stringContaining('promptfoo.yaml'),
+        expect.stringContaining('artef.yaml'),
         expect.stringMatching(/email: new@example\.com.*apiKey: old-key/s),
       );
     });
@@ -178,7 +178,7 @@ describe('Global Config', () => {
       globalConfig.writeGlobalConfigPartial(partialConfig);
 
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.stringContaining('promptfoo.yaml'),
+        expect.stringContaining('artef.yaml'),
         expect.not.stringContaining('apiKey: old-key'),
       );
     });

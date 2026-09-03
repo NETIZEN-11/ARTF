@@ -1,6 +1,6 @@
-# provider-truefoundry (TrueFoundry Examples)
+﻿# provider-truefoundry (TrueFoundry Examples)
 
-This directory contains example configurations for using [TrueFoundry's AI Gateway](https://www.truefoundry.com/ai-gateway) (LLM, MCP, and Agent Gateway) with promptfoo.
+This directory contains example configurations for using [TrueFoundry's AI Gateway](https://www.truefoundry.com/ai-gateway) (LLM, MCP, and Agent Gateway) with artef.
 
 ## Prerequisites
 
@@ -17,13 +17,13 @@ This directory contains example configurations for using [TrueFoundry's AI Gatew
 To quickly set up this example:
 
 ```bash
-npx promptfoo@latest init --example provider-truefoundry
+npx artef@latest init --example provider-truefoundry
 cd provider-truefoundry
 ```
 
 ## Examples
 
-### 1. Basic Configuration (`promptfooconfig.yaml`)
+### 1. Basic Configuration (`artefconfig.yaml`)
 
 A simple example demonstrating basic TrueFoundry usage with multiple models:
 
@@ -34,16 +34,16 @@ A simple example demonstrating basic TrueFoundry usage with multiple models:
 **Run the example:**
 
 ```bash
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 ```
 
 **View results:**
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
-### 2. MCP Servers (`promptfooconfig-mcp.yaml`)
+### 2. MCP Servers (`artefconfig-mcp.yaml`)
 
 An advanced example showcasing TrueFoundry's MCP (Model Context Protocol) server integration:
 
@@ -55,7 +55,7 @@ An advanced example showcasing TrueFoundry's MCP (Model Context Protocol) server
 **Run the example:**
 
 ```bash
-npx promptfoo eval -c promptfooconfig-mcp.yaml
+npx artef eval -c artefconfig-mcp.yaml
 ```
 
 ## Configuration Options
@@ -173,7 +173,7 @@ When `loggingConfig.enabled` is set to `true`, all requests are logged in the Tr
 
 - [TrueFoundry Documentation](https://docs.truefoundry.com/docs/ai-gateway)
 - [TrueFoundry Provider Documentation](/docs/providers/truefoundry/)
-- [Promptfoo Documentation](https://www.promptfoo.dev/docs/)
+- [artef Documentation](https://www.artef.dev/docs/)
 
 ## Support
 
@@ -182,7 +182,7 @@ For TrueFoundry-specific questions:
 - Visit [docs.truefoundry.com](https://docs.truefoundry.com/)
 - Contact TrueFoundry support
 
-For promptfoo-related questions:
+For artef-related questions:
 
-- Visit [promptfoo.dev](https://www.promptfoo.dev/)
-- Join the [Discord community](https://discord.gg/promptfoo)
+- Visit [artef.dev](https://www.artef.dev/)
+- Join the [Discord community](https://discord.gg/artef)

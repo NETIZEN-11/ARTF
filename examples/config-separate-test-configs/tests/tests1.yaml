@@ -1,5 +1,5 @@
-# This file contains a list of test cases. They're added alongside test cases
-# from tests2.yaml in the example promptfooconfig.yaml.
+﻿# This file contains a list of test cases. They're added alongside test cases
+# from tests2.yaml in the example artefconfig.yaml.
 
 - vars:
     topic: artificial intelligence

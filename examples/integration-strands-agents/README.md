@@ -1,13 +1,13 @@
-# integration-strands-agents (Strands Agents SDK example)
+﻿# integration-strands-agents (Strands Agents SDK example)
 
-This example demonstrates how to evaluate [Strands Agents SDK](https://github.com/strands-agents/sdk-python) with [promptfoo](https://promptfoo.dev).
+This example demonstrates how to evaluate [Strands Agents SDK](https://github.com/strands-agents/sdk-python) with [artef](https://artef.dev).
 
 [Strands Agents](https://strandsagents.com/) is an open-source AI agent framework developed by [AWS](https://github.com/strands-agents) that provides a model-driven approach to building AI agents.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-strands-agents
+npx artef@latest init --example integration-strands-agents
 cd integration-strands-agents
 ```
 
@@ -17,7 +17,7 @@ This example showcases:
 
 - Creating a [Strands agent](https://strandsagents.com/latest/user-guide/concepts/agents/) with custom tools
 - Using the [`@tool` decorator](https://strandsagents.com/latest/user-guide/concepts/tools/python-tools/) to define agent capabilities
-- Evaluating agent responses with various [promptfoo assertions](https://promptfoo.dev/docs/configuration/expected-outputs/)
+- Evaluating agent responses with various [artef assertions](https://artef.dev/docs/configuration/expected-outputs/)
 - Testing tool usage with mock weather and temperature conversion tools
 
 ## Prerequisites
@@ -65,10 +65,10 @@ pip install 'strands-agents[bedrock]'
 
 ```bash
 # Run evaluation
-npx promptfoo eval
+npx artef eval
 
 # View results in the web UI
-npx promptfoo view
+npx artef view
 ```
 
 ## How it works
@@ -84,11 +84,11 @@ Tools are defined using the [`@tool` decorator](https://strandsagents.com/latest
 
 ### Provider integration
 
-`agent_provider.py` exposes a `call_api` function that [promptfoo's Python provider](https://promptfoo.dev/docs/providers/python/) calls to interact with the Strands agent.
+`agent_provider.py` exposes a `call_api` function that [artef's Python provider](https://artef.dev/docs/providers/python/) calls to interact with the Strands agent.
 
 ### Test cases and assertion types
 
-The [promptfoo config](https://promptfoo.dev/docs/configuration/guide/) includes 5 test cases that demonstrate different [assertion types](https://promptfoo.dev/docs/configuration/expected-outputs/):
+The [artef config](https://artef.dev/docs/configuration/guide/) includes 5 test cases that demonstrate different [assertion types](https://artef.dev/docs/configuration/expected-outputs/):
 
 | Test                                | Description                | Assertion types used                    |
 | ----------------------------------- | -------------------------- | --------------------------------------- |
@@ -100,9 +100,9 @@ The [promptfoo config](https://promptfoo.dev/docs/configuration/guide/) includes
 
 #### Assertion types explained
 
-- **[`latency`](https://promptfoo.dev/docs/configuration/expected-outputs/#latency)** - Ensures responses complete within 30 seconds (applied to all tests via `defaultTest`)
-- **[`contains-any`](https://promptfoo.dev/docs/configuration/expected-outputs/#contains)** - Verifies the agent returns expected city names and weather data from the mock tool
-- **[`icontains`](https://promptfoo.dev/docs/configuration/expected-outputs/#contains)** - Case-insensitive matching to verify city names appear regardless of formatting
-- **[`not-contains`](https://promptfoo.dev/docs/configuration/expected-outputs/#not-contains)** - Ensures the agent handles unknown cities gracefully without error messages
-- **[`javascript`](https://promptfoo.dev/docs/configuration/expected-outputs/#javascript)** - Validates temperature format (°F/°C symbols) and response length requirements
-- **[`llm-rubric`](https://promptfoo.dev/docs/configuration/expected-outputs/model-graded/)** - Semantically evaluates whether the agent correctly chains weather lookup with temperature conversion
+- **[`latency`](https://artef.dev/docs/configuration/expected-outputs/#latency)** - Ensures responses complete within 30 seconds (applied to all tests via `defaultTest`)
+- **[`contains-any`](https://artef.dev/docs/configuration/expected-outputs/#contains)** - Verifies the agent returns expected city names and weather data from the mock tool
+- **[`icontains`](https://artef.dev/docs/configuration/expected-outputs/#contains)** - Case-insensitive matching to verify city names appear regardless of formatting
+- **[`not-contains`](https://artef.dev/docs/configuration/expected-outputs/#not-contains)** - Ensures the agent handles unknown cities gracefully without error messages
+- **[`javascript`](https://artef.dev/docs/configuration/expected-outputs/#javascript)** - Validates temperature format (°F/°C symbols) and response length requirements
+- **[`llm-rubric`](https://artef.dev/docs/configuration/expected-outputs/model-graded/)** - Semantically evaluates whether the agent correctly chains weather lookup with temperature conversion

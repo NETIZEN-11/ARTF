@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   ATTACK_PROVIDER_IDS,
   getAttackProviderFullId,
@@ -32,29 +32,29 @@ describe('attackProviders', () => {
       it('should return true for hydra variants', () => {
         expect(isAttackProvider('hydra')).toBe(true);
         expect(isAttackProvider('jailbreak:hydra')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:hydra')).toBe(true);
+        expect(isAttackProvider('artef:redteam:hydra')).toBe(true);
       });
 
       it('should return true for goblin variants', () => {
         expect(isAttackProvider('goblin')).toBe(true);
         expect(isAttackProvider('jailbreak:goblin')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:goblin')).toBe(true);
+        expect(isAttackProvider('artef:redteam:goblin')).toBe(true);
       });
 
       it('should return true for crescendo variants', () => {
         expect(isAttackProvider('crescendo')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:crescendo')).toBe(true);
+        expect(isAttackProvider('artef:redteam:crescendo')).toBe(true);
       });
 
       it('should return true for goat variants', () => {
         expect(isAttackProvider('goat')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:goat')).toBe(true);
+        expect(isAttackProvider('artef:redteam:goat')).toBe(true);
       });
 
       it('should return true for custom variants', () => {
         expect(isAttackProvider('custom')).toBe(true);
         expect(isAttackProvider('custom:my-custom')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:custom')).toBe(true);
+        expect(isAttackProvider('artef:redteam:custom')).toBe(true);
       });
     });
 
@@ -62,19 +62,19 @@ describe('attackProviders', () => {
       it('should return true for iterative (base jailbreak)', () => {
         expect(isAttackProvider('iterative')).toBe(true);
         expect(isAttackProvider('jailbreak')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:iterative')).toBe(true);
+        expect(isAttackProvider('artef:redteam:iterative')).toBe(true);
       });
 
       it('should return true for iterative:meta (jailbreak:meta)', () => {
         expect(isAttackProvider('iterative:meta')).toBe(true);
         expect(isAttackProvider('jailbreak:meta')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:iterative:meta')).toBe(true);
+        expect(isAttackProvider('artef:redteam:iterative:meta')).toBe(true);
       });
 
       it('should return true for iterative:tree (jailbreak:tree)', () => {
         expect(isAttackProvider('iterative:tree')).toBe(true);
         expect(isAttackProvider('jailbreak:tree')).toBe(true);
-        expect(isAttackProvider('promptfoo:redteam:iterative:tree')).toBe(true);
+        expect(isAttackProvider('artef:redteam:iterative:tree')).toBe(true);
       });
     });
 
@@ -102,54 +102,54 @@ describe('attackProviders', () => {
   describe('getAttackProviderFullId', () => {
     describe('already full IDs', () => {
       it('should return the same ID if already full', () => {
-        expect(getAttackProviderFullId('promptfoo:redteam:hydra')).toBe('promptfoo:redteam:hydra');
-        expect(getAttackProviderFullId('promptfoo:redteam:iterative')).toBe(
-          'promptfoo:redteam:iterative',
+        expect(getAttackProviderFullId('artef:redteam:hydra')).toBe('artef:redteam:hydra');
+        expect(getAttackProviderFullId('artef:redteam:iterative')).toBe(
+          'artef:redteam:iterative',
         );
-        expect(getAttackProviderFullId('promptfoo:redteam:iterative:meta')).toBe(
-          'promptfoo:redteam:iterative:meta',
+        expect(getAttackProviderFullId('artef:redteam:iterative:meta')).toBe(
+          'artef:redteam:iterative:meta',
         );
       });
     });
 
     describe('jailbreak variants', () => {
-      it('should convert jailbreak (base) to promptfoo:redteam:iterative', () => {
-        expect(getAttackProviderFullId('jailbreak')).toBe('promptfoo:redteam:iterative');
+      it('should convert jailbreak (base) to artef:redteam:iterative', () => {
+        expect(getAttackProviderFullId('jailbreak')).toBe('artef:redteam:iterative');
       });
 
-      it('should convert jailbreak:meta to promptfoo:redteam:iterative:meta', () => {
-        expect(getAttackProviderFullId('jailbreak:meta')).toBe('promptfoo:redteam:iterative:meta');
+      it('should convert jailbreak:meta to artef:redteam:iterative:meta', () => {
+        expect(getAttackProviderFullId('jailbreak:meta')).toBe('artef:redteam:iterative:meta');
       });
 
-      it('should convert jailbreak:tree to promptfoo:redteam:iterative:tree', () => {
-        expect(getAttackProviderFullId('jailbreak:tree')).toBe('promptfoo:redteam:iterative:tree');
+      it('should convert jailbreak:tree to artef:redteam:iterative:tree', () => {
+        expect(getAttackProviderFullId('jailbreak:tree')).toBe('artef:redteam:iterative:tree');
       });
 
-      it('should convert jailbreak:hydra to promptfoo:redteam:hydra', () => {
-        expect(getAttackProviderFullId('jailbreak:hydra')).toBe('promptfoo:redteam:hydra');
+      it('should convert jailbreak:hydra to artef:redteam:hydra', () => {
+        expect(getAttackProviderFullId('jailbreak:hydra')).toBe('artef:redteam:hydra');
       });
 
-      it('should convert jailbreak:goblin to promptfoo:redteam:goblin', () => {
-        expect(getAttackProviderFullId('jailbreak:goblin')).toBe('promptfoo:redteam:goblin');
+      it('should convert jailbreak:goblin to artef:redteam:goblin', () => {
+        expect(getAttackProviderFullId('jailbreak:goblin')).toBe('artef:redteam:goblin');
       });
     });
 
     describe('custom variants', () => {
-      it('should convert custom to promptfoo:redteam:custom', () => {
-        expect(getAttackProviderFullId('custom')).toBe('promptfoo:redteam:custom');
+      it('should convert custom to artef:redteam:custom', () => {
+        expect(getAttackProviderFullId('custom')).toBe('artef:redteam:custom');
       });
 
-      it('should convert custom:variant to promptfoo:redteam:custom', () => {
-        expect(getAttackProviderFullId('custom:my-custom')).toBe('promptfoo:redteam:custom');
+      it('should convert custom:variant to artef:redteam:custom', () => {
+        expect(getAttackProviderFullId('custom:my-custom')).toBe('artef:redteam:custom');
       });
     });
 
     describe('short IDs', () => {
       it('should convert short IDs to full IDs', () => {
-        expect(getAttackProviderFullId('hydra')).toBe('promptfoo:redteam:hydra');
-        expect(getAttackProviderFullId('goblin')).toBe('promptfoo:redteam:goblin');
-        expect(getAttackProviderFullId('crescendo')).toBe('promptfoo:redteam:crescendo');
-        expect(getAttackProviderFullId('goat')).toBe('promptfoo:redteam:goat');
+        expect(getAttackProviderFullId('hydra')).toBe('artef:redteam:hydra');
+        expect(getAttackProviderFullId('goblin')).toBe('artef:redteam:goblin');
+        expect(getAttackProviderFullId('crescendo')).toBe('artef:redteam:crescendo');
+        expect(getAttackProviderFullId('goat')).toBe('artef:redteam:goat');
       });
     });
   });
@@ -164,9 +164,9 @@ describe('attackProviders', () => {
 
     it('should handle various ID formats', () => {
       expect(isMultiTurnStrategy('jailbreak:hydra')).toBe(true);
-      expect(isMultiTurnStrategy('promptfoo:redteam:hydra')).toBe(true);
+      expect(isMultiTurnStrategy('artef:redteam:hydra')).toBe(true);
       expect(isMultiTurnStrategy('jailbreak:goblin')).toBe(true);
-      expect(isMultiTurnStrategy('promptfoo:redteam:goblin')).toBe(true);
+      expect(isMultiTurnStrategy('artef:redteam:goblin')).toBe(true);
     });
 
     it('should return false for non-multi-turn strategies', () => {

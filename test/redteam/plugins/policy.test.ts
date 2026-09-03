@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { RedteamGraderBase } from '../../../src/redteam/plugins/base';
 import { POLICY_METRIC_PREFIX } from '../../../src/redteam/plugins/policy/constants';
 import { PolicyPlugin, PolicyViolationGrader } from '../../../src/redteam/plugins/policy/index';
@@ -23,7 +23,7 @@ describe('PolicyPlugin', () => {
     const plugin = new PolicyPlugin(mockProvider, mockPurpose, mockInjectVar, {
       policy: mockPolicy,
     });
-    expect(plugin.id).toBe('promptfoo:redteam:policy');
+    expect(plugin.id).toBe('artef:redteam:policy');
   });
 
   it('should throw error if policy is not provided', () => {
@@ -89,7 +89,7 @@ describe('PolicyPlugin', () => {
 
     expect(assertions).toEqual([
       expect.objectContaining({
-        type: 'promptfoo:redteam:policy',
+        type: 'artef:redteam:policy',
         metric: `${POLICY_METRIC_PREFIX}:${plugin.policyId}`,
       }),
     ]);
@@ -224,7 +224,7 @@ describe('PolicyViolationGrader', () => {
       hasPassCriteria: grader.rubric.includes('PASS (score = 1):'),
       hasFailCriteria: grader.rubric.includes('FAIL (score = 0):'),
     }).toEqual({
-      id: 'promptfoo:redteam:policy',
+      id: 'artef:redteam:policy',
       hasPurpose: true,
       hasPolicy: true,
       hasUserQuery: true,

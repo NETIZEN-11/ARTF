@@ -1,4 +1,4 @@
-import { spawnSync } from 'node:child_process';
+﻿import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -286,14 +286,14 @@ describe('inline server API DTO validation', () => {
 
   it('returns share-domain DTOs for valid evals', async () => {
     mockedEval.findById.mockResolvedValue({ id: 'eval-1' } as never);
-    mockedDetermineShareDomain.mockReturnValue({ domain: 'https://app.promptfoo.dev' } as never);
+    mockedDetermineShareDomain.mockReturnValue({ domain: 'https://app.artef.dev' } as never);
     mockedCloudConfig.isEnabled.mockReturnValue(true);
 
     const response = await api.get('/api/results/share/check-domain?id=eval-1');
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
-      domain: 'https://app.promptfoo.dev',
+      domain: 'https://app.artef.dev',
       isCloudEnabled: true,
     });
   });
@@ -536,7 +536,7 @@ describe('inline server API DTO validation', () => {
   });
 
   it('imports server DTO schemas without mutating the user config directory', () => {
-    const configDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-server-dto-import-'));
+    const configDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-server-dto-import-'));
     const importProbe = `
       await import('./src/types/api/server.ts');
       await import('./src/telemetryEvents.ts');
@@ -548,8 +548,8 @@ describe('inline server API DTO validation', () => {
         encoding: 'utf8',
         env: {
           ...process.env,
-          PROMPTFOO_CONFIG_DIR: configDir,
-          PROMPTFOO_DISABLE_TELEMETRY: 'true',
+          artef_CONFIG_DIR: configDir,
+          artef_DISABLE_TELEMETRY: 'true',
         },
       });
 

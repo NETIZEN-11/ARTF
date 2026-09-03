@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -139,7 +139,7 @@ function createGeneratedFile(
   const format = source.format || 'pdf';
   const contentType = getMimeTypeForGeneratedFormat(format);
   const text = renderTemplate(
-    source.text || 'Promptfoo generated document for multipart HTTP target testing.',
+    source.text || 'artef generated document for multipart HTTP target testing.',
     vars,
   );
 
@@ -196,7 +196,7 @@ export function normalizeFilePath(filePath: string): string {
     }
   }
 
-  // Promptfoo's long-standing shorthand for relative paths: file://relative/path.ext.
+  // artef's long-standing shorthand for relative paths: file://relative/path.ext.
   //
   // This deliberately wins over reading the authority as a UNC host: `file://host/share`
   // and `file://relative/path` are the same string shape, so supporting one necessarily
@@ -288,7 +288,7 @@ export async function renderHttpMultipartBody(
     } else {
       const generated = createGeneratedFile(part.source, vars);
       loaded = generated;
-      defaultFilename = `promptfoo-document.${generated.extension}`;
+      defaultFilename = `artef-document.${generated.extension}`;
     }
 
     const filenameTemplate = part.filenameTemplate || part.filename || defaultFilename;

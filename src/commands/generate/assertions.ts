@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 
 import chalk from 'chalk';
 import { InvalidArgumentError } from 'commander';
@@ -10,7 +10,7 @@ import telemetry from '../../telemetry';
 import { type TestSuite, type UnifiedConfig } from '../../types/index';
 import { resolveConfigs } from '../../util/config/load';
 import { printBorder, setupEnv } from '../../util/index';
-import { promptfooCommand } from '../../util/promptfooCommand';
+import { artefCommand } from '../../util/artefCommand';
 import { loadYaml } from '../../util/yamlLoad';
 import type { Command } from 'commander';
 
@@ -48,7 +48,7 @@ export async function doGenerateAssertions(options: DatasetGenerateOptions): Pro
     testSuite = resolved.testSuite;
   } else {
     throw new Error(
-      `Could not find a config file. Pass --config path/to/promptfooconfig.yaml or run "${promptfooCommand(
+      `Could not find a config file. Pass --config path/to/artefconfig.yaml or run "${artefCommand(
         'init',
       )}" to create one.`,
     );
@@ -102,12 +102,12 @@ export async function doGenerateAssertions(options: DatasetGenerateOptions): Pro
     };
     await fs.writeFile(configPath, yaml.dump(existingConfig));
     logger.info(`Wrote ${results.length} new test cases to ${configPath}`);
-    const runCommand = promptfooCommand('eval');
+    const runCommand = artefCommand('eval');
     logger.info(chalk.green(`Run ${chalk.bold(runCommand)} to run the generated assertions`));
   } else {
     logger.info(
       `Copy the above test cases or run ${chalk.greenBright(
-        'promptfoo generate assertions --write',
+        'artef generate assertions --write',
       )} to write directly to the config`,
     );
   }
@@ -146,10 +146,10 @@ export function generateAssertionsCommand(
     )
     .option(
       '-c, --config [path]',
-      'Path to configuration file. Defaults to promptfooconfig.yaml. Requires at least 1 prompt to be defined.',
+      'Path to configuration file. Defaults to artefconfig.yaml. Requires at least 1 prompt to be defined.',
     )
     .option('-o, --output [path]', 'Path to output file. Supports YAML output')
-    .option('-w, --write', 'Write results to promptfoo configuration file')
+    .option('-w, --write', 'Write results to artef configuration file')
     .option('--numAssertions <amount>', 'Number of assertions to generate')
     .option(
       '--provider <provider>',

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 7
 title: Tool Calling
 description: Configure tool definitions that work across OpenAI, Anthropic, AWS Bedrock, Google, and other LLM providers
@@ -46,7 +46,7 @@ While many providers have standardized around OpenAI's tool format, some maintai
 | AWS Bedrock              | `{ toolSpec: { name, inputSchema: { json } } }`        |
 | Google                   | `{ functionDeclarations: [{ name, parameters }] }`     |
 
-Promptfoo uses OpenAI's tool format as the standard. For built-in providers (OpenAI, Anthropic, Bedrock, Google, etc.), promptfoo automatically converts tool definitions to the required native format. For the [HTTP provider](/docs/providers/http), set `transformToolsFormat` to tell promptfoo what format the target API expects.
+artef uses OpenAI's tool format as the standard. For built-in providers (OpenAI, Anthropic, Bedrock, Google, etc.), artef automatically converts tool definitions to the required native format. For the [HTTP provider](/docs/providers/http), set `transformToolsFormat` to tell artef what format the target API expects.
 
 ### Reusing tools between providers
 
@@ -261,7 +261,7 @@ providers:
               location: { type: string }
 ```
 
-Promptfoo auto-detects the format. If tools are in OpenAI format (`type: 'function'` with `function.name`), they can be transformed. Otherwise, they pass through unchanged.
+artef auto-detects the format. If tools are in OpenAI format (`type: 'function'` with `function.name`), they can be transformed. Otherwise, they pass through unchanged.
 
 ## Loading Tools from Files
 

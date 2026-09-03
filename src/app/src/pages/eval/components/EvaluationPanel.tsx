@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -9,7 +9,7 @@ import {
 import { cn } from '@app/lib/utils';
 import { Check, ChevronDown, CircleCheck, CircleX, Copy, CornerDownRight } from 'lucide-react';
 import { ellipsize } from '../../../../../util/text';
-import type { Assertion, GradingResult } from '@promptfoo/types';
+import type { Assertion, GradingResult } from '@artef/types';
 
 const COPY_FEEDBACK_DURATION_MS = 2000;
 const ASSERTION_VALUE_PREVIEW_LENGTH = 300;

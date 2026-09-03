@@ -1,4 +1,4 @@
----
+﻿---
 name: redteam-plugin-development
 description: Standards for creating redteam plugins and graders. Use when creating new plugins, writing graders, or modifying attack templates.
 ---
@@ -173,7 +173,7 @@ When adding a new plugin:
    ```typescript
    import { MyGrader } from './plugins/myplugin';
    // In graders object:
-   'promptfoo:redteam:myplugin': new MyGrader(),
+   'artef:redteam:myplugin': new MyGrader(),
    ```
 6. **Add documentation**: `site/docs/red-team/plugins/myplugin.md`
 7. **Update plugins data**: `site/docs/_shared/data/plugins.ts`

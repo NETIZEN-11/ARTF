@@ -1,4 +1,4 @@
-import fsPromises from 'fs/promises';
+﻿import fsPromises from 'fs/promises';
 import path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -386,7 +386,7 @@ describe('OpenAiVideoProvider', () => {
         expect.stringMatching(/\/videos$/),
         expect.objectContaining({
           headers: expect.objectContaining({
-            'X-OpenAI-Originator': 'promptfoo',
+            'X-OpenAI-Originator': 'artef',
           }),
         }),
       );

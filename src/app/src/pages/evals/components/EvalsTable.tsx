@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Badge } from '@app/components/ui/badge';
@@ -17,9 +17,9 @@ import { EVAL_ROUTES } from '@app/constants/routes';
 import { cn } from '@app/lib/utils';
 import { callApi } from '@app/utils/api';
 import { formatDataGridDate } from '@app/utils/date';
-import invariant from '@promptfoo/util/invariant';
+import invariant from '@artef/util/invariant';
 import { Link, useLocation } from 'react-router-dom';
-import type { EvalSummary } from '@promptfoo/types';
+import type { EvalSummary } from '@artef/types';
 import type { ColumnDef, RowSelectionState } from '@tanstack/react-table';
 
 interface EvalsTableProps {

@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_position: 60
-description: Debug and resolve common promptfoo issues with solutions for memory optimization, API configuration, Node.js errors, native builds, and network/proxy setup in your LLM testing pipeline
+description: Debug and resolve common artef issues with solutions for memory optimization, API configuration, Node.js errors, native builds, and network/proxy setup in your LLM testing pipeline
 ---
 
 # Troubleshooting
@@ -9,13 +9,13 @@ description: Debug and resolve common promptfoo issues with solutions for memory
 
 Before troubleshooting specific issues, you can access detailed logs to help diagnose problems:
 
-- **View logs directly**: Log files are stored in your config directory at `~/.promptfoo/logs` by default
-- **Custom log directory**: Set the `PROMPTFOO_LOG_DIR` environment variable to write logs to a different directory (e.g., `PROMPTFOO_LOG_DIR=./logs promptfoo eval`)
-- **Export logs for sharing**: Use `promptfoo export logs` to create a compressed archive of your log files for debugging or support
+- **View logs directly**: Log files are stored in your config directory at `~/.artef/logs` by default
+- **Custom log directory**: Set the `artef_LOG_DIR` environment variable to write logs to a different directory (e.g., `artef_LOG_DIR=./logs artef eval`)
+- **Export logs for sharing**: Use `artef export logs` to create a compressed archive of your log files for debugging or support
 
 ### Live Debug Toggle
 
-During `promptfoo redteam run`, you can toggle debug logging on and off in real-time without restarting:
+During `artef redteam run`, you can toggle debug logging on and off in real-time without restarting:
 
 - **Press `v`** at any time to toggle verbose/debug output
 - Works only in interactive terminal mode (not in CI or when output is piped)
@@ -55,30 +55,30 @@ You can selectively strip out heavy data from the results using environment vari
 
 ```bash
 # Strip prompt text (useful if your prompts contain large amounts of text or images)
-export PROMPTFOO_STRIP_PROMPT_TEXT=true
+export artef_STRIP_PROMPT_TEXT=true
 
 # Strip model outputs (useful if your model generates large responses)
-export PROMPTFOO_STRIP_RESPONSE_OUTPUT=true
+export artef_STRIP_RESPONSE_OUTPUT=true
 
 # Strip test variables (useful if your test cases contain large datasets)
-export PROMPTFOO_STRIP_TEST_VARS=true
+export artef_STRIP_TEST_VARS=true
 
 # Strip grading results (useful if you're using model-graded assertions)
-export PROMPTFOO_STRIP_GRADING_RESULT=true
+export artef_STRIP_GRADING_RESULT=true
 
 # Strip metadata (useful if you're storing large amounts of custom metadata)
-export PROMPTFOO_STRIP_METADATA=true
+export artef_STRIP_METADATA=true
 ```
 
 You can use any combination of these variables to optimize memory usage while preserving the data you need.
 
 ### Increase Node.js memory limit
 
-If you're still encountering memory issues after trying the above options, you can increase the amount of memory available to promptfoo by setting the `NODE_OPTIONS` environment variable:
+If you're still encountering memory issues after trying the above options, you can increase the amount of memory available to artef by setting the `NODE_OPTIONS` environment variable:
 
 ```bash
 # 8192 MB is 8 GB. Set this to an appropriate value for your machine.
-NODE_OPTIONS="--max-old-space-size=8192" npx promptfoo eval
+NODE_OPTIONS="--max-old-space-size=8192" npx artef eval
 ```
 
 ## Object template handling
@@ -87,7 +87,7 @@ When working with complex data structures in templates, you might encounter issu
 
 ### `[object Object]` appears in outputs
 
-If you see `[object Object]` in your LLM outputs or grading results, this means JavaScript objects are being converted to their string representation without proper serialization. By default, promptfoo automatically stringifies objects to prevent this issue.
+If you see `[object Object]` in your LLM outputs or grading results, this means JavaScript objects are being converted to their string representation without proper serialization. By default, artef automatically stringifies objects to prevent this issue.
 
 **Example problem:**
 
@@ -113,8 +113,8 @@ Product: {"name":"Headphones","price":99.99}
 If you need to access specific properties of objects in your templates (like `{{ product.name }}`), you can enable direct object access:
 
 ```bash
-export PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true
-promptfoo eval
+export artef_DISABLE_OBJECT_STRINGIFY=true
+artef eval
 ```
 
 With this setting enabled, you can use object property access in templates:
@@ -133,7 +133,7 @@ prompts:
 - Working with existing templates that expect JSON strings
 - You need maximum compatibility and don't want to see `[object Object]`
 
-**Use object property access (`PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true`) when:**
+**Use object property access (`artef_DISABLE_OBJECT_STRINGIFY=true`) when:**
 
 - You need to access specific properties like `{{ product.name }}`
 - Building new templates designed for object navigation
@@ -158,7 +158,7 @@ N-API is ABI-stable across Node.js versions, so this is almost always a packagin
 issue (npm skipped optional deps, the cache is corrupt, or the platform isn't yet
 supported), not a Node.js version mismatch.
 
-Use the repair path that matches how you run promptfoo.
+Use the repair path that matches how you run artef.
 
 **Project checkout**
 
@@ -175,7 +175,7 @@ npm install --include=optional
 **Global npm install**
 
 ```bash
-npm install -g promptfoo@latest
+npm install -g artef@latest
 ```
 
 **npx**
@@ -186,17 +186,17 @@ matching cache entry:
 ```bash
 npm cache npx ls
 npm cache npx rm <key>
-npx -y promptfoo@latest
+npx -y artef@latest
 ```
 
-Use the key shown next to `promptfoo@latest` in `npm cache npx ls`.
+Use the key shown next to `artef@latest` in `npm cache npx ls`.
 
 **Unsupported platform**
 
 If your `<platform>-<arch>` is not listed in the
 [libsql release matrix](https://github.com/tursodatabase/libsql-js/releases),
 file an issue at
-[promptfoo/promptfoo](https://github.com/promptfoo/promptfoo/issues) with your
+[artef/artef](https://github.com/artef/artef/issues) with your
 platform and architecture in the title.
 
 ## Native build failures
@@ -221,7 +221,7 @@ If you're behind a corporate proxy or firewall and having trouble connecting to 
 
 ### Configure proxy settings
 
-Set standard proxy environment variables before running promptfoo:
+Set standard proxy environment variables before running artef:
 
 ```bash
 # Set proxy for HTTPS requests (most common)
@@ -239,20 +239,20 @@ export NO_PROXY=localhost,127.0.0.1,internal.domain.com
 For environments with custom certificate authorities:
 
 ```bash
-export PROMPTFOO_CA_CERT_PATH=/path/to/ca-bundle.crt
+export artef_CA_CERT_PATH=/path/to/ca-bundle.crt
 ```
 
 ### Verify your configuration
 
-Run `promptfoo debug` to see detected proxy settings and verify your network configuration is correct.
+Run `artef debug` to see detected proxy settings and verify your network configuration is correct.
 
-See the [FAQ](/docs/faq/#how-do-i-configure-promptfoo-for-corporate-networks-or-proxies) for complete proxy and SSL configuration details.
+See the [FAQ](/docs/faq/#how-do-i-configure-artef-for-corporate-networks-or-proxies) for complete proxy and SSL configuration details.
 
 ## OpenAI API key is not set
 
 If you're using OpenAI, set the `OPENAI_API_KEY` environment variable or add `apiKey` to the provider config.
 
-For default text-only model grading and synthesis, you can also install `@openai/codex-sdk`, sign in through the Codex CLI, and let Promptfoo use `openai:codex-sdk` automatically when no higher-priority API credentials are set. This does not cover embedding or moderation providers.
+For default text-only model grading and synthesis, you can also install `@openai/codex-sdk`, sign in through the Codex CLI, and let artef use `openai:codex-sdk` automatically when no higher-priority API credentials are set. This does not cover embedding or moderation providers.
 
 If you're not using OpenAI but still receiving this message, you probably have some [model-graded metric](/docs/configuration/expected-outputs/model-graded/) such as `similar` or `moderation` that requires you to [override the grader](/docs/configuration/expected-outputs/model-graded/#overriding-the-llm-grader) or configure an embedding/moderation provider explicitly.
 
@@ -280,7 +280,7 @@ If you see errors like `Python files require a function name` when loading tools
 
 Python and JavaScript tool files must specify a function name using the `file://path:function_name` format:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-4.1-mini
     config:
@@ -358,18 +358,18 @@ You can control two settings: timeout for individual test cases and timeout for 
 **Set timeouts for individual requests and total evaluation time:**
 
 ```bash
-export PROMPTFOO_EVAL_TIMEOUT_MS=30000  # 30 seconds per request
-export PROMPTFOO_MAX_EVAL_TIME_MS=300000  # 5 minutes total limit
+export artef_EVAL_TIMEOUT_MS=30000  # 30 seconds per request
+export artef_MAX_EVAL_TIME_MS=300000  # 5 minutes total limit
 
-npx promptfoo eval
+npx artef eval
 ```
 
-You can also set these values in your `.env` file or Promptfoo config file:
+You can also set these values in your `.env` file or artef config file:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 env:
-  PROMPTFOO_EVAL_TIMEOUT_MS: 30000
-  PROMPTFOO_MAX_EVAL_TIME_MS: 300000
+  artef_EVAL_TIMEOUT_MS: 30000
+  artef_MAX_EVAL_TIME_MS: 300000
 ```
 
 ## Debugging Python
@@ -381,21 +381,21 @@ When using custom Python providers, prompts, hooks, assertions, etc., you may ne
 To see the output from your Python script, including print statements, set the `LOG_LEVEL` environment variable to `debug` when running your eval:
 
 ```bash
-LOG_LEVEL=debug npx promptfoo eval
+LOG_LEVEL=debug npx artef eval
 ```
 
 Alternatively, you can use the `--verbose` flag:
 
 ```bash
-npx promptfoo eval --verbose
+npx artef eval --verbose
 ```
 
 ### Using the Python debugger (pdb)
 
-Promptfoo now supports native Python debugging with pdb. To enable it:
+artef now supports native Python debugging with pdb. To enable it:
 
 ```bash
-export PROMPTFOO_PYTHON_DEBUG_ENABLED=true
+export artef_PYTHON_DEBUG_ENABLED=true
 ```
 
 Then add breakpoints in your Python code:
@@ -410,21 +410,21 @@ def call_api(prompt, options, context):
 
 ### Python Installation and Path Issues
 
-If you encounter errors like `spawn py -3 ENOENT` or `Python 3 not found`, promptfoo cannot locate your Python installation. Here's how to resolve this:
+If you encounter errors like `spawn py -3 ENOENT` or `Python 3 not found`, artef cannot locate your Python installation. Here's how to resolve this:
 
 #### Setting a Custom Python Path
 
-Use the `PROMPTFOO_PYTHON` environment variable to specify your Python executable:
+Use the `artef_PYTHON` environment variable to specify your Python executable:
 
 ```bash
 # Windows (if Python is installed at a custom location)
-export PROMPTFOO_PYTHON=C:\Python\3_11\python.exe
+export artef_PYTHON=C:\Python\3_11\python.exe
 
 # macOS/Linux
-export PROMPTFOO_PYTHON=/usr/local/bin/python3
+export artef_PYTHON=/usr/local/bin/python3
 
 # Then run your evaluation
-npx promptfoo eval
+npx artef eval
 ```
 
 #### Per-Provider Python Configuration
@@ -440,10 +440,10 @@ providers:
 
 #### Windows-Specific Issues
 
-On Windows, promptfoo tries to detect Python in this order:
+On Windows, artef tries to detect Python in this order:
 
 1. Provider-specific `pythonExecutable` config (if set)
-2. `PROMPTFOO_PYTHON` environment variable (if set)
+2. `artef_PYTHON` environment variable (if set)
 3. **Windows smart detection**: Uses `where python` command and filters out Microsoft Store stubs
 4. `python -c "import sys; print(sys.executable)"` (to get the actual Python path)
 5. Common fallback commands: `python`, `python3`, `py -3`, `py`
@@ -451,7 +451,7 @@ On Windows, promptfoo tries to detect Python in this order:
 If you don't have the Python launcher (`py.exe`) installed but have Python directly, make sure the `python` command works from your command line. If not, either:
 
 - Add your Python installation directory to your PATH
-- Set `PROMPTFOO_PYTHON` to the full path of your `python.exe`
+- Set `artef_PYTHON` to the full path of your `python.exe`
 
 **Common Windows Python locations:**
 
@@ -464,51 +464,51 @@ If you don't have the Python launcher (`py.exe`) installed but have Python direc
 To verify your Python is correctly configured:
 
 ```bash
-# Test that promptfoo can find your Python
+# Test that artef can find your Python
 python -c "import sys; print(sys.executable)"
 
-# If this works but promptfoo still has issues, set PROMPTFOO_PYTHON:
-export PROMPTFOO_PYTHON=$(python -c "import sys; print(sys.executable)")
+# If this works but artef still has issues, set artef_PYTHON:
+export artef_PYTHON=$(python -c "import sys; print(sys.executable)")
 ```
 
 ### Handling errors
 
-If you encounter errors in your Python script, the error message and stack trace will be displayed in the promptfoo output. Make sure to check this information for clues about what might be going wrong in your code.
+If you encounter errors in your Python script, the error message and stack trace will be displayed in the artef output. Make sure to check this information for clues about what might be going wrong in your code.
 
-Remember that promptfoo runs your Python script in a separate process, so some standard debugging techniques may not work as expected. Using logging and remote debugging as described above are the most reliable ways to troubleshoot issues in your Python providers.
+Remember that artef runs your Python script in a separate process, so some standard debugging techniques may not work as expected. Using logging and remote debugging as described above are the most reliable ways to troubleshoot issues in your Python providers.
 
 ## Debugging the Database
 
 1. Set environment variables:
 
    ```bash
-   export PROMPTFOO_ENABLE_DATABASE_LOGS=true
+   export artef_ENABLE_DATABASE_LOGS=true
    export LOG_LEVEL=debug
    ```
 
 2. Run your command:
 
    ```bash
-   npx promptfoo eval
+   npx artef eval
    ```
 
 3. Disable logging when done:
 
    ```bash
-   unset PROMPTFOO_ENABLE_DATABASE_LOGS
+   unset artef_ENABLE_DATABASE_LOGS
    ```
 
 ## Finding log files
 
-Promptfoo logs errors and debug logs to `~/.promptfoo/logs` by default.
+artef logs errors and debug logs to `~/.artef/logs` by default.
 
 To inspect them from the CLI:
 
 ```bash
-promptfoo logs --list
-promptfoo logs <filename>
+artef logs --list
+artef logs <filename>
 ```
 
-Change the location by setting `PROMPTFOO_LOG_DIR` to a different directory.
+Change the location by setting `artef_LOG_DIR` to a different directory.
 
 For each run an error log and a debug log will be created.

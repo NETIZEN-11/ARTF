@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { VERSION } from '../constants';
 import { getUserEmail } from '../globalConfig/accounts';
 import logger from '../logger';
@@ -27,7 +27,7 @@ import type {
   TokenUsage,
 } from '../types/index';
 
-interface PromptfooHarmfulCompletionOptions {
+interface artefHarmfulCompletionOptions {
   harmCategory: string;
   n: number;
   purpose: string;
@@ -37,10 +37,10 @@ interface PromptfooHarmfulCompletionOptions {
 }
 
 /**
- * Provider for generating harmful/adversarial content using Promptfoo's unaligned models.
+ * Provider for generating harmful/adversarial content using artef's unaligned models.
  * Used by red team plugins to generate test cases for harmful content categories.
  */
-export class PromptfooHarmfulCompletionProvider implements ApiProvider {
+export class artefHarmfulCompletionProvider implements ApiProvider {
   harmCategory: string;
   n: number;
   purpose: string;
@@ -48,7 +48,7 @@ export class PromptfooHarmfulCompletionProvider implements ApiProvider {
   targetId?: string;
   redteamGenerationContext?: RemoteGenerationContext;
 
-  constructor(options: PromptfooHarmfulCompletionOptions) {
+  constructor(options: artefHarmfulCompletionOptions) {
     this.harmCategory = options.harmCategory;
     this.n = options.n;
     this.purpose = options.purpose;
@@ -60,11 +60,11 @@ export class PromptfooHarmfulCompletionProvider implements ApiProvider {
   }
 
   id(): string {
-    return `promptfoo:redteam:${this.harmCategory}`;
+    return `artef:redteam:${this.harmCategory}`;
   }
 
   toString(): string {
-    return `[Promptfoo Harmful Completion Provider ${this.purpose} - ${this.harmCategory}]`;
+    return `[artef Harmful Completion Provider ${this.purpose} - ${this.harmCategory}]`;
   }
 
   async callApi(
@@ -76,13 +76,13 @@ export class PromptfooHarmfulCompletionProvider implements ApiProvider {
     if (neverGenerateRemote()) {
       return {
         error: dedent`
-          Remote generation is disabled. Harmful content generation requires Promptfoo's unaligned models.
+          Remote generation is disabled. Harmful content generation requires artef's unaligned models.
 
           To enable:
-          - Remove PROMPTFOO_DISABLE_REMOTE_GENERATION (or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION)
+          - Remove artef_DISABLE_REMOTE_GENERATION (or artef_DISABLE_REDTEAM_REMOTE_GENERATION)
           - Or configure an alternative unaligned model provider
 
-          Learn more: https://www.promptfoo.dev/docs/red-team/configuration#remote-generation
+          Learn more: https://www.artef.dev/docs/red-team/configuration#remote-generation
         `,
       };
     }
@@ -101,7 +101,7 @@ export class PromptfooHarmfulCompletionProvider implements ApiProvider {
       logger.debug(
         `[HarmfulCompletionProvider] Calling generate harmful API (${getRemoteGenerationUrlForUnaligned()}) with body: ${JSON.stringify(body)}`,
       );
-      // We're using the promptfoo API to avoid having users provide their own unaligned model.
+      // We're using the artef API to avoid having users provide their own unaligned model.
       const response = await fetchWithRetries(
         getRemoteGenerationUrlForUnaligned(),
         {
@@ -160,7 +160,7 @@ export class PromptfooHarmfulCompletionProvider implements ApiProvider {
   }
 }
 
-interface PromptfooChatCompletionOptions {
+interface artefChatCompletionOptions {
   env?: EnvOverrides;
   id?: string;
   jsonOnly: boolean;
@@ -188,22 +188,22 @@ interface PromptfooChatCompletionOptions {
 }
 
 /**
- * Provider for red team adversarial strategies using Promptfoo's task-specific models.
+ * Provider for red team adversarial strategies using artef's task-specific models.
  * Supports multi-turn attack strategies like crescendo, goat, and iterative attacks.
  */
-export class PromptfooChatCompletionProvider implements ApiProvider {
-  private options: PromptfooChatCompletionOptions;
+export class artefChatCompletionProvider implements ApiProvider {
+  private options: artefChatCompletionOptions;
 
-  constructor(options: PromptfooChatCompletionOptions) {
+  constructor(options: artefChatCompletionOptions) {
     this.options = options;
   }
 
   id(): string {
-    return this.options.id || 'promptfoo:chatcompletion';
+    return this.options.id || 'artef:chatcompletion';
   }
 
   toString(): string {
-    return `[Promptfoo Chat Completion Provider]`;
+    return `[artef Chat Completion Provider]`;
   }
 
   async callApi(
@@ -215,13 +215,13 @@ export class PromptfooChatCompletionProvider implements ApiProvider {
     if (neverGenerateRemote()) {
       return {
         error: dedent`
-          Remote generation is disabled. This red team strategy requires Promptfoo's task-specific models.
+          Remote generation is disabled. This red team strategy requires artef's task-specific models.
 
           To enable:
-          - Remove PROMPTFOO_DISABLE_REMOTE_GENERATION (or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION)
+          - Remove artef_DISABLE_REMOTE_GENERATION (or artef_DISABLE_REDTEAM_REMOTE_GENERATION)
           - Or provide OPENAI_API_KEY for local generation (may have lower quality)
 
-          Learn more: https://www.promptfoo.dev/docs/red-team/configuration#remote-generation
+          Learn more: https://www.artef.dev/docs/red-team/configuration#remote-generation
         `,
       };
     }
@@ -258,7 +258,7 @@ export class PromptfooChatCompletionProvider implements ApiProvider {
 
       if (!data.result) {
         logger.debug(
-          `Error from promptfoo completion provider. Status: ${response.status} ${response.statusText} ${JSON.stringify(data)} `,
+          `Error from artef completion provider. Status: ${response.status} ${response.statusText} ${JSON.stringify(data)} `,
         );
         return {
           error: 'LLM did not return a result, likely refusal',
@@ -285,7 +285,7 @@ export class PromptfooChatCompletionProvider implements ApiProvider {
   }
 }
 
-interface PromptfooAgentOptions {
+interface artefAgentOptions {
   env?: EnvOverrides;
   id?: string;
   instructions?: string;
@@ -298,24 +298,24 @@ interface PromptfooAgentOptions {
 export const REDTEAM_SIMULATED_USER_TASK_ID = 'mischievous-user-redteam';
 
 /**
- * Provider for simulating realistic user conversations using Promptfoo's conversation models.
+ * Provider for simulating realistic user conversations using artef's conversation models.
  * Supports both regular simulated users and adversarial red team users.
  */
-export class PromptfooSimulatedUserProvider implements ApiProvider {
-  private options: PromptfooAgentOptions;
+export class artefSimulatedUserProvider implements ApiProvider {
+  private options: artefAgentOptions;
   private taskId: string;
 
-  constructor(options: PromptfooAgentOptions = {}, taskId: string) {
+  constructor(options: artefAgentOptions = {}, taskId: string) {
     this.options = options;
     this.taskId = taskId;
   }
 
   id(): string {
-    return this.options.id || 'promptfoo:agent';
+    return this.options.id || 'artef:agent';
   }
 
   toString(): string {
-    return '[Promptfoo Agent Provider]';
+    return '[artef Agent Provider]';
   }
 
   async callApi(
@@ -334,17 +334,17 @@ export class PromptfooSimulatedUserProvider implements ApiProvider {
 
     if (shouldDisable) {
       const relevantFlag = isRedteamTask
-        ? 'PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION'
-        : 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+        ? 'artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION'
+        : 'artef_DISABLE_REMOTE_GENERATION';
       const docsUrl = isRedteamTask
-        ? 'https://www.promptfoo.dev/docs/red-team/configuration#remote-generation'
-        : 'https://www.promptfoo.dev/docs/providers/simulated-user#remote-generation';
+        ? 'https://www.artef.dev/docs/red-team/configuration#remote-generation'
+        : 'https://www.artef.dev/docs/providers/simulated-user#remote-generation';
 
       return {
         error: dedent`
           Remote generation is disabled.
 
-          SimulatedUser requires Promptfoo's conversation simulation models.
+          SimulatedUser requires artef's conversation simulation models.
 
           To enable, remove ${relevantFlag}
 

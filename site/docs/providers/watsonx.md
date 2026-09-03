@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: WatsonX
 description: Configure IBM WatsonX's text and chat models for enterprise-grade LLM testing, including Granite, Llama, code, and multilingual options
 ---
@@ -9,7 +9,7 @@ description: Configure IBM WatsonX's text and chat models for enterprise-grade L
 
 ## Supported Models
 
-IBM watsonx.ai provides foundation models through its inference API. The promptfoo WatsonX provider currently supports **text generation and chat models** that can be called directly via API.
+IBM watsonx.ai provides foundation models through its inference API. The artef WatsonX provider currently supports **text generation and chat models** that can be called directly via API.
 
 :::tip Finding Available Models
 
@@ -59,7 +59,7 @@ IBM watsonx.ai also offers:
 
 :::info Additional Model Types Not Currently Supported
 
-The promptfoo WatsonX provider focuses on **text generation and chat models only**. Deploy on Demand, embedding, and reranker models use different API endpoints and workflows. For these model types, use IBM's API directly or create a [custom provider](/docs/providers/custom-api/).
+The artef WatsonX provider focuses on **text generation and chat models only**. Deploy on Demand, embedding, and reranker models use different API endpoints and workflows. For these model types, use IBM's API directly or create a [custom provider](/docs/providers/custom-api/).
 
 :::
 

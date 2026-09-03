@@ -1,11 +1,11 @@
-# compare-openai-models (OpenAI Model Comparison)
+﻿# compare-openai-models (OpenAI Model Comparison)
 
 This example compares OpenAI's `gpt-5.4` with `gpt-5.4-mini` across various riddles and reasoning tasks.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example compare-openai-models
+npx artef@latest init --example compare-openai-models
 cd compare-openai-models
 ```
 
@@ -14,7 +14,7 @@ cd compare-openai-models
 1. Initialize this example by running:
 
    ```bash
-   npx promptfoo@latest init --example compare-openai-models
+   npx artef@latest init --example compare-openai-models
    ```
 
 2. Navigate to the newly created `compare-openai-models` directory:
@@ -38,15 +38,15 @@ cd compare-openai-models
 4. Run the evaluation with:
 
    ```bash
-   npx promptfoo@latest eval --no-cache
+   npx artef@latest eval --no-cache
    ```
 
-   Note: the `--no-cache` flag is required because the example uses a [latency assertion](https://www.promptfoo.dev/docs/configuration/expected-outputs/deterministic/#latency) which does not support caching.
+   Note: the `--no-cache` flag is required because the example uses a [latency assertion](https://www.artef.dev/docs/configuration/expected-outputs/deterministic/#latency) which does not support caching.
 
 5. View the results:
 
    ```bash
-   npx promptfoo@latest view
+   npx artef@latest view
    ```
 
    The expected output will include the responses from both models for the provided riddles, allowing you to compare their performance side by side.

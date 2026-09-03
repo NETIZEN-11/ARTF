@@ -1,9 +1,9 @@
-# eval-custom-grader-csv (Custom Grader Csv)
+﻿# eval-custom-grader-csv (Custom Grader Csv)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-custom-grader-csv
+npx artef@latest init --example eval-custom-grader-csv
 cd eval-custom-grader-csv
 ```
 
@@ -15,11 +15,11 @@ The `__expected` column in `tests.csv` points to this assertion script.
 Run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 Full command-line equivalent:
 
 ```bash
-promptfoo eval --prompts prompts.txt --tests tests.csv --providers openai:gpt-4.1-mini --output output.json
+artef eval --prompts prompts.txt --tests tests.csv --providers openai:gpt-4.1-mini --output output.json
 ```

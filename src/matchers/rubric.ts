@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import { loadFromJavaScriptFile } from '../assertions/utils';
@@ -40,7 +40,7 @@ const DEFAULT_GRADING_IMAGE_MAX_TOTAL_RAW_CHARS =
 const MULTIMODAL_GRADING_INSTRUCTION =
   'The evaluated output includes the attached image(s). Treat the attached image(s) as primary evidence in <Output>. Inspect the visual content directly, and do not infer visual traits, demographics, safety issues, or rubric failures from the user prompt or from any base64/data URI text.';
 const BLOB_HASH_REGEX = /^[a-f0-9]{64}$/i;
-const BLOB_URI_REGEX = /promptfoo:\/\/blob\/([a-f0-9]{64})/i;
+const BLOB_URI_REGEX = /artef:\/\/blob\/([a-f0-9]{64})/i;
 const RESPONSES_PROVIDER_CLASS_NAMES = new Set([
   'AzureResponsesProvider',
   'BedrockOpenAiResponsesProvider',
@@ -137,7 +137,7 @@ export async function renderLlmRubricPrompt(
   rubricPrompt: string,
   context: Record<string, VarValue>,
 ) {
-  const enableObjectAccess = getEnvBool('PROMPTFOO_DISABLE_OBJECT_STRINGIFY', false);
+  const enableObjectAccess = getEnvBool('artef_DISABLE_OBJECT_STRINGIFY', false);
   const processedContext = processContextForTemplating(context, enableObjectAccess);
 
   try {
@@ -317,7 +317,7 @@ export function materializeImageOutputsForGrading(images?: ImageOutput[]): {
     return { imageOutputs: [], imageData: [] };
   }
 
-  const maxImages = getEnvInt('PROMPTFOO_GRADING_MAX_IMAGES', DEFAULT_GRADING_MAX_IMAGES);
+  const maxImages = getEnvInt('artef_GRADING_MAX_IMAGES', DEFAULT_GRADING_MAX_IMAGES);
   if (images.length > maxImages) {
     throw new Error(
       `Too many images for multimodal grading: received ${images.length}, maximum is ${maxImages}.`,
@@ -325,19 +325,19 @@ export function materializeImageOutputsForGrading(images?: ImageOutput[]): {
   }
 
   const maxImageBytes = getEnvInt(
-    'PROMPTFOO_GRADING_IMAGE_MAX_BYTES',
+    'artef_GRADING_IMAGE_MAX_BYTES',
     DEFAULT_GRADING_IMAGE_MAX_BYTES,
   );
   const maxTotalImageBytes = getEnvInt(
-    'PROMPTFOO_GRADING_IMAGE_MAX_TOTAL_BYTES',
+    'artef_GRADING_IMAGE_MAX_TOTAL_BYTES',
     DEFAULT_GRADING_IMAGE_MAX_TOTAL_BYTES,
   );
   const maxRawChars = getEnvInt(
-    'PROMPTFOO_GRADING_IMAGE_MAX_RAW_CHARS',
+    'artef_GRADING_IMAGE_MAX_RAW_CHARS',
     DEFAULT_GRADING_IMAGE_MAX_RAW_CHARS,
   );
   const maxTotalRawChars = getEnvInt(
-    'PROMPTFOO_GRADING_IMAGE_MAX_TOTAL_RAW_CHARS',
+    'artef_GRADING_IMAGE_MAX_TOTAL_RAW_CHARS',
     DEFAULT_GRADING_IMAGE_MAX_TOTAL_RAW_CHARS,
   );
   const materializedImages = images.map(imageOutputToImageUrl).filter(

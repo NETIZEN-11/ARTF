@@ -1,4 +1,4 @@
-import { fetchWithCache } from '../cache';
+﻿import { fetchWithCache } from '../cache';
 import logger from '../logger';
 import { getRequestTimeoutMs } from '../providers/shared';
 import { type Inputs } from '../types/shared';
@@ -327,12 +327,12 @@ export function removePrefix(str: string, prefix: string) {
 
 /**
  * Extracts the short name from a fully qualified plugin ID.
- * Removes the 'promptfoo:redteam:' prefix if present.
+ * Removes the 'artef:redteam:' prefix if present.
  * @param pluginId The full plugin ID
  * @returns The short plugin ID
  */
 export function getShortPluginId(pluginId: string): string {
-  return pluginId.replace(/^promptfoo:redteam:/, '');
+  return pluginId.replace(/^artef:redteam:/, '');
 }
 
 /**

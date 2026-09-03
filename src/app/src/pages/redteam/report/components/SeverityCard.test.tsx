@@ -1,5 +1,5 @@
-import { renderWithProviders } from '@app/utils/testutils';
-import { Severity } from '@promptfoo/redteam/constants';
+﻿import { renderWithProviders } from '@app/utils/testutils';
+import { Severity } from '@artef/redteam/constants';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';

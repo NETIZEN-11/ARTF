@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test for #6393: file:// references in vars context for runtime loading
 description: 'Regression test - file:// references in vars'
 

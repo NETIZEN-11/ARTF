@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Will agents hack everything?'
 description: 'The first state-level AI cyberattack raises hard questions: Can we stop AI agents from helping attackers? Should we?'
 image: /img/blog/will-agents-hack-everything/red-panda-vs-hackers.jpg
@@ -22,9 +22,9 @@ tags: [security-vulnerability, ai-security, agents]
 
 # Will agents hack everything?
 
-![A promptfoo engineer uses Claude Code to simulate attacks](/img/blog/will-agents-hack-everything/claude-code-ctf.gif)
+![A artef engineer uses Claude Code to simulate attacks](/img/blog/will-agents-hack-everything/claude-code-ctf.gif)
 
-_A Promptfoo engineer uses Claude Code to run agent-based attacks against a CTF—a system made deliberately vulnerable for security training._
+_A artef engineer uses Claude Code to run agent-based attacks against a CTF—a system made deliberately vulnerable for security training._
 
 <!-- truncate -->
 
@@ -74,7 +74,7 @@ From the prompt, it's not even possible for the model to know whether the task h
 
 Example 2 in the previous section highlights another problem. In security, **defense requires offense**. The only way to know whether your defensive measures work is to test them against realistic attacks. This is often called "red teaming". It's a well-established practice in traditional cybersecurity, and is gaining popularity in the new sub-field of AI security.
 
-(It just so happens that we build [red teaming software for AI](https://www.promptfoo.dev/red-teaming/) here at Promptfoo, and count many of the Fortune 500 among our customers.)
+(It just so happens that we build [red teaming software for AI](https://www.artef.dev/red-teaming/) here at artef, and count many of the Fortune 500 among our customers.)
 
 You might see where I'm going with this. Even if the labs could figure out some way to balance all these tradeoffs, so that "legitimate work" is mostly unimpeded while helping with attacks is reliably refused, is that what we should want?
 
@@ -92,4 +92,4 @@ Being thoughtless or overzealous in our attempts to stop them from doing it coul
 
 ---
 
-_Questions or thoughts? Get in touch: dane@promptfoo.dev_
+_Questions or thoughts? Get in touch: dane@artef.dev_

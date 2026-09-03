@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { loadFromJavaScriptFile } from '../../src/assertions/utils';
@@ -1106,7 +1106,7 @@ describe('matchesLlmRubric', () => {
             images: [
               {
                 blobRef: {
-                  uri: `promptfoo://blob/${hash}`,
+                  uri: `artef://blob/${hash}`,
                   hash,
                   mimeType: 'image/png',
                   sizeBytes: 11,
@@ -1183,7 +1183,7 @@ describe('matchesLlmRubric', () => {
   });
 
   it('should reject raw image data that exceeds the raw character cap before grading', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_GRADING_IMAGE_MAX_RAW_CHARS: '20' });
+    const restoreEnv = mockProcessEnv({ artef_GRADING_IMAGE_MAX_RAW_CHARS: '20' });
     const provider = createMockProvider({
       response: {
         output: JSON.stringify({ pass: true, score: 1, reason: 'image ok' }),
@@ -1216,7 +1216,7 @@ describe('matchesLlmRubric', () => {
   });
 
   it('should reject too many image outputs before grading', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_GRADING_MAX_IMAGES: '1' });
+    const restoreEnv = mockProcessEnv({ artef_GRADING_MAX_IMAGES: '1' });
     const provider = createMockProvider({
       response: {
         output: JSON.stringify({ pass: true, score: 1, reason: 'image ok' }),
@@ -1252,7 +1252,7 @@ describe('matchesLlmRubric', () => {
   });
 
   it('should reject oversized inline image outputs before grading', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_GRADING_IMAGE_MAX_BYTES: '4' });
+    const restoreEnv = mockProcessEnv({ artef_GRADING_IMAGE_MAX_BYTES: '4' });
     const provider = createMockProvider({
       response: {
         output: JSON.stringify({ pass: true, score: 1, reason: 'image ok' }),
@@ -1288,8 +1288,8 @@ describe('matchesLlmRubric', () => {
 
   it('should reject inline image outputs that exceed the total size limit before grading', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_GRADING_IMAGE_MAX_BYTES: '10',
-      PROMPTFOO_GRADING_IMAGE_MAX_TOTAL_BYTES: '9',
+      artef_GRADING_IMAGE_MAX_BYTES: '10',
+      artef_GRADING_IMAGE_MAX_TOTAL_BYTES: '9',
     });
     const provider = createMockProvider({
       response: {
@@ -2448,7 +2448,7 @@ Evaluate the response
     const remoteGeneration = await import('../../src/redteam/remoteGeneration');
     vi.mocked(remoteGeneration.shouldGenerateRemote).mockReturnValue(true);
     (cliState as any).config = {
-      providers: ['promptfoo://provider/cloud-target-123'],
+      providers: ['artef://provider/cloud-target-123'],
       redteam: {},
     };
 
@@ -2469,10 +2469,10 @@ Evaluate the response
     const remoteGeneration = await import('../../src/redteam/remoteGeneration');
     vi.mocked(remoteGeneration.shouldGenerateRemote).mockReturnValue(true);
     cliState.config = {
-      providers: ['promptfoo://provider/excluded-target'],
+      providers: ['artef://provider/excluded-target'],
       redteam: {},
     };
-    cliState.selectedProviderConfigs = ['promptfoo://provider/selected-target'];
+    cliState.selectedProviderConfigs = ['artef://provider/selected-target'];
 
     await matchesLlmRubric(rubric, llmOutput, {});
 

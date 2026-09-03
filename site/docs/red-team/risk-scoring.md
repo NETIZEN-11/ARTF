@@ -1,10 +1,10 @@
----
+﻿---
 sidebar_position: 40
 ---
 
 # Risk Scoring
 
-Promptfoo provides a risk scoring system that quantifies the severity and likelihood of vulnerabilities in your LLM application. Each vulnerability is assigned a risk score between 0 and 10 that helps you prioritize remediation efforts.
+artef provides a risk scoring system that quantifies the severity and likelihood of vulnerabilities in your LLM application. Each vulnerability is assigned a risk score between 0 and 10 that helps you prioritize remediation efforts.
 
 Our risk scoring methodology is based on industry-standard CVSS (Common Vulnerability Scoring System) principles, adapted specifically for LLM security assessments. This approach ensures that security professionals can interpret scores using familiar frameworks and integrate findings into existing vulnerability management workflows.
 
@@ -121,7 +121,7 @@ Medium severity issues with substantial success rates can escalate to high-risk 
 
 ## System-Level Risk Scoring
 
-For overall system assessment, Promptfoo calculates a system-wide risk score that considers:
+For overall system assessment, artef calculates a system-wide risk score that considers:
 
 1. **Maximum Individual Risk**: The highest-scoring vulnerability sets the baseline system risk
 2. **Distribution Penalty**: Multiple critical/high vulnerabilities increase overall system risk:

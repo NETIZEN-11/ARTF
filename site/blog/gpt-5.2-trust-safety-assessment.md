@@ -1,4 +1,4 @@
----
+﻿---
 title: 'GPT-5.2 Initial Trust and Safety Assessment'
 description: 'Day-0 red team results for GPT-5.2. 4,229 probes across 43 risk categories. Baseline safety holds at 96%, but jailbreaks drop it to as low as 22%.'
 image: /img/blog/gpt-5.2-security/hero.jpg
@@ -19,7 +19,7 @@ tags: [red-teaming, security-vulnerability, openai]
 
 # GPT-5.2 Initial Trust and Safety Assessment
 
-OpenAI released GPT-5.2 today (December 11, 2025) at approximately 10:00 AM PST. We [opened a PR for GPT-5.2 support](https://github.com/promptfoo/promptfoo/pull/6628) at 10:24 AM PST and kicked off a [red team](/docs/red-team/) eval ([security testing where you try to break something](/blog/ai-red-teaming-for-first-timers)). **First critical finding hit at 10:29 AM PST, 5 minutes later.** This is an early, targeted assessment focused on jailbreak resilience and harmful content, not a full security review.
+OpenAI released GPT-5.2 today (December 11, 2025) at approximately 10:00 AM PST. We [opened a PR for GPT-5.2 support](https://github.com/artef/artef/pull/6628) at 10:24 AM PST and kicked off a [red team](/docs/red-team/) eval ([security testing where you try to break something](/blog/ai-red-teaming-for-first-timers)). **First critical finding hit at 10:29 AM PST, 5 minutes later.** This is an early, targeted assessment focused on jailbreak resilience and harmful content, not a full security review.
 
 This post covers what we tested, what failed, and what you should do about it.
 
@@ -46,9 +46,9 @@ We used two [attack strategies](/docs/red-team/strategies/):
 
 Total runtime: **~30 minutes** on a MacBook Pro.
 
-We used [Promptfoo](https://github.com/promptfoo/promptfoo), an [open-source LLM red teaming tool](/docs/red-team/quickstart). The config:
+We used [artef](https://github.com/artef/artef), an [open-source LLM red teaming tool](/docs/red-team/quickstart). The config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 targets:
   - id: openai:chat:gpt-5.2
     config:
@@ -116,7 +116,7 @@ redteam:
 The command:
 
 ```bash
-npx promptfoo@latest redteam run -c redteam.yaml -j 40 --output results.json
+npx artef@latest redteam run -c redteam.yaml -j 40 --output results.json
 ```
 
 We disabled reasoning tokens (`reasoning_effort: 'none'`) to test the base model behavior. Reasoning tokens let the model "think" before responding, which typically improves safety but costs more and takes longer. GPT-5.2 exposes multiple reasoning effort levels in the API (`none`, `low`, `medium`, `high`, and `xhigh` depending on the variant). We'll run a follow-up eval with reasoning enabled and publish those results separately.
@@ -197,14 +197,14 @@ See our [foundation model red teaming guide](/docs/red-team/foundation-models/) 
 
 ```bash
 # Clone the example
-npx promptfoo@latest init --example redteam-foundation-model
+npx artef@latest init --example redteam-foundation-model
 cd redteam-foundation-model
 
 # Point it at GPT-5.2
 # Edit redteam.yaml: change target to openai:chat:gpt-5.2
 
 # Run
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 Full results take about 30 minutes with `-j 40`. You'll get a report showing which categories failed and which attacks succeeded.
@@ -250,6 +250,6 @@ High-failure categories under low reasoning:
 
 ---
 
-Want the full red team report? Contact us at inquiries@promptfoo.dev.
+Want the full red team report? Contact us at inquiries@artef.dev.
 
-Questions? Find us on [Discord](https://discord.gg/promptfoo) or [GitHub](https://github.com/promptfoo/promptfoo).
+Questions? Find us on [Discord](https://discord.gg/artef) or [GitHub](https://github.com/artef/artef).

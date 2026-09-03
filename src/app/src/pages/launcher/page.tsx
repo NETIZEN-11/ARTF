@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 import logoPanda from '@app/assets/logo.svg';
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
@@ -88,12 +88,12 @@ export default function LauncherPage() {
             <AlertDescription>
               Connection lost. Try visiting{' '}
               <a
-                href="https://local.promptfoo.app"
+                href="https://local.artef.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium underline hover:no-underline"
               >
-                local.promptfoo.app
+                local.artef.app
               </a>{' '}
               instead
             </AlertDescription>
@@ -108,9 +108,9 @@ export default function LauncherPage() {
 
       {/* Header section */}
       <div className="mb-8 flex w-full max-w-[600px] flex-col items-center sm:mb-10">
-        <img src={logoPanda} alt="Promptfoo Logo" className="mb-6 size-16 lg:size-20" />
+        <img src={logoPanda} alt="artef Logo" className="mb-6 size-16 lg:size-20" />
         <h1 className="mb-6 text-center text-2xl font-light sm:text-3xl md:text-4xl">
-          Welcome to Promptfoo
+          Welcome to artef
         </h1>
 
         <div
@@ -121,13 +121,13 @@ export default function LauncherPage() {
         >
           {isConnecting ? (
             <>
-              Connecting to Promptfoo on localhost:15500
+              Connecting to artef on localhost:15500
               <Spinner size="sm" />
             </>
           ) : (
             <>
               <CheckCircle className="size-4" />
-              Connected to Promptfoo successfully!
+              Connected to artef successfully!
             </>
           )}
         </div>
@@ -158,7 +158,7 @@ export default function LauncherPage() {
             <li className="leading-relaxed">
               Check our{' '}
               <a
-                href="https://promptfoo.dev/docs/installation"
+                href="https://artef.dev/docs/installation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
@@ -170,12 +170,12 @@ export default function LauncherPage() {
               <span className="mb-3 block text-muted-foreground">Run one of these commands:</span>
               <div className="rounded-md bg-muted/50 p-4 font-mono text-sm leading-relaxed dark:bg-muted/20">
                 <div className="mb-1 text-muted-foreground">
-                  # If you have promptfoo installed globally:
+                  # If you have artef installed globally:
                 </div>
-                <div>promptfoo view -n</div>
+                <div>artef view -n</div>
                 <div className="my-2">&nbsp;</div>
                 <div className="mb-1 text-muted-foreground"># Or using npx:</div>
-                <div>npx promptfoo@latest view -n</div>
+                <div>npx artef@latest view -n</div>
               </div>
             </li>
           </ol>
@@ -219,7 +219,7 @@ export default function LauncherPage() {
         <p className="text-muted-foreground/70">
           Still experiencing issues? Feel free to{' '}
           <a
-            href="https://github.com/promptfoo/promptfoo/issues"
+            href="https://github.com/artef/artef/issues"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
@@ -228,7 +228,7 @@ export default function LauncherPage() {
           </a>{' '}
           or join our{' '}
           <a
-            href="https://discord.gg/promptfoo"
+            href="https://discord.gg/artef"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"

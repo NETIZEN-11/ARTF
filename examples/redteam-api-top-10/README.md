@@ -1,4 +1,4 @@
-# redteam-api-top-10 (OWASP API Security Top 10 Red Team Example)
+﻿# redteam-api-top-10 (OWASP API Security Top 10 Red Team Example)
 
 A **deliberately vulnerable** demonstration app for testing AI red-teaming and OWASP API Security Top 10 vulnerabilities via prompt injection. This example showcases MCP (Model Context Protocol) tool integration with configurable security weaknesses.
 
@@ -6,7 +6,7 @@ A **deliberately vulnerable** demonstration app for testing AI red-teaming and O
 
 ```bash
 # Initialize this example
-npx promptfoo@latest init --example redteam-api-top-10
+npx artef@latest init --example redteam-api-top-10
 cd redteam-api-top-10
 
 # Set up environment
@@ -22,13 +22,13 @@ uv run python scripts/seed_database.py
 # Start the server (in a separate terminal)
 uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
 
-# Generate a fresh JWT token and update promptfooconfig.yaml
+# Generate a fresh JWT token and update artefconfig.yaml
 curl -s -X POST http://localhost:8000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"alice","password":"password123"}' | jq -r '.token'
 
 # Run the red team evaluation
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 ## Prerequisites
@@ -133,9 +133,9 @@ curl http://localhost:8000/mock/internal/metadata
 curl http://localhost:8000/debug/logs
 ```
 
-## Promptfoo Configuration
+## artef Configuration
 
-The `promptfooconfig.yaml` is pre-configured with:
+The `artefconfig.yaml` is pre-configured with:
 
 - **Plugin**: `owasp:api` - Tests all OWASP API Security Top 10 vulnerabilities
 - **Strategies**: `jailbreak:meta`, `crescendo`, `jailbreak:hydra`

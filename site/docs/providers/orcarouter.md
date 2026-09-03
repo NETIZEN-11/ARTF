@@ -1,8 +1,8 @@
----
+﻿---
 title: OrcaRouter
 sidebar_label: OrcaRouter
 sidebar_position: 59
-description: 'Use OrcaRouter with promptfoo to evaluate OpenAI-compatible routed models, configure adaptive or fallback routing, and compare upstream providers in one eval.'
+description: 'Use OrcaRouter with artef to evaluate OpenAI-compatible routed models, configure adaptive or fallback routing, and compare upstream providers in one eval.'
 ---
 
 # OrcaRouter
@@ -35,7 +35,7 @@ OrcaRouter's full live catalog is at [orcarouter.ai/models](https://www.orcarout
 ## Basic Configuration
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: orcarouter:openai/gpt-4o-mini
     config:
@@ -83,12 +83,12 @@ providers:
 When `route: fallback` and the primary upstream errors out, OrcaRouter walks the `models` list in order.
 
 :::note
-OrcaRouter's own docs show fallback configuration as `extra_body: { models, route }` because they're written for the OpenAI Python SDK, which merges `extra_body` into the wire request. In promptfoo's YAML, write `models` and `route` directly at the provider `config` level — the provider promotes them to top-level body fields for you.
+OrcaRouter's own docs show fallback configuration as `extra_body: { models, route }` because they're written for the OpenAI Python SDK, which merges `extra_body` into the wire request. In artef's YAML, write `models` and `route` directly at the provider `config` level — the provider promotes them to top-level body fields for you.
 :::
 
 ## Thinking / Reasoning Models
 
-Reasoning-capable models (Anthropic Claude Opus, OpenAI GPT-5 family, DeepSeek Reasoner, Gemini reasoning previews, etc.) may return a `reasoning` field alongside `content`. By default, promptfoo prefixes the reasoning content as `Thinking: ...\n\n<actual response>`. Hide it with `showThinking: false`:
+Reasoning-capable models (Anthropic Claude Opus, OpenAI GPT-5 family, DeepSeek Reasoner, Gemini reasoning previews, etc.) may return a `reasoning` field alongside `content`. By default, artef prefixes the reasoning content as `Thinking: ...\n\n<actual response>`. Hide it with `showThinking: false`:
 
 ```yaml
 providers:
@@ -106,4 +106,4 @@ Several reasoning families reject `temperature` outright: `anthropic/claude-opus
 - Access to OpenAI, Anthropic, Google, DeepSeek, Grok, Qwen, Kimi, MiniMax, and other upstream providers through one endpoint.
 - Adaptive workload-aware routing via `orcarouter/auto` with strategies tunable from the console (no client redeploy required).
 - Explicit fallback chains using `models` + `route: fallback`.
-- OpenAI-compatible request/response format — works with all standard promptfoo features (assertions, multi-prompt, multimodal where the underlying model supports it).
+- OpenAI-compatible request/response format — works with all standard artef features (assertions, multi-prompt, multimodal where the underlying model supports it).

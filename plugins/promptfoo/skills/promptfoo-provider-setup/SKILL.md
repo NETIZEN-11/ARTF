@@ -1,17 +1,17 @@
----
-name: promptfoo-provider-setup
+﻿---
+name: artef-provider-setup
 description: >
-  Configure promptfoo providers or redteam targets for hosted models, live HTTP
+  Configure artef providers or redteam targets for hosted models, live HTTP
   APIs, Python/JavaScript local scripts, agent SDKs, or multi-input systems. Use
-  when connecting promptfoo to the system under test, mapping vars, auth env
+  when connecting artef to the system under test, mapping vars, auth env
   vars, request bodies, response transforms, or static-code-derived provider
   wrappers. Do not use for choosing eval assertions or red team plugins unless a
   smoke test is needed to verify the connection.
 ---
 
-# Promptfoo Provider Setup
+# artef Provider Setup
 
-Connect Promptfoo to the system under test with the smallest reliable provider
+Connect artef to the system under test with the smallest reliable provider
 or target configuration. Prefer a working smoke test over a clever abstraction.
 
 Read `references/provider-patterns.md` when you need concrete YAML or provider
@@ -79,7 +79,7 @@ For static code discovery:
    authentication source.
 3. If the app constructs prompts dynamically, wrap the real code instead of
    duplicating business logic in YAML.
-4. For agents/tools, identify whether Promptfoo should send one string input or
+4. For agents/tools, identify whether artef should send one string input or
    a structured object with named fields.
 
 ### 3. Choose the provider pattern
@@ -96,7 +96,7 @@ For static code discovery:
 
 Add or update a config with:
 
-- `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json`
+- `# yaml-language-server: $schema=https://artef.dev/config-schema.json`
 - A short `description`
 - Provider or `targets` config with `{{env.VAR}}` for secrets
 - One or two smoke tests that verify the request reaches the target and the
@@ -110,25 +110,25 @@ inputs from `context.vars`. Python providers use `file://provider.py` or
 `file://provider.py:function_name`; the function takes `(prompt, options,
 context)` and reads named inputs from `context.get("vars", {})`. Set
 `config.workers: 1` for non-thread-safe SDKs, `config.timeout` for slow calls,
-and `config.pythonExecutable`/`PROMPTFOO_PYTHON` for venvs. Add harmless
+and `config.pythonExecutable`/`artef_PYTHON` for venvs. Add harmless
 defaults because `validate target` may call providers without test-case vars.
 
 ### 5. Validate and run
 
-From the promptfoo repo, use the local build:
+From the artef repo, use the local build:
 
 ```bash
-npm run local -- validate config -c path/to/promptfooconfig.yaml
-npm run local -- validate target -c path/to/promptfooconfig.yaml
-npm run local -- eval -c path/to/promptfooconfig.yaml -o output.json --no-cache --no-share
+npm run local -- validate config -c path/to/artefconfig.yaml
+npm run local -- validate target -c path/to/artefconfig.yaml
+npm run local -- eval -c path/to/artefconfig.yaml -o output.json --no-cache --no-share
 ```
 
-Outside the promptfoo repo, use:
+Outside the artef repo, use:
 
 ```bash
-npx promptfoo@latest validate config -c path/to/promptfooconfig.yaml
-npx promptfoo@latest validate target -c path/to/promptfooconfig.yaml
-npx promptfoo@latest eval -c path/to/promptfooconfig.yaml -o output.json --no-cache --no-share
+npx artef@latest validate config -c path/to/artefconfig.yaml
+npx artef@latest validate target -c path/to/artefconfig.yaml
+npx artef@latest eval -c path/to/artefconfig.yaml -o output.json --no-cache --no-share
 ```
 
 Inspect the output file for `results.stats`, `response.output`, `score`, and
@@ -143,7 +143,7 @@ only when the user explicitly wants a cloud share URL.
 # WRONG: shell-style env vars are literal strings in YAML
 apiKey: $API_KEY
 
-# CORRECT: promptfoo renders Nunjucks env references
+# CORRECT: artef renders Nunjucks env references
 apiKey: '{{env.API_KEY}}'
 ```
 

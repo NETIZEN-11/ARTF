@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -150,7 +150,7 @@ describe('retry command', () => {
   describe('retryCommand', () => {
     it('preserves persisted errors when an override config no longer matches the stored provider filter', async () => {
       const artifactId = randomUUID();
-      const configPath = path.join(os.tmpdir(), `promptfoo-retry-filter-${artifactId}.yaml`);
+      const configPath = path.join(os.tmpdir(), `artef-retry-filter-${artifactId}.yaml`);
       const prompt = { raw: 'Hello {{name}}', label: 'Hello {{name}}' };
       const completedPrompt = { ...prompt, provider: 'selected-target' };
       const evalRecord = await Eval.create(
@@ -217,9 +217,9 @@ describe('retry command', () => {
 
     it('rewrites the original JSONL output after partial cleanup with an override config', async () => {
       const artifactId = randomUUID();
-      const jsonlOutputPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.JSONL`);
-      const jsonOutputPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.json`);
-      const configPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.yaml`);
+      const jsonlOutputPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.JSONL`);
+      const jsonOutputPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.json`);
+      const configPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.yaml`);
       const prompt = { raw: 'Hello {{name}}', label: 'Hello {{name}}' };
       const evalRecord = await Eval.create(
         {
@@ -318,8 +318,8 @@ describe('retry command', () => {
 
     it('preserves stale ERROR rows when replacement persistence fails', async () => {
       const artifactId = randomUUID();
-      const jsonlOutputPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.jsonl`);
-      const configPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.yaml`);
+      const jsonlOutputPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.jsonl`);
+      const configPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.yaml`);
       const prompt = { raw: 'Hello {{name}}', label: 'Hello {{name}}' };
       const evalRecord = await Eval.create(
         {
@@ -396,8 +396,8 @@ describe('retry command', () => {
 
     it('rewrites JSONL from the partially persisted database state when retry persistence fails', async () => {
       const artifactId = randomUUID();
-      const jsonlOutputPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.jsonl`);
-      const configPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.yaml`);
+      const jsonlOutputPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.jsonl`);
+      const configPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.yaml`);
       const prompt = { raw: 'Hello {{name}}', label: 'Hello {{name}}' };
       const evalRecord = await Eval.create(
         {
@@ -479,8 +479,8 @@ describe('retry command', () => {
 
     it('keeps the persistence error primary when restoring JSONL output also fails', async () => {
       const artifactId = randomUUID();
-      const jsonlOutputPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.jsonl`);
-      const configPath = path.join(os.tmpdir(), `promptfoo-retry-${artifactId}.yaml`);
+      const jsonlOutputPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.jsonl`);
+      const configPath = path.join(os.tmpdir(), `artef-retry-${artifactId}.yaml`);
       const prompt = { raw: 'Hello {{name}}', label: 'Hello {{name}}' };
       const evalRecord = await Eval.create(
         {
@@ -698,8 +698,8 @@ describe('retry command', () => {
       expect(result).toBe(false);
     });
 
-    it('should return false when PROMPTFOO_DISABLE_SHARING env is set', () => {
-      vi.stubEnv('PROMPTFOO_DISABLE_SHARING', 'true');
+    it('should return false when artef_DISABLE_SHARING env is set', () => {
+      vi.stubEnv('artef_DISABLE_SHARING', 'true');
       const result = shouldShareResults({
         cliShare: undefined,
         configShare: true,

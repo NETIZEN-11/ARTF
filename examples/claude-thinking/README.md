@@ -1,11 +1,11 @@
-# claude-thinking (Claude Thinking)
+﻿# claude-thinking (Claude Thinking)
 
 This example demonstrates Claude's "thinking" capability, which allows you to see the model's step-by-step reasoning process before it provides a final answer. The example compares thinking outputs from Claude Sonnet 4 (Anthropic API) and Claude Haiku 4.5 (AWS Bedrock).
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example claude-thinking
+npx artef@latest init --example claude-thinking
 cd claude-thinking
 ```
 
@@ -37,8 +37,8 @@ After setting up environment variables:
 
 ```bash
 # From the example directory
-promptfoo eval
-promptfoo view
+artef eval
+artef view
 ```
 
 ## Test Cases
@@ -76,4 +76,4 @@ Final answer: We need exactly 2 weighings to find the heavier ball.
 
 - [Claude Thinking Documentation](https://docs.anthropic.com/claude/docs/extended-thinking)
 - [AWS Bedrock Claude Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html)
-- [Promptfoo Documentation on Claude Providers](https://promptfoo.dev/docs/providers/anthropic)
+- [artef Documentation on Claude Providers](https://artef.dev/docs/providers/anthropic)

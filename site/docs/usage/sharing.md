@@ -1,32 +1,32 @@
----
+﻿---
 sidebar_position: 40
-description: Share your promptfoo eval results with teams via cloud platform, enterprise deployment, or self-hosted infrastructure
-keywords: [eval sharing, model testing, promptfoo sharing, collaboration, team sharing]
+description: Share your artef eval results with teams via cloud platform, enterprise deployment, or self-hosted infrastructure
+keywords: [eval sharing, model testing, artef sharing, collaboration, team sharing]
 ---
 
 # Sharing
 
 Share your eval results with others using the `share` command or the web interface.
 
-Sharing uploads the eval/report snapshot needed to view the result. This can include prompts, vars, outputs, traces, metadata, provider configuration fields, media/blob references, scan artifacts, and derived artifacts. Do not put secrets in prompts, datasets, provider config fields, metadata, or other shareable inputs unless that field is documented as redacted. See the [security policy](https://github.com/promptfoo/promptfoo/blob/main/SECURITY.md) for what counts as a configured sharing destination.
+Sharing uploads the eval/report snapshot needed to view the result. This can include prompts, vars, outputs, traces, metadata, provider configuration fields, media/blob references, scan artifacts, and derived artifacts. Do not put secrets in prompts, datasets, provider config fields, metadata, or other shareable inputs unless that field is documented as redacted. See the [security policy](https://github.com/artef/artef/blob/main/SECURITY.md) for what counts as a configured sharing destination.
 
 ## Quick Start (Cloud)
 
-Most users will share to promptfoo.app cloud:
+Most users will share to artef.app cloud:
 
 ```sh
 # Login (one-time setup)
-# First, get your API key from https://promptfoo.app/welcome
-promptfoo auth login -k YOUR_API_KEY
+# First, get your API key from https://artef.app/welcome
+artef auth login -k YOUR_API_KEY
 
 # Run an eval and share it
-promptfoo eval
-promptfoo share
+artef eval
+artef share
 ```
 
 :::note
 
-Cloud sharing creates private links only visible to you and your organization. If you don't have an account, visit https://promptfoo.app/welcome to create one and get your API key.
+Cloud sharing creates private links only visible to you and your organization. If you don't have an account, visit https://artef.app/welcome to create one and get your API key.
 
 :::
 
@@ -60,23 +60,23 @@ The share button is visible by default for all evals. If sharing isn't configure
 
 ```sh
 # List available evals
-promptfoo list evals
+artef list evals
 
 # Share by ID
-promptfoo share my-eval-id
+artef share my-eval-id
 ```
 
 ## Enterprise Sharing
 
-If you have a Promptfoo Enterprise account:
+If you have a artef Enterprise account:
 
 ```sh
 # Login to your enterprise instance
 # Get your API key from the "CLI Login Information" section in your profile
-promptfoo auth login --host https://your-company.promptfoo.app -k YOUR_API_KEY
+artef auth login --host https://your-company.artef.app -k YOUR_API_KEY
 
 # Share your eval
-promptfoo share
+artef share
 ```
 
 Enterprise sharing includes additional features:
@@ -93,10 +93,10 @@ For more details on authentication and team management, see the [Enterprise docu
 
 ```sh
 # Authenticate with API token
-export PROMPTFOO_API_KEY=your_api_token
+export artef_API_KEY=your_api_token
 
 # Run and share
-promptfoo eval --share
+artef eval --share
 ```
 
 Get your API token from the "CLI Login Information" section in your account settings. For Enterprise users, you can also use [Service Accounts](/docs/enterprise/service-accounts.md) for CI/CD integration.
@@ -107,24 +107,24 @@ For users with self-hosted instances:
 
 ```sh
 # Configure sharing to your server
-export PROMPTFOO_REMOTE_API_BASE_URL=http://your-server:3000
-export PROMPTFOO_REMOTE_APP_BASE_URL=http://your-server:3000
+export artef_REMOTE_API_BASE_URL=http://your-server:3000
+export artef_REMOTE_APP_BASE_URL=http://your-server:3000
 
 # Share your eval (no login required)
-promptfoo share
+artef share
 ```
 
 If you need to use HTTP Basic Authentication with your self-hosted server:
 
 ```sh
 # Configure sharing with basic auth credentials in URL
-export PROMPTFOO_REMOTE_API_BASE_URL=http://username:password@your-server:3000
-export PROMPTFOO_REMOTE_APP_BASE_URL=http://username:password@your-server:3000
+export artef_REMOTE_API_BASE_URL=http://username:password@your-server:3000
+export artef_REMOTE_APP_BASE_URL=http://username:password@your-server:3000
 ```
 
-You can also add these settings to your `promptfooconfig.yaml`:
+You can also add these settings to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 sharing:
   apiBaseUrl: http://your-server:3000
   appBaseUrl: http://your-server:3000
@@ -134,7 +134,7 @@ Config-supplied sharing endpoints are trusted. Only accept or run configs with `
 
 :::tip
 
-Self-hosted sharing doesn't require `promptfoo auth login` when these environment variables or config settings are present.
+Self-hosted sharing doesn't require `artef auth login` when these environment variables or config settings are present.
 
 :::
 
@@ -151,7 +151,7 @@ You can solve this in two ways:
    ```sh
    # Reduce the number of results per upload chunk (default is calculated automatically)
    # Start with a small value like 10-20 for very large evals
-   export PROMPTFOO_SHARE_CHUNK_SIZE=10
+   export artef_SHARE_CHUNK_SIZE=10
    ```
 
 2. **Increase NGINX max body size** (server-side):
@@ -167,24 +167,24 @@ For multi-tenant environments, reducing the chunk size on the client is usually 
 To disable sharing completely, use any of the controls below. These controls prevent both the
 eval snapshot and referenced media/blob data from being uploaded to a sharing destination. Media
 blobs are still stored locally, so they remain available in the local viewer and are included if
-you later run an explicit `promptfoo share` command.
+you later run an explicit `artef share` command.
 
 ### Disable for One Eval
 
 ```sh
-promptfoo eval --no-share
+artef eval --no-share
 ```
 
 ### Disable via Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 sharing: false
 ```
 
 ### Disable via Environment Variable
 
 ```sh
-export PROMPTFOO_DISABLE_SHARING=true
+export artef_DISABLE_SHARING=true
 ```
 
 ## See Also

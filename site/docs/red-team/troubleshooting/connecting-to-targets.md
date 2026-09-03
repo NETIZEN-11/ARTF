@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Connecting to Targets
 description: Red team API authentication and rate limiting configurations by validating security headers and tokens to protect AI systems from unauthorized access and abuse
 ---
@@ -9,9 +9,9 @@ When setting up your target, use these best practices:
 
 - Use a **single HTTP endpoint** for all requests. This endpoint should accept a user input and return a response.
 - If your target requires authentication, include a custom header or user agent in your configuration and whitelist your client.
-- Promptfoo runs locally on your machine, so your machine must have access to the target.
+- artef runs locally on your machine, so your machine must have access to the target.
 
-Promptfoo is capable of using authentication, complex protocols, websockets, and more. But you will find it much easier to set up if you use a single HTTP endpoint.
+artef is capable of using authentication, complex protocols, websockets, and more. But you will find it much easier to set up if you use a single HTTP endpoint.
 
 There are a few common issues that can arise when connecting to targets:
 
@@ -34,7 +34,7 @@ The solution here is to include a custom header or user agent in your configurat
 
 ```yaml
 headers:
-  User-Agent: Promptfoo
+  User-Agent: artef
 ```
 
 ## Streaming or Polling

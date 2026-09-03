@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import protobuf from 'protobufjs';
 import request from 'supertest';
@@ -131,7 +131,7 @@ describe('OTLPReceiver', () => {
       const response = await request(receiver.getApp()).get('/v1/traces').expect(200);
 
       expect(response.body).toEqual({
-        service: 'promptfoo-otlp-receiver',
+        service: 'artef-otlp-receiver',
         version: '1.0.0',
         supported_formats: ['json', 'protobuf'],
       });
@@ -144,7 +144,7 @@ describe('OTLPReceiver', () => {
       const response = await request(receiver.getApp()).get('/v1/traces').expect(200);
 
       expect(response.body).toEqual({
-        service: 'promptfoo-otlp-receiver',
+        service: 'artef-otlp-receiver',
         version: '1.0.0',
         supported_formats: ['json'],
       });
@@ -1485,7 +1485,7 @@ describe('OTLPReceiver', () => {
       ]);
     });
 
-    it('falls back to promptfoo.trace_id / parent_span_id resource attrs when the log record has none', async () => {
+    it('falls back to artef.trace_id / parent_span_id resource attrs when the log record has none', async () => {
       // Mimics Claude Agent SDK logs: body carries the event type, the record
       // itself has no traceId/spanId, and the provider injected trace context
       // via OTEL_RESOURCE_ATTRIBUTES.
@@ -1495,8 +1495,8 @@ describe('OTLPReceiver', () => {
             resource: {
               attributes: [
                 { key: 'service.name', value: { stringValue: 'claude-agent-sdk' } },
-                { key: 'promptfoo.trace_id', value: { stringValue: hexTraceId } },
-                { key: 'promptfoo.parent_span_id', value: { stringValue: hexParentSpanId } },
+                { key: 'artef.trace_id', value: { stringValue: hexTraceId } },
+                { key: 'artef.parent_span_id', value: { stringValue: hexParentSpanId } },
               ],
             },
             scopeLogs: [
@@ -1548,8 +1548,8 @@ describe('OTLPReceiver', () => {
               resource: {
                 attributes: [
                   { key: 'service.name', value: { stringValue: 'codex-cli' } },
-                  { key: 'promptfoo.trace_id', value: { stringValue: hexTraceId } },
-                  { key: 'promptfoo.parent_span_id', value: { stringValue: hexParentSpanId } },
+                  { key: 'artef.trace_id', value: { stringValue: hexTraceId } },
+                  { key: 'artef.parent_span_id', value: { stringValue: hexParentSpanId } },
                 ],
               },
               scopeLogs: [
@@ -1589,7 +1589,7 @@ describe('OTLPReceiver', () => {
     it('is advertised on the service info endpoint', async () => {
       // Sanity check that /v1/traces stays stable despite the new /v1/logs route.
       const response = await request(receiver.getApp()).get('/v1/traces').expect(200);
-      expect(response.body.service).toBe('promptfoo-otlp-receiver');
+      expect(response.body.service).toBe('artef-otlp-receiver');
     });
 
     it('marks log-derived spans as ERROR when severityNumber >= 17', async () => {

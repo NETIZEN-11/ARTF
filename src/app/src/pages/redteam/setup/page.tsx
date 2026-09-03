@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import ErrorBoundary from '@app/components/ErrorBoundary';
 import { Button } from '@app/components/ui/button';
@@ -26,9 +26,9 @@ import { useToast } from '@app/hooks/useToast';
 import { cn } from '@app/lib/utils';
 import { callApi } from '@app/utils/api';
 import { formatDataGridDate } from '@app/utils/date';
-import { REDTEAM_DEFAULTS } from '@promptfoo/redteam/constants';
-import { loadYaml } from '@promptfoo/util/yamlLoad';
-import { ProviderOptionsSchema } from '@promptfoo/validators/providers';
+import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
+import { loadYaml } from '@artef/util/yamlLoad';
+import { ProviderOptionsSchema } from '@artef/validators/providers';
 import {
   Brain,
   ClipboardCheck,
@@ -57,7 +57,7 @@ import { useRedTeamTargetConfigValidation } from './hooks/useRedTeamTargetConfig
 import { useSetupState } from './hooks/useSetupState';
 import { purposeToApplicationDefinition } from './utils/purposeParser';
 import { generateOrderedYaml } from './utils/yamlHelpers';
-import type { RedteamStrategy } from '@promptfoo/types';
+import type { RedteamStrategy } from '@artef/types';
 
 import type { Config } from './types';
 
@@ -763,7 +763,7 @@ export default function RedTeamSetupPage() {
               <div>
                 <p className="text-sm font-medium">Import YAML File</p>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Import an existing promptfoo redteam YAML configuration. Your application details
+                  Import an existing artef redteam YAML configuration. Your application details
                   will be automatically parsed and pre-filled in the form.
                 </p>
                 <input

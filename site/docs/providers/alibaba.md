@@ -1,4 +1,4 @@
----
+﻿---
 title: Alibaba Cloud (Qwen) Provider
 sidebar_label: Alibaba Cloud (Qwen)
 description: Deploy Alibaba Cloud's Qwen models including Qwen3, QwQ reasoning, and specialized coding/math/vision models for enterprise applications
@@ -7,7 +7,7 @@ keywords: [alibaba, qwen, qwen3, dashscope, deepseek, qwq, reasoning, vision, mu
 
 # Alibaba Cloud (Qwen)
 
-[Alibaba Cloud's DashScope API](https://www.alibabacloud.com/help/en/model-studio/getting-started/models) provides OpenAI-compatible access to Qwen language models. Compatible with all [OpenAI provider](/docs/providers/openai/) options in promptfoo.
+[Alibaba Cloud's DashScope API](https://www.alibabacloud.com/help/en/model-studio/getting-started/models) provides OpenAI-compatible access to Qwen language models. Compatible with all [OpenAI provider](/docs/providers/openai/) options in artef.
 
 ## Setup
 
@@ -21,8 +21,8 @@ export DASHSCOPE_API_KEY=your_api_key_here
 
 The provider supports all [OpenAI provider](/docs/providers/openai) configuration options. Example usage:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - alibaba:qwen-max # Simple usage
   - id: alibaba:qwen-plus # Aliases: alicloud:, aliyun:, dashscope:

@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_label: Webhook Integration
-description: Integrate real-time issue notifications with external systems using Promptfoo's webhook API. Configure event types, manage endpoints, and verify signatures securely.
+description: Integrate real-time issue notifications with external systems using artef's webhook API. Configure event types, manage endpoints, and verify signatures securely.
 ---
 
 # Webhook Integration
 
-[Promptfoo Enterprise](/docs/enterprise/) provides webhooks to notify external systems when security vulnerabilities (issues) are created or updated.
+[artef Enterprise](/docs/enterprise/) provides webhooks to notify external systems when security vulnerabilities (issues) are created or updated.
 
 ## What is an Issue?
 
-An "issue" in Promptfoo Enterprise refers to a **security vulnerability** or weakness detected during AI security testing. Issues are created when red team plugins identify potential security risks such as prompt injections, data leaks, harmful content generation, or other AI-specific vulnerabilities.
+An "issue" in artef Enterprise refers to a **security vulnerability** or weakness detected during AI security testing. Issues are created when red team plugins identify potential security risks such as prompt injections, data leaks, harmful content generation, or other AI-specific vulnerabilities.
 
 ## Event Types
 
@@ -102,7 +102,7 @@ This structure allows you to:
 
 ## Verifying Webhook Signatures
 
-To verify that a webhook is coming from Promptfoo Enterprise, the payload is signed using HMAC SHA-256. The signature is included in the `X-Promptfoo-Signature` header.
+To verify that a webhook is coming from artef Enterprise, the payload is signed using HMAC SHA-256. The signature is included in the `X-artef-Signature` header.
 
 Here's an example of how to verify signatures in Node.js:
 
@@ -121,7 +121,7 @@ function verifyWebhookSignature(payload, signature, secret) {
 // In your webhook handler:
 app.post('/webhook-endpoint', (req, res) => {
   const payload = req.body;
-  const signature = req.headers['x-promptfoo-signature'];
+  const signature = req.headers['x-artef-signature'];
   const webhookSecret = 'your-webhook-secret';
 
   if (!verifyWebhookSignature(payload, signature, webhookSecret)) {
@@ -139,7 +139,7 @@ app.post('/webhook-endpoint', (req, res) => {
 
 ### SIEM Integration
 
-When integrating with a SIEM system, you might want to listen for `issue.created` and `issue.updated` events. This allows your security team to be notified of new security vulnerabilities detected by Promptfoo Enterprise and track their resolution. The complete vulnerability state provided with each webhook makes it easy to keep your SIEM system synchronized.
+When integrating with a SIEM system, you might want to listen for `issue.created` and `issue.updated` events. This allows your security team to be notified of new security vulnerabilities detected by artef Enterprise and track their resolution. The complete vulnerability state provided with each webhook makes it easy to keep your SIEM system synchronized.
 
 ### Task Tracking Integration
 

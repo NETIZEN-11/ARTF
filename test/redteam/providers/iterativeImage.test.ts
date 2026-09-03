@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createMockProvider, type MockApiProvider } from '../../factories/provider';
 
 import type { CallApiContextParams } from '../../../src/types/index';
@@ -73,7 +73,7 @@ describe('RedteamIterativeImageProvider', () => {
 
   it('should have correct ID', () => {
     const provider = new RedteamIterativeProvider({ injectVar: 'goal' });
-    expect(provider.id()).toBe('promptfoo:redteam:iterative:image');
+    expect(provider.id()).toBe('artef:redteam:iterative:image');
   });
 
   it('should throw error when originalProvider is not set', async () => {

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Custom Strategy
 title: Custom Strategy - AI-Powered Red Team Conversations
 description: Create reusable red team strategies by writing natural language instructions that guide AI through multi-turn conversations
@@ -110,7 +110,7 @@ strategies:
 
 ## Basic Usage
 
-Add to your `promptfooconfig.yaml`:
+Add to your `artefconfig.yaml`:
 
 ```yaml
 redteam:

@@ -1,4 +1,4 @@
-import { CODING_AGENT_COLLECTIONS, CODING_AGENT_PLUGINS } from './codingAgents';
+﻿import { CODING_AGENT_COLLECTIONS, CODING_AGENT_PLUGINS } from './codingAgents';
 
 import type { CodingAgentPlugin } from './codingAgents';
 
@@ -574,7 +574,7 @@ export const REMOTE_ONLY_PLUGIN_IDS = [
 
 // Plugins that frontend should disable when remote generation is unavailable
 // Superset of REMOTE_ONLY_PLUGIN_IDS plus harm/bias plugins
-// Used by frontend UI to gray out plugins when PROMPTFOO_DISABLE_REMOTE_GENERATION is set
+// Used by frontend UI to gray out plugins when artef_DISABLE_REMOTE_GENERATION is set
 export const UI_DISABLED_WHEN_REMOTE_UNAVAILABLE = [
   ...Object.keys(UNALIGNED_PROVIDER_HARM_PLUGINS),
   ...BIAS_PLUGINS,

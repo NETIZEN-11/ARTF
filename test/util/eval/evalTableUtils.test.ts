@@ -1,4 +1,4 @@
-import { parse as parseCsv } from 'csv-parse/sync';
+﻿import { parse as parseCsv } from 'csv-parse/sync';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ResultFailureReason } from '../../../src/types/index';
 import {
@@ -773,7 +773,7 @@ describe('evalTableUtils', () => {
 
       it('should include pluginId and strategyId from metadata in CSV output', () => {
         // This test validates that pluginId and strategyId are read from metadata
-        // for CSV export, consistent with the promptfoo-cloud approach
+        // for CSV export, consistent with the artef-cloud approach
         const outputWithMetadataIds: EvaluateTableOutput = {
           id: 'test-id',
           pass: true,
@@ -1925,8 +1925,8 @@ describe('evalTableToCsv formula injection (CWE-1236)', () => {
     expect(dataRow[commentIdx]).toBe('plain comment');
   });
 
-  it('leaves cells raw when PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING is set', () => {
-    vi.stubEnv('PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING', 'true');
+  it('leaves cells raw when artef_DISABLE_CSV_FORMULA_ESCAPING is set', () => {
+    vi.stubEnv('artef_DISABLE_CSV_FORMULA_ESCAPING', 'true');
     try {
       const [, dataRow] = parseCsv(evalTableToCsv(buildFormulaTable())) as string[][];
       expect(dataRow[1]).toBe('=cmd|calc');
@@ -1937,11 +1937,11 @@ describe('evalTableToCsv formula injection (CWE-1236)', () => {
   });
 
   it('uses the evaluation config env before process.env', () => {
-    vi.stubEnv('PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING', 'true');
+    vi.stubEnv('artef_DISABLE_CSV_FORMULA_ESCAPING', 'true');
     try {
       const [, dataRow] = parseCsv(
         evalTableToCsv(buildFormulaTable(), {
-          env: { PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING: 'false' },
+          env: { artef_DISABLE_CSV_FORMULA_ESCAPING: 'false' },
         }),
       ) as string[][];
 
@@ -1954,7 +1954,7 @@ describe('evalTableToCsv formula injection (CWE-1236)', () => {
 
   it('uses config.env for full-table evaluation exports', async () => {
     const csv = await generateEvalCsv({
-      config: { env: { PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING: 'true' } },
+      config: { env: { artef_DISABLE_CSV_FORMULA_ESCAPING: 'true' } },
       getTablePage: vi.fn().mockResolvedValue(buildFormulaTable()),
     } as unknown as Eval);
     const [, dataRow] = parseCsv(csv) as string[][];
@@ -1965,7 +1965,7 @@ describe('evalTableToCsv formula injection (CWE-1236)', () => {
 
   it('uses config.env for streaming evaluation exports', async () => {
     const mockEval = {
-      config: { env: { PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING: 'true' } },
+      config: { env: { artef_DISABLE_CSV_FORMULA_ESCAPING: 'true' } },
       vars: ['input'],
       prompts: [createCompletedPrompt('{{input}}', { provider: 'echo', label: 'Prompt 1' })],
       fetchResultsBatched: async function* () {

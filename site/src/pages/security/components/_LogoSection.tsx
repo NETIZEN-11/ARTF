@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import styles from '../styles.module.css';
 
@@ -14,7 +14,7 @@ export default function LogoSection(): React.ReactElement {
     <section className={styles.logoSection}>
       <div className={styles.container}>
         <p className={styles.logoIntro}>
-          Promptfoo has run{' '}
+          artef has run{' '}
           <strong>
             <u>16 million+</u>
           </strong>{' '}

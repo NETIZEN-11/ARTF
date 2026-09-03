@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { runAssertions } from '../../../assertions/index';
 import logger from '../../../logger';
@@ -16,7 +16,7 @@ import type { Assertion, AtomicTestCase } from '../../../types/index';
  * - Validate grading logic for custom assertions
  * - Experiment with different assertion parameters
  *
- * Supports all promptfoo assertion types including:
+ * Supports all artef assertion types including:
  * - Content checks: contains, equals, regex, starts-with
  * - LLM-graded: llm-rubric, factuality, answer-relevance
  * - Format validation: is-json, is-xml, is-sql

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Generic Webhook
 description: Configure webhook integrations to trigger custom LLM flows and prompt chains with HTTP POST requests, enabling seamless API-based testing and evaluation
 ---
@@ -14,7 +14,7 @@ providers:
   - webhook:http://example.com/webhook
 ```
 
-promptfoo will send an HTTP POST request with the following JSON payload:
+artef will send an HTTP POST request with the following JSON payload:
 
 ```json
 {

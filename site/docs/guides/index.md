@@ -1,12 +1,12 @@
----
+﻿---
 sidebar_label: Guides
 title: Eval Guides
-description: Step-by-step tutorials for evaluating LLMs, comparing models, and testing integrations with promptfoo
+description: Step-by-step tutorials for evaluating LLMs, comparing models, and testing integrations with artef
 ---
 
 # Eval Guides
 
-Practical tutorials to help you get the most out of promptfoo evals. Each guide walks through a real-world scenario with working configuration examples you can adapt to your own use case.
+Practical tutorials to help you get the most out of artef evals. Each guide walks through a real-world scenario with working configuration examples you can adapt to your own use case.
 
 ## Evaluation Techniques
 
@@ -51,9 +51,9 @@ Compare LLM performance on your own data to make informed model selection decisi
 
 ## Integrations
 
-Use promptfoo with popular frameworks and services.
+Use artef with popular frameworks and services.
 
-- [Using LangChain PromptTemplate](/docs/guides/langchain-prompttemplate) — Integrate LangChain prompt templates with promptfoo
+- [Using LangChain PromptTemplate](/docs/guides/langchain-prompttemplate) — Integrate LangChain prompt templates with artef
 - [Evaluating OpenAI Assistants](/docs/guides/evaluate-openai-assistants) — Evaluate OpenAI's Assistants API
 - [Evaluating CrewAI Agents](/docs/guides/evaluate-crewai) — Red team and evaluate CrewAI multi-agent workflows
 - [Evaluating LangGraph](/docs/guides/evaluate-langgraph) — Test LangGraph agent applications

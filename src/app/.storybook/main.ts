@@ -1,4 +1,4 @@
-import path, { dirname } from 'path';
+﻿import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 import type { StorybookConfig } from '@storybook/react-vite';
@@ -30,7 +30,7 @@ const config: StorybookConfig = {
         alias: {
           ...config.resolve?.alias,
           '@app': path.resolve(__dirname, '../src'),
-          '@promptfoo': path.resolve(__dirname, '../../'),
+          '@artef': path.resolve(__dirname, '../../'),
         },
       },
     };

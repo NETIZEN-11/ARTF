@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 11
 sidebar_label: Prompts
 title: Prompt Configuration - Text, Chat, and Dynamic Prompts
@@ -24,7 +24,7 @@ Define what you send to your LLMs - from simple strings to complex multi-turn co
 
 The simplest way to define prompts is with plain text:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Translate the following text to French: "{{text}}"'
   - 'Summarize this article: {{article}}'
@@ -34,7 +34,7 @@ prompts:
 
 Use YAML's multiline syntax for longer prompts:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - |-
     You are a helpful assistant.
@@ -60,7 +60,7 @@ prompts:
 
 Store prompts in external files for better organization:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://prompts/customer_service.txt
   - file://prompts/technical_support.txt
@@ -142,7 +142,7 @@ Wildcards like `path/to/prompts/**/*.py:func_name` are also supported.
 
 For conversation-style interactions, use JSON format:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://chat_prompt.json
 ```
@@ -189,7 +189,7 @@ Use JavaScript or Python to generate prompts with custom logic:
 
 ### JavaScript Functions
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://generate_prompt.js
 ```
@@ -211,7 +211,7 @@ module.exports = async function ({ vars, provider }) {
 
 ### Python Functions
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://generate_prompt.py:create_prompt
 ```
@@ -256,7 +256,7 @@ Your script receives test context as JSON in the first argument and outputs the 
 
 Explicitly mark as executable:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - exec:./generate-prompt.sh
   - exec:/usr/bin/my-prompt-tool
@@ -264,7 +264,7 @@ prompts:
 
 Or just reference the script directly (auto-detected for `.sh`, `.bash`, `.rb`, `.pl`, and other common script extensions):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - ./generate-prompt.sh
   - ./prompt_builder.rb
@@ -276,7 +276,7 @@ Python files (`.py`) are processed as Python prompt templates, not executables. 
 
 Pass configuration if needed:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - label: 'Technical Prompt'
     raw: exec:./generator.sh
@@ -320,7 +320,7 @@ puts "\nUser query: #{context['vars']['query']}"
 ### Security Considerations
 
 :::warning
-Executable scripts run with full permissions of the promptfoo process. Be mindful of:
+Executable scripts run with full permissions of the artef process. Be mindful of:
 
 - **User Input**: Scripts receive user-controlled `vars` as JSON. Always validate and sanitize inputs before using them in commands.
 - **Untrusted Scripts**: Only run scripts from trusted sources. Scripts can access files, make network calls, and execute commands.
@@ -340,7 +340,7 @@ Note that there are dedicated handlers for Python and Javascript (see above).
 
 Different prompts for different providers:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - id: file://prompts/gpt_prompt.json
     label: gpt_prompt
@@ -360,7 +360,7 @@ The `prompts` field also works when providers are defined in external files (`fi
 
 ## External Prompt Management Systems
 
-Promptfoo integrates with external prompt management platforms, allowing you to centralize and version control your prompts:
+artef integrates with external prompt management platforms, allowing you to centralize and version control your prompts:
 
 ### Langfuse
 
@@ -416,7 +416,7 @@ module.exports = function (str) {
 };
 ```
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 nunjucksFilters:
   uppercaseFirst: ./uppercase_first.js
 
@@ -438,7 +438,7 @@ prompts:
 
 ### Default Prompt
 
-If no prompts are specified, promptfoo uses `{{prompt}}` as a passthrough.
+If no prompts are specified, artef uses `{{prompt}}` as a passthrough.
 
 ## Best Practices
 
@@ -490,7 +490,7 @@ prompts:
 
 To see the final rendered prompts:
 
-1. Run `promptfoo view`
+1. Run `artef view`
 2. Enable **Table Settings** > **Show full prompt in output cell**
 
 This shows exactly what was sent to each provider after variable substitution.

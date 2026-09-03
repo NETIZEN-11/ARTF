@@ -1,4 +1,4 @@
-import confirm from '@inquirer/confirm';
+﻿import confirm from '@inquirer/confirm';
 import { z } from 'zod';
 import { getUserEmail, setUserEmail } from '../globalConfig/accounts';
 import { cloudConfig } from '../globalConfig/cloud';
@@ -24,10 +24,10 @@ export function configCommand(program: Command) {
         logger.info(email);
       } else if (apiKey) {
         logger.info(
-          "Email is managed through 'promptfoo auth login'. Run 'promptfoo auth whoami' to view the current account.",
+          "Email is managed through 'artef auth login'. Run 'artef auth whoami' to view the current account.",
         );
       } else {
-        logger.info('No email set. Use "promptfoo config set email <email>" to set one.');
+        logger.info('No email set. Use "artef config set email <email>" to set one.');
       }
       telemetry.record('command_used', {
         name: 'config get',
@@ -41,7 +41,7 @@ export function configCommand(program: Command) {
     .action(async (email: string) => {
       if (cloudConfig.getApiKey()) {
         logger.error(
-          "Cannot update email while logged in. Email is managed through 'promptfoo auth login'. Please use 'promptfoo auth logout' first if you want to use a different email.",
+          "Cannot update email while logged in. Email is managed through 'artef auth login'. Please use 'artef auth logout' first if you want to use a different email.",
         );
         process.exitCode = 1;
         return;
@@ -68,7 +68,7 @@ export function configCommand(program: Command) {
     .action(async (options) => {
       if (cloudConfig.getApiKey()) {
         logger.error(
-          "Cannot update email while logged in. Email is managed through 'promptfoo auth login'. Please use 'promptfoo auth logout' first if you want to use a different email.",
+          "Cannot update email while logged in. Email is managed through 'artef auth login'. Please use 'artef auth logout' first if you want to use a different email.",
         );
         process.exitCode = 1;
         return;

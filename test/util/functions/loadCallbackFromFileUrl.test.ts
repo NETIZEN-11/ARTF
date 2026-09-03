@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
@@ -100,7 +100,7 @@ describe('resolveCallbackPath', () => {
     // user-facing message; that information lives on the
     // CallbackPathTraversalError instance for debugging.
     expect(() => resolveCallbackPath('../escape.js', '/test/base/path')).toThrow(
-      /'\.\.\/escape\.js'.*PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD/,
+      /'\.\.\/escape\.js'.*artef_DISABLE_CALLBACK_PATH_GUARD/,
     );
   });
 
@@ -130,8 +130,8 @@ describe('resolveCallbackPath', () => {
     expect(relative.startsWith('..') || path.win32.isAbsolute(relative)).toBe(true);
   });
 
-  it('PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD=true disables the guard', () => {
-    vi.stubEnv('PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD', 'true');
+  it('artef_DISABLE_CALLBACK_PATH_GUARD=true disables the guard', () => {
+    vi.stubEnv('artef_DISABLE_CALLBACK_PATH_GUARD', 'true');
     try {
       const resolved = resolveCallbackPath('../escape.js', '/test/base/path');
       expect(resolved).toBe(path.resolve('/test/base/path', '../escape.js'));

@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "http-provider-auth-signature-pfx",
   "version": "1.0.0",
   "description": "Example HTTP provider with PFX certificate signature authentication",
@@ -11,10 +11,10 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "pem": "^1.15.1",
-    "promptfoo": "^0.121.0"
+    "artef": "^0.121.0"
   },
   "keywords": [
-    "promptfoo",
+    "artef",
     "authentication",
     "pfx",
     "pkcs12",

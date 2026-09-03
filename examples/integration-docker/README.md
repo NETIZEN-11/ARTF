@@ -1,6 +1,6 @@
-# integration-docker (Docker)
+﻿# integration-docker (Docker)
 
-Examples for using promptfoo with Docker containers.
+Examples for using artef with Docker containers.
 
 ## Examples
 

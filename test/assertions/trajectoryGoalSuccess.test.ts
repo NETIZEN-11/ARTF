@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { handleTrajectoryGoalSuccess } from '../../src/assertions/trajectory';
 import { matchesTrajectoryGoalSuccess } from '../../src/matchers/llmGrading';
 import { createMockProvider, createProviderResponse } from '../factories/provider';
@@ -33,7 +33,7 @@ const mockTraceData: TraceData = {
       startTime: 1000,
       endTime: 1800,
       attributes: {
-        'promptfoo.provider.id': 'openai:gpt-5',
+        'artef.provider.id': 'openai:gpt-5',
       },
     },
     {

@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getEnvString } from '../../src/envars';
@@ -62,7 +62,7 @@ describe('Ruby utilities', () => {
     vi.mocked(fs.readFile).mockResolvedValue(
       JSON.stringify({ type: 'final_result', data: 'secret-result' }),
     );
-    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/promptfoo-ruby-test');
+    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/artef-ruby-test');
     vi.mocked(removeSecureTempDirectory).mockResolvedValue(undefined);
     vi.mocked(writeSecureTempFile).mockImplementation(
       async (directory: string, filename: string) => `${directory}/${filename}`,
@@ -76,20 +76,20 @@ describe('Ruby utilities', () => {
     const result = await rubyUtils.runRuby('/path/to/script.rb', 'call_api', ['secret-input']);
 
     expect(result).toBe('secret-result');
-    expect(createSecureTempDirectory).toHaveBeenCalledWith('promptfoo-ruby-');
+    expect(createSecureTempDirectory).toHaveBeenCalledWith('artef-ruby-');
     expect(writeSecureTempFile).toHaveBeenNthCalledWith(
       1,
-      '/tmp/promptfoo-ruby-test',
+      '/tmp/artef-ruby-test',
       'input.json',
       '["secret-input"]',
     );
     expect(writeSecureTempFile).toHaveBeenNthCalledWith(
       2,
-      '/tmp/promptfoo-ruby-test',
+      '/tmp/artef-ruby-test',
       'output.json',
       '',
     );
-    expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/promptfoo-ruby-test');
+    expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/artef-ruby-test');
 
     const debugMessages = vi.mocked(logger.debug).mock.calls.flat().map(String).join('\n');
     expect(debugMessages).not.toContain('secret-input');

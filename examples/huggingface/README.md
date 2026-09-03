@@ -1,6 +1,6 @@
-# huggingface (Hugging Face)
+﻿# huggingface (Hugging Face)
 
-Examples for using promptfoo with Hugging Face models, datasets, and classifiers.
+Examples for using artef with Hugging Face models, datasets, and classifiers.
 
 ## Examples
 

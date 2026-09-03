@@ -1,4 +1,4 @@
-import { execFile } from 'node:child_process';
+﻿import { execFile } from 'node:child_process';
 import { mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -156,7 +156,7 @@ describe('TraceStore span persistence', () => {
         attributes: {
           'gen_ai.operation.name': 'chat',
           'gen_ai.request.model': 'grading-model',
-          'promptfoo.span.role': 'grader',
+          'artef.span.role': 'grader',
         },
       },
     ];
@@ -224,13 +224,13 @@ describe('TraceStore span persistence', () => {
         spanId: 'target',
         name: 'chat target-model',
         startTime: 1,
-        attributes: { 'gen_ai.operation.name': 'chat', 'promptfoo.span.role': 'target' },
+        attributes: { 'gen_ai.operation.name': 'chat', 'artef.span.role': 'target' },
       },
       {
         spanId: 'grader',
         name: 'grader llm-rubric',
         startTime: 2,
-        attributes: { 'promptfoo.span.role': 'grader' },
+        attributes: { 'artef.span.role': 'grader' },
       },
       {
         spanId: 'grader-agent',
@@ -336,7 +336,7 @@ describe('TraceStore span persistence', () => {
 
 describe('span uniqueness migration', () => {
   it('removes existing duplicate spans before adding the unique index', async () => {
-    const directory = await mkdtemp(join(tmpdir(), 'promptfoo-span-migration-'));
+    const directory = await mkdtemp(join(tmpdir(), 'artef-span-migration-'));
 
     try {
       // Pin the migration that removes duplicate spans before adding its unique index.
@@ -390,7 +390,7 @@ describe('span uniqueness migration', () => {
         '--input-type=module',
         '--eval',
         migrationProbe,
-        join(directory, 'promptfoo.db'),
+        join(directory, 'artef.db'),
         migration,
       ]);
       const result = JSON.parse(stdout) as { spanIds: string[]; duplicateError?: string };

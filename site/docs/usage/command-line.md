@@ -1,13 +1,13 @@
----
+﻿---
 title: Command Line
 sidebar_position: 10
 sidebar_label: Command line
-description: 'Explore promptfoo CLI commands for LLM testing: run evals, generate datasets, scan models for vulnerabilities, and automate workflows from the terminal.'
+description: 'Explore artef CLI commands for LLM testing: run evals, generate datasets, scan models for vulnerabilities, and automate workflows from the terminal.'
 ---
 
 # Command line
 
-The `promptfoo` command line utility includes these command groups:
+The `artef` command line utility includes these command groups:
 
 - `init [directory]` - Initialize a new project with prompts, providers, and test cases.
 - `eval` - Evaluate prompts and models. This is the command you'll be using the most!
@@ -37,20 +37,20 @@ The `promptfoo` command line utility includes these command groups:
   - `list evals`
   - `list prompts`
   - `list datasets`
-- `logs` - View promptfoo log files.
+- `logs` - View artef log files.
   - `logs [file]`
   - `logs list`
-- `mcp` - Start a Model Context Protocol (MCP) server to expose promptfoo tools to AI agents and development environments.
+- `mcp` - Start a Model Context Protocol (MCP) server to expose artef tools to AI agents and development environments.
 - `optimize` - Improve one configured prompt against one configured provider.
 - `scan-model` - Scan ML models for security vulnerabilities.
 - `show [id]` - Show details of a specific resource (eval, prompt, or dataset).
 - `delete <id>` - Delete an eval by ID; accepts `latest` or `all`.
 - `retry <evalId>` - Retry ERROR results from a previous eval in place.
-- `validate` - Validate a promptfoo configuration file.
+- `validate` - Validate a artef configuration file.
   - `validate config`
   - `validate target`
-- `feedback <message>` - Send feedback to the Promptfoo developers.
-- `import <filepath>` - Import a Promptfoo eval JSON export or OpenAI Evals dashboard JSONL export.
+- `feedback <message>` - Send feedback to the artef developers.
+- `import <filepath>` - Import a artef eval JSON export or OpenAI Evals dashboard JSONL export.
 - `export` - Export eval records or logs.
   - `export eval <evalId>`
   - `export logs`
@@ -77,7 +77,7 @@ Most commands support the following common options:
 
 :::note
 
-For `promptfoo eval`, `-v` is the short form of `--vars`, not `--verbose`. Use the long form (`--verbose`) or set `LOG_LEVEL=debug` to enable debug logs during eval runs.
+For `artef eval`, `-v` is the short form of `--vars`, not `--verbose`. Use the long form (`--verbose`) or set `LOG_LEVEL=debug` to enable debug logs during eval runs.
 
 :::
 
@@ -87,22 +87,22 @@ You can load multiple `.env` files. Later files override values from earlier one
 
 ```bash
 # Repeated flags
-promptfoo eval --env-file .env --env-file .env.local
+artef eval --env-file .env --env-file .env.local
 
 # Comma-separated
-promptfoo eval --env-file .env,.env.local
+artef eval --env-file .env,.env.local
 ```
 
 All specified files must exist or an error is thrown.
 
-## `promptfoo eval`
+## `artef eval`
 
-By default the `eval` command will read the `promptfooconfig.yaml` configuration file in your current directory. But, if you're looking to override certain parameters you can supply optional arguments:
+By default the `eval` command will read the `artefconfig.yaml` configuration file in your current directory. But, if you're looking to override certain parameters you can supply optional arguments:
 
 | Option                               | Description                                                                                              |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | `-a, --assertions <path>`            | Path to assertions file                                                                                  |
-| `-c, --config <paths...>`            | Path to configuration file(s). Automatically loads promptfooconfig.yaml                                  |
+| `-c, --config <paths...>`            | Path to configuration file(s). Automatically loads artefconfig.yaml                                  |
 | `--delay <number>`                   | Delay between each test (in milliseconds)                                                                |
 | `--description <description>`        | Description of the eval run                                                                              |
 | `--filter-failing <path or id>`      | Filter tests that failed in a previous eval (by file path or eval ID)                                    |
@@ -123,7 +123,7 @@ By default the `eval` command will read the `promptfooconfig.yaml` configuration
 | `--no-cache`                         | Do not read or write results to disk cache                                                               |
 | `--no-progress-bar`                  | Do not show progress bar                                                                                 |
 | `--no-table`                         | Do not output table in CLI                                                                               |
-| `--no-write`                         | Do not write results to promptfoo directory                                                              |
+| `--no-write`                         | Do not write results to artef directory                                                              |
 | `--resume [evalId]`                  | Resume a paused/incomplete eval. If `evalId` is omitted, resumes latest                                  |
 | `--retry-errors`                     | Retry all ERROR results from the latest eval                                                             |
 | `-o, --output <paths...>`            | Path(s) to output file (csv, txt, json, jsonl, yaml, yml, html, xml, junit.xml)                          |
@@ -145,10 +145,10 @@ By default the `eval` command will read the `promptfooconfig.yaml` configuration
 | `-w, --watch`                        | Watch for changes in config and re-run                                                                   |
 | `-x, --extension <paths...>`         | Extension hooks to run, such as `file://handler.js:afterAll`                                             |
 
-Use `--tag` for run-specific eval tags that should not change `promptfooconfig.yaml`:
+Use `--tag` for run-specific eval tags that should not change `artefconfig.yaml`:
 
 ```sh
-promptfoo eval --tag env=ci --tag run-id=$CI_RUN_ID
+artef eval --tag env=ci --tag run-id=$CI_RUN_ID
 ```
 
 For export examples and format-specific guidance, see [output formats](/docs/configuration/outputs).
@@ -156,27 +156,27 @@ For export examples and format-specific guidance, see [output formats](/docs/con
 Use `--filter-range` to shard or rerun a stable slice of test cases by index. The first test has index `0`, the `start` index is included, and the `end` index is excluded:
 
 ```sh
-promptfoo eval --filter-range 0:100   # tests 0 through 99
-promptfoo eval --filter-range 100:200 # tests 100 through 199
-promptfoo eval --filter-range 200:    # tests 200 through the end
-promptfoo eval --filter-range :50     # first 50 tests
+artef eval --filter-range 0:100   # tests 0 through 99
+artef eval --filter-range 100:200 # tests 100 through 199
+artef eval --filter-range 200:    # tests 200 through the end
+artef eval --filter-range :50     # first 50 tests
 ```
 
 Range is applied before `--repeat` expansion, so `--filter-range 0:5 --repeat 3` runs 15 evaluations across the same 5 tests. When combined with other filters (`--filter-pattern`, `--filter-metadata`, etc.), range slices the post-filter list.
 
-When resuming an eval, promptfoo reuses the range saved with the original run so test indices stay stable. A `--filter-range` flag passed on resume is ignored (with a warning) and other transient filters from the original run are not restored, so resume is most predictable when range was the only selection filter.
+When resuming an eval, artef reuses the range saved with the original run so test indices stay stable. A `--filter-range` flag passed on resume is ignored (with a warning) and other transient filters from the original run are not restored, so resume is most predictable when range was the only selection filter.
 
-The `eval` command will return exit code `100` when there is at least 1 test case failure or when the pass rate is below the threshold set by `PROMPTFOO_PASS_RATE_THRESHOLD`. It will return exit code `1` for any other error. The exit code for failed tests can be overridden with environment variable `PROMPTFOO_FAILED_TEST_EXIT_CODE`.
+The `eval` command will return exit code `100` when there is at least 1 test case failure or when the pass rate is below the threshold set by `artef_PASS_RATE_THRESHOLD`. It will return exit code `1` for any other error. The exit code for failed tests can be overridden with environment variable `artef_FAILED_TEST_EXIT_CODE`.
 
-## `promptfoo optimize`
+## `artef optimize`
 
 Improve one configured prompt against one configured provider. The optimizer runs a baseline eval, proposes prompt candidates from observed failures and prior scores, evaluates those candidates, and prints the strongest prompt it found.
 
 ```sh
-promptfoo optimize
-promptfoo optimize -c path/to/promptfooconfig.yaml
-promptfoo optimize --prompt-index 1 --provider-index 0
-promptfoo optimize --validation-split 0.2
+artef optimize
+artef optimize -c path/to/artefconfig.yaml
+artef optimize --prompt-index 1 --provider-index 0
+artef optimize --validation-split 0.2
 ```
 
 The default config is loaded implicitly when `-c` is omitted. Optimization
@@ -184,7 +184,7 @@ targets one resolved prompt/provider pair at a time.
 
 | Option                          | Description                                                                                                  | Default                |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| `-c, --config <path>`           | Path to the configuration file                                                                               | `promptfooconfig.yaml` |
+| `-c, --config <path>`           | Path to the configuration file                                                                               | `artefconfig.yaml` |
 | `--prompt-index <index>`        | Zero-based resolved prompt index to optimize                                                                 | `0`                    |
 | `--provider-index <index>`      | Zero-based resolved provider index to optimize against                                                       | `0`                    |
 | `--validation-split <fraction>` | Hold out up to half of the configured test cases for validation scoring while search uses the remaining set. | none                   |
@@ -200,16 +200,16 @@ target selection details, and validation split recommendations.
 ### Pause and Resume
 
 ```sh
-promptfoo eval --resume            # resumes the latest eval
-promptfoo eval --resume <evalId>   # resumes a specific eval
+artef eval --resume            # resumes the latest eval
+artef eval --resume <evalId>   # resumes a specific eval
 ```
 
-- On resume, promptfoo reuses the original run's effective runtime options (e.g., `--delay`, `--no-cache`, `--max-concurrency`, `--repeat`), skips completed test/prompt pairs, ignores CLI flags that change test ordering to keep indices aligned, and disables watch mode.
+- On resume, artef reuses the original run's effective runtime options (e.g., `--delay`, `--no-cache`, `--max-concurrency`, `--repeat`), skips completed test/prompt pairs, ignores CLI flags that change test ordering to keep indices aligned, and disables watch mode.
 
 ### Retry Errors
 
 ```sh
-promptfoo eval --retry-errors      # retries all ERROR results from the latest eval
+artef eval --retry-errors      # retries all ERROR results from the latest eval
 ```
 
 - The retry errors feature automatically finds ERROR results from the latest eval and re-runs only those test cases. This is useful when evals fail due to temporary network issues, rate limits, or API errors.
@@ -217,9 +217,9 @@ promptfoo eval --retry-errors      # retries all ERROR results from the latest e
 - Cannot be used together with `--resume` or `--no-write` flags.
 - Uses the original eval's configuration and runtime options to ensure consistency.
 
-## `promptfoo init [directory]`
+## `artef init [directory]`
 
-Set up a new promptfoo project with prompts, providers, and test cases.
+Set up a new artef project with prompts, providers, and test cases.
 
 | Option             | Description                    |
 | ------------------ | ------------------------------ |
@@ -227,29 +227,29 @@ Set up a new promptfoo project with prompts, providers, and test cases.
 | `--no-interactive` | Do not run in interactive mode |
 | `--example [name]` | Download an example project    |
 
-## `promptfoo view`
+## `artef view`
 
 Start a browser UI for visualization of results.
 
 | Option                         | Description                               |
 | ------------------------------ | ----------------------------------------- |
-| `[directory]`                  | Promptfoo output/config directory to view |
+| `[directory]`                  | artef output/config directory to view |
 | `-p, --port <number>`          | Port number for the local server          |
 | `-y, --yes`                    | Skip confirmation and auto-open the URL   |
 | `-n, --no`                     | Skip confirmation and do not open the URL |
 | `--filter-description <regex>` | Deprecated; accepted but ignored          |
 
-If you've used `PROMPTFOO_CONFIG_DIR` to override the promptfoo output directory, run `promptfoo view [directory]`.
+If you've used `artef_CONFIG_DIR` to override the artef output directory, run `artef view [directory]`.
 
-## `promptfoo share [id]` {#promptfoo-share-evalid}
+## `artef share [id]` {#artef-share-evalid}
 
-Create a URL that can be shared online. If no ID is provided, promptfoo shares the most recent eval or model audit.
+Create a URL that can be shared online. If no ID is provided, artef shares the most recent eval or model audit.
 
 | Option        | Description                         |
 | ------------- | ----------------------------------- |
 | `--show-auth` | Include auth info in the shared URL |
 
-## `promptfoo cache`
+## `artef cache`
 
 Manage cache.
 
@@ -257,15 +257,15 @@ Manage cache.
 | ------- | --------------- |
 | `clear` | Clear the cache |
 
-## `promptfoo feedback <message>`
+## `artef feedback <message>`
 
-Send feedback to the promptfoo developers.
+Send feedback to the artef developers.
 
 | Option    | Description      |
 | --------- | ---------------- |
 | `message` | Feedback message |
 
-## `promptfoo list`
+## `artef list`
 
 List various resources like evals, prompts, and datasets.
 
@@ -280,9 +280,9 @@ List various resources like evals, prompts, and datasets.
 | `-n`         | Show the first n records, sorted by descending date of creation |
 | `--ids-only` | Show only IDs without descriptions                              |
 
-## `promptfoo logs`
+## `artef logs`
 
-View promptfoo log files directly from the command line.
+View artef log files directly from the command line.
 
 | Option                 | Description                                | Default |
 | ---------------------- | ------------------------------------------ | ------- |
@@ -295,7 +295,7 @@ View promptfoo log files directly from the command line.
 | `-g, --grep <pattern>` | Filter lines matching pattern (regex)      |         |
 | `--no-color`           | Disable syntax highlighting                |         |
 
-### `promptfoo logs list`
+### `artef logs list`
 
 List available log files in the logs directory.
 
@@ -307,46 +307,46 @@ List available log files in the logs directory.
 
 ```sh
 # View most recent log file (or current session's log if run during a CLI session)
-promptfoo logs
+artef logs
 
 # View last 50 lines
-promptfoo logs -n 50
+artef logs -n 50
 
 # View first 20 lines
-promptfoo logs --head 20
+artef logs --head 20
 
 # Follow log in real-time (like tail -f)
-promptfoo logs -f
+artef logs -f
 
 # List all available log files
-promptfoo logs --list
+artef logs --list
 
 # View a specific log file by name or partial match
-promptfoo logs promptfoo-debug-2024-01-15_10-30-00.log
-promptfoo logs 2024-01-15
+artef logs artef-debug-2024-01-15_10-30-00.log
+artef logs 2024-01-15
 
 # View error logs only
-promptfoo logs --type error
+artef logs --type error
 
 # Filter logs by pattern (case-insensitive regex)
-promptfoo logs --grep "error|warn"
-promptfoo logs --grep "openai"
+artef logs --grep "error|warn"
+artef logs --grep "openai"
 ```
 
-Log files are stored in `~/.promptfoo/logs` by default. Set `PROMPTFOO_LOG_DIR` to use a custom directory.
+Log files are stored in `~/.artef/logs` by default. Set `artef_LOG_DIR` to use a custom directory.
 
-## `promptfoo code-scans run [repo-path]`
+## `artef code-scans run [repo-path]`
 
 Scan code changes for LLM security vulnerabilities.
 
 | Option                            | Description                                              |
 | --------------------------------- | -------------------------------------------------------- |
 | `[repo-path]`                     | Repository path to scan                                  |
-| `--api-key <key>`                 | Promptfoo API key for authentication                     |
+| `--api-key <key>`                 | artef API key for authentication                     |
 | `--base <ref>`                    | Base branch or commit to compare against                 |
 | `--compare <ref>`                 | Compare branch or commit                                 |
 | `-c, --config <path>`             | Path to code scan config file                            |
-| `--api-host <url>`                | Promptfoo API host URL                                   |
+| `--api-host <url>`                | artef API host URL                                   |
 | `--diffs-only`                    | Scan only PR diffs, skip filesystem exploration          |
 | `--json`                          | Output results as JSON                                   |
 | `-f, --format <format>`           | Output format: `text`, `json`, or `sarif`                |
@@ -358,9 +358,9 @@ Scan code changes for LLM security vulnerabilities.
 
 For complete setup and JSON output details, see the [code scanning CLI docs](/docs/code-scanning/cli).
 
-## `promptfoo mcp`
+## `artef mcp`
 
-Start a Model Context Protocol (MCP) server to expose promptfoo's eval and testing capabilities as tools that AI agents and development environments can use.
+Start a Model Context Protocol (MCP) server to expose artef's eval and testing capabilities as tools that AI agents and development environments can use.
 
 | Option                | Description                       | Default |
 | --------------------- | --------------------------------- | ------- |
@@ -376,13 +376,13 @@ Start a Model Context Protocol (MCP) server to expose promptfoo's eval and testi
 
 ```sh
 # Start MCP server with STDIO transport (for Cursor, Claude Desktop, etc.)
-npx promptfoo@latest mcp --transport stdio
+npx artef@latest mcp --transport stdio
 
 # Start MCP server with HTTP transport on default port
-npx promptfoo@latest mcp --transport http
+npx artef@latest mcp --transport http
 
 # Start MCP server with HTTP transport on custom port
-npx promptfoo@latest mcp --transport http --port 8080
+npx artef@latest mcp --transport http --port 8080
 ```
 
 ### Available Tools
@@ -403,7 +403,7 @@ The MCP server provides 14 tools for AI agents:
 
 **Configuration & Testing:**
 
-- **`validate_promptfoo_config`** - Validate configuration files using the same logic as the CLI
+- **`validate_artef_config`** - Validate configuration files using the same logic as the CLI
 - **`test_provider`** - Test AI provider connectivity, credentials, and response quality
 - **`run_assertion`** - Test individual assertion rules against outputs for debugging
 
@@ -415,14 +415,14 @@ The MCP server provides 14 tools for AI agents:
 
 **Debugging Tools:**
 
-- **`list_logs`** - List promptfoo log files with metadata
-- **`read_logs`** - Read promptfoo log file contents with filtering options
+- **`list_logs`** - List artef log files with metadata
+- **`read_logs`** - Read artef log file contents with filtering options
 
 For detailed setup instructions and integration examples, see the [MCP Server documentation](/docs/integrations/mcp-server).
 
-## `promptfoo show <id>`
+## `artef show <id>`
 
-Show details of a specific resource. If no ID is provided, promptfoo shows the most recent eval.
+Show details of a specific resource. If no ID is provided, artef shows the most recent eval.
 
 | Option         | Description                        |
 | -------------- | ---------------------------------- |
@@ -430,7 +430,7 @@ Show details of a specific resource. If no ID is provided, promptfoo shows the m
 | `prompt <id>`  | Show details of a specific prompt  |
 | `dataset <id>` | Show details of a specific dataset |
 
-## `promptfoo delete <id>`
+## `artef delete <id>`
 
 Deletes a specific resource.
 
@@ -438,7 +438,7 @@ Deletes a specific resource.
 | ----------- | ----------------------------------------------- |
 | `eval <id>` | Delete an eval by ID; accepts `latest` or `all` |
 
-## `promptfoo retry <evalId>`
+## `artef retry <evalId>`
 
 Retry all ERROR results from a specific eval. This command finds test cases that resulted in errors (e.g., from network issues, rate limits, or API failures) and re-runs only those test cases. The results are updated in place in the original eval.
 
@@ -454,16 +454,16 @@ Examples:
 
 ```sh
 # Retry errors from a specific eval
-promptfoo retry eval-abc123
+artef retry eval-abc123
 
 # Retry with a different config file
-promptfoo retry eval-abc123 -c updated-config.yaml
+artef retry eval-abc123 -c updated-config.yaml
 
 # Retry with verbose output and limited concurrency
-promptfoo retry eval-abc123 -v --max-concurrency 2
+artef retry eval-abc123 -v --max-concurrency 2
 
 # Retry and share results to cloud
-promptfoo retry eval-abc123 --share
+artef retry eval-abc123 --share
 ```
 
 :::tip Data Safety
@@ -471,12 +471,12 @@ If the retry operation fails (network error, API timeout, etc.), your original E
 :::
 
 :::tip
-Unlike `--filter-errors-only` which creates a new eval, `promptfoo retry` updates the original eval in place. Use `retry` when you want to fix errors in an existing eval without creating duplicates.
+Unlike `--filter-errors-only` which creates a new eval, `artef retry` updates the original eval in place. Use `retry` when you want to fix errors in an existing eval without creating duplicates.
 :::
 
-## `promptfoo import <filepath>`
+## `artef import <filepath>`
 
-Import a Promptfoo eval file from JSON format, or import an OpenAI Evals dashboard
+Import a artef eval file from JSON format, or import an OpenAI Evals dashboard
 `eval_items_*.jsonl` export.
 
 | Option     | Description                                                                          |
@@ -484,14 +484,14 @@ Import a Promptfoo eval file from JSON format, or import an OpenAI Evals dashboa
 | `--new-id` | Generate a new eval ID instead of preserving the original (creates a duplicate eval) |
 | `--force`  | Replace an existing eval with the same ID                                            |
 
-When importing a Promptfoo eval export, the following data is preserved:
+When importing a artef eval export, the following data is preserved:
 
 - **Eval ID** - Preserved by default. Use `--new-id` to generate a new ID, or `--force` to replace an existing eval.
 - **Timestamp** - The original creation timestamp is always preserved (even with `--new-id` or `--force`)
 - **Author** - The original author is always preserved (even with `--new-id` or `--force`)
 - **Config, results, prompts, variables, runtime options, and durations** - Preserved for current exports. Config secrets are redacted during export.
 - **Traces** - Preserved for current exports with sensitive trace attributes redacted by the trace store.
-- **Referenced blob media** - Restored when the export includes embedded media assets. Create a portable export with `promptfoo export eval <evalId> --include-media`.
+- **Referenced blob media** - Restored when the export includes embedded media assets. Create a portable export with `artef export eval <evalId> --include-media`.
 
 Older exports that do not include newer parity fields still import normally. Local relationships such as tags, dataset links, cache entries, and share state are not reconstructed from an eval export.
 
@@ -501,47 +501,47 @@ Example:
 
 ```sh
 # Import an eval, preserving the original ID
-promptfoo import my-eval.json
+artef import my-eval.json
 
 # Import even if an eval with this ID exists (creates duplicate with new ID)
-promptfoo import --new-id my-eval.json
+artef import --new-id my-eval.json
 
 # Replace an existing eval with updated data
-promptfoo import --force my-eval.json
+artef import --force my-eval.json
 ```
 
 OpenAI Evals dashboard exports such as `eval_items_*.jsonl` are imported as historical
-Promptfoo eval records. Promptfoo keeps each OpenAI source item under `vars.item` and
+artef eval records. artef keeps each OpenAI source item under `vars.item` and
 preserves raw source item data, grader values, available pass/fail states, and grader
 samples in imported result metadata. When the export includes OpenAI `sample` data,
-Promptfoo also preserves it and surfaces available model output, errors, and token usage on
+artef also preserves it and surfaces available model output, errors, and token usage on
 the imported result. Grader rows with scores but no pass/fail states stay score-only:
-Promptfoo preserves the grader scores without turning the missing pass state into a failed
-assertion. If an export includes multiple OpenAI runs, Promptfoo imports them as prompt
+artef preserves the grader scores without turning the missing pass state into a failed
+assertion. If an export includes multiple OpenAI runs, artef imports them as prompt
 columns in one eval and aligns them on both the OpenAI data-source index and source item
 content. Rows with the same run-local index but different source items stay separate.
 
 For source fidelity, imported results keep the raw dashboard output-item row with its
-dashboard field names at `metadata.openai.outputItem`. The stored Promptfoo config records
+dashboard field names at `metadata.openai.outputItem`. The stored artef config records
 the dashboard import format and imported run IDs in `metadata.openaiEvalsImport`.
 
 The dashboard JSONL contains output-item rows, not the OpenAI eval definition, data-source
 config, run config, or testing-criteria definitions. It only keeps grader results keyed by
-grader name. The import is for historical results; it does not infer Promptfoo assertions
-or reconstruct a runnable Promptfoo config from the OpenAI eval.
+grader name. The import is for historical results; it does not infer artef assertions
+or reconstruct a runnable artef config from the OpenAI eval.
 
 This import path supports the dashboard JSONL export, not the OpenAI API output-items list
 response.
 
 ```sh
-promptfoo import eval_items_OutputDataItemStatusParam.ALL.jsonl
+artef import eval_items_OutputDataItemStatusParam.ALL.jsonl
 ```
 
-## `promptfoo export`
+## `artef export`
 
 Export eval records or logs.
 
-### `promptfoo export eval <evalId>`
+### `artef export eval <evalId>`
 
 Export an eval record to JSON format. To export the most recent, use `latest`.
 
@@ -550,13 +550,13 @@ Export an eval record to JSON format. To export the most recent, use `latest`.
 | `-o, --output <filepath>` | File to write. Writes to stdout by default.             |
 | `--include-media`         | Embed referenced blob media bytes for portable imports. |
 
-Exports always redact config secrets before writing. Media bytes are opt-in because they can make the export much larger and may contain sensitive user content. Without `--include-media`, blob references remain in the exported results and resolve only when the target Promptfoo data directory already has the referenced blobs.
+Exports always redact config secrets before writing. Media bytes are opt-in because they can make the export much larger and may contain sensitive user content. Without `--include-media`, blob references remain in the exported results and resolve only when the target artef data directory already has the referenced blobs.
 
 :::warning
 Eval exports can still contain user data in prompts, outputs, variables, traces, and opt-in media. Inspect an export before sharing it.
 :::
 
-### `promptfoo export logs`
+### `artef export logs`
 
 Collect and zip log files for debugging purposes.
 
@@ -565,43 +565,43 @@ Collect and zip log files for debugging purposes.
 | `-n, --count <number>`    | Number of recent log files to include (default: all) |
 | `-o, --output <filepath>` | Output path for the compressed log file              |
 
-This command creates a compressed tar.gz archive containing your promptfoo log files, making it easy to share them for debugging purposes. If no output path is specified, it will generate a timestamped filename automatically.
+This command creates a compressed tar.gz archive containing your artef log files, making it easy to share them for debugging purposes. If no output path is specified, it will generate a timestamped filename automatically.
 
-Log files are stored in `~/.promptfoo/logs` by default. To use a custom log directory, set the `PROMPTFOO_LOG_DIR` environment variable.
+Log files are stored in `~/.artef/logs` by default. To use a custom log directory, set the `artef_LOG_DIR` environment variable.
 
-## `promptfoo validate`
+## `artef validate`
 
-Validate a promptfoo configuration file to ensure it follows the correct schema and structure.
+Validate a artef configuration file to ensure it follows the correct schema and structure.
 
 | Command           | Description                                     |
 | ----------------- | ----------------------------------------------- |
-| `validate config` | Validate a promptfoo configuration file         |
+| `validate config` | Validate a artef configuration file         |
 | `validate target` | Test provider connectivity from config or cloud |
 
-### `promptfoo validate config`
+### `artef validate config`
 
 | Option                    | Description                                                             |
 | ------------------------- | ----------------------------------------------------------------------- |
-| `-c, --config <paths...>` | Path to configuration file(s). Automatically loads promptfooconfig.yaml |
+| `-c, --config <paths...>` | Path to configuration file(s). Automatically loads artefconfig.yaml |
 
 This command validates both the configuration file and the test suite to ensure they conform to the expected schema. It will report any validation errors with detailed messages to help you fix configuration issues.
 
 Examples:
 
 ```sh
-# Validate the default promptfooconfig.yaml
-promptfoo validate
+# Validate the default artefconfig.yaml
+artef validate
 
 # Validate a specific configuration file
-promptfoo validate -c my-config.yaml
+artef validate -c my-config.yaml
 
 # Validate multiple configuration files
-promptfoo validate -c config1.yaml config2.yaml
+artef validate -c config1.yaml config2.yaml
 ```
 
 The command will exit with code `1` if validation fails, making it useful for CI/CD pipelines to catch configuration errors early.
 
-### `promptfoo validate target`
+### `artef validate target`
 
 | Option                | Description                                      |
 | --------------------- | ------------------------------------------------ |
@@ -612,13 +612,13 @@ Examples:
 
 ```sh
 # Test all providers in a config
-promptfoo validate target -c promptfooconfig.yaml
+artef validate target -c artefconfig.yaml
 
 # Test one provider by ID or cloud UUID
-promptfoo validate target -t openai:gpt-5-mini
+artef validate target -t openai:gpt-5-mini
 ```
 
-## `promptfoo scan-model`
+## `artef scan-model`
 
 Scan ML models for security vulnerabilities. Provide one or more paths to model files or directories.
 
@@ -645,32 +645,32 @@ Scan ML models for security vulnerabilities. Provide one or more paths to model 
 | `--force`                       | Force scan even if the model was already scanned                     |         |
 | `--share` / `--no-share`        | Share or suppress sharing for model audit results                    |         |
 
-By default, `scan-model` saves model audit records to the promptfoo database. In that mode, `--output` writes promptfoo's JSON result payload even when `--format sarif` is selected. Use `--no-write --format sarif --output results.sarif` for raw ModelAudit SARIF output.
+By default, `scan-model` saves model audit records to the artef database. In that mode, `--output` writes artef's JSON result payload even when `--format sarif` is selected. Use `--no-write --format sarif --output results.sarif` for raw ModelAudit SARIF output.
 
 For model source examples, scanner IDs, SBOM output, and SARIF workflows, see the [ModelAudit docs](/docs/model-audit).
 
-## `promptfoo auth`
+## `artef auth`
 
 Manage authentication for cloud features.
 
-### `promptfoo auth login`
+### `artef auth login`
 
-Login to the promptfoo cloud.
+Login to the artef cloud.
 
 | Option                | Description                                                                |
 | --------------------- | -------------------------------------------------------------------------- |
 | `-o, --org <orgId>`   | The organization ID to log in to                                           |
-| `-h, --host <host>`   | The host of the promptfoo instance (API URL if different from the app URL) |
+| `-h, --host <host>`   | The host of the artef instance (API URL if different from the app URL) |
 | `-k, --api-key <key>` | Log in using an API key                                                    |
 | `-t, --team <team>`   | Team name, slug, or ID to use after login                                  |
 
 After login, if you have multiple teams, you can switch between them using the `teams` subcommand.
 
-### `promptfoo auth logout`
+### `artef auth logout`
 
-Logout from the promptfoo cloud.
+Logout from the artef cloud.
 
-### `promptfoo auth whoami`
+### `artef auth whoami`
 
 Display current authentication status including user, organization, and active team.
 
@@ -684,7 +684,7 @@ Display current authentication status including user, organization, and active t
 Example:
 
 ```sh
-promptfoo auth whoami
+artef auth whoami
 ```
 
 Output:
@@ -694,10 +694,10 @@ Currently logged in as:
 User: user@company.com
 Organization: Acme Corp
 Current Team: Engineering Team
-App URL: https://www.promptfoo.app
+App URL: https://www.artef.app
 ```
 
-### `promptfoo auth can-create-targets`
+### `artef auth can-create-targets`
 
 Check whether the current user can create cloud targets.
 
@@ -705,19 +705,19 @@ Check whether the current user can create cloud targets.
 | ------------------------ | -------------------------------- |
 | `-t, --team-id <teamId>` | Team ID to check permissions for |
 
-### `promptfoo auth teams`
+### `artef auth teams`
 
 Manage team switching for organizations with multiple teams.
 
-#### `promptfoo auth teams list`
+#### `artef auth teams list`
 
 List all teams you have access to in the current organization.
 
-#### `promptfoo auth teams current`
+#### `artef auth teams current`
 
 Show the currently active team.
 
-#### `promptfoo auth teams set <teamIdentifier>`
+#### `artef auth teams set <teamIdentifier>`
 
 Switch to a specific team. The team identifier can be:
 
@@ -729,16 +729,16 @@ Examples:
 
 ```sh
 # Switch to team by name
-promptfoo auth teams set "Engineering Team"
+artef auth teams set "Engineering Team"
 
 # Switch to team by slug
-promptfoo auth teams set engineering
+artef auth teams set engineering
 
 # Switch to team by ID
-promptfoo auth teams set team_12345
+artef auth teams set team_12345
 ```
 
-Your team selection is remembered across CLI sessions and applies to all promptfoo operations including evals and red team testing.
+Your team selection is remembered across CLI sessions and applies to all artef operations including evals and red team testing.
 
 #### Team Selection Across Organizations
 
@@ -752,33 +752,33 @@ Example workflow:
 
 ```sh
 # Login to Organization A
-promptfoo auth login --api-key <org-a-key>
-promptfoo auth teams set "Engineering"     # Set team in Org A
+artef auth login --api-key <org-a-key>
+artef auth teams set "Engineering"     # Set team in Org A
 
 # Login to Organization B
-promptfoo auth login --api-key <org-b-key>
-promptfoo auth teams set "Marketing"       # Set team in Org B
+artef auth login --api-key <org-b-key>
+artef auth teams set "Marketing"       # Set team in Org B
 
 # Login back to Organization A
-promptfoo auth login --api-key <org-a-key>
-promptfoo auth teams current              # Shows "Engineering" (preserved!)
+artef auth login --api-key <org-a-key>
+artef auth teams current              # Shows "Engineering" (preserved!)
 ```
 
 Your team selection persists across login sessions within the same organization.
 
-## `promptfoo config`
+## `artef config`
 
 Edit configuration settings.
 
-### `promptfoo config get email`
+### `artef config get email`
 
 Get the user's email address.
 
-### `promptfoo config set email <email>`
+### `artef config set email <email>`
 
 Set the user's email address.
 
-### `promptfoo config unset email`
+### `artef config unset email`
 
 Unset the user's email address.
 
@@ -786,21 +786,21 @@ Unset the user's email address.
 | ------------- | -------------------------------- |
 | `-f, --force` | Force unset without confirmation |
 
-## `promptfoo debug`
+## `artef debug`
 
 Display debug information for troubleshooting.
 
 | Option                | Description                                                  |
 | --------------------- | ------------------------------------------------------------ |
-| `-c, --config [path]` | Path to configuration file. Defaults to promptfooconfig.yaml |
+| `-c, --config [path]` | Path to configuration file. Defaults to artefconfig.yaml |
 
-## `promptfoo generate dataset`
+## `artef generate dataset`
 
 BETA: Generate synthetic test cases based on existing prompts and variables.
 
 | Option                              | Description                                                | Default              |
 | ----------------------------------- | ---------------------------------------------------------- | -------------------- |
-| `-c, --config <path>`               | Path to the configuration file                             | promptfooconfig.yaml |
+| `-c, --config <path>`               | Path to the configuration file                             | artefconfig.yaml |
 | `-w, --write`                       | Write the generated test cases directly to the config file | false                |
 | `-i, --instructions <text>`         | Custom instructions for test case generation               |                      |
 | `-o, --output <path>`               | Path to write the generated test cases                     | stdout               |
@@ -809,19 +809,19 @@ BETA: Generate synthetic test cases based on existing prompts and variables.
 | `--provider <provider>`             | Provider to use for generating test cases                  | default grader       |
 | `--no-cache`                        | Do not read or write results to disk cache                 | false                |
 
-For example, this command will modify your default config file (usually `promptfooconfig.yaml`) with new test cases:
+For example, this command will modify your default config file (usually `artefconfig.yaml`) with new test cases:
 
 ```sh
-promptfoo generate dataset -w
+artef generate dataset -w
 ```
 
 This command will generate test cases for a specific config and write them to a file, while following special instructions:
 
 ```sh
-promptfoo generate dataset -c my_config.yaml -o new_tests.yaml -i 'All test cases for {{location}} must be European cities'
+artef generate dataset -c my_config.yaml -o new_tests.yaml -i 'All test cases for {{location}} must be European cities'
 ```
 
-## `promptfoo generate assertions`
+## `artef generate assertions`
 
 Generate additional objective/subjective assertions based on existing prompts and assertions.
 
@@ -837,7 +837,7 @@ When brainstorming assertions:
 | Option                      | Description                                                     | Default              |
 | --------------------------- | --------------------------------------------------------------- | -------------------- |
 | `-t, --type <type>`         | The assertion type to use for generated subjective assertions.  | pi                   |
-| `-c, --config <path>`       | Path to the configuration file that contains at least 1 prompt. | promptfooconfig.yaml |
+| `-c, --config <path>`       | Path to the configuration file that contains at least 1 prompt. | artefconfig.yaml |
 | `-w, --write`               | Write the generated assertions directly to the config file      | false                |
 | `-i, --instructions <text>` | Custom instructions for assertion generation                    |                      |
 | `-o, --output <path>`       | Path to write the generated assertions                          | stdout               |
@@ -845,23 +845,23 @@ When brainstorming assertions:
 | `--provider <provider>`     | Provider to use for generating assertions                       | default grader       |
 | `--no-cache`                | Do not read or write results to disk cache                      | false                |
 
-For example, this command will modify your default config file (usually `promptfooconfig.yaml`) with new test cases:
+For example, this command will modify your default config file (usually `artefconfig.yaml`) with new test cases:
 
 ```sh
-promptfoo generate assertions -w
+artef generate assertions -w
 ```
 
 This command will generate `pi` and `python` assertions for a specific config and write them to a file, while following special instructions:
 
 ```sh
-promptfoo generate assertions -c my_config.yaml -o new_tests.yaml -i 'I need assertions about pronunciation'
+artef generate assertions -c my_config.yaml -o new_tests.yaml -i 'I need assertions about pronunciation'
 ```
 
-## `promptfoo generate redteam`
+## `artef generate redteam`
 
-Alias for [`promptfoo redteam generate`](#promptfoo-redteam-generate).
+Alias for [`artef redteam generate`](#artef-redteam-generate).
 
-## `promptfoo redteam init`
+## `artef redteam init`
 
 Initialize a red teaming project.
 
@@ -873,7 +873,7 @@ Initialize a red teaming project.
 Example:
 
 ```sh
-promptfoo redteam init my_project
+artef redteam init my_project
 ```
 
 :::danger
@@ -882,7 +882,7 @@ Adversarial testing produces offensive, toxic, and harmful test inputs, and may 
 
 For more detail, see [red team configuration](/docs/red-team/configuration/).
 
-## `promptfoo redteam setup`
+## `artef redteam setup`
 
 Start browser UI and open to red team setup.
 
@@ -892,13 +892,13 @@ Start browser UI and open to red team setup.
 | `-p, --port <number>`            | Port number for the local server         | 15500   |
 | `--filter-description <pattern>` | Deprecated; accepted but ignored         |         |
 
-## `promptfoo redteam run`
+## `artef redteam run`
 
 Run the complete red teaming process (init, generate, and evaluate).
 
 | Option                                             | Description                                                                      | Default              |
 | -------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------- |
-| `-c, --config [path]`                              | Path to configuration file                                                       | promptfooconfig.yaml |
+| `-c, --config [path]`                              | Path to configuration file                                                       | artefconfig.yaml |
 | `-o, --output [path]`                              | Path to output file for generated tests                                          | redteam.yaml         |
 | `-d, --description <text>`                         | Custom description/name for this scan run                                        |                      |
 | `--tag <key=value>`                                | Set an eval tag. Can be specified multiple times; CLI tags override config tags. |                      |
@@ -918,10 +918,10 @@ scan template or generated `redteam.yaml`. CLI tags override matching tags from 
 configuration and are included when the eval is shared.
 
 ```sh
-promptfoo redteam run --tag ci.run-id=$CI_RUN_ID --tag git.sha=$GIT_COMMIT
+artef redteam run --tag ci.run-id=$CI_RUN_ID --tag git.sha=$GIT_COMMIT
 ```
 
-## `promptfoo redteam discover`
+## `artef redteam discover`
 
 Runs the [Target Discovery Agent](/docs/red-team/discovery) against your application.
 
@@ -933,16 +933,16 @@ Only a configuration file or target can be specified
 
 | Option                | Description                                          | Default |
 | --------------------- | ---------------------------------------------------- | ------- |
-| `-c, --config <path>` | Path to `promptfooconfig.yaml` configuration file.   |         |
-| `-t, --target <id>`   | UUID of a target defined in Promptfoo Cloud to scan. |         |
+| `-c, --config <path>` | Path to `artefconfig.yaml` configuration file.   |         |
+| `-t, --target <id>`   | UUID of a target defined in artef Cloud to scan. |         |
 
-## `promptfoo redteam generate`
+## `artef redteam generate`
 
 Generate adversarial test cases to challenge your prompts and models.
 
 | Option                           | Description                                                          | Default              |
 | -------------------------------- | -------------------------------------------------------------------- | -------------------- |
-| `-c, --config <path>`            | Path to configuration file                                           | promptfooconfig.yaml |
+| `-c, --config <path>`            | Path to configuration file                                           | artefconfig.yaml |
 | `-o, --output <path>`            | Path to write the generated test cases                               | redteam.yaml         |
 | `-d, --description <text>`       | Custom description/name for the generated tests                      |                      |
 | `-w, --write`                    | Write the generated test cases directly to the config file           | false                |
@@ -963,7 +963,7 @@ Generate adversarial test cases to challenge your prompts and models.
 | `--strict`                       | Fail if any plugins fail to generate test cases                      | false                |
 | `--burp-escape-json`             | Escape special characters in .burp output for JSON payloads          | false                |
 
-For example, let's suppose we have the following `promptfooconfig.yaml`:
+For example, let's suppose we have the following `artefconfig.yaml`:
 
 ```yaml
 prompts:
@@ -977,16 +977,16 @@ providers:
 This command will generate adversarial test cases and write them to `redteam.yaml`.
 
 ```sh
-promptfoo redteam generate
+artef redteam generate
 ```
 
 This command overrides the system purpose and the variable to inject adversarial user input:
 
 ```sh
-promptfoo redteam generate --purpose 'Travel agent that helps users plan trips' --injectVar 'message'
+artef redteam generate --purpose 'Travel agent that helps users plan trips' --injectVar 'message'
 ```
 
-## `promptfoo redteam poison`
+## `artef redteam poison`
 
 Generate poisoned documents for RAG testing.
 
@@ -997,12 +997,12 @@ Generate poisoned documents for RAG testing.
 | `-o, --output <path>`     | Output YAML file path                             | `poisoned-config.yaml` |
 | `-d, --output-dir <path>` | Directory to write individual poisoned documents  | `poisoned-documents`   |
 
-## `promptfoo redteam eval`
+## `artef redteam eval`
 
-Works the same as [`promptfoo eval`](#promptfoo-eval), including repeatable `--tag`
+Works the same as [`artef eval`](#artef-eval), including repeatable `--tag`
 options for run-specific labels, but defaults to loading `redteam.yaml`.
 
-## `promptfoo redteam report`
+## `artef redteam report`
 
 Start a browser UI and open the red teaming report.
 
@@ -1015,10 +1015,10 @@ Start a browser UI and open the red teaming report.
 Example:
 
 ```sh
-promptfoo redteam report -p 8080
+artef redteam report -p 8080
 ```
 
-## `promptfoo redteam plugins`
+## `artef redteam plugins`
 
 List all available red team plugins.
 
@@ -1029,11 +1029,11 @@ List all available red team plugins.
 
 ## Specifying Command Line Options in Config
 
-Many command line options can be specified directly in your `promptfooconfig.yaml` file using the `commandLineOptions` section. This is convenient for options you frequently use or want to set as defaults for your project.
+Many command line options can be specified directly in your `artefconfig.yaml` file using the `commandLineOptions` section. This is convenient for options you frequently use or want to set as defaults for your project.
 
 Example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - Write a funny tweet about {{topic}}
 providers:
@@ -1051,7 +1051,7 @@ commandLineOptions:
   write: true
 ```
 
-With this configuration, you can simply run `promptfoo eval` without specifying these options on the command line. You can still override these settings by providing the corresponding flag when running the command.
+With this configuration, you can simply run `artef eval` without specifying these options on the command line. You can still override these settings by providing the corresponding flag when running the command.
 
 ## ASCII-only outputs
 
@@ -1060,7 +1060,7 @@ To disable terminal colors for printed outputs, set `FORCE_COLOR=0` (this is sup
 For the `eval` command, you may also want to disable the progress bar and table as well, because they use special characters:
 
 ```sh
-FORCE_COLOR=0 promptfoo eval --no-progress-bar --no-table
+FORCE_COLOR=0 artef eval --no-progress-bar --no-table
 ```
 
 # Environment variables
@@ -1070,44 +1070,44 @@ These general-purpose environment variables are supported:
 | Name                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Default                       |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
 | `FORCE_COLOR`                                 | Set to 0 to disable terminal colors for printed outputs                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                               |
-| `PROMPTFOO_ASSERTIONS_MAX_CONCURRENCY`        | How many assertions to run at a time                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 3                             |
-| `PROMPTFOO_CACHE_ENABLED`                     | Enable LLM request/response caching                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `true`                        |
-| `PROMPTFOO_CACHE_PATH`                        | Directory for the disk cache. Defaults to a `cache` directory under `PROMPTFOO_CONFIG_DIR`                                                                                                                                                                                                                                                                                                                                                                                                                       | `~/.promptfoo/cache`          |
-| `PROMPTFOO_CACHE_TTL`                         | Cache TTL in seconds                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `1209600`                     |
-| `PROMPTFOO_CACHE_TYPE`                        | Cache backend: `disk` or `memory`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `disk`                        |
-| `PROMPTFOO_CONFIG_DIR`                        | Directory that stores eval history                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `~/.promptfoo`                |
-| `PROMPTFOO_CSRF_ALLOWED_ORIGINS`              | Comma-separated list of trusted origins allowed to make cross-site requests to the Promptfoo server (e.g., `https://app.example.com,https://admin.example.com`). Not needed for standard localhost or same-origin setups.                                                                                                                                                                                                                                                                                        |                               |
-| `PROMPTFOO_DISABLE_AJV_STRICT_MODE`           | If set, disables AJV strict mode for JSON schema validation                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                               |
-| `PROMPTFOO_DISABLE_CONVERSATION_VAR`          | Prevents the `_conversation` variable from being set                                                                                                                                                                                                                                                                                                                                                                                                                                                             |                               |
-| `PROMPTFOO_DISABLE_ERROR_LOG`                 | Prevents error logs from being written to a file                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                               |
-| `PROMPTFOO_DISABLE_DEBUG_LOG`                 | Prevents debug logs from being written to a file                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                               |
-| `PROMPTFOO_DISABLE_JSON_AUTOESCAPE`           | If set, disables smart variable substitution within JSON prompts                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                               |
-| `PROMPTFOO_DISABLE_OBJECT_STRINGIFY`          | Disable object stringification in templates. When false (default), objects are stringified to prevent `[object Object]` issues. When true, allows direct property access (e.g., `{{output.property}}`).                                                                                                                                                                                                                                                                                                          | `false`                       |
-| `PROMPTFOO_DISABLE_REF_PARSER`                | Prevents JSON schema dereferencing                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                               |
-| `PROMPTFOO_DISABLE_REMOTE_GENERATION`         | Disables supported Promptfoo-hosted generation fallbacks within its documented scope, including red team target/provider setup helpers that rely on remote generation. This is not a network egress firewall and does not disable explicitly configured providers, graders, telemetry, account/license checks, sharing, Cloud sync, red team target/provider test requests, or red team target/provider setup helpers that do not rely on remote generation. Example: `PROMPTFOO_DISABLE_REMOTE_GENERATION=true` | `false`                       |
-| `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION` | Disables supported Promptfoo-hosted red team generation paths, including red team target/provider setup helpers that rely on remote generation, while leaving non-red-team hosted generation, red team target/provider test requests, red team target/provider setup helpers that do not rely on remote generation, sharing, telemetry, account, and Cloud-backed controls unchanged. Example: `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true`                                                                | `false`                       |
-| `PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS`         | Disables OS environment variables in templates. When true, only config `env:` variables are available in templates.                                                                                                                                                                                                                                                                                                                                                                                              | `false` (true in self-hosted) |
-| `PROMPTFOO_DISABLE_TEMPLATING`                | Disables Nunjucks template processing                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `false`                       |
-| `PROMPTFOO_DISABLE_UPDATE`                    | Disables automatic update availability checks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `false`                       |
-| `PROMPTFOO_DISABLE_VAR_EXPANSION`             | Prevents Array-type vars from being expanded into multiple test cases                                                                                                                                                                                                                                                                                                                                                                                                                                            |                               |
-| `PROMPTFOO_FAILED_TEST_EXIT_CODE`             | Override the exit code when there is at least 1 test case failure or when the pass rate is below PROMPTFOO_PASS_RATE_THRESHOLD                                                                                                                                                                                                                                                                                                                                                                                   | 100                           |
-| `PROMPTFOO_LOG_DIR`                           | Directory to write log files (both debug and error logs). Overrides the default `~/.promptfoo/logs` directory.                                                                                                                                                                                                                                                                                                                                                                                                   | `~/.promptfoo/logs`           |
-| `PROMPTFOO_PASS_RATE_THRESHOLD`               | Set a minimum pass rate threshold (as a percentage). If not set, defaults to 100% (no failures allowed)                                                                                                                                                                                                                                                                                                                                                                                                          | 100                           |
-| `PROMPTFOO_REQUIRE_JSON_PROMPTS`              | By default the chat completion provider will wrap non-JSON messages in a single user message. Setting this envar to true disables that behavior.                                                                                                                                                                                                                                                                                                                                                                 |                               |
-| `PROMPTFOO_SHARE_CHUNK_SIZE`                  | Number of results to send in each chunk. This is used to estimate the size of the results and to determine the number of chunks to send.                                                                                                                                                                                                                                                                                                                                                                         |                               |
-| `PROMPTFOO_EVAL_TIMEOUT_MS`                   | Timeout in milliseconds for each individual test case/provider API call. When reached, that specific test is marked as an error.                                                                                                                                                                                                                                                                                                                                                                                 |                               |
-| `PROMPTFOO_MAX_EVAL_TIME_MS`                  | Maximum total runtime in milliseconds for the entire eval process. When reached, all remaining tests are marked as errors and the eval ends.                                                                                                                                                                                                                                                                                                                                                                     |                               |
-| `PROMPTFOO_STRIP_GRADING_RESULT`              | Strip grading results from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                        | false                         |
-| `PROMPTFOO_STRIP_METADATA`                    | Strip metadata from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                               | false                         |
-| `PROMPTFOO_STRIP_PROMPT_TEXT`                 | Strip prompt text from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                            | false                         |
-| `PROMPTFOO_STRIP_RESPONSE_OUTPUT`             | Strip model response outputs from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                 | false                         |
-| `PROMPTFOO_STRIP_TEST_VARS`                   | Strip test variables from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                         | false                         |
-| `PROMPTFOO_OFFICIAL_DOCKER_IMAGE`             | Internal marker for upstream official-image update guidance. Official Promptfoo builds set this automatically, and derived images inherit it. The inherited guidance includes the extra rebuild step; set it to `false` in a derived image for tailored custom-image guidance.                                                                                                                                                                                                                                   | `false`                       |
-| `PROMPTFOO_RUNNING_IN_DOCKER`                 | Internal marker for container-aware update guidance. The Promptfoo Dockerfile sets this automatically. Other custom Dockerfiles that bake Promptfoo into an image must set it to `true` to receive rebuild-and-redeploy guidance instead of package-manager commands.                                                                                                                                                                                                                                            | `false`                       |
-| `PROMPTFOO_SELF_HOSTED`                       | Enables self-hosted mode. When true, disables OS environment variables in templates (only config `env:` values available), disables telemetry, and modifies other behaviors for controlled environments                                                                                                                                                                                                                                                                                                          | `false`                       |
+| `artef_ASSERTIONS_MAX_CONCURRENCY`        | How many assertions to run at a time                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 3                             |
+| `artef_CACHE_ENABLED`                     | Enable LLM request/response caching                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `true`                        |
+| `artef_CACHE_PATH`                        | Directory for the disk cache. Defaults to a `cache` directory under `artef_CONFIG_DIR`                                                                                                                                                                                                                                                                                                                                                                                                                       | `~/.artef/cache`          |
+| `artef_CACHE_TTL`                         | Cache TTL in seconds                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `1209600`                     |
+| `artef_CACHE_TYPE`                        | Cache backend: `disk` or `memory`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `disk`                        |
+| `artef_CONFIG_DIR`                        | Directory that stores eval history                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `~/.artef`                |
+| `artef_CSRF_ALLOWED_ORIGINS`              | Comma-separated list of trusted origins allowed to make cross-site requests to the artef server (e.g., `https://app.example.com,https://admin.example.com`). Not needed for standard localhost or same-origin setups.                                                                                                                                                                                                                                                                                        |                               |
+| `artef_DISABLE_AJV_STRICT_MODE`           | If set, disables AJV strict mode for JSON schema validation                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                               |
+| `artef_DISABLE_CONVERSATION_VAR`          | Prevents the `_conversation` variable from being set                                                                                                                                                                                                                                                                                                                                                                                                                                                             |                               |
+| `artef_DISABLE_ERROR_LOG`                 | Prevents error logs from being written to a file                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                               |
+| `artef_DISABLE_DEBUG_LOG`                 | Prevents debug logs from being written to a file                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                               |
+| `artef_DISABLE_JSON_AUTOESCAPE`           | If set, disables smart variable substitution within JSON prompts                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                               |
+| `artef_DISABLE_OBJECT_STRINGIFY`          | Disable object stringification in templates. When false (default), objects are stringified to prevent `[object Object]` issues. When true, allows direct property access (e.g., `{{output.property}}`).                                                                                                                                                                                                                                                                                                          | `false`                       |
+| `artef_DISABLE_REF_PARSER`                | Prevents JSON schema dereferencing                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                               |
+| `artef_DISABLE_REMOTE_GENERATION`         | Disables supported artef-hosted generation fallbacks within its documented scope, including red team target/provider setup helpers that rely on remote generation. This is not a network egress firewall and does not disable explicitly configured providers, graders, telemetry, account/license checks, sharing, Cloud sync, red team target/provider test requests, or red team target/provider setup helpers that do not rely on remote generation. Example: `artef_DISABLE_REMOTE_GENERATION=true` | `false`                       |
+| `artef_DISABLE_REDTEAM_REMOTE_GENERATION` | Disables supported artef-hosted red team generation paths, including red team target/provider setup helpers that rely on remote generation, while leaving non-red-team hosted generation, red team target/provider test requests, red team target/provider setup helpers that do not rely on remote generation, sharing, telemetry, account, and Cloud-backed controls unchanged. Example: `artef_DISABLE_REDTEAM_REMOTE_GENERATION=true`                                                                | `false`                       |
+| `artef_DISABLE_TEMPLATE_ENV_VARS`         | Disables OS environment variables in templates. When true, only config `env:` variables are available in templates.                                                                                                                                                                                                                                                                                                                                                                                              | `false` (true in self-hosted) |
+| `artef_DISABLE_TEMPLATING`                | Disables Nunjucks template processing                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `false`                       |
+| `artef_DISABLE_UPDATE`                    | Disables automatic update availability checks.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `false`                       |
+| `artef_DISABLE_VAR_EXPANSION`             | Prevents Array-type vars from being expanded into multiple test cases                                                                                                                                                                                                                                                                                                                                                                                                                                            |                               |
+| `artef_FAILED_TEST_EXIT_CODE`             | Override the exit code when there is at least 1 test case failure or when the pass rate is below artef_PASS_RATE_THRESHOLD                                                                                                                                                                                                                                                                                                                                                                                   | 100                           |
+| `artef_LOG_DIR`                           | Directory to write log files (both debug and error logs). Overrides the default `~/.artef/logs` directory.                                                                                                                                                                                                                                                                                                                                                                                                   | `~/.artef/logs`           |
+| `artef_PASS_RATE_THRESHOLD`               | Set a minimum pass rate threshold (as a percentage). If not set, defaults to 100% (no failures allowed)                                                                                                                                                                                                                                                                                                                                                                                                          | 100                           |
+| `artef_REQUIRE_JSON_PROMPTS`              | By default the chat completion provider will wrap non-JSON messages in a single user message. Setting this envar to true disables that behavior.                                                                                                                                                                                                                                                                                                                                                                 |                               |
+| `artef_SHARE_CHUNK_SIZE`                  | Number of results to send in each chunk. This is used to estimate the size of the results and to determine the number of chunks to send.                                                                                                                                                                                                                                                                                                                                                                         |                               |
+| `artef_EVAL_TIMEOUT_MS`                   | Timeout in milliseconds for each individual test case/provider API call. When reached, that specific test is marked as an error.                                                                                                                                                                                                                                                                                                                                                                                 |                               |
+| `artef_MAX_EVAL_TIME_MS`                  | Maximum total runtime in milliseconds for the entire eval process. When reached, all remaining tests are marked as errors and the eval ends.                                                                                                                                                                                                                                                                                                                                                                     |                               |
+| `artef_STRIP_GRADING_RESULT`              | Strip grading results from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                        | false                         |
+| `artef_STRIP_METADATA`                    | Strip metadata from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                               | false                         |
+| `artef_STRIP_PROMPT_TEXT`                 | Strip prompt text from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                            | false                         |
+| `artef_STRIP_RESPONSE_OUTPUT`             | Strip model response outputs from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                 | false                         |
+| `artef_STRIP_TEST_VARS`                   | Strip test variables from results to reduce memory usage                                                                                                                                                                                                                                                                                                                                                                                                                                                         | false                         |
+| `artef_OFFICIAL_DOCKER_IMAGE`             | Internal marker for upstream official-image update guidance. Official artef builds set this automatically, and derived images inherit it. The inherited guidance includes the extra rebuild step; set it to `false` in a derived image for tailored custom-image guidance.                                                                                                                                                                                                                                   | `false`                       |
+| `artef_RUNNING_IN_DOCKER`                 | Internal marker for container-aware update guidance. The artef Dockerfile sets this automatically. Other custom Dockerfiles that bake artef into an image must set it to `true` to receive rebuild-and-redeploy guidance instead of package-manager commands.                                                                                                                                                                                                                                            | `false`                       |
+| `artef_SELF_HOSTED`                       | Enables self-hosted mode. When true, disables OS environment variables in templates (only config `env:` values available), disables telemetry, and modifies other behaviors for controlled environments                                                                                                                                                                                                                                                                                                          | `false`                       |
 
 :::tip
-promptfoo will load environment variables from the `.env` in your current working directory.
+artef will load environment variables from the `.env` in your current working directory.
 :::
 
 :::tip

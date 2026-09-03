@@ -1,13 +1,13 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 
 import { Label } from '@app/components/ui/label';
 import { NumberInput } from '@app/components/ui/number-input';
 import { Switch } from '@app/components/ui/switch';
 import { TagInput } from '@app/components/ui/tag-input';
 import { COMMON_LANGUAGE_NAMES, normalizeLanguage } from '@app/constants/languages';
-import { REDTEAM_DEFAULTS } from '@promptfoo/redteam/constants';
+import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
 import { Config } from '../types';
-import type { RedteamRunOptions } from '@promptfoo/types';
+import type { RedteamRunOptions } from '@artef/types';
 
 // Shared helper and error text constants for RunOptions inputs
 export const RUNOPTIONS_TEXT = {

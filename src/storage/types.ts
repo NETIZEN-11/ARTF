@@ -1,5 +1,5 @@
-/**
- * Media storage abstraction for promptfoo (OSS).
+﻿/**
+ * Media storage abstraction for artef (OSS).
  *
  * OSS uses only the local filesystem for media storage. Cloud deployments can override
  * the provider, but cloud-specific types (e.g., S3) live in the cloud repo.
@@ -64,7 +64,7 @@ export interface StoreResult {
  * Configuration for local filesystem storage
  */
 export interface LocalStorageConfig {
-  /** Base directory for media storage (defaults to ~/.promptfoo/media) */
+  /** Base directory for media storage (defaults to ~/.artef/media) */
   basePath?: string;
 }
 

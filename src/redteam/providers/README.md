@@ -1,4 +1,4 @@
-# Red Team Providers
+﻿# Red Team Providers
 
 This folder contains red teaming providers designed to test and evaluate language and image generation models. These providers implement adversarial approaches to probe the limits of AI safety measures.
 
@@ -140,7 +140,7 @@ During a red team attack (e.g., Crescendo, GOAT, Custom providers), the unblocki
 
 ### When to Enable
 
-**Enable unblocking (`PROMPTFOO_ENABLE_UNBLOCKING=true`) when:**
+**Enable unblocking (`artef_ENABLE_UNBLOCKING=true`) when:**
 
 - Testing conversational agents that frequently ask clarifying questions
 - Running red team evaluations against customer service bots or domain-specific assistants
@@ -160,10 +160,10 @@ Set the environment variable before running red team evaluations:
 
 ```bash
 # Enable unblocking
-export PROMPTFOO_ENABLE_UNBLOCKING=true
+export artef_ENABLE_UNBLOCKING=true
 
 # Run red team eval
-promptfoo eval
+artef eval
 ```
 
 ### Tradeoffs

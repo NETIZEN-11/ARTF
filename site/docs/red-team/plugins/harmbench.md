@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: HarmBench
 description: Red team LLM safety using HarmBench's 400 harmful behavior tests, with filters for specific semantic and functional categories
 ---
@@ -79,7 +79,7 @@ redteam:
           - contextual
 ```
 
-When you set both semantic and functional filters, Promptfoo generates tests from the matching intersection.
+When you set both semantic and functional filters, artef generates tests from the matching intersection.
 
 The available functional categories are:
 

@@ -1,4 +1,4 @@
-import { type ChildProcess, spawn } from 'child_process';
+﻿import { type ChildProcess, spawn } from 'child_process';
 
 import { getEnvString } from '../../envars';
 import logger from '../../logger';
@@ -292,9 +292,9 @@ export class GoogleLiveProvider implements ApiProvider {
         // Use the validatePythonPath function to get the correct Python executable
         const pythonPath = await validatePythonPath(
           config.functionToolStatefulApi.pythonExecutable ||
-            getEnvString('PROMPTFOO_PYTHON') ||
+            getEnvString('artef_PYTHON') ||
             'python3',
-          !!config.functionToolStatefulApi.pythonExecutable || !!getEnvString('PROMPTFOO_PYTHON'),
+          !!config.functionToolStatefulApi.pythonExecutable || !!getEnvString('artef_PYTHON'),
         );
         logger.debug(`Spawning API with Python executable: ${pythonPath}`);
         statefulApi = spawn(pythonPath, [config.functionToolStatefulApi.file]);

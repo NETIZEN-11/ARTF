@@ -1,4 +1,4 @@
-import { Button } from '@app/components/ui/button';
+﻿import { Button } from '@app/components/ui/button';
 import { DatabaseZap, ImageIcon, SearchX } from 'lucide-react';
 
 interface MediaEmptyStateProps {
@@ -41,14 +41,14 @@ export function MediaEmptyState({
         <p className="text-sm text-muted-foreground text-center max-w-md">
           Media files from evaluations are stored using blob storage. Enable it by setting the{' '}
           <code className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">
-            PROMPTFOO_ENABLE_BLOB_STORAGE
+            artef_ENABLE_BLOB_STORAGE
           </code>{' '}
           environment variable to{' '}
           <code className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">true</code>, then
           re-run your evaluations.
         </p>
         <a
-          href="https://www.promptfoo.dev/docs/configuration/parameters/#blob-storage"
+          href="https://www.artef.dev/docs/configuration/parameters/#blob-storage"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 text-sm text-primary hover:underline"
@@ -70,7 +70,7 @@ export function MediaEmptyState({
         audio provider to get started.
       </p>
       <a
-        href="https://www.promptfoo.dev/docs/providers/"
+        href="https://www.artef.dev/docs/providers/"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 text-sm text-primary hover:underline"

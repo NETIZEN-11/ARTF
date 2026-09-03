@@ -1,9 +1,9 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { getEnvInt } from '../../envars';
 import { renderPrompt } from '../../evaluatorHelpers';
 import { isLoggedIntoCloud } from '../../globalConfig/accounts';
 import logger from '../../logger';
-import { PromptfooChatCompletionProvider } from '../../providers/promptfoo';
+import { artefChatCompletionProvider } from '../../providers/artef';
 import {
   extractTraceIdFromTraceparent,
   fetchTraceContext,
@@ -861,7 +861,7 @@ class RedteamIterativeProvider implements ApiProvider {
     this.inputs = config.inputs as Inputs | undefined;
 
     const configuredIterations =
-      Number(config.numIterations) || getEnvInt('PROMPTFOO_NUM_JAILBREAK_ITERATIONS', 4);
+      Number(config.numIterations) || getEnvInt('artef_NUM_JAILBREAK_ITERATIONS', 4);
     this.numIterations = isLoggedIntoCloud()
       ? configuredIterations
       : Math.min(configuredIterations, 10);
@@ -874,13 +874,13 @@ class RedteamIterativeProvider implements ApiProvider {
     // Redteam provider can be set from the config.
 
     if (shouldGenerateRemote()) {
-      this.gradingProvider = new PromptfooChatCompletionProvider({
+      this.gradingProvider = new artefChatCompletionProvider({
         task: 'judge',
         jsonOnly: true,
         preferSmallModel: false,
         ...remoteGenerationContextPayload(config.targetId),
       });
-      this.redteamProvider = new PromptfooChatCompletionProvider({
+      this.redteamProvider = new artefChatCompletionProvider({
         task: 'iterative',
         jsonOnly: true,
         preferSmallModel: false,
@@ -902,7 +902,7 @@ class RedteamIterativeProvider implements ApiProvider {
   }
 
   id() {
-    return 'promptfoo:redteam:iterative';
+    return 'artef:redteam:iterative';
   }
 
   async callApi(

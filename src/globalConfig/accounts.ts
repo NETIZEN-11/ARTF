@@ -1,4 +1,4 @@
-import input from '@inquirer/input';
+﻿import input from '@inquirer/input';
 import chalk from 'chalk';
 import { z } from 'zod';
 import { TERMINAL_MAX_WIDTH } from '../constants';
@@ -19,7 +19,7 @@ import { readGlobalConfig, writeGlobalConfig, writeGlobalConfigPartial } from '.
 
 import type { GlobalConfig } from '../configTypes';
 
-const CI_PLACEHOLDER_EMAIL = 'ci-placeholder@promptfoo.dev';
+const CI_PLACEHOLDER_EMAIL = 'ci-placeholder@artef.dev';
 
 export type AuthMethod = 'api-key' | 'email' | 'none';
 
@@ -51,7 +51,7 @@ function failEmailValidation(reason: EmailValidationFailureReason, message: stri
 export function getUserAuthInfo(): UserAuthInfo {
   const globalConfig = readGlobalConfig();
   const email = globalConfig?.account?.email || null;
-  const isLoggedIntoCloud = !!(globalConfig?.cloud?.apiKey || process.env.PROMPTFOO_API_KEY);
+  const isLoggedIntoCloud = !!(globalConfig?.cloud?.apiKey || process.env.artef_API_KEY);
 
   return {
     email,
@@ -121,7 +121,7 @@ export function setUserEmailValidated(validated: boolean) {
 
 export function getAuthor(override?: string | null): string | null {
   const userEmail = getUserEmail();
-  const envAuthor = getEnvString('PROMPTFOO_AUTHOR');
+  const envAuthor = getEnvString('artef_AUTHOR');
   if (isLoggedIntoCloud() && userEmail) {
     if (override && override !== userEmail) {
       // Don't log the full emails — the rest of the codebase treats them as PII.
@@ -133,7 +133,7 @@ export function getAuthor(override?: string | null): string | null {
 }
 
 export function isLoggedIntoCloud(): boolean {
-  // Check if user has authenticated with Promptfoo Cloud
+  // Check if user has authenticated with artef Cloud
   // This supports both interactive (email-based) and non-interactive (API key) authentication
   // CI environments can authenticate via API keys, so we no longer exclude CI
   return getUserAuthInfo().isLoggedIntoCloud;
@@ -155,7 +155,7 @@ interface EmailStatusResult {
 }
 
 /**
- * Shared function to check email status with the promptfoo API
+ * Shared function to check email status with the artef API
  * Used by both CLI and server routes
  */
 export async function checkEmailStatus(options?: {
@@ -195,7 +195,7 @@ export async function checkEmailStatus(options?: {
 
     const host = cloudConfig.isEnabled()
       ? cloudConfig.getApiHost()
-      : getEnvString('PROMPTFOO_CLOUD_API_URL', 'https://api.promptfoo.app')?.replace(/\/+$/, '');
+      : getEnvString('artef_CLOUD_API_URL', 'https://api.artef.app')?.replace(/\/+$/, '');
 
     const resp = await fetchWithTimeout(
       `${host}/api/users/status?email=${encodeURIComponent(userEmail)}${validateParam}`,
@@ -335,7 +335,7 @@ export async function checkEmailStatusAndMaybeExit(options?: {
 
   if (result.status === EmailValidationStatus.EXCEEDED_LIMIT) {
     const message =
-      'You have exceeded the maximum cloud inference limit. Please contact inquiries@promptfoo.dev to upgrade your account.';
+      'You have exceeded the maximum cloud inference limit. Please contact inquiries@artef.dev to upgrade your account.';
     logger.error(message);
     failEmailValidation('exceeded_limit', message);
   } else if (result.status === EmailValidationStatus.EMAIL_VERIFICATION_REQUIRED) {

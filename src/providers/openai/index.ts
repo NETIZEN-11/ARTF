@@ -1,4 +1,4 @@
-import { getEnvString } from '../../envars';
+﻿import { getEnvString } from '../../envars';
 
 import type { EnvVarKey } from '../../envars';
 import type { EnvOverrides } from '../../types/env';
@@ -12,7 +12,7 @@ import type { OpenAiSharedOptions } from './types';
 
 export const OPENAI_ORIGINATOR_HEADER = 'X-OpenAI-Originator';
 export const OPENAI_ORGANIZATION_HEADER = 'OpenAI-Organization';
-export const DEFAULT_OPENAI_ORIGINATOR = 'promptfoo';
+export const DEFAULT_OPENAI_ORIGINATOR = 'artef';
 
 /**
  * Whether `customHeaders` contains a case-insensitive override for `headerName`.

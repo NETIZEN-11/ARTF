@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Button } from '@app/components/ui/button';
@@ -16,11 +16,11 @@ import {
   deserializePolicyIdFromMetric,
   formatPolicyIdentifierAsMetric,
   isPolicyMetric,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import { useApplyFilterFromMetric } from './hooks';
 import { useTableStore } from './store';
 import { getNamedMetricTotal } from './utils';
-import type { EvaluateTable } from '@promptfoo/types';
+import type { EvaluateTable } from '@artef/types';
 import type { ColumnDef } from '@tanstack/react-table';
 
 type MetricScore = {

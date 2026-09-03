@@ -1,13 +1,13 @@
-{
+﻿{
   "name": "ts-config-example",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "description": "TypeScript configuration example for promptfoo with dynamic schema generation",
+  "description": "TypeScript configuration example for artef with dynamic schema generation",
   "scripts": {
-    "eval": "NODE_OPTIONS=\"--import tsx\" promptfoo eval -c promptfooconfig.ts",
-    "eval-schema": "NODE_OPTIONS=\"--import tsx\" promptfoo eval -c promptfooconfig-with-schema.ts",
-    "view": "promptfoo view"
+    "eval": "NODE_OPTIONS=\"--import tsx\" artef eval -c artefconfig.ts",
+    "eval-schema": "NODE_OPTIONS=\"--import tsx\" artef eval -c artefconfig-with-schema.ts",
+    "view": "artef view"
   },
   "dependencies": {
     "openai": "^7.1.0",
@@ -16,6 +16,6 @@
   },
   "devDependencies": {
     "@types/node": "^25.1.0",
-    "promptfoo": "latest"
+    "artef": "latest"
   }
 }

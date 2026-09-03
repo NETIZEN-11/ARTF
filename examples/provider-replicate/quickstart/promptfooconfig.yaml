@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Replicate provider quick start
 
 prompts:
@@ -21,9 +21,9 @@ tests:
         value: output.toLowerCase().includes('world')
 
   - vars:
-      name: promptfoo
+      name: artef
     assert:
       - type: contains-any
         value: ['hello', 'hi', 'greetings']
       - type: javascript
-        value: output.toLowerCase().includes('promptfoo')
+        value: output.toLowerCase().includes('artef')

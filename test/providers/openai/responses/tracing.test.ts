@@ -1,4 +1,4 @@
-// Load-bearing: registers shared vi.mock / beforeEach hooks before any
+﻿// Load-bearing: registers shared vi.mock / beforeEach hooks before any
 // module-under-test import below. See ./setup.ts for details.
 import './setup';
 
@@ -98,9 +98,9 @@ describe('OpenAiResponsesProvider tracing', () => {
       'gen_ai.operation.name': 'chat',
       'gen_ai.request.model': 'gpt-4o',
       'openai.api.type': 'responses',
-      'promptfoo.provider.id': 'openai:gpt-4o',
+      'artef.provider.id': 'openai:gpt-4o',
     });
-    expect(chatSpan?.attributes['promptfoo.usage.total_tokens']).toBe(30);
+    expect(chatSpan?.attributes['artef.usage.total_tokens']).toBe(30);
     expect(chatSpan?.ended).toBe(true);
     // SpanStatusCode.OK === 1
     expect(chatSpan?.status?.code).toBe(1);

@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { clearCache, disableCache, enableCache } from '../../../src/cache';
 import {
   BedrockAnthropicMessagesProvider,
@@ -57,7 +57,7 @@ describe('Bedrock Anthropic Messages provider', () => {
     ).toThrow(/only in us-east-1 and eu-north-1/);
   });
 
-  it('uses promptfoo env overrides for the key and region', async () => {
+  it('uses artef env overrides for the key and region', async () => {
     restoreEnv = mockProcessEnv({
       AWS_BEARER_TOKEN_BEDROCK: undefined,
       AWS_BEDROCK_REGION: undefined,

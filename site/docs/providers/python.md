@@ -1,4 +1,4 @@
----
+﻿---
 title: Python Provider
 sidebar_label: Python Provider
 sidebar_position: 50
@@ -7,7 +7,7 @@ description: 'Create custom Python scripts for advanced model integrations, eval
 
 # Python Provider
 
-The Python provider enables you to create custom evaluation logic using Python scripts. This allows you to integrate Promptfoo with any Python-based model, API, or custom logic.
+The Python provider enables you to create custom evaluation logic using Python scripts. This allows you to integrate artef with any Python-based model, API, or custom logic.
 
 :::tip Python Overview
 
@@ -28,7 +28,7 @@ For an overview of all Python integrations (providers, assertions, test generato
 Before using the Python provider, ensure you have:
 
 - Python 3.7 or higher installed
-- Basic familiarity with Promptfoo configuration
+- Basic familiarity with artef configuration
 - Understanding of Python dictionaries and JSON
 
 ## Quick Start
@@ -49,10 +49,10 @@ def call_api(prompt, options, context):
     }
 ```
 
-### Step 2: Configure Promptfoo
+### Step 2: Configure artef
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 providers:
   - id: 'file://echo_provider.py'
 
@@ -64,7 +64,7 @@ prompts:
 ### Step 3: Run the evaluation
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 That's it! You've created your first custom Python provider.
@@ -73,19 +73,19 @@ That's it! You've created your first custom Python provider.
 
 Python providers use persistent worker processes. Your script is loaded once when the worker starts, not on every call. This makes subsequent calls much faster, especially for scripts with heavy imports like ML models.
 
-When Promptfoo evaluates a test case with a Python provider:
+When artef evaluates a test case with a Python provider:
 
-1. **Promptfoo** prepares the prompt based on your configuration
-2. **Promptfoo** invokes `call_api` in your Python script with three parameters:
+1. **artef** prepares the prompt based on your configuration
+2. **artef** invokes `call_api` in your Python script with three parameters:
    - `prompt`: The final prompt string
    - `options`: Provider configuration from your YAML
    - `context`: Variables and metadata for the current test
 3. **Your Code** processes the prompt and returns a response
-4. **Promptfoo** validates the response and continues evaluation
+4. **artef** validates the response and continues evaluation
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│ Promptfoo   │────▶│ Your Python  │────▶│ Your Logic  │
+│ artef   │────▶│ Your Python  │────▶│ Your Logic  │
 │ Evaluation  │     │ Provider     │     │ (API/Model) │
 └─────────────┘     └──────────────┘     └─────────────┘
        ▲                    │
@@ -166,13 +166,13 @@ Contains your provider configuration and metadata:
 {
     "id": "file://my_provider.py",
     "config": {
-        # Your custom configuration from promptfooconfig.yaml
+        # Your custom configuration from artefconfig.yaml
         "model_name": "gpt-3.5-turbo",
         "temperature": 0.7,
         "max_tokens": 100,
 
-        # Automatically added by promptfoo:
-        "basePath": "/absolute/path/to/config"  # Directory containing your config (promptfooconfig.yaml)
+        # Automatically added by artef:
+        "basePath": "/absolute/path/to/config"  # Directory containing your config (artefconfig.yaml)
     }
 }
 ```
@@ -194,7 +194,7 @@ For `call_api`, this provides information about the current test case:
     "test": {
         "vars": { ... },
         "metadata": {
-            "pluginId": "...",   # Redteam plugin (e.g. "promptfoo:redteam:harmful:hate")
+            "pluginId": "...",   # Redteam plugin (e.g. "artef:redteam:harmful:hate")
             "strategyId": "...", # Redteam strategy (e.g. "jailbreak", "jailbreak-templates")
         },
     },
@@ -289,7 +289,7 @@ Return at least one of `output` or `error`. Represent an expected safety block a
 :::
 
 For multi-turn red team strategies, return `conversationEnded: True` (with optional
-`conversationEndReason`) when your target intentionally closes the active thread so promptfoo
+`conversationEndReason`) when your target intentionally closes the active thread so artef
 stops probing gracefully instead of continuing into timeout/error turns.
 
 ## Complete Examples
@@ -440,8 +440,8 @@ providers:
 
 ### Link to Cloud Target
 
-:::info Promptfoo Cloud Feature
-Available in [Promptfoo Cloud](/docs/enterprise) deployments.
+:::info artef Cloud Feature
+Available in [artef Cloud](/docs/enterprise) deployments.
 :::
 
 Link your local provider configuration to a cloud target using `linkedTargetId`:
@@ -450,7 +450,7 @@ Link your local provider configuration to a cloud target using `linkedTargetId`:
 providers:
   - id: 'file://my_provider.py'
     config:
-      linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'
+      linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'
 ```
 
 See [Linking Local Targets to Cloud](/docs/red-team/troubleshooting/linking-targets/) for setup instructions.
@@ -508,7 +508,7 @@ providers:
 Or set globally:
 
 ```bash
-export PROMPTFOO_PYTHON_WORKERS=4
+export artef_PYTHON_WORKERS=4
 ```
 
 **When to use 1 worker** (default):
@@ -560,16 +560,16 @@ providers:
 
 ```bash
 # Use specific Python version globally
-export PROMPTFOO_PYTHON=/usr/bin/python3.11
-npx promptfoo@latest eval
+export artef_PYTHON=/usr/bin/python3.11
+npx artef@latest eval
 ```
 
 #### Python Detection Process
 
-Promptfoo automatically detects your Python installation in this priority order:
+artef automatically detects your Python installation in this priority order:
 
 1. **Provider config**: `pythonExecutable` in your config
-2. **Environment variable**: `PROMPTFOO_PYTHON` (if set)
+2. **Environment variable**: `artef_PYTHON` (if set)
 3. **Windows smart detection**: Uses `where python` and filters out Microsoft Store stubs (Windows only)
 4. **Smart detection**: Uses `python -c "import sys; print(sys.executable)"` to find the actual Python path
 5. **Fallback commands**:
@@ -583,16 +583,16 @@ Use `pythonExecutable` when one provider needs a different interpreter than the 
 
 ```bash
 # Use specific Python version
-export PROMPTFOO_PYTHON=/usr/bin/python3.11
+export artef_PYTHON=/usr/bin/python3.11
 
 # Add custom module paths
 export PYTHONPATH=/path/to/my/modules:$PYTHONPATH
 
 # Enable Python debugging with pdb
-export PROMPTFOO_PYTHON_DEBUG_ENABLED=true
+export artef_PYTHON_DEBUG_ENABLED=true
 
 # Run evaluation
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Advanced Features
@@ -693,7 +693,7 @@ pip install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp-prot
 
 **Enable tracing:**
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tracing:
   enabled: true
   otlp:
@@ -704,7 +704,7 @@ tracing:
 Install the Python OpenTelemetry packages and enable the wrapper instrumentation:
 
 ```bash
-export PROMPTFOO_ENABLE_OTEL=true
+export artef_ENABLE_OTEL=true
 ```
 
 When wrapper OTEL instrumentation is enabled, the Python provider wrapper:
@@ -714,9 +714,9 @@ When wrapper OTEL instrumentation is enabled, the Python provider wrapper:
 - Captures token usage from `tokenUsage` in your response
 - Includes evaluation and test case metadata
 
-The wrapper identifies Python execution through `promptfoo.provider.type`, `promptfoo.provider.function`, and, when configured, `promptfoo.provider.model`. Token counts use standard [GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/), including `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. Instrument the model library inside your provider when you also want separate model-inference spans.
+The wrapper identifies Python execution through `artef.provider.type`, `artef.provider.function`, and, when configured, `artef.provider.model`. Token counts use standard [GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/), including `gen_ai.usage.input_tokens` and `gen_ai.usage.output_tokens`. Instrument the model library inside your provider when you also want separate model-inference spans.
 
-This span covers the provider call itself. If you need internal workflow telemetry for tools, agents, or handoffs, create custom child spans or export framework-native traces into Promptfoo. See the [OpenAI Agents Python SDK guide](/docs/guides/evaluate-openai-agents-python) for a full example that makes `trajectory:*` assertions work with the Python `openai-agents` SDK.
+This span covers the provider call itself. If you need internal workflow telemetry for tools, agents, or handoffs, create custom child spans or export framework-native traces into artef. See the [OpenAI Agents Python SDK guide](/docs/guides/evaluate-openai-agents-python) for a full example that makes `trajectory:*` assertions work with the Python `openai-agents` SDK.
 
 ### Handling Retries
 
@@ -760,8 +760,8 @@ Custom providers handle multimodal content the same way whether the media comes 
 
 For standard evals, provide the media value through `tests[].vars`, `defaultTest.vars`, a dataset column, or a dynamic variable:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: file://multimodal_provider.py
 
@@ -782,7 +782,7 @@ For red team runs, [image](/docs/red-team/strategies/image), [audio](/docs/red-t
 | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `image`           | Raw PNG base64, no `data:` prefix                        | `context['vars']['image_text']`, `context['test']['metadata']['originalText']` | Wrap as `data:image/png;base64,...` for APIs that expect data URLs.                                                                                                                                                                |
 | `audio`           | Raw MP3 base64 from remote generation, no `data:` prefix | `context['test']['metadata']['originalText']`                                  | Requires remote generation. Forward with MIME type `audio/mpeg` or your provider's equivalent audio format.                                                                                                                        |
-| `video`           | Raw MP4 base64 when local FFmpeg generation succeeds     | `context['vars']['video_text']`, `context['test']['metadata']['originalText']` | Install FFmpeg and set `PROMPTFOO_DISABLE_REMOTE_GENERATION=true` or `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true` for real MP4 bytes. If generation falls back, the value may decode to the original text instead of an MP4. |
+| `video`           | Raw MP4 base64 when local FFmpeg generation succeeds     | `context['vars']['video_text']`, `context['test']['metadata']['originalText']` | Install FFmpeg and set `artef_DISABLE_REMOTE_GENERATION=true` or `artef_DISABLE_REDTEAM_REMOTE_GENERATION=true` for real MP4 bytes. If generation falls back, the value may decode to the original text instead of an MP4. |
 
 Audio and video have opposite generation requirements today: audio requires remote generation, while real MP4 video requires the local FFmpeg path. Run separate scans if you need to verify both remote audio and local MP4 handling.
 
@@ -832,8 +832,8 @@ def call_api(prompt, options, context):
 
 For red team runs, set `redteam.injectVar` to the same template variable:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: file://multimodal_provider.py
 
@@ -872,10 +872,10 @@ See the [multimodal red team guide](/docs/guides/multimodal-red-team) and [JavaS
 
 | Issue                       | Solution                                                            |
 | --------------------------- | ------------------------------------------------------------------- |
-| `spawn py -3 ENOENT` errors | Set `PROMPTFOO_PYTHON` env var or use `pythonExecutable` in config  |
-| `Python 3 not found` errors | Ensure `python` command works or set `PROMPTFOO_PYTHON`             |
+| `spawn py -3 ENOENT` errors | Set `artef_PYTHON` env var or use `pythonExecutable` in config  |
+| `Python 3 not found` errors | Ensure `python` command works or set `artef_PYTHON`             |
 | "Module not found" errors   | Set `PYTHONPATH` or use `pythonExecutable` for virtual environments |
-| Script not executing        | Check file path is relative to `promptfooconfig.yaml`               |
+| Script not executing        | Check file path is relative to `artefconfig.yaml`               |
 | No output visible           | Use `LOG_LEVEL=debug` to see print statements                       |
 | JSON parsing errors         | Ensure prompt format matches your parsing logic                     |
 | Timeout errors              | Optimize initialization code, load models once                      |
@@ -885,7 +885,7 @@ See the [multimodal red team guide](/docs/guides/multimodal-red-team) and [JavaS
 1. **Enable debug logging:**
 
    ```bash
-   LOG_LEVEL=debug npx promptfoo@latest eval
+   LOG_LEVEL=debug npx artef@latest eval
    ```
 
 2. **Add logging to your provider:**
@@ -916,7 +916,7 @@ See the [multimodal red team guide](/docs/guides/multimodal-red-team) and [JavaS
 4. **Use Python debugger (pdb) for interactive debugging:**
 
    ```bash
-   export PROMPTFOO_PYTHON_DEBUG_ENABLED=true
+   export artef_PYTHON_DEBUG_ENABLED=true
    ```
 
    With this environment variable set, you can use `import pdb; pdb.set_trace()` in your Python code to set breakpoints:

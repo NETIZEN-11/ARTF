@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Claude Fable 5 advanced coding with xhigh effort and always-on adaptive thinking
 
 prompts:
@@ -13,7 +13,7 @@ providers:
       # `type: disabled` is omitted because thinking cannot be turned off.
       #
       # Fable 5 also rejects manual sampling controls (temperature/top_p/top_k)
-      # at the model level — promptfoo omits them automatically, so don't set
+      # at the model level — artef omits them automatically, so don't set
       # them here.
       effort: xhigh # Recommended starting point for coding/agentic work (between high and max)
       # Always-on adaptive thinking consumes output tokens before any visible

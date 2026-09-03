@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Opus-tier coding — Opus 5 vs Opus 4.8 at xhigh effort
 
 prompts:
@@ -12,7 +12,7 @@ providers:
     label: opus-5-xhigh
     config:
       # Opus 5 deprecates manual sampling controls (temperature/top_p/top_k) at the
-      # model level — promptfoo omits them automatically, so don't set them here.
+      # model level — artef omits them automatically, so don't set them here.
       #
       # No `thinking` block on purpose: unlike Opus 4.8, Opus 5 runs adaptive thinking
       # by default. `max_tokens` caps thinking PLUS the answer, so leave real headroom —

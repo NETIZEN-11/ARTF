@@ -1,4 +1,4 @@
-# Provider Implementations
+﻿# Provider Implementations
 
 LLM provider integrations implementing `ApiProvider` interface to call different AI services.
 
@@ -53,9 +53,9 @@ prefix/sub-type pair resolves to the expected class or throws.
 
 ## Cache Key Hygiene
 
-Promptfoo's disk cache lives at `${getConfigDirectoryPath()}/cache` (typically
-`~/.promptfoo/cache`), unless overridden with `PROMPTFOO_CACHE_PATH` or
-`PROMPTFOO_CONFIG_DIR`. If an implementation stores literal cache-key strings, those
+artef's disk cache lives at `${getConfigDirectoryPath()}/cache` (typically
+`~/.artef/cache`), unless overridden with `artef_CACHE_PATH` or
+`artef_CONFIG_DIR`. If an implementation stores literal cache-key strings, those
 strings persist to disk; if it stores hashed keys, the hash persists.
 
 - **Never include secrets in cache keys.** Strip `Authorization`, bearer tokens, API
@@ -141,7 +141,7 @@ grep -q "MYPROVIDER_API_KEY" src/contracts/env.ts && echo "env schema updated"
 ls test/providers/myprovider.test.ts
 ls site/docs/providers/myprovider.md
 grep -q "myprovider" site/docs/providers/index.md && echo "index.md updated"
-ls examples/myprovider/promptfooconfig.yaml
+ls examples/myprovider/artefconfig.yaml
 ```
 
 **Reference existing providers** - 50+ implementations to learn from.

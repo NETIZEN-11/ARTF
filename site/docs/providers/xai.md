@@ -1,4 +1,4 @@
----
+﻿---
 title: xAI (Grok) Provider
 description: Use xAI Grok models for text, image, video, voice, and Responses API tool workflows, including Grok 4.5, Grok 4.3, regional endpoints, and pricing.
 keywords:
@@ -29,7 +29,7 @@ To use xAI's API, set the `XAI_API_KEY` environment variable or specify via `api
 export XAI_API_KEY=your_api_key_here
 ```
 
-When xAI is the selected fallback provider family, Promptfoo can use xAI defaults for grading, suggestions, synthesis, and web search. These automatic defaults currently use `grok-4.3` so they work for both US and EU accounts; select `grok-4.5` explicitly where it is available. xAI does not currently expose a public embeddings or moderation API, so those defaults fall back to OpenAI when xAI is selected. Explicit provider IDs in your config still take precedence.
+When xAI is the selected fallback provider family, artef can use xAI defaults for grading, suggestions, synthesis, and web search. These automatic defaults currently use `grok-4.3` so they work for both US and EU accounts; select `grok-4.5` explicitly where it is available. xAI does not currently expose a public embeddings or moderation API, so those defaults fall back to OpenAI when xAI is selected. Explicit provider IDs in your config still take precedence.
 
 ## Supported Models
 
@@ -99,20 +99,20 @@ These legacy IDs remain recognized for backward compatibility and redirect to Gr
 
 ### Grok-3 Models
 
-The `grok-3`, `grok-3-beta`, `grok-3-fast`, and related `-latest` IDs are legacy aliases that redirect to Grok 4.3. Promptfoo also recognizes the older Grok 3 Mini IDs for backward compatibility; verify their availability for your xAI account before relying on them.
+The `grok-3`, `grok-3-beta`, `grok-3-fast`, and related `-latest` IDs are legacy aliases that redirect to Grok 4.3. artef also recognizes the older Grok 3 Mini IDs for backward compatibility; verify their availability for your xAI account before relying on them.
 
 ### Grok-2 and previous Models
 
-Promptfoo recognizes older `grok-2`, `grok-beta`, and vision IDs for existing configs, but they are not in xAI's current public catalog. Use a current model for new configs and verify legacy availability in the xAI Console.
+artef recognizes older `grok-2`, `grok-beta`, and vision IDs for existing configs, but they are not in xAI's current public catalog. Use a current model for new configs and verify legacy availability in the xAI Console.
 
 ## Configuration
 
 The provider uses [OpenAI-compatible configuration options](/docs/providers/openai) plus Grok-specific options, subject to the model restrictions below. Example usage:
 
-When xAI returns [`usage.cost_in_usd_ticks`](https://docs.x.ai/developers/cost-tracking), Promptfoo uses that exact billed amount, including cache discounts and request-level pricing adjustments. If ticks are unavailable, Promptfoo falls back to the model's catalog rates. Custom pricing can be set with `cost`, `inputCost`, `outputCost`, and `cacheReadCost` (all per-token rates); explicit overrides take precedence over reported ticks.
+When xAI returns [`usage.cost_in_usd_ticks`](https://docs.x.ai/developers/cost-tracking), artef uses that exact billed amount, including cache discounts and request-level pricing adjustments. If ticks are unavailable, artef falls back to the model's catalog rates. Custom pricing can be set with `cost`, `inputCost`, `outputCost`, and `cacheReadCost` (all per-token rates); explicit overrides take precedence over reported ticks.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-4.5
     config:
@@ -125,7 +125,7 @@ providers:
 
 Multiple Grok models support reasoning capabilities:
 
-**Grok 4.5**: Flagship reasoning model recommended by xAI's public model catalog. Chat requests can set `reasoning_effort` to `low`, `medium`, or `high` (defaults to `high`); Promptfoo rejects other values locally because xAI cannot disable reasoning for this model. Responses API requests use `reasoning.effort` with the same values.
+**Grok 4.5**: Flagship reasoning model recommended by xAI's public model catalog. Chat requests can set `reasoning_effort` to `low`, `medium`, or `high` (defaults to `high`); artef rejects other values locally because xAI cannot disable reasoning for this model. Responses API requests use `reasoning.effort` with the same values.
 
 **Grok 4.3**: General-purpose reasoning model. Chat requests can set `reasoning_effort` to `none`, `low`, `medium`, or `high`; Responses API requests use `reasoning.effort`.
 
@@ -141,13 +141,13 @@ Grok 4.5 is xAI's flagship model for coding, agentic tasks, and knowledge work:
 
 - **500K context window** with text and image input
 - **Configurable reasoning**: `reasoning_effort` accepts `low`, `medium`, or `high` (defaults to `high`); `none` is rejected
-- **Long-context pricing**: requests with at least 200K input tokens use the higher catalog rate ($4/M input, $1/M cached input, and $12/M output instead of $2/M, $0.50/M, and $6/M); Promptfoo uses the exact billed ticks when xAI returns them
-- **Unsupported parameters**: `presence_penalty`, `frequency_penalty`, and `stop` are rejected, and Promptfoo strips them automatically
+- **Long-context pricing**: requests with at least 200K input tokens use the higher catalog rate ($4/M input, $1/M cached input, and $12/M output instead of $2/M, $0.50/M, and $6/M); artef uses the exact billed ticks when xAI returns them
+- **Unsupported parameters**: `presence_penalty`, `frequency_penalty`, and `stop` are rejected, and artef strips them automatically
 - **Ignored parameters**: xAI silently ignores `logprobs` and `top_logprobs` on Grok 4.20 and newer models
 - **Server-side tools**: use `xai:responses:grok-4.5` for web search, X search, code execution, and MCP
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-4.5
     config:
@@ -165,7 +165,7 @@ Grok 4.3 is a general-purpose alternative for text workflows:
 - **Unsupported parameters**: Same restrictions as other Grok 4-family reasoning models (`presence_penalty`, `frequency_penalty`, and `stop`)
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-4.3
     config:
@@ -173,14 +173,14 @@ providers:
       max_completion_tokens: 4096
 ```
 
-**Grok-3 Models**: Promptfoo retains the legacy Grok 3 Mini reasoning-effort contract for backward compatibility. Use Grok 4.3 or Grok 4.5 for new configurations.
+**Grok-3 Models**: artef retains the legacy Grok 3 Mini reasoning-effort contract for backward compatibility. Use Grok 4.3 or Grok 4.5 for new configurations.
 
 ### Grok 4.1 Fast Specific Behavior
 
-These retired IDs redirect to Grok 4.3 but retain their legacy request contract. Promptfoo strips `reasoning_effort`, `presence_penalty`, `frequency_penalty`, and `stop` from these requests. Target Grok 4.3 directly when you need to control reasoning effort.
+These retired IDs redirect to Grok 4.3 but retain their legacy request contract. artef strips `reasoning_effort`, `presence_penalty`, `frequency_penalty`, and `stop` from these requests. Target Grok 4.3 directly when you need to control reasoning effort.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-4.3
     config:
@@ -193,8 +193,8 @@ providers:
 
 These retired reasoning and non-reasoning IDs redirect to Grok 4.3 but retain their legacy request contract. Use Grok 4.3 directly for new configurations.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-4.3
     config:
@@ -205,10 +205,10 @@ providers:
 
 ### Grok-4 Specific Behavior
 
-The retired Grok 4 IDs redirect to Grok 4.3 with low reasoning effort while retaining their legacy request contract. Promptfoo strips unsupported sampling and reasoning-effort parameters; use Grok 4.3 directly for new configurations.
+The retired Grok 4 IDs redirect to Grok 4.3 with low reasoning effort while retaining their legacy request contract. artef strips unsupported sampling and reasoning-effort parameters; use Grok 4.3 directly for new configurations.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-4.3
     config:
@@ -227,8 +227,8 @@ The Grok Code Fast IDs are aliases of `grok-build-0.1`, xAI's model for agentic 
 - **Tool Integration**: Excellent support for function calling, tool usage, and web search
 - **Coding Expertise**: Particularly adept at TypeScript, Python, Java, Rust, C++, and Go
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:grok-build-0.1
     config:
@@ -255,7 +255,7 @@ xAI's global endpoint automatically routes requests to models available to your 
 
 :::warning
 
-xAI's current documentation recommends the Responses API for server-side tools. Promptfoo still passes legacy `search_parameters` through for older configs, but new search configs should use the [Agent Tools API](#agent-tools-api-responses-api).
+xAI's current documentation recommends the Responses API for server-side tools. artef still passes legacy `search_parameters` through for older configs, but new search configs should use the [Agent Tools API](#agent-tools-api-responses-api).
 
 :::
 
@@ -267,7 +267,7 @@ Legacy configs can still pass a `search_parameters` object. The `mode` field con
 
 Additional fields like `sources`, `from_date`, `to_date`, and `return_citations` may also be provided.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: xai:grok-3-beta
     config:
@@ -284,7 +284,7 @@ For a full list of options see the [xAI documentation](https://docs.x.ai/docs).
 
 Use the `xai:responses:<model>` provider to access xAI's Agent Tools API, which enables autonomous server-side tool execution for web search, X search, code execution, collections search, and remote MCP tools.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: xai:responses:grok-4.3
     config:
@@ -344,7 +344,7 @@ tools:
 
 #### Complete Example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: xai:responses:grok-4.3
     config:
@@ -437,7 +437,7 @@ providers:
 
 :::info Not Yet Supported
 
-xAI offers [Deferred Chat Completions](https://docs.x.ai/docs/guides/deferred-chat-completions) for long-running requests that can be retrieved asynchronously via a `request_id`. This feature is not yet supported in promptfoo. For async workflows, use the xAI Python SDK directly.
+xAI offers [Deferred Chat Completions](https://docs.x.ai/docs/guides/deferred-chat-completions) for long-running requests that can be retrieved asynchronously via a `request_id`. This feature is not yet supported in artef. For async workflows, use the xAI Python SDK directly.
 
 :::
 
@@ -445,7 +445,7 @@ xAI offers [Deferred Chat Completions](https://docs.x.ai/docs/guides/deferred-ch
 
 xAI supports standard OpenAI-compatible function calling for client-side tool execution:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: xai:grok-4.3
     config:
@@ -468,7 +468,7 @@ providers:
 
 xAI supports structured outputs via JSON schema:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: xai:grok-4.3
     config:
@@ -514,10 +514,10 @@ For models with vision capabilities, you can include images in your prompts usin
       text: '{{question}}'
 ```
 
-Then reference it in your promptfoo config:
+Then reference it in your artef config:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://prompt.yaml
 
@@ -553,8 +553,8 @@ Current Grok Imagine image model IDs include:
 
 Example configuration for image generation:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'A {{style}} painting of {{subject}}'
 
@@ -592,14 +592,14 @@ prompts:
 
 #### Pricing
 
-Promptfoo uses the exact `usage.cost_in_usd_ticks` value returned by xAI when available. When the API omits usage, Promptfoo falls back to its local Imagine image estimate, including documented output rates and source-image media-input charges on edit requests.
+artef uses the exact `usage.cost_in_usd_ticks` value returned by xAI when available. When the API omits usage, artef falls back to its local Imagine image estimate, including documented output rates and source-image media-input charges on edit requests.
 
 ### Video Generation
 
 xAI supports video generation through the Grok Imagine API using the `xai:video:grok-imagine-video` provider:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Generate a video of: {{scene}}'
 
@@ -679,7 +679,7 @@ Reference-to-video requires a non-empty prompt, cannot be combined with `image` 
 
 #### Pricing
 
-Promptfoo uses the exact `usage.cost_in_usd_ticks` value returned by xAI when available. When the API omits usage, Promptfoo falls back to the video provider's local duration-based estimate.
+artef uses the exact `usage.cost_in_usd_ticks` value returned by xAI when available. When the API omits usage, artef falls back to the video provider's local duration-based estimate.
 
 ### Voice Agent API
 
@@ -692,8 +692,8 @@ providers:
 
 #### Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: xai:voice:grok-voice-think-fast-1.0
     config:
@@ -759,7 +759,7 @@ tools:
 
 You can define custom function tools inline or load them from external files:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: xai:voice:grok-voice-think-fast-1.0
     config:
@@ -895,8 +895,8 @@ Supported sample rates: 8000, 16000, 22050, 24000, 32000, 44100, 48000 Hz
 
 #### Complete Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://input.json
 
@@ -925,16 +925,16 @@ For more information on the available models and API usage, refer to the [xAI do
 
 ## Examples
 
-For examples demonstrating text generation, image creation, and web search, see the [xai example](https://github.com/promptfoo/promptfoo/tree/main/examples/xai/chat).
+For examples demonstrating text generation, image creation, and web search, see the [xai example](https://github.com/artef/artef/tree/main/examples/xai/chat).
 
 ```bash
-npx promptfoo@latest init --example xai/chat
+npx artef@latest init --example xai/chat
 ```
 
-For real-time voice conversations with Grok, see the [xai-voice example](https://github.com/promptfoo/promptfoo/tree/main/examples/xai/voice).
+For real-time voice conversations with Grok, see the [xai-voice example](https://github.com/artef/artef/tree/main/examples/xai/voice).
 
 ```bash
-npx promptfoo@latest init --example xai/voice
+npx artef@latest init --example xai/voice
 ```
 
 ## See Also
@@ -958,8 +958,8 @@ The xAI provider will provide helpful error messages to guide you in resolving t
 
 If you're experiencing timeouts or want to control retry behavior:
 
-- To disable retries for 5XX errors: `PROMPTFOO_RETRY_5XX=false`
-- To reduce retry delays: `PROMPTFOO_REQUEST_BACKOFF_MS=1000` (in milliseconds)
+- To disable retries for 5XX errors: `artef_RETRY_5XX=false`
+- To reduce retry delays: `artef_REQUEST_BACKOFF_MS=1000` (in milliseconds)
 
 ## Reference
 

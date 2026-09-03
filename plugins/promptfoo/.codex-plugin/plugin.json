@@ -1,35 +1,35 @@
-{
-  "name": "promptfoo",
+﻿{
+  "name": "artef",
   "version": "0.1.1",
-  "description": "Agent skills for connecting, evaluating, and red teaming LLM applications with Promptfoo.",
+  "description": "Agent skills for connecting, evaluating, and red teaming LLM applications with artef.",
   "author": {
-    "name": "Promptfoo",
-    "email": "support@promptfoo.dev",
-    "url": "https://www.promptfoo.dev"
+    "name": "artef",
+    "email": "support@artef.dev",
+    "url": "https://www.artef.dev"
   },
-  "homepage": "https://www.promptfoo.dev/docs/integrations/agent-skill",
-  "repository": "https://github.com/promptfoo/promptfoo",
+  "homepage": "https://www.artef.dev/docs/integrations/agent-skill",
+  "repository": "https://github.com/artef/artef",
   "license": "MIT",
-  "keywords": ["eval", "redteam", "llm", "testing", "promptfoo"],
+  "keywords": ["eval", "redteam", "llm", "testing", "artef"],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Promptfoo",
+    "displayName": "artef",
     "shortDescription": "Create evals, connect targets, and red team LLM apps",
-    "longDescription": "Promptfoo skills for configuring providers and targets, writing eval suites, and setting up or running red team workflows against LLM apps.",
-    "developerName": "Promptfoo",
+    "longDescription": "artef skills for configuring providers and targets, writing eval suites, and setting up or running red team workflows against LLM apps.",
+    "developerName": "artef",
     "category": "Developer Tools",
     "capabilities": ["Read", "Write"],
-    "websiteURL": "https://www.promptfoo.dev",
-    "privacyPolicyURL": "https://www.promptfoo.dev/privacy/",
-    "termsOfServiceURL": "https://www.promptfoo.dev/terms-of-service/",
+    "websiteURL": "https://www.artef.dev",
+    "privacyPolicyURL": "https://www.artef.dev/privacy/",
+    "termsOfServiceURL": "https://www.artef.dev/terms-of-service/",
     "defaultPrompt": [
-      "Write a Promptfoo eval for this behavior.",
-      "Use Promptfoo to connect my HTTP endpoint to an eval.",
-      "Set up or run Promptfoo red teaming for this API."
+      "Write a artef eval for this behavior.",
+      "Use artef to connect my HTTP endpoint to an eval.",
+      "Set up or run artef red teaming for this API."
     ],
     "brandColor": "#FE2C06",
-    "composerIcon": "./assets/promptfoo-panda.svg",
-    "logo": "./assets/promptfoo-panda.svg",
+    "composerIcon": "./assets/artef-panda.svg",
+    "logo": "./assets/artef-panda.svg",
     "screenshots": []
   }
 }

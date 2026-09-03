@@ -1,6 +1,6 @@
-# integration-browser (Browser)
+﻿# integration-browser (Browser)
 
-Examples for using promptfoo with browser-based testing.
+Examples for using artef with browser-based testing.
 
 ## Examples
 

@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class InsuranceDataDisclosurePluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:insurance:data-disclosure';
+  readonly id = 'artef:redteam:insurance:data-disclosure';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

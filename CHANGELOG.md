@@ -1,1969 +1,1969 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [0.122.2](https://github.com/promptfoo/promptfoo/compare/0.122.1...0.122.2) (2026-08-28)
+## [0.122.2](https://github.com/artef/artef/compare/0.122.1...0.122.2) (2026-08-28)
 
 ### Features
 
-- **auth:** support configurable Cloud auth header name ([#10375](https://github.com/promptfoo/promptfoo/issues/10375)) ([997cb56](https://github.com/promptfoo/promptfoo/commit/997cb56535dd5ba5ab602adbd8aaca266ac9141e))
-- **providers:** add Codex Security SDK provider ([#10467](https://github.com/promptfoo/promptfoo/issues/10467)) ([df8a5ab](https://github.com/promptfoo/promptfoo/commit/df8a5ab89807f9ec2c3c5bb9fb6a80dce630cc1f))
+- **auth:** support configurable Cloud auth header name ([#10375](https://github.com/artef/artef/issues/10375)) ([997cb56](https://github.com/artef/artef/commit/997cb56535dd5ba5ab602adbd8aaca266ac9141e))
+- **providers:** add Codex Security SDK provider ([#10467](https://github.com/artef/artef/issues/10467)) ([df8a5ab](https://github.com/artef/artef/commit/df8a5ab89807f9ec2c3c5bb9fb6a80dce630cc1f))
 
-## [0.122.1](https://github.com/promptfoo/promptfoo/compare/0.122.0...0.122.1) (2026-08-26)
+## [0.122.1](https://github.com/artef/artef/compare/0.122.0...0.122.1) (2026-08-26)
 
 ### Features
 
-- **eval:** distinguish scan footprint from incurred token usage ([#10497](https://github.com/promptfoo/promptfoo/issues/10497)) ([8df8ef0](https://github.com/promptfoo/promptfoo/commit/8df8ef0148a838be26a08a1124a733563db178d7))
-- **providers:** add Gemini 3.7 Flash and Flash-Lite ([#10389](https://github.com/promptfoo/promptfoo/issues/10389)) ([bc6b189](https://github.com/promptfoo/promptfoo/commit/bc6b189ba7a2f21098a2e52c9f46063c62a6f696))
-- **redteam:** account for multi-turn attacker and grading tokens ([#10407](https://github.com/promptfoo/promptfoo/issues/10407)) ([33cc8bc](https://github.com/promptfoo/promptfoo/commit/33cc8bc90e07d6c4ba36c83001cca1b4726b7593))
-- **redteam:** report generation, target, attacker, and grading tokens ([#10408](https://github.com/promptfoo/promptfoo/issues/10408)) ([0891e4e](https://github.com/promptfoo/promptfoo/commit/0891e4e9e49d1c63df6379b1dfbb79bac659e331))
-- **tracing:** add test-case roots and universal target spans ([#10328](https://github.com/promptfoo/promptfoo/issues/10328)) ([334586e](https://github.com/promptfoo/promptfoo/commit/334586ee4b21e56d16cff63c9b82134614d05486))
-- **tracing:** align spans with OpenTelemetry GenAI conventions ([#10361](https://github.com/promptfoo/promptfoo/issues/10361)) ([e6f44f8](https://github.com/promptfoo/promptfoo/commit/e6f44f8b04cf961d7227ad4062c1c04dcb62c1f0))
-- **tracing:** fetch external spans from Grafana Tempo ([#10327](https://github.com/promptfoo/promptfoo/issues/10327)) ([1b445b0](https://github.com/promptfoo/promptfoo/commit/1b445b0db4cf7e2ef87cfb9a09ab397ecae802e2))
-- **tracing:** fetch external traces from Braintrust ([#10329](https://github.com/promptfoo/promptfoo/issues/10329)) ([f372318](https://github.com/promptfoo/promptfoo/commit/f3723187d94479add2a51c5f36c4f61fb1999e80))
-- **tracing:** fetch external traces from Langfuse ([#10372](https://github.com/promptfoo/promptfoo/issues/10372)) ([f7809f6](https://github.com/promptfoo/promptfoo/commit/f7809f60e44fbb4898f5c2abc31990ac0712b5a8))
-- **tracing:** harden trace span persistence ([#10326](https://github.com/promptfoo/promptfoo/issues/10326)) ([d9d0e82](https://github.com/promptfoo/promptfoo/commit/d9d0e82254f265f8d299a7a9fb3e4ed9e99d7834))
-- **tracing:** instrument grading and red-team execution ([#10362](https://github.com/promptfoo/promptfoo/issues/10362)) ([a53ba32](https://github.com/promptfoo/promptfoo/commit/a53ba328e6af77fce98e67ab2ca69035f9f026ec))
-- **tracing:** integrate OpenAI Agents and Vercel SDK telemetry ([#10364](https://github.com/promptfoo/promptfoo/issues/10364)) ([8f89002](https://github.com/promptfoo/promptfoo/commit/8f890022486aac5884e614fc85d670fd0125d10d))
-- **tracing:** standardize tool execution across providers ([#10363](https://github.com/promptfoo/promptfoo/issues/10363)) ([b54ccbd](https://github.com/promptfoo/promptfoo/commit/b54ccbd7b253d9a4f469766f581e0b3803681b24))
-- **tracing:** support Claude and Codex subprocess telemetry ([#10365](https://github.com/promptfoo/promptfoo/issues/10365)) ([84c518f](https://github.com/promptfoo/promptfoo/commit/84c518f412ac6e08bdb2e17e21b2eb32312fc649))
+- **eval:** distinguish scan footprint from incurred token usage ([#10497](https://github.com/artef/artef/issues/10497)) ([8df8ef0](https://github.com/artef/artef/commit/8df8ef0148a838be26a08a1124a733563db178d7))
+- **providers:** add Gemini 3.7 Flash and Flash-Lite ([#10389](https://github.com/artef/artef/issues/10389)) ([bc6b189](https://github.com/artef/artef/commit/bc6b189ba7a2f21098a2e52c9f46063c62a6f696))
+- **redteam:** account for multi-turn attacker and grading tokens ([#10407](https://github.com/artef/artef/issues/10407)) ([33cc8bc](https://github.com/artef/artef/commit/33cc8bc90e07d6c4ba36c83001cca1b4726b7593))
+- **redteam:** report generation, target, attacker, and grading tokens ([#10408](https://github.com/artef/artef/issues/10408)) ([0891e4e](https://github.com/artef/artef/commit/0891e4e9e49d1c63df6379b1dfbb79bac659e331))
+- **tracing:** add test-case roots and universal target spans ([#10328](https://github.com/artef/artef/issues/10328)) ([334586e](https://github.com/artef/artef/commit/334586ee4b21e56d16cff63c9b82134614d05486))
+- **tracing:** align spans with OpenTelemetry GenAI conventions ([#10361](https://github.com/artef/artef/issues/10361)) ([e6f44f8](https://github.com/artef/artef/commit/e6f44f8b04cf961d7227ad4062c1c04dcb62c1f0))
+- **tracing:** fetch external spans from Grafana Tempo ([#10327](https://github.com/artef/artef/issues/10327)) ([1b445b0](https://github.com/artef/artef/commit/1b445b0db4cf7e2ef87cfb9a09ab397ecae802e2))
+- **tracing:** fetch external traces from Braintrust ([#10329](https://github.com/artef/artef/issues/10329)) ([f372318](https://github.com/artef/artef/commit/f3723187d94479add2a51c5f36c4f61fb1999e80))
+- **tracing:** fetch external traces from Langfuse ([#10372](https://github.com/artef/artef/issues/10372)) ([f7809f6](https://github.com/artef/artef/commit/f7809f60e44fbb4898f5c2abc31990ac0712b5a8))
+- **tracing:** harden trace span persistence ([#10326](https://github.com/artef/artef/issues/10326)) ([d9d0e82](https://github.com/artef/artef/commit/d9d0e82254f265f8d299a7a9fb3e4ed9e99d7834))
+- **tracing:** instrument grading and red-team execution ([#10362](https://github.com/artef/artef/issues/10362)) ([a53ba32](https://github.com/artef/artef/commit/a53ba328e6af77fce98e67ab2ca69035f9f026ec))
+- **tracing:** integrate OpenAI Agents and Vercel SDK telemetry ([#10364](https://github.com/artef/artef/issues/10364)) ([8f89002](https://github.com/artef/artef/commit/8f890022486aac5884e614fc85d670fd0125d10d))
+- **tracing:** standardize tool execution across providers ([#10363](https://github.com/artef/artef/issues/10363)) ([b54ccbd](https://github.com/artef/artef/commit/b54ccbd7b253d9a4f469766f581e0b3803681b24))
+- **tracing:** support Claude and Codex subprocess telemetry ([#10365](https://github.com/artef/artef/issues/10365)) ([84c518f](https://github.com/artef/artef/commit/84c518f412ac6e08bdb2e17e21b2eb32312fc649))
 
 ### Bug Fixes
 
-- **app:** clarify red team grading actions ([#10366](https://github.com/promptfoo/promptfoo/issues/10366)) ([84a5cf2](https://github.com/promptfoo/promptfoo/commit/84a5cf214f3bad068eb5a90bed0803c129a4e44f))
-- **assertions:** avoid regex backtracking in GLEU and SQL parsing ([#10373](https://github.com/promptfoo/promptfoo/issues/10373)) ([57243cf](https://github.com/promptfoo/promptfoo/commit/57243cf84bd9625fa9b4d331806cfb240c75d247))
-- **assertions:** correct inverse JSON failure messages ([#9824](https://github.com/promptfoo/promptfoo/issues/9824)) ([d1d8de3](https://github.com/promptfoo/promptfoo/commit/d1d8de31470b0dc238f67cf2de0a926bc0ed3416))
-- **assertions:** reject out-of-range trace-span-duration percentile ([#10089](https://github.com/promptfoo/promptfoo/issues/10089)) ([49c0f6d](https://github.com/promptfoo/promptfoo/commit/49c0f6d77496c022c6d32e362522993bb0d72d42))
-- **assertions:** score tokenless GLEU inputs as zero ([#9850](https://github.com/promptfoo/promptfoo/issues/9850)) ([cc8c0c6](https://github.com/promptfoo/promptfoo/commit/cc8c0c65f1378d80166b2a209747cd9c1a6302c2))
-- **deps:** align Chevrotain CST generator with parser ([#10360](https://github.com/promptfoo/promptfoo/issues/10360)) ([6ae80cd](https://github.com/promptfoo/promptfoo/commit/6ae80cd9e5bde81f976cfba65fcea5d05661c7f8))
-- **deps:** block install scripts in Docker builds ([#10330](https://github.com/promptfoo/promptfoo/issues/10330)) ([c4454c4](https://github.com/promptfoo/promptfoo/commit/c4454c401c93d77a6a46fe1d883175f47adc1eff))
-- **deps:** bundle the runtime cache dependency ([#10302](https://github.com/promptfoo/promptfoo/issues/10302)) ([b5f8ea3](https://github.com/promptfoo/promptfoo/commit/b5f8ea3b0a307adb91c31ed4e13a3d6896902841))
-- **deps:** enforce npm release age during lockfile maintenance ([#10396](https://github.com/promptfoo/promptfoo/issues/10396)) ([42c1076](https://github.com/promptfoo/promptfoo/commit/42c1076b9ba691f65b5c5cbd5bfedc3cbba8842c))
-- **deps:** hold jsdom below the release our Node floor cannot install ([#10351](https://github.com/promptfoo/promptfoo/issues/10351)) ([2dcb128](https://github.com/promptfoo/promptfoo/commit/2dcb128ce6ced450fd91d036d5695a29c8369681))
-- **deps:** hold tanstack table below incompatible v9 ([#10388](https://github.com/promptfoo/promptfoo/issues/10388)) ([fded938](https://github.com/promptfoo/promptfoo/commit/fded938b65a81e12070a66e90ca4ad2d42a8062e))
-- **deps:** keep Renovate on the supported npm major ([#10393](https://github.com/promptfoo/promptfoo/issues/10393)) ([f5034c1](https://github.com/promptfoo/promptfoo/commit/f5034c1a33a6db26f25dfa77e7e587d8386d6b4a))
-- **deps:** limit pnpm install scripts and new releases ([#10331](https://github.com/promptfoo/promptfoo/issues/10331)) ([0dbf6c8](https://github.com/promptfoo/promptfoo/commit/0dbf6c8e0bbcaa232b2fe4447545080aa0e5bf18))
-- **deps:** patch vulnerable transitive js-yaml releases ([#10356](https://github.com/promptfoo/promptfoo/issues/10356)) ([2626fd0](https://github.com/promptfoo/promptfoo/commit/2626fd0eddf687784f89e7b0aa791953e83b3e72))
-- **deps:** prevent incompatible Chevrotain parser updates ([#10306](https://github.com/promptfoo/promptfoo/issues/10306)) ([77c08d5](https://github.com/promptfoo/promptfoo/commit/77c08d5f0cf7720249648ff064dfdef2a3f23200))
-- **deps:** prevent incompatible chevrotain-allstar upgrades ([#10399](https://github.com/promptfoo/promptfoo/issues/10399)) ([5357d06](https://github.com/promptfoo/promptfoo/commit/5357d067166b3b3a1eed49e2e5717855643a1188))
-- **deps:** restore standard cache dependency resolution ([#10314](https://github.com/promptfoo/promptfoo/issues/10314)) ([ca65846](https://github.com/promptfoo/promptfoo/commit/ca65846615f65a2316c3378adae0607488303e8f))
-- **deps:** update anthropic packages ([#10426](https://github.com/promptfoo/promptfoo/issues/10426)) ([ef4cd6b](https://github.com/promptfoo/promptfoo/commit/ef4cd6bd234cb69f63c5fb6c61d3cd8483ab8f54))
-- **deps:** update anthropic packages ([#10471](https://github.com/promptfoo/promptfoo/issues/10471)) ([ed5bae3](https://github.com/promptfoo/promptfoo/commit/ed5bae37f5c9d68184ea9378c53f69d456a9d6c2))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to v16 ([#10474](https://github.com/promptfoo/promptfoo/issues/10474)) ([7600c55](https://github.com/promptfoo/promptfoo/commit/7600c558c8dc1e6d8f245d2c2a122dc449d1963d))
-- **deps:** update dependency @hono/node-server to v2.1.0 ([#10385](https://github.com/promptfoo/promptfoo/issues/10385)) ([af026d0](https://github.com/promptfoo/promptfoo/commit/af026d02115c31dad4bebe0484ab5b6a3a62f6e2))
-- **deps:** update dependency @hono/node-server to v2.1.1 ([#10472](https://github.com/promptfoo/promptfoo/issues/10472)) ([24ef223](https://github.com/promptfoo/promptfoo/commit/24ef22354a86f8adf32fbc89d9dfe581a6671162))
-- **deps:** update dependency chalk to v6 ([#10309](https://github.com/promptfoo/promptfoo/issues/10309)) ([1c30e18](https://github.com/promptfoo/promptfoo/commit/1c30e183c4a464d953898398399dc6aa69786471))
-- **deps:** update dependency gcp-metadata to v9 ([#10350](https://github.com/promptfoo/promptfoo/issues/10350)) ([16cb1f3](https://github.com/promptfoo/promptfoo/commit/16cb1f3c251d2aa8227ead6fd802ee3b8790f5d2))
-- **deps:** update dependency js-yaml to v5.2.3 ([#10354](https://github.com/promptfoo/promptfoo/issues/10354)) ([fc36f28](https://github.com/promptfoo/promptfoo/commit/fc36f283493e4c23afee1e1ae9a2e7b127cf2ea3))
-- **deps:** update dependency js-yaml to v5.3.0 ([#10473](https://github.com/promptfoo/promptfoo/issues/10473)) ([e419aff](https://github.com/promptfoo/promptfoo/commit/e419aff5021543ff3d940c0ce408e552ca3d6e9b))
-- **deps:** update dependency openai to v7 ([#10318](https://github.com/promptfoo/promptfoo/issues/10318)) ([9a5f84b](https://github.com/promptfoo/promptfoo/commit/9a5f84b96976111376a586c48414014ddd8b42fd))
-- **providers:** apply path-traversal guard to all callback loaders ([#9472](https://github.com/promptfoo/promptfoo/issues/9472)) ([87a5a42](https://github.com/promptfoo/promptfoo/commit/87a5a4267c548033398b351a91b72f371930d47f))
-- **providers:** avoid crash on empty choices in snowflake and openrouter ([#10418](https://github.com/promptfoo/promptfoo/issues/10418)) ([c149fcf](https://github.com/promptfoo/promptfoo/commit/c149fcf36c2aeaac83a215906c2caa659cafecff))
-- **providers:** count cached and thinking tokens for Claude on Bedrock ([#10492](https://github.com/promptfoo/promptfoo/issues/10492)) ([0170037](https://github.com/promptfoo/promptfoo/commit/0170037970dd4732f7542c60ceafa5f4951289de))
-- **providers:** count Claude Agent SDK subagent tokens ([#10455](https://github.com/promptfoo/promptfoo/issues/10455)) ([5cd3baa](https://github.com/promptfoo/promptfoo/commit/5cd3baae39922b704d5cf6e8ccbe4a8283e921e4))
-- **providers:** future-proof Claude sampling without alias collisions ([#10359](https://github.com/promptfoo/promptfoo/issues/10359)) ([9a1e965](https://github.com/promptfoo/promptfoo/commit/9a1e9659bbe694c8b1122a415428a8daf5472b22))
-- **providers:** harden coding-agent tool policies ([#9044](https://github.com/promptfoo/promptfoo/issues/9044)) ([7759d6f](https://github.com/promptfoo/promptfoo/commit/7759d6f9421499e6bf72b5e843113fb5d8a531d9))
-- **providers:** honor Claude Agent SDK cancellation ([#10459](https://github.com/promptfoo/promptfoo/issues/10459)) ([a488cb4](https://github.com/promptfoo/promptfoo/commit/a488cb498d3786befcdcf415b2373bc02fe1808f))
-- **providers:** isolate Anthropic credentials and Meta Responses ([#10110](https://github.com/promptfoo/promptfoo/issues/10110)) ([f24966a](https://github.com/promptfoo/promptfoo/commit/f24966ab7c3f4aab0403611e18de5f2590b3e052))
-- **providers:** normalize OpenRouter URLs and validate SDK ranges ([#10433](https://github.com/promptfoo/promptfoo/issues/10433)) ([a0b9c34](https://github.com/promptfoo/promptfoo/commit/a0b9c349fa2e0631d68a66042bda319ab4e707e0))
-- **providers:** preserve Claude SDK task tools ([#10489](https://github.com/promptfoo/promptfoo/issues/10489)) ([ac71008](https://github.com/promptfoo/promptfoo/commit/ac71008b68946c4cdb9c3e8c507a29565813d523))
-- **providers:** preserve scheduled Claude task results ([#10233](https://github.com/promptfoo/promptfoo/issues/10233)) ([b1999a0](https://github.com/promptfoo/promptfoo/commit/b1999a03d43918f3016e8bea83cd0cdb24f8500c))
-- **providers:** raise max_tokens above a manual thinking budget on every Claude route ([#10491](https://github.com/promptfoo/promptfoo/issues/10491)) ([73e0e1f](https://github.com/promptfoo/promptfoo/commit/73e0e1fb5dea61695acb3af9bcf7a13889bea913))
-- **providers:** redact AWS SigV4 credentials in sanitized output ([#10482](https://github.com/promptfoo/promptfoo/issues/10482)) ([eeebd72](https://github.com/promptfoo/promptfoo/commit/eeebd72abd54ebf0de9e47541a6547577db63e2b))
-- **providers:** resolve the anthropic shorthand for uncatalogued models ([#10490](https://github.com/promptfoo/promptfoo/issues/10490)) ([3c77783](https://github.com/promptfoo/promptfoo/commit/3c77783e19aa2df6b14699ec21eacac9c66d97ab))
-- **providers:** update GPT model costs ([#10319](https://github.com/promptfoo/promptfoo/issues/10319)) ([9988fcb](https://github.com/promptfoo/promptfoo/commit/9988fcb02b1dc0b6aee11e4c2266b21c54c9a1da))
-- **providers:** validate coding-agent targets and cache keys ([#10111](https://github.com/promptfoo/promptfoo/issues/10111)) ([2003fcc](https://github.com/promptfoo/promptfoo/commit/2003fcc659fa466f654c1be685475eda6fa9570a))
-- **redteam:** account for all scan-time model calls ([#10479](https://github.com/promptfoo/promptfoo/issues/10479)) ([9b11bd8](https://github.com/promptfoo/promptfoo/commit/9b11bd8b5aea423c885cd56536cda78bf13e8422))
-- **redteam:** account for remote strategy generation usage ([#10445](https://github.com/promptfoo/promptfoo/issues/10445)) ([02c9209](https://github.com/promptfoo/promptfoo/commit/02c9209aeab1c0f72b8aa923967cf0a8f869de16))
-- **redteam:** count unmetered generation requests ([#10429](https://github.com/promptfoo/promptfoo/issues/10429)) ([b74d5e0](https://github.com/promptfoo/promptfoo/commit/b74d5e05570b2b4fcc48986503764b1ca8bfe5ed))
-- **redteam:** preserve cached generation and retry accounting ([#10507](https://github.com/promptfoo/promptfoo/issues/10507)) ([4868649](https://github.com/promptfoo/promptfoo/commit/486864972a8e4f6d75832a138f4410325ab6c0d0))
-- **redteam:** preserve cumulative grading token usage ([#10406](https://github.com/promptfoo/promptfoo/issues/10406)) ([be75b25](https://github.com/promptfoo/promptfoo/commit/be75b25b13a012d2c60820a244770bf1ef1241e0))
-- **redteam:** prevent cached and duplicate token charges ([#10417](https://github.com/promptfoo/promptfoo/issues/10417)) ([4ba76df](https://github.com/promptfoo/promptfoo/commit/4ba76df943f4488281830f7424f64136b6f419cd))
-- **redteam:** separate Mischievous User token usage ([#10431](https://github.com/promptfoo/promptfoo/issues/10431)) ([f30f67d](https://github.com/promptfoo/promptfoo/commit/f30f67d0134558123ce3a9a3ad2f024439e98c93))
-- **scheduler:** parse RFC 3339 rate-limit reset headers ([#10322](https://github.com/promptfoo/promptfoo/issues/10322)) ([12f0322](https://github.com/promptfoo/promptfoo/commit/12f0322ab108886215922495d4ae9dbddfc14af5))
-- **tracing:** capture effective OpenAI completion request settings ([#10368](https://github.com/promptfoo/promptfoo/issues/10368)) ([176215c](https://github.com/promptfoo/promptfoo/commit/176215c5a809cef59f38b27b682c07eef7a8dbc7))
-- **tracing:** select meaningful model and tool spans for red teaming ([#10358](https://github.com/promptfoo/promptfoo/issues/10358)) ([be44f83](https://github.com/promptfoo/promptfoo/commit/be44f8389bcd234e7144861957f670548ce85326))
-- **webui:** stop the media bulk download when the page unmounts ([#10487](https://github.com/promptfoo/promptfoo/issues/10487)) ([2309f65](https://github.com/promptfoo/promptfoo/commit/2309f65e1c64db9be66c785f5ccb6ee51eacec7d))
+- **app:** clarify red team grading actions ([#10366](https://github.com/artef/artef/issues/10366)) ([84a5cf2](https://github.com/artef/artef/commit/84a5cf214f3bad068eb5a90bed0803c129a4e44f))
+- **assertions:** avoid regex backtracking in GLEU and SQL parsing ([#10373](https://github.com/artef/artef/issues/10373)) ([57243cf](https://github.com/artef/artef/commit/57243cf84bd9625fa9b4d331806cfb240c75d247))
+- **assertions:** correct inverse JSON failure messages ([#9824](https://github.com/artef/artef/issues/9824)) ([d1d8de3](https://github.com/artef/artef/commit/d1d8de31470b0dc238f67cf2de0a926bc0ed3416))
+- **assertions:** reject out-of-range trace-span-duration percentile ([#10089](https://github.com/artef/artef/issues/10089)) ([49c0f6d](https://github.com/artef/artef/commit/49c0f6d77496c022c6d32e362522993bb0d72d42))
+- **assertions:** score tokenless GLEU inputs as zero ([#9850](https://github.com/artef/artef/issues/9850)) ([cc8c0c6](https://github.com/artef/artef/commit/cc8c0c65f1378d80166b2a209747cd9c1a6302c2))
+- **deps:** align Chevrotain CST generator with parser ([#10360](https://github.com/artef/artef/issues/10360)) ([6ae80cd](https://github.com/artef/artef/commit/6ae80cd9e5bde81f976cfba65fcea5d05661c7f8))
+- **deps:** block install scripts in Docker builds ([#10330](https://github.com/artef/artef/issues/10330)) ([c4454c4](https://github.com/artef/artef/commit/c4454c401c93d77a6a46fe1d883175f47adc1eff))
+- **deps:** bundle the runtime cache dependency ([#10302](https://github.com/artef/artef/issues/10302)) ([b5f8ea3](https://github.com/artef/artef/commit/b5f8ea3b0a307adb91c31ed4e13a3d6896902841))
+- **deps:** enforce npm release age during lockfile maintenance ([#10396](https://github.com/artef/artef/issues/10396)) ([42c1076](https://github.com/artef/artef/commit/42c1076b9ba691f65b5c5cbd5bfedc3cbba8842c))
+- **deps:** hold jsdom below the release our Node floor cannot install ([#10351](https://github.com/artef/artef/issues/10351)) ([2dcb128](https://github.com/artef/artef/commit/2dcb128ce6ced450fd91d036d5695a29c8369681))
+- **deps:** hold tanstack table below incompatible v9 ([#10388](https://github.com/artef/artef/issues/10388)) ([fded938](https://github.com/artef/artef/commit/fded938b65a81e12070a66e90ca4ad2d42a8062e))
+- **deps:** keep Renovate on the supported npm major ([#10393](https://github.com/artef/artef/issues/10393)) ([f5034c1](https://github.com/artef/artef/commit/f5034c1a33a6db26f25dfa77e7e587d8386d6b4a))
+- **deps:** limit pnpm install scripts and new releases ([#10331](https://github.com/artef/artef/issues/10331)) ([0dbf6c8](https://github.com/artef/artef/commit/0dbf6c8e0bbcaa232b2fe4447545080aa0e5bf18))
+- **deps:** patch vulnerable transitive js-yaml releases ([#10356](https://github.com/artef/artef/issues/10356)) ([2626fd0](https://github.com/artef/artef/commit/2626fd0eddf687784f89e7b0aa791953e83b3e72))
+- **deps:** prevent incompatible Chevrotain parser updates ([#10306](https://github.com/artef/artef/issues/10306)) ([77c08d5](https://github.com/artef/artef/commit/77c08d5f0cf7720249648ff064dfdef2a3f23200))
+- **deps:** prevent incompatible chevrotain-allstar upgrades ([#10399](https://github.com/artef/artef/issues/10399)) ([5357d06](https://github.com/artef/artef/commit/5357d067166b3b3a1eed49e2e5717855643a1188))
+- **deps:** restore standard cache dependency resolution ([#10314](https://github.com/artef/artef/issues/10314)) ([ca65846](https://github.com/artef/artef/commit/ca65846615f65a2316c3378adae0607488303e8f))
+- **deps:** update anthropic packages ([#10426](https://github.com/artef/artef/issues/10426)) ([ef4cd6b](https://github.com/artef/artef/commit/ef4cd6bd234cb69f63c5fb6c61d3cd8483ab8f54))
+- **deps:** update anthropic packages ([#10471](https://github.com/artef/artef/issues/10471)) ([ed5bae3](https://github.com/artef/artef/commit/ed5bae37f5c9d68184ea9378c53f69d456a9d6c2))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to v16 ([#10474](https://github.com/artef/artef/issues/10474)) ([7600c55](https://github.com/artef/artef/commit/7600c558c8dc1e6d8f245d2c2a122dc449d1963d))
+- **deps:** update dependency @hono/node-server to v2.1.0 ([#10385](https://github.com/artef/artef/issues/10385)) ([af026d0](https://github.com/artef/artef/commit/af026d02115c31dad4bebe0484ab5b6a3a62f6e2))
+- **deps:** update dependency @hono/node-server to v2.1.1 ([#10472](https://github.com/artef/artef/issues/10472)) ([24ef223](https://github.com/artef/artef/commit/24ef22354a86f8adf32fbc89d9dfe581a6671162))
+- **deps:** update dependency chalk to v6 ([#10309](https://github.com/artef/artef/issues/10309)) ([1c30e18](https://github.com/artef/artef/commit/1c30e183c4a464d953898398399dc6aa69786471))
+- **deps:** update dependency gcp-metadata to v9 ([#10350](https://github.com/artef/artef/issues/10350)) ([16cb1f3](https://github.com/artef/artef/commit/16cb1f3c251d2aa8227ead6fd802ee3b8790f5d2))
+- **deps:** update dependency js-yaml to v5.2.3 ([#10354](https://github.com/artef/artef/issues/10354)) ([fc36f28](https://github.com/artef/artef/commit/fc36f283493e4c23afee1e1ae9a2e7b127cf2ea3))
+- **deps:** update dependency js-yaml to v5.3.0 ([#10473](https://github.com/artef/artef/issues/10473)) ([e419aff](https://github.com/artef/artef/commit/e419aff5021543ff3d940c0ce408e552ca3d6e9b))
+- **deps:** update dependency openai to v7 ([#10318](https://github.com/artef/artef/issues/10318)) ([9a5f84b](https://github.com/artef/artef/commit/9a5f84b96976111376a586c48414014ddd8b42fd))
+- **providers:** apply path-traversal guard to all callback loaders ([#9472](https://github.com/artef/artef/issues/9472)) ([87a5a42](https://github.com/artef/artef/commit/87a5a4267c548033398b351a91b72f371930d47f))
+- **providers:** avoid crash on empty choices in snowflake and openrouter ([#10418](https://github.com/artef/artef/issues/10418)) ([c149fcf](https://github.com/artef/artef/commit/c149fcf36c2aeaac83a215906c2caa659cafecff))
+- **providers:** count cached and thinking tokens for Claude on Bedrock ([#10492](https://github.com/artef/artef/issues/10492)) ([0170037](https://github.com/artef/artef/commit/0170037970dd4732f7542c60ceafa5f4951289de))
+- **providers:** count Claude Agent SDK subagent tokens ([#10455](https://github.com/artef/artef/issues/10455)) ([5cd3baa](https://github.com/artef/artef/commit/5cd3baae39922b704d5cf6e8ccbe4a8283e921e4))
+- **providers:** future-proof Claude sampling without alias collisions ([#10359](https://github.com/artef/artef/issues/10359)) ([9a1e965](https://github.com/artef/artef/commit/9a1e9659bbe694c8b1122a415428a8daf5472b22))
+- **providers:** harden coding-agent tool policies ([#9044](https://github.com/artef/artef/issues/9044)) ([7759d6f](https://github.com/artef/artef/commit/7759d6f9421499e6bf72b5e843113fb5d8a531d9))
+- **providers:** honor Claude Agent SDK cancellation ([#10459](https://github.com/artef/artef/issues/10459)) ([a488cb4](https://github.com/artef/artef/commit/a488cb498d3786befcdcf415b2373bc02fe1808f))
+- **providers:** isolate Anthropic credentials and Meta Responses ([#10110](https://github.com/artef/artef/issues/10110)) ([f24966a](https://github.com/artef/artef/commit/f24966ab7c3f4aab0403611e18de5f2590b3e052))
+- **providers:** normalize OpenRouter URLs and validate SDK ranges ([#10433](https://github.com/artef/artef/issues/10433)) ([a0b9c34](https://github.com/artef/artef/commit/a0b9c349fa2e0631d68a66042bda319ab4e707e0))
+- **providers:** preserve Claude SDK task tools ([#10489](https://github.com/artef/artef/issues/10489)) ([ac71008](https://github.com/artef/artef/commit/ac71008b68946c4cdb9c3e8c507a29565813d523))
+- **providers:** preserve scheduled Claude task results ([#10233](https://github.com/artef/artef/issues/10233)) ([b1999a0](https://github.com/artef/artef/commit/b1999a03d43918f3016e8bea83cd0cdb24f8500c))
+- **providers:** raise max_tokens above a manual thinking budget on every Claude route ([#10491](https://github.com/artef/artef/issues/10491)) ([73e0e1f](https://github.com/artef/artef/commit/73e0e1fb5dea61695acb3af9bcf7a13889bea913))
+- **providers:** redact AWS SigV4 credentials in sanitized output ([#10482](https://github.com/artef/artef/issues/10482)) ([eeebd72](https://github.com/artef/artef/commit/eeebd72abd54ebf0de9e47541a6547577db63e2b))
+- **providers:** resolve the anthropic shorthand for uncatalogued models ([#10490](https://github.com/artef/artef/issues/10490)) ([3c77783](https://github.com/artef/artef/commit/3c77783e19aa2df6b14699ec21eacac9c66d97ab))
+- **providers:** update GPT model costs ([#10319](https://github.com/artef/artef/issues/10319)) ([9988fcb](https://github.com/artef/artef/commit/9988fcb02b1dc0b6aee11e4c2266b21c54c9a1da))
+- **providers:** validate coding-agent targets and cache keys ([#10111](https://github.com/artef/artef/issues/10111)) ([2003fcc](https://github.com/artef/artef/commit/2003fcc659fa466f654c1be685475eda6fa9570a))
+- **redteam:** account for all scan-time model calls ([#10479](https://github.com/artef/artef/issues/10479)) ([9b11bd8](https://github.com/artef/artef/commit/9b11bd8b5aea423c885cd56536cda78bf13e8422))
+- **redteam:** account for remote strategy generation usage ([#10445](https://github.com/artef/artef/issues/10445)) ([02c9209](https://github.com/artef/artef/commit/02c9209aeab1c0f72b8aa923967cf0a8f869de16))
+- **redteam:** count unmetered generation requests ([#10429](https://github.com/artef/artef/issues/10429)) ([b74d5e0](https://github.com/artef/artef/commit/b74d5e05570b2b4fcc48986503764b1ca8bfe5ed))
+- **redteam:** preserve cached generation and retry accounting ([#10507](https://github.com/artef/artef/issues/10507)) ([4868649](https://github.com/artef/artef/commit/486864972a8e4f6d75832a138f4410325ab6c0d0))
+- **redteam:** preserve cumulative grading token usage ([#10406](https://github.com/artef/artef/issues/10406)) ([be75b25](https://github.com/artef/artef/commit/be75b25b13a012d2c60820a244770bf1ef1241e0))
+- **redteam:** prevent cached and duplicate token charges ([#10417](https://github.com/artef/artef/issues/10417)) ([4ba76df](https://github.com/artef/artef/commit/4ba76df943f4488281830f7424f64136b6f419cd))
+- **redteam:** separate Mischievous User token usage ([#10431](https://github.com/artef/artef/issues/10431)) ([f30f67d](https://github.com/artef/artef/commit/f30f67d0134558123ce3a9a3ad2f024439e98c93))
+- **scheduler:** parse RFC 3339 rate-limit reset headers ([#10322](https://github.com/artef/artef/issues/10322)) ([12f0322](https://github.com/artef/artef/commit/12f0322ab108886215922495d4ae9dbddfc14af5))
+- **tracing:** capture effective OpenAI completion request settings ([#10368](https://github.com/artef/artef/issues/10368)) ([176215c](https://github.com/artef/artef/commit/176215c5a809cef59f38b27b682c07eef7a8dbc7))
+- **tracing:** select meaningful model and tool spans for red teaming ([#10358](https://github.com/artef/artef/issues/10358)) ([be44f83](https://github.com/artef/artef/commit/be44f8389bcd234e7144861957f670548ce85326))
+- **webui:** stop the media bulk download when the page unmounts ([#10487](https://github.com/artef/artef/issues/10487)) ([2309f65](https://github.com/artef/artef/commit/2309f65e1c64db9be66c785f5ccb6ee51eacec7d))
 
-## [0.122.0](https://github.com/promptfoo/promptfoo/compare/0.121.20...0.122.0) (2026-08-04)
+## [0.122.0](https://github.com/artef/artef/compare/0.121.20...0.122.0) (2026-08-04)
 
 ### ⚠ BREAKING CHANGES
 
-- drop Node.js 20 support ([#10260](https://github.com/promptfoo/promptfoo/issues/10260))
+- drop Node.js 20 support ([#10260](https://github.com/artef/artef/issues/10260))
 
 ### Bug Fixes
 
-- **deps:** keep the Shai-Hulud compromised versions unreachable ([#10301](https://github.com/promptfoo/promptfoo/issues/10301)) ([db2a066](https://github.com/promptfoo/promptfoo/commit/db2a0665648b49dde742c4d027bef92f221930f4))
-- **deps:** patch undici in code-scan-action and guard both lockfiles ([#10278](https://github.com/promptfoo/promptfoo/issues/10278)) ([15bf41f](https://github.com/promptfoo/promptfoo/commit/15bf41f2dcb7187fc6ed40cddea96b609b2610a9))
-- **deps:** pin socket.io-parser above the packet-decoder DoS ([#10279](https://github.com/promptfoo/promptfoo/issues/10279)) ([d0f2a83](https://github.com/promptfoo/promptfoo/commit/d0f2a83d8b72f3c0ad71950e2822d9350b7a48ed))
-- **deps:** repair Biome and undici upgrade regressions ([#10292](https://github.com/promptfoo/promptfoo/issues/10292)) ([3565a3c](https://github.com/promptfoo/promptfoo/commit/3565a3c1ffc16fd9f9a8d65ae93e4a6885c4b5c1))
-- **deps:** restore XML entity decoding for xlsx test files ([#10249](https://github.com/promptfoo/promptfoo/issues/10249)) ([00cdeb9](https://github.com/promptfoo/promptfoo/commit/00cdeb9a857ab019f61789b69ef75c3c852ce283))
-- **deps:** update anthropic packages ([#10234](https://github.com/promptfoo/promptfoo/issues/10234)) ([6279230](https://github.com/promptfoo/promptfoo/commit/6279230cae992d0ad4d6a823728b4a06d2553d73))
-- **deps:** update anthropic packages ([#10277](https://github.com/promptfoo/promptfoo/issues/10277)) ([f8609a6](https://github.com/promptfoo/promptfoo/commit/f8609a6b70a0c155f84c6921d111d3b30968e952))
-- **deps:** update dependency execa to v10 ([#10227](https://github.com/promptfoo/promptfoo/issues/10227)) ([bab74b8](https://github.com/promptfoo/promptfoo/commit/bab74b8623bb44182843de01b95890ae10c1cfcb))
-- **deps:** update opentelemetry ([#10290](https://github.com/promptfoo/promptfoo/issues/10290)) ([5638797](https://github.com/promptfoo/promptfoo/commit/5638797888b50e38ac263463ef2c7bd7d1ae2a6c))
-- **providers:** correct Nscale model identifiers ([#10259](https://github.com/promptfoo/promptfoo/issues/10259)) ([249b125](https://github.com/promptfoo/promptfoo/commit/249b125277d5c6fdeaaf610c253ddbbb1c460685))
-- **providers:** stop leaking Nscale provider settings into the request body ([#10258](https://github.com/promptfoo/promptfoo/issues/10258)) ([d23f86a](https://github.com/promptfoo/promptfoo/commit/d23f86a3907946f02c962a190e66edb0a642efe1))
-- **providers:** stop WebSocket evals from hanging when a stream stalls ([#10266](https://github.com/promptfoo/promptfoo/issues/10266)) ([60898c7](https://github.com/promptfoo/promptfoo/commit/60898c7faedbfa6bedf4832feffffcd5d6ecaef0))
+- **deps:** keep the Shai-Hulud compromised versions unreachable ([#10301](https://github.com/artef/artef/issues/10301)) ([db2a066](https://github.com/artef/artef/commit/db2a0665648b49dde742c4d027bef92f221930f4))
+- **deps:** patch undici in code-scan-action and guard both lockfiles ([#10278](https://github.com/artef/artef/issues/10278)) ([15bf41f](https://github.com/artef/artef/commit/15bf41f2dcb7187fc6ed40cddea96b609b2610a9))
+- **deps:** pin socket.io-parser above the packet-decoder DoS ([#10279](https://github.com/artef/artef/issues/10279)) ([d0f2a83](https://github.com/artef/artef/commit/d0f2a83d8b72f3c0ad71950e2822d9350b7a48ed))
+- **deps:** repair Biome and undici upgrade regressions ([#10292](https://github.com/artef/artef/issues/10292)) ([3565a3c](https://github.com/artef/artef/commit/3565a3c1ffc16fd9f9a8d65ae93e4a6885c4b5c1))
+- **deps:** restore XML entity decoding for xlsx test files ([#10249](https://github.com/artef/artef/issues/10249)) ([00cdeb9](https://github.com/artef/artef/commit/00cdeb9a857ab019f61789b69ef75c3c852ce283))
+- **deps:** update anthropic packages ([#10234](https://github.com/artef/artef/issues/10234)) ([6279230](https://github.com/artef/artef/commit/6279230cae992d0ad4d6a823728b4a06d2553d73))
+- **deps:** update anthropic packages ([#10277](https://github.com/artef/artef/issues/10277)) ([f8609a6](https://github.com/artef/artef/commit/f8609a6b70a0c155f84c6921d111d3b30968e952))
+- **deps:** update dependency execa to v10 ([#10227](https://github.com/artef/artef/issues/10227)) ([bab74b8](https://github.com/artef/artef/commit/bab74b8623bb44182843de01b95890ae10c1cfcb))
+- **deps:** update opentelemetry ([#10290](https://github.com/artef/artef/issues/10290)) ([5638797](https://github.com/artef/artef/commit/5638797888b50e38ac263463ef2c7bd7d1ae2a6c))
+- **providers:** correct Nscale model identifiers ([#10259](https://github.com/artef/artef/issues/10259)) ([249b125](https://github.com/artef/artef/commit/249b125277d5c6fdeaaf610c253ddbbb1c460685))
+- **providers:** stop leaking Nscale provider settings into the request body ([#10258](https://github.com/artef/artef/issues/10258)) ([d23f86a](https://github.com/artef/artef/commit/d23f86a3907946f02c962a190e66edb0a642efe1))
+- **providers:** stop WebSocket evals from hanging when a stream stalls ([#10266](https://github.com/artef/artef/issues/10266)) ([60898c7](https://github.com/artef/artef/commit/60898c7faedbfa6bedf4832feffffcd5d6ecaef0))
 
 ### Miscellaneous Chores
 
-- drop Node.js 20 support ([#10260](https://github.com/promptfoo/promptfoo/issues/10260)) ([26b725b](https://github.com/promptfoo/promptfoo/commit/26b725bd9496351ef269380c9fd83b9c2c338a0e))
+- drop Node.js 20 support ([#10260](https://github.com/artef/artef/issues/10260)) ([26b725b](https://github.com/artef/artef/commit/26b725bd9496351ef269380c9fd83b9c2c338a0e))
 
-## [0.121.20](https://github.com/promptfoo/promptfoo/compare/0.121.19...0.121.20) (2026-07-30)
-
-### Features
-
-- **providers:** add Claude Opus 5 support ([#10210](https://github.com/promptfoo/promptfoo/issues/10210)) ([ff84f13](https://github.com/promptfoo/promptfoo/commit/ff84f13605c09cac0c3c591d9590622f864cc2f7))
-- **providers:** add current Azure, Claude, and Gemini models ([#10128](https://github.com/promptfoo/promptfoo/issues/10128)) ([5c216a1](https://github.com/promptfoo/promptfoo/commit/5c216a1bc33104bb507a9e57952b81a0fb27d06f))
-- **providers:** add Kimi K3 support to Moonshot provider ([#10132](https://github.com/promptfoo/promptfoo/issues/10132)) ([a1168b6](https://github.com/promptfoo/promptfoo/commit/a1168b62ef31a6c061f16ecdf2bfd76514e2a852))
-- **websocket:** support URL templating ([#10171](https://github.com/promptfoo/promptfoo/issues/10171)) ([a9aaced](https://github.com/promptfoo/promptfoo/commit/a9aacede5c3f84150d999bfbeadbbf39834370ea))
-
-### Bug Fixes
-
-- **assertions:** default conversation-relevance threshold to 0.5 ([#10142](https://github.com/promptfoo/promptfoo/issues/10142)) ([2812d76](https://github.com/promptfoo/promptfoo/commit/2812d7622b2e14f59753ac04e28b1ca63257263b))
-- **azure:** avoid crash on empty completion choices ([#10124](https://github.com/promptfoo/promptfoo/issues/10124)) ([17d8d03](https://github.com/promptfoo/promptfoo/commit/17d8d036420a63e4a9205084f096b82591b3b608))
-- **deps:** align Renovate npm registry ([#10115](https://github.com/promptfoo/promptfoo/issues/10115)) ([688a905](https://github.com/promptfoo/promptfoo/commit/688a90561180a6045ce3c8e8805d04bc23811bd7))
-- **deps:** update anthropic packages ([#10146](https://github.com/promptfoo/promptfoo/issues/10146)) ([cfa9bee](https://github.com/promptfoo/promptfoo/commit/cfa9bee146bd38fcabc1c4241ede8889fa95e302))
-- **deps:** update anthropic packages ([#10199](https://github.com/promptfoo/promptfoo/issues/10199)) ([2d3f3f1](https://github.com/promptfoo/promptfoo/commit/2d3f3f16154e04e3bbac8e672f90434fa85997ef))
-- **deps:** update anthropic packages ([#10229](https://github.com/promptfoo/promptfoo/issues/10229)) ([2834215](https://github.com/promptfoo/promptfoo/commit/28342153f2f5bdaaf30695f21ada70e311de421e))
-- **deps:** update dependency js-yaml to v5.2.2 [security] ([#10218](https://github.com/promptfoo/promptfoo/issues/10218)) ([18ea879](https://github.com/promptfoo/promptfoo/commit/18ea87909489b56e424513e5425ca13dcf702bd0))
-- **eval:** avoid prompt index collisions for duplicate providers ([#10208](https://github.com/promptfoo/promptfoo/issues/10208)) ([5aa0958](https://github.com/promptfoo/promptfoo/commit/5aa09586752c906763135ddb867b203b4ecd14e0))
-- **eval:** isolate conversation history by result column ([#10212](https://github.com/promptfoo/promptfoo/issues/10212)) ([a377bb7](https://github.com/promptfoo/promptfoo/commit/a377bb71d3e33b0e262a82a2eb3d36a05e371e29))
-- **integrations:** migrate Langfuse prompts to SDK v5 ([#10131](https://github.com/promptfoo/promptfoo/issues/10131)) ([08b3f50](https://github.com/promptfoo/promptfoo/commit/08b3f5084d5cd36e9187ac3c79e3fda03d6eefd7))
-- **providers:** align OpenAI models and capabilities ([#10125](https://github.com/promptfoo/promptfoo/issues/10125)) ([e17ce87](https://github.com/promptfoo/promptfoo/commit/e17ce87b380d7c5e807a622d86c859206e1e1ffb))
-- **providers:** preserve WebSocket retries for certificate-like URLs ([#10197](https://github.com/promptfoo/promptfoo/issues/10197)) ([85e0710](https://github.com/promptfoo/promptfoo/commit/85e07103ae7f47462d70e3e02154c1fafaeef2f1))
-- **providers:** reject Vertex Omni passthrough follow-ups ([#10135](https://github.com/promptfoo/promptfoo/issues/10135)) ([8482570](https://github.com/promptfoo/promptfoo/commit/84825702e935332e236426f29fb0dc99c3c162f8))
-- **providers:** restore secret-safe WebSocket retries ([#10176](https://github.com/promptfoo/promptfoo/issues/10176)) ([6d89cbb](https://github.com/promptfoo/promptfoo/commit/6d89cbbd609895fb31062a1fbbe94db8b08260f3))
-- **python:** keep worker control markers on their own line ([#10097](https://github.com/promptfoo/promptfoo/issues/10097)) ([6bc2b95](https://github.com/promptfoo/promptfoo/commit/6bc2b95da1c75ce81ff9047ae599af90222ac676))
-- **redteam:** harden risk reports and WebSocket timeout tests ([#10211](https://github.com/promptfoo/promptfoo/issues/10211)) ([9ab178e](https://github.com/promptfoo/promptfoo/commit/9ab178ec2772d72bacd533f2dc11ba66208606a5))
-- **redteam:** improve risk-category report row accessibility ([b163738](https://github.com/promptfoo/promptfoo/commit/b16373873b095ab5abb00dbd57fd10e864d3f6fe))
-- **redteam:** preserve generation provider selection ([#10133](https://github.com/promptfoo/promptfoo/issues/10133)) ([ac8971f](https://github.com/promptfoo/promptfoo/commit/ac8971fcfa961fa5fa96bcc4f527f5309b504997))
-- **site:** repair stale event pages, dead links, and hydration mismatches ([#10215](https://github.com/promptfoo/promptfoo/issues/10215)) ([b0e3c25](https://github.com/promptfoo/promptfoo/commit/b0e3c2567f504c30094b2d3863bcc51e916d0070))
-
-## [0.121.19](https://github.com/promptfoo/promptfoo/compare/0.121.18...0.121.19) (2026-07-14)
+## [0.121.20](https://github.com/artef/artef/compare/0.121.19...0.121.20) (2026-07-30)
 
 ### Features
 
-- **providers:** add Bedrock GPT-5.6 frontier support ([#10081](https://github.com/promptfoo/promptfoo/issues/10081)) ([a97c8eb](https://github.com/promptfoo/promptfoo/commit/a97c8ebf1d005d035c75692c9aa1518a3b75a4b6))
-- **providers:** add Meta Model API (Muse Spark) provider ([#10041](https://github.com/promptfoo/promptfoo/issues/10041)) ([e6f06da](https://github.com/promptfoo/promptfoo/commit/e6f06da06093552eee2d09d0210fb3a960cf0304))
-- **providers:** add Open Interpreter provider ([#10079](https://github.com/promptfoo/promptfoo/issues/10079)) ([c4d9028](https://github.com/promptfoo/promptfoo/commit/c4d9028792fdfcbdc93350921f640cdeb1114c8d))
-- **providers:** add xAI Grok 4.5 support ([#10032](https://github.com/promptfoo/promptfoo/issues/10032)) ([83cedf0](https://github.com/promptfoo/promptfoo/commit/83cedf0f4cf096c3908d4abacae6dca511455d6f))
-- **providers:** honor CLAUDE_CONFIG_DIR for Claude Code creds ([#9980](https://github.com/promptfoo/promptfoo/issues/9980)) ([a643f8b](https://github.com/promptfoo/promptfoo/commit/a643f8b8e13a93e89f1da229e3b77db3927bdf55))
-- **providers:** support GPT-5.6 GA ([#10040](https://github.com/promptfoo/promptfoo/issues/10040)) ([3280625](https://github.com/promptfoo/promptfoo/commit/32806255bfb2685ea8e01a72bca8420746ba341c))
-- **redteam:** account for generation-phase token usage ([#9967](https://github.com/promptfoo/promptfoo/issues/9967)) ([e0d1698](https://github.com/promptfoo/promptfoo/commit/e0d16984a3d627c252a4f1dce4ae9b5ffdd250f6))
-- **redteam:** add goblin strategy ([#10057](https://github.com/promptfoo/promptfoo/issues/10057)) ([c0c86f1](https://github.com/promptfoo/promptfoo/commit/c0c86f1b2e9a94e7c3e60aa93deaad1e63fc6512))
-- **types:** optional token-usage fields on public types/schemas ([#9962](https://github.com/promptfoo/promptfoo/issues/9962)) ([7365c32](https://github.com/promptfoo/promptfoo/commit/7365c32c7acfc5fbd88c070ba38f4bdb91910bb4))
-- **util:** add token-usage helpers (error/generation accumulation) ([#9969](https://github.com/promptfoo/promptfoo/issues/9969)) ([79ebc2d](https://github.com/promptfoo/promptfoo/commit/79ebc2df50aaaeeba2f1c6add182351d6f0e0b73))
+- **providers:** add Claude Opus 5 support ([#10210](https://github.com/artef/artef/issues/10210)) ([ff84f13](https://github.com/artef/artef/commit/ff84f13605c09cac0c3c591d9590622f864cc2f7))
+- **providers:** add current Azure, Claude, and Gemini models ([#10128](https://github.com/artef/artef/issues/10128)) ([5c216a1](https://github.com/artef/artef/commit/5c216a1bc33104bb507a9e57952b81a0fb27d06f))
+- **providers:** add Kimi K3 support to Moonshot provider ([#10132](https://github.com/artef/artef/issues/10132)) ([a1168b6](https://github.com/artef/artef/commit/a1168b62ef31a6c061f16ecdf2bfd76514e2a852))
+- **websocket:** support URL templating ([#10171](https://github.com/artef/artef/issues/10171)) ([a9aaced](https://github.com/artef/artef/commit/a9aacede5c3f84150d999bfbeadbbf39834370ea))
 
 ### Bug Fixes
 
-- **assertions:** allow numeric 0 as contains/icontains value ([#10012](https://github.com/promptfoo/promptfoo/issues/10012)) ([06d8105](https://github.com/promptfoo/promptfoo/commit/06d8105dcaa27df9327dc30f9f77e5c53510ddf1))
-- **assertions:** return pass:false for tool calls missing a function object ([#10076](https://github.com/promptfoo/promptfoo/issues/10076)) ([ffd8922](https://github.com/promptfoo/promptfoo/commit/ffd8922926445671e2d62b2b4eb7f8dd8a97751a))
-- **azure:** avoid crash on empty choices array when reading logprobs ([#9867](https://github.com/promptfoo/promptfoo/issues/9867)) ([f189f84](https://github.com/promptfoo/promptfoo/commit/f189f84c344527635d76e478bcf9cd5508d963f7))
-- **code-scan:** harden action supply chain ([#9991](https://github.com/promptfoo/promptfoo/issues/9991)) ([17e90eb](https://github.com/promptfoo/promptfoo/commit/17e90eb9641f935aebb34663560fcee1b90c62bc))
-- **db:** protect user database from test runners ([#9590](https://github.com/promptfoo/promptfoo/issues/9590)) ([aabb699](https://github.com/promptfoo/promptfoo/commit/aabb69901b28b49eef8618ceb07b3a6d3dec4744))
-- **deps:** update anthropic packages ([#10037](https://github.com/promptfoo/promptfoo/issues/10037)) ([fed1d2a](https://github.com/promptfoo/promptfoo/commit/fed1d2accd8d6fffd2ceedaa6cf8ab7700290dcf))
-- **deps:** update anthropic packages ([#10066](https://github.com/promptfoo/promptfoo/issues/10066)) ([24a3ef1](https://github.com/promptfoo/promptfoo/commit/24a3ef1664de3431b3d00110b47ad509837649e4))
-- **deps:** update dependency js-yaml to v5.2.1 ([#10052](https://github.com/promptfoo/promptfoo/issues/10052)) ([fe22aa7](https://github.com/promptfoo/promptfoo/commit/fe22aa7a37b74b63987aa59b24dbfae4ee74f0b5))
-- **deps:** update opentelemetry ([#10067](https://github.com/promptfoo/promptfoo/issues/10067)) ([03e3f2a](https://github.com/promptfoo/promptfoo/commit/03e3f2a744c32da61c18a2f26d1b9adfca7dd705))
-- **eval:** combineFilterConditions doesn't recognize lowercase 'or' ([#10087](https://github.com/promptfoo/promptfoo/issues/10087)) ([25fedb6](https://github.com/promptfoo/promptfoo/commit/25fedb61c2168c5a86e45e59fd2a001a2a043cf4))
-- **matchers:** count missing faithfulness verdicts as unsupported ([#9984](https://github.com/promptfoo/promptfoo/issues/9984)) ([ce4a3d3](https://github.com/promptfoo/promptfoo/commit/ce4a3d38c24b3bd3af4b1d134a6962dd06ced2b3))
-- **matchers:** preserve reserved grader vars in model-graded matchers ([#10042](https://github.com/promptfoo/promptfoo/issues/10042)) ([9f6afcc](https://github.com/promptfoo/promptfoo/commit/9f6afcc9ab139f91f6e7991c77f282eb3aa38343))
-- **matchers:** preserve reserved rag grader vars ([#9994](https://github.com/promptfoo/promptfoo/issues/9994)) ([6e9e2ee](https://github.com/promptfoo/promptfoo/commit/6e9e2ee6471415deff58d6ed22fb5010ef4d10a1))
-- **providers:** address xAI response edge cases ([#10072](https://github.com/promptfoo/promptfoo/issues/10072)) ([0300eb0](https://github.com/promptfoo/promptfoo/commit/0300eb0fd11aec09cb5e93e51ae1e06c9460c959))
-- **providers:** avoid app-server config recursion ([#10078](https://github.com/promptfoo/promptfoo/issues/10078)) ([61a043f](https://github.com/promptfoo/promptfoo/commit/61a043f4e560a44fa78e0089e7df29d50939b7f7))
-- **providers:** bill GPT-5.6 image input tokens ([#10050](https://github.com/promptfoo/promptfoo/issues/10050)) ([ab52ee0](https://github.com/promptfoo/promptfoo/commit/ab52ee079c4558dad731a3165b0741cd64a34344))
-- **providers:** clamp DeepSeek cached tokens in cost calc ([#9908](https://github.com/promptfoo/promptfoo/issues/9908)) ([eca0cdc](https://github.com/promptfoo/promptfoo/commit/eca0cdc70b72a12e7421e55516407845ae621118))
-- **providers:** correct Codex SDK provider config handling ([#9963](https://github.com/promptfoo/promptfoo/issues/9963)) ([a311483](https://github.com/promptfoo/promptfoo/commit/a3114835a073fe14427d648fe11be094aae06fbe))
-- **providers:** guard array access in Bedrock Titan and Cohere output handlers ([#9897](https://github.com/promptfoo/promptfoo/issues/9897)) ([9a2aa85](https://github.com/promptfoo/promptfoo/commit/9a2aa85d13120a4d0aba6e064d3c88acd486a47c))
-- **providers:** handle TrueFoundry guardrail blocks ([#10021](https://github.com/promptfoo/promptfoo/issues/10021)) ([a9cfc86](https://github.com/promptfoo/promptfoo/commit/a9cfc86ad2dd7807e10e9858d961855c70fd705c))
-- **providers:** preserve TrueFoundry filter errors ([#10027](https://github.com/promptfoo/promptfoo/issues/10027)) ([051914a](https://github.com/promptfoo/promptfoo/commit/051914a620c26059befb0712ad23de87d30052c1))
-- **providers:** report cached request counts in token usage ([#9970](https://github.com/promptfoo/promptfoo/issues/9970)) ([2392ce3](https://github.com/promptfoo/promptfoo/commit/2392ce3b6e8b536d923cc245653a720dd62730bb))
-- **providers:** stringify simulated user provider outputs ([#10019](https://github.com/promptfoo/promptfoo/issues/10019)) ([46ee400](https://github.com/promptfoo/promptfoo/commit/46ee40056fa09c774ef4feedfdde3fb41c0d1afc))
-- **redteam:** add missing lowercase f to homoglyph map ([#10071](https://github.com/promptfoo/promptfoo/issues/10071)) ([fe3151e](https://github.com/promptfoo/promptfoo/commit/fe3151e86e6899309648588058d55ad99c74eb35))
-- **redteam:** clean up Hydra and Hex handling ([#10077](https://github.com/promptfoo/promptfoo/issues/10077)) ([ef61281](https://github.com/promptfoo/promptfoo/commit/ef61281e04ddd19490aaad50ac6f06d736494e6f))
-- **redteam:** encode hex strategy payloads as UTF-8 bytes ([#10073](https://github.com/promptfoo/promptfoo/issues/10073)) ([080dc99](https://github.com/promptfoo/promptfoo/commit/080dc9936cedd58aecbd16cb307c6c3c54e252f0))
-- **redteam:** match cross-session leaks case-insensitively ([#10074](https://github.com/promptfoo/promptfoo/issues/10074)) ([53d7586](https://github.com/promptfoo/promptfoo/commit/53d75866070c7fac6c1cb96711da7fbb8f9926cb))
-- **redteam:** pass target output to structured graders ([#10068](https://github.com/promptfoo/promptfoo/issues/10068)) ([c5f205d](https://github.com/promptfoo/promptfoo/commit/c5f205d4730c37942abf3b40f1284116c7b0ad72))
-- **redteam:** preserve punctuation in Pig Latin encoding ([#10025](https://github.com/promptfoo/promptfoo/issues/10025)) ([fe6bf3a](https://github.com/promptfoo/promptfoo/commit/fe6bf3a18a1f61194937c92d78dd097721ec73aa))
-- **redteam:** stop empty prompts at metadata boundaries ([#10015](https://github.com/promptfoo/promptfoo/issues/10015)) ([3957d90](https://github.com/promptfoo/promptfoo/commit/3957d9029fa87ef70ab7670da819c55004a41973))
-- **util:** handle even backslashes before slash comments ([#10030](https://github.com/promptfoo/promptfoo/issues/10030)) ([fd607d1](https://github.com/promptfoo/promptfoo/commit/fd607d1f00e41c7110d487ad8f20ba70f93686f0))
-- **util:** handle single-quoted escaped paths ([#10080](https://github.com/promptfoo/promptfoo/issues/10080)) ([01694e7](https://github.com/promptfoo/promptfoo/commit/01694e786edd16e7d5bf24594f5ec0497186888f))
-- **util:** remove unused NormalizedTokenUsage export ([#10065](https://github.com/promptfoo/promptfoo/issues/10065)) ([402a84d](https://github.com/promptfoo/promptfoo/commit/402a84d73d5317f046089256cf9b35cec38ae8db))
+- **assertions:** default conversation-relevance threshold to 0.5 ([#10142](https://github.com/artef/artef/issues/10142)) ([2812d76](https://github.com/artef/artef/commit/2812d7622b2e14f59753ac04e28b1ca63257263b))
+- **azure:** avoid crash on empty completion choices ([#10124](https://github.com/artef/artef/issues/10124)) ([17d8d03](https://github.com/artef/artef/commit/17d8d036420a63e4a9205084f096b82591b3b608))
+- **deps:** align Renovate npm registry ([#10115](https://github.com/artef/artef/issues/10115)) ([688a905](https://github.com/artef/artef/commit/688a90561180a6045ce3c8e8805d04bc23811bd7))
+- **deps:** update anthropic packages ([#10146](https://github.com/artef/artef/issues/10146)) ([cfa9bee](https://github.com/artef/artef/commit/cfa9bee146bd38fcabc1c4241ede8889fa95e302))
+- **deps:** update anthropic packages ([#10199](https://github.com/artef/artef/issues/10199)) ([2d3f3f1](https://github.com/artef/artef/commit/2d3f3f16154e04e3bbac8e672f90434fa85997ef))
+- **deps:** update anthropic packages ([#10229](https://github.com/artef/artef/issues/10229)) ([2834215](https://github.com/artef/artef/commit/28342153f2f5bdaaf30695f21ada70e311de421e))
+- **deps:** update dependency js-yaml to v5.2.2 [security] ([#10218](https://github.com/artef/artef/issues/10218)) ([18ea879](https://github.com/artef/artef/commit/18ea87909489b56e424513e5425ca13dcf702bd0))
+- **eval:** avoid prompt index collisions for duplicate providers ([#10208](https://github.com/artef/artef/issues/10208)) ([5aa0958](https://github.com/artef/artef/commit/5aa09586752c906763135ddb867b203b4ecd14e0))
+- **eval:** isolate conversation history by result column ([#10212](https://github.com/artef/artef/issues/10212)) ([a377bb7](https://github.com/artef/artef/commit/a377bb71d3e33b0e262a82a2eb3d36a05e371e29))
+- **integrations:** migrate Langfuse prompts to SDK v5 ([#10131](https://github.com/artef/artef/issues/10131)) ([08b3f50](https://github.com/artef/artef/commit/08b3f5084d5cd36e9187ac3c79e3fda03d6eefd7))
+- **providers:** align OpenAI models and capabilities ([#10125](https://github.com/artef/artef/issues/10125)) ([e17ce87](https://github.com/artef/artef/commit/e17ce87b380d7c5e807a622d86c859206e1e1ffb))
+- **providers:** preserve WebSocket retries for certificate-like URLs ([#10197](https://github.com/artef/artef/issues/10197)) ([85e0710](https://github.com/artef/artef/commit/85e07103ae7f47462d70e3e02154c1fafaeef2f1))
+- **providers:** reject Vertex Omni passthrough follow-ups ([#10135](https://github.com/artef/artef/issues/10135)) ([8482570](https://github.com/artef/artef/commit/84825702e935332e236426f29fb0dc99c3c162f8))
+- **providers:** restore secret-safe WebSocket retries ([#10176](https://github.com/artef/artef/issues/10176)) ([6d89cbb](https://github.com/artef/artef/commit/6d89cbbd609895fb31062a1fbbe94db8b08260f3))
+- **python:** keep worker control markers on their own line ([#10097](https://github.com/artef/artef/issues/10097)) ([6bc2b95](https://github.com/artef/artef/commit/6bc2b95da1c75ce81ff9047ae599af90222ac676))
+- **redteam:** harden risk reports and WebSocket timeout tests ([#10211](https://github.com/artef/artef/issues/10211)) ([9ab178e](https://github.com/artef/artef/commit/9ab178ec2772d72bacd533f2dc11ba66208606a5))
+- **redteam:** improve risk-category report row accessibility ([b163738](https://github.com/artef/artef/commit/b16373873b095ab5abb00dbd57fd10e864d3f6fe))
+- **redteam:** preserve generation provider selection ([#10133](https://github.com/artef/artef/issues/10133)) ([ac8971f](https://github.com/artef/artef/commit/ac8971fcfa961fa5fa96bcc4f527f5309b504997))
+- **site:** repair stale event pages, dead links, and hydration mismatches ([#10215](https://github.com/artef/artef/issues/10215)) ([b0e3c25](https://github.com/artef/artef/commit/b0e3c2567f504c30094b2d3863bcc51e916d0070))
 
-## [0.121.18](https://github.com/promptfoo/promptfoo/compare/0.121.17...0.121.18) (2026-07-07)
+## [0.121.19](https://github.com/artef/artef/compare/0.121.18...0.121.19) (2026-07-14)
 
 ### Features
 
-- add Node.js 20 support cutoff campaign ([#9862](https://github.com/promptfoo/promptfoo/issues/9862)) ([d4d35da](https://github.com/promptfoo/promptfoo/commit/d4d35da347358af9040c69e7e6003c7a9f0eac26))
-- add per-test repeat option ([#9781](https://github.com/promptfoo/promptfoo/issues/9781)) ([3e1f02b](https://github.com/promptfoo/promptfoo/commit/3e1f02bc192d26076e00bbe7133c340d95003308))
-- **app:** surface websocket subprotocols ([#9947](https://github.com/promptfoo/promptfoo/issues/9947)) ([88c7445](https://github.com/promptfoo/promptfoo/commit/88c7445fee7b0d611b48570e14f816c2d93c107c))
-- **config:** add YAML source location to prompt reference errors ([#9940](https://github.com/promptfoo/promptfoo/issues/9940)) ([5f13e76](https://github.com/promptfoo/promptfoo/commit/5f13e7672e730b5eb0033f4bac3c7f6228a1f647))
-- **providers:** add Bedrock support for Grok 4.3, GLM, MiniMax, Kimi, Nemotron, Gemma, Palmyra ([#9788](https://github.com/promptfoo/promptfoo/issues/9788)) ([84a274b](https://github.com/promptfoo/promptfoo/commit/84a274b5a5fa416065eb7ba3236b47b3de6e8799))
-- **providers:** add Claude Sonnet 5 support across Anthropic, Bedrock, Vertex, and Azure ([#9924](https://github.com/promptfoo/promptfoo/issues/9924)) ([3ea1e71](https://github.com/promptfoo/promptfoo/commit/3ea1e7130f3655f5764a366f845ca5f78821a104))
-- **providers:** add GPT-5.6 preview support ([#9893](https://github.com/promptfoo/promptfoo/issues/9893)) ([853710f](https://github.com/promptfoo/promptfoo/commit/853710faf786ff2f9ec90aea87dcec3373b3d950))
-- **providers:** add Moonshot (Kimi) provider ([#9672](https://github.com/promptfoo/promptfoo/issues/9672)) ([47c4def](https://github.com/promptfoo/promptfoo/commit/47c4def544fdab0b4efff8b7608689afb9a101b4))
-- **providers:** expand Google model support — Nano Banana 2 Lite, GA image aliases, gemini-pro-latest ([#9923](https://github.com/promptfoo/promptfoo/issues/9923)) ([87be4d5](https://github.com/promptfoo/promptfoo/commit/87be4d565415cf3871d16a633bb5b4e02d940db8))
+- **providers:** add Bedrock GPT-5.6 frontier support ([#10081](https://github.com/artef/artef/issues/10081)) ([a97c8eb](https://github.com/artef/artef/commit/a97c8ebf1d005d035c75692c9aa1518a3b75a4b6))
+- **providers:** add Meta Model API (Muse Spark) provider ([#10041](https://github.com/artef/artef/issues/10041)) ([e6f06da](https://github.com/artef/artef/commit/e6f06da06093552eee2d09d0210fb3a960cf0304))
+- **providers:** add Open Interpreter provider ([#10079](https://github.com/artef/artef/issues/10079)) ([c4d9028](https://github.com/artef/artef/commit/c4d9028792fdfcbdc93350921f640cdeb1114c8d))
+- **providers:** add xAI Grok 4.5 support ([#10032](https://github.com/artef/artef/issues/10032)) ([83cedf0](https://github.com/artef/artef/commit/83cedf0f4cf096c3908d4abacae6dca511455d6f))
+- **providers:** honor CLAUDE_CONFIG_DIR for Claude Code creds ([#9980](https://github.com/artef/artef/issues/9980)) ([a643f8b](https://github.com/artef/artef/commit/a643f8b8e13a93e89f1da229e3b77db3927bdf55))
+- **providers:** support GPT-5.6 GA ([#10040](https://github.com/artef/artef/issues/10040)) ([3280625](https://github.com/artef/artef/commit/32806255bfb2685ea8e01a72bca8420746ba341c))
+- **redteam:** account for generation-phase token usage ([#9967](https://github.com/artef/artef/issues/9967)) ([e0d1698](https://github.com/artef/artef/commit/e0d16984a3d627c252a4f1dce4ae9b5ffdd250f6))
+- **redteam:** add goblin strategy ([#10057](https://github.com/artef/artef/issues/10057)) ([c0c86f1](https://github.com/artef/artef/commit/c0c86f1b2e9a94e7c3e60aa93deaad1e63fc6512))
+- **types:** optional token-usage fields on public types/schemas ([#9962](https://github.com/artef/artef/issues/9962)) ([7365c32](https://github.com/artef/artef/commit/7365c32c7acfc5fbd88c070ba38f4bdb91910bb4))
+- **util:** add token-usage helpers (error/generation accumulation) ([#9969](https://github.com/artef/artef/issues/9969)) ([79ebc2d](https://github.com/artef/artef/commit/79ebc2df50aaaeeba2f1c6add182351d6f0e0b73))
 
 ### Bug Fixes
 
-- address GitHub AI findings ([#9765](https://github.com/promptfoo/promptfoo/issues/9765)) ([fd8320a](https://github.com/promptfoo/promptfoo/commit/fd8320aa1e68e9f85f736b77eee9f86199ee5381))
-- **assertions:** let contains-sql extract fenced SQL with backtick identifiers ([#9785](https://github.com/promptfoo/promptfoo/issues/9785)) ([f97c932](https://github.com/promptfoo/promptfoo/commit/f97c932977de8c3da2da5ba42d76e545902fe198))
-- **assertions:** make is-xml reject non-well-formed XML ([#9782](https://github.com/promptfoo/promptfoo/issues/9782)) ([96929e8](https://github.com/promptfoo/promptfoo/commit/96929e8758cafb2bfdb0c5fbc5d7d0ea0971c162))
-- **assertions:** respect inverse for is-refusal when output is missing ([#9818](https://github.com/promptfoo/promptfoo/issues/9818)) ([59898f2](https://github.com/promptfoo/promptfoo/commit/59898f2a4722cb79daf13b3c328e4eab0d5a41e5))
-- **assertions:** stop is-sql false-rejecting SELECT DISTINCT ([#9784](https://github.com/promptfoo/promptfoo/issues/9784)) ([c08cfc4](https://github.com/promptfoo/promptfoo/commit/c08cfc454d38f052d0a86067eda0ed8ab15d45c7))
-- **bleu:** return pass:false for empty output instead of throwing ([#9841](https://github.com/promptfoo/promptfoo/issues/9841)) ([9e98c3e](https://github.com/promptfoo/promptfoo/commit/9e98c3ea8c7379adbad2e0da8f92cbf44578558b))
-- **ci:** re-pin code-scan Node to 24.15.0 to stop install timeout ([#9871](https://github.com/promptfoo/promptfoo/issues/9871)) ([8cc2cbb](https://github.com/promptfoo/promptfoo/commit/8cc2cbbf980791afb523ddbdb718071891ecbc89))
-- **cloud:** stop legacy API_HOST env var from steering cloud host resolution ([#9920](https://github.com/promptfoo/promptfoo/issues/9920)) ([49614da](https://github.com/promptfoo/promptfoo/commit/49614da0378ac56103466c5078fdbe39dd0bbb93))
-- **code-scan:** run GitHub Action on Node 24 runtime ([#9772](https://github.com/promptfoo/promptfoo/issues/9772)) ([c25974e](https://github.com/promptfoo/promptfoo/commit/c25974e8e74a5ba923c0318cb6576e2b4dfc9ad6))
-- **csv:** preserve quoted commas in contains-any/all assertion values ([#9761](https://github.com/promptfoo/promptfoo/issues/9761)) ([ae4a73a](https://github.com/promptfoo/promptfoo/commit/ae4a73ab57b2475fad3331e8fad4064f40702718))
-- **csv:** preserve zero \_\_threshold in testCaseFromCsvRow ([#9768](https://github.com/promptfoo/promptfoo/issues/9768)) ([7e7f1ae](https://github.com/promptfoo/promptfoo/commit/7e7f1aec8d19cd8454445bcf67b90e307f01dce5))
-- **csv:** reject \_\_expected0 instead of silently dropping its config ([#9815](https://github.com/promptfoo/promptfoo/issues/9815)) ([5097c23](https://github.com/promptfoo/promptfoo/commit/5097c2329dcb694ba6f8b8fbceb0d50612f703a9))
-- **deps:** bump pydantic-ai from 1.101.0 to 1.102.0 in /examples/integration-pydantic-ai in the pip group across 1 directory ([#9903](https://github.com/promptfoo/promptfoo/issues/9903)) ([1f2ac90](https://github.com/promptfoo/promptfoo/commit/1f2ac906f0db872070f31c255d324dceaf6f3e90))
-- **deps:** bump pypdf to 6.13.3 in eval-rag-full ([#9806](https://github.com/promptfoo/promptfoo/issues/9806)) ([a432a8d](https://github.com/promptfoo/promptfoo/commit/a432a8d05b7843ddef149c3e23cc2940ebb64a9f))
-- **deps:** override launch-editor to 2.14.1 ([#9883](https://github.com/promptfoo/promptfoo/issues/9883)) ([e96f32b](https://github.com/promptfoo/promptfoo/commit/e96f32b28eddb655f9905b1395e1c47aaaf687ae))
-- **deps:** require hono v4.12.25 ([#9777](https://github.com/promptfoo/promptfoo/issues/9777)) ([c5b397a](https://github.com/promptfoo/promptfoo/commit/c5b397aa0fb3097d7ef8f3aa0293f15296c4162f))
-- **deps:** resolve audit vulnerabilities ([#9880](https://github.com/promptfoo/promptfoo/issues/9880)) ([e55b37b](https://github.com/promptfoo/promptfoo/commit/e55b37bcde70ca9695e3ba38f21105be56a14ee8))
-- **deps:** restore LangChain examples ([#9778](https://github.com/promptfoo/promptfoo/issues/9778)) ([fb16af0](https://github.com/promptfoo/promptfoo/commit/fb16af0bfb2f14a3741871cdd3203f8058e39965))
-- **deps:** update anthropic packages ([#9817](https://github.com/promptfoo/promptfoo/issues/9817)) ([fe73e2e](https://github.com/promptfoo/promptfoo/commit/fe73e2e644186c40e6fd600ac2666ed5c43d0133))
-- **deps:** update anthropic packages ([#9831](https://github.com/promptfoo/promptfoo/issues/9831)) ([7f1cb4a](https://github.com/promptfoo/promptfoo/commit/7f1cb4ab356fa01a35d347dabf8114f9a4e97ee1))
-- **deps:** update anthropic packages ([#9904](https://github.com/promptfoo/promptfoo/issues/9904)) ([63c5a7a](https://github.com/promptfoo/promptfoo/commit/63c5a7a3a8e862aa14efc5fb7ee6e5217559b94e))
-- **deps:** update anthropic packages ([#9989](https://github.com/promptfoo/promptfoo/issues/9989)) ([25aa530](https://github.com/promptfoo/promptfoo/commit/25aa530e24c36b5f51ff7f9a2190189b9f5867ac))
-- **deps:** update anthropic packages to v0.102.0 ([#9776](https://github.com/promptfoo/promptfoo/issues/9776)) ([3e18ecb](https://github.com/promptfoo/promptfoo/commit/3e18ecb9dfafe49490c79df64d7e53f5e2a8ca0b))
-- **deps:** update dependency @anthropic-ai/sdk to v0.104.2 ([#9879](https://github.com/promptfoo/promptfoo/issues/9879)) ([81adada](https://github.com/promptfoo/promptfoo/commit/81adadadd2fd1bb19b80136ebe66c8c64102bc55))
-- **deps:** update dependency csv-parse to v7 ([#9870](https://github.com/promptfoo/promptfoo/issues/9870)) ([83f2ff6](https://github.com/promptfoo/promptfoo/commit/83f2ff6de7258480d7bdcde80a61673787bcf737))
-- **deps:** update dependency js-yaml to v5 ([#9919](https://github.com/promptfoo/promptfoo/issues/9919)) ([9696a2f](https://github.com/promptfoo/promptfoo/commit/9696a2fe5fdbff423aac3e35e349de047f5754fd))
-- **deps:** update dependency semver to v7.8.3 ([#9804](https://github.com/promptfoo/promptfoo/issues/9804)) ([7a6b199](https://github.com/promptfoo/promptfoo/commit/7a6b1999a70d689d39064ac13e98b69a749b5c34))
-- **deps:** update dependency swiper to v14 ([#10005](https://github.com/promptfoo/promptfoo/issues/10005)) ([e8a929a](https://github.com/promptfoo/promptfoo/commit/e8a929a11b36faded6396fbebfa7b64b21bc7257))
-- **deps:** update opentelemetry ([#9827](https://github.com/promptfoo/promptfoo/issues/9827)) ([f45c2e0](https://github.com/promptfoo/promptfoo/commit/f45c2e03d6a6398939929470d174517fcb25771a))
-- **deps:** update type definitions ([#9832](https://github.com/promptfoo/promptfoo/issues/9832)) ([f545c51](https://github.com/promptfoo/promptfoo/commit/f545c5164c6a45ce80bf2a73a013924f1a49f1c4))
-- **init:** promptfoo init will print undefined when initializing and selecting redteam as action ([#9899](https://github.com/promptfoo/promptfoo/issues/9899)) ([bfb2ad4](https://github.com/promptfoo/promptfoo/commit/bfb2ad4d233cc577e49160ea7eb82ee1e2d761f8))
-- **providers:** apply xAI cache-read discount to cost calculation ([#9783](https://github.com/promptfoo/promptfoo/issues/9783)) ([f273300](https://github.com/promptfoo/promptfoo/commit/f273300575fc73ea2d8312b76b4c438439208f55))
-- **providers:** Azure provider audit — cost reporting, token refresh, doc accuracy ([#9794](https://github.com/promptfoo/promptfoo/issues/9794)) ([7d304ee](https://github.com/promptfoo/promptfoo/commit/7d304ee20263b7686b4966dff683071a0f2c1871))
-- **providers:** correct Claude context pricing by platform ([#9995](https://github.com/promptfoo/promptfoo/issues/9995)) ([433d8f5](https://github.com/promptfoo/promptfoo/commit/433d8f5d6bdb767ab1e935a2a6ace00f74ab6bb7))
-- **providers:** correct Mistral alias pricing drift and refresh models/docs ([#9929](https://github.com/promptfoo/promptfoo/issues/9929)) ([ae04fcc](https://github.com/promptfoo/promptfoo/commit/ae04fcc0e8d9aa0307cd6d92501762aa961d9c45))
-- **providers:** correct stale model pricing ([#9951](https://github.com/promptfoo/promptfoo/issues/9951)) ([4e969db](https://github.com/promptfoo/promptfoo/commit/4e969db925570221cac4d8d371f1fba4e4b6f102))
-- **providers:** correct watsonx token usage (total omits prompt; completion miscomputed) ([#9780](https://github.com/promptfoo/promptfoo/issues/9780)) ([9056649](https://github.com/promptfoo/promptfoo/commit/9056649c9b1234998ab0f8289c219cb93ef16df2))
-- **providers:** flatten Moonshot config options ([#9803](https://github.com/promptfoo/promptfoo/issues/9803)) ([f0e87d9](https://github.com/promptfoo/promptfoo/commit/f0e87d96de40ebb9c5a20053dcf6fdba97bd6a55))
-- **providers:** support websocket subprotocols ([#9944](https://github.com/promptfoo/promptfoo/issues/9944)) ([ce40d66](https://github.com/promptfoo/promptfoo/commit/ce40d66492a4be614dee99574d083172db93e712))
-- **redteam:** remote materialize mcp tool calls ([#9935](https://github.com/promptfoo/promptfoo/issues/9935)) ([ede696e](https://github.com/promptfoo/promptfoo/commit/ede696e1905b2aa4469d259fe208edde645014cf))
-- **redteam:** stop presenting deprecated or invalid prompt-injection ids in tool guidance ([#9936](https://github.com/promptfoo/promptfoo/issues/9936)) ([9a337ab](https://github.com/promptfoo/promptfoo/commit/9a337ab3bc479b1bd7cb3a67c6fc00220390a703))
-- **redteam:** support Sharp 0.35 ([#9823](https://github.com/promptfoo/promptfoo/issues/9823)) ([92108f0](https://github.com/promptfoo/promptfoo/commit/92108f05ac925636895d175e4f345da166d27e9a))
-- restore Docker CLI links and validate rate-limit reset metadata ([#9790](https://github.com/promptfoo/promptfoo/issues/9790)) ([58e7c83](https://github.com/promptfoo/promptfoo/commit/58e7c8326867d470689f1f9978660c6f73e6f7c0))
-- **sanitizer:** redact malformed token params ([#9779](https://github.com/promptfoo/promptfoo/issues/9779)) ([ad1ad35](https://github.com/promptfoo/promptfoo/commit/ad1ad354f87da934d763d4c937376a678aa3551c))
-- **scheduler:** fall back from invalid retry-after-ms ([#9796](https://github.com/promptfoo/promptfoo/issues/9796)) ([81fe447](https://github.com/promptfoo/promptfoo/commit/81fe4479e722ae416b67e4e20fd5ba723dc91ff6))
-- **site:** declare js-yaml dependency so Cloudflare Pages build resolves v5 ([#9957](https://github.com/promptfoo/promptfoo/issues/9957)) ([65f0f4c](https://github.com/promptfoo/promptfoo/commit/65f0f4cd29c220388ceb16b5304850ce772073d8))
-- **testCaseReader:** preserve JSONL row description instead of overwriting ([#9840](https://github.com/promptfoo/promptfoo/issues/9840)) ([644e71b](https://github.com/promptfoo/promptfoo/commit/644e71b06be9efe2532fa43832a52b9ed71dd972))
-- **ui:** preserve WebSocket protocol input ([#10002](https://github.com/promptfoo/promptfoo/issues/10002)) ([ed192d3](https://github.com/promptfoo/promptfoo/commit/ed192d335be3bba23f10b1d0493548528d05cf0f))
-- **util:** keep ellipsize within maxLen when maxLen is below 3 ([#9822](https://github.com/promptfoo/promptfoo/issues/9822)) ([60939c0](https://github.com/promptfoo/promptfoo/commit/60939c0612d5a522354c50d09db86c8aff0a2345))
-- **util:** match JavaScript/TypeScript file extensions case-insensitively ([#9799](https://github.com/promptfoo/promptfoo/issues/9799)) ([9f18d92](https://github.com/promptfoo/promptfoo/commit/9f18d92cf99bf9a290276c917abc3987bf9d6bff))
-- **util:** report file and line for malformed JSON/JSONL test files ([#9942](https://github.com/promptfoo/promptfoo/issues/9942)) ([250af9d](https://github.com/promptfoo/promptfoo/commit/250af9d8a145bca136d2321751d2a6a28bdd56ea))
-- **util:** select xlsx sheet by name when name starts with digits ([#9932](https://github.com/promptfoo/promptfoo/issues/9932)) ([ede3302](https://github.com/promptfoo/promptfoo/commit/ede330200ede3ef6b15a3f45420bf11fd6616e50))
+- **assertions:** allow numeric 0 as contains/icontains value ([#10012](https://github.com/artef/artef/issues/10012)) ([06d8105](https://github.com/artef/artef/commit/06d8105dcaa27df9327dc30f9f77e5c53510ddf1))
+- **assertions:** return pass:false for tool calls missing a function object ([#10076](https://github.com/artef/artef/issues/10076)) ([ffd8922](https://github.com/artef/artef/commit/ffd8922926445671e2d62b2b4eb7f8dd8a97751a))
+- **azure:** avoid crash on empty choices array when reading logprobs ([#9867](https://github.com/artef/artef/issues/9867)) ([f189f84](https://github.com/artef/artef/commit/f189f84c344527635d76e478bcf9cd5508d963f7))
+- **code-scan:** harden action supply chain ([#9991](https://github.com/artef/artef/issues/9991)) ([17e90eb](https://github.com/artef/artef/commit/17e90eb9641f935aebb34663560fcee1b90c62bc))
+- **db:** protect user database from test runners ([#9590](https://github.com/artef/artef/issues/9590)) ([aabb699](https://github.com/artef/artef/commit/aabb69901b28b49eef8618ceb07b3a6d3dec4744))
+- **deps:** update anthropic packages ([#10037](https://github.com/artef/artef/issues/10037)) ([fed1d2a](https://github.com/artef/artef/commit/fed1d2accd8d6fffd2ceedaa6cf8ab7700290dcf))
+- **deps:** update anthropic packages ([#10066](https://github.com/artef/artef/issues/10066)) ([24a3ef1](https://github.com/artef/artef/commit/24a3ef1664de3431b3d00110b47ad509837649e4))
+- **deps:** update dependency js-yaml to v5.2.1 ([#10052](https://github.com/artef/artef/issues/10052)) ([fe22aa7](https://github.com/artef/artef/commit/fe22aa7a37b74b63987aa59b24dbfae4ee74f0b5))
+- **deps:** update opentelemetry ([#10067](https://github.com/artef/artef/issues/10067)) ([03e3f2a](https://github.com/artef/artef/commit/03e3f2a744c32da61c18a2f26d1b9adfca7dd705))
+- **eval:** combineFilterConditions doesn't recognize lowercase 'or' ([#10087](https://github.com/artef/artef/issues/10087)) ([25fedb6](https://github.com/artef/artef/commit/25fedb61c2168c5a86e45e59fd2a001a2a043cf4))
+- **matchers:** count missing faithfulness verdicts as unsupported ([#9984](https://github.com/artef/artef/issues/9984)) ([ce4a3d3](https://github.com/artef/artef/commit/ce4a3d38c24b3bd3af4b1d134a6962dd06ced2b3))
+- **matchers:** preserve reserved grader vars in model-graded matchers ([#10042](https://github.com/artef/artef/issues/10042)) ([9f6afcc](https://github.com/artef/artef/commit/9f6afcc9ab139f91f6e7991c77f282eb3aa38343))
+- **matchers:** preserve reserved rag grader vars ([#9994](https://github.com/artef/artef/issues/9994)) ([6e9e2ee](https://github.com/artef/artef/commit/6e9e2ee6471415deff58d6ed22fb5010ef4d10a1))
+- **providers:** address xAI response edge cases ([#10072](https://github.com/artef/artef/issues/10072)) ([0300eb0](https://github.com/artef/artef/commit/0300eb0fd11aec09cb5e93e51ae1e06c9460c959))
+- **providers:** avoid app-server config recursion ([#10078](https://github.com/artef/artef/issues/10078)) ([61a043f](https://github.com/artef/artef/commit/61a043f4e560a44fa78e0089e7df29d50939b7f7))
+- **providers:** bill GPT-5.6 image input tokens ([#10050](https://github.com/artef/artef/issues/10050)) ([ab52ee0](https://github.com/artef/artef/commit/ab52ee079c4558dad731a3165b0741cd64a34344))
+- **providers:** clamp DeepSeek cached tokens in cost calc ([#9908](https://github.com/artef/artef/issues/9908)) ([eca0cdc](https://github.com/artef/artef/commit/eca0cdc70b72a12e7421e55516407845ae621118))
+- **providers:** correct Codex SDK provider config handling ([#9963](https://github.com/artef/artef/issues/9963)) ([a311483](https://github.com/artef/artef/commit/a3114835a073fe14427d648fe11be094aae06fbe))
+- **providers:** guard array access in Bedrock Titan and Cohere output handlers ([#9897](https://github.com/artef/artef/issues/9897)) ([9a2aa85](https://github.com/artef/artef/commit/9a2aa85d13120a4d0aba6e064d3c88acd486a47c))
+- **providers:** handle TrueFoundry guardrail blocks ([#10021](https://github.com/artef/artef/issues/10021)) ([a9cfc86](https://github.com/artef/artef/commit/a9cfc86ad2dd7807e10e9858d961855c70fd705c))
+- **providers:** preserve TrueFoundry filter errors ([#10027](https://github.com/artef/artef/issues/10027)) ([051914a](https://github.com/artef/artef/commit/051914a620c26059befb0712ad23de87d30052c1))
+- **providers:** report cached request counts in token usage ([#9970](https://github.com/artef/artef/issues/9970)) ([2392ce3](https://github.com/artef/artef/commit/2392ce3b6e8b536d923cc245653a720dd62730bb))
+- **providers:** stringify simulated user provider outputs ([#10019](https://github.com/artef/artef/issues/10019)) ([46ee400](https://github.com/artef/artef/commit/46ee40056fa09c774ef4feedfdde3fb41c0d1afc))
+- **redteam:** add missing lowercase f to homoglyph map ([#10071](https://github.com/artef/artef/issues/10071)) ([fe3151e](https://github.com/artef/artef/commit/fe3151e86e6899309648588058d55ad99c74eb35))
+- **redteam:** clean up Hydra and Hex handling ([#10077](https://github.com/artef/artef/issues/10077)) ([ef61281](https://github.com/artef/artef/commit/ef61281e04ddd19490aaad50ac6f06d736494e6f))
+- **redteam:** encode hex strategy payloads as UTF-8 bytes ([#10073](https://github.com/artef/artef/issues/10073)) ([080dc99](https://github.com/artef/artef/commit/080dc9936cedd58aecbd16cb307c6c3c54e252f0))
+- **redteam:** match cross-session leaks case-insensitively ([#10074](https://github.com/artef/artef/issues/10074)) ([53d7586](https://github.com/artef/artef/commit/53d75866070c7fac6c1cb96711da7fbb8f9926cb))
+- **redteam:** pass target output to structured graders ([#10068](https://github.com/artef/artef/issues/10068)) ([c5f205d](https://github.com/artef/artef/commit/c5f205d4730c37942abf3b40f1284116c7b0ad72))
+- **redteam:** preserve punctuation in Pig Latin encoding ([#10025](https://github.com/artef/artef/issues/10025)) ([fe6bf3a](https://github.com/artef/artef/commit/fe6bf3a18a1f61194937c92d78dd097721ec73aa))
+- **redteam:** stop empty prompts at metadata boundaries ([#10015](https://github.com/artef/artef/issues/10015)) ([3957d90](https://github.com/artef/artef/commit/3957d9029fa87ef70ab7670da819c55004a41973))
+- **util:** handle even backslashes before slash comments ([#10030](https://github.com/artef/artef/issues/10030)) ([fd607d1](https://github.com/artef/artef/commit/fd607d1f00e41c7110d487ad8f20ba70f93686f0))
+- **util:** handle single-quoted escaped paths ([#10080](https://github.com/artef/artef/issues/10080)) ([01694e7](https://github.com/artef/artef/commit/01694e786edd16e7d5bf24594f5ec0497186888f))
+- **util:** remove unused NormalizedTokenUsage export ([#10065](https://github.com/artef/artef/issues/10065)) ([402a84d](https://github.com/artef/artef/commit/402a84d73d5317f046089256cf9b35cec38ae8db))
 
-## [0.121.17](https://github.com/promptfoo/promptfoo/compare/0.121.16...0.121.17) (2026-06-16)
-
-### Bug Fixes
-
-- **docker:** bump pinned Python to 3.14 to match the Alpine base image ([#9769](https://github.com/promptfoo/promptfoo/issues/9769)) ([24fc5be](https://github.com/promptfoo/promptfoo/commit/24fc5be1ae645cbe6ecf0f06238ea6a360ad7866))
-- **docker:** unpin Python minor by default so Alpine drift can't break the build ([#9771](https://github.com/promptfoo/promptfoo/issues/9771)) ([c69ef40](https://github.com/promptfoo/promptfoo/commit/c69ef40c611c7b6b83b5e6118c7907e411f0d07b))
-- **matchers:** drop stranded list markers in RAGAS context-relevance segmentation ([#9767](https://github.com/promptfoo/promptfoo/issues/9767)) ([b06eb88](https://github.com/promptfoo/promptfoo/commit/b06eb885191ec47e7b5eada1d89c00d9d304949c))
-- **sanitizer:** stop over-redacting benign url values that mention a credential keyword ([#9764](https://github.com/promptfoo/promptfoo/issues/9764)) ([77abc5e](https://github.com/promptfoo/promptfoo/commit/77abc5e6131191128b4ecb3de41a6cceae5b0d65))
-
-## [0.121.16](https://github.com/promptfoo/promptfoo/compare/0.121.15...0.121.16) (2026-06-16)
+## [0.121.18](https://github.com/artef/artef/compare/0.121.17...0.121.18) (2026-07-07)
 
 ### Features
 
-- **providers:** add Claude Fable and Mythos support ([#9671](https://github.com/promptfoo/promptfoo/issues/9671)) ([09435af](https://github.com/promptfoo/promptfoo/commit/09435af291d953e33e5e7f8813e37925a41a9f93))
-- **redteam:** publish all four promptfoo skills to the Claude Code marketplace ([#9665](https://github.com/promptfoo/promptfoo/issues/9665)) ([53a7266](https://github.com/promptfoo/promptfoo/commit/53a7266b1d206c787454f0cf00b348ce6fda54dc))
+- add Node.js 20 support cutoff campaign ([#9862](https://github.com/artef/artef/issues/9862)) ([d4d35da](https://github.com/artef/artef/commit/d4d35da347358af9040c69e7e6003c7a9f0eac26))
+- add per-test repeat option ([#9781](https://github.com/artef/artef/issues/9781)) ([3e1f02b](https://github.com/artef/artef/commit/3e1f02bc192d26076e00bbe7133c340d95003308))
+- **app:** surface websocket subprotocols ([#9947](https://github.com/artef/artef/issues/9947)) ([88c7445](https://github.com/artef/artef/commit/88c7445fee7b0d611b48570e14f816c2d93c107c))
+- **config:** add YAML source location to prompt reference errors ([#9940](https://github.com/artef/artef/issues/9940)) ([5f13e76](https://github.com/artef/artef/commit/5f13e7672e730b5eb0033f4bac3c7f6228a1f647))
+- **providers:** add Bedrock support for Grok 4.3, GLM, MiniMax, Kimi, Nemotron, Gemma, Palmyra ([#9788](https://github.com/artef/artef/issues/9788)) ([84a274b](https://github.com/artef/artef/commit/84a274b5a5fa416065eb7ba3236b47b3de6e8799))
+- **providers:** add Claude Sonnet 5 support across Anthropic, Bedrock, Vertex, and Azure ([#9924](https://github.com/artef/artef/issues/9924)) ([3ea1e71](https://github.com/artef/artef/commit/3ea1e7130f3655f5764a366f845ca5f78821a104))
+- **providers:** add GPT-5.6 preview support ([#9893](https://github.com/artef/artef/issues/9893)) ([853710f](https://github.com/artef/artef/commit/853710faf786ff2f9ec90aea87dcec3373b3d950))
+- **providers:** add Moonshot (Kimi) provider ([#9672](https://github.com/artef/artef/issues/9672)) ([47c4def](https://github.com/artef/artef/commit/47c4def544fdab0b4efff8b7608689afb9a101b4))
+- **providers:** expand Google model support — Nano Banana 2 Lite, GA image aliases, gemini-pro-latest ([#9923](https://github.com/artef/artef/issues/9923)) ([87be4d5](https://github.com/artef/artef/commit/87be4d565415cf3871d16a633bb5b4e02d940db8))
 
 ### Bug Fixes
 
-- address AI quality findings ([#9637](https://github.com/promptfoo/promptfoo/issues/9637)) ([c54a306](https://github.com/promptfoo/promptfoo/commit/c54a30668ad8319d76c20ae96e6680ad6c51a2c6))
-- **assertions:** correct BLEU brevity penalty formula ([#9717](https://github.com/promptfoo/promptfoo/issues/9717)) ([2a97af6](https://github.com/promptfoo/promptfoo/commit/2a97af6c3e25e6f7b6a6849d025c22ffbdb00963))
-- **assertions:** honor a test/assert-set threshold of 0 ([#9736](https://github.com/promptfoo/promptfoo/issues/9736)) ([2547025](https://github.com/promptfoo/promptfoo/commit/2547025aad8ce1bec79bf24f4c20ef9c0432608c))
-- **assertions:** honor inverse (not-) for cost, latency, and perplexity ([#9725](https://github.com/promptfoo/promptfoo/issues/9725)) ([1c9daa0](https://github.com/promptfoo/promptfoo/commit/1c9daa092725c663d1797aef02ea6d590a878459))
-- **assertions:** honor inverse (not-) for levenshtein assertion ([#9722](https://github.com/promptfoo/promptfoo/issues/9722)) ([560ea2d](https://github.com/promptfoo/promptfoo/commit/560ea2d236e7d926f8a3443fb93d833b1b537bb4))
-- **assertions:** honor inverse for not-moderation ([#9738](https://github.com/promptfoo/promptfoo/issues/9738)) ([c56c712](https://github.com/promptfoo/promptfoo/commit/c56c7121749ac9fcdb29e6892c806900f8cf9568))
-- **assertions:** make BLEU closest-reference tie-break order-independent ([#9718](https://github.com/promptfoo/promptfoo/issues/9718)) ([051fbf9](https://github.com/promptfoo/promptfoo/commit/051fbf95bc3a460c79c5d2252a73484f16b65f12))
-- **assertions:** make not-similar with an array require dissimilarity to all values ([#9737](https://github.com/promptfoo/promptfoo/issues/9737)) ([6c3e7bb](https://github.com/promptfoo/promptfoo/commit/6c3e7bb161cccfc9040b363bc5a77ddfcbabf852))
-- **assertions:** report best similarity score when no array value passes ([#9721](https://github.com/promptfoo/promptfoo/issues/9721)) ([94eaaf3](https://github.com/promptfoo/promptfoo/commit/94eaaf315b73de52d82e2820b9b5dd7a6dd1c993))
-- **assertions:** respect inverse when an object value can't parse output as JSON ([#9626](https://github.com/promptfoo/promptfoo/issues/9626)) ([052a4e1](https://github.com/promptfoo/promptfoo/commit/052a4e1e3ebf62818243cac3cdd6987546dcc052))
-- **assertions:** score ROUGE case-insensitively ([#9739](https://github.com/promptfoo/promptfoo/issues/9739)) ([386c012](https://github.com/promptfoo/promptfoo/commit/386c0129bf5099963e5f8afb773f56d92441417b))
-- **assertions:** stop BLEU collapsing scores for short candidates ([#9740](https://github.com/promptfoo/promptfoo/issues/9740)) ([ec0e225](https://github.com/promptfoo/promptfoo/commit/ec0e2250d42a93e89441b023a09042345568b96d))
-- **build:** make biome Style Check run deterministically (fix stack-overflow no-op) + fix unmasked lint errors ([#9631](https://github.com/promptfoo/promptfoo/issues/9631)) ([836733f](https://github.com/promptfoo/promptfoo/commit/836733ff89e1388b3193b31d308b858eadc72bc4))
-- **ci:** update architecture edge baseline for evalTableUtils CSV imports ([#9633](https://github.com/promptfoo/promptfoo/issues/9633)) ([ea3348e](https://github.com/promptfoo/promptfoo/commit/ea3348e3d1ff72fd7dabb02787b709561a41068f))
-- **cli:** accept falsy provider outputs in validation ([#9644](https://github.com/promptfoo/promptfoo/issues/9644)) ([c5e4b80](https://github.com/promptfoo/promptfoo/commit/c5e4b80a4803f554a7d78ca23b6d821c1fc10841))
-- **code-scan:** keep SARIF skip errors off stdout ([#9690](https://github.com/promptfoo/promptfoo/issues/9690)) ([e1e062d](https://github.com/promptfoo/promptfoo/commit/e1e062db849a320f934a94210ea9400720fdbdf5))
-- **code-scan:** restore log level after structured scans ([#9196](https://github.com/promptfoo/promptfoo/issues/9196)) ([ca4821c](https://github.com/promptfoo/promptfoo/commit/ca4821c8e3f3e428a50678d774bf5a30eaa328f4))
-- **codex:** propagate trace identity to CLI telemetry ([#9703](https://github.com/promptfoo/promptfoo/issues/9703)) ([29db0a8](https://github.com/promptfoo/promptfoo/commit/29db0a829571fb7df2b87c601da49efa7b1d6d98))
-- **csv:** unescape all escaped commas in array metadata values ([#9757](https://github.com/promptfoo/promptfoo/issues/9757)) ([9ef75a2](https://github.com/promptfoo/promptfoo/commit/9ef75a257907049973ce062ce181697013c0e11b))
-- **deps:** constrain undici to &lt;7.27.1 to fix Node 26 "terminated" error ([#9668](https://github.com/promptfoo/promptfoo/issues/9668)) ([2774371](https://github.com/promptfoo/promptfoo/commit/2774371660c7fc92eaac6891e4b8152a30940399))
-- **deps:** gate Content-Encoding strip after decompress and require undici &gt;=7.27.1 &lt;8 ([#9683](https://github.com/promptfoo/promptfoo/issues/9683)) ([d6031dc](https://github.com/promptfoo/promptfoo/commit/d6031dc65da5df55db034026ec7bbe3a74f1c2ce))
-- **deps:** pin undici to 7.27.1 ([#9711](https://github.com/promptfoo/promptfoo/issues/9711)) ([67ae571](https://github.com/promptfoo/promptfoo/commit/67ae57163dc49491ecb1ea983162fdddf1336c13))
-- **deps:** update anthropic packages ([#9634](https://github.com/promptfoo/promptfoo/issues/9634)) ([d932250](https://github.com/promptfoo/promptfoo/commit/d932250ac0d40abf59a0540ed2d860e01a046e8c))
-- **deps:** update anthropic packages ([#9651](https://github.com/promptfoo/promptfoo/issues/9651)) ([4fcaa87](https://github.com/promptfoo/promptfoo/commit/4fcaa87067fefd4279a597cceb03dc3834fc5924))
-- **deps:** update anthropic packages ([#9733](https://github.com/promptfoo/promptfoo/issues/9733)) ([b320a7b](https://github.com/promptfoo/promptfoo/commit/b320a7bc56039f5def46110cd6a161a03d8bbd8b))
-- **deps:** update dependency @opentelemetry/core to v2.8.0 [security] ([#9754](https://github.com/promptfoo/promptfoo/issues/9754)) ([fd11498](https://github.com/promptfoo/promptfoo/commit/fd11498db6c3ce71249fe1320071dc16b79296fc))
-- **eval:** escape CSV formula injection in result exports ([#9609](https://github.com/promptfoo/promptfoo/issues/9609)) ([c039bff](https://github.com/promptfoo/promptfoo/commit/c039bffb23fcc4bb36d5fe38daea119f8cd30645))
-- **eval:** handle config directory inputs without promptfooconfig ([#7825](https://github.com/promptfoo/promptfoo/issues/7825)) ([30dc14b](https://github.com/promptfoo/promptfoo/commit/30dc14bca9c38b8a927283f53b897e246785882a))
-- **eval:** restore CSV export architecture boundary ([#9630](https://github.com/promptfoo/promptfoo/issues/9630)) ([7aaa3ed](https://github.com/promptfoo/promptfoo/commit/7aaa3ed9e8c917411808aa351190e13f33d1bef5))
-- honor remote data-sharing controls ([#9664](https://github.com/promptfoo/promptfoo/issues/9664)) ([49a175a](https://github.com/promptfoo/promptfoo/commit/49a175a877b828893f2a9e03420816d192cdbb5f))
-- **http:** redact transformed request debug logs ([#9425](https://github.com/promptfoo/promptfoo/issues/9425)) ([4190a3c](https://github.com/promptfoo/promptfoo/commit/4190a3c630e0c41396ed5750a1b4fb9c203e4557))
-- **matchers:** respect filtered remote target context ([#9704](https://github.com/promptfoo/promptfoo/issues/9704)) ([86ec3ab](https://github.com/promptfoo/promptfoo/commit/86ec3ab863514a6932f1f5d057f133406a5f35ed))
-- **matchers:** segment prose context into sentences for RAGAS context relevance ([#9734](https://github.com/promptfoo/promptfoo/issues/9734)) ([ca75779](https://github.com/promptfoo/promptfoo/commit/ca757794c53c48422d9c20c133e5d1704e5adff0))
-- **output:** wait for JSONL file release ([#9618](https://github.com/promptfoo/promptfoo/issues/9618)) ([9d46d14](https://github.com/promptfoo/promptfoo/commit/9d46d141dc60031073c971f8891c825d1a854832))
-- preserve prompt function across beforeAll extension hooks ([#9661](https://github.com/promptfoo/promptfoo/issues/9661)) ([d984059](https://github.com/promptfoo/promptfoo/commit/d9840593addb070b31504fec2db332e01c320bc6))
-- **providers:** preserve Anthropic thinking token usage ([#9680](https://github.com/promptfoo/promptfoo/issues/9680)) ([6b41b43](https://github.com/promptfoo/promptfoo/commit/6b41b4332f79f89a7647293bd8e41c2d383ee4de))
-- **providers:** respect originator header overrides ([#9585](https://github.com/promptfoo/promptfoo/issues/9585)) ([c9fe77f](https://github.com/promptfoo/promptfoo/commit/c9fe77fbb88920ec13845e1529c553ea53982894))
-- **redteam:** allow token plugins with multi-input ([#9657](https://github.com/promptfoo/promptfoo/issues/9657)) ([03f888f](https://github.com/promptfoo/promptfoo/commit/03f888fd81b47ae273d194054b346c312de90214))
-- **redteam:** make skill commands and script paths work for marketplace users ([#9670](https://github.com/promptfoo/promptfoo/issues/9670)) ([aba48e4](https://github.com/promptfoo/promptfoo/commit/aba48e4cdef5b37fd7816ff7dd4ac42a442e1238))
-- **redteam:** preserve team context in cloud tasks ([#9677](https://github.com/promptfoo/promptfoo/issues/9677)) ([a7bac57](https://github.com/promptfoo/promptfoo/commit/a7bac57018ea354b7249ec595901235a50b187f5))
-- **redteam:** publish marketplace skill fixes ([#9676](https://github.com/promptfoo/promptfoo/issues/9676)) ([3c761c5](https://github.com/promptfoo/promptfoo/commit/3c761c5d32b806fda229379a8937e50b1c05bb77))
-- **redteam:** surface remote generation body read failures ([#9751](https://github.com/promptfoo/promptfoo/issues/9751)) ([8a1bec2](https://github.com/promptfoo/promptfoo/commit/8a1bec20745707fe9bf7bf0e75145cbfede37932))
-- **share:** preserve blob refs per result row ([#9749](https://github.com/promptfoo/promptfoo/issues/9749)) ([e029151](https://github.com/promptfoo/promptfoo/commit/e029151eb65ee64d3dcff1d0d79099e7ada35e33))
-- **webui:** redact test filter provider credentials ([#9529](https://github.com/promptfoo/promptfoo/issues/9529)) ([5d809ef](https://github.com/promptfoo/promptfoo/commit/5d809ef283c9117e317883472d9e74f6f7e20b03))
+- address GitHub AI findings ([#9765](https://github.com/artef/artef/issues/9765)) ([fd8320a](https://github.com/artef/artef/commit/fd8320aa1e68e9f85f736b77eee9f86199ee5381))
+- **assertions:** let contains-sql extract fenced SQL with backtick identifiers ([#9785](https://github.com/artef/artef/issues/9785)) ([f97c932](https://github.com/artef/artef/commit/f97c932977de8c3da2da5ba42d76e545902fe198))
+- **assertions:** make is-xml reject non-well-formed XML ([#9782](https://github.com/artef/artef/issues/9782)) ([96929e8](https://github.com/artef/artef/commit/96929e8758cafb2bfdb0c5fbc5d7d0ea0971c162))
+- **assertions:** respect inverse for is-refusal when output is missing ([#9818](https://github.com/artef/artef/issues/9818)) ([59898f2](https://github.com/artef/artef/commit/59898f2a4722cb79daf13b3c328e4eab0d5a41e5))
+- **assertions:** stop is-sql false-rejecting SELECT DISTINCT ([#9784](https://github.com/artef/artef/issues/9784)) ([c08cfc4](https://github.com/artef/artef/commit/c08cfc454d38f052d0a86067eda0ed8ab15d45c7))
+- **bleu:** return pass:false for empty output instead of throwing ([#9841](https://github.com/artef/artef/issues/9841)) ([9e98c3e](https://github.com/artef/artef/commit/9e98c3ea8c7379adbad2e0da8f92cbf44578558b))
+- **ci:** re-pin code-scan Node to 24.15.0 to stop install timeout ([#9871](https://github.com/artef/artef/issues/9871)) ([8cc2cbb](https://github.com/artef/artef/commit/8cc2cbbf980791afb523ddbdb718071891ecbc89))
+- **cloud:** stop legacy API_HOST env var from steering cloud host resolution ([#9920](https://github.com/artef/artef/issues/9920)) ([49614da](https://github.com/artef/artef/commit/49614da0378ac56103466c5078fdbe39dd0bbb93))
+- **code-scan:** run GitHub Action on Node 24 runtime ([#9772](https://github.com/artef/artef/issues/9772)) ([c25974e](https://github.com/artef/artef/commit/c25974e8e74a5ba923c0318cb6576e2b4dfc9ad6))
+- **csv:** preserve quoted commas in contains-any/all assertion values ([#9761](https://github.com/artef/artef/issues/9761)) ([ae4a73a](https://github.com/artef/artef/commit/ae4a73ab57b2475fad3331e8fad4064f40702718))
+- **csv:** preserve zero \_\_threshold in testCaseFromCsvRow ([#9768](https://github.com/artef/artef/issues/9768)) ([7e7f1ae](https://github.com/artef/artef/commit/7e7f1aec8d19cd8454445bcf67b90e307f01dce5))
+- **csv:** reject \_\_expected0 instead of silently dropping its config ([#9815](https://github.com/artef/artef/issues/9815)) ([5097c23](https://github.com/artef/artef/commit/5097c2329dcb694ba6f8b8fbceb0d50612f703a9))
+- **deps:** bump pydantic-ai from 1.101.0 to 1.102.0 in /examples/integration-pydantic-ai in the pip group across 1 directory ([#9903](https://github.com/artef/artef/issues/9903)) ([1f2ac90](https://github.com/artef/artef/commit/1f2ac906f0db872070f31c255d324dceaf6f3e90))
+- **deps:** bump pypdf to 6.13.3 in eval-rag-full ([#9806](https://github.com/artef/artef/issues/9806)) ([a432a8d](https://github.com/artef/artef/commit/a432a8d05b7843ddef149c3e23cc2940ebb64a9f))
+- **deps:** override launch-editor to 2.14.1 ([#9883](https://github.com/artef/artef/issues/9883)) ([e96f32b](https://github.com/artef/artef/commit/e96f32b28eddb655f9905b1395e1c47aaaf687ae))
+- **deps:** require hono v4.12.25 ([#9777](https://github.com/artef/artef/issues/9777)) ([c5b397a](https://github.com/artef/artef/commit/c5b397aa0fb3097d7ef8f3aa0293f15296c4162f))
+- **deps:** resolve audit vulnerabilities ([#9880](https://github.com/artef/artef/issues/9880)) ([e55b37b](https://github.com/artef/artef/commit/e55b37bcde70ca9695e3ba38f21105be56a14ee8))
+- **deps:** restore LangChain examples ([#9778](https://github.com/artef/artef/issues/9778)) ([fb16af0](https://github.com/artef/artef/commit/fb16af0bfb2f14a3741871cdd3203f8058e39965))
+- **deps:** update anthropic packages ([#9817](https://github.com/artef/artef/issues/9817)) ([fe73e2e](https://github.com/artef/artef/commit/fe73e2e644186c40e6fd600ac2666ed5c43d0133))
+- **deps:** update anthropic packages ([#9831](https://github.com/artef/artef/issues/9831)) ([7f1cb4a](https://github.com/artef/artef/commit/7f1cb4ab356fa01a35d347dabf8114f9a4e97ee1))
+- **deps:** update anthropic packages ([#9904](https://github.com/artef/artef/issues/9904)) ([63c5a7a](https://github.com/artef/artef/commit/63c5a7a3a8e862aa14efc5fb7ee6e5217559b94e))
+- **deps:** update anthropic packages ([#9989](https://github.com/artef/artef/issues/9989)) ([25aa530](https://github.com/artef/artef/commit/25aa530e24c36b5f51ff7f9a2190189b9f5867ac))
+- **deps:** update anthropic packages to v0.102.0 ([#9776](https://github.com/artef/artef/issues/9776)) ([3e18ecb](https://github.com/artef/artef/commit/3e18ecb9dfafe49490c79df64d7e53f5e2a8ca0b))
+- **deps:** update dependency @anthropic-ai/sdk to v0.104.2 ([#9879](https://github.com/artef/artef/issues/9879)) ([81adada](https://github.com/artef/artef/commit/81adadadd2fd1bb19b80136ebe66c8c64102bc55))
+- **deps:** update dependency csv-parse to v7 ([#9870](https://github.com/artef/artef/issues/9870)) ([83f2ff6](https://github.com/artef/artef/commit/83f2ff6de7258480d7bdcde80a61673787bcf737))
+- **deps:** update dependency js-yaml to v5 ([#9919](https://github.com/artef/artef/issues/9919)) ([9696a2f](https://github.com/artef/artef/commit/9696a2fe5fdbff423aac3e35e349de047f5754fd))
+- **deps:** update dependency semver to v7.8.3 ([#9804](https://github.com/artef/artef/issues/9804)) ([7a6b199](https://github.com/artef/artef/commit/7a6b1999a70d689d39064ac13e98b69a749b5c34))
+- **deps:** update dependency swiper to v14 ([#10005](https://github.com/artef/artef/issues/10005)) ([e8a929a](https://github.com/artef/artef/commit/e8a929a11b36faded6396fbebfa7b64b21bc7257))
+- **deps:** update opentelemetry ([#9827](https://github.com/artef/artef/issues/9827)) ([f45c2e0](https://github.com/artef/artef/commit/f45c2e03d6a6398939929470d174517fcb25771a))
+- **deps:** update type definitions ([#9832](https://github.com/artef/artef/issues/9832)) ([f545c51](https://github.com/artef/artef/commit/f545c5164c6a45ce80bf2a73a013924f1a49f1c4))
+- **init:** artef init will print undefined when initializing and selecting redteam as action ([#9899](https://github.com/artef/artef/issues/9899)) ([bfb2ad4](https://github.com/artef/artef/commit/bfb2ad4d233cc577e49160ea7eb82ee1e2d761f8))
+- **providers:** apply xAI cache-read discount to cost calculation ([#9783](https://github.com/artef/artef/issues/9783)) ([f273300](https://github.com/artef/artef/commit/f273300575fc73ea2d8312b76b4c438439208f55))
+- **providers:** Azure provider audit — cost reporting, token refresh, doc accuracy ([#9794](https://github.com/artef/artef/issues/9794)) ([7d304ee](https://github.com/artef/artef/commit/7d304ee20263b7686b4966dff683071a0f2c1871))
+- **providers:** correct Claude context pricing by platform ([#9995](https://github.com/artef/artef/issues/9995)) ([433d8f5](https://github.com/artef/artef/commit/433d8f5d6bdb767ab1e935a2a6ace00f74ab6bb7))
+- **providers:** correct Mistral alias pricing drift and refresh models/docs ([#9929](https://github.com/artef/artef/issues/9929)) ([ae04fcc](https://github.com/artef/artef/commit/ae04fcc0e8d9aa0307cd6d92501762aa961d9c45))
+- **providers:** correct stale model pricing ([#9951](https://github.com/artef/artef/issues/9951)) ([4e969db](https://github.com/artef/artef/commit/4e969db925570221cac4d8d371f1fba4e4b6f102))
+- **providers:** correct watsonx token usage (total omits prompt; completion miscomputed) ([#9780](https://github.com/artef/artef/issues/9780)) ([9056649](https://github.com/artef/artef/commit/9056649c9b1234998ab0f8289c219cb93ef16df2))
+- **providers:** flatten Moonshot config options ([#9803](https://github.com/artef/artef/issues/9803)) ([f0e87d9](https://github.com/artef/artef/commit/f0e87d96de40ebb9c5a20053dcf6fdba97bd6a55))
+- **providers:** support websocket subprotocols ([#9944](https://github.com/artef/artef/issues/9944)) ([ce40d66](https://github.com/artef/artef/commit/ce40d66492a4be614dee99574d083172db93e712))
+- **redteam:** remote materialize mcp tool calls ([#9935](https://github.com/artef/artef/issues/9935)) ([ede696e](https://github.com/artef/artef/commit/ede696e1905b2aa4469d259fe208edde645014cf))
+- **redteam:** stop presenting deprecated or invalid prompt-injection ids in tool guidance ([#9936](https://github.com/artef/artef/issues/9936)) ([9a337ab](https://github.com/artef/artef/commit/9a337ab3bc479b1bd7cb3a67c6fc00220390a703))
+- **redteam:** support Sharp 0.35 ([#9823](https://github.com/artef/artef/issues/9823)) ([92108f0](https://github.com/artef/artef/commit/92108f05ac925636895d175e4f345da166d27e9a))
+- restore Docker CLI links and validate rate-limit reset metadata ([#9790](https://github.com/artef/artef/issues/9790)) ([58e7c83](https://github.com/artef/artef/commit/58e7c8326867d470689f1f9978660c6f73e6f7c0))
+- **sanitizer:** redact malformed token params ([#9779](https://github.com/artef/artef/issues/9779)) ([ad1ad35](https://github.com/artef/artef/commit/ad1ad354f87da934d763d4c937376a678aa3551c))
+- **scheduler:** fall back from invalid retry-after-ms ([#9796](https://github.com/artef/artef/issues/9796)) ([81fe447](https://github.com/artef/artef/commit/81fe4479e722ae416b67e4e20fd5ba723dc91ff6))
+- **site:** declare js-yaml dependency so Cloudflare Pages build resolves v5 ([#9957](https://github.com/artef/artef/issues/9957)) ([65f0f4c](https://github.com/artef/artef/commit/65f0f4cd29c220388ceb16b5304850ce772073d8))
+- **testCaseReader:** preserve JSONL row description instead of overwriting ([#9840](https://github.com/artef/artef/issues/9840)) ([644e71b](https://github.com/artef/artef/commit/644e71b06be9efe2532fa43832a52b9ed71dd972))
+- **ui:** preserve WebSocket protocol input ([#10002](https://github.com/artef/artef/issues/10002)) ([ed192d3](https://github.com/artef/artef/commit/ed192d335be3bba23f10b1d0493548528d05cf0f))
+- **util:** keep ellipsize within maxLen when maxLen is below 3 ([#9822](https://github.com/artef/artef/issues/9822)) ([60939c0](https://github.com/artef/artef/commit/60939c0612d5a522354c50d09db86c8aff0a2345))
+- **util:** match JavaScript/TypeScript file extensions case-insensitively ([#9799](https://github.com/artef/artef/issues/9799)) ([9f18d92](https://github.com/artef/artef/commit/9f18d92cf99bf9a290276c917abc3987bf9d6bff))
+- **util:** report file and line for malformed JSON/JSONL test files ([#9942](https://github.com/artef/artef/issues/9942)) ([250af9d](https://github.com/artef/artef/commit/250af9d8a145bca136d2321751d2a6a28bdd56ea))
+- **util:** select xlsx sheet by name when name starts with digits ([#9932](https://github.com/artef/artef/issues/9932)) ([ede3302](https://github.com/artef/artef/commit/ede330200ede3ef6b15a3f45420bf11fd6616e50))
 
-## [0.121.15](https://github.com/promptfoo/promptfoo/compare/0.121.14...0.121.15) (2026-06-05)
+## [0.121.17](https://github.com/artef/artef/compare/0.121.16...0.121.17) (2026-06-16)
+
+### Bug Fixes
+
+- **docker:** bump pinned Python to 3.14 to match the Alpine base image ([#9769](https://github.com/artef/artef/issues/9769)) ([24fc5be](https://github.com/artef/artef/commit/24fc5be1ae645cbe6ecf0f06238ea6a360ad7866))
+- **docker:** unpin Python minor by default so Alpine drift can't break the build ([#9771](https://github.com/artef/artef/issues/9771)) ([c69ef40](https://github.com/artef/artef/commit/c69ef40c611c7b6b83b5e6118c7907e411f0d07b))
+- **matchers:** drop stranded list markers in RAGAS context-relevance segmentation ([#9767](https://github.com/artef/artef/issues/9767)) ([b06eb88](https://github.com/artef/artef/commit/b06eb885191ec47e7b5eada1d89c00d9d304949c))
+- **sanitizer:** stop over-redacting benign url values that mention a credential keyword ([#9764](https://github.com/artef/artef/issues/9764)) ([77abc5e](https://github.com/artef/artef/commit/77abc5e6131191128b4ecb3de41a6cceae5b0d65))
+
+## [0.121.16](https://github.com/artef/artef/compare/0.121.15...0.121.16) (2026-06-16)
 
 ### Features
 
-- **assertions:** grade multimodal outputs ([#9617](https://github.com/promptfoo/promptfoo/issues/9617)) ([ec4d3b4](https://github.com/promptfoo/promptfoo/commit/ec4d3b42e29133e0479028d38de394b949c9c092))
-- **build:** add DAG-aware architecture cycle checks ([#9557](https://github.com/promptfoo/promptfoo/issues/9557)) ([9d7d810](https://github.com/promptfoo/promptfoo/commit/9d7d810c2118c63cb537bf05ea2d34c12bd22066))
-- **providers:** add Azure MAI image provider and MAI model recognition ([#9595](https://github.com/promptfoo/promptfoo/issues/9595)) ([e091527](https://github.com/promptfoo/promptfoo/commit/e091527e2eae0539b9b6d78abb462eddc15e093d))
-- **providers:** upgrade MiniMax default model to M3 ([#9598](https://github.com/promptfoo/promptfoo/issues/9598)) ([43b30c5](https://github.com/promptfoo/promptfoo/commit/43b30c5bc50368842ecd08432edc2e37543db5a2))
+- **providers:** add Claude Fable and Mythos support ([#9671](https://github.com/artef/artef/issues/9671)) ([09435af](https://github.com/artef/artef/commit/09435af291d953e33e5e7f8813e37925a41a9f93))
+- **redteam:** publish all four artef skills to the Claude Code marketplace ([#9665](https://github.com/artef/artef/issues/9665)) ([53a7266](https://github.com/artef/artef/commit/53a7266b1d206c787454f0cf00b348ce6fda54dc))
 
 ### Bug Fixes
 
-- **auth:** enable auto-share for on-prem Report Server after login ([#9612](https://github.com/promptfoo/promptfoo/issues/9612)) ([8ece593](https://github.com/promptfoo/promptfoo/commit/8ece593840d8dba3f5d2e1e05f55116ec1a92c30))
-- **auth:** preserve cloud request headers ([#9610](https://github.com/promptfoo/promptfoo/issues/9610)) ([3a2c5e6](https://github.com/promptfoo/promptfoo/commit/3a2c5e64796b3852381b6168ad2da735f3161c1d))
-- **code-scan:** process findings in mixed skip responses ([#9525](https://github.com/promptfoo/promptfoo/issues/9525)) ([aeae790](https://github.com/promptfoo/promptfoo/commit/aeae7904701f861a0a7ce8bfcdd16f67e74deec3))
-- **code-scan:** reject fractional inline comment lines ([#9556](https://github.com/promptfoo/promptfoo/issues/9556)) ([0a2b329](https://github.com/promptfoo/promptfoo/commit/0a2b32997dd83033e218cf523562b69cebc88527))
-- **eval:** compose metadata and result filters ([#9604](https://github.com/promptfoo/promptfoo/issues/9604)) ([49539ee](https://github.com/promptfoo/promptfoo/commit/49539ee61786540a77bcb9765f23cb8a2c4e1828))
-- **eval:** preserve --config ordering when expanding a directory entry ([#9606](https://github.com/promptfoo/promptfoo/issues/9606)) ([fc081a0](https://github.com/promptfoo/promptfoo/commit/fc081a0bbaa91c27b93bdd4c28533f5912023deb))
-- harden validation and target discovery ([#9614](https://github.com/promptfoo/promptfoo/issues/9614)) ([465d610](https://github.com/promptfoo/promptfoo/commit/465d610aade97837ed5bf731d54c3b2389e92819))
-- **providers:** require deployment name for no-default Azure provider types ([#9603](https://github.com/promptfoo/promptfoo/issues/9603)) ([da48abd](https://github.com/promptfoo/promptfoo/commit/da48abd6bc1b92e44acd5d4c88a0a02058721b3b))
-- **providers:** suppress optional GCP metadata warning ([#9554](https://github.com/promptfoo/promptfoo/issues/9554)) ([8dcc44b](https://github.com/promptfoo/promptfoo/commit/8dcc44bd2b2278db047363545566917cb1566975))
-- **redteam:** restrict remote auth to cloud host ([#9597](https://github.com/promptfoo/promptfoo/issues/9597)) ([1b2c6d9](https://github.com/promptfoo/promptfoo/commit/1b2c6d932494d38ad6162478d0a5fbb9a1a5f1fb))
+- address AI quality findings ([#9637](https://github.com/artef/artef/issues/9637)) ([c54a306](https://github.com/artef/artef/commit/c54a30668ad8319d76c20ae96e6680ad6c51a2c6))
+- **assertions:** correct BLEU brevity penalty formula ([#9717](https://github.com/artef/artef/issues/9717)) ([2a97af6](https://github.com/artef/artef/commit/2a97af6c3e25e6f7b6a6849d025c22ffbdb00963))
+- **assertions:** honor a test/assert-set threshold of 0 ([#9736](https://github.com/artef/artef/issues/9736)) ([2547025](https://github.com/artef/artef/commit/2547025aad8ce1bec79bf24f4c20ef9c0432608c))
+- **assertions:** honor inverse (not-) for cost, latency, and perplexity ([#9725](https://github.com/artef/artef/issues/9725)) ([1c9daa0](https://github.com/artef/artef/commit/1c9daa092725c663d1797aef02ea6d590a878459))
+- **assertions:** honor inverse (not-) for levenshtein assertion ([#9722](https://github.com/artef/artef/issues/9722)) ([560ea2d](https://github.com/artef/artef/commit/560ea2d236e7d926f8a3443fb93d833b1b537bb4))
+- **assertions:** honor inverse for not-moderation ([#9738](https://github.com/artef/artef/issues/9738)) ([c56c712](https://github.com/artef/artef/commit/c56c7121749ac9fcdb29e6892c806900f8cf9568))
+- **assertions:** make BLEU closest-reference tie-break order-independent ([#9718](https://github.com/artef/artef/issues/9718)) ([051fbf9](https://github.com/artef/artef/commit/051fbf95bc3a460c79c5d2252a73484f16b65f12))
+- **assertions:** make not-similar with an array require dissimilarity to all values ([#9737](https://github.com/artef/artef/issues/9737)) ([6c3e7bb](https://github.com/artef/artef/commit/6c3e7bb161cccfc9040b363bc5a77ddfcbabf852))
+- **assertions:** report best similarity score when no array value passes ([#9721](https://github.com/artef/artef/issues/9721)) ([94eaaf3](https://github.com/artef/artef/commit/94eaaf315b73de52d82e2820b9b5dd7a6dd1c993))
+- **assertions:** respect inverse when an object value can't parse output as JSON ([#9626](https://github.com/artef/artef/issues/9626)) ([052a4e1](https://github.com/artef/artef/commit/052a4e1e3ebf62818243cac3cdd6987546dcc052))
+- **assertions:** score ROUGE case-insensitively ([#9739](https://github.com/artef/artef/issues/9739)) ([386c012](https://github.com/artef/artef/commit/386c0129bf5099963e5f8afb773f56d92441417b))
+- **assertions:** stop BLEU collapsing scores for short candidates ([#9740](https://github.com/artef/artef/issues/9740)) ([ec0e225](https://github.com/artef/artef/commit/ec0e2250d42a93e89441b023a09042345568b96d))
+- **build:** make biome Style Check run deterministically (fix stack-overflow no-op) + fix unmasked lint errors ([#9631](https://github.com/artef/artef/issues/9631)) ([836733f](https://github.com/artef/artef/commit/836733ff89e1388b3193b31d308b858eadc72bc4))
+- **ci:** update architecture edge baseline for evalTableUtils CSV imports ([#9633](https://github.com/artef/artef/issues/9633)) ([ea3348e](https://github.com/artef/artef/commit/ea3348e3d1ff72fd7dabb02787b709561a41068f))
+- **cli:** accept falsy provider outputs in validation ([#9644](https://github.com/artef/artef/issues/9644)) ([c5e4b80](https://github.com/artef/artef/commit/c5e4b80a4803f554a7d78ca23b6d821c1fc10841))
+- **code-scan:** keep SARIF skip errors off stdout ([#9690](https://github.com/artef/artef/issues/9690)) ([e1e062d](https://github.com/artef/artef/commit/e1e062db849a320f934a94210ea9400720fdbdf5))
+- **code-scan:** restore log level after structured scans ([#9196](https://github.com/artef/artef/issues/9196)) ([ca4821c](https://github.com/artef/artef/commit/ca4821c8e3f3e428a50678d774bf5a30eaa328f4))
+- **codex:** propagate trace identity to CLI telemetry ([#9703](https://github.com/artef/artef/issues/9703)) ([29db0a8](https://github.com/artef/artef/commit/29db0a829571fb7df2b87c601da49efa7b1d6d98))
+- **csv:** unescape all escaped commas in array metadata values ([#9757](https://github.com/artef/artef/issues/9757)) ([9ef75a2](https://github.com/artef/artef/commit/9ef75a257907049973ce062ce181697013c0e11b))
+- **deps:** constrain undici to &lt;7.27.1 to fix Node 26 "terminated" error ([#9668](https://github.com/artef/artef/issues/9668)) ([2774371](https://github.com/artef/artef/commit/2774371660c7fc92eaac6891e4b8152a30940399))
+- **deps:** gate Content-Encoding strip after decompress and require undici &gt;=7.27.1 &lt;8 ([#9683](https://github.com/artef/artef/issues/9683)) ([d6031dc](https://github.com/artef/artef/commit/d6031dc65da5df55db034026ec7bbe3a74f1c2ce))
+- **deps:** pin undici to 7.27.1 ([#9711](https://github.com/artef/artef/issues/9711)) ([67ae571](https://github.com/artef/artef/commit/67ae57163dc49491ecb1ea983162fdddf1336c13))
+- **deps:** update anthropic packages ([#9634](https://github.com/artef/artef/issues/9634)) ([d932250](https://github.com/artef/artef/commit/d932250ac0d40abf59a0540ed2d860e01a046e8c))
+- **deps:** update anthropic packages ([#9651](https://github.com/artef/artef/issues/9651)) ([4fcaa87](https://github.com/artef/artef/commit/4fcaa87067fefd4279a597cceb03dc3834fc5924))
+- **deps:** update anthropic packages ([#9733](https://github.com/artef/artef/issues/9733)) ([b320a7b](https://github.com/artef/artef/commit/b320a7bc56039f5def46110cd6a161a03d8bbd8b))
+- **deps:** update dependency @opentelemetry/core to v2.8.0 [security] ([#9754](https://github.com/artef/artef/issues/9754)) ([fd11498](https://github.com/artef/artef/commit/fd11498db6c3ce71249fe1320071dc16b79296fc))
+- **eval:** escape CSV formula injection in result exports ([#9609](https://github.com/artef/artef/issues/9609)) ([c039bff](https://github.com/artef/artef/commit/c039bffb23fcc4bb36d5fe38daea119f8cd30645))
+- **eval:** handle config directory inputs without artefconfig ([#7825](https://github.com/artef/artef/issues/7825)) ([30dc14b](https://github.com/artef/artef/commit/30dc14bca9c38b8a927283f53b897e246785882a))
+- **eval:** restore CSV export architecture boundary ([#9630](https://github.com/artef/artef/issues/9630)) ([7aaa3ed](https://github.com/artef/artef/commit/7aaa3ed9e8c917411808aa351190e13f33d1bef5))
+- honor remote data-sharing controls ([#9664](https://github.com/artef/artef/issues/9664)) ([49a175a](https://github.com/artef/artef/commit/49a175a877b828893f2a9e03420816d192cdbb5f))
+- **http:** redact transformed request debug logs ([#9425](https://github.com/artef/artef/issues/9425)) ([4190a3c](https://github.com/artef/artef/commit/4190a3c630e0c41396ed5750a1b4fb9c203e4557))
+- **matchers:** respect filtered remote target context ([#9704](https://github.com/artef/artef/issues/9704)) ([86ec3ab](https://github.com/artef/artef/commit/86ec3ab863514a6932f1f5d057f133406a5f35ed))
+- **matchers:** segment prose context into sentences for RAGAS context relevance ([#9734](https://github.com/artef/artef/issues/9734)) ([ca75779](https://github.com/artef/artef/commit/ca757794c53c48422d9c20c133e5d1704e5adff0))
+- **output:** wait for JSONL file release ([#9618](https://github.com/artef/artef/issues/9618)) ([9d46d14](https://github.com/artef/artef/commit/9d46d141dc60031073c971f8891c825d1a854832))
+- preserve prompt function across beforeAll extension hooks ([#9661](https://github.com/artef/artef/issues/9661)) ([d984059](https://github.com/artef/artef/commit/d9840593addb070b31504fec2db332e01c320bc6))
+- **providers:** preserve Anthropic thinking token usage ([#9680](https://github.com/artef/artef/issues/9680)) ([6b41b43](https://github.com/artef/artef/commit/6b41b4332f79f89a7647293bd8e41c2d383ee4de))
+- **providers:** respect originator header overrides ([#9585](https://github.com/artef/artef/issues/9585)) ([c9fe77f](https://github.com/artef/artef/commit/c9fe77fbb88920ec13845e1529c553ea53982894))
+- **redteam:** allow token plugins with multi-input ([#9657](https://github.com/artef/artef/issues/9657)) ([03f888f](https://github.com/artef/artef/commit/03f888fd81b47ae273d194054b346c312de90214))
+- **redteam:** make skill commands and script paths work for marketplace users ([#9670](https://github.com/artef/artef/issues/9670)) ([aba48e4](https://github.com/artef/artef/commit/aba48e4cdef5b37fd7816ff7dd4ac42a442e1238))
+- **redteam:** preserve team context in cloud tasks ([#9677](https://github.com/artef/artef/issues/9677)) ([a7bac57](https://github.com/artef/artef/commit/a7bac57018ea354b7249ec595901235a50b187f5))
+- **redteam:** publish marketplace skill fixes ([#9676](https://github.com/artef/artef/issues/9676)) ([3c761c5](https://github.com/artef/artef/commit/3c761c5d32b806fda229379a8937e50b1c05bb77))
+- **redteam:** surface remote generation body read failures ([#9751](https://github.com/artef/artef/issues/9751)) ([8a1bec2](https://github.com/artef/artef/commit/8a1bec20745707fe9bf7bf0e75145cbfede37932))
+- **share:** preserve blob refs per result row ([#9749](https://github.com/artef/artef/issues/9749)) ([e029151](https://github.com/artef/artef/commit/e029151eb65ee64d3dcff1d0d79099e7ada35e33))
+- **webui:** redact test filter provider credentials ([#9529](https://github.com/artef/artef/issues/9529)) ([5d809ef](https://github.com/artef/artef/commit/5d809ef283c9117e317883472d9e74f6f7e20b03))
 
-## [0.121.14](https://github.com/promptfoo/promptfoo/compare/0.121.13...0.121.14) (2026-06-02)
+## [0.121.15](https://github.com/artef/artef/compare/0.121.14...0.121.15) (2026-06-05)
 
 ### Features
 
-- add A2A provider ([#9586](https://github.com/promptfoo/promptfoo/issues/9586)) ([963b264](https://github.com/promptfoo/promptfoo/commit/963b264ba22d621282d0bf82efdae2b5defe6d59))
-- **assertions:** add agent-rubric grader ([#9453](https://github.com/promptfoo/promptfoo/issues/9453)) ([cadb3c5](https://github.com/promptfoo/promptfoo/commit/cadb3c500277464f05244c8bc8525c2725aa5c22))
-- **build:** publish a lightweight promptfoo/contracts subpath ([#9535](https://github.com/promptfoo/promptfoo/issues/9535)) ([6e89fd4](https://github.com/promptfoo/promptfoo/commit/6e89fd45abc97696a70079cddcb659492acc66d0))
-- **cli:** add seeded random sampling ([#9522](https://github.com/promptfoo/promptfoo/issues/9522)) ([6e4ba60](https://github.com/promptfoo/promptfoo/commit/6e4ba60eba69ff696d0404aabf5453311214c500))
-- **eval:** extract eval-creator readiness and validation modules ([#9397](https://github.com/promptfoo/promptfoo/issues/9397)) ([d3af118](https://github.com/promptfoo/promptfoo/commit/d3af1180405e82786461eae5bf85e50ce6b73f3a))
-- **eval:** surface trace linkage on result rows ([#9027](https://github.com/promptfoo/promptfoo/issues/9027)) ([9468d66](https://github.com/promptfoo/promptfoo/commit/9468d6607e858f9c1a1c77f43713f58a7dc154c5))
-- **providers:** add OpenAI GPT-5.5/5.4 frontier models + Codex on Amazon Bedrock ([#9587](https://github.com/promptfoo/promptfoo/issues/9587)) ([1e35267](https://github.com/promptfoo/promptfoo/commit/1e35267796ea372e1b4a8700ad15964d8171566b))
-- **providers:** add OpenAI originator header ([#9474](https://github.com/promptfoo/promptfoo/issues/9474)) ([6141070](https://github.com/promptfoo/promptfoo/commit/61410706acbc86772b1d60ac85d6988dc09f2fa6))
-- **providers:** expose traceable agent turn markers ([#9475](https://github.com/promptfoo/promptfoo/issues/9475)) ([4018837](https://github.com/promptfoo/promptfoo/commit/4018837455faf334ce2e07fd39a1fbc33c2960d2))
-- **providers:** promote Fireworks AI from registry stub to dedicated provider ([#9542](https://github.com/promptfoo/promptfoo/issues/9542)) ([2bae148](https://github.com/promptfoo/promptfoo/commit/2bae148be51975dbacaec2a4a5d36c839e897034))
-- **tracing:** add runtime receiver controls ([#9028](https://github.com/promptfoo/promptfoo/issues/9028)) ([90df6a1](https://github.com/promptfoo/promptfoo/commit/90df6a120710191ab4f64926e0b0636a3c891ea4))
+- **assertions:** grade multimodal outputs ([#9617](https://github.com/artef/artef/issues/9617)) ([ec4d3b4](https://github.com/artef/artef/commit/ec4d3b42e29133e0479028d38de394b949c9c092))
+- **build:** add DAG-aware architecture cycle checks ([#9557](https://github.com/artef/artef/issues/9557)) ([9d7d810](https://github.com/artef/artef/commit/9d7d810c2118c63cb537bf05ea2d34c12bd22066))
+- **providers:** add Azure MAI image provider and MAI model recognition ([#9595](https://github.com/artef/artef/issues/9595)) ([e091527](https://github.com/artef/artef/commit/e091527e2eae0539b9b6d78abb462eddc15e093d))
+- **providers:** upgrade MiniMax default model to M3 ([#9598](https://github.com/artef/artef/issues/9598)) ([43b30c5](https://github.com/artef/artef/commit/43b30c5bc50368842ecd08432edc2e37543db5a2))
 
 ### Bug Fixes
 
-- **assertions:** don't classify gen_ai.tool.definitions chat spans as tool calls ([#9524](https://github.com/promptfoo/promptfoo/issues/9524)) ([b59f397](https://github.com/promptfoo/promptfoo/commit/b59f3974851657a8a97c05db09cc87064ba0528d))
-- **cli:** preflight force imports before collision lookup ([#9570](https://github.com/promptfoo/promptfoo/issues/9570)) ([0b93733](https://github.com/promptfoo/promptfoo/commit/0b93733d48727be67e34433cb0fb1ad21026863a))
-- **cloud:** on-prem API host for guardrails and http-generator, with host-resolution tests ([#9580](https://github.com/promptfoo/promptfoo/issues/9580)) ([b9a014a](https://github.com/promptfoo/promptfoo/commit/b9a014a3de85f26402312ac96d94fe787f2ac764))
-- **cloud:** use on-prem API host in checkEmailStatus ([#9576](https://github.com/promptfoo/promptfoo/issues/9576)) ([063c62b](https://github.com/promptfoo/promptfoo/commit/063c62b5d0df93ecf10ccdd6831ab0a2534b4df3))
-- **db:** avoid SQLITE_LOCKED flakiness in shared-cache test database ([#9567](https://github.com/promptfoo/promptfoo/issues/9567)) ([1fdb59b](https://github.com/promptfoo/promptfoo/commit/1fdb59b44f771952e5e96eb01ade2a54035fcaa0))
-- **db:** serialize libsql test database cleanup ([#9540](https://github.com/promptfoo/promptfoo/issues/9540)) ([f4380c2](https://github.com/promptfoo/promptfoo/commit/f4380c23f1e62eb1a2e171155d1437a1645d01dd))
-- **deps:** keep ModelAudit pydantic-core pinned to compatible 2.46.4 ([b2b35b0](https://github.com/promptfoo/promptfoo/commit/b2b35b079aab5ba338700d891a4ec189d4e468d7))
-- **deps:** update dependency ai to ^6.0.190 ([#9577](https://github.com/promptfoo/promptfoo/issues/9577)) ([9ec614a](https://github.com/promptfoo/promptfoo/commit/9ec614a175668d1775c332de8c272a01b6c28341))
-- **eval:** canonicalize retry JSONL output with atomic rewrites ([#9547](https://github.com/promptfoo/promptfoo/issues/9547)) ([8d7c920](https://github.com/promptfoo/promptfoo/commit/8d7c920101f495b87d23bcbd3c32fa01147db10d))
-- **eval:** redact credentials from the persisted browser store ([#9396](https://github.com/promptfoo/promptfoo/issues/9396)) ([4d5bed5](https://github.com/promptfoo/promptfoo/commit/4d5bed56b94de0351d8348f7a6b8b25a1bbc14e1))
-- **evaluator:** preserve and harden programmatic JSONL output ([#9538](https://github.com/promptfoo/promptfoo/issues/9538)) ([8ddd906](https://github.com/promptfoo/promptfoo/commit/8ddd9064de73d8e454ddab5adfaac32f64704137))
-- **output:** redact api-key and legacy transport headers in JSONL/DB ([#9546](https://github.com/promptfoo/promptfoo/issues/9546)) ([e194c85](https://github.com/promptfoo/promptfoo/commit/e194c852a4303faefab109c151c74134e1556403))
-- **providers:** handle Codex SDK rate limits ([#9473](https://github.com/promptfoo/promptfoo/issues/9473)) ([76d3db4](https://github.com/promptfoo/promptfoo/commit/76d3db402b04fbad08580907b025b93120b7d2a4))
-- **providers:** inject n8n sessions into custom bodies ([#9527](https://github.com/promptfoo/promptfoo/issues/9527)) ([9cc0542](https://github.com/promptfoo/promptfoo/commit/9cc05429af81ff6493bc8f4f448be3ce3e1c55c7))
-- **providers:** preserve n8n array body templates ([#9544](https://github.com/promptfoo/promptfoo/issues/9544)) ([6cdf63d](https://github.com/promptfoo/promptfoo/commit/6cdf63d02752bcc23fb2ab68a14e620447460df8))
-- **providers:** preserve streamed Anthropic refusal guardrails ([#9560](https://github.com/promptfoo/promptfoo/issues/9560)) ([ff8eafd](https://github.com/promptfoo/promptfoo/commit/ff8eafd743cf6d63dd85b790ad8a4c73ede5828d))
-- **providers:** serialize persistent browser sessions ([#9414](https://github.com/promptfoo/promptfoo/issues/9414)) ([097ff9b](https://github.com/promptfoo/promptfoo/commit/097ff9bab6d6692b54c385867a72c63fd106f471))
-- **redteam:** authenticate remote-generation requests against on-prem cloud ([#9584](https://github.com/promptfoo/promptfoo/issues/9584)) ([7df8fae](https://github.com/promptfoo/promptfoo/commit/7df8fae21ceb5eb51f4c246bce8ba16a11de2c1c))
-- **util:** restore nested SAS tokens after array reorder ([#9528](https://github.com/promptfoo/promptfoo/issues/9528)) ([9759e5a](https://github.com/promptfoo/promptfoo/commit/9759e5a58099a702e313013daa04149530473e33))
-- **webui:** render negative-only metric charts ([#9526](https://github.com/promptfoo/promptfoo/issues/9526)) ([7ccafa4](https://github.com/promptfoo/promptfoo/commit/7ccafa4c74c391516a5e371c9db2918e415f078f))
+- **auth:** enable auto-share for on-prem Report Server after login ([#9612](https://github.com/artef/artef/issues/9612)) ([8ece593](https://github.com/artef/artef/commit/8ece593840d8dba3f5d2e1e05f55116ec1a92c30))
+- **auth:** preserve cloud request headers ([#9610](https://github.com/artef/artef/issues/9610)) ([3a2c5e6](https://github.com/artef/artef/commit/3a2c5e64796b3852381b6168ad2da735f3161c1d))
+- **code-scan:** process findings in mixed skip responses ([#9525](https://github.com/artef/artef/issues/9525)) ([aeae790](https://github.com/artef/artef/commit/aeae7904701f861a0a7ce8bfcdd16f67e74deec3))
+- **code-scan:** reject fractional inline comment lines ([#9556](https://github.com/artef/artef/issues/9556)) ([0a2b329](https://github.com/artef/artef/commit/0a2b32997dd83033e218cf523562b69cebc88527))
+- **eval:** compose metadata and result filters ([#9604](https://github.com/artef/artef/issues/9604)) ([49539ee](https://github.com/artef/artef/commit/49539ee61786540a77bcb9765f23cb8a2c4e1828))
+- **eval:** preserve --config ordering when expanding a directory entry ([#9606](https://github.com/artef/artef/issues/9606)) ([fc081a0](https://github.com/artef/artef/commit/fc081a0bbaa91c27b93bdd4c28533f5912023deb))
+- harden validation and target discovery ([#9614](https://github.com/artef/artef/issues/9614)) ([465d610](https://github.com/artef/artef/commit/465d610aade97837ed5bf731d54c3b2389e92819))
+- **providers:** require deployment name for no-default Azure provider types ([#9603](https://github.com/artef/artef/issues/9603)) ([da48abd](https://github.com/artef/artef/commit/da48abd6bc1b92e44acd5d4c88a0a02058721b3b))
+- **providers:** suppress optional GCP metadata warning ([#9554](https://github.com/artef/artef/issues/9554)) ([8dcc44b](https://github.com/artef/artef/commit/8dcc44bd2b2278db047363545566917cb1566975))
+- **redteam:** restrict remote auth to cloud host ([#9597](https://github.com/artef/artef/issues/9597)) ([1b2c6d9](https://github.com/artef/artef/commit/1b2c6d932494d38ad6162478d0a5fbb9a1a5f1fb))
 
-## [0.121.13](https://github.com/promptfoo/promptfoo/compare/0.121.12...0.121.13) (2026-05-28)
+## [0.121.14](https://github.com/artef/artef/compare/0.121.13...0.121.14) (2026-06-02)
 
 ### Features
 
-- add MiniMax provider ([#8207](https://github.com/promptfoo/promptfoo/issues/8207)) ([ebd78f6](https://github.com/promptfoo/promptfoo/commit/ebd78f6b9c22c4a61050e8f767aee211729415a2))
-- **anthropic:** add support for Claude Opus 4.8 ([#9500](https://github.com/promptfoo/promptfoo/issues/9500)) ([e090730](https://github.com/promptfoo/promptfoo/commit/e0907306ecf388a27e606407eef7a89f6c6d92bc))
-- **assertions:** add ignore option to trajectory:tool-args-match ([#9466](https://github.com/promptfoo/promptfoo/issues/9466)) ([6423f2a](https://github.com/promptfoo/promptfoo/commit/6423f2a5c95ed84a3210806eda222a23d0a30c01))
-- **assertions:** add metadata shortcut to assertion context ([#6863](https://github.com/promptfoo/promptfoo/issues/6863)) ([5264680](https://github.com/promptfoo/promptfoo/commit/5264680f1bb5372fbebc1a780b0e6c8f77455b2a))
-- **assertions:** support glob patterns in trajectory:tool-args-match ignore ([#9484](https://github.com/promptfoo/promptfoo/issues/9484)) ([18b3eef](https://github.com/promptfoo/promptfoo/commit/18b3eefd48a2ff8dd6ee69160e86523823ee10e3))
-- **assertions:** tolerate optional defaults in trajectory:tool-args-match ([#9471](https://github.com/promptfoo/promptfoo/issues/9471)) ([a74894a](https://github.com/promptfoo/promptfoo/commit/a74894a4ff26872d88fa2008b8a1c13b725ccb56))
-- **cli:** add prompt optimization ([#9294](https://github.com/promptfoo/promptfoo/issues/9294)) ([27d6dbe](https://github.com/promptfoo/promptfoo/commit/27d6dbe36e5ca63aaf32a185e3464e278746f89c))
-- **cli:** warn on deprecated Node.js 20 runtime ([#9494](https://github.com/promptfoo/promptfoo/issues/9494)) ([8de3408](https://github.com/promptfoo/promptfoo/commit/8de3408fc1f74fb7d6079903f39451a664416e6e))
-- **eval:** add eval runtime vars ([#9331](https://github.com/promptfoo/promptfoo/issues/9331)) ([3c76045](https://github.com/promptfoo/promptfoo/commit/3c76045e30afea3d022a18c2df8c3fce6db98d18))
-- **eval:** add output detail deep links ([#9170](https://github.com/promptfoo/promptfoo/issues/9170)) ([1f5845b](https://github.com/promptfoo/promptfoo/commit/1f5845b9f508a01de0b821c6671eae438fb7109c))
-- **eval:** load test sets from azure blob storage ([#9282](https://github.com/promptfoo/promptfoo/issues/9282)) ([b5ea8ab](https://github.com/promptfoo/promptfoo/commit/b5ea8abf56fe16bef058cb40d15439062a35e42c))
-- **google:** add Gemini 3.5 Flash and refresh Google/Vertex models ([#9376](https://github.com/promptfoo/promptfoo/issues/9376)) ([6c81c8d](https://github.com/promptfoo/promptfoo/commit/6c81c8df89678f869d8f3b69a7728e04ea24b345))
-- **output:** add html report detail drawer ([#9291](https://github.com/promptfoo/promptfoo/issues/9291)) ([8c54598](https://github.com/promptfoo/promptfoo/commit/8c54598c67d404d398c761ac44fd81bec194233f))
-- **output:** add named metric columns to CSV exports ([#9480](https://github.com/promptfoo/promptfoo/issues/9480)) ([4531750](https://github.com/promptfoo/promptfoo/commit/45317507bd8993f4b7c91e41bfbf925884c06754))
-- **providers:** add MLflow AI Gateway provider ([#8860](https://github.com/promptfoo/promptfoo/issues/8860)) ([d0e7e2d](https://github.com/promptfoo/promptfoo/commit/d0e7e2d96d3639ee6fd7a93a48dc3f28fac51b56))
-- **providers:** add n8n webhook provider ([#6770](https://github.com/promptfoo/promptfoo/issues/6770)) ([3dc6e32](https://github.com/promptfoo/promptfoo/commit/3dc6e32d1824d94f053ef95fcd72a569980bcf1e))
-- **providers:** add Novita provider ([#8190](https://github.com/promptfoo/promptfoo/issues/8190)) ([42930e8](https://github.com/promptfoo/promptfoo/commit/42930e872e60ecf225a6d01890e6a8aed8116778))
-- **providers:** add NVIDIA NIM provider ([#9491](https://github.com/promptfoo/promptfoo/issues/9491)) ([fa3e4a9](https://github.com/promptfoo/promptfoo/commit/fa3e4a9a43b302606355b1365ac4a533b0bf9fbc))
-- **providers:** add OrcaRouter provider ([#9493](https://github.com/promptfoo/promptfoo/issues/9493)) ([fe115ab](https://github.com/promptfoo/promptfoo/commit/fe115abe52278a48a9f94a1dbfe0f0c30296ce08))
-- **redteam:** add runtime tags to redteam run ([#9499](https://github.com/promptfoo/promptfoo/issues/9499)) ([72d4cb4](https://github.com/promptfoo/promptfoo/commit/72d4cb493e54a0dc632d3fa9e6582191407f13a0))
+- add A2A provider ([#9586](https://github.com/artef/artef/issues/9586)) ([963b264](https://github.com/artef/artef/commit/963b264ba22d621282d0bf82efdae2b5defe6d59))
+- **assertions:** add agent-rubric grader ([#9453](https://github.com/artef/artef/issues/9453)) ([cadb3c5](https://github.com/artef/artef/commit/cadb3c500277464f05244c8bc8525c2725aa5c22))
+- **build:** publish a lightweight artef/contracts subpath ([#9535](https://github.com/artef/artef/issues/9535)) ([6e89fd4](https://github.com/artef/artef/commit/6e89fd45abc97696a70079cddcb659492acc66d0))
+- **cli:** add seeded random sampling ([#9522](https://github.com/artef/artef/issues/9522)) ([6e4ba60](https://github.com/artef/artef/commit/6e4ba60eba69ff696d0404aabf5453311214c500))
+- **eval:** extract eval-creator readiness and validation modules ([#9397](https://github.com/artef/artef/issues/9397)) ([d3af118](https://github.com/artef/artef/commit/d3af1180405e82786461eae5bf85e50ce6b73f3a))
+- **eval:** surface trace linkage on result rows ([#9027](https://github.com/artef/artef/issues/9027)) ([9468d66](https://github.com/artef/artef/commit/9468d6607e858f9c1a1c77f43713f58a7dc154c5))
+- **providers:** add OpenAI GPT-5.5/5.4 frontier models + Codex on Amazon Bedrock ([#9587](https://github.com/artef/artef/issues/9587)) ([1e35267](https://github.com/artef/artef/commit/1e35267796ea372e1b4a8700ad15964d8171566b))
+- **providers:** add OpenAI originator header ([#9474](https://github.com/artef/artef/issues/9474)) ([6141070](https://github.com/artef/artef/commit/61410706acbc86772b1d60ac85d6988dc09f2fa6))
+- **providers:** expose traceable agent turn markers ([#9475](https://github.com/artef/artef/issues/9475)) ([4018837](https://github.com/artef/artef/commit/4018837455faf334ce2e07fd39a1fbc33c2960d2))
+- **providers:** promote Fireworks AI from registry stub to dedicated provider ([#9542](https://github.com/artef/artef/issues/9542)) ([2bae148](https://github.com/artef/artef/commit/2bae148be51975dbacaec2a4a5d36c839e897034))
+- **tracing:** add runtime receiver controls ([#9028](https://github.com/artef/artef/issues/9028)) ([90df6a1](https://github.com/artef/artef/commit/90df6a120710191ab4f64926e0b0636a3c891ea4))
 
 ### Bug Fixes
 
-- **app:** clarify metric pill filtering ([#9252](https://github.com/promptfoo/promptfoo/issues/9252)) ([05e5a30](https://github.com/promptfoo/promptfoo/commit/05e5a30eb28acf30dbc6256b58c9a28bcf85f1ca))
-- **app:** reorder eval output actions ([#9261](https://github.com/promptfoo/promptfoo/issues/9261)) ([91dc814](https://github.com/promptfoo/promptfoo/commit/91dc814467687214f371dbb83cc4571e0a0d9a28))
-- **cache:** make the fetch cache key stable across processes ([#9509](https://github.com/promptfoo/promptfoo/issues/9509)) ([7be3ef5](https://github.com/promptfoo/promptfoo/commit/7be3ef54250df638faaf9d1bbc0bf30a638c401a))
-- **ci:** avoid shell interpolation in telemetry check ([#9280](https://github.com/promptfoo/promptfoo/issues/9280)) ([4160a90](https://github.com/promptfoo/promptfoo/commit/4160a90a46f438f11c8f59c0b53124a36d634371))
-- **ci:** disable deploy dependency cache ([#9281](https://github.com/promptfoo/promptfoo/issues/9281)) ([f3a2502](https://github.com/promptfoo/promptfoo/commit/f3a250249d9c3c28fca8c88ab430925c76dae5ea))
-- **ci:** pin code-scan Node to 24.15.0 to stop install timeout ([#9374](https://github.com/promptfoo/promptfoo/issues/9374)) ([e200bb5](https://github.com/promptfoo/promptfoo/commit/e200bb55e4dd0a7314950e16fbbd237a3b8bb963))
-- **ci:** scope code-scan-action mirror sync to release artifacts ([#9363](https://github.com/promptfoo/promptfoo/issues/9363)) ([76c3a29](https://github.com/promptfoo/promptfoo/commit/76c3a298986b8c5a199656473c67a7cd349a868a))
-- classify script stderr by severity ([#9459](https://github.com/promptfoo/promptfoo/issues/9459)) ([1eeef19](https://github.com/promptfoo/promptfoo/commit/1eeef199dd5a55c23300d482fef2593abfe6d87e))
-- **cli:** validate optimization split input ([#9514](https://github.com/promptfoo/promptfoo/issues/9514)) ([e7e29d1](https://github.com/promptfoo/promptfoo/commit/e7e29d14986e9510db0b51e241858444c60ca219))
-- **code-scan:** emit structured fork PR skip output ([#9426](https://github.com/promptfoo/promptfoo/issues/9426)) ([61c624c](https://github.com/promptfoo/promptfoo/commit/61c624c7f91808a6f59d8b837dbb3896dd9a74c0))
-- **code-scan:** honor minimum-severity alias when min-severity is unset ([#9433](https://github.com/promptfoo/promptfoo/issues/9433)) ([ea5ea9e](https://github.com/promptfoo/promptfoo/commit/ea5ea9e741da0968431de25c0d67337f2e0e6e20))
-- **code-scan:** suppress SARIF on skipped fork scans ([#9451](https://github.com/promptfoo/promptfoo/issues/9451)) ([8236e65](https://github.com/promptfoo/promptfoo/commit/8236e65011807b227df69b19ca033e3066e1a96d))
-- **config:** dedupe repeated executable providers ([#9430](https://github.com/promptfoo/promptfoo/issues/9430)) ([6325653](https://github.com/promptfoo/promptfoo/commit/6325653f707fc48949dd683642600b96a8cc0521))
-- **config:** preserve all function providers in combineConfigs ([#9408](https://github.com/promptfoo/promptfoo/issues/9408)) ([ed4e29e](https://github.com/promptfoo/promptfoo/commit/ed4e29ea22462a2ef0572522d91db159badc067b))
-- **db:** isolate libsql test databases ([#9504](https://github.com/promptfoo/promptfoo/issues/9504)) ([b01b257](https://github.com/promptfoo/promptfoo/commit/b01b257bbfee524bfc24560e9b0b85f2b027f555))
-- **db:** parameterize JSON path filters ([#9345](https://github.com/promptfoo/promptfoo/issues/9345)) ([dc5e2ed](https://github.com/promptfoo/promptfoo/commit/dc5e2ededb2321006847ea4d42b7468b6579eee9))
-- **db:** replace better-sqlite3 with libsql ([#9486](https://github.com/promptfoo/promptfoo/issues/9486)) ([ca3dea4](https://github.com/promptfoo/promptfoo/commit/ca3dea486be75c5a0a94fa1e320c53414f38d891))
-- **db:** restore SQLite busy_timeout for the libsql driver ([#9508](https://github.com/promptfoo/promptfoo/issues/9508)) ([a74b2fe](https://github.com/promptfoo/promptfoo/commit/a74b2fe39c37519060c5773f69419fa3478c1cd7))
-- **deps:** avoid Socket-blocked package releases ([#9456](https://github.com/promptfoo/promptfoo/issues/9456)) ([89d6e61](https://github.com/promptfoo/promptfoo/commit/89d6e613161f47c165786973b709f15847f1d509))
-- **deps:** bump brace-expansion and webpack-dev-server [security] ([#9339](https://github.com/promptfoo/promptfoo/issues/9339)) ([bb1d57e](https://github.com/promptfoo/promptfoo/commit/bb1d57efdfd287e8151f714f0fa0ee71b8f97db5))
-- **deps:** lazy-load optional integration packages ([#9284](https://github.com/promptfoo/promptfoo/issues/9284)) ([db37941](https://github.com/promptfoo/promptfoo/commit/db3794179514a818fcef5aec63a109682c2aa174))
-- **deps:** patch qs denial of service advisory ([#9384](https://github.com/promptfoo/promptfoo/issues/9384)) ([b392051](https://github.com/promptfoo/promptfoo/commit/b392051d28b2beefabb5f1bd27313a0707b74da5))
-- **deps:** update anthropic packages ([#9461](https://github.com/promptfoo/promptfoo/issues/9461)) ([87277b9](https://github.com/promptfoo/promptfoo/commit/87277b9ad3832235ba1fba0c4c26fbd39c309147))
-- **deps:** update dependency engine.io to v6.6.7 ([#9457](https://github.com/promptfoo/promptfoo/issues/9457)) ([5f36395](https://github.com/promptfoo/promptfoo/commit/5f363957f6c4e24b6f4864ad26564647856ad185))
-- **deps:** update dependency engine.io to v6.6.8 ([#9477](https://github.com/promptfoo/promptfoo/issues/9477)) ([3366b67](https://github.com/promptfoo/promptfoo/commit/3366b673d3bdd098e58172709b52451ffb676b99))
-- **deps:** update dependency engine.io-client to v6.6.5 ([#9478](https://github.com/promptfoo/promptfoo/issues/9478)) ([32610e3](https://github.com/promptfoo/promptfoo/commit/32610e3f47905873dc08e83d7dea7f35fe977e1a))
-- **eval:** accept defaultTest-only configs in prompt optimizer ([#9365](https://github.com/promptfoo/promptfoo/issues/9365)) ([f8ecebd](https://github.com/promptfoo/promptfoo/commit/f8ecebdb1113ab6617c6888cad5e3a5b8f5b058f))
-- **eval:** error when optimizer pair has no runnable tests ([#9372](https://github.com/promptfoo/promptfoo/issues/9372)) ([45046ac](https://github.com/promptfoo/promptfoo/commit/45046ac496de3e1df0373b201714372d9346d24c))
-- **eval:** handle Google Sheets export classification ([#9385](https://github.com/promptfoo/promptfoo/issues/9385)) ([5ffeb33](https://github.com/promptfoo/promptfoo/commit/5ffeb33210aa0ecd85cfbfc8f0a03c94b8591a83))
-- **eval:** invalidate count cache after retry cleanup ([#9431](https://github.com/promptfoo/promptfoo/issues/9431)) ([3ea3599](https://github.com/promptfoo/promptfoo/commit/3ea3599c9b7798f88ea8248eb668453cf6db041f))
-- **eval:** invalidate history cache after result update ([#9487](https://github.com/promptfoo/promptfoo/issues/9487)) ([2e48494](https://github.com/promptfoo/promptfoo/commit/2e484949e7f3276299a319fcc4c7b02928c6735c))
-- **eval:** invalidate result-count cache on insert ([#9348](https://github.com/promptfoo/promptfoo/issues/9348)) ([#9421](https://github.com/promptfoo/promptfoo/issues/9421)) ([4651ceb](https://github.com/promptfoo/promptfoo/commit/4651ceb16225ec524db706fff608c4350d386b22))
-- **eval:** keep eval runtime vars out of persisted results ([#9370](https://github.com/promptfoo/promptfoo/issues/9370)) ([734db7c](https://github.com/promptfoo/promptfoo/commit/734db7c8b3e6ee3bd80583cc417e262a17d1697a))
-- **eval:** preserve all distinct CallApiFunction providers in combineConfigs ([#9402](https://github.com/promptfoo/promptfoo/issues/9402)) ([b7f2a93](https://github.com/promptfoo/promptfoo/commit/b7f2a9373f0030a5ee6da8e940e20c72298d7a34))
-- **eval:** preserve optimized prompt routing ([#9391](https://github.com/promptfoo/promptfoo/issues/9391)) ([fff7ca4](https://github.com/promptfoo/promptfoo/commit/fff7ca4644f0ce7aeb8f38361e1dc8f7456bda15))
-- **eval:** preserve prompt optimizer progress when a later round fails ([#9505](https://github.com/promptfoo/promptfoo/issues/9505)) ([211fadf](https://github.com/promptfoo/promptfoo/commit/211fadf7be8fc7019aa92eeb1a3212fad2a88136))
-- **eval:** prevent optimize from polluting jsonl output ([#9364](https://github.com/promptfoo/promptfoo/issues/9364)) ([1205a2a](https://github.com/promptfoo/promptfoo/commit/1205a2a2be77beb8505731515d0af1ee893cacb0))
-- **eval:** redact Azure Blob SAS tokens in outputs ([#9386](https://github.com/promptfoo/promptfoo/issues/9386)) ([23a5376](https://github.com/promptfoo/promptfoo/commit/23a5376b3efc4b195fc36a870da239aca627f140))
-- **eval:** refresh history cache after inserts ([#9496](https://github.com/promptfoo/promptfoo/issues/9496)) ([ed17310](https://github.com/promptfoo/promptfoo/commit/ed1731078993b9ae9ebd7038815423160fbd49a4))
-- **eval:** restore result header borders and live metrics ([#9273](https://github.com/promptfoo/promptfoo/issues/9273)) ([4ceaeb5](https://github.com/promptfoo/promptfoo/commit/4ceaeb504254a909e221a35c62b732829349f156))
-- **eval:** reuse configured grading provider references ([#9460](https://github.com/promptfoo/promptfoo/issues/9460)) ([28b26d9](https://github.com/promptfoo/promptfoo/commit/28b26d96cdd2798050c2d2ce86979d3c40b7c790))
-- **eval:** show test descriptions in HTML output ([#9390](https://github.com/promptfoo/promptfoo/issues/9390)) ([206f1dd](https://github.com/promptfoo/promptfoo/commit/206f1dd9848607ed9d4eba1f7998f90b8f87f0ff))
-- handle chart and Google response edge cases ([#9409](https://github.com/promptfoo/promptfoo/issues/9409)) ([09701a8](https://github.com/promptfoo/promptfoo/commit/09701a8fa0ba1f86ae2a941a9d1d775456b08f37))
-- **http:** isolate auth token cache ([#8636](https://github.com/promptfoo/promptfoo/issues/8636)) ([8d745cd](https://github.com/promptfoo/promptfoo/commit/8d745cd6456f24ab06837d2de1482fb0dd572f03))
-- **http:** redact debug request metadata ([#8635](https://github.com/promptfoo/promptfoo/issues/8635)) ([6594491](https://github.com/promptfoo/promptfoo/commit/6594491bccab61a8ebb4c687cdb9bc9ac56ba9ca))
-- **mcp:** use cryptographic session identifiers ([#9392](https://github.com/promptfoo/promptfoo/issues/9392)) ([c6f5144](https://github.com/promptfoo/promptfoo/commit/c6f5144c2abf0813e57e57ec618a6d42e3123b87))
-- **providers:** align Gemini safety block handling ([#9387](https://github.com/promptfoo/promptfoo/issues/9387)) ([45fed35](https://github.com/promptfoo/promptfoo/commit/45fed35c009e0258a0226b132538f149b4ba5bfa))
-- **providers:** harden callback file URL parsing ([#9479](https://github.com/promptfoo/promptfoo/issues/9479)) ([d6bfc1f](https://github.com/promptfoo/promptfoo/commit/d6bfc1f59349ca7ec747865e72704f7ae8bddfbb))
-- **providers:** honor Vertex default host overrides ([#9389](https://github.com/promptfoo/promptfoo/issues/9389)) ([11a8d9b](https://github.com/promptfoo/promptfoo/commit/11a8d9b1c4edf214e8e15dd6794690ab49d24430))
-- **providers:** improve invalid provider diagnostics ([#9405](https://github.com/promptfoo/promptfoo/issues/9405)) ([04c5aa4](https://github.com/promptfoo/promptfoo/commit/04c5aa4bdc604b1efdbe26588b132d5ce63ec133))
-- **providers:** normalize Claude Opus compatibility ([#9510](https://github.com/promptfoo/promptfoo/issues/9510)) ([14e9dc1](https://github.com/promptfoo/promptfoo/commit/14e9dc1998bd14397f820cf066edca29c8032825))
-- **providers:** preserve AI Studio grounding metadata ([#9436](https://github.com/promptfoo/promptfoo/issues/9436)) ([79b6b63](https://github.com/promptfoo/promptfoo/commit/79b6b6363fbba7e7cdfbfe2d3d8d06546bb62a20))
-- **providers:** preserve raw Google stream chunks ([#9437](https://github.com/promptfoo/promptfoo/issues/9437)) ([2875f4e](https://github.com/promptfoo/promptfoo/commit/2875f4e02ecf383b9d1a0771bd3726378c7e1a60))
-- **providers:** price unknown Grok Imagine slugs at the quality tier ([#9337](https://github.com/promptfoo/promptfoo/issues/9337)) ([efa689e](https://github.com/promptfoo/promptfoo/commit/efa689ee65ebf4b6819f4d0fc30733897a997882))
-- **providers:** redact MLflow Gateway api key and restore Novita routing test ([#9511](https://github.com/promptfoo/promptfoo/issues/9511)) ([9e2eaf5](https://github.com/promptfoo/promptfoo/commit/9e2eaf5e2b6596f1f51fb29c9e759da78a44e637))
-- **providers:** reject MiniMax function_call ([#9512](https://github.com/promptfoo/promptfoo/issues/9512)) ([b9a849b](https://github.com/promptfoo/promptfoo/commit/b9a849bccb7c1bfd2821e3fdbf984d95e886ce9d))
-- **providers:** return refreshed HTTP auth tokens safely ([#9394](https://github.com/promptfoo/promptfoo/issues/9394)) ([9a258a5](https://github.com/promptfoo/promptfoo/commit/9a258a521f190a77e7f10d9bbe474d3729264d01))
-- **providers:** show labels in missing API key diagnostics ([#9404](https://github.com/promptfoo/promptfoo/issues/9404)) ([b43625b](https://github.com/promptfoo/promptfoo/commit/b43625b44d86ceaa1e624766d475efb388666d6b))
-- **providers:** stop double-counting xAI reasoning tokens in cost ([#9326](https://github.com/promptfoo/promptfoo/issues/9326)) ([26f6d13](https://github.com/promptfoo/promptfoo/commit/26f6d137621c29680c9a7aa0a348f55c4ffd4959))
-- **providers:** stop double-counting xAI reasoning tokens in cost ([#9507](https://github.com/promptfoo/promptfoo/issues/9507)) ([7f2932c](https://github.com/promptfoo/promptfoo/commit/7f2932cf511f710f51f19aba87b2fae3798e0f61))
-- secure script temporary artifacts ([#9393](https://github.com/promptfoo/promptfoo/issues/9393)) ([c320916](https://github.com/promptfoo/promptfoo/commit/c320916d34a7eb5379c862408f6345c6e1801f99))
-- **server:** publish eval job completion only after results are saved ([#9395](https://github.com/promptfoo/promptfoo/issues/9395)) ([a9f5bcf](https://github.com/promptfoo/promptfoo/commit/a9f5bcfb95b729f5735b2beb2dadb9dae3b5f360))
-- **server:** restore Azure Blob SAS tokens by value, not array position ([#9516](https://github.com/promptfoo/promptfoo/issues/9516)) ([b7f4a04](https://github.com/promptfoo/promptfoo/commit/b7f4a048a90e0ae5d2c4978ed6a6867d557f3d3c))
-- **util:** don't misreport a missing transitive dep as the optional package ([#9513](https://github.com/promptfoo/promptfoo/issues/9513)) ([e93c817](https://github.com/promptfoo/promptfoo/commit/e93c817c2823167d641f7eec7d43762819a5bd7f))
-- **web-viewer:** preserve config variable order instead of alphabetizing ([#9435](https://github.com/promptfoo/promptfoo/issues/9435)) ([a53d6f7](https://github.com/promptfoo/promptfoo/commit/a53d6f749ffeec72808c041298b636fae338167f))
-- **webui:** avoid NaN in named metric charts ([#9352](https://github.com/promptfoo/promptfoo/issues/9352)) ([a6b860f](https://github.com/promptfoo/promptfoo/commit/a6b860fd5c9fa16607c5fb3a78efac949a588188))
-- **webui:** clear row hint on eval selection ([#9380](https://github.com/promptfoo/promptfoo/issues/9380)) ([4586da4](https://github.com/promptfoo/promptfoo/commit/4586da40f2dbe249952a5fdce1e36486d1d8bb31))
-- **webui:** clear stale eval detail row hint ([#9377](https://github.com/promptfoo/promptfoo/issues/9377)) ([c9a3f61](https://github.com/promptfoo/promptfoo/commit/c9a3f616be3cc34882414519b640d90ef93c34fa))
-- **webui:** clear stale rowId and details hash on filter clear ([#9369](https://github.com/promptfoo/promptfoo/issues/9369)) ([e9b8e98](https://github.com/promptfoo/promptfoo/commit/e9b8e98fee9fc7407bdc38232ed7b959c5a55040))
-- **webui:** harden eval table deep links and header borders ([#9285](https://github.com/promptfoo/promptfoo/issues/9285)) ([3514f6d](https://github.com/promptfoo/promptfoo/commit/3514f6d84cfc766824dfcc52384fc414b24daef8))
-- **webui:** make full metric chip area clickable ([#9368](https://github.com/promptfoo/promptfoo/issues/9368)) ([8eed102](https://github.com/promptfoo/promptfoo/commit/8eed10296cf8a065028efa779adc0ac69654a99d))
-- **webui:** page eval deep links by rowId when filtered ([#9371](https://github.com/promptfoo/promptfoo/issues/9371)) ([16ede34](https://github.com/promptfoo/promptfoo/commit/16ede34d87b89a12345980f232e6788a322b8e2e))
+- **assertions:** don't classify gen_ai.tool.definitions chat spans as tool calls ([#9524](https://github.com/artef/artef/issues/9524)) ([b59f397](https://github.com/artef/artef/commit/b59f3974851657a8a97c05db09cc87064ba0528d))
+- **cli:** preflight force imports before collision lookup ([#9570](https://github.com/artef/artef/issues/9570)) ([0b93733](https://github.com/artef/artef/commit/0b93733d48727be67e34433cb0fb1ad21026863a))
+- **cloud:** on-prem API host for guardrails and http-generator, with host-resolution tests ([#9580](https://github.com/artef/artef/issues/9580)) ([b9a014a](https://github.com/artef/artef/commit/b9a014a3de85f26402312ac96d94fe787f2ac764))
+- **cloud:** use on-prem API host in checkEmailStatus ([#9576](https://github.com/artef/artef/issues/9576)) ([063c62b](https://github.com/artef/artef/commit/063c62b5d0df93ecf10ccdd6831ab0a2534b4df3))
+- **db:** avoid SQLITE_LOCKED flakiness in shared-cache test database ([#9567](https://github.com/artef/artef/issues/9567)) ([1fdb59b](https://github.com/artef/artef/commit/1fdb59b44f771952e5e96eb01ade2a54035fcaa0))
+- **db:** serialize libsql test database cleanup ([#9540](https://github.com/artef/artef/issues/9540)) ([f4380c2](https://github.com/artef/artef/commit/f4380c23f1e62eb1a2e171155d1437a1645d01dd))
+- **deps:** keep ModelAudit pydantic-core pinned to compatible 2.46.4 ([b2b35b0](https://github.com/artef/artef/commit/b2b35b079aab5ba338700d891a4ec189d4e468d7))
+- **deps:** update dependency ai to ^6.0.190 ([#9577](https://github.com/artef/artef/issues/9577)) ([9ec614a](https://github.com/artef/artef/commit/9ec614a175668d1775c332de8c272a01b6c28341))
+- **eval:** canonicalize retry JSONL output with atomic rewrites ([#9547](https://github.com/artef/artef/issues/9547)) ([8d7c920](https://github.com/artef/artef/commit/8d7c920101f495b87d23bcbd3c32fa01147db10d))
+- **eval:** redact credentials from the persisted browser store ([#9396](https://github.com/artef/artef/issues/9396)) ([4d5bed5](https://github.com/artef/artef/commit/4d5bed56b94de0351d8348f7a6b8b25a1bbc14e1))
+- **evaluator:** preserve and harden programmatic JSONL output ([#9538](https://github.com/artef/artef/issues/9538)) ([8ddd906](https://github.com/artef/artef/commit/8ddd9064de73d8e454ddab5adfaac32f64704137))
+- **output:** redact api-key and legacy transport headers in JSONL/DB ([#9546](https://github.com/artef/artef/issues/9546)) ([e194c85](https://github.com/artef/artef/commit/e194c852a4303faefab109c151c74134e1556403))
+- **providers:** handle Codex SDK rate limits ([#9473](https://github.com/artef/artef/issues/9473)) ([76d3db4](https://github.com/artef/artef/commit/76d3db402b04fbad08580907b025b93120b7d2a4))
+- **providers:** inject n8n sessions into custom bodies ([#9527](https://github.com/artef/artef/issues/9527)) ([9cc0542](https://github.com/artef/artef/commit/9cc05429af81ff6493bc8f4f448be3ce3e1c55c7))
+- **providers:** preserve n8n array body templates ([#9544](https://github.com/artef/artef/issues/9544)) ([6cdf63d](https://github.com/artef/artef/commit/6cdf63d02752bcc23fb2ab68a14e620447460df8))
+- **providers:** preserve streamed Anthropic refusal guardrails ([#9560](https://github.com/artef/artef/issues/9560)) ([ff8eafd](https://github.com/artef/artef/commit/ff8eafd743cf6d63dd85b790ad8a4c73ede5828d))
+- **providers:** serialize persistent browser sessions ([#9414](https://github.com/artef/artef/issues/9414)) ([097ff9b](https://github.com/artef/artef/commit/097ff9bab6d6692b54c385867a72c63fd106f471))
+- **redteam:** authenticate remote-generation requests against on-prem cloud ([#9584](https://github.com/artef/artef/issues/9584)) ([7df8fae](https://github.com/artef/artef/commit/7df8fae21ceb5eb51f4c246bce8ba16a11de2c1c))
+- **util:** restore nested SAS tokens after array reorder ([#9528](https://github.com/artef/artef/issues/9528)) ([9759e5a](https://github.com/artef/artef/commit/9759e5a58099a702e313013daa04149530473e33))
+- **webui:** render negative-only metric charts ([#9526](https://github.com/artef/artef/issues/9526)) ([7ccafa4](https://github.com/artef/artef/commit/7ccafa4c74c391516a5e371c9db2918e415f078f))
+
+## [0.121.13](https://github.com/artef/artef/compare/0.121.12...0.121.13) (2026-05-28)
+
+### Features
+
+- add MiniMax provider ([#8207](https://github.com/artef/artef/issues/8207)) ([ebd78f6](https://github.com/artef/artef/commit/ebd78f6b9c22c4a61050e8f767aee211729415a2))
+- **anthropic:** add support for Claude Opus 4.8 ([#9500](https://github.com/artef/artef/issues/9500)) ([e090730](https://github.com/artef/artef/commit/e0907306ecf388a27e606407eef7a89f6c6d92bc))
+- **assertions:** add ignore option to trajectory:tool-args-match ([#9466](https://github.com/artef/artef/issues/9466)) ([6423f2a](https://github.com/artef/artef/commit/6423f2a5c95ed84a3210806eda222a23d0a30c01))
+- **assertions:** add metadata shortcut to assertion context ([#6863](https://github.com/artef/artef/issues/6863)) ([5264680](https://github.com/artef/artef/commit/5264680f1bb5372fbebc1a780b0e6c8f77455b2a))
+- **assertions:** support glob patterns in trajectory:tool-args-match ignore ([#9484](https://github.com/artef/artef/issues/9484)) ([18b3eef](https://github.com/artef/artef/commit/18b3eefd48a2ff8dd6ee69160e86523823ee10e3))
+- **assertions:** tolerate optional defaults in trajectory:tool-args-match ([#9471](https://github.com/artef/artef/issues/9471)) ([a74894a](https://github.com/artef/artef/commit/a74894a4ff26872d88fa2008b8a1c13b725ccb56))
+- **cli:** add prompt optimization ([#9294](https://github.com/artef/artef/issues/9294)) ([27d6dbe](https://github.com/artef/artef/commit/27d6dbe36e5ca63aaf32a185e3464e278746f89c))
+- **cli:** warn on deprecated Node.js 20 runtime ([#9494](https://github.com/artef/artef/issues/9494)) ([8de3408](https://github.com/artef/artef/commit/8de3408fc1f74fb7d6079903f39451a664416e6e))
+- **eval:** add eval runtime vars ([#9331](https://github.com/artef/artef/issues/9331)) ([3c76045](https://github.com/artef/artef/commit/3c76045e30afea3d022a18c2df8c3fce6db98d18))
+- **eval:** add output detail deep links ([#9170](https://github.com/artef/artef/issues/9170)) ([1f5845b](https://github.com/artef/artef/commit/1f5845b9f508a01de0b821c6671eae438fb7109c))
+- **eval:** load test sets from azure blob storage ([#9282](https://github.com/artef/artef/issues/9282)) ([b5ea8ab](https://github.com/artef/artef/commit/b5ea8abf56fe16bef058cb40d15439062a35e42c))
+- **google:** add Gemini 3.5 Flash and refresh Google/Vertex models ([#9376](https://github.com/artef/artef/issues/9376)) ([6c81c8d](https://github.com/artef/artef/commit/6c81c8df89678f869d8f3b69a7728e04ea24b345))
+- **output:** add html report detail drawer ([#9291](https://github.com/artef/artef/issues/9291)) ([8c54598](https://github.com/artef/artef/commit/8c54598c67d404d398c761ac44fd81bec194233f))
+- **output:** add named metric columns to CSV exports ([#9480](https://github.com/artef/artef/issues/9480)) ([4531750](https://github.com/artef/artef/commit/45317507bd8993f4b7c91e41bfbf925884c06754))
+- **providers:** add MLflow AI Gateway provider ([#8860](https://github.com/artef/artef/issues/8860)) ([d0e7e2d](https://github.com/artef/artef/commit/d0e7e2d96d3639ee6fd7a93a48dc3f28fac51b56))
+- **providers:** add n8n webhook provider ([#6770](https://github.com/artef/artef/issues/6770)) ([3dc6e32](https://github.com/artef/artef/commit/3dc6e32d1824d94f053ef95fcd72a569980bcf1e))
+- **providers:** add Novita provider ([#8190](https://github.com/artef/artef/issues/8190)) ([42930e8](https://github.com/artef/artef/commit/42930e872e60ecf225a6d01890e6a8aed8116778))
+- **providers:** add NVIDIA NIM provider ([#9491](https://github.com/artef/artef/issues/9491)) ([fa3e4a9](https://github.com/artef/artef/commit/fa3e4a9a43b302606355b1365ac4a533b0bf9fbc))
+- **providers:** add OrcaRouter provider ([#9493](https://github.com/artef/artef/issues/9493)) ([fe115ab](https://github.com/artef/artef/commit/fe115abe52278a48a9f94a1dbfe0f0c30296ce08))
+- **redteam:** add runtime tags to redteam run ([#9499](https://github.com/artef/artef/issues/9499)) ([72d4cb4](https://github.com/artef/artef/commit/72d4cb493e54a0dc632d3fa9e6582191407f13a0))
+
+### Bug Fixes
+
+- **app:** clarify metric pill filtering ([#9252](https://github.com/artef/artef/issues/9252)) ([05e5a30](https://github.com/artef/artef/commit/05e5a30eb28acf30dbc6256b58c9a28bcf85f1ca))
+- **app:** reorder eval output actions ([#9261](https://github.com/artef/artef/issues/9261)) ([91dc814](https://github.com/artef/artef/commit/91dc814467687214f371dbb83cc4571e0a0d9a28))
+- **cache:** make the fetch cache key stable across processes ([#9509](https://github.com/artef/artef/issues/9509)) ([7be3ef5](https://github.com/artef/artef/commit/7be3ef54250df638faaf9d1bbc0bf30a638c401a))
+- **ci:** avoid shell interpolation in telemetry check ([#9280](https://github.com/artef/artef/issues/9280)) ([4160a90](https://github.com/artef/artef/commit/4160a90a46f438f11c8f59c0b53124a36d634371))
+- **ci:** disable deploy dependency cache ([#9281](https://github.com/artef/artef/issues/9281)) ([f3a2502](https://github.com/artef/artef/commit/f3a250249d9c3c28fca8c88ab430925c76dae5ea))
+- **ci:** pin code-scan Node to 24.15.0 to stop install timeout ([#9374](https://github.com/artef/artef/issues/9374)) ([e200bb5](https://github.com/artef/artef/commit/e200bb55e4dd0a7314950e16fbbd237a3b8bb963))
+- **ci:** scope code-scan-action mirror sync to release artifacts ([#9363](https://github.com/artef/artef/issues/9363)) ([76c3a29](https://github.com/artef/artef/commit/76c3a298986b8c5a199656473c67a7cd349a868a))
+- classify script stderr by severity ([#9459](https://github.com/artef/artef/issues/9459)) ([1eeef19](https://github.com/artef/artef/commit/1eeef199dd5a55c23300d482fef2593abfe6d87e))
+- **cli:** validate optimization split input ([#9514](https://github.com/artef/artef/issues/9514)) ([e7e29d1](https://github.com/artef/artef/commit/e7e29d14986e9510db0b51e241858444c60ca219))
+- **code-scan:** emit structured fork PR skip output ([#9426](https://github.com/artef/artef/issues/9426)) ([61c624c](https://github.com/artef/artef/commit/61c624c7f91808a6f59d8b837dbb3896dd9a74c0))
+- **code-scan:** honor minimum-severity alias when min-severity is unset ([#9433](https://github.com/artef/artef/issues/9433)) ([ea5ea9e](https://github.com/artef/artef/commit/ea5ea9e741da0968431de25c0d67337f2e0e6e20))
+- **code-scan:** suppress SARIF on skipped fork scans ([#9451](https://github.com/artef/artef/issues/9451)) ([8236e65](https://github.com/artef/artef/commit/8236e65011807b227df69b19ca033e3066e1a96d))
+- **config:** dedupe repeated executable providers ([#9430](https://github.com/artef/artef/issues/9430)) ([6325653](https://github.com/artef/artef/commit/6325653f707fc48949dd683642600b96a8cc0521))
+- **config:** preserve all function providers in combineConfigs ([#9408](https://github.com/artef/artef/issues/9408)) ([ed4e29e](https://github.com/artef/artef/commit/ed4e29ea22462a2ef0572522d91db159badc067b))
+- **db:** isolate libsql test databases ([#9504](https://github.com/artef/artef/issues/9504)) ([b01b257](https://github.com/artef/artef/commit/b01b257bbfee524bfc24560e9b0b85f2b027f555))
+- **db:** parameterize JSON path filters ([#9345](https://github.com/artef/artef/issues/9345)) ([dc5e2ed](https://github.com/artef/artef/commit/dc5e2ededb2321006847ea4d42b7468b6579eee9))
+- **db:** replace better-sqlite3 with libsql ([#9486](https://github.com/artef/artef/issues/9486)) ([ca3dea4](https://github.com/artef/artef/commit/ca3dea486be75c5a0a94fa1e320c53414f38d891))
+- **db:** restore SQLite busy_timeout for the libsql driver ([#9508](https://github.com/artef/artef/issues/9508)) ([a74b2fe](https://github.com/artef/artef/commit/a74b2fe39c37519060c5773f69419fa3478c1cd7))
+- **deps:** avoid Socket-blocked package releases ([#9456](https://github.com/artef/artef/issues/9456)) ([89d6e61](https://github.com/artef/artef/commit/89d6e613161f47c165786973b709f15847f1d509))
+- **deps:** bump brace-expansion and webpack-dev-server [security] ([#9339](https://github.com/artef/artef/issues/9339)) ([bb1d57e](https://github.com/artef/artef/commit/bb1d57efdfd287e8151f714f0fa0ee71b8f97db5))
+- **deps:** lazy-load optional integration packages ([#9284](https://github.com/artef/artef/issues/9284)) ([db37941](https://github.com/artef/artef/commit/db3794179514a818fcef5aec63a109682c2aa174))
+- **deps:** patch qs denial of service advisory ([#9384](https://github.com/artef/artef/issues/9384)) ([b392051](https://github.com/artef/artef/commit/b392051d28b2beefabb5f1bd27313a0707b74da5))
+- **deps:** update anthropic packages ([#9461](https://github.com/artef/artef/issues/9461)) ([87277b9](https://github.com/artef/artef/commit/87277b9ad3832235ba1fba0c4c26fbd39c309147))
+- **deps:** update dependency engine.io to v6.6.7 ([#9457](https://github.com/artef/artef/issues/9457)) ([5f36395](https://github.com/artef/artef/commit/5f363957f6c4e24b6f4864ad26564647856ad185))
+- **deps:** update dependency engine.io to v6.6.8 ([#9477](https://github.com/artef/artef/issues/9477)) ([3366b67](https://github.com/artef/artef/commit/3366b673d3bdd098e58172709b52451ffb676b99))
+- **deps:** update dependency engine.io-client to v6.6.5 ([#9478](https://github.com/artef/artef/issues/9478)) ([32610e3](https://github.com/artef/artef/commit/32610e3f47905873dc08e83d7dea7f35fe977e1a))
+- **eval:** accept defaultTest-only configs in prompt optimizer ([#9365](https://github.com/artef/artef/issues/9365)) ([f8ecebd](https://github.com/artef/artef/commit/f8ecebdb1113ab6617c6888cad5e3a5b8f5b058f))
+- **eval:** error when optimizer pair has no runnable tests ([#9372](https://github.com/artef/artef/issues/9372)) ([45046ac](https://github.com/artef/artef/commit/45046ac496de3e1df0373b201714372d9346d24c))
+- **eval:** handle Google Sheets export classification ([#9385](https://github.com/artef/artef/issues/9385)) ([5ffeb33](https://github.com/artef/artef/commit/5ffeb33210aa0ecd85cfbfc8f0a03c94b8591a83))
+- **eval:** invalidate count cache after retry cleanup ([#9431](https://github.com/artef/artef/issues/9431)) ([3ea3599](https://github.com/artef/artef/commit/3ea3599c9b7798f88ea8248eb668453cf6db041f))
+- **eval:** invalidate history cache after result update ([#9487](https://github.com/artef/artef/issues/9487)) ([2e48494](https://github.com/artef/artef/commit/2e484949e7f3276299a319fcc4c7b02928c6735c))
+- **eval:** invalidate result-count cache on insert ([#9348](https://github.com/artef/artef/issues/9348)) ([#9421](https://github.com/artef/artef/issues/9421)) ([4651ceb](https://github.com/artef/artef/commit/4651ceb16225ec524db706fff608c4350d386b22))
+- **eval:** keep eval runtime vars out of persisted results ([#9370](https://github.com/artef/artef/issues/9370)) ([734db7c](https://github.com/artef/artef/commit/734db7c8b3e6ee3bd80583cc417e262a17d1697a))
+- **eval:** preserve all distinct CallApiFunction providers in combineConfigs ([#9402](https://github.com/artef/artef/issues/9402)) ([b7f2a93](https://github.com/artef/artef/commit/b7f2a9373f0030a5ee6da8e940e20c72298d7a34))
+- **eval:** preserve optimized prompt routing ([#9391](https://github.com/artef/artef/issues/9391)) ([fff7ca4](https://github.com/artef/artef/commit/fff7ca4644f0ce7aeb8f38361e1dc8f7456bda15))
+- **eval:** preserve prompt optimizer progress when a later round fails ([#9505](https://github.com/artef/artef/issues/9505)) ([211fadf](https://github.com/artef/artef/commit/211fadf7be8fc7019aa92eeb1a3212fad2a88136))
+- **eval:** prevent optimize from polluting jsonl output ([#9364](https://github.com/artef/artef/issues/9364)) ([1205a2a](https://github.com/artef/artef/commit/1205a2a2be77beb8505731515d0af1ee893cacb0))
+- **eval:** redact Azure Blob SAS tokens in outputs ([#9386](https://github.com/artef/artef/issues/9386)) ([23a5376](https://github.com/artef/artef/commit/23a5376b3efc4b195fc36a870da239aca627f140))
+- **eval:** refresh history cache after inserts ([#9496](https://github.com/artef/artef/issues/9496)) ([ed17310](https://github.com/artef/artef/commit/ed1731078993b9ae9ebd7038815423160fbd49a4))
+- **eval:** restore result header borders and live metrics ([#9273](https://github.com/artef/artef/issues/9273)) ([4ceaeb5](https://github.com/artef/artef/commit/4ceaeb504254a909e221a35c62b732829349f156))
+- **eval:** reuse configured grading provider references ([#9460](https://github.com/artef/artef/issues/9460)) ([28b26d9](https://github.com/artef/artef/commit/28b26d96cdd2798050c2d2ce86979d3c40b7c790))
+- **eval:** show test descriptions in HTML output ([#9390](https://github.com/artef/artef/issues/9390)) ([206f1dd](https://github.com/artef/artef/commit/206f1dd9848607ed9d4eba1f7998f90b8f87f0ff))
+- handle chart and Google response edge cases ([#9409](https://github.com/artef/artef/issues/9409)) ([09701a8](https://github.com/artef/artef/commit/09701a8fa0ba1f86ae2a941a9d1d775456b08f37))
+- **http:** isolate auth token cache ([#8636](https://github.com/artef/artef/issues/8636)) ([8d745cd](https://github.com/artef/artef/commit/8d745cd6456f24ab06837d2de1482fb0dd572f03))
+- **http:** redact debug request metadata ([#8635](https://github.com/artef/artef/issues/8635)) ([6594491](https://github.com/artef/artef/commit/6594491bccab61a8ebb4c687cdb9bc9ac56ba9ca))
+- **mcp:** use cryptographic session identifiers ([#9392](https://github.com/artef/artef/issues/9392)) ([c6f5144](https://github.com/artef/artef/commit/c6f5144c2abf0813e57e57ec618a6d42e3123b87))
+- **providers:** align Gemini safety block handling ([#9387](https://github.com/artef/artef/issues/9387)) ([45fed35](https://github.com/artef/artef/commit/45fed35c009e0258a0226b132538f149b4ba5bfa))
+- **providers:** harden callback file URL parsing ([#9479](https://github.com/artef/artef/issues/9479)) ([d6bfc1f](https://github.com/artef/artef/commit/d6bfc1f59349ca7ec747865e72704f7ae8bddfbb))
+- **providers:** honor Vertex default host overrides ([#9389](https://github.com/artef/artef/issues/9389)) ([11a8d9b](https://github.com/artef/artef/commit/11a8d9b1c4edf214e8e15dd6794690ab49d24430))
+- **providers:** improve invalid provider diagnostics ([#9405](https://github.com/artef/artef/issues/9405)) ([04c5aa4](https://github.com/artef/artef/commit/04c5aa4bdc604b1efdbe26588b132d5ce63ec133))
+- **providers:** normalize Claude Opus compatibility ([#9510](https://github.com/artef/artef/issues/9510)) ([14e9dc1](https://github.com/artef/artef/commit/14e9dc1998bd14397f820cf066edca29c8032825))
+- **providers:** preserve AI Studio grounding metadata ([#9436](https://github.com/artef/artef/issues/9436)) ([79b6b63](https://github.com/artef/artef/commit/79b6b6363fbba7e7cdfbfe2d3d8d06546bb62a20))
+- **providers:** preserve raw Google stream chunks ([#9437](https://github.com/artef/artef/issues/9437)) ([2875f4e](https://github.com/artef/artef/commit/2875f4e02ecf383b9d1a0771bd3726378c7e1a60))
+- **providers:** price unknown Grok Imagine slugs at the quality tier ([#9337](https://github.com/artef/artef/issues/9337)) ([efa689e](https://github.com/artef/artef/commit/efa689ee65ebf4b6819f4d0fc30733897a997882))
+- **providers:** redact MLflow Gateway api key and restore Novita routing test ([#9511](https://github.com/artef/artef/issues/9511)) ([9e2eaf5](https://github.com/artef/artef/commit/9e2eaf5e2b6596f1f51fb29c9e759da78a44e637))
+- **providers:** reject MiniMax function_call ([#9512](https://github.com/artef/artef/issues/9512)) ([b9a849b](https://github.com/artef/artef/commit/b9a849bccb7c1bfd2821e3fdbf984d95e886ce9d))
+- **providers:** return refreshed HTTP auth tokens safely ([#9394](https://github.com/artef/artef/issues/9394)) ([9a258a5](https://github.com/artef/artef/commit/9a258a521f190a77e7f10d9bbe474d3729264d01))
+- **providers:** show labels in missing API key diagnostics ([#9404](https://github.com/artef/artef/issues/9404)) ([b43625b](https://github.com/artef/artef/commit/b43625b44d86ceaa1e624766d475efb388666d6b))
+- **providers:** stop double-counting xAI reasoning tokens in cost ([#9326](https://github.com/artef/artef/issues/9326)) ([26f6d13](https://github.com/artef/artef/commit/26f6d137621c29680c9a7aa0a348f55c4ffd4959))
+- **providers:** stop double-counting xAI reasoning tokens in cost ([#9507](https://github.com/artef/artef/issues/9507)) ([7f2932c](https://github.com/artef/artef/commit/7f2932cf511f710f51f19aba87b2fae3798e0f61))
+- secure script temporary artifacts ([#9393](https://github.com/artef/artef/issues/9393)) ([c320916](https://github.com/artef/artef/commit/c320916d34a7eb5379c862408f6345c6e1801f99))
+- **server:** publish eval job completion only after results are saved ([#9395](https://github.com/artef/artef/issues/9395)) ([a9f5bcf](https://github.com/artef/artef/commit/a9f5bcfb95b729f5735b2beb2dadb9dae3b5f360))
+- **server:** restore Azure Blob SAS tokens by value, not array position ([#9516](https://github.com/artef/artef/issues/9516)) ([b7f4a04](https://github.com/artef/artef/commit/b7f4a048a90e0ae5d2c4978ed6a6867d557f3d3c))
+- **util:** don't misreport a missing transitive dep as the optional package ([#9513](https://github.com/artef/artef/issues/9513)) ([e93c817](https://github.com/artef/artef/commit/e93c817c2823167d641f7eec7d43762819a5bd7f))
+- **web-viewer:** preserve config variable order instead of alphabetizing ([#9435](https://github.com/artef/artef/issues/9435)) ([a53d6f7](https://github.com/artef/artef/commit/a53d6f749ffeec72808c041298b636fae338167f))
+- **webui:** avoid NaN in named metric charts ([#9352](https://github.com/artef/artef/issues/9352)) ([a6b860f](https://github.com/artef/artef/commit/a6b860fd5c9fa16607c5fb3a78efac949a588188))
+- **webui:** clear row hint on eval selection ([#9380](https://github.com/artef/artef/issues/9380)) ([4586da4](https://github.com/artef/artef/commit/4586da40f2dbe249952a5fdce1e36486d1d8bb31))
+- **webui:** clear stale eval detail row hint ([#9377](https://github.com/artef/artef/issues/9377)) ([c9a3f61](https://github.com/artef/artef/commit/c9a3f616be3cc34882414519b640d90ef93c34fa))
+- **webui:** clear stale rowId and details hash on filter clear ([#9369](https://github.com/artef/artef/issues/9369)) ([e9b8e98](https://github.com/artef/artef/commit/e9b8e98fee9fc7407bdc38232ed7b959c5a55040))
+- **webui:** harden eval table deep links and header borders ([#9285](https://github.com/artef/artef/issues/9285)) ([3514f6d](https://github.com/artef/artef/commit/3514f6d84cfc766824dfcc52384fc414b24daef8))
+- **webui:** make full metric chip area clickable ([#9368](https://github.com/artef/artef/issues/9368)) ([8eed102](https://github.com/artef/artef/commit/8eed10296cf8a065028efa779adc0ac69654a99d))
+- **webui:** page eval deep links by rowId when filtered ([#9371](https://github.com/artef/artef/issues/9371)) ([16ede34](https://github.com/artef/artef/commit/16ede34d87b89a12345980f232e6788a322b8e2e))
 
 ### Performance Improvements
 
-- **webui:** speed up evaluation selection ([#9462](https://github.com/promptfoo/promptfoo/issues/9462)) ([dda3db3](https://github.com/promptfoo/promptfoo/commit/dda3db3622018b9f963174eb400f3fc7d21c58db))
+- **webui:** speed up evaluation selection ([#9462](https://github.com/artef/artef/issues/9462)) ([dda3db3](https://github.com/artef/artef/commit/dda3db3622018b9f963174eb400f3fc7d21c58db))
 
-## [0.121.12](https://github.com/promptfoo/promptfoo/compare/0.121.11...0.121.12) (2026-05-21)
-
-### Features
-
-- **cache:** support repeat-aware fetch cache options ([#6844](https://github.com/promptfoo/promptfoo/issues/6844)) ([c119832](https://github.com/promptfoo/promptfoo/commit/c1198327c02b6b51f7be829e0a56f45f95c33ae9))
-- **cli:** add searchable team selector ([#9243](https://github.com/promptfoo/promptfoo/issues/9243)) ([247eef5](https://github.com/promptfoo/promptfoo/commit/247eef5ad79b297d37cef4d6f3df98f94569556e))
-- **cli:** import OpenAI Evals dashboard exports ([#9305](https://github.com/promptfoo/promptfoo/issues/9305)) ([70cebab](https://github.com/promptfoo/promptfoo/commit/70cebab21d14d32eb751b3b061c162a0a13edee1))
-- **code-scan:** add SARIF output support ([#9161](https://github.com/promptfoo/promptfoo/issues/9161)) ([4da26e9](https://github.com/promptfoo/promptfoo/commit/4da26e95e4837ad9fd3363dfb52a86e5e1ceb66d))
-- **code-scan:** refine SARIF output ergonomics ([#9159](https://github.com/promptfoo/promptfoo/issues/9159)) ([ea3a655](https://github.com/promptfoo/promptfoo/commit/ea3a65521c55a7360cc315efa5f971673fb1f981))
-- **eval:** add metrics pills display toggle ([#9253](https://github.com/promptfoo/promptfoo/issues/9253)) ([eb7ecad](https://github.com/promptfoo/promptfoo/commit/eb7ecade9fcca51b95c195a5d8d9e0be5522f997))
-- **eval:** support runtime tags ([#9322](https://github.com/promptfoo/promptfoo/issues/9322)) ([5a09980](https://github.com/promptfoo/promptfoo/commit/5a09980f39ecbd9a99875639e0dbf87a5b1e9904))
-- **examples:** expand google adk integration ([#9047](https://github.com/promptfoo/promptfoo/issues/9047)) ([f190033](https://github.com/promptfoo/promptfoo/commit/f1900336eb1fe77bd4cff39f2083b80cf6349b92))
-- **mcp:** add response transforms ([#8943](https://github.com/promptfoo/promptfoo/issues/8943)) ([5d90bb7](https://github.com/promptfoo/promptfoo/commit/5d90bb724df6be7b028f032dd2a62b36c66e9510))
-- **providers:** normalize OpenCode skill usage ([#9250](https://github.com/promptfoo/promptfoo/issues/9250)) ([8930dad](https://github.com/promptfoo/promptfoo/commit/8930dad6ab051392c0c83b80b12d4b0dbb34daa2))
-- **providers:** support Agents SDK 0.9 workflows ([#9128](https://github.com/promptfoo/promptfoo/issues/9128)) ([0505ea1](https://github.com/promptfoo/promptfoo/commit/0505ea125003e1db71b6ba67b2f5521f7a0ccd83))
-- **redteam:** support context purpose overrides ([#9260](https://github.com/promptfoo/promptfoo/issues/9260)) ([ca62ec9](https://github.com/promptfoo/promptfoo/commit/ca62ec98f6ac4454b705086ead8bad0099794923))
-- **telemetry:** capture node runtime metadata ([#9206](https://github.com/promptfoo/promptfoo/issues/9206)) ([ec9d308](https://github.com/promptfoo/promptfoo/commit/ec9d308fd000426117422e2e96c0912e49c5e11f))
-
-### Bug Fixes
-
-- **app:** align table settings info buttons ([#9249](https://github.com/promptfoo/promptfoo/issues/9249)) ([a3252e9](https://github.com/promptfoo/promptfoo/commit/a3252e9716064c4612129625c575fd8d4e53635e))
-- **app:** improve custom metrics dialog readability ([#9248](https://github.com/promptfoo/promptfoo/issues/9248)) ([a3eafa4](https://github.com/promptfoo/promptfoo/commit/a3eafa495e7910b54b81c898afc26095095d0762))
-- **app:** sort custom metrics before truncation ([#9246](https://github.com/promptfoo/promptfoo/issues/9246)) ([74d2f9d](https://github.com/promptfoo/promptfoo/commit/74d2f9dcfd1f56a537ece207363f515bcbc105fe))
-- **cache:** include status in JSON parse errors ([#9317](https://github.com/promptfoo/promptfoo/issues/9317)) ([bb64b2e](https://github.com/promptfoo/promptfoo/commit/bb64b2eec87fb725b2d4820efbb722e889f6cc81))
-- **cli:** clearer errors for malformed eval imports ([#9333](https://github.com/promptfoo/promptfoo/issues/9333)) ([869fd54](https://github.com/promptfoo/promptfoo/commit/869fd54d7279556d974b422f38586022e7835805))
-- **code-scan:** isolate action OIDC token env ([#9309](https://github.com/promptfoo/promptfoo/issues/9309)) ([30c99e9](https://github.com/promptfoo/promptfoo/commit/30c99e924e02160db90385eff6f668c0ee551bc3))
-- **code-scan:** route logs to stderr for structured output ([#9329](https://github.com/promptfoo/promptfoo/issues/9329)) ([06cce72](https://github.com/promptfoo/promptfoo/commit/06cce72a675b67d5dd0fd5e26f1660f15ea80863))
-- **code-scan:** scope OIDC token to scan subprocess ([#9308](https://github.com/promptfoo/promptfoo/issues/9308)) ([178b57a](https://github.com/promptfoo/promptfoo/commit/178b57adb39d96d50012afd92a5e1b8e8e12ff75))
-- **code-scan:** skip unrelated default config startup ([#9230](https://github.com/promptfoo/promptfoo/issues/9230)) ([335d809](https://github.com/promptfoo/promptfoo/commit/335d809e29adbbb928e5653a11c69ff449df1768))
-- **deps:** avoid incompatible npm release-age config ([#9244](https://github.com/promptfoo/promptfoo/issues/9244)) ([b8bfb73](https://github.com/promptfoo/promptfoo/commit/b8bfb7395c3319367f7ccf87e4a7a596b680a02e))
-- **deps:** bump nested ws to a non-vulnerable version ([#9330](https://github.com/promptfoo/promptfoo/issues/9330)) ([1fe31a4](https://github.com/promptfoo/promptfoo/commit/1fe31a4468d5a0af4e4a685cde2702694643e28e))
-- **deps:** clear protobuf and langsmith alerts ([#9219](https://github.com/promptfoo/promptfoo/issues/9219)) ([d0995b8](https://github.com/promptfoo/promptfoo/commit/d0995b83154fab364cc9f1897140c42b1dce2a79))
-- **deps:** remove stray smithy lockfile root dependency ([#9271](https://github.com/promptfoo/promptfoo/issues/9271)) ([8f34641](https://github.com/promptfoo/promptfoo/commit/8f346416f09d28f920baadb0a3894af46780287b))
-- **deps:** resolve active advisories ([#9153](https://github.com/promptfoo/promptfoo/issues/9153)) ([47cd609](https://github.com/promptfoo/promptfoo/commit/47cd6090006670f376fb68b3b0a38a264f6c713f))
-- **deps:** update anthropic packages ([#9187](https://github.com/promptfoo/promptfoo/issues/9187)) ([a68ed8b](https://github.com/promptfoo/promptfoo/commit/a68ed8b77676e4ab0d981bc1aa9425999094ee68))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.97.1 ([#9316](https://github.com/promptfoo/promptfoo/issues/9316)) ([88bc094](https://github.com/promptfoo/promptfoo/commit/88bc09485d56cb3894fec7fced79abdcd499a9c7))
-- **deps:** update dependency @inquirer/search to v4.1.9 ([#9277](https://github.com/promptfoo/promptfoo/issues/9277)) ([7a7ae06](https://github.com/promptfoo/promptfoo/commit/7a7ae061d81e63fecdf51738b5296883edb51fc7))
-- **deps:** update dependency @opentelemetry/exporter-trace-otlp-http to ^0.217.0 ([#9193](https://github.com/promptfoo/promptfoo/issues/9193)) ([082cb22](https://github.com/promptfoo/promptfoo/commit/082cb22cf4064ecf6404c30951a790ea49eb3984))
-- **deps:** update dependency ws to v8.20.1 [security] ([#9275](https://github.com/promptfoo/promptfoo/issues/9275)) ([bac18de](https://github.com/promptfoo/promptfoo/commit/bac18dee558e905776cec9dca2c8540720b572ae))
-- **deps:** update openai packages ([#9189](https://github.com/promptfoo/promptfoo/issues/9189)) ([f2ceff3](https://github.com/promptfoo/promptfoo/commit/f2ceff36f828aadb13b65cc222618db6e3668558))
-- **dev:** use tsx watch for server ([#9301](https://github.com/promptfoo/promptfoo/issues/9301)) ([f0280e6](https://github.com/promptfoo/promptfoo/commit/f0280e61dbde41d53d5883d0aa81ccf5a9ab0a36))
-- **eval:** allow header horizontal scrolling ([#9245](https://github.com/promptfoo/promptfoo/issues/9245)) ([4e3fb27](https://github.com/promptfoo/promptfoo/commit/4e3fb271254d06dce776f5338d300a0820199e24))
-- **eval:** preserve eval export import parity ([#9310](https://github.com/promptfoo/promptfoo/issues/9310)) ([ef7f98e](https://github.com/promptfoo/promptfoo/commit/ef7f98eae416db4772fc9b4f4ee914941b625cf9))
-- **fetch:** decompress fallback for compressed responses on Node 26 ([#9218](https://github.com/promptfoo/promptfoo/issues/9218)) ([93f5f1e](https://github.com/promptfoo/promptfoo/commit/93f5f1e625f563fc2d88f6e1d01c8f9d783a4222))
-- **fetch:** decompress pooled undici responses ([#9234](https://github.com/promptfoo/promptfoo/issues/9234)) ([e193d61](https://github.com/promptfoo/promptfoo/commit/e193d615c5c04e2acb99eeaec1c911c188fca690))
-- guard against empty choices and message=None in swe_runner example ([#9263](https://github.com/promptfoo/promptfoo/issues/9263)) ([b6ce944](https://github.com/promptfoo/promptfoo/commit/b6ce944871728a5a870abb38eaaa8b5182313a01))
-- isolate loadFunction cache entries ([#9255](https://github.com/promptfoo/promptfoo/issues/9255)) ([1e3533e](https://github.com/promptfoo/promptfoo/commit/1e3533e78a20b5a1f0754a9e8c4706ee9d66c853))
-- **mcp:** surface tool error results ([#9320](https://github.com/promptfoo/promptfoo/issues/9320)) ([b600a27](https://github.com/promptfoo/promptfoo/commit/b600a27d3f84ea6f31e0fb032d554de497ff4377))
-- **openclaw:** support protocol negotiation for versions 3 and 4 ([#9254](https://github.com/promptfoo/promptfoo/issues/9254)) ([4220562](https://github.com/promptfoo/promptfoo/commit/42205628b760f0a07419a95080c0a6b3a626b16f))
-- **providers:** aggregate command output deltas ([#9204](https://github.com/promptfoo/promptfoo/issues/9204)) ([5f89b7c](https://github.com/promptfoo/promptfoo/commit/5f89b7c86ea04e5c03fbe7789dd0e47aed05bf43))
-- **providers:** avoid constant-key cache HMAC ([#9152](https://github.com/promptfoo/promptfoo/issues/9152)) ([2b5db89](https://github.com/promptfoo/promptfoo/commit/2b5db898c7a51a354e1f0198cc952218b197c5af))
-- **providers:** decompress mTLS HTTP responses on Node 26 ([#9325](https://github.com/promptfoo/promptfoo/issues/9325)) ([4ff8315](https://github.com/promptfoo/promptfoo/commit/4ff831570406ebd320818d02bc77bb7d5fdf172a))
-- **providers:** execute Anthropic MCP tool results ([#9286](https://github.com/promptfoo/promptfoo/issues/9286)) ([a42dbd6](https://github.com/promptfoo/promptfoo/commit/a42dbd6cce1583466a769d8531d83787ab94ced5))
-- **providers:** harden codex app-server approvals and raw evidence ([#9131](https://github.com/promptfoo/promptfoo/issues/9131)) ([2299c31](https://github.com/promptfoo/promptfoo/commit/2299c31298115a7ada8f58b1f3a6c3544898aae7))
-- **providers:** harden OpenAI Realtime provider after [#9137](https://github.com/promptfoo/promptfoo/issues/9137) ([#9156](https://github.com/promptfoo/promptfoo/issues/9156)) ([9447d18](https://github.com/promptfoo/promptfoo/commit/9447d18c8400e217951b866079bf5c0cba5b21d3))
-- **providers:** honor max_tool_calls: 0 for Anthropic MCP ([#9327](https://github.com/promptfoo/promptfoo/issues/9327)) ([5b804e0](https://github.com/promptfoo/promptfoo/commit/5b804e031940b318035365a77455120e17eabb4d))
-- **providers:** map Python worker stderr log levels ([#9306](https://github.com/promptfoo/promptfoo/issues/9306)) ([bbd683c](https://github.com/promptfoo/promptfoo/commit/bbd683c6b9afd56b8f6271638874a83fcacae758))
-- **providers:** preserve interleaved command output deltas ([#9210](https://github.com/promptfoo/promptfoo/issues/9210)) ([3c03fbe](https://github.com/promptfoo/promptfoo/commit/3c03fbece86319a13e6e1a8c6bae446c1926d6ff))
-- **providers:** refresh xai grok support ([#9237](https://github.com/promptfoo/promptfoo/issues/9237)) ([58b1c6e](https://github.com/promptfoo/promptfoo/commit/58b1c6e8fbc0c20261af76e7e4f3dbe538ed49d2))
-- **providers:** support realtime tools in persistent sessions ([#9137](https://github.com/promptfoo/promptfoo/issues/9137)) ([00f6518](https://github.com/promptfoo/promptfoo/commit/00f6518b925419d52346dbc17e15f550ad44cdf3))
-- **providers:** tear down Realtime socket on response timeout ([#9324](https://github.com/promptfoo/promptfoo/issues/9324)) ([d3bb58c](https://github.com/promptfoo/promptfoo/commit/d3bb58ca8b2c97ca6f96a632e3ea524b9deb5978))
-- **redteam:** clarify empty custom intent scans ([#8990](https://github.com/promptfoo/promptfoo/issues/8990)) ([93b5579](https://github.com/promptfoo/promptfoo/commit/93b55799e8edb114d9898714a6b5b1b0280b2473))
-- **redteam:** improve setup control accessibility ([#9188](https://github.com/promptfoo/promptfoo/issues/9188)) ([0ea2f86](https://github.com/promptfoo/promptfoo/commit/0ea2f86100b879b18b8b457b65550d2aa58b2cc3))
-- **redteam:** redact plugin config logs ([#8661](https://github.com/promptfoo/promptfoo/issues/8661)) ([5ae731b](https://github.com/promptfoo/promptfoo/commit/5ae731bbf55c650178c18a74ae9c55f47bf9d8dc))
-- resolve code quality findings ([#9151](https://github.com/promptfoo/promptfoo/issues/9151)) ([83d80b8](https://github.com/promptfoo/promptfoo/commit/83d80b8dd6b02afb236c4170ae69f1be3b9c1671))
-- **server:** cap eval table page size ([#9313](https://github.com/promptfoo/promptfoo/issues/9313)) ([25286aa](https://github.com/promptfoo/promptfoo/commit/25286aac7964501d8faf86d42bbd6e2009a37546))
-- **ui:** improve table filter accessibility ([#9166](https://github.com/promptfoo/promptfoo/issues/9166)) ([cb5dab7](https://github.com/promptfoo/promptfoo/commit/cb5dab7d3907d53919d891c824a3bc0ef6df0070))
-- **ui:** wrap static table filters ([#9167](https://github.com/promptfoo/promptfoo/issues/9167)) ([9fffdca](https://github.com/promptfoo/promptfoo/commit/9fffdca717fedc9f6b0bb7fdde5a1c4722e63ba7))
-- **webui:** align custom intent count gating ([#9201](https://github.com/promptfoo/promptfoo/issues/9201)) ([007ae19](https://github.com/promptfoo/promptfoo/commit/007ae19dba7626af8dc282503100f79a5dc6803e))
-- **webui:** anchor nav menus to their triggers ([#9154](https://github.com/promptfoo/promptfoo/issues/9154)) ([cfb474d](https://github.com/promptfoo/promptfoo/commit/cfb474d631a10e28831df7a0c7f897247c950276))
-- **webui:** improve data table keyboard access ([#9171](https://github.com/promptfoo/promptfoo/issues/9171)) ([c4ce1b4](https://github.com/promptfoo/promptfoo/commit/c4ce1b4d4cbd7062127d3a31a315888aef5bb795))
-- **webui:** improve eval results table sizing ([#9257](https://github.com/promptfoo/promptfoo/issues/9257)) ([5269f22](https://github.com/promptfoo/promptfoo/commit/5269f2274626208589c160e6b36aa86c1ffbe736))
-- **webui:** restore nav dropdown animations and clean up after [#9154](https://github.com/promptfoo/promptfoo/issues/9154) ([#9169](https://github.com/promptfoo/promptfoo/issues/9169)) ([d0337d7](https://github.com/promptfoo/promptfoo/commit/d0337d710ad2547e74d09094816cb0a4bed5cffd))
-
-## [0.121.11](https://github.com/promptfoo/promptfoo/compare/0.121.10...0.121.11) (2026-05-08)
+## [0.121.12](https://github.com/artef/artef/compare/0.121.11...0.121.12) (2026-05-21)
 
 ### Features
 
-- **quiverai:** add Arrow 1.1 models, vectorize endpoint, and GPT Image-2 pipeline ([#9139](https://github.com/promptfoo/promptfoo/issues/9139)) ([ce2c62d](https://github.com/promptfoo/promptfoo/commit/ce2c62d4f9cfd92bd8e48f45db2314271946c467))
+- **cache:** support repeat-aware fetch cache options ([#6844](https://github.com/artef/artef/issues/6844)) ([c119832](https://github.com/artef/artef/commit/c1198327c02b6b51f7be829e0a56f45f95c33ae9))
+- **cli:** add searchable team selector ([#9243](https://github.com/artef/artef/issues/9243)) ([247eef5](https://github.com/artef/artef/commit/247eef5ad79b297d37cef4d6f3df98f94569556e))
+- **cli:** import OpenAI Evals dashboard exports ([#9305](https://github.com/artef/artef/issues/9305)) ([70cebab](https://github.com/artef/artef/commit/70cebab21d14d32eb751b3b061c162a0a13edee1))
+- **code-scan:** add SARIF output support ([#9161](https://github.com/artef/artef/issues/9161)) ([4da26e9](https://github.com/artef/artef/commit/4da26e95e4837ad9fd3363dfb52a86e5e1ceb66d))
+- **code-scan:** refine SARIF output ergonomics ([#9159](https://github.com/artef/artef/issues/9159)) ([ea3a655](https://github.com/artef/artef/commit/ea3a65521c55a7360cc315efa5f971673fb1f981))
+- **eval:** add metrics pills display toggle ([#9253](https://github.com/artef/artef/issues/9253)) ([eb7ecad](https://github.com/artef/artef/commit/eb7ecade9fcca51b95c195a5d8d9e0be5522f997))
+- **eval:** support runtime tags ([#9322](https://github.com/artef/artef/issues/9322)) ([5a09980](https://github.com/artef/artef/commit/5a09980f39ecbd9a99875639e0dbf87a5b1e9904))
+- **examples:** expand google adk integration ([#9047](https://github.com/artef/artef/issues/9047)) ([f190033](https://github.com/artef/artef/commit/f1900336eb1fe77bd4cff39f2083b80cf6349b92))
+- **mcp:** add response transforms ([#8943](https://github.com/artef/artef/issues/8943)) ([5d90bb7](https://github.com/artef/artef/commit/5d90bb724df6be7b028f032dd2a62b36c66e9510))
+- **providers:** normalize OpenCode skill usage ([#9250](https://github.com/artef/artef/issues/9250)) ([8930dad](https://github.com/artef/artef/commit/8930dad6ab051392c0c83b80b12d4b0dbb34daa2))
+- **providers:** support Agents SDK 0.9 workflows ([#9128](https://github.com/artef/artef/issues/9128)) ([0505ea1](https://github.com/artef/artef/commit/0505ea125003e1db71b6ba67b2f5521f7a0ccd83))
+- **redteam:** support context purpose overrides ([#9260](https://github.com/artef/artef/issues/9260)) ([ca62ec9](https://github.com/artef/artef/commit/ca62ec98f6ac4454b705086ead8bad0099794923))
+- **telemetry:** capture node runtime metadata ([#9206](https://github.com/artef/artef/issues/9206)) ([ec9d308](https://github.com/artef/artef/commit/ec9d308fd000426117422e2e96c0912e49c5e11f))
 
 ### Bug Fixes
 
-- **redteam:** handle MCP target prompt materialization ([#9149](https://github.com/promptfoo/promptfoo/issues/9149)) ([a050023](https://github.com/promptfoo/promptfoo/commit/a0500234494818a07ce1367e8c9c167531e8fb9b))
-- **redteam:** keep fresh target type state in sync ([#9145](https://github.com/promptfoo/promptfoo/issues/9145)) ([770130f](https://github.com/promptfoo/promptfoo/commit/770130fd8fce16e1071c418cc5f9c8b8a84244db))
-- **redteam:** show target type selector immediately ([#9141](https://github.com/promptfoo/promptfoo/issues/9141)) ([c143fa6](https://github.com/promptfoo/promptfoo/commit/c143fa625ea92bc01148174a84f60a1cb7d6d540))
+- **app:** align table settings info buttons ([#9249](https://github.com/artef/artef/issues/9249)) ([a3252e9](https://github.com/artef/artef/commit/a3252e9716064c4612129625c575fd8d4e53635e))
+- **app:** improve custom metrics dialog readability ([#9248](https://github.com/artef/artef/issues/9248)) ([a3eafa4](https://github.com/artef/artef/commit/a3eafa495e7910b54b81c898afc26095095d0762))
+- **app:** sort custom metrics before truncation ([#9246](https://github.com/artef/artef/issues/9246)) ([74d2f9d](https://github.com/artef/artef/commit/74d2f9dcfd1f56a537ece207363f515bcbc105fe))
+- **cache:** include status in JSON parse errors ([#9317](https://github.com/artef/artef/issues/9317)) ([bb64b2e](https://github.com/artef/artef/commit/bb64b2eec87fb725b2d4820efbb722e889f6cc81))
+- **cli:** clearer errors for malformed eval imports ([#9333](https://github.com/artef/artef/issues/9333)) ([869fd54](https://github.com/artef/artef/commit/869fd54d7279556d974b422f38586022e7835805))
+- **code-scan:** isolate action OIDC token env ([#9309](https://github.com/artef/artef/issues/9309)) ([30c99e9](https://github.com/artef/artef/commit/30c99e924e02160db90385eff6f668c0ee551bc3))
+- **code-scan:** route logs to stderr for structured output ([#9329](https://github.com/artef/artef/issues/9329)) ([06cce72](https://github.com/artef/artef/commit/06cce72a675b67d5dd0fd5e26f1660f15ea80863))
+- **code-scan:** scope OIDC token to scan subprocess ([#9308](https://github.com/artef/artef/issues/9308)) ([178b57a](https://github.com/artef/artef/commit/178b57adb39d96d50012afd92a5e1b8e8e12ff75))
+- **code-scan:** skip unrelated default config startup ([#9230](https://github.com/artef/artef/issues/9230)) ([335d809](https://github.com/artef/artef/commit/335d809e29adbbb928e5653a11c69ff449df1768))
+- **deps:** avoid incompatible npm release-age config ([#9244](https://github.com/artef/artef/issues/9244)) ([b8bfb73](https://github.com/artef/artef/commit/b8bfb7395c3319367f7ccf87e4a7a596b680a02e))
+- **deps:** bump nested ws to a non-vulnerable version ([#9330](https://github.com/artef/artef/issues/9330)) ([1fe31a4](https://github.com/artef/artef/commit/1fe31a4468d5a0af4e4a685cde2702694643e28e))
+- **deps:** clear protobuf and langsmith alerts ([#9219](https://github.com/artef/artef/issues/9219)) ([d0995b8](https://github.com/artef/artef/commit/d0995b83154fab364cc9f1897140c42b1dce2a79))
+- **deps:** remove stray smithy lockfile root dependency ([#9271](https://github.com/artef/artef/issues/9271)) ([8f34641](https://github.com/artef/artef/commit/8f346416f09d28f920baadb0a3894af46780287b))
+- **deps:** resolve active advisories ([#9153](https://github.com/artef/artef/issues/9153)) ([47cd609](https://github.com/artef/artef/commit/47cd6090006670f376fb68b3b0a38a264f6c713f))
+- **deps:** update anthropic packages ([#9187](https://github.com/artef/artef/issues/9187)) ([a68ed8b](https://github.com/artef/artef/commit/a68ed8b77676e4ab0d981bc1aa9425999094ee68))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.97.1 ([#9316](https://github.com/artef/artef/issues/9316)) ([88bc094](https://github.com/artef/artef/commit/88bc09485d56cb3894fec7fced79abdcd499a9c7))
+- **deps:** update dependency @inquirer/search to v4.1.9 ([#9277](https://github.com/artef/artef/issues/9277)) ([7a7ae06](https://github.com/artef/artef/commit/7a7ae061d81e63fecdf51738b5296883edb51fc7))
+- **deps:** update dependency @opentelemetry/exporter-trace-otlp-http to ^0.217.0 ([#9193](https://github.com/artef/artef/issues/9193)) ([082cb22](https://github.com/artef/artef/commit/082cb22cf4064ecf6404c30951a790ea49eb3984))
+- **deps:** update dependency ws to v8.20.1 [security] ([#9275](https://github.com/artef/artef/issues/9275)) ([bac18de](https://github.com/artef/artef/commit/bac18dee558e905776cec9dca2c8540720b572ae))
+- **deps:** update openai packages ([#9189](https://github.com/artef/artef/issues/9189)) ([f2ceff3](https://github.com/artef/artef/commit/f2ceff36f828aadb13b65cc222618db6e3668558))
+- **dev:** use tsx watch for server ([#9301](https://github.com/artef/artef/issues/9301)) ([f0280e6](https://github.com/artef/artef/commit/f0280e61dbde41d53d5883d0aa81ccf5a9ab0a36))
+- **eval:** allow header horizontal scrolling ([#9245](https://github.com/artef/artef/issues/9245)) ([4e3fb27](https://github.com/artef/artef/commit/4e3fb271254d06dce776f5338d300a0820199e24))
+- **eval:** preserve eval export import parity ([#9310](https://github.com/artef/artef/issues/9310)) ([ef7f98e](https://github.com/artef/artef/commit/ef7f98eae416db4772fc9b4f4ee914941b625cf9))
+- **fetch:** decompress fallback for compressed responses on Node 26 ([#9218](https://github.com/artef/artef/issues/9218)) ([93f5f1e](https://github.com/artef/artef/commit/93f5f1e625f563fc2d88f6e1d01c8f9d783a4222))
+- **fetch:** decompress pooled undici responses ([#9234](https://github.com/artef/artef/issues/9234)) ([e193d61](https://github.com/artef/artef/commit/e193d615c5c04e2acb99eeaec1c911c188fca690))
+- guard against empty choices and message=None in swe_runner example ([#9263](https://github.com/artef/artef/issues/9263)) ([b6ce944](https://github.com/artef/artef/commit/b6ce944871728a5a870abb38eaaa8b5182313a01))
+- isolate loadFunction cache entries ([#9255](https://github.com/artef/artef/issues/9255)) ([1e3533e](https://github.com/artef/artef/commit/1e3533e78a20b5a1f0754a9e8c4706ee9d66c853))
+- **mcp:** surface tool error results ([#9320](https://github.com/artef/artef/issues/9320)) ([b600a27](https://github.com/artef/artef/commit/b600a27d3f84ea6f31e0fb032d554de497ff4377))
+- **openclaw:** support protocol negotiation for versions 3 and 4 ([#9254](https://github.com/artef/artef/issues/9254)) ([4220562](https://github.com/artef/artef/commit/42205628b760f0a07419a95080c0a6b3a626b16f))
+- **providers:** aggregate command output deltas ([#9204](https://github.com/artef/artef/issues/9204)) ([5f89b7c](https://github.com/artef/artef/commit/5f89b7c86ea04e5c03fbe7789dd0e47aed05bf43))
+- **providers:** avoid constant-key cache HMAC ([#9152](https://github.com/artef/artef/issues/9152)) ([2b5db89](https://github.com/artef/artef/commit/2b5db898c7a51a354e1f0198cc952218b197c5af))
+- **providers:** decompress mTLS HTTP responses on Node 26 ([#9325](https://github.com/artef/artef/issues/9325)) ([4ff8315](https://github.com/artef/artef/commit/4ff831570406ebd320818d02bc77bb7d5fdf172a))
+- **providers:** execute Anthropic MCP tool results ([#9286](https://github.com/artef/artef/issues/9286)) ([a42dbd6](https://github.com/artef/artef/commit/a42dbd6cce1583466a769d8531d83787ab94ced5))
+- **providers:** harden codex app-server approvals and raw evidence ([#9131](https://github.com/artef/artef/issues/9131)) ([2299c31](https://github.com/artef/artef/commit/2299c31298115a7ada8f58b1f3a6c3544898aae7))
+- **providers:** harden OpenAI Realtime provider after [#9137](https://github.com/artef/artef/issues/9137) ([#9156](https://github.com/artef/artef/issues/9156)) ([9447d18](https://github.com/artef/artef/commit/9447d18c8400e217951b866079bf5c0cba5b21d3))
+- **providers:** honor max_tool_calls: 0 for Anthropic MCP ([#9327](https://github.com/artef/artef/issues/9327)) ([5b804e0](https://github.com/artef/artef/commit/5b804e031940b318035365a77455120e17eabb4d))
+- **providers:** map Python worker stderr log levels ([#9306](https://github.com/artef/artef/issues/9306)) ([bbd683c](https://github.com/artef/artef/commit/bbd683c6b9afd56b8f6271638874a83fcacae758))
+- **providers:** preserve interleaved command output deltas ([#9210](https://github.com/artef/artef/issues/9210)) ([3c03fbe](https://github.com/artef/artef/commit/3c03fbece86319a13e6e1a8c6bae446c1926d6ff))
+- **providers:** refresh xai grok support ([#9237](https://github.com/artef/artef/issues/9237)) ([58b1c6e](https://github.com/artef/artef/commit/58b1c6e8fbc0c20261af76e7e4f3dbe538ed49d2))
+- **providers:** support realtime tools in persistent sessions ([#9137](https://github.com/artef/artef/issues/9137)) ([00f6518](https://github.com/artef/artef/commit/00f6518b925419d52346dbc17e15f550ad44cdf3))
+- **providers:** tear down Realtime socket on response timeout ([#9324](https://github.com/artef/artef/issues/9324)) ([d3bb58c](https://github.com/artef/artef/commit/d3bb58ca8b2c97ca6f96a632e3ea524b9deb5978))
+- **redteam:** clarify empty custom intent scans ([#8990](https://github.com/artef/artef/issues/8990)) ([93b5579](https://github.com/artef/artef/commit/93b55799e8edb114d9898714a6b5b1b0280b2473))
+- **redteam:** improve setup control accessibility ([#9188](https://github.com/artef/artef/issues/9188)) ([0ea2f86](https://github.com/artef/artef/commit/0ea2f86100b879b18b8b457b65550d2aa58b2cc3))
+- **redteam:** redact plugin config logs ([#8661](https://github.com/artef/artef/issues/8661)) ([5ae731b](https://github.com/artef/artef/commit/5ae731bbf55c650178c18a74ae9c55f47bf9d8dc))
+- resolve code quality findings ([#9151](https://github.com/artef/artef/issues/9151)) ([83d80b8](https://github.com/artef/artef/commit/83d80b8dd6b02afb236c4170ae69f1be3b9c1671))
+- **server:** cap eval table page size ([#9313](https://github.com/artef/artef/issues/9313)) ([25286aa](https://github.com/artef/artef/commit/25286aac7964501d8faf86d42bbd6e2009a37546))
+- **ui:** improve table filter accessibility ([#9166](https://github.com/artef/artef/issues/9166)) ([cb5dab7](https://github.com/artef/artef/commit/cb5dab7d3907d53919d891c824a3bc0ef6df0070))
+- **ui:** wrap static table filters ([#9167](https://github.com/artef/artef/issues/9167)) ([9fffdca](https://github.com/artef/artef/commit/9fffdca717fedc9f6b0bb7fdde5a1c4722e63ba7))
+- **webui:** align custom intent count gating ([#9201](https://github.com/artef/artef/issues/9201)) ([007ae19](https://github.com/artef/artef/commit/007ae19dba7626af8dc282503100f79a5dc6803e))
+- **webui:** anchor nav menus to their triggers ([#9154](https://github.com/artef/artef/issues/9154)) ([cfb474d](https://github.com/artef/artef/commit/cfb474d631a10e28831df7a0c7f897247c950276))
+- **webui:** improve data table keyboard access ([#9171](https://github.com/artef/artef/issues/9171)) ([c4ce1b4](https://github.com/artef/artef/commit/c4ce1b4d4cbd7062127d3a31a315888aef5bb795))
+- **webui:** improve eval results table sizing ([#9257](https://github.com/artef/artef/issues/9257)) ([5269f22](https://github.com/artef/artef/commit/5269f2274626208589c160e6b36aa86c1ffbe736))
+- **webui:** restore nav dropdown animations and clean up after [#9154](https://github.com/artef/artef/issues/9154) ([#9169](https://github.com/artef/artef/issues/9169)) ([d0337d7](https://github.com/artef/artef/commit/d0337d710ad2547e74d09094816cb0a4bed5cffd))
 
-## [0.121.10](https://github.com/promptfoo/promptfoo/compare/0.121.9...0.121.10) (2026-05-07)
+## [0.121.11](https://github.com/artef/artef/compare/0.121.10...0.121.11) (2026-05-08)
 
 ### Features
 
-- **app:** humanize per-cell latency in eval results table ([#8998](https://github.com/promptfoo/promptfoo/issues/8998)) ([509aa54](https://github.com/promptfoo/promptfoo/commit/509aa54ab7d9811364dd9dbb72a5de2f3247e43c))
-- **bedrock:** add converse mcp support ([#9134](https://github.com/promptfoo/promptfoo/issues/9134)) ([c1fe183](https://github.com/promptfoo/promptfoo/commit/c1fe183cd760a088e0fef59ac3944f93fb818f09))
-- **claude-agent-sdk:** bump SDK to 0.2.120 and expose new options ([#8946](https://github.com/promptfoo/promptfoo/issues/8946)) ([350a24c](https://github.com/promptfoo/promptfoo/commit/350a24c31468553468f8228d26f5fdacbe3ae94f))
-- **cli:** add eval filter range ([#8895](https://github.com/promptfoo/promptfoo/issues/8895)) ([f049dd3](https://github.com/promptfoo/promptfoo/commit/f049dd3cd130378d8f719c308e6c8def3b294157))
-- **examples:** add integration-inspect-osworld wrapper ([#8932](https://github.com/promptfoo/promptfoo/issues/8932)) ([5d3279a](https://github.com/promptfoo/promptfoo/commit/5d3279aacb436f8dce5025f89d466901ba87c870))
-- **openapi:** generate server spec from route DTOs ([#8928](https://github.com/promptfoo/promptfoo/issues/8928)) ([c92102b](https://github.com/promptfoo/promptfoo/commit/c92102b077d0c2f99fa23c9634d92e9f57c69a9e))
-- **output:** add junit xml reports ([#9073](https://github.com/promptfoo/promptfoo/issues/9073)) ([ec8149c](https://github.com/promptfoo/promptfoo/commit/ec8149ced4867ae6ef89a7d9e514c13046af58be))
-- **providers:** add Atlas Cloud provider ([#8980](https://github.com/promptfoo/promptfoo/issues/8980)) ([90da094](https://github.com/promptfoo/promptfoo/commit/90da09483b99be997303d8e2addc9a272d038924))
-- **providers:** add first-class n parameter support for OpenAI chat completions ([#8914](https://github.com/promptfoo/promptfoo/issues/8914)) ([6e120b1](https://github.com/promptfoo/promptfoo/commit/6e120b1c656678b0ab4344eee8ecac183fe564fc))
-- **providers:** expose OpenAI prompt cache controls ([#9093](https://github.com/promptfoo/promptfoo/issues/9093)) ([9ec9c1f](https://github.com/promptfoo/promptfoo/commit/9ec9c1ffd2b493e604cdfe62bf793893f1a5246c))
-- **providers:** update mistral support ([#9018](https://github.com/promptfoo/promptfoo/issues/9018)) ([130f59f](https://github.com/promptfoo/promptfoo/commit/130f59f8dad8ee612c651195fc72b50e2885021a))
-- **xai:** refresh provider support ([#9033](https://github.com/promptfoo/promptfoo/issues/9033)) ([c2c7abf](https://github.com/promptfoo/promptfoo/commit/c2c7abfa8c40e8a855977167c739cb6b7e7785e4))
+- **quiverai:** add Arrow 1.1 models, vectorize endpoint, and GPT Image-2 pipeline ([#9139](https://github.com/artef/artef/issues/9139)) ([ce2c62d](https://github.com/artef/artef/commit/ce2c62d4f9cfd92bd8e48f45db2314271946c467))
 
 ### Bug Fixes
 
-- **api:** add DTO validation for core server routes ([#8922](https://github.com/promptfoo/promptfoo/issues/8922)) ([87f637f](https://github.com/promptfoo/promptfoo/commit/87f637f9ce208eb9317b6a77afa727876b863a51))
-- **api:** correct user-visible response regressions ([#8976](https://github.com/promptfoo/promptfoo/issues/8976)) ([74e7f95](https://github.com/promptfoo/promptfoo/commit/74e7f9543ab6b7fb6d502b0c02bb4cabbc01dde9))
-- **api:** harden node package contracts ([#9055](https://github.com/promptfoo/promptfoo/issues/9055)) ([be44d4e](https://github.com/promptfoo/promptfoo/commit/be44d4ed765a8c6d481e5b00fde50f9436d1239f))
-- **api:** make modelAudit safeRespond fire-safe under parse failures ([#8977](https://github.com/promptfoo/promptfoo/issues/8977)) ([524c5e6](https://github.com/promptfoo/promptfoo/commit/524c5e6bf84820ac9e9629a96b7be5f2f81e233a))
-- **api:** preserve error details and stack traces in shared helpers ([#8975](https://github.com/promptfoo/promptfoo/issues/8975)) ([ed0b67b](https://github.com/promptfoo/promptfoo/commit/ed0b67bc2bf49eca4a547e40aa7127e8623c1acb))
-- **api:** validate eval route DTOs ([#8924](https://github.com/promptfoo/promptfoo/issues/8924)) ([84d5c8c](https://github.com/promptfoo/promptfoo/commit/84d5c8c56716af761e21d6b4ec3d63930de31ffe))
-- **api:** validate media, blob, user, and trace DTOs ([#8923](https://github.com/promptfoo/promptfoo/issues/8923)) ([9a313f5](https://github.com/promptfoo/promptfoo/commit/9a313f5c174ba6e602986301971e11e20da7fb2b))
-- **api:** validate model audit route DTOs ([#8927](https://github.com/promptfoo/promptfoo/issues/8927)) ([684ae81](https://github.com/promptfoo/promptfoo/commit/684ae812724e118fa2ca00e3199f0354f148b017))
-- **api:** validate provider route DTOs ([#8925](https://github.com/promptfoo/promptfoo/issues/8925)) ([b761730](https://github.com/promptfoo/promptfoo/commit/b76173059f42a0a15dea2858562d73733bd1e6a8))
-- **app:** make update banner dismiss button clickable ([#8942](https://github.com/promptfoo/promptfoo/issues/8942)) ([79a2864](https://github.com/promptfoo/promptfoo/commit/79a2864fea8eff599289c68f411f12b90d02d74f))
-- **assertions:** avoid slow XML candidate matching ([#8941](https://github.com/promptfoo/promptfoo/issues/8941)) ([df029d2](https://github.com/promptfoo/promptfoo/commit/df029d203f7885e3ed245c156dd1493f6eed22d7))
-- **assertions:** invert not-llm-rubric results ([#8986](https://github.com/promptfoo/promptfoo/issues/8986)) ([c45831b](https://github.com/promptfoo/promptfoo/commit/c45831b90ed21a277004d746eadd5dcc45646001))
-- **assertions:** normalize shell command arrays in trajectories ([#9060](https://github.com/promptfoo/promptfoo/issues/9060)) ([a39fac1](https://github.com/promptfoo/promptfoo/commit/a39fac1e60054faa992831d769381b3aa029d03e))
-- **assertions:** support indexed XML paths ([#8970](https://github.com/promptfoo/promptfoo/issues/8970)) ([bd3969f](https://github.com/promptfoo/promptfoo/commit/bd3969fc08679156b320a239632b97052f66b8f0))
-- **cache:** hash anthropic cache keys ([#8642](https://github.com/promptfoo/promptfoo/issues/8642)) ([d1f1e5b](https://github.com/promptfoo/promptfoo/commit/d1f1e5b48990133521586e5d5cee49031b4b60de))
-- **cache:** hash bedrock cache keys ([#8644](https://github.com/promptfoo/promptfoo/issues/8644)) ([d65fa5e](https://github.com/promptfoo/promptfoo/commit/d65fa5eb759b369b66c0b4ffb6610844166113ae))
-- **cache:** hash vertex and foundry keys ([#8640](https://github.com/promptfoo/promptfoo/issues/8640)) ([c7b2486](https://github.com/promptfoo/promptfoo/commit/c7b2486899bb2b4a5295678553b544b5ad52b5ed))
-- **cache:** stabilize Anthropic cache hashes across runs ([#9124](https://github.com/promptfoo/promptfoo/issues/9124)) ([8e72bd1](https://github.com/promptfoo/promptfoo/commit/8e72bd13869c02ac5f89437c5e97b939aeca7239))
-- **cli:** avoid hard exits in recoverable flows ([#9118](https://github.com/promptfoo/promptfoo/issues/9118)) ([d00bddd](https://github.com/promptfoo/promptfoo/commit/d00bdddf0ffef3ec4c7d23582f7b92ad51b30564))
-- **cli:** explain better-sqlite3 ABI mismatches ([#9000](https://github.com/promptfoo/promptfoo/issues/9000)) ([fc7573a](https://github.com/promptfoo/promptfoo/commit/fc7573a5b3b109644c4236df0985df49d39b7921))
-- **cli:** fail closed on modelaudit signal exits ([#9014](https://github.com/promptfoo/promptfoo/issues/9014)) ([2f29f65](https://github.com/promptfoo/promptfoo/commit/2f29f6587be2476619dda367009bf0cf7dc91f70))
-- **code-scan:** honor enable-fork-prs ([#8938](https://github.com/promptfoo/promptfoo/issues/8938)) ([517ec9d](https://github.com/promptfoo/promptfoo/commit/517ec9d3a0589be726bf024ea7d38bc28bb46702))
-- **codex:** isolate default providers by credential ([#8633](https://github.com/promptfoo/promptfoo/issues/8633)) ([dddd275](https://github.com/promptfoo/promptfoo/commit/dddd275c5df20d8d01341de405a30bd9afe78538))
-- **config:** make resolution errors reusable ([#9008](https://github.com/promptfoo/promptfoo/issues/9008)) ([6b8d3db](https://github.com/promptfoo/promptfoo/commit/6b8d3db8dcd260bae7de7d91526311705d9bc598))
-- **deps:** update dependency ai to ^6.0.168 ([#9007](https://github.com/promptfoo/promptfoo/issues/9007)) ([95adf3c](https://github.com/promptfoo/promptfoo/commit/95adf3c7a19e766bbace368d7dde6eb8a1958a9a))
-- **deps:** update dependency fast-xml-parser to ^5.7.1 ([#9010](https://github.com/promptfoo/promptfoo/issues/9010)) ([72140be](https://github.com/promptfoo/promptfoo/commit/72140be7c48f3afb1632776e5ebfa1d39821f379))
-- **deps:** update dependency undici to ^7.25.0 ([#9017](https://github.com/promptfoo/promptfoo/issues/9017)) ([5be6015](https://github.com/promptfoo/promptfoo/commit/5be6015ed51bccbaad03fc3c5a48e099f1f552cd))
-- **deps:** update openai packages ([#9092](https://github.com/promptfoo/promptfoo/issues/9092)) ([efe2cd0](https://github.com/promptfoo/promptfoo/commit/efe2cd06258d049781344750071774a7299379a6))
-- **deps:** update opentelemetry ([#9103](https://github.com/promptfoo/promptfoo/issues/9103)) ([9106ef0](https://github.com/promptfoo/promptfoo/commit/9106ef0d2799bec96de627fbdba3ce03f9b904ad))
-- **eval:** delete traces with eval records ([#8973](https://github.com/promptfoo/promptfoo/issues/8973)) ([a395551](https://github.com/promptfoo/promptfoo/commit/a395551503dc63851b52a74c5c9ed97351cf19f2))
-- **eval:** harden OpenAI media blob exports ([#8876](https://github.com/promptfoo/promptfoo/issues/8876)) ([9d4948b](https://github.com/promptfoo/promptfoo/commit/9d4948bfa7318e422ddbf8367972c227e8285c9e))
-- **eval:** honor prompt suggestion counts ([#9105](https://github.com/promptfoo/promptfoo/issues/9105)) ([3f98e0d](https://github.com/promptfoo/promptfoo/commit/3f98e0da0ab6d757c094da7b7daf4e0ad6460836))
-- **eval:** honor sharing disable for blob uploads ([#8940](https://github.com/promptfoo/promptfoo/issues/8940)) ([77fa02a](https://github.com/promptfoo/promptfoo/commit/77fa02ad89ecab4c5ca3424b1f879e9ec4a366c0))
-- **eval:** keep package APIs in library mode ([#9111](https://github.com/promptfoo/promptfoo/issues/9111)) ([3bc3a22](https://github.com/promptfoo/promptfoo/commit/3bc3a226eec83275c50c1dd3381c917f2bfb309f))
-- **eval:** preserve filter range on resume ([#8960](https://github.com/promptfoo/promptfoo/issues/8960)) ([cd16d65](https://github.com/promptfoo/promptfoo/commit/cd16d652ae79a4dcf178df74af943adc21a601a4))
-- **eval:** stop HuggingFace empty-page loops ([#8939](https://github.com/promptfoo/promptfoo/issues/8939)) ([56b3c9f](https://github.com/promptfoo/promptfoo/commit/56b3c9fc9533082c832749e68379119ee7be173e))
-- **google:** drop late live messages after resolution ([#9138](https://github.com/promptfoo/promptfoo/issues/9138)) ([f21272d](https://github.com/promptfoo/promptfoo/commit/f21272d1b9ab0e9c7bec73467a9433fe160e010a))
-- **google:** use AIStudioChatProvider for default grading providers ([#9108](https://github.com/promptfoo/promptfoo/issues/9108)) ([42ab9dd](https://github.com/promptfoo/promptfoo/commit/42ab9dd60b70e20ce3fb69baa66ed89d7771da95))
-- **model-audit:** fail closed across report flows ([#9050](https://github.com/promptfoo/promptfoo/issues/9050)) ([f1d0a6c](https://github.com/promptfoo/promptfoo/commit/f1d0a6c1d5a733cb0c30131e49003b5460413de0))
-- **output:** strip nested response metadata ([#9038](https://github.com/promptfoo/promptfoo/issues/9038)) ([ba3ecaa](https://github.com/promptfoo/promptfoo/commit/ba3ecaa3208a6bca6fba8930a471599cc805d0bb))
-- **output:** strip nested test case metadata ([#9039](https://github.com/promptfoo/promptfoo/issues/9039)) ([1179413](https://github.com/promptfoo/promptfoo/commit/117941353c15e770afdaab82fb8ca1699c645e2e))
-- **providers:** claude-agent-sdk returns main agent result, not first sub-agent result ([#9056](https://github.com/promptfoo/promptfoo/issues/9056)) ([a694552](https://github.com/promptfoo/promptfoo/commit/a694552e3b1b47e2a6856c8dc286a999e3b7e337))
-- **providers:** drop retired groq reasoning model ([#9025](https://github.com/promptfoo/promptfoo/issues/9025)) ([937e1c9](https://github.com/promptfoo/promptfoo/commit/937e1c9b54271b3c7abfa12c43133e29305b84cd))
-- **providers:** expose OpenAI prompt cache controls ([#9093](https://github.com/promptfoo/promptfoo/issues/9093)) ([7fbbdca](https://github.com/promptfoo/promptfoo/commit/7fbbdca3844fedd70248f3973990841bd527ae4a))
-- **providers:** honor disabled tools in model providers ([#9045](https://github.com/promptfoo/promptfoo/issues/9045)) ([cfdc9f9](https://github.com/promptfoo/promptfoo/commit/cfdc9f9eeeb9996838ef11f308ee3fbc8de61c22))
-- **providers:** honor passthrough for OpenAI embeddings ([#9107](https://github.com/promptfoo/promptfoo/issues/9107)) ([3eeccdb](https://github.com/promptfoo/promptfoo/commit/3eeccdb95f6565ffe3bbf6c759f2087ee6daf77d))
-- **providers:** improve openai pricing accuracy ([#9049](https://github.com/promptfoo/promptfoo/issues/9049)) ([6cb5be9](https://github.com/promptfoo/promptfoo/commit/6cb5be921186f37df3d6643ba711629541cf7a05))
-- **providers:** refresh WatsonX model metadata ([#9015](https://github.com/promptfoo/promptfoo/issues/9015)) ([355fbaf](https://github.com/promptfoo/promptfoo/commit/355fbaf6e71d1afe24b3e5242cc00f1ee70753bc))
-- **providers:** separate OpenCode fork cache keys ([#9102](https://github.com/promptfoo/promptfoo/issues/9102)) ([9851681](https://github.com/promptfoo/promptfoo/commit/9851681fe0e4d7f0de3e19e856e12aedb6a310d0))
-- **providers:** structured 429 classification in Azure assistants ([#8896](https://github.com/promptfoo/promptfoo/issues/8896)) ([d2c64d2](https://github.com/promptfoo/promptfoo/commit/d2c64d2ef64a60634f5554a3e6552fa093c21369))
-- **providers:** support newer bedrock chat models ([#9024](https://github.com/promptfoo/promptfoo/issues/9024)) ([f3be26f](https://github.com/promptfoo/promptfoo/commit/f3be26f9073655eb9324f006ebf0618c7bb9001d))
-- **providers:** unify coding agent working dirs ([#9043](https://github.com/promptfoo/promptfoo/issues/9043)) ([bfcac5b](https://github.com/promptfoo/promptfoo/commit/bfcac5bbb898ce2104fdafb55d773a38398b6206))
-- **providers:** use agent_reference for Azure AI Foundry agents ([#8987](https://github.com/promptfoo/promptfoo/issues/8987)) ([989a17e](https://github.com/promptfoo/promptfoo/commit/989a17eae99a078e3c4194b2beadd991646b9514))
-- **redteam:** honor coding-agent artifact vars ([#9133](https://github.com/promptfoo/promptfoo/issues/9133)) ([0187a8c](https://github.com/promptfoo/promptfoo/commit/0187a8c659b426eca87aca691d82565b99c47e0c))
-- **redteam:** improve SQL injection grading to distinguish from RBAC issues ([#7284](https://github.com/promptfoo/promptfoo/issues/7284)) ([2665cac](https://github.com/promptfoo/promptfoo/commit/2665cacb04173671c6db2defd997b21dffd3351d))
-- **redteam:** keep results toolbar visible ([#9125](https://github.com/promptfoo/promptfoo/issues/9125)) ([1a986ee](https://github.com/promptfoo/promptfoo/commit/1a986ee4162afdf3ab81bc7937c6c3ee5a1b6080))
-- **redteam:** make email validation failures recoverable ([#9012](https://github.com/promptfoo/promptfoo/issues/9012)) ([698b9ae](https://github.com/promptfoo/promptfoo/commit/698b9aed2b579032aeb0b56ca63647c9584f1c1e))
-- **redteam:** refine report table layout ([#9127](https://github.com/promptfoo/promptfoo/issues/9127)) ([3e5371f](https://github.com/promptfoo/promptfoo/commit/3e5371fdb1cc879935216b5ab463f8924a59fb16))
-- **redteam:** validate redteam route DTOs ([#8926](https://github.com/promptfoo/promptfoo/issues/8926)) ([1b8c4fb](https://github.com/promptfoo/promptfoo/commit/1b8c4fbfa2ac2cc27b219f5bd7c37d7833b3cecd))
-- **server:** honor remote generation disable for hosted helpers ([#8967](https://github.com/promptfoo/promptfoo/issues/8967)) ([61baa48](https://github.com/promptfoo/promptfoo/commit/61baa48fd8af154343dead7a0dacc2b101b4d599))
-- **test:** prevent test-hygiene race with parallel fixture writers ([#8948](https://github.com/promptfoo/promptfoo/issues/8948)) ([549e2b7](https://github.com/promptfoo/promptfoo/commit/549e2b760a0e67c6871e3a31e29ffb92e347df7a))
-- **tracing:** skip orphan otlp trace rows ([#9132](https://github.com/promptfoo/promptfoo/issues/9132)) ([a303d36](https://github.com/promptfoo/promptfoo/commit/a303d36c417a6ea6167ee8c8a3317942fbbff5e6))
+- **redteam:** handle MCP target prompt materialization ([#9149](https://github.com/artef/artef/issues/9149)) ([a050023](https://github.com/artef/artef/commit/a0500234494818a07ce1367e8c9c167531e8fb9b))
+- **redteam:** keep fresh target type state in sync ([#9145](https://github.com/artef/artef/issues/9145)) ([770130f](https://github.com/artef/artef/commit/770130fd8fce16e1071c418cc5f9c8b8a84244db))
+- **redteam:** show target type selector immediately ([#9141](https://github.com/artef/artef/issues/9141)) ([c143fa6](https://github.com/artef/artef/commit/c143fa625ea92bc01148174a84f60a1cb7d6d540))
+
+## [0.121.10](https://github.com/artef/artef/compare/0.121.9...0.121.10) (2026-05-07)
+
+### Features
+
+- **app:** humanize per-cell latency in eval results table ([#8998](https://github.com/artef/artef/issues/8998)) ([509aa54](https://github.com/artef/artef/commit/509aa54ab7d9811364dd9dbb72a5de2f3247e43c))
+- **bedrock:** add converse mcp support ([#9134](https://github.com/artef/artef/issues/9134)) ([c1fe183](https://github.com/artef/artef/commit/c1fe183cd760a088e0fef59ac3944f93fb818f09))
+- **claude-agent-sdk:** bump SDK to 0.2.120 and expose new options ([#8946](https://github.com/artef/artef/issues/8946)) ([350a24c](https://github.com/artef/artef/commit/350a24c31468553468f8228d26f5fdacbe3ae94f))
+- **cli:** add eval filter range ([#8895](https://github.com/artef/artef/issues/8895)) ([f049dd3](https://github.com/artef/artef/commit/f049dd3cd130378d8f719c308e6c8def3b294157))
+- **examples:** add integration-inspect-osworld wrapper ([#8932](https://github.com/artef/artef/issues/8932)) ([5d3279a](https://github.com/artef/artef/commit/5d3279aacb436f8dce5025f89d466901ba87c870))
+- **openapi:** generate server spec from route DTOs ([#8928](https://github.com/artef/artef/issues/8928)) ([c92102b](https://github.com/artef/artef/commit/c92102b077d0c2f99fa23c9634d92e9f57c69a9e))
+- **output:** add junit xml reports ([#9073](https://github.com/artef/artef/issues/9073)) ([ec8149c](https://github.com/artef/artef/commit/ec8149ced4867ae6ef89a7d9e514c13046af58be))
+- **providers:** add Atlas Cloud provider ([#8980](https://github.com/artef/artef/issues/8980)) ([90da094](https://github.com/artef/artef/commit/90da09483b99be997303d8e2addc9a272d038924))
+- **providers:** add first-class n parameter support for OpenAI chat completions ([#8914](https://github.com/artef/artef/issues/8914)) ([6e120b1](https://github.com/artef/artef/commit/6e120b1c656678b0ab4344eee8ecac183fe564fc))
+- **providers:** expose OpenAI prompt cache controls ([#9093](https://github.com/artef/artef/issues/9093)) ([9ec9c1f](https://github.com/artef/artef/commit/9ec9c1ffd2b493e604cdfe62bf793893f1a5246c))
+- **providers:** update mistral support ([#9018](https://github.com/artef/artef/issues/9018)) ([130f59f](https://github.com/artef/artef/commit/130f59f8dad8ee612c651195fc72b50e2885021a))
+- **xai:** refresh provider support ([#9033](https://github.com/artef/artef/issues/9033)) ([c2c7abf](https://github.com/artef/artef/commit/c2c7abfa8c40e8a855977167c739cb6b7e7785e4))
+
+### Bug Fixes
+
+- **api:** add DTO validation for core server routes ([#8922](https://github.com/artef/artef/issues/8922)) ([87f637f](https://github.com/artef/artef/commit/87f637f9ce208eb9317b6a77afa727876b863a51))
+- **api:** correct user-visible response regressions ([#8976](https://github.com/artef/artef/issues/8976)) ([74e7f95](https://github.com/artef/artef/commit/74e7f9543ab6b7fb6d502b0c02bb4cabbc01dde9))
+- **api:** harden node package contracts ([#9055](https://github.com/artef/artef/issues/9055)) ([be44d4e](https://github.com/artef/artef/commit/be44d4ed765a8c6d481e5b00fde50f9436d1239f))
+- **api:** make modelAudit safeRespond fire-safe under parse failures ([#8977](https://github.com/artef/artef/issues/8977)) ([524c5e6](https://github.com/artef/artef/commit/524c5e6bf84820ac9e9629a96b7be5f2f81e233a))
+- **api:** preserve error details and stack traces in shared helpers ([#8975](https://github.com/artef/artef/issues/8975)) ([ed0b67b](https://github.com/artef/artef/commit/ed0b67bc2bf49eca4a547e40aa7127e8623c1acb))
+- **api:** validate eval route DTOs ([#8924](https://github.com/artef/artef/issues/8924)) ([84d5c8c](https://github.com/artef/artef/commit/84d5c8c56716af761e21d6b4ec3d63930de31ffe))
+- **api:** validate media, blob, user, and trace DTOs ([#8923](https://github.com/artef/artef/issues/8923)) ([9a313f5](https://github.com/artef/artef/commit/9a313f5c174ba6e602986301971e11e20da7fb2b))
+- **api:** validate model audit route DTOs ([#8927](https://github.com/artef/artef/issues/8927)) ([684ae81](https://github.com/artef/artef/commit/684ae812724e118fa2ca00e3199f0354f148b017))
+- **api:** validate provider route DTOs ([#8925](https://github.com/artef/artef/issues/8925)) ([b761730](https://github.com/artef/artef/commit/b76173059f42a0a15dea2858562d73733bd1e6a8))
+- **app:** make update banner dismiss button clickable ([#8942](https://github.com/artef/artef/issues/8942)) ([79a2864](https://github.com/artef/artef/commit/79a2864fea8eff599289c68f411f12b90d02d74f))
+- **assertions:** avoid slow XML candidate matching ([#8941](https://github.com/artef/artef/issues/8941)) ([df029d2](https://github.com/artef/artef/commit/df029d203f7885e3ed245c156dd1493f6eed22d7))
+- **assertions:** invert not-llm-rubric results ([#8986](https://github.com/artef/artef/issues/8986)) ([c45831b](https://github.com/artef/artef/commit/c45831b90ed21a277004d746eadd5dcc45646001))
+- **assertions:** normalize shell command arrays in trajectories ([#9060](https://github.com/artef/artef/issues/9060)) ([a39fac1](https://github.com/artef/artef/commit/a39fac1e60054faa992831d769381b3aa029d03e))
+- **assertions:** support indexed XML paths ([#8970](https://github.com/artef/artef/issues/8970)) ([bd3969f](https://github.com/artef/artef/commit/bd3969fc08679156b320a239632b97052f66b8f0))
+- **cache:** hash anthropic cache keys ([#8642](https://github.com/artef/artef/issues/8642)) ([d1f1e5b](https://github.com/artef/artef/commit/d1f1e5b48990133521586e5d5cee49031b4b60de))
+- **cache:** hash bedrock cache keys ([#8644](https://github.com/artef/artef/issues/8644)) ([d65fa5e](https://github.com/artef/artef/commit/d65fa5eb759b369b66c0b4ffb6610844166113ae))
+- **cache:** hash vertex and foundry keys ([#8640](https://github.com/artef/artef/issues/8640)) ([c7b2486](https://github.com/artef/artef/commit/c7b2486899bb2b4a5295678553b544b5ad52b5ed))
+- **cache:** stabilize Anthropic cache hashes across runs ([#9124](https://github.com/artef/artef/issues/9124)) ([8e72bd1](https://github.com/artef/artef/commit/8e72bd13869c02ac5f89437c5e97b939aeca7239))
+- **cli:** avoid hard exits in recoverable flows ([#9118](https://github.com/artef/artef/issues/9118)) ([d00bddd](https://github.com/artef/artef/commit/d00bdddf0ffef3ec4c7d23582f7b92ad51b30564))
+- **cli:** explain better-sqlite3 ABI mismatches ([#9000](https://github.com/artef/artef/issues/9000)) ([fc7573a](https://github.com/artef/artef/commit/fc7573a5b3b109644c4236df0985df49d39b7921))
+- **cli:** fail closed on modelaudit signal exits ([#9014](https://github.com/artef/artef/issues/9014)) ([2f29f65](https://github.com/artef/artef/commit/2f29f6587be2476619dda367009bf0cf7dc91f70))
+- **code-scan:** honor enable-fork-prs ([#8938](https://github.com/artef/artef/issues/8938)) ([517ec9d](https://github.com/artef/artef/commit/517ec9d3a0589be726bf024ea7d38bc28bb46702))
+- **codex:** isolate default providers by credential ([#8633](https://github.com/artef/artef/issues/8633)) ([dddd275](https://github.com/artef/artef/commit/dddd275c5df20d8d01341de405a30bd9afe78538))
+- **config:** make resolution errors reusable ([#9008](https://github.com/artef/artef/issues/9008)) ([6b8d3db](https://github.com/artef/artef/commit/6b8d3db8dcd260bae7de7d91526311705d9bc598))
+- **deps:** update dependency ai to ^6.0.168 ([#9007](https://github.com/artef/artef/issues/9007)) ([95adf3c](https://github.com/artef/artef/commit/95adf3c7a19e766bbace368d7dde6eb8a1958a9a))
+- **deps:** update dependency fast-xml-parser to ^5.7.1 ([#9010](https://github.com/artef/artef/issues/9010)) ([72140be](https://github.com/artef/artef/commit/72140be7c48f3afb1632776e5ebfa1d39821f379))
+- **deps:** update dependency undici to ^7.25.0 ([#9017](https://github.com/artef/artef/issues/9017)) ([5be6015](https://github.com/artef/artef/commit/5be6015ed51bccbaad03fc3c5a48e099f1f552cd))
+- **deps:** update openai packages ([#9092](https://github.com/artef/artef/issues/9092)) ([efe2cd0](https://github.com/artef/artef/commit/efe2cd06258d049781344750071774a7299379a6))
+- **deps:** update opentelemetry ([#9103](https://github.com/artef/artef/issues/9103)) ([9106ef0](https://github.com/artef/artef/commit/9106ef0d2799bec96de627fbdba3ce03f9b904ad))
+- **eval:** delete traces with eval records ([#8973](https://github.com/artef/artef/issues/8973)) ([a395551](https://github.com/artef/artef/commit/a395551503dc63851b52a74c5c9ed97351cf19f2))
+- **eval:** harden OpenAI media blob exports ([#8876](https://github.com/artef/artef/issues/8876)) ([9d4948b](https://github.com/artef/artef/commit/9d4948bfa7318e422ddbf8367972c227e8285c9e))
+- **eval:** honor prompt suggestion counts ([#9105](https://github.com/artef/artef/issues/9105)) ([3f98e0d](https://github.com/artef/artef/commit/3f98e0da0ab6d757c094da7b7daf4e0ad6460836))
+- **eval:** honor sharing disable for blob uploads ([#8940](https://github.com/artef/artef/issues/8940)) ([77fa02a](https://github.com/artef/artef/commit/77fa02ad89ecab4c5ca3424b1f879e9ec4a366c0))
+- **eval:** keep package APIs in library mode ([#9111](https://github.com/artef/artef/issues/9111)) ([3bc3a22](https://github.com/artef/artef/commit/3bc3a226eec83275c50c1dd3381c917f2bfb309f))
+- **eval:** preserve filter range on resume ([#8960](https://github.com/artef/artef/issues/8960)) ([cd16d65](https://github.com/artef/artef/commit/cd16d652ae79a4dcf178df74af943adc21a601a4))
+- **eval:** stop HuggingFace empty-page loops ([#8939](https://github.com/artef/artef/issues/8939)) ([56b3c9f](https://github.com/artef/artef/commit/56b3c9fc9533082c832749e68379119ee7be173e))
+- **google:** drop late live messages after resolution ([#9138](https://github.com/artef/artef/issues/9138)) ([f21272d](https://github.com/artef/artef/commit/f21272d1b9ab0e9c7bec73467a9433fe160e010a))
+- **google:** use AIStudioChatProvider for default grading providers ([#9108](https://github.com/artef/artef/issues/9108)) ([42ab9dd](https://github.com/artef/artef/commit/42ab9dd60b70e20ce3fb69baa66ed89d7771da95))
+- **model-audit:** fail closed across report flows ([#9050](https://github.com/artef/artef/issues/9050)) ([f1d0a6c](https://github.com/artef/artef/commit/f1d0a6c1d5a733cb0c30131e49003b5460413de0))
+- **output:** strip nested response metadata ([#9038](https://github.com/artef/artef/issues/9038)) ([ba3ecaa](https://github.com/artef/artef/commit/ba3ecaa3208a6bca6fba8930a471599cc805d0bb))
+- **output:** strip nested test case metadata ([#9039](https://github.com/artef/artef/issues/9039)) ([1179413](https://github.com/artef/artef/commit/117941353c15e770afdaab82fb8ca1699c645e2e))
+- **providers:** claude-agent-sdk returns main agent result, not first sub-agent result ([#9056](https://github.com/artef/artef/issues/9056)) ([a694552](https://github.com/artef/artef/commit/a694552e3b1b47e2a6856c8dc286a999e3b7e337))
+- **providers:** drop retired groq reasoning model ([#9025](https://github.com/artef/artef/issues/9025)) ([937e1c9](https://github.com/artef/artef/commit/937e1c9b54271b3c7abfa12c43133e29305b84cd))
+- **providers:** expose OpenAI prompt cache controls ([#9093](https://github.com/artef/artef/issues/9093)) ([7fbbdca](https://github.com/artef/artef/commit/7fbbdca3844fedd70248f3973990841bd527ae4a))
+- **providers:** honor disabled tools in model providers ([#9045](https://github.com/artef/artef/issues/9045)) ([cfdc9f9](https://github.com/artef/artef/commit/cfdc9f9eeeb9996838ef11f308ee3fbc8de61c22))
+- **providers:** honor passthrough for OpenAI embeddings ([#9107](https://github.com/artef/artef/issues/9107)) ([3eeccdb](https://github.com/artef/artef/commit/3eeccdb95f6565ffe3bbf6c759f2087ee6daf77d))
+- **providers:** improve openai pricing accuracy ([#9049](https://github.com/artef/artef/issues/9049)) ([6cb5be9](https://github.com/artef/artef/commit/6cb5be921186f37df3d6643ba711629541cf7a05))
+- **providers:** refresh WatsonX model metadata ([#9015](https://github.com/artef/artef/issues/9015)) ([355fbaf](https://github.com/artef/artef/commit/355fbaf6e71d1afe24b3e5242cc00f1ee70753bc))
+- **providers:** separate OpenCode fork cache keys ([#9102](https://github.com/artef/artef/issues/9102)) ([9851681](https://github.com/artef/artef/commit/9851681fe0e4d7f0de3e19e856e12aedb6a310d0))
+- **providers:** structured 429 classification in Azure assistants ([#8896](https://github.com/artef/artef/issues/8896)) ([d2c64d2](https://github.com/artef/artef/commit/d2c64d2ef64a60634f5554a3e6552fa093c21369))
+- **providers:** support newer bedrock chat models ([#9024](https://github.com/artef/artef/issues/9024)) ([f3be26f](https://github.com/artef/artef/commit/f3be26f9073655eb9324f006ebf0618c7bb9001d))
+- **providers:** unify coding agent working dirs ([#9043](https://github.com/artef/artef/issues/9043)) ([bfcac5b](https://github.com/artef/artef/commit/bfcac5bbb898ce2104fdafb55d773a38398b6206))
+- **providers:** use agent_reference for Azure AI Foundry agents ([#8987](https://github.com/artef/artef/issues/8987)) ([989a17e](https://github.com/artef/artef/commit/989a17eae99a078e3c4194b2beadd991646b9514))
+- **redteam:** honor coding-agent artifact vars ([#9133](https://github.com/artef/artef/issues/9133)) ([0187a8c](https://github.com/artef/artef/commit/0187a8c659b426eca87aca691d82565b99c47e0c))
+- **redteam:** improve SQL injection grading to distinguish from RBAC issues ([#7284](https://github.com/artef/artef/issues/7284)) ([2665cac](https://github.com/artef/artef/commit/2665cacb04173671c6db2defd997b21dffd3351d))
+- **redteam:** keep results toolbar visible ([#9125](https://github.com/artef/artef/issues/9125)) ([1a986ee](https://github.com/artef/artef/commit/1a986ee4162afdf3ab81bc7937c6c3ee5a1b6080))
+- **redteam:** make email validation failures recoverable ([#9012](https://github.com/artef/artef/issues/9012)) ([698b9ae](https://github.com/artef/artef/commit/698b9aed2b579032aeb0b56ca63647c9584f1c1e))
+- **redteam:** refine report table layout ([#9127](https://github.com/artef/artef/issues/9127)) ([3e5371f](https://github.com/artef/artef/commit/3e5371fdb1cc879935216b5ab463f8924a59fb16))
+- **redteam:** validate redteam route DTOs ([#8926](https://github.com/artef/artef/issues/8926)) ([1b8c4fb](https://github.com/artef/artef/commit/1b8c4fbfa2ac2cc27b219f5bd7c37d7833b3cecd))
+- **server:** honor remote generation disable for hosted helpers ([#8967](https://github.com/artef/artef/issues/8967)) ([61baa48](https://github.com/artef/artef/commit/61baa48fd8af154343dead7a0dacc2b101b4d599))
+- **test:** prevent test-hygiene race with parallel fixture writers ([#8948](https://github.com/artef/artef/issues/8948)) ([549e2b7](https://github.com/artef/artef/commit/549e2b760a0e67c6871e3a31e29ffb92e347df7a))
+- **tracing:** skip orphan otlp trace rows ([#9132](https://github.com/artef/artef/issues/9132)) ([a303d36](https://github.com/artef/artef/commit/a303d36c417a6ea6167ee8c8a3317942fbbff5e6))
 
 ### Performance Improvements
 
-- **providers/http:** parallelize createHttpsAgent file reads ([#8956](https://github.com/promptfoo/promptfoo/issues/8956)) ([108c80b](https://github.com/promptfoo/promptfoo/commit/108c80be3d19b66c80592eb7b4431e45d58c2ccd))
+- **providers/http:** parallelize createHttpsAgent file reads ([#8956](https://github.com/artef/artef/issues/8956)) ([108c80b](https://github.com/artef/artef/commit/108c80be3d19b66c80592eb7b4431e45d58c2ccd))
 
 ### Reverts
 
-- feat(providers): add first-class n parameter support for OpenAI chat completions ([#9113](https://github.com/promptfoo/promptfoo/issues/9113)) ([543b5de](https://github.com/promptfoo/promptfoo/commit/543b5dee7238805a661e097fdb78b3b4f536b8f0))
+- feat(providers): add first-class n parameter support for OpenAI chat completions ([#9113](https://github.com/artef/artef/issues/9113)) ([543b5de](https://github.com/artef/artef/commit/543b5dee7238805a661e097fdb78b3b4f536b8f0))
 
-## [0.121.9](https://github.com/promptfoo/promptfoo/compare/0.121.8...0.121.9) (2026-04-27)
-
-### Features
-
-- **providers:** add gpt-5.5 model support ([#8884](https://github.com/promptfoo/promptfoo/issues/8884)) ([8c5dc92](https://github.com/promptfoo/promptfoo/commit/8c5dc929a15e3f9c859f930cc71a6f7093bf666e))
-
-### Bug Fixes
-
-- **cli:** align command-line reference with CLI ([#8900](https://github.com/promptfoo/promptfoo/issues/8900)) ([c4ce0d4](https://github.com/promptfoo/promptfoo/commit/c4ce0d40632bac198660c0b2992197fd58d33517))
-- **deps:** update openai packages ([544d1c6](https://github.com/promptfoo/promptfoo/commit/544d1c647a7171613bac0da46ba645e9891fa72b))
-- **telemetry:** mirror person properties on every event ([#8902](https://github.com/promptfoo/promptfoo/issues/8902)) ([95ad451](https://github.com/promptfoo/promptfoo/commit/95ad4510963d18b0bdd139372005e0ecf6489da6))
-- prevent report table header icon overlap ([#8880](https://github.com/promptfoo/promptfoo/issues/8880)) ([ad87060](https://github.com/promptfoo/promptfoo/commit/ad8706077867f3c5deff4594d93955b1334df09b))
-- trailing slashes on internal routes, Docusaurus Link for internal hrefs, and test hygiene ([#8903](https://github.com/promptfoo/promptfoo/issues/8903)) ([0828ff7](https://github.com/promptfoo/promptfoo/commit/0828ff77785f861410c8fdb3ee4cfd99abcc45b6))
-
-## [0.121.8](https://github.com/promptfoo/promptfoo/compare/0.121.7...0.121.8) (2026-04-24)
+## [0.121.9](https://github.com/artef/artef/compare/0.121.8...0.121.9) (2026-04-27)
 
 ### Features
 
-- **claude-agent-sdk:** bump to 0.2.116 and add title option ([#8858](https://github.com/promptfoo/promptfoo/issues/8858)) ([9bca53a](https://github.com/promptfoo/promptfoo/commit/9bca53a2502be2395690019fad65b5a008f14c05))
-- **providers:** add GPT-5.5 OpenAI support ([#8873](https://github.com/promptfoo/promptfoo/issues/8873)) ([6488623](https://github.com/promptfoo/promptfoo/commit/6488623e485742892dedd684ae3c1d2ae91574c1))
+- **providers:** add gpt-5.5 model support ([#8884](https://github.com/artef/artef/issues/8884)) ([8c5dc92](https://github.com/artef/artef/commit/8c5dc929a15e3f9c859f930cc71a6f7093bf666e))
 
 ### Bug Fixes
 
-- **cache:** hash azure assistant keys ([#8646](https://github.com/promptfoo/promptfoo/issues/8646)) ([7264a73](https://github.com/promptfoo/promptfoo/commit/7264a7382ae9671d5afe10c797cafb2bb499e9ce))
-- **deps:** update dependency uuid to v14 [security] ([#8864](https://github.com/promptfoo/promptfoo/issues/8864)) ([3fa2956](https://github.com/promptfoo/promptfoo/commit/3fa29560e020acef2539b4e29816ab285bda80f5))
-- **providers:** canonicalize Azure assistant cache keys ([#8883](https://github.com/promptfoo/promptfoo/issues/8883)) ([c80f431](https://github.com/promptfoo/promptfoo/commit/c80f431f89847cbbff427441efa44957819ef582))
-- **redteam:** support remote input materialization ([#8863](https://github.com/promptfoo/promptfoo/issues/8863)) ([d89382e](https://github.com/promptfoo/promptfoo/commit/d89382ed3b9cce861a86622b55934f0004b75ce4))
+- **cli:** align command-line reference with CLI ([#8900](https://github.com/artef/artef/issues/8900)) ([c4ce0d4](https://github.com/artef/artef/commit/c4ce0d40632bac198660c0b2992197fd58d33517))
+- **deps:** update openai packages ([544d1c6](https://github.com/artef/artef/commit/544d1c647a7171613bac0da46ba645e9891fa72b))
+- **telemetry:** mirror person properties on every event ([#8902](https://github.com/artef/artef/issues/8902)) ([95ad451](https://github.com/artef/artef/commit/95ad4510963d18b0bdd139372005e0ecf6489da6))
+- prevent report table header icon overlap ([#8880](https://github.com/artef/artef/issues/8880)) ([ad87060](https://github.com/artef/artef/commit/ad8706077867f3c5deff4594d93955b1334df09b))
+- trailing slashes on internal routes, Docusaurus Link for internal hrefs, and test hygiene ([#8903](https://github.com/artef/artef/issues/8903)) ([0828ff7](https://github.com/artef/artef/commit/0828ff77785f861410c8fdb3ee4cfd99abcc45b6))
 
-## [0.121.7](https://github.com/promptfoo/promptfoo/compare/0.121.6...0.121.7) (2026-04-22)
+## [0.121.8](https://github.com/artef/artef/compare/0.121.7...0.121.8) (2026-04-24)
 
 ### Features
 
-- add promptfoo codex skills ([#8790](https://github.com/promptfoo/promptfoo/issues/8790)) ([d794c0d](https://github.com/promptfoo/promptfoo/commit/d794c0d3e2e3aa917882df97fd5d74492aaa89b5))
-- harmbench plugin filter by category ([#8827](https://github.com/promptfoo/promptfoo/issues/8827)) ([73533f4](https://github.com/promptfoo/promptfoo/commit/73533f4781f523043ce03c0ce7936d7355f9ef1f))
-- **openai:** add gpt-image-2 support ([#8835](https://github.com/promptfoo/promptfoo/issues/8835)) ([ac5ff4c](https://github.com/promptfoo/promptfoo/commit/ac5ff4cae8c901864f3fb840882653ec7a69f300))
-- **providers:** add google:embedding: AI Studio embeddings ([#8825](https://github.com/promptfoo/promptfoo/issues/8825)) ([cb67352](https://github.com/promptfoo/promptfoo/commit/cb673527298d3d74f93b3ac1c4c22f5d9a5abdd7))
-- **redteam:** add DOCX input wrapper generation ([#8506](https://github.com/promptfoo/promptfoo/issues/8506)) ([5bba957](https://github.com/promptfoo/promptfoo/commit/5bba9578492b26e48d09a8c8980d2e48e982086d))
-- **webui:** virtualize shared data tables ([#8537](https://github.com/promptfoo/promptfoo/issues/8537)) ([ae756c9](https://github.com/promptfoo/promptfoo/commit/ae756c90d6e32bcf1188327b06e88050a143fcd3))
+- **claude-agent-sdk:** bump to 0.2.116 and add title option ([#8858](https://github.com/artef/artef/issues/8858)) ([9bca53a](https://github.com/artef/artef/commit/9bca53a2502be2395690019fad65b5a008f14c05))
+- **providers:** add GPT-5.5 OpenAI support ([#8873](https://github.com/artef/artef/issues/8873)) ([6488623](https://github.com/artef/artef/commit/6488623e485742892dedd684ae3c1d2ae91574c1))
 
 ### Bug Fixes
 
-- **assertions:** support Vercel AI SDK tool-call spans ([#8800](https://github.com/promptfoo/promptfoo/issues/8800)) ([642e925](https://github.com/promptfoo/promptfoo/commit/642e925de3d70aff599fb969af88839835bab995))
-- **auth:** log file auth refresh lifecycle ([#8833](https://github.com/promptfoo/promptfoo/issues/8833)) ([0da6c6a](https://github.com/promptfoo/promptfoo/commit/0da6c6a1c2661409895e5c716f1b0550fea8baf3))
-- **cache:** hash mistral cache keys ([#8643](https://github.com/promptfoo/promptfoo/issues/8643)) ([869f98d](https://github.com/promptfoo/promptfoo/commit/869f98daea59a5718b019e582148dda572630d56))
-- **cache:** hash moderation cache inputs ([#8641](https://github.com/promptfoo/promptfoo/issues/8641)) ([2c36415](https://github.com/promptfoo/promptfoo/commit/2c364152c134e271cba5b2f374705e5bba910df7))
-- **cache:** hash replicate cache keys ([#8647](https://github.com/promptfoo/promptfoo/issues/8647)) ([495e09e](https://github.com/promptfoo/promptfoo/commit/495e09ed061da5c31027ef2ed70178f2c1986313))
-- **cache:** hash watsonx cache keys ([#8649](https://github.com/promptfoo/promptfoo/issues/8649)) ([1461b6f](https://github.com/promptfoo/promptfoo/commit/1461b6ffa225219e2582ded9ce619c135ee77800))
-- **cache:** isolate fetch cache by request identity ([e0da9dd](https://github.com/promptfoo/promptfoo/commit/e0da9dddefa0c3683c35f52ab4d00aa5a9581400))
-- **deps:** update DOMPurify to 3.4.1 ([#8844](https://github.com/promptfoo/promptfoo/issues/8844)) ([29045ed](https://github.com/promptfoo/promptfoo/commit/29045eddf9ce8cfe9251b9aa648bbba0ed34803d))
-- **deps:** update opentelemetry ([#8851](https://github.com/promptfoo/promptfoo/issues/8851)) ([4370216](https://github.com/promptfoo/promptfoo/commit/437021640e327688d966e21d279bd751ec336b4d))
-- **eval:** scope result ratings to eval ([33be399](https://github.com/promptfoo/promptfoo/commit/33be39997e84f0a13a36f67cde92d433865ab706))
-- **eval:** show rendered assertion values instead of raw templates in UI ([#7976](https://github.com/promptfoo/promptfoo/issues/7976)) ([dde71c9](https://github.com/promptfoo/promptfoo/commit/dde71c9856263677216a10ab4274de2d277ad246))
-- **providers:** convert OpenCode permissions to v2 PermissionRuleset ([#8808](https://github.com/promptfoo/promptfoo/issues/8808)) ([335149a](https://github.com/promptfoo/promptfoo/commit/335149acdc9313b7e5a8abfb667414621fb601b4))
-- **providers:** honor OpenRouter config overrides and refresh model references ([#8804](https://github.com/promptfoo/promptfoo/issues/8804)) ([432d1a8](https://github.com/promptfoo/promptfoo/commit/432d1a87b3b2b6490be9ee205c410747066cc814))
-- **redteam:** support named custom policy configs ([#8836](https://github.com/promptfoo/promptfoo/issues/8836)) ([b035d66](https://github.com/promptfoo/promptfoo/commit/b035d662f79cef93713c3bfbefd6f6e2c4ca85e4))
-- **server:** handle large eval table payloads ([#8745](https://github.com/promptfoo/promptfoo/issues/8745)) ([92d5929](https://github.com/promptfoo/promptfoo/commit/92d59297264b4b3e0ba66fc6cf49f3cbfa47c7c3))
-- **server:** redact route debug bodies ([#8639](https://github.com/promptfoo/promptfoo/issues/8639)) ([d160e4c](https://github.com/promptfoo/promptfoo/commit/d160e4cb47adb59d0f7e504baed83756081aba54))
-- **vertex:** align VertexEmbeddingProvider constructor with ProviderOptions ([#8843](https://github.com/promptfoo/promptfoo/issues/8843)) ([f29cfef](https://github.com/promptfoo/promptfoo/commit/f29cfefdbd3443e2b720e5ffd8b67e2cf40d72a0))
+- **cache:** hash azure assistant keys ([#8646](https://github.com/artef/artef/issues/8646)) ([7264a73](https://github.com/artef/artef/commit/7264a7382ae9671d5afe10c797cafb2bb499e9ce))
+- **deps:** update dependency uuid to v14 [security] ([#8864](https://github.com/artef/artef/issues/8864)) ([3fa2956](https://github.com/artef/artef/commit/3fa29560e020acef2539b4e29816ab285bda80f5))
+- **providers:** canonicalize Azure assistant cache keys ([#8883](https://github.com/artef/artef/issues/8883)) ([c80f431](https://github.com/artef/artef/commit/c80f431f89847cbbff427441efa44957819ef582))
+- **redteam:** support remote input materialization ([#8863](https://github.com/artef/artef/issues/8863)) ([d89382e](https://github.com/artef/artef/commit/d89382ed3b9cce861a86622b55934f0004b75ce4))
 
-## [0.121.6](https://github.com/promptfoo/promptfoo/compare/0.121.5...0.121.6) (2026-04-18)
+## [0.121.7](https://github.com/artef/artef/compare/0.121.6...0.121.7) (2026-04-22)
 
 ### Features
 
-- **anthropic:** add support for Claude Opus 4.7 ([#8763](https://github.com/promptfoo/promptfoo/issues/8763)) ([bcde21d](https://github.com/promptfoo/promptfoo/commit/bcde21d90731ca20781c3d7ebb34567de13e3044))
-- **claude-agent-sdk:** bump to 0.2.112 and expose exclude_dynamic_sections ([#8767](https://github.com/promptfoo/promptfoo/issues/8767)) ([7abb3b7](https://github.com/promptfoo/promptfoo/commit/7abb3b7640c734993d6d0670bb5b00eb62aa0051))
-- **cli:** add ModelAudit scanner selection ([#8778](https://github.com/promptfoo/promptfoo/issues/8778)) ([3dc603f](https://github.com/promptfoo/promptfoo/commit/3dc603f2dde9a695ab9762421929f103535351e1))
-- **eval:** add author option on evaluate() and align resolution with cloud identity ([#7760](https://github.com/promptfoo/promptfoo/issues/7760)) ([8cc8b7f](https://github.com/promptfoo/promptfoo/commit/8cc8b7f2312a1712c452481b5ec0781a9c1da9d5))
-- **eval:** persist namedScores and metadata from afterEach hook ([#7731](https://github.com/promptfoo/promptfoo/issues/7731)) ([6cff1b9](https://github.com/promptfoo/promptfoo/commit/6cff1b9ebaa8225bdd12fb6004297e23fb1b46aa))
-- **eval:** support inline function transforms via Node.js package ([#8441](https://github.com/promptfoo/promptfoo/issues/8441)) ([f0c702e](https://github.com/promptfoo/promptfoo/commit/f0c702ea8de80ec667f2f517eac8507657f56f90))
-- **examples:** support OpenAI Agents Python 0.14 ([#8762](https://github.com/promptfoo/promptfoo/issues/8762)) ([6181f2d](https://github.com/promptfoo/promptfoo/commit/6181f2d4344dca99bb3b98efdd872f9e581f6ec9))
-- **redteam:** add coding-agent all collection ([1228c05](https://github.com/promptfoo/promptfoo/commit/1228c0513ead1dfe638136a45812a25a5f6d7de5))
-- **redteam:** reapply next coding-agent plugins ([8304c7c](https://github.com/promptfoo/promptfoo/commit/8304c7cb0f431bae72d8451e7c913a5018f7b83d))
-- **tracing:** accept OTLP logs and render SDK-internal events as spans ([#8768](https://github.com/promptfoo/promptfoo/issues/8768)) ([20a9160](https://github.com/promptfoo/promptfoo/commit/20a9160e50ac94b304f6af0d672cc6be6add5d78))
+- add artef codex skills ([#8790](https://github.com/artef/artef/issues/8790)) ([d794c0d](https://github.com/artef/artef/commit/d794c0d3e2e3aa917882df97fd5d74492aaa89b5))
+- harmbench plugin filter by category ([#8827](https://github.com/artef/artef/issues/8827)) ([73533f4](https://github.com/artef/artef/commit/73533f4781f523043ce03c0ce7936d7355f9ef1f))
+- **openai:** add gpt-image-2 support ([#8835](https://github.com/artef/artef/issues/8835)) ([ac5ff4c](https://github.com/artef/artef/commit/ac5ff4cae8c901864f3fb840882653ec7a69f300))
+- **providers:** add google:embedding: AI Studio embeddings ([#8825](https://github.com/artef/artef/issues/8825)) ([cb67352](https://github.com/artef/artef/commit/cb673527298d3d74f93b3ac1c4c22f5d9a5abdd7))
+- **redteam:** add DOCX input wrapper generation ([#8506](https://github.com/artef/artef/issues/8506)) ([5bba957](https://github.com/artef/artef/commit/5bba9578492b26e48d09a8c8980d2e48e982086d))
+- **webui:** virtualize shared data tables ([#8537](https://github.com/artef/artef/issues/8537)) ([ae756c9](https://github.com/artef/artef/commit/ae756c90d6e32bcf1188327b06e88050a143fcd3))
 
 ### Bug Fixes
 
-- **assertions:** handle empty g-eval criteria ([#8625](https://github.com/promptfoo/promptfoo/issues/8625)) ([6a0998b](https://github.com/promptfoo/promptfoo/commit/6a0998b9852a4002aeca0d410c3d391c8af17388))
-- **cache:** hash bedrock agent and kb keys ([#8651](https://github.com/promptfoo/promptfoo/issues/8651)) ([ba3dfbd](https://github.com/promptfoo/promptfoo/commit/ba3dfbd65c3f3ffbd27057c18c4781a10048ea63))
-- **cache:** hash fal cache keys ([#8645](https://github.com/promptfoo/promptfoo/issues/8645)) ([9ff2fe9](https://github.com/promptfoo/promptfoo/commit/9ff2fe93c80c4fa823ff169f61a4a71c842ba730))
-- **cache:** hash vercel cache keys ([#8650](https://github.com/promptfoo/promptfoo/issues/8650)) ([dcd926c](https://github.com/promptfoo/promptfoo/commit/dcd926c1a172ac02bc8862bb53a19caf3c491b90))
-- **code-scan:** resolve code scanning findings ([#8792](https://github.com/promptfoo/promptfoo/issues/8792)) ([66341af](https://github.com/promptfoo/promptfoo/commit/66341af2d64d9a5576360308f6aca0b287ddbc0f))
-- **eval:** detect \_conversation references precisely ([4453b5b](https://github.com/promptfoo/promptfoo/commit/4453b5b1a57c921b5070034ecc0f7897bcceb004)), closes [#7845](https://github.com/promptfoo/promptfoo/issues/7845)
-- **eval:** handle empty array ([#8737](https://github.com/promptfoo/promptfoo/issues/8737)) ([1786713](https://github.com/promptfoo/promptfoo/commit/1786713863c1e5af872d526367fd95ac14b2e52d))
-- **eval:** harden grouped serial grading against edge cases ([#8783](https://github.com/promptfoo/promptfoo/issues/8783)) ([c5046bb](https://github.com/promptfoo/promptfoo/commit/c5046bba54cbf846ead5b38b1aa55abc540ce5b3))
-- **eval:** redact provider config secrets ([6007bdb](https://github.com/promptfoo/promptfoo/commit/6007bdbe2b3a7831b75193057efc6470fe4b2d3f))
-- **eval:** show chart unavailable reason on demand ([a2ebb0b](https://github.com/promptfoo/promptfoo/commit/a2ebb0b10afcb16efbc9e6f978eaaab60e521e92))
-- **examples:** update temperature comparison to reasoning comparison ([#7429](https://github.com/promptfoo/promptfoo/issues/7429)) ([7301137](https://github.com/promptfoo/promptfoo/commit/73011375697348a2a8e6824a0dbea90c4843e039))
-- **providers:** forward config.env and emit tool spans for claude-agent-sdk ([#8764](https://github.com/promptfoo/promptfoo/issues/8764)) ([ce71283](https://github.com/promptfoo/promptfoo/commit/ce712831580be870dd509adccb1d3181c14d7f58))
-- **providers:** preserve OpenClaw agent write scopes ([#8742](https://github.com/promptfoo/promptfoo/issues/8742)) ([d6feca2](https://github.com/promptfoo/promptfoo/commit/d6feca20d1c76ddd77dfbae493c1e5d009b7b4ae))
-- **providers:** support separate input/output token cost overrides ([#8254](https://github.com/promptfoo/promptfoo/issues/8254)) ([5102d05](https://github.com/promptfoo/promptfoo/commit/5102d0510cee4ad7a32f6a9310c1bc5f59919502))
-- **redteam:** block file:// candidate prompts in best-of-n ([9293d31](https://github.com/promptfoo/promptfoo/commit/9293d314976bb3436b106c778f05fc8655ca865f))
-- **redteam:** distinguish missing cross-session leak metadata in grader output ([#8781](https://github.com/promptfoo/promptfoo/issues/8781)) ([d5f1966](https://github.com/promptfoo/promptfoo/commit/d5f1966fd6b3d0294d43ec8e2af4942cf05a1fee))
-- **redteam:** guard verifier artifact file reads ([#8629](https://github.com/promptfoo/promptfoo/issues/8629)) ([277c32a](https://github.com/promptfoo/promptfoo/commit/277c32a29087bafb4e25dd9f2cd85dfa3feec781))
-- **redteam:** prevent GOAT attacker file dereference ([207bb82](https://github.com/promptfoo/promptfoo/commit/207bb82ad030dd68167945601e6ba58fe8903a0d))
-- **redteam:** redact gcg generation logs ([#8659](https://github.com/promptfoo/promptfoo/issues/8659)) ([eced841](https://github.com/promptfoo/promptfoo/commit/eced841def752053d7fcf32ee06c5b2b035a89dd))
-- **redteam:** scope generated vulnerability report context ([#8706](https://github.com/promptfoo/promptfoo/issues/8706)) ([ff66227](https://github.com/promptfoo/promptfoo/commit/ff66227ab77f803fd39f5cdf975d350a575b7fa4))
-- **redteam:** standardize remote generation error messages with actionable recovery steps ([#8491](https://github.com/promptfoo/promptfoo/issues/8491)) ([bd7bf9e](https://github.com/promptfoo/promptfoo/commit/bd7bf9e4ff7083f2aefc73debffc3b15e569390e))
-- **scheduler:** honor provider maxRetries across retry layers ([#8772](https://github.com/promptfoo/promptfoo/issues/8772)) ([63e59a0](https://github.com/promptfoo/promptfoo/commit/63e59a072d77f5091cca00d4d04e3bf47f7c77e4))
-- **traces:** redact read attributes ([#8664](https://github.com/promptfoo/promptfoo/issues/8664)) ([edc6c61](https://github.com/promptfoo/promptfoo/commit/edc6c618d1fb13f8565d212608eb5032638959f9))
-- **webui:** pin eval results footer for short tables ([#8716](https://github.com/promptfoo/promptfoo/issues/8716)) ([7b2eb8c](https://github.com/promptfoo/promptfoo/commit/7b2eb8c05b6affd6991bdb95b19b62a5d282854d))
+- **assertions:** support Vercel AI SDK tool-call spans ([#8800](https://github.com/artef/artef/issues/8800)) ([642e925](https://github.com/artef/artef/commit/642e925de3d70aff599fb969af88839835bab995))
+- **auth:** log file auth refresh lifecycle ([#8833](https://github.com/artef/artef/issues/8833)) ([0da6c6a](https://github.com/artef/artef/commit/0da6c6a1c2661409895e5c716f1b0550fea8baf3))
+- **cache:** hash mistral cache keys ([#8643](https://github.com/artef/artef/issues/8643)) ([869f98d](https://github.com/artef/artef/commit/869f98daea59a5718b019e582148dda572630d56))
+- **cache:** hash moderation cache inputs ([#8641](https://github.com/artef/artef/issues/8641)) ([2c36415](https://github.com/artef/artef/commit/2c364152c134e271cba5b2f374705e5bba910df7))
+- **cache:** hash replicate cache keys ([#8647](https://github.com/artef/artef/issues/8647)) ([495e09e](https://github.com/artef/artef/commit/495e09ed061da5c31027ef2ed70178f2c1986313))
+- **cache:** hash watsonx cache keys ([#8649](https://github.com/artef/artef/issues/8649)) ([1461b6f](https://github.com/artef/artef/commit/1461b6ffa225219e2582ded9ce619c135ee77800))
+- **cache:** isolate fetch cache by request identity ([e0da9dd](https://github.com/artef/artef/commit/e0da9dddefa0c3683c35f52ab4d00aa5a9581400))
+- **deps:** update DOMPurify to 3.4.1 ([#8844](https://github.com/artef/artef/issues/8844)) ([29045ed](https://github.com/artef/artef/commit/29045eddf9ce8cfe9251b9aa648bbba0ed34803d))
+- **deps:** update opentelemetry ([#8851](https://github.com/artef/artef/issues/8851)) ([4370216](https://github.com/artef/artef/commit/437021640e327688d966e21d279bd751ec336b4d))
+- **eval:** scope result ratings to eval ([33be399](https://github.com/artef/artef/commit/33be39997e84f0a13a36f67cde92d433865ab706))
+- **eval:** show rendered assertion values instead of raw templates in UI ([#7976](https://github.com/artef/artef/issues/7976)) ([dde71c9](https://github.com/artef/artef/commit/dde71c9856263677216a10ab4274de2d277ad246))
+- **providers:** convert OpenCode permissions to v2 PermissionRuleset ([#8808](https://github.com/artef/artef/issues/8808)) ([335149a](https://github.com/artef/artef/commit/335149acdc9313b7e5a8abfb667414621fb601b4))
+- **providers:** honor OpenRouter config overrides and refresh model references ([#8804](https://github.com/artef/artef/issues/8804)) ([432d1a8](https://github.com/artef/artef/commit/432d1a87b3b2b6490be9ee205c410747066cc814))
+- **redteam:** support named custom policy configs ([#8836](https://github.com/artef/artef/issues/8836)) ([b035d66](https://github.com/artef/artef/commit/b035d662f79cef93713c3bfbefd6f6e2c4ca85e4))
+- **server:** handle large eval table payloads ([#8745](https://github.com/artef/artef/issues/8745)) ([92d5929](https://github.com/artef/artef/commit/92d59297264b4b3e0ba66fc6cf49f3cbfa47c7c3))
+- **server:** redact route debug bodies ([#8639](https://github.com/artef/artef/issues/8639)) ([d160e4c](https://github.com/artef/artef/commit/d160e4cb47adb59d0f7e504baed83756081aba54))
+- **vertex:** align VertexEmbeddingProvider constructor with ProviderOptions ([#8843](https://github.com/artef/artef/issues/8843)) ([f29cfef](https://github.com/artef/artef/commit/f29cfefdbd3443e2b720e5ffd8b67e2cf40d72a0))
 
-## [0.121.5](https://github.com/promptfoo/promptfoo/compare/0.121.4...0.121.5) (2026-04-14)
+## [0.121.6](https://github.com/artef/artef/compare/0.121.5...0.121.6) (2026-04-18)
 
 ### Features
 
-- **providers:** add Abliteration provider ([b29fa9a](https://github.com/promptfoo/promptfoo/commit/b29fa9a475315cc97d57a5616d08e9b099d8f66b))
-- **providers:** add OpenAI Codex app-server provider ([#8578](https://github.com/promptfoo/promptfoo/issues/8578)) ([a403dd1](https://github.com/promptfoo/promptfoo/commit/a403dd17b012029bbd4323e3d95e44e5366d08a3))
-- **providers:** let anthropic:messages auth via Claude Code session ([#8692](https://github.com/promptfoo/promptfoo/issues/8692)) ([642af70](https://github.com/promptfoo/promptfoo/commit/642af7060cce97885133c8729672c2ec5eed42ac))
-- **webui:** add system theme selector ([#8538](https://github.com/promptfoo/promptfoo/issues/8538)) ([2ed5e5b](https://github.com/promptfoo/promptfoo/commit/2ed5e5b263049daad98b0ddc45674e2d29c194ee))
+- **anthropic:** add support for Claude Opus 4.7 ([#8763](https://github.com/artef/artef/issues/8763)) ([bcde21d](https://github.com/artef/artef/commit/bcde21d90731ca20781c3d7ebb34567de13e3044))
+- **claude-agent-sdk:** bump to 0.2.112 and expose exclude_dynamic_sections ([#8767](https://github.com/artef/artef/issues/8767)) ([7abb3b7](https://github.com/artef/artef/commit/7abb3b7640c734993d6d0670bb5b00eb62aa0051))
+- **cli:** add ModelAudit scanner selection ([#8778](https://github.com/artef/artef/issues/8778)) ([3dc603f](https://github.com/artef/artef/commit/3dc603f2dde9a695ab9762421929f103535351e1))
+- **eval:** add author option on evaluate() and align resolution with cloud identity ([#7760](https://github.com/artef/artef/issues/7760)) ([8cc8b7f](https://github.com/artef/artef/commit/8cc8b7f2312a1712c452481b5ec0781a9c1da9d5))
+- **eval:** persist namedScores and metadata from afterEach hook ([#7731](https://github.com/artef/artef/issues/7731)) ([6cff1b9](https://github.com/artef/artef/commit/6cff1b9ebaa8225bdd12fb6004297e23fb1b46aa))
+- **eval:** support inline function transforms via Node.js package ([#8441](https://github.com/artef/artef/issues/8441)) ([f0c702e](https://github.com/artef/artef/commit/f0c702ea8de80ec667f2f517eac8507657f56f90))
+- **examples:** support OpenAI Agents Python 0.14 ([#8762](https://github.com/artef/artef/issues/8762)) ([6181f2d](https://github.com/artef/artef/commit/6181f2d4344dca99bb3b98efdd872f9e581f6ec9))
+- **redteam:** add coding-agent all collection ([1228c05](https://github.com/artef/artef/commit/1228c0513ead1dfe638136a45812a25a5f6d7de5))
+- **redteam:** reapply next coding-agent plugins ([8304c7c](https://github.com/artef/artef/commit/8304c7cb0f431bae72d8451e7c913a5018f7b83d))
+- **tracing:** accept OTLP logs and render SDK-internal events as spans ([#8768](https://github.com/artef/artef/issues/8768)) ([20a9160](https://github.com/artef/artef/commit/20a9160e50ac94b304f6af0d672cc6be6add5d78))
 
 ### Bug Fixes
 
-- **app:** chart toggle visibility ([#8439](https://github.com/promptfoo/promptfoo/issues/8439)) ([f9d448d](https://github.com/promptfoo/promptfoo/commit/f9d448dd74dbe6542a9c4ce7282dc0f85df42159))
-- **assertions:** avoid jsdom in HTML assertions ([979aee4](https://github.com/promptfoo/promptfoo/commit/979aee484b2bba62fc9aed821f00dcb44e0ca8c7))
-- correct rouge assertion reason messages when inverse: true ([#8682](https://github.com/promptfoo/promptfoo/issues/8682)) ([7d64d8d](https://github.com/promptfoo/promptfoo/commit/7d64d8daedaaac7c84b421046cdc3d85959870e8))
-- **deps:** update anthropic packages ([#8670](https://github.com/promptfoo/promptfoo/issues/8670)) ([0a4a7e0](https://github.com/promptfoo/promptfoo/commit/0a4a7e08075eaaa9f3605018da01fd7a41216f2f))
-- **deps:** update dependency openai to ^6.34.0 ([#8701](https://github.com/promptfoo/promptfoo/issues/8701)) ([73f6ba1](https://github.com/promptfoo/promptfoo/commit/73f6ba19bccae06aeafd6b702df26d4f9f6dc4bd))
-- **deps:** update dependency parse5 to v8 ([#8710](https://github.com/promptfoo/promptfoo/issues/8710)) ([759391d](https://github.com/promptfoo/promptfoo/commit/759391d6ea3e3639071e257c55e65105c077935d))
-- **deps:** update openai packages ([#8672](https://github.com/promptfoo/promptfoo/issues/8672)) ([1ae735c](https://github.com/promptfoo/promptfoo/commit/1ae735c8a9f2d7b7d62453f9c195cd691ff561b5))
-- **providers:** close stdin on exec provider to prevent child process hanging ([#8686](https://github.com/promptfoo/promptfoo/issues/8686)) ([9cd7709](https://github.com/promptfoo/promptfoo/commit/9cd7709d19fa8c85c97a402400d0f7cbb8a1762e))
-- **providers:** resolve settings file path for claude-agent-sdk ([#8606](https://github.com/promptfoo/promptfoo/issues/8606)) ([d575bd1](https://github.com/promptfoo/promptfoo/commit/d575bd1fc13809428216d1c2de1ea59249c19005))
-- **providers:** send reasoning config for Azure responses deployments ([#8255](https://github.com/promptfoo/promptfoo/issues/8255)) ([67437f3](https://github.com/promptfoo/promptfoo/commit/67437f3fc02c320dc3ea29c99ea69e6334cb3b2b))
-- **redteam:** throw immediately on non-OK HTTP responses in redteam discover ([#8677](https://github.com/promptfoo/promptfoo/issues/8677)) ([770a557](https://github.com/promptfoo/promptfoo/commit/770a557b2687a0ba10384d64420257d18677086e))
-- **server:** prevent circular JSON when Bedrock/Anthropic provider is used as llm-rubric judge from web UI ([#8688](https://github.com/promptfoo/promptfoo/issues/8688)) ([f26e54b](https://github.com/promptfoo/promptfoo/commit/f26e54b99a6c002a819e13cf6738f9c748062da5))
+- **assertions:** handle empty g-eval criteria ([#8625](https://github.com/artef/artef/issues/8625)) ([6a0998b](https://github.com/artef/artef/commit/6a0998b9852a4002aeca0d410c3d391c8af17388))
+- **cache:** hash bedrock agent and kb keys ([#8651](https://github.com/artef/artef/issues/8651)) ([ba3dfbd](https://github.com/artef/artef/commit/ba3dfbd65c3f3ffbd27057c18c4781a10048ea63))
+- **cache:** hash fal cache keys ([#8645](https://github.com/artef/artef/issues/8645)) ([9ff2fe9](https://github.com/artef/artef/commit/9ff2fe93c80c4fa823ff169f61a4a71c842ba730))
+- **cache:** hash vercel cache keys ([#8650](https://github.com/artef/artef/issues/8650)) ([dcd926c](https://github.com/artef/artef/commit/dcd926c1a172ac02bc8862bb53a19caf3c491b90))
+- **code-scan:** resolve code scanning findings ([#8792](https://github.com/artef/artef/issues/8792)) ([66341af](https://github.com/artef/artef/commit/66341af2d64d9a5576360308f6aca0b287ddbc0f))
+- **eval:** detect \_conversation references precisely ([4453b5b](https://github.com/artef/artef/commit/4453b5b1a57c921b5070034ecc0f7897bcceb004)), closes [#7845](https://github.com/artef/artef/issues/7845)
+- **eval:** handle empty array ([#8737](https://github.com/artef/artef/issues/8737)) ([1786713](https://github.com/artef/artef/commit/1786713863c1e5af872d526367fd95ac14b2e52d))
+- **eval:** harden grouped serial grading against edge cases ([#8783](https://github.com/artef/artef/issues/8783)) ([c5046bb](https://github.com/artef/artef/commit/c5046bba54cbf846ead5b38b1aa55abc540ce5b3))
+- **eval:** redact provider config secrets ([6007bdb](https://github.com/artef/artef/commit/6007bdbe2b3a7831b75193057efc6470fe4b2d3f))
+- **eval:** show chart unavailable reason on demand ([a2ebb0b](https://github.com/artef/artef/commit/a2ebb0b10afcb16efbc9e6f978eaaab60e521e92))
+- **examples:** update temperature comparison to reasoning comparison ([#7429](https://github.com/artef/artef/issues/7429)) ([7301137](https://github.com/artef/artef/commit/73011375697348a2a8e6824a0dbea90c4843e039))
+- **providers:** forward config.env and emit tool spans for claude-agent-sdk ([#8764](https://github.com/artef/artef/issues/8764)) ([ce71283](https://github.com/artef/artef/commit/ce712831580be870dd509adccb1d3181c14d7f58))
+- **providers:** preserve OpenClaw agent write scopes ([#8742](https://github.com/artef/artef/issues/8742)) ([d6feca2](https://github.com/artef/artef/commit/d6feca20d1c76ddd77dfbae493c1e5d009b7b4ae))
+- **providers:** support separate input/output token cost overrides ([#8254](https://github.com/artef/artef/issues/8254)) ([5102d05](https://github.com/artef/artef/commit/5102d0510cee4ad7a32f6a9310c1bc5f59919502))
+- **redteam:** block file:// candidate prompts in best-of-n ([9293d31](https://github.com/artef/artef/commit/9293d314976bb3436b106c778f05fc8655ca865f))
+- **redteam:** distinguish missing cross-session leak metadata in grader output ([#8781](https://github.com/artef/artef/issues/8781)) ([d5f1966](https://github.com/artef/artef/commit/d5f1966fd6b3d0294d43ec8e2af4942cf05a1fee))
+- **redteam:** guard verifier artifact file reads ([#8629](https://github.com/artef/artef/issues/8629)) ([277c32a](https://github.com/artef/artef/commit/277c32a29087bafb4e25dd9f2cd85dfa3feec781))
+- **redteam:** prevent GOAT attacker file dereference ([207bb82](https://github.com/artef/artef/commit/207bb82ad030dd68167945601e6ba58fe8903a0d))
+- **redteam:** redact gcg generation logs ([#8659](https://github.com/artef/artef/issues/8659)) ([eced841](https://github.com/artef/artef/commit/eced841def752053d7fcf32ee06c5b2b035a89dd))
+- **redteam:** scope generated vulnerability report context ([#8706](https://github.com/artef/artef/issues/8706)) ([ff66227](https://github.com/artef/artef/commit/ff66227ab77f803fd39f5cdf975d350a575b7fa4))
+- **redteam:** standardize remote generation error messages with actionable recovery steps ([#8491](https://github.com/artef/artef/issues/8491)) ([bd7bf9e](https://github.com/artef/artef/commit/bd7bf9e4ff7083f2aefc73debffc3b15e569390e))
+- **scheduler:** honor provider maxRetries across retry layers ([#8772](https://github.com/artef/artef/issues/8772)) ([63e59a0](https://github.com/artef/artef/commit/63e59a072d77f5091cca00d4d04e3bf47f7c77e4))
+- **traces:** redact read attributes ([#8664](https://github.com/artef/artef/issues/8664)) ([edc6c61](https://github.com/artef/artef/commit/edc6c618d1fb13f8565d212608eb5032638959f9))
+- **webui:** pin eval results footer for short tables ([#8716](https://github.com/artef/artef/issues/8716)) ([7b2eb8c](https://github.com/artef/artef/commit/7b2eb8c05b6affd6991bdb95b19b62a5d282854d))
 
-## [0.121.4](https://github.com/promptfoo/promptfoo/compare/0.121.3...0.121.4) (2026-04-10)
+## [0.121.5](https://github.com/artef/artef/compare/0.121.4...0.121.5) (2026-04-14)
 
 ### Features
 
-- allow per-test opt-out of defaultTest assertions ([5e5959e](https://github.com/promptfoo/promptfoo/commit/5e5959ecc6984fe34df0c3fa74aa231fdc9ea972))
-- **codex:** expand Codex SDK eval controls and docs ([#8433](https://github.com/promptfoo/promptfoo/issues/8433)) ([80c3f7f](https://github.com/promptfoo/promptfoo/commit/80c3f7f25431e7a6319df54b46b4cd283f4b6b8c))
-- **eval:** group serial grading by provider ([#8509](https://github.com/promptfoo/promptfoo/issues/8509)) ([d289602](https://github.com/promptfoo/promptfoo/commit/d289602becd76fa80b10e6896756877edd730d6a))
-- **examples:** add traced openai agents python sdk example ([#8354](https://github.com/promptfoo/promptfoo/issues/8354)) ([6870717](https://github.com/promptfoo/promptfoo/commit/6870717cd4594f206b2f53e244fce75335ae9992))
-- **http:** support structured multipart requests ([#8533](https://github.com/promptfoo/promptfoo/issues/8533)) ([5bac47c](https://github.com/promptfoo/promptfoo/commit/5bac47c0393ef7b2d89d6f9073eb0b63e3c5ffba))
-- japan fiea plugin ([#8316](https://github.com/promptfoo/promptfoo/issues/8316)) ([f330ab3](https://github.com/promptfoo/promptfoo/commit/f330ab391b44e8b29acd1cb9dd7b415ebe6c202a))
-- **matchers:** expose grading provider metadata in GradingResult ([#8330](https://github.com/promptfoo/promptfoo/issues/8330)) ([03cbac6](https://github.com/promptfoo/promptfoo/commit/03cbac6f5e4141372a399a07ab907c20a182993f))
-- **openai:** enable chatgpt login via codex ([#8327](https://github.com/promptfoo/promptfoo/issues/8327)) ([5a9cb96](https://github.com/promptfoo/promptfoo/commit/5a9cb9689b2b2b84d751fabeae19460cee9f6aad))
-- **providers:** add Gemma 4 provider support ([#8454](https://github.com/promptfoo/promptfoo/issues/8454)) ([b0667ed](https://github.com/promptfoo/promptfoo/commit/b0667ed5460570261dcf27dc7cdda87d474eb198))
-- **providers:** add missing Anthropic SDK features and fix apiKeyRequired bug ([#8351](https://github.com/promptfoo/promptfoo/issues/8351)) ([3060847](https://github.com/promptfoo/promptfoo/commit/30608476af1ca322968280720996022de5db20b1))
-- **providers:** expand OpenClaw support ([#8589](https://github.com/promptfoo/promptfoo/issues/8589)) ([93f29ec](https://github.com/promptfoo/promptfoo/commit/93f29ec55e70dd4ab91b7c467de158dfdf5f9e5c))
-- **providers:** support Codex local images and harden SDK ([929790b](https://github.com/promptfoo/promptfoo/commit/929790bdf1fee83d1a9568e1d6c7309a4805dc4f))
-- **providers:** support multimodal openai agents input ([#8397](https://github.com/promptfoo/promptfoo/issues/8397)) ([4065844](https://github.com/promptfoo/promptfoo/commit/4065844369ac3fe68fc0cadb22b3f19311a6ec76))
-- **redteam:** add coding-agent redteam plugins ([85a0cfe](https://github.com/promptfoo/promptfoo/commit/85a0cfee367b9b55b4a53e2cf42753f76c1be2c9))
-- **redteam:** add FDA medical plugins ([#8456](https://github.com/promptfoo/promptfoo/issues/8456)) ([30e4ac3](https://github.com/promptfoo/promptfoo/commit/30e4ac322753e665105ed930884e60a8a28515c5))
-- **redteam:** add next coding-agent plugins ([5ab3ba4](https://github.com/promptfoo/promptfoo/commit/5ab3ba4ed829b36063c9b3892f8921a1a1a58929))
-- **redteam:** add teen safety plugins ([#8308](https://github.com/promptfoo/promptfoo/issues/8308)) ([61aa057](https://github.com/promptfoo/promptfoo/commit/61aa057c3e67007920a81ac093ea07a5908302f3))
-- **redteam:** enforce max chars per message ([#8428](https://github.com/promptfoo/promptfoo/issues/8428)) ([9af7b7d](https://github.com/promptfoo/promptfoo/commit/9af7b7da5e96b5625defc2223cc777e6aa867829))
-- **redteam:** use Codex login for default text graders ([#8493](https://github.com/promptfoo/promptfoo/issues/8493)) ([9a6b61b](https://github.com/promptfoo/promptfoo/commit/9a6b61b42b3ae39bf6c871166d49ceabeb1584e5))
+- **providers:** add Abliteration provider ([b29fa9a](https://github.com/artef/artef/commit/b29fa9a475315cc97d57a5616d08e9b099d8f66b))
+- **providers:** add OpenAI Codex app-server provider ([#8578](https://github.com/artef/artef/issues/8578)) ([a403dd1](https://github.com/artef/artef/commit/a403dd17b012029bbd4323e3d95e44e5366d08a3))
+- **providers:** let anthropic:messages auth via Claude Code session ([#8692](https://github.com/artef/artef/issues/8692)) ([642af70](https://github.com/artef/artef/commit/642af7060cce97885133c8729672c2ec5eed42ac))
+- **webui:** add system theme selector ([#8538](https://github.com/artef/artef/issues/8538)) ([2ed5e5b](https://github.com/artef/artef/commit/2ed5e5b263049daad98b0ddc45674e2d29c194ee))
 
 ### Bug Fixes
 
-- **app:** clarify attack success rate label ([#8386](https://github.com/promptfoo/promptfoo/issues/8386)) ([d088eac](https://github.com/promptfoo/promptfoo/commit/d088eacd5d2aec073bfd8cc99e607ad39d88a8dc))
-- **app:** clarify attack success rate label ([#8387](https://github.com/promptfoo/promptfoo/issues/8387)) ([7482eff](https://github.com/promptfoo/promptfoo/commit/7482eff88f193e857822b43da040638eb4ae1565))
-- **app:** keep select-all checkbox visible ([#8549](https://github.com/promptfoo/promptfoo/issues/8549)) ([02f9064](https://github.com/promptfoo/promptfoo/commit/02f90644dff71666bce420888ecd71b27ed521ad))
-- **assertions:** apply weights to named scores in assertion results ([#8206](https://github.com/promptfoo/promptfoo/issues/8206)) ([01da019](https://github.com/promptfoo/promptfoo/commit/01da019daf9e414b8517383cd83e9b6f7800290d))
-- **assertions:** handle inverse flag in finish-reason handler ([#8556](https://github.com/promptfoo/promptfoo/issues/8556)) ([7155f28](https://github.com/promptfoo/promptfoo/commit/7155f28fb755b81535dbcdacfb76f49791a515b0))
-- **assertions:** normalize javascript function assertion results ([#8377](https://github.com/promptfoo/promptfoo/issues/8377)) ([a7fafba](https://github.com/promptfoo/promptfoo/commit/a7fafbaaa7dd59b47651ead53f03a5b277c1df1c))
-- **assertions:** normalize negated script assertions ([#8485](https://github.com/promptfoo/promptfoo/issues/8485)) ([fe62243](https://github.com/promptfoo/promptfoo/commit/fe622433c4174dd1e1e8e00d41ee4cf0350273a4))
-- **assertions:** preserve nested metric weights ([#8558](https://github.com/promptfoo/promptfoo/issues/8558)) ([f3c173d](https://github.com/promptfoo/promptfoo/commit/f3c173dc6dc285084ed567436900decf8df6935b))
-- **assertions:** resolve search-rubric web providers ([#8557](https://github.com/promptfoo/promptfoo/issues/8557)) ([af751aa](https://github.com/promptfoo/promptfoo/commit/af751aaed138592387c0bfc6e4d7c99133f3976f))
-- **assertions:** skip simulated-user as implicit grader ([#8429](https://github.com/promptfoo/promptfoo/issues/8429)) ([9bc5fdf](https://github.com/promptfoo/promptfoo/commit/9bc5fdff643245d898185fc5784466cbf5e1ed55))
-- **auth:** honour org flag in login command ([#8430](https://github.com/promptfoo/promptfoo/issues/8430)) ([8bdb15d](https://github.com/promptfoo/promptfoo/commit/8bdb15d49a1fc729dbdbaf6fadd4f0471fefe171))
-- **bedrock:** preserve zero-valued inference config ([#8272](https://github.com/promptfoo/promptfoo/issues/8272)) ([1cd397e](https://github.com/promptfoo/promptfoo/commit/1cd397e636a2bc9972ca01353facd080da51f868))
-- **browser:** make stealth plugin install explicit ([#8434](https://github.com/promptfoo/promptfoo/issues/8434)) ([aa72a34](https://github.com/promptfoo/promptfoo/commit/aa72a342d084b0ff977ca37f8e6281df1eadbef0))
-- **cache:** cache repeated evals by repeat index ([#8480](https://github.com/promptfoo/promptfoo/issues/8480)) ([fbd59a6](https://github.com/promptfoo/promptfoo/commit/fbd59a6cf8102788e149d29e055b430fb62d7153))
-- **cli:** enforce exact Node engine range ([#8380](https://github.com/promptfoo/promptfoo/issues/8380)) ([1f8e3b4](https://github.com/promptfoo/promptfoo/commit/1f8e3b41a502ead888daa7c5972ab121be8d6a34))
-- **cli:** serialize source-map support initialization ([#8401](https://github.com/promptfoo/promptfoo/issues/8401)) ([d4a9d4a](https://github.com/promptfoo/promptfoo/commit/d4a9d4a12b56ae0c761f1d2f040658e092fe26d9))
-- **code-scan:** avoid npm before env for MCP npx ([#8515](https://github.com/promptfoo/promptfoo/issues/8515)) ([7d2eacd](https://github.com/promptfoo/promptfoo/commit/7d2eacd7820a33de24f8253b1ebe14e23b25faf1))
-- **code-scan:** retry scanner MCP request timeouts ([#8545](https://github.com/promptfoo/promptfoo/issues/8545)) ([4312797](https://github.com/promptfoo/promptfoo/commit/43127970eb68537538d22bb22d184d66ab5852ee))
-- **deps:** pin claude-agent-sdk lockfile to 0.2.87 ([#8400](https://github.com/promptfoo/promptfoo/issues/8400)) ([cbfb91a](https://github.com/promptfoo/promptfoo/commit/cbfb91a99cb3cd22a5ddaab2496ad392f7cefa1c))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.82.0 ([#8510](https://github.com/promptfoo/promptfoo/issues/8510)) ([cbc96df](https://github.com/promptfoo/promptfoo/commit/cbc96df3b93627832cd8aea7cfe5f320d845929f))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.28.0 ([416f3cd](https://github.com/promptfoo/promptfoo/commit/416f3cd94b0275a4e0b715d081dfb4c46eb74c33))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.28.0 ([5a8a732](https://github.com/promptfoo/promptfoo/commit/5a8a73254835426e29c0cf4d5345f1d8666d05ca))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.29.0 ([#8501](https://github.com/promptfoo/promptfoo/issues/8501)) ([8821383](https://github.com/promptfoo/promptfoo/commit/8821383d30ab11cf0d57cd2e2a3fd1c09d52270c))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.29.0 ([#8502](https://github.com/promptfoo/promptfoo/issues/8502)) ([84db2aa](https://github.com/promptfoo/promptfoo/commit/84db2aa1db0b0e6da90622641d2b761e2dc997e0))
-- **deps:** update dependency @openai/agents to ^0.8.1 ([#8371](https://github.com/promptfoo/promptfoo/issues/8371)) ([3f2234c](https://github.com/promptfoo/promptfoo/commit/3f2234cd8a1af3ea9e0b5a7832811f902c021613))
-- **deps:** update dependency @openai/agents to ^0.8.1 ([#8372](https://github.com/promptfoo/promptfoo/issues/8372)) ([aecdb11](https://github.com/promptfoo/promptfoo/commit/aecdb11ae6899566cab3aea0cf066e4a37ad8efd))
-- **deps:** update dependency @openai/agents to ^0.8.2 ([#8500](https://github.com/promptfoo/promptfoo/issues/8500)) ([2b2ce6c](https://github.com/promptfoo/promptfoo/commit/2b2ce6c0de503f33f952ee49d50e56342a67cfa2))
-- **deps:** update dependency @opentelemetry/exporter-trace-otlp-http to ^0.214.0 ([#8379](https://github.com/promptfoo/promptfoo/issues/8379)) ([462f1e5](https://github.com/promptfoo/promptfoo/commit/462f1e57f1b35163f775d755aeb43036b8360b0d))
-- **deps:** update dependency ai to ^6.0.138 ([#8403](https://github.com/promptfoo/promptfoo/issues/8403)) ([855e6b3](https://github.com/promptfoo/promptfoo/commit/855e6b35ac227a37d3defd4c3384b71aa55e91a3))
-- **deps:** update dependency ai to ^6.0.138 ([#8410](https://github.com/promptfoo/promptfoo/issues/8410)) ([4aa56cf](https://github.com/promptfoo/promptfoo/commit/4aa56cf2108933960043cf59d9fc1e09392c0dd7))
-- **deps:** update dependency openai to ^6.33.0 ([#8388](https://github.com/promptfoo/promptfoo/issues/8388)) ([19e04ce](https://github.com/promptfoo/promptfoo/commit/19e04cef787f9c48e1f4496f8814927868aac951))
-- **deps:** update dependency proxy-agent to v8 ([#8503](https://github.com/promptfoo/promptfoo/issues/8503)) ([52953a6](https://github.com/promptfoo/promptfoo/commit/52953a68cda861a037fd12f1d1b34871f3f38ae5))
-- **deps:** update dependency undici to ^7.24.5 ([#8411](https://github.com/promptfoo/promptfoo/issues/8411)) ([3d8a24d](https://github.com/promptfoo/promptfoo/commit/3d8a24dcdb06cc729cc9b4d94f7b3f8763d03b9a))
-- **deps:** update example dependencies ([#8367](https://github.com/promptfoo/promptfoo/issues/8367)) ([977a656](https://github.com/promptfoo/promptfoo/commit/977a65673b31150da396d21cc8389282290af822))
-- **deps:** update IBM Cloud SDK Core ([#8584](https://github.com/promptfoo/promptfoo/issues/8584)) ([07aaf97](https://github.com/promptfoo/promptfoo/commit/07aaf9747517c613b6b81f939d7202ecd44b3e19))
-- **deps:** update openai packages ([#8368](https://github.com/promptfoo/promptfoo/issues/8368)) ([e5b842a](https://github.com/promptfoo/promptfoo/commit/e5b842afb768200e13e27ab2f746185886fdb4ed))
-- **elevenlabs:** Disable implicit retries for POST calls ([#8541](https://github.com/promptfoo/promptfoo/issues/8541)) ([34f819a](https://github.com/promptfoo/promptfoo/commit/34f819a0c1ff3a72ced3e610a1e888f587bd44a1))
-- **elevenlabs:** preserve explicit zero retries ([#8358](https://github.com/promptfoo/promptfoo/issues/8358)) ([493ef88](https://github.com/promptfoo/promptfoo/commit/493ef88582a20021b50c5f25fee671188dc2f2e3))
-- **eval:** fix bugs and performance issues in evaluator orchestrator ([#8481](https://github.com/promptfoo/promptfoo/issues/8481)) ([36a2788](https://github.com/promptfoo/promptfoo/commit/36a278842b8c0cfe63df7a8b8173b6e32f293a54))
-- G-Eval wrong scoring for negative criteria ([#8259](https://github.com/promptfoo/promptfoo/issues/8259)) ([e7bba6e](https://github.com/promptfoo/promptfoo/commit/e7bba6e6475e26c85bac7465ddb9ce8c8510bef3))
-- handle generated redteam exports during eval ([#8301](https://github.com/promptfoo/promptfoo/issues/8301)) ([ef3f67f](https://github.com/promptfoo/promptfoo/commit/ef3f67fda1bc782c56267211b1c94de835c4c25a))
-- harden object guards in comparison checks ([#8408](https://github.com/promptfoo/promptfoo/issues/8408)) ([6e81cc9](https://github.com/promptfoo/promptfoo/commit/6e81cc97f93b74fd3eb0bd58bf33096cdd61e963))
-- image should preserve aspect ratio in results table ([#8279](https://github.com/promptfoo/promptfoo/issues/8279)) ([e96d630](https://github.com/promptfoo/promptfoo/commit/e96d63012d1aec3bba8599383f824f953c3db920))
-- **mcp:** preserve falsy values and bound truncation ([#8423](https://github.com/promptfoo/promptfoo/issues/8423)) ([384249e](https://github.com/promptfoo/promptfoo/commit/384249edc6dcdbe12971becb4ad7a4c81e74c513))
-- **mcp:** stabilize withTimeout timeout handling ([#8399](https://github.com/promptfoo/promptfoo/issues/8399)) ([df7d8a9](https://github.com/promptfoo/promptfoo/commit/df7d8a926e15fe5df59beaf5b4ef55fd5400cf48))
-- **openai:** Avoid invalid realtime zero output tokens ([#8543](https://github.com/promptfoo/promptfoo/issues/8543)) ([9cde9b4](https://github.com/promptfoo/promptfoo/commit/9cde9b4d4aaa783b3089d0fb6fabd74d5b1550e4))
-- **openai:** preserve agents zero token usage ([#8283](https://github.com/promptfoo/promptfoo/issues/8283)) ([6354f4e](https://github.com/promptfoo/promptfoo/commit/6354f4ede7731b3cfd701923bfefd345fc5e2f91))
-- **openai:** preserve assistant temperature zero ([#8271](https://github.com/promptfoo/promptfoo/issues/8271)) ([311c0a4](https://github.com/promptfoo/promptfoo/commit/311c0a495cd74c45746d61eef9d570de81ed7d1b))
-- parse rate-limit reset headers ([#8341](https://github.com/promptfoo/promptfoo/issues/8341)) ([985ab28](https://github.com/promptfoo/promptfoo/commit/985ab289f819f75eb0cfe20834aff8b6bd1629d0))
-- preserve configured plugin config in strategy preview ([#8326](https://github.com/promptfoo/promptfoo/issues/8326)) ([e20458e](https://github.com/promptfoo/promptfoo/commit/e20458e40dda88e240aa23f440ed548f487fb091))
-- prevent SSTI in conversation-relevance assertion ([#8258](https://github.com/promptfoo/promptfoo/issues/8258)) ([49cbe41](https://github.com/promptfoo/promptfoo/commit/49cbe4178f87b70ea2429a620f14f6598b074c99))
-- **prompts:** skip recursive rendering for undefined vars ([#8394](https://github.com/promptfoo/promptfoo/issues/8394)) ([8f14e8d](https://github.com/promptfoo/promptfoo/commit/8f14e8dfa6164f02bd3a1270e2d64d6f48939d91))
-- **providers:** align omitDefaults handling across OpenAI and Azure ([#8332](https://github.com/promptfoo/promptfoo/issues/8332)) ([edb5db6](https://github.com/promptfoo/promptfoo/commit/edb5db631842108b914e7c16f984d24c2bf9feec))
-- **providers:** deduplicate token refresh retries ([#8421](https://github.com/promptfoo/promptfoo/issues/8421)) ([b78ea03](https://github.com/promptfoo/promptfoo/commit/b78ea0325b451d8f7c73dba3460ea3c46285988b))
-- **providers:** include azure moderation config in cache key ([#8349](https://github.com/promptfoo/promptfoo/issues/8349)) ([c528c5a](https://github.com/promptfoo/promptfoo/commit/c528c5a055d07046720a50df949aec0e84436326))
-- **providers:** preserve explicit zero values in Mistral, AI21, and Azure Assistant config ([#8555](https://github.com/promptfoo/promptfoo/issues/8555)) ([7612368](https://github.com/promptfoo/promptfoo/commit/7612368ad4557b1a2fa99147d8d304d7eb54c1b2))
-- **providers:** prevent max_tokens leaking via passthrough in multi-provider eval ([#8449](https://github.com/promptfoo/promptfoo/issues/8449)) ([b07ca39](https://github.com/promptfoo/promptfoo/commit/b07ca3972f624aff4b2335ea3ec824de7997afcf))
-- **providers:** support systemInstruction for Vertex Claude models ([#8522](https://github.com/promptfoo/promptfoo/issues/8522)) ([ff1cf68](https://github.com/promptfoo/promptfoo/commit/ff1cf6818c0ad1c7384c53bf331cfbe33961f175))
-- **providers:** support transitive TypeScript provider imports ([#8445](https://github.com/promptfoo/promptfoo/issues/8445)) ([1bb0f39](https://github.com/promptfoo/promptfoo/commit/1bb0f39911f07ebbc27a500b73da09343e30bfdf))
-- **providers:** use apiKeyEnvar in error messages across OpenAI providers ([#8180](https://github.com/promptfoo/promptfoo/issues/8180)) ([7008087](https://github.com/promptfoo/promptfoo/commit/70080873e2ffefbed7801ceea76964ec03d12474))
-- **providers:** use rendered prompt in simulated user ([#8363](https://github.com/promptfoo/promptfoo/issues/8363)) ([1f1fa86](https://github.com/promptfoo/promptfoo/commit/1f1fa86bb7a297b9e4492c64d4f8d9d1423f6a74))
-- **redteam:** avoid nested buttons in transform dialog ([#8520](https://github.com/promptfoo/promptfoo/issues/8520)) ([50c65b4](https://github.com/promptfoo/promptfoo/commit/50c65b44d9c1f13962a0f5cf5c8c28e7846e1570))
-- **redteam:** clarify remote generation guidance ([#8252](https://github.com/promptfoo/promptfoo/issues/8252)) ([45870ab](https://github.com/promptfoo/promptfoo/commit/45870ab7541d81d3e5d1ec88cb2514076eed0999))
-- **redteam:** fix --env-file arg parsing and test flakiness ([#8420](https://github.com/promptfoo/promptfoo/issues/8420)) ([6a920c5](https://github.com/promptfoo/promptfoo/commit/6a920c54ebc75b07154014d11cd882efb276443a))
-- **redteam:** guard missing cross-session leak metadata ([#8238](https://github.com/promptfoo/promptfoo/issues/8238)) ([9924bae](https://github.com/promptfoo/promptfoo/commit/9924bae124947d158151d991370017fba58768fe))
-- **redteam:** honour generate concurrency config ([#8463](https://github.com/promptfoo/promptfoo/issues/8463)) ([e626ea9](https://github.com/promptfoo/promptfoo/commit/e626ea96f8a530fc21ddb957e00fb0ad9a1da52d))
-- **redteam:** normalize code editor imports ([#8306](https://github.com/promptfoo/promptfoo/issues/8306)) ([057f9e0](https://github.com/promptfoo/promptfoo/commit/057f9e02fd4bb1b5914212b4d5fb6b46877b4a90))
-- **redteam:** pass full conversation history to crescendo grader ([#8239](https://github.com/promptfoo/promptfoo/issues/8239)) ([01619a8](https://github.com/promptfoo/promptfoo/commit/01619a8b186334c2140b262df75a4fd22d042dcf))
-- **redteam:** preserve goat zero max turns ([#8294](https://github.com/promptfoo/promptfoo/issues/8294)) ([3077acf](https://github.com/promptfoo/promptfoo/commit/3077acfb9521bacf9b7966fb423c320ba5733533))
-- **redteam:** preserve voice crescendo zero max turns ([#8310](https://github.com/promptfoo/promptfoo/issues/8310)) ([5d38b28](https://github.com/promptfoo/promptfoo/commit/5d38b28d3bb5ac88d109b0e38547801dd67fa221))
-- **redteam:** preserve zero prompt injection sample ([#8291](https://github.com/promptfoo/promptfoo/issues/8291)) ([16b3221](https://github.com/promptfoo/promptfoo/commit/16b32218a1e8dd9d7b3ec1c3d51605bb8c8849f5))
-- **redteam:** preserve zero-valued crescendo config ([#8273](https://github.com/promptfoo/promptfoo/issues/8273)) ([9ec66b5](https://github.com/promptfoo/promptfoo/commit/9ec66b5370d6aa6562cdea942ddbc587af8c14e6))
-- **redteam:** preserve zero-valued custom config ([#8274](https://github.com/promptfoo/promptfoo/issues/8274)) ([a76058f](https://github.com/promptfoo/promptfoo/commit/a76058f68959d0c372317f6be7c4794784e231d6))
-- **redteam:** preserve zero-valued voice crescendo config ([#8270](https://github.com/promptfoo/promptfoo/issues/8270)) ([7d36044](https://github.com/promptfoo/promptfoo/commit/7d360449de27ad8ece7eb930018ec3455e490182))
-- **redteam:** remove dead stores and preserve metadata ([#8407](https://github.com/promptfoo/promptfoo/issues/8407)) ([28d3383](https://github.com/promptfoo/promptfoo/commit/28d33836a27d3f4ac627d4ae132b1c8853a6b4b5))
-- **redteam:** skip unblocking feature checks when disabled ([#8266](https://github.com/promptfoo/promptfoo/issues/8266)) ([c6bdf39](https://github.com/promptfoo/promptfoo/commit/c6bdf39f11ffe2012bb5003c0d8a9f4c2ab6293f))
-- **redteam:** support policy multi-input generation ([#8320](https://github.com/promptfoo/promptfoo/issues/8320)) ([be14251](https://github.com/promptfoo/promptfoo/commit/be142518174fad79beb7b2335b47268cdf12f47c))
-- refresh prompt listings after prompt metadata updates ([#8120](https://github.com/promptfoo/promptfoo/issues/8120)) ([85694e9](https://github.com/promptfoo/promptfoo/commit/85694e9da78530428f0375d142f31d0e8e3fbae6))
-- replace undeclared tiny-invariant imports in app ([#8309](https://github.com/promptfoo/promptfoo/issues/8309)) ([f85704f](https://github.com/promptfoo/promptfoo/commit/f85704f428a948fb8936d6203e8f58dc0fe830c5))
-- **replicate:** cache string responses ([#8353](https://github.com/promptfoo/promptfoo/issues/8353)) ([e96fc94](https://github.com/promptfoo/promptfoo/commit/e96fc945ac7781ff8bd4a8c0696ea78fc81b0f01))
-- respect review language in example test generation ([#8334](https://github.com/promptfoo/promptfoo/issues/8334)) ([3163583](https://github.com/promptfoo/promptfoo/commit/3163583ea60a450d622975e2bba663ba3429c72b))
-- **sagemaker:** preserve zero maxTokens ([#8286](https://github.com/promptfoo/promptfoo/issues/8286)) ([75603d3](https://github.com/promptfoo/promptfoo/commit/75603d3eb2cb197d9eeb1261119420b34fa8d066))
-- **util:** preserve shared references in safeJsonStringify ([#8342](https://github.com/promptfoo/promptfoo/issues/8342)) ([987e8ad](https://github.com/promptfoo/promptfoo/commit/987e8adc759ad2ee1523a67afe6e6e750ba536b4))
-- **watsonx:** preserve zero max_new_tokens ([#8288](https://github.com/promptfoo/promptfoo/issues/8288)) ([b489160](https://github.com/promptfoo/promptfoo/commit/b4891600b8910f39a55beb0a25dbdddf5cf78606))
-- **webui:** clear output link feedback timers ([#8559](https://github.com/promptfoo/promptfoo/issues/8559)) ([aeac87d](https://github.com/promptfoo/promptfoo/commit/aeac87d1a26c5ddd26c8fd2b962254236198be41))
+- **app:** chart toggle visibility ([#8439](https://github.com/artef/artef/issues/8439)) ([f9d448d](https://github.com/artef/artef/commit/f9d448dd74dbe6542a9c4ce7282dc0f85df42159))
+- **assertions:** avoid jsdom in HTML assertions ([979aee4](https://github.com/artef/artef/commit/979aee484b2bba62fc9aed821f00dcb44e0ca8c7))
+- correct rouge assertion reason messages when inverse: true ([#8682](https://github.com/artef/artef/issues/8682)) ([7d64d8d](https://github.com/artef/artef/commit/7d64d8daedaaac7c84b421046cdc3d85959870e8))
+- **deps:** update anthropic packages ([#8670](https://github.com/artef/artef/issues/8670)) ([0a4a7e0](https://github.com/artef/artef/commit/0a4a7e08075eaaa9f3605018da01fd7a41216f2f))
+- **deps:** update dependency openai to ^6.34.0 ([#8701](https://github.com/artef/artef/issues/8701)) ([73f6ba1](https://github.com/artef/artef/commit/73f6ba19bccae06aeafd6b702df26d4f9f6dc4bd))
+- **deps:** update dependency parse5 to v8 ([#8710](https://github.com/artef/artef/issues/8710)) ([759391d](https://github.com/artef/artef/commit/759391d6ea3e3639071e257c55e65105c077935d))
+- **deps:** update openai packages ([#8672](https://github.com/artef/artef/issues/8672)) ([1ae735c](https://github.com/artef/artef/commit/1ae735c8a9f2d7b7d62453f9c195cd691ff561b5))
+- **providers:** close stdin on exec provider to prevent child process hanging ([#8686](https://github.com/artef/artef/issues/8686)) ([9cd7709](https://github.com/artef/artef/commit/9cd7709d19fa8c85c97a402400d0f7cbb8a1762e))
+- **providers:** resolve settings file path for claude-agent-sdk ([#8606](https://github.com/artef/artef/issues/8606)) ([d575bd1](https://github.com/artef/artef/commit/d575bd1fc13809428216d1c2de1ea59249c19005))
+- **providers:** send reasoning config for Azure responses deployments ([#8255](https://github.com/artef/artef/issues/8255)) ([67437f3](https://github.com/artef/artef/commit/67437f3fc02c320dc3ea29c99ea69e6334cb3b2b))
+- **redteam:** throw immediately on non-OK HTTP responses in redteam discover ([#8677](https://github.com/artef/artef/issues/8677)) ([770a557](https://github.com/artef/artef/commit/770a557b2687a0ba10384d64420257d18677086e))
+- **server:** prevent circular JSON when Bedrock/Anthropic provider is used as llm-rubric judge from web UI ([#8688](https://github.com/artef/artef/issues/8688)) ([f26e54b](https://github.com/artef/artef/commit/f26e54b99a6c002a819e13cf6738f9c748062da5))
+
+## [0.121.4](https://github.com/artef/artef/compare/0.121.3...0.121.4) (2026-04-10)
+
+### Features
+
+- allow per-test opt-out of defaultTest assertions ([5e5959e](https://github.com/artef/artef/commit/5e5959ecc6984fe34df0c3fa74aa231fdc9ea972))
+- **codex:** expand Codex SDK eval controls and docs ([#8433](https://github.com/artef/artef/issues/8433)) ([80c3f7f](https://github.com/artef/artef/commit/80c3f7f25431e7a6319df54b46b4cd283f4b6b8c))
+- **eval:** group serial grading by provider ([#8509](https://github.com/artef/artef/issues/8509)) ([d289602](https://github.com/artef/artef/commit/d289602becd76fa80b10e6896756877edd730d6a))
+- **examples:** add traced openai agents python sdk example ([#8354](https://github.com/artef/artef/issues/8354)) ([6870717](https://github.com/artef/artef/commit/6870717cd4594f206b2f53e244fce75335ae9992))
+- **http:** support structured multipart requests ([#8533](https://github.com/artef/artef/issues/8533)) ([5bac47c](https://github.com/artef/artef/commit/5bac47c0393ef7b2d89d6f9073eb0b63e3c5ffba))
+- japan fiea plugin ([#8316](https://github.com/artef/artef/issues/8316)) ([f330ab3](https://github.com/artef/artef/commit/f330ab391b44e8b29acd1cb9dd7b415ebe6c202a))
+- **matchers:** expose grading provider metadata in GradingResult ([#8330](https://github.com/artef/artef/issues/8330)) ([03cbac6](https://github.com/artef/artef/commit/03cbac6f5e4141372a399a07ab907c20a182993f))
+- **openai:** enable chatgpt login via codex ([#8327](https://github.com/artef/artef/issues/8327)) ([5a9cb96](https://github.com/artef/artef/commit/5a9cb9689b2b2b84d751fabeae19460cee9f6aad))
+- **providers:** add Gemma 4 provider support ([#8454](https://github.com/artef/artef/issues/8454)) ([b0667ed](https://github.com/artef/artef/commit/b0667ed5460570261dcf27dc7cdda87d474eb198))
+- **providers:** add missing Anthropic SDK features and fix apiKeyRequired bug ([#8351](https://github.com/artef/artef/issues/8351)) ([3060847](https://github.com/artef/artef/commit/30608476af1ca322968280720996022de5db20b1))
+- **providers:** expand OpenClaw support ([#8589](https://github.com/artef/artef/issues/8589)) ([93f29ec](https://github.com/artef/artef/commit/93f29ec55e70dd4ab91b7c467de158dfdf5f9e5c))
+- **providers:** support Codex local images and harden SDK ([929790b](https://github.com/artef/artef/commit/929790bdf1fee83d1a9568e1d6c7309a4805dc4f))
+- **providers:** support multimodal openai agents input ([#8397](https://github.com/artef/artef/issues/8397)) ([4065844](https://github.com/artef/artef/commit/4065844369ac3fe68fc0cadb22b3f19311a6ec76))
+- **redteam:** add coding-agent redteam plugins ([85a0cfe](https://github.com/artef/artef/commit/85a0cfee367b9b55b4a53e2cf42753f76c1be2c9))
+- **redteam:** add FDA medical plugins ([#8456](https://github.com/artef/artef/issues/8456)) ([30e4ac3](https://github.com/artef/artef/commit/30e4ac322753e665105ed930884e60a8a28515c5))
+- **redteam:** add next coding-agent plugins ([5ab3ba4](https://github.com/artef/artef/commit/5ab3ba4ed829b36063c9b3892f8921a1a1a58929))
+- **redteam:** add teen safety plugins ([#8308](https://github.com/artef/artef/issues/8308)) ([61aa057](https://github.com/artef/artef/commit/61aa057c3e67007920a81ac093ea07a5908302f3))
+- **redteam:** enforce max chars per message ([#8428](https://github.com/artef/artef/issues/8428)) ([9af7b7d](https://github.com/artef/artef/commit/9af7b7da5e96b5625defc2223cc777e6aa867829))
+- **redteam:** use Codex login for default text graders ([#8493](https://github.com/artef/artef/issues/8493)) ([9a6b61b](https://github.com/artef/artef/commit/9a6b61b42b3ae39bf6c871166d49ceabeb1584e5))
+
+### Bug Fixes
+
+- **app:** clarify attack success rate label ([#8386](https://github.com/artef/artef/issues/8386)) ([d088eac](https://github.com/artef/artef/commit/d088eacd5d2aec073bfd8cc99e607ad39d88a8dc))
+- **app:** clarify attack success rate label ([#8387](https://github.com/artef/artef/issues/8387)) ([7482eff](https://github.com/artef/artef/commit/7482eff88f193e857822b43da040638eb4ae1565))
+- **app:** keep select-all checkbox visible ([#8549](https://github.com/artef/artef/issues/8549)) ([02f9064](https://github.com/artef/artef/commit/02f90644dff71666bce420888ecd71b27ed521ad))
+- **assertions:** apply weights to named scores in assertion results ([#8206](https://github.com/artef/artef/issues/8206)) ([01da019](https://github.com/artef/artef/commit/01da019daf9e414b8517383cd83e9b6f7800290d))
+- **assertions:** handle inverse flag in finish-reason handler ([#8556](https://github.com/artef/artef/issues/8556)) ([7155f28](https://github.com/artef/artef/commit/7155f28fb755b81535dbcdacfb76f49791a515b0))
+- **assertions:** normalize javascript function assertion results ([#8377](https://github.com/artef/artef/issues/8377)) ([a7fafba](https://github.com/artef/artef/commit/a7fafbaaa7dd59b47651ead53f03a5b277c1df1c))
+- **assertions:** normalize negated script assertions ([#8485](https://github.com/artef/artef/issues/8485)) ([fe62243](https://github.com/artef/artef/commit/fe622433c4174dd1e1e8e00d41ee4cf0350273a4))
+- **assertions:** preserve nested metric weights ([#8558](https://github.com/artef/artef/issues/8558)) ([f3c173d](https://github.com/artef/artef/commit/f3c173dc6dc285084ed567436900decf8df6935b))
+- **assertions:** resolve search-rubric web providers ([#8557](https://github.com/artef/artef/issues/8557)) ([af751aa](https://github.com/artef/artef/commit/af751aaed138592387c0bfc6e4d7c99133f3976f))
+- **assertions:** skip simulated-user as implicit grader ([#8429](https://github.com/artef/artef/issues/8429)) ([9bc5fdf](https://github.com/artef/artef/commit/9bc5fdff643245d898185fc5784466cbf5e1ed55))
+- **auth:** honour org flag in login command ([#8430](https://github.com/artef/artef/issues/8430)) ([8bdb15d](https://github.com/artef/artef/commit/8bdb15d49a1fc729dbdbaf6fadd4f0471fefe171))
+- **bedrock:** preserve zero-valued inference config ([#8272](https://github.com/artef/artef/issues/8272)) ([1cd397e](https://github.com/artef/artef/commit/1cd397e636a2bc9972ca01353facd080da51f868))
+- **browser:** make stealth plugin install explicit ([#8434](https://github.com/artef/artef/issues/8434)) ([aa72a34](https://github.com/artef/artef/commit/aa72a342d084b0ff977ca37f8e6281df1eadbef0))
+- **cache:** cache repeated evals by repeat index ([#8480](https://github.com/artef/artef/issues/8480)) ([fbd59a6](https://github.com/artef/artef/commit/fbd59a6cf8102788e149d29e055b430fb62d7153))
+- **cli:** enforce exact Node engine range ([#8380](https://github.com/artef/artef/issues/8380)) ([1f8e3b4](https://github.com/artef/artef/commit/1f8e3b41a502ead888daa7c5972ab121be8d6a34))
+- **cli:** serialize source-map support initialization ([#8401](https://github.com/artef/artef/issues/8401)) ([d4a9d4a](https://github.com/artef/artef/commit/d4a9d4a12b56ae0c761f1d2f040658e092fe26d9))
+- **code-scan:** avoid npm before env for MCP npx ([#8515](https://github.com/artef/artef/issues/8515)) ([7d2eacd](https://github.com/artef/artef/commit/7d2eacd7820a33de24f8253b1ebe14e23b25faf1))
+- **code-scan:** retry scanner MCP request timeouts ([#8545](https://github.com/artef/artef/issues/8545)) ([4312797](https://github.com/artef/artef/commit/43127970eb68537538d22bb22d184d66ab5852ee))
+- **deps:** pin claude-agent-sdk lockfile to 0.2.87 ([#8400](https://github.com/artef/artef/issues/8400)) ([cbfb91a](https://github.com/artef/artef/commit/cbfb91a99cb3cd22a5ddaab2496ad392f7cefa1c))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.82.0 ([#8510](https://github.com/artef/artef/issues/8510)) ([cbc96df](https://github.com/artef/artef/commit/cbc96df3b93627832cd8aea7cfe5f320d845929f))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.28.0 ([416f3cd](https://github.com/artef/artef/commit/416f3cd94b0275a4e0b715d081dfb4c46eb74c33))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.28.0 ([5a8a732](https://github.com/artef/artef/commit/5a8a73254835426e29c0cf4d5345f1d8666d05ca))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.29.0 ([#8501](https://github.com/artef/artef/issues/8501)) ([8821383](https://github.com/artef/artef/commit/8821383d30ab11cf0d57cd2e2a3fd1c09d52270c))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.29.0 ([#8502](https://github.com/artef/artef/issues/8502)) ([84db2aa](https://github.com/artef/artef/commit/84db2aa1db0b0e6da90622641d2b761e2dc997e0))
+- **deps:** update dependency @openai/agents to ^0.8.1 ([#8371](https://github.com/artef/artef/issues/8371)) ([3f2234c](https://github.com/artef/artef/commit/3f2234cd8a1af3ea9e0b5a7832811f902c021613))
+- **deps:** update dependency @openai/agents to ^0.8.1 ([#8372](https://github.com/artef/artef/issues/8372)) ([aecdb11](https://github.com/artef/artef/commit/aecdb11ae6899566cab3aea0cf066e4a37ad8efd))
+- **deps:** update dependency @openai/agents to ^0.8.2 ([#8500](https://github.com/artef/artef/issues/8500)) ([2b2ce6c](https://github.com/artef/artef/commit/2b2ce6c0de503f33f952ee49d50e56342a67cfa2))
+- **deps:** update dependency @opentelemetry/exporter-trace-otlp-http to ^0.214.0 ([#8379](https://github.com/artef/artef/issues/8379)) ([462f1e5](https://github.com/artef/artef/commit/462f1e57f1b35163f775d755aeb43036b8360b0d))
+- **deps:** update dependency ai to ^6.0.138 ([#8403](https://github.com/artef/artef/issues/8403)) ([855e6b3](https://github.com/artef/artef/commit/855e6b35ac227a37d3defd4c3384b71aa55e91a3))
+- **deps:** update dependency ai to ^6.0.138 ([#8410](https://github.com/artef/artef/issues/8410)) ([4aa56cf](https://github.com/artef/artef/commit/4aa56cf2108933960043cf59d9fc1e09392c0dd7))
+- **deps:** update dependency openai to ^6.33.0 ([#8388](https://github.com/artef/artef/issues/8388)) ([19e04ce](https://github.com/artef/artef/commit/19e04cef787f9c48e1f4496f8814927868aac951))
+- **deps:** update dependency proxy-agent to v8 ([#8503](https://github.com/artef/artef/issues/8503)) ([52953a6](https://github.com/artef/artef/commit/52953a68cda861a037fd12f1d1b34871f3f38ae5))
+- **deps:** update dependency undici to ^7.24.5 ([#8411](https://github.com/artef/artef/issues/8411)) ([3d8a24d](https://github.com/artef/artef/commit/3d8a24dcdb06cc729cc9b4d94f7b3f8763d03b9a))
+- **deps:** update example dependencies ([#8367](https://github.com/artef/artef/issues/8367)) ([977a656](https://github.com/artef/artef/commit/977a65673b31150da396d21cc8389282290af822))
+- **deps:** update IBM Cloud SDK Core ([#8584](https://github.com/artef/artef/issues/8584)) ([07aaf97](https://github.com/artef/artef/commit/07aaf9747517c613b6b81f939d7202ecd44b3e19))
+- **deps:** update openai packages ([#8368](https://github.com/artef/artef/issues/8368)) ([e5b842a](https://github.com/artef/artef/commit/e5b842afb768200e13e27ab2f746185886fdb4ed))
+- **elevenlabs:** Disable implicit retries for POST calls ([#8541](https://github.com/artef/artef/issues/8541)) ([34f819a](https://github.com/artef/artef/commit/34f819a0c1ff3a72ced3e610a1e888f587bd44a1))
+- **elevenlabs:** preserve explicit zero retries ([#8358](https://github.com/artef/artef/issues/8358)) ([493ef88](https://github.com/artef/artef/commit/493ef88582a20021b50c5f25fee671188dc2f2e3))
+- **eval:** fix bugs and performance issues in evaluator orchestrator ([#8481](https://github.com/artef/artef/issues/8481)) ([36a2788](https://github.com/artef/artef/commit/36a278842b8c0cfe63df7a8b8173b6e32f293a54))
+- G-Eval wrong scoring for negative criteria ([#8259](https://github.com/artef/artef/issues/8259)) ([e7bba6e](https://github.com/artef/artef/commit/e7bba6e6475e26c85bac7465ddb9ce8c8510bef3))
+- handle generated redteam exports during eval ([#8301](https://github.com/artef/artef/issues/8301)) ([ef3f67f](https://github.com/artef/artef/commit/ef3f67fda1bc782c56267211b1c94de835c4c25a))
+- harden object guards in comparison checks ([#8408](https://github.com/artef/artef/issues/8408)) ([6e81cc9](https://github.com/artef/artef/commit/6e81cc97f93b74fd3eb0bd58bf33096cdd61e963))
+- image should preserve aspect ratio in results table ([#8279](https://github.com/artef/artef/issues/8279)) ([e96d630](https://github.com/artef/artef/commit/e96d63012d1aec3bba8599383f824f953c3db920))
+- **mcp:** preserve falsy values and bound truncation ([#8423](https://github.com/artef/artef/issues/8423)) ([384249e](https://github.com/artef/artef/commit/384249edc6dcdbe12971becb4ad7a4c81e74c513))
+- **mcp:** stabilize withTimeout timeout handling ([#8399](https://github.com/artef/artef/issues/8399)) ([df7d8a9](https://github.com/artef/artef/commit/df7d8a926e15fe5df59beaf5b4ef55fd5400cf48))
+- **openai:** Avoid invalid realtime zero output tokens ([#8543](https://github.com/artef/artef/issues/8543)) ([9cde9b4](https://github.com/artef/artef/commit/9cde9b4d4aaa783b3089d0fb6fabd74d5b1550e4))
+- **openai:** preserve agents zero token usage ([#8283](https://github.com/artef/artef/issues/8283)) ([6354f4e](https://github.com/artef/artef/commit/6354f4ede7731b3cfd701923bfefd345fc5e2f91))
+- **openai:** preserve assistant temperature zero ([#8271](https://github.com/artef/artef/issues/8271)) ([311c0a4](https://github.com/artef/artef/commit/311c0a495cd74c45746d61eef9d570de81ed7d1b))
+- parse rate-limit reset headers ([#8341](https://github.com/artef/artef/issues/8341)) ([985ab28](https://github.com/artef/artef/commit/985ab289f819f75eb0cfe20834aff8b6bd1629d0))
+- preserve configured plugin config in strategy preview ([#8326](https://github.com/artef/artef/issues/8326)) ([e20458e](https://github.com/artef/artef/commit/e20458e40dda88e240aa23f440ed548f487fb091))
+- prevent SSTI in conversation-relevance assertion ([#8258](https://github.com/artef/artef/issues/8258)) ([49cbe41](https://github.com/artef/artef/commit/49cbe4178f87b70ea2429a620f14f6598b074c99))
+- **prompts:** skip recursive rendering for undefined vars ([#8394](https://github.com/artef/artef/issues/8394)) ([8f14e8d](https://github.com/artef/artef/commit/8f14e8dfa6164f02bd3a1270e2d64d6f48939d91))
+- **providers:** align omitDefaults handling across OpenAI and Azure ([#8332](https://github.com/artef/artef/issues/8332)) ([edb5db6](https://github.com/artef/artef/commit/edb5db631842108b914e7c16f984d24c2bf9feec))
+- **providers:** deduplicate token refresh retries ([#8421](https://github.com/artef/artef/issues/8421)) ([b78ea03](https://github.com/artef/artef/commit/b78ea0325b451d8f7c73dba3460ea3c46285988b))
+- **providers:** include azure moderation config in cache key ([#8349](https://github.com/artef/artef/issues/8349)) ([c528c5a](https://github.com/artef/artef/commit/c528c5a055d07046720a50df949aec0e84436326))
+- **providers:** preserve explicit zero values in Mistral, AI21, and Azure Assistant config ([#8555](https://github.com/artef/artef/issues/8555)) ([7612368](https://github.com/artef/artef/commit/7612368ad4557b1a2fa99147d8d304d7eb54c1b2))
+- **providers:** prevent max_tokens leaking via passthrough in multi-provider eval ([#8449](https://github.com/artef/artef/issues/8449)) ([b07ca39](https://github.com/artef/artef/commit/b07ca3972f624aff4b2335ea3ec824de7997afcf))
+- **providers:** support systemInstruction for Vertex Claude models ([#8522](https://github.com/artef/artef/issues/8522)) ([ff1cf68](https://github.com/artef/artef/commit/ff1cf6818c0ad1c7384c53bf331cfbe33961f175))
+- **providers:** support transitive TypeScript provider imports ([#8445](https://github.com/artef/artef/issues/8445)) ([1bb0f39](https://github.com/artef/artef/commit/1bb0f39911f07ebbc27a500b73da09343e30bfdf))
+- **providers:** use apiKeyEnvar in error messages across OpenAI providers ([#8180](https://github.com/artef/artef/issues/8180)) ([7008087](https://github.com/artef/artef/commit/70080873e2ffefbed7801ceea76964ec03d12474))
+- **providers:** use rendered prompt in simulated user ([#8363](https://github.com/artef/artef/issues/8363)) ([1f1fa86](https://github.com/artef/artef/commit/1f1fa86bb7a297b9e4492c64d4f8d9d1423f6a74))
+- **redteam:** avoid nested buttons in transform dialog ([#8520](https://github.com/artef/artef/issues/8520)) ([50c65b4](https://github.com/artef/artef/commit/50c65b44d9c1f13962a0f5cf5c8c28e7846e1570))
+- **redteam:** clarify remote generation guidance ([#8252](https://github.com/artef/artef/issues/8252)) ([45870ab](https://github.com/artef/artef/commit/45870ab7541d81d3e5d1ec88cb2514076eed0999))
+- **redteam:** fix --env-file arg parsing and test flakiness ([#8420](https://github.com/artef/artef/issues/8420)) ([6a920c5](https://github.com/artef/artef/commit/6a920c54ebc75b07154014d11cd882efb276443a))
+- **redteam:** guard missing cross-session leak metadata ([#8238](https://github.com/artef/artef/issues/8238)) ([9924bae](https://github.com/artef/artef/commit/9924bae124947d158151d991370017fba58768fe))
+- **redteam:** honour generate concurrency config ([#8463](https://github.com/artef/artef/issues/8463)) ([e626ea9](https://github.com/artef/artef/commit/e626ea96f8a530fc21ddb957e00fb0ad9a1da52d))
+- **redteam:** normalize code editor imports ([#8306](https://github.com/artef/artef/issues/8306)) ([057f9e0](https://github.com/artef/artef/commit/057f9e02fd4bb1b5914212b4d5fb6b46877b4a90))
+- **redteam:** pass full conversation history to crescendo grader ([#8239](https://github.com/artef/artef/issues/8239)) ([01619a8](https://github.com/artef/artef/commit/01619a8b186334c2140b262df75a4fd22d042dcf))
+- **redteam:** preserve goat zero max turns ([#8294](https://github.com/artef/artef/issues/8294)) ([3077acf](https://github.com/artef/artef/commit/3077acfb9521bacf9b7966fb423c320ba5733533))
+- **redteam:** preserve voice crescendo zero max turns ([#8310](https://github.com/artef/artef/issues/8310)) ([5d38b28](https://github.com/artef/artef/commit/5d38b28d3bb5ac88d109b0e38547801dd67fa221))
+- **redteam:** preserve zero prompt injection sample ([#8291](https://github.com/artef/artef/issues/8291)) ([16b3221](https://github.com/artef/artef/commit/16b32218a1e8dd9d7b3ec1c3d51605bb8c8849f5))
+- **redteam:** preserve zero-valued crescendo config ([#8273](https://github.com/artef/artef/issues/8273)) ([9ec66b5](https://github.com/artef/artef/commit/9ec66b5370d6aa6562cdea942ddbc587af8c14e6))
+- **redteam:** preserve zero-valued custom config ([#8274](https://github.com/artef/artef/issues/8274)) ([a76058f](https://github.com/artef/artef/commit/a76058f68959d0c372317f6be7c4794784e231d6))
+- **redteam:** preserve zero-valued voice crescendo config ([#8270](https://github.com/artef/artef/issues/8270)) ([7d36044](https://github.com/artef/artef/commit/7d360449de27ad8ece7eb930018ec3455e490182))
+- **redteam:** remove dead stores and preserve metadata ([#8407](https://github.com/artef/artef/issues/8407)) ([28d3383](https://github.com/artef/artef/commit/28d33836a27d3f4ac627d4ae132b1c8853a6b4b5))
+- **redteam:** skip unblocking feature checks when disabled ([#8266](https://github.com/artef/artef/issues/8266)) ([c6bdf39](https://github.com/artef/artef/commit/c6bdf39f11ffe2012bb5003c0d8a9f4c2ab6293f))
+- **redteam:** support policy multi-input generation ([#8320](https://github.com/artef/artef/issues/8320)) ([be14251](https://github.com/artef/artef/commit/be142518174fad79beb7b2335b47268cdf12f47c))
+- refresh prompt listings after prompt metadata updates ([#8120](https://github.com/artef/artef/issues/8120)) ([85694e9](https://github.com/artef/artef/commit/85694e9da78530428f0375d142f31d0e8e3fbae6))
+- replace undeclared tiny-invariant imports in app ([#8309](https://github.com/artef/artef/issues/8309)) ([f85704f](https://github.com/artef/artef/commit/f85704f428a948fb8936d6203e8f58dc0fe830c5))
+- **replicate:** cache string responses ([#8353](https://github.com/artef/artef/issues/8353)) ([e96fc94](https://github.com/artef/artef/commit/e96fc945ac7781ff8bd4a8c0696ea78fc81b0f01))
+- respect review language in example test generation ([#8334](https://github.com/artef/artef/issues/8334)) ([3163583](https://github.com/artef/artef/commit/3163583ea60a450d622975e2bba663ba3429c72b))
+- **sagemaker:** preserve zero maxTokens ([#8286](https://github.com/artef/artef/issues/8286)) ([75603d3](https://github.com/artef/artef/commit/75603d3eb2cb197d9eeb1261119420b34fa8d066))
+- **util:** preserve shared references in safeJsonStringify ([#8342](https://github.com/artef/artef/issues/8342)) ([987e8ad](https://github.com/artef/artef/commit/987e8adc759ad2ee1523a67afe6e6e750ba536b4))
+- **watsonx:** preserve zero max_new_tokens ([#8288](https://github.com/artef/artef/issues/8288)) ([b489160](https://github.com/artef/artef/commit/b4891600b8910f39a55beb0a25dbdddf5cf78606))
+- **webui:** clear output link feedback timers ([#8559](https://github.com/artef/artef/issues/8559)) ([aeac87d](https://github.com/artef/artef/commit/aeac87d1a26c5ddd26c8fd2b962254236198be41))
 
 ### Reverts
 
-- feat(redteam): add next coding-agent plugins ([#8585](https://github.com/promptfoo/promptfoo/issues/8585)) ([720d677](https://github.com/promptfoo/promptfoo/commit/720d6774825ad5a3ac4d3dcdb9ca36a8c35b615c))
+- feat(redteam): add next coding-agent plugins ([#8585](https://github.com/artef/artef/issues/8585)) ([720d677](https://github.com/artef/artef/commit/720d6774825ad5a3ac4d3dcdb9ca36a8c35b615c))
 
-## [0.121.3](https://github.com/promptfoo/promptfoo/compare/0.121.2...0.121.3) (2026-03-24)
+## [0.121.3](https://github.com/artef/artef/compare/0.121.2...0.121.3) (2026-03-24)
 
 ### Features
 
-- add block-no-verify PreToolUse hook to .claude/settings.json ([#8234](https://github.com/promptfoo/promptfoo/issues/8234)) ([29a856a](https://github.com/promptfoo/promptfoo/commit/29a856a8fa2defba5bc8362ea6e14364b7e624ce))
-- add new config options to composite jailbreak strategy ([#7693](https://github.com/promptfoo/promptfoo/issues/7693)) ([071d345](https://github.com/promptfoo/promptfoo/commit/071d34592e626fa12399d43d6f2feda2a8edb67c))
-- **app:** add manual filtering to DataTable and improve filter UX ([#8122](https://github.com/promptfoo/promptfoo/issues/8122)) ([46dfdf5](https://github.com/promptfoo/promptfoo/commit/46dfdf57298b0cd6afa98b2b626bcb53e150cca8))
-- **assertions:** add trajectory eval assertions ([#8040](https://github.com/promptfoo/promptfoo/issues/8040)) ([6567fda](https://github.com/promptfoo/promptfoo/commit/6567fdaf0b381e65110451f802222fc0f861613a))
-- **assertions:** add trajectory tool args matching ([#8142](https://github.com/promptfoo/promptfoo/issues/8142)) ([d0ba078](https://github.com/promptfoo/promptfoo/commit/d0ba0780b01f900f9b78670b16e8fadb897afe20))
-- **http:** add file-based auth ([#8282](https://github.com/promptfoo/promptfoo/issues/8282)) ([00b497c](https://github.com/promptfoo/promptfoo/commit/00b497c23e43c0f2f4cafbbcfbdad65e4aedf9a8))
-- **providers:** add skill eval support for agent SDKs ([#8242](https://github.com/promptfoo/promptfoo/issues/8242)) ([3e2bfeb](https://github.com/promptfoo/promptfoo/commit/3e2bfeb4d51fa09cee1c1fd8530ad3114354f6b9))
-- **providers:** support GPT-5.4 mini and nano models ([#8216](https://github.com/promptfoo/promptfoo/issues/8216)) ([8ee7547](https://github.com/promptfoo/promptfoo/commit/8ee7547fe4f6a72e6206190758d878da91446a9c))
-- **providers:** support new sora video sizes ([#8147](https://github.com/promptfoo/promptfoo/issues/8147)) ([3e8af4d](https://github.com/promptfoo/promptfoo/commit/3e8af4d571825772c1d93e4729effc58db93255a))
-- **providers:** support Veo via Google AI Studio and Vertex ([#8185](https://github.com/promptfoo/promptfoo/issues/8185)) ([c8e340d](https://github.com/promptfoo/promptfoo/commit/c8e340de7a293fd95b16a80ccb4067d326092a46))
-- support opt-out from api key checks in claude-agent-sdk ([#8256](https://github.com/promptfoo/promptfoo/issues/8256)) ([13c040f](https://github.com/promptfoo/promptfoo/commit/13c040f3f4bc8415378239c4e13c1c8967738850))
+- add block-no-verify PreToolUse hook to .claude/settings.json ([#8234](https://github.com/artef/artef/issues/8234)) ([29a856a](https://github.com/artef/artef/commit/29a856a8fa2defba5bc8362ea6e14364b7e624ce))
+- add new config options to composite jailbreak strategy ([#7693](https://github.com/artef/artef/issues/7693)) ([071d345](https://github.com/artef/artef/commit/071d34592e626fa12399d43d6f2feda2a8edb67c))
+- **app:** add manual filtering to DataTable and improve filter UX ([#8122](https://github.com/artef/artef/issues/8122)) ([46dfdf5](https://github.com/artef/artef/commit/46dfdf57298b0cd6afa98b2b626bcb53e150cca8))
+- **assertions:** add trajectory eval assertions ([#8040](https://github.com/artef/artef/issues/8040)) ([6567fda](https://github.com/artef/artef/commit/6567fdaf0b381e65110451f802222fc0f861613a))
+- **assertions:** add trajectory tool args matching ([#8142](https://github.com/artef/artef/issues/8142)) ([d0ba078](https://github.com/artef/artef/commit/d0ba0780b01f900f9b78670b16e8fadb897afe20))
+- **http:** add file-based auth ([#8282](https://github.com/artef/artef/issues/8282)) ([00b497c](https://github.com/artef/artef/commit/00b497c23e43c0f2f4cafbbcfbdad65e4aedf9a8))
+- **providers:** add skill eval support for agent SDKs ([#8242](https://github.com/artef/artef/issues/8242)) ([3e2bfeb](https://github.com/artef/artef/commit/3e2bfeb4d51fa09cee1c1fd8530ad3114354f6b9))
+- **providers:** support GPT-5.4 mini and nano models ([#8216](https://github.com/artef/artef/issues/8216)) ([8ee7547](https://github.com/artef/artef/commit/8ee7547fe4f6a72e6206190758d878da91446a9c))
+- **providers:** support new sora video sizes ([#8147](https://github.com/artef/artef/issues/8147)) ([3e8af4d](https://github.com/artef/artef/commit/3e8af4d571825772c1d93e4729effc58db93255a))
+- **providers:** support Veo via Google AI Studio and Vertex ([#8185](https://github.com/artef/artef/issues/8185)) ([c8e340d](https://github.com/artef/artef/commit/c8e340de7a293fd95b16a80ccb4067d326092a46))
+- support opt-out from api key checks in claude-agent-sdk ([#8256](https://github.com/artef/artef/issues/8256)) ([13c040f](https://github.com/artef/artef/commit/13c040f3f4bc8415378239c4e13c1c8967738850))
 
 ### Bug Fixes
 
-- **ai21:** preserve zero max_tokens ([#8287](https://github.com/promptfoo/promptfoo/issues/8287)) ([88da62a](https://github.com/promptfoo/promptfoo/commit/88da62a219dc0370301636cf7ff651238771dad1))
-- **anthropic:** preserve zero max_tokens_to_sample ([#8290](https://github.com/promptfoo/promptfoo/issues/8290)) ([92dd8b7](https://github.com/promptfoo/promptfoo/commit/92dd8b78291341fdd0142ce69a1ae0fbba575565))
-- **assertions:** stabilize trajectory eval assertions ([#8140](https://github.com/promptfoo/promptfoo/issues/8140)) ([a207119](https://github.com/promptfoo/promptfoo/commit/a2071199846ccc0b685cbf2e48e1016ed07d50e4))
-- **cli:** move success rate next to passes ([#8303](https://github.com/promptfoo/promptfoo/issues/8303)) ([8e09d59](https://github.com/promptfoo/promptfoo/commit/8e09d59450957bfc1d534fa7fbab249277658a8a))
-- **cli:** prevent API error logs from corrupting progress bar display ([#7646](https://github.com/promptfoo/promptfoo/issues/7646)) ([8aa4e42](https://github.com/promptfoo/promptfoo/commit/8aa4e4217e01bf0965970790f03c5c694f225954))
-- **deps:** update anthropic packages ([#8249](https://github.com/promptfoo/promptfoo/issues/8249)) ([15efcd7](https://github.com/promptfoo/promptfoo/commit/15efcd704998f5c66a427d28619f3ee812a4e77e))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.80.0 ([#8281](https://github.com/promptfoo/promptfoo/issues/8281)) ([33d738f](https://github.com/promptfoo/promptfoo/commit/33d738fc9acf3da8e8ea064620ca47ad86a71a17))
-- **deps:** update dependency @openai/agents to ^0.6.0 ([#8179](https://github.com/promptfoo/promptfoo/issues/8179)) ([d221767](https://github.com/promptfoo/promptfoo/commit/d221767b0391e79bbcbada3c2788d18102a065ce))
-- **deps:** update dependency @openai/agents to ^0.7.0 ([#8189](https://github.com/promptfoo/promptfoo/issues/8189)) ([08a2c12](https://github.com/promptfoo/promptfoo/commit/08a2c127beaff35c29ba6e3c44f34b18a48d6871))
-- **deps:** update dependency @tanstack/react-virtual to ^3.13.22 ([#8201](https://github.com/promptfoo/promptfoo/issues/8201)) ([63cc2b1](https://github.com/promptfoo/promptfoo/commit/63cc2b175b6b4e649642ab8c2228dcfa3b09da10))
-- **deps:** update dependency better-sqlite3 to ^12.8.0 ([#8221](https://github.com/promptfoo/promptfoo/issues/8221)) ([7ffc164](https://github.com/promptfoo/promptfoo/commit/7ffc1645dc777521cdf99e706756b99e484f3a15))
-- **deps:** update dependency fast-xml-parser to ^5.5.0 ([#8168](https://github.com/promptfoo/promptfoo/issues/8168)) ([c1e0dcb](https://github.com/promptfoo/promptfoo/commit/c1e0dcbc0e84b19be40fa1898d0ec067298c41f0))
-- **deps:** update dependency fast-xml-parser to ^5.5.3 ([#8169](https://github.com/promptfoo/promptfoo/issues/8169)) ([ce1e672](https://github.com/promptfoo/promptfoo/commit/ce1e6724eb92388254af5f38f1cfc4218f73077d))
-- **deps:** update dependency fast-xml-parser to ^5.5.4 ([#8205](https://github.com/promptfoo/promptfoo/issues/8205)) ([ab66e52](https://github.com/promptfoo/promptfoo/commit/ab66e527a392aec3f9a6b80e8fd03bfd7144c112))
-- **deps:** update dependency fast-xml-parser to ^5.5.5 ([#8210](https://github.com/promptfoo/promptfoo/issues/8210)) ([ca3d586](https://github.com/promptfoo/promptfoo/commit/ca3d586fc8e0c5484b2691a6f314b52d3b3a0f77))
-- **deps:** update dependency lightningcss to ^1.32.0 ([#8149](https://github.com/promptfoo/promptfoo/issues/8149)) ([a5c5c3b](https://github.com/promptfoo/promptfoo/commit/a5c5c3b94685e78074203df886fd45a6e4c20b6e))
-- **deps:** update dependency lru-cache to ^11.2.7 ([#8215](https://github.com/promptfoo/promptfoo/issues/8215)) ([3065be9](https://github.com/promptfoo/promptfoo/commit/3065be92c42dac2ad40296b845a5bfc89b4f69e2))
-- **deps:** update dependency openai to ^6.32.0 ([#8269](https://github.com/promptfoo/promptfoo/issues/8269)) ([c7d7825](https://github.com/promptfoo/promptfoo/commit/c7d78250eec5cbff86b0179ddb35e0fd090bf167))
-- **deps:** update dependency proxy-agent to v7 ([#8186](https://github.com/promptfoo/promptfoo/issues/8186)) ([87affda](https://github.com/promptfoo/promptfoo/commit/87affdad72818a87e1dc82e46313a0dc54cc83ed))
-- **deps:** update dependency proxy-from-env to ^2.1.0 ([#8229](https://github.com/promptfoo/promptfoo/issues/8229)) ([8b4b542](https://github.com/promptfoo/promptfoo/commit/8b4b54270d8de3598f0ef82d68539143d4611dbe))
-- **deps:** update dependency simple-git to ^3.33.0 ([#8170](https://github.com/promptfoo/promptfoo/issues/8170)) ([39aee24](https://github.com/promptfoo/promptfoo/commit/39aee2496d8e4be0583d96a7d7bc31ebd9ed7c21))
-- **deps:** update example dependencies ([#8248](https://github.com/promptfoo/promptfoo/issues/8248)) ([53d5ab6](https://github.com/promptfoo/promptfoo/commit/53d5ab621e2e8c53a5626df10e4d142027069b23))
-- **deps:** update openai packages ([#8212](https://github.com/promptfoo/promptfoo/issues/8212)) ([42e523a](https://github.com/promptfoo/promptfoo/commit/42e523a67afbf74205688990a1310cf8a0c25d45))
-- **deps:** update openai packages ([#8268](https://github.com/promptfoo/promptfoo/issues/8268)) ([ac24038](https://github.com/promptfoo/promptfoo/commit/ac240385fcd40e7bc456e313a9a5aca5edc0bee7))
-- **elevenlabs:** preserve agents maxTurns zero ([#8285](https://github.com/promptfoo/promptfoo/issues/8285)) ([36ce694](https://github.com/promptfoo/promptfoo/commit/36ce6943cf94d51fe2e19f0ea8d6e7cbf3b6c54e))
-- **envars:** use explicit undefined check in getEnvInt and getEnvFloat ([#8182](https://github.com/promptfoo/promptfoo/issues/8182)) ([f3215e5](https://github.com/promptfoo/promptfoo/commit/f3215e552bb15a5e74eb6da74b04999cfb9bc4e4))
-- **examples:** use append_allowed_tools in plugins example ([#8143](https://github.com/promptfoo/promptfoo/issues/8143)) ([3510ba8](https://github.com/promptfoo/promptfoo/commit/3510ba8e42a494cc89bfb7f9bda238586077070e))
-- **http:** expose oauth token in vars ([#8304](https://github.com/promptfoo/promptfoo/issues/8304)) ([fee4bc0](https://github.com/promptfoo/promptfoo/commit/fee4bc058df350fb0f0167f8f223e732c84771e0))
-- **mistral:** handle tool call responses where content is null ([#8165](https://github.com/promptfoo/promptfoo/issues/8165)) ([9c93471](https://github.com/promptfoo/promptfoo/commit/9c9347128580d1bd3367be82586f02ffb1e9eff4))
-- **providers:** add gpt-5.4 mini and nano support ([#8219](https://github.com/promptfoo/promptfoo/issues/8219)) ([68c1961](https://github.com/promptfoo/promptfoo/commit/68c196119903e016b08c26aa9b3e1b050e09c5a6))
-- **providers:** add requiresApiKey() to claude-agent-sdk for Vertex/Bedrock support ([#8132](https://github.com/promptfoo/promptfoo/issues/8132)) ([49af17b](https://github.com/promptfoo/promptfoo/commit/49af17b51d8d09442e8c36d5d1f46fdc840d934a))
-- **providers:** support gpt-5.4 in codex provider ([#8228](https://github.com/promptfoo/promptfoo/issues/8228)) ([ee7ae2c](https://github.com/promptfoo/promptfoo/commit/ee7ae2c71bad28f9237b9a2541256b0035406783))
-- **providers:** use merged env for claude-agent-sdk provider registration ([#8134](https://github.com/promptfoo/promptfoo/issues/8134)) ([456199c](https://github.com/promptfoo/promptfoo/commit/456199c953e8bcb554aeada65e64b5973007d179))
-- **providers:** use nullish coalescing for temperature in Anthropic Messages and LocalAI ([#8163](https://github.com/promptfoo/promptfoo/issues/8163)) ([94adbe1](https://github.com/promptfoo/promptfoo/commit/94adbe1c23d8eb5b1fad83853ac2a53e0da5ade8))
-- **providers:** use nullish coalescing for temperature with provider-scoped env support ([#8167](https://github.com/promptfoo/promptfoo/issues/8167)) ([3b20e2b](https://github.com/promptfoo/promptfoo/commit/3b20e2ba606e7121a75c93be6c48174da9d99e23))
-- **redteam:** de-alias generated redteam examples ([#8241](https://github.com/promptfoo/promptfoo/issues/8241)) ([6117b52](https://github.com/promptfoo/promptfoo/commit/6117b52b092882bde2258a9b91ff4a41e09ae778))
-- **redteam:** fix Rules of Hooks violation in RiskCategoryDrawer ([#8072](https://github.com/promptfoo/promptfoo/issues/8072)) ([afb2732](https://github.com/promptfoo/promptfoo/commit/afb2732d823c0c97ef3a4f332e032861739b55ad))
-- **redteam:** preserve voice crescendo zero max backtracks ([#8296](https://github.com/promptfoo/promptfoo/issues/8296)) ([0d3e4b7](https://github.com/promptfoo/promptfoo/commit/0d3e4b79759bcf133ad62961ea5c6f30b9327265))
-- **replicate:** preserve zero-valued config ([#8128](https://github.com/promptfoo/promptfoo/issues/8128)) ([14890e6](https://github.com/promptfoo/promptfoo/commit/14890e62a87f7d4e759d1fc6fefb4bc46a53b5a8))
+- **ai21:** preserve zero max_tokens ([#8287](https://github.com/artef/artef/issues/8287)) ([88da62a](https://github.com/artef/artef/commit/88da62a219dc0370301636cf7ff651238771dad1))
+- **anthropic:** preserve zero max_tokens_to_sample ([#8290](https://github.com/artef/artef/issues/8290)) ([92dd8b7](https://github.com/artef/artef/commit/92dd8b78291341fdd0142ce69a1ae0fbba575565))
+- **assertions:** stabilize trajectory eval assertions ([#8140](https://github.com/artef/artef/issues/8140)) ([a207119](https://github.com/artef/artef/commit/a2071199846ccc0b685cbf2e48e1016ed07d50e4))
+- **cli:** move success rate next to passes ([#8303](https://github.com/artef/artef/issues/8303)) ([8e09d59](https://github.com/artef/artef/commit/8e09d59450957bfc1d534fa7fbab249277658a8a))
+- **cli:** prevent API error logs from corrupting progress bar display ([#7646](https://github.com/artef/artef/issues/7646)) ([8aa4e42](https://github.com/artef/artef/commit/8aa4e4217e01bf0965970790f03c5c694f225954))
+- **deps:** update anthropic packages ([#8249](https://github.com/artef/artef/issues/8249)) ([15efcd7](https://github.com/artef/artef/commit/15efcd704998f5c66a427d28619f3ee812a4e77e))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.80.0 ([#8281](https://github.com/artef/artef/issues/8281)) ([33d738f](https://github.com/artef/artef/commit/33d738fc9acf3da8e8ea064620ca47ad86a71a17))
+- **deps:** update dependency @openai/agents to ^0.6.0 ([#8179](https://github.com/artef/artef/issues/8179)) ([d221767](https://github.com/artef/artef/commit/d221767b0391e79bbcbada3c2788d18102a065ce))
+- **deps:** update dependency @openai/agents to ^0.7.0 ([#8189](https://github.com/artef/artef/issues/8189)) ([08a2c12](https://github.com/artef/artef/commit/08a2c127beaff35c29ba6e3c44f34b18a48d6871))
+- **deps:** update dependency @tanstack/react-virtual to ^3.13.22 ([#8201](https://github.com/artef/artef/issues/8201)) ([63cc2b1](https://github.com/artef/artef/commit/63cc2b175b6b4e649642ab8c2228dcfa3b09da10))
+- **deps:** update dependency better-sqlite3 to ^12.8.0 ([#8221](https://github.com/artef/artef/issues/8221)) ([7ffc164](https://github.com/artef/artef/commit/7ffc1645dc777521cdf99e706756b99e484f3a15))
+- **deps:** update dependency fast-xml-parser to ^5.5.0 ([#8168](https://github.com/artef/artef/issues/8168)) ([c1e0dcb](https://github.com/artef/artef/commit/c1e0dcbc0e84b19be40fa1898d0ec067298c41f0))
+- **deps:** update dependency fast-xml-parser to ^5.5.3 ([#8169](https://github.com/artef/artef/issues/8169)) ([ce1e672](https://github.com/artef/artef/commit/ce1e6724eb92388254af5f38f1cfc4218f73077d))
+- **deps:** update dependency fast-xml-parser to ^5.5.4 ([#8205](https://github.com/artef/artef/issues/8205)) ([ab66e52](https://github.com/artef/artef/commit/ab66e527a392aec3f9a6b80e8fd03bfd7144c112))
+- **deps:** update dependency fast-xml-parser to ^5.5.5 ([#8210](https://github.com/artef/artef/issues/8210)) ([ca3d586](https://github.com/artef/artef/commit/ca3d586fc8e0c5484b2691a6f314b52d3b3a0f77))
+- **deps:** update dependency lightningcss to ^1.32.0 ([#8149](https://github.com/artef/artef/issues/8149)) ([a5c5c3b](https://github.com/artef/artef/commit/a5c5c3b94685e78074203df886fd45a6e4c20b6e))
+- **deps:** update dependency lru-cache to ^11.2.7 ([#8215](https://github.com/artef/artef/issues/8215)) ([3065be9](https://github.com/artef/artef/commit/3065be92c42dac2ad40296b845a5bfc89b4f69e2))
+- **deps:** update dependency openai to ^6.32.0 ([#8269](https://github.com/artef/artef/issues/8269)) ([c7d7825](https://github.com/artef/artef/commit/c7d78250eec5cbff86b0179ddb35e0fd090bf167))
+- **deps:** update dependency proxy-agent to v7 ([#8186](https://github.com/artef/artef/issues/8186)) ([87affda](https://github.com/artef/artef/commit/87affdad72818a87e1dc82e46313a0dc54cc83ed))
+- **deps:** update dependency proxy-from-env to ^2.1.0 ([#8229](https://github.com/artef/artef/issues/8229)) ([8b4b542](https://github.com/artef/artef/commit/8b4b54270d8de3598f0ef82d68539143d4611dbe))
+- **deps:** update dependency simple-git to ^3.33.0 ([#8170](https://github.com/artef/artef/issues/8170)) ([39aee24](https://github.com/artef/artef/commit/39aee2496d8e4be0583d96a7d7bc31ebd9ed7c21))
+- **deps:** update example dependencies ([#8248](https://github.com/artef/artef/issues/8248)) ([53d5ab6](https://github.com/artef/artef/commit/53d5ab621e2e8c53a5626df10e4d142027069b23))
+- **deps:** update openai packages ([#8212](https://github.com/artef/artef/issues/8212)) ([42e523a](https://github.com/artef/artef/commit/42e523a67afbf74205688990a1310cf8a0c25d45))
+- **deps:** update openai packages ([#8268](https://github.com/artef/artef/issues/8268)) ([ac24038](https://github.com/artef/artef/commit/ac240385fcd40e7bc456e313a9a5aca5edc0bee7))
+- **elevenlabs:** preserve agents maxTurns zero ([#8285](https://github.com/artef/artef/issues/8285)) ([36ce694](https://github.com/artef/artef/commit/36ce6943cf94d51fe2e19f0ea8d6e7cbf3b6c54e))
+- **envars:** use explicit undefined check in getEnvInt and getEnvFloat ([#8182](https://github.com/artef/artef/issues/8182)) ([f3215e5](https://github.com/artef/artef/commit/f3215e552bb15a5e74eb6da74b04999cfb9bc4e4))
+- **examples:** use append_allowed_tools in plugins example ([#8143](https://github.com/artef/artef/issues/8143)) ([3510ba8](https://github.com/artef/artef/commit/3510ba8e42a494cc89bfb7f9bda238586077070e))
+- **http:** expose oauth token in vars ([#8304](https://github.com/artef/artef/issues/8304)) ([fee4bc0](https://github.com/artef/artef/commit/fee4bc058df350fb0f0167f8f223e732c84771e0))
+- **mistral:** handle tool call responses where content is null ([#8165](https://github.com/artef/artef/issues/8165)) ([9c93471](https://github.com/artef/artef/commit/9c9347128580d1bd3367be82586f02ffb1e9eff4))
+- **providers:** add gpt-5.4 mini and nano support ([#8219](https://github.com/artef/artef/issues/8219)) ([68c1961](https://github.com/artef/artef/commit/68c196119903e016b08c26aa9b3e1b050e09c5a6))
+- **providers:** add requiresApiKey() to claude-agent-sdk for Vertex/Bedrock support ([#8132](https://github.com/artef/artef/issues/8132)) ([49af17b](https://github.com/artef/artef/commit/49af17b51d8d09442e8c36d5d1f46fdc840d934a))
+- **providers:** support gpt-5.4 in codex provider ([#8228](https://github.com/artef/artef/issues/8228)) ([ee7ae2c](https://github.com/artef/artef/commit/ee7ae2c71bad28f9237b9a2541256b0035406783))
+- **providers:** use merged env for claude-agent-sdk provider registration ([#8134](https://github.com/artef/artef/issues/8134)) ([456199c](https://github.com/artef/artef/commit/456199c953e8bcb554aeada65e64b5973007d179))
+- **providers:** use nullish coalescing for temperature in Anthropic Messages and LocalAI ([#8163](https://github.com/artef/artef/issues/8163)) ([94adbe1](https://github.com/artef/artef/commit/94adbe1c23d8eb5b1fad83853ac2a53e0da5ade8))
+- **providers:** use nullish coalescing for temperature with provider-scoped env support ([#8167](https://github.com/artef/artef/issues/8167)) ([3b20e2b](https://github.com/artef/artef/commit/3b20e2ba606e7121a75c93be6c48174da9d99e23))
+- **redteam:** de-alias generated redteam examples ([#8241](https://github.com/artef/artef/issues/8241)) ([6117b52](https://github.com/artef/artef/commit/6117b52b092882bde2258a9b91ff4a41e09ae778))
+- **redteam:** fix Rules of Hooks violation in RiskCategoryDrawer ([#8072](https://github.com/artef/artef/issues/8072)) ([afb2732](https://github.com/artef/artef/commit/afb2732d823c0c97ef3a4f332e032861739b55ad))
+- **redteam:** preserve voice crescendo zero max backtracks ([#8296](https://github.com/artef/artef/issues/8296)) ([0d3e4b7](https://github.com/artef/artef/commit/0d3e4b79759bcf133ad62961ea5c6f30b9327265))
+- **replicate:** preserve zero-valued config ([#8128](https://github.com/artef/artef/issues/8128)) ([14890e6](https://github.com/artef/artef/commit/14890e62a87f7d4e759d1fc6fefb4bc46a53b5a8))
 
-## [0.121.2](https://github.com/promptfoo/promptfoo/compare/0.121.1...0.121.2) (2026-03-12)
-
-### Bug Fixes
-
-- add node-addon-api to devDependencies for sharp build ([#8102](https://github.com/promptfoo/promptfoo/issues/8102)) ([1d4e959](https://github.com/promptfoo/promptfoo/commit/1d4e9596f2199ade67e4b65207b8f99b7c2b1b3b))
-- **deps:** update dependency @tanstack/react-virtual to ^3.13.20 ([#8083](https://github.com/promptfoo/promptfoo/issues/8083)) ([5e5f774](https://github.com/promptfoo/promptfoo/commit/5e5f7746b065f45147efc9fedaff3366af01e020))
-- **deps:** update dependency @tanstack/react-virtual to ^3.13.21 ([#8104](https://github.com/promptfoo/promptfoo/issues/8104)) ([b17998b](https://github.com/promptfoo/promptfoo/commit/b17998bd9fcc6ad7c67236f83e1a4353227ab7e6))
-- **deps:** update mui packages to ^7.3.9 ([#8077](https://github.com/promptfoo/promptfoo/issues/8077)) ([4db1d67](https://github.com/promptfoo/promptfoo/commit/4db1d67b081a4180d099cbff63978713326fb8e9))
-- **deps:** update openai packages ([#7956](https://github.com/promptfoo/promptfoo/issues/7956)) ([5b70a50](https://github.com/promptfoo/promptfoo/commit/5b70a5089d25cc7bd227703144f35e74d6d52995))
-- **eval:** preserve chart default state per eval ([#8087](https://github.com/promptfoo/promptfoo/issues/8087)) ([cd26f4a](https://github.com/promptfoo/promptfoo/commit/cd26f4a16dfca36043b06f934c3a2ce5301571f5))
-- **examples:** use matching gpt-4o model in temperature comparison ([#8074](https://github.com/promptfoo/promptfoo/issues/8074)) ([516df96](https://github.com/promptfoo/promptfoo/commit/516df96042d5fdec7522548b1f30b6eb7c58704b))
-- not-contains-json with schema respects inverse flag ([#8069](https://github.com/promptfoo/promptfoo/issues/8069)) ([baf5e1b](https://github.com/promptfoo/promptfoo/commit/baf5e1bfda95cc7b9d53642a9e9c265489826307))
-- prevent caching error responses in fetchWithCache ([#8070](https://github.com/promptfoo/promptfoo/issues/8070)) ([033e1bb](https://github.com/promptfoo/promptfoo/commit/033e1bb688cf1054961f94d6563b904c8d14cab3))
-- **providers:** align openclaw with upstream gateway ([#8058](https://github.com/promptfoo/promptfoo/issues/8058)) ([f130803](https://github.com/promptfoo/promptfoo/commit/f1308031752870233b8f0b2b35137ecd7c3a76d2))
-- **providers:** omit default temperature for LiteLLM proxy provider ([#8064](https://github.com/promptfoo/promptfoo/issues/8064)) ([f831d39](https://github.com/promptfoo/promptfoo/commit/f831d399b5dc0bf131305e9eff4ffadbbd79881c))
-- **redteam:** avoid router dependency in risk category drawer ([#8085](https://github.com/promptfoo/promptfoo/issues/8085)) ([1e1d9ac](https://github.com/promptfoo/promptfoo/commit/1e1d9ac537e187ac7927511b3b6bfbb8321ee254))
-- **redteam:** improve EU AI Act preset bias/discrimination coverage ([#8115](https://github.com/promptfoo/promptfoo/issues/8115)) ([30ce06b](https://github.com/promptfoo/promptfoo/commit/30ce06bc2ac13d7bcdaac374fd63252f3a2a3b48))
-- remove unnecessary string length limit for env var rendering ([#8110](https://github.com/promptfoo/promptfoo/issues/8110)) ([40a6b09](https://github.com/promptfoo/promptfoo/commit/40a6b091370974e44bbba31eaa7f7b9e8cad53ac))
-
-## [0.121.1](https://github.com/promptfoo/promptfoo/compare/0.121.0...0.121.1) (2026-03-09)
+## [0.121.2](https://github.com/artef/artef/compare/0.121.1...0.121.2) (2026-03-12)
 
 ### Bug Fixes
 
-- **providers:** support newer opencode sdk api ([#8060](https://github.com/promptfoo/promptfoo/issues/8060)) ([7ec80b2](https://github.com/promptfoo/promptfoo/commit/7ec80b2e173dc99438002c8f5d16feb7b6643aa1))
+- add node-addon-api to devDependencies for sharp build ([#8102](https://github.com/artef/artef/issues/8102)) ([1d4e959](https://github.com/artef/artef/commit/1d4e9596f2199ade67e4b65207b8f99b7c2b1b3b))
+- **deps:** update dependency @tanstack/react-virtual to ^3.13.20 ([#8083](https://github.com/artef/artef/issues/8083)) ([5e5f774](https://github.com/artef/artef/commit/5e5f7746b065f45147efc9fedaff3366af01e020))
+- **deps:** update dependency @tanstack/react-virtual to ^3.13.21 ([#8104](https://github.com/artef/artef/issues/8104)) ([b17998b](https://github.com/artef/artef/commit/b17998bd9fcc6ad7c67236f83e1a4353227ab7e6))
+- **deps:** update mui packages to ^7.3.9 ([#8077](https://github.com/artef/artef/issues/8077)) ([4db1d67](https://github.com/artef/artef/commit/4db1d67b081a4180d099cbff63978713326fb8e9))
+- **deps:** update openai packages ([#7956](https://github.com/artef/artef/issues/7956)) ([5b70a50](https://github.com/artef/artef/commit/5b70a5089d25cc7bd227703144f35e74d6d52995))
+- **eval:** preserve chart default state per eval ([#8087](https://github.com/artef/artef/issues/8087)) ([cd26f4a](https://github.com/artef/artef/commit/cd26f4a16dfca36043b06f934c3a2ce5301571f5))
+- **examples:** use matching gpt-4o model in temperature comparison ([#8074](https://github.com/artef/artef/issues/8074)) ([516df96](https://github.com/artef/artef/commit/516df96042d5fdec7522548b1f30b6eb7c58704b))
+- not-contains-json with schema respects inverse flag ([#8069](https://github.com/artef/artef/issues/8069)) ([baf5e1b](https://github.com/artef/artef/commit/baf5e1bfda95cc7b9d53642a9e9c265489826307))
+- prevent caching error responses in fetchWithCache ([#8070](https://github.com/artef/artef/issues/8070)) ([033e1bb](https://github.com/artef/artef/commit/033e1bb688cf1054961f94d6563b904c8d14cab3))
+- **providers:** align openclaw with upstream gateway ([#8058](https://github.com/artef/artef/issues/8058)) ([f130803](https://github.com/artef/artef/commit/f1308031752870233b8f0b2b35137ecd7c3a76d2))
+- **providers:** omit default temperature for LiteLLM proxy provider ([#8064](https://github.com/artef/artef/issues/8064)) ([f831d39](https://github.com/artef/artef/commit/f831d399b5dc0bf131305e9eff4ffadbbd79881c))
+- **redteam:** avoid router dependency in risk category drawer ([#8085](https://github.com/artef/artef/issues/8085)) ([1e1d9ac](https://github.com/artef/artef/commit/1e1d9ac537e187ac7927511b3b6bfbb8321ee254))
+- **redteam:** improve EU AI Act preset bias/discrimination coverage ([#8115](https://github.com/artef/artef/issues/8115)) ([30ce06b](https://github.com/artef/artef/commit/30ce06bc2ac13d7bcdaac374fd63252f3a2a3b48))
+- remove unnecessary string length limit for env var rendering ([#8110](https://github.com/artef/artef/issues/8110)) ([40a6b09](https://github.com/artef/artef/commit/40a6b091370974e44bbba31eaa7f7b9e8cad53ac))
 
-## [0.121.0](https://github.com/promptfoo/promptfoo/compare/0.120.27...0.121.0) (2026-03-09)
+## [0.121.1](https://github.com/artef/artef/compare/0.121.0...0.121.1) (2026-03-09)
+
+### Bug Fixes
+
+- **providers:** support newer opencode sdk api ([#8060](https://github.com/artef/artef/issues/8060)) ([7ec80b2](https://github.com/artef/artef/commit/7ec80b2e173dc99438002c8f5d16feb7b6643aa1))
+
+## [0.121.0](https://github.com/artef/artef/compare/0.120.27...0.121.0) (2026-03-09)
 
 ### ⚠ BREAKING CHANGES
 
-- **providers:** resolve relative config paths against config dir in claude-agent-sdk ([#8030](https://github.com/promptfoo/promptfoo/issues/8030))
+- **providers:** resolve relative config paths against config dir in claude-agent-sdk ([#8030](https://github.com/artef/artef/issues/8030))
 
 ### Features
 
-- **redteam:** generalize insurance plugins for all insurance types ([#8002](https://github.com/promptfoo/promptfoo/issues/8002)) ([945c3bc](https://github.com/promptfoo/promptfoo/commit/945c3bc6725ca8bc7369f7d0efed6f8394da98fa))
-- stop multi-turn redteam attacks when target closes thread ([#7942](https://github.com/promptfoo/promptfoo/issues/7942)) ([d849923](https://github.com/promptfoo/promptfoo/commit/d84992322a2442f6d1a71a744f297d5e808ab770))
+- **redteam:** generalize insurance plugins for all insurance types ([#8002](https://github.com/artef/artef/issues/8002)) ([945c3bc](https://github.com/artef/artef/commit/945c3bc6725ca8bc7369f7d0efed6f8394da98fa))
+- stop multi-turn redteam attacks when target closes thread ([#7942](https://github.com/artef/artef/issues/7942)) ([d849923](https://github.com/artef/artef/commit/d84992322a2442f6d1a71a744f297d5e808ab770))
 
 ### Bug Fixes
 
-- **app:** enforce strategy config limits via onChange clamping ([#8045](https://github.com/promptfoo/promptfoo/issues/8045)) ([9b8920d](https://github.com/promptfoo/promptfoo/commit/9b8920d97a3a8cd4091e7e5b6ff20efff74e2ded))
-- **app:** restore composite jailbreak strategy visibility ([#8013](https://github.com/promptfoo/promptfoo/issues/8013)) ([a34ec66](https://github.com/promptfoo/promptfoo/commit/a34ec664ece825532bcd14c31b79ddf0afab9dbc))
-- **ci:** skip email verification API call in CI environments ([#8034](https://github.com/promptfoo/promptfoo/issues/8034)) ([594a4a7](https://github.com/promptfoo/promptfoo/commit/594a4a7ad46203d2c5d3ac833c25ecfd14295847))
-- **cli:** cap agent fs reads before loading file ([#8050](https://github.com/promptfoo/promptfoo/issues/8050)) ([d39c41b](https://github.com/promptfoo/promptfoo/commit/d39c41b89262fafeced2778801e2e637eab8d19a))
-- **deps:** update dependency @opencode-ai/sdk to ^1.2.19 ([#8052](https://github.com/promptfoo/promptfoo/issues/8052)) ([995f94c](https://github.com/promptfoo/promptfoo/commit/995f94cef32c953de83d3e35cd273c09fad34472))
-- **deps:** update dependency fast-xml-parser to ^5.4.2 ([#8042](https://github.com/promptfoo/promptfoo/issues/8042)) ([8be46a5](https://github.com/promptfoo/promptfoo/commit/8be46a5b096092cf68ef1cf989e706b461807d0c))
-- **deps:** update opentelemetry ([#8056](https://github.com/promptfoo/promptfoo/issues/8056)) ([6b4ed86](https://github.com/promptfoo/promptfoo/commit/6b4ed863686fa49e922d697bbf725555cd8adaa0))
-- make quoted comma parsing consistent across contains assertions ([#8041](https://github.com/promptfoo/promptfoo/issues/8041)) ([3c1ad55](https://github.com/promptfoo/promptfoo/commit/3c1ad55811347febe7479b4bfb77887b7dc5003e))
-- **providers:** resolve relative config paths against config dir in claude-agent-sdk ([#8030](https://github.com/promptfoo/promptfoo/issues/8030)) ([2e8a976](https://github.com/promptfoo/promptfoo/commit/2e8a9763ee2e663473f915b18417abdbaf408634))
+- **app:** enforce strategy config limits via onChange clamping ([#8045](https://github.com/artef/artef/issues/8045)) ([9b8920d](https://github.com/artef/artef/commit/9b8920d97a3a8cd4091e7e5b6ff20efff74e2ded))
+- **app:** restore composite jailbreak strategy visibility ([#8013](https://github.com/artef/artef/issues/8013)) ([a34ec66](https://github.com/artef/artef/commit/a34ec664ece825532bcd14c31b79ddf0afab9dbc))
+- **ci:** skip email verification API call in CI environments ([#8034](https://github.com/artef/artef/issues/8034)) ([594a4a7](https://github.com/artef/artef/commit/594a4a7ad46203d2c5d3ac833c25ecfd14295847))
+- **cli:** cap agent fs reads before loading file ([#8050](https://github.com/artef/artef/issues/8050)) ([d39c41b](https://github.com/artef/artef/commit/d39c41b89262fafeced2778801e2e637eab8d19a))
+- **deps:** update dependency @opencode-ai/sdk to ^1.2.19 ([#8052](https://github.com/artef/artef/issues/8052)) ([995f94c](https://github.com/artef/artef/commit/995f94cef32c953de83d3e35cd273c09fad34472))
+- **deps:** update dependency fast-xml-parser to ^5.4.2 ([#8042](https://github.com/artef/artef/issues/8042)) ([8be46a5](https://github.com/artef/artef/commit/8be46a5b096092cf68ef1cf989e706b461807d0c))
+- **deps:** update opentelemetry ([#8056](https://github.com/artef/artef/issues/8056)) ([6b4ed86](https://github.com/artef/artef/commit/6b4ed863686fa49e922d697bbf725555cd8adaa0))
+- make quoted comma parsing consistent across contains assertions ([#8041](https://github.com/artef/artef/issues/8041)) ([3c1ad55](https://github.com/artef/artef/commit/3c1ad55811347febe7479b4bfb77887b7dc5003e))
+- **providers:** resolve relative config paths against config dir in claude-agent-sdk ([#8030](https://github.com/artef/artef/issues/8030)) ([2e8a976](https://github.com/artef/artef/commit/2e8a9763ee2e663473f915b18417abdbaf408634))
 
-## [0.120.27](https://github.com/promptfoo/promptfoo/compare/0.120.26...0.120.27) (2026-03-06)
+## [0.120.27](https://github.com/artef/artef/compare/0.120.26...0.120.27) (2026-03-06)
 
 ### Features
 
-- add promptfoo-evals agent skill for Claude Code and Codex ([#7985](https://github.com/promptfoo/promptfoo/issues/7985)) ([71160fe](https://github.com/promptfoo/promptfoo/commit/71160fea6aaa3471de9c6027b929830bdd7acfb0))
-- **app:** add media library page ([#6901](https://github.com/promptfoo/promptfoo/issues/6901)) ([4eba85a](https://github.com/promptfoo/promptfoo/commit/4eba85aac7a3103a4edbf40c834dd23301160afe))
-- **code-scan:** add retry with exponential backoff for capacity errors ([#8016](https://github.com/promptfoo/promptfoo/issues/8016)) ([8d263e4](https://github.com/promptfoo/promptfoo/commit/8d263e47118f99a12289debc9ff746c43660fc96))
-- dod ethical ai mappings ([#7948](https://github.com/promptfoo/promptfoo/issues/7948)) ([4e2c897](https://github.com/promptfoo/promptfoo/commit/4e2c897c62936ea896ecfc2ba2864739eeb0191f))
-- **eval-creator:** add yaml download and cli callout ([#7932](https://github.com/promptfoo/promptfoo/issues/7932)) ([c73c002](https://github.com/promptfoo/promptfoo/commit/c73c002fdd45bc116537c74711010877b05584a0))
-- **eval:** detect missing API keys before running evaluation ([#7937](https://github.com/promptfoo/promptfoo/issues/7937)) ([d2b7d61](https://github.com/promptfoo/promptfoo/commit/d2b7d61f2a68834e525a1d4bb6e6fa39d03318ae))
-- **eval:** disable auto-share by default unless paid cloud customer ([#7982](https://github.com/promptfoo/promptfoo/issues/7982)) ([9df2250](https://github.com/promptfoo/promptfoo/commit/9df2250611e18218fd5a12eade8958bdbfafdaf2))
-- handle email_verification_required in redteam prechecks (ENG-1531) ([#7979](https://github.com/promptfoo/promptfoo/issues/7979)) ([2c66d1b](https://github.com/promptfoo/promptfoo/commit/2c66d1b6ec4627323b5ea764121b22d8d77ac7c0))
-- **providers/google:** add Nano Banana 2 image model support ([#7884](https://github.com/promptfoo/promptfoo/issues/7884)) ([0dba833](https://github.com/promptfoo/promptfoo/commit/0dba833169ce94c2ca7ea94cf14eb9b24b75663f))
-- **providers:** add gpt-5.3 and gpt-5.2 aliases ([#7965](https://github.com/promptfoo/promptfoo/issues/7965)) ([2001eda](https://github.com/promptfoo/promptfoo/commit/2001edafb90d2e75bc12ada5864113abb1a56893))
-- **providers:** add gpt-5.4 and gpt-5.4-pro aliases ([#8008](https://github.com/promptfoo/promptfoo/issues/8008)) ([3d9826e](https://github.com/promptfoo/promptfoo/commit/3d9826e93193f4cb90756655f0628c54d0648616))
-- **providers:** add gpt-5.4 model support ([#8009](https://github.com/promptfoo/promptfoo/issues/8009)) ([968ca35](https://github.com/promptfoo/promptfoo/commit/968ca35c73e6ec3289e4eccae0a4f2c12665f02a))
-- **providers:** add ModelsLab image generation provider ([#7925](https://github.com/promptfoo/promptfoo/issues/7925)) ([df5f07a](https://github.com/promptfoo/promptfoo/commit/df5f07af00361541730e3bb64a8bff8d54f3fce0))
-- **providers:** add Vertex AI cost calculation for Gemini models ([#7490](https://github.com/promptfoo/promptfoo/issues/7490)) ([f2b7de4](https://github.com/promptfoo/promptfoo/commit/f2b7de4ce826a89af006edc61f9ddb6b2eec3397))
-- **providers:** expose all choices in metadata when n &gt; 1 ([#8007](https://github.com/promptfoo/promptfoo/issues/8007)) ([d8f4239](https://github.com/promptfoo/promptfoo/commit/d8f4239aba627d0986673490a5c28da8d0ea0c59))
-- **providers:** rewrite QuiverAI for native SVG API ([#7951](https://github.com/promptfoo/promptfoo/issues/7951)) ([f76ffb5](https://github.com/promptfoo/promptfoo/commit/f76ffb567c3d416d43d95d641bdca1ae5ebc7690))
-- **redteam:** add monthly probe limit for non-cloud users ([#7966](https://github.com/promptfoo/promptfoo/issues/7966)) ([ef8ff9c](https://github.com/promptfoo/promptfoo/commit/ef8ff9cf75908466cedda5378e96060957ba9db1))
-- **redteam:** rate-limit expensive strategies for unauthenticated users ([#8005](https://github.com/promptfoo/promptfoo/issues/8005)) ([662a8bc](https://github.com/promptfoo/promptfoo/commit/662a8bc0584ad3708676fa65fad35b03f8ca51d3))
-- **targetLink:** add HTTP probe, filesystem ops, and error classification types ([#7981](https://github.com/promptfoo/promptfoo/issues/7981)) ([e988d56](https://github.com/promptfoo/promptfoo/commit/e988d569685e1f1e8d277b70f3060d330f77c481))
+- add artef-evals agent skill for Claude Code and Codex ([#7985](https://github.com/artef/artef/issues/7985)) ([71160fe](https://github.com/artef/artef/commit/71160fea6aaa3471de9c6027b929830bdd7acfb0))
+- **app:** add media library page ([#6901](https://github.com/artef/artef/issues/6901)) ([4eba85a](https://github.com/artef/artef/commit/4eba85aac7a3103a4edbf40c834dd23301160afe))
+- **code-scan:** add retry with exponential backoff for capacity errors ([#8016](https://github.com/artef/artef/issues/8016)) ([8d263e4](https://github.com/artef/artef/commit/8d263e47118f99a12289debc9ff746c43660fc96))
+- dod ethical ai mappings ([#7948](https://github.com/artef/artef/issues/7948)) ([4e2c897](https://github.com/artef/artef/commit/4e2c897c62936ea896ecfc2ba2864739eeb0191f))
+- **eval-creator:** add yaml download and cli callout ([#7932](https://github.com/artef/artef/issues/7932)) ([c73c002](https://github.com/artef/artef/commit/c73c002fdd45bc116537c74711010877b05584a0))
+- **eval:** detect missing API keys before running evaluation ([#7937](https://github.com/artef/artef/issues/7937)) ([d2b7d61](https://github.com/artef/artef/commit/d2b7d61f2a68834e525a1d4bb6e6fa39d03318ae))
+- **eval:** disable auto-share by default unless paid cloud customer ([#7982](https://github.com/artef/artef/issues/7982)) ([9df2250](https://github.com/artef/artef/commit/9df2250611e18218fd5a12eade8958bdbfafdaf2))
+- handle email_verification_required in redteam prechecks (ENG-1531) ([#7979](https://github.com/artef/artef/issues/7979)) ([2c66d1b](https://github.com/artef/artef/commit/2c66d1b6ec4627323b5ea764121b22d8d77ac7c0))
+- **providers/google:** add Nano Banana 2 image model support ([#7884](https://github.com/artef/artef/issues/7884)) ([0dba833](https://github.com/artef/artef/commit/0dba833169ce94c2ca7ea94cf14eb9b24b75663f))
+- **providers:** add gpt-5.3 and gpt-5.2 aliases ([#7965](https://github.com/artef/artef/issues/7965)) ([2001eda](https://github.com/artef/artef/commit/2001edafb90d2e75bc12ada5864113abb1a56893))
+- **providers:** add gpt-5.4 and gpt-5.4-pro aliases ([#8008](https://github.com/artef/artef/issues/8008)) ([3d9826e](https://github.com/artef/artef/commit/3d9826e93193f4cb90756655f0628c54d0648616))
+- **providers:** add gpt-5.4 model support ([#8009](https://github.com/artef/artef/issues/8009)) ([968ca35](https://github.com/artef/artef/commit/968ca35c73e6ec3289e4eccae0a4f2c12665f02a))
+- **providers:** add ModelsLab image generation provider ([#7925](https://github.com/artef/artef/issues/7925)) ([df5f07a](https://github.com/artef/artef/commit/df5f07af00361541730e3bb64a8bff8d54f3fce0))
+- **providers:** add Vertex AI cost calculation for Gemini models ([#7490](https://github.com/artef/artef/issues/7490)) ([f2b7de4](https://github.com/artef/artef/commit/f2b7de4ce826a89af006edc61f9ddb6b2eec3397))
+- **providers:** expose all choices in metadata when n &gt; 1 ([#8007](https://github.com/artef/artef/issues/8007)) ([d8f4239](https://github.com/artef/artef/commit/d8f4239aba627d0986673490a5c28da8d0ea0c59))
+- **providers:** rewrite QuiverAI for native SVG API ([#7951](https://github.com/artef/artef/issues/7951)) ([f76ffb5](https://github.com/artef/artef/commit/f76ffb567c3d416d43d95d641bdca1ae5ebc7690))
+- **redteam:** add monthly probe limit for non-cloud users ([#7966](https://github.com/artef/artef/issues/7966)) ([ef8ff9c](https://github.com/artef/artef/commit/ef8ff9cf75908466cedda5378e96060957ba9db1))
+- **redteam:** rate-limit expensive strategies for unauthenticated users ([#8005](https://github.com/artef/artef/issues/8005)) ([662a8bc](https://github.com/artef/artef/commit/662a8bc0584ad3708676fa65fad35b03f8ca51d3))
+- **targetLink:** add HTTP probe, filesystem ops, and error classification types ([#7981](https://github.com/artef/artef/issues/7981)) ([e988d56](https://github.com/artef/artef/commit/e988d569685e1f1e8d277b70f3060d330f77c481))
 
 ### Bug Fixes
 
-- **app:** deduplicate image outputs in eval cell ([#8012](https://github.com/promptfoo/promptfoo/issues/8012)) ([71a1cd4](https://github.com/promptfoo/promptfoo/commit/71a1cd4855706593a0d926eb5922cb09861f25f0))
-- **app:** improve data table expanded rows ([#8015](https://github.com/promptfoo/promptfoo/issues/8015)) ([ead520b](https://github.com/promptfoo/promptfoo/commit/ead520b0776ba1afbef5b6b402a0ea62da17eec2))
-- **app:** restore default border color for Tailwind v4 ([#7920](https://github.com/promptfoo/promptfoo/issues/7920)) ([e17430e](https://github.com/promptfoo/promptfoo/commit/e17430e24f55ea712c5b6efe0ba3f673698f898c))
-- **ci:** use npm ci for docs and site-tests jobs to fix serialize-javascript override ([#7952](https://github.com/promptfoo/promptfoo/issues/7952)) ([013f90d](https://github.com/promptfoo/promptfoo/commit/013f90d4b523f2a9dbcf7f1baec2724011d19953))
-- **cloud:** strip heavy fields from permission check payload ([#7839](https://github.com/promptfoo/promptfoo/issues/7839)) ([aba832d](https://github.com/promptfoo/promptfoo/commit/aba832df29cc3a697047dc8df5b78f56e3f3f971))
-- **deps:** override dompurify to &gt;=3.3.2 to resolve XSS CVE in monaco-editor ([#8026](https://github.com/promptfoo/promptfoo/issues/8026)) ([fc7a3a8](https://github.com/promptfoo/promptfoo/commit/fc7a3a808de05e00039fe6bbdea753711b59316e))
-- **deps:** resolve all npm audit vulnerabilities via overrides ([#7947](https://github.com/promptfoo/promptfoo/issues/7947)) ([0b94778](https://github.com/promptfoo/promptfoo/commit/0b94778e95aece10e9ce2dced40ea29a77a6bc49))
-- **deps:** update dependency @actions/github to v9 ([#7432](https://github.com/promptfoo/promptfoo/issues/7432)) ([efa1625](https://github.com/promptfoo/promptfoo/commit/efa16252995c847a99e6b4998c5663279c1d0bb2))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.3.0 ([#8010](https://github.com/promptfoo/promptfoo/issues/8010)) ([aa25f9b](https://github.com/promptfoo/promptfoo/commit/aa25f9b0754cad34aa9f1024fb59181b035fbe06))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.3.1 ([#8011](https://github.com/promptfoo/promptfoo/issues/8011)) ([82eaaa3](https://github.com/promptfoo/promptfoo/commit/82eaaa3e279e4dc8fcd91db4a8ad0d0ecec070d2))
-- **deps:** update dependency @opentelemetry/semantic-conventions to ^1.40.0 ([#7957](https://github.com/promptfoo/promptfoo/issues/7957)) ([ece8f61](https://github.com/promptfoo/promptfoo/commit/ece8f61a7cd896d1fb347d970065e1a4f85153b3))
-- **deps:** update dependency minimatch to ^10.2.4 ([#7939](https://github.com/promptfoo/promptfoo/issues/7939)) ([639301f](https://github.com/promptfoo/promptfoo/commit/639301fcdbc252f27100e308d65218c28f202006))
-- **deps:** update dependency simple-git to ^3.32.3 ([#7954](https://github.com/promptfoo/promptfoo/issues/7954)) ([1d62387](https://github.com/promptfoo/promptfoo/commit/1d62387874920f82011a6978fa8bd68b7f70b8ca))
-- **deps:** update github actions to v3 (major) ([#7946](https://github.com/promptfoo/promptfoo/issues/7946)) ([2a6600d](https://github.com/promptfoo/promptfoo/commit/2a6600d9d1317bd2763ff2e2bd006b1e0bb09aaf))
-- **deps:** update openai packages ([#7928](https://github.com/promptfoo/promptfoo/issues/7928)) ([9facd14](https://github.com/promptfoo/promptfoo/commit/9facd1494006001bdfb69dbd23673f19c20f44c5))
-- **eval:** improve eval setup web UI ([#8000](https://github.com/promptfoo/promptfoo/issues/8000)) ([d2c166d](https://github.com/promptfoo/promptfoo/commit/d2c166df4faea868629a425a9550db03ab316de4))
-- **eval:** pass dynamic prompt config to providers ([#7970](https://github.com/promptfoo/promptfoo/issues/7970)) ([8a75163](https://github.com/promptfoo/promptfoo/commit/8a75163b233d43c5a81ab11547c9704d1670b95f))
-- **matchers:** handle missing context-faithfulness verdicts ([#7991](https://github.com/promptfoo/promptfoo/issues/7991)) ([242486c](https://github.com/promptfoo/promptfoo/commit/242486c73d9a5d26fb181643fe7ebc0587b7fa51))
-- **output:** redact exported config secrets and clarify docs ([#7974](https://github.com/promptfoo/promptfoo/issues/7974)) ([1e0a48b](https://github.com/promptfoo/promptfoo/commit/1e0a48b6e8d6d66a8cb6d0cd66f86eb3beb636b9))
-- **providers:** avoid bedrock http2 runtime failures ([#7993](https://github.com/promptfoo/promptfoo/issues/7993)) ([76e256c](https://github.com/promptfoo/promptfoo/commit/76e256c8df8c4a7caf56f37b308ab192015f4ef5))
-- **providers:** guard top_p for reasoning models, remove dead code, update UI defaults ([#7963](https://github.com/promptfoo/promptfoo/issues/7963)) ([cec3ac0](https://github.com/promptfoo/promptfoo/commit/cec3ac0c95fda61ffbe8e87f03775a6b51e25753))
-- **providers:** handle system messages in Vertex Claude API calls ([#7902](https://github.com/promptfoo/promptfoo/issues/7902)) ([b2116a5](https://github.com/promptfoo/promptfoo/commit/b2116a5ae377ced6ea2394957f33c8ace9308f5e))
-- **providers:** improve Vertex Claude system message handling ([#7977](https://github.com/promptfoo/promptfoo/issues/7977)) ([45c2de2](https://github.com/promptfoo/promptfoo/commit/45c2de2ee103438f5f5fe5f874b7899cdf3dc1bc))
-- **providers:** reduce google ADC metadata lookup warnings ([#7992](https://github.com/promptfoo/promptfoo/issues/7992)) ([f31e779](https://github.com/promptfoo/promptfoo/commit/f31e7793cc9fd2ed67969dbd68a28472493b4463))
-- **providers:** resolve env var placeholders in file:// provider references ([#7997](https://github.com/promptfoo/promptfoo/issues/7997)) ([5397dd6](https://github.com/promptfoo/promptfoo/commit/5397dd6470ba55d36a74a0e152ab9984fa419b0b))
-- **redteam:** add anti-hallucination guardrails to policy grader rubric ([#7829](https://github.com/promptfoo/promptfoo/issues/7829)) ([cf04414](https://github.com/promptfoo/promptfoo/commit/cf044140479ecd85f5fc6ebf8810ac76d7c07625))
-- **redteam:** clarify hydra/meta error when OPENAI_API_KEY blocks remote generation ([#8020](https://github.com/promptfoo/promptfoo/issues/8020)) ([21eae98](https://github.com/promptfoo/promptfoo/commit/21eae985e2bec2449f58850d335e23daf7c72923))
-- **redteam:** exclude default strategies from OSS setup sidebar count ([#7989](https://github.com/promptfoo/promptfoo/issues/7989)) ([8bf49cf](https://github.com/promptfoo/promptfoo/commit/8bf49cfee8f24ad741abda11a5edde67de9e342d))
-- **redteam:** honor config.model for openai:chat ([#7971](https://github.com/promptfoo/promptfoo/issues/7971)) ([a5cc127](https://github.com/promptfoo/promptfoo/commit/a5cc1274e43899c594933b82d6e6c3573bb43e57))
-- **redteam:** propagate sessionId to context.vars in hydra stateful mode ([#7960](https://github.com/promptfoo/promptfoo/issues/7960)) ([554c305](https://github.com/promptfoo/promptfoo/commit/554c30527edf50956d76e6ac5e0f28641fb48b79))
-- **redteam:** show pointer cursor on setup tabs and filters ([#7929](https://github.com/promptfoo/promptfoo/issues/7929)) ([bf43419](https://github.com/promptfoo/promptfoo/commit/bf43419a27581485f92acd6e7de333d55712ca86))
-- **skill:** correct plugin structure, transform syntax, and provider format ([#7986](https://github.com/promptfoo/promptfoo/issues/7986)) ([592fca9](https://github.com/promptfoo/promptfoo/commit/592fca976e50a99071f43e2d5d0e3f4de95f859e))
-- **ui:** wrap long log lines in log viewer ([#8001](https://github.com/promptfoo/promptfoo/issues/8001)) ([98c35be](https://github.com/promptfoo/promptfoo/commit/98c35be3822911e96778c681c8a76a831ccbb40b))
+- **app:** deduplicate image outputs in eval cell ([#8012](https://github.com/artef/artef/issues/8012)) ([71a1cd4](https://github.com/artef/artef/commit/71a1cd4855706593a0d926eb5922cb09861f25f0))
+- **app:** improve data table expanded rows ([#8015](https://github.com/artef/artef/issues/8015)) ([ead520b](https://github.com/artef/artef/commit/ead520b0776ba1afbef5b6b402a0ea62da17eec2))
+- **app:** restore default border color for Tailwind v4 ([#7920](https://github.com/artef/artef/issues/7920)) ([e17430e](https://github.com/artef/artef/commit/e17430e24f55ea712c5b6efe0ba3f673698f898c))
+- **ci:** use npm ci for docs and site-tests jobs to fix serialize-javascript override ([#7952](https://github.com/artef/artef/issues/7952)) ([013f90d](https://github.com/artef/artef/commit/013f90d4b523f2a9dbcf7f1baec2724011d19953))
+- **cloud:** strip heavy fields from permission check payload ([#7839](https://github.com/artef/artef/issues/7839)) ([aba832d](https://github.com/artef/artef/commit/aba832df29cc3a697047dc8df5b78f56e3f3f971))
+- **deps:** override dompurify to &gt;=3.3.2 to resolve XSS CVE in monaco-editor ([#8026](https://github.com/artef/artef/issues/8026)) ([fc7a3a8](https://github.com/artef/artef/commit/fc7a3a808de05e00039fe6bbdea753711b59316e))
+- **deps:** resolve all npm audit vulnerabilities via overrides ([#7947](https://github.com/artef/artef/issues/7947)) ([0b94778](https://github.com/artef/artef/commit/0b94778e95aece10e9ce2dced40ea29a77a6bc49))
+- **deps:** update dependency @actions/github to v9 ([#7432](https://github.com/artef/artef/issues/7432)) ([efa1625](https://github.com/artef/artef/commit/efa16252995c847a99e6b4998c5663279c1d0bb2))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.3.0 ([#8010](https://github.com/artef/artef/issues/8010)) ([aa25f9b](https://github.com/artef/artef/commit/aa25f9b0754cad34aa9f1024fb59181b035fbe06))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.3.1 ([#8011](https://github.com/artef/artef/issues/8011)) ([82eaaa3](https://github.com/artef/artef/commit/82eaaa3e279e4dc8fcd91db4a8ad0d0ecec070d2))
+- **deps:** update dependency @opentelemetry/semantic-conventions to ^1.40.0 ([#7957](https://github.com/artef/artef/issues/7957)) ([ece8f61](https://github.com/artef/artef/commit/ece8f61a7cd896d1fb347d970065e1a4f85153b3))
+- **deps:** update dependency minimatch to ^10.2.4 ([#7939](https://github.com/artef/artef/issues/7939)) ([639301f](https://github.com/artef/artef/commit/639301fcdbc252f27100e308d65218c28f202006))
+- **deps:** update dependency simple-git to ^3.32.3 ([#7954](https://github.com/artef/artef/issues/7954)) ([1d62387](https://github.com/artef/artef/commit/1d62387874920f82011a6978fa8bd68b7f70b8ca))
+- **deps:** update github actions to v3 (major) ([#7946](https://github.com/artef/artef/issues/7946)) ([2a6600d](https://github.com/artef/artef/commit/2a6600d9d1317bd2763ff2e2bd006b1e0bb09aaf))
+- **deps:** update openai packages ([#7928](https://github.com/artef/artef/issues/7928)) ([9facd14](https://github.com/artef/artef/commit/9facd1494006001bdfb69dbd23673f19c20f44c5))
+- **eval:** improve eval setup web UI ([#8000](https://github.com/artef/artef/issues/8000)) ([d2c166d](https://github.com/artef/artef/commit/d2c166df4faea868629a425a9550db03ab316de4))
+- **eval:** pass dynamic prompt config to providers ([#7970](https://github.com/artef/artef/issues/7970)) ([8a75163](https://github.com/artef/artef/commit/8a75163b233d43c5a81ab11547c9704d1670b95f))
+- **matchers:** handle missing context-faithfulness verdicts ([#7991](https://github.com/artef/artef/issues/7991)) ([242486c](https://github.com/artef/artef/commit/242486c73d9a5d26fb181643fe7ebc0587b7fa51))
+- **output:** redact exported config secrets and clarify docs ([#7974](https://github.com/artef/artef/issues/7974)) ([1e0a48b](https://github.com/artef/artef/commit/1e0a48b6e8d6d66a8cb6d0cd66f86eb3beb636b9))
+- **providers:** avoid bedrock http2 runtime failures ([#7993](https://github.com/artef/artef/issues/7993)) ([76e256c](https://github.com/artef/artef/commit/76e256c8df8c4a7caf56f37b308ab192015f4ef5))
+- **providers:** guard top_p for reasoning models, remove dead code, update UI defaults ([#7963](https://github.com/artef/artef/issues/7963)) ([cec3ac0](https://github.com/artef/artef/commit/cec3ac0c95fda61ffbe8e87f03775a6b51e25753))
+- **providers:** handle system messages in Vertex Claude API calls ([#7902](https://github.com/artef/artef/issues/7902)) ([b2116a5](https://github.com/artef/artef/commit/b2116a5ae377ced6ea2394957f33c8ace9308f5e))
+- **providers:** improve Vertex Claude system message handling ([#7977](https://github.com/artef/artef/issues/7977)) ([45c2de2](https://github.com/artef/artef/commit/45c2de2ee103438f5f5fe5f874b7899cdf3dc1bc))
+- **providers:** reduce google ADC metadata lookup warnings ([#7992](https://github.com/artef/artef/issues/7992)) ([f31e779](https://github.com/artef/artef/commit/f31e7793cc9fd2ed67969dbd68a28472493b4463))
+- **providers:** resolve env var placeholders in file:// provider references ([#7997](https://github.com/artef/artef/issues/7997)) ([5397dd6](https://github.com/artef/artef/commit/5397dd6470ba55d36a74a0e152ab9984fa419b0b))
+- **redteam:** add anti-hallucination guardrails to policy grader rubric ([#7829](https://github.com/artef/artef/issues/7829)) ([cf04414](https://github.com/artef/artef/commit/cf044140479ecd85f5fc6ebf8810ac76d7c07625))
+- **redteam:** clarify hydra/meta error when OPENAI_API_KEY blocks remote generation ([#8020](https://github.com/artef/artef/issues/8020)) ([21eae98](https://github.com/artef/artef/commit/21eae985e2bec2449f58850d335e23daf7c72923))
+- **redteam:** exclude default strategies from OSS setup sidebar count ([#7989](https://github.com/artef/artef/issues/7989)) ([8bf49cf](https://github.com/artef/artef/commit/8bf49cfee8f24ad741abda11a5edde67de9e342d))
+- **redteam:** honor config.model for openai:chat ([#7971](https://github.com/artef/artef/issues/7971)) ([a5cc127](https://github.com/artef/artef/commit/a5cc1274e43899c594933b82d6e6c3573bb43e57))
+- **redteam:** propagate sessionId to context.vars in hydra stateful mode ([#7960](https://github.com/artef/artef/issues/7960)) ([554c305](https://github.com/artef/artef/commit/554c30527edf50956d76e6ac5e0f28641fb48b79))
+- **redteam:** show pointer cursor on setup tabs and filters ([#7929](https://github.com/artef/artef/issues/7929)) ([bf43419](https://github.com/artef/artef/commit/bf43419a27581485f92acd6e7de333d55712ca86))
+- **skill:** correct plugin structure, transform syntax, and provider format ([#7986](https://github.com/artef/artef/issues/7986)) ([592fca9](https://github.com/artef/artef/commit/592fca976e50a99071f43e2d5d0e3f4de95f859e))
+- **ui:** wrap long log lines in log viewer ([#8001](https://github.com/artef/artef/issues/8001)) ([98c35be](https://github.com/artef/artef/commit/98c35be3822911e96778c681c8a76a831ccbb40b))
 
-## [0.120.26](https://github.com/promptfoo/promptfoo/compare/0.120.25...0.120.26) (2026-03-03)
+## [0.120.26](https://github.com/artef/artef/compare/0.120.25...0.120.26) (2026-03-03)
 
 ### Features
 
-- Add financial:sox-compliance plugin ([#7780](https://github.com/promptfoo/promptfoo/issues/7780)) ([b7cfc8e](https://github.com/promptfoo/promptfoo/commit/b7cfc8e47c5594a498c8a472460896424e5ada52))
-- add model-identification plugin ([#7883](https://github.com/promptfoo/promptfoo/issues/7883)) ([a2ac7c6](https://github.com/promptfoo/promptfoo/commit/a2ac7c6139aaed061f41fd7ab83c7562e1672068))
-- **app:** add href support to Chip component ([#7783](https://github.com/promptfoo/promptfoo/issues/7783)) ([983970a](https://github.com/promptfoo/promptfoo/commit/983970ab8f9ed0731f3c0dcac27f2f76ce2ce0d0))
-- **providers:** add Gemini 3.1 Pro support ([#7779](https://github.com/promptfoo/promptfoo/issues/7779)) ([e41c203](https://github.com/promptfoo/promptfoo/commit/e41c203bb53ac0e9dc02b1bcd9682c3044b87c57))
-- **providers:** expose tool calls in Claude Agent SDK response metadata ([#7790](https://github.com/promptfoo/promptfoo/issues/7790)) ([d1a2d28](https://github.com/promptfoo/promptfoo/commit/d1a2d289bb5154a5dd6b412ce03146ed760d33a0))
-- **providers:** support LITELLM_API_BASE env var for base URL override ([#7862](https://github.com/promptfoo/promptfoo/issues/7862)) ([9aa543e](https://github.com/promptfoo/promptfoo/commit/9aa543e8fd30c4a3209d30e6930758498c34c7a8))
-- **redteam:** add Zod validation for redteam routes ([#7811](https://github.com/promptfoo/promptfoo/issues/7811)) ([85e4c48](https://github.com/promptfoo/promptfoo/commit/85e4c4815541482d72261e1d7d6a8b6d9e172381))
-- **redteam:** improve eval header, print styles, and report navigation ([#7613](https://github.com/promptfoo/promptfoo/issues/7613)) ([3beaca4](https://github.com/promptfoo/promptfoo/commit/3beaca4c4248df31f6f6f15c4a869d08a23533e1))
-- **report:** add toggle for untested framework plugins ([#7770](https://github.com/promptfoo/promptfoo/issues/7770)) ([63d803c](https://github.com/promptfoo/promptfoo/commit/63d803c503be0ce842bc838dac901dd8db6c6823))
-- **server:** add CSRF protection middleware ([#7840](https://github.com/promptfoo/promptfoo/issues/7840)) ([a574489](https://github.com/promptfoo/promptfoo/commit/a5744892efeb7980934d15d97b1895d792d43b3b))
-- **server:** add Zod validation for eval, user, and redteam routes ([#7817](https://github.com/promptfoo/promptfoo/issues/7817)) ([21948ec](https://github.com/promptfoo/promptfoo/commit/21948ec0b9fad283384967b9a09d49d2d106d1c7))
-- **server:** add Zod validation for model audit routes ([#7799](https://github.com/promptfoo/promptfoo/issues/7799)) ([b441654](https://github.com/promptfoo/promptfoo/commit/b4416540a2e7edb0b1362f17073635c9f6a38c63))
-- **server:** add Zod validation for provider routes ([#7814](https://github.com/promptfoo/promptfoo/issues/7814)) ([27e0fc3](https://github.com/promptfoo/promptfoo/commit/27e0fc38bb2e1f8f3d0028d5c4a17d2b08d1e388))
-- **server:** add Zod validation for traces, blobs, media, version routes ([#7805](https://github.com/promptfoo/promptfoo/issues/7805)) ([4c55f56](https://github.com/promptfoo/promptfoo/commit/4c55f5640907143b1936abb669a51cf09c5ed5d7))
-- **server:** add Zod validation schemas for config routes ([#7794](https://github.com/promptfoo/promptfoo/issues/7794)) ([c2847ff](https://github.com/promptfoo/promptfoo/commit/c2847ff735aa63c2c51db704c6d2d40475e9f4ca))
-- **server:** add Zod validation schemas for eval routes ([#7360](https://github.com/promptfoo/promptfoo/issues/7360)) ([9d7dcb1](https://github.com/promptfoo/promptfoo/commit/9d7dcb1042a1f184f95814d3e10d5cca434dc4bd))
-- **webui:** Adds server-side pagination, column-level filtering, and expandable rows to DataTable ([#7838](https://github.com/promptfoo/promptfoo/issues/7838)) ([55ad28b](https://github.com/promptfoo/promptfoo/commit/55ad28b27f0f530fefe0ce3bbc3c6e50f1f2baa2))
+- Add financial:sox-compliance plugin ([#7780](https://github.com/artef/artef/issues/7780)) ([b7cfc8e](https://github.com/artef/artef/commit/b7cfc8e47c5594a498c8a472460896424e5ada52))
+- add model-identification plugin ([#7883](https://github.com/artef/artef/issues/7883)) ([a2ac7c6](https://github.com/artef/artef/commit/a2ac7c6139aaed061f41fd7ab83c7562e1672068))
+- **app:** add href support to Chip component ([#7783](https://github.com/artef/artef/issues/7783)) ([983970a](https://github.com/artef/artef/commit/983970ab8f9ed0731f3c0dcac27f2f76ce2ce0d0))
+- **providers:** add Gemini 3.1 Pro support ([#7779](https://github.com/artef/artef/issues/7779)) ([e41c203](https://github.com/artef/artef/commit/e41c203bb53ac0e9dc02b1bcd9682c3044b87c57))
+- **providers:** expose tool calls in Claude Agent SDK response metadata ([#7790](https://github.com/artef/artef/issues/7790)) ([d1a2d28](https://github.com/artef/artef/commit/d1a2d289bb5154a5dd6b412ce03146ed760d33a0))
+- **providers:** support LITELLM_API_BASE env var for base URL override ([#7862](https://github.com/artef/artef/issues/7862)) ([9aa543e](https://github.com/artef/artef/commit/9aa543e8fd30c4a3209d30e6930758498c34c7a8))
+- **redteam:** add Zod validation for redteam routes ([#7811](https://github.com/artef/artef/issues/7811)) ([85e4c48](https://github.com/artef/artef/commit/85e4c4815541482d72261e1d7d6a8b6d9e172381))
+- **redteam:** improve eval header, print styles, and report navigation ([#7613](https://github.com/artef/artef/issues/7613)) ([3beaca4](https://github.com/artef/artef/commit/3beaca4c4248df31f6f6f15c4a869d08a23533e1))
+- **report:** add toggle for untested framework plugins ([#7770](https://github.com/artef/artef/issues/7770)) ([63d803c](https://github.com/artef/artef/commit/63d803c503be0ce842bc838dac901dd8db6c6823))
+- **server:** add CSRF protection middleware ([#7840](https://github.com/artef/artef/issues/7840)) ([a574489](https://github.com/artef/artef/commit/a5744892efeb7980934d15d97b1895d792d43b3b))
+- **server:** add Zod validation for eval, user, and redteam routes ([#7817](https://github.com/artef/artef/issues/7817)) ([21948ec](https://github.com/artef/artef/commit/21948ec0b9fad283384967b9a09d49d2d106d1c7))
+- **server:** add Zod validation for model audit routes ([#7799](https://github.com/artef/artef/issues/7799)) ([b441654](https://github.com/artef/artef/commit/b4416540a2e7edb0b1362f17073635c9f6a38c63))
+- **server:** add Zod validation for provider routes ([#7814](https://github.com/artef/artef/issues/7814)) ([27e0fc3](https://github.com/artef/artef/commit/27e0fc38bb2e1f8f3d0028d5c4a17d2b08d1e388))
+- **server:** add Zod validation for traces, blobs, media, version routes ([#7805](https://github.com/artef/artef/issues/7805)) ([4c55f56](https://github.com/artef/artef/commit/4c55f5640907143b1936abb669a51cf09c5ed5d7))
+- **server:** add Zod validation schemas for config routes ([#7794](https://github.com/artef/artef/issues/7794)) ([c2847ff](https://github.com/artef/artef/commit/c2847ff735aa63c2c51db704c6d2d40475e9f4ca))
+- **server:** add Zod validation schemas for eval routes ([#7360](https://github.com/artef/artef/issues/7360)) ([9d7dcb1](https://github.com/artef/artef/commit/9d7dcb1042a1f184f95814d3e10d5cca434dc4bd))
+- **webui:** Adds server-side pagination, column-level filtering, and expandable rows to DataTable ([#7838](https://github.com/artef/artef/issues/7838)) ([55ad28b](https://github.com/artef/artef/commit/55ad28b27f0f530fefe0ce3bbc3c6e50f1f2baa2))
 
 ### Bug Fixes
 
-- **app:** add border style lint and explicit border colors ([#7885](https://github.com/promptfoo/promptfoo/issues/7885)) ([956b160](https://github.com/promptfoo/promptfoo/commit/956b1604c4ab409b1891875980703123359cf68a))
-- **app:** remove global border-color ([#7784](https://github.com/promptfoo/promptfoo/issues/7784)) ([6540828](https://github.com/promptfoo/promptfoo/commit/6540828cb82ebb6fc419a3154eb8b2d199cc4ae5))
-- **app:** wrap DataTable body cells in overflow-hidden container ([#7833](https://github.com/promptfoo/promptfoo/issues/7833)) ([5f59f23](https://github.com/promptfoo/promptfoo/commit/5f59f2349b99fc3e554cb95935df86ed3f5ad759))
-- **deps:** update [@inquirer](https://github.com/inquirer) packages ([#7777](https://github.com/promptfoo/promptfoo/issues/7777)) ([385f899](https://github.com/promptfoo/promptfoo/commit/385f899e5d29c92df2aeae0d1f456b46ae020812))
-- **deps:** update [@inquirer](https://github.com/inquirer) packages ([#7806](https://github.com/promptfoo/promptfoo/issues/7806)) ([fb39ca6](https://github.com/promptfoo/promptfoo/commit/fb39ca6905ed7cfaaaac17188429884cf00d9744))
-- **deps:** update [@inquirer](https://github.com/inquirer) packages ([#7908](https://github.com/promptfoo/promptfoo/issues/7908)) ([94c2259](https://github.com/promptfoo/promptfoo/commit/94c2259adda887399dcf15b1a483fcbd2cc20cb6))
-- **deps:** update anthropic packages ([#7816](https://github.com/promptfoo/promptfoo/issues/7816)) ([ec860e8](https://github.com/promptfoo/promptfoo/commit/ec860e8bc6743f8679e213855f22322aab9c1927))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.77.0 ([#7830](https://github.com/promptfoo/promptfoo/issues/7830)) ([933b355](https://github.com/promptfoo/promptfoo/commit/933b355b8fc91dfab25e3b943701aa9c6b13e7e2))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.78.0 ([#7852](https://github.com/promptfoo/promptfoo/issues/7852)) ([372b05a](https://github.com/promptfoo/promptfoo/commit/372b05a170b3d949b80dcd23bfded562138c8a69))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.27.0 ([#7836](https://github.com/promptfoo/promptfoo/issues/7836)) ([279180f](https://github.com/promptfoo/promptfoo/commit/279180f05c78bdd2dd4cab722b2c6446c5632add))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.27.1 ([#7927](https://github.com/promptfoo/promptfoo/issues/7927)) ([2309593](https://github.com/promptfoo/promptfoo/commit/23095934deb499f285b0f7b55091c8216df7d874))
-- **deps:** update dependency @openai/agents to ^0.4.10 ([#7768](https://github.com/promptfoo/promptfoo/issues/7768)) ([9fe7b4c](https://github.com/promptfoo/promptfoo/commit/9fe7b4c07f25572645ea8bb4c435a716cb07c4ce))
-- **deps:** update dependency @openai/agents to ^0.4.11 ([#7818](https://github.com/promptfoo/promptfoo/issues/7818)) ([bfa837b](https://github.com/promptfoo/promptfoo/commit/bfa837bfed6808042e0e7ecaa666387e15469a1f))
-- **deps:** update dependency @openai/agents to ^0.4.12 ([#7822](https://github.com/promptfoo/promptfoo/issues/7822)) ([7f2c208](https://github.com/promptfoo/promptfoo/commit/7f2c208aae635b5b5b176377430f79f002490a8f))
-- **deps:** update dependency @openai/agents to ^0.4.13 ([#7843](https://github.com/promptfoo/promptfoo/issues/7843)) ([fb82b8b](https://github.com/promptfoo/promptfoo/commit/fb82b8b88dcb41ae5e7c44f1de314889d75c6449))
-- **deps:** update dependency @openai/agents to ^0.4.14 ([#7855](https://github.com/promptfoo/promptfoo/issues/7855)) ([c1012b4](https://github.com/promptfoo/promptfoo/commit/c1012b42a5bd6e69d522583a5182b513f6488bc9))
-- **deps:** update dependency @openai/agents to ^0.4.15 ([#7874](https://github.com/promptfoo/promptfoo/issues/7874)) ([846c6dd](https://github.com/promptfoo/promptfoo/commit/846c6dd25cf1e80de2afadecede3a79dde176e86))
-- **deps:** update dependency @openai/agents to ^0.4.9 ([#7763](https://github.com/promptfoo/promptfoo/issues/7763)) ([52dd162](https://github.com/promptfoo/promptfoo/commit/52dd16217734bd01f1b4b9a4f900023aadd473b6))
-- **deps:** update dependency @opencode-ai/sdk to ^1.2.9 ([#7819](https://github.com/promptfoo/promptfoo/issues/7819)) ([9a9cc51](https://github.com/promptfoo/promptfoo/commit/9a9cc51daa3c33cfdee001ad93b469bcff107faf))
-- **deps:** update dependency @tanstack/react-virtual to ^3.13.19 ([#7916](https://github.com/promptfoo/promptfoo/issues/7916)) ([cbc103a](https://github.com/promptfoo/promptfoo/commit/cbc103a308da22ce97177b0e98827fb48cde2be2))
-- **deps:** update dependency ajv to ^8.18.0 ([#7773](https://github.com/promptfoo/promptfoo/issues/7773)) ([7e5cac8](https://github.com/promptfoo/promptfoo/commit/7e5cac83d1d732149de8afc77d8e67363c66b22a))
-- **deps:** update dependency fast-xml-parser to ^5.3.6 ([#7769](https://github.com/promptfoo/promptfoo/issues/7769)) ([559d477](https://github.com/promptfoo/promptfoo/commit/559d4779197ba923b8a656d9e9d5b1f89e13a143))
-- **deps:** update dependency fast-xml-parser to ^5.3.7 ([#7857](https://github.com/promptfoo/promptfoo/issues/7857)) ([901945f](https://github.com/promptfoo/promptfoo/commit/901945fd7ed2eb981d1ddb39aad82030bee9d7d9))
-- **deps:** update dependency fast-xml-parser to ^5.4.1 ([#7934](https://github.com/promptfoo/promptfoo/issues/7934)) ([3b22b1d](https://github.com/promptfoo/promptfoo/commit/3b22b1dc66ac8e5c4c080b210c97ecb3eeb1a085))
-- **deps:** update dependency glob to ^13.0.4 ([#7807](https://github.com/promptfoo/promptfoo/issues/7807)) ([b0cc1d8](https://github.com/promptfoo/promptfoo/commit/b0cc1d8ab4d8deb8454f7c4cd51cdd622e3ebffa))
-- **deps:** update dependency glob to ^13.0.5 ([#7809](https://github.com/promptfoo/promptfoo/issues/7809)) ([6467da1](https://github.com/promptfoo/promptfoo/commit/6467da10adb2be77236e1a39699cc49642b0d7f0))
-- **deps:** update dependency glob to ^13.0.6 ([#7851](https://github.com/promptfoo/promptfoo/issues/7851)) ([4f1ec0f](https://github.com/promptfoo/promptfoo/commit/4f1ec0f61af440fc60d9a08d48b3f3d1a2eef06c))
-- **deps:** update dependency ink to ^6.8.0 ([#7844](https://github.com/promptfoo/promptfoo/issues/7844)) ([3e169d1](https://github.com/promptfoo/promptfoo/commit/3e169d155921b73ea6a9d93ffabe73f04e1a1f32))
-- **deps:** update dependency minimatch to ^10.2.1 ([#7808](https://github.com/promptfoo/promptfoo/issues/7808)) ([05d4226](https://github.com/promptfoo/promptfoo/commit/05d4226688d294734b75794fab5733025e52f3f2))
-- **deps:** update dependency minimatch to ^10.2.2 ([#7849](https://github.com/promptfoo/promptfoo/issues/7849)) ([052df9b](https://github.com/promptfoo/promptfoo/commit/052df9bf3ea45752c5b9d9eae8827d3b07d25b06))
-- **deps:** update dependency minimatch to ^10.2.3 ([#7930](https://github.com/promptfoo/promptfoo/issues/7930)) ([7cddccc](https://github.com/promptfoo/promptfoo/commit/7cddcccb4046805cc903ca0b008a9bedc794d98f))
-- **deps:** update dependency openai to ^6.22.0 ([#7766](https://github.com/promptfoo/promptfoo/issues/7766)) ([4e6d010](https://github.com/promptfoo/promptfoo/commit/4e6d0109db5d909cf3315cbae592c3073ae21857))
-- **deps:** update dependency simple-git to ^3.31.1 ([#7772](https://github.com/promptfoo/promptfoo/issues/7772)) ([40e7dbc](https://github.com/promptfoo/promptfoo/commit/40e7dbc3d03d1c5e6be759123796cb471dc6353f))
-- **deps:** update dependency simple-git to ^3.32.0 ([#7882](https://github.com/promptfoo/promptfoo/issues/7882)) ([92dc76e](https://github.com/promptfoo/promptfoo/commit/92dc76e4a983e8d9cba5cb9fbf3b69e94ac73def))
-- **deps:** update dependency simple-git to ^3.32.1 ([#7887](https://github.com/promptfoo/promptfoo/issues/7887)) ([027a321](https://github.com/promptfoo/promptfoo/commit/027a3210b25bd011f490f60f4bc8ff72c466cd2a))
-- **deps:** update dependency simple-git to ^3.32.2 ([#7907](https://github.com/promptfoo/promptfoo/issues/7907)) ([c9f4713](https://github.com/promptfoo/promptfoo/commit/c9f47138efbc89d95b83f808e4738f87a848219a))
-- **deps:** update dependency swiper to ^12.1.1 ([#7767](https://github.com/promptfoo/promptfoo/issues/7767)) ([225eaa0](https://github.com/promptfoo/promptfoo/commit/225eaa0d9f352ef13c11c469279ec90c3f89514f))
-- **deps:** update dependency swiper to ^12.1.2 ([#7828](https://github.com/promptfoo/promptfoo/issues/7828)) ([9dec8e7](https://github.com/promptfoo/promptfoo/commit/9dec8e798a8307a219672885621b3ab9a6980b04))
-- Dispatcher not getting set properly ([#7903](https://github.com/promptfoo/promptfoo/issues/7903)) ([d6ec797](https://github.com/promptfoo/promptfoo/commit/d6ec7973486e0ca03d5b2213580083b9f08474da))
-- **eval:** harden eval resume with serial loop abort and duplicate index detection ([#7606](https://github.com/promptfoo/promptfoo/issues/7606)) ([db05c6a](https://github.com/promptfoo/promptfoo/commit/db05c6a25c6f33ee79c557baac888aabe0feb652))
-- Preserve delimiting colons in Ruby-namespaced method names in `file://` references ([#7791](https://github.com/promptfoo/promptfoo/issues/7791)) ([1e97f3b](https://github.com/promptfoo/promptfoo/commit/1e97f3be0beec08478fc0764c8584f823bc9bb75))
-- **providers:** improve Claude Agent SDK tool call tracking ([#7821](https://github.com/promptfoo/promptfoo/issues/7821)) ([2a2749b](https://github.com/promptfoo/promptfoo/commit/2a2749bf21fa5811732dd2c8a5361482e3e24a7f))
-- **redteam:** abort scan on non-transient HTTP errors ([#7870](https://github.com/promptfoo/promptfoo/issues/7870)) ([05f4da4](https://github.com/promptfoo/promptfoo/commit/05f4da4485171df3f0cedf224d52eabf2afb210f))
-- **redteam:** align OWASP LLM04/05 labels ([#7846](https://github.com/promptfoo/promptfoo/issues/7846)) ([8f6bd03](https://github.com/promptfoo/promptfoo/commit/8f6bd03020cff69cc8252615d8e5457d929cb154))
-- **redteam:** use X icon for run cancel button ([#7865](https://github.com/promptfoo/promptfoo/issues/7865)) ([99d35ce](https://github.com/promptfoo/promptfoo/commit/99d35ce1208478ae2ed6eb3bb2ad41205123b8dc))
-- **ui:** use replace for URL search param updates to fix back button ([#7782](https://github.com/promptfoo/promptfoo/issues/7782)) ([1866835](https://github.com/promptfoo/promptfoo/commit/1866835541b285227dc556957c1ddb89f5e458eb))
-- **webui:** render inline base64 images from markdown syntax ([#7678](https://github.com/promptfoo/promptfoo/issues/7678)) ([bab239f](https://github.com/promptfoo/promptfoo/commit/bab239f78e61600b71c89617fd365846c5938302))
+- **app:** add border style lint and explicit border colors ([#7885](https://github.com/artef/artef/issues/7885)) ([956b160](https://github.com/artef/artef/commit/956b1604c4ab409b1891875980703123359cf68a))
+- **app:** remove global border-color ([#7784](https://github.com/artef/artef/issues/7784)) ([6540828](https://github.com/artef/artef/commit/6540828cb82ebb6fc419a3154eb8b2d199cc4ae5))
+- **app:** wrap DataTable body cells in overflow-hidden container ([#7833](https://github.com/artef/artef/issues/7833)) ([5f59f23](https://github.com/artef/artef/commit/5f59f2349b99fc3e554cb95935df86ed3f5ad759))
+- **deps:** update [@inquirer](https://github.com/inquirer) packages ([#7777](https://github.com/artef/artef/issues/7777)) ([385f899](https://github.com/artef/artef/commit/385f899e5d29c92df2aeae0d1f456b46ae020812))
+- **deps:** update [@inquirer](https://github.com/inquirer) packages ([#7806](https://github.com/artef/artef/issues/7806)) ([fb39ca6](https://github.com/artef/artef/commit/fb39ca6905ed7cfaaaac17188429884cf00d9744))
+- **deps:** update [@inquirer](https://github.com/inquirer) packages ([#7908](https://github.com/artef/artef/issues/7908)) ([94c2259](https://github.com/artef/artef/commit/94c2259adda887399dcf15b1a483fcbd2cc20cb6))
+- **deps:** update anthropic packages ([#7816](https://github.com/artef/artef/issues/7816)) ([ec860e8](https://github.com/artef/artef/commit/ec860e8bc6743f8679e213855f22322aab9c1927))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.77.0 ([#7830](https://github.com/artef/artef/issues/7830)) ([933b355](https://github.com/artef/artef/commit/933b355b8fc91dfab25e3b943701aa9c6b13e7e2))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.78.0 ([#7852](https://github.com/artef/artef/issues/7852)) ([372b05a](https://github.com/artef/artef/commit/372b05a170b3d949b80dcd23bfded562138c8a69))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.27.0 ([#7836](https://github.com/artef/artef/issues/7836)) ([279180f](https://github.com/artef/artef/commit/279180f05c78bdd2dd4cab722b2c6446c5632add))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.27.1 ([#7927](https://github.com/artef/artef/issues/7927)) ([2309593](https://github.com/artef/artef/commit/23095934deb499f285b0f7b55091c8216df7d874))
+- **deps:** update dependency @openai/agents to ^0.4.10 ([#7768](https://github.com/artef/artef/issues/7768)) ([9fe7b4c](https://github.com/artef/artef/commit/9fe7b4c07f25572645ea8bb4c435a716cb07c4ce))
+- **deps:** update dependency @openai/agents to ^0.4.11 ([#7818](https://github.com/artef/artef/issues/7818)) ([bfa837b](https://github.com/artef/artef/commit/bfa837bfed6808042e0e7ecaa666387e15469a1f))
+- **deps:** update dependency @openai/agents to ^0.4.12 ([#7822](https://github.com/artef/artef/issues/7822)) ([7f2c208](https://github.com/artef/artef/commit/7f2c208aae635b5b5b176377430f79f002490a8f))
+- **deps:** update dependency @openai/agents to ^0.4.13 ([#7843](https://github.com/artef/artef/issues/7843)) ([fb82b8b](https://github.com/artef/artef/commit/fb82b8b88dcb41ae5e7c44f1de314889d75c6449))
+- **deps:** update dependency @openai/agents to ^0.4.14 ([#7855](https://github.com/artef/artef/issues/7855)) ([c1012b4](https://github.com/artef/artef/commit/c1012b42a5bd6e69d522583a5182b513f6488bc9))
+- **deps:** update dependency @openai/agents to ^0.4.15 ([#7874](https://github.com/artef/artef/issues/7874)) ([846c6dd](https://github.com/artef/artef/commit/846c6dd25cf1e80de2afadecede3a79dde176e86))
+- **deps:** update dependency @openai/agents to ^0.4.9 ([#7763](https://github.com/artef/artef/issues/7763)) ([52dd162](https://github.com/artef/artef/commit/52dd16217734bd01f1b4b9a4f900023aadd473b6))
+- **deps:** update dependency @opencode-ai/sdk to ^1.2.9 ([#7819](https://github.com/artef/artef/issues/7819)) ([9a9cc51](https://github.com/artef/artef/commit/9a9cc51daa3c33cfdee001ad93b469bcff107faf))
+- **deps:** update dependency @tanstack/react-virtual to ^3.13.19 ([#7916](https://github.com/artef/artef/issues/7916)) ([cbc103a](https://github.com/artef/artef/commit/cbc103a308da22ce97177b0e98827fb48cde2be2))
+- **deps:** update dependency ajv to ^8.18.0 ([#7773](https://github.com/artef/artef/issues/7773)) ([7e5cac8](https://github.com/artef/artef/commit/7e5cac83d1d732149de8afc77d8e67363c66b22a))
+- **deps:** update dependency fast-xml-parser to ^5.3.6 ([#7769](https://github.com/artef/artef/issues/7769)) ([559d477](https://github.com/artef/artef/commit/559d4779197ba923b8a656d9e9d5b1f89e13a143))
+- **deps:** update dependency fast-xml-parser to ^5.3.7 ([#7857](https://github.com/artef/artef/issues/7857)) ([901945f](https://github.com/artef/artef/commit/901945fd7ed2eb981d1ddb39aad82030bee9d7d9))
+- **deps:** update dependency fast-xml-parser to ^5.4.1 ([#7934](https://github.com/artef/artef/issues/7934)) ([3b22b1d](https://github.com/artef/artef/commit/3b22b1dc66ac8e5c4c080b210c97ecb3eeb1a085))
+- **deps:** update dependency glob to ^13.0.4 ([#7807](https://github.com/artef/artef/issues/7807)) ([b0cc1d8](https://github.com/artef/artef/commit/b0cc1d8ab4d8deb8454f7c4cd51cdd622e3ebffa))
+- **deps:** update dependency glob to ^13.0.5 ([#7809](https://github.com/artef/artef/issues/7809)) ([6467da1](https://github.com/artef/artef/commit/6467da10adb2be77236e1a39699cc49642b0d7f0))
+- **deps:** update dependency glob to ^13.0.6 ([#7851](https://github.com/artef/artef/issues/7851)) ([4f1ec0f](https://github.com/artef/artef/commit/4f1ec0f61af440fc60d9a08d48b3f3d1a2eef06c))
+- **deps:** update dependency ink to ^6.8.0 ([#7844](https://github.com/artef/artef/issues/7844)) ([3e169d1](https://github.com/artef/artef/commit/3e169d155921b73ea6a9d93ffabe73f04e1a1f32))
+- **deps:** update dependency minimatch to ^10.2.1 ([#7808](https://github.com/artef/artef/issues/7808)) ([05d4226](https://github.com/artef/artef/commit/05d4226688d294734b75794fab5733025e52f3f2))
+- **deps:** update dependency minimatch to ^10.2.2 ([#7849](https://github.com/artef/artef/issues/7849)) ([052df9b](https://github.com/artef/artef/commit/052df9bf3ea45752c5b9d9eae8827d3b07d25b06))
+- **deps:** update dependency minimatch to ^10.2.3 ([#7930](https://github.com/artef/artef/issues/7930)) ([7cddccc](https://github.com/artef/artef/commit/7cddcccb4046805cc903ca0b008a9bedc794d98f))
+- **deps:** update dependency openai to ^6.22.0 ([#7766](https://github.com/artef/artef/issues/7766)) ([4e6d010](https://github.com/artef/artef/commit/4e6d0109db5d909cf3315cbae592c3073ae21857))
+- **deps:** update dependency simple-git to ^3.31.1 ([#7772](https://github.com/artef/artef/issues/7772)) ([40e7dbc](https://github.com/artef/artef/commit/40e7dbc3d03d1c5e6be759123796cb471dc6353f))
+- **deps:** update dependency simple-git to ^3.32.0 ([#7882](https://github.com/artef/artef/issues/7882)) ([92dc76e](https://github.com/artef/artef/commit/92dc76e4a983e8d9cba5cb9fbf3b69e94ac73def))
+- **deps:** update dependency simple-git to ^3.32.1 ([#7887](https://github.com/artef/artef/issues/7887)) ([027a321](https://github.com/artef/artef/commit/027a3210b25bd011f490f60f4bc8ff72c466cd2a))
+- **deps:** update dependency simple-git to ^3.32.2 ([#7907](https://github.com/artef/artef/issues/7907)) ([c9f4713](https://github.com/artef/artef/commit/c9f47138efbc89d95b83f808e4738f87a848219a))
+- **deps:** update dependency swiper to ^12.1.1 ([#7767](https://github.com/artef/artef/issues/7767)) ([225eaa0](https://github.com/artef/artef/commit/225eaa0d9f352ef13c11c469279ec90c3f89514f))
+- **deps:** update dependency swiper to ^12.1.2 ([#7828](https://github.com/artef/artef/issues/7828)) ([9dec8e7](https://github.com/artef/artef/commit/9dec8e798a8307a219672885621b3ab9a6980b04))
+- Dispatcher not getting set properly ([#7903](https://github.com/artef/artef/issues/7903)) ([d6ec797](https://github.com/artef/artef/commit/d6ec7973486e0ca03d5b2213580083b9f08474da))
+- **eval:** harden eval resume with serial loop abort and duplicate index detection ([#7606](https://github.com/artef/artef/issues/7606)) ([db05c6a](https://github.com/artef/artef/commit/db05c6a25c6f33ee79c557baac888aabe0feb652))
+- Preserve delimiting colons in Ruby-namespaced method names in `file://` references ([#7791](https://github.com/artef/artef/issues/7791)) ([1e97f3b](https://github.com/artef/artef/commit/1e97f3be0beec08478fc0764c8584f823bc9bb75))
+- **providers:** improve Claude Agent SDK tool call tracking ([#7821](https://github.com/artef/artef/issues/7821)) ([2a2749b](https://github.com/artef/artef/commit/2a2749bf21fa5811732dd2c8a5361482e3e24a7f))
+- **redteam:** abort scan on non-transient HTTP errors ([#7870](https://github.com/artef/artef/issues/7870)) ([05f4da4](https://github.com/artef/artef/commit/05f4da4485171df3f0cedf224d52eabf2afb210f))
+- **redteam:** align OWASP LLM04/05 labels ([#7846](https://github.com/artef/artef/issues/7846)) ([8f6bd03](https://github.com/artef/artef/commit/8f6bd03020cff69cc8252615d8e5457d929cb154))
+- **redteam:** use X icon for run cancel button ([#7865](https://github.com/artef/artef/issues/7865)) ([99d35ce](https://github.com/artef/artef/commit/99d35ce1208478ae2ed6eb3bb2ad41205123b8dc))
+- **ui:** use replace for URL search param updates to fix back button ([#7782](https://github.com/artef/artef/issues/7782)) ([1866835](https://github.com/artef/artef/commit/1866835541b285227dc556957c1ddb89f5e458eb))
+- **webui:** render inline base64 images from markdown syntax ([#7678](https://github.com/artef/artef/issues/7678)) ([bab239f](https://github.com/artef/artef/commit/bab239f78e61600b71c89617fd365846c5938302))
 
-## [0.120.25](https://github.com/promptfoo/promptfoo/compare/0.120.24...0.120.25) (2026-02-18)
+## [0.120.25](https://github.com/artef/artef/compare/0.120.24...0.120.25) (2026-02-18)
 
 ### Features
 
-- add regenerate button for suggested policies ([#7652](https://github.com/promptfoo/promptfoo/issues/7652)) ([2b09693](https://github.com/promptfoo/promptfoo/commit/2b096935c26ee148ad28f7bfe47ddad292ce9bd3))
-- **app:** add renderOption prop to Combobox component ([#7723](https://github.com/promptfoo/promptfoo/issues/7723)) ([a609016](https://github.com/promptfoo/promptfoo/commit/a609016ce3605f39e13274e99b32f5fd968518f4))
-- eval setup command to open eval setup web view ([#7663](https://github.com/promptfoo/promptfoo/issues/7663)) ([58c634f](https://github.com/promptfoo/promptfoo/commit/58c634fed8a350a63f63795bca6614649b55c353))
-- **eval:** support cloud UUID configs for eval -c ([#7661](https://github.com/promptfoo/promptfoo/issues/7661)) ([5175eba](https://github.com/promptfoo/promptfoo/commit/5175eba6312569d9fc532fcfbdbe6633c5bc6f07))
-- **fetch:** add PROMPTFOO_FETCH_CONNECTIONS env var to override HTTP pool size ([#7758](https://github.com/promptfoo/promptfoo/issues/7758)) ([535d30b](https://github.com/promptfoo/promptfoo/commit/535d30bf7360904b8c28b65acaebaf72a55bf4b8))
-- **providers:** add Claude Sonnet 4.6 support ([#7734](https://github.com/promptfoo/promptfoo/issues/7734)) ([2679911](https://github.com/promptfoo/promptfoo/commit/2679911e19d13f236d5cd3a42efc2d57500f094d))
-- **providers:** add GPT-5.3 model support to OpenAI Codex provider ([#7674](https://github.com/promptfoo/promptfoo/issues/7674)) ([2c0f588](https://github.com/promptfoo/promptfoo/commit/2c0f588f70309adb5976807c42d559ef0ff64be6))
-- **providers:** add OpenClaw multi-provider support ([#7562](https://github.com/promptfoo/promptfoo/issues/7562)) ([ee1a607](https://github.com/promptfoo/promptfoo/commit/ee1a6073c9e6a39ac19595b786a1ff5311404b1c))
-- **redteam:** store and display correct scan time ([#7591](https://github.com/promptfoo/promptfoo/issues/7591)) ([ca76e58](https://github.com/promptfoo/promptfoo/commit/ca76e5894be04a37a16837d85f631687950118cf))
-- **targetLink:** shared types and CLI helper for TargetLink probe communication ([#7638](https://github.com/promptfoo/promptfoo/issues/7638)) ([d82e4b1](https://github.com/promptfoo/promptfoo/commit/d82e4b1171bf840b08c395d4f4e34fccb5147139))
+- add regenerate button for suggested policies ([#7652](https://github.com/artef/artef/issues/7652)) ([2b09693](https://github.com/artef/artef/commit/2b096935c26ee148ad28f7bfe47ddad292ce9bd3))
+- **app:** add renderOption prop to Combobox component ([#7723](https://github.com/artef/artef/issues/7723)) ([a609016](https://github.com/artef/artef/commit/a609016ce3605f39e13274e99b32f5fd968518f4))
+- eval setup command to open eval setup web view ([#7663](https://github.com/artef/artef/issues/7663)) ([58c634f](https://github.com/artef/artef/commit/58c634fed8a350a63f63795bca6614649b55c353))
+- **eval:** support cloud UUID configs for eval -c ([#7661](https://github.com/artef/artef/issues/7661)) ([5175eba](https://github.com/artef/artef/commit/5175eba6312569d9fc532fcfbdbe6633c5bc6f07))
+- **fetch:** add artef_FETCH_CONNECTIONS env var to override HTTP pool size ([#7758](https://github.com/artef/artef/issues/7758)) ([535d30b](https://github.com/artef/artef/commit/535d30bf7360904b8c28b65acaebaf72a55bf4b8))
+- **providers:** add Claude Sonnet 4.6 support ([#7734](https://github.com/artef/artef/issues/7734)) ([2679911](https://github.com/artef/artef/commit/2679911e19d13f236d5cd3a42efc2d57500f094d))
+- **providers:** add GPT-5.3 model support to OpenAI Codex provider ([#7674](https://github.com/artef/artef/issues/7674)) ([2c0f588](https://github.com/artef/artef/commit/2c0f588f70309adb5976807c42d559ef0ff64be6))
+- **providers:** add OpenClaw multi-provider support ([#7562](https://github.com/artef/artef/issues/7562)) ([ee1a607](https://github.com/artef/artef/commit/ee1a6073c9e6a39ac19595b786a1ff5311404b1c))
+- **redteam:** store and display correct scan time ([#7591](https://github.com/artef/artef/issues/7591)) ([ca76e58](https://github.com/artef/artef/commit/ca76e5894be04a37a16837d85f631687950118cf))
+- **targetLink:** shared types and CLI helper for TargetLink probe communication ([#7638](https://github.com/artef/artef/issues/7638)) ([d82e4b1](https://github.com/artef/artef/commit/d82e4b1171bf840b08c395d4f4e34fccb5147139))
 
 ### Bug Fixes
 
-- **ci:** correct calibreapp/image-actions tag reference ([#7677](https://github.com/promptfoo/promptfoo/issues/7677)) ([9a6ca07](https://github.com/promptfoo/promptfoo/commit/9a6ca071b11fef8afec0568b6314031e23ed6815))
-- **cli:** clarify missing config search hint ([#7721](https://github.com/promptfoo/promptfoo/issues/7721)) ([2942908](https://github.com/promptfoo/promptfoo/commit/294290834db8c8ef620a342c71b764236d4adfa6))
-- **deps:** update anthropic packages ([#7659](https://github.com/promptfoo/promptfoo/issues/7659)) ([4f2b2e9](https://github.com/promptfoo/promptfoo/commit/4f2b2e96b747ed92114a1be4cb8bb9f136b91b37))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.73.0 ([#7604](https://github.com/promptfoo/promptfoo/issues/7604)) ([2b7abc7](https://github.com/promptfoo/promptfoo/commit/2b7abc7c2a2e2833d0d25ef9675f5f9bb5883177))
-- **deps:** update dependency @openai/agents to ^0.4.6 ([#7635](https://github.com/promptfoo/promptfoo/issues/7635)) ([d476c6a](https://github.com/promptfoo/promptfoo/commit/d476c6a5d29fd1eb8d103bdde351735a6090bf37))
-- **deps:** update dependency @openai/agents to ^0.4.7 ([#7724](https://github.com/promptfoo/promptfoo/issues/7724)) ([a0ae842](https://github.com/promptfoo/promptfoo/commit/a0ae842b305421d86caf2132e999d22d392a1e69))
-- **deps:** update dependency @openai/agents to ^0.4.8 ([#7748](https://github.com/promptfoo/promptfoo/issues/7748)) ([15a353f](https://github.com/promptfoo/promptfoo/commit/15a353f07b19e452581ee601ce96b29900fa2bf1))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.52 ([#7601](https://github.com/promptfoo/promptfoo/issues/7601)) ([b6aa8e4](https://github.com/promptfoo/promptfoo/commit/b6aa8e4acbad19f0e806e5e4ecf44c278e5b78e2))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.53 ([#7614](https://github.com/promptfoo/promptfoo/issues/7614)) ([9aec3d2](https://github.com/promptfoo/promptfoo/commit/9aec3d245de81a6740645a69e3dbb21dbb50e4bb))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.55 ([#7706](https://github.com/promptfoo/promptfoo/issues/7706)) ([6fb680b](https://github.com/promptfoo/promptfoo/commit/6fb680bad275ab15b306c9154b9e8340c3f18aaa))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.56 ([#7708](https://github.com/promptfoo/promptfoo/issues/7708)) ([99f8551](https://github.com/promptfoo/promptfoo/commit/99f855144a8b37aef51377aa3f13379f877d7e69))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.59 ([#7714](https://github.com/promptfoo/promptfoo/issues/7714)) ([951f6a1](https://github.com/promptfoo/promptfoo/commit/951f6a13f58d5adc2d515dad9a305f187ed71fc9))
-- **deps:** update dependency dotenv to ^17.2.4 ([#7607](https://github.com/promptfoo/promptfoo/issues/7607)) ([a44d36d](https://github.com/promptfoo/promptfoo/commit/a44d36dbd73c89d3d3161b5a1387464f68ebcc74))
-- **deps:** update dependency dotenv to ^17.3.1 ([#7749](https://github.com/promptfoo/promptfoo/issues/7749)) ([59dd96e](https://github.com/promptfoo/promptfoo/commit/59dd96e5fa0c30e37debc7d37f2939f664fcb7fe))
-- **deps:** update dependency fast-xml-parser to ^5.3.5 ([#7665](https://github.com/promptfoo/promptfoo/issues/7665)) ([c78b882](https://github.com/promptfoo/promptfoo/commit/c78b8829c2707144686e7030154f7ad4888db5ce))
-- **deps:** update dependency glob to ^13.0.2 ([#7703](https://github.com/promptfoo/promptfoo/issues/7703)) ([834fe37](https://github.com/promptfoo/promptfoo/commit/834fe37f2fc2a0d765602fcea1b167e610e63b48))
-- **deps:** update dependency glob to ^13.0.3 ([#7739](https://github.com/promptfoo/promptfoo/issues/7739)) ([11ff0df](https://github.com/promptfoo/promptfoo/commit/11ff0df44d3ae9c7616275422007f8e9ac970cad))
-- **deps:** update dependency ink to ^6.7.0 ([#7701](https://github.com/promptfoo/promptfoo/issues/7701)) ([51b5da8](https://github.com/promptfoo/promptfoo/commit/51b5da838311c4171b4eb5abc9b827e8d25ba6c1))
-- **deps:** update dependency lru-cache to ^11.2.6 ([#7704](https://github.com/promptfoo/promptfoo/issues/7704)) ([ed7a2de](https://github.com/promptfoo/promptfoo/commit/ed7a2de1e9df15acb2ba163e2a8e2e081910f7bf))
-- **deps:** update dependency mathjs to ^15.1.1 ([#7698](https://github.com/promptfoo/promptfoo/issues/7698)) ([3bc5d85](https://github.com/promptfoo/promptfoo/commit/3bc5d85d4506bc18af44d530bcbe04e51b2c425b))
-- **deps:** update dependency minimatch to ^10.2.0 ([#7740](https://github.com/promptfoo/promptfoo/issues/7740)) ([aa2a7fa](https://github.com/promptfoo/promptfoo/commit/aa2a7fa8aa4d092356bf5be8fb49ad7e90309622))
-- **deps:** update dependency openai to ^6.18.0 ([#7598](https://github.com/promptfoo/promptfoo/issues/7598)) ([7a83c00](https://github.com/promptfoo/promptfoo/commit/7a83c000e53854e81eacaeddda012b58568564fb))
-- **deps:** update dependency ora to ^9.3.0 ([#7594](https://github.com/promptfoo/promptfoo/issues/7594)) ([9125e12](https://github.com/promptfoo/promptfoo/commit/9125e125c9f20942e542c02bf061b43ee8b63840))
-- **deps:** update dependency proxy-from-env to v2 ([#7679](https://github.com/promptfoo/promptfoo/issues/7679)) ([06978cb](https://github.com/promptfoo/promptfoo/commit/06978cb512253db1061ef64ecff667f14ecf6d8d))
-- **deps:** update dependency undici to ^7.21.0 ([#7625](https://github.com/promptfoo/promptfoo/issues/7625)) ([1703a20](https://github.com/promptfoo/promptfoo/commit/1703a20e253e38fb19eaa35208e6014628e6b080))
-- **deps:** update mui packages to ^7.3.8 ([#7729](https://github.com/promptfoo/promptfoo/issues/7729)) ([a2c57b7](https://github.com/promptfoo/promptfoo/commit/a2c57b7dbf19526541b69bbce0ffa8b291c47790))
-- **deps:** update openai packages ([#7712](https://github.com/promptfoo/promptfoo/issues/7712)) ([0db7371](https://github.com/promptfoo/promptfoo/commit/0db73718dd36fb638d1ffa2ed799f0b2e6052c38))
-- **deps:** update opentelemetry ([#7743](https://github.com/promptfoo/promptfoo/issues/7743)) ([69b9a38](https://github.com/promptfoo/promptfoo/commit/69b9a387c071a3106956eff1c0d72de826790a0f))
-- **eval:** preserve provider config when using --providers flag ([#7720](https://github.com/promptfoo/promptfoo/issues/7720)) ([7192f20](https://github.com/promptfoo/promptfoo/commit/7192f209b6702c975b976293394f91e7c341a9e1))
-- **providers:** avoid codex sdk cached token double-counting ([#7617](https://github.com/promptfoo/promptfoo/issues/7617)) ([c4059b8](https://github.com/promptfoo/promptfoo/commit/c4059b877a180a1df52b5b768b1fc1a638aa4956))
-- **providers:** update Azure Mistral example and add Mistral-Large-3 pricing ([#7610](https://github.com/promptfoo/promptfoo/issues/7610)) ([8e2a28e](https://github.com/promptfoo/promptfoo/commit/8e2a28e8f0cd78f617ab9eec560486fedbdbe4b2))
-- **redteam:** count probes as target requests ([#7671](https://github.com/promptfoo/promptfoo/issues/7671)) ([bf2e305](https://github.com/promptfoo/promptfoo/commit/bf2e3054ccfa5f4011f7bd8b35f13d5f05d3e877))
-- **redteam:** fix severity card counts for custom policy vulnerabilities ([#7615](https://github.com/promptfoo/promptfoo/issues/7615)) ([4747f2a](https://github.com/promptfoo/promptfoo/commit/4747f2afa755b8453ba8c314eddb784378986261))
-- switch git hook install to husky prepare flow ([#7726](https://github.com/promptfoo/promptfoo/issues/7726)) ([0ed1634](https://github.com/promptfoo/promptfoo/commit/0ed16348912899c1b43c55512d24868adfe73ac1))
-- **table:** display sessionIds array from multi-turn strategies ([#7608](https://github.com/promptfoo/promptfoo/issues/7608)) ([0442aee](https://github.com/promptfoo/promptfoo/commit/0442aee2b479f7a843f286d6bdf509759234a4b2))
-- **util:** handle path-only URLs in sanitizeUrl ([#7752](https://github.com/promptfoo/promptfoo/issues/7752)) ([4d26d85](https://github.com/promptfoo/promptfoo/commit/4d26d85f016bbaa4606b46286a3983c24153a2c5))
+- **ci:** correct calibreapp/image-actions tag reference ([#7677](https://github.com/artef/artef/issues/7677)) ([9a6ca07](https://github.com/artef/artef/commit/9a6ca071b11fef8afec0568b6314031e23ed6815))
+- **cli:** clarify missing config search hint ([#7721](https://github.com/artef/artef/issues/7721)) ([2942908](https://github.com/artef/artef/commit/294290834db8c8ef620a342c71b764236d4adfa6))
+- **deps:** update anthropic packages ([#7659](https://github.com/artef/artef/issues/7659)) ([4f2b2e9](https://github.com/artef/artef/commit/4f2b2e96b747ed92114a1be4cb8bb9f136b91b37))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.73.0 ([#7604](https://github.com/artef/artef/issues/7604)) ([2b7abc7](https://github.com/artef/artef/commit/2b7abc7c2a2e2833d0d25ef9675f5f9bb5883177))
+- **deps:** update dependency @openai/agents to ^0.4.6 ([#7635](https://github.com/artef/artef/issues/7635)) ([d476c6a](https://github.com/artef/artef/commit/d476c6a5d29fd1eb8d103bdde351735a6090bf37))
+- **deps:** update dependency @openai/agents to ^0.4.7 ([#7724](https://github.com/artef/artef/issues/7724)) ([a0ae842](https://github.com/artef/artef/commit/a0ae842b305421d86caf2132e999d22d392a1e69))
+- **deps:** update dependency @openai/agents to ^0.4.8 ([#7748](https://github.com/artef/artef/issues/7748)) ([15a353f](https://github.com/artef/artef/commit/15a353f07b19e452581ee601ce96b29900fa2bf1))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.52 ([#7601](https://github.com/artef/artef/issues/7601)) ([b6aa8e4](https://github.com/artef/artef/commit/b6aa8e4acbad19f0e806e5e4ecf44c278e5b78e2))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.53 ([#7614](https://github.com/artef/artef/issues/7614)) ([9aec3d2](https://github.com/artef/artef/commit/9aec3d245de81a6740645a69e3dbb21dbb50e4bb))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.55 ([#7706](https://github.com/artef/artef/issues/7706)) ([6fb680b](https://github.com/artef/artef/commit/6fb680bad275ab15b306c9154b9e8340c3f18aaa))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.56 ([#7708](https://github.com/artef/artef/issues/7708)) ([99f8551](https://github.com/artef/artef/commit/99f855144a8b37aef51377aa3f13379f877d7e69))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.59 ([#7714](https://github.com/artef/artef/issues/7714)) ([951f6a1](https://github.com/artef/artef/commit/951f6a13f58d5adc2d515dad9a305f187ed71fc9))
+- **deps:** update dependency dotenv to ^17.2.4 ([#7607](https://github.com/artef/artef/issues/7607)) ([a44d36d](https://github.com/artef/artef/commit/a44d36dbd73c89d3d3161b5a1387464f68ebcc74))
+- **deps:** update dependency dotenv to ^17.3.1 ([#7749](https://github.com/artef/artef/issues/7749)) ([59dd96e](https://github.com/artef/artef/commit/59dd96e5fa0c30e37debc7d37f2939f664fcb7fe))
+- **deps:** update dependency fast-xml-parser to ^5.3.5 ([#7665](https://github.com/artef/artef/issues/7665)) ([c78b882](https://github.com/artef/artef/commit/c78b8829c2707144686e7030154f7ad4888db5ce))
+- **deps:** update dependency glob to ^13.0.2 ([#7703](https://github.com/artef/artef/issues/7703)) ([834fe37](https://github.com/artef/artef/commit/834fe37f2fc2a0d765602fcea1b167e610e63b48))
+- **deps:** update dependency glob to ^13.0.3 ([#7739](https://github.com/artef/artef/issues/7739)) ([11ff0df](https://github.com/artef/artef/commit/11ff0df44d3ae9c7616275422007f8e9ac970cad))
+- **deps:** update dependency ink to ^6.7.0 ([#7701](https://github.com/artef/artef/issues/7701)) ([51b5da8](https://github.com/artef/artef/commit/51b5da838311c4171b4eb5abc9b827e8d25ba6c1))
+- **deps:** update dependency lru-cache to ^11.2.6 ([#7704](https://github.com/artef/artef/issues/7704)) ([ed7a2de](https://github.com/artef/artef/commit/ed7a2de1e9df15acb2ba163e2a8e2e081910f7bf))
+- **deps:** update dependency mathjs to ^15.1.1 ([#7698](https://github.com/artef/artef/issues/7698)) ([3bc5d85](https://github.com/artef/artef/commit/3bc5d85d4506bc18af44d530bcbe04e51b2c425b))
+- **deps:** update dependency minimatch to ^10.2.0 ([#7740](https://github.com/artef/artef/issues/7740)) ([aa2a7fa](https://github.com/artef/artef/commit/aa2a7fa8aa4d092356bf5be8fb49ad7e90309622))
+- **deps:** update dependency openai to ^6.18.0 ([#7598](https://github.com/artef/artef/issues/7598)) ([7a83c00](https://github.com/artef/artef/commit/7a83c000e53854e81eacaeddda012b58568564fb))
+- **deps:** update dependency ora to ^9.3.0 ([#7594](https://github.com/artef/artef/issues/7594)) ([9125e12](https://github.com/artef/artef/commit/9125e125c9f20942e542c02bf061b43ee8b63840))
+- **deps:** update dependency proxy-from-env to v2 ([#7679](https://github.com/artef/artef/issues/7679)) ([06978cb](https://github.com/artef/artef/commit/06978cb512253db1061ef64ecff667f14ecf6d8d))
+- **deps:** update dependency undici to ^7.21.0 ([#7625](https://github.com/artef/artef/issues/7625)) ([1703a20](https://github.com/artef/artef/commit/1703a20e253e38fb19eaa35208e6014628e6b080))
+- **deps:** update mui packages to ^7.3.8 ([#7729](https://github.com/artef/artef/issues/7729)) ([a2c57b7](https://github.com/artef/artef/commit/a2c57b7dbf19526541b69bbce0ffa8b291c47790))
+- **deps:** update openai packages ([#7712](https://github.com/artef/artef/issues/7712)) ([0db7371](https://github.com/artef/artef/commit/0db73718dd36fb638d1ffa2ed799f0b2e6052c38))
+- **deps:** update opentelemetry ([#7743](https://github.com/artef/artef/issues/7743)) ([69b9a38](https://github.com/artef/artef/commit/69b9a387c071a3106956eff1c0d72de826790a0f))
+- **eval:** preserve provider config when using --providers flag ([#7720](https://github.com/artef/artef/issues/7720)) ([7192f20](https://github.com/artef/artef/commit/7192f209b6702c975b976293394f91e7c341a9e1))
+- **providers:** avoid codex sdk cached token double-counting ([#7617](https://github.com/artef/artef/issues/7617)) ([c4059b8](https://github.com/artef/artef/commit/c4059b877a180a1df52b5b768b1fc1a638aa4956))
+- **providers:** update Azure Mistral example and add Mistral-Large-3 pricing ([#7610](https://github.com/artef/artef/issues/7610)) ([8e2a28e](https://github.com/artef/artef/commit/8e2a28e8f0cd78f617ab9eec560486fedbdbe4b2))
+- **redteam:** count probes as target requests ([#7671](https://github.com/artef/artef/issues/7671)) ([bf2e305](https://github.com/artef/artef/commit/bf2e3054ccfa5f4011f7bd8b35f13d5f05d3e877))
+- **redteam:** fix severity card counts for custom policy vulnerabilities ([#7615](https://github.com/artef/artef/issues/7615)) ([4747f2a](https://github.com/artef/artef/commit/4747f2afa755b8453ba8c314eddb784378986261))
+- switch git hook install to husky prepare flow ([#7726](https://github.com/artef/artef/issues/7726)) ([0ed1634](https://github.com/artef/artef/commit/0ed16348912899c1b43c55512d24868adfe73ac1))
+- **table:** display sessionIds array from multi-turn strategies ([#7608](https://github.com/artef/artef/issues/7608)) ([0442aee](https://github.com/artef/artef/commit/0442aee2b479f7a843f286d6bdf509759234a4b2))
+- **util:** handle path-only URLs in sanitizeUrl ([#7752](https://github.com/artef/artef/issues/7752)) ([4d26d85](https://github.com/artef/artef/commit/4d26d85f016bbaa4606b46286a3983c24153a2c5))
 
-## [0.120.24](https://github.com/promptfoo/promptfoo/compare/0.120.23...0.120.24) (2026-02-10)
+## [0.120.24](https://github.com/artef/artef/compare/0.120.23...0.120.24) (2026-02-10)
 
 ### Features
 
-- add --filter-prompts option with MCP alignment ([#7451](https://github.com/promptfoo/promptfoo/issues/7451)) ([e9b53e2](https://github.com/promptfoo/promptfoo/commit/e9b53e2ac83df1f6e98bf9561a6a3c8d87d271af))
-- **eval:** add hidden column indicators and schema-based column visibility persistence ([#7536](https://github.com/promptfoo/promptfoo/issues/7536)) ([8fbeb60](https://github.com/promptfoo/promptfoo/commit/8fbeb60a1cbb2171b6fa53e548f2dacbffa8a31f))
-- **fetch:** add Cloudflare 524 timeout to transient error retry ([#7590](https://github.com/promptfoo/promptfoo/issues/7590)) ([e7c1c81](https://github.com/promptfoo/promptfoo/commit/e7c1c8152c4517c9fca24335b5955924cc0cf3d1))
-- **providers:** add Claude Opus 4.6 support across all platforms ([#7506](https://github.com/promptfoo/promptfoo/issues/7506)) ([850c3bf](https://github.com/promptfoo/promptfoo/commit/850c3bf9d38d3ab850e80f86c15ccd8c384b59a8))
-- **providers:** add pricing support for Google AI Studio models ([#7491](https://github.com/promptfoo/promptfoo/issues/7491)) ([ffcacd4](https://github.com/promptfoo/promptfoo/commit/ffcacd4b2a04ec670f26608bb6946e4c206741f9))
-- **providers:** disable MCP caching by default, add cache_mcp opt-in ([#7518](https://github.com/promptfoo/promptfoo/issues/7518)) ([3f224a6](https://github.com/promptfoo/promptfoo/commit/3f224a6d2be47fd31cc4260e1b1a673de82f87b8))
-- real estate plugins ([#7494](https://github.com/promptfoo/promptfoo/issues/7494)) ([ef92072](https://github.com/promptfoo/promptfoo/commit/ef9207295df0a848edb458670c70f3623ad68c6b))
+- add --filter-prompts option with MCP alignment ([#7451](https://github.com/artef/artef/issues/7451)) ([e9b53e2](https://github.com/artef/artef/commit/e9b53e2ac83df1f6e98bf9561a6a3c8d87d271af))
+- **eval:** add hidden column indicators and schema-based column visibility persistence ([#7536](https://github.com/artef/artef/issues/7536)) ([8fbeb60](https://github.com/artef/artef/commit/8fbeb60a1cbb2171b6fa53e548f2dacbffa8a31f))
+- **fetch:** add Cloudflare 524 timeout to transient error retry ([#7590](https://github.com/artef/artef/issues/7590)) ([e7c1c81](https://github.com/artef/artef/commit/e7c1c8152c4517c9fca24335b5955924cc0cf3d1))
+- **providers:** add Claude Opus 4.6 support across all platforms ([#7506](https://github.com/artef/artef/issues/7506)) ([850c3bf](https://github.com/artef/artef/commit/850c3bf9d38d3ab850e80f86c15ccd8c384b59a8))
+- **providers:** add pricing support for Google AI Studio models ([#7491](https://github.com/artef/artef/issues/7491)) ([ffcacd4](https://github.com/artef/artef/commit/ffcacd4b2a04ec670f26608bb6946e4c206741f9))
+- **providers:** disable MCP caching by default, add cache_mcp opt-in ([#7518](https://github.com/artef/artef/issues/7518)) ([3f224a6](https://github.com/artef/artef/commit/3f224a6d2be47fd31cc4260e1b1a673de82f87b8))
+- real estate plugins ([#7494](https://github.com/artef/artef/issues/7494)) ([ef92072](https://github.com/artef/artef/commit/ef9207295df0a848edb458670c70f3623ad68c6b))
 
 ### Bug Fixes
 
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.26.0 ([#7588](https://github.com/promptfoo/promptfoo/issues/7588)) ([3902784](https://github.com/promptfoo/promptfoo/commit/3902784a78ad58294001accff0c4ab7033a789cd))
-- **deps:** update dependency @octokit/auth-app to ^8.2.0 ([#7560](https://github.com/promptfoo/promptfoo/issues/7560)) ([b7d9b4d](https://github.com/promptfoo/promptfoo/commit/b7d9b4d83361f7f03062e4f584727cd2ef8c7d1a))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.49 ([#7559](https://github.com/promptfoo/promptfoo/issues/7559)) ([08ebaae](https://github.com/promptfoo/promptfoo/commit/08ebaae059375ac7a0bbbd29bbfddb1b0a278050))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.50 ([#7578](https://github.com/promptfoo/promptfoo/issues/7578)) ([3697c4f](https://github.com/promptfoo/promptfoo/commit/3697c4f318d0a7d7a264b76d67dc39416736133a))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.51 ([#7580](https://github.com/promptfoo/promptfoo/issues/7580)) ([22630d1](https://github.com/promptfoo/promptfoo/commit/22630d14a223924f5d8949e912f331373c8a66f1))
-- **deps:** update dependency glob to ^13.0.1 ([#7568](https://github.com/promptfoo/promptfoo/issues/7568)) ([d783cdc](https://github.com/promptfoo/promptfoo/commit/d783cdc806c6bcac41179c343048dfd803cfd987))
-- **deps:** update dependency minimatch to ^10.1.2 ([#7570](https://github.com/promptfoo/promptfoo/issues/7570)) ([12d604c](https://github.com/promptfoo/promptfoo/commit/12d604c5af0229a9f64011f6982716db540ee49b))
-- **deps:** update dependency ora to ^9.2.0 ([#7581](https://github.com/promptfoo/promptfoo/issues/7581)) ([8f4fc1e](https://github.com/promptfoo/promptfoo/commit/8f4fc1ecd24ba282a724927a29c6838931dedb84))
-- **deps:** update dependency posthog-node to ~5.24.10 ([#7584](https://github.com/promptfoo/promptfoo/issues/7584)) ([d47b996](https://github.com/promptfoo/promptfoo/commit/d47b99621e3bf1eac80608f9f3f4bd77842c5f64))
-- **deps:** update dependency posthog-node to ~5.24.9 ([#7564](https://github.com/promptfoo/promptfoo/issues/7564)) ([644bc11](https://github.com/promptfoo/promptfoo/commit/644bc112f738f36c2054b98235c3eca76d7bffab))
-- **deps:** update dependency semver to ^7.7.4 ([#7602](https://github.com/promptfoo/promptfoo/issues/7602)) ([6882a4d](https://github.com/promptfoo/promptfoo/commit/6882a4d688e64f527c74dcf1ba45ff8f5e79f375))
-- **deps:** update openai packages ([#7577](https://github.com/promptfoo/promptfoo/issues/7577)) ([cc71973](https://github.com/promptfoo/promptfoo/commit/cc71973210c3ebefe55e993294cd03df7d4bc145))
-- **eval:** correct promptIdx alignment with test-level filtering ([#7544](https://github.com/promptfoo/promptfoo/issues/7544)) ([0f4ae84](https://github.com/promptfoo/promptfoo/commit/0f4ae84699f1d3836abde351b34c18e7bb1ec2dd))
-- **eval:** fix SSL "bad record mac" errors under concurrent API load ([#7466](https://github.com/promptfoo/promptfoo/issues/7466)) ([5eb903b](https://github.com/promptfoo/promptfoo/commit/5eb903b20a860f3af96410ba353f51ea4e650092))
-- **eval:** show more toggle for metrics in cells for evals ([#7530](https://github.com/promptfoo/promptfoo/issues/7530)) ([1367921](https://github.com/promptfoo/promptfoo/commit/1367921d626320cd1f4ff1885bb11f35f75f5026))
-- **huggingface:** concurrent dataset fetching ([#7423](https://github.com/promptfoo/promptfoo/issues/7423)) ([eefc8be](https://github.com/promptfoo/promptfoo/commit/eefc8be2112c7eb5c1b72d7774b389ac91bb79ec))
-- improve clarity of which model is being used in logging redteams ([#7508](https://github.com/promptfoo/promptfoo/issues/7508)) ([2e2a7cb](https://github.com/promptfoo/promptfoo/commit/2e2a7cb2ad9c6369e2851454410d3c4b2370f6b3))
-- **providers:** add missing Claude Opus 4.6 entries for Bedrock, Vertex, and OpenRouter ([#7543](https://github.com/promptfoo/promptfoo/issues/7543)) ([e20ae6a](https://github.com/promptfoo/promptfoo/commit/e20ae6ad3f780b5024f22ee76b4cac8218af604c))
-- **redteam:** deduplicate global grader examples (ENG-1780) ([#7593](https://github.com/promptfoo/promptfoo/issues/7593)) ([dddfc18](https://github.com/promptfoo/promptfoo/commit/dddfc185f27b21f2b5b2db9509d27666f6b02bdc))
-- **redteam:** preserve provider config when importing YAML in setup UI ([#7457](https://github.com/promptfoo/promptfoo/issues/7457)) ([18f848b](https://github.com/promptfoo/promptfoo/commit/18f848bba2a73569a096bd1a59964a8f59b59110))
-- stop plugin filters jumping in redteam setup ([#7557](https://github.com/promptfoo/promptfoo/issues/7557)) ([05685c0](https://github.com/promptfoo/promptfoo/commit/05685c0c972e9820729a62e9368ed03bee586457))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.26.0 ([#7588](https://github.com/artef/artef/issues/7588)) ([3902784](https://github.com/artef/artef/commit/3902784a78ad58294001accff0c4ab7033a789cd))
+- **deps:** update dependency @octokit/auth-app to ^8.2.0 ([#7560](https://github.com/artef/artef/issues/7560)) ([b7d9b4d](https://github.com/artef/artef/commit/b7d9b4d83361f7f03062e4f584727cd2ef8c7d1a))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.49 ([#7559](https://github.com/artef/artef/issues/7559)) ([08ebaae](https://github.com/artef/artef/commit/08ebaae059375ac7a0bbbd29bbfddb1b0a278050))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.50 ([#7578](https://github.com/artef/artef/issues/7578)) ([3697c4f](https://github.com/artef/artef/commit/3697c4f318d0a7d7a264b76d67dc39416736133a))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.51 ([#7580](https://github.com/artef/artef/issues/7580)) ([22630d1](https://github.com/artef/artef/commit/22630d14a223924f5d8949e912f331373c8a66f1))
+- **deps:** update dependency glob to ^13.0.1 ([#7568](https://github.com/artef/artef/issues/7568)) ([d783cdc](https://github.com/artef/artef/commit/d783cdc806c6bcac41179c343048dfd803cfd987))
+- **deps:** update dependency minimatch to ^10.1.2 ([#7570](https://github.com/artef/artef/issues/7570)) ([12d604c](https://github.com/artef/artef/commit/12d604c5af0229a9f64011f6982716db540ee49b))
+- **deps:** update dependency ora to ^9.2.0 ([#7581](https://github.com/artef/artef/issues/7581)) ([8f4fc1e](https://github.com/artef/artef/commit/8f4fc1ecd24ba282a724927a29c6838931dedb84))
+- **deps:** update dependency posthog-node to ~5.24.10 ([#7584](https://github.com/artef/artef/issues/7584)) ([d47b996](https://github.com/artef/artef/commit/d47b99621e3bf1eac80608f9f3f4bd77842c5f64))
+- **deps:** update dependency posthog-node to ~5.24.9 ([#7564](https://github.com/artef/artef/issues/7564)) ([644bc11](https://github.com/artef/artef/commit/644bc112f738f36c2054b98235c3eca76d7bffab))
+- **deps:** update dependency semver to ^7.7.4 ([#7602](https://github.com/artef/artef/issues/7602)) ([6882a4d](https://github.com/artef/artef/commit/6882a4d688e64f527c74dcf1ba45ff8f5e79f375))
+- **deps:** update openai packages ([#7577](https://github.com/artef/artef/issues/7577)) ([cc71973](https://github.com/artef/artef/commit/cc71973210c3ebefe55e993294cd03df7d4bc145))
+- **eval:** correct promptIdx alignment with test-level filtering ([#7544](https://github.com/artef/artef/issues/7544)) ([0f4ae84](https://github.com/artef/artef/commit/0f4ae84699f1d3836abde351b34c18e7bb1ec2dd))
+- **eval:** fix SSL "bad record mac" errors under concurrent API load ([#7466](https://github.com/artef/artef/issues/7466)) ([5eb903b](https://github.com/artef/artef/commit/5eb903b20a860f3af96410ba353f51ea4e650092))
+- **eval:** show more toggle for metrics in cells for evals ([#7530](https://github.com/artef/artef/issues/7530)) ([1367921](https://github.com/artef/artef/commit/1367921d626320cd1f4ff1885bb11f35f75f5026))
+- **huggingface:** concurrent dataset fetching ([#7423](https://github.com/artef/artef/issues/7423)) ([eefc8be](https://github.com/artef/artef/commit/eefc8be2112c7eb5c1b72d7774b389ac91bb79ec))
+- improve clarity of which model is being used in logging redteams ([#7508](https://github.com/artef/artef/issues/7508)) ([2e2a7cb](https://github.com/artef/artef/commit/2e2a7cb2ad9c6369e2851454410d3c4b2370f6b3))
+- **providers:** add missing Claude Opus 4.6 entries for Bedrock, Vertex, and OpenRouter ([#7543](https://github.com/artef/artef/issues/7543)) ([e20ae6a](https://github.com/artef/artef/commit/e20ae6ad3f780b5024f22ee76b4cac8218af604c))
+- **redteam:** deduplicate global grader examples (ENG-1780) ([#7593](https://github.com/artef/artef/issues/7593)) ([dddfc18](https://github.com/artef/artef/commit/dddfc185f27b21f2b5b2db9509d27666f6b02bdc))
+- **redteam:** preserve provider config when importing YAML in setup UI ([#7457](https://github.com/artef/artef/issues/7457)) ([18f848b](https://github.com/artef/artef/commit/18f848bba2a73569a096bd1a59964a8f59b59110))
+- stop plugin filters jumping in redteam setup ([#7557](https://github.com/artef/artef/issues/7557)) ([05685c0](https://github.com/artef/artef/commit/05685c0c972e9820729a62e9368ed03bee586457))
 
-## [0.120.23](https://github.com/promptfoo/promptfoo/compare/0.120.22...0.120.23) (2026-02-06)
+## [0.120.23](https://github.com/artef/artef/compare/0.120.22...0.120.23) (2026-02-06)
 
 ### Bug Fixes
 
-- **blobs:** restore cloud blob upload for shared evals ([#7484](https://github.com/promptfoo/promptfoo/issues/7484)) ([7eb1009](https://github.com/promptfoo/promptfoo/commit/7eb100939c07b0b414459682cdd057e024b39814))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.48 ([#7499](https://github.com/promptfoo/promptfoo/issues/7499)) ([b081a54](https://github.com/promptfoo/promptfoo/commit/b081a54887bd4c8ff79cc81b305b8f10f21c2962))
-- **deps:** update dependency commander to ^14.0.3 ([#7497](https://github.com/promptfoo/promptfoo/issues/7497)) ([1c8f67a](https://github.com/promptfoo/promptfoo/commit/1c8f67a7af72cd4bd8fa0d63b8dab261a2405a8b))
-- **eval:** restore runtime vars when filtering tests for re-run ([#7071](https://github.com/promptfoo/promptfoo/issues/7071)) ([c53523c](https://github.com/promptfoo/promptfoo/commit/c53523c461d9a1b93ce03bcc149605746a9307f3))
-- **redteam:** avoid undefined callApi with Python mischievous-user ([#7509](https://github.com/promptfoo/promptfoo/issues/7509)) ([395856c](https://github.com/promptfoo/promptfoo/commit/395856ca76e57d46c42efa2d8a389e788990bb5c))
-- **redteam:** data exfil grader falls through to LLM rubric on no server-side hit ([#7516](https://github.com/promptfoo/promptfoo/issues/7516)) ([6fbd246](https://github.com/promptfoo/promptfoo/commit/6fbd246792ea00c6f135c4968fb8c8e5e0454673))
-- **redteam:** include specific policy IDs in severity map ([#7492](https://github.com/promptfoo/promptfoo/issues/7492)) ([61935ee](https://github.com/promptfoo/promptfoo/commit/61935ee9ced0bd5a4675c2a59456b9e0abbe66c0))
-- **redteam:** skip refusal check when output contains valid prompt markers ([#7524](https://github.com/promptfoo/promptfoo/issues/7524)) ([882f47e](https://github.com/promptfoo/promptfoo/commit/882f47e145181ae4cbaeac3ee05a39f625f88349))
-- **redteam:** strip eval- prefix from dynamic page URLs ([#7496](https://github.com/promptfoo/promptfoo/issues/7496)) ([f467707](https://github.com/promptfoo/promptfoo/commit/f467707e15758113278610ed9a9fea54f8afba8c))
+- **blobs:** restore cloud blob upload for shared evals ([#7484](https://github.com/artef/artef/issues/7484)) ([7eb1009](https://github.com/artef/artef/commit/7eb100939c07b0b414459682cdd057e024b39814))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.48 ([#7499](https://github.com/artef/artef/issues/7499)) ([b081a54](https://github.com/artef/artef/commit/b081a54887bd4c8ff79cc81b305b8f10f21c2962))
+- **deps:** update dependency commander to ^14.0.3 ([#7497](https://github.com/artef/artef/issues/7497)) ([1c8f67a](https://github.com/artef/artef/commit/1c8f67a7af72cd4bd8fa0d63b8dab261a2405a8b))
+- **eval:** restore runtime vars when filtering tests for re-run ([#7071](https://github.com/artef/artef/issues/7071)) ([c53523c](https://github.com/artef/artef/commit/c53523c461d9a1b93ce03bcc149605746a9307f3))
+- **redteam:** avoid undefined callApi with Python mischievous-user ([#7509](https://github.com/artef/artef/issues/7509)) ([395856c](https://github.com/artef/artef/commit/395856ca76e57d46c42efa2d8a389e788990bb5c))
+- **redteam:** data exfil grader falls through to LLM rubric on no server-side hit ([#7516](https://github.com/artef/artef/issues/7516)) ([6fbd246](https://github.com/artef/artef/commit/6fbd246792ea00c6f135c4968fb8c8e5e0454673))
+- **redteam:** include specific policy IDs in severity map ([#7492](https://github.com/artef/artef/issues/7492)) ([61935ee](https://github.com/artef/artef/commit/61935ee9ced0bd5a4675c2a59456b9e0abbe66c0))
+- **redteam:** skip refusal check when output contains valid prompt markers ([#7524](https://github.com/artef/artef/issues/7524)) ([882f47e](https://github.com/artef/artef/commit/882f47e145181ae4cbaeac3ee05a39f625f88349))
+- **redteam:** strip eval- prefix from dynamic page URLs ([#7496](https://github.com/artef/artef/issues/7496)) ([f467707](https://github.com/artef/artef/commit/f467707e15758113278610ed9a9fea54f8afba8c))
 
 ### Performance Improvements
 
-- **redteam:** strip graderExamples from remote generation requests ([#7522](https://github.com/promptfoo/promptfoo/issues/7522)) ([d7df221](https://github.com/promptfoo/promptfoo/commit/d7df221b5857b2ca0c77256447c3bb9ec4572a2f))
+- **redteam:** strip graderExamples from remote generation requests ([#7522](https://github.com/artef/artef/issues/7522)) ([d7df221](https://github.com/artef/artef/commit/d7df221b5857b2ca0c77256447c3bb9ec4572a2f))
 
-## [0.120.22](https://github.com/promptfoo/promptfoo/compare/0.120.21...0.120.22) (2026-02-04)
-
-### Features
-
-- **redteam:** enable multilingual support for audio/video/image strategies ([#7485](https://github.com/promptfoo/promptfoo/issues/7485)) ([01b62ce](https://github.com/promptfoo/promptfoo/commit/01b62cee55c4c06edc510d9684a4696bbc62633b))
-
-### Bug Fixes
-
-- **app:** move rows useMemo after table declaration to fix build ([#7475](https://github.com/promptfoo/promptfoo/issues/7475)) ([d1c2a39](https://github.com/promptfoo/promptfoo/commit/d1c2a39d6729de3988cbc4c21f72126ca5e0a8c6))
-- **app:** reduce payload to avoid RangeError ([#7436](https://github.com/promptfoo/promptfoo/issues/7436)) ([ff3d3d9](https://github.com/promptfoo/promptfoo/commit/ff3d3d9d31ebeb87c461db4443ce233e915d29d2))
-- **app:** show all table rows when printing instead of just current page ([#7387](https://github.com/promptfoo/promptfoo/issues/7387)) ([ca50ce8](https://github.com/promptfoo/promptfoo/commit/ca50ce87c9ea59ac5d81a09430929f10ad92cb82))
-- **cli:** improve error messages for missing config file ([#7464](https://github.com/promptfoo/promptfoo/issues/7464)) ([9189dbf](https://github.com/promptfoo/promptfoo/commit/9189dbf2f79d3c237615678c47ce41edefd585f8))
-- **commands:** use streaming iteration in recalculatePromptMetrics to avoid OOM ([#7471](https://github.com/promptfoo/promptfoo/issues/7471)) ([1346f0a](https://github.com/promptfoo/promptfoo/commit/1346f0a130536427829ae451f66323a4a2a2bb3f))
-- **deps:** override lodash-es to 4.17.23 to resolve prototype pollution ([#7474](https://github.com/promptfoo/promptfoo/issues/7474)) ([f8bbd45](https://github.com/promptfoo/promptfoo/commit/f8bbd45ad91bd0b389f2c4aa999999a0671abefd))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.72.0 ([#7460](https://github.com/promptfoo/promptfoo/issues/7460)) ([4bce247](https://github.com/promptfoo/promptfoo/commit/4bce247f1003ab38dbe3115913172b9c5b0b6275))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.72.1 ([#7472](https://github.com/promptfoo/promptfoo/issues/7472)) ([bc8be96](https://github.com/promptfoo/promptfoo/commit/bc8be969ddd782681779d7f7f0404be235113707))
-- **deps:** update dependency ai to ^6.0.62 ([#7456](https://github.com/promptfoo/promptfoo/issues/7456)) ([cc259e9](https://github.com/promptfoo/promptfoo/commit/cc259e99a3960c74a1447241dccce42c0d64c91f))
-- **deps:** update dependency fast-xml-parser to ^5.3.4 ([#7476](https://github.com/promptfoo/promptfoo/issues/7476)) ([29121d5](https://github.com/promptfoo/promptfoo/commit/29121d52c5dd36769c23867025e46281f420679d))
-- **deps:** update dependency posthog-node to ~5.24.6 ([#7441](https://github.com/promptfoo/promptfoo/issues/7441)) ([9d2a59f](https://github.com/promptfoo/promptfoo/commit/9d2a59f662965c6d86d6f2acf63d00c9407edbae))
-- **deps:** update dependency posthog-node to ~5.24.7 ([#7465](https://github.com/promptfoo/promptfoo/issues/7465)) ([b87fbd9](https://github.com/promptfoo/promptfoo/commit/b87fbd9e06c6b4532c1cd5a8d4fda36ccf7da5d7))
-- export/table handling for falsy values ([#7440](https://github.com/promptfoo/promptfoo/issues/7440)) ([ec5b404](https://github.com/promptfoo/promptfoo/commit/ec5b404de0cadb2de27578c716e37e092dcdd860))
-
-## [0.120.21](https://github.com/promptfoo/promptfoo/compare/0.120.20...0.120.21) (2026-02-03)
+## [0.120.22](https://github.com/artef/artef/compare/0.120.21...0.120.22) (2026-02-04)
 
 ### Features
 
-- **app:** add print styles to DataTable for light mode printing ([#7365](https://github.com/promptfoo/promptfoo/issues/7365)) ([167b27c](https://github.com/promptfoo/promptfoo/commit/167b27c4b9483173cebe6eb7b3467e72a723fd3f))
-- **app:** improve HTTP endpoint request body editor ([#7438](https://github.com/promptfoo/promptfoo/issues/7438)) ([cfadb37](https://github.com/promptfoo/promptfoo/commit/cfadb3733c252114b5b15daf0f3a95809333b541))
-- **providers:** add HuggingFace chat completion provider ([#7446](https://github.com/promptfoo/promptfoo/issues/7446)) ([cd709b7](https://github.com/promptfoo/promptfoo/commit/cd709b7db38fc396ccadce5e960e28019f0efd01))
-- **providers:** add tools and tool choice transformations ([#7420](https://github.com/promptfoo/promptfoo/issues/7420)) ([c332cef](https://github.com/promptfoo/promptfoo/commit/c332cefd5dfc141d1f02ae4427509e82aeb1062e))
-- **providers:** add xAI Grok Imagine video provider ([#7395](https://github.com/promptfoo/promptfoo/issues/7395)) ([8407969](https://github.com/promptfoo/promptfoo/commit/84079698c689628f5a7bd775befbc99f4529decc))
-- **redteam:** Add indirect-web-pwn attack strategy ([#6973](https://github.com/promptfoo/promptfoo/issues/6973)) ([1065e71](https://github.com/promptfoo/promptfoo/commit/1065e711ddd96e53da500a20589914d53d94f157))
+- **redteam:** enable multilingual support for audio/video/image strategies ([#7485](https://github.com/artef/artef/issues/7485)) ([01b62ce](https://github.com/artef/artef/commit/01b62cee55c4c06edc510d9684a4696bbc62633b))
 
 ### Bug Fixes
 
-- **app:** refresh history page when evals complete ([#7189](https://github.com/promptfoo/promptfoo/issues/7189)) ([31ac183](https://github.com/promptfoo/promptfoo/commit/31ac183deb8b09ea7bb657cd579304007515aa1a))
-- **assertions:** resolve dynamic vars before passing to assertion functions ([#7374](https://github.com/promptfoo/promptfoo/issues/7374)) ([d3ad963](https://github.com/promptfoo/promptfoo/commit/d3ad963830002c3856a7f1a6ad719e74b8ab91c1))
-- **ci:** replace raven-actions/actionlint with direct download ([#7373](https://github.com/promptfoo/promptfoo/issues/7373)) ([665f8d3](https://github.com/promptfoo/promptfoo/commit/665f8d344e8ed7b9127b0438e9b09bc460259fd0))
-- **cli:** ensure process exits on SIGINT during view command ([#7390](https://github.com/promptfoo/promptfoo/issues/7390)) ([1a21ce2](https://github.com/promptfoo/promptfoo/commit/1a21ce267cbd61e5671a611884b53f5937ac44b5))
-- **cli:** show zero pass/fail counts in `promptfoo show` ([#7427](https://github.com/promptfoo/promptfoo/issues/7427)) ([ecc2abc](https://github.com/promptfoo/promptfoo/commit/ecc2abc942c4697813a4acda763c877a34e9a0ab))
-- **cli:** use npx commands in README when init run via npx ([#7377](https://github.com/promptfoo/promptfoo/issues/7377)) ([1c0504e](https://github.com/promptfoo/promptfoo/commit/1c0504e7bdd31e7aa6dde2f1c65e28b4cbcc372c))
-- **deps:** lock file maintenance example dependencies ([#7406](https://github.com/promptfoo/promptfoo/issues/7406)) ([4f4807c](https://github.com/promptfoo/promptfoo/commit/4f4807ce20500ba35b0785729aa5d6de04cb9377))
-- **deps:** run npm audit fix ([#7450](https://github.com/promptfoo/promptfoo/issues/7450)) ([3f9ac78](https://github.com/promptfoo/promptfoo/commit/3f9ac78f4740f4ce0cc52d3e7c66fe2240adcf2e))
-- **deps:** update dependency @actions/core to ^2.0.3 ([#7415](https://github.com/promptfoo/promptfoo/issues/7415)) ([5f0e93f](https://github.com/promptfoo/promptfoo/commit/5f0e93f4337eb03546f470fe526afc15d86c5e14))
-- **deps:** update dependency @actions/github to ^8.0.1 ([#7412](https://github.com/promptfoo/promptfoo/issues/7412)) ([052ba95](https://github.com/promptfoo/promptfoo/commit/052ba950240c25239bed8a364f2e628318b42f6b))
-- **deps:** update dependency @actions/github to v8 ([#7402](https://github.com/promptfoo/promptfoo/issues/7402)) ([b805942](https://github.com/promptfoo/promptfoo/commit/b805942c7286eca0e42f851c5c1f4a2ced9dd037))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.2.2 ([#7362](https://github.com/promptfoo/promptfoo/issues/7362)) ([7ac8a53](https://github.com/promptfoo/promptfoo/commit/7ac8a53913fad9101a5698976971495fc8e62618))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.35 ([#7380](https://github.com/promptfoo/promptfoo/issues/7380)) ([632f64d](https://github.com/promptfoo/promptfoo/commit/632f64ddb11600b6b4bd66068548add9de902664))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.36 ([#7389](https://github.com/promptfoo/promptfoo/issues/7389)) ([c23e90c](https://github.com/promptfoo/promptfoo/commit/c23e90cc951a94edcb25de8e0fdbf74a684d4769))
-- **deps:** update dependency ai to ^6.0.50 ([#7399](https://github.com/promptfoo/promptfoo/issues/7399)) ([af3542d](https://github.com/promptfoo/promptfoo/commit/af3542d342403d2f9a8cb8de633188ea862e80a6))
-- **deps:** update dependency ai to ^6.0.55 ([#7410](https://github.com/promptfoo/promptfoo/issues/7410)) ([890d6a7](https://github.com/promptfoo/promptfoo/commit/890d6a7bf4781e0ecfaf174516ca21619e53ad1c))
-- **deps:** update dependency ai to ^6.0.56 ([#7417](https://github.com/promptfoo/promptfoo/issues/7417)) ([42d316f](https://github.com/promptfoo/promptfoo/commit/42d316f5d31141c11b2c913bff0315171d297598))
-- **deps:** update dependency ai to ^6.0.57 ([#7421](https://github.com/promptfoo/promptfoo/issues/7421)) ([ca7972b](https://github.com/promptfoo/promptfoo/commit/ca7972bde61844e9fe595d23d2d1f588e309d19d))
-- **deps:** update dependency ai to ^6.0.58 ([#7439](https://github.com/promptfoo/promptfoo/issues/7439)) ([2a05dbd](https://github.com/promptfoo/promptfoo/commit/2a05dbd1e9a2d8de6ed694280f1f51911cd9781e))
-- **deps:** update dependency ai to ^6.0.59 ([#7448](https://github.com/promptfoo/promptfoo/issues/7448)) ([a5f17ed](https://github.com/promptfoo/promptfoo/commit/a5f17ed5702c086c83a49cbbf86cb369f29e5613))
-- **deps:** update dependency ai to ^6.0.60 ([#7455](https://github.com/promptfoo/promptfoo/issues/7455)) ([ee7b28e](https://github.com/promptfoo/promptfoo/commit/ee7b28eb9f50de834fb9f1f062c21ddd34c67450))
-- **deps:** update dependency lru-cache to ^11.2.5 ([#7400](https://github.com/promptfoo/promptfoo/issues/7400)) ([c193ebd](https://github.com/promptfoo/promptfoo/commit/c193ebd7f4a89d9d20b072107250bfeabf52dae7))
-- **deps:** update dependency openai to ^6.17.0 ([#7449](https://github.com/promptfoo/promptfoo/issues/7449)) ([65e75eb](https://github.com/promptfoo/promptfoo/commit/65e75eb6be722a901c2bb6be76965d71c2f1e95f))
-- **deps:** update dependency posthog-node to ~5.24.3 ([#7413](https://github.com/promptfoo/promptfoo/issues/7413)) ([f60d3e0](https://github.com/promptfoo/promptfoo/commit/f60d3e0f1820ad9a86e962a32f37cd7e492c4ef3))
-- **deps:** update dependency swiper to ^12.1.0 ([#7442](https://github.com/promptfoo/promptfoo/issues/7442)) ([8b6af09](https://github.com/promptfoo/promptfoo/commit/8b6af09b44c88650ebc0e6ad4cde55b454551253))
-- **deps:** update dependency undici ([#7422](https://github.com/promptfoo/promptfoo/issues/7422)) ([8ef17c6](https://github.com/promptfoo/promptfoo/commit/8ef17c63d74e4742d2a9cfe749fbdcd4dd53faae))
-- **deps:** update dependency undici to ^7.19.1 ([#7368](https://github.com/promptfoo/promptfoo/issues/7368)) ([5a841d0](https://github.com/promptfoo/promptfoo/commit/5a841d0902c243f50bbc79d225244503566a3da3))
-- **deps:** update example dependencies (major) ([#7404](https://github.com/promptfoo/promptfoo/issues/7404)) ([a46f8dd](https://github.com/promptfoo/promptfoo/commit/a46f8dda2a2a4919ed93ed63f49445698886adc3))
-- **deps:** update openai packages ([#7435](https://github.com/promptfoo/promptfoo/issues/7435)) ([241a2fc](https://github.com/promptfoo/promptfoo/commit/241a2fced1a17201906dd605896cec0ae2ce8259))
-- **deps:** update type definitions ([#7431](https://github.com/promptfoo/promptfoo/issues/7431)) ([9e5cddb](https://github.com/promptfoo/promptfoo/commit/9e5cddb9a645446cf8b8bcee528d923701d7dd32))
-- g-eval prompt ambiguity ([#7397](https://github.com/promptfoo/promptfoo/issues/7397)) ([fb8d872](https://github.com/promptfoo/promptfoo/commit/fb8d872140b34b8c62bc99caccbdd0156ceb7037))
-- Langfuse variable type conversion ([#7461](https://github.com/promptfoo/promptfoo/issues/7461)) ([755d38c](https://github.com/promptfoo/promptfoo/commit/755d38c3d4b564b6c39d05bcfd02821f7d14287b))
-- prompt id hashing ([#6782](https://github.com/promptfoo/promptfoo/issues/6782)) ([18beb08](https://github.com/promptfoo/promptfoo/commit/18beb08b8749aab06d33e5c21503f25f1fe280fd))
-- **redteam:** ensure provider cleanup on all exit paths ([#7407](https://github.com/promptfoo/promptfoo/issues/7407)) ([e1538fe](https://github.com/promptfoo/promptfoo/commit/e1538fe1e3c68d7b709247eef89712c285d2ac2e))
-- **redteam:** improve Request Body editor UX and error handling ([#7319](https://github.com/promptfoo/promptfoo/issues/7319)) ([a1b4eec](https://github.com/promptfoo/promptfoo/commit/a1b4eecc6d464f6bdf88be636c850fd4d27cac6c))
-- **redteam:** use word-boundary regex in isBasicRefusal to prevent false positives ([#7394](https://github.com/promptfoo/promptfoo/issues/7394)) ([2ad5692](https://github.com/promptfoo/promptfoo/commit/2ad569207365665b143f52dff93cd0552bad13b7))
-- remove dupe eval row ids ([#7426](https://github.com/promptfoo/promptfoo/issues/7426)) ([4ba7fad](https://github.com/promptfoo/promptfoo/commit/4ba7fad28d3364eb542980335140c56f09d1a360))
+- **app:** move rows useMemo after table declaration to fix build ([#7475](https://github.com/artef/artef/issues/7475)) ([d1c2a39](https://github.com/artef/artef/commit/d1c2a39d6729de3988cbc4c21f72126ca5e0a8c6))
+- **app:** reduce payload to avoid RangeError ([#7436](https://github.com/artef/artef/issues/7436)) ([ff3d3d9](https://github.com/artef/artef/commit/ff3d3d9d31ebeb87c461db4443ce233e915d29d2))
+- **app:** show all table rows when printing instead of just current page ([#7387](https://github.com/artef/artef/issues/7387)) ([ca50ce8](https://github.com/artef/artef/commit/ca50ce87c9ea59ac5d81a09430929f10ad92cb82))
+- **cli:** improve error messages for missing config file ([#7464](https://github.com/artef/artef/issues/7464)) ([9189dbf](https://github.com/artef/artef/commit/9189dbf2f79d3c237615678c47ce41edefd585f8))
+- **commands:** use streaming iteration in recalculatePromptMetrics to avoid OOM ([#7471](https://github.com/artef/artef/issues/7471)) ([1346f0a](https://github.com/artef/artef/commit/1346f0a130536427829ae451f66323a4a2a2bb3f))
+- **deps:** override lodash-es to 4.17.23 to resolve prototype pollution ([#7474](https://github.com/artef/artef/issues/7474)) ([f8bbd45](https://github.com/artef/artef/commit/f8bbd45ad91bd0b389f2c4aa999999a0671abefd))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.72.0 ([#7460](https://github.com/artef/artef/issues/7460)) ([4bce247](https://github.com/artef/artef/commit/4bce247f1003ab38dbe3115913172b9c5b0b6275))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.72.1 ([#7472](https://github.com/artef/artef/issues/7472)) ([bc8be96](https://github.com/artef/artef/commit/bc8be969ddd782681779d7f7f0404be235113707))
+- **deps:** update dependency ai to ^6.0.62 ([#7456](https://github.com/artef/artef/issues/7456)) ([cc259e9](https://github.com/artef/artef/commit/cc259e99a3960c74a1447241dccce42c0d64c91f))
+- **deps:** update dependency fast-xml-parser to ^5.3.4 ([#7476](https://github.com/artef/artef/issues/7476)) ([29121d5](https://github.com/artef/artef/commit/29121d52c5dd36769c23867025e46281f420679d))
+- **deps:** update dependency posthog-node to ~5.24.6 ([#7441](https://github.com/artef/artef/issues/7441)) ([9d2a59f](https://github.com/artef/artef/commit/9d2a59f662965c6d86d6f2acf63d00c9407edbae))
+- **deps:** update dependency posthog-node to ~5.24.7 ([#7465](https://github.com/artef/artef/issues/7465)) ([b87fbd9](https://github.com/artef/artef/commit/b87fbd9e06c6b4532c1cd5a8d4fda36ccf7da5d7))
+- export/table handling for falsy values ([#7440](https://github.com/artef/artef/issues/7440)) ([ec5b404](https://github.com/artef/artef/commit/ec5b404de0cadb2de27578c716e37e092dcdd860))
 
-## [0.120.20](https://github.com/promptfoo/promptfoo/compare/0.120.19...0.120.20) (2026-01-29)
+## [0.120.21](https://github.com/artef/artef/compare/0.120.20...0.120.21) (2026-02-03)
 
 ### Features
 
-- **redteam:** add email validation to generate command ([#7314](https://github.com/promptfoo/promptfoo/issues/7314)) ([4fffc3a](https://github.com/promptfoo/promptfoo/commit/4fffc3a2827cfadc9213f06167755fa880a2099d))
+- **app:** add print styles to DataTable for light mode printing ([#7365](https://github.com/artef/artef/issues/7365)) ([167b27c](https://github.com/artef/artef/commit/167b27c4b9483173cebe6eb7b3467e72a723fd3f))
+- **app:** improve HTTP endpoint request body editor ([#7438](https://github.com/artef/artef/issues/7438)) ([cfadb37](https://github.com/artef/artef/commit/cfadb3733c252114b5b15daf0f3a95809333b541))
+- **providers:** add HuggingFace chat completion provider ([#7446](https://github.com/artef/artef/issues/7446)) ([cd709b7](https://github.com/artef/artef/commit/cd709b7db38fc396ccadce5e960e28019f0efd01))
+- **providers:** add tools and tool choice transformations ([#7420](https://github.com/artef/artef/issues/7420)) ([c332cef](https://github.com/artef/artef/commit/c332cefd5dfc141d1f02ae4427509e82aeb1062e))
+- **providers:** add xAI Grok Imagine video provider ([#7395](https://github.com/artef/artef/issues/7395)) ([8407969](https://github.com/artef/artef/commit/84079698c689628f5a7bd775befbc99f4529decc))
+- **redteam:** Add indirect-web-pwn attack strategy ([#6973](https://github.com/artef/artef/issues/6973)) ([1065e71](https://github.com/artef/artef/commit/1065e711ddd96e53da500a20589914d53d94f157))
 
 ### Bug Fixes
 
-- **deps:** update dependency @openai/agents to ^0.4.3 ([#7352](https://github.com/promptfoo/promptfoo/issues/7352)) ([7fbb175](https://github.com/promptfoo/promptfoo/commit/7fbb1750d9304ef65a94762934381de745c96f01))
-- **deps:** update dependency posthog-node to ~5.23.0 ([#7249](https://github.com/promptfoo/promptfoo/issues/7249)) ([2126508](https://github.com/promptfoo/promptfoo/commit/21265087b3af10f627bb56838a772c2c8677b190))
-- **deps:** update dependency posthog-node to ~5.24.2 ([#7357](https://github.com/promptfoo/promptfoo/issues/7357)) ([5c664a2](https://github.com/promptfoo/promptfoo/commit/5c664a2f902b4fa83a8093906088038059b842f2))
-- **redteam:** add retry logic for multi-turn strategy generation ([#7342](https://github.com/promptfoo/promptfoo/issues/7342)) ([3e10268](https://github.com/promptfoo/promptfoo/commit/3e102682789c295c27c1a25dd89bfd687018b295))
-- **redteam:** preserve provider config in browser flow ([#7358](https://github.com/promptfoo/promptfoo/issues/7358)) ([5941c43](https://github.com/promptfoo/promptfoo/commit/5941c432a342fe3c514e25e5efaec264b0d2f4f1))
-- **scheduler:** preserve provider id() method when wrapping with rate… ([#7353](https://github.com/promptfoo/promptfoo/issues/7353)) ([eee32d4](https://github.com/promptfoo/promptfoo/commit/eee32d4756d56fda37e73c4253fd0fee7481650d))
+- **app:** refresh history page when evals complete ([#7189](https://github.com/artef/artef/issues/7189)) ([31ac183](https://github.com/artef/artef/commit/31ac183deb8b09ea7bb657cd579304007515aa1a))
+- **assertions:** resolve dynamic vars before passing to assertion functions ([#7374](https://github.com/artef/artef/issues/7374)) ([d3ad963](https://github.com/artef/artef/commit/d3ad963830002c3856a7f1a6ad719e74b8ab91c1))
+- **ci:** replace raven-actions/actionlint with direct download ([#7373](https://github.com/artef/artef/issues/7373)) ([665f8d3](https://github.com/artef/artef/commit/665f8d344e8ed7b9127b0438e9b09bc460259fd0))
+- **cli:** ensure process exits on SIGINT during view command ([#7390](https://github.com/artef/artef/issues/7390)) ([1a21ce2](https://github.com/artef/artef/commit/1a21ce267cbd61e5671a611884b53f5937ac44b5))
+- **cli:** show zero pass/fail counts in `artef show` ([#7427](https://github.com/artef/artef/issues/7427)) ([ecc2abc](https://github.com/artef/artef/commit/ecc2abc942c4697813a4acda763c877a34e9a0ab))
+- **cli:** use npx commands in README when init run via npx ([#7377](https://github.com/artef/artef/issues/7377)) ([1c0504e](https://github.com/artef/artef/commit/1c0504e7bdd31e7aa6dde2f1c65e28b4cbcc372c))
+- **deps:** lock file maintenance example dependencies ([#7406](https://github.com/artef/artef/issues/7406)) ([4f4807c](https://github.com/artef/artef/commit/4f4807ce20500ba35b0785729aa5d6de04cb9377))
+- **deps:** run npm audit fix ([#7450](https://github.com/artef/artef/issues/7450)) ([3f9ac78](https://github.com/artef/artef/commit/3f9ac78f4740f4ce0cc52d3e7c66fe2240adcf2e))
+- **deps:** update dependency @actions/core to ^2.0.3 ([#7415](https://github.com/artef/artef/issues/7415)) ([5f0e93f](https://github.com/artef/artef/commit/5f0e93f4337eb03546f470fe526afc15d86c5e14))
+- **deps:** update dependency @actions/github to ^8.0.1 ([#7412](https://github.com/artef/artef/issues/7412)) ([052ba95](https://github.com/artef/artef/commit/052ba950240c25239bed8a364f2e628318b42f6b))
+- **deps:** update dependency @actions/github to v8 ([#7402](https://github.com/artef/artef/issues/7402)) ([b805942](https://github.com/artef/artef/commit/b805942c7286eca0e42f851c5c1f4a2ced9dd037))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.2.2 ([#7362](https://github.com/artef/artef/issues/7362)) ([7ac8a53](https://github.com/artef/artef/commit/7ac8a53913fad9101a5698976971495fc8e62618))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.35 ([#7380](https://github.com/artef/artef/issues/7380)) ([632f64d](https://github.com/artef/artef/commit/632f64ddb11600b6b4bd66068548add9de902664))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.36 ([#7389](https://github.com/artef/artef/issues/7389)) ([c23e90c](https://github.com/artef/artef/commit/c23e90cc951a94edcb25de8e0fdbf74a684d4769))
+- **deps:** update dependency ai to ^6.0.50 ([#7399](https://github.com/artef/artef/issues/7399)) ([af3542d](https://github.com/artef/artef/commit/af3542d342403d2f9a8cb8de633188ea862e80a6))
+- **deps:** update dependency ai to ^6.0.55 ([#7410](https://github.com/artef/artef/issues/7410)) ([890d6a7](https://github.com/artef/artef/commit/890d6a7bf4781e0ecfaf174516ca21619e53ad1c))
+- **deps:** update dependency ai to ^6.0.56 ([#7417](https://github.com/artef/artef/issues/7417)) ([42d316f](https://github.com/artef/artef/commit/42d316f5d31141c11b2c913bff0315171d297598))
+- **deps:** update dependency ai to ^6.0.57 ([#7421](https://github.com/artef/artef/issues/7421)) ([ca7972b](https://github.com/artef/artef/commit/ca7972bde61844e9fe595d23d2d1f588e309d19d))
+- **deps:** update dependency ai to ^6.0.58 ([#7439](https://github.com/artef/artef/issues/7439)) ([2a05dbd](https://github.com/artef/artef/commit/2a05dbd1e9a2d8de6ed694280f1f51911cd9781e))
+- **deps:** update dependency ai to ^6.0.59 ([#7448](https://github.com/artef/artef/issues/7448)) ([a5f17ed](https://github.com/artef/artef/commit/a5f17ed5702c086c83a49cbbf86cb369f29e5613))
+- **deps:** update dependency ai to ^6.0.60 ([#7455](https://github.com/artef/artef/issues/7455)) ([ee7b28e](https://github.com/artef/artef/commit/ee7b28eb9f50de834fb9f1f062c21ddd34c67450))
+- **deps:** update dependency lru-cache to ^11.2.5 ([#7400](https://github.com/artef/artef/issues/7400)) ([c193ebd](https://github.com/artef/artef/commit/c193ebd7f4a89d9d20b072107250bfeabf52dae7))
+- **deps:** update dependency openai to ^6.17.0 ([#7449](https://github.com/artef/artef/issues/7449)) ([65e75eb](https://github.com/artef/artef/commit/65e75eb6be722a901c2bb6be76965d71c2f1e95f))
+- **deps:** update dependency posthog-node to ~5.24.3 ([#7413](https://github.com/artef/artef/issues/7413)) ([f60d3e0](https://github.com/artef/artef/commit/f60d3e0f1820ad9a86e962a32f37cd7e492c4ef3))
+- **deps:** update dependency swiper to ^12.1.0 ([#7442](https://github.com/artef/artef/issues/7442)) ([8b6af09](https://github.com/artef/artef/commit/8b6af09b44c88650ebc0e6ad4cde55b454551253))
+- **deps:** update dependency undici ([#7422](https://github.com/artef/artef/issues/7422)) ([8ef17c6](https://github.com/artef/artef/commit/8ef17c63d74e4742d2a9cfe749fbdcd4dd53faae))
+- **deps:** update dependency undici to ^7.19.1 ([#7368](https://github.com/artef/artef/issues/7368)) ([5a841d0](https://github.com/artef/artef/commit/5a841d0902c243f50bbc79d225244503566a3da3))
+- **deps:** update example dependencies (major) ([#7404](https://github.com/artef/artef/issues/7404)) ([a46f8dd](https://github.com/artef/artef/commit/a46f8dda2a2a4919ed93ed63f49445698886adc3))
+- **deps:** update openai packages ([#7435](https://github.com/artef/artef/issues/7435)) ([241a2fc](https://github.com/artef/artef/commit/241a2fced1a17201906dd605896cec0ae2ce8259))
+- **deps:** update type definitions ([#7431](https://github.com/artef/artef/issues/7431)) ([9e5cddb](https://github.com/artef/artef/commit/9e5cddb9a645446cf8b8bcee528d923701d7dd32))
+- g-eval prompt ambiguity ([#7397](https://github.com/artef/artef/issues/7397)) ([fb8d872](https://github.com/artef/artef/commit/fb8d872140b34b8c62bc99caccbdd0156ceb7037))
+- Langfuse variable type conversion ([#7461](https://github.com/artef/artef/issues/7461)) ([755d38c](https://github.com/artef/artef/commit/755d38c3d4b564b6c39d05bcfd02821f7d14287b))
+- prompt id hashing ([#6782](https://github.com/artef/artef/issues/6782)) ([18beb08](https://github.com/artef/artef/commit/18beb08b8749aab06d33e5c21503f25f1fe280fd))
+- **redteam:** ensure provider cleanup on all exit paths ([#7407](https://github.com/artef/artef/issues/7407)) ([e1538fe](https://github.com/artef/artef/commit/e1538fe1e3c68d7b709247eef89712c285d2ac2e))
+- **redteam:** improve Request Body editor UX and error handling ([#7319](https://github.com/artef/artef/issues/7319)) ([a1b4eec](https://github.com/artef/artef/commit/a1b4eecc6d464f6bdf88be636c850fd4d27cac6c))
+- **redteam:** use word-boundary regex in isBasicRefusal to prevent false positives ([#7394](https://github.com/artef/artef/issues/7394)) ([2ad5692](https://github.com/artef/artef/commit/2ad569207365665b143f52dff93cd0552bad13b7))
+- remove dupe eval row ids ([#7426](https://github.com/artef/artef/issues/7426)) ([4ba7fad](https://github.com/artef/artef/commit/4ba7fad28d3364eb542980335140c56f09d1a360))
 
-## [0.120.19](https://github.com/promptfoo/promptfoo/compare/0.120.18...0.120.19) (2026-01-28)
+## [0.120.20](https://github.com/artef/artef/compare/0.120.19...0.120.20) (2026-01-29)
 
 ### Features
 
-- **app:** enhance DataTable with column alignment and styling improvements ([#7349](https://github.com/promptfoo/promptfoo/issues/7349)) ([8b8b122](https://github.com/promptfoo/promptfoo/commit/8b8b1223cef96257783caf69079976090db0062c))
-- **app:** extend UI component interfaces for data-testid support ([#7339](https://github.com/promptfoo/promptfoo/issues/7339)) ([d9dc48a](https://github.com/promptfoo/promptfoo/commit/d9dc48a4866c1657ef7d4355deddd8f7ecc6dcaa))
-- **webui:** Make severity cards colourful again ([#7346](https://github.com/promptfoo/promptfoo/issues/7346)) ([ba3c3db](https://github.com/promptfoo/promptfoo/commit/ba3c3db57d9968a85b2b7fcdd35ea61039df8934))
+- **redteam:** add email validation to generate command ([#7314](https://github.com/artef/artef/issues/7314)) ([4fffc3a](https://github.com/artef/artef/commit/4fffc3a2827cfadc9213f06167755fa880a2099d))
 
 ### Bug Fixes
 
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.33 ([#7327](https://github.com/promptfoo/promptfoo/issues/7327)) ([bc8ee96](https://github.com/promptfoo/promptfoo/commit/bc8ee96af4f424a25d3e66579205d717894f81a1))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.34 ([#7332](https://github.com/promptfoo/promptfoo/issues/7332)) ([a9523d5](https://github.com/promptfoo/promptfoo/commit/a9523d51826d42c4d762ac0d414900c04b318cc4))
-- **deps:** update dependency ai to ^6.0.49 ([#7341](https://github.com/promptfoo/promptfoo/issues/7341)) ([a957b98](https://github.com/promptfoo/promptfoo/commit/a957b98754982c60fc75fbdb61b6b32c03c81532))
-- serialize Error objects properly in log context ([#7351](https://github.com/promptfoo/promptfoo/issues/7351)) ([584b283](https://github.com/promptfoo/promptfoo/commit/584b283134c8496ce2468003522aa13558bd4182))
-- **share:** add adaptive chunk retry for large eval uploads ([#7335](https://github.com/promptfoo/promptfoo/issues/7335)) ([1f114da](https://github.com/promptfoo/promptfoo/commit/1f114da4b3a9d81e04a771471fcae6df84ba95fd))
-- **webui:** Make chevron clickable for combobox ([#7347](https://github.com/promptfoo/promptfoo/issues/7347)) ([e7be12d](https://github.com/promptfoo/promptfoo/commit/e7be12d351f6b137f1964120277775ed384654ad))
+- **deps:** update dependency @openai/agents to ^0.4.3 ([#7352](https://github.com/artef/artef/issues/7352)) ([7fbb175](https://github.com/artef/artef/commit/7fbb1750d9304ef65a94762934381de745c96f01))
+- **deps:** update dependency posthog-node to ~5.23.0 ([#7249](https://github.com/artef/artef/issues/7249)) ([2126508](https://github.com/artef/artef/commit/21265087b3af10f627bb56838a772c2c8677b190))
+- **deps:** update dependency posthog-node to ~5.24.2 ([#7357](https://github.com/artef/artef/issues/7357)) ([5c664a2](https://github.com/artef/artef/commit/5c664a2f902b4fa83a8093906088038059b842f2))
+- **redteam:** add retry logic for multi-turn strategy generation ([#7342](https://github.com/artef/artef/issues/7342)) ([3e10268](https://github.com/artef/artef/commit/3e102682789c295c27c1a25dd89bfd687018b295))
+- **redteam:** preserve provider config in browser flow ([#7358](https://github.com/artef/artef/issues/7358)) ([5941c43](https://github.com/artef/artef/commit/5941c432a342fe3c514e25e5efaec264b0d2f4f1))
+- **scheduler:** preserve provider id() method when wrapping with rate… ([#7353](https://github.com/artef/artef/issues/7353)) ([eee32d4](https://github.com/artef/artef/commit/eee32d4756d56fda37e73c4253fd0fee7481650d))
 
-## [0.120.18](https://github.com/promptfoo/promptfoo/compare/0.120.17...0.120.18) (2026-01-28)
+## [0.120.19](https://github.com/artef/artef/compare/0.120.18...0.120.19) (2026-01-28)
 
 ### Features
 
-- **eval:** support multiple --filter-metadata flags with AND logic ([#7317](https://github.com/promptfoo/promptfoo/issues/7317)) ([61d8d17](https://github.com/promptfoo/promptfoo/commit/61d8d174ee756881edac31dcad9861bb14530803))
-- **providers:** add collaboration_mode support to OpenAI Codex SDK ([#7275](https://github.com/promptfoo/promptfoo/issues/7275)) ([a3e6d58](https://github.com/promptfoo/promptfoo/commit/a3e6d58d3580f0ea161646bc75967a86789ee4d7))
-- **redteam:** add early CLI error for missing sharp dependency ([#7222](https://github.com/promptfoo/promptfoo/issues/7222)) ([f518b39](https://github.com/promptfoo/promptfoo/commit/f518b39637937a95c6f92a72f3870e26bec50077))
-- **redteam:** informational level severity ([#7298](https://github.com/promptfoo/promptfoo/issues/7298)) ([4ce1327](https://github.com/promptfoo/promptfoo/commit/4ce1327dfab30c39079e9ad8fddd4f436427350b))
-- **scheduler:** add adaptive rate limit scheduler ([#7262](https://github.com/promptfoo/promptfoo/issues/7262)) ([0f6da61](https://github.com/promptfoo/promptfoo/commit/0f6da6141819be36fb0f840f8e94f5cedd3a1739))
-- **server:** add shared API types infrastructure with Zod schemas ([#7260](https://github.com/promptfoo/promptfoo/issues/7260)) ([f3a12d2](https://github.com/promptfoo/promptfoo/commit/f3a12d2b4e7f60d3dd997eca2916a5ff98a0fd09))
-- **xai:** add websocketUrl override and expose function calls in voice provider ([#7217](https://github.com/promptfoo/promptfoo/issues/7217)) ([5865735](https://github.com/promptfoo/promptfoo/commit/5865735be1348d317bf793383a5bdf409aea2031))
+- **app:** enhance DataTable with column alignment and styling improvements ([#7349](https://github.com/artef/artef/issues/7349)) ([8b8b122](https://github.com/artef/artef/commit/8b8b1223cef96257783caf69079976090db0062c))
+- **app:** extend UI component interfaces for data-testid support ([#7339](https://github.com/artef/artef/issues/7339)) ([d9dc48a](https://github.com/artef/artef/commit/d9dc48a4866c1657ef7d4355deddd8f7ecc6dcaa))
+- **webui:** Make severity cards colourful again ([#7346](https://github.com/artef/artef/issues/7346)) ([ba3c3db](https://github.com/artef/artef/commit/ba3c3db57d9968a85b2b7fcdd35ea61039df8934))
 
 ### Bug Fixes
 
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.25.3 ([#7268](https://github.com/promptfoo/promptfoo/issues/7268)) ([45e82e7](https://github.com/promptfoo/promptfoo/commit/45e82e73877de890a5848b3c86a1335b50324b7d))
-- **deps:** update dependency @openai/agents to ^0.4.2 ([#7325](https://github.com/promptfoo/promptfoo/issues/7325)) ([d2ae2fd](https://github.com/promptfoo/promptfoo/commit/d2ae2fda6a33ae961c4f177a9fb2df953fadbeee))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.26 ([#7248](https://github.com/promptfoo/promptfoo/issues/7248)) ([597abe0](https://github.com/promptfoo/promptfoo/commit/597abe079c5e665f7dad2c583cafd69a5bd9da18))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.28 ([#7253](https://github.com/promptfoo/promptfoo/issues/7253)) ([d689b01](https://github.com/promptfoo/promptfoo/commit/d689b011497987a0faad07b8ad74b0f06070eecb))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.31 ([#7289](https://github.com/promptfoo/promptfoo/issues/7289)) ([2c10b14](https://github.com/promptfoo/promptfoo/commit/2c10b14cfd3c10a1fb0e6054bd748c5fd7d0952c))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.32 ([#7315](https://github.com/promptfoo/promptfoo/issues/7315)) ([01456ea](https://github.com/promptfoo/promptfoo/commit/01456eadf2a3621d4a7fc8c97bcb1952d81df491))
-- **deps:** update dependency ai to ^6.0.45 ([#7277](https://github.com/promptfoo/promptfoo/issues/7277)) ([9d113d1](https://github.com/promptfoo/promptfoo/commit/9d113d15b5169fa2a88316b10dafc4e5b84b1a19))
-- **deps:** update dependency ai to ^6.0.47 ([#7305](https://github.com/promptfoo/promptfoo/issues/7305)) ([dd9bef1](https://github.com/promptfoo/promptfoo/commit/dd9bef140956e89a9d9b0ae8424ce82eca72e485))
-- **deps:** update dependency ai to ^6.0.48 ([#7307](https://github.com/promptfoo/promptfoo/issues/7307)) ([9f6e275](https://github.com/promptfoo/promptfoo/commit/9f6e2755dfb8db00d8c4097da0eff8e8a2d54306))
-- **deps:** update dependency cors to ^2.8.6 ([#7306](https://github.com/promptfoo/promptfoo/issues/7306)) ([9f59e5b](https://github.com/promptfoo/promptfoo/commit/9f59e5be8ef95fcc6c3b4bed925d41030bc27d77))
-- **deps:** update dependency keyv to ^5.6.0 ([#7269](https://github.com/promptfoo/promptfoo/issues/7269)) ([0135f8c](https://github.com/promptfoo/promptfoo/commit/0135f8c8b03aec40ef1d2a845e6ebcd8e6017a92))
-- **deps:** update dependency lightningcss to ^1.31.0 ([#7251](https://github.com/promptfoo/promptfoo/issues/7251)) ([20e4ddb](https://github.com/promptfoo/promptfoo/commit/20e4ddb39ca6d6966d0107c069716e64d340394c))
-- **deps:** update dependency lightningcss to ^1.31.1 ([#7270](https://github.com/promptfoo/promptfoo/issues/7270)) ([f41fc9e](https://github.com/promptfoo/promptfoo/commit/f41fc9e413671ef185b3e6e81b0adea154aeb7ea))
-- **deps:** update dependency ora to ^9.1.0 ([#7271](https://github.com/promptfoo/promptfoo/issues/7271)) ([0d98bf6](https://github.com/promptfoo/promptfoo/commit/0d98bf6d6a0cedbb46007da0781fa27f55b9c8ae))
-- **deps:** update dependency posthog-node to ~5.21.2 ([#7242](https://github.com/promptfoo/promptfoo/issues/7242)) ([8e8864c](https://github.com/promptfoo/promptfoo/commit/8e8864c85457cd3cea8080717a67a1da58ef59f8))
-- **deps:** update dependency undici to ^7.19.0 ([#7291](https://github.com/promptfoo/promptfoo/issues/7291)) ([36a0c01](https://github.com/promptfoo/promptfoo/commit/36a0c0171e6536e2d67667ffaf157ebc0d65e849))
-- **deps:** update dependency zod to ^4.3.6 ([#7316](https://github.com/promptfoo/promptfoo/issues/7316)) ([fe6a9fc](https://github.com/promptfoo/promptfoo/commit/fe6a9fcc7ef0cf7aafb7fe6d1e35075f4ea1886f))
-- **deps:** update openai packages ([#7227](https://github.com/promptfoo/promptfoo/issues/7227)) ([8d59146](https://github.com/promptfoo/promptfoo/commit/8d59146f248e05650c58dcffe16398d1ec87ddb9))
-- **deps:** update openai packages ([#7272](https://github.com/promptfoo/promptfoo/issues/7272)) ([0695134](https://github.com/promptfoo/promptfoo/commit/06951347a5349c00289b478685af83525d62000d))
-- **deps:** update opentelemetry ([#7292](https://github.com/promptfoo/promptfoo/issues/7292)) ([0746c12](https://github.com/promptfoo/promptfoo/commit/0746c12a0fba0cf749ae20de542d15c94c8ceebc))
-- **evaluator:** handle circular references in provider responses ([#7281](https://github.com/promptfoo/promptfoo/issues/7281)) ([cb14c83](https://github.com/promptfoo/promptfoo/commit/cb14c83da3e866419ba9a788d6fdfa1d7c504329))
-- **providers:** kill Python process on worker ready timeout ([#7280](https://github.com/promptfoo/promptfoo/issues/7280)) ([4c4723e](https://github.com/promptfoo/promptfoo/commit/4c4723e3fb4e2456be3bc219dbcfef3818f3f58c))
-- **providers:** make @huggingface/transformers an optional dependency ([#7261](https://github.com/promptfoo/promptfoo/issues/7261)) ([4cda786](https://github.com/promptfoo/promptfoo/commit/4cda7861054e73aa2d7c0df069cf73c673261173))
-- **providers:** send temperature: 0 and max_tokens: 0 to API ([#7323](https://github.com/promptfoo/promptfoo/issues/7323)) ([646f0ea](https://github.com/promptfoo/promptfoo/commit/646f0eab81acfc63768fa494557f128aaaf32074))
-- **redteam:** fix filter panel errors in Report component ([#7250](https://github.com/promptfoo/promptfoo/issues/7250)) ([45a3676](https://github.com/promptfoo/promptfoo/commit/45a367640e740a2a0382086aa2b40f83950d8e98))
-- **redteam:** handle health check timeout to avoid blocking generation ([#7301](https://github.com/promptfoo/promptfoo/issues/7301)) ([9ba4040](https://github.com/promptfoo/promptfoo/commit/9ba4040b601a98c87ed9d6bc1c06b82b893a5372))
-- **redteam:** make sharp availability tests deterministic ([#7232](https://github.com/promptfoo/promptfoo/issues/7232)) ([0fa9023](https://github.com/promptfoo/promptfoo/commit/0fa9023baa3df3437150de1a8478cd96f6833670))
-- **redteam:** use defaultTest provider as fallback for attack generation ([#7236](https://github.com/promptfoo/promptfoo/issues/7236)) ([5ab746a](https://github.com/promptfoo/promptfoo/commit/5ab746ad69f36b67b97f032e2b7f2e0b4615e25b))
-- **scheduler:** handle undefined error.message in isRateLimitError ([#7299](https://github.com/promptfoo/promptfoo/issues/7299)) ([b99108c](https://github.com/promptfoo/promptfoo/commit/b99108c7b625a9ce06ee55ccec90d7c40e051482))
-- **webui:** Support password encrypted keys for PEM certs ([#7282](https://github.com/promptfoo/promptfoo/issues/7282)) ([2f8ee3c](https://github.com/promptfoo/promptfoo/commit/2f8ee3c223278abc50304fa7e37ef2491ac9e5c3))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.33 ([#7327](https://github.com/artef/artef/issues/7327)) ([bc8ee96](https://github.com/artef/artef/commit/bc8ee96af4f424a25d3e66579205d717894f81a1))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.34 ([#7332](https://github.com/artef/artef/issues/7332)) ([a9523d5](https://github.com/artef/artef/commit/a9523d51826d42c4d762ac0d414900c04b318cc4))
+- **deps:** update dependency ai to ^6.0.49 ([#7341](https://github.com/artef/artef/issues/7341)) ([a957b98](https://github.com/artef/artef/commit/a957b98754982c60fc75fbdb61b6b32c03c81532))
+- serialize Error objects properly in log context ([#7351](https://github.com/artef/artef/issues/7351)) ([584b283](https://github.com/artef/artef/commit/584b283134c8496ce2468003522aa13558bd4182))
+- **share:** add adaptive chunk retry for large eval uploads ([#7335](https://github.com/artef/artef/issues/7335)) ([1f114da](https://github.com/artef/artef/commit/1f114da4b3a9d81e04a771471fcae6df84ba95fd))
+- **webui:** Make chevron clickable for combobox ([#7347](https://github.com/artef/artef/issues/7347)) ([e7be12d](https://github.com/artef/artef/commit/e7be12d351f6b137f1964120277775ed384654ad))
 
-## [0.120.17](https://github.com/promptfoo/promptfoo/compare/0.120.16...0.120.17) (2026-01-23)
+## [0.120.18](https://github.com/artef/artef/compare/0.120.17...0.120.18) (2026-01-28)
 
 ### Features
 
-- **redteam:** add telecom vertical red team plugins ([#7182](https://github.com/promptfoo/promptfoo/issues/7182)) ([678fd1e](https://github.com/promptfoo/promptfoo/commit/678fd1e9828aeece905f6d17984f3478846749ee))
-- **redteam:** add VLSU compositional safety plugin ([#6855](https://github.com/promptfoo/promptfoo/issues/6855)) ([3e30cb0](https://github.com/promptfoo/promptfoo/commit/3e30cb0383991990177f3858cc19022334167974))
-- **webui:** add user-rated filter to show only manually rated results ([#6193](https://github.com/promptfoo/promptfoo/issues/6193)) ([cbc59db](https://github.com/promptfoo/promptfoo/commit/cbc59dbbe9fd7c66e7b6b44bae9559e682f8ad9b))
+- **eval:** support multiple --filter-metadata flags with AND logic ([#7317](https://github.com/artef/artef/issues/7317)) ([61d8d17](https://github.com/artef/artef/commit/61d8d174ee756881edac31dcad9861bb14530803))
+- **providers:** add collaboration_mode support to OpenAI Codex SDK ([#7275](https://github.com/artef/artef/issues/7275)) ([a3e6d58](https://github.com/artef/artef/commit/a3e6d58d3580f0ea161646bc75967a86789ee4d7))
+- **redteam:** add early CLI error for missing sharp dependency ([#7222](https://github.com/artef/artef/issues/7222)) ([f518b39](https://github.com/artef/artef/commit/f518b39637937a95c6f92a72f3870e26bec50077))
+- **redteam:** informational level severity ([#7298](https://github.com/artef/artef/issues/7298)) ([4ce1327](https://github.com/artef/artef/commit/4ce1327dfab30c39079e9ad8fddd4f436427350b))
+- **scheduler:** add adaptive rate limit scheduler ([#7262](https://github.com/artef/artef/issues/7262)) ([0f6da61](https://github.com/artef/artef/commit/0f6da6141819be36fb0f840f8e94f5cedd3a1739))
+- **server:** add shared API types infrastructure with Zod schemas ([#7260](https://github.com/artef/artef/issues/7260)) ([f3a12d2](https://github.com/artef/artef/commit/f3a12d2b4e7f60d3dd997eca2916a5ff98a0fd09))
+- **xai:** add websocketUrl override and expose function calls in voice provider ([#7217](https://github.com/artef/artef/issues/7217)) ([5865735](https://github.com/artef/artef/commit/5865735be1348d317bf793383a5bdf409aea2031))
 
 ### Bug Fixes
 
-- **app:** fix tabs padding and hover state conflicts ([#7179](https://github.com/promptfoo/promptfoo/issues/7179)) ([7edf9af](https://github.com/promptfoo/promptfoo/commit/7edf9afef478d1223498b431acc12eb8fb062c82))
-- **ci:** use gh pr diff for full reviews to avoid false positives ([#7192](https://github.com/promptfoo/promptfoo/issues/7192)) ([520f4cb](https://github.com/promptfoo/promptfoo/commit/520f4cb9491672b2ee67d1d4c93b83352f9d2d07))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.2.1 ([#7193](https://github.com/promptfoo/promptfoo/issues/7193)) ([e1e5faa](https://github.com/promptfoo/promptfoo/commit/e1e5faa5363344a2b0234ae745f0f85fc8e007fd))
-- **deps:** update dependency @openai/agents to ^0.3.9 ([#7183](https://github.com/promptfoo/promptfoo/issues/7183)) ([78cd5f4](https://github.com/promptfoo/promptfoo/commit/78cd5f4f235a32bc9c300338955b42193e1b0c95))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.24 ([#7177](https://github.com/promptfoo/promptfoo/issues/7177)) ([a34f27f](https://github.com/promptfoo/promptfoo/commit/a34f27f82767ee7ef1d109ddb750bcb6e9ddbcc6))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.25 ([#7180](https://github.com/promptfoo/promptfoo/issues/7180)) ([f960f63](https://github.com/promptfoo/promptfoo/commit/f960f63b3dd8aee3ca34960697fa5e27cb8b0b62))
-- **deps:** update dependency better-sqlite3 to ^12.6.2 ([#7194](https://github.com/promptfoo/promptfoo/issues/7194)) ([2fca1e1](https://github.com/promptfoo/promptfoo/commit/2fca1e152201788ff9f9ec143baacab8b6d61b80))
-- **deps:** update dependency posthog-node to ~5.21.1 ([#7178](https://github.com/promptfoo/promptfoo/issues/7178)) ([376b8a4](https://github.com/promptfoo/promptfoo/commit/376b8a4942a344f7f837956bd5aa6b32033ef38e))
-- **export:** unify CSV exports between CLI and WebUI ([#6659](https://github.com/promptfoo/promptfoo/issues/6659)) ([a7080b6](https://github.com/promptfoo/promptfoo/commit/a7080b63aa7b7b40415b2877a33c5ae4e79530e3))
-- **redteam:** fix policy loading and logging for inline vs reusable policies ([#7210](https://github.com/promptfoo/promptfoo/issues/7210)) ([b097386](https://github.com/promptfoo/promptfoo/commit/b0973865a3bc953425094db6d6bf2e0a728629d0))
-- **redteam:** handle isRefusal in Crescendo before parsing JSON ([#7191](https://github.com/promptfoo/promptfoo/issues/7191)) ([d0c5857](https://github.com/promptfoo/promptfoo/commit/d0c5857984826f5a89de07ddfd704d2233b03157))
-- **redteam:** use lenient provider matching for agentic strategies ([#7027](https://github.com/promptfoo/promptfoo/issues/7027)) ([552cb98](https://github.com/promptfoo/promptfoo/commit/552cb98d15a34f5a2686a6b2aed5b1badd6952ea))
-- **retry:** prevent data loss when retry fails and add cloud sync ([#7164](https://github.com/promptfoo/promptfoo/issues/7164)) ([577c4d7](https://github.com/promptfoo/promptfoo/commit/577c4d7c2fd4d6dac1e5241e31873080cfd51cd0))
-- **webui:** prevent external URL auto-loading from test variables ([#7076](https://github.com/promptfoo/promptfoo/issues/7076)) ([b7b5243](https://github.com/promptfoo/promptfoo/commit/b7b52436512198dfe63a02daa59b32f142cf5385))
-- **webui:** prevent form submission during ime composition ([#7186](https://github.com/promptfoo/promptfoo/issues/7186)) ([2f3d37a](https://github.com/promptfoo/promptfoo/commit/2f3d37acae31521fe934c043d1824662c7fe1524))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.25.3 ([#7268](https://github.com/artef/artef/issues/7268)) ([45e82e7](https://github.com/artef/artef/commit/45e82e73877de890a5848b3c86a1335b50324b7d))
+- **deps:** update dependency @openai/agents to ^0.4.2 ([#7325](https://github.com/artef/artef/issues/7325)) ([d2ae2fd](https://github.com/artef/artef/commit/d2ae2fda6a33ae961c4f177a9fb2df953fadbeee))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.26 ([#7248](https://github.com/artef/artef/issues/7248)) ([597abe0](https://github.com/artef/artef/commit/597abe079c5e665f7dad2c583cafd69a5bd9da18))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.28 ([#7253](https://github.com/artef/artef/issues/7253)) ([d689b01](https://github.com/artef/artef/commit/d689b011497987a0faad07b8ad74b0f06070eecb))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.31 ([#7289](https://github.com/artef/artef/issues/7289)) ([2c10b14](https://github.com/artef/artef/commit/2c10b14cfd3c10a1fb0e6054bd748c5fd7d0952c))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.32 ([#7315](https://github.com/artef/artef/issues/7315)) ([01456ea](https://github.com/artef/artef/commit/01456eadf2a3621d4a7fc8c97bcb1952d81df491))
+- **deps:** update dependency ai to ^6.0.45 ([#7277](https://github.com/artef/artef/issues/7277)) ([9d113d1](https://github.com/artef/artef/commit/9d113d15b5169fa2a88316b10dafc4e5b84b1a19))
+- **deps:** update dependency ai to ^6.0.47 ([#7305](https://github.com/artef/artef/issues/7305)) ([dd9bef1](https://github.com/artef/artef/commit/dd9bef140956e89a9d9b0ae8424ce82eca72e485))
+- **deps:** update dependency ai to ^6.0.48 ([#7307](https://github.com/artef/artef/issues/7307)) ([9f6e275](https://github.com/artef/artef/commit/9f6e2755dfb8db00d8c4097da0eff8e8a2d54306))
+- **deps:** update dependency cors to ^2.8.6 ([#7306](https://github.com/artef/artef/issues/7306)) ([9f59e5b](https://github.com/artef/artef/commit/9f59e5be8ef95fcc6c3b4bed925d41030bc27d77))
+- **deps:** update dependency keyv to ^5.6.0 ([#7269](https://github.com/artef/artef/issues/7269)) ([0135f8c](https://github.com/artef/artef/commit/0135f8c8b03aec40ef1d2a845e6ebcd8e6017a92))
+- **deps:** update dependency lightningcss to ^1.31.0 ([#7251](https://github.com/artef/artef/issues/7251)) ([20e4ddb](https://github.com/artef/artef/commit/20e4ddb39ca6d6966d0107c069716e64d340394c))
+- **deps:** update dependency lightningcss to ^1.31.1 ([#7270](https://github.com/artef/artef/issues/7270)) ([f41fc9e](https://github.com/artef/artef/commit/f41fc9e413671ef185b3e6e81b0adea154aeb7ea))
+- **deps:** update dependency ora to ^9.1.0 ([#7271](https://github.com/artef/artef/issues/7271)) ([0d98bf6](https://github.com/artef/artef/commit/0d98bf6d6a0cedbb46007da0781fa27f55b9c8ae))
+- **deps:** update dependency posthog-node to ~5.21.2 ([#7242](https://github.com/artef/artef/issues/7242)) ([8e8864c](https://github.com/artef/artef/commit/8e8864c85457cd3cea8080717a67a1da58ef59f8))
+- **deps:** update dependency undici to ^7.19.0 ([#7291](https://github.com/artef/artef/issues/7291)) ([36a0c01](https://github.com/artef/artef/commit/36a0c0171e6536e2d67667ffaf157ebc0d65e849))
+- **deps:** update dependency zod to ^4.3.6 ([#7316](https://github.com/artef/artef/issues/7316)) ([fe6a9fc](https://github.com/artef/artef/commit/fe6a9fcc7ef0cf7aafb7fe6d1e35075f4ea1886f))
+- **deps:** update openai packages ([#7227](https://github.com/artef/artef/issues/7227)) ([8d59146](https://github.com/artef/artef/commit/8d59146f248e05650c58dcffe16398d1ec87ddb9))
+- **deps:** update openai packages ([#7272](https://github.com/artef/artef/issues/7272)) ([0695134](https://github.com/artef/artef/commit/06951347a5349c00289b478685af83525d62000d))
+- **deps:** update opentelemetry ([#7292](https://github.com/artef/artef/issues/7292)) ([0746c12](https://github.com/artef/artef/commit/0746c12a0fba0cf749ae20de542d15c94c8ceebc))
+- **evaluator:** handle circular references in provider responses ([#7281](https://github.com/artef/artef/issues/7281)) ([cb14c83](https://github.com/artef/artef/commit/cb14c83da3e866419ba9a788d6fdfa1d7c504329))
+- **providers:** kill Python process on worker ready timeout ([#7280](https://github.com/artef/artef/issues/7280)) ([4c4723e](https://github.com/artef/artef/commit/4c4723e3fb4e2456be3bc219dbcfef3818f3f58c))
+- **providers:** make @huggingface/transformers an optional dependency ([#7261](https://github.com/artef/artef/issues/7261)) ([4cda786](https://github.com/artef/artef/commit/4cda7861054e73aa2d7c0df069cf73c673261173))
+- **providers:** send temperature: 0 and max_tokens: 0 to API ([#7323](https://github.com/artef/artef/issues/7323)) ([646f0ea](https://github.com/artef/artef/commit/646f0eab81acfc63768fa494557f128aaaf32074))
+- **redteam:** fix filter panel errors in Report component ([#7250](https://github.com/artef/artef/issues/7250)) ([45a3676](https://github.com/artef/artef/commit/45a367640e740a2a0382086aa2b40f83950d8e98))
+- **redteam:** handle health check timeout to avoid blocking generation ([#7301](https://github.com/artef/artef/issues/7301)) ([9ba4040](https://github.com/artef/artef/commit/9ba4040b601a98c87ed9d6bc1c06b82b893a5372))
+- **redteam:** make sharp availability tests deterministic ([#7232](https://github.com/artef/artef/issues/7232)) ([0fa9023](https://github.com/artef/artef/commit/0fa9023baa3df3437150de1a8478cd96f6833670))
+- **redteam:** use defaultTest provider as fallback for attack generation ([#7236](https://github.com/artef/artef/issues/7236)) ([5ab746a](https://github.com/artef/artef/commit/5ab746ad69f36b67b97f032e2b7f2e0b4615e25b))
+- **scheduler:** handle undefined error.message in isRateLimitError ([#7299](https://github.com/artef/artef/issues/7299)) ([b99108c](https://github.com/artef/artef/commit/b99108c7b625a9ce06ee55ccec90d7c40e051482))
+- **webui:** Support password encrypted keys for PEM certs ([#7282](https://github.com/artef/artef/issues/7282)) ([2f8ee3c](https://github.com/artef/artef/commit/2f8ee3c223278abc50304fa7e37ef2491ac9e5c3))
 
-## [0.120.16](https://github.com/promptfoo/promptfoo/compare/0.120.15...0.120.16) (2026-01-21)
+## [0.120.17](https://github.com/artef/artef/compare/0.120.16...0.120.17) (2026-01-23)
 
 ### Features
 
-- **config:** add per-test structured output support ([#6239](https://github.com/promptfoo/promptfoo/issues/6239)) ([4629892](https://github.com/promptfoo/promptfoo/commit/4629892c14c8df37d298229209a8a932d607de9f))
-- **eval:** re-enable SIGINT graceful shutdown for eval pause/resume ([#7012](https://github.com/promptfoo/promptfoo/issues/7012)) ([06364ef](https://github.com/promptfoo/promptfoo/commit/06364ef85ebf0ffe0c5091d594aa91d704dea07a))
-- **providers:** add AWS Bedrock video generation (Nova Reel + Luma Ray 2) ([#6889](https://github.com/promptfoo/promptfoo/issues/6889)) ([71cb200](https://github.com/promptfoo/promptfoo/commit/71cb2005e639ab45c20b875317d7ad21566beb34))
-- **providers:** add enhanced parameters and chat support for WatsonX ([#6605](https://github.com/promptfoo/promptfoo/issues/6605)) ([6cbb5db](https://github.com/promptfoo/promptfoo/commit/6cbb5db7487640b8d2855998695e4bc45cf89843))
-- **providers:** support dynamic prompt reporting ([#6843](https://github.com/promptfoo/promptfoo/issues/6843)) ([65a2dc7](https://github.com/promptfoo/promptfoo/commit/65a2dc79e4f3aa0b5adba466be39bdb93fcc8e4c))
+- **redteam:** add telecom vertical red team plugins ([#7182](https://github.com/artef/artef/issues/7182)) ([678fd1e](https://github.com/artef/artef/commit/678fd1e9828aeece905f6d17984f3478846749ee))
+- **redteam:** add VLSU compositional safety plugin ([#6855](https://github.com/artef/artef/issues/6855)) ([3e30cb0](https://github.com/artef/artef/commit/3e30cb0383991990177f3858cc19022334167974))
+- **webui:** add user-rated filter to show only manually rated results ([#6193](https://github.com/artef/artef/issues/6193)) ([cbc59db](https://github.com/artef/artef/commit/cbc59dbbe9fd7c66e7b6b44bae9559e682f8ad9b))
 
 ### Bug Fixes
 
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.23 ([#7153](https://github.com/promptfoo/promptfoo/issues/7153)) ([b697ce7](https://github.com/promptfoo/promptfoo/commit/b697ce7bbcaf2fd89d172c5fdcfb217bcf466b8c))
-- **redteam:** improve plugin logging and fix report aggregation ([#7150](https://github.com/promptfoo/promptfoo/issues/7150)) ([5736ff0](https://github.com/promptfoo/promptfoo/commit/5736ff0a8e07cc2bd3fd93320ef01e62356ed170))
-- **redteam:** unique display IDs for policy plugins & accurate progress bar ([#7157](https://github.com/promptfoo/promptfoo/issues/7157)) ([5cbc027](https://github.com/promptfoo/promptfoo/commit/5cbc027ef063353bf667787536d1c1d62bcc399e))
+- **app:** fix tabs padding and hover state conflicts ([#7179](https://github.com/artef/artef/issues/7179)) ([7edf9af](https://github.com/artef/artef/commit/7edf9afef478d1223498b431acc12eb8fb062c82))
+- **ci:** use gh pr diff for full reviews to avoid false positives ([#7192](https://github.com/artef/artef/issues/7192)) ([520f4cb](https://github.com/artef/artef/commit/520f4cb9491672b2ee67d1d4c93b83352f9d2d07))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.2.1 ([#7193](https://github.com/artef/artef/issues/7193)) ([e1e5faa](https://github.com/artef/artef/commit/e1e5faa5363344a2b0234ae745f0f85fc8e007fd))
+- **deps:** update dependency @openai/agents to ^0.3.9 ([#7183](https://github.com/artef/artef/issues/7183)) ([78cd5f4](https://github.com/artef/artef/commit/78cd5f4f235a32bc9c300338955b42193e1b0c95))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.24 ([#7177](https://github.com/artef/artef/issues/7177)) ([a34f27f](https://github.com/artef/artef/commit/a34f27f82767ee7ef1d109ddb750bcb6e9ddbcc6))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.25 ([#7180](https://github.com/artef/artef/issues/7180)) ([f960f63](https://github.com/artef/artef/commit/f960f63b3dd8aee3ca34960697fa5e27cb8b0b62))
+- **deps:** update dependency better-sqlite3 to ^12.6.2 ([#7194](https://github.com/artef/artef/issues/7194)) ([2fca1e1](https://github.com/artef/artef/commit/2fca1e152201788ff9f9ec143baacab8b6d61b80))
+- **deps:** update dependency posthog-node to ~5.21.1 ([#7178](https://github.com/artef/artef/issues/7178)) ([376b8a4](https://github.com/artef/artef/commit/376b8a4942a344f7f837956bd5aa6b32033ef38e))
+- **export:** unify CSV exports between CLI and WebUI ([#6659](https://github.com/artef/artef/issues/6659)) ([a7080b6](https://github.com/artef/artef/commit/a7080b63aa7b7b40415b2877a33c5ae4e79530e3))
+- **redteam:** fix policy loading and logging for inline vs reusable policies ([#7210](https://github.com/artef/artef/issues/7210)) ([b097386](https://github.com/artef/artef/commit/b0973865a3bc953425094db6d6bf2e0a728629d0))
+- **redteam:** handle isRefusal in Crescendo before parsing JSON ([#7191](https://github.com/artef/artef/issues/7191)) ([d0c5857](https://github.com/artef/artef/commit/d0c5857984826f5a89de07ddfd704d2233b03157))
+- **redteam:** use lenient provider matching for agentic strategies ([#7027](https://github.com/artef/artef/issues/7027)) ([552cb98](https://github.com/artef/artef/commit/552cb98d15a34f5a2686a6b2aed5b1badd6952ea))
+- **retry:** prevent data loss when retry fails and add cloud sync ([#7164](https://github.com/artef/artef/issues/7164)) ([577c4d7](https://github.com/artef/artef/commit/577c4d7c2fd4d6dac1e5241e31873080cfd51cd0))
+- **webui:** prevent external URL auto-loading from test variables ([#7076](https://github.com/artef/artef/issues/7076)) ([b7b5243](https://github.com/artef/artef/commit/b7b52436512198dfe63a02daa59b32f142cf5385))
+- **webui:** prevent form submission during ime composition ([#7186](https://github.com/artef/artef/issues/7186)) ([2f3d37a](https://github.com/artef/artef/commit/2f3d37acae31521fe934c043d1824662c7fe1524))
 
-## [0.120.15](https://github.com/promptfoo/promptfoo/compare/0.120.14...0.120.15) (2026-01-20)
+## [0.120.16](https://github.com/artef/artef/compare/0.120.15...0.120.16) (2026-01-21)
 
 ### Features
 
-- **app:** add NavigationSidebar component and enhance Tabs ([#7073](https://github.com/promptfoo/promptfoo/issues/7073)) ([55a3125](https://github.com/promptfoo/promptfoo/commit/55a3125e5627c2f1a4981744f536fde71b21a5de))
-- **app:** add Storybook with stories for all UI components ([#7066](https://github.com/promptfoo/promptfoo/issues/7066)) ([53f51cf](https://github.com/promptfoo/promptfoo/commit/53f51cf79b9d584dbf1acf1e1142bbde3f1d215f))
-- **app:** enhance Combobox with label and clearable props ([#7074](https://github.com/promptfoo/promptfoo/issues/7074)) ([53a47c5](https://github.com/promptfoo/promptfoo/commit/53a47c59b87135d68ff74a0cce8d788475118987))
-- **app:** Improve alert component ([#7069](https://github.com/promptfoo/promptfoo/issues/7069)) ([8ee2bcb](https://github.com/promptfoo/promptfoo/commit/8ee2bcb8b53e7f55c562b128dcfa9f8997384ded))
-- **code-scan:** fork PR support and comment-triggered scans ([#7038](https://github.com/promptfoo/promptfoo/issues/7038)) ([4eebb81](https://github.com/promptfoo/promptfoo/commit/4eebb8179b9c57ed4cb966d0f63cf2f8d3991096))
-- **eval:** add providers filter on test cases ([#6872](https://github.com/promptfoo/promptfoo/issues/6872)) ([4d64d84](https://github.com/promptfoo/promptfoo/commit/4d64d84b8aed357b792834731d521de4913272ca))
-- **eval:** add test-level prompts filter ([#6686](https://github.com/promptfoo/promptfoo/issues/6686)) ([895e1b4](https://github.com/promptfoo/promptfoo/commit/895e1b4a4ee683c3fccb2c02de9527574faba223))
-- **eval:** surface metadata.sessionId as a variable column in tables and exports ([#7087](https://github.com/promptfoo/promptfoo/issues/7087)) ([736bddb](https://github.com/promptfoo/promptfoo/commit/736bddb911065806b8da8d7583adba395c3673aa))
-- **evaluator:** add \_\_count variable for derived metrics averages ([#7092](https://github.com/promptfoo/promptfoo/issues/7092)) ([31ad6e6](https://github.com/promptfoo/promptfoo/commit/31ad6e60e607e24276aa7a8f62e9b497c2bc1a82))
-- **providers:** add apiBaseUrl support to xAI Voice provider ([#7088](https://github.com/promptfoo/promptfoo/issues/7088)) ([a1d535a](https://github.com/promptfoo/promptfoo/commit/a1d535a32ba6231fb8593b6501600b21e7578468))
-- **providers:** add native session endpoint support for HTTP provider ([#7133](https://github.com/promptfoo/promptfoo/issues/7133)) ([54c315b](https://github.com/promptfoo/promptfoo/commit/54c315b4d69e586aae173b7b91e0d6ff7cde59dc))
-- **providers:** add Transformers.js provider for local inference ([#6661](https://github.com/promptfoo/promptfoo/issues/6661)) ([dd9b199](https://github.com/promptfoo/promptfoo/commit/dd9b199dea69e986888ac530896123c27edee4d2))
-- **providers:** add Vercel AI gateway ([#7061](https://github.com/promptfoo/promptfoo/issues/7061)) ([f2a4c89](https://github.com/promptfoo/promptfoo/commit/f2a4c89da251c0ccb78605e82de20d162fd1e74e))
-- **python:** propagate -j concurrency flag to worker pool ([#7065](https://github.com/promptfoo/promptfoo/issues/7065)) ([32ffdd5](https://github.com/promptfoo/promptfoo/commit/32ffdd5e9a0e05b0f6a2352cf87ba28e58edbbe3))
-- **redteam:** add -d/--description flag to generate command ([#7148](https://github.com/promptfoo/promptfoo/issues/7148)) ([c305085](https://github.com/promptfoo/promptfoo/commit/c3050851bb8dc1abdfdffa62663b5b5c0d9659c1))
-- **redteam:** add RAG source attribution plugin ([#7064](https://github.com/promptfoo/promptfoo/issues/7064)) ([3efe2a6](https://github.com/promptfoo/promptfoo/commit/3efe2a6cf300f185a29cb434d5e50a2a370d0466))
-- **redteam:** stop scan early when plugins fail to generate test cases ([#7017](https://github.com/promptfoo/promptfoo/issues/7017)) ([49b856b](https://github.com/promptfoo/promptfoo/commit/49b856b4b7141e950b5c856b1608f7bf59819b4b))
-- **webui:** Multi-input in redteam setup UI ([#6954](https://github.com/promptfoo/promptfoo/issues/6954)) ([3c45963](https://github.com/promptfoo/promptfoo/commit/3c459639147962cca65c63d8df0377ae0ba3a9cf))
+- **config:** add per-test structured output support ([#6239](https://github.com/artef/artef/issues/6239)) ([4629892](https://github.com/artef/artef/commit/4629892c14c8df37d298229209a8a932d607de9f))
+- **eval:** re-enable SIGINT graceful shutdown for eval pause/resume ([#7012](https://github.com/artef/artef/issues/7012)) ([06364ef](https://github.com/artef/artef/commit/06364ef85ebf0ffe0c5091d594aa91d704dea07a))
+- **providers:** add AWS Bedrock video generation (Nova Reel + Luma Ray 2) ([#6889](https://github.com/artef/artef/issues/6889)) ([71cb200](https://github.com/artef/artef/commit/71cb2005e639ab45c20b875317d7ad21566beb34))
+- **providers:** add enhanced parameters and chat support for WatsonX ([#6605](https://github.com/artef/artef/issues/6605)) ([6cbb5db](https://github.com/artef/artef/commit/6cbb5db7487640b8d2855998695e4bc45cf89843))
+- **providers:** support dynamic prompt reporting ([#6843](https://github.com/artef/artef/issues/6843)) ([65a2dc7](https://github.com/artef/artef/commit/65a2dc79e4f3aa0b5adba466be39bdb93fcc8e4c))
 
 ### Bug Fixes
 
-- **config:** resolve env variables from config env section in provider IDs ([#7093](https://github.com/promptfoo/promptfoo/issues/7093)) ([736f65a](https://github.com/promptfoo/promptfoo/commit/736f65a5d19fe355b58d2fee093514c4fe7ff7b8))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.2.0 ([#7131](https://github.com/promptfoo/promptfoo/issues/7131)) ([a7ef170](https://github.com/promptfoo/promptfoo/commit/a7ef17014ad44d3642ba2f4a790ddf0df40d200c))
-- **deps:** update dependency @openai/agents to ^0.3.8 ([#7123](https://github.com/promptfoo/promptfoo/issues/7123)) ([85a3c92](https://github.com/promptfoo/promptfoo/commit/85a3c921ec2db77e4866aedd3ca7e3087fa47f42))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.20 ([#7124](https://github.com/promptfoo/promptfoo/issues/7124)) ([271ea58](https://github.com/promptfoo/promptfoo/commit/271ea58391df834ad349d0c366701f964402cac1))
-- **deps:** update dependency @opencode-ai/sdk to ^1.1.21 ([#7132](https://github.com/promptfoo/promptfoo/issues/7132)) ([2430635](https://github.com/promptfoo/promptfoo/commit/24306359bba296bc304d17ffa90297106d7d350b))
-- **deps:** update dependency ai to ^6.0.35 ([#7134](https://github.com/promptfoo/promptfoo/issues/7134)) ([eea0948](https://github.com/promptfoo/promptfoo/commit/eea0948f589bbba5fbe1b1c3b8096ae3ac22f76e))
-- **deps:** update dependency ai to ^6.0.37 ([#7140](https://github.com/promptfoo/promptfoo/issues/7140)) ([c12c6c5](https://github.com/promptfoo/promptfoo/commit/c12c6c5efbb43d0508365a693087e51f72457cd6))
-- **deps:** update dependency posthog-node to ^5.21.0 ([#7125](https://github.com/promptfoo/promptfoo/issues/7125)) ([8e36498](https://github.com/promptfoo/promptfoo/commit/8e36498c5bd9059f648ea28eeb16f5e05f38f162))
-- **deps:** update opentelemetry ([#7036](https://github.com/promptfoo/promptfoo/issues/7036)) ([6755add](https://github.com/promptfoo/promptfoo/commit/6755add6cf209778f36fcb850dd747a58c19d7d1))
-- **deps:** upgrade undici to 6.23.0 to address CVE-2026-22036 ([#7130](https://github.com/promptfoo/promptfoo/issues/7130)) ([ba5d75f](https://github.com/promptfoo/promptfoo/commit/ba5d75feeff58a086c60787a004e313a3132c7e6))
-- **lint:** resolve biome formatting and unused variable issues ([#7116](https://github.com/promptfoo/promptfoo/issues/7116)) ([b27742c](https://github.com/promptfoo/promptfoo/commit/b27742ca7845853dc986ce49f2b9900adff17be4))
-- **providers:** copy wrapper files to server directory for Docker builds ([#7142](https://github.com/promptfoo/promptfoo/issues/7142)) ([febfc6c](https://github.com/promptfoo/promptfoo/commit/febfc6cf40e01c5e132ff1d868e6829314f71f86))
-- **providers:** handle undefined agentResponse in SimulatedUser ([#7103](https://github.com/promptfoo/promptfoo/issues/7103)) ([fcebdfe](https://github.com/promptfoo/promptfoo/commit/fcebdfe088eac2f3bfc4857d1455d13d5de8e050))
-- **redteam:** apply strategy numTests as pre-generation limit ([#7080](https://github.com/promptfoo/promptfoo/issues/7080)) ([29c49ef](https://github.com/promptfoo/promptfoo/commit/29c49eff0404f1b2728829e9892ef6dee42d0c86))
-- **redteam:** improve error handling for iterative grading failures (ENG-1342) ([#6981](https://github.com/promptfoo/promptfoo/issues/6981)) ([66f8770](https://github.com/promptfoo/promptfoo/commit/66f87708c8421694732ad6ea27f068fc5753ed0b))
-- **redteam:** respect --grader CLI flag in iterative strategies ([#7100](https://github.com/promptfoo/promptfoo/issues/7100)) ([2115c8d](https://github.com/promptfoo/promptfoo/commit/2115c8d5300c4f3654a6b15a09295aab45c29b34))
-- **schema:** replace z.intersection with object spread for TestCase options ([#7097](https://github.com/promptfoo/promptfoo/issues/7097)) ([2d296a1](https://github.com/promptfoo/promptfoo/commit/2d296a136061db3088567155b2060694342fc521))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.23 ([#7153](https://github.com/artef/artef/issues/7153)) ([b697ce7](https://github.com/artef/artef/commit/b697ce7bbcaf2fd89d172c5fdcfb217bcf466b8c))
+- **redteam:** improve plugin logging and fix report aggregation ([#7150](https://github.com/artef/artef/issues/7150)) ([5736ff0](https://github.com/artef/artef/commit/5736ff0a8e07cc2bd3fd93320ef01e62356ed170))
+- **redteam:** unique display IDs for policy plugins & accurate progress bar ([#7157](https://github.com/artef/artef/issues/7157)) ([5cbc027](https://github.com/artef/artef/commit/5cbc027ef063353bf667787536d1c1d62bcc399e))
 
-## [0.120.14](https://github.com/promptfoo/promptfoo/compare/0.120.13...0.120.14) (2026-01-14)
+## [0.120.15](https://github.com/artef/artef/compare/0.120.14...0.120.15) (2026-01-20)
 
 ### Features
 
-- **redteam:** add numTests config option for strategy test capping ([#7030](https://github.com/promptfoo/promptfoo/issues/7030)) ([0ca5ded](https://github.com/promptfoo/promptfoo/commit/0ca5deda234c22482d43fd0a07f7855a444696ff))
+- **app:** add NavigationSidebar component and enhance Tabs ([#7073](https://github.com/artef/artef/issues/7073)) ([55a3125](https://github.com/artef/artef/commit/55a3125e5627c2f1a4981744f536fde71b21a5de))
+- **app:** add Storybook with stories for all UI components ([#7066](https://github.com/artef/artef/issues/7066)) ([53f51cf](https://github.com/artef/artef/commit/53f51cf79b9d584dbf1acf1e1142bbde3f1d215f))
+- **app:** enhance Combobox with label and clearable props ([#7074](https://github.com/artef/artef/issues/7074)) ([53a47c5](https://github.com/artef/artef/commit/53a47c59b87135d68ff74a0cce8d788475118987))
+- **app:** Improve alert component ([#7069](https://github.com/artef/artef/issues/7069)) ([8ee2bcb](https://github.com/artef/artef/commit/8ee2bcb8b53e7f55c562b128dcfa9f8997384ded))
+- **code-scan:** fork PR support and comment-triggered scans ([#7038](https://github.com/artef/artef/issues/7038)) ([4eebb81](https://github.com/artef/artef/commit/4eebb8179b9c57ed4cb966d0f63cf2f8d3991096))
+- **eval:** add providers filter on test cases ([#6872](https://github.com/artef/artef/issues/6872)) ([4d64d84](https://github.com/artef/artef/commit/4d64d84b8aed357b792834731d521de4913272ca))
+- **eval:** add test-level prompts filter ([#6686](https://github.com/artef/artef/issues/6686)) ([895e1b4](https://github.com/artef/artef/commit/895e1b4a4ee683c3fccb2c02de9527574faba223))
+- **eval:** surface metadata.sessionId as a variable column in tables and exports ([#7087](https://github.com/artef/artef/issues/7087)) ([736bddb](https://github.com/artef/artef/commit/736bddb911065806b8da8d7583adba395c3673aa))
+- **evaluator:** add \_\_count variable for derived metrics averages ([#7092](https://github.com/artef/artef/issues/7092)) ([31ad6e6](https://github.com/artef/artef/commit/31ad6e60e607e24276aa7a8f62e9b497c2bc1a82))
+- **providers:** add apiBaseUrl support to xAI Voice provider ([#7088](https://github.com/artef/artef/issues/7088)) ([a1d535a](https://github.com/artef/artef/commit/a1d535a32ba6231fb8593b6501600b21e7578468))
+- **providers:** add native session endpoint support for HTTP provider ([#7133](https://github.com/artef/artef/issues/7133)) ([54c315b](https://github.com/artef/artef/commit/54c315b4d69e586aae173b7b91e0d6ff7cde59dc))
+- **providers:** add Transformers.js provider for local inference ([#6661](https://github.com/artef/artef/issues/6661)) ([dd9b199](https://github.com/artef/artef/commit/dd9b199dea69e986888ac530896123c27edee4d2))
+- **providers:** add Vercel AI gateway ([#7061](https://github.com/artef/artef/issues/7061)) ([f2a4c89](https://github.com/artef/artef/commit/f2a4c89da251c0ccb78605e82de20d162fd1e74e))
+- **python:** propagate -j concurrency flag to worker pool ([#7065](https://github.com/artef/artef/issues/7065)) ([32ffdd5](https://github.com/artef/artef/commit/32ffdd5e9a0e05b0f6a2352cf87ba28e58edbbe3))
+- **redteam:** add -d/--description flag to generate command ([#7148](https://github.com/artef/artef/issues/7148)) ([c305085](https://github.com/artef/artef/commit/c3050851bb8dc1abdfdffa62663b5b5c0d9659c1))
+- **redteam:** add RAG source attribution plugin ([#7064](https://github.com/artef/artef/issues/7064)) ([3efe2a6](https://github.com/artef/artef/commit/3efe2a6cf300f185a29cb434d5e50a2a370d0466))
+- **redteam:** stop scan early when plugins fail to generate test cases ([#7017](https://github.com/artef/artef/issues/7017)) ([49b856b](https://github.com/artef/artef/commit/49b856b4b7141e950b5c856b1608f7bf59819b4b))
+- **webui:** Multi-input in redteam setup UI ([#6954](https://github.com/artef/artef/issues/6954)) ([3c45963](https://github.com/artef/artef/commit/3c459639147962cca65c63d8df0377ae0ba3a9cf))
 
 ### Bug Fixes
 
-- **deps:** update @actions/github to v7 and fix workspace config ([#7037](https://github.com/promptfoo/promptfoo/issues/7037)) ([c6b2496](https://github.com/promptfoo/promptfoo/commit/c6b24967dd86e6fad1bb10c37f8d36e79fb0ca4f))
-- **helm:** correct Docker registry domain from fghcr.io to ghcr.io ([#7056](https://github.com/promptfoo/promptfoo/issues/7056)) ([efe9460](https://github.com/promptfoo/promptfoo/commit/efe94607d349c5079d93401a489c59fbba1ca40c))
+- **config:** resolve env variables from config env section in provider IDs ([#7093](https://github.com/artef/artef/issues/7093)) ([736f65a](https://github.com/artef/artef/commit/736f65a5d19fe355b58d2fee093514c4fe7ff7b8))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to ^15.2.0 ([#7131](https://github.com/artef/artef/issues/7131)) ([a7ef170](https://github.com/artef/artef/commit/a7ef17014ad44d3642ba2f4a790ddf0df40d200c))
+- **deps:** update dependency @openai/agents to ^0.3.8 ([#7123](https://github.com/artef/artef/issues/7123)) ([85a3c92](https://github.com/artef/artef/commit/85a3c921ec2db77e4866aedd3ca7e3087fa47f42))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.20 ([#7124](https://github.com/artef/artef/issues/7124)) ([271ea58](https://github.com/artef/artef/commit/271ea58391df834ad349d0c366701f964402cac1))
+- **deps:** update dependency @opencode-ai/sdk to ^1.1.21 ([#7132](https://github.com/artef/artef/issues/7132)) ([2430635](https://github.com/artef/artef/commit/24306359bba296bc304d17ffa90297106d7d350b))
+- **deps:** update dependency ai to ^6.0.35 ([#7134](https://github.com/artef/artef/issues/7134)) ([eea0948](https://github.com/artef/artef/commit/eea0948f589bbba5fbe1b1c3b8096ae3ac22f76e))
+- **deps:** update dependency ai to ^6.0.37 ([#7140](https://github.com/artef/artef/issues/7140)) ([c12c6c5](https://github.com/artef/artef/commit/c12c6c5efbb43d0508365a693087e51f72457cd6))
+- **deps:** update dependency posthog-node to ^5.21.0 ([#7125](https://github.com/artef/artef/issues/7125)) ([8e36498](https://github.com/artef/artef/commit/8e36498c5bd9059f648ea28eeb16f5e05f38f162))
+- **deps:** update opentelemetry ([#7036](https://github.com/artef/artef/issues/7036)) ([6755add](https://github.com/artef/artef/commit/6755add6cf209778f36fcb850dd747a58c19d7d1))
+- **deps:** upgrade undici to 6.23.0 to address CVE-2026-22036 ([#7130](https://github.com/artef/artef/issues/7130)) ([ba5d75f](https://github.com/artef/artef/commit/ba5d75feeff58a086c60787a004e313a3132c7e6))
+- **lint:** resolve biome formatting and unused variable issues ([#7116](https://github.com/artef/artef/issues/7116)) ([b27742c](https://github.com/artef/artef/commit/b27742ca7845853dc986ce49f2b9900adff17be4))
+- **providers:** copy wrapper files to server directory for Docker builds ([#7142](https://github.com/artef/artef/issues/7142)) ([febfc6c](https://github.com/artef/artef/commit/febfc6cf40e01c5e132ff1d868e6829314f71f86))
+- **providers:** handle undefined agentResponse in SimulatedUser ([#7103](https://github.com/artef/artef/issues/7103)) ([fcebdfe](https://github.com/artef/artef/commit/fcebdfe088eac2f3bfc4857d1455d13d5de8e050))
+- **redteam:** apply strategy numTests as pre-generation limit ([#7080](https://github.com/artef/artef/issues/7080)) ([29c49ef](https://github.com/artef/artef/commit/29c49eff0404f1b2728829e9892ef6dee42d0c86))
+- **redteam:** improve error handling for iterative grading failures (ENG-1342) ([#6981](https://github.com/artef/artef/issues/6981)) ([66f8770](https://github.com/artef/artef/commit/66f87708c8421694732ad6ea27f068fc5753ed0b))
+- **redteam:** respect --grader CLI flag in iterative strategies ([#7100](https://github.com/artef/artef/issues/7100)) ([2115c8d](https://github.com/artef/artef/commit/2115c8d5300c4f3654a6b15a09295aab45c29b34))
+- **schema:** replace z.intersection with object spread for TestCase options ([#7097](https://github.com/artef/artef/issues/7097)) ([2d296a1](https://github.com/artef/artef/commit/2d296a136061db3088567155b2060694342fc521))
 
-## [0.120.13](https://github.com/promptfoo/promptfoo/compare/0.120.12...0.120.13) (2026-01-13)
+## [0.120.14](https://github.com/artef/artef/compare/0.120.13...0.120.14) (2026-01-14)
 
 ### Features
 
-- **ui:** Add Ink-based interactive list UI foundation ([#7013](https://github.com/promptfoo/promptfoo/issues/7013)) ([84a2ac7](https://github.com/promptfoo/promptfoo/commit/84a2ac7b2f8697d4cdafd0f868778348e6211c0e))
+- **redteam:** add numTests config option for strategy test capping ([#7030](https://github.com/artef/artef/issues/7030)) ([0ca5ded](https://github.com/artef/artef/commit/0ca5deda234c22482d43fd0a07f7855a444696ff))
 
 ### Bug Fixes
 
-- **ui:** preserve exact getRowId values in DataTable row selection ([#7032](https://github.com/promptfoo/promptfoo/issues/7032)) ([e78f083](https://github.com/promptfoo/promptfoo/commit/e78f083ff06a366e14fbc0530151c788738c2fec))
+- **deps:** update @actions/github to v7 and fix workspace config ([#7037](https://github.com/artef/artef/issues/7037)) ([c6b2496](https://github.com/artef/artef/commit/c6b24967dd86e6fad1bb10c37f8d36e79fb0ca4f))
+- **helm:** correct Docker registry domain from fghcr.io to ghcr.io ([#7056](https://github.com/artef/artef/issues/7056)) ([efe9460](https://github.com/artef/artef/commit/efe94607d349c5079d93401a489c59fbba1ca40c))
 
-## [0.120.12](https://github.com/promptfoo/promptfoo/compare/0.120.11...0.120.12) (2026-01-12)
+## [0.120.13](https://github.com/artef/artef/compare/0.120.12...0.120.13) (2026-01-13)
 
 ### Features
 
-- **app:** show provider config details on hover in eval results ([#6757](https://github.com/promptfoo/promptfoo/issues/6757)) ([c790f80](https://github.com/promptfoo/promptfoo/commit/c790f809a0baab2c186ea5be4a787229baad6d2d))
-- **assertions:** add word-count assertion type ([#7028](https://github.com/promptfoo/promptfoo/issues/7028)) ([d21f7a0](https://github.com/promptfoo/promptfoo/commit/d21f7a09c3d1932ac3780a1e90bc51907dc586a1))
-- **cli:** add logs command for viewing promptfoo log files ([#6621](https://github.com/promptfoo/promptfoo/issues/6621)) ([7ae03b4](https://github.com/promptfoo/promptfoo/commit/7ae03b493cf601721e44a93152687e2ab49210a2))
-- **config:** support environment variables in file paths ([#6862](https://github.com/promptfoo/promptfoo/issues/6862)) ([bf2d801](https://github.com/promptfoo/promptfoo/commit/bf2d801b73bdf6ff31ad6824b76eb419a0ddae92))
-- **mcp:** add server-side filtering to get_evaluation_details ([#7016](https://github.com/promptfoo/promptfoo/issues/7016)) ([36b5293](https://github.com/promptfoo/promptfoo/commit/36b5293111121506e51d2c96cad2e89dd4371d22))
-- **providers:** add QuiverAI provider ([#6979](https://github.com/promptfoo/promptfoo/issues/6979)) ([5ec7345](https://github.com/promptfoo/promptfoo/commit/5ec7345639978131b339a8b8abe12a9d6c18ea75))
-- **providers:** cloudflare ai gateway support ([#6966](https://github.com/promptfoo/promptfoo/issues/6966)) ([d53e276](https://github.com/promptfoo/promptfoo/commit/d53e276ef220afbbfd59a03a3b447f48386eed33))
-- **providers:** integrate tracing in openai codex provider ([#6751](https://github.com/promptfoo/promptfoo/issues/6751)) ([7150824](https://github.com/promptfoo/promptfoo/commit/7150824cea700b1fb8adc5664f49e074e2d4fe4c))
+- **ui:** Add Ink-based interactive list UI foundation ([#7013](https://github.com/artef/artef/issues/7013)) ([84a2ac7](https://github.com/artef/artef/commit/84a2ac7b2f8697d4cdafd0f868778348e6211c0e))
 
 ### Bug Fixes
 
-- allow custom function names in extension hooks to run for all hooks ([#6993](https://github.com/promptfoo/promptfoo/issues/6993)) ([695e4b3](https://github.com/promptfoo/promptfoo/commit/695e4b38549df918d376713d0905ef2fd39fe3af))
-- **app:** prevent pagination bar from floating on short eval tables ([#7010](https://github.com/promptfoo/promptfoo/issues/7010)) ([a54d1a5](https://github.com/promptfoo/promptfoo/commit/a54d1a53a35324de1ecdcd1fedb79da7fe76403c))
-- **app:** prevent sticky header jitter when scroll room is minimal ([#7026](https://github.com/promptfoo/promptfoo/issues/7026)) ([54347c1](https://github.com/promptfoo/promptfoo/commit/54347c1ce94d2ba7f82eb50f5ad3ad23b80299df))
-- **mcp:** fix stdio server lifecycle and shutdown ([#7001](https://github.com/promptfoo/promptfoo/issues/7001)) ([c08c735](https://github.com/promptfoo/promptfoo/commit/c08c735a2754d85e6c029d14bcddb778e80b1b31))
-- **mcp:** fix stdio server lifecycle and shutdown ([#7003](https://github.com/promptfoo/promptfoo/issues/7003)) ([1c35bbf](https://github.com/promptfoo/promptfoo/commit/1c35bbfb7500fb82a1609d9783d1300987362195))
-- **providers:** consolidate response_format loading and fix Azure nested schema bug ([#6880](https://github.com/promptfoo/promptfoo/issues/6880)) ([2d35ff2](https://github.com/promptfoo/promptfoo/commit/2d35ff23a5af2fa32788a052d44bebe6589b3b17))
-- **redteam:** batch update plugins in handleToggleAll to prevent infinite loop ([#6969](https://github.com/promptfoo/promptfoo/issues/6969)) ([2e6cbe0](https://github.com/promptfoo/promptfoo/commit/2e6cbe0fdff5bc6fab382edfe91d1cb9ca46a5e8))
-- **test-cases:** fix xlsx/xls array format loading and sheet specifier syntax ([#6998](https://github.com/promptfoo/promptfoo/issues/6998)) ([d8e266c](https://github.com/promptfoo/promptfoo/commit/d8e266c205985a2185a1b614774d686cae710c0a))
+- **ui:** preserve exact getRowId values in DataTable row selection ([#7032](https://github.com/artef/artef/issues/7032)) ([e78f083](https://github.com/artef/artef/commit/e78f083ff06a366e14fbc0530151c788738c2fec))
 
-## [0.120.11](https://github.com/promptfoo/promptfoo/compare/0.120.10...0.120.11) (2026-01-10)
+## [0.120.12](https://github.com/artef/artef/compare/0.120.11...0.120.12) (2026-01-12)
 
 ### Features
 
-- **app:** add Combobox component ([#6946](https://github.com/promptfoo/promptfoo/issues/6946)) ([a1fb9ed](https://github.com/promptfoo/promptfoo/commit/a1fb9ed64d49d4fc4cf58c96dfa89454eddc59d0))
-- **codeScan:** add fork PR authentication support ([#6958](https://github.com/promptfoo/promptfoo/issues/6958)) ([9c0fee4](https://github.com/promptfoo/promptfoo/commit/9c0fee4904af3135492545802f6d3bb872a31651))
-- **fetch:** add automatic retries for transient 5xx errors ([#6721](https://github.com/promptfoo/promptfoo/issues/6721)) ([eb0a608](https://github.com/promptfoo/promptfoo/commit/eb0a608fb0842ed9430d424ee99a9eecb9209cad))
-- **model-audit:** add auto-sharing with --share and --no-share flags ([#6928](https://github.com/promptfoo/promptfoo/issues/6928)) ([d66fdbc](https://github.com/promptfoo/promptfoo/commit/d66fdbc5140b209356e7fb4a241b68e92645018b))
-- **providers:** add OpenCode SDK v1.1.x feature support ([#6984](https://github.com/promptfoo/promptfoo/issues/6984)) ([42ba31b](https://github.com/promptfoo/promptfoo/commit/42ba31b14236d14d5a2bbe5585cda44108fcca5d))
+- **app:** show provider config details on hover in eval results ([#6757](https://github.com/artef/artef/issues/6757)) ([c790f80](https://github.com/artef/artef/commit/c790f809a0baab2c186ea5be4a787229baad6d2d))
+- **assertions:** add word-count assertion type ([#7028](https://github.com/artef/artef/issues/7028)) ([d21f7a0](https://github.com/artef/artef/commit/d21f7a09c3d1932ac3780a1e90bc51907dc586a1))
+- **cli:** add logs command for viewing artef log files ([#6621](https://github.com/artef/artef/issues/6621)) ([7ae03b4](https://github.com/artef/artef/commit/7ae03b493cf601721e44a93152687e2ab49210a2))
+- **config:** support environment variables in file paths ([#6862](https://github.com/artef/artef/issues/6862)) ([bf2d801](https://github.com/artef/artef/commit/bf2d801b73bdf6ff31ad6824b76eb419a0ddae92))
+- **mcp:** add server-side filtering to get_evaluation_details ([#7016](https://github.com/artef/artef/issues/7016)) ([36b5293](https://github.com/artef/artef/commit/36b5293111121506e51d2c96cad2e89dd4371d22))
+- **providers:** add QuiverAI provider ([#6979](https://github.com/artef/artef/issues/6979)) ([5ec7345](https://github.com/artef/artef/commit/5ec7345639978131b339a8b8abe12a9d6c18ea75))
+- **providers:** cloudflare ai gateway support ([#6966](https://github.com/artef/artef/issues/6966)) ([d53e276](https://github.com/artef/artef/commit/d53e276ef220afbbfd59a03a3b447f48386eed33))
+- **providers:** integrate tracing in openai codex provider ([#6751](https://github.com/artef/artef/issues/6751)) ([7150824](https://github.com/artef/artef/commit/7150824cea700b1fb8adc5664f49e074e2d4fe4c))
 
 ### Bug Fixes
 
-- **app:** improve prompt/response readability in risk category drawer ([#6871](https://github.com/promptfoo/promptfoo/issues/6871)) ([7b82477](https://github.com/promptfoo/promptfoo/commit/7b8247720f37fddcab7607faf71768dcf364ddde))
-- **app:** show charts for meaningful uniform scores ([#6961](https://github.com/promptfoo/promptfoo/issues/6961)) ([ad75924](https://github.com/promptfoo/promptfoo/commit/ad75924f4bc61048cf0f03806241a52066ff365d))
-- **app:** UI improvements and bug fixes for eval creator and data table ([#6968](https://github.com/promptfoo/promptfoo/issues/6968)) ([d31c632](https://github.com/promptfoo/promptfoo/commit/d31c6329018778c7c7b776bc05a917dd745411b6))
-- **blobs:** store audio blobs locally and pass evalId for access control ([#6923](https://github.com/promptfoo/promptfoo/issues/6923)) ([112a08a](https://github.com/promptfoo/promptfoo/commit/112a08a8985277f7c24881aabd2977abe95e6d03))
-- **ci:** add missing permissions for docker attestation workflow call ([#6985](https://github.com/promptfoo/promptfoo/issues/6985)) ([08d4779](https://github.com/promptfoo/promptfoo/commit/08d4779e33d27208442ec3125f13dfcaa93d0dd0))
-- **ci:** prevent database migration race condition in Docker tests ([#6965](https://github.com/promptfoo/promptfoo/issues/6965)) ([bec6473](https://github.com/promptfoo/promptfoo/commit/bec647392bb2c05d70c3ba46416e97c63f7eeb17))
-- **code-scan-action:** pass base branch to CLI for stacked PRs ([#6892](https://github.com/promptfoo/promptfoo/issues/6892)) ([642a409](https://github.com/promptfoo/promptfoo/commit/642a4095dc65e6e875625d5b8ce664a00f7f5835))
-- **deps:** update dependency @modelcontextprotocol/sdk to ^1.25.2 ([#6976](https://github.com/promptfoo/promptfoo/issues/6976)) ([067d82b](https://github.com/promptfoo/promptfoo/commit/067d82bab50331c48b69ebb64468c323643bde93))
-- **filter-providers:** Handle edge cases with null/empty provider IDs ([#6948](https://github.com/promptfoo/promptfoo/issues/6948)) ([1385760](https://github.com/promptfoo/promptfoo/commit/1385760957347bf85086d62447481fe090012799))
-- Plugin Form State Management Errors ([#6967](https://github.com/promptfoo/promptfoo/issues/6967)) ([d33cc8a](https://github.com/promptfoo/promptfoo/commit/d33cc8ac323eba01609ee37951d635a725c0e38e))
-- **providers:** await finalizeResponse to prevent race condition ([#6960](https://github.com/promptfoo/promptfoo/issues/6960)) ([faeed3f](https://github.com/promptfoo/promptfoo/commit/faeed3ffc9bc1d6e68e767d376fd4692162de676))
-- **providers:** prevent race condition in Google Live finalizeResponse ([#6975](https://github.com/promptfoo/promptfoo/issues/6975)) ([fa26643](https://github.com/promptfoo/promptfoo/commit/fa266436f899c0114ba4e956f955749d8cc1dae4))
-- **providers:** set cached flag on cache hits across 10 providers ([#6944](https://github.com/promptfoo/promptfoo/issues/6944)) ([202f192](https://github.com/promptfoo/promptfoo/commit/202f192f7bbaf935e939ca0e41ae71c2c95c79d4))
-- show helpful error for unsupported Node.js versions ([#6995](https://github.com/promptfoo/promptfoo/issues/6995)) ([99a8a7f](https://github.com/promptfoo/promptfoo/commit/99a8a7ff8bef7d7457978b57d801b5681c7d3505))
-- **test:** remove MUI imports from test files ([#6949](https://github.com/promptfoo/promptfoo/issues/6949)) ([806eff9](https://github.com/promptfoo/promptfoo/commit/806eff991a541a198b1a96688e03f44232ab5abd))
+- allow custom function names in extension hooks to run for all hooks ([#6993](https://github.com/artef/artef/issues/6993)) ([695e4b3](https://github.com/artef/artef/commit/695e4b38549df918d376713d0905ef2fd39fe3af))
+- **app:** prevent pagination bar from floating on short eval tables ([#7010](https://github.com/artef/artef/issues/7010)) ([a54d1a5](https://github.com/artef/artef/commit/a54d1a53a35324de1ecdcd1fedb79da7fe76403c))
+- **app:** prevent sticky header jitter when scroll room is minimal ([#7026](https://github.com/artef/artef/issues/7026)) ([54347c1](https://github.com/artef/artef/commit/54347c1ce94d2ba7f82eb50f5ad3ad23b80299df))
+- **mcp:** fix stdio server lifecycle and shutdown ([#7001](https://github.com/artef/artef/issues/7001)) ([c08c735](https://github.com/artef/artef/commit/c08c735a2754d85e6c029d14bcddb778e80b1b31))
+- **mcp:** fix stdio server lifecycle and shutdown ([#7003](https://github.com/artef/artef/issues/7003)) ([1c35bbf](https://github.com/artef/artef/commit/1c35bbfb7500fb82a1609d9783d1300987362195))
+- **providers:** consolidate response_format loading and fix Azure nested schema bug ([#6880](https://github.com/artef/artef/issues/6880)) ([2d35ff2](https://github.com/artef/artef/commit/2d35ff23a5af2fa32788a052d44bebe6589b3b17))
+- **redteam:** batch update plugins in handleToggleAll to prevent infinite loop ([#6969](https://github.com/artef/artef/issues/6969)) ([2e6cbe0](https://github.com/artef/artef/commit/2e6cbe0fdff5bc6fab382edfe91d1cb9ca46a5e8))
+- **test-cases:** fix xlsx/xls array format loading and sheet specifier syntax ([#6998](https://github.com/artef/artef/issues/6998)) ([d8e266c](https://github.com/artef/artef/commit/d8e266c205985a2185a1b614774d686cae710c0a))
 
-## [0.120.10](https://github.com/promptfoo/promptfoo/compare/0.120.9...0.120.10) (2026-01-06)
+## [0.120.11](https://github.com/artef/artef/compare/0.120.10...0.120.11) (2026-01-10)
 
 ### Features
 
-- **evaluator:** enrich error results with provider context and metadata ([#6913](https://github.com/promptfoo/promptfoo/issues/6913)) ([a004182](https://github.com/promptfoo/promptfoo/commit/a0041825b8149e94d25828a43b77787896ba8dc6))
-- **providers:** add Azure AI Foundry video provider (Sora) ([#6890](https://github.com/promptfoo/promptfoo/issues/6890)) ([1479e74](https://github.com/promptfoo/promptfoo/commit/1479e7481a61476145e307d0b1a10994f6fc1e9d))
-- **providers:** add Google Veo video generation provider ([#6707](https://github.com/promptfoo/promptfoo/issues/6707)) ([ec7de98](https://github.com/promptfoo/promptfoo/commit/ec7de9855b737a8051290525498a7a303ab735e0))
-- **providers:** add OpenAI Sora video generation provider ([#6698](https://github.com/promptfoo/promptfoo/issues/6698)) ([a4589bb](https://github.com/promptfoo/promptfoo/commit/a4589bbf6cdea9333b87c5ac6e33a2b6b63a3992))
-- **redteam:** Redteam with multiple inputs ([#6709](https://github.com/promptfoo/promptfoo/issues/6709)) ([3d8057f](https://github.com/promptfoo/promptfoo/commit/3d8057f009a10e1782b972345806bc0e53e70fa3))
-- **webui:** remove MUI dependencies, complete migration to Radix/Tailwind ([#6868](https://github.com/promptfoo/promptfoo/issues/6868)) ([62ba798](https://github.com/promptfoo/promptfoo/commit/62ba79823d5262b0a06404ada1021fd21a8a6281))
-- **webui:** show additional cell actions on hover + tooltip fix ([#6936](https://github.com/promptfoo/promptfoo/issues/6936)) ([81101f1](https://github.com/promptfoo/promptfoo/commit/81101f1d9b881d9393c6f51cdc5b39cb0d03e582))
+- **app:** add Combobox component ([#6946](https://github.com/artef/artef/issues/6946)) ([a1fb9ed](https://github.com/artef/artef/commit/a1fb9ed64d49d4fc4cf58c96dfa89454eddc59d0))
+- **codeScan:** add fork PR authentication support ([#6958](https://github.com/artef/artef/issues/6958)) ([9c0fee4](https://github.com/artef/artef/commit/9c0fee4904af3135492545802f6d3bb872a31651))
+- **fetch:** add automatic retries for transient 5xx errors ([#6721](https://github.com/artef/artef/issues/6721)) ([eb0a608](https://github.com/artef/artef/commit/eb0a608fb0842ed9430d424ee99a9eecb9209cad))
+- **model-audit:** add auto-sharing with --share and --no-share flags ([#6928](https://github.com/artef/artef/issues/6928)) ([d66fdbc](https://github.com/artef/artef/commit/d66fdbc5140b209356e7fb4a241b68e92645018b))
+- **providers:** add OpenCode SDK v1.1.x feature support ([#6984](https://github.com/artef/artef/issues/6984)) ([42ba31b](https://github.com/artef/artef/commit/42ba31b14236d14d5a2bbe5585cda44108fcca5d))
 
 ### Bug Fixes
 
-- **app:** add biome-ignore for useExhaustiveDependencies and fix one unused dependency ([#6907](https://github.com/promptfoo/promptfoo/issues/6907)) ([21d3e7b](https://github.com/promptfoo/promptfoo/commit/21d3e7b06e7d89757c533d547402cc14e9d34025))
-- **app:** add cursor-pointer to interactive UI components ([#6945](https://github.com/promptfoo/promptfoo/issues/6945)) ([4e3de51](https://github.com/promptfoo/promptfoo/commit/4e3de51c4d6550ed394e6a1c41e164571606e761))
-- **app:** fix ErrorBoundary dark mode styling ([#6893](https://github.com/promptfoo/promptfoo/issues/6893)) ([9c5d595](https://github.com/promptfoo/promptfoo/commit/9c5d595757f3dce72711b148ae17146e74d50d22))
-- **app:** fix Tailwind CSS variable syntax and React infinite render loop ([#6908](https://github.com/promptfoo/promptfoo/issues/6908)) ([d60e222](https://github.com/promptfoo/promptfoo/commit/d60e2228e7c64e144459b9d97a024eb16ea46674))
-- **app:** pointer cursor on eval setup steps ([#6897](https://github.com/promptfoo/promptfoo/issues/6897)) ([879e62c](https://github.com/promptfoo/promptfoo/commit/879e62ccba1c5022f63d07d58aa88479ba78d625))
-- **app:** prevent duplicate fail reasons in eval results carousel ([#6916](https://github.com/promptfoo/promptfoo/issues/6916)) ([9ac7176](https://github.com/promptfoo/promptfoo/commit/9ac7176dd830d09bae5fafe7067adc460b930645))
-- **app:** update banner z-index to render below navigation dropdowns ([#6887](https://github.com/promptfoo/promptfoo/issues/6887)) ([750afd7](https://github.com/promptfoo/promptfoo/commit/750afd7f70732d1eede5b8ad68a553209ca7830f))
-- **ci:** add code-scan-action to CODEOWNERS ([#6894](https://github.com/promptfoo/promptfoo/issues/6894)) ([ee4aa3c](https://github.com/promptfoo/promptfoo/commit/ee4aa3cf9d6d3bbcf497b43472b1aa66b8d65439))
-- **ci:** increase claude-review max-turns from 10 to 30 ([#6922](https://github.com/promptfoo/promptfoo/issues/6922)) ([c9b94d4](https://github.com/promptfoo/promptfoo/commit/c9b94d4f2553b34de420ebb900c6797793723a23))
-- **cloud:** check PROMPTFOO_API_KEY env var in cloudConfig ([#6896](https://github.com/promptfoo/promptfoo/issues/6896)) ([6fea2fc](https://github.com/promptfoo/promptfoo/commit/6fea2fcca5c6c67bf1e9bb012d9347d67ab41191))
-- **esm:** suppress spurious error logs during config file discovery ([#6891](https://github.com/promptfoo/promptfoo/issues/6891)) ([10214cc](https://github.com/promptfoo/promptfoo/commit/10214cc24a1c264b40aeab4eaed8ed61db5127ca))
-- **evaluator:** respect provider-supplied latencyMs for cached responses ([#6911](https://github.com/promptfoo/promptfoo/issues/6911)) ([6cd5d39](https://github.com/promptfoo/promptfoo/commit/6cd5d3936774501629febac9fa9f8dc97f32b228))
-- keep column widths synced when Render Markdown is turned on ([#6937](https://github.com/promptfoo/promptfoo/issues/6937)) ([8d60499](https://github.com/promptfoo/promptfoo/commit/8d604996c92218347e1e826d7fd9a558cb2063ed))
-- **providers:** sanitize JSON Schema for Gemini MCP tool compatibility ([#6904](https://github.com/promptfoo/promptfoo/issues/6904)) ([fcda531](https://github.com/promptfoo/promptfoo/commit/fcda5318d6d5cd4aef1351d5e18df7458475b854))
-- **providers:** skip delay on cache hit in Bedrock Converse provider ([#6930](https://github.com/promptfoo/promptfoo/issues/6930)) ([5a7f3cf](https://github.com/promptfoo/promptfoo/commit/5a7f3cf728e261fa6c326ae02e9b94d0253aab23))
-- **redteam:** filter runtime vars and merge defaultTest.vars for accurate test matching ([#6810](https://github.com/promptfoo/promptfoo/issues/6810)) ([3ced621](https://github.com/promptfoo/promptfoo/commit/3ced621c88c84cc87905fa243d92c7bb106bd895))
-- **redteam:** prevent nunjucks error on template syntax in attack prompts ([#6888](https://github.com/promptfoo/promptfoo/issues/6888)) ([ec6698d](https://github.com/promptfoo/promptfoo/commit/ec6698d027e32f8040bfc4f8ccfb5547df6f43a6))
-- **server:** resolve update banner state bugs in version endpoint ([#6895](https://github.com/promptfoo/promptfoo/issues/6895)) ([18277f2](https://github.com/promptfoo/promptfoo/commit/18277f2b2f5b67ef8248fc590073d5fe6553bfa3))
-- **test:** resolve flaky google live provider test ([#6886](https://github.com/promptfoo/promptfoo/issues/6886)) ([ac8f78f](https://github.com/promptfoo/promptfoo/commit/ac8f78ffc1e9039e2f84454a07a0f8c470ce12c0))
-- **webui:** improve eval dialog tab styling ([#6920](https://github.com/promptfoo/promptfoo/issues/6920)) ([d38b01c](https://github.com/promptfoo/promptfoo/commit/d38b01c9d3989ddef3d7c05226153d061d875cb5))
-- **webui:** Reports table navigation to report ([#6917](https://github.com/promptfoo/promptfoo/issues/6917)) ([2ae27ba](https://github.com/promptfoo/promptfoo/commit/2ae27ba488a100bc52cd4d354dbfea8e87b23968))
+- **app:** improve prompt/response readability in risk category drawer ([#6871](https://github.com/artef/artef/issues/6871)) ([7b82477](https://github.com/artef/artef/commit/7b8247720f37fddcab7607faf71768dcf364ddde))
+- **app:** show charts for meaningful uniform scores ([#6961](https://github.com/artef/artef/issues/6961)) ([ad75924](https://github.com/artef/artef/commit/ad75924f4bc61048cf0f03806241a52066ff365d))
+- **app:** UI improvements and bug fixes for eval creator and data table ([#6968](https://github.com/artef/artef/issues/6968)) ([d31c632](https://github.com/artef/artef/commit/d31c6329018778c7c7b776bc05a917dd745411b6))
+- **blobs:** store audio blobs locally and pass evalId for access control ([#6923](https://github.com/artef/artef/issues/6923)) ([112a08a](https://github.com/artef/artef/commit/112a08a8985277f7c24881aabd2977abe95e6d03))
+- **ci:** add missing permissions for docker attestation workflow call ([#6985](https://github.com/artef/artef/issues/6985)) ([08d4779](https://github.com/artef/artef/commit/08d4779e33d27208442ec3125f13dfcaa93d0dd0))
+- **ci:** prevent database migration race condition in Docker tests ([#6965](https://github.com/artef/artef/issues/6965)) ([bec6473](https://github.com/artef/artef/commit/bec647392bb2c05d70c3ba46416e97c63f7eeb17))
+- **code-scan-action:** pass base branch to CLI for stacked PRs ([#6892](https://github.com/artef/artef/issues/6892)) ([642a409](https://github.com/artef/artef/commit/642a4095dc65e6e875625d5b8ce664a00f7f5835))
+- **deps:** update dependency @modelcontextprotocol/sdk to ^1.25.2 ([#6976](https://github.com/artef/artef/issues/6976)) ([067d82b](https://github.com/artef/artef/commit/067d82bab50331c48b69ebb64468c323643bde93))
+- **filter-providers:** Handle edge cases with null/empty provider IDs ([#6948](https://github.com/artef/artef/issues/6948)) ([1385760](https://github.com/artef/artef/commit/1385760957347bf85086d62447481fe090012799))
+- Plugin Form State Management Errors ([#6967](https://github.com/artef/artef/issues/6967)) ([d33cc8a](https://github.com/artef/artef/commit/d33cc8ac323eba01609ee37951d635a725c0e38e))
+- **providers:** await finalizeResponse to prevent race condition ([#6960](https://github.com/artef/artef/issues/6960)) ([faeed3f](https://github.com/artef/artef/commit/faeed3ffc9bc1d6e68e767d376fd4692162de676))
+- **providers:** prevent race condition in Google Live finalizeResponse ([#6975](https://github.com/artef/artef/issues/6975)) ([fa26643](https://github.com/artef/artef/commit/fa266436f899c0114ba4e956f955749d8cc1dae4))
+- **providers:** set cached flag on cache hits across 10 providers ([#6944](https://github.com/artef/artef/issues/6944)) ([202f192](https://github.com/artef/artef/commit/202f192f7bbaf935e939ca0e41ae71c2c95c79d4))
+- show helpful error for unsupported Node.js versions ([#6995](https://github.com/artef/artef/issues/6995)) ([99a8a7f](https://github.com/artef/artef/commit/99a8a7ff8bef7d7457978b57d801b5681c7d3505))
+- **test:** remove MUI imports from test files ([#6949](https://github.com/artef/artef/issues/6949)) ([806eff9](https://github.com/artef/artef/commit/806eff991a541a198b1a96688e03f44232ab5abd))
 
-## [0.120.9](https://github.com/promptfoo/promptfoo/compare/0.120.8...0.120.9) (2025-12-30)
+## [0.120.10](https://github.com/artef/artef/compare/0.120.9...0.120.10) (2026-01-06)
 
 ### Features
 
-- **app:** add apiBaseUrl field to provider configuration UI ([#6884](https://github.com/promptfoo/promptfoo/issues/6884)) ([24440e4](https://github.com/promptfoo/promptfoo/commit/24440e46b3a2c07fc5efb32206808c49a5b643f5)) — @mldangelo
-- **app:** add design system, navigation, model audit, and eval creator ([#6823](https://github.com/promptfoo/promptfoo/issues/6823)) ([c5c698b](https://github.com/promptfoo/promptfoo/commit/c5c698bc97b3927b023eff623b9b73d6fa9d5940)) — @faizanminhas
-- **cli:** add wildcard support for prompt filters ([#6853](https://github.com/promptfoo/promptfoo/issues/6853)) ([cd5deba](https://github.com/promptfoo/promptfoo/commit/cd5deba396f08905704d69da05cea6919a696f41)) — @typpo
-- **extensions:** add afterAll hook enhancement and --extension CLI flag ([#4760](https://github.com/promptfoo/promptfoo/issues/4760)) ([18eb910](https://github.com/promptfoo/promptfoo/commit/18eb9109249b799cce33f3e595f382003c787912)) — @mldangelo
-- **lib:** add shareable URL support to Node.js evaluate() API ([#6839](https://github.com/promptfoo/promptfoo/issues/6839)) ([ecc7fa6](https://github.com/promptfoo/promptfoo/commit/ecc7fa6babbbaf1e9b2a99ba4852e6980e19a980)) — @mldangelo
-- **logger:** add structured logging support for cloud integrations ([#6845](https://github.com/promptfoo/promptfoo/issues/6845)) ([4b7bd33](https://github.com/promptfoo/promptfoo/commit/4b7bd335bd0ce1d37ed039a9ce2644566820dc31)) — @mldangelo
-- **mcp:** add OAuth authentication with proactive token refresh ([#6817](https://github.com/promptfoo/promptfoo/issues/6817)) ([bcd4db3](https://github.com/promptfoo/promptfoo/commit/bcd4db3fec98c0c2f40337eb0f7f317298d3a1e2)) — @jameshiester
-- **providers:** add xAI Voice Agent API provider ([#6792](https://github.com/promptfoo/promptfoo/issues/6792)) ([1f366a5](https://github.com/promptfoo/promptfoo/commit/1f366a588a9a275f3c4195fb565a71669fabd2a2)) — @mldangelo
-- **redteam:** add OWASP Top 10 for Agentic Applications ([#6694](https://github.com/promptfoo/promptfoo/issues/6694)) ([5fd44ca](https://github.com/promptfoo/promptfoo/commit/5fd44cacb368fafb3d1893ab93f30187c3faac82)) — @stefanoamorelli
-- **redteam:** add retry strategy for failed test cases ([#6243](https://github.com/promptfoo/promptfoo/issues/6243)) ([e7228c8](https://github.com/promptfoo/promptfoo/commit/e7228c8345bdcea352728d064da864ad0cbb4762)) — @yash2998chhabria
-- **redteam:** hydrate applicationDefinition when importing YAML configs ([#6542](https://github.com/promptfoo/promptfoo/issues/6542)) ([70b6d07](https://github.com/promptfoo/promptfoo/commit/70b6d071019bd74aefc17b976c40ba3b8964eef0)) — @mldangelo
-- **redteam:** improve validate target output ([#6742](https://github.com/promptfoo/promptfoo/issues/6742)) ([664c5b9](https://github.com/promptfoo/promptfoo/commit/664c5b929618b161868e73a4317b5c679ae85719)) — @faizanminhas
-- **redteam:** migrate reports and EvalOutputPromptDialog to design system ([#6831](https://github.com/promptfoo/promptfoo/issues/6831)) ([424ddfb](https://github.com/promptfoo/promptfoo/commit/424ddfbff2836968777bc02fb8e5a047dade5706)) — @faizanminhas
-- **redteam:** migrate setup flow to design system ([#6838](https://github.com/promptfoo/promptfoo/issues/6838)) ([d296073](https://github.com/promptfoo/promptfoo/commit/d29607321f4e07b5de21c096cd9e2ef2fe59e9d4)) — @faizanminhas
-- **redteam:** redesign risk categories ([#6876](https://github.com/promptfoo/promptfoo/issues/6876)) ([e29bc55](https://github.com/promptfoo/promptfoo/commit/e29bc55557010cb7e6790481f48226b81cb33fe1)) — @typpo
+- **evaluator:** enrich error results with provider context and metadata ([#6913](https://github.com/artef/artef/issues/6913)) ([a004182](https://github.com/artef/artef/commit/a0041825b8149e94d25828a43b77787896ba8dc6))
+- **providers:** add Azure AI Foundry video provider (Sora) ([#6890](https://github.com/artef/artef/issues/6890)) ([1479e74](https://github.com/artef/artef/commit/1479e7481a61476145e307d0b1a10994f6fc1e9d))
+- **providers:** add Google Veo video generation provider ([#6707](https://github.com/artef/artef/issues/6707)) ([ec7de98](https://github.com/artef/artef/commit/ec7de9855b737a8051290525498a7a303ab735e0))
+- **providers:** add OpenAI Sora video generation provider ([#6698](https://github.com/artef/artef/issues/6698)) ([a4589bb](https://github.com/artef/artef/commit/a4589bbf6cdea9333b87c5ac6e33a2b6b63a3992))
+- **redteam:** Redteam with multiple inputs ([#6709](https://github.com/artef/artef/issues/6709)) ([3d8057f](https://github.com/artef/artef/commit/3d8057f009a10e1782b972345806bc0e53e70fa3))
+- **webui:** remove MUI dependencies, complete migration to Radix/Tailwind ([#6868](https://github.com/artef/artef/issues/6868)) ([62ba798](https://github.com/artef/artef/commit/62ba79823d5262b0a06404ada1021fd21a8a6281))
+- **webui:** show additional cell actions on hover + tooltip fix ([#6936](https://github.com/artef/artef/issues/6936)) ([81101f1](https://github.com/artef/artef/commit/81101f1d9b881d9393c6f51cdc5b39cb0d03e582))
 
 ### Bug Fixes
 
-- **app:** add compact markdown styling for eval table cells ([#6840](https://github.com/promptfoo/promptfoo/issues/6840)) ([ae9c4d0](https://github.com/promptfoo/promptfoo/commit/ae9c4d076c52402225a6ef0a1d4af69d5d27e3f5)) — @mldangelo
-- **app:** fix accessibility issues and console warnings in new components ([#6859](https://github.com/promptfoo/promptfoo/issues/6859)) ([b3274d1](https://github.com/promptfoo/promptfoo/commit/b3274d11ca7863ef414b83679b2e94b4cb5958a6)) — @faizanminhas
-- **app:** fix browser back button on evals results table ([#6832](https://github.com/promptfoo/promptfoo/issues/6832)) ([c4886bc](https://github.com/promptfoo/promptfoo/commit/c4886bcf63f1bdfb582e5474d2a52c0fef1f9887)) — @faizanminhas
-- **app:** fix React 19 table header stale memoization on eval switch ([#6877](https://github.com/promptfoo/promptfoo/issues/6877)) ([6e8759d](https://github.com/promptfoo/promptfoo/commit/6e8759d111c8acaabedc5aca17d4685e5a4c0853)) — @faizanminhas
-- **app:** improve DataTable pagination and performance ([#6858](https://github.com/promptfoo/promptfoo/issues/6858)) ([59301e3](https://github.com/promptfoo/promptfoo/commit/59301e35484acabfe3fa1c16c22e1da0aedaff75)) — @faizanminhas
-- **app:** improve test cases table formatting in eval creator ([#6860](https://github.com/promptfoo/promptfoo/issues/6860)) ([25637e3](https://github.com/promptfoo/promptfoo/commit/25637e3d2056f7883a4e179f88061e4a37927e2e)) — @mldangelo
-- **app:** preserve existing filters when changing column in DataTable ([#6837](https://github.com/promptfoo/promptfoo/issues/6837)) ([f7630e4](https://github.com/promptfoo/promptfoo/commit/f7630e42e023f336d91a8e7951e05cc85272659a)) — @faizanminhas
-- **app:** prevent header value field collapse with long values ([#6830](https://github.com/promptfoo/promptfoo/issues/6830)) ([889f750](https://github.com/promptfoo/promptfoo/commit/889f750c733ccf2c51330493e679e3cc100ca3af)) — @mldangelo
-- **app:** prevent icon overflow in results table cells ([#6807](https://github.com/promptfoo/promptfoo/issues/6807)) ([3af0a5e](https://github.com/promptfoo/promptfoo/commit/3af0a5e91211f5f9c2b708d7d39150b79abdf68d)) — @addelong
-- **app:** prevent markdown re-render flickering in eval result cells ([#6847](https://github.com/promptfoo/promptfoo/issues/6847)) ([4439d70](https://github.com/promptfoo/promptfoo/commit/4439d70d7441b37c10df8574495727ee00e04fd3)) — @mldangelo
-- **app:** remove underline from navbar dropdown items ([#6875](https://github.com/promptfoo/promptfoo/issues/6875)) ([891a96a](https://github.com/promptfoo/promptfoo/commit/891a96accf84e6cfd2283cc8e0ad0e0ae0b3bbac)) — @typpo
-- **app:** resolve browser fs.readFileSync error by using direct imports ([#6861](https://github.com/promptfoo/promptfoo/issues/6861)) ([e47cb2a](https://github.com/promptfoo/promptfoo/commit/e47cb2aa505424107906abe7555cece1fb909c60)) — @mldangelo
-- **app:** show toolbar when filters return no results ([#6827](https://github.com/promptfoo/promptfoo/issues/6827)) ([b53f832](https://github.com/promptfoo/promptfoo/commit/b53f8322de6787366bb898fd6e3bcab8779d7cc2)) — @faizanminhas
-- **assertions:** render template variables in assertion metric field ([#6678](https://github.com/promptfoo/promptfoo/issues/6678)) ([3277310](https://github.com/promptfoo/promptfoo/commit/32773108be8aa2084418f8e5fcf7c9d79d67f981)) — @mldangelo
-- **cli:** downgrade missing blob reference log level ([#6814](https://github.com/promptfoo/promptfoo/issues/6814)) ([c3b6326](https://github.com/promptfoo/promptfoo/commit/c3b63263faaf7fe349262626828932997b3db5a5)) — @addelong
-- **cli:** respect prompts filter when providers loaded from file:// ([#6657](https://github.com/promptfoo/promptfoo/issues/6657)) ([d189e5c](https://github.com/promptfoo/promptfoo/commit/d189e5ca215bf4ef5f0dd64b847d35ef2f708907)) — @mldangelo
-- **eval:** honor external abortSignal when timeoutMs is set ([#6850](https://github.com/promptfoo/promptfoo/issues/6850)) ([dd26762](https://github.com/promptfoo/promptfoo/commit/dd26762f774243d31d3837434d4fa08af3dff91d)) — @typpo
-- **evaluator:** apply comparison results to pass/fail ([#6774](https://github.com/promptfoo/promptfoo/issues/6774)) ([f6add72](https://github.com/promptfoo/promptfoo/commit/f6add7200ce845be2bc90be4374fbc19f744616d)) — @typpo
-- **http:** handle multipart/form-data and x-www-form-urlencoded in raw requests ([#6797](https://github.com/promptfoo/promptfoo/issues/6797)) ([8850ab2](https://github.com/promptfoo/promptfoo/commit/8850ab24dc4e1daf86168225b432ee17aae2799c)) — @MrFlounder
-- **providers:** correctly extract provider IDs from file references ([#6848](https://github.com/promptfoo/promptfoo/issues/6848)) ([b088306](https://github.com/promptfoo/promptfoo/commit/b088306c2e5c986fb2d574f6fae44de98b64b427)) — @typpo
-- **providers:** pass env overrides to template rendering ([#6785](https://github.com/promptfoo/promptfoo/issues/6785)) ([9b304bc](https://github.com/promptfoo/promptfoo/commit/9b304bc60c9d55cc2f251cd2e7d29dd0b33cb68f)) — @typpo
-- **providers:** respect PROMPTFOO_PYTHON env var in Python providers ([#6829](https://github.com/promptfoo/promptfoo/issues/6829)) ([05e30da](https://github.com/promptfoo/promptfoo/commit/05e30dab7306a42a357715018f839c6ea52633f2)) — @mldangelo
-- **redteam:** persist custom provider selection when changing tabs ([#6834](https://github.com/promptfoo/promptfoo/issues/6834)) ([d1efd11](https://github.com/promptfoo/promptfoo/commit/d1efd11da1cbe2615517d1f563d1e540b2e4cf16)) — @mldangelo
-- **redteam:** reduce false positives in grader rubrics ([#6784](https://github.com/promptfoo/promptfoo/issues/6784)) ([54a552a](https://github.com/promptfoo/promptfoo/commit/54a552a68a98e203a0f492cef33969a32a33219a)) — @yash2998chhabria
-- **util:** convert sync fs operations to async across util modules ([#6869](https://github.com/promptfoo/promptfoo/issues/6869)) ([55c9edb](https://github.com/promptfoo/promptfoo/commit/55c9edbbc1545a36feca9f60f49cf2680dd7f954)) — @mldangelo
-- **yaml:** prevent URLs from being treated as comments ([#6854](https://github.com/promptfoo/promptfoo/issues/6854)) ([f85bf58](https://github.com/promptfoo/promptfoo/commit/f85bf58f8a7ef0b272cef5b8ed3218962a3d34bb)) — @typpo
+- **app:** add biome-ignore for useExhaustiveDependencies and fix one unused dependency ([#6907](https://github.com/artef/artef/issues/6907)) ([21d3e7b](https://github.com/artef/artef/commit/21d3e7b06e7d89757c533d547402cc14e9d34025))
+- **app:** add cursor-pointer to interactive UI components ([#6945](https://github.com/artef/artef/issues/6945)) ([4e3de51](https://github.com/artef/artef/commit/4e3de51c4d6550ed394e6a1c41e164571606e761))
+- **app:** fix ErrorBoundary dark mode styling ([#6893](https://github.com/artef/artef/issues/6893)) ([9c5d595](https://github.com/artef/artef/commit/9c5d595757f3dce72711b148ae17146e74d50d22))
+- **app:** fix Tailwind CSS variable syntax and React infinite render loop ([#6908](https://github.com/artef/artef/issues/6908)) ([d60e222](https://github.com/artef/artef/commit/d60e2228e7c64e144459b9d97a024eb16ea46674))
+- **app:** pointer cursor on eval setup steps ([#6897](https://github.com/artef/artef/issues/6897)) ([879e62c](https://github.com/artef/artef/commit/879e62ccba1c5022f63d07d58aa88479ba78d625))
+- **app:** prevent duplicate fail reasons in eval results carousel ([#6916](https://github.com/artef/artef/issues/6916)) ([9ac7176](https://github.com/artef/artef/commit/9ac7176dd830d09bae5fafe7067adc460b930645))
+- **app:** update banner z-index to render below navigation dropdowns ([#6887](https://github.com/artef/artef/issues/6887)) ([750afd7](https://github.com/artef/artef/commit/750afd7f70732d1eede5b8ad68a553209ca7830f))
+- **ci:** add code-scan-action to CODEOWNERS ([#6894](https://github.com/artef/artef/issues/6894)) ([ee4aa3c](https://github.com/artef/artef/commit/ee4aa3cf9d6d3bbcf497b43472b1aa66b8d65439))
+- **ci:** increase claude-review max-turns from 10 to 30 ([#6922](https://github.com/artef/artef/issues/6922)) ([c9b94d4](https://github.com/artef/artef/commit/c9b94d4f2553b34de420ebb900c6797793723a23))
+- **cloud:** check artef_API_KEY env var in cloudConfig ([#6896](https://github.com/artef/artef/issues/6896)) ([6fea2fc](https://github.com/artef/artef/commit/6fea2fcca5c6c67bf1e9bb012d9347d67ab41191))
+- **esm:** suppress spurious error logs during config file discovery ([#6891](https://github.com/artef/artef/issues/6891)) ([10214cc](https://github.com/artef/artef/commit/10214cc24a1c264b40aeab4eaed8ed61db5127ca))
+- **evaluator:** respect provider-supplied latencyMs for cached responses ([#6911](https://github.com/artef/artef/issues/6911)) ([6cd5d39](https://github.com/artef/artef/commit/6cd5d3936774501629febac9fa9f8dc97f32b228))
+- keep column widths synced when Render Markdown is turned on ([#6937](https://github.com/artef/artef/issues/6937)) ([8d60499](https://github.com/artef/artef/commit/8d604996c92218347e1e826d7fd9a558cb2063ed))
+- **providers:** sanitize JSON Schema for Gemini MCP tool compatibility ([#6904](https://github.com/artef/artef/issues/6904)) ([fcda531](https://github.com/artef/artef/commit/fcda5318d6d5cd4aef1351d5e18df7458475b854))
+- **providers:** skip delay on cache hit in Bedrock Converse provider ([#6930](https://github.com/artef/artef/issues/6930)) ([5a7f3cf](https://github.com/artef/artef/commit/5a7f3cf728e261fa6c326ae02e9b94d0253aab23))
+- **redteam:** filter runtime vars and merge defaultTest.vars for accurate test matching ([#6810](https://github.com/artef/artef/issues/6810)) ([3ced621](https://github.com/artef/artef/commit/3ced621c88c84cc87905fa243d92c7bb106bd895))
+- **redteam:** prevent nunjucks error on template syntax in attack prompts ([#6888](https://github.com/artef/artef/issues/6888)) ([ec6698d](https://github.com/artef/artef/commit/ec6698d027e32f8040bfc4f8ccfb5547df6f43a6))
+- **server:** resolve update banner state bugs in version endpoint ([#6895](https://github.com/artef/artef/issues/6895)) ([18277f2](https://github.com/artef/artef/commit/18277f2b2f5b67ef8248fc590073d5fe6553bfa3))
+- **test:** resolve flaky google live provider test ([#6886](https://github.com/artef/artef/issues/6886)) ([ac8f78f](https://github.com/artef/artef/commit/ac8f78ffc1e9039e2f84454a07a0f8c470ce12c0))
+- **webui:** improve eval dialog tab styling ([#6920](https://github.com/artef/artef/issues/6920)) ([d38b01c](https://github.com/artef/artef/commit/d38b01c9d3989ddef3d7c05226153d061d875cb5))
+- **webui:** Reports table navigation to report ([#6917](https://github.com/artef/artef/issues/6917)) ([2ae27ba](https://github.com/artef/artef/commit/2ae27ba488a100bc52cd4d354dbfea8e87b23968))
+
+## [0.120.9](https://github.com/artef/artef/compare/0.120.8...0.120.9) (2025-12-30)
+
+### Features
+
+- **app:** add apiBaseUrl field to provider configuration UI ([#6884](https://github.com/artef/artef/issues/6884)) ([24440e4](https://github.com/artef/artef/commit/24440e46b3a2c07fc5efb32206808c49a5b643f5)) — @mldangelo
+- **app:** add design system, navigation, model audit, and eval creator ([#6823](https://github.com/artef/artef/issues/6823)) ([c5c698b](https://github.com/artef/artef/commit/c5c698bc97b3927b023eff623b9b73d6fa9d5940)) — @faizanminhas
+- **cli:** add wildcard support for prompt filters ([#6853](https://github.com/artef/artef/issues/6853)) ([cd5deba](https://github.com/artef/artef/commit/cd5deba396f08905704d69da05cea6919a696f41)) — @typpo
+- **extensions:** add afterAll hook enhancement and --extension CLI flag ([#4760](https://github.com/artef/artef/issues/4760)) ([18eb910](https://github.com/artef/artef/commit/18eb9109249b799cce33f3e595f382003c787912)) — @mldangelo
+- **lib:** add shareable URL support to Node.js evaluate() API ([#6839](https://github.com/artef/artef/issues/6839)) ([ecc7fa6](https://github.com/artef/artef/commit/ecc7fa6babbbaf1e9b2a99ba4852e6980e19a980)) — @mldangelo
+- **logger:** add structured logging support for cloud integrations ([#6845](https://github.com/artef/artef/issues/6845)) ([4b7bd33](https://github.com/artef/artef/commit/4b7bd335bd0ce1d37ed039a9ce2644566820dc31)) — @mldangelo
+- **mcp:** add OAuth authentication with proactive token refresh ([#6817](https://github.com/artef/artef/issues/6817)) ([bcd4db3](https://github.com/artef/artef/commit/bcd4db3fec98c0c2f40337eb0f7f317298d3a1e2)) — @jameshiester
+- **providers:** add xAI Voice Agent API provider ([#6792](https://github.com/artef/artef/issues/6792)) ([1f366a5](https://github.com/artef/artef/commit/1f366a588a9a275f3c4195fb565a71669fabd2a2)) — @mldangelo
+- **redteam:** add OWASP Top 10 for Agentic Applications ([#6694](https://github.com/artef/artef/issues/6694)) ([5fd44ca](https://github.com/artef/artef/commit/5fd44cacb368fafb3d1893ab93f30187c3faac82)) — @stefanoamorelli
+- **redteam:** add retry strategy for failed test cases ([#6243](https://github.com/artef/artef/issues/6243)) ([e7228c8](https://github.com/artef/artef/commit/e7228c8345bdcea352728d064da864ad0cbb4762)) — @yash2998chhabria
+- **redteam:** hydrate applicationDefinition when importing YAML configs ([#6542](https://github.com/artef/artef/issues/6542)) ([70b6d07](https://github.com/artef/artef/commit/70b6d071019bd74aefc17b976c40ba3b8964eef0)) — @mldangelo
+- **redteam:** improve validate target output ([#6742](https://github.com/artef/artef/issues/6742)) ([664c5b9](https://github.com/artef/artef/commit/664c5b929618b161868e73a4317b5c679ae85719)) — @faizanminhas
+- **redteam:** migrate reports and EvalOutputPromptDialog to design system ([#6831](https://github.com/artef/artef/issues/6831)) ([424ddfb](https://github.com/artef/artef/commit/424ddfbff2836968777bc02fb8e5a047dade5706)) — @faizanminhas
+- **redteam:** migrate setup flow to design system ([#6838](https://github.com/artef/artef/issues/6838)) ([d296073](https://github.com/artef/artef/commit/d29607321f4e07b5de21c096cd9e2ef2fe59e9d4)) — @faizanminhas
+- **redteam:** redesign risk categories ([#6876](https://github.com/artef/artef/issues/6876)) ([e29bc55](https://github.com/artef/artef/commit/e29bc55557010cb7e6790481f48226b81cb33fe1)) — @typpo
+
+### Bug Fixes
+
+- **app:** add compact markdown styling for eval table cells ([#6840](https://github.com/artef/artef/issues/6840)) ([ae9c4d0](https://github.com/artef/artef/commit/ae9c4d076c52402225a6ef0a1d4af69d5d27e3f5)) — @mldangelo
+- **app:** fix accessibility issues and console warnings in new components ([#6859](https://github.com/artef/artef/issues/6859)) ([b3274d1](https://github.com/artef/artef/commit/b3274d11ca7863ef414b83679b2e94b4cb5958a6)) — @faizanminhas
+- **app:** fix browser back button on evals results table ([#6832](https://github.com/artef/artef/issues/6832)) ([c4886bc](https://github.com/artef/artef/commit/c4886bcf63f1bdfb582e5474d2a52c0fef1f9887)) — @faizanminhas
+- **app:** fix React 19 table header stale memoization on eval switch ([#6877](https://github.com/artef/artef/issues/6877)) ([6e8759d](https://github.com/artef/artef/commit/6e8759d111c8acaabedc5aca17d4685e5a4c0853)) — @faizanminhas
+- **app:** improve DataTable pagination and performance ([#6858](https://github.com/artef/artef/issues/6858)) ([59301e3](https://github.com/artef/artef/commit/59301e35484acabfe3fa1c16c22e1da0aedaff75)) — @faizanminhas
+- **app:** improve test cases table formatting in eval creator ([#6860](https://github.com/artef/artef/issues/6860)) ([25637e3](https://github.com/artef/artef/commit/25637e3d2056f7883a4e179f88061e4a37927e2e)) — @mldangelo
+- **app:** preserve existing filters when changing column in DataTable ([#6837](https://github.com/artef/artef/issues/6837)) ([f7630e4](https://github.com/artef/artef/commit/f7630e42e023f336d91a8e7951e05cc85272659a)) — @faizanminhas
+- **app:** prevent header value field collapse with long values ([#6830](https://github.com/artef/artef/issues/6830)) ([889f750](https://github.com/artef/artef/commit/889f750c733ccf2c51330493e679e3cc100ca3af)) — @mldangelo
+- **app:** prevent icon overflow in results table cells ([#6807](https://github.com/artef/artef/issues/6807)) ([3af0a5e](https://github.com/artef/artef/commit/3af0a5e91211f5f9c2b708d7d39150b79abdf68d)) — @addelong
+- **app:** prevent markdown re-render flickering in eval result cells ([#6847](https://github.com/artef/artef/issues/6847)) ([4439d70](https://github.com/artef/artef/commit/4439d70d7441b37c10df8574495727ee00e04fd3)) — @mldangelo
+- **app:** remove underline from navbar dropdown items ([#6875](https://github.com/artef/artef/issues/6875)) ([891a96a](https://github.com/artef/artef/commit/891a96accf84e6cfd2283cc8e0ad0e0ae0b3bbac)) — @typpo
+- **app:** resolve browser fs.readFileSync error by using direct imports ([#6861](https://github.com/artef/artef/issues/6861)) ([e47cb2a](https://github.com/artef/artef/commit/e47cb2aa505424107906abe7555cece1fb909c60)) — @mldangelo
+- **app:** show toolbar when filters return no results ([#6827](https://github.com/artef/artef/issues/6827)) ([b53f832](https://github.com/artef/artef/commit/b53f8322de6787366bb898fd6e3bcab8779d7cc2)) — @faizanminhas
+- **assertions:** render template variables in assertion metric field ([#6678](https://github.com/artef/artef/issues/6678)) ([3277310](https://github.com/artef/artef/commit/32773108be8aa2084418f8e5fcf7c9d79d67f981)) — @mldangelo
+- **cli:** downgrade missing blob reference log level ([#6814](https://github.com/artef/artef/issues/6814)) ([c3b6326](https://github.com/artef/artef/commit/c3b63263faaf7fe349262626828932997b3db5a5)) — @addelong
+- **cli:** respect prompts filter when providers loaded from file:// ([#6657](https://github.com/artef/artef/issues/6657)) ([d189e5c](https://github.com/artef/artef/commit/d189e5ca215bf4ef5f0dd64b847d35ef2f708907)) — @mldangelo
+- **eval:** honor external abortSignal when timeoutMs is set ([#6850](https://github.com/artef/artef/issues/6850)) ([dd26762](https://github.com/artef/artef/commit/dd26762f774243d31d3837434d4fa08af3dff91d)) — @typpo
+- **evaluator:** apply comparison results to pass/fail ([#6774](https://github.com/artef/artef/issues/6774)) ([f6add72](https://github.com/artef/artef/commit/f6add7200ce845be2bc90be4374fbc19f744616d)) — @typpo
+- **http:** handle multipart/form-data and x-www-form-urlencoded in raw requests ([#6797](https://github.com/artef/artef/issues/6797)) ([8850ab2](https://github.com/artef/artef/commit/8850ab24dc4e1daf86168225b432ee17aae2799c)) — @MrFlounder
+- **providers:** correctly extract provider IDs from file references ([#6848](https://github.com/artef/artef/issues/6848)) ([b088306](https://github.com/artef/artef/commit/b088306c2e5c986fb2d574f6fae44de98b64b427)) — @typpo
+- **providers:** pass env overrides to template rendering ([#6785](https://github.com/artef/artef/issues/6785)) ([9b304bc](https://github.com/artef/artef/commit/9b304bc60c9d55cc2f251cd2e7d29dd0b33cb68f)) — @typpo
+- **providers:** respect artef_PYTHON env var in Python providers ([#6829](https://github.com/artef/artef/issues/6829)) ([05e30da](https://github.com/artef/artef/commit/05e30dab7306a42a357715018f839c6ea52633f2)) — @mldangelo
+- **redteam:** persist custom provider selection when changing tabs ([#6834](https://github.com/artef/artef/issues/6834)) ([d1efd11](https://github.com/artef/artef/commit/d1efd11da1cbe2615517d1f563d1e540b2e4cf16)) — @mldangelo
+- **redteam:** reduce false positives in grader rubrics ([#6784](https://github.com/artef/artef/issues/6784)) ([54a552a](https://github.com/artef/artef/commit/54a552a68a98e203a0f492cef33969a32a33219a)) — @yash2998chhabria
+- **util:** convert sync fs operations to async across util modules ([#6869](https://github.com/artef/artef/issues/6869)) ([55c9edb](https://github.com/artef/artef/commit/55c9edbbc1545a36feca9f60f49cf2680dd7f954)) — @mldangelo
+- **yaml:** prevent URLs from being treated as comments ([#6854](https://github.com/artef/artef/issues/6854)) ([f85bf58](https://github.com/artef/artef/commit/f85bf58f8a7ef0b272cef5b8ed3218962a3d34bb)) — @typpo
 
 ### Performance Improvements
 
-- **app:** eliminate crypto polyfill with native SubtleCrypto ([#6798](https://github.com/promptfoo/promptfoo/issues/6798)) ([c3e24ad](https://github.com/promptfoo/promptfoo/commit/c3e24ad8857f296713f935b826eb45cb8cb32ba8)) — @JustinBeckwith
+- **app:** eliminate crypto polyfill with native SubtleCrypto ([#6798](https://github.com/artef/artef/issues/6798)) ([c3e24ad](https://github.com/artef/artef/commit/c3e24ad8857f296713f935b826eb45cb8cb32ba8)) — @JustinBeckwith
 
 ### Tests
 
-- convert flaky performance benchmark to smoke test ([#6856](https://github.com/promptfoo/promptfoo/issues/6856)) ([87b63db](https://github.com/promptfoo/promptfoo/commit/87b63db31fbf50f1f580c6ae2bc70e5cbd15ec2e)) — @mldangelo
-- make Google Live provider test order-agnostic ([#6852](https://github.com/promptfoo/promptfoo/issues/6852)) ([7a8d1ff](https://github.com/promptfoo/promptfoo/commit/7a8d1ff36e210e722ad5792cedeab65d78d00f4c)) — @mldangelo
+- convert flaky performance benchmark to smoke test ([#6856](https://github.com/artef/artef/issues/6856)) ([87b63db](https://github.com/artef/artef/commit/87b63db31fbf50f1f580c6ae2bc70e5cbd15ec2e)) — @mldangelo
+- make Google Live provider test order-agnostic ([#6852](https://github.com/artef/artef/issues/6852)) ([7a8d1ff](https://github.com/artef/artef/commit/7a8d1ff36e210e722ad5792cedeab65d78d00f4c)) — @mldangelo
 
-## [0.120.8](https://github.com/promptfoo/promptfoo/compare/0.120.7...0.120.8) (2025-12-21)
+## [0.120.8](https://github.com/artef/artef/compare/0.120.7...0.120.8) (2025-12-21)
 
 ### Features
 
-- **redteam:** add --description flag to redteam run command ([#6796](https://github.com/promptfoo/promptfoo/issues/6796)) ([95cc2ff](https://github.com/promptfoo/promptfoo/commit/95cc2ffe1075b00620647369beb9bb331af95858))
-- **server:** add configurable base path support ([#6758](https://github.com/promptfoo/promptfoo/issues/6758)) ([9395a28](https://github.com/promptfoo/promptfoo/commit/9395a28766275ec6105bd86ee7ecee8979a1c4f4))
+- **redteam:** add --description flag to redteam run command ([#6796](https://github.com/artef/artef/issues/6796)) ([95cc2ff](https://github.com/artef/artef/commit/95cc2ffe1075b00620647369beb9bb331af95858))
+- **server:** add configurable base path support ([#6758](https://github.com/artef/artef/issues/6758)) ([9395a28](https://github.com/artef/artef/commit/9395a28766275ec6105bd86ee7ecee8979a1c4f4))
 
 ### Bug Fixes
 
-- Entra id support in azure:responses provider ([#6794](https://github.com/promptfoo/promptfoo/issues/6794)) ([47e1db5](https://github.com/promptfoo/promptfoo/commit/47e1db552aabc3c61d38d7022de819d0f0eb5073))
-- **redteam:** Add error handling to citation strategy ([#6735](https://github.com/promptfoo/promptfoo/issues/6735)) ([55ac248](https://github.com/promptfoo/promptfoo/commit/55ac248e51b37588230c959d11f9bbb2dd8b12b6))
+- Entra id support in azure:responses provider ([#6794](https://github.com/artef/artef/issues/6794)) ([47e1db5](https://github.com/artef/artef/commit/47e1db552aabc3c61d38d7022de819d0f0eb5073))
+- **redteam:** Add error handling to citation strategy ([#6735](https://github.com/artef/artef/issues/6735)) ([55ac248](https://github.com/artef/artef/commit/55ac248e51b37588230c959d11f9bbb2dd8b12b6))
 
-## [0.120.7](https://github.com/promptfoo/promptfoo/compare/0.120.6...0.120.7) (2025-12-19)
-
-### Features
-
-- blob storage ([#6708](https://github.com/promptfoo/promptfoo/issues/6708)) ([73fcd51](https://github.com/promptfoo/promptfoo/commit/73fcd5183bfaa37b76326f21eaeaaaddee264bb9))
-
-## [0.120.6](https://github.com/promptfoo/promptfoo/compare/0.120.5...0.120.6) (2025-12-19)
+## [0.120.7](https://github.com/artef/artef/compare/0.120.6...0.120.7) (2025-12-19)
 
 ### Features
 
-- **auth:** add interactive team selection during login ([#6760](https://github.com/promptfoo/promptfoo/issues/6760)) ([11c7037](https://github.com/promptfoo/promptfoo/commit/11c7037d229d0cfb335fc2e3419de6c210fec7bc))
-- **bedrock:** configurable numberOfResults for Bedrock Knowledge Base ([#6738](https://github.com/promptfoo/promptfoo/issues/6738)) ([f8f0b8b](https://github.com/promptfoo/promptfoo/commit/f8f0b8bf647fc28c9256e01aa28c46f1b1a1cdeb))
-- **grading:** store and display full grading prompt in UI ([#6736](https://github.com/promptfoo/promptfoo/issues/6736)) ([b38642a](https://github.com/promptfoo/promptfoo/commit/b38642a288f05721425f53c530d9a57a07d3a24a))
-- **providers:** add Gemini 3 Flash Preview support with Vertex AI express mode ([#6739](https://github.com/promptfoo/promptfoo/issues/6739)) ([ad0dff5](https://github.com/promptfoo/promptfoo/commit/ad0dff5767cac47e780e759b3903bba04828192c))
-- **providers:** adds support for OpenAI GPT Image 1.5 ([#6713](https://github.com/promptfoo/promptfoo/issues/6713)) ([4d96061](https://github.com/promptfoo/promptfoo/commit/4d960619ebe6d6615422506a7c2614e3deddde56))
-- **redteam:** add contexts for testing different app states ([#6716](https://github.com/promptfoo/promptfoo/issues/6716)) ([55c0e3e](https://github.com/promptfoo/promptfoo/commit/55c0e3edaa4ec4e80530ac7253be56afa1f1b594))
-- **redteam:** add tracing support to Hydra and IterativeMeta providers ([#6718](https://github.com/promptfoo/promptfoo/issues/6718)) ([54a66af](https://github.com/promptfoo/promptfoo/commit/54a66afd2f4669662e47b4bcb5d5a0ef1afd6241))
-- **site:** add proof banner linking to code scanning blog post ([#6753](https://github.com/promptfoo/promptfoo/issues/6753)) ([3b104ae](https://github.com/promptfoo/promptfoo/commit/3b104ae3bda7924c8732d8ed4a21a8c400d1449e))
-- **tracing:** add OpenTelemetry tracing integration with GenAI semantic conventions ([#6536](https://github.com/promptfoo/promptfoo/issues/6536)) ([784599f](https://github.com/promptfoo/promptfoo/commit/784599f17e52351046d8612503339103abd82c67))
-- **webui:** display evaluation duration in web UI ([#6691](https://github.com/promptfoo/promptfoo/issues/6691)) ([762c16e](https://github.com/promptfoo/promptfoo/commit/762c16e12065c403136ad3fec49b4927176b896a))
+- blob storage ([#6708](https://github.com/artef/artef/issues/6708)) ([73fcd51](https://github.com/artef/artef/commit/73fcd5183bfaa37b76326f21eaeaaaddee264bb9))
+
+## [0.120.6](https://github.com/artef/artef/compare/0.120.5...0.120.6) (2025-12-19)
+
+### Features
+
+- **auth:** add interactive team selection during login ([#6760](https://github.com/artef/artef/issues/6760)) ([11c7037](https://github.com/artef/artef/commit/11c7037d229d0cfb335fc2e3419de6c210fec7bc))
+- **bedrock:** configurable numberOfResults for Bedrock Knowledge Base ([#6738](https://github.com/artef/artef/issues/6738)) ([f8f0b8b](https://github.com/artef/artef/commit/f8f0b8bf647fc28c9256e01aa28c46f1b1a1cdeb))
+- **grading:** store and display full grading prompt in UI ([#6736](https://github.com/artef/artef/issues/6736)) ([b38642a](https://github.com/artef/artef/commit/b38642a288f05721425f53c530d9a57a07d3a24a))
+- **providers:** add Gemini 3 Flash Preview support with Vertex AI express mode ([#6739](https://github.com/artef/artef/issues/6739)) ([ad0dff5](https://github.com/artef/artef/commit/ad0dff5767cac47e780e759b3903bba04828192c))
+- **providers:** adds support for OpenAI GPT Image 1.5 ([#6713](https://github.com/artef/artef/issues/6713)) ([4d96061](https://github.com/artef/artef/commit/4d960619ebe6d6615422506a7c2614e3deddde56))
+- **redteam:** add contexts for testing different app states ([#6716](https://github.com/artef/artef/issues/6716)) ([55c0e3e](https://github.com/artef/artef/commit/55c0e3edaa4ec4e80530ac7253be56afa1f1b594))
+- **redteam:** add tracing support to Hydra and IterativeMeta providers ([#6718](https://github.com/artef/artef/issues/6718)) ([54a66af](https://github.com/artef/artef/commit/54a66afd2f4669662e47b4bcb5d5a0ef1afd6241))
+- **site:** add proof banner linking to code scanning blog post ([#6753](https://github.com/artef/artef/issues/6753)) ([3b104ae](https://github.com/artef/artef/commit/3b104ae3bda7924c8732d8ed4a21a8c400d1449e))
+- **tracing:** add OpenTelemetry tracing integration with GenAI semantic conventions ([#6536](https://github.com/artef/artef/issues/6536)) ([784599f](https://github.com/artef/artef/commit/784599f17e52351046d8612503339103abd82c67))
+- **webui:** display evaluation duration in web UI ([#6691](https://github.com/artef/artef/issues/6691)) ([762c16e](https://github.com/artef/artef/commit/762c16e12065c403136ad3fec49b4927176b896a))
 
 ### Bug Fixes
 
-- **bedrock:** improve Knowledge Base provider backwards compatibility ([#6744](https://github.com/promptfoo/promptfoo/issues/6744)) ([7531d45](https://github.com/promptfoo/promptfoo/commit/7531d45115b008edd7ff416a19ec42f5d59814de))
-- **ci:** use valid Vitest 4 reporter in Tusk workflow ([#6766](https://github.com/promptfoo/promptfoo/issues/6766)) ([53da876](https://github.com/promptfoo/promptfoo/commit/53da876fe5a693f353d350fb3294baa42b2e0782))
-- **cli:** preserve evalId, createdAt, and author on import ([#6690](https://github.com/promptfoo/promptfoo/issues/6690)) ([f5445c1](https://github.com/promptfoo/promptfoo/commit/f5445c11d6c42ca2565a50343b1b0205dde19a88))
-- **code-scan:** add null check to fix action build ([#6750](https://github.com/promptfoo/promptfoo/issues/6750)) ([1b8a1e3](https://github.com/promptfoo/promptfoo/commit/1b8a1e3da7bb63b582ee7d7b9d276180bace6f70))
-- **code-scan:** ensure valid line numbers for github comments ([#6722](https://github.com/promptfoo/promptfoo/issues/6722)) ([40138ce](https://github.com/promptfoo/promptfoo/commit/40138cea62cd00515ea4b9c54ac93f50909a0f49))
-- **providers:** add vars support to dynamic tool loading for Anthropic and Bedrock ([#6679](https://github.com/promptfoo/promptfoo/issues/6679)) ([accbfef](https://github.com/promptfoo/promptfoo/commit/accbfef2af4bd8927b85a9df373710188f1eab52))
-- **python:** increase test timeout for worker integration tests ([#6754](https://github.com/promptfoo/promptfoo/issues/6754)) ([03f4cc9](https://github.com/promptfoo/promptfoo/commit/03f4cc95124e9ec2f50be582a0513b59470b748f))
-- **redteam:** add missing prompt variable to policy grader rubric ([#6734](https://github.com/promptfoo/promptfoo/issues/6734)) ([d47008a](https://github.com/promptfoo/promptfoo/commit/d47008adfb1cded3be5c580bf438d7d61b2488ef))
+- **bedrock:** improve Knowledge Base provider backwards compatibility ([#6744](https://github.com/artef/artef/issues/6744)) ([7531d45](https://github.com/artef/artef/commit/7531d45115b008edd7ff416a19ec42f5d59814de))
+- **ci:** use valid Vitest 4 reporter in Tusk workflow ([#6766](https://github.com/artef/artef/issues/6766)) ([53da876](https://github.com/artef/artef/commit/53da876fe5a693f353d350fb3294baa42b2e0782))
+- **cli:** preserve evalId, createdAt, and author on import ([#6690](https://github.com/artef/artef/issues/6690)) ([f5445c1](https://github.com/artef/artef/commit/f5445c11d6c42ca2565a50343b1b0205dde19a88))
+- **code-scan:** add null check to fix action build ([#6750](https://github.com/artef/artef/issues/6750)) ([1b8a1e3](https://github.com/artef/artef/commit/1b8a1e3da7bb63b582ee7d7b9d276180bace6f70))
+- **code-scan:** ensure valid line numbers for github comments ([#6722](https://github.com/artef/artef/issues/6722)) ([40138ce](https://github.com/artef/artef/commit/40138cea62cd00515ea4b9c54ac93f50909a0f49))
+- **providers:** add vars support to dynamic tool loading for Anthropic and Bedrock ([#6679](https://github.com/artef/artef/issues/6679)) ([accbfef](https://github.com/artef/artef/commit/accbfef2af4bd8927b85a9df373710188f1eab52))
+- **python:** increase test timeout for worker integration tests ([#6754](https://github.com/artef/artef/issues/6754)) ([03f4cc9](https://github.com/artef/artef/commit/03f4cc95124e9ec2f50be582a0513b59470b748f))
+- **redteam:** add missing prompt variable to policy grader rubric ([#6734](https://github.com/artef/artef/issues/6734)) ([d47008a](https://github.com/artef/artef/commit/d47008adfb1cded3be5c580bf438d7d61b2488ef))
 
-## [0.120.5](https://github.com/promptfoo/promptfoo/compare/0.120.4...0.120.5) (2025-12-16)
-
-### Features
-
-- **cli:** support multiple --env-file flags ([#6622](https://github.com/promptfoo/promptfoo/issues/6622)) ([015f2df](https://github.com/promptfoo/promptfoo/commit/015f2dfb76be0710a2c98d87fe957060e18de162))
-- **esm:** add resolvePackageEntryPoint for ESM-only packages ([#6586](https://github.com/promptfoo/promptfoo/issues/6586)) ([fbc0eca](https://github.com/promptfoo/promptfoo/commit/fbc0eca0e27ed03239bc87a9716fd8a1206307f9))
-- **providers:** add gpt-image-1-mini support to OpenAI image provider ([#6603](https://github.com/promptfoo/promptfoo/issues/6603)) ([bedc616](https://github.com/promptfoo/promptfoo/commit/bedc616318bc82c25f700a0996e91ab84e3cc17b))
-- **providers:** update OpenAI Codex SDK to v0.65.0 with new SDK options ([#6563](https://github.com/promptfoo/promptfoo/issues/6563)) ([fc19872](https://github.com/promptfoo/promptfoo/commit/fc1987250d49c0749205bc0c590327d0f5abc23a))
-- **redteam:** ability to change plugin for strategy test case generation ([#6549](https://github.com/promptfoo/promptfoo/issues/6549)) ([ed8b268](https://github.com/promptfoo/promptfoo/commit/ed8b2681c32caacb576fea6298e9d0d9ac2c5b66))
-- **redteam:** add OWASP API Security Top 10 example ([#6615](https://github.com/promptfoo/promptfoo/issues/6615)) ([8d383b5](https://github.com/promptfoo/promptfoo/commit/8d383b58306d3dbfd7b28d6dadec3c7cb836bcea))
-- **redteam:** add tiered severity grading for SSRF plugin ([#6444](https://github.com/promptfoo/promptfoo/issues/6444)) ([1556df3](https://github.com/promptfoo/promptfoo/commit/1556df3b29dcb96014dac14f8181beaa33718796))
-- **types:** add pluginId and strategyId to EvaluateTableOutput ([#6638](https://github.com/promptfoo/promptfoo/issues/6638)) ([9e2121b](https://github.com/promptfoo/promptfoo/commit/9e2121b60228e78fe293c3354399d7685d757d01))
-- **webui:** improve model audit navigation and test coverage ([#5595](https://github.com/promptfoo/promptfoo/issues/5595)) ([55cb973](https://github.com/promptfoo/promptfoo/commit/55cb973d948f4b7b31974be3de6a0d8c1dabc423))
-- **webui:** redesign Table Settings modal with compact two-column layout ([#6683](https://github.com/promptfoo/promptfoo/issues/6683)) ([4c0f3ef](https://github.com/promptfoo/promptfoo/commit/4c0f3efdd85b6731e9280c07e078a0bdf0d530a6))
-
-### Bug Fixes
-
-- **assertions:** handle variable declarations in single-line JavaScript assertions ([#6609](https://github.com/promptfoo/promptfoo/issues/6609)) ([f00cf71](https://github.com/promptfoo/promptfoo/commit/f00cf71a8878dc83fbca80ea8ca2d7fcc42814e5))
-- **assertions:** improve error messages for malformed assertion configs ([#6600](https://github.com/promptfoo/promptfoo/issues/6600)) ([6afb4ca](https://github.com/promptfoo/promptfoo/commit/6afb4ca94f83c7e85e134ea7a31b1338c480e740))
-- **ci:** trigger code scan when PR moves from draft to ready ([#6705](https://github.com/promptfoo/promptfoo/issues/6705)) ([790d6b5](https://github.com/promptfoo/promptfoo/commit/790d6b53a6d104ce793dd4d24fe78085b1a0a3ca))
-- **cli:** filter providers before instantiation ([#6596](https://github.com/promptfoo/promptfoo/issues/6596)) ([2891658](https://github.com/promptfoo/promptfoo/commit/289165894656516544106a6abc51e09d3a968382))
-- **cli:** Increased the number of characters for displaying test variables ([#5041](https://github.com/promptfoo/promptfoo/issues/5041)) ([70c4258](https://github.com/promptfoo/promptfoo/commit/70c4258299f2c3b3c71c6a234b83ccf6f48fe2f0))
-- **deps:** update dependency @googleapis/sheets to v13 ([#6682](https://github.com/promptfoo/promptfoo/issues/6682)) ([b53f2d5](https://github.com/promptfoo/promptfoo/commit/b53f2d5e3901f1bf5bab0d824ce9333376a92415))
-- **deps:** update dependency openai to ^6.10.0 ([#6641](https://github.com/promptfoo/promptfoo/issues/6641)) ([3637b6c](https://github.com/promptfoo/promptfoo/commit/3637b6c05d4390a3ba82ba323a32c21208a31e01))
-- **deps:** update github actions to v2 (major) ([#6681](https://github.com/promptfoo/promptfoo/issues/6681)) ([a0434b5](https://github.com/promptfoo/promptfoo/commit/a0434b579bff8a2a3089649f6192e7fed6fbf870))
-- **evaluator:** isolate \_conversation state between scenarios ([#6623](https://github.com/promptfoo/promptfoo/issues/6623)) ([6fb90c8](https://github.com/promptfoo/promptfoo/commit/6fb90c8c08999285d7e941470566dd2c1d6ffdcb))
-- **geval:** enforce stricter output formatting in GEVAL prompts ([#6632](https://github.com/promptfoo/promptfoo/issues/6632)) ([9432bf7](https://github.com/promptfoo/promptfoo/commit/9432bf754908c55aa441a8fc01035b1b2a550341))
-- improving error logging for GOAT ([#6486](https://github.com/promptfoo/promptfoo/issues/6486)) ([c0da862](https://github.com/promptfoo/promptfoo/commit/c0da86258d1f4d7afbc122385a523d62a114b428))
-- **logger:** prevent "write after end" crash during shutdown ([#6625](https://github.com/promptfoo/promptfoo/issues/6625)) ([516aa2a](https://github.com/promptfoo/promptfoo/commit/516aa2ad9ca09b162bc28e839a0c96a1f00775aa))
-- **mcp:** prevent HTTP server from shutting down immediately ([#6520](https://github.com/promptfoo/promptfoo/issues/6520)) ([f1f10c3](https://github.com/promptfoo/promptfoo/commit/f1f10c3819fd86478940641505ad0418312ec78a))
-- Presentation of strategy demo modal ([#6675](https://github.com/promptfoo/promptfoo/issues/6675)) ([e1f5e68](https://github.com/promptfoo/promptfoo/commit/e1f5e680cc3967ccadaf9b7ed51d3b1bf6a2d8a0))
-- **providers:** treat vertex MAX_TOKENS as success instead of error ([#6697](https://github.com/promptfoo/promptfoo/issues/6697)) ([b6cf509](https://github.com/promptfoo/promptfoo/commit/b6cf50961aea94ba0bfbe417e72aff3ab7339d0c))
-- **redteam:** comprehensive token usage tracking across all providers ([#6619](https://github.com/promptfoo/promptfoo/issues/6619)) ([babd51c](https://github.com/promptfoo/promptfoo/commit/babd51c1760827d3777196d9e091d39f27b198bc))
-- **redteam:** filter runtime vars and merge defaultTest.vars for accurate test matching ([#6706](https://github.com/promptfoo/promptfoo/issues/6706)) ([783961b](https://github.com/promptfoo/promptfoo/commit/783961b399523f29d4d2b986e167ec583643ccab))
-- **redteam:** fix infinite loop in updatePlugins by comparing output vs state ([#6647](https://github.com/promptfoo/promptfoo/issues/6647)) ([28140c8](https://github.com/promptfoo/promptfoo/commit/28140c8b108f48c0a8f97b96db8a24f0538063a2))
-- **redteam:** handle object output in TestCaseDialog ([#6672](https://github.com/promptfoo/promptfoo/issues/6672)) ([33ec0ea](https://github.com/promptfoo/promptfoo/commit/33ec0ea0574c53e476772745e8c53fd10bc48188))
-- **redteam:** prevent infinite loop in Plugins page when selecting presets ([#6626](https://github.com/promptfoo/promptfoo/issues/6626)) ([25f3ea6](https://github.com/promptfoo/promptfoo/commit/25f3ea6b66fa50ca7d589573d9e9d846b29aa982))
-- restore TypeScript type checking in CI ([#6652](https://github.com/promptfoo/promptfoo/issues/6652)) ([d0af689](https://github.com/promptfoo/promptfoo/commit/d0af689f5ac955467eed6583acba4c55c9f0e188))
-- **server:** avoid redundant httpServer.close warning on shutdown ([#6646](https://github.com/promptfoo/promptfoo/issues/6646)) ([0975fc3](https://github.com/promptfoo/promptfoo/commit/0975fc3155b160a5e2df49e85a0c43f1fde08f04))
-- **site:** remove homepage code box scrollbars ([#6668](https://github.com/promptfoo/promptfoo/issues/6668)) ([5ac8abc](https://github.com/promptfoo/promptfoo/commit/5ac8abcd40c1b618e97a104457a68a7d2a0b808b))
-- **test:** make Python concurrency test environment-independent ([#6660](https://github.com/promptfoo/promptfoo/issues/6660)) ([645b6e2](https://github.com/promptfoo/promptfoo/commit/645b6e2560d7bcbf5b0c2ba7c24a4c3fde19c072))
-- **util:** make transform.ts browser-compatible by splitting Node.js code ([#6642](https://github.com/promptfoo/promptfoo/issues/6642)) ([8fc1f12](https://github.com/promptfoo/promptfoo/commit/8fc1f12a82ae0edf79c710eb30305b9d7ebd9895))
-- **webui:** include grading rubric in storedGraderResult for iterative, hydra, and custom strategies ([#6696](https://github.com/promptfoo/promptfoo/issues/6696)) ([933a752](https://github.com/promptfoo/promptfoo/commit/933a752c92de5e423bb98db6b0812b9bbd3872b4))
-
-## [0.120.4](https://github.com/promptfoo/promptfoo/compare/0.120.3...0.120.4) (2025-12-11)
+## [0.120.5](https://github.com/artef/artef/compare/0.120.4...0.120.5) (2025-12-16)
 
 ### Features
 
-- **providers:** add ElevenLabs provider integration ([#6022](https://github.com/promptfoo/promptfoo/issues/6022)) ([8d54faa](https://github.com/promptfoo/promptfoo/commit/8d54faa1c240e28557b1eb652c358a3f8eb4b0a2))
-- **providers:** add GPT-5.2 model support ([#6628](https://github.com/promptfoo/promptfoo/issues/6628)) ([b105980](https://github.com/promptfoo/promptfoo/commit/b105980f121d1b0ad8b0db95ff1d63e4d701f24d))
-- **providers:** add OpenCode SDK provider ([#6423](https://github.com/promptfoo/promptfoo/issues/6423)) ([ef8f227](https://github.com/promptfoo/promptfoo/commit/ef8f227bced68ce9f507abec0b4010445fda61e4))
-- **providers:** add streaming option for Vertex AI Model Armor support ([#6614](https://github.com/promptfoo/promptfoo/issues/6614)) ([aebd268](https://github.com/promptfoo/promptfoo/commit/aebd26879b87ca9a4a2a4e1d1e66bc22da6ff9fc))
-- **redteam:** complete OWASP Agentic AI T1-T15 threat mapping ([#6458](https://github.com/promptfoo/promptfoo/issues/6458)) ([24e3c2b](https://github.com/promptfoo/promptfoo/commit/24e3c2bf5b0bedf519588aec2a5352a7aef42260))
+- **cli:** support multiple --env-file flags ([#6622](https://github.com/artef/artef/issues/6622)) ([015f2df](https://github.com/artef/artef/commit/015f2dfb76be0710a2c98d87fe957060e18de162))
+- **esm:** add resolvePackageEntryPoint for ESM-only packages ([#6586](https://github.com/artef/artef/issues/6586)) ([fbc0eca](https://github.com/artef/artef/commit/fbc0eca0e27ed03239bc87a9716fd8a1206307f9))
+- **providers:** add gpt-image-1-mini support to OpenAI image provider ([#6603](https://github.com/artef/artef/issues/6603)) ([bedc616](https://github.com/artef/artef/commit/bedc616318bc82c25f700a0996e91ab84e3cc17b))
+- **providers:** update OpenAI Codex SDK to v0.65.0 with new SDK options ([#6563](https://github.com/artef/artef/issues/6563)) ([fc19872](https://github.com/artef/artef/commit/fc1987250d49c0749205bc0c590327d0f5abc23a))
+- **redteam:** ability to change plugin for strategy test case generation ([#6549](https://github.com/artef/artef/issues/6549)) ([ed8b268](https://github.com/artef/artef/commit/ed8b2681c32caacb576fea6298e9d0d9ac2c5b66))
+- **redteam:** add OWASP API Security Top 10 example ([#6615](https://github.com/artef/artef/issues/6615)) ([8d383b5](https://github.com/artef/artef/commit/8d383b58306d3dbfd7b28d6dadec3c7cb836bcea))
+- **redteam:** add tiered severity grading for SSRF plugin ([#6444](https://github.com/artef/artef/issues/6444)) ([1556df3](https://github.com/artef/artef/commit/1556df3b29dcb96014dac14f8181beaa33718796))
+- **types:** add pluginId and strategyId to EvaluateTableOutput ([#6638](https://github.com/artef/artef/issues/6638)) ([9e2121b](https://github.com/artef/artef/commit/9e2121b60228e78fe293c3354399d7685d757d01))
+- **webui:** improve model audit navigation and test coverage ([#5595](https://github.com/artef/artef/issues/5595)) ([55cb973](https://github.com/artef/artef/commit/55cb973d948f4b7b31974be3de6a0d8c1dabc423))
+- **webui:** redesign Table Settings modal with compact two-column layout ([#6683](https://github.com/artef/artef/issues/6683)) ([4c0f3ef](https://github.com/artef/artef/commit/4c0f3efdd85b6731e9280c07e078a0bdf0d530a6))
 
 ### Bug Fixes
 
-- **ci:** format CHANGELOG.md and improve release-please formatting step ([#6610](https://github.com/promptfoo/promptfoo/issues/6610)) ([b89977c](https://github.com/promptfoo/promptfoo/commit/b89977cc78bee7072a8168df3edf3e50cf4b4c5b))
-- **deps:** update anthropic packages ([#6616](https://github.com/promptfoo/promptfoo/issues/6616)) ([645386b](https://github.com/promptfoo/promptfoo/commit/645386bf04b53bc980f53b0666bb75d34098c5f6))
-- **providers:** add numRequests tracking to all provider tokenUsage objects ([#6612](https://github.com/promptfoo/promptfoo/issues/6612)) ([d35bf7c](https://github.com/promptfoo/promptfoo/commit/d35bf7c15deb2b360bcadc52c3d4753e335e7ed3))
-- **providers:** update HuggingFace to use new inference API endpoint ([#6624](https://github.com/promptfoo/promptfoo/issues/6624)) ([57f118b](https://github.com/promptfoo/promptfoo/commit/57f118bc8c9d7aa48e6de1ace363d935b8de9f2e))
-- **redteam:** preserve BestOfNProvider config through database serialization ([#6598](https://github.com/promptfoo/promptfoo/issues/6598)) ([92adeba](https://github.com/promptfoo/promptfoo/commit/92adeba581063a7fd5c545a3b2aa6f243a0f4881))
+- **assertions:** handle variable declarations in single-line JavaScript assertions ([#6609](https://github.com/artef/artef/issues/6609)) ([f00cf71](https://github.com/artef/artef/commit/f00cf71a8878dc83fbca80ea8ca2d7fcc42814e5))
+- **assertions:** improve error messages for malformed assertion configs ([#6600](https://github.com/artef/artef/issues/6600)) ([6afb4ca](https://github.com/artef/artef/commit/6afb4ca94f83c7e85e134ea7a31b1338c480e740))
+- **ci:** trigger code scan when PR moves from draft to ready ([#6705](https://github.com/artef/artef/issues/6705)) ([790d6b5](https://github.com/artef/artef/commit/790d6b53a6d104ce793dd4d24fe78085b1a0a3ca))
+- **cli:** filter providers before instantiation ([#6596](https://github.com/artef/artef/issues/6596)) ([2891658](https://github.com/artef/artef/commit/289165894656516544106a6abc51e09d3a968382))
+- **cli:** Increased the number of characters for displaying test variables ([#5041](https://github.com/artef/artef/issues/5041)) ([70c4258](https://github.com/artef/artef/commit/70c4258299f2c3b3c71c6a234b83ccf6f48fe2f0))
+- **deps:** update dependency @googleapis/sheets to v13 ([#6682](https://github.com/artef/artef/issues/6682)) ([b53f2d5](https://github.com/artef/artef/commit/b53f2d5e3901f1bf5bab0d824ce9333376a92415))
+- **deps:** update dependency openai to ^6.10.0 ([#6641](https://github.com/artef/artef/issues/6641)) ([3637b6c](https://github.com/artef/artef/commit/3637b6c05d4390a3ba82ba323a32c21208a31e01))
+- **deps:** update github actions to v2 (major) ([#6681](https://github.com/artef/artef/issues/6681)) ([a0434b5](https://github.com/artef/artef/commit/a0434b579bff8a2a3089649f6192e7fed6fbf870))
+- **evaluator:** isolate \_conversation state between scenarios ([#6623](https://github.com/artef/artef/issues/6623)) ([6fb90c8](https://github.com/artef/artef/commit/6fb90c8c08999285d7e941470566dd2c1d6ffdcb))
+- **geval:** enforce stricter output formatting in GEVAL prompts ([#6632](https://github.com/artef/artef/issues/6632)) ([9432bf7](https://github.com/artef/artef/commit/9432bf754908c55aa441a8fc01035b1b2a550341))
+- improving error logging for GOAT ([#6486](https://github.com/artef/artef/issues/6486)) ([c0da862](https://github.com/artef/artef/commit/c0da86258d1f4d7afbc122385a523d62a114b428))
+- **logger:** prevent "write after end" crash during shutdown ([#6625](https://github.com/artef/artef/issues/6625)) ([516aa2a](https://github.com/artef/artef/commit/516aa2ad9ca09b162bc28e839a0c96a1f00775aa))
+- **mcp:** prevent HTTP server from shutting down immediately ([#6520](https://github.com/artef/artef/issues/6520)) ([f1f10c3](https://github.com/artef/artef/commit/f1f10c3819fd86478940641505ad0418312ec78a))
+- Presentation of strategy demo modal ([#6675](https://github.com/artef/artef/issues/6675)) ([e1f5e68](https://github.com/artef/artef/commit/e1f5e680cc3967ccadaf9b7ed51d3b1bf6a2d8a0))
+- **providers:** treat vertex MAX_TOKENS as success instead of error ([#6697](https://github.com/artef/artef/issues/6697)) ([b6cf509](https://github.com/artef/artef/commit/b6cf50961aea94ba0bfbe417e72aff3ab7339d0c))
+- **redteam:** comprehensive token usage tracking across all providers ([#6619](https://github.com/artef/artef/issues/6619)) ([babd51c](https://github.com/artef/artef/commit/babd51c1760827d3777196d9e091d39f27b198bc))
+- **redteam:** filter runtime vars and merge defaultTest.vars for accurate test matching ([#6706](https://github.com/artef/artef/issues/6706)) ([783961b](https://github.com/artef/artef/commit/783961b399523f29d4d2b986e167ec583643ccab))
+- **redteam:** fix infinite loop in updatePlugins by comparing output vs state ([#6647](https://github.com/artef/artef/issues/6647)) ([28140c8](https://github.com/artef/artef/commit/28140c8b108f48c0a8f97b96db8a24f0538063a2))
+- **redteam:** handle object output in TestCaseDialog ([#6672](https://github.com/artef/artef/issues/6672)) ([33ec0ea](https://github.com/artef/artef/commit/33ec0ea0574c53e476772745e8c53fd10bc48188))
+- **redteam:** prevent infinite loop in Plugins page when selecting presets ([#6626](https://github.com/artef/artef/issues/6626)) ([25f3ea6](https://github.com/artef/artef/commit/25f3ea6b66fa50ca7d589573d9e9d846b29aa982))
+- restore TypeScript type checking in CI ([#6652](https://github.com/artef/artef/issues/6652)) ([d0af689](https://github.com/artef/artef/commit/d0af689f5ac955467eed6583acba4c55c9f0e188))
+- **server:** avoid redundant httpServer.close warning on shutdown ([#6646](https://github.com/artef/artef/issues/6646)) ([0975fc3](https://github.com/artef/artef/commit/0975fc3155b160a5e2df49e85a0c43f1fde08f04))
+- **site:** remove homepage code box scrollbars ([#6668](https://github.com/artef/artef/issues/6668)) ([5ac8abc](https://github.com/artef/artef/commit/5ac8abcd40c1b618e97a104457a68a7d2a0b808b))
+- **test:** make Python concurrency test environment-independent ([#6660](https://github.com/artef/artef/issues/6660)) ([645b6e2](https://github.com/artef/artef/commit/645b6e2560d7bcbf5b0c2ba7c24a4c3fde19c072))
+- **util:** make transform.ts browser-compatible by splitting Node.js code ([#6642](https://github.com/artef/artef/issues/6642)) ([8fc1f12](https://github.com/artef/artef/commit/8fc1f12a82ae0edf79c710eb30305b9d7ebd9895))
+- **webui:** include grading rubric in storedGraderResult for iterative, hydra, and custom strategies ([#6696](https://github.com/artef/artef/issues/6696)) ([933a752](https://github.com/artef/artef/commit/933a752c92de5e423bb98db6b0812b9bbd3872b4))
 
-## [0.120.3](https://github.com/promptfoo/promptfoo/compare/0.120.2...0.120.3) (2025-12-10)
+## [0.120.4](https://github.com/artef/artef/compare/0.120.3...0.120.4) (2025-12-11)
 
 ### Features
 
-- **providers:** add multi-turn session persistence to browser provider ([#6585](https://github.com/promptfoo/promptfoo/issues/6585)) ([873241e](https://github.com/promptfoo/promptfoo/commit/873241ee0b5692edc74fcb33815b99adfab68a52))
+- **providers:** add ElevenLabs provider integration ([#6022](https://github.com/artef/artef/issues/6022)) ([8d54faa](https://github.com/artef/artef/commit/8d54faa1c240e28557b1eb652c358a3f8eb4b0a2))
+- **providers:** add GPT-5.2 model support ([#6628](https://github.com/artef/artef/issues/6628)) ([b105980](https://github.com/artef/artef/commit/b105980f121d1b0ad8b0db95ff1d63e4d701f24d))
+- **providers:** add OpenCode SDK provider ([#6423](https://github.com/artef/artef/issues/6423)) ([ef8f227](https://github.com/artef/artef/commit/ef8f227bced68ce9f507abec0b4010445fda61e4))
+- **providers:** add streaming option for Vertex AI Model Armor support ([#6614](https://github.com/artef/artef/issues/6614)) ([aebd268](https://github.com/artef/artef/commit/aebd26879b87ca9a4a2a4e1d1e66bc22da6ff9fc))
+- **redteam:** complete OWASP Agentic AI T1-T15 threat mapping ([#6458](https://github.com/artef/artef/issues/6458)) ([24e3c2b](https://github.com/artef/artef/commit/24e3c2bf5b0bedf519588aec2a5352a7aef42260))
 
 ### Bug Fixes
 
-- **build:** exclude Nunjucks template fixture from TypeScript ([#6588](https://github.com/promptfoo/promptfoo/issues/6588)) ([6f02eec](https://github.com/promptfoo/promptfoo/commit/6f02eecda3d988da210c43027b3687fb561637f9))
-- **ci:** resolve release workflow and devcontainer build failures ([#6589](https://github.com/promptfoo/promptfoo/issues/6589)) ([707ace0](https://github.com/promptfoo/promptfoo/commit/707ace0997279e8d5a9572aa8c48c20e03308992))
-- **deps:** update dependency @anthropic-ai/sdk to ^0.71.1 ([#6594](https://github.com/promptfoo/promptfoo/issues/6594)) ([f11a097](https://github.com/promptfoo/promptfoo/commit/f11a097b7f53003dbd1170c0ef32388c81540a00))
-- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.3 ([#6590](https://github.com/promptfoo/promptfoo/issues/6590)) ([1bc4d27](https://github.com/promptfoo/promptfoo/commit/1bc4d27f1f9dc49bed95475331faed4fde1dbb20))
-- **deps:** update dependency drizzle-orm to ^0.45.0 ([#6592](https://github.com/promptfoo/promptfoo/issues/6592)) ([1bac327](https://github.com/promptfoo/promptfoo/commit/1bac327fbce6e687f08779663adccf732366cb12))
-- **deps:** update winston to v3.19.0 and simplify logger flush ([#6593](https://github.com/promptfoo/promptfoo/issues/6593)) ([f29926c](https://github.com/promptfoo/promptfoo/commit/f29926c36bfa33eaa3d39bc5d5ca355b47509705))
-- **esm:** restore process.mainModule.require compatibility for inline transforms ([#6606](https://github.com/promptfoo/promptfoo/issues/6606)) ([765a26f](https://github.com/promptfoo/promptfoo/commit/765a26fc4fc41f0ddec814b9b7c04bbec954d8c7))
-- **npm:** drop npm version requirement ([#6604](https://github.com/promptfoo/promptfoo/issues/6604)) ([a182bb2](https://github.com/promptfoo/promptfoo/commit/a182bb2d0e2a9af70cac5217b4806abf67f98966))
+- **ci:** format CHANGELOG.md and improve release-please formatting step ([#6610](https://github.com/artef/artef/issues/6610)) ([b89977c](https://github.com/artef/artef/commit/b89977cc78bee7072a8168df3edf3e50cf4b4c5b))
+- **deps:** update anthropic packages ([#6616](https://github.com/artef/artef/issues/6616)) ([645386b](https://github.com/artef/artef/commit/645386bf04b53bc980f53b0666bb75d34098c5f6))
+- **providers:** add numRequests tracking to all provider tokenUsage objects ([#6612](https://github.com/artef/artef/issues/6612)) ([d35bf7c](https://github.com/artef/artef/commit/d35bf7c15deb2b360bcadc52c3d4753e335e7ed3))
+- **providers:** update HuggingFace to use new inference API endpoint ([#6624](https://github.com/artef/artef/issues/6624)) ([57f118b](https://github.com/artef/artef/commit/57f118bc8c9d7aa48e6de1ace363d935b8de9f2e))
+- **redteam:** preserve BestOfNProvider config through database serialization ([#6598](https://github.com/artef/artef/issues/6598)) ([92adeba](https://github.com/artef/artef/commit/92adeba581063a7fd5c545a3b2aa6f243a0f4881))
 
-## [0.120.2](https://github.com/promptfoo/promptfoo/compare/0.120.1...0.120.2) (2025-12-09)
+## [0.120.3](https://github.com/artef/artef/compare/0.120.2...0.120.3) (2025-12-10)
 
 ### Features
 
-- **assertions:** tool calling f1 score ([#6548](https://github.com/promptfoo/promptfoo/issues/6548)) ([1327195](https://github.com/promptfoo/promptfoo/commit/13271958b5a48b7d26586daf5f06d98bcdf4d063))
-- **providers:** add Amazon Nova 2 model support with reasoning capabilities ([#6531](https://github.com/promptfoo/promptfoo/issues/6531)) ([3a99c2b](https://github.com/promptfoo/promptfoo/commit/3a99c2b54598274d42f0f404694a0526aa57cec0))
-- **providers:** add Llama 3.2 Vision support for Bedrock InvokeModel API ([#6555](https://github.com/promptfoo/promptfoo/issues/6555)) ([9b78f61](https://github.com/promptfoo/promptfoo/commit/9b78f61653ab7a1f4435299710e505c60c1dd474))
-- **redteam:** add job persistence for browser-based evaluations ([#6529](https://github.com/promptfoo/promptfoo/issues/6529)) ([35f2e9f](https://github.com/promptfoo/promptfoo/commit/35f2e9f1a5b0c57c934c8f94d2ee5cdad27f844c))
-- **redteam:** Adding authentication options for HTTP provider ([#6515](https://github.com/promptfoo/promptfoo/issues/6515)) ([df90497](https://github.com/promptfoo/promptfoo/commit/df90497fbfc688cef89a29b85d2dcd38755835b7))
-- **tracing:** add protobuf support for OTLP trace ingestion ([#6540](https://github.com/promptfoo/promptfoo/issues/6540)) ([d83837e](https://github.com/promptfoo/promptfoo/commit/d83837efb0e2be44c3e84378206be435f003d6c1))
+- **providers:** add multi-turn session persistence to browser provider ([#6585](https://github.com/artef/artef/issues/6585)) ([873241e](https://github.com/artef/artef/commit/873241ee0b5692edc74fcb33815b99adfab68a52))
 
 ### Bug Fixes
 
-- **assertions:** filter preamble text in context-recall parser ([#6566](https://github.com/promptfoo/promptfoo/issues/6566)) ([01e5bf0](https://github.com/promptfoo/promptfoo/commit/01e5bf021728a0e80daf5effdd97d539639e5775))
-- **assertions:** improve is-sql error messages for whitelist violations ([#6565](https://github.com/promptfoo/promptfoo/issues/6565)) ([43bd7d6](https://github.com/promptfoo/promptfoo/commit/43bd7d6d7a0fa8dd546b365b77f96dc66e811bd8))
-- **ci:** rename GitHub releases to remove v prefix ([#6574](https://github.com/promptfoo/promptfoo/issues/6574)) ([16a31eb](https://github.com/promptfoo/promptfoo/commit/16a31ebb639251db73053df938fd64baad4825cd))
-- **cli:** show CLI UI during model scan by using temp file for JSON output ([#6524](https://github.com/promptfoo/promptfoo/issues/6524)) ([f50456b](https://github.com/promptfoo/promptfoo/commit/f50456b6d2cfef2c8f1989d26f6814c9633575a4))
-- fix parsing empty contents for gemini providers ([#6580](https://github.com/promptfoo/promptfoo/issues/6580)) ([ddff9b9](https://github.com/promptfoo/promptfoo/commit/ddff9b9b49c9abebddae9127800a06d8507dd99d))
-- making guardrails fall back to false when undefined to simplify configuring successful responses ([#6582](https://github.com/promptfoo/promptfoo/issues/6582)) ([ee698e4](https://github.com/promptfoo/promptfoo/commit/ee698e41003992af0623a6fa4f07f1688ccaf80a))
-- **redteam:** fix prompt-injection strategy data.json loading in ESM build ([#6583](https://github.com/promptfoo/promptfoo/issues/6583)) ([ae373dc](https://github.com/promptfoo/promptfoo/commit/ae373dcf1c8e0f0b7e4a4978d339df0ab9b8f263))
-- updating guardrail detection for vertex provider ([#6581](https://github.com/promptfoo/promptfoo/issues/6581)) ([3c10f64](https://github.com/promptfoo/promptfoo/commit/3c10f648bf709bf62d934f7090da9c8ea969948d))
-- **webui:** add missing vitest imports to test files ([#6577](https://github.com/promptfoo/promptfoo/issues/6577)) ([8c2afa0](https://github.com/promptfoo/promptfoo/commit/8c2afa023db80a4926abb2ab80a8c03de108ebfe))
-- **webui:** display provider errors in eval results fail reason carousel ([#6552](https://github.com/promptfoo/promptfoo/issues/6552)) ([b43f225](https://github.com/promptfoo/promptfoo/commit/b43f225ad07eefc9af7e3cae17bcd362dba4383f))
-- **webui:** handle object outputs in eval prompt dialog ([#6556](https://github.com/promptfoo/promptfoo/issues/6556)) ([c2a3441](https://github.com/promptfoo/promptfoo/commit/c2a34418eb640c6c46ff2bc1cf5ff5ad954b0199))
+- **build:** exclude Nunjucks template fixture from TypeScript ([#6588](https://github.com/artef/artef/issues/6588)) ([6f02eec](https://github.com/artef/artef/commit/6f02eecda3d988da210c43027b3687fb561637f9))
+- **ci:** resolve release workflow and devcontainer build failures ([#6589](https://github.com/artef/artef/issues/6589)) ([707ace0](https://github.com/artef/artef/commit/707ace0997279e8d5a9572aa8c48c20e03308992))
+- **deps:** update dependency @anthropic-ai/sdk to ^0.71.1 ([#6594](https://github.com/artef/artef/issues/6594)) ([f11a097](https://github.com/artef/artef/commit/f11a097b7f53003dbd1170c0ef32388c81540a00))
+- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.3 ([#6590](https://github.com/artef/artef/issues/6590)) ([1bc4d27](https://github.com/artef/artef/commit/1bc4d27f1f9dc49bed95475331faed4fde1dbb20))
+- **deps:** update dependency drizzle-orm to ^0.45.0 ([#6592](https://github.com/artef/artef/issues/6592)) ([1bac327](https://github.com/artef/artef/commit/1bac327fbce6e687f08779663adccf732366cb12))
+- **deps:** update winston to v3.19.0 and simplify logger flush ([#6593](https://github.com/artef/artef/issues/6593)) ([f29926c](https://github.com/artef/artef/commit/f29926c36bfa33eaa3d39bc5d5ca355b47509705))
+- **esm:** restore process.mainModule.require compatibility for inline transforms ([#6606](https://github.com/artef/artef/issues/6606)) ([765a26f](https://github.com/artef/artef/commit/765a26fc4fc41f0ddec814b9b7c04bbec954d8c7))
+- **npm:** drop npm version requirement ([#6604](https://github.com/artef/artef/issues/6604)) ([a182bb2](https://github.com/artef/artef/commit/a182bb2d0e2a9af70cac5217b4806abf67f98966))
 
-## [0.120.1](https://github.com/promptfoo/promptfoo/compare/0.120.0...0.120.1) (2025-12-08)
+## [0.120.2](https://github.com/artef/artef/compare/0.120.1...0.120.2) (2025-12-09)
 
 ### Features
 
-- **providers:** update claude-agent-sdk to ^0.1.60 with betas and dontAsk support ([#6557](https://github.com/promptfoo/promptfoo/issues/6557)) ([cc3d857](https://github.com/promptfoo/promptfoo/commit/cc3d85763606facb615965ad9288c33650e01512))
+- **assertions:** tool calling f1 score ([#6548](https://github.com/artef/artef/issues/6548)) ([1327195](https://github.com/artef/artef/commit/13271958b5a48b7d26586daf5f06d98bcdf4d063))
+- **providers:** add Amazon Nova 2 model support with reasoning capabilities ([#6531](https://github.com/artef/artef/issues/6531)) ([3a99c2b](https://github.com/artef/artef/commit/3a99c2b54598274d42f0f404694a0526aa57cec0))
+- **providers:** add Llama 3.2 Vision support for Bedrock InvokeModel API ([#6555](https://github.com/artef/artef/issues/6555)) ([9b78f61](https://github.com/artef/artef/commit/9b78f61653ab7a1f4435299710e505c60c1dd474))
+- **redteam:** add job persistence for browser-based evaluations ([#6529](https://github.com/artef/artef/issues/6529)) ([35f2e9f](https://github.com/artef/artef/commit/35f2e9f1a5b0c57c934c8f94d2ee5cdad27f844c))
+- **redteam:** Adding authentication options for HTTP provider ([#6515](https://github.com/artef/artef/issues/6515)) ([df90497](https://github.com/artef/artef/commit/df90497fbfc688cef89a29b85d2dcd38755835b7))
+- **tracing:** add protobuf support for OTLP trace ingestion ([#6540](https://github.com/artef/artef/issues/6540)) ([d83837e](https://github.com/artef/artef/commit/d83837efb0e2be44c3e84378206be435f003d6c1))
 
 ### Bug Fixes
 
-- **ci:** trigger Docker build from release-please workflow ([#6572](https://github.com/promptfoo/promptfoo/issues/6572)) ([6b17908](https://github.com/promptfoo/promptfoo/commit/6b17908e5875eb7baed1e66a4f6a650413ca9ef7))
-- improved differentiation between parsing json and non-json chat messages ([#6568](https://github.com/promptfoo/promptfoo/issues/6568)) ([3776606](https://github.com/promptfoo/promptfoo/commit/377660659ac6cd52a58f3ee1cb687a5bbb2ece23))
-- use correct drizzle migrations path for npm/npx installs ([#6573](https://github.com/promptfoo/promptfoo/issues/6573)) ([3e4fa81](https://github.com/promptfoo/promptfoo/commit/3e4fa814882e34d7606dd256e34789559213feca))
+- **assertions:** filter preamble text in context-recall parser ([#6566](https://github.com/artef/artef/issues/6566)) ([01e5bf0](https://github.com/artef/artef/commit/01e5bf021728a0e80daf5effdd97d539639e5775))
+- **assertions:** improve is-sql error messages for whitelist violations ([#6565](https://github.com/artef/artef/issues/6565)) ([43bd7d6](https://github.com/artef/artef/commit/43bd7d6d7a0fa8dd546b365b77f96dc66e811bd8))
+- **ci:** rename GitHub releases to remove v prefix ([#6574](https://github.com/artef/artef/issues/6574)) ([16a31eb](https://github.com/artef/artef/commit/16a31ebb639251db73053df938fd64baad4825cd))
+- **cli:** show CLI UI during model scan by using temp file for JSON output ([#6524](https://github.com/artef/artef/issues/6524)) ([f50456b](https://github.com/artef/artef/commit/f50456b6d2cfef2c8f1989d26f6814c9633575a4))
+- fix parsing empty contents for gemini providers ([#6580](https://github.com/artef/artef/issues/6580)) ([ddff9b9](https://github.com/artef/artef/commit/ddff9b9b49c9abebddae9127800a06d8507dd99d))
+- making guardrails fall back to false when undefined to simplify configuring successful responses ([#6582](https://github.com/artef/artef/issues/6582)) ([ee698e4](https://github.com/artef/artef/commit/ee698e41003992af0623a6fa4f07f1688ccaf80a))
+- **redteam:** fix prompt-injection strategy data.json loading in ESM build ([#6583](https://github.com/artef/artef/issues/6583)) ([ae373dc](https://github.com/artef/artef/commit/ae373dcf1c8e0f0b7e4a4978d339df0ab9b8f263))
+- updating guardrail detection for vertex provider ([#6581](https://github.com/artef/artef/issues/6581)) ([3c10f64](https://github.com/artef/artef/commit/3c10f648bf709bf62d934f7090da9c8ea969948d))
+- **webui:** add missing vitest imports to test files ([#6577](https://github.com/artef/artef/issues/6577)) ([8c2afa0](https://github.com/artef/artef/commit/8c2afa023db80a4926abb2ab80a8c03de108ebfe))
+- **webui:** display provider errors in eval results fail reason carousel ([#6552](https://github.com/artef/artef/issues/6552)) ([b43f225](https://github.com/artef/artef/commit/b43f225ad07eefc9af7e3cae17bcd362dba4383f))
+- **webui:** handle object outputs in eval prompt dialog ([#6556](https://github.com/artef/artef/issues/6556)) ([c2a3441](https://github.com/artef/artef/commit/c2a34418eb640c6c46ff2bc1cf5ff5ad954b0199))
 
-## [0.120.0](https://github.com/promptfoo/promptfoo/compare/0.119.14...0.120.0) (2025-12-08)
+## [0.120.1](https://github.com/artef/artef/compare/0.120.0...0.120.1) (2025-12-08)
 
 ### Features
 
-- **build:** migrate to ESM (ECMAScript Modules) ([#5594](https://github.com/promptfoo/promptfoo/issues/5594)) ([9cdf09b](https://github.com/promptfoo/promptfoo/commit/9cdf09b1c681454ed3fa047dee41a43fea48028a))
-- **cli:** toggle debug log live ([#6517](https://github.com/promptfoo/promptfoo/issues/6517)) ([6beebce](https://github.com/promptfoo/promptfoo/commit/6beebce4134f0e0dfd54e7f14cf4b213abd9573c))
-- **providers:** add Gemini native image generation support ([#6405](https://github.com/promptfoo/promptfoo/issues/6405)) ([13bc040](https://github.com/promptfoo/promptfoo/commit/13bc04000accebae4231d77997970528d207a377))
-- **redteam:** add multi-modal layer strategy support for audio/image attacks ([#6472](https://github.com/promptfoo/promptfoo/issues/6472)) ([c0d7c1c](https://github.com/promptfoo/promptfoo/commit/c0d7c1c0aef2cc63957075c7f60829e77ee4741e))
+- **providers:** update claude-agent-sdk to ^0.1.60 with betas and dontAsk support ([#6557](https://github.com/artef/artef/issues/6557)) ([cc3d857](https://github.com/artef/artef/commit/cc3d85763606facb615965ad9288c33650e01512))
 
 ### Bug Fixes
 
-- **build:** add CommonJS fallback for .js files in ESM environment ([#6501](https://github.com/promptfoo/promptfoo/issues/6501)) ([ae39641](https://github.com/promptfoo/promptfoo/commit/ae39641d3db36d47aba72b39a0bc35290ca80d93))
-- **assertions:** allow Nunjucks templates in JSON rubricPrompt files ([#6554](https://github.com/promptfoo/promptfoo/issues/6554)) ([7cdb1af](https://github.com/promptfoo/promptfoo/commit/7cdb1afae9bec1432bbcd898c583451e7cf0ac8f))
-- **assertions:** resolve provider paths relative to config file location ([#6503](https://github.com/promptfoo/promptfoo/issues/6503)) ([61a77eb](https://github.com/promptfoo/promptfoo/commit/61a77eb5cfa3619bbcdb82eac89e20293f2d6cb8))
-- **cli:** await modelaudit subprocess completion in scan-model command ([#6518](https://github.com/promptfoo/promptfoo/issues/6518)) ([fe19331](https://github.com/promptfoo/promptfoo/commit/fe19331acada496c3ea528c65c3b39066d97ca67))
-- **cli:** resolve view command premature exit and eval hanging issues ([#6460](https://github.com/promptfoo/promptfoo/issues/6460)) ([d9e9814](https://github.com/promptfoo/promptfoo/commit/d9e9814ff3a21b5922794ea48b70d104e29b948c))
-- **code-scan:** output valid JSON when no files to scan with --json flag ([#6496](https://github.com/promptfoo/promptfoo/issues/6496)) ([8c41fce](https://github.com/promptfoo/promptfoo/commit/8c41fceaff6474e7de919d73fc01c2cd80979cf9))
-- **deps:** downgrade zod-validation-error for ESM compatibility ([#6471](https://github.com/promptfoo/promptfoo/issues/6471)) ([a39643a](https://github.com/promptfoo/promptfoo/commit/a39643ad94d4d9a804d3cec0a736e120b17d092d))
-- **deps:** resolve Express CVE-2024-51999 vulnerability ([#6457](https://github.com/promptfoo/promptfoo/issues/6457)) ([c2ef1ad](https://github.com/promptfoo/promptfoo/commit/c2ef1ad64fc2a0f4b0bc6a76dac751733b52a77f))
-- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.0 [security] ([#6463](https://github.com/promptfoo/promptfoo/issues/6463)) ([cfdffff](https://github.com/promptfoo/promptfoo/commit/cfdfffff518e02c29cec705f93ebdc2e24a07901))
-- **deps:** update jws to fix security vulnerability ([#6497](https://github.com/promptfoo/promptfoo/issues/6497)) ([28112f5](https://github.com/promptfoo/promptfoo/commit/28112f5fac826d6d32aaa80f82d291955ed42555))
-- **eval:** correct share progress count to match actual results ([#6513](https://github.com/promptfoo/promptfoo/issues/6513)) ([ea4410c](https://github.com/promptfoo/promptfoo/commit/ea4410cdf5deea1af08a9e29688adbc6fbdb8909))
-- **eval:** handle missing defaultTest in extension-api hooks ([#6504](https://github.com/promptfoo/promptfoo/issues/6504)) ([c0d111c](https://github.com/promptfoo/promptfoo/commit/c0d111c457ddbabf54cf5652b04fcbf2ce336838))
-- **eval:** include provider in Google Sheets output column headers ([#6528](https://github.com/promptfoo/promptfoo/issues/6528)) ([ded540a](https://github.com/promptfoo/promptfoo/commit/ded540a97a10f78e4bc0aeb4b4c39248cdc06919))
-- **cache:** fix initialization ([#6467](https://github.com/promptfoo/promptfoo/issues/6467)) ([df2ae94](https://github.com/promptfoo/promptfoo/commit/df2ae94cc967cd6fc3df4e0d170bdcb4702c2e53))
-- **config:** handle setting maxConcurrency in config.yaml ([#6526](https://github.com/promptfoo/promptfoo/issues/6526)) ([5443171](https://github.com/promptfoo/promptfoo/commit/5443171ea0eec30215c56e83cce6378e482cd1e7))
-- **providers:** fix Golang and Ruby wrappers ([#6506](https://github.com/promptfoo/promptfoo/issues/6506)) ([d429b00](https://github.com/promptfoo/promptfoo/commit/d429b005ff222c818d3946fc3108a7c8970abcb2))
-- **providers:** handle Vertex AI global region endpoint ([#6570](https://github.com/promptfoo/promptfoo/issues/6570)) ([5d8a043](https://github.com/promptfoo/promptfoo/commit/5d8a0434e4e5d4f9d8b6e3a1c2f7e8d9a0b1c2d3))
-- **http:** improve parsing of body in HTTP provider ([#6484](https://github.com/promptfoo/promptfoo/issues/6484)) ([7665f48](https://github.com/promptfoo/promptfoo/commit/7665f4857a06796b7558e9dfc50730523c47b801))
-- **build:** migrate require() to ESM-compatible imports ([#6509](https://github.com/promptfoo/promptfoo/issues/6509)) ([7b30dda](https://github.com/promptfoo/promptfoo/commit/7b30dda3c362d2f3ffe768acd8450b3a25ee151d))
-- **logger:** prevent Winston 'write after end' error during shutdown ([#6511](https://github.com/promptfoo/promptfoo/issues/6511)) ([a5ad5cb](https://github.com/promptfoo/promptfoo/commit/a5ad5cb3381e5ac3ae5c34640cf99915216490bf))
-- **logger:** prevent write-after-end error in shutdown ([#6514](https://github.com/promptfoo/promptfoo/issues/6514)) ([c901d8d](https://github.com/promptfoo/promptfoo/commit/c901d8dcd6fa24201d99ede3ef2552c7fb91b945))
-- **providers:** improve ChatKit multi-step workflow support ([#6425](https://github.com/promptfoo/promptfoo/issues/6425)) ([ceef623](https://github.com/promptfoo/promptfoo/commit/ceef623af0c48f864f13bd3b29e9c63acd83160c))
-- **providers:** improve ChatKit response capture reliability ([#6482](https://github.com/promptfoo/promptfoo/issues/6482)) ([f251a03](https://github.com/promptfoo/promptfoo/commit/f251a03e3aad4ca0ee7b5030e9a94b66a1323dc1))
-- **python:** fix provider path resolution ([#6465](https://github.com/promptfoo/promptfoo/issues/6465)) ([20b363e](https://github.com/promptfoo/promptfoo/commit/20b363e686002fd53d3fdb7b769481d1f49889a3))
-- **python:** fix wrapper.py path resolution ([#6500](https://github.com/promptfoo/promptfoo/issues/6500)) ([f617ee5](https://github.com/promptfoo/promptfoo/commit/f617ee545248cd45e8eb7666470294b456984c21))
-- **python:** replace deprecated asyncio.iscoroutinefunction with inspect.iscoroutinefunction ([#6551](https://github.com/promptfoo/promptfoo/issues/6551)) ([804d6c8](https://github.com/promptfoo/promptfoo/commit/804d6c83e1de5b167e341ebe43178a76f865cb46))
-- **redteam:** handle missing strategy test cases ([#6485](https://github.com/promptfoo/promptfoo/issues/6485)) ([2ae2315](https://github.com/promptfoo/promptfoo/commit/2ae231518f1b93fc1f247d5b941940de2c8c9e10))
-- **redteam:** propagate abort signals through agentic strategy providers ([#6412](https://github.com/promptfoo/promptfoo/issues/6412)) ([49b96e7](https://github.com/promptfoo/promptfoo/commit/49b96e7417eead8b880646b5bec0d6dc7c0641d6))
-- **build:** fix require() module resolution ([#6468](https://github.com/promptfoo/promptfoo/issues/6468)) ([ea6b299](https://github.com/promptfoo/promptfoo/commit/ea6b2995ecdc94e970dcabbc95fe6aa5a0e94bf5))
-- **cli:** use npm environment variables for version detection ([#6479](https://github.com/promptfoo/promptfoo/issues/6479)) ([2a88aab](https://github.com/promptfoo/promptfoo/commit/2a88aab8a4a1f7e97dc851f58aa9a103bc09981f))
-- **server:** resolve drizzle migrations path for cloud bundled context ([#6522](https://github.com/promptfoo/promptfoo/issues/6522)) ([6d2ff39](https://github.com/promptfoo/promptfoo/commit/6d2ff395d9b10db9b87dc9cba5263b5d053c10fd))
+- **ci:** trigger Docker build from release-please workflow ([#6572](https://github.com/artef/artef/issues/6572)) ([6b17908](https://github.com/artef/artef/commit/6b17908e5875eb7baed1e66a4f6a650413ca9ef7))
+- improved differentiation between parsing json and non-json chat messages ([#6568](https://github.com/artef/artef/issues/6568)) ([3776606](https://github.com/artef/artef/commit/377660659ac6cd52a58f3ee1cb687a5bbb2ece23))
+- use correct drizzle migrations path for npm/npx installs ([#6573](https://github.com/artef/artef/issues/6573)) ([3e4fa81](https://github.com/artef/artef/commit/3e4fa814882e34d7606dd256e34789559213feca))
+
+## [0.120.0](https://github.com/artef/artef/compare/0.119.14...0.120.0) (2025-12-08)
+
+### Features
+
+- **build:** migrate to ESM (ECMAScript Modules) ([#5594](https://github.com/artef/artef/issues/5594)) ([9cdf09b](https://github.com/artef/artef/commit/9cdf09b1c681454ed3fa047dee41a43fea48028a))
+- **cli:** toggle debug log live ([#6517](https://github.com/artef/artef/issues/6517)) ([6beebce](https://github.com/artef/artef/commit/6beebce4134f0e0dfd54e7f14cf4b213abd9573c))
+- **providers:** add Gemini native image generation support ([#6405](https://github.com/artef/artef/issues/6405)) ([13bc040](https://github.com/artef/artef/commit/13bc04000accebae4231d77997970528d207a377))
+- **redteam:** add multi-modal layer strategy support for audio/image attacks ([#6472](https://github.com/artef/artef/issues/6472)) ([c0d7c1c](https://github.com/artef/artef/commit/c0d7c1c0aef2cc63957075c7f60829e77ee4741e))
+
+### Bug Fixes
+
+- **build:** add CommonJS fallback for .js files in ESM environment ([#6501](https://github.com/artef/artef/issues/6501)) ([ae39641](https://github.com/artef/artef/commit/ae39641d3db36d47aba72b39a0bc35290ca80d93))
+- **assertions:** allow Nunjucks templates in JSON rubricPrompt files ([#6554](https://github.com/artef/artef/issues/6554)) ([7cdb1af](https://github.com/artef/artef/commit/7cdb1afae9bec1432bbcd898c583451e7cf0ac8f))
+- **assertions:** resolve provider paths relative to config file location ([#6503](https://github.com/artef/artef/issues/6503)) ([61a77eb](https://github.com/artef/artef/commit/61a77eb5cfa3619bbcdb82eac89e20293f2d6cb8))
+- **cli:** await modelaudit subprocess completion in scan-model command ([#6518](https://github.com/artef/artef/issues/6518)) ([fe19331](https://github.com/artef/artef/commit/fe19331acada496c3ea528c65c3b39066d97ca67))
+- **cli:** resolve view command premature exit and eval hanging issues ([#6460](https://github.com/artef/artef/issues/6460)) ([d9e9814](https://github.com/artef/artef/commit/d9e9814ff3a21b5922794ea48b70d104e29b948c))
+- **code-scan:** output valid JSON when no files to scan with --json flag ([#6496](https://github.com/artef/artef/issues/6496)) ([8c41fce](https://github.com/artef/artef/commit/8c41fceaff6474e7de919d73fc01c2cd80979cf9))
+- **deps:** downgrade zod-validation-error for ESM compatibility ([#6471](https://github.com/artef/artef/issues/6471)) ([a39643a](https://github.com/artef/artef/commit/a39643ad94d4d9a804d3cec0a736e120b17d092d))
+- **deps:** resolve Express CVE-2024-51999 vulnerability ([#6457](https://github.com/artef/artef/issues/6457)) ([c2ef1ad](https://github.com/artef/artef/commit/c2ef1ad64fc2a0f4b0bc6a76dac751733b52a77f))
+- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.0 [security] ([#6463](https://github.com/artef/artef/issues/6463)) ([cfdffff](https://github.com/artef/artef/commit/cfdfffff518e02c29cec705f93ebdc2e24a07901))
+- **deps:** update jws to fix security vulnerability ([#6497](https://github.com/artef/artef/issues/6497)) ([28112f5](https://github.com/artef/artef/commit/28112f5fac826d6d32aaa80f82d291955ed42555))
+- **eval:** correct share progress count to match actual results ([#6513](https://github.com/artef/artef/issues/6513)) ([ea4410c](https://github.com/artef/artef/commit/ea4410cdf5deea1af08a9e29688adbc6fbdb8909))
+- **eval:** handle missing defaultTest in extension-api hooks ([#6504](https://github.com/artef/artef/issues/6504)) ([c0d111c](https://github.com/artef/artef/commit/c0d111c457ddbabf54cf5652b04fcbf2ce336838))
+- **eval:** include provider in Google Sheets output column headers ([#6528](https://github.com/artef/artef/issues/6528)) ([ded540a](https://github.com/artef/artef/commit/ded540a97a10f78e4bc0aeb4b4c39248cdc06919))
+- **cache:** fix initialization ([#6467](https://github.com/artef/artef/issues/6467)) ([df2ae94](https://github.com/artef/artef/commit/df2ae94cc967cd6fc3df4e0d170bdcb4702c2e53))
+- **config:** handle setting maxConcurrency in config.yaml ([#6526](https://github.com/artef/artef/issues/6526)) ([5443171](https://github.com/artef/artef/commit/5443171ea0eec30215c56e83cce6378e482cd1e7))
+- **providers:** fix Golang and Ruby wrappers ([#6506](https://github.com/artef/artef/issues/6506)) ([d429b00](https://github.com/artef/artef/commit/d429b005ff222c818d3946fc3108a7c8970abcb2))
+- **providers:** handle Vertex AI global region endpoint ([#6570](https://github.com/artef/artef/issues/6570)) ([5d8a043](https://github.com/artef/artef/commit/5d8a0434e4e5d4f9d8b6e3a1c2f7e8d9a0b1c2d3))
+- **http:** improve parsing of body in HTTP provider ([#6484](https://github.com/artef/artef/issues/6484)) ([7665f48](https://github.com/artef/artef/commit/7665f4857a06796b7558e9dfc50730523c47b801))
+- **build:** migrate require() to ESM-compatible imports ([#6509](https://github.com/artef/artef/issues/6509)) ([7b30dda](https://github.com/artef/artef/commit/7b30dda3c362d2f3ffe768acd8450b3a25ee151d))
+- **logger:** prevent Winston 'write after end' error during shutdown ([#6511](https://github.com/artef/artef/issues/6511)) ([a5ad5cb](https://github.com/artef/artef/commit/a5ad5cb3381e5ac3ae5c34640cf99915216490bf))
+- **logger:** prevent write-after-end error in shutdown ([#6514](https://github.com/artef/artef/issues/6514)) ([c901d8d](https://github.com/artef/artef/commit/c901d8dcd6fa24201d99ede3ef2552c7fb91b945))
+- **providers:** improve ChatKit multi-step workflow support ([#6425](https://github.com/artef/artef/issues/6425)) ([ceef623](https://github.com/artef/artef/commit/ceef623af0c48f864f13bd3b29e9c63acd83160c))
+- **providers:** improve ChatKit response capture reliability ([#6482](https://github.com/artef/artef/issues/6482)) ([f251a03](https://github.com/artef/artef/commit/f251a03e3aad4ca0ee7b5030e9a94b66a1323dc1))
+- **python:** fix provider path resolution ([#6465](https://github.com/artef/artef/issues/6465)) ([20b363e](https://github.com/artef/artef/commit/20b363e686002fd53d3fdb7b769481d1f49889a3))
+- **python:** fix wrapper.py path resolution ([#6500](https://github.com/artef/artef/issues/6500)) ([f617ee5](https://github.com/artef/artef/commit/f617ee545248cd45e8eb7666470294b456984c21))
+- **python:** replace deprecated asyncio.iscoroutinefunction with inspect.iscoroutinefunction ([#6551](https://github.com/artef/artef/issues/6551)) ([804d6c8](https://github.com/artef/artef/commit/804d6c83e1de5b167e341ebe43178a76f865cb46))
+- **redteam:** handle missing strategy test cases ([#6485](https://github.com/artef/artef/issues/6485)) ([2ae2315](https://github.com/artef/artef/commit/2ae231518f1b93fc1f247d5b941940de2c8c9e10))
+- **redteam:** propagate abort signals through agentic strategy providers ([#6412](https://github.com/artef/artef/issues/6412)) ([49b96e7](https://github.com/artef/artef/commit/49b96e7417eead8b880646b5bec0d6dc7c0641d6))
+- **build:** fix require() module resolution ([#6468](https://github.com/artef/artef/issues/6468)) ([ea6b299](https://github.com/artef/artef/commit/ea6b2995ecdc94e970dcabbc95fe6aa5a0e94bf5))
+- **cli:** use npm environment variables for version detection ([#6479](https://github.com/artef/artef/issues/6479)) ([2a88aab](https://github.com/artef/artef/commit/2a88aab8a4a1f7e97dc851f58aa9a103bc09981f))
+- **server:** resolve drizzle migrations path for cloud bundled context ([#6522](https://github.com/artef/artef/issues/6522)) ([6d2ff39](https://github.com/artef/artef/commit/6d2ff395d9b10db9b87dc9cba5263b5d053c10fd))
 
 ### Performance Improvements
 
-- **build:** parallelize build steps and use esbuild minifier ([#6494](https://github.com/promptfoo/promptfoo/issues/6494)) ([8b41b40](https://github.com/promptfoo/promptfoo/commit/8b41b40034c6025d83eb1b351da63a61928b13d5))
+- **build:** parallelize build steps and use esbuild minifier ([#6494](https://github.com/artef/artef/issues/6494)) ([8b41b40](https://github.com/artef/artef/commit/8b41b40034c6025d83eb1b351da63a61928b13d5))
 
 ### Reverts
 
-- "fix(deps): update dependency jsdom to v27" ([#6449](https://github.com/promptfoo/promptfoo/issues/6449)) ([1cd29ad](https://github.com/promptfoo/promptfoo/commit/1cd29ad68cf93ab3c7c40a75212ac6f4ca56bcbf))
+- "fix(deps): update dependency jsdom to v27" ([#6449](https://github.com/artef/artef/issues/6449)) ([1cd29ad](https://github.com/artef/artef/commit/1cd29ad68cf93ab3c7c40a75212ac6f4ca56bcbf))
 
 ### Documentation
 
-- **site:** display correct blog post dates regardless of user timezone ([#6534](https://github.com/promptfoo/promptfoo/issues/6534)) ([3401ca1](https://github.com/promptfoo/promptfoo/commit/3401ca15c373f332dc33f955744b0a2191c414c9))
-- **site:** fix responsive logo containers ([#6470](https://github.com/promptfoo/promptfoo/issues/6470)) ([a94cef9](https://github.com/promptfoo/promptfoo/commit/a94cef98af50dcf15c503bc055b98100f83a286c))
-- **site:** update Tabs Fakier GitHub profile URL ([#6527](https://github.com/promptfoo/promptfoo/issues/6527)) ([d7959c6](https://github.com/promptfoo/promptfoo/commit/d7959c61153646184a558990f3c62e1dcfe70f74))
+- **site:** display correct blog post dates regardless of user timezone ([#6534](https://github.com/artef/artef/issues/6534)) ([3401ca1](https://github.com/artef/artef/commit/3401ca15c373f332dc33f955744b0a2191c414c9))
+- **site:** fix responsive logo containers ([#6470](https://github.com/artef/artef/issues/6470)) ([a94cef9](https://github.com/artef/artef/commit/a94cef98af50dcf15c503bc055b98100f83a286c))
+- **site:** update Tabs Fakier GitHub profile URL ([#6527](https://github.com/artef/artef/issues/6527)) ([d7959c6](https://github.com/artef/artef/commit/d7959c61153646184a558990f3c62e1dcfe70f74))
 
 ### Miscellaneous Chores
 
-- **ci:** enforce npm version to prevent lockfile incompatibility ([#6483](https://github.com/promptfoo/promptfoo/issues/6483)) ([ab0cccc](https://github.com/promptfoo/promptfoo/commit/ab0cccc166e803b64b4a87353f318f0e20a363c3))
-- **ci:** remove packageManager to allow pnpm/yarn ([#6512](https://github.com/promptfoo/promptfoo/issues/6512)) ([9b49e36](https://github.com/promptfoo/promptfoo/commit/9b49e360f8f0418b7230442f1f97cb25fd2c2243))
-- **ci:** update latest Docker tag on releases ([#6477](https://github.com/promptfoo/promptfoo/issues/6477)) ([d213e33](https://github.com/promptfoo/promptfoo/commit/d213e33e10cce5bb3dc1165eec52e5657d221925))
-- **deps:** update dependency @apidevtools/json-schema-ref-parser to v15 ([#6336](https://github.com/promptfoo/promptfoo/issues/6336)) ([614aa66](https://github.com/promptfoo/promptfoo/commit/614aa66d224e1333d4a736c0d25ec71a232875e9))
-- **deps:** update dependency @modelcontextprotocol/sdk to v1.23.0 ([#6441](https://github.com/promptfoo/promptfoo/issues/6441)) ([878682f](https://github.com/promptfoo/promptfoo/commit/878682f8a731f4173a82a29828d611e7ebe79b79))
-- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.1 ([#6558](https://github.com/promptfoo/promptfoo/issues/6558)) ([d532aa2](https://github.com/promptfoo/promptfoo/commit/d532aa2dbf6c1151c75038950f975b832053df8f))
-- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.2 ([#6567](https://github.com/promptfoo/promptfoo/issues/6567)) ([f87f11b](https://github.com/promptfoo/promptfoo/commit/f87f11b3690ffb1eedebd4a7f4bd7cac3c9ef013))
-- **deps:** update dependency better-sqlite3 to v12.5.0 ([#6488](https://github.com/promptfoo/promptfoo/issues/6488)) ([1689562](https://github.com/promptfoo/promptfoo/commit/1689562deb77e324d1942fe47d14090fddd2cdb1))
-- **deps:** update dependency chalk to v5 ([#6310](https://github.com/promptfoo/promptfoo/issues/6310)) ([cb2bfb4](https://github.com/promptfoo/promptfoo/commit/cb2bfb463c38ad4cd798b67cd14aef4dcec0a21a))
-- **deps:** update dependency chokidar to v5 ([#6442](https://github.com/promptfoo/promptfoo/issues/6442)) ([6faa86b](https://github.com/promptfoo/promptfoo/commit/6faa86b98f129708d1d90c8cf17e0473fc1936b6))
-- **deps:** update dependency debounce to v3 ([#6445](https://github.com/promptfoo/promptfoo/issues/6445)) ([df4606f](https://github.com/promptfoo/promptfoo/commit/df4606fa260c4017e75848deb16add7b9b17e3de))
-- **deps:** update dependency jsdom to v27 ([#6446](https://github.com/promptfoo/promptfoo/issues/6446)) ([f7b5828](https://github.com/promptfoo/promptfoo/commit/f7b5828a736471dbdfe1e50a4765fabbc4182a6f))
-- **deps:** update dependency ora to v9 ([#6447](https://github.com/promptfoo/promptfoo/issues/6447)) ([e618896](https://github.com/promptfoo/promptfoo/commit/e618896ea7bedb70a0e490e2458426112dc860cc))
-- **deps:** update dependency swiper to v12 ([#6448](https://github.com/promptfoo/promptfoo/issues/6448)) ([2b7569b](https://github.com/promptfoo/promptfoo/commit/2b7569b2b6794e7630e2a427c0d059cc21b056da))
-- **deps:** update dependency uuid to v13 ([#6452](https://github.com/promptfoo/promptfoo/issues/6452)) ([9d6c21f](https://github.com/promptfoo/promptfoo/commit/9d6c21fc412dfe7623e1bf9d2b860a7e85302666))
-- **deps:** update dependency zod-validation-error to v5 ([#6455](https://github.com/promptfoo/promptfoo/issues/6455)) ([4c72b13](https://github.com/promptfoo/promptfoo/commit/4c72b13b0b559e07e8ce08e832613d697e2684bc))
-- **examples:** add JS loader for cyberseceval test cases ([#6505](https://github.com/promptfoo/promptfoo/issues/6505)) ([b3d4a85](https://github.com/promptfoo/promptfoo/commit/b3d4a85fd1c84f9f7b41443d55c1111a0d3fe692))
-- replace TypeScript enums with const objects ([#6428](https://github.com/promptfoo/promptfoo/issues/6428)) ([ae2b609](https://github.com/promptfoo/promptfoo/commit/ae2b609fe593d63f4b7ca51fb55f6822a44b0ce6))
+- **ci:** enforce npm version to prevent lockfile incompatibility ([#6483](https://github.com/artef/artef/issues/6483)) ([ab0cccc](https://github.com/artef/artef/commit/ab0cccc166e803b64b4a87353f318f0e20a363c3))
+- **ci:** remove packageManager to allow pnpm/yarn ([#6512](https://github.com/artef/artef/issues/6512)) ([9b49e36](https://github.com/artef/artef/commit/9b49e360f8f0418b7230442f1f97cb25fd2c2243))
+- **ci:** update latest Docker tag on releases ([#6477](https://github.com/artef/artef/issues/6477)) ([d213e33](https://github.com/artef/artef/commit/d213e33e10cce5bb3dc1165eec52e5657d221925))
+- **deps:** update dependency @apidevtools/json-schema-ref-parser to v15 ([#6336](https://github.com/artef/artef/issues/6336)) ([614aa66](https://github.com/artef/artef/commit/614aa66d224e1333d4a736c0d25ec71a232875e9))
+- **deps:** update dependency @modelcontextprotocol/sdk to v1.23.0 ([#6441](https://github.com/artef/artef/issues/6441)) ([878682f](https://github.com/artef/artef/commit/878682f8a731f4173a82a29828d611e7ebe79b79))
+- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.1 ([#6558](https://github.com/artef/artef/issues/6558)) ([d532aa2](https://github.com/artef/artef/commit/d532aa2dbf6c1151c75038950f975b832053df8f))
+- **deps:** update dependency @modelcontextprotocol/sdk to v1.24.2 ([#6567](https://github.com/artef/artef/issues/6567)) ([f87f11b](https://github.com/artef/artef/commit/f87f11b3690ffb1eedebd4a7f4bd7cac3c9ef013))
+- **deps:** update dependency better-sqlite3 to v12.5.0 ([#6488](https://github.com/artef/artef/issues/6488)) ([1689562](https://github.com/artef/artef/commit/1689562deb77e324d1942fe47d14090fddd2cdb1))
+- **deps:** update dependency chalk to v5 ([#6310](https://github.com/artef/artef/issues/6310)) ([cb2bfb4](https://github.com/artef/artef/commit/cb2bfb463c38ad4cd798b67cd14aef4dcec0a21a))
+- **deps:** update dependency chokidar to v5 ([#6442](https://github.com/artef/artef/issues/6442)) ([6faa86b](https://github.com/artef/artef/commit/6faa86b98f129708d1d90c8cf17e0473fc1936b6))
+- **deps:** update dependency debounce to v3 ([#6445](https://github.com/artef/artef/issues/6445)) ([df4606f](https://github.com/artef/artef/commit/df4606fa260c4017e75848deb16add7b9b17e3de))
+- **deps:** update dependency jsdom to v27 ([#6446](https://github.com/artef/artef/issues/6446)) ([f7b5828](https://github.com/artef/artef/commit/f7b5828a736471dbdfe1e50a4765fabbc4182a6f))
+- **deps:** update dependency ora to v9 ([#6447](https://github.com/artef/artef/issues/6447)) ([e618896](https://github.com/artef/artef/commit/e618896ea7bedb70a0e490e2458426112dc860cc))
+- **deps:** update dependency swiper to v12 ([#6448](https://github.com/artef/artef/issues/6448)) ([2b7569b](https://github.com/artef/artef/commit/2b7569b2b6794e7630e2a427c0d059cc21b056da))
+- **deps:** update dependency uuid to v13 ([#6452](https://github.com/artef/artef/issues/6452)) ([9d6c21f](https://github.com/artef/artef/commit/9d6c21fc412dfe7623e1bf9d2b860a7e85302666))
+- **deps:** update dependency zod-validation-error to v5 ([#6455](https://github.com/artef/artef/issues/6455)) ([4c72b13](https://github.com/artef/artef/commit/4c72b13b0b559e07e8ce08e832613d697e2684bc))
+- **examples:** add JS loader for cyberseceval test cases ([#6505](https://github.com/artef/artef/issues/6505)) ([b3d4a85](https://github.com/artef/artef/commit/b3d4a85fd1c84f9f7b41443d55c1111a0d3fe692))
+- replace TypeScript enums with const objects ([#6428](https://github.com/artef/artef/issues/6428)) ([ae2b609](https://github.com/artef/artef/commit/ae2b609fe593d63f4b7ca51fb55f6822a44b0ce6))
 
-## [0.119.14](https://github.com/promptfoo/promptfoo/compare/0.119.13...0.119.14) (2025-12-01)
-
-### Features
-
-- Add web search assertion type ([#5111](https://github.com/promptfoo/promptfoo/issues/5111)) ([11c01cc](https://github.com/promptfoo/promptfoo/commit/11c01cc637efd6867a1e99e44bc8633d324ac66a))
-- **examples:** add Strands Agents SDK example ([#6384](https://github.com/promptfoo/promptfoo/issues/6384)) ([28c3d58](https://github.com/promptfoo/promptfoo/commit/28c3d584f2f820de40a17e641aaf95809cf51e82))
-- **providers:** add AWS Bedrock Converse API provider ([#6348](https://github.com/promptfoo/promptfoo/issues/6348)) ([8ab3f96](https://github.com/promptfoo/promptfoo/commit/8ab3f96f36eb054ba833206f463014a0f3aedc92))
-- **providers:** add Claude Agent SDK plugin support ([#6377](https://github.com/promptfoo/promptfoo/issues/6377)) ([d3e67f5](https://github.com/promptfoo/promptfoo/commit/d3e67f5409af88abc1723c23c3f799cdac47de69))
-- **providers:** add comprehensive Azure model support ([#6375](https://github.com/promptfoo/promptfoo/issues/6375)) ([2e53c08](https://github.com/promptfoo/promptfoo/commit/2e53c084b6a0f95b1f1f5ec1869bcba4bb961657))
-- **providers:** add Google Cloud Model Armor support to Vertex AI ([#6365](https://github.com/promptfoo/promptfoo/issues/6365)) ([0d1641b](https://github.com/promptfoo/promptfoo/commit/0d1641bb3699dcc36e66273c7105ba0b33f0b58d))
-- **providers:** add Groq reasoning models, Responses API, and built-in tools support ([#6231](https://github.com/promptfoo/promptfoo/issues/6231)) ([7cbddd0](https://github.com/promptfoo/promptfoo/commit/7cbddd0ee2fcce983654e07550a6a673b23e2291))
-- **providers:** add missing Claude Agent SDK options ([#6389](https://github.com/promptfoo/promptfoo/issues/6389)) ([d0d227c](https://github.com/promptfoo/promptfoo/commit/d0d227cc627c048efbfe44e224d6394d2ca5311e))
-- **providers:** add OpenAI ChatKit provider ([#6406](https://github.com/promptfoo/promptfoo/issues/6406)) ([433ac65](https://github.com/promptfoo/promptfoo/commit/433ac65589bf758901ed5388fec1a5e460d27c2d))
-- **providers:** add OpenAI Codex SDK provider ([#6321](https://github.com/promptfoo/promptfoo/issues/6321)) ([cc45c0f](https://github.com/promptfoo/promptfoo/commit/cc45c0fbe16814743dba09ba897c13c3687163d1))
-- **providers:** add verbosity and isReasoningModel config to azure:responses ([#6382](https://github.com/promptfoo/promptfoo/issues/6382)) ([e99b8a8](https://github.com/promptfoo/promptfoo/commit/e99b8a84ab4dbe8d0ffd9352a5176d9aaaaf0f36))
-- **providers:** add xAI Responses API with Agent Tools support ([#6386](https://github.com/promptfoo/promptfoo/issues/6386)) ([fad0fc8](https://github.com/promptfoo/promptfoo/commit/fad0fc893dfd62579e80fce7db3d0127c3b4e6b1))
-- **redteam:** update VLGuard to use original MIT-licensed dataset ([#5809](https://github.com/promptfoo/promptfoo/issues/5809)) ([dbabbaf](https://github.com/promptfoo/promptfoo/commit/dbabbaf1a4366ca6e5881fe2b30ecfd5aec4174f))
-- Share trace data to promptfoo cloud ([ce251ae](https://github.com/promptfoo/promptfoo/commit/ce251ae5cb16d9f65cf98d89c7ba4ea91778e3c4))
-- vs code red team extension ([#6396](https://github.com/promptfoo/promptfoo/issues/6396)) ([406dc61](https://github.com/promptfoo/promptfoo/commit/406dc61c6f122e720283108aefeafbb21a6386a3))
-
-### Bug Fixes
-
-- **ci:** restore original tag format for GitHub releases ([#6402](https://github.com/promptfoo/promptfoo/issues/6402)) ([e49e5b8](https://github.com/promptfoo/promptfoo/commit/e49e5b80574b8f12a066ee834e160eacb3cd03f5))
-- **cli:** resolve eval command hanging by adding missing await calls ([#6422](https://github.com/promptfoo/promptfoo/issues/6422)) ([137231a](https://github.com/promptfoo/promptfoo/commit/137231a775259d37c5173606f6414851198cfcb2))
-- **deps:** replace xlsx with read-excel-file to fix high severity vulnerability ([#6357](https://github.com/promptfoo/promptfoo/issues/6357)) ([e6e2b98](https://github.com/promptfoo/promptfoo/commit/e6e2b980d71f662258e50832b4967f20de1b0585))
-- **deps:** update node-forge to 1.3.2 to fix security vulnerability ([#6395](https://github.com/promptfoo/promptfoo/issues/6395)) ([2b96ee2](https://github.com/promptfoo/promptfoo/commit/2b96ee2caa17237317a5a8c70798af4677d8a7d4))
-- **evals:** do not truncate image responses in eval ([#6391](https://github.com/promptfoo/promptfoo/issues/6391)) ([d6fb07c](https://github.com/promptfoo/promptfoo/commit/d6fb07c1c45c2c8dce9f79812ab7d1f834af0e38))
-- **mcp:** pass timeout configuration to MCP SDK calls ([#6394](https://github.com/promptfoo/promptfoo/issues/6394)) ([d05da44](https://github.com/promptfoo/promptfoo/commit/d05da44d2c33d2f7956c4b5b16a04a8304580c4b))
-- **modelaudit:** track scanner version and re-scan on version changes ([#6361](https://github.com/promptfoo/promptfoo/issues/6361)) ([f0e8065](https://github.com/promptfoo/promptfoo/commit/f0e80654b1b1a2d48f7f8ac92fdc73e2786767a5))
-- preserve all file:// references in vars context for runtime loading ([#6393](https://github.com/promptfoo/promptfoo/issues/6393)) ([55c553c](https://github.com/promptfoo/promptfoo/commit/55c553caf348ff4837bd8f0b28b0aed7374b7ff6))
-- prevent Node.js from hanging when importing promptfoo as a library ([#6351](https://github.com/promptfoo/promptfoo/issues/6351)) ([af857a3](https://github.com/promptfoo/promptfoo/commit/af857a3ed37e06d357d85c550b4fa3bf63b5d991))
-- **providers:** fix ChatKit echo behavior and concurrency issues ([#6420](https://github.com/promptfoo/promptfoo/issues/6420)) ([04df4a8](https://github.com/promptfoo/promptfoo/commit/04df4a8b730eeb82589a3ff743f95c7279a58fa3))
-- **site:** add truncation marker to blog post ([#6392](https://github.com/promptfoo/promptfoo/issues/6392)) ([900fac2](https://github.com/promptfoo/promptfoo/commit/900fac28dda24001038d4b5a979a59cefdbd9271))
-- **webui:** resolve Vitest timing issues causing test timeouts ([#6356](https://github.com/promptfoo/promptfoo/issues/6356)) ([353ab11](https://github.com/promptfoo/promptfoo/commit/353ab1183431c98ec2a625d0c8fb3e5a70cba408))
-
-## [0.119.13](https://github.com/promptfoo/promptfoo/compare/promptfoo-v0.119.12...promptfoo-v0.119.13) (2025-11-25)
+## [0.119.14](https://github.com/artef/artef/compare/0.119.13...0.119.14) (2025-12-01)
 
 ### Features
 
-- ecommerce plugin pack ([#6168](https://github.com/promptfoo/promptfoo/issues/6168)) ([152b1ff](https://github.com/promptfoo/promptfoo/commit/152b1ff3f3fdb6ca43a0a5718d463757f63a1814))
+- Add web search assertion type ([#5111](https://github.com/artef/artef/issues/5111)) ([11c01cc](https://github.com/artef/artef/commit/11c01cc637efd6867a1e99e44bc8633d324ac66a))
+- **examples:** add Strands Agents SDK example ([#6384](https://github.com/artef/artef/issues/6384)) ([28c3d58](https://github.com/artef/artef/commit/28c3d584f2f820de40a17e641aaf95809cf51e82))
+- **providers:** add AWS Bedrock Converse API provider ([#6348](https://github.com/artef/artef/issues/6348)) ([8ab3f96](https://github.com/artef/artef/commit/8ab3f96f36eb054ba833206f463014a0f3aedc92))
+- **providers:** add Claude Agent SDK plugin support ([#6377](https://github.com/artef/artef/issues/6377)) ([d3e67f5](https://github.com/artef/artef/commit/d3e67f5409af88abc1723c23c3f799cdac47de69))
+- **providers:** add comprehensive Azure model support ([#6375](https://github.com/artef/artef/issues/6375)) ([2e53c08](https://github.com/artef/artef/commit/2e53c084b6a0f95b1f1f5ec1869bcba4bb961657))
+- **providers:** add Google Cloud Model Armor support to Vertex AI ([#6365](https://github.com/artef/artef/issues/6365)) ([0d1641b](https://github.com/artef/artef/commit/0d1641bb3699dcc36e66273c7105ba0b33f0b58d))
+- **providers:** add Groq reasoning models, Responses API, and built-in tools support ([#6231](https://github.com/artef/artef/issues/6231)) ([7cbddd0](https://github.com/artef/artef/commit/7cbddd0ee2fcce983654e07550a6a673b23e2291))
+- **providers:** add missing Claude Agent SDK options ([#6389](https://github.com/artef/artef/issues/6389)) ([d0d227c](https://github.com/artef/artef/commit/d0d227cc627c048efbfe44e224d6394d2ca5311e))
+- **providers:** add OpenAI ChatKit provider ([#6406](https://github.com/artef/artef/issues/6406)) ([433ac65](https://github.com/artef/artef/commit/433ac65589bf758901ed5388fec1a5e460d27c2d))
+- **providers:** add OpenAI Codex SDK provider ([#6321](https://github.com/artef/artef/issues/6321)) ([cc45c0f](https://github.com/artef/artef/commit/cc45c0fbe16814743dba09ba897c13c3687163d1))
+- **providers:** add verbosity and isReasoningModel config to azure:responses ([#6382](https://github.com/artef/artef/issues/6382)) ([e99b8a8](https://github.com/artef/artef/commit/e99b8a84ab4dbe8d0ffd9352a5176d9aaaaf0f36))
+- **providers:** add xAI Responses API with Agent Tools support ([#6386](https://github.com/artef/artef/issues/6386)) ([fad0fc8](https://github.com/artef/artef/commit/fad0fc893dfd62579e80fce7db3d0127c3b4e6b1))
+- **redteam:** update VLGuard to use original MIT-licensed dataset ([#5809](https://github.com/artef/artef/issues/5809)) ([dbabbaf](https://github.com/artef/artef/commit/dbabbaf1a4366ca6e5881fe2b30ecfd5aec4174f))
+- Share trace data to artef cloud ([ce251ae](https://github.com/artef/artef/commit/ce251ae5cb16d9f65cf98d89c7ba4ea91778e3c4))
+- vs code red team extension ([#6396](https://github.com/artef/artef/issues/6396)) ([406dc61](https://github.com/artef/artef/commit/406dc61c6f122e720283108aefeafbb21a6386a3))
 
 ### Bug Fixes
 
-- **deps:** bump posthog-node from 5.13.2 to 5.14.0 for sha1-hulud mitigation ([6a44eda](https://github.com/promptfoo/promptfoo/commit/6a44eda819f48273230853cc8692b821f8db14a0))
+- **ci:** restore original tag format for GitHub releases ([#6402](https://github.com/artef/artef/issues/6402)) ([e49e5b8](https://github.com/artef/artef/commit/e49e5b80574b8f12a066ee834e160eacb3cd03f5))
+- **cli:** resolve eval command hanging by adding missing await calls ([#6422](https://github.com/artef/artef/issues/6422)) ([137231a](https://github.com/artef/artef/commit/137231a775259d37c5173606f6414851198cfcb2))
+- **deps:** replace xlsx with read-excel-file to fix high severity vulnerability ([#6357](https://github.com/artef/artef/issues/6357)) ([e6e2b98](https://github.com/artef/artef/commit/e6e2b980d71f662258e50832b4967f20de1b0585))
+- **deps:** update node-forge to 1.3.2 to fix security vulnerability ([#6395](https://github.com/artef/artef/issues/6395)) ([2b96ee2](https://github.com/artef/artef/commit/2b96ee2caa17237317a5a8c70798af4677d8a7d4))
+- **evals:** do not truncate image responses in eval ([#6391](https://github.com/artef/artef/issues/6391)) ([d6fb07c](https://github.com/artef/artef/commit/d6fb07c1c45c2c8dce9f79812ab7d1f834af0e38))
+- **mcp:** pass timeout configuration to MCP SDK calls ([#6394](https://github.com/artef/artef/issues/6394)) ([d05da44](https://github.com/artef/artef/commit/d05da44d2c33d2f7956c4b5b16a04a8304580c4b))
+- **modelaudit:** track scanner version and re-scan on version changes ([#6361](https://github.com/artef/artef/issues/6361)) ([f0e8065](https://github.com/artef/artef/commit/f0e80654b1b1a2d48f7f8ac92fdc73e2786767a5))
+- preserve all file:// references in vars context for runtime loading ([#6393](https://github.com/artef/artef/issues/6393)) ([55c553c](https://github.com/artef/artef/commit/55c553caf348ff4837bd8f0b28b0aed7374b7ff6))
+- prevent Node.js from hanging when importing artef as a library ([#6351](https://github.com/artef/artef/issues/6351)) ([af857a3](https://github.com/artef/artef/commit/af857a3ed37e06d357d85c550b4fa3bf63b5d991))
+- **providers:** fix ChatKit echo behavior and concurrency issues ([#6420](https://github.com/artef/artef/issues/6420)) ([04df4a8](https://github.com/artef/artef/commit/04df4a8b730eeb82589a3ff743f95c7279a58fa3))
+- **site:** add truncation marker to blog post ([#6392](https://github.com/artef/artef/issues/6392)) ([900fac2](https://github.com/artef/artef/commit/900fac28dda24001038d4b5a979a59cefdbd9271))
+- **webui:** resolve Vitest timing issues causing test timeouts ([#6356](https://github.com/artef/artef/issues/6356)) ([353ab11](https://github.com/artef/artef/commit/353ab1183431c98ec2a625d0c8fb3e5a70cba408))
 
-## [0.119.12](https://github.com/promptfoo/promptfoo/compare/promptfoo-v0.119.11...promptfoo-v0.119.12) (2025-11-24)
+## [0.119.13](https://github.com/artef/artef/compare/artef-v0.119.12...artef-v0.119.13) (2025-11-25)
+
+### Features
+
+- ecommerce plugin pack ([#6168](https://github.com/artef/artef/issues/6168)) ([152b1ff](https://github.com/artef/artef/commit/152b1ff3f3fdb6ca43a0a5718d463757f63a1814))
+
+### Bug Fixes
+
+- **deps:** bump posthog-node from 5.13.2 to 5.14.0 for sha1-hulud mitigation ([6a44eda](https://github.com/artef/artef/commit/6a44eda819f48273230853cc8692b821f8db14a0))
+
+## [0.119.12](https://github.com/artef/artef/compare/artef-v0.119.11...artef-v0.119.12) (2025-11-24)
 
 ### Features
 
 - feat(redteam): add ecommerce plugin pack with 4 security testing plugins (#6168)
 
-* changelog automation and validation ([#6252](https://github.com/promptfoo/promptfoo/issues/6252)) ([ee74c4a](https://github.com/promptfoo/promptfoo/commit/ee74c4ae7dc01c35dd52d835a19188f06a334a1a))
-* **providers:** add Anthropic structured outputs support ([#6226](https://github.com/promptfoo/promptfoo/issues/6226)) ([1b1b9d2](https://github.com/promptfoo/promptfoo/commit/1b1b9d274559a5ae7cefba1de0c6a732a3d6cbf0))
-* **providers:** add Claude Opus 4.5 model support ([#6339](https://github.com/promptfoo/promptfoo/issues/6339)) ([65f855d](https://github.com/promptfoo/promptfoo/commit/65f855d57a2d3e0a663ad86260308f899c375dd6))
-* **providers:** add Claude Opus 4.5 support for Anthropic, Google Vertex AI, and AWS Bedrock ([#6340](https://github.com/promptfoo/promptfoo/issues/6340)) ([95780cb](https://github.com/promptfoo/promptfoo/commit/95780cb32270ec7cca86e5722e204cae321942b5))
-* **providers:** add metadata extraction for OpenAI Responses API ([#6267](https://github.com/promptfoo/promptfoo/issues/6267)) ([f252f33](https://github.com/promptfoo/promptfoo/commit/f252f330f1faed5b8d46f8b32010c81d5f92edf7))
-* **server:** add server-side provider list customization ([#6124](https://github.com/promptfoo/promptfoo/issues/6124)) ([fdb792a](https://github.com/promptfoo/promptfoo/commit/fdb792a2d1908007786571d54a8d7f66fb54940c))
-* **util:** add support for loading tool definitions from Python/JavaScript files ([#6272](https://github.com/promptfoo/promptfoo/issues/6272)) ([41377d0](https://github.com/promptfoo/promptfoo/commit/41377d04d01b8b7abd9955619d29a77c2a8914d5))
+* changelog automation and validation ([#6252](https://github.com/artef/artef/issues/6252)) ([ee74c4a](https://github.com/artef/artef/commit/ee74c4ae7dc01c35dd52d835a19188f06a334a1a))
+* **providers:** add Anthropic structured outputs support ([#6226](https://github.com/artef/artef/issues/6226)) ([1b1b9d2](https://github.com/artef/artef/commit/1b1b9d274559a5ae7cefba1de0c6a732a3d6cbf0))
+* **providers:** add Claude Opus 4.5 model support ([#6339](https://github.com/artef/artef/issues/6339)) ([65f855d](https://github.com/artef/artef/commit/65f855d57a2d3e0a663ad86260308f899c375dd6))
+* **providers:** add Claude Opus 4.5 support for Anthropic, Google Vertex AI, and AWS Bedrock ([#6340](https://github.com/artef/artef/issues/6340)) ([95780cb](https://github.com/artef/artef/commit/95780cb32270ec7cca86e5722e204cae321942b5))
+* **providers:** add metadata extraction for OpenAI Responses API ([#6267](https://github.com/artef/artef/issues/6267)) ([f252f33](https://github.com/artef/artef/commit/f252f330f1faed5b8d46f8b32010c81d5f92edf7))
+* **server:** add server-side provider list customization ([#6124](https://github.com/artef/artef/issues/6124)) ([fdb792a](https://github.com/artef/artef/commit/fdb792a2d1908007786571d54a8d7f66fb54940c))
+* **util:** add support for loading tool definitions from Python/JavaScript files ([#6272](https://github.com/artef/artef/issues/6272)) ([41377d0](https://github.com/artef/artef/commit/41377d04d01b8b7abd9955619d29a77c2a8914d5))
 
 ### Bug Fixes
 
-- add data URL support for vision models with local images ([#5725](https://github.com/promptfoo/promptfoo/issues/5725)) ([17442a8](https://github.com/promptfoo/promptfoo/commit/17442a85f230668a430076141492c777ecca4995))
-- **assertions:** use script output for file:// references in all assertion types ([#6253](https://github.com/promptfoo/promptfoo/issues/6253)) ([246dcd8](https://github.com/promptfoo/promptfoo/commit/246dcd8642803772ef53ab0b3c6ef471c7bee815))
-- **cli:** restore commandLineOptions support + fix cloud auto-sharing ([#6190](https://github.com/promptfoo/promptfoo/issues/6190)) ([6df071f](https://github.com/promptfoo/promptfoo/commit/6df071f1373ceb6b1c31fb096a2e0c673cc8918c))
-- **code-scan:** remove redundant PR comment when no issues found ([#6317](https://github.com/promptfoo/promptfoo/issues/6317)) ([2a6e38c](https://github.com/promptfoo/promptfoo/commit/2a6e38c4e210c5bc6b1358fa5d4c48c82c3bec78))
-- **codeScan:** exit with code 0 when no files to scan ([#6316](https://github.com/promptfoo/promptfoo/issues/6316)) ([78e5c52](https://github.com/promptfoo/promptfoo/commit/78e5c526ee4ef240419eac2e8e51142b9f538ad6))
-- **logging:** implement PROMPTFOO_LOG_DIR environment variable ([#6179](https://github.com/promptfoo/promptfoo/issues/6179)) ([f3db2d9](https://github.com/promptfoo/promptfoo/commit/f3db2d9421fe72cbd19efde4e888fb016c3c256d))
-- **providers:** propagate agent errors in simulated-user provider ([#6251](https://github.com/promptfoo/promptfoo/issues/6251)) ([2378f71](https://github.com/promptfoo/promptfoo/commit/2378f71bcb06ee39e09f9243051ceea77af1b3a9))
-- **providers:** support function providers in defaultTest.options.provider and assertions ([#6174](https://github.com/promptfoo/promptfoo/issues/6174)) ([601f173](https://github.com/promptfoo/promptfoo/commit/601f1730cd83c858aaf845d7aadd69069d2395c4))
-- **webui:** prevent horizontal scrolling in metadata table ([#6178](https://github.com/promptfoo/promptfoo/issues/6178)) ([5d36d8d](https://github.com/promptfoo/promptfoo/commit/5d36d8d2ff836914f596892b2fc41a80e5b7804e))
+- add data URL support for vision models with local images ([#5725](https://github.com/artef/artef/issues/5725)) ([17442a8](https://github.com/artef/artef/commit/17442a85f230668a430076141492c777ecca4995))
+- **assertions:** use script output for file:// references in all assertion types ([#6253](https://github.com/artef/artef/issues/6253)) ([246dcd8](https://github.com/artef/artef/commit/246dcd8642803772ef53ab0b3c6ef471c7bee815))
+- **cli:** restore commandLineOptions support + fix cloud auto-sharing ([#6190](https://github.com/artef/artef/issues/6190)) ([6df071f](https://github.com/artef/artef/commit/6df071f1373ceb6b1c31fb096a2e0c673cc8918c))
+- **code-scan:** remove redundant PR comment when no issues found ([#6317](https://github.com/artef/artef/issues/6317)) ([2a6e38c](https://github.com/artef/artef/commit/2a6e38c4e210c5bc6b1358fa5d4c48c82c3bec78))
+- **codeScan:** exit with code 0 when no files to scan ([#6316](https://github.com/artef/artef/issues/6316)) ([78e5c52](https://github.com/artef/artef/commit/78e5c526ee4ef240419eac2e8e51142b9f538ad6))
+- **logging:** implement artef_LOG_DIR environment variable ([#6179](https://github.com/artef/artef/issues/6179)) ([f3db2d9](https://github.com/artef/artef/commit/f3db2d9421fe72cbd19efde4e888fb016c3c256d))
+- **providers:** propagate agent errors in simulated-user provider ([#6251](https://github.com/artef/artef/issues/6251)) ([2378f71](https://github.com/artef/artef/commit/2378f71bcb06ee39e09f9243051ceea77af1b3a9))
+- **providers:** support function providers in defaultTest.options.provider and assertions ([#6174](https://github.com/artef/artef/issues/6174)) ([601f173](https://github.com/artef/artef/commit/601f1730cd83c858aaf845d7aadd69069d2395c4))
+- **webui:** prevent horizontal scrolling in metadata table ([#6178](https://github.com/artef/artef/issues/6178)) ([5d36d8d](https://github.com/artef/artef/commit/5d36d8d2ff836914f596892b2fc41a80e5b7804e))
 
 ## [Unreleased]
 
@@ -1973,8 +1973,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - **Custom providers**: `.js` files are now treated as ESM by default. If your custom provider uses CommonJS syntax (`require`/`module.exports`), either:
     1. Rename the file to `.cjs` extension, OR
     2. Convert to ESM syntax (`import`/`export`)
-  - **Library consumers**: The library now exports both ESM and CJS formats. ESM is the default for `import`, CJS is available via `require('promptfoo')`.
-  - **No action needed** if you only use promptfoo via CLI with YAML configs
+  - **Library consumers**: The library now exports both ESM and CJS formats. ESM is the default for `import`, CJS is available via `require('artef')`.
+  - **No action needed** if you only use artef via CLI with YAML configs
 
 ### Added
 
@@ -1986,7 +1986,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat(webui): add custom policy generation to red team setup (#6181)
 - feat(webui): add strategy test generation to red team setup (#6005)
 - feat(webui): add visibility button for PFX passphrase field in red team target configuration (#6258)
-- feat: Share trace data to promptfoo cloud (#6290)
+- feat: Share trace data to artef cloud (#6290)
 
 ### Changed
 
@@ -2010,7 +2010,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - fix(providers): propagate agent errors in simulated-user provider - fixes issue where errors from sendMessageToAgent() were silently ignored, causing false-positive test results when the target provider fails (#6251)
 - fix(providers): support function providers in defaultTest.options.provider and assertions (#6174)
 - fix(assertions): use file-based script output for all assertion types with `file://` references (#6200)
-- fix(cli): respect PROMPTFOO_LOG_DIR environment variable for custom log directory location (#6179)
+- fix(cli): respect artef_LOG_DIR environment variable for custom log directory location (#6179)
 
 ### Documentation
 
@@ -2059,10 +2059,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - fix(providers): fix LiteLLM provider API key authentication — reverts to inline authentication check to properly handle providers with `apiKeyRequired: false` and fixes Authorization header to be omitted (instead of sending "Bearer undefined") when no API key is set, resolving "API key is not set" error when using LITELLM_API_KEY environment variable (#6322)
-- fix(webui): fix Basic strategy checkbox behavior in red team setup — unchecking Basic now correctly adds `enabled: false` instead of removing the strategy, matching documented behavior at [Basic strategy docs](https://www.promptfoo.dev/docs/red-team/strategies/basic/) (#6313)
+- fix(webui): fix Basic strategy checkbox behavior in red team setup — unchecking Basic now correctly adds `enabled: false` instead of removing the strategy, matching documented behavior at [Basic strategy docs](https://www.artef.dev/docs/red-team/strategies/basic/) (#6313)
 - fix(code-scan): prevent "start line must precede end line" GitHub API error by ensuring start_line is only set when it differs from line - fixes single-line comment highlighting in PR reviews (#6314)
 - fix(app): Test generation tooltips remain visible after dialog is rendered (#6309)
-- fix(auth): allow CI environments to authenticate with Promptfoo Cloud using API keys — unblocks `jailbreak:meta` strategy in GitHub Actions by recognizing API key auth regardless of CI status (#6273)
+- fix(auth): allow CI environments to authenticate with artef Cloud using API keys — unblocks `jailbreak:meta` strategy in GitHub Actions by recognizing API key auth regardless of CI status (#6273)
 - fix(webui): allow thumbs up/down ratings to toggle off and remove manual grading when clicked again (#6260)
 - fix(python): resolve Windows path compatibility issues in Python provider protocol - changed delimiter from `:` to `|` to avoid conflicts with Windows drive letters (C:, D:, etc.), fixing ENOENT errors and timeouts in Python provider on Windows (#6262)
 
@@ -2120,7 +2120,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - fix(code-scan): in `code-scans run`, don't log anything to stdout except json results when --json is used—fixes GitHub action (#6248)
-- fix(code-scan): update default API host to https://api.promptfoo.app to fix websocket connection issues (#6247)
+- fix(code-scan): update default API host to https://api.artef.app to fix websocket connection issues (#6247)
 
 ## [0.119.7] - 2025-11-17
 
@@ -2180,7 +2180,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - fix(webui): prevent infinite loop in StrategyConfigDialog useEffect - fixes vitest tests hanging by using stable empty array references for default parameters (#6203)
 - fix(webui): require configuration for layer strategy before allowing navigation in red team setup - layer strategy now shows red border and blocks Next button until steps array is configured, similar to plugins requiring configuration
-- fix(webui): filter hidden metadata keys from metadata filter dropdown - ensures consistent filtering of 'citations' and '\_promptfooFileMetadata' keys across MetadataPanel, EvalOutputPromptDialog, and metadata filter dropdown (#6177)
+- fix(webui): filter hidden metadata keys from metadata filter dropdown - ensures consistent filtering of 'citations' and '\_artefFileMetadata' keys across MetadataPanel, EvalOutputPromptDialog, and metadata filter dropdown (#6177)
 - fix(cli): format object and array variables with pretty-printed JSON in console table and HTML outputs for improved readability (#6175)
 - fix(cli): only show error counter when >0
 - fix(redteam): respect redteam.provider configuration for local grading - fixes issue where configuring a local provider (e.g., ollama:llama3.2) still sent grading requests to remote API instead of using the configured provider (#5959)
@@ -2226,8 +2226,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Documentation
 
-- docs(cli): document `promptfoo view --no` flag in command-line docs (#6067)
-- docs(site): add blog post on Anthropic threat intelligence covering PROMPTFLUX and PROMPTSTEAL (first observed LLM-querying malware by Google), AI-orchestrated extortion campaigns, three categories of AI-assisted attacks (operator/builder/enabler), operational security implications, and practical Promptfoo testing examples for AI system exploitation risks (#5583)
+- docs(cli): document `artef view --no` flag in command-line docs (#6067)
+- docs(site): add blog post on Anthropic threat intelligence covering PROMPTFLUX and PROMPTSTEAL (first observed LLM-querying malware by Google), AI-orchestrated extortion campaigns, three categories of AI-assisted attacks (operator/builder/enabler), operational security implications, and practical artef testing examples for AI system exploitation risks (#5583)
 - docs(site): re-add adaptive guardrails documentation covering enterprise feature for generating target-specific security policies from red team findings, including architecture, API integration, use cases, troubleshooting, and comparison to AWS Bedrock/Azure AI Content Safety (#5955)
 - docs(guides): add comprehensive Portkey integration guide covering prompt management, multi-model testing across 1600+ providers, red-teaming workflows, and production deployment strategies by @ladyofcode (#5730)
 
@@ -2245,12 +2245,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(cli): add `code-scans run` command for scanning code changes for LLM security vulnerabilities including prompt injection, PII exposure, and excessive agency - uses AI agents to trace data flows, analyze vulnerabilities across batches, and suggest fixes with configurable severity thresholds (see https://promptfoo.com/docs/code-scanning/ for more details) (#6121)
-- feat(github-action): add Code Scan GitHub Action for automated PR security scanning with GitHub App OIDC authentication or manual API token setup; automatically posts review comments with severity levels and suggested fixes (see https://promptfoo.com/docs/code-scanning/ for more details) (#6121)
+- feat(cli): add `code-scans run` command for scanning code changes for LLM security vulnerabilities including prompt injection, PII exposure, and excessive agency - uses AI agents to trace data flows, analyze vulnerabilities across batches, and suggest fixes with configurable severity thresholds (see https://artef.com/docs/code-scanning/ for more details) (#6121)
+- feat(github-action): add Code Scan GitHub Action for automated PR security scanning with GitHub App OIDC authentication or manual API token setup; automatically posts review comments with severity levels and suggested fixes (see https://artef.com/docs/code-scanning/ for more details) (#6121)
 - feat(webui): add confirmation dialog and smart navigation for delete eval with improved UX (Material-UI dialog, next→previous→home navigation, loading states, toast notifications) (#6113)
 - feat(redteam): pass policy text to intent extraction for custom policy tests, enabling more accurate and self-contained testing objectives that include specific policy requirements (#6116)
 - feat(redteam): add timestamp context to all grading rubrics for time-aware evaluation and temporal context in security assessments (#6110)
-- feat(model-audit): add revision tracking, content hash generation, and deduplication for model scans to prevent re-scanning unchanged models (saving ~99% time and bandwidth); add `--stream` flag to delete downloaded files immediately after scan ([#6058](https://github.com/promptfoo/promptfoo/pull/6058))
+- feat(model-audit): add revision tracking, content hash generation, and deduplication for model scans to prevent re-scanning unchanged models (saving ~99% time and bandwidth); add `--stream` flag to delete downloaded files immediately after scan ([#6058](https://github.com/artef/artef/pull/6058))
 - feat(redteam): add FERPA compliance plugin (#6130)
 
 ### Fixed
@@ -2379,7 +2379,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore(internals): custom policy type def (#6037)
 - chore(changelog): organize and improve Unreleased section with consistent scoping and formatting (#6024)
 - refactor(redteam): migrate multilingual from per-strategy config to global language configuration; plugins now generate tests directly in target languages without post-generation translation (#5984)
-- chore(cli): show telemetryDisabled/telemetryDebug in `promptfoo debug` output (#6015)
+- chore(cli): show telemetryDisabled/telemetryDebug in `artef debug` output (#6015)
 - chore(cli): improve error handling and error logging (#5930)
 - chore(cli): revert "feat: Improved error handling in CLI and error logging" (#5939)
 - chore(webui): add label column to prompts table (#6002)
@@ -2530,7 +2530,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- fix(app): disable red team scan Run Now button when Promptfoo Cloud is unavailable (#5891)
+- fix(app): disable red team scan Run Now button when artef Cloud is unavailable (#5891)
 - fix(webui): fix infinite re-render when custom intents are specified (#5897)
 - fix(redteam): clean up multilingual strategy logging and fix chunk numbering (#5878)
 - fix(redteam): requested column in 'redteam generate' output incorporates fan out strategies (#5864)
@@ -2560,7 +2560,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(cli): Add connectivity tests to promptfoo validate (#5802)
+- feat(cli): Add connectivity tests to artef validate (#5802)
 - feat(guardrails): map content filter response to guardrails output (#5859)
 - feat(webui): Download full results (#5674)
 
@@ -2762,7 +2762,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - fix: improve iterative judge parsing (#5691)
-- fix(cli): prevent promptfoo CLI from hanging after commands complete (#5698)
+- fix(cli): prevent artef CLI from hanging after commands complete (#5698)
 - fix(dev): suppress noisy health check logs during local startup (#5667)
 - fix(prompts): tune prompt set to reduce model refusals (#5689)
 
@@ -2779,7 +2779,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(webui): connect login page to promptfoo auth system (#5685)
+- feat(webui): connect login page to artef auth system (#5685)
 - feat: ability to retry errors from cli (#5647)
 
 ### Changed
@@ -2909,7 +2909,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - fix(assertions): handle `threshold=0` correctly across all assertion types, (#5581)
 - fix(cli): prevent accidental escaping of Python path override, (#5589)
-- fix(cli): fix table display for `promptfoo list`, (#5616)
+- fix(cli): fix table display for `artef list`, (#5616)
 - fix(cli): temporarily disable SIGINT handler, (#5620)
 - fix(internal): strip authentication headers in HTTP provider metadata, (#5577)
 - fix(redteam): ensure custom policies skip the basic refusal check, (#5614)
@@ -3003,7 +3003,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Documentation
 
-- docs(e2b-example): Add e2b-code-eval example (promptfoo + e2b sandbox) (#5477)
+- docs(e2b-example): Add e2b-code-eval example (artef + e2b sandbox) (#5477)
 - docs(examples): Add Google ADK integration example (#5520)
 - docs(examples): Add YAML schema directives to example configs (#5476)
 - docs(redteam): Add missing plugins to sidebar and improve bias docs (#5498)
@@ -3115,7 +3115,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(providers): add support for database-stored certificates in HTTP provider for promptfoo cloud (#5401)
+- feat(providers): add support for database-stored certificates in HTTP provider for artef cloud (#5401)
 
 ### Changed
 
@@ -3151,7 +3151,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore: Adjust padding in plugins page (#5396)
 - chore: bump version 0.117.11 (#5397)
 - chore(CI): enable and refactor Docker build for caching (#5374)
-- chore: remove promptfoo/package-lock.json (#5380)
+- chore: remove artef/package-lock.json (#5380)
 - chore: visual formatting for modelaudit flat list (#5331)
 - refactor(webui): Clicking "show more" on eval results metric pills renders dialog (#5337)
 - docs: expose sidebar on pages that aren't in the sidebar (#5377)
@@ -3232,7 +3232,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Documentation
 
 - docs(site): add truncation marker to top-5-open-source-ai-red-teaming-tools-2025 blog post (#5351)
-- docs: add writing for promptfoo guidelines to sidebar (#5277)
+- docs: add writing for artef guidelines to sidebar (#5277)
 - docs(site): describe llm-rubric default grading providers (#5350)
 - docs: og image updates (#5324)
 - docs: red team data flow (#5325)
@@ -3266,7 +3266,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - docs: modelaudit updates (#5322)
 - docs(site): Add GitHub Actions caching optimization tip (#5301)
 - docs(site): correct author attribution (#5297)
-- docs: add writing for promptfoo guidelines to sidebar (#5277)
+- docs: add writing for artef guidelines to sidebar (#5277)
 - docs(site): add truncation marker to top-5-open-source-ai-red-teaming-tools-2025 blog post (#5351)
 - docs(site): update security quiz questions and answers for prompt injection blog (#5302)
 
@@ -3451,7 +3451,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - docs: fix company name (#5143)
 - docs: fix images (#5197)
 - docs: fix multi-turn strategy documentation (#5156)
-- docs: guide for evaluating LangGraph agents with Promptfoo (#4926)
+- docs: guide for evaluating LangGraph agents with artef (#4926)
 - docs: include font for meta image (#5158)
 - docs: make MCP image taller (#5199)
 - docs: update Ollama documentation with latest models and defaultTest guidance (#5084)
@@ -3680,7 +3680,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - fix(providers): esm provider loading (#4915)
 - fix(providers): implement callEmbeddingApi for LiteLLM embedding provider (#4952)
 - fix(redteam): prevent redteam run from hanging when using an mcp client (#4924)
-- fix(redteam): respect PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION for cloud users (#4839)
+- fix(redteam): respect artef_DISABLE_REDTEAM_REMOTE_GENERATION for cloud users (#4839)
 - fix(redteam): set pluginId on eval results (#4928)
 - fix(redteam): test target in http provider setup with non-200 status codes (#4932)
 - fix(webui): eval results table horizontal scrolling (#4826)
@@ -3717,7 +3717,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - docs(blog): revise article tags (#4949)
 - docs(blog): soc2 type ii and iso 27001 blog (#4880)
 - docs(comparison): pyrit comparison (#4679)
-- docs(config): clarify PROMPTFOO_EVAL_TIMEOUT_MS and PROMPTFOO_MAX_EVAL_TIME_MS descriptions (#4947)
+- docs(config): clarify artef_EVAL_TIMEOUT_MS and artef_MAX_EVAL_TIME_MS descriptions (#4947)
 - docs(enterprise): adaptive guardrails enterprise (#4951)
 - docs(events): blackhat landing page (#4862)
 - docs(events): defcon landing page (#4864)
@@ -3725,7 +3725,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - docs(examples): add mischievous-user strategy to redteam multi-turn examples (#4837)
 - docs(gemini): update experimental Gemini model IDs to stable versions (#4894)
 - docs(google): add examples for gemini URL context and code execution tools (#4923)
-- docs(guide): guide for evaluating CrewAI agents with Promptfoo (#4861)
+- docs(guide): guide for evaluating CrewAI agents with artef (#4861)
 - docs(images): standardize CrewAI image filenames to kebab-case (#4941)
 - docs(integration): add n8n integration (#4917)
 - docs(litellm): fix example with modern model IDs and proper embedding config (#4885)
@@ -4030,17 +4030,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- fix: empty vars array on eval results [#4621](https://github.com/promptfoo/promptfoo/pull/4621) by @sklein12
-- fix: save sessionId for multi-turn strategies [#4625](https://github.com/promptfoo/promptfoo/pull/4625) by @sklein12
-- chore: PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS controls process.env access, not `env:` access [#4620](https://github.com/promptfoo/promptfoo/pull/4620) by @mldangelo
-- chore: bump version to 0.115.3 [#4626](https://github.com/promptfoo/promptfoo/pull/4626) by @sklein12
+- fix: empty vars array on eval results [#4621](https://github.com/artef/artef/pull/4621) by @sklein12
+- fix: save sessionId for multi-turn strategies [#4625](https://github.com/artef/artef/pull/4625) by @sklein12
+- chore: artef_DISABLE_TEMPLATE_ENV_VARS controls process.env access, not `env:` access [#4620](https://github.com/artef/artef/pull/4620) by @mldangelo
+- chore: bump version to 0.115.3 [#4626](https://github.com/artef/artef/pull/4626) by @sklein12
 
 ### Fixed
 
-- fix(webui): handle null scores in ResultsCharts component [#4610](https://github.com/promptfoo/promptfoo/pull/4610) by @mldangelo
-- fix(redteam): skip goal extraction when remote generation is disabled [#4623](https://github.com/promptfoo/promptfoo/pull/4623) by @mldangelo
-- fix(test): hyperbolic provider tests failing due to env variable pollution [#4619](https://github.com/promptfoo/promptfoo/pull/4619) by @mldangelo
-- fix(cli): remove context schema validation from extension hooks [#4622](https://github.com/promptfoo/promptfoo/pull/4622) by @will-holley
+- fix(webui): handle null scores in ResultsCharts component [#4610](https://github.com/artef/artef/pull/4610) by @mldangelo
+- fix(redteam): skip goal extraction when remote generation is disabled [#4623](https://github.com/artef/artef/pull/4623) by @mldangelo
+- fix(test): hyperbolic provider tests failing due to env variable pollution [#4619](https://github.com/artef/artef/pull/4619) by @mldangelo
+- fix(cli): remove context schema validation from extension hooks [#4622](https://github.com/artef/artef/pull/4622) by @will-holley
 
 ## [0.115.2] - 2025-06-24
 
@@ -4157,7 +4157,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore: improve tusk workflow (#4461)
 - chore: bump version to 0.115.1 (#4520)
 - docs: add log file location section to troubleshooting guide (#4473)
-- docs: capitalize Promptfoo (#4515)
+- docs: capitalize artef (#4515)
 - docs: update red-teaming agent blog post title (#4497)
 - docs: improve installation and getting-started pages with tabbed interface and SEO metadata (#4395)
 - docs: improve Python provider documentation (#4484)
@@ -4190,87 +4190,87 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(providers): Google live audio output ([#4280](https://github.com/promptfoo/promptfoo/pull/4280)) by **@adelmuursepp**
-- feat(webui): static model-scanning UI ([#4368](https://github.com/promptfoo/promptfoo/pull/4368)) by **@typpo**
-- feat(tests): configuration support for test generators ([#4301](https://github.com/promptfoo/promptfoo/pull/4301)) by **@mldangelo**
-- feat(cli): per-provider token-usage statistics ([#4044](https://github.com/promptfoo/promptfoo/pull/4044)) by **@mldangelo**
-- feat(providers): optional token-estimation for HTTP provider ([#4439](https://github.com/promptfoo/promptfoo/pull/4439)) by **@mldangelo**
-- feat(redteam): enable HTTP-token estimation by default in red-team mode ([#4449](https://github.com/promptfoo/promptfoo/pull/4449)) by **@mldangelo**
-- feat(redteam): cloud-based plugin-severity overrides ([#4348](https://github.com/promptfoo/promptfoo/pull/4348)) by **@will-holley**
-- feat(providers): custom-header support for Azure API ([#4409](https://github.com/promptfoo/promptfoo/pull/4409)) by **@yurchik11**
-- feat(core): maximum evaluation-time limit via `PROMPTFOO_MAX_EVAL_TIME_MS` ([#4322](https://github.com/promptfoo/promptfoo/pull/4322)) by **@mldangelo**
-- feat(redteam): Aegis red-team dataset ([#4119](https://github.com/promptfoo/promptfoo/pull/4119)) by **@mldangelo**
-- feat(providers): Mistral Magistral reasoning models ([#4435](https://github.com/promptfoo/promptfoo/pull/4435)) by **@mldangelo**
-- feat(core): WebSocket header support ([#4456](https://github.com/promptfoo/promptfoo/pull/4456)) by **@typpo**
+- feat(providers): Google live audio output ([#4280](https://github.com/artef/artef/pull/4280)) by **@adelmuursepp**
+- feat(webui): static model-scanning UI ([#4368](https://github.com/artef/artef/pull/4368)) by **@typpo**
+- feat(tests): configuration support for test generators ([#4301](https://github.com/artef/artef/pull/4301)) by **@mldangelo**
+- feat(cli): per-provider token-usage statistics ([#4044](https://github.com/artef/artef/pull/4044)) by **@mldangelo**
+- feat(providers): optional token-estimation for HTTP provider ([#4439](https://github.com/artef/artef/pull/4439)) by **@mldangelo**
+- feat(redteam): enable HTTP-token estimation by default in red-team mode ([#4449](https://github.com/artef/artef/pull/4449)) by **@mldangelo**
+- feat(redteam): cloud-based plugin-severity overrides ([#4348](https://github.com/artef/artef/pull/4348)) by **@will-holley**
+- feat(providers): custom-header support for Azure API ([#4409](https://github.com/artef/artef/pull/4409)) by **@yurchik11**
+- feat(core): maximum evaluation-time limit via `artef_MAX_EVAL_TIME_MS` ([#4322](https://github.com/artef/artef/pull/4322)) by **@mldangelo**
+- feat(redteam): Aegis red-team dataset ([#4119](https://github.com/artef/artef/pull/4119)) by **@mldangelo**
+- feat(providers): Mistral Magistral reasoning models ([#4435](https://github.com/artef/artef/pull/4435)) by **@mldangelo**
+- feat(core): WebSocket header support ([#4456](https://github.com/artef/artef/pull/4456)) by **@typpo**
 
 ### Changed
 
-- refactor(redteam): consolidate constants ([#4372](https://github.com/promptfoo/promptfoo/pull/4372)) by **@mldangelo**
-- chore(ci): set CodeRabbit review settings ([#4413](https://github.com/promptfoo/promptfoo/pull/4413)) by **@sklein12**
-- chore(core): coding-rules for error messages ([#4401](https://github.com/promptfoo/promptfoo/pull/4401)) by **@sklein12**
-- chore(core): improve `RangeError` diagnostics ([#4431](https://github.com/promptfoo/promptfoo/pull/4431)) by **@mldangelo**
-- chore(core): prefer remote-purpose generation ([#4444](https://github.com/promptfoo/promptfoo/pull/4444)) by **@typpo**
-- chore(core): remove unused types & deprecated functions ([#4450](https://github.com/promptfoo/promptfoo/pull/4450)) by **@mldangelo**
-- chore(cursor): local-dev guidance for coding agents ([#4403](https://github.com/promptfoo/promptfoo/pull/4403)) by **@mldangelo**
-- chore(docs): add README for missing examples ([#4404](https://github.com/promptfoo/promptfoo/pull/4404)) by **@mldangelo**
-- chore(providers): initial o3-pro support ([#4397](https://github.com/promptfoo/promptfoo/pull/4397)) by **@mldangelo**
-- chore(providers): o3-pro improvements ([#4396](https://github.com/promptfoo/promptfoo/pull/4396)) by **@mldangelo**
-- chore(redteam): delimit user-inputs in purpose discovery ([#4405](https://github.com/promptfoo/promptfoo/pull/4405)) by **@typpo**
-- chore(redteam): turn off discovery by default ([#4393](https://github.com/promptfoo/promptfoo/pull/4393)) by **@sklein12**
-- chore(release): bump version → 0.115.0 ([#4451](https://github.com/promptfoo/promptfoo/pull/4451)) by **@mldangelo**
-- chore(ui): improve `EvalOutputPromptDialog` styling ([#4364](https://github.com/promptfoo/promptfoo/pull/4364)) by **@typpo**
-- chore(webui): remove extra OpenAI targets ([#4447](https://github.com/promptfoo/promptfoo/pull/4447)) by **@mldangelo**
-- chore(webui): add token-estimation UI ([#4448](https://github.com/promptfoo/promptfoo/pull/4448)) by **@mldangelo**
+- refactor(redteam): consolidate constants ([#4372](https://github.com/artef/artef/pull/4372)) by **@mldangelo**
+- chore(ci): set CodeRabbit review settings ([#4413](https://github.com/artef/artef/pull/4413)) by **@sklein12**
+- chore(core): coding-rules for error messages ([#4401](https://github.com/artef/artef/pull/4401)) by **@sklein12**
+- chore(core): improve `RangeError` diagnostics ([#4431](https://github.com/artef/artef/pull/4431)) by **@mldangelo**
+- chore(core): prefer remote-purpose generation ([#4444](https://github.com/artef/artef/pull/4444)) by **@typpo**
+- chore(core): remove unused types & deprecated functions ([#4450](https://github.com/artef/artef/pull/4450)) by **@mldangelo**
+- chore(cursor): local-dev guidance for coding agents ([#4403](https://github.com/artef/artef/pull/4403)) by **@mldangelo**
+- chore(docs): add README for missing examples ([#4404](https://github.com/artef/artef/pull/4404)) by **@mldangelo**
+- chore(providers): initial o3-pro support ([#4397](https://github.com/artef/artef/pull/4397)) by **@mldangelo**
+- chore(providers): o3-pro improvements ([#4396](https://github.com/artef/artef/pull/4396)) by **@mldangelo**
+- chore(redteam): delimit user-inputs in purpose discovery ([#4405](https://github.com/artef/artef/pull/4405)) by **@typpo**
+- chore(redteam): turn off discovery by default ([#4393](https://github.com/artef/artef/pull/4393)) by **@sklein12**
+- chore(release): bump version → 0.115.0 ([#4451](https://github.com/artef/artef/pull/4451)) by **@mldangelo**
+- chore(ui): improve `EvalOutputPromptDialog` styling ([#4364](https://github.com/artef/artef/pull/4364)) by **@typpo**
+- chore(webui): remove extra OpenAI targets ([#4447](https://github.com/artef/artef/pull/4447)) by **@mldangelo**
+- chore(webui): add token-estimation UI ([#4448](https://github.com/artef/artef/pull/4448)) by **@mldangelo**
 - chore(docs): fix link to careers page (#4506)
 - chore: bump @anthropic-ai/sdk from 0.53.0 to 0.54.0 (#4441)
 
 ### Fixed
 
-- fix(eval): gracefully handle `RangeError` & truncate oversized output ([#4424](https://github.com/promptfoo/promptfoo/pull/4424)) by **@Sly1029**
-- fix(providers): add timeout to `ProxyAgent` ([#4369](https://github.com/promptfoo/promptfoo/pull/4369)) by **@AegisAurora**
-- fix(config): persist Goat configuration ([#4370](https://github.com/promptfoo/promptfoo/pull/4370)) by **@sklein12**
-- fix(parser): lenient JSON parsing for MathPrompt ([#4361](https://github.com/promptfoo/promptfoo/pull/4361)) by **@typpo**
-- fix(redteam): standardize plugin parameter to `prompt` ([#4425](https://github.com/promptfoo/promptfoo/pull/4425)) by **@mldangelo**
-- fix(assertions): support `snake_case` fields in Python assertions ([#4398](https://github.com/promptfoo/promptfoo/pull/4398)) by **@mldangelo**
-- fix(redteam): handle purpose without prompts ([#4445](https://github.com/promptfoo/promptfoo/pull/4445)) by **@typpo**
-- fix(webui): stream test-cases to viewer ([#4440](https://github.com/promptfoo/promptfoo/pull/4440)) by **@mldangelo**
-- fix(redteam): connect `MisinformationDisinformationGrader` ([#4452](https://github.com/promptfoo/promptfoo/pull/4452)) by **@mldangelo**
+- fix(eval): gracefully handle `RangeError` & truncate oversized output ([#4424](https://github.com/artef/artef/pull/4424)) by **@Sly1029**
+- fix(providers): add timeout to `ProxyAgent` ([#4369](https://github.com/artef/artef/pull/4369)) by **@AegisAurora**
+- fix(config): persist Goat configuration ([#4370](https://github.com/artef/artef/pull/4370)) by **@sklein12**
+- fix(parser): lenient JSON parsing for MathPrompt ([#4361](https://github.com/artef/artef/pull/4361)) by **@typpo**
+- fix(redteam): standardize plugin parameter to `prompt` ([#4425](https://github.com/artef/artef/pull/4425)) by **@mldangelo**
+- fix(assertions): support `snake_case` fields in Python assertions ([#4398](https://github.com/artef/artef/pull/4398)) by **@mldangelo**
+- fix(redteam): handle purpose without prompts ([#4445](https://github.com/artef/artef/pull/4445)) by **@typpo**
+- fix(webui): stream test-cases to viewer ([#4440](https://github.com/artef/artef/pull/4440)) by **@mldangelo**
+- fix(redteam): connect `MisinformationDisinformationGrader` ([#4452](https://github.com/artef/artef/pull/4452)) by **@mldangelo**
 
 ### Dependencies
 
-- chore(deps): bump `@aws-sdk/client-bedrock-runtime` → 3.826.0 ([#4366](https://github.com/promptfoo/promptfoo/pull/4366)) by **@dependabot**
-- chore(deps): bump `@aws-sdk/client-bedrock-runtime` → 3.828.0 ([#4442](https://github.com/promptfoo/promptfoo/pull/4442)) by **@dependabot**
-- chore(deps): bump `brace-expansion` → 1.1.12 ([#4423](https://github.com/promptfoo/promptfoo/pull/4423)) by **@dependabot**
-- chore(deps): bump `openai` → 5.3.0 ([#4407](https://github.com/promptfoo/promptfoo/pull/4407)) by **@dependabot**
-- chore(deps): bump pip group dependencies ([#4379](https://github.com/promptfoo/promptfoo/pull/4379)) by **@dependabot**
-- chore(deps): minor + patch bumps across workspaces ([#4377](https://github.com/promptfoo/promptfoo/pull/4377)) by **@mldangelo**
-- chore(deps): upgrade Express → 5.1.0 ([#4378](https://github.com/promptfoo/promptfoo/pull/4378)) by **@mldangelo**
+- chore(deps): bump `@aws-sdk/client-bedrock-runtime` → 3.826.0 ([#4366](https://github.com/artef/artef/pull/4366)) by **@dependabot**
+- chore(deps): bump `@aws-sdk/client-bedrock-runtime` → 3.828.0 ([#4442](https://github.com/artef/artef/pull/4442)) by **@dependabot**
+- chore(deps): bump `brace-expansion` → 1.1.12 ([#4423](https://github.com/artef/artef/pull/4423)) by **@dependabot**
+- chore(deps): bump `openai` → 5.3.0 ([#4407](https://github.com/artef/artef/pull/4407)) by **@dependabot**
+- chore(deps): bump pip group dependencies ([#4379](https://github.com/artef/artef/pull/4379)) by **@dependabot**
+- chore(deps): minor + patch bumps across workspaces ([#4377](https://github.com/artef/artef/pull/4377)) by **@mldangelo**
+- chore(deps): upgrade Express → 5.1.0 ([#4378](https://github.com/artef/artef/pull/4378)) by **@mldangelo**
 
 ### Documentation
 
-- docs(blog): GPT red-team post ([#4363](https://github.com/promptfoo/promptfoo/pull/4363)) by **@typpo**
-- docs(blog): Claude red-team post ([#4365](https://github.com/promptfoo/promptfoo/pull/4365)) by **@typpo**
-- docs(guides): clarify completion-variable for factuality ([#4385](https://github.com/promptfoo/promptfoo/pull/4385)) by **@mldangelo**
-- docs(blog): fix broken image link in GPT post ([#4391](https://github.com/promptfoo/promptfoo/pull/4391)) by **@mldangelo**
-- docs(blog): update Claude-4 post date ([#4392](https://github.com/promptfoo/promptfoo/pull/4392)) by **@mldangelo**
-- docs(site): move discovery docs under _Tools_ ([#4408](https://github.com/promptfoo/promptfoo/pull/4408)) by **@typpo**
-- docs(guides): GPT-4.1 vs GPT-4o MMLU comparison ([#4399](https://github.com/promptfoo/promptfoo/pull/4399)) by **@mldangelo**
-- docs(blog): 100 k-users milestone post ([#4402](https://github.com/promptfoo/promptfoo/pull/4402)) by **@mldangelo**
-- docs(redteam): configuration precedence section ([#4412](https://github.com/promptfoo/promptfoo/pull/4412)) by **@typpo**
-- docs(policies): PromptBlock format for custom policies ([#4327](https://github.com/promptfoo/promptfoo/pull/4327)) by **@mldangelo**
-- docs(site): improve copy-button positioning ([#4414](https://github.com/promptfoo/promptfoo/pull/4414)) by **@mldangelo**
-- docs(workflow): GH-CLI rule improvements ([#4415](https://github.com/promptfoo/promptfoo/pull/4415)) by **@mldangelo**
-- docs(blog): overflow in MCP blog post ([#4367](https://github.com/promptfoo/promptfoo/pull/4367)) by **@AISimplyExplained**
-- docs(redteam): remove duplicate memory-poisoning entry ([#4388](https://github.com/promptfoo/promptfoo/pull/4388)) by **@mldangelo**
+- docs(blog): GPT red-team post ([#4363](https://github.com/artef/artef/pull/4363)) by **@typpo**
+- docs(blog): Claude red-team post ([#4365](https://github.com/artef/artef/pull/4365)) by **@typpo**
+- docs(guides): clarify completion-variable for factuality ([#4385](https://github.com/artef/artef/pull/4385)) by **@mldangelo**
+- docs(blog): fix broken image link in GPT post ([#4391](https://github.com/artef/artef/pull/4391)) by **@mldangelo**
+- docs(blog): update Claude-4 post date ([#4392](https://github.com/artef/artef/pull/4392)) by **@mldangelo**
+- docs(site): move discovery docs under _Tools_ ([#4408](https://github.com/artef/artef/pull/4408)) by **@typpo**
+- docs(guides): GPT-4.1 vs GPT-4o MMLU comparison ([#4399](https://github.com/artef/artef/pull/4399)) by **@mldangelo**
+- docs(blog): 100 k-users milestone post ([#4402](https://github.com/artef/artef/pull/4402)) by **@mldangelo**
+- docs(redteam): configuration precedence section ([#4412](https://github.com/artef/artef/pull/4412)) by **@typpo**
+- docs(policies): PromptBlock format for custom policies ([#4327](https://github.com/artef/artef/pull/4327)) by **@mldangelo**
+- docs(site): improve copy-button positioning ([#4414](https://github.com/artef/artef/pull/4414)) by **@mldangelo**
+- docs(workflow): GH-CLI rule improvements ([#4415](https://github.com/artef/artef/pull/4415)) by **@mldangelo**
+- docs(blog): overflow in MCP blog post ([#4367](https://github.com/artef/artef/pull/4367)) by **@AISimplyExplained**
+- docs(redteam): remove duplicate memory-poisoning entry ([#4388](https://github.com/artef/artef/pull/4388)) by **@mldangelo**
 
 ### Tests
 
-- test(redteam): unique risk-category IDs ([#4390](https://github.com/promptfoo/promptfoo/pull/4390)) by **@mldangelo**
-- test(pricing): add missing o3 pricing information ([#4400](https://github.com/promptfoo/promptfoo/pull/4400)) by **@mldangelo**
-- test(providers): Azure embedding ([#4411](https://github.com/promptfoo/promptfoo/pull/4411)) & completion ([#4410](https://github.com/promptfoo/promptfoo/pull/4410)) by **@gru-agent**
-- test(redteam): graders unit tests ([#4433](https://github.com/promptfoo/promptfoo/pull/4433), [#4455](https://github.com/promptfoo/promptfoo/pull/4455)) by **@gru-agent**
-- test(redteam): Aegis plugin unit tests ([#4434](https://github.com/promptfoo/promptfoo/pull/4434)) by **@gru-agent**
-- test(redteam): memory-poisoning plugin tests ([#4453](https://github.com/promptfoo/promptfoo/pull/4453)) by **@gru-agent**
+- test(redteam): unique risk-category IDs ([#4390](https://github.com/artef/artef/pull/4390)) by **@mldangelo**
+- test(pricing): add missing o3 pricing information ([#4400](https://github.com/artef/artef/pull/4400)) by **@mldangelo**
+- test(providers): Azure embedding ([#4411](https://github.com/artef/artef/pull/4411)) & completion ([#4410](https://github.com/artef/artef/pull/4410)) by **@gru-agent**
+- test(redteam): graders unit tests ([#4433](https://github.com/artef/artef/pull/4433), [#4455](https://github.com/artef/artef/pull/4455)) by **@gru-agent**
+- test(redteam): Aegis plugin unit tests ([#4434](https://github.com/artef/artef/pull/4434)) by **@gru-agent**
+- test(redteam): memory-poisoning plugin tests ([#4453](https://github.com/artef/artef/pull/4453)) by **@gru-agent**
 - test: add unit test for src/util/tokenUsage.ts (#4472)
 - test: add unit test for src/redteam/extraction/purpose.ts (#4446)
 - test: add unit test for src/providers/defaults.ts (#4438)
@@ -4381,7 +4381,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- chore(templating): add PROMPTFOO_DISABLE_OBJECT_STRINGIFY environment variable for object template handling (#4297)
+- chore(templating): add artef_DISABLE_OBJECT_STRINGIFY environment variable for object template handling (#4297)
 - chore(cli): improve token usage presentation (#4294)
 - chore(providers): add base URL override for Google provider (#4255)
 - chore(providers): add custom headers support for Google Gemini (#4308)
@@ -4434,73 +4434,73 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - **feat:** Display audio file variables in result table
-  [#3864](https://github.com/promptfoo/promptfoo/pull/3864) by @faizanminhas
-  [#4244](https://github.com/promptfoo/promptfoo/pull/4244) by @faizanminhas
+  [#3864](https://github.com/artef/artef/pull/3864) by @faizanminhas
+  [#4244](https://github.com/artef/artef/pull/4244) by @faizanminhas
 - **fix:** Resolve model-graded assertion providers from providerMap
-  [#4273](https://github.com/promptfoo/promptfoo/pull/4273) by @mldangelo
+  [#4273](https://github.com/artef/artef/pull/4273) by @mldangelo
 - **fix:** File content not being loaded when referenced with `file://` prefix in vars
-  [#3793](https://github.com/promptfoo/promptfoo/pull/3793) by @adityabharadwaj198
+  [#3793](https://github.com/artef/artef/pull/3793) by @adityabharadwaj198
 - **fix:** Use array as type for vars
-  [#4281](https://github.com/promptfoo/promptfoo/pull/4281) by @sklein12
+  [#4281](https://github.com/artef/artef/pull/4281) by @sklein12
 - **test:** Add unit test for `src/globalConfig/accounts.ts`
-  [#4259](https://github.com/promptfoo/promptfoo/pull/4259) by @gru-agent
+  [#4259](https://github.com/artef/artef/pull/4259) by @gru-agent
 - **test:** Add unit test for `src/util/config/manage.ts`
-  [#4258](https://github.com/promptfoo/promptfoo/pull/4258) by @gru-agent
+  [#4258](https://github.com/artef/artef/pull/4258) by @gru-agent
 - **test:** Add vitest coverage for frontend pages
-  [#4274](https://github.com/promptfoo/promptfoo/pull/4274) by @mldangelo
+  [#4274](https://github.com/artef/artef/pull/4274) by @mldangelo
 - **test:** Add unit test for `renderVarsInObject` formatting
-  [#4254](https://github.com/promptfoo/promptfoo/pull/4254) by @mldangelo
+  [#4254](https://github.com/artef/artef/pull/4254) by @mldangelo
 - **test:** Add unit test for `src/redteam/plugins/base.ts`
-  [#4233](https://github.com/promptfoo/promptfoo/pull/4233) by @gru-agent
+  [#4233](https://github.com/artef/artef/pull/4233) by @gru-agent
 - **test:** Add unit test for `src/redteam/providers/crescendo/index.ts`
-  [#4211](https://github.com/promptfoo/promptfoo/pull/4211)
-  [#4214](https://github.com/promptfoo/promptfoo/pull/4214) by @gru-agent
+  [#4211](https://github.com/artef/artef/pull/4211)
+  [#4214](https://github.com/artef/artef/pull/4214) by @gru-agent
 - **test:** Add unit test for `src/redteam/providers/crescendo/prompts.ts`
-  [#4213](https://github.com/promptfoo/promptfoo/pull/4213) by @gru-agent
+  [#4213](https://github.com/artef/artef/pull/4213) by @gru-agent
 - **docs:** Add job board
-  [#4264](https://github.com/promptfoo/promptfoo/pull/4264) by @typpo
+  [#4264](https://github.com/artef/artef/pull/4264) by @typpo
 - **docs:** Add custom policy to sidebar
-  [#4272](https://github.com/promptfoo/promptfoo/pull/4272) by @typpo
+  [#4272](https://github.com/artef/artef/pull/4272) by @typpo
 - **docs:** Add native build guidance to troubleshooting section
-  [#4253](https://github.com/promptfoo/promptfoo/pull/4253) by @mldangelo
+  [#4253](https://github.com/artef/artef/pull/4253) by @mldangelo
 - **docs:** Add anchor links to press page section headings
-  [#4265](https://github.com/promptfoo/promptfoo/pull/4265) by @mldangelo
+  [#4265](https://github.com/artef/artef/pull/4265) by @mldangelo
 - **docs:** Add JSON schema to example
-  [#4276](https://github.com/promptfoo/promptfoo/pull/4276) by @ladyofcode
+  [#4276](https://github.com/artef/artef/pull/4276) by @ladyofcode
 - **docs:** Add schema header to example configs
-  [#4277](https://github.com/promptfoo/promptfoo/pull/4277) by @mldangelo
+  [#4277](https://github.com/artef/artef/pull/4277) by @mldangelo
 - **docs:** Unify formatting across site
-  [#4270](https://github.com/promptfoo/promptfoo/pull/4270) by @mldangelo
+  [#4270](https://github.com/artef/artef/pull/4270) by @mldangelo
 - **chore:** Fix open handles in readline tests preventing graceful Jest exit
-  [#4242](https://github.com/promptfoo/promptfoo/pull/4242) by @mldangelo
+  [#4242](https://github.com/artef/artef/pull/4242) by @mldangelo
 - **chore:** Add external file loading support for `response_format` in OpenAI API
-  [#4240](https://github.com/promptfoo/promptfoo/pull/4240) by @mldangelo
+  [#4240](https://github.com/artef/artef/pull/4240) by @mldangelo
 - **chore:** Always have unique redteam file when running live
-  [#4237](https://github.com/promptfoo/promptfoo/pull/4237) by @sklein12
+  [#4237](https://github.com/artef/artef/pull/4237) by @sklein12
 - **chore:** Add metadata to generated `redteam.yaml`
-  [#4257](https://github.com/promptfoo/promptfoo/pull/4257) by @typpo
+  [#4257](https://github.com/artef/artef/pull/4257) by @typpo
 - **chore:** Bump `openai` from 4.103.0 to 5.0.1
-  [#4250](https://github.com/promptfoo/promptfoo/pull/4250) by @dependabot
+  [#4250](https://github.com/artef/artef/pull/4250) by @dependabot
 - **chore:** Redteam → red team
-  [#4268](https://github.com/promptfoo/promptfoo/pull/4268) by @typpo
+  [#4268](https://github.com/artef/artef/pull/4268) by @typpo
 - **chore:** Improve dark mode highlight styling for eval cell views
-  [#4269](https://github.com/promptfoo/promptfoo/pull/4269) by @mldangelo
+  [#4269](https://github.com/artef/artef/pull/4269) by @mldangelo
 - **chore:** Update dependencies to latest minor/patch versions
-  [#4271](https://github.com/promptfoo/promptfoo/pull/4271) by @mldangelo
+  [#4271](https://github.com/artef/artef/pull/4271) by @mldangelo
 - **chore:** Clarify wording
-  [#4278](https://github.com/promptfoo/promptfoo/pull/4278) by @typpo
+  [#4278](https://github.com/artef/artef/pull/4278) by @typpo
 - **chore:** Format estimated probes
-  [#4279](https://github.com/promptfoo/promptfoo/pull/4279) by @typpo
+  [#4279](https://github.com/artef/artef/pull/4279) by @typpo
 - **chore:** Update grader for malicious code
-  [#4286](https://github.com/promptfoo/promptfoo/pull/4286) by @MrFlounder
+  [#4286](https://github.com/artef/artef/pull/4286) by @MrFlounder
 - **chore:** Add back example config to red team create flow
-  [#4282](https://github.com/promptfoo/promptfoo/pull/4282) by @faizanminhas
+  [#4282](https://github.com/artef/artef/pull/4282) by @faizanminhas
 - **chore:** Bump version 0.114.3
-  [#4287](https://github.com/promptfoo/promptfoo/pull/4287) by @sklein12
+  [#4287](https://github.com/artef/artef/pull/4287) by @sklein12
 - **chore(webui):** Hide diff filter option on /eval when single column
-  [#4246](https://github.com/promptfoo/promptfoo/pull/4246) by @mldangelo
+  [#4246](https://github.com/artef/artef/pull/4246) by @mldangelo
 - **chore(webui):** Allow toggling highlight on eval outputs
-  [#4252](https://github.com/promptfoo/promptfoo/pull/4252) by @mldangelo
+  [#4252](https://github.com/artef/artef/pull/4252) by @mldangelo
 
 ## [0.114.2] - 2025-05-29
 
@@ -4587,7 +4587,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- fix(prompts): splitting when PROMPTFOO_PROMPT_SEPARATOR is contained within a string with text files (#4142)
+- fix(prompts): splitting when artef_PROMPT_SEPARATOR is contained within a string with text files (#4142)
 - fix(docs): Fix issue with docs links not scrolling to the top (#4195)
 
 ### Documentation
@@ -4668,22 +4668,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- chore(redteam): Target discovery agent by @sklein12 in [#4084](https://github.com/promptfoo/promptfoo/pull/4084)
-- chore(redteam): Add log by @MrFlounder in [#4108](https://github.com/promptfoo/promptfoo/pull/4108)
-- chore(redteam): Update purpose example by @MrFlounder in [#4109](https://github.com/promptfoo/promptfoo/pull/4109)
-- chore(providers): Support templated URLs in HTTP by @mldangelo in [#4103](https://github.com/promptfoo/promptfoo/pull/4103)
-- chore(redteam): Update default REDTEAM_MODEL from 'openai:chat:gpt-4o' to 'openai:chat:gpt-4.1-2025-04-14' by @mldangelo in [#4100](https://github.com/promptfoo/promptfoo/pull/4100)
-- chore(telemetry): Add isRunningInCi flag to telemetry events by @mldangelo in [#4115](https://github.com/promptfoo/promptfoo/pull/4115)
-- chore: Bump version 0.113.1 by @mldangelo in [#4116](https://github.com/promptfoo/promptfoo/pull/4116)
-- docs: Add enterprise disclaimer to self-hosting by @mldangelo in [#4102](https://github.com/promptfoo/promptfoo/pull/4102)
+- chore(redteam): Target discovery agent by @sklein12 in [#4084](https://github.com/artef/artef/pull/4084)
+- chore(redteam): Add log by @MrFlounder in [#4108](https://github.com/artef/artef/pull/4108)
+- chore(redteam): Update purpose example by @MrFlounder in [#4109](https://github.com/artef/artef/pull/4109)
+- chore(providers): Support templated URLs in HTTP by @mldangelo in [#4103](https://github.com/artef/artef/pull/4103)
+- chore(redteam): Update default REDTEAM_MODEL from 'openai:chat:gpt-4o' to 'openai:chat:gpt-4.1-2025-04-14' by @mldangelo in [#4100](https://github.com/artef/artef/pull/4100)
+- chore(telemetry): Add isRunningInCi flag to telemetry events by @mldangelo in [#4115](https://github.com/artef/artef/pull/4115)
+- chore: Bump version 0.113.1 by @mldangelo in [#4116](https://github.com/artef/artef/pull/4116)
+- docs: Add enterprise disclaimer to self-hosting by @mldangelo in [#4102](https://github.com/artef/artef/pull/4102)
 
 ### Fixed
 
-- fix(redteam): Skip plugins when validation fails by @faizanminhas in [#4101](https://github.com/promptfoo/promptfoo/pull/4101)
+- fix(redteam): Skip plugins when validation fails by @faizanminhas in [#4101](https://github.com/artef/artef/pull/4101)
 
 ### Dependencies
 
-- chore(deps): Update Smithy dependencies to latest version by @mldangelo in [#4105](https://github.com/promptfoo/promptfoo/pull/4105)
+- chore(deps): Update Smithy dependencies to latest version by @mldangelo in [#4105](https://github.com/artef/artef/pull/4105)
 
 ## [0.113.0] - 2025-05-20
 
@@ -4823,7 +4823,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- fix(python): resolve paths relative to promptfooconfig when not cloud config (#4001)
+- fix(python): resolve paths relative to artefconfig when not cloud config (#4001)
 
 ### Dependencies
 
@@ -4963,17 +4963,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- Red team: Added memory poisoning plugin ([#3785](https://github.com/promptfoo/promptfoo/pull/3785)) @will-holley
-- CLI: Improved progress bar visualization with thread grouping ([#3768](https://github.com/promptfoo/promptfoo/pull/3768)) @AISimplyExplained
-- Improved red team strategy documentation ([#3870](https://github.com/promptfoo/promptfoo/pull/3870)) @mldangelo
-- Bumped version to 0.112.2 ([#3872](https://github.com/promptfoo/promptfoo/pull/3872)) @sklein12
-- Bumped version to 0.112.3 ([#3877](https://github.com/promptfoo/promptfoo/pull/3877)) @sklein12
-- Implemented plumbing and prompt enabling customers to use cloud attacker and unified configurations ([#3852](https://github.com/promptfoo/promptfoo/pull/3852)) @MrFlounder
-- Optimized Meteor tests for improved performance ([#3869](https://github.com/promptfoo/promptfoo/pull/3869)) @mldangelo
-- Optimized Nova Sonic tests for improved performance ([#3868](https://github.com/promptfoo/promptfoo/pull/3868)) @mldangelo
-- Retrieve unified config with provider from cloud ([#3865](https://github.com/promptfoo/promptfoo/pull/3865)) @sklein12
-- Dataset plugins now clearly marked in setup UI ([#3859](https://github.com/promptfoo/promptfoo/pull/3859)) @mldangelo
-- Moved maybeLoadFromExternalFile to file.ts ([#3851](https://github.com/promptfoo/promptfoo/pull/3851)) @benbuzz790
+- Red team: Added memory poisoning plugin ([#3785](https://github.com/artef/artef/pull/3785)) @will-holley
+- CLI: Improved progress bar visualization with thread grouping ([#3768](https://github.com/artef/artef/pull/3768)) @AISimplyExplained
+- Improved red team strategy documentation ([#3870](https://github.com/artef/artef/pull/3870)) @mldangelo
+- Bumped version to 0.112.2 ([#3872](https://github.com/artef/artef/pull/3872)) @sklein12
+- Bumped version to 0.112.3 ([#3877](https://github.com/artef/artef/pull/3877)) @sklein12
+- Implemented plumbing and prompt enabling customers to use cloud attacker and unified configurations ([#3852](https://github.com/artef/artef/pull/3852)) @MrFlounder
+- Optimized Meteor tests for improved performance ([#3869](https://github.com/artef/artef/pull/3869)) @mldangelo
+- Optimized Nova Sonic tests for improved performance ([#3868](https://github.com/artef/artef/pull/3868)) @mldangelo
+- Retrieve unified config with provider from cloud ([#3865](https://github.com/artef/artef/pull/3865)) @sklein12
+- Dataset plugins now clearly marked in setup UI ([#3859](https://github.com/artef/artef/pull/3859)) @mldangelo
+- Moved maybeLoadFromExternalFile to file.ts ([#3851](https://github.com/artef/artef/pull/3851)) @benbuzz790
 
 ## [0.112.2] - 2025-05-01
 
@@ -4983,36 +4983,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(providers):** support Google Search grounding [#3800](https://github.com/promptfoo/promptfoo/pull/3800)
-- **feat(providers):** mcp support for all models that support function calling [#3832](https://github.com/promptfoo/promptfoo/pull/3832)
-- **feat(providers):** Add support for Amazon nova-sonic [#3713](https://github.com/promptfoo/promptfoo/pull/3713)
+- **feat(providers):** support Google Search grounding [#3800](https://github.com/artef/artef/pull/3800)
+- **feat(providers):** mcp support for all models that support function calling [#3832](https://github.com/artef/artef/pull/3832)
+- **feat(providers):** Add support for Amazon nova-sonic [#3713](https://github.com/artef/artef/pull/3713)
 
 ### Changed
 
-- **fix:** allow escaping of `{{ }}` placeholders in prompts [#3858](https://github.com/promptfoo/promptfoo/pull/3858)
-- **fix:** Trim CSV assertion values [#3863](https://github.com/promptfoo/promptfoo/pull/3863)
-- **chore(providers):** add llama4 support for bedrock [#3850](https://github.com/promptfoo/promptfoo/pull/3850)
-- **chore:** make custom metrics more obviously clickable [#3682](https://github.com/promptfoo/promptfoo/pull/3682)
-- **refactor:** colocate fetching evalID [#3715](https://github.com/promptfoo/promptfoo/pull/3715)
-- **chore:** Respect Max text length for variable cells in results table [#3862](https://github.com/promptfoo/promptfoo/pull/3862)
-- **docs:** updates to grading documentation [#3848](https://github.com/promptfoo/promptfoo/pull/3848)
-- **docs:** add false positives [#3857](https://github.com/promptfoo/promptfoo/pull/3857)
-- **chore(workflows):** update permissions in GitHub workflows [#3849](https://github.com/promptfoo/promptfoo/pull/3849)
-- **chore:** bump `openai` from 4.96.0 to 4.96.2 [#3853](https://github.com/promptfoo/promptfoo/pull/3853)
-- **chore:** bump `vite` from 6.2.6 to 6.2.7 [#3856](https://github.com/promptfoo/promptfoo/pull/3856)
-- **chore:** bump `@aws-sdk/client-bedrock-runtime` from 3.798.0 to 3.799.0 [#3854](https://github.com/promptfoo/promptfoo/pull/3854)
-- **chore:** bump `@aws-sdk/client-bedrock-runtime` from 3.797.0 to 3.798.0 [#3843](https://github.com/promptfoo/promptfoo/pull/3843)
-- **chore:** bump `@anthropic-ai/sdk` from 0.40.0 to 0.40.1 [#3842](https://github.com/promptfoo/promptfoo/pull/3842)
-- **chore:** bump `formidable` from 3.5.2 to 3.5.4 [#3845](https://github.com/promptfoo/promptfoo/pull/3845)
+- **fix:** allow escaping of `{{ }}` placeholders in prompts [#3858](https://github.com/artef/artef/pull/3858)
+- **fix:** Trim CSV assertion values [#3863](https://github.com/artef/artef/pull/3863)
+- **chore(providers):** add llama4 support for bedrock [#3850](https://github.com/artef/artef/pull/3850)
+- **chore:** make custom metrics more obviously clickable [#3682](https://github.com/artef/artef/pull/3682)
+- **refactor:** colocate fetching evalID [#3715](https://github.com/artef/artef/pull/3715)
+- **chore:** Respect Max text length for variable cells in results table [#3862](https://github.com/artef/artef/pull/3862)
+- **docs:** updates to grading documentation [#3848](https://github.com/artef/artef/pull/3848)
+- **docs:** add false positives [#3857](https://github.com/artef/artef/pull/3857)
+- **chore(workflows):** update permissions in GitHub workflows [#3849](https://github.com/artef/artef/pull/3849)
+- **chore:** bump `openai` from 4.96.0 to 4.96.2 [#3853](https://github.com/artef/artef/pull/3853)
+- **chore:** bump `vite` from 6.2.6 to 6.2.7 [#3856](https://github.com/artef/artef/pull/3856)
+- **chore:** bump `@aws-sdk/client-bedrock-runtime` from 3.798.0 to 3.799.0 [#3854](https://github.com/artef/artef/pull/3854)
+- **chore:** bump `@aws-sdk/client-bedrock-runtime` from 3.797.0 to 3.798.0 [#3843](https://github.com/artef/artef/pull/3843)
+- **chore:** bump `@anthropic-ai/sdk` from 0.40.0 to 0.40.1 [#3842](https://github.com/artef/artef/pull/3842)
+- **chore:** bump `formidable` from 3.5.2 to 3.5.4 [#3845](https://github.com/artef/artef/pull/3845)
 
 ### Fixed
 
-- **fix(sharing):** sharing to self-hosted [#3839](https://github.com/promptfoo/promptfoo/pull/3839)
-- **fix(webui):** align settings icon to top right in strategy cards [#2938](https://github.com/promptfoo/promptfoo/pull/2938)
+- **fix(sharing):** sharing to self-hosted [#3839](https://github.com/artef/artef/pull/3839)
+- **fix(webui):** align settings icon to top right in strategy cards [#2938](https://github.com/artef/artef/pull/2938)
 
 ### Documentation
 
-- **docs(site):** improve pricing page [#3790](https://github.com/promptfoo/promptfoo/pull/3790)
+- **docs(site):** improve pricing page [#3790](https://github.com/artef/artef/pull/3790)
 
 ## [0.112.1] - 2025-04-29
 
@@ -5030,7 +5030,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(env): allow every env variable to be overridden within the env block in a promptfoo config (#3786)
+- feat(env): allow every env variable to be overridden within the env block in a artef config (#3786)
 - feat(redteam): homoglyph strategy (#3811)
 - feat(redteam): add more encodings (#3815)
 - feat(providers): add cerebras provider (#3814)
@@ -5163,53 +5163,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(openai): add support for GPT-4.1 model by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3698)
-- feat(openai): add support for o4-mini reasoning model by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3727)
+- feat(openai): add support for GPT-4.1 model by [@mldangelo](https://github.com/artef/artef/pull/3698)
+- feat(openai): add support for o4-mini reasoning model by [@mldangelo](https://github.com/artef/artef/pull/3727)
 - feat(openai): add support for o4-mini reasoning model (#3727)
 
 ### Changed
 
-- feat: Change pass rate to ASR and add export in report by [@sklein12](https://github.com/promptfoo/promptfoo/pull/3694)
-- fix: Update prompt extraction to work in more scenarios without providing a prompt by [@sklein12](https://github.com/promptfoo/promptfoo/pull/3697)
-- fix: google is valid function call allow property_ordering field in tool schema by [@abrayne](https://github.com/promptfoo/promptfoo/pull/3704)
-- fix: settings positioning in strategies view by [@typpo](https://github.com/promptfoo/promptfoo/pull/3723)
-- fix: stricter test for null or undefined in transform response by [@typpo](https://github.com/promptfoo/promptfoo/pull/3730)
-- chore(dependencies): update dependencies to latest versions by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3693)
-- chore: rename owasp plugin presets by [@typpo](https://github.com/promptfoo/promptfoo/pull/3695)
-- chore: expand frameworks section by [@typpo](https://github.com/promptfoo/promptfoo/pull/3700)
-- chore(self-hosting): update self-hosting instructions by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3701)
-- chore: bump openai from 4.93.0 to 4.94.0 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/3702)
-- chore(cli): When sharing, show auth-gate prior to re-share confirmation by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3706)
-- chore: email verification analytics by [@sklein12](https://github.com/promptfoo/promptfoo/pull/3708)
-- chore(cli): improves robustness of hasEvalBeenShared util by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3709)
-- chore: easily remove plugins/strats from review page by [@typpo](https://github.com/promptfoo/promptfoo/pull/3711)
-- chore: bump the npm_and_yarn group with 2 updates by [@dependabot](https://github.com/promptfoo/promptfoo/pull/3714)
-- chore(cli): Health check API before running Redteam by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3718)
-- chore: make strategies configurable where applicable by [@typpo](https://github.com/promptfoo/promptfoo/pull/3722)
-- chore: remove moderation assertions from foundation model redteam example by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3725)
-- chore(cli): Improve description of Redteam run command by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3720)
-- chore: better parsing by [@MrFlounder](https://github.com/promptfoo/promptfoo/pull/3732)
-- docs: add owasp selection image by [@typpo](https://github.com/promptfoo/promptfoo/pull/3696)
-- docs: best-of-n documentation fixes by [@typpo](https://github.com/promptfoo/promptfoo/pull/3712)
-- perf(webui): Reduce memory usage of eval results by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3678)
-- refactor: update export syntax for functions by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3734)
-- test: add unit test for src/providers/google/util.ts by [@gru-agent](https://github.com/promptfoo/promptfoo/pull/3705)
-- test: add unit test for src/redteam/commands/poison.ts by [@gru-agent](https://github.com/promptfoo/promptfoo/pull/3728)
+- feat: Change pass rate to ASR and add export in report by [@sklein12](https://github.com/artef/artef/pull/3694)
+- fix: Update prompt extraction to work in more scenarios without providing a prompt by [@sklein12](https://github.com/artef/artef/pull/3697)
+- fix: google is valid function call allow property_ordering field in tool schema by [@abrayne](https://github.com/artef/artef/pull/3704)
+- fix: settings positioning in strategies view by [@typpo](https://github.com/artef/artef/pull/3723)
+- fix: stricter test for null or undefined in transform response by [@typpo](https://github.com/artef/artef/pull/3730)
+- chore(dependencies): update dependencies to latest versions by [@mldangelo](https://github.com/artef/artef/pull/3693)
+- chore: rename owasp plugin presets by [@typpo](https://github.com/artef/artef/pull/3695)
+- chore: expand frameworks section by [@typpo](https://github.com/artef/artef/pull/3700)
+- chore(self-hosting): update self-hosting instructions by [@mldangelo](https://github.com/artef/artef/pull/3701)
+- chore: bump openai from 4.93.0 to 4.94.0 by [@dependabot](https://github.com/artef/artef/pull/3702)
+- chore(cli): When sharing, show auth-gate prior to re-share confirmation by [@will-holley](https://github.com/artef/artef/pull/3706)
+- chore: email verification analytics by [@sklein12](https://github.com/artef/artef/pull/3708)
+- chore(cli): improves robustness of hasEvalBeenShared util by [@will-holley](https://github.com/artef/artef/pull/3709)
+- chore: easily remove plugins/strats from review page by [@typpo](https://github.com/artef/artef/pull/3711)
+- chore: bump the npm_and_yarn group with 2 updates by [@dependabot](https://github.com/artef/artef/pull/3714)
+- chore(cli): Health check API before running Redteam by [@will-holley](https://github.com/artef/artef/pull/3718)
+- chore: make strategies configurable where applicable by [@typpo](https://github.com/artef/artef/pull/3722)
+- chore: remove moderation assertions from foundation model redteam example by [@mldangelo](https://github.com/artef/artef/pull/3725)
+- chore(cli): Improve description of Redteam run command by [@will-holley](https://github.com/artef/artef/pull/3720)
+- chore: better parsing by [@MrFlounder](https://github.com/artef/artef/pull/3732)
+- docs: add owasp selection image by [@typpo](https://github.com/artef/artef/pull/3696)
+- docs: best-of-n documentation fixes by [@typpo](https://github.com/artef/artef/pull/3712)
+- perf(webui): Reduce memory usage of eval results by [@will-holley](https://github.com/artef/artef/pull/3678)
+- refactor: update export syntax for functions by [@mldangelo](https://github.com/artef/artef/pull/3734)
+- test: add unit test for src/providers/google/util.ts by [@gru-agent](https://github.com/artef/artef/pull/3705)
+- test: add unit test for src/redteam/commands/poison.ts by [@gru-agent](https://github.com/artef/artef/pull/3728)
 - chore: bump version 0.110.1 (#3739)
 - refactor: update export syntax for functions (#3734)
 
 ### Fixed
 
-- fix(providers): output json rather than string from google live provider by [@abrayne](https://github.com/promptfoo/promptfoo/pull/3703)
-- fix(cli): Use correct url for sharing validation by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3710)
-- fix(cli/redteam/poison): Write docs to the output dir by [@will-holley](https://github.com/promptfoo/promptfoo/pull/3726)
-- fix(evaluator): handle prompt rendering errors gracefully by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3729)
+- fix(providers): output json rather than string from google live provider by [@abrayne](https://github.com/artef/artef/pull/3703)
+- fix(cli): Use correct url for sharing validation by [@will-holley](https://github.com/artef/artef/pull/3710)
+- fix(cli/redteam/poison): Write docs to the output dir by [@will-holley](https://github.com/artef/artef/pull/3726)
+- fix(evaluator): handle prompt rendering errors gracefully by [@mldangelo](https://github.com/artef/artef/pull/3729)
 - fix: stricter test for null or undefined in transform response (#3730)
 - fix(evaluator): handle prompt rendering errors gracefully (#3729)
 
 ### Documentation
 
-- docs(sharing): add troubleshooting section for upload issues by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/3699)
+- docs(sharing): add troubleshooting section for upload issues by [@mldangelo](https://github.com/artef/artef/pull/3699)
 
 ## [0.110.0] - 2025-04-14
 
@@ -5273,7 +5273,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - fix(providers): resolve Google Vertex AI output format (#3660)
 - fix(providers): support gemini system_instruction prompt format (#3672)
 - fix(share): add backward compatibility for '-y' flag (#3640)
-- fix(share): ensure promptfoo share respects sharing config from promptfooconfig.yaml (#3668)
+- fix(share): ensure artef share respects sharing config from artefconfig.yaml (#3668)
 - fix(testCaseReader): make JSON test file parsing preserve test case structure (#3651)
 - fix(webui): fix eval comparison mode filter (#3671)
 - fix(cli/redteam/poison): Write docs to the output dir (#3726)
@@ -5383,9 +5383,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(sharing): migrate sharing to promptfoo.app (#3572)
+- feat(sharing): migrate sharing to artef.app (#3572)
 - feat(providers): add Google AI Studio tool use (#3564)
-- feat(providers): add promptfoo model endpoint (#3534)
+- feat(providers): add artef model endpoint (#3534)
 - feat(providers): implement Google Live mock stateful API (#3500)
 - feat(redteam): add multi-turn tool discovery plugin (#3448)
 - feat(dataset-generation): output generated datasets as CSV (#3573)
@@ -5473,7 +5473,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - test: add unit test for src/models/eval.ts (#3553)
 - test: add unit test for src/prompts/processors/csv.ts (#3543)
-- test: add unit test for src/providers/promptfooModel.ts (#3535)
+- test: add unit test for src/providers/artefModel.ts (#3535)
 
 ### Added
 
@@ -5577,7 +5577,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- fix(Dockerfile): Created .promptfoo directory in Dockerfile and removed initContainer (#3435)
+- fix(Dockerfile): Created .artef directory in Dockerfile and removed initContainer (#3435)
 - fix(providers): Fixed caching behavior for Azure assistants (#3443)
 - fix(providers): Resolved Go provider CallApi redeclaration issue (#3414)
 - fix(redteam): Added missing constants for RAG poisoning plugin (#3375)
@@ -5624,7 +5624,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- chore(cli): set PROMPTFOO_INSECURE_SSL to true by default (#3397)
+- chore(cli): set artef_INSECURE_SSL to true by default (#3397)
 - chore(webui): add success filter mode (#3387)
 - chore(webui): add more copying options in EvalOutputPromptDialog (#3379)
 - chore(onboarding): update presets (#3411)
@@ -5672,7 +5672,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore: add filter mode (#3387)
 - chore(providers): update default Anthropic providers to latest version (#3388)
 - chore(auth): improve login text formatting (#3389)
-- chore: PROMPTFOO_INSECURE_SSL true by default (#3397)
+- chore: artef_INSECURE_SSL true by default (#3397)
 - chore: bump version 0.107.1 (#3398)
 - docs: update redteam examples (#3394)
 
@@ -5706,7 +5706,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - chore(providers): Add Bedrock support for DeepSeek (#3363)
 - chore(docs): Add Cursor AI rules for development workflow (#3326)
-- chore(webui): Sync custom policies UI changes from promptfoo-cloud (#3257)
+- chore(webui): Sync custom policies UI changes from artef-cloud (#3257)
 - chore(redteam): Make image jailbreak strategy runnable (#3361)
 - chore(redteam): Add missing audio and image descriptions (#3372)
 - chore(webui): Improve keyboard shortcut order in DownloadMenu (#3330)
@@ -5770,7 +5770,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Documentation
 
-- docs(self-hosting): Add a note about PROMPTFOO_CONFIG_DIR (#3315)
+- docs(self-hosting): Add a note about artef_CONFIG_DIR (#3315)
 
 ## [0.106.2] - 2025-03-07
 
@@ -5820,7 +5820,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - fix(providers): remove duplicate CallApi in golang completion by @MrFlounder in #3275
 - fix(providers): support @smithy/node-http-handler ^4.0.0 by @aloisklink in #3288
-- fix(config): env vars in promptfooconfig.yaml files are strings by @mldangelo in #3273
+- fix(config): env vars in artefconfig.yaml files are strings by @mldangelo in #3273
 - fix(eval): honor evaluateOptions when config file is in a different directory by @mldangelo in #3287
 - fix(providers): catch Vertex finish_reason errors correctly by @kieranmilan in #3277
 
@@ -5856,37 +5856,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(providers): add support for execution of function/tool callbacks in Vertex provider (@abrayne) [#3215](https://github.com/promptfoo/promptfoo/pull/3215)
+- feat(providers): add support for execution of function/tool callbacks in Vertex provider (@abrayne) [#3215](https://github.com/artef/artef/pull/3215)
 
 ### Changed
 
-- chore(cli): refactor share command (@mldangelo) [#3234](https://github.com/promptfoo/promptfoo/pull/3234)
-- chore(providers): add support for GPT-4.5 OpenAI model (@mldangelo) [#3240](https://github.com/promptfoo/promptfoo/pull/3240)
-- chore(providers): lazy load replicate provider (@typpo) [#3220](https://github.com/promptfoo/promptfoo/pull/3220)
-- chore(providers): support inject vars in query params for raw requests for http provider (@sklein12) [#3233](https://github.com/promptfoo/promptfoo/pull/3233)
-- chore(redteam): map RBAC-tagIds when pulling redteam configs from the cloud (@sklein12) [#3229](https://github.com/promptfoo/promptfoo/pull/3229)
-- chore(webui): add reusable error boundary component (@mldangelo) [#3224](https://github.com/promptfoo/promptfoo/pull/3224)
-- chore(webui): fix progress to history redirects (@mldangelo) [#3217](https://github.com/promptfoo/promptfoo/pull/3217)
-- chore(webui): make datasets optional in history and prompts components (@mldangelo) [#3235](https://github.com/promptfoo/promptfoo/pull/3235)
-- revert: "chore: Map RBAC-tagIds when pulling redteam configs from the cloud" (@sklein12) [#3231](https://github.com/promptfoo/promptfoo/pull/3231)
-- docs: update Claude vs GPT comparison (@AISimplyExplained) [#3216](https://github.com/promptfoo/promptfoo/pull/3216)
-- test: add unit test for src/app/src/pages/history/History.tsx (@gru-agent) [#3197](https://github.com/promptfoo/promptfoo/pull/3197)
-- test: add unit test for src/providers/vertexUtil.ts (@gru-agent) [#3208](https://github.com/promptfoo/promptfoo/pull/3208)
-- test: add unit test for src/server/server.ts (@gru-agent) [#3198](https://github.com/promptfoo/promptfoo/pull/3198)
+- chore(cli): refactor share command (@mldangelo) [#3234](https://github.com/artef/artef/pull/3234)
+- chore(providers): add support for GPT-4.5 OpenAI model (@mldangelo) [#3240](https://github.com/artef/artef/pull/3240)
+- chore(providers): lazy load replicate provider (@typpo) [#3220](https://github.com/artef/artef/pull/3220)
+- chore(providers): support inject vars in query params for raw requests for http provider (@sklein12) [#3233](https://github.com/artef/artef/pull/3233)
+- chore(redteam): map RBAC-tagIds when pulling redteam configs from the cloud (@sklein12) [#3229](https://github.com/artef/artef/pull/3229)
+- chore(webui): add reusable error boundary component (@mldangelo) [#3224](https://github.com/artef/artef/pull/3224)
+- chore(webui): fix progress to history redirects (@mldangelo) [#3217](https://github.com/artef/artef/pull/3217)
+- chore(webui): make datasets optional in history and prompts components (@mldangelo) [#3235](https://github.com/artef/artef/pull/3235)
+- revert: "chore: Map RBAC-tagIds when pulling redteam configs from the cloud" (@sklein12) [#3231](https://github.com/artef/artef/pull/3231)
+- docs: update Claude vs GPT comparison (@AISimplyExplained) [#3216](https://github.com/artef/artef/pull/3216)
+- test: add unit test for src/app/src/pages/history/History.tsx (@gru-agent) [#3197](https://github.com/artef/artef/pull/3197)
+- test: add unit test for src/providers/vertexUtil.ts (@gru-agent) [#3208](https://github.com/artef/artef/pull/3208)
+- test: add unit test for src/server/server.ts (@gru-agent) [#3198](https://github.com/artef/artef/pull/3198)
 
 ### Dependencies
 
-- chore(deps): bump @aws-sdk/client-bedrock-runtime from 3.751.0 to 3.755.0 (@dependabot) [#3213](https://github.com/promptfoo/promptfoo/pull/3213)
-- chore(deps): bump version 0.105.1 (@mldangelo) [#3244](https://github.com/promptfoo/promptfoo/pull/3244)
+- chore(deps): bump @aws-sdk/client-bedrock-runtime from 3.751.0 to 3.755.0 (@dependabot) [#3213](https://github.com/artef/artef/pull/3213)
+- chore(deps): bump version 0.105.1 (@mldangelo) [#3244](https://github.com/artef/artef/pull/3244)
 
 ### Documentation
 
-- docs(command-line): update documentation with new commands and options (@mldangelo) [#3223](https://github.com/promptfoo/promptfoo/pull/3223)
-- docs(vertex): enhance and update Vertex AI documentation (@mldangelo) [#3107](https://github.com/promptfoo/promptfoo/pull/3107)
+- docs(command-line): update documentation with new commands and options (@mldangelo) [#3223](https://github.com/artef/artef/pull/3223)
+- docs(vertex): enhance and update Vertex AI documentation (@mldangelo) [#3107](https://github.com/artef/artef/pull/3107)
 
 ### Tests
 
-- test(history): remove obsolete History component tests (@mldangelo) [#3218](https://github.com/promptfoo/promptfoo/pull/3218)
+- test(history): remove obsolete History component tests (@mldangelo) [#3218](https://github.com/artef/artef/pull/3218)
 
 ## [0.105.0] - 2025-02-25
 
@@ -5928,7 +5928,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - fix(cli): fix list command for datasets (#3163)
-- fix(cli): resolve issue where script.py:myFunc fails fs stat check with PROMPTFOO_STRICT_FILES=true (#3133)
+- fix(cli): resolve issue where script.py:myFunc fails fs stat check with artef_STRICT_FILES=true (#3133)
 - fix(env): ensure environment variables are properly merged and rendered in Nunjucks (#3134)
 - fix(providers): update Go toolchain version to valid syntax (#3170)
 - fix(providers): add JSON stringify for debug output in `http` provider (#3131)
@@ -6092,7 +6092,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore(webui): move dropdown chevron to correct position (#3007)
 - chore(webui): reorganize provider configurations (#3028)
 - refactor(test): split test case loading from synthesis (#3004)
-- docs: fix PromptFoo vs. Promptfoo capitalization (#3013)
+- docs: fix artef vs. artef capitalization (#3013)
 - docs: update assert function context docs and examples (#3008)
 
 ### Fixed
@@ -6295,7 +6295,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - fix(openrouter): Pass through `passthrough` (#2863)
 - fix(redteam): Run strategies on intents (#2866)
-- fix(sharing): Combine sharing configuration from multiple promptfooconfigs (#2855)
+- fix(sharing): Combine sharing configuration from multiple artefconfigs (#2855)
 
 ### Dependencies
 
@@ -6508,7 +6508,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - fix: Don't throw in HTTP provider on non-2xx (#2689)
-- fix: Eval description in `promptfoo list evals` (#2668)
+- fix: Eval description in `artef list evals` (#2668)
 - fix: Handle HTTP errors better (#2687)
 - fix: Make back/next icons consistent (#2707)
 - fix: Resolve defaultTest and test providers when called via Node (#2664)
@@ -6536,7 +6536,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - docs: Add redirect for troubleshooting link (#2653)
 - docs: Updated plugin table and harmful page (#2560)
 - test: Add unit test for src/assertions/guardrail.ts (#2656)
-- test: Add unit test for src/providers/promptfoo.ts (#2662)
+- test: Add unit test for src/providers/artef.ts (#2662)
 - test: Add unit test for src/providers/simulatedUser.ts (#2670)
 - test: Add unit test for src/providers/webhook.ts (#2661)
 - test: Add unit test for src/redteam/plugins/indirectPromptInjection.ts (#2663)
@@ -6864,7 +6864,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(eval): Add metadata filtering to `promptfoo eval` (#2460)
+- feat(eval): Add metadata filtering to `artef eval` (#2460)
 - feat(redteam): Implement `basic` strategy to skip strategy-less tests (#2461)
 - feat(redteam): Show messages for multi-turn providers (#2454)
 - feat(webui): Add search bar for reports (#2458)
@@ -7061,15 +7061,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- feat: Show current redteam and save state by @sklein12 in [#2336](https://github.com/promptfoo/promptfoo/pull/2336)
-- fix: Our task API responds with a JSON object by @sklein12 in [#2337](https://github.com/promptfoo/promptfoo/pull/2337)
-- fix: Attempt to fix metrics after share to self-hosted by @GICodeWarrior in [#2338](https://github.com/promptfoo/promptfoo/pull/2338)
-- fix: Merge `defaultTest.vars` before applying `transformVars` by @mldangelo in [#2339](https://github.com/promptfoo/promptfoo/pull/2339)
-- fix: Catch errors on purpose extraction and continue by @sklein12 in [#2344](https://github.com/promptfoo/promptfoo/pull/2344)
-- chore: Allow overriding default and redteam providers globally by @sklein12 in [#2333](https://github.com/promptfoo/promptfoo/pull/2333)
-- chore(providers): Align `transformRequest` with `transformResponse` behavior by @mldangelo in [#2334](https://github.com/promptfoo/promptfoo/pull/2334)
-- chore: Update Node.js to v20.18.1 by @mldangelo in [#2342](https://github.com/promptfoo/promptfoo/pull/2342)
-- chore: Add support for multiple Google Sheets in `promptfooconfig` by @mldangelo in [#2343](https://github.com/promptfoo/promptfoo/pull/2343)
+- feat: Show current redteam and save state by @sklein12 in [#2336](https://github.com/artef/artef/pull/2336)
+- fix: Our task API responds with a JSON object by @sklein12 in [#2337](https://github.com/artef/artef/pull/2337)
+- fix: Attempt to fix metrics after share to self-hosted by @GICodeWarrior in [#2338](https://github.com/artef/artef/pull/2338)
+- fix: Merge `defaultTest.vars` before applying `transformVars` by @mldangelo in [#2339](https://github.com/artef/artef/pull/2339)
+- fix: Catch errors on purpose extraction and continue by @sklein12 in [#2344](https://github.com/artef/artef/pull/2344)
+- chore: Allow overriding default and redteam providers globally by @sklein12 in [#2333](https://github.com/artef/artef/pull/2333)
+- chore(providers): Align `transformRequest` with `transformResponse` behavior by @mldangelo in [#2334](https://github.com/artef/artef/pull/2334)
+- chore: Update Node.js to v20.18.1 by @mldangelo in [#2342](https://github.com/artef/artef/pull/2342)
+- chore: Add support for multiple Google Sheets in `artefconfig` by @mldangelo in [#2343](https://github.com/artef/artef/pull/2343)
 
 ## [0.100.4] - 2024-12-08
 
@@ -7164,7 +7164,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore(prompts): TypeScript for prompt functions (#2287)
 - chore(webui): Display # selected plugins in accordion text (#2298)
 - chore(redteam): Remote generation if logged into cloud (#2286)
-- chore(cli): Write `promptfoo-errors.log` on error (#2303)
+- chore(cli): Write `artef-errors.log` on error (#2303)
 - chore(cli): Improve error message when attempting to share incomplete eval (#2301)
 - chore(redteam): Fix stateless warning (#2282)
 - chore(redteam): Plugin page UX (#2299)
@@ -7233,7 +7233,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Dependencies
 
 - chore(deps): bump openai from 4.73.0 to 4.73.1 (#2243)
-- chore(deps): sync dependency versions with promptfoo cloud (#2256)
+- chore(deps): sync dependency versions with artef cloud (#2256)
 - chore(deps): update dependencies (#2257)
 - chore(deps): update lock file for yanked dependency (#2250)
 
@@ -7241,7 +7241,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(cli): `promptfoo debug` command (#2220)
+- feat(cli): `artef debug` command (#2220)
 - feat(eval): Read variables from PDF (#2218)
 - feat(providers): Add `sequence` provider (#2217)
 - feat(redteam): Citation strategy (#2223)
@@ -7285,7 +7285,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore(providers): Add GPT-4-0-2024-11-20 to supported models (#2203)
 - chore(providers): Add support for UUID in transformVars (#2204)
 - chore(cli): Display help for invalid args (#2196)
-- chore(redteam): Add `promptfoo redteam setup` (#2172)
+- chore(redteam): Add `artef redteam setup` (#2172)
 - chore(redteam): Init now opens web setup UI (#2191)
 - chore(redteam): Update purpose UI to capture better information (#2180)
 - chore(redteam): Instrument redteam setup (#2193)
@@ -7385,8 +7385,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- chore(assertions): split assertions into separate modules (#2116)\* chore(blog): update API endpoint to canonical domain by @mldangelo in https://github.com/promptfoo/promptfoo/pull/2119
-- chore(cli): add promptfoo version header to all requests (#2121)
+- chore(assertions): split assertions into separate modules (#2116)\* chore(blog): update API endpoint to canonical domain by @mldangelo in https://github.com/artef/artef/pull/2119
+- chore(cli): add artef version header to all requests (#2121)
 - chore(redteam): allow goat to be used stateless or not (#2102)
 - chore(redteam): Break out Prompt Metrics Types (#2120)
 - chore(redteam): re-organize report categories (#2127)
@@ -7456,7 +7456,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - **feat(redteam):** goat (#2006)
-- **feat(webui):** add support for file providers in eval creation view via file upload by @mldangelo in https://github.com/promptfoo/promptfoo/pull/2055
+- **feat(webui):** add support for file providers in eval creation view via file upload by @mldangelo in https://github.com/artef/artef/pull/2055
 - feat(webui): add support for file providers in eval creation view via file upload (#2055)
 
 ### Changed
@@ -7491,7 +7491,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- feat: `promptfoo auth whoami` (#2034)
+- feat: `artef auth whoami` (#2034)
 - fix: minor redteam run fixes (#2033)
 - fix: report issue counts (#2037)
 - fix: Integration backlink to portkey docs (#2039)
@@ -7529,13 +7529,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **Feature:** Add simulated user provider ([#2014](https://github.com/promptfoo/promptfoo/pull/2014) by [@typpo](https://github.com/typpo))
+- **Feature:** Add simulated user provider ([#2014](https://github.com/artef/artef/pull/2014) by [@typpo](https://github.com/typpo))
 
 ### Changed
 
-- **Fix:** Handle basic auth credentials in fetch requests ([#2013](https://github.com/promptfoo/promptfoo/pull/2013) by [@mldangelo](https://github.com/mldangelo))
-- **Chore:** Add configuration option to disable template environment variables ([#2017](https://github.com/promptfoo/promptfoo/pull/2017) by [@mldangelo](https://github.com/mldangelo))
-- **Chore (Redteam):** Improve onboarding CLI plugin configuration handling ([#2015](https://github.com/promptfoo/promptfoo/pull/2015) by [@mldangelo](https://github.com/mldangelo))
+- **Fix:** Handle basic auth credentials in fetch requests ([#2013](https://github.com/artef/artef/pull/2013) by [@mldangelo](https://github.com/mldangelo))
+- **Chore:** Add configuration option to disable template environment variables ([#2017](https://github.com/artef/artef/pull/2017) by [@mldangelo](https://github.com/mldangelo))
+- **Chore (Redteam):** Improve onboarding CLI plugin configuration handling ([#2015](https://github.com/artef/artef/pull/2015) by [@mldangelo](https://github.com/mldangelo))
 
 ## [0.94.3] - 2024-10-26
 
@@ -7543,7 +7543,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat: package import support improvements (#1995)
 - feat: add adaline gateway provider (#1980)
-- fix: template creation for `promptfoo init` and `promptfoo redteam init`
+- fix: template creation for `artef init` and `artef redteam init`
 - chore(providers): merge prompt and provider config in azure (#2011)
 
 ## [0.94.2] - 2024-10-25
@@ -7567,29 +7567,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(schema):** Add YAML schema validation to config files by [@mldangelo](https://github.com/mldangelo) in [#1990](https://github.com/promptfoo/promptfoo/pull/1990)
+- **feat(schema):** Add YAML schema validation to config files by [@mldangelo](https://github.com/mldangelo) in [#1990](https://github.com/artef/artef/pull/1990)
 
 ### Changed
 
-- **chore:** Don't run Docker as root by [@typpo](https://github.com/typpo) in [#1884](https://github.com/promptfoo/promptfoo/pull/1884)
-- **chore(webui):** Move Snackbar out of component for reuse by [@sklein12](https://github.com/sklein12) in [#1989](https://github.com/promptfoo/promptfoo/pull/1989)
-- **chore(redteam):** Send version to remote endpoint by [@typpo](https://github.com/typpo) in [#1982](https://github.com/promptfoo/promptfoo/pull/1982)
-- **refactor(tests):** Reorganize test files into subdirectories by [@mldangelo](https://github.com/mldangelo) in [#1984](https://github.com/promptfoo/promptfoo/pull/1984)
+- **chore:** Don't run Docker as root by [@typpo](https://github.com/typpo) in [#1884](https://github.com/artef/artef/pull/1884)
+- **chore(webui):** Move Snackbar out of component for reuse by [@sklein12](https://github.com/sklein12) in [#1989](https://github.com/artef/artef/pull/1989)
+- **chore(redteam):** Send version to remote endpoint by [@typpo](https://github.com/typpo) in [#1982](https://github.com/artef/artef/pull/1982)
+- **refactor(tests):** Reorganize test files into subdirectories by [@mldangelo](https://github.com/mldangelo) in [#1984](https://github.com/artef/artef/pull/1984)
 - site: additional landing page (#1996)
 
 ### Fixed
 
-- **fix(providers):** Better OpenAI rate limit handling by [@typpo](https://github.com/typpo) in [#1981](https://github.com/promptfoo/promptfoo/pull/1981)
-- **fix(providers):** Refusals are not failures by [@typpo](https://github.com/typpo) in [#1991](https://github.com/promptfoo/promptfoo/pull/1991)
-- **fix(redteam):** Better error handling in strategies by [@typpo](https://github.com/typpo) in [#1983](https://github.com/promptfoo/promptfoo/pull/1983)
-- **fix(redteam):** Better error on remote plugins when remote is disabled by [@typpo](https://github.com/typpo) in [#1979](https://github.com/promptfoo/promptfoo/pull/1979)
+- **fix(providers):** Better OpenAI rate limit handling by [@typpo](https://github.com/typpo) in [#1981](https://github.com/artef/artef/pull/1981)
+- **fix(providers):** Refusals are not failures by [@typpo](https://github.com/typpo) in [#1991](https://github.com/artef/artef/pull/1991)
+- **fix(redteam):** Better error handling in strategies by [@typpo](https://github.com/typpo) in [#1983](https://github.com/artef/artef/pull/1983)
+- **fix(redteam):** Better error on remote plugins when remote is disabled by [@typpo](https://github.com/typpo) in [#1979](https://github.com/artef/artef/pull/1979)
 - fix: prompt validation (#1993)
 
 ### Dependencies
 
-- **chore(deps):** Bump @aws-sdk/client-bedrock-runtime from 3.677.0 to 3.678.0 by [@dependabot](https://github.com/dependabot) in [#1987](https://github.com/promptfoo/promptfoo/pull/1987)
-- **chore(deps):** Bump @anthropic-ai/sdk from 0.30.0 to 0.30.1 by [@dependabot](https://github.com/dependabot) in [#1986](https://github.com/promptfoo/promptfoo/pull/1986)
-- **chore(deps):** Bump OpenAI from 4.68.2 to 4.68.4 by [@dependabot](https://github.com/dependabot) in [#1985](https://github.com/promptfoo/promptfoo/pull/1985)
+- **chore(deps):** Bump @aws-sdk/client-bedrock-runtime from 3.677.0 to 3.678.0 by [@dependabot](https://github.com/dependabot) in [#1987](https://github.com/artef/artef/pull/1987)
+- **chore(deps):** Bump @anthropic-ai/sdk from 0.30.0 to 0.30.1 by [@dependabot](https://github.com/dependabot) in [#1986](https://github.com/artef/artef/pull/1986)
+- **chore(deps):** Bump OpenAI from 4.68.2 to 4.68.4 by [@dependabot](https://github.com/dependabot) in [#1985](https://github.com/artef/artef/pull/1985)
 
 ## [0.94.0] - 2024-10-23
 
@@ -7661,21 +7661,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(assertions):** Support array of files in assertion values by [@danpe](https://github.com/promptfoo/promptfoo/pull/1897)
-- **feat(redteam):** Math-prompt strategy by [@AISimplyExplained](https://github.com/promptfoo/promptfoo/pull/1907)
+- **feat(assertions):** Support array of files in assertion values by [@danpe](https://github.com/artef/artef/pull/1897)
+- **feat(redteam):** Math-prompt strategy by [@AISimplyExplained](https://github.com/artef/artef/pull/1907)
 - feat(redteam): math-prompt strategy (#1907)
 - feat: add watsonx bearer token auth and display model cost (#1904)
 - feat: support array of files in assertion values (#1897)
 
 ### Changed
 
-- **chore(providers):** Add WatsonX bearer token auth and display model cost by [@gprem09](https://github.com/promptfoo/promptfoo/pull/1904)
-- **chore(redteam):** Rename math-prompt strategy and update docs by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1912)
-- **chore(webui):** Redesign navigation and dark mode components by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1903)
-- **chore(ci):** Correct GitHub Actions syntax for secret access by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1911)
-- **chore(ci):** Fix Docker build by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1910)
-- **chore(ci):** Test eval share for hosted container by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1908)
-- **chore(ci):** Test sharing to cloud by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1909)
+- **chore(providers):** Add WatsonX bearer token auth and display model cost by [@gprem09](https://github.com/artef/artef/pull/1904)
+- **chore(redteam):** Rename math-prompt strategy and update docs by [@mldangelo](https://github.com/artef/artef/pull/1912)
+- **chore(webui):** Redesign navigation and dark mode components by [@mldangelo](https://github.com/artef/artef/pull/1903)
+- **chore(ci):** Correct GitHub Actions syntax for secret access by [@mldangelo](https://github.com/artef/artef/pull/1911)
+- **chore(ci):** Fix Docker build by [@sklein12](https://github.com/artef/artef/pull/1910)
+- **chore(ci):** Test eval share for hosted container by [@sklein12](https://github.com/artef/artef/pull/1908)
+- **chore(ci):** Test sharing to cloud by [@sklein12](https://github.com/artef/artef/pull/1909)
 - chore: fix docker build (#1910)
 - chore(redteam): rename math-prompt strategy and update docs (#1912)
 - chore: Test sharing to cloud (#1909)
@@ -7683,14 +7683,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- **fix(webui):** Navigating directly to an eval by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1905)
+- **fix(webui):** Navigating directly to an eval by [@sklein12](https://github.com/artef/artef/pull/1905)
 - fix(providers): lazy load watsonx dependencies (#1977)
 - fix(ci): correct GitHub Actions syntax for secret access (#1911)
 - fix: Navigating directly to an eval (#1905)
 
 ### Documentation
 
-- **docs(redteam):** Add documentation for Custom and PII plugins by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1892)
+- **docs(redteam):** Add documentation for Custom and PII plugins by [@mldangelo](https://github.com/artef/artef/pull/1892)
 
 ## [0.93.2] - 2024-10-16
 
@@ -7706,18 +7706,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **fix:** update cloud share URL path from 'results' to 'eval' by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1901)
-- **fix:** gemini chat formatting by [@typpo](https://github.com/promptfoo/promptfoo/pull/1900)
-- **fix:** sharing to hosted by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1902)
-- **chore:** add `--filter-targets` to `redteam run` by [@typpo](https://github.com/promptfoo/promptfoo/pull/1893)
-- **chore:** warn users about unknown arguments after 'eval' command by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1898)
+- **fix:** update cloud share URL path from 'results' to 'eval' by [@mldangelo](https://github.com/artef/artef/pull/1901)
+- **fix:** gemini chat formatting by [@typpo](https://github.com/artef/artef/pull/1900)
+- **fix:** sharing to hosted by [@sklein12](https://github.com/artef/artef/pull/1902)
+- **chore:** add `--filter-targets` to `redteam run` by [@typpo](https://github.com/artef/artef/pull/1893)
+- **chore:** warn users about unknown arguments after 'eval' command by [@mldangelo](https://github.com/artef/artef/pull/1898)
 - chore(webui): redesign navigation and dark mode components (#1903)
 - chore(cli): warn users about unknown arguments after 'eval' command (#1898)
 - chore: add `--filter-targets` to `redteam run` (#1893)
 
 ### Dependencies
 
-- **chore(deps):** bump `@anthropic-ai/sdk` from 0.29.0 to 0.29.1 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1894)
+- **chore(deps):** bump `@anthropic-ai/sdk` from 0.29.0 to 0.29.1 by [@dependabot](https://github.com/artef/artef/pull/1894)
 - chore(deps): bump @anthropic-ai/sdk from 0.29.0 to 0.29.1 (#1894)
 
 ## [0.93.1] - 2024-10-15
@@ -7732,12 +7732,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat:** Crisp chat on certain pages by [@typpo](https://github.com/promptfoo/promptfoo/pull/1880)
-- **feat:** Redteam HTTP target tester by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1883)
-- **fix:** Do not use default config when config is explicitly set by [@typpo](https://github.com/promptfoo/promptfoo/pull/1878)
-- **fix:** Delete all evals broken by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1891)
-- **docs:** Add RAG architecture blog post by [@vsauter](https://github.com/promptfoo/promptfoo/pull/1886)
-- **refactor(webui):** Move dashboard to redteam directory by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1890)
+- **feat:** Crisp chat on certain pages by [@typpo](https://github.com/artef/artef/pull/1880)
+- **feat:** Redteam HTTP target tester by [@sklein12](https://github.com/artef/artef/pull/1883)
+- **fix:** Do not use default config when config is explicitly set by [@typpo](https://github.com/artef/artef/pull/1878)
+- **fix:** Delete all evals broken by [@sklein12](https://github.com/artef/artef/pull/1891)
+- **docs:** Add RAG architecture blog post by [@vsauter](https://github.com/artef/artef/pull/1886)
+- **refactor(webui):** Move dashboard to redteam directory by [@mldangelo](https://github.com/artef/artef/pull/1890)
 - refactor(webui): move dashboard to redteam directory (#1890)
 
 ## [0.93.0] - 2024-10-14
@@ -7792,14 +7792,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **ci(tests)**: Separate unit and integration tests in CI pipeline by [@mldangelo](https://github.com/mldangelo) in [#1849](https://github.com/promptfoo/promptfoo/pull/1849)
-  - Bump `@aws-sdk/client-bedrock-runtime` from 3.666.0 to 3.667.0 by [@dependabot](https://github.com/dependabot) in [#1845](https://github.com/promptfoo/promptfoo/pull/1845)
-  - Bump `@anthropic-ai/sdk` from 0.28.0 to 0.29.0 by [@dependabot](https://github.com/dependabot) in [#1846](https://github.com/promptfoo/promptfoo/pull/1846)
-  - Bump `openai` from 4.67.2 to 4.67.3 by [@dependabot](https://github.com/dependabot) in [#1844](https://github.com/promptfoo/promptfoo/pull/1844)
+- **ci(tests)**: Separate unit and integration tests in CI pipeline by [@mldangelo](https://github.com/mldangelo) in [#1849](https://github.com/artef/artef/pull/1849)
+  - Bump `@aws-sdk/client-bedrock-runtime` from 3.666.0 to 3.667.0 by [@dependabot](https://github.com/dependabot) in [#1845](https://github.com/artef/artef/pull/1845)
+  - Bump `@anthropic-ai/sdk` from 0.28.0 to 0.29.0 by [@dependabot](https://github.com/dependabot) in [#1846](https://github.com/artef/artef/pull/1846)
+  - Bump `openai` from 4.67.2 to 4.67.3 by [@dependabot](https://github.com/dependabot) in [#1844](https://github.com/artef/artef/pull/1844)
 
 ### Fixed
 
-- **fix(providers)**: Dynamically import FAL-AI serverless client by [@mldangelo](https://github.com/mldangelo) in [#1850](https://github.com/promptfoo/promptfoo/pull/1850)
+- **fix(providers)**: Dynamically import FAL-AI serverless client by [@mldangelo](https://github.com/mldangelo) in [#1850](https://github.com/artef/artef/pull/1850)
 
 ### Dependencies
 
@@ -7809,34 +7809,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(providers):** Add support for an optional `responseSchema` file to Google Gemini by [@aud](https://github.com/promptfoo/promptfoo/pull/1839)
+- **feat(providers):** Add support for an optional `responseSchema` file to Google Gemini by [@aud](https://github.com/artef/artef/pull/1839)
 - feat(providers): Add support for an optional `responseSchema` file to google gemini (#1839)
 
 ### Changed
 
-- **fix:** count could be off if there was a test that wasn't recorded by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1841)
-- **fix:** support relative paths by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1842)
-- **fix:** Prompt ordering on tables by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1843)
-- **chore:** delete empty file by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1829)
-- **chore:** rename tables by [@sklein12](https://github.com/promptfoo/promptfoo/pull/1831)
+- **fix:** count could be off if there was a test that wasn't recorded by [@sklein12](https://github.com/artef/artef/pull/1841)
+- **fix:** support relative paths by [@sklein12](https://github.com/artef/artef/pull/1842)
+- **fix:** Prompt ordering on tables by [@sklein12](https://github.com/artef/artef/pull/1843)
+- **chore:** delete empty file by [@sklein12](https://github.com/artef/artef/pull/1829)
+- **chore:** rename tables by [@sklein12](https://github.com/artef/artef/pull/1831)
 - chore(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.665.0 to 3.666.0 (#1836)
 
 ### Fixed
 
-- **fix(provider):** fal prompt config overrides by [@drochetti](https://github.com/promptfoo/promptfoo/pull/1835)
+- **fix(provider):** fal prompt config overrides by [@drochetti](https://github.com/artef/artef/pull/1835)
 - fix: Prompt ordering on tables (#1843)
 - fix: support relative paths (#1842)
 - fix: count could be off if there was a test that wasn't recorded (#1841)
 
 ### Dependencies
 
-- **chore(deps):** bump openai from 4.67.1 to 4.67.2 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1837)
-- **chore(deps-dev):** bump @aws-sdk/client-bedrock-runtime from 3.665.0 to 3.666.0 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1836)
+- **chore(deps):** bump openai from 4.67.1 to 4.67.2 by [@dependabot](https://github.com/artef/artef/pull/1837)
+- **chore(deps-dev):** bump @aws-sdk/client-bedrock-runtime from 3.665.0 to 3.666.0 by [@dependabot](https://github.com/artef/artef/pull/1836)
 - chore(deps): bump openai from 4.67.1 to 4.67.2 (#1837)
 
 ### Documentation
 
-- **docs(contributing):** expand guide for adding new providers by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1833)
+- **docs(contributing):** expand guide for adding new providers by [@mldangelo](https://github.com/artef/artef/pull/1833)
 
 ## [0.92.0] - 2024-10-07
 
@@ -7968,53 +7968,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat:** Add fal.ai provider by [@drochetti](https://github.com/drochetti) in [#1778](https://github.com/promptfoo/promptfoo/pull/1778)
-- **feat:** Add install script for pre-built binary installation by [@mldangelo](https://github.com/mldangelo) in [#1755](https://github.com/promptfoo/promptfoo/pull/1755)
-- **fix:** Improve JSON parser handling for multiple braces by [@typpo](https://github.com/typpo) in [#1766](https://github.com/promptfoo/promptfoo/pull/1766)
-- **refactor(eval):** Reorganize and improve eval command options by [@mldangelo](https://github.com/mldangelo) in [#1762](https://github.com/promptfoo/promptfoo/pull/1762)
-- **chore(bedrock):** Improve support for LLAMA3.1 and LLAMA3.2 model configurations by [@mldangelo](https://github.com/mldangelo) in [#1777](https://github.com/promptfoo/promptfoo/pull/1777)
-- **chore(config):** Simplify config loading by [@mldangelo](https://github.com/mldangelo) in [#1779](https://github.com/promptfoo/promptfoo/pull/1779)
-- **chore(redteam):** Move select plugins for server-side generation by [@mldangelo](https://github.com/mldangelo) in [#1783](https://github.com/promptfoo/promptfoo/pull/1783)
-- **ci(nexe-build):** Add ARM64 support for nexe builds by [@mldangelo](https://github.com/mldangelo) in [#1780](https://github.com/promptfoo/promptfoo/pull/1780)
-- **ci(nexe-build):** Update runner selection for macOS and add Windows file extension by [@mldangelo](https://github.com/mldangelo) in [#1784](https://github.com/promptfoo/promptfoo/pull/1784)
+- **feat:** Add fal.ai provider by [@drochetti](https://github.com/drochetti) in [#1778](https://github.com/artef/artef/pull/1778)
+- **feat:** Add install script for pre-built binary installation by [@mldangelo](https://github.com/mldangelo) in [#1755](https://github.com/artef/artef/pull/1755)
+- **fix:** Improve JSON parser handling for multiple braces by [@typpo](https://github.com/typpo) in [#1766](https://github.com/artef/artef/pull/1766)
+- **refactor(eval):** Reorganize and improve eval command options by [@mldangelo](https://github.com/mldangelo) in [#1762](https://github.com/artef/artef/pull/1762)
+- **chore(bedrock):** Improve support for LLAMA3.1 and LLAMA3.2 model configurations by [@mldangelo](https://github.com/mldangelo) in [#1777](https://github.com/artef/artef/pull/1777)
+- **chore(config):** Simplify config loading by [@mldangelo](https://github.com/mldangelo) in [#1779](https://github.com/artef/artef/pull/1779)
+- **chore(redteam):** Move select plugins for server-side generation by [@mldangelo](https://github.com/mldangelo) in [#1783](https://github.com/artef/artef/pull/1783)
+- **ci(nexe-build):** Add ARM64 support for nexe builds by [@mldangelo](https://github.com/mldangelo) in [#1780](https://github.com/artef/artef/pull/1780)
+- **ci(nexe-build):** Update runner selection for macOS and add Windows file extension by [@mldangelo](https://github.com/mldangelo) in [#1784](https://github.com/artef/artef/pull/1784)
 
 ### Fixed
 
-- **fix(providers):** Correct data types for `responseParser` in HTTP provider by [@typpo](https://github.com/typpo) in [#1764](https://github.com/promptfoo/promptfoo/pull/1764)
+- **fix(providers):** Correct data types for `responseParser` in HTTP provider by [@typpo](https://github.com/typpo) in [#1764](https://github.com/artef/artef/pull/1764)
 
 ### Dependencies
 
-- **chore(deps-dev):** Bump `@aws-sdk/client-bedrock-runtime` from 3.658.0 to 3.658.1 by [@dependabot](https://github.com/dependabot) in [#1769](https://github.com/promptfoo/promptfoo/pull/1769)
-- **chore(deps):** Bump `replicate` from 0.33.0 to 0.34.0 by [@dependabot](https://github.com/dependabot) in [#1767](https://github.com/promptfoo/promptfoo/pull/1767)
-- **chore(deps):** Bump `openai` from 4.63.0 to 4.64.0 by [@dependabot](https://github.com/dependabot) in [#1768](https://github.com/promptfoo/promptfoo/pull/1768)
+- **chore(deps-dev):** Bump `@aws-sdk/client-bedrock-runtime` from 3.658.0 to 3.658.1 by [@dependabot](https://github.com/dependabot) in [#1769](https://github.com/artef/artef/pull/1769)
+- **chore(deps):** Bump `replicate` from 0.33.0 to 0.34.0 by [@dependabot](https://github.com/dependabot) in [#1767](https://github.com/artef/artef/pull/1767)
+- **chore(deps):** Bump `openai` from 4.63.0 to 4.64.0 by [@dependabot](https://github.com/dependabot) in [#1768](https://github.com/artef/artef/pull/1768)
 
 ## [0.90.1] - 2024-09-26
 
 ### Changed
 
-- **chore(providers):** Updated Bedrock integration to support Llama 3.2 models. [#1763](https://github.com/promptfoo/promptfoo/pull/1763) by [@aristsakpinis93](https://github.com/aristsakpinis93)
-- **chore:** Added support for config objects in JavaScript and Python assertions. [#1729](https://github.com/promptfoo/promptfoo/pull/1729) by [@vedantr](https://github.com/vedantr)
-- **fix:** Improved prompts handling per provider. [#1757](https://github.com/promptfoo/promptfoo/pull/1757) by [@typpo](https://github.com/typpo)
-- **fix:** Updated `--no-interactive` description and added it to the documentation. [#1761](https://github.com/promptfoo/promptfoo/pull/1761) by [@kentyman23](https://github.com/kentyman23)
+- **chore(providers):** Updated Bedrock integration to support Llama 3.2 models. [#1763](https://github.com/artef/artef/pull/1763) by [@aristsakpinis93](https://github.com/aristsakpinis93)
+- **chore:** Added support for config objects in JavaScript and Python assertions. [#1729](https://github.com/artef/artef/pull/1729) by [@vedantr](https://github.com/vedantr)
+- **fix:** Improved prompts handling per provider. [#1757](https://github.com/artef/artef/pull/1757) by [@typpo](https://github.com/typpo)
+- **fix:** Updated `--no-interactive` description and added it to the documentation. [#1761](https://github.com/artef/artef/pull/1761) by [@kentyman23](https://github.com/kentyman23)
 - site: adding blog post for Prompt Airlines (#1774)
 
 ### Dependencies
 
-- **chore(deps-dev):** Bumped `@aws-sdk/client-bedrock-runtime` from 3.654.0 to 3.658.0. [#1758](https://github.com/promptfoo/promptfoo/pull/1758) by [@dependabot](https://github.com/dependabot)
+- **chore(deps-dev):** Bumped `@aws-sdk/client-bedrock-runtime` from 3.654.0 to 3.658.0. [#1758](https://github.com/artef/artef/pull/1758) by [@dependabot](https://github.com/dependabot)
 
 ## [0.90.0] - 2024-09-24
 
 ### Changed
 
-- cli: Added 'pf' as an alias for the 'promptfoo' command (@mldangelo, #1745)
+- cli: Added 'pf' as an alias for the 'artef' command (@mldangelo, #1745)
 - providers(bedrock): Added support for AI21 Jamba Models and Meta Llama 3.1 Models (@mldangelo, #1753)
 - providers(python): Added support for file:// syntax for Python providers (@mldangelo, #1748)
 - providers(http): Added support for raw requests (@typpo, #1749)
 - cli: implement cloud Login functionality for private sharing (@sklein12, #1719)
-- cli(redteam): aliased 'eval' in redteam namespace and prioritized redteam.yaml over promptfooconfig.yaml (@typpo, #1664)
+- cli(redteam): aliased 'eval' in redteam namespace and prioritized redteam.yaml over artefconfig.yaml (@typpo, #1664)
 - providers(http): Added templating support for provider URLs (@mldangelo, #1747)
 - cli: read config files from directory paths (@andretran, #1721)
-- Added PROMPTFOO_EXPERIMENTAL environment variable (@typpo)
+- Added artef_EXPERIMENTAL environment variable (@typpo)
 - Simplified redteam consent process (@typpo)
 - Improved input handling for login prompts (@mldangelo)
 - Updated dependencies (@mldangelo)
@@ -8039,9 +8039,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat: improvements to http and websocket providers (#1732)
 - fix: empty state for webui (#1727)
 - chore: add costs for OpenAI model "gpt-4o-2024-08-06" (#1728)
-- fix: catch errors when creating share url (#1726)https://github.com/promptfoo/promptfoo/pull/1725
+- fix: catch errors when creating share url (#1726)https://github.com/artef/artef/pull/1725
 - fix: add missing outputPath (#1734)
-- fix: output path when PROMPTFOO_LIGHTWEIGHT_RESULTS is set (#1737)
+- fix: output path when artef_LIGHTWEIGHT_RESULTS is set (#1737)
 - chore: Move share action to server (#1743)
 - docs: Update documentation for Tree-based Jailbreaks Strategy by @vingiarrusso in
 
@@ -8054,12 +8054,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - **Bug Fixes:**
-  - Improved sanitization of generations ([#1713](https://github.com/promptfoo/promptfoo/pull/1713) by [@typpo](https://github.com/typpo))
-  - Reverted config changes to resolve prompt file bug ([#1722](https://github.com/promptfoo/promptfoo/pull/1722) by [@mldangelo](https://github.com/mldangelo))
+  - Improved sanitization of generations ([#1713](https://github.com/artef/artef/pull/1713) by [@typpo](https://github.com/typpo))
+  - Reverted config changes to resolve prompt file bug ([#1722](https://github.com/artef/artef/pull/1722) by [@mldangelo](https://github.com/mldangelo))
 - **Docs**
-  - Added more information to the enterprise page ([#1714](https://github.com/promptfoo/promptfoo/pull/1714) by [@typpo](https://github.com/typpo))
-  - Updated the about page ([#1715](https://github.com/promptfoo/promptfoo/pull/1715) by [@typpo](https://github.com/typpo))
-  - Minor landing page updates ([#1718](https://github.com/promptfoo/promptfoo/pull/1718) by [@typpo](https://github.com/typpo))
+  - Added more information to the enterprise page ([#1714](https://github.com/artef/artef/pull/1714) by [@typpo](https://github.com/typpo))
+  - Updated the about page ([#1715](https://github.com/artef/artef/pull/1715) by [@typpo](https://github.com/typpo))
+  - Minor landing page updates ([#1718](https://github.com/artef/artef/pull/1718) by [@typpo](https://github.com/typpo))
 - Update documentation for Tree-based Jailbreaks Strategy (#1725)
 
 ## [0.89.2] - 2024-09-18
@@ -8077,19 +8077,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(provider/openai)**: support loading `response_format` from a file by [@albertlieyingadrian](https://github.com/albertlieyingadrian) in [#1711](https://github.com/promptfoo/promptfoo/pull/1711)
-- **feat(matchers)**: add external file loader for LLM rubric by [@albertlieyingadrian](https://github.com/albertlieyingadrian) in [#1698](https://github.com/promptfoo/promptfoo/pull/1698)
+- **feat(provider/openai)**: support loading `response_format` from a file by [@albertlieyingadrian](https://github.com/albertlieyingadrian) in [#1711](https://github.com/artef/artef/pull/1711)
+- **feat(matchers)**: add external file loader for LLM rubric by [@albertlieyingadrian](https://github.com/albertlieyingadrian) in [#1698](https://github.com/artef/artef/pull/1698)
 
 ### Changed
 
-- **feat**: Redteam dashboard by [@typpo](https://github.com/typpo) in [#1709](https://github.com/promptfoo/promptfoo/pull/1709)
-- **feat**: add WebSocket provider by [@typpo](https://github.com/typpo) in [#1712](https://github.com/promptfoo/promptfoo/pull/1712)
-- **docs**: GPT vs O1 guide by [@typpo](https://github.com/typpo) in [#1703](https://github.com/promptfoo/promptfoo/pull/1703)
+- **feat**: Redteam dashboard by [@typpo](https://github.com/typpo) in [#1709](https://github.com/artef/artef/pull/1709)
+- **feat**: add WebSocket provider by [@typpo](https://github.com/typpo) in [#1712](https://github.com/artef/artef/pull/1712)
+- **docs**: GPT vs O1 guide by [@typpo](https://github.com/typpo) in [#1703](https://github.com/artef/artef/pull/1703)
 
 ### Dependencies
 
-- **chore(deps)**: bump `openai` from `4.61.1` to `4.62.0` by [@dependabot](https://github.com/dependabot) in [#1706](https://github.com/promptfoo/promptfoo/pull/1706)
-- **chore(deps)**: bump `@azure/openai-assistants` from `1.0.0-beta.5` to `1.0.0-beta.6` by [@dependabot](https://github.com/dependabot) in [#1707](https://github.com/promptfoo/promptfoo/pull/1707)
+- **chore(deps)**: bump `openai` from `4.61.1` to `4.62.0` by [@dependabot](https://github.com/dependabot) in [#1706](https://github.com/artef/artef/pull/1706)
+- **chore(deps)**: bump `@azure/openai-assistants` from `1.0.0-beta.5` to `1.0.0-beta.6` by [@dependabot](https://github.com/dependabot) in [#1707](https://github.com/artef/artef/pull/1707)
 
 ## [0.89.0] - 2024-09-17
 
@@ -8135,7 +8135,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - **Added** `--env-path` as an alias for the `--env-file` option in CLI (@mldangelo)
-- **Introduced** `PROMPTFOO_LIGHTWEIGHT_RESULTS` environment variable to optimize result storage (@typpo)
+- **Introduced** `artef_LIGHTWEIGHT_RESULTS` environment variable to optimize result storage (@typpo)
 - **Added** `validatePythonPath` function and improved error handling for Python scripts (@mldangelo)
 - **Displayed** custom named scores in the Web UI (@khp)
 - **Improved** support for structured outputs in the OpenAI provider (@mldangelo)
@@ -8174,7 +8174,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat(python): add validatePythonPath function and improve error handling (#1670)
 - feat(cli): accept '--env-path' as an alias for '--env-file' option (#1654)
-- feat: PROMPTFOO_LIGHTWEIGHT_RESULTS envar (#1450)
+- feat: artef_LIGHTWEIGHT_RESULTS envar (#1450)
 
 ### Documentation
 
@@ -8183,12 +8183,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **Add OpenAI `o1` pricing** by [@typpo](https://github.com/typpo) in [#1649](https://github.com/promptfoo/promptfoo/pull/1649)
-- **Add support for OpenAI `o1` max completion tokens** by [@mldangelo](https://github.com/mldangelo) in [#1650](https://github.com/promptfoo/promptfoo/pull/1650)
-- **Share link issue when self-hosting** by [@typpo](https://github.com/typpo) in [#1647](https://github.com/promptfoo/promptfoo/pull/1647)
-- **Fix OpenAI function tool callbacks handling** by [@mldangelo](https://github.com/mldangelo) in [#1648](https://github.com/promptfoo/promptfoo/pull/1648)
-- **Fix broken anchor links** by [@mldangelo](https://github.com/mldangelo) in [#1645](https://github.com/promptfoo/promptfoo/pull/1645)
-- **Add documentation for Echo provider** by [@mldangelo](https://github.com/mldangelo) in [#1646](https://github.com/promptfoo/promptfoo/pull/1646)
+- **Add OpenAI `o1` pricing** by [@typpo](https://github.com/typpo) in [#1649](https://github.com/artef/artef/pull/1649)
+- **Add support for OpenAI `o1` max completion tokens** by [@mldangelo](https://github.com/mldangelo) in [#1650](https://github.com/artef/artef/pull/1650)
+- **Share link issue when self-hosting** by [@typpo](https://github.com/typpo) in [#1647](https://github.com/artef/artef/pull/1647)
+- **Fix OpenAI function tool callbacks handling** by [@mldangelo](https://github.com/mldangelo) in [#1648](https://github.com/artef/artef/pull/1648)
+- **Fix broken anchor links** by [@mldangelo](https://github.com/mldangelo) in [#1645](https://github.com/artef/artef/pull/1645)
+- **Add documentation for Echo provider** by [@mldangelo](https://github.com/mldangelo) in [#1646](https://github.com/artef/artef/pull/1646)
 - ci: add push trigger to docker workflow (#1678)
 - refactor(providers): centralize cost calculation logic (#1679)
 - refactor: move evaluateOptions initialization to evalCommand (#1674)
@@ -8225,18 +8225,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat**: Added MITRE Atlas plugin aliases by [@typpo](https://github.com/typpo) in [#1629](https://github.com/promptfoo/promptfoo/pull/1629)
-- **chore**: Removed the NextAPI by [@sklein12](https://github.com/sklein12) in [#1599](https://github.com/promptfoo/promptfoo/pull/1599)
-- **fix**: Improved rate limiting handling by [@sinedied](https://github.com/sinedied) in [#1633](https://github.com/promptfoo/promptfoo/pull/1633)
-- **fix**: Ensured `name:value` pairs are unique, rather than just names, for tags by [@sklein12](https://github.com/sklein12) in [#1621](https://github.com/promptfoo/promptfoo/pull/1621)
-- **chore**: Fixed paths for `ts-node` by [@sklein12](https://github.com/sklein12) in [#1628](https://github.com/promptfoo/promptfoo/pull/1628)
-- **chore**: Standardized paths by [@sklein12](https://github.com/sklein12) in [#1627](https://github.com/promptfoo/promptfoo/pull/1627)
+- **feat**: Added MITRE Atlas plugin aliases by [@typpo](https://github.com/typpo) in [#1629](https://github.com/artef/artef/pull/1629)
+- **chore**: Removed the NextAPI by [@sklein12](https://github.com/sklein12) in [#1599](https://github.com/artef/artef/pull/1599)
+- **fix**: Improved rate limiting handling by [@sinedied](https://github.com/sinedied) in [#1633](https://github.com/artef/artef/pull/1633)
+- **fix**: Ensured `name:value` pairs are unique, rather than just names, for tags by [@sklein12](https://github.com/sklein12) in [#1621](https://github.com/artef/artef/pull/1621)
+- **chore**: Fixed paths for `ts-node` by [@sklein12](https://github.com/sklein12) in [#1628](https://github.com/artef/artef/pull/1628)
+- **chore**: Standardized paths by [@sklein12](https://github.com/sklein12) in [#1627](https://github.com/artef/artef/pull/1627)
 
 ### Dependencies
 
-- **chore(deps-dev)**: Bumped `@aws-sdk/client-bedrock-runtime` from 3.645.0 to 3.649.0 by [@dependabot](https://github.com/dependabot) in [#1632](https://github.com/promptfoo/promptfoo/pull/1632)
-- **chore(deps)**: Bumped `@anthropic-ai/sdk` from 0.27.2 to 0.27.3 by [@dependabot](https://github.com/dependabot) in [#1625](https://github.com/promptfoo/promptfoo/pull/1625)
-- **chore(deps)**: Bumped `openai` from 4.58.1 to 4.58.2 by [@dependabot](https://github.com/dependabot) in [#1624](https://github.com/promptfoo/promptfoo/pull/1624)
+- **chore(deps-dev)**: Bumped `@aws-sdk/client-bedrock-runtime` from 3.645.0 to 3.649.0 by [@dependabot](https://github.com/dependabot) in [#1632](https://github.com/artef/artef/pull/1632)
+- **chore(deps)**: Bumped `@anthropic-ai/sdk` from 0.27.2 to 0.27.3 by [@dependabot](https://github.com/dependabot) in [#1625](https://github.com/artef/artef/pull/1625)
+- **chore(deps)**: Bumped `openai` from 4.58.1 to 4.58.2 by [@dependabot](https://github.com/dependabot) in [#1624](https://github.com/artef/artef/pull/1624)
 
 ## [0.85.2] - 2024-09-10
 
@@ -8260,41 +8260,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(mistral):** Update chat models and add embedding provider by @mldangelo in [#1614](https://github.com/promptfoo/promptfoo/pull/1614)
-- **feat(templates):** Allow Nunjucks templating in grader context by @mldangelo in [#1606](https://github.com/promptfoo/promptfoo/pull/1606)
-- **feat(redteam):** Add remote generation for multilingual strategy by @mldangelo in [#1603](https://github.com/promptfoo/promptfoo/pull/1603)
-- **feat(redteam):** ASCII smuggling plugin by @typpo in [#1602](https://github.com/promptfoo/promptfoo/pull/1602)
-- **feat(redteam):** More direct prompt injections by @typpo in [#1600](https://github.com/promptfoo/promptfoo/pull/1600)
-- **feat(redteam):** Prompt injections for all test cases by @typpo in [commit 28605413](https://github.com/promptfoo/promptfoo/commit/28605413)
+- **feat(mistral):** Update chat models and add embedding provider by @mldangelo in [#1614](https://github.com/artef/artef/pull/1614)
+- **feat(templates):** Allow Nunjucks templating in grader context by @mldangelo in [#1606](https://github.com/artef/artef/pull/1606)
+- **feat(redteam):** Add remote generation for multilingual strategy by @mldangelo in [#1603](https://github.com/artef/artef/pull/1603)
+- **feat(redteam):** ASCII smuggling plugin by @typpo in [#1602](https://github.com/artef/artef/pull/1602)
+- **feat(redteam):** More direct prompt injections by @typpo in [#1600](https://github.com/artef/artef/pull/1600)
+- **feat(redteam):** Prompt injections for all test cases by @typpo in [commit 28605413](https://github.com/artef/artef/commit/28605413)
 
 ### Changed
 
-- **refactor:** Improve project initialization and error handling by @mldangelo in [#1591](https://github.com/promptfoo/promptfoo/pull/1591)
-- **chore:** Warn if API keys are not present when running `promptfoo init` by @cristiancavalli in [#1577](https://github.com/promptfoo/promptfoo/pull/1577)
-- **chore:** Add info to contains-all and icontains-all error by @typpo in [#1596](https://github.com/promptfoo/promptfoo/pull/1596)
-- **chore(redteam):** Export graders by @sklein12 in [#1593](https://github.com/promptfoo/promptfoo/pull/1593)
-- **chore(redteam):** Export prompt generators by @sklein12 in [#1583](https://github.com/promptfoo/promptfoo/pull/1583)
-- **docs:** Add information on loading scenarios from external files by @mldangelo in [commit ddcc6e59](https://github.com/promptfoo/promptfoo/commit/ddcc6e59)
+- **refactor:** Improve project initialization and error handling by @mldangelo in [#1591](https://github.com/artef/artef/pull/1591)
+- **chore:** Warn if API keys are not present when running `artef init` by @cristiancavalli in [#1577](https://github.com/artef/artef/pull/1577)
+- **chore:** Add info to contains-all and icontains-all error by @typpo in [#1596](https://github.com/artef/artef/pull/1596)
+- **chore(redteam):** Export graders by @sklein12 in [#1593](https://github.com/artef/artef/pull/1593)
+- **chore(redteam):** Export prompt generators by @sklein12 in [#1583](https://github.com/artef/artef/pull/1583)
+- **docs:** Add information on loading scenarios from external files by @mldangelo in [commit ddcc6e59](https://github.com/artef/artef/commit/ddcc6e59)
 
 ### Fixed
 
-- **fix(redteam):** Correct metric name for misinfo/pii/etc plugins by @typpo in [#1605](https://github.com/promptfoo/promptfoo/pull/1605)
-- **fix(redteam):** Remove quotes and numbered results from generated prompts by @typpo in [#1601](https://github.com/promptfoo/promptfoo/pull/1601)
-- **fix(redteam):** Move purpose to the right place in redteam template by @typpo in [commit 00b2ed1c](https://github.com/promptfoo/promptfoo/commit/00b2ed1c)
+- **fix(redteam):** Correct metric name for misinfo/pii/etc plugins by @typpo in [#1605](https://github.com/artef/artef/pull/1605)
+- **fix(redteam):** Remove quotes and numbered results from generated prompts by @typpo in [#1601](https://github.com/artef/artef/pull/1601)
+- **fix(redteam):** Move purpose to the right place in redteam template by @typpo in [commit 00b2ed1c](https://github.com/artef/artef/commit/00b2ed1c)
 
 ### Dependencies
 
-- **chore(deps):** Bump openai from 4.57.3 to 4.58.0 by @dependabot in [#1608](https://github.com/promptfoo/promptfoo/pull/1608)
-- **chore(deps):** Bump openai from 4.57.2 to 4.57.3 by @dependabot in [#1594](https://github.com/promptfoo/promptfoo/pull/1594)
+- **chore(deps):** Bump openai from 4.57.3 to 4.58.0 by @dependabot in [#1608](https://github.com/artef/artef/pull/1608)
+- **chore(deps):** Bump openai from 4.57.2 to 4.57.3 by @dependabot in [#1594](https://github.com/artef/artef/pull/1594)
 
 ### Documentation
 
-- **docs(redteam):** Red team introduction by @typpo in [commit ba5fe14c](https://github.com/promptfoo/promptfoo/commit/ba5fe14c) and [commit 60624456](https://github.com/promptfoo/promptfoo/commit/60624456)
-- **docs(redteam):** Minor redteam update by @typpo in [commit 7cad8da5](https://github.com/promptfoo/promptfoo/commit/7cad8da5)
+- **docs(redteam):** Red team introduction by @typpo in [commit ba5fe14c](https://github.com/artef/artef/commit/ba5fe14c) and [commit 60624456](https://github.com/artef/artef/commit/60624456)
+- **docs(redteam):** Minor redteam update by @typpo in [commit 7cad8da5](https://github.com/artef/artef/commit/7cad8da5)
 
 ### Tests
 
-- **test(redteam):** Enhance nested quotes handling in parseGeneratedPrompts by @mldangelo in [commit 36f6464a](https://github.com/promptfoo/promptfoo/commit/36f6464a)
+- **test(redteam):** Enhance nested quotes handling in parseGeneratedPrompts by @mldangelo in [commit 36f6464a](https://github.com/artef/artef/commit/36f6464a)
 
 ## [0.84.1] - 2024-09-04
 
@@ -8358,7 +8358,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore: clean up some redteam onboarding questions by @typpo
 - chore: export redteam plugins by @typpo
 - chore: rename envar by @typpo
-- chore: add `PROMPTFOO_NO_REDTEAM_MODERATION` envar by @typpo
+- chore: add `artef_NO_REDTEAM_MODERATION` envar by @typpo
 - chore(redteam): add progress bar to multilingual strategy by @mldangelo
 - chore(redteam): export extraction functions by @mldangelo
 - chore(docker): install peer dependencies during build by @mldangelo
@@ -8406,22 +8406,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **fix:** redteam progress bar by @typpo in [#1548](https://github.com/promptfoo/promptfoo/pull/1548)
-- **fix:** redteam grading should use defaultTest by @typpo in [#1549](https://github.com/promptfoo/promptfoo/pull/1549)
-- **refactor:** move extractJsonObjects to json utility module by @mldangelo in [#1539](https://github.com/promptfoo/promptfoo/pull/1539)
+- **fix:** redteam progress bar by @typpo in [#1548](https://github.com/artef/artef/pull/1548)
+- **fix:** redteam grading should use defaultTest by @typpo in [#1549](https://github.com/artef/artef/pull/1549)
+- **refactor:** move extractJsonObjects to json utility module by @mldangelo in [#1539](https://github.com/artef/artef/pull/1539)
 
 ### Fixed
 
-- **fix(redteam):** fix modifier handling in PluginBase by @mldangelo in [#1538](https://github.com/promptfoo/promptfoo/pull/1538)
-- **fix(testCases):** improve test case generation with retry logic by @mldangelo in [#1544](https://github.com/promptfoo/promptfoo/pull/1544)
-- **fix(docker):** link peer dependencies in Docker build by @mldangelo in [#1545](https://github.com/promptfoo/promptfoo/pull/1545)
-- **fix(devcontainer):** simplify and standardize development environment by @mldangelo in [#1547](https://github.com/promptfoo/promptfoo/pull/1547)
+- **fix(redteam):** fix modifier handling in PluginBase by @mldangelo in [#1538](https://github.com/artef/artef/pull/1538)
+- **fix(testCases):** improve test case generation with retry logic by @mldangelo in [#1544](https://github.com/artef/artef/pull/1544)
+- **fix(docker):** link peer dependencies in Docker build by @mldangelo in [#1545](https://github.com/artef/artef/pull/1545)
+- **fix(devcontainer):** simplify and standardize development environment by @mldangelo in [#1547](https://github.com/artef/artef/pull/1547)
 
 ### Dependencies
 
-- **chore(deps):** update dependencies by @mldangelo in [#1540](https://github.com/promptfoo/promptfoo/pull/1540)
-- **chore(deps):** bump @anthropic-ai/sdk from 0.27.0 to 0.27.1 by @dependabot in [#1541](https://github.com/promptfoo/promptfoo/pull/1541)
-- **chore(deps):** bump openai from 4.56.0 to 4.56.1 by @dependabot in [#1542](https://github.com/promptfoo/promptfoo/pull/1542)
+- **chore(deps):** update dependencies by @mldangelo in [#1540](https://github.com/artef/artef/pull/1540)
+- **chore(deps):** bump @anthropic-ai/sdk from 0.27.0 to 0.27.1 by @dependabot in [#1541](https://github.com/artef/artef/pull/1541)
+- **chore(deps):** bump openai from 4.56.0 to 4.56.1 by @dependabot in [#1542](https://github.com/artef/artef/pull/1542)
 
 ## [0.81.3] - 2024-08-28
 
@@ -8488,7 +8488,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat: report view sidebar for previewing test failures (#1522)
 - chore: add plugin/strategy descriptions (#1520)
-- chore: add `promptfoo redteam plugins` command to list plugins (#1523)
+- chore: add `artef redteam plugins` command to list plugins (#1523)
 - chore: clear cache status messages (#1517)
 
 ### Fixed
@@ -8504,12 +8504,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **Add Support for Embeddings API (Cohere)**: Added support for the embeddings API. [#1502](https://github.com/promptfoo/promptfoo/pull/1502) by @typpo
-- **Improve Download Menu**: Enhanced the web UI by improving the download menu, adding an option to download human eval test cases, and adding tests. [#1500](https://github.com/promptfoo/promptfoo/pull/1500) by @mldangelo
-- **Python IPC Encoding**: Resolved an issue by ensuring that Python IPC uses UTF-8 encoding. [#1511](https://github.com/promptfoo/promptfoo/pull/1511) by @typpo
+- **Add Support for Embeddings API (Cohere)**: Added support for the embeddings API. [#1502](https://github.com/artef/artef/pull/1502) by @typpo
+- **Improve Download Menu**: Enhanced the web UI by improving the download menu, adding an option to download human eval test cases, and adding tests. [#1500](https://github.com/artef/artef/pull/1500) by @mldangelo
+- **Python IPC Encoding**: Resolved an issue by ensuring that Python IPC uses UTF-8 encoding. [#1511](https://github.com/artef/artef/pull/1511) by @typpo
 - **Dependencies**:
-  - Bumped `@anthropic-ai/sdk` from `0.26.1` to `0.27.0`. [#1507](https://github.com/promptfoo/promptfoo/pull/1507) by @dependabot
-  - Upgraded Docusaurus to version `3.5.2`. [#1512](https://github.com/promptfoo/promptfoo/pull/1512) by @mldangelo
+  - Bumped `@anthropic-ai/sdk` from `0.26.1` to `0.27.0`. [#1507](https://github.com/artef/artef/pull/1507) by @dependabot
+  - Upgraded Docusaurus to version `3.5.2`. [#1512](https://github.com/artef/artef/pull/1512) by @mldangelo
 
 ## [0.80.2] - 2024-08-22
 
@@ -8551,22 +8551,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **Multilingual Strategy**: Added multilingual strategy by @typpo in [#1483](https://github.com/promptfoo/promptfoo/pull/1483)
-- **Redteam**: Improved test generation and reporting by @mldangelo in [#1481](https://github.com/promptfoo/promptfoo/pull/1481)
-- **Evaluation**: Removed interactive providers option by @mldangelo in [#1487](https://github.com/promptfoo/promptfoo/pull/1487)
-- **Hosted Load**: Fixed hosted load shared eval by @sklein12 in [#1482](https://github.com/promptfoo/promptfoo/pull/1482)
-- **Shared Evals**: Generated correct URL for hosted shared evals by @sklein12 in [#1484](https://github.com/promptfoo/promptfoo/pull/1484)
-- **Assertions**: Updated error messages for context-relevance and context-faithfulness by @mldangelo in [#1485](https://github.com/promptfoo/promptfoo/pull/1485)
-- **Python Provider**: Included vars in Python provider cache key by @typpo in [#1493](https://github.com/promptfoo/promptfoo/pull/1493)
-- **Prompt Extraction**: Fixed prompt extraction during redteam generation by @sklein12 in [#1494](https://github.com/promptfoo/promptfoo/pull/1494)
-- **Matchers**: Fixed floating point comparisons in matchers by @typpo in [#1486](https://github.com/promptfoo/promptfoo/pull/1486)
-- **Redteam Generation**: Fixed prompt setup during redteam generation by @sklein12 in [#1496](https://github.com/promptfoo/promptfoo/pull/1496)
-- **Harmful Tests**: Improved test generation and deduplication by @mldangelo in [#1480](https://github.com/promptfoo/promptfoo/pull/1480)
-- **ESLint**: Added and configured eslint-plugin-unicorn by @mldangelo in [#1489](https://github.com/promptfoo/promptfoo/pull/1489)
-- **Dependencies**: Bumped @aws-sdk/client-bedrock-runtime from 3.632.0 to 3.635.0 by @dependabot in [#1490](https://github.com/promptfoo/promptfoo/pull/1490)
+- **Multilingual Strategy**: Added multilingual strategy by @typpo in [#1483](https://github.com/artef/artef/pull/1483)
+- **Redteam**: Improved test generation and reporting by @mldangelo in [#1481](https://github.com/artef/artef/pull/1481)
+- **Evaluation**: Removed interactive providers option by @mldangelo in [#1487](https://github.com/artef/artef/pull/1487)
+- **Hosted Load**: Fixed hosted load shared eval by @sklein12 in [#1482](https://github.com/artef/artef/pull/1482)
+- **Shared Evals**: Generated correct URL for hosted shared evals by @sklein12 in [#1484](https://github.com/artef/artef/pull/1484)
+- **Assertions**: Updated error messages for context-relevance and context-faithfulness by @mldangelo in [#1485](https://github.com/artef/artef/pull/1485)
+- **Python Provider**: Included vars in Python provider cache key by @typpo in [#1493](https://github.com/artef/artef/pull/1493)
+- **Prompt Extraction**: Fixed prompt extraction during redteam generation by @sklein12 in [#1494](https://github.com/artef/artef/pull/1494)
+- **Matchers**: Fixed floating point comparisons in matchers by @typpo in [#1486](https://github.com/artef/artef/pull/1486)
+- **Redteam Generation**: Fixed prompt setup during redteam generation by @sklein12 in [#1496](https://github.com/artef/artef/pull/1496)
+- **Harmful Tests**: Improved test generation and deduplication by @mldangelo in [#1480](https://github.com/artef/artef/pull/1480)
+- **ESLint**: Added and configured eslint-plugin-unicorn by @mldangelo in [#1489](https://github.com/artef/artef/pull/1489)
+- **Dependencies**: Bumped @aws-sdk/client-bedrock-runtime from 3.632.0 to 3.635.0 by @dependabot in [#1490](https://github.com/artef/artef/pull/1490)
 - **Crescendo**: Crescendo now uses gpt-4o-mini instead of gpt-4o by @typpo
 - **Environment Variables**: Added GROQ_API_KEY and alphabetized 3rd party environment variables by @mldangelo
-- **Enterprise Breakdown**: Added enterprise breakdown by @typpo in [#1495](https://github.com/promptfoo/promptfoo/pull/1495)
+- **Enterprise Breakdown**: Added enterprise breakdown by @typpo in [#1495](https://github.com/artef/artef/pull/1495)
 
 ## [0.79.0] - 2024-08-20
 
@@ -8605,27 +8605,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Tests
 
-- test(config): run tests over example promptfoo configs by @mldangelo in #1475
+- test(config): run tests over example artef configs by @mldangelo in #1475
 
 ## [0.78.3] - 2024-08-19
 
 ### Added
 
-- feat(redteam): add base path to CLI state for redteam generate by @mldangelo in [#1464](https://github.com/promptfoo/promptfoo/pull/1464)
-- feat(eval): add global pass rate threshold by @mldangelo in [#1443](https://github.com/promptfoo/promptfoo/pull/1443)
+- feat(redteam): add base path to CLI state for redteam generate by @mldangelo in [#1464](https://github.com/artef/artef/pull/1464)
+- feat(eval): add global pass rate threshold by @mldangelo in [#1443](https://github.com/artef/artef/pull/1443)
 
 ### Changed
 
-- chore: check config.redteam instead of config.metadata.redteam by @mldangelo in [#1463](https://github.com/promptfoo/promptfoo/pull/1463)
-- chore: Add vscode settings for prettier formatting by @sklein12 in [#1469](https://github.com/promptfoo/promptfoo/pull/1469)
-- build: add defaults for supabase environment variables by @sklein12 in [#1468](https://github.com/promptfoo/promptfoo/pull/1468)
-- fix: smarter caching in exec provider by @typpo in [#1467](https://github.com/promptfoo/promptfoo/pull/1467)
-- docs: display consistent instructions for npx vs npm vs brew by @typpo in [#1465](https://github.com/promptfoo/promptfoo/pull/1465)
+- chore: check config.redteam instead of config.metadata.redteam by @mldangelo in [#1463](https://github.com/artef/artef/pull/1463)
+- chore: Add vscode settings for prettier formatting by @sklein12 in [#1469](https://github.com/artef/artef/pull/1469)
+- build: add defaults for supabase environment variables by @sklein12 in [#1468](https://github.com/artef/artef/pull/1468)
+- fix: smarter caching in exec provider by @typpo in [#1467](https://github.com/artef/artef/pull/1467)
+- docs: display consistent instructions for npx vs npm vs brew by @typpo in [#1465](https://github.com/artef/artef/pull/1465)
 
 ### Dependencies
 
-- chore(deps): bump openai from 4.55.9 to 4.56.0 by @dependabot in [#1466](https://github.com/promptfoo/promptfoo/pull/1466)
-- chore(deps): replace rouge with js-rouge by @QuarkNerd in [#1420](https://github.com/promptfoo/promptfoo/pull/1420)
+- chore(deps): bump openai from 4.55.9 to 4.56.0 by @dependabot in [#1466](https://github.com/artef/artef/pull/1466)
+- chore(deps): replace rouge with js-rouge by @QuarkNerd in [#1420](https://github.com/artef/artef/pull/1420)
 
 ## [0.78.2] - 2024-08-18
 
@@ -8642,41 +8642,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat:** Helicone integration by @maamalama in [#1434](https://github.com/promptfoo/promptfoo/pull/1434)
-- **fix:** is-sql assertion `databaseType` not `database` by @typpo in [#1451](https://github.com/promptfoo/promptfoo/pull/1451)
-- **chore:** Use temporary file for Python interprocess communication by @enkoder in [#1447](https://github.com/promptfoo/promptfoo/pull/1447)
-- **chore:** Redteam onboarding updates by @typpo in [#1453](https://github.com/promptfoo/promptfoo/pull/1453)
-- **site:** Add blog post by @typpo in [#1444](https://github.com/promptfoo/promptfoo/pull/1444)
+- **feat:** Helicone integration by @maamalama in [#1434](https://github.com/artef/artef/pull/1434)
+- **fix:** is-sql assertion `databaseType` not `database` by @typpo in [#1451](https://github.com/artef/artef/pull/1451)
+- **chore:** Use temporary file for Python interprocess communication by @enkoder in [#1447](https://github.com/artef/artef/pull/1447)
+- **chore:** Redteam onboarding updates by @typpo in [#1453](https://github.com/artef/artef/pull/1453)
+- **site:** Add blog post by @typpo in [#1444](https://github.com/artef/artef/pull/1444)
 
 ### Fixed
 
-- **fix(redteam):** Improve iterative tree-based red team attack provider by @mldangelo in [#1458](https://github.com/promptfoo/promptfoo/pull/1458)
+- **fix(redteam):** Improve iterative tree-based red team attack provider by @mldangelo in [#1458](https://github.com/artef/artef/pull/1458)
 
 ### Dependencies
 
-- **chore(deps):** Update various dependencies by @mldangelo in [#1442](https://github.com/promptfoo/promptfoo/pull/1442)
-- **chore(deps):** Bump `@aws-sdk/client-bedrock-runtime` from 3.629.0 to 3.631.0 by @dependabot in [#1448](https://github.com/promptfoo/promptfoo/pull/1448)
-- **chore(deps):** Bump `@aws-sdk/client-bedrock-runtime` from 3.631.0 to 3.632.0 by @dependabot in [#1455](https://github.com/promptfoo/promptfoo/pull/1455)
-- **chore(deps):** Bump `@anthropic-ai/sdk` from 0.25.2 to 0.26.0 by @dependabot in [#1449](https://github.com/promptfoo/promptfoo/pull/1449)
-- **chore(deps):** Bump `@anthropic-ai/sdk` from 0.26.0 to 0.26.1 by @dependabot in [#1456](https://github.com/promptfoo/promptfoo/pull/1456)
-- **chore(deps):** Bump `openai` from 4.55.7 to 4.55.9 by @dependabot in [#1457](https://github.com/promptfoo/promptfoo/pull/1457)
+- **chore(deps):** Update various dependencies by @mldangelo in [#1442](https://github.com/artef/artef/pull/1442)
+- **chore(deps):** Bump `@aws-sdk/client-bedrock-runtime` from 3.629.0 to 3.631.0 by @dependabot in [#1448](https://github.com/artef/artef/pull/1448)
+- **chore(deps):** Bump `@aws-sdk/client-bedrock-runtime` from 3.631.0 to 3.632.0 by @dependabot in [#1455](https://github.com/artef/artef/pull/1455)
+- **chore(deps):** Bump `@anthropic-ai/sdk` from 0.25.2 to 0.26.0 by @dependabot in [#1449](https://github.com/artef/artef/pull/1449)
+- **chore(deps):** Bump `@anthropic-ai/sdk` from 0.26.0 to 0.26.1 by @dependabot in [#1456](https://github.com/artef/artef/pull/1456)
+- **chore(deps):** Bump `openai` from 4.55.7 to 4.55.9 by @dependabot in [#1457](https://github.com/artef/artef/pull/1457)
 
 ## [0.78.0] - 2024-08-14
 
 ### Changed
 
-- **Web UI**: Added ability to choose prompt/provider column in report view by @typpo in [#1426](https://github.com/promptfoo/promptfoo/pull/1426)
-- **Eval**: Support loading scenarios and tests from external files by @mldangelo in [#1432](https://github.com/promptfoo/promptfoo/pull/1432)
-- **Redteam**: Added language support for generated tests by @mldangelo in [#1433](https://github.com/promptfoo/promptfoo/pull/1433)
-- **Transform**: Support custom function names in file transforms by @mldangelo in [#1435](https://github.com/promptfoo/promptfoo/pull/1435)
-- **Extension Hook API**: Introduced extension hook API by @aantn in [#1249](https://github.com/promptfoo/promptfoo/pull/1249)
-- **Report**: Hide unused plugins in report by @typpo in [#1425](https://github.com/promptfoo/promptfoo/pull/1425)
-- **Memory**: Optimize memory usage in `listPreviousResults` by not loading all results into memory by @typpo in [#1439](https://github.com/promptfoo/promptfoo/pull/1439)
-- **TypeScript**: Added TypeScript `promptfooconfig` example by @mldangelo in [#1427](https://github.com/promptfoo/promptfoo/pull/1427)
-- **Tests**: Moved `evaluatorHelpers` tests to a separate file by @mldangelo in [#1437](https://github.com/promptfoo/promptfoo/pull/1437)
-- **Dev**: Bumped `@aws-sdk/client-bedrock-runtime` from 3.624.0 to 3.629.0 by @dependabot in [#1428](https://github.com/promptfoo/promptfoo/pull/1428)
-- **SDK**: Bumped `@anthropic-ai/sdk` from 0.25.1 to 0.25.2 by @dependabot in [#1429](https://github.com/promptfoo/promptfoo/pull/1429)
-- **SDK**: Bumped `openai` from 4.55.4 to 4.55.7 by @dependabot in [#1436](https://github.com/promptfoo/promptfoo/pull/1436)
+- **Web UI**: Added ability to choose prompt/provider column in report view by @typpo in [#1426](https://github.com/artef/artef/pull/1426)
+- **Eval**: Support loading scenarios and tests from external files by @mldangelo in [#1432](https://github.com/artef/artef/pull/1432)
+- **Redteam**: Added language support for generated tests by @mldangelo in [#1433](https://github.com/artef/artef/pull/1433)
+- **Transform**: Support custom function names in file transforms by @mldangelo in [#1435](https://github.com/artef/artef/pull/1435)
+- **Extension Hook API**: Introduced extension hook API by @aantn in [#1249](https://github.com/artef/artef/pull/1249)
+- **Report**: Hide unused plugins in report by @typpo in [#1425](https://github.com/artef/artef/pull/1425)
+- **Memory**: Optimize memory usage in `listPreviousResults` by not loading all results into memory by @typpo in [#1439](https://github.com/artef/artef/pull/1439)
+- **TypeScript**: Added TypeScript `artefconfig` example by @mldangelo in [#1427](https://github.com/artef/artef/pull/1427)
+- **Tests**: Moved `evaluatorHelpers` tests to a separate file by @mldangelo in [#1437](https://github.com/artef/artef/pull/1437)
+- **Dev**: Bumped `@aws-sdk/client-bedrock-runtime` from 3.624.0 to 3.629.0 by @dependabot in [#1428](https://github.com/artef/artef/pull/1428)
+- **SDK**: Bumped `@anthropic-ai/sdk` from 0.25.1 to 0.25.2 by @dependabot in [#1429](https://github.com/artef/artef/pull/1429)
+- **SDK**: Bumped `openai` from 4.55.4 to 4.55.7 by @dependabot in [#1436](https://github.com/artef/artef/pull/1436)
 
 ## [0.77.0] - 2024-08-12
 
@@ -8715,7 +8715,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat: add `delete eval latest` and `delete eval all` (#1383)
 - feat: bfla and bofa plugins (#1406)
 - feat: Support loading tools from multiple files (#1384)
-- feat: `promptfoo eval --description` override (#1399)
+- feat: `artef eval --description` override (#1399)
 - feat: add `default` strategy and remove `--add-strategies` (#1401)
 - feat: assume unrecognized openai models are chat models (#1404)
 - feat: excessive agency grader looks at tools (#1403)
@@ -8765,7 +8765,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat(webui): Download report as PDF by @typpo in #1348
 - feat(redteam): Add custom policy plugin by @mldangelo in #1346
-- feat(config): Add writePromptfooConfig function and orderKeys utility by @mldangelo in #1360
+- feat(config): Add writeartefConfig function and orderKeys utility by @mldangelo in #1360
 - feat(redteam): Add purpose and entities to defaultTest metadata by @mldangelo in #1359
 - feat(webui): Show metadata in details dialog by @typpo in #1362
 - feat(redteam): Add some simple requested strategies by @typpo in #1364
@@ -8795,22 +8795,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat**: Split types vs validators for prompts, providers, and redteam [#1325](https://github.com/promptfoo/promptfoo/pull/1325) by [@typpo](https://github.com/typpo)
-- **feat**: Load provider `tools` and `functions` from external file [#1342](https://github.com/promptfoo/promptfoo/pull/1342) by [@typpo](https://github.com/typpo)
-- **fix**: Show gray icon when there are no tests in report [#1335](https://github.com/promptfoo/promptfoo/pull/1335) by [@typpo](https://github.com/typpo)
-- **fix**: numTests calculation for previous evals [#1336](https://github.com/promptfoo/promptfoo/pull/1336) by [@onyck](https://github.com/onyck)
-- **fix**: Only show the number of tests actually run in the eval [#1338](https://github.com/promptfoo/promptfoo/pull/1338) by [@typpo](https://github.com/typpo)
-- **fix**: better-sqlite3 in arm64 docker image [#1344](https://github.com/promptfoo/promptfoo/pull/1344) by [@cmrfrd](https://github.com/cmrfrd)
-- **fix**: Correct positive example in DEFAULT_GRADING_PROMPT [#1337](https://github.com/promptfoo/promptfoo/pull/1337) by [@tbuckley](https://github.com/tbuckley)
-- **chore**: Integrate red team evaluation into promptfoo init [#1334](https://github.com/promptfoo/promptfoo/pull/1334) by [@mldangelo](https://github.com/mldangelo)
-- **chore**: Enforce consistent type imports [#1341](https://github.com/promptfoo/promptfoo/pull/1341) by [@mldangelo](https://github.com/mldangelo)
-- **refactor(redteam)**: Update plugin architecture and improve error handling [#1343](https://github.com/promptfoo/promptfoo/pull/1343) by [@mldangelo](https://github.com/mldangelo)
-- **docs**: Expand installation instructions in README and docs [#1345](https://github.com/promptfoo/promptfoo/pull/1345) by [@mldangelo](https://github.com/mldangelo)
+- **feat**: Split types vs validators for prompts, providers, and redteam [#1325](https://github.com/artef/artef/pull/1325) by [@typpo](https://github.com/typpo)
+- **feat**: Load provider `tools` and `functions` from external file [#1342](https://github.com/artef/artef/pull/1342) by [@typpo](https://github.com/typpo)
+- **fix**: Show gray icon when there are no tests in report [#1335](https://github.com/artef/artef/pull/1335) by [@typpo](https://github.com/typpo)
+- **fix**: numTests calculation for previous evals [#1336](https://github.com/artef/artef/pull/1336) by [@onyck](https://github.com/onyck)
+- **fix**: Only show the number of tests actually run in the eval [#1338](https://github.com/artef/artef/pull/1338) by [@typpo](https://github.com/typpo)
+- **fix**: better-sqlite3 in arm64 docker image [#1344](https://github.com/artef/artef/pull/1344) by [@cmrfrd](https://github.com/cmrfrd)
+- **fix**: Correct positive example in DEFAULT_GRADING_PROMPT [#1337](https://github.com/artef/artef/pull/1337) by [@tbuckley](https://github.com/tbuckley)
+- **chore**: Integrate red team evaluation into artef init [#1334](https://github.com/artef/artef/pull/1334) by [@mldangelo](https://github.com/mldangelo)
+- **chore**: Enforce consistent type imports [#1341](https://github.com/artef/artef/pull/1341) by [@mldangelo](https://github.com/mldangelo)
+- **refactor(redteam)**: Update plugin architecture and improve error handling [#1343](https://github.com/artef/artef/pull/1343) by [@mldangelo](https://github.com/mldangelo)
+- **docs**: Expand installation instructions in README and docs [#1345](https://github.com/artef/artef/pull/1345) by [@mldangelo](https://github.com/mldangelo)
 
 ### Dependencies
 
-- **chore(deps)**: Bump @azure/identity from 4.4.0 to 4.4.1 [#1340](https://github.com/promptfoo/promptfoo/pull/1340) by [@dependabot](https://github.com/dependabot)
-- **chore(deps)**: Bump the github-actions group with 3 updates [#1339](https://github.com/promptfoo/promptfoo/pull/1339) by [@dependabot](https://github.com/dependabot)
+- **chore(deps)**: Bump @azure/identity from 4.4.0 to 4.4.1 [#1340](https://github.com/artef/artef/pull/1340) by [@dependabot](https://github.com/dependabot)
+- **chore(deps)**: Bump the github-actions group with 3 updates [#1339](https://github.com/artef/artef/pull/1339) by [@dependabot](https://github.com/dependabot)
 
 ## [0.73.9] - 2024-07-30
 
@@ -8830,25 +8830,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - **Features:**
-  - feat: handle rate limits in generic fetch path by @typpo in https://github.com/promptfoo/promptfoo/pull/1324
+  - feat: handle rate limits in generic fetch path by @typpo in https://github.com/artef/artef/pull/1324
 - **Fixes:**
-  - fix: show default vars in table by @typpo in https://github.com/promptfoo/promptfoo/pull/1306
-  - fix: chain provider and test transform by @fvdnabee in https://github.com/promptfoo/promptfoo/pull/1316
+  - fix: show default vars in table by @typpo in https://github.com/artef/artef/pull/1306
+  - fix: chain provider and test transform by @fvdnabee in https://github.com/artef/artef/pull/1316
 - **Refactors:**
-  - refactor(redteam): extract entity and purpose logic, update imitation plugin by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1301
+  - refactor(redteam): extract entity and purpose logic, update imitation plugin by @mldangelo in https://github.com/artef/artef/pull/1301
 - **Chores:**
-  - chore(deps): bump openai from 4.53.1 to 4.53.2 by @dependabot in https://github.com/promptfoo/promptfoo/pull/1314
-  - chore: set page titles by @typpo in https://github.com/promptfoo/promptfoo/pull/1315
-  - chore: add devcontainer setup by @cmrfrd in https://github.com/promptfoo/promptfoo/pull/1317
-  - chore(webui): persist column selection in evals view by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1302
-  - chore(redteam): allow multiple provider selection by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1319
-  - chore(deps): bump @anthropic-ai/sdk from 0.24.3 to 0.25.0 by @dependabot in https://github.com/promptfoo/promptfoo/pull/1326
-  - chore(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.620.0 to 3.620.1 by @dependabot in https://github.com/promptfoo/promptfoo/pull/1327
-  - chore(deps): update dev dependencies and minor package versions by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1331
+  - chore(deps): bump openai from 4.53.1 to 4.53.2 by @dependabot in https://github.com/artef/artef/pull/1314
+  - chore: set page titles by @typpo in https://github.com/artef/artef/pull/1315
+  - chore: add devcontainer setup by @cmrfrd in https://github.com/artef/artef/pull/1317
+  - chore(webui): persist column selection in evals view by @mldangelo in https://github.com/artef/artef/pull/1302
+  - chore(redteam): allow multiple provider selection by @mldangelo in https://github.com/artef/artef/pull/1319
+  - chore(deps): bump @anthropic-ai/sdk from 0.24.3 to 0.25.0 by @dependabot in https://github.com/artef/artef/pull/1326
+  - chore(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.620.0 to 3.620.1 by @dependabot in https://github.com/artef/artef/pull/1327
+  - chore(deps): update dev dependencies and minor package versions by @mldangelo in https://github.com/artef/artef/pull/1331
 - **CI/CD:**
-  - ci: add assets generation job and update json schema by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1321
-  - docs: add CITATION.cff file by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1322
-  - docs: update examples and docs to use gpt-4o and gpt-4o-mini models by @mldangelo in https://github.com/promptfoo/promptfoo/pull/1323
+  - ci: add assets generation job and update json schema by @mldangelo in https://github.com/artef/artef/pull/1321
+  - docs: add CITATION.cff file by @mldangelo in https://github.com/artef/artef/pull/1322
+  - docs: update examples and docs to use gpt-4o and gpt-4o-mini models by @mldangelo in https://github.com/artef/artef/pull/1323
 - chore(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.620.0 to 3.620.1 (#1327)
 
 ### Documentation
@@ -8898,14 +8898,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **Standalone graders for redteam** by [@typpo](https://github.com/typpo) in [#1256](https://github.com/promptfoo/promptfoo/pull/1256)
-- **Punycode deprecation warning on node 22** by [@typpo](https://github.com/typpo) in [#1287](https://github.com/promptfoo/promptfoo/pull/1287)
-- **Improve iterative providers and update provider API interface to pass original prompt** by [@mldangelo](https://github.com/mldangelo) in [#1293](https://github.com/promptfoo/promptfoo/pull/1293)
-- **Add issue templates** by [@typpo](https://github.com/typpo) in [#1288](https://github.com/promptfoo/promptfoo/pull/1288)
-- **Support TS files for prompts providers and assertions** by [@benasher44](https://github.com/benasher44) in [#1286](https://github.com/promptfoo/promptfoo/pull/1286)
-- **Update dependencies** by [@mldangelo](https://github.com/mldangelo) in [#1292](https://github.com/promptfoo/promptfoo/pull/1292)
-- **Move circular dependency check to style-check job** by [@mldangelo](https://github.com/mldangelo) in [#1291](https://github.com/promptfoo/promptfoo/pull/1291)
-- **Add examples for embedding and classification providers** by [@Luca-Hackl](https://github.com/Luca-Hackl) in [#1296](https://github.com/promptfoo/promptfoo/pull/1296)
+- **Standalone graders for redteam** by [@typpo](https://github.com/typpo) in [#1256](https://github.com/artef/artef/pull/1256)
+- **Punycode deprecation warning on node 22** by [@typpo](https://github.com/typpo) in [#1287](https://github.com/artef/artef/pull/1287)
+- **Improve iterative providers and update provider API interface to pass original prompt** by [@mldangelo](https://github.com/mldangelo) in [#1293](https://github.com/artef/artef/pull/1293)
+- **Add issue templates** by [@typpo](https://github.com/typpo) in [#1288](https://github.com/artef/artef/pull/1288)
+- **Support TS files for prompts providers and assertions** by [@benasher44](https://github.com/benasher44) in [#1286](https://github.com/artef/artef/pull/1286)
+- **Update dependencies** by [@mldangelo](https://github.com/mldangelo) in [#1292](https://github.com/artef/artef/pull/1292)
+- **Move circular dependency check to style-check job** by [@mldangelo](https://github.com/mldangelo) in [#1291](https://github.com/artef/artef/pull/1291)
+- **Add examples for embedding and classification providers** by [@Luca-Hackl](https://github.com/Luca-Hackl) in [#1296](https://github.com/artef/artef/pull/1296)
 
 ## [0.73.6] - 2024-07-25
 
@@ -8929,7 +8929,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore: move types files (#1278)
 - refactor(redteam): rename strategies and improve type safety (#1275)
 - ci: re-enable Node 22.x in CI matrix (#1272)
-- chore: support loading .{,m,c}ts promptfooconfig files (#1284)
+- chore: support loading .{,m,c}ts artefconfig files (#1284)
 
 ### Dependencies
 
@@ -8940,25 +8940,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(cli):** Add the ability to share a specific eval by [@typpo](https://github.com/promptfoo/promptfoo/pull/1250)
-- **feat(webui):** Hide long metrics lists by [@typpo](https://github.com/promptfoo/promptfoo/pull/1262)
+- **feat(cli):** Add the ability to share a specific eval by [@typpo](https://github.com/artef/artef/pull/1250)
+- **feat(webui):** Hide long metrics lists by [@typpo](https://github.com/artef/artef/pull/1262)
 - feat(webui): hide long metrics lists (#1262)
 - feat: ability to share a specific eval (#1250)
 
 ### Changed
 
-- **fix:** Resolve node-fetch TypeScript errors by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1254)
-- **fix:** Correct color error in local `checkNodeVersion` test by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1255)
-- **fix:** Multiple Docker fixes by [@typpo](https://github.com/promptfoo/promptfoo/pull/1257)
-- **fix:** Improve `--add-strategies` validation error messages by [@typpo](https://github.com/promptfoo/promptfoo/pull/1260)
-- **chore:** Warn when a variable is named `assert` by [@typpo](https://github.com/promptfoo/promptfoo/pull/1259)
-- **chore:** Update Llama examples and add support for chat-formatted prompts in Replicate by [@typpo](https://github.com/promptfoo/promptfoo/pull/1261)
+- **fix:** Resolve node-fetch TypeScript errors by [@mldangelo](https://github.com/artef/artef/pull/1254)
+- **fix:** Correct color error in local `checkNodeVersion` test by [@mldangelo](https://github.com/artef/artef/pull/1255)
+- **fix:** Multiple Docker fixes by [@typpo](https://github.com/artef/artef/pull/1257)
+- **fix:** Improve `--add-strategies` validation error messages by [@typpo](https://github.com/artef/artef/pull/1260)
+- **chore:** Warn when a variable is named `assert` by [@typpo](https://github.com/artef/artef/pull/1259)
+- **chore:** Update Llama examples and add support for chat-formatted prompts in Replicate by [@typpo](https://github.com/artef/artef/pull/1261)
 - chore: update llama examples and add support for chat formatted prompts in Replicate (#1261)
 - chore: warn when a var is named assert (#1259)
 
 ### Fixed
 
-- **fix(redteam):** Allow arbitrary `injectVar` name for redteam providers by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1253)
+- **fix(redteam):** Allow arbitrary `injectVar` name for redteam providers by [@mldangelo](https://github.com/artef/artef/pull/1253)
 - fix: make --add-strategies validation have useful error (#1260)
 - fix: multiple docker fixes (#1257)
 - fix: color error in local checkNodeVersion test (#1255)
@@ -8969,32 +8969,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **schema**: Update config schema for strategies by @mldangelo in [#1244](https://github.com/promptfoo/promptfoo/pull/1244)
-- **defaultTest**: Fix scenario assert merging by @onyck in [#1251](https://github.com/promptfoo/promptfoo/pull/1251)
-- **webui**: Handle port already in use error by @mldangelo in [#1246](https://github.com/promptfoo/promptfoo/pull/1246)
-- **webui**: Update provider list in `ProviderSelector` and add tests by @mldangelo in [#1245](https://github.com/promptfoo/promptfoo/pull/1245)
-- **site**: Add blog post by @typpo in [#1247](https://github.com/promptfoo/promptfoo/pull/1247)
-- **site**: Improve navigation and consistency by @mldangelo in [#1248](https://github.com/promptfoo/promptfoo/pull/1248)
-- **site**: Add careers page by @mldangelo in [#1222](https://github.com/promptfoo/promptfoo/pull/1222)
-- **docs**: Full RAG example by @typpo in [#1228](https://github.com/promptfoo/promptfoo/pull/1228)
+- **schema**: Update config schema for strategies by @mldangelo in [#1244](https://github.com/artef/artef/pull/1244)
+- **defaultTest**: Fix scenario assert merging by @onyck in [#1251](https://github.com/artef/artef/pull/1251)
+- **webui**: Handle port already in use error by @mldangelo in [#1246](https://github.com/artef/artef/pull/1246)
+- **webui**: Update provider list in `ProviderSelector` and add tests by @mldangelo in [#1245](https://github.com/artef/artef/pull/1245)
+- **site**: Add blog post by @typpo in [#1247](https://github.com/artef/artef/pull/1247)
+- **site**: Improve navigation and consistency by @mldangelo in [#1248](https://github.com/artef/artef/pull/1248)
+- **site**: Add careers page by @mldangelo in [#1222](https://github.com/artef/artef/pull/1222)
+- **docs**: Full RAG example by @typpo in [#1228](https://github.com/artef/artef/pull/1228)
 
 ## [0.73.3] - 2024-07-23
 
 ### Changed
 
-- **WebUI:** Make eval switcher more obvious by @typpo in [#1232](https://github.com/promptfoo/promptfoo/pull/1232)
-- **Redteam:** Add iterative tree provider and strategy by @mldangelo in [#1238](https://github.com/promptfoo/promptfoo/pull/1238)
-- Improve `CallApiFunctionSchema`/`ProviderFunction` type by @aloisklink in [#1235](https://github.com/promptfoo/promptfoo/pull/1235)
-- **Redteam:** CLI nits, plugins, provider functionality, and documentation by @mldangelo in [#1231](https://github.com/promptfoo/promptfoo/pull/1231)
-- **Redteam:** PII false positives by @typpo in [#1233](https://github.com/promptfoo/promptfoo/pull/1233)
-- **Redteam:** `--add-strategies` flag didn't work by @typpo in [#1234](https://github.com/promptfoo/promptfoo/pull/1234)
-- Cleanup logging and fix nextui TS error by @mldangelo in [#1243](https://github.com/promptfoo/promptfoo/pull/1243)
-- **CI:** Add registry URL to npm publish workflow by @mldangelo in [#1241](https://github.com/promptfoo/promptfoo/pull/1241)
-- Remove redundant chalk invocations by @mldangelo in [#1240](https://github.com/promptfoo/promptfoo/pull/1240)
-- Update dependencies by @mldangelo in [#1242](https://github.com/promptfoo/promptfoo/pull/1242)
-- Update some images by @typpo in [#1236](https://github.com/promptfoo/promptfoo/pull/1236)
-- More image updates by @typpo in [#1237](https://github.com/promptfoo/promptfoo/pull/1237)
-- Update capitalization of Promptfoo and fix site deprecation warning by @mldangelo in [#1239](https://github.com/promptfoo/promptfoo/pull/1239)
+- **WebUI:** Make eval switcher more obvious by @typpo in [#1232](https://github.com/artef/artef/pull/1232)
+- **Redteam:** Add iterative tree provider and strategy by @mldangelo in [#1238](https://github.com/artef/artef/pull/1238)
+- Improve `CallApiFunctionSchema`/`ProviderFunction` type by @aloisklink in [#1235](https://github.com/artef/artef/pull/1235)
+- **Redteam:** CLI nits, plugins, provider functionality, and documentation by @mldangelo in [#1231](https://github.com/artef/artef/pull/1231)
+- **Redteam:** PII false positives by @typpo in [#1233](https://github.com/artef/artef/pull/1233)
+- **Redteam:** `--add-strategies` flag didn't work by @typpo in [#1234](https://github.com/artef/artef/pull/1234)
+- Cleanup logging and fix nextui TS error by @mldangelo in [#1243](https://github.com/artef/artef/pull/1243)
+- **CI:** Add registry URL to npm publish workflow by @mldangelo in [#1241](https://github.com/artef/artef/pull/1241)
+- Remove redundant chalk invocations by @mldangelo in [#1240](https://github.com/artef/artef/pull/1240)
+- Update dependencies by @mldangelo in [#1242](https://github.com/artef/artef/pull/1242)
+- Update some images by @typpo in [#1236](https://github.com/artef/artef/pull/1236)
+- More image updates by @typpo in [#1237](https://github.com/artef/artef/pull/1237)
+- Update capitalization of artef and fix site deprecation warning by @mldangelo in [#1239](https://github.com/artef/artef/pull/1239)
 
 ## [0.73.2] - 2024-07-23
 
@@ -9015,8 +9015,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat(redteam): add 4 new basic plugins (#1201)
 - feat(redteam): improve test generation logic and add batching by @mldangelo in
-- feat(redteam): settings dialog (#1215)https://github.com/promptfoo/promptfoo/pull/1208
-- feat(redteam): introduce redteam section for promptfooconfig.yaml (#1192)
+- feat(redteam): settings dialog (#1215)https://github.com/artef/artef/pull/1208
+- feat(redteam): introduce redteam section for artefconfig.yaml (#1192)
 
 ### Changed
 
@@ -9027,7 +9027,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - docs: fix broken links (#1211)
 - site: image updates and bugfixes (#1217)
 - site: improve human readability of validator errors (#1221)
-- site: yaml/json config validator for promptfoo configs (#1207)
+- site: yaml/json config validator for artef configs (#1207)
 
 ### Fixed
 
@@ -9048,32 +9048,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **feat(openai):** add GPT-4o-mini models by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1196)
+- **feat(openai):** add GPT-4o-mini models by [@mldangelo](https://github.com/artef/artef/pull/1196)
 - feat(redteam): improve test generation logic and add batching (#1208)
 
 ### Changed
 
-- **feat:** add schema validation to `promptfooconfig.yaml` by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1185)
-- **fix:** base path for custom filter resolution by [@onyck](https://github.com/promptfoo/promptfoo/pull/1198)
-- **chore(redteam):** refactor PII categories and improve plugin handling by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1191)
-- **build(deps-dev):** bump `@aws-sdk/client-bedrock-runtime` from 3.614.0 to 3.616.0 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1203)
-- **docs:** add guide for comparing GPT-4o vs GPT-4o-mini by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1200)
-- **site:** contact page by [@typpo](https://github.com/promptfoo/promptfoo/pull/1190)
-- **site:** newsletter form by [@typpo](https://github.com/promptfoo/promptfoo/pull/1194)
-- **site:** miscellaneous images and improvements by [@typpo](https://github.com/promptfoo/promptfoo/pull/1199)
+- **feat:** add schema validation to `artefconfig.yaml` by [@mldangelo](https://github.com/artef/artef/pull/1185)
+- **fix:** base path for custom filter resolution by [@onyck](https://github.com/artef/artef/pull/1198)
+- **chore(redteam):** refactor PII categories and improve plugin handling by [@mldangelo](https://github.com/artef/artef/pull/1191)
+- **build(deps-dev):** bump `@aws-sdk/client-bedrock-runtime` from 3.614.0 to 3.616.0 by [@dependabot](https://github.com/artef/artef/pull/1203)
+- **docs:** add guide for comparing GPT-4o vs GPT-4o-mini by [@mldangelo](https://github.com/artef/artef/pull/1200)
+- **site:** contact page by [@typpo](https://github.com/artef/artef/pull/1190)
+- **site:** newsletter form by [@typpo](https://github.com/artef/artef/pull/1194)
+- **site:** miscellaneous images and improvements by [@typpo](https://github.com/artef/artef/pull/1199)
 - build(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.614.0 to 3.616.0 (#1203)
 - site: misc images and improvements (#1199)
 
 ### Fixed
 
-- **fix(webui):** eval ID not being properly set by [@typpo](https://github.com/promptfoo/promptfoo/pull/1195)
-- **fix(Dockerfile):** install curl for healthcheck by [@orange-anjou](https://github.com/promptfoo/promptfoo/pull/1204)
+- **fix(webui):** eval ID not being properly set by [@typpo](https://github.com/artef/artef/pull/1195)
+- **fix(Dockerfile):** install curl for healthcheck by [@orange-anjou](https://github.com/artef/artef/pull/1204)
 - fix(Dockerfile): install curl for healthcheck (#1204)
 - fix: base path for custom filter resolution (#1198)
 
 ### Tests
 
-- **test(webui):** add unit tests for `InfoModal` component by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1187)
+- **test(webui):** add unit tests for `InfoModal` component by [@mldangelo](https://github.com/artef/artef/pull/1187)
 
 ## [0.72.1] - 2024-07-18
 
@@ -9088,20 +9088,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - feat(openai): add gpt-4o-mini models (#1196)
-- feat: add schema validation to promptfooconfig.yaml (#1185)
+- feat: add schema validation to artefconfig.yaml (#1185)
 
 ### Changed
 
-- Fix: Consider model name when caching Bedrock responses by @fvdnabee in [#1181](https://github.com/promptfoo/promptfoo/pull/1181)
-- Fix: Parsing of the model name tag in Ollama embeddings provider by @minamijoyo in [#1189](https://github.com/promptfoo/promptfoo/pull/1189)
-- Refactor (redteam): Simplify CLI command structure and update provider options by @mldangelo in [#1174](https://github.com/promptfoo/promptfoo/pull/1174)
-- Refactor (types): Convert interfaces to Zod schemas by @mldangelo in [#1178](https://github.com/promptfoo/promptfoo/pull/1178)
-- Refactor (redteam): Improve type safety and simplify code structure by @mldangelo in [#1175](https://github.com/promptfoo/promptfoo/pull/1175)
-- Chore (redteam): Another injection by @typpo in [#1173](https://github.com/promptfoo/promptfoo/pull/1173)
-- Chore (deps): Upgrade inquirer to v10 by @mldangelo in [#1176](https://github.com/promptfoo/promptfoo/pull/1176)
-- Chore (redteam): Update CLI for test case generation by @mldangelo in [#1177](https://github.com/promptfoo/promptfoo/pull/1177)
-- Chore: Include hostname in share confirmation by @typpo in [#1183](https://github.com/promptfoo/promptfoo/pull/1183)
-- Build (deps-dev): Bump @azure/identity from 4.3.0 to 4.4.0 by @dependabot in [#1180](https://github.com/promptfoo/promptfoo/pull/1180)
+- Fix: Consider model name when caching Bedrock responses by @fvdnabee in [#1181](https://github.com/artef/artef/pull/1181)
+- Fix: Parsing of the model name tag in Ollama embeddings provider by @minamijoyo in [#1189](https://github.com/artef/artef/pull/1189)
+- Refactor (redteam): Simplify CLI command structure and update provider options by @mldangelo in [#1174](https://github.com/artef/artef/pull/1174)
+- Refactor (types): Convert interfaces to Zod schemas by @mldangelo in [#1178](https://github.com/artef/artef/pull/1178)
+- Refactor (redteam): Improve type safety and simplify code structure by @mldangelo in [#1175](https://github.com/artef/artef/pull/1175)
+- Chore (redteam): Another injection by @typpo in [#1173](https://github.com/artef/artef/pull/1173)
+- Chore (deps): Upgrade inquirer to v10 by @mldangelo in [#1176](https://github.com/artef/artef/pull/1176)
+- Chore (redteam): Update CLI for test case generation by @mldangelo in [#1177](https://github.com/artef/artef/pull/1177)
+- Chore: Include hostname in share confirmation by @typpo in [#1183](https://github.com/artef/artef/pull/1183)
+- Build (deps-dev): Bump @azure/identity from 4.3.0 to 4.4.0 by @dependabot in [#1180](https://github.com/artef/artef/pull/1180)
 - chore(redteam): refactor PII categories and improve plugin handling (#1191)
 - site: newsletter form (#1194)
 - site: contact page (#1190)
@@ -9142,42 +9142,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **Eval picker for web UI** by [@typpo](https://github.com/typpo) in [#1143](https://github.com/promptfoo/promptfoo/pull/1143)
-- **Update default model providers to Claude 3.5** by [@mldangelo](https://github.com/mldangelo) in [#1157](https://github.com/promptfoo/promptfoo/pull/1157)
-- **Allow provider customization for dataset generation** by [@mldangelo](https://github.com/mldangelo) in [#1158](https://github.com/promptfoo/promptfoo/pull/1158)
-- **Predict Redteam injectVars** by [@mldangelo](https://github.com/mldangelo) in [#1141](https://github.com/promptfoo/promptfoo/pull/1141)
-- **Fix JSON prompt escaping in HTTP provider and add LM Studio example** by [@mldangelo](https://github.com/mldangelo) in [#1156](https://github.com/promptfoo/promptfoo/pull/1156)
-- **Fix poor performing harmful test generation** by [@mldangelo](https://github.com/mldangelo) in [#1124](https://github.com/promptfoo/promptfoo/pull/1124)
-- **Update overreliance grading prompt** by [@mldangelo](https://github.com/mldangelo) in [#1146](https://github.com/promptfoo/promptfoo/pull/1146)
-- **Move multiple variables warning to before progress bar** by [@typpo](https://github.com/typpo) in [#1160](https://github.com/promptfoo/promptfoo/pull/1160)
-- **Add contributing guide** by [@mldangelo](https://github.com/mldangelo) in [#1150](https://github.com/promptfoo/promptfoo/pull/1150)
-- **Refactor and optimize injection and iterative methods** by [@mldangelo](https://github.com/mldangelo) in [#1138](https://github.com/promptfoo/promptfoo/pull/1138)
-- **Update plugin base class to support multiple assertions** by [@mldangelo](https://github.com/mldangelo) in [#1139](https://github.com/promptfoo/promptfoo/pull/1139)
-- **Structural refactor, abstract plugin and method actions** by [@mldangelo](https://github.com/mldangelo) in [#1140](https://github.com/promptfoo/promptfoo/pull/1140)
-- **Move CLI commands into individual files** by [@mldangelo](https://github.com/mldangelo) in [#1155](https://github.com/promptfoo/promptfoo/pull/1155)
-- **Update Jest linter rules** by [@mldangelo](https://github.com/mldangelo) in [#1161](https://github.com/promptfoo/promptfoo/pull/1161)
-- **Bump openai from 4.52.4 to 4.52.5** by [@dependabot](https://github.com/dependabot) in [#1137](https://github.com/promptfoo/promptfoo/pull/1137)
-- **Bump @aws-sdk/client-bedrock-runtime from 3.613.0 to 3.614.0** by [@dependabot](https://github.com/dependabot) in [#1136](https://github.com/promptfoo/promptfoo/pull/1136)
-- **Bump openai from 4.52.5 to 4.52.7** by [@dependabot](https://github.com/dependabot) in [#1142](https://github.com/promptfoo/promptfoo/pull/1142)
-- **Update documentation and MUI dependencies** by [@mldangelo](https://github.com/mldangelo) in [#1152](https://github.com/promptfoo/promptfoo/pull/1152)
-- **Update Drizzle dependencies and configuration** by [@mldangelo](https://github.com/mldangelo) in [#1151](https://github.com/promptfoo/promptfoo/pull/1151)
-- **Bump dependencies with patch and minor version updates** by [@mldangelo](https://github.com/mldangelo) in [#1159](https://github.com/promptfoo/promptfoo/pull/1159)
+- **Eval picker for web UI** by [@typpo](https://github.com/typpo) in [#1143](https://github.com/artef/artef/pull/1143)
+- **Update default model providers to Claude 3.5** by [@mldangelo](https://github.com/mldangelo) in [#1157](https://github.com/artef/artef/pull/1157)
+- **Allow provider customization for dataset generation** by [@mldangelo](https://github.com/mldangelo) in [#1158](https://github.com/artef/artef/pull/1158)
+- **Predict Redteam injectVars** by [@mldangelo](https://github.com/mldangelo) in [#1141](https://github.com/artef/artef/pull/1141)
+- **Fix JSON prompt escaping in HTTP provider and add LM Studio example** by [@mldangelo](https://github.com/mldangelo) in [#1156](https://github.com/artef/artef/pull/1156)
+- **Fix poor performing harmful test generation** by [@mldangelo](https://github.com/mldangelo) in [#1124](https://github.com/artef/artef/pull/1124)
+- **Update overreliance grading prompt** by [@mldangelo](https://github.com/mldangelo) in [#1146](https://github.com/artef/artef/pull/1146)
+- **Move multiple variables warning to before progress bar** by [@typpo](https://github.com/typpo) in [#1160](https://github.com/artef/artef/pull/1160)
+- **Add contributing guide** by [@mldangelo](https://github.com/mldangelo) in [#1150](https://github.com/artef/artef/pull/1150)
+- **Refactor and optimize injection and iterative methods** by [@mldangelo](https://github.com/mldangelo) in [#1138](https://github.com/artef/artef/pull/1138)
+- **Update plugin base class to support multiple assertions** by [@mldangelo](https://github.com/mldangelo) in [#1139](https://github.com/artef/artef/pull/1139)
+- **Structural refactor, abstract plugin and method actions** by [@mldangelo](https://github.com/mldangelo) in [#1140](https://github.com/artef/artef/pull/1140)
+- **Move CLI commands into individual files** by [@mldangelo](https://github.com/mldangelo) in [#1155](https://github.com/artef/artef/pull/1155)
+- **Update Jest linter rules** by [@mldangelo](https://github.com/mldangelo) in [#1161](https://github.com/artef/artef/pull/1161)
+- **Bump openai from 4.52.4 to 4.52.5** by [@dependabot](https://github.com/dependabot) in [#1137](https://github.com/artef/artef/pull/1137)
+- **Bump @aws-sdk/client-bedrock-runtime from 3.613.0 to 3.614.0** by [@dependabot](https://github.com/dependabot) in [#1136](https://github.com/artef/artef/pull/1136)
+- **Bump openai from 4.52.5 to 4.52.7** by [@dependabot](https://github.com/dependabot) in [#1142](https://github.com/artef/artef/pull/1142)
+- **Update documentation and MUI dependencies** by [@mldangelo](https://github.com/mldangelo) in [#1152](https://github.com/artef/artef/pull/1152)
+- **Update Drizzle dependencies and configuration** by [@mldangelo](https://github.com/mldangelo) in [#1151](https://github.com/artef/artef/pull/1151)
+- **Bump dependencies with patch and minor version updates** by [@mldangelo](https://github.com/mldangelo) in [#1159](https://github.com/artef/artef/pull/1159)
 
 ## [0.70.1] - 2024-07-11
 
 ### Changed
 
-- **provider**: put provider in outer loop to reduce model swap by @typpo in [#1132](https://github.com/promptfoo/promptfoo/pull/1132)
-- **evaluator**: ensure unique prompt handling with labeled and unlabeled providers by @mldangelo in [#1134](https://github.com/promptfoo/promptfoo/pull/1134)
-- **eval**: validate --output file extension before running eval by @mldangelo in [#1135](https://github.com/promptfoo/promptfoo/pull/1135)
-- **deps-dev**: bump @aws-sdk/client-bedrock-runtime from 3.609.0 to 3.613.0 by @dependabot in [#1126](https://github.com/promptfoo/promptfoo/pull/1126)
-- fix pythonCompletion test by @mldangelo in [#1133](https://github.com/promptfoo/promptfoo/pull/1133)
+- **provider**: put provider in outer loop to reduce model swap by @typpo in [#1132](https://github.com/artef/artef/pull/1132)
+- **evaluator**: ensure unique prompt handling with labeled and unlabeled providers by @mldangelo in [#1134](https://github.com/artef/artef/pull/1134)
+- **eval**: validate --output file extension before running eval by @mldangelo in [#1135](https://github.com/artef/artef/pull/1135)
+- **deps-dev**: bump @aws-sdk/client-bedrock-runtime from 3.609.0 to 3.613.0 by @dependabot in [#1126](https://github.com/artef/artef/pull/1126)
+- fix pythonCompletion test by @mldangelo in [#1133](https://github.com/artef/artef/pull/1133)
 
 ## [0.70.0] - 2024-07-10
 
 ### Changed
 
-- feat: Add `promptfoo redteam init` command (#1122)
+- feat: Add `artef redteam init` command (#1122)
 - chore: refactor eval and generate commands out of main.ts (#1121)
 - build(deps): bump openai from 4.52.3 to 4.52.4 (#1118)
 - refactor(redteam): relocate harmful and pii plugins from legacy directory (#1123)
@@ -9201,14 +9201,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat**: Add Zod schema validation for providers in `promptfooconfig` by @mldangelo in [#1102](https://github.com/promptfoo/promptfoo/pull/1102)
-- **fix**: Re-add provider context in prompt functions by @mldangelo in [#1106](https://github.com/promptfoo/promptfoo/pull/1106)
-- **fix**: Add missing `gpt-4-turbo-2024-04-09` by @aloisklink in [#1100](https://github.com/promptfoo/promptfoo/pull/1100)
-- **chore**: Update minor and patch versions of several packages by @mldangelo in [#1107](https://github.com/promptfoo/promptfoo/pull/1107)
-- **chore**: Format Python code and add check job to GitHub Actions workflow by @mldangelo in [#1105](https://github.com/promptfoo/promptfoo/pull/1105)
+- **feat**: Add Zod schema validation for providers in `artefconfig` by @mldangelo in [#1102](https://github.com/artef/artef/pull/1102)
+- **fix**: Re-add provider context in prompt functions by @mldangelo in [#1106](https://github.com/artef/artef/pull/1106)
+- **fix**: Add missing `gpt-4-turbo-2024-04-09` by @aloisklink in [#1100](https://github.com/artef/artef/pull/1100)
+- **chore**: Update minor and patch versions of several packages by @mldangelo in [#1107](https://github.com/artef/artef/pull/1107)
+- **chore**: Format Python code and add check job to GitHub Actions workflow by @mldangelo in [#1105](https://github.com/artef/artef/pull/1105)
 - **chore**: Bump version to 0.69.1 by @mldangelo
-- **docs**: Add example and configuration guide for using `llama.cpp` by @mldangelo in [#1104](https://github.com/promptfoo/promptfoo/pull/1104)
-- **docs**: Add Vitest integration guide by @mldangelo in [#1103](https://github.com/promptfoo/promptfoo/pull/1103)
+- **docs**: Add example and configuration guide for using `llama.cpp` by @mldangelo in [#1104](https://github.com/artef/artef/pull/1104)
+- **docs**: Add Vitest integration guide by @mldangelo in [#1103](https://github.com/artef/artef/pull/1103)
 
 ## [0.69.0] - 2024-07-05
 
@@ -9216,7 +9216,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat(redteam): `extra-jailbreak` plugin that applies jailbreak to all probes (#1085)
 - feat(webui): show metrics as % in column header (#1087)
-- feat: add support for PROMPTFOO_AUTHOR environment variable (#1099)
+- feat: add support for artef_AUTHOR environment variable (#1099)
 
 ### Changed
 
@@ -9251,14 +9251,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - **Features:**
-  - Added support for attachments in OpenAI assistants by [@typpo](https://github.com/promptfoo/promptfoo/pull/1080)
+  - Added support for attachments in OpenAI assistants by [@typpo](https://github.com/artef/artef/pull/1080)
 - **Fixes:**
-  - Removed test mutation for classifier and select-best assertion types by [@typpo](https://github.com/promptfoo/promptfoo/pull/1083)
-  - Treated non-existent files as prompt strings by [@typpo](https://github.com/promptfoo/promptfoo/pull/1084)
-  - Fixed assertion result mock pollution by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1086)
+  - Removed test mutation for classifier and select-best assertion types by [@typpo](https://github.com/artef/artef/pull/1083)
+  - Treated non-existent files as prompt strings by [@typpo](https://github.com/artef/artef/pull/1084)
+  - Fixed assertion result mock pollution by [@mldangelo](https://github.com/artef/artef/pull/1086)
 - **Dependencies:**
-  - Bumped `openai` from 4.52.2 to 4.52.3 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1073)
-  - Bumped `@aws-sdk/client-bedrock-runtime` from 3.606.0 to 3.609.0 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1072)
+  - Bumped `openai` from 4.52.2 to 4.52.3 by [@dependabot](https://github.com/artef/artef/pull/1073)
+  - Bumped `@aws-sdk/client-bedrock-runtime` from 3.606.0 to 3.609.0 by [@dependabot](https://github.com/artef/artef/pull/1072)
 
 ## [0.68.2] - 2024-07-03
 
@@ -9284,10 +9284,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- **feat:** Support calling specific function from Python provider by [@typpo](https://github.com/promptfoo/promptfoo/pull/1053)
-- **fix:** Resolve issues with relative prompt paths by [@mldangelo](https://github.com/promptfoo/promptfoo/pull/1066)
-- **fix:** Handle replicate IDs without version by [@typpo](https://github.com/promptfoo/promptfoo/pull/1059)
-- **build(deps):** Bump `@anthropic-ai/sdk` from 0.24.2 to 0.24.3 by [@dependabot](https://github.com/promptfoo/promptfoo/pull/1062)
+- **feat:** Support calling specific function from Python provider by [@typpo](https://github.com/artef/artef/pull/1053)
+- **fix:** Resolve issues with relative prompt paths by [@mldangelo](https://github.com/artef/artef/pull/1066)
+- **fix:** Handle replicate IDs without version by [@typpo](https://github.com/artef/artef/pull/1059)
+- **build(deps):** Bump `@anthropic-ai/sdk` from 0.24.2 to 0.24.3 by [@dependabot](https://github.com/artef/artef/pull/1062)
 - build(deps): bump @anthropic-ai/sdk from 0.24.2 to 0.24.3 (#1062)
 
 ## [0.68.0] - 2024-07-01
@@ -9298,28 +9298,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(webui): Add support for markdown tables and other extras by @typpo in [#1042](https://github.com/promptfoo/promptfoo/pull/1042)
+- feat(webui): Add support for markdown tables and other extras by @typpo in [#1042](https://github.com/artef/artef/pull/1042)
 
 ### Changed
 
-- feat: support for image model redteaming by @typpo in [#1051](https://github.com/promptfoo/promptfoo/pull/1051)
-- feat: prompt syntax for bedrock llama3 by @fvdnabee in [#1038](https://github.com/promptfoo/promptfoo/pull/1038)
-- fix: http provider returns the correct response format by @typpo in [#1027](https://github.com/promptfoo/promptfoo/pull/1027)
-- fix: handle when stdout columns are not set by @typpo in [#1029](https://github.com/promptfoo/promptfoo/pull/1029)
-- fix: support additional models via AWS Bedrock and update documentation by @mldangelo in [#1034](https://github.com/promptfoo/promptfoo/pull/1034)
-- fix: handle imported single test case by @typpo in [#1041](https://github.com/promptfoo/promptfoo/pull/1041)
-- fix: dereference promptfoo test files by @fvdnabee in [#1035](https://github.com/promptfoo/promptfoo/pull/1035)
-- chore: expose runAssertion and runAssertions to node package by @typpo in [#1026](https://github.com/promptfoo/promptfoo/pull/1026)
-- chore: add Node.js version check to ensure compatibility by @mldangelo in [#1030](https://github.com/promptfoo/promptfoo/pull/1030)
-- chore: enable '@typescript-eslint/no-use-before-define' linter rule by @mldangelo in [#1043](https://github.com/promptfoo/promptfoo/pull/1043)
-- docs: fix broken documentation links by @mldangelo in [#1033](https://github.com/promptfoo/promptfoo/pull/1033)
-- docs: update anthropic.md by @Codeshark-NET in [#1036](https://github.com/promptfoo/promptfoo/pull/1036)
-- ci: add GitHub Action for automatic version tagging by @mldangelo in [#1046](https://github.com/promptfoo/promptfoo/pull/1046)
-- ci: npm publish workflow by @typpo in [#1044](https://github.com/promptfoo/promptfoo/pull/1044)
-- build(deps): bump openai from 4.52.1 to 4.52.2 by @dependabot in [#1057](https://github.com/promptfoo/promptfoo/pull/1057)
-- build(deps): bump @anthropic-ai/sdk from 0.24.1 to 0.24.2 by @dependabot in [#1056](https://github.com/promptfoo/promptfoo/pull/1056)
-- build(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.602.0 to 3.606.0 by @dependabot in [#1055](https://github.com/promptfoo/promptfoo/pull/1055)
-- build(deps): bump docker/setup-buildx-action from 2 to 3 in the github-actions group by @dependabot in [#1054](https://github.com/promptfoo/promptfoo/pull/1054)
+- feat: support for image model redteaming by @typpo in [#1051](https://github.com/artef/artef/pull/1051)
+- feat: prompt syntax for bedrock llama3 by @fvdnabee in [#1038](https://github.com/artef/artef/pull/1038)
+- fix: http provider returns the correct response format by @typpo in [#1027](https://github.com/artef/artef/pull/1027)
+- fix: handle when stdout columns are not set by @typpo in [#1029](https://github.com/artef/artef/pull/1029)
+- fix: support additional models via AWS Bedrock and update documentation by @mldangelo in [#1034](https://github.com/artef/artef/pull/1034)
+- fix: handle imported single test case by @typpo in [#1041](https://github.com/artef/artef/pull/1041)
+- fix: dereference artef test files by @fvdnabee in [#1035](https://github.com/artef/artef/pull/1035)
+- chore: expose runAssertion and runAssertions to node package by @typpo in [#1026](https://github.com/artef/artef/pull/1026)
+- chore: add Node.js version check to ensure compatibility by @mldangelo in [#1030](https://github.com/artef/artef/pull/1030)
+- chore: enable '@typescript-eslint/no-use-before-define' linter rule by @mldangelo in [#1043](https://github.com/artef/artef/pull/1043)
+- docs: fix broken documentation links by @mldangelo in [#1033](https://github.com/artef/artef/pull/1033)
+- docs: update anthropic.md by @Codeshark-NET in [#1036](https://github.com/artef/artef/pull/1036)
+- ci: add GitHub Action for automatic version tagging by @mldangelo in [#1046](https://github.com/artef/artef/pull/1046)
+- ci: npm publish workflow by @typpo in [#1044](https://github.com/artef/artef/pull/1044)
+- build(deps): bump openai from 4.52.1 to 4.52.2 by @dependabot in [#1057](https://github.com/artef/artef/pull/1057)
+- build(deps): bump @anthropic-ai/sdk from 0.24.1 to 0.24.2 by @dependabot in [#1056](https://github.com/artef/artef/pull/1056)
+- build(deps-dev): bump @aws-sdk/client-bedrock-runtime from 3.602.0 to 3.606.0 by @dependabot in [#1055](https://github.com/artef/artef/pull/1055)
+- build(deps): bump docker/setup-buildx-action from 2 to 3 in the github-actions group by @dependabot in [#1054](https://github.com/artef/artef/pull/1054)
 
 ## [0.67.0] - 2024-06-27
 
@@ -9339,32 +9339,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - chore: sort imports (#1006)
 - chore: switch to smaller googleapis dependency (#1009)
 - chore: add config telemetry (#1005)
-- docs: update GitHub urls to reflect promptfoo github org repository location (#1011)
+- docs: update GitHub urls to reflect artef github org repository location (#1011)
 - docs: fix incorrect yaml ref in guide (#1018)
 
 ## [0.66.0] - 2024-06-24
 
 ### Changed
 
-- `config get/set` commands, ability for users to set their email by [@typpo](https://github.com/typpo) in [#971](https://github.com/promptfoo/promptfoo/pull/971)
-- **webui**: Download as CSV by [@typpo](https://github.com/typpo) in [#1000](https://github.com/promptfoo/promptfoo/pull/1000)
-- Add support for Gemini default grader if credentials are present by [@typpo](https://github.com/typpo) in [#998](https://github.com/promptfoo/promptfoo/pull/998)
-- **redteam**: Allow arbitrary providers by [@mldangelo](https://github.com/mldangelo) in [#1002](https://github.com/promptfoo/promptfoo/pull/1002)
-- Derived metrics by [@typpo](https://github.com/typpo) in [#985](https://github.com/promptfoo/promptfoo/pull/985)
-- Python provider can import modules with same name as built-ins by [@typpo](https://github.com/typpo) in [#989](https://github.com/promptfoo/promptfoo/pull/989)
-- Include error text in all cases by [@typpo](https://github.com/typpo) in [#990](https://github.com/promptfoo/promptfoo/pull/990)
-- Ensure tests inside scenarios are filtered by filter patterns by [@mldangelo](https://github.com/mldangelo) in [#996](https://github.com/promptfoo/promptfoo/pull/996)
-- Anthropic message API support for env vars by [@typpo](https://github.com/typpo) in [#997](https://github.com/promptfoo/promptfoo/pull/997)
-- Add build documentation workflow and fix typos by [@mldangelo](https://github.com/mldangelo) in [#993](https://github.com/promptfoo/promptfoo/pull/993)
-- Block network calls in tests by [@typpo](https://github.com/typpo) in [#972](https://github.com/promptfoo/promptfoo/pull/972)
-- Export `AnthropicMessagesProvider` from providers by [@greysteil](https://github.com/greysteil) in [#975](https://github.com/promptfoo/promptfoo/pull/975)
-- Add Claude 3.5 sonnet pricing by [@typpo](https://github.com/typpo) in [#976](https://github.com/promptfoo/promptfoo/pull/976)
-- Pass `tool_choice` to Anthropic when set in config by [@greysteil](https://github.com/greysteil) in [#977](https://github.com/promptfoo/promptfoo/pull/977)
-- Fixed according to Ollama API specifications by [@keishidev](https://github.com/keishidev) in [#981](https://github.com/promptfoo/promptfoo/pull/981)
-- Add Dependabot config and update provider dependencies by [@mldangelo](https://github.com/mldangelo) in [#984](https://github.com/promptfoo/promptfoo/pull/984)
-- Don't commit `.env` to Git by [@will-holley](https://github.com/will-holley) in [#991](https://github.com/promptfoo/promptfoo/pull/991)
-- Update Docker base image to Node 20, improve self-hosting documentation, and add CI action for Docker build by [@mldangelo](https://github.com/mldangelo) in [#995](https://github.com/promptfoo/promptfoo/pull/995)
-- Allow variable cells to scroll instead of exploding the table height by [@grrowl](https://github.com/grrowl) in [#973](https://github.com/promptfoo/promptfoo/pull/973)
+- `config get/set` commands, ability for users to set their email by [@typpo](https://github.com/typpo) in [#971](https://github.com/artef/artef/pull/971)
+- **webui**: Download as CSV by [@typpo](https://github.com/typpo) in [#1000](https://github.com/artef/artef/pull/1000)
+- Add support for Gemini default grader if credentials are present by [@typpo](https://github.com/typpo) in [#998](https://github.com/artef/artef/pull/998)
+- **redteam**: Allow arbitrary providers by [@mldangelo](https://github.com/mldangelo) in [#1002](https://github.com/artef/artef/pull/1002)
+- Derived metrics by [@typpo](https://github.com/typpo) in [#985](https://github.com/artef/artef/pull/985)
+- Python provider can import modules with same name as built-ins by [@typpo](https://github.com/typpo) in [#989](https://github.com/artef/artef/pull/989)
+- Include error text in all cases by [@typpo](https://github.com/typpo) in [#990](https://github.com/artef/artef/pull/990)
+- Ensure tests inside scenarios are filtered by filter patterns by [@mldangelo](https://github.com/mldangelo) in [#996](https://github.com/artef/artef/pull/996)
+- Anthropic message API support for env vars by [@typpo](https://github.com/typpo) in [#997](https://github.com/artef/artef/pull/997)
+- Add build documentation workflow and fix typos by [@mldangelo](https://github.com/mldangelo) in [#993](https://github.com/artef/artef/pull/993)
+- Block network calls in tests by [@typpo](https://github.com/typpo) in [#972](https://github.com/artef/artef/pull/972)
+- Export `AnthropicMessagesProvider` from providers by [@greysteil](https://github.com/greysteil) in [#975](https://github.com/artef/artef/pull/975)
+- Add Claude 3.5 sonnet pricing by [@typpo](https://github.com/typpo) in [#976](https://github.com/artef/artef/pull/976)
+- Pass `tool_choice` to Anthropic when set in config by [@greysteil](https://github.com/greysteil) in [#977](https://github.com/artef/artef/pull/977)
+- Fixed according to Ollama API specifications by [@keishidev](https://github.com/keishidev) in [#981](https://github.com/artef/artef/pull/981)
+- Add Dependabot config and update provider dependencies by [@mldangelo](https://github.com/mldangelo) in [#984](https://github.com/artef/artef/pull/984)
+- Don't commit `.env` to Git by [@will-holley](https://github.com/will-holley) in [#991](https://github.com/artef/artef/pull/991)
+- Update Docker base image to Node 20, improve self-hosting documentation, and add CI action for Docker build by [@mldangelo](https://github.com/mldangelo) in [#995](https://github.com/artef/artef/pull/995)
+- Allow variable cells to scroll instead of exploding the table height by [@grrowl](https://github.com/grrowl) in [#973](https://github.com/artef/artef/pull/973)
 
 ## [0.65.2] - 2024-06-20
 
@@ -9424,7 +9424,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - feat: add hf to onboarding flow (#947)
-- feat: add support for `promptfoo export latest` (#948)
+- feat: add support for `artef export latest` (#948)
 - fix: serialize each item in `vars` when its type is a string (#823) (#943)
 - chore(webui): split ResultsTable into separate files (#942)
 
@@ -9445,7 +9445,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- feat: export `promptfoo.cache` to node package (#923)
+- feat: export `artef.cache` to node package (#923)
 - feat: add Voyage AI embeddings provider (#931)
 - feat: Add more Portkey header provider options and create headers automatically (#909)
 - fix: handle openai chat-style messages better in `moderation` assert (#930)
@@ -9498,19 +9498,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat: support array of values for `similar` assertion (#895)
 - fix: Prompt variable reads unprocessed spaces on both sides (#887)
 - fix: windows node 22 flake (#907)
-- [fix: ci passing despite failing build (](https://github.com/promptfoo/promptfoo/commit/ce6090be5d70fbe71c6da0a5ec1a73253a9d8a0e)https://github.com/promptfoo/promptfoo/pull/876[)](https://github.com/promptfoo/promptfoo/commit/ce6090be5d70fbe71c6da0a5ec1a73253a9d8a0e)
-- [fix: incorrect migrations path in docker build](https://github.com/promptfoo/promptfoo/commit/6a1eef4e4b006b32de9ce6e5e2d7c0bd3b9fa95a) https://github.com/promptfoo/promptfoo/issues/861
+- [fix: ci passing despite failing build (](https://github.com/artef/artef/commit/ce6090be5d70fbe71c6da0a5ec1a73253a9d8a0e)https://github.com/artef/artef/pull/876[)](https://github.com/artef/artef/commit/ce6090be5d70fbe71c6da0a5ec1a73253a9d8a0e)
+- [fix: incorrect migrations path in docker build](https://github.com/artef/artef/commit/6a1eef4e4b006b32de9ce6e5e2d7c0bd3b9fa95a) https://github.com/artef/artef/issues/861
 - chore(ci): add `workflow_dispatch` trigger (#897)
 - chore: add more gemini models (#894)
 - chore: introduce eslint (#904)
 - chore: switch to SWC for faster Jest tests (#899)
 - chore: update to prettier 3 (#901)
-- [chore(openai): add tool_choice required type](https://github.com/promptfoo/promptfoo/commit/e97ce63221b0e06f7e03f46c466da36c5b713017)
+- [chore(openai): add tool_choice required type](https://github.com/artef/artef/commit/e97ce63221b0e06f7e03f46c466da36c5b713017)
 
 ### Fixed
 
 - fix(vertex): support var templating in system instruction (#902)
-- [fix(webui): display latency when available](https://github.com/promptfoo/promptfoo/commit/bb335efbe9e8d6b23526c837402787a1cbba9969)
+- [fix(webui): display latency when available](https://github.com/artef/artef/commit/bb335efbe9e8d6b23526c837402787a1cbba9969)
 
 ### Dependencies
 
@@ -9520,7 +9520,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(webui): Ability to suppress browser open on `promptfoo view` (#881)
+- feat(webui): Ability to suppress browser open on `artef view` (#881)
 - feat(anthropic): add support for base url (#850)
 - feat(openai): Support function/tool callbacks (#830)
 - feat(vertex/gemini): add support for toolConfig and systemInstruction (#841)
@@ -9632,13 +9632,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- [fix: handle null result timestamp when writing to db.](https://github.com/promptfoo/promptfoo/commit/40e1ebfbfd512fea56761b4cbdfff0cd25d61ae1) https://github.com/promptfoo/promptfoo/issues/800
+- [fix: handle null result timestamp when writing to db.](https://github.com/artef/artef/commit/40e1ebfbfd512fea56761b4cbdfff0cd25d61ae1) https://github.com/artef/artef/issues/800
 
 ## [0.59.0] - 2024-05-18
 
 ### Added
 
-- feat(webui): add --filter-description option to `promptfoo view` (#780)
+- feat(webui): add --filter-description option to `artef view` (#780)
 - feat(bedrock): add support for embeddings models (#797)
 
 ### Changed
@@ -9661,8 +9661,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - fix: improve GradingResult validation (#772)
-- [fix: update python ProviderResponse error message and docs.](https://github.com/promptfoo/promptfoo/commit/258013080809bc782afe3de51c9309230cb5cdb2) https://github.com/promptfoo/promptfoo/issues/769
-- [chore(openai): add gpt-4o models (](https://github.com/promptfoo/promptfoo/commit/ff4655d31d3588972522bb162733cb61e460f36f)https://github.com/promptfoo/promptfoo/pull/776[)](https://github.com/promptfoo/promptfoo/commit/ff4655d31d3588972522bb162733cb61e460f36f)
+- [fix: update python ProviderResponse error message and docs.](https://github.com/artef/artef/commit/258013080809bc782afe3de51c9309230cb5cdb2) https://github.com/artef/artef/issues/769
+- [chore(openai): add gpt-4o models (](https://github.com/artef/artef/commit/ff4655d31d3588972522bb162733cb61e460f36f)https://github.com/artef/artef/pull/776[)](https://github.com/artef/artef/commit/ff4655d31d3588972522bb162733cb61e460f36f)
 - add gpt-4o models (#776)
 
 ### Fixed
@@ -9684,7 +9684,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - fix: do not serialize js objects to non-js providers (#754)
-- **[See 0.57.0 release notes](https://github.com/promptfoo/promptfoo/releases/tag/0.57.0)**
+- **[See 0.57.0 release notes](https://github.com/artef/artef/releases/tag/0.57.0)**
 
 ## [0.57.0] - 2024-05-01
 
@@ -9692,14 +9692,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat: ability to override provider per test case (#725)
 - feat: eval tests matching pattern (#735)
-- feat: add `-n` limit arg for `promptfoo list` (#749)
-- feat: `promptfoo import` and `promptfoo export` commands (#750)
+- feat: add `-n` limit arg for `artef list` (#749)
+- feat: `artef import` and `artef export` commands (#750)
 - feat: add support for `--var name=value` cli option (#745)
-- feat: promptfoo eval --filter-failing outputFile.json (#742)
+- feat: artef eval --filter-failing outputFile.json (#742)
 - fix: eval --first-n arg (#734)
 - chore: Update openai package to 3.48.5 (#739)
 - chore: include logger and cache utils in javascript provider context (#748)
-- chore: add `PROMPTFOO_FAILED_TEST_EXIT_CODE` envar (#751)
+- chore: add `artef_FAILED_TEST_EXIT_CODE` envar (#751)
 - docs: Document `python:` prefix when loading assertions in CSV (#731)
 - docs: update README.md (#733)
 - docs: Fixes to Python docs (#728)
@@ -9842,14 +9842,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - fix(selfhost): add support for prompts and datasets api endpoints (#600)
-- fix(selfhost): Consolidate to `NEXT_PUBLIC_PROMPTFOO_REMOTE_BASE_URL` (#609)
+- fix(selfhost): Consolidate to `NEXT_PUBLIC_artef_REMOTE_BASE_URL` (#609)
 
 ## [0.49.3] - 2024-03-29
 
 ### Changed
 
 - fix: bedrock model parsing (#593)
-- [fix: make llm-rubric more resilient to bad json responses.](https://github.com/promptfoo/promptfoo/commit/93fd059a13454ed7a251a90a33306fb1f3c81895) https://github.com/promptfoo/promptfoo/issues/596
+- [fix: make llm-rubric more resilient to bad json responses.](https://github.com/artef/artef/commit/93fd059a13454ed7a251a90a33306fb1f3c81895) https://github.com/artef/artef/issues/596
 - feat: display progress bar for each parallel execution (#597)
 
 ## [0.49.2] - 2024-03-27
@@ -9881,8 +9881,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat: ability to set tags on standalone assertion llm outputs (#581)
 - feat: add support for claude3 on bedrock (#582)
 - fix: load file before running prompt function (#583)
-- [fix: broken ansi colors on cli table](https://github.com/promptfoo/promptfoo/commit/bbb0157b09c0ffb5366d3cbd112438ca3d2d61c9)
-- [fix: remove duplicate instruction output](https://github.com/promptfoo/promptfoo/commit/fb095617d36102f5b6256e9718e736378c0a5cea)
+- [fix: broken ansi colors on cli table](https://github.com/artef/artef/commit/bbb0157b09c0ffb5366d3cbd112438ca3d2d61c9)
+- [fix: remove duplicate instruction output](https://github.com/artef/artef/commit/fb095617d36102f5b6256e9718e736378c0a5cea)
 - chore: better error messages when expecting json but getting text (#576)
 
 ### Fixed
@@ -9903,7 +9903,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat: migrate filesystem storage to sqlite db (#558)
   - **When you first run `eval` or `view` with 0.48.0, your saved evals will be migrated from `.json` files to a sqlite db. Please open an issue if you run into problems.**
-  - Restoration: By default, the migration process runs on the promptfoo output directory `~/.promptfoo/output`. This directory is backed up at `~/.promptfoo/output-backup-*` and you can restore it and use a previous version by renaming that directory back to `output`
+  - Restoration: By default, the migration process runs on the artef output directory `~/.artef/output`. This directory is backed up at `~/.artef/output-backup-*` and you can restore it and use a previous version by renaming that directory back to `output`
 - feat: Add anthropic:messages and replicate:mistral as default providers to web ui (#562)
 - feat: add label field to provider options (#563)
 - docs: adjust configuration for python provider (#565)
@@ -10009,7 +10009,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- fix: pass through PROMPTFOO\_\* variables from docker run (#498)
+- fix: pass through artef\_\* variables from docker run (#498)
 - docs: clean up python provider header
 
 ### Fixed
@@ -10126,7 +10126,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - fix: html output (#430)
 - feat: add a `python` provider that supports native python function calls (#419)
 - feat: support for image models such as dall-e (#406)
-- feat: support for `PROMPTFOO_PROMPT_SEPARATOR envar. #424
+- feat: support for `artef_PROMPT_SEPARATOR envar. #424
 
 ## [0.37.1] - 2024-01-26
 
@@ -10143,7 +10143,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - feat: standalone share server (#408)
-- feat: `PROMPTFOO_DISABLE_TEMPLATING` disables nunjucks templates (#405)
+- feat: `artef_DISABLE_TEMPLATING` disables nunjucks templates (#405)
 
 ## [0.36.0] - 2024-01-18
 
@@ -10155,7 +10155,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- feat: add `promptfoo generate dataset` (#397)
+- feat: add `artef generate dataset` (#397)
 - fix: typo (#401)
 
 ## [0.35.1] - 2024-01-12
@@ -10184,7 +10184,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat: add perplexity-score metric (#377)
 - feat: add logprobs support for azure openai (#376)
 - fix: use relative paths consistently and handle object formats (#375)
-- [fix: restore **prefix and **suffix column handlers when loading test csv](https://github.com/promptfoo/promptfoo/commit/3a058684b3389693f4c5899f786fb090b04e3c93)
+- [fix: restore **prefix and **suffix column handlers when loading test csv](https://github.com/artef/artef/commit/3a058684b3389693f4c5899f786fb090b04e3c93)
 
 ## [0.34.1] - 2024-01-02
 
@@ -10213,7 +10213,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - fix: bad indentation for inline python sript (#353)
-- [fix: truncate CLI table headers](https://github.com/promptfoo/promptfoo/commit/9aa9106cc9bc1660df40117d3c8f053f361fa09c)
+- [fix: truncate CLI table headers](https://github.com/artef/artef/commit/9aa9106cc9bc1660df40117d3c8f053f361fa09c)
 - feat: add openai tool parameter (#350)
 - feat: add `is-valid-openai-tools-call` assertion type (#354)
 
@@ -10221,16 +10221,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- [fix: pass env to providers when using CLI](https://github.com/promptfoo/promptfoo/commit/e8170a7f0e9d4033ef219169115f6474d978f1a7)
-- [fix: correctly handle bedrock models containing :](https://github.com/promptfoo/promptfoo/commit/4469b693993934192fee2e84cc27c21e31267e5f)
+- [fix: pass env to providers when using CLI](https://github.com/artef/artef/commit/e8170a7f0e9d4033ef219169115f6474d978f1a7)
+- [fix: correctly handle bedrock models containing :](https://github.com/artef/artef/commit/4469b693993934192fee2e84cc27c21e31267e5f)
 - feat: add latency assertion type (#344)
 - feat: add perplexity assertion type (#346)
 - feat: add support for ollama chat API (#342)
-- feat: retry when getting internal server error with PROMPTFOO_RETRY_5XX envar (#327)
+- feat: retry when getting internal server error with artef_RETRY_5XX envar (#327)
 - fix: properly escape arguments for external python assertions (#338)
 - fix: use execFile/spawn for external processes (#343)
-- [fix: handle null score in custom metrics](https://github.com/promptfoo/promptfoo/commit/514feed49e2f83f3e04d3e167e5833dc075e6c10)
-- [fix: increment failure counter for script errors.](https://github.com/promptfoo/promptfoo/commit/61d1b068f26c63f3234dc49c9d5f5104b9cf1cda)
+- [fix: handle null score in custom metrics](https://github.com/artef/artef/commit/514feed49e2f83f3e04d3e167e5833dc075e6c10)
+- [fix: increment failure counter for script errors.](https://github.com/artef/artef/commit/61d1b068f26c63f3234dc49c9d5f5104b9cf1cda)
 
 ## [0.33.0] - 2023-12-17
 
@@ -10239,11 +10239,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - feat: add latency assertion type (#344)
 - feat: add perplexity assertion type (#346)
 - feat: add support for ollama chat API (#342)
-- feat: retry when getting internal server error with PROMPTFOO_RETRY_5XX envar (#327)
+- feat: retry when getting internal server error with artef_RETRY_5XX envar (#327)
 - fix: properly escape arguments for external python assertions (#338)
 - fix: use execFile/spawn for external processes (#343)
-- [fix: handle null score in custom metrics](https://github.com/promptfoo/promptfoo/commit/514feed49e2f83f3e04d3e167e5833dc075e6c10)
-- [fix: increment failure counter for script errors.](https://github.com/promptfoo/promptfoo/commit/61d1b068f26c63f3234dc49c9d5f5104b9cf1cda)
+- [fix: handle null score in custom metrics](https://github.com/artef/artef/commit/514feed49e2f83f3e04d3e167e5833dc075e6c10)
+- [fix: increment failure counter for script errors.](https://github.com/artef/artef/commit/61d1b068f26c63f3234dc49c9d5f5104b9cf1cda)
 
 ## [0.32.0] - 2023-12-14
 
@@ -10351,10 +10351,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- [feat(node-package): Add support for raw objects in prompts](https://github.com/promptfoo/promptfoo/commit/e6a5fe2fa7c05aabd2f52bd4fa143d957a7953dd)
+- [feat(node-package): Add support for raw objects in prompts](https://github.com/artef/artef/commit/e6a5fe2fa7c05aabd2f52bd4fa143d957a7953dd)
 - feat(openai): Add support for OpenAI `seed` param (#275)
-- [feat(openai): Add support for OpenAI response_format](https://github.com/promptfoo/promptfoo/commit/12781f11f495bed21db1070e987f1b40a43b72e3)
-- [feat(webview): Round score in details modal](https://github.com/promptfoo/promptfoo/commit/483c31d79486a75efc497508b9a42257935585cf)
+- [feat(openai): Add support for OpenAI response_format](https://github.com/artef/artef/commit/12781f11f495bed21db1070e987f1b40a43b72e3)
+- [feat(webview): Round score in details modal](https://github.com/artef/artef/commit/483c31d79486a75efc497508b9a42257935585cf)
 
 ### Changed
 
@@ -10364,16 +10364,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Bump langchain from 0.0.325 to 0.0.329 in /examples/langchain-python (#278)
 - Provide the prompt in the context to external assertion scripts (#277)
 - fix the following error : 'List should have at least 1 item after val… (#280)
-- [chore: Add HuggingFace debug output](https://github.com/promptfoo/promptfoo/commit/2bae118e3fa7f8164fd78d29a3a30d187026bf13)
+- [chore: Add HuggingFace debug output](https://github.com/artef/artef/commit/2bae118e3fa7f8164fd78d29a3a30d187026bf13)
 
 ## [0.27.0] - 2023-11-14
 
 ### Added
 
-- [feat(node-package): Add support for raw objects in prompts](https://github.com/promptfoo/promptfoo/commit/e6a5fe2fa7c05aabd2f52bd4fa143d957a7953dd)
+- [feat(node-package): Add support for raw objects in prompts](https://github.com/artef/artef/commit/e6a5fe2fa7c05aabd2f52bd4fa143d957a7953dd)
 - feat(openai): Add support for OpenAI `seed` param (#275)
-- [feat(openai): Add support for OpenAI response_format](https://github.com/promptfoo/promptfoo/commit/12781f11f495bed21db1070e987f1b40a43b72e3)
-- [feat(webview): Round score in details modal](https://github.com/promptfoo/promptfoo/commit/483c31d79486a75efc497508b9a42257935585cf)
+- [feat(openai): Add support for OpenAI response_format](https://github.com/artef/artef/commit/12781f11f495bed21db1070e987f1b40a43b72e3)
+- [feat(webview): Round score in details modal](https://github.com/artef/artef/commit/483c31d79486a75efc497508b9a42257935585cf)
 
 ### Changed
 
@@ -10382,14 +10382,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Bump langchain from 0.0.325 to 0.0.329 in /examples/langchain-python (#278)
 - Provide the prompt in the context to external assertion scripts (#277)
 - fix the following error : 'List should have at least 1 item after val… (#280)
-- [chore: Add HuggingFace debug output](https://github.com/promptfoo/promptfoo/commit/2bae118e3fa7f8164fd78d29a3a30d187026bf13)
+- [chore: Add HuggingFace debug output](https://github.com/artef/artef/commit/2bae118e3fa7f8164fd78d29a3a30d187026bf13)
 
 ## [0.26.5] - 2023-11-10
 
 ### Changed
 
 - feat: Support for Azure OpenAI Cognitive Search (#274)
-- [feat: Add PROMPTFOO_PYTHON environment variable](https://github.com/promptfoo/promptfoo/commit/33ecca3dab9382f063e68529c047cfd3fbd959e5)
+- [feat: Add artef_PYTHON environment variable](https://github.com/artef/artef/commit/33ecca3dab9382f063e68529c047cfd3fbd959e5)
 
 ## [0.26.4] - 2023-11-09
 
@@ -10405,12 +10405,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- [feat(AzureOpenAI): Add support for deployment_id and dataSources](https://github.com/promptfoo/promptfoo/commit/3f6dee99b4ef860af1088c4ceda1a74726070f37)
+- [feat(AzureOpenAI): Add support for deployment_id and dataSources](https://github.com/artef/artef/commit/3f6dee99b4ef860af1088c4ceda1a74726070f37)
 
 ### Changed
 
-- [Stringify output display string if output is a JSON object](https://github.com/promptfoo/promptfoo/commit/e6eff1fb75e09bfd602c08edd89ec154e3e61bf9)
-- [Add JSON schema dereferencing support for JSON configs](https://github.com/promptfoo/promptfoo/commit/c32f9b051a51ee6e1ee08738e0921b4e05a5c23d)
+- [Stringify output display string if output is a JSON object](https://github.com/artef/artef/commit/e6eff1fb75e09bfd602c08edd89ec154e3e61bf9)
+- [Add JSON schema dereferencing support for JSON configs](https://github.com/artef/artef/commit/c32f9b051a51ee6e1ee08738e0921b4e05a5c23d)
 - Update chat completion endpoint in azureopenai.ts (#273)
 
 ### Fixed
@@ -10421,9 +10421,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- [Fix issue with named prompt function imports](https://github.com/promptfoo/promptfoo/commit/18a4d751af15b996310eceafc5a75e114ce1bf56)
-- [Fix OpenAI finetuned model parsing](https://github.com/promptfoo/promptfoo/commit/b52de61c6e1fd0a9e67d2476a9f3f9153084ad61)
-- [Add new OpenAI models](https://github.com/promptfoo/promptfoo/commit/d9432d3b5747516aea1a7e8a744167fbd10a69d2)
+- [Fix issue with named prompt function imports](https://github.com/artef/artef/commit/18a4d751af15b996310eceafc5a75e114ce1bf56)
+- [Fix OpenAI finetuned model parsing](https://github.com/artef/artef/commit/b52de61c6e1fd0a9e67d2476a9f3f9153084ad61)
+- [Add new OpenAI models](https://github.com/artef/artef/commit/d9432d3b5747516aea1a7e8a744167fbd10a69d2)
 - Fix: Broken custom api host for OpenAI. (#261)
 - Add `classifier` assert type (#263)
 - Send provider options and test context to ScriptCompletion (exec) provider (#268)
@@ -10456,7 +10456,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Improve escaping in matchers (#242)
 - Add support for nunjucks filters (#243)
 - Fix issue where outputPath from the configuration file is not used when `-c` option is provided
-- Add envar PROMPTFOO_DISABLE_CONVERSATION_VAR
+- Add envar artef_DISABLE_CONVERSATION_VAR
 - Resolve promises in external assert files
 
 ## [0.25.1] - 2023-10-19
@@ -10527,7 +10527,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fix escaping in python asserts (#156)
 - Fix README link to providers docs (#153)
 - Allow object with function name as a value for function_call (#158)
-- Add a -y/--yes option to `promptfoo view` command to skip confirmation (#166)
+- Add a -y/--yes option to `artef view` command to skip confirmation (#166)
 - Other misc fixes and improvements
 
 ## [0.24.0] - 2023-09-18
@@ -10730,7 +10730,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- fix(cli): repair `promptfoo share` regression (01df513)
+- fix(cli): repair `artef share` regression (01df513)
 - fix(config): handle provider map parsing when entries are strings (bdd1dea)
 - fix(scoring): keep weighted averages accurate by running all test cases (7854424)
 
@@ -10754,7 +10754,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat(assertions): add `python` assertion type (#78)
 - feat(api): support native function ApiProviders and assertions (#93)
-- feat(evals): introduce Promptfoo scenarios for data-driven testing - allows datasets to be associated with specific tests, eliminating the need to copy tests for each dataset by @Skylertodd (#89)
+- feat(evals): introduce artef scenarios for data-driven testing - allows datasets to be associated with specific tests, eliminating the need to copy tests for each dataset by @Skylertodd (#89)
 - feat(cli): allow specifying `outputPath` when using the Node evaluate helper (#91)
 
 ### Changed
@@ -10824,7 +10824,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - chore(providers): refine Replicate provider behaviour (57fa43f)
-- chore(cli): default `promptfoo share` prompt to Yes on enter (1a4c080)
+- chore(cli): default `artef share` prompt to Yes on enter (1a4c080)
 - chore(webui): simplify dark mode and hide identical rows in history (c244403)
 
 ## [0.17.5] - 2023-07-14
@@ -10838,8 +10838,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - feat(providers): support YAML-formatted OpenAI prompts (#67)
 - chore(cli): allow disabling sharing prompts (#69)
-- chore(cli): require confirmation before running `promptfoo share` (f3de0e4)
-- chore(env): add `PROMPTFOO_DISABLE_UPDATE` environment variable (60fee72)
+- chore(cli): require confirmation before running `artef share` (f3de0e4)
+- chore(env): add `artef_DISABLE_UPDATE` environment variable (60fee72)
 
 ### Fixed
 
@@ -10858,7 +10858,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - fix(cli): support terminals without `process.stdout.columns` (064dcb3)
-- fix(cli): correct `promptfoo init` output to reference YAML (404be34)
+- fix(cli): correct `artef init` output to reference YAML (404be34)
 
 ### Documentation
 
@@ -10959,8 +10959,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(cli)!: add shareable URLs and the `promptfoo share` command by @typpo (#42)
-- feat(cli): add `--no-progress-bar` option to `promptfoo eval` (75adf8a)
+- feat(cli)!: add shareable URLs and the `artef share` command by @typpo (#42)
+- feat(cli): add `--no-progress-bar` option to `artef eval` (75adf8a)
 - feat(cli): add `--no-table` flag for evaluation output (ecf79a4)
 - feat(cli): add `--share` flag to automatically create shareable URLs (7987f6e)
 
@@ -11003,14 +11003,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(share): publish evaluations with the `promptfoo share` workflow by @typpo (#33)
+- feat(share): publish evaluations with the `artef share` workflow by @typpo (#33)
 - feat(telemetry): add basic usage telemetry for insight gathering (7e7e3ea)
 - feat(assertions): support CSV definitions for `rouge-n` and webhook assertions (7f8be15)
 
 ### Changed
 
 - chore(build): resolve build output paths for the web client (#32)
-- chore(cli): notify users when a newer promptfoo release is available by @typpo (#31)
+- chore(cli): notify users when a newer artef release is available by @typpo (#31)
 
 ## [0.11.0] - 2023-06-11
 
@@ -11063,7 +11063,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - chore(core): set a default semantic similarity threshold (4ebea73)
-- chore(cli): refresh `promptfoo init` output messaging (cdbf806)
+- chore(cli): refresh `artef init` output messaging (cdbf806)
 
 ### Fixed
 
@@ -11184,7 +11184,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- feat(cli): add `promptfoo --version` output (77e862b)
+- feat(cli): add `artef --version` output (77e862b)
 
 ### Changed
 
@@ -11192,12 +11192,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- fix(cli): correct `promptfoo init` output text (862d7a7)
+- fix(cli): correct `artef init` output text (862d7a7)
 - fix(evals): preserve table ordering when building concurrently (2e3ddfa)
 
 ## [0.2.0] - 2023-05-04
 
 ### Added
 
-- feat(cli): add `promptfoo init` command (c6a3a59)
+- feat(cli): add `artef init` command (c6a3a59)
 - feat(providers): improve custom provider loading and add example (4f6b6e2)

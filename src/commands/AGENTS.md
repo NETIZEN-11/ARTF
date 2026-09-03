@@ -1,4 +1,4 @@
-# CLI Commands
+﻿# CLI Commands
 
 Commander.js-based CLI commands registered in `src/main.ts`.
 
@@ -54,7 +54,7 @@ src/commands/
 ## Testing Locally
 
 ```bash
-npm link && promptfoo mycommand --help
+npm link && artef mycommand --help
 npm run local -- mycommand --verbose
 ```
 

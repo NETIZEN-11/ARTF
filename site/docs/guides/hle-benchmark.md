@@ -1,6 +1,6 @@
----
-title: Testing Humanity's Last Exam with Promptfoo
-description: Run evaluations against Humanity's Last Exam using promptfoo - the most challenging AI benchmark with expert-crafted questions across 100+ subjects.
+﻿---
+title: Testing Humanity's Last Exam with artef
+description: Run evaluations against Humanity's Last Exam using artef - the most challenging AI benchmark with expert-crafted questions across 100+ subjects.
 sidebar_label: HLE Benchmark
 keywords:
   [
@@ -11,7 +11,7 @@ keywords:
     model testing,
     claude,
     gpt,
-    promptfoo,
+    artef,
     expert questions,
   ]
 image: /img/hle-token-usage-summary.png
@@ -20,13 +20,13 @@ date: 2025-06-30
 authors: [michael]
 ---
 
-# Testing Humanity's Last Exam with Promptfoo
+# Testing Humanity's Last Exam with artef
 
 [Humanity's Last Exam (HLE)](https://arxiv.org/abs/2501.14249) is a challenging benchmark commissioned by Scale AI and the Center for AI Safety (CAIS), developed by 1,000+ subject experts from over 500 institutions across 50 countries. Created to address benchmark saturation where current models achieve 90%+ accuracy on MMLU, HLE presents genuinely difficult expert-level questions that test AI capabilities at the frontier of human knowledge.
 
 This guide shows you how to:
 
-- Set up HLE evals with promptfoo
+- Set up HLE evals with artef
 - Configure reasoning models for HLE questions
 - Analyze real performance data from Claude 4 and o4-mini
 - Understand model limitations on challenging benchmarks
@@ -62,12 +62,12 @@ HLE addresses benchmark saturation - the phenomenon where advanced models achiev
 Set up your HLE eval with these commands:
 
 ```bash
-npx promptfoo@latest init --example huggingface/hle
+npx artef@latest init --example huggingface/hle
 cd huggingface/hle
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
-See the complete example at [examples/huggingface/hle](https://github.com/promptfoo/promptfoo/tree/main/examples/huggingface/hle) for all configuration files and implementation details.
+See the complete example at [examples/huggingface/hle](https://github.com/artef/artef/tree/main/examples/huggingface/hle) for all configuration files and implementation details.
 
 Set these API keys before running:
 
@@ -75,7 +75,7 @@ Set these API keys before running:
 - `ANTHROPIC_API_KEY` - for Claude 4 with thinking mode
 - `HF_TOKEN` - get yours from [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
 
-Promptfoo handles dataset loading, parallel execution, cost tracking, and results analysis automatically.
+artef handles dataset loading, parallel execution, cost tracking, and results analysis automatically.
 
 :::note License and Safety
 
@@ -88,14 +88,14 @@ HLE is released under the MIT license. The dataset includes a canary string to h
 After your eval completes, open the web interface:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
-Promptfoo generates a summary report showing token usage, costs, success rates, and performance metrics:
+artef generates a summary report showing token usage, costs, success rates, and performance metrics:
 
 ![HLE Evaluation Results](/img/hle-token-usage-summary.png)
 
-We tested Claude 4 and o4-mini on 50 HLE questions using promptfoo with optimized configurations to demonstrate real-world performance. Note that our results differ from official benchmarks due to different prompting strategies, token budgets, and question sampling.
+We tested Claude 4 and o4-mini on 50 HLE questions using artef with optimized configurations to demonstrate real-world performance. Note that our results differ from official benchmarks due to different prompting strategies, token budgets, and question sampling.
 
 ![Model Comparison on Bioinformatics Question](/img/hle-model-comparison-detail.png)
 
@@ -153,7 +153,7 @@ The Python approach enables provider-specific adaptations:
 
 ## Automated Grading
 
-Promptfoo uses LLM-as-a-judge for automated grading with the built-in `llm-rubric` assertion. This approach evaluates model responses against the expected answers without requiring exact string matches.
+artef uses LLM-as-a-judge for automated grading with the built-in `llm-rubric` assertion. This approach evaluates model responses against the expected answers without requiring exact string matches.
 
 The grading system:
 
@@ -243,7 +243,7 @@ As Dan Hendrycks (CAIS co-founder) notes:
 - Token budget increases alone don't guarantee accuracy improvements
 - Substantial gaps remain between AI and human expert performance
 
-Promptfoo provides HLE eval capabilities through automated dataset integration, parallel execution, and comprehensive results analysis.
+artef provides HLE eval capabilities through automated dataset integration, parallel execution, and comprehensive results analysis.
 
 ## Learn More
 
@@ -260,7 +260,7 @@ Promptfoo provides HLE eval capabilities through automated dataset integration, 
 - [Medium: HLE Paper Review](https://medium.com/@sulbha.jindal/humanitys-last-exam-hle-paper-review-69316b2cfc04) - Technical analysis of the benchmark
 - [Hugging Face Papers](https://huggingface.co/papers/2501.14249) - Community discussion and insights
 
-### Promptfoo Integration
+### artef Integration
 
 - [HuggingFace Provider Guide](../providers/huggingface.md) - Set up dataset access
 - [Model Grading Setup](../../configuration/expected-outputs/model-graded/) - Configure automated grading

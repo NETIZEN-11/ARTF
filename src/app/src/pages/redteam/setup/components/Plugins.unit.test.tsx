@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { ToastProvider } from '@app/contexts/ToastContext';
@@ -72,7 +72,7 @@ vi.mock('./TestCaseDialog', () => ({
 
 vi.mock('./PluginsTab', async () => {
   const { DEFAULT_PLUGINS, MINIMAL_TEST_PLUGINS, RAG_PLUGINS } = await import(
-    '@promptfoo/redteam/constants'
+    '@artef/redteam/constants'
   );
 
   return {

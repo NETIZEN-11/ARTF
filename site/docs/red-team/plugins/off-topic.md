@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Off-Topic
 title: Off-Topic Plugin - AI Red Team Testing
 description: Test whether AI systems can be manipulated to go off-topic from their intended purpose. Prevent AI from becoming an open proxy for unrelated tasks.
@@ -29,7 +29,7 @@ The Off-Topic Plugin:
 
 ## Configuration
 
-Add the off-topic plugin to your promptfoo configuration:
+Add the off-topic plugin to your artef configuration:
 
 ```yaml
 redteam:

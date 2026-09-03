@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
@@ -7,7 +7,7 @@ import {
   deserializePolicyIdFromMetric,
   formatPolicyIdentifierAsMetric,
   isPolicyMetric,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import { CheckCircle, ChevronDown, ChevronUp, XCircle } from 'lucide-react';
 import { useTableStore } from './store';
 import { getNamedMetricTotal } from './utils';

@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 
 import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -30,7 +30,7 @@ vi.mock('../../src/cliState', () => ({
   },
 }));
 vi.mock('../../src/util/logs', () => ({
-  getLogDirectory: vi.fn().mockReturnValue('/home/user/.promptfoo/logs'),
+  getLogDirectory: vi.fn().mockReturnValue('/home/user/.artef/logs'),
   getLogFiles: vi.fn().mockResolvedValue([]),
   getLogFilesSync: vi.fn().mockReturnValue([]),
   findLogFile: vi.fn().mockReturnValue(null),
@@ -73,7 +73,7 @@ describe('logs command', () => {
       const cmd = program.commands.find((c) => c.name() === 'logs');
 
       expect(cmd).toBeDefined();
-      expect(cmd?.description()).toContain('View promptfoo log files');
+      expect(cmd?.description()).toContain('View artef log files');
 
       const options = cmd?.options;
       expect(options?.find((o) => o.long === '--type')).toBeDefined();
@@ -108,8 +108,8 @@ describe('logs command', () => {
     it('should display table when log files exist', async () => {
       mockLogsUtil.getLogFiles.mockResolvedValue([
         {
-          name: 'promptfoo-debug-2024-01-01_10-00-00.log',
-          path: '/home/user/.promptfoo/logs/promptfoo-debug-2024-01-01_10-00-00.log',
+          name: 'artef-debug-2024-01-01_10-00-00.log',
+          path: '/home/user/.artef/logs/artef-debug-2024-01-01_10-00-00.log',
           mtime: new Date('2024-01-01T10:00:00Z'),
           type: 'debug',
           size: 1024,
@@ -122,7 +122,7 @@ describe('logs command', () => {
       // wrapTable is called and result is logged
       expect(logger.info).toHaveBeenCalled();
       expect(logger.info).toHaveBeenCalledWith(
-        expect.stringContaining('promptfoo logs <filename>'),
+        expect.stringContaining('artef logs <filename>'),
       );
     });
 
@@ -146,7 +146,7 @@ describe('logs command', () => {
   });
 
   describe('viewing log files', () => {
-    const mockLogPath = '/home/user/.promptfoo/logs/promptfoo-debug-2024-01-01_10-00-00.log';
+    const mockLogPath = '/home/user/.artef/logs/artef-debug-2024-01-01_10-00-00.log';
     const mockLogContent = `2024-01-01T10:00:00.000Z [INFO]: Test message 1
 2024-01-01T10:00:01.000Z [DEBUG]: Test debug message
 2024-01-01T10:00:02.000Z [ERROR]: Test error message
@@ -156,7 +156,7 @@ describe('logs command', () => {
       mockLogsUtil.findLogFile.mockReturnValue(null);
       mockLogsUtil.getLogFiles.mockResolvedValue([
         {
-          name: 'promptfoo-debug-2024-01-01_10-00-00.log',
+          name: 'artef-debug-2024-01-01_10-00-00.log',
           path: mockLogPath,
           mtime: new Date('2024-01-01T10:00:00Z'),
           type: 'debug',
@@ -197,7 +197,7 @@ describe('logs command', () => {
       const logsCmd = program.commands.find((c) => c.name() === 'logs');
       await logsCmd?.parseAsync(['node', 'test']);
 
-      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('promptfoo-debug'));
+      expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('artef-debug'));
       expect(mockFs.readFile).toHaveBeenCalledWith(mockLogPath, 'utf-8');
     });
 
@@ -226,10 +226,10 @@ describe('logs command', () => {
       mockLogsUtil.findLogFile.mockReturnValue(mockLogPath);
 
       const logsCmd = program.commands.find((c) => c.name() === 'logs');
-      await logsCmd?.parseAsync(['node', 'test', 'promptfoo-debug-2024-01-01_10-00-00.log']);
+      await logsCmd?.parseAsync(['node', 'test', 'artef-debug-2024-01-01_10-00-00.log']);
 
       expect(mockLogsUtil.findLogFile).toHaveBeenCalledWith(
-        'promptfoo-debug-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
         'all',
       );
       expect(mockFs.readFile).toHaveBeenCalledWith(mockLogPath, 'utf-8');

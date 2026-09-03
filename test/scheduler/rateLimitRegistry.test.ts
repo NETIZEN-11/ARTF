@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+﻿import { EventEmitter } from 'events';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -191,7 +191,7 @@ describe('RateLimitRegistry', () => {
       const callFn = vi.fn().mockResolvedValue('result');
       registry.execute(mockProvider, callFn);
 
-      expect(mockGetEnvInt).toHaveBeenCalledWith('PROMPTFOO_MIN_CONCURRENCY', 1);
+      expect(mockGetEnvInt).toHaveBeenCalledWith('artef_MIN_CONCURRENCY', 1);
       expect(mockProviderRateLimitStateConstructor).toHaveBeenCalledWith({
         rateLimitKey: 'test-provider',
         maxConcurrency: 10,
@@ -218,7 +218,7 @@ describe('RateLimitRegistry', () => {
       const callFn = vi.fn().mockResolvedValue('result');
       const result = await registry.execute(mockProvider, callFn);
 
-      expect(mockGetEnvBool).toHaveBeenCalledWith('PROMPTFOO_DISABLE_ADAPTIVE_SCHEDULER', false);
+      expect(mockGetEnvBool).toHaveBeenCalledWith('artef_DISABLE_ADAPTIVE_SCHEDULER', false);
       expect(callFn).toHaveBeenCalled();
       expect(mockProviderRateLimitStateConstructor).not.toHaveBeenCalled();
       expect(result).toBe('result');

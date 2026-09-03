@@ -1,4 +1,4 @@
-import * as fs from 'node:fs';
+﻿import * as fs from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
 
@@ -159,10 +159,10 @@ export function mockGlobal<T>(name: string, value: T): () => void {
 /**
  * Creates a unique temporary directory in the operating system temp location.
  *
- * @param prefix - Optional directory name prefix. Defaults to `promptfoo-test-`.
+ * @param prefix - Optional directory name prefix. Defaults to `artef-test-`.
  * @returns The absolute path to the newly created temporary directory.
  */
-export function createTempDir(prefix = 'promptfoo-test-'): string {
+export function createTempDir(prefix = 'artef-test-'): string {
   return fs.mkdtempSync(path.join(os.tmpdir(), prefix));
 }
 

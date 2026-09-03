@@ -1,4 +1,4 @@
-import type { Dispatcher } from 'undici';
+﻿import type { Dispatcher } from 'undici';
 
 // undici's parseHeaders lowercases header names, but scan case-insensitively in
 // case a differently-cased record arrives from another interceptor.
@@ -9,7 +9,7 @@ function hasContentEncoding(headers: Record<string, string | string[]>): boolean
   return Object.keys(headers).some((key) => key.toLowerCase() === 'content-encoding');
 }
 
-// When promptfoo's undici 7 agent is used with Node 26's built-in undici 8 fetch,
+// When artef's undici 7 agent is used with Node 26's built-in undici 8 fetch,
 // the decompress interceptor decompresses the body but leaves Content-Encoding in
 // controller.rawHeaders. undici 7.27.1+ preserves rawHeaders through the v7→v8
 // bridge, so Node 26's fetch sees Content-Encoding and tries to decompress again

@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+﻿import Anthropic from '@anthropic-ai/sdk';
 import dedent from 'dedent';
 import { getCache, isCacheEnabled } from '../../cache';
 import { getEnvFloat, getEnvInt, getEnvString } from '../../envars';
@@ -2062,7 +2062,7 @@ ${prompt}
       const content = responseJson.choices?.[0]?.message?.content;
       const showThinking = (config as BedrockOpenAIGenerationOptions)?.showThinking;
       // Bedrock's InvokeModel surfaces the model's chain-of-thought inline, wrapped in
-      // <reasoning>...</reasoning> before the final answer. By DEFAULT promptfoo returns the
+      // <reasoning>...</reasoning> before the final answer. By DEFAULT artef returns the
       // model output verbatim so nothing the API returned is hidden from assertions or
       // red-team graders — an eval framework should not silently drop application-visible
       // content. `showThinking` makes the two transformations opt-in.
@@ -2717,9 +2717,9 @@ export function getHandlerForModel(
     }
     throw new Error(
       `Amazon Bedrock model "${modelName}" looks like the Bedrock Mantle id for an open-weight ` +
-        `gpt-oss model. promptfoo's bedrock: provider calls the InvokeModel (bedrock-runtime) ` +
+        `gpt-oss model. artef's bedrock: provider calls the InvokeModel (bedrock-runtime) ` +
         `API, which uses the versioned runtime id — e.g. "bedrock:openai.gpt-oss-120b-1:0". See ` +
-        `https://www.promptfoo.dev/docs/providers/aws-bedrock/#openai-models`,
+        `https://www.artef.dev/docs/providers/aws-bedrock/#openai-models`,
     );
   }
   if (modelName.includes('openai.')) {
@@ -2730,7 +2730,7 @@ export function getHandlerForModel(
       `OpenAI model "${modelName}" is not served by Bedrock's InvokeModel API. Frontier ` +
         `models (gpt-5.x) use the OpenAI-compatible Responses API — use ` +
         `"bedrock:${bareFrontierId}" and set AWS_BEARER_TOKEN_BEDROCK. See ` +
-        `https://www.promptfoo.dev/docs/providers/aws-bedrock/#openai-models`,
+        `https://www.artef.dev/docs/providers/aws-bedrock/#openai-models`,
     );
   }
   if (modelName.includes('xai.') || modelName.includes('grok')) {
@@ -2740,7 +2740,7 @@ export function getHandlerForModel(
     throw new Error(
       `xAI model "${modelName}" is not served by Bedrock's InvokeModel API. Grok runs on the ` +
         `OpenAI-compatible Responses API (mantle endpoint) — use "bedrock:xai.grok-4.3" and set ` +
-        `AWS_BEARER_TOKEN_BEDROCK. See https://www.promptfoo.dev/docs/providers/aws-bedrock/#xai-grok-models`,
+        `AWS_BEARER_TOKEN_BEDROCK. See https://www.artef.dev/docs/providers/aws-bedrock/#xai-grok-models`,
     );
   }
   throw new Error(`Unknown Amazon Bedrock model: ${modelName}`);

@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { sanitizeProvider } from '../../../src/models/evalResult';
 import { neverGenerateRemote } from '../../../src/redteam/remoteGeneration';
 import {
@@ -334,9 +334,9 @@ describe('BestOfNProvider - Runtime Behavior', () => {
     'file://etc/passwd',
     ' FILE://etc/passwd',
     '\tFiLe://etc/passwd',
-    'package:@promptfoo/fake:getSecret',
-    ' PACKAGE:@promptfoo/fake:getSecret',
-    '\tPaCkAgE:@promptfoo/fake:getSecret',
+    'package:@artef/fake:getSecret',
+    ' PACKAGE:@artef/fake:getSecret',
+    '\tPaCkAgE:@artef/fake:getSecret',
   ])('should skip unsafe candidate prompt from remote generation: %s', async (unsafePrompt) => {
     const provider = new BestOfNProvider({
       injectVar: 'input',
@@ -438,7 +438,7 @@ describe('BestOfNProvider - Config Serialization', () => {
 
     const sanitized = sanitizeProvider(provider);
 
-    expect(sanitized.id).toBe('promptfoo:redteam:best-of-n');
+    expect(sanitized.id).toBe('artef:redteam:best-of-n');
     expect(sanitized.config).toEqual({
       injectVar: 'query',
       maxConcurrency: 5,

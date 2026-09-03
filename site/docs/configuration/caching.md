@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 41
 sidebar_label: Caching
 title: Caching Configuration - Performance Optimization
@@ -18,9 +18,9 @@ pagination_next: configuration/telemetry
 
 # Caching
 
-promptfoo caches the results of API calls to LLM providers to help save time and cost.
+artef caches the results of API calls to LLM providers to help save time and cost.
 
-The cache is managed by [`cache-manager`](https://www.npmjs.com/package/cache-manager/) with [`keyv`](https://www.npmjs.com/package/keyv) and [`keyv-file`](https://www.npmjs.com/package/keyv-file) for disk-based storage. By default, promptfoo uses disk-based storage (`~/.promptfoo/cache`).
+The cache is managed by [`cache-manager`](https://www.npmjs.com/package/cache-manager/) with [`keyv`](https://www.npmjs.com/package/keyv) and [`keyv-file`](https://www.npmjs.com/package/keyv-file) for disk-based storage. By default, artef uses disk-based storage (`~/.artef/cache`).
 
 ## How Caching Works
 
@@ -57,18 +57,18 @@ const fetchCacheKey = `fetch:v3:<request-digest>`;
 
 ## Command Line
 
-If you're using the command line, call `promptfoo eval` with `--no-cache` to disable the cache, or set `{ evaluateOptions: { cache: false }}` in your config file.
+If you're using the command line, call `artef eval` with `--no-cache` to disable the cache, or set `{ evaluateOptions: { cache: false }}` in your config file.
 
 Use `--no-cache` with `--repeat` when you want every run to make fresh LLM calls instead of replaying each repeat index from cache.
 
-Use `promptfoo cache clear` command to clear the cache.
+Use `artef cache clear` command to clear the cache.
 
 ## Node package
 
 Set `EvaluateOptions.cache` to false to disable cache:
 
 ```js
-promptfoo.evaluate(testSuite, {
+artef.evaluate(testSuite, {
   cache: false,
 });
 ```
@@ -78,8 +78,8 @@ promptfoo.evaluate(testSuite, {
 If you're integrating with [jest or vitest](/docs/integrations/jest), [mocha](/docs/integrations/mocha-chai), or any other external framework, you'll probably want to set the following for CI:
 
 ```sh
-PROMPTFOO_CACHE_TYPE=disk
-PROMPTFOO_CACHE_PATH=...
+artef_CACHE_TYPE=disk
+artef_CACHE_PATH=...
 ```
 
 ## Configuration
@@ -88,16 +88,16 @@ The cache is configurable through environment variables:
 
 | Environment Variable    | Description                               | Default Value                                      |
 | ----------------------- | ----------------------------------------- | -------------------------------------------------- |
-| PROMPTFOO_CACHE_ENABLED | Enable or disable the cache               | true                                               |
-| PROMPTFOO_CACHE_TYPE    | `disk` or `memory`                        | `memory` if `NODE_ENV` is `test`, otherwise `disk` |
-| PROMPTFOO_CACHE_PATH    | Path to the cache directory               | `~/.promptfoo/cache`                               |
-| PROMPTFOO_CACHE_TTL     | Time to live for cache entries in seconds | 14 days                                            |
+| artef_CACHE_ENABLED | Enable or disable the cache               | true                                               |
+| artef_CACHE_TYPE    | `disk` or `memory`                        | `memory` if `NODE_ENV` is `test`, otherwise `disk` |
+| artef_CACHE_PATH    | Path to the cache directory               | `~/.artef/cache`                               |
+| artef_CACHE_TTL     | Time to live for cache entries in seconds | 14 days                                            |
 
 #### Additional Cache Details
 
 - Rate limit responses (HTTP 429) are automatically handled with exponential backoff
 - Empty responses are not cached
-- HTTP 500 responses can be retried by setting `PROMPTFOO_RETRY_5XX=true`
+- HTTP 500 responses can be retried by setting `artef_RETRY_5XX=true`
 
 ## Managing the Cache
 
@@ -108,20 +108,20 @@ You can clear the cache in several ways:
 1. Using the CLI command:
 
 ```bash
-promptfoo cache clear
+artef cache clear
 ```
 
 2. Through the Node.js API:
 
 ```javascript
-const promptfoo = require('promptfoo');
-await promptfoo.cache.clearCache();
+const artef = require('artef');
+await artef.cache.clearCache();
 ```
 
 3. Manually delete the cache directory:
 
 ```bash
-rm -rf ~/.promptfoo/cache
+rm -rf ~/.artef/cache
 ```
 
 ### Cache Busting
@@ -131,7 +131,7 @@ You can force a cache miss in two ways:
 1. Pass `--no-cache` to the CLI:
 
 ```bash
-promptfoo eval --no-cache
+artef eval --no-cache
 ```
 
 2. Set cache busting in code:

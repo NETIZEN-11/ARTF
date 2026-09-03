@@ -1,4 +1,4 @@
-# Agent Documentation
+﻿# Agent Documentation
 
 Guidance for AI agents editing the reusable docs in `docs/agents/`.
 
@@ -11,7 +11,7 @@ Guidance for AI agents editing the reusable docs in `docs/agents/`.
 - Do not introduce hard-coded local env-file requirements into generic eval commands.
   Use `--env-file .env` only when credentials are needed and the file exists.
 - Do not claim that eval exit code 0 means all test cases passed unless the text
-  accounts for `PROMPTFOO_PASS_RATE_THRESHOLD`.
+  accounts for `artef_PASS_RATE_THRESHOLD`.
 - Verify implementation claims against source before documenting paths, defaults, or
   environment variables, and avoid machine-specific paths.
 - Prefer concrete command examples over broad advice, and avoid duplicating long

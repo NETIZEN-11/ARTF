@@ -1,11 +1,11 @@
-import { CodeScanSeverity, type Comment, type ScanResponse } from '../../types/codeScan';
+﻿import { CodeScanSeverity, type Comment, type ScanResponse } from '../../types/codeScan';
 import { sha256 } from '../../util/createHash';
 import { VERSION } from '../../version';
 
 const SARIF_SCHEMA_URL = 'https://json.schemastore.org/sarif-2.1.0.json';
 const SARIF_VERSION = '2.1.0';
-const TOOL_INFORMATION_URI = 'https://www.promptfoo.dev/docs/code-scanning/cli/';
-const GENERIC_RULE_ID = 'promptfoo/code-scan-finding';
+const TOOL_INFORMATION_URI = 'https://www.artef.dev/docs/code-scanning/cli/';
+const GENERIC_RULE_ID = 'artef/code-scan-finding';
 const RULE_HELP_TEXT =
   'Review the finding and suggested fix, then validate the affected code path before merging.';
 // Cap fingerprint input so minor rephrasing of long findings still hashes to the same id
@@ -16,12 +16,12 @@ type SarifRule = SarifLog['runs'][number]['tool']['driver']['rules'][number];
 
 const SARIF_RULE: SarifRule = {
   id: GENERIC_RULE_ID,
-  name: 'Promptfoo Code Scan Finding',
+  name: 'artef Code Scan Finding',
   shortDescription: {
-    text: 'Potential LLM security issue identified by Promptfoo Code Scan.',
+    text: 'Potential LLM security issue identified by artef Code Scan.',
   },
   fullDescription: {
-    text: 'Promptfoo Code Scan reviews code changes for LLM-related security risks such as prompt injection, unsafe tool use, and sensitive data exposure.',
+    text: 'artef Code Scan reviews code changes for LLM-related security risks such as prompt injection, unsafe tool use, and sensitive data exposure.',
   },
   defaultConfiguration: { level: 'warning' },
   help: { text: RULE_HELP_TEXT, markdown: RULE_HELP_TEXT },
@@ -58,7 +58,7 @@ interface SarifResult {
   };
   locations?: SarifLocation[];
   partialFingerprints: {
-    promptfooFindingHash: string;
+    artefFindingHash: string;
   };
   properties: {
     severity?: CodeScanSeverity;
@@ -101,7 +101,7 @@ interface SarifLog {
     };
     results: SarifResult[];
     properties?: {
-      promptfoo?: {
+      artef?: {
         review?: string;
       };
     };
@@ -196,7 +196,7 @@ function toSarifResult(comment: Comment): SarifResult {
     },
     locations: toSarifLocation(comment),
     partialFingerprints: {
-      promptfooFindingHash: createFingerprint(comment),
+      artefFindingHash: createFingerprint(comment),
     },
     properties: {
       severity: comment.severity,
@@ -218,7 +218,7 @@ export function scanResponseToSarif(response: ScanResponse): SarifLog {
   const results = response.comments.filter(isSarifReportableFinding).map(toSarifResult);
 
   const driver: SarifLog['runs'][number]['tool']['driver'] = {
-    name: 'Promptfoo Code Scan',
+    name: 'artef Code Scan',
     informationUri: TOOL_INFORMATION_URI,
     // Omit the rule descriptor when we have no findings. A rule with no associated results
     // adds noise to GitHub Code Scanning's tool inventory, so only emit it when used.
@@ -236,10 +236,10 @@ export function scanResponseToSarif(response: ScanResponse): SarifLog {
     results,
   };
   // Preserve the scan's review summary under a tool-namespaced custom property. GitHub
-  // Code Scanning ignores unknown properties; SARIF tooling that knows about promptfoo
+  // Code Scanning ignores unknown properties; SARIF tooling that knows about artef
   // can surface it.
   if (response.review) {
-    run.properties = { promptfoo: { review: response.review } };
+    run.properties = { artef: { review: response.review } };
   }
 
   return {

@@ -1,4 +1,4 @@
-import { getTraceStore } from '../tracing/store';
+﻿import { getTraceStore } from '../tracing/store';
 import { TokenUsageTracker } from './tokenUsage';
 import { accumulateTokenUsage, createEmptyTokenUsage } from './tokenUsageUtils';
 
@@ -18,10 +18,10 @@ const TOKEN_USAGE_ATTRIBUTES = [
   'gen_ai.usage.cache_creation.input_tokens',
   'gen_ai.usage.accepted_prediction_tokens',
   'gen_ai.usage.rejected_prediction_tokens',
-  'promptfoo.usage.total_tokens',
-  'promptfoo.usage.cached_response_tokens',
-  'promptfoo.usage.accepted_prediction_tokens',
-  'promptfoo.usage.rejected_prediction_tokens',
+  'artef.usage.total_tokens',
+  'artef.usage.cached_response_tokens',
+  'artef.usage.accepted_prediction_tokens',
+  'artef.usage.rejected_prediction_tokens',
 ] as const;
 
 /**
@@ -95,7 +95,7 @@ export async function getTokenUsage(query: TokenUsageQuery): Promise<TokenUsage>
  * - `gen_ai.usage.cache_read.input_tokens` -> provider prompt-cache reads
  * - `gen_ai.usage.cache_creation.input_tokens` -> provider prompt-cache writes
  *
- * Promptfoo-specific measurements use the `promptfoo.usage.*` namespace.
+ * artef-specific measurements use the `artef.usage.*` namespace.
  * Historical `gen_ai.usage.*` variants remain readable for existing traces.
  *
  * @param traceId - The trace ID to retrieve usage for
@@ -194,7 +194,7 @@ export function extractUsageFromSpan(span: SpanData): TokenUsage | undefined {
 
   const prompt = readNumericAttribute('gen_ai.usage.input_tokens');
   const completion = readNumericAttribute('gen_ai.usage.output_tokens');
-  const total = readNumericAttribute('promptfoo.usage.total_tokens', 'gen_ai.usage.total_tokens');
+  const total = readNumericAttribute('artef.usage.total_tokens', 'gen_ai.usage.total_tokens');
   if (prompt !== undefined) {
     usage.prompt = prompt;
   }
@@ -207,7 +207,7 @@ export function extractUsageFromSpan(span: SpanData): TokenUsage | undefined {
     usage.total = prompt + completion;
   }
   const cached = readNumericAttribute(
-    'promptfoo.usage.cached_response_tokens',
+    'artef.usage.cached_response_tokens',
     'gen_ai.usage.cached_tokens',
   );
   if (cached !== undefined) {
@@ -219,11 +219,11 @@ export function extractUsageFromSpan(span: SpanData): TokenUsage | undefined {
     'gen_ai.usage.reasoning_tokens',
   );
   const acceptedPrediction = readNumericAttribute(
-    'promptfoo.usage.accepted_prediction_tokens',
+    'artef.usage.accepted_prediction_tokens',
     'gen_ai.usage.accepted_prediction_tokens',
   );
   const rejectedPrediction = readNumericAttribute(
-    'promptfoo.usage.rejected_prediction_tokens',
+    'artef.usage.rejected_prediction_tokens',
     'gen_ai.usage.rejected_prediction_tokens',
   );
   const cacheReadInputTokens = readNumericAttribute(
@@ -279,7 +279,7 @@ export async function getTokenUsageByProvider(traceId: string): Promise<Map<stri
   const usageByProvider = new Map<string, TokenUsage>();
 
   for (const span of spans) {
-    const providerId = span.attributes?.['promptfoo.provider.id'] as string | undefined;
+    const providerId = span.attributes?.['artef.provider.id'] as string | undefined;
     if (!providerId) {
       continue;
     }
@@ -313,7 +313,7 @@ export async function getTokenUsageByTestIndex(traceId: string): Promise<Map<num
   const usageByTest = new Map<number, TokenUsage>();
 
   for (const span of spans) {
-    const testIndex = span.attributes?.['promptfoo.test.index'] as number | undefined;
+    const testIndex = span.attributes?.['artef.test.index'] as number | undefined;
     if (testIndex === undefined) {
       continue;
     }

@@ -1,6 +1,6 @@
----
+﻿---
 title: GPT Model Tiers MMLU-Pro Benchmark Comparison
-description: Compare full, mini, and nano GPT model tiers on MMLU-Pro reasoning tasks using promptfoo with step-by-step setup and deterministic scoring.
+description: Compare full, mini, and nano GPT model tiers on MMLU-Pro reasoning tasks using artef with step-by-step setup and deterministic scoring.
 image: /img/docs/gpt-5-vs-gpt-5-mini-mmlu.png
 keywords:
   [
@@ -21,11 +21,11 @@ slug: gpt-mmlu-comparison
 
 # GPT Model Tiers: MMLU-Pro Benchmark Comparison
 
-This guide compares full, mini, and nano OpenAI GPT model tiers on MMLU-Pro reasoning tasks using promptfoo.
+This guide compares full, mini, and nano OpenAI GPT model tiers on MMLU-Pro reasoning tasks using artef.
 
 **MMLU-Pro** is a more challenging successor to MMLU with harder reasoning questions and up to 10 answer options per item.
 
-This guide shows you how to run MMLU-Pro benchmarks using promptfoo.
+This guide shows you how to run MMLU-Pro benchmarks using artef.
 
 MMLU-Pro covers a broad set of academic and professional subjects, and it is more useful than classic MMLU when current models are already near saturation on easier multiple-choice benchmarks.
 
@@ -34,14 +34,14 @@ Running your own MMLU-Pro eval lets you compare reasoning quality, latency, and 
 :::tip Quick Start
 
 ```bash
-npx promptfoo@latest init --example compare-gpt-model-tiers-mmlu-pro
+npx artef@latest init --example compare-gpt-model-tiers-mmlu-pro
 ```
 
 :::
 
 ## Prerequisites
 
-- [promptfoo CLI installed](/docs/installation)
+- [artef CLI installed](/docs/installation)
 - OpenAI API key (set as `OPENAI_API_KEY`)
 - [Hugging Face token](https://huggingface.co/settings/tokens) (optional for public datasets; set as `HF_TOKEN`)
 
@@ -50,15 +50,15 @@ npx promptfoo@latest init --example compare-gpt-model-tiers-mmlu-pro
 Initialize and configure:
 
 ```bash
-npx promptfoo@latest init --example compare-gpt-model-tiers-mmlu-pro
+npx artef@latest init --example compare-gpt-model-tiers-mmlu-pro
 cd compare-gpt-model-tiers-mmlu-pro
 export HF_TOKEN=your_token_here
 ```
 
 Create a minimal configuration:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: GPT model tiers MMLU-Pro comparison
 
 prompts:
@@ -92,8 +92,8 @@ tests:
 ## Step 2: Run and View Results
 
 ```bash
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 You should see the full-size GPT tier outperforming the smaller tiers on at least some MMLU-Pro categories, though the exact gaps depend on the sample.
@@ -106,7 +106,7 @@ The results show side-by-side benchmark pass rates, letting you compare reasonin
 
 Add a short reasoning instruction and fixed final-answer format:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - |
     You are an expert test taker. Solve this step by step.

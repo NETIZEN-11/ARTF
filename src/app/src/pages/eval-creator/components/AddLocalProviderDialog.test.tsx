@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import AddLocalProviderDialog from './AddLocalProviderDialog';
 
 // Mock the fileExtensions utility
-vi.mock('@promptfoo/util/fileExtensions', () => ({
+vi.mock('@artef/util/fileExtensions', () => ({
   isJavascriptFile: vi.fn((path: string) => {
     return (
       path.endsWith('.js') ||

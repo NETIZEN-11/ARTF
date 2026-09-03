@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+﻿import { useCallback, useState } from 'react';
 
 import { callApi } from '@app/utils/api';
 import { EmailValidationStatus, UserEmailStatus } from '../../../types/email';
@@ -55,7 +55,7 @@ export function useEmailVerification() {
             needsEmail: false,
             status,
             error:
-              'You have exceeded the maximum cloud inference limit. Please contact inquiries@promptfoo.dev to upgrade your account.',
+              'You have exceeded the maximum cloud inference limit. Please contact inquiries@artef.dev to upgrade your account.',
           };
         }
 

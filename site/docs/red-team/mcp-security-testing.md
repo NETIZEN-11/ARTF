@@ -1,4 +1,4 @@
----
+﻿---
 title: MCP Security Testing Guide
 description: Secure Model Context Protocol servers through comprehensive red teaming, tool poisoning tests, and API vulnerability scanning
 sidebar_label: MCP Security Testing
@@ -10,7 +10,7 @@ This guide covers security testing approaches for Model Context Protocol (MCP) s
 
 We'll explore three testing scenarios, each addressing different threat models and deployment architectures, with particular focus on Tool Poisoning Attacks and other MCP-specific vulnerabilities.
 
-For general MCP integration with Promptfoo, see the [MCP Integration Guide](/docs/integrations/mcp). For using MCP as a provider, see the [MCP Provider documentation](/docs/providers/mcp).
+For general MCP integration with artef, see the [MCP Integration Guide](/docs/integrations/mcp). For using MCP as a provider, see the [MCP Provider documentation](/docs/providers/mcp).
 
 ## Overview
 
@@ -41,7 +41,7 @@ This scenario tests natural language attacks through a trusted application or mo
 **Configuration Example:**
 
 ```yaml
-# promptfooconfig.yaml for Scenario 1
+# artefconfig.yaml for Scenario 1
 description: 'MCP server security testing via thin client'
 
 targets:
@@ -124,12 +124,12 @@ tools:
           type: object
 ```
 
-We've also open-sourced an example [rogue MCP server](https://github.com/promptfoo/evil-mcp-server) you can run out-of-the-box.
+We've also open-sourced an example [rogue MCP server](https://github.com/artef/evil-mcp-server) you can run out-of-the-box.
 
-2. Configure Promptfoo to test with both servers:
+2. Configure artef to test with both servers:
 
 ```yaml
-# promptfooconfig.yaml for Scenario 2
+# artefconfig.yaml for Scenario 2
 description: 'MCP security testing'
 
 targets:
@@ -176,7 +176,7 @@ This scenario tests the MCP server directly using the MCP protocol, without any 
 **Configuration Example:**
 
 ```yaml
-# promptfooconfig.yaml for Scenario 3
+# artefconfig.yaml for Scenario 3
 description: 'Direct MCP server security testing'
 
 providers:
@@ -203,10 +203,10 @@ This is particularly useful for testing how agents respond to malicious tool out
 ### Quick Start
 
 ```bash
-npx promptfoo@latest init --example redteam-mcp-agent
+npx artef@latest init --example redteam-mcp-agent
 cd redteam-mcp-agent
 export OPENAI_API_KEY=your-key-here
-npx promptfoo redteam run
+npx artef redteam run
 ```
 
 ### Example Configuration
@@ -222,7 +222,7 @@ providers:
 
         # Malicious test server
         - command: npx
-          args: ['-y', '@promptfoo/evil-mcp-server@latest']
+          args: ['-y', '@artef/evil-mcp-server@latest']
 
 redteam:
   plugins:
@@ -235,11 +235,11 @@ redteam:
 
 This example tests critical vulnerabilities like tool response manipulation, cascading unauthorized actions, and data leakage through return values.
 
-See the complete [redteam-mcp-agent example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-mcp-agent) on GitHub.
+See the complete [redteam-mcp-agent example](https://github.com/artef/artef/tree/main/examples/redteam-mcp-agent) on GitHub.
 
 ## Getting Started
 
-For more info on getting started with Promptfoo, see the [quickstart guide](/docs/red-team/quickstart/).
+For more info on getting started with artef, see the [quickstart guide](/docs/red-team/quickstart/).
 
 ## Integration with CI/CD
 
@@ -270,9 +270,9 @@ jobs:
 
       - name: Run security tests
         run: |
-          npx promptfoo eval -c security-tests/scenario1.yaml
-          npx promptfoo eval -c security-tests/scenario2.yaml
-          npx promptfoo eval -c security-tests/scenario3.yaml
+          npx artef eval -c security-tests/scenario1.yaml
+          npx artef eval -c security-tests/scenario2.yaml
+          npx artef eval -c security-tests/scenario3.yaml
 
       - name: Check for vulnerabilities
         run: |
@@ -287,13 +287,13 @@ jobs:
 ### MCP-Specific Documentation
 
 - [MCP Plugin for Red Team Testing](/docs/red-team/plugins/mcp) - Detailed plugin documentation
-- [MCP Integration Guide](/docs/integrations/mcp) - General MCP integration with Promptfoo
+- [MCP Integration Guide](/docs/integrations/mcp) - General MCP integration with artef
 - [MCP Provider Documentation](/docs/providers/mcp) - Using MCP as a provider
 
 ### Example Implementations
 
-- [Red Team MCP Agent Example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-mcp-agent) - Complete example testing agent behavior with tool return values
-- [Evil MCP Server](https://github.com/promptfoo/evil-mcp-server) - Example malicious server for security testing
+- [Red Team MCP Agent Example](https://github.com/artef/artef/tree/main/examples/redteam-mcp-agent) - Complete example testing agent behavior with tool return values
+- [Evil MCP Server](https://github.com/artef/evil-mcp-server) - Example malicious server for security testing
 
 ### Red Team Resources
 

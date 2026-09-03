@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Utility for parsing and validating ModelAudit CLI arguments
- * Ensures compatibility between promptfoo and modelaudit CLI interfaces
+ * Ensures compatibility between artef and modelaudit CLI interfaces
  */
 
 import { z } from 'zod';
@@ -38,7 +38,7 @@ export const ModelAuditCliOptionsSchema = z.object({
   excludeScanner: z.array(z.string()).optional(),
   listScanners: z.boolean().optional(),
 
-  // Sharing options (promptfoo-only, not passed to modelaudit)
+  // Sharing options (artef-only, not passed to modelaudit)
   share: z.boolean().optional(),
   noShare: z.boolean().optional(),
 });
@@ -106,7 +106,7 @@ export const DEPRECATED_OPTIONS_MAP: Record<string, string | null> = {
 
 /**
  * Configuration mapping from option keys to CLI arguments
- * Note: 'share' and 'noShare' are omitted as they are promptfoo-only options
+ * Note: 'share' and 'noShare' are omitted as they are artef-only options
  */
 const CLI_ARG_MAP: Partial<
   Record<

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 6
 sidebar_label: Deterministic metrics
 title: Deterministic Metrics for LLM Output Validation
@@ -472,11 +472,11 @@ assert:
   - type: not-is-xml
 ```
 
-This will pass for non-XML content and XML outside Promptfoo's supported `is-xml` subset, and fail for supported well-formed XML content.
+This will pass for non-XML content and XML outside artef's supported `is-xml` subset, and fail for supported well-formed XML content.
 
 Note: The `is-xml` assertion requires the entire output to be a supported well-formed XML document. For checking XML content within a larger text, use the `contains-xml` assertion.
 
-`is-xml` rejects documents with a DTD internal subset because Promptfoo cannot safely validate the subset's declarations and entity replacement text. External resources are not loaded during validation.
+`is-xml` rejects documents with a DTD internal subset because artef cannot safely validate the subset's declarations and entity replacement text. External resources are not loaded during validation.
 
 ### Contains-XML
 
@@ -675,7 +675,7 @@ The `threshold` defaults to `1.0` (exact match required). Lower thresholds allow
 
 The `skill-used` assertion checks normalized provider skill metadata rather than the model's final output. It works well for agent evals where the important question is "did the agent route through the right skill?". Errored skill tool attempts can still appear in provider metadata for diagnostics, but they do not satisfy `skill-used`.
 
-Promptfoo currently populates `metadata.skillCalls` for:
+artef currently populates `metadata.skillCalls` for:
 
 - Claude Agent SDK, by normalizing `Skill` tool calls.
 - OpenAI Codex SDK, by inferring skill usage from command text that directly references a local `SKILL.md` path.
@@ -708,7 +708,7 @@ The `trajectory:tool-used` assertion checks traced tool steps rather than the mo
 Trajectory assertions require trace data. Enable tracing for the eval and use a provider that emits tool-oriented spans or attributes.
 :::
 
-Promptfoo identifies tool names from attributes such as `tool.name`, `function.name`, and Vercel AI SDK telemetry's `ai.toolCall.name`.
+artef identifies tool names from attributes such as `tool.name`, `function.name`, and Vercel AI SDK telemetry's `ai.toolCall.name`.
 
 Example:
 
@@ -864,7 +864,7 @@ tests:
 | `{ status: 'Q', page: 2 }`               | fail    | `page: 2` does not equal the declared default (1)            |
 | `{ status: 'Q', delete_database: true }` | fail    | hallucinated extra is not in `args`, `defaults`, or `ignore` |
 
-Promptfoo looks for tool arguments in span attributes such as `tool.arguments`, `tool.args`, `tool.input`, `function.arguments`, `args`, `arguments`, `input`, and Vercel AI SDK telemetry's `ai.toolCall.args`, `ai.toolCall.arguments`, and `ai.toolCall.input`. String values are parsed as JSON when possible.
+artef looks for tool arguments in span attributes such as `tool.arguments`, `tool.args`, `tool.input`, `function.arguments`, `args`, `arguments`, `input`, and Vercel AI SDK telemetry's `ai.toolCall.args`, `ai.toolCall.arguments`, and `ai.toolCall.input`. String values are parsed as JSON when possible.
 
 ### trajectory:tool-sequence {#trajectorytool-sequence}
 
@@ -958,7 +958,7 @@ assert:
     threshold: 5000
 ```
 
-Note that `latency` requires that the [cache is disabled](/docs/configuration/caching) with `promptfoo eval --no-cache` or an equivalent option.
+Note that `latency` requires that the [cache is disabled](/docs/configuration/caching) with `artef eval --no-cache` or an equivalent option.
 
 ### Levenshtein distance
 
@@ -1031,7 +1031,7 @@ Comparing scores across models may not be meaningful, unless the models have bee
 
 `perplexity-score` is a supported metric similar to `perplexity`, except it is normalized between 0 and 1 and inverted, meaning larger numbers are better.
 
-This makes it easier to include in an aggregate promptfoo score, as higher scores are usually better. In this example, we compare perplexity across multiple GPTs:
+This makes it easier to include in an aggregate artef score, as higher scores are usually better. In this example, we compare perplexity across multiple GPTs:
 
 ```yaml
 providers:
@@ -1577,7 +1577,7 @@ The F-score will be calculated automatically after the eval completes. A score c
 
 This is particularly useful for evaluating classification tasks like sentiment analysis, where you want to measure both the precision (accuracy of positive predictions) and recall (ability to find all positive cases).
 
-See [Github](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-f-score) for a complete example.
+See [Github](https://github.com/artef/artef/tree/main/examples/eval-f-score) for a complete example.
 
 ### Finish Reason
 

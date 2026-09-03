@@ -1,7 +1,7 @@
----
+﻿---
 title: 'When AI becomes the attacker: The rise of AI-orchestrated cyberattacks'
 description: "Google's November 2025 discovery of PROMPTFLUX and PROMPTSTEAL confirms Anthropic's August threat intelligence findings on AI-orchestrated attacks. Learn about vibe hacking, attack categories, and practical security measures."
-image: /img/blog/anthropic-threat-intelligence/header_redpanda_reading_report_promptfoo.jpg
+image: /img/blog/anthropic-threat-intelligence/header_redpanda_reading_report_artef.jpg
 keywords:
   [
     AI security,
@@ -215,7 +215,7 @@ tests:
 ```
 
 **Test 3: Red team your AI system**
-Attackers will use AI to generate thousands of attack variations. Use Promptfoo's red team plugins to test whether your AI system can be exploited.
+Attackers will use AI to generate thousands of attack variations. Use artef's red team plugins to test whether your AI system can be exploited.
 
 ```yaml
 # Generate adversarial test cases automatically
@@ -236,7 +236,7 @@ redteam:
 
 This generates 50 adversarial test cases per plugin category, testing whether your AI refuses harmful requests, leaks PII, or promotes competitors. Run this before each deployment.
 
-When you run `promptfoo eval`, you'll get a detailed report showing which prompts successfully bypassed your guardrails (red flags) and which were properly refused (green checks). This creates a security scorecard you can track over time and integrate into your CI/CD pipeline.
+When you run `artef eval`, you'll get a detailed report showing which prompts successfully bypassed your guardrails (red flags) and which were properly refused (green checks). This creates a security scorecard you can track over time and integrate into your CI/CD pipeline.
 
 ## Accelerating defensive measures
 
@@ -298,4 +298,4 @@ Attackers documented in these case studies are already using AI to scale operati
 - [Google discovers PROMPTFLUX malware leveraging AI for evasion](https://thehackernews.com/2025/11/google-uncovers-promptflux-malware-that.html) - First observed LLM-powered malware in the wild
 - [Kaspersky: $500K crypto heist through malicious packages targeting Cursor developers](https://www.kaspersky.com/about/press-releases/kaspersky-uncovers-500k-crypto-heist-through-malicious-packages-targeting-cursor-developers) - Supply chain attack on AI coding tool users
 
-**Ready to test your AI systems for security vulnerabilities?** [Explore Promptfoo's red-teaming capabilities →](/docs/red-team/)
+**Ready to test your AI systems for security vulnerabilities?** [Explore artef's red-teaming capabilities →](/docs/red-team/)

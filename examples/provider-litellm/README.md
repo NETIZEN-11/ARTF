@@ -1,13 +1,13 @@
-# provider-litellm (LiteLLM Provider)
+﻿# provider-litellm (LiteLLM Provider)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-litellm
+npx artef@latest init --example provider-litellm
 cd provider-litellm
 ```
 
-This example demonstrates how to use the LiteLLM provider with promptfoo to evaluate multiple models through a unified interface.
+This example demonstrates how to use the LiteLLM provider with artef to evaluate multiple models through a unified interface.
 
 ## What is LiteLLM?
 
@@ -37,7 +37,7 @@ LiteLLM provides a unified interface to 400+ LLMs. Instead of managing different
 
 3. **Run the evaluation**:
    ```bash
-   npx promptfoo@latest eval
+   npx artef@latest eval
    ```
 
 ## Features
@@ -51,7 +51,7 @@ LiteLLM provides a unified interface to 400+ LLMs. Instead of managing different
 
 ## How It Works
 
-The LiteLLM provider in promptfoo connects to a LiteLLM proxy server (default port 4000). The proxy handles:
+The LiteLLM provider in artef connects to a LiteLLM proxy server (default port 4000). The proxy handles:
 
 - Authentication and routing to various providers
 - Standardizing request/response formats
@@ -60,7 +60,7 @@ The LiteLLM provider in promptfoo connects to a LiteLLM proxy server (default po
 
 ## Configuration Files
 
-- `promptfooconfig.yaml` - Main evaluation configuration
+- `artefconfig.yaml` - Main evaluation configuration
 - `litellm_config.yaml` - LiteLLM proxy server configuration
 - `start-proxy.sh` - Helper script to start the proxy
 
@@ -125,5 +125,5 @@ litellm --config litellm_config.yaml
 ## Learn More
 
 - [LiteLLM Documentation](https://docs.litellm.ai/docs/)
-- [Promptfoo LiteLLM Provider Docs](/docs/providers/litellm)
+- [artef LiteLLM Provider Docs](/docs/providers/litellm)
 - [LiteLLM Proxy Setup](https://docs.litellm.ai/docs/proxy/quick_start)

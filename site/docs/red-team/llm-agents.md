@@ -1,4 +1,4 @@
----
+﻿---
 slug: agents
 sidebar_position: 10001
 description: Red team LLM agent security by testing privilege escalation, context poisoning, and memory manipulation to protect AI systems from unauthorized access and data breaches
@@ -10,7 +10,7 @@ LLM agents are capable of interacting with their environment and executing compl
 
 This guide outlines strategies for red teaming LLM agents, with a focus on technical vulnerabilities and security implications.
 
-It includes configuration examples for Promptfoo, an open-source red teaming tool. To run your own red team, see [getting started](/docs/red-team/quickstart/).
+It includes configuration examples for artef, an open-source red teaming tool. To run your own red team, see [getting started](/docs/red-team/quickstart/).
 
 :::tip
 
@@ -49,7 +49,7 @@ redteam:
 
 The RBAC plugin tests whether the agent respects predefined access control policies. The BOLA and BFLA plugins check if the agent can be tricked into accessing or modifying resources or functions beyond its intended scope.
 
-Promptfoo's red teaming capabilities include many other OWASP vulnerabilities. Learn more about them [here](https://promptfoo.dev/docs/red-team/owasp-llm-top-10).
+artef's red teaming capabilities include many other OWASP vulnerabilities. Learn more about them [here](https://artef.dev/docs/red-team/owasp-llm-top-10).
 
 ## Context Poisoning and Data Exfiltration
 
@@ -287,7 +287,7 @@ targets:
   - 'file://agent.py:do_planning' # Test just planning
 
 redteam:
-  # The `purpose` field is critical. Promptfoo uses this description of your
+  # The `purpose` field is critical. artef uses this description of your
   # agent's goals to generate targeted, context-aware attacks.
   purpose: 'Customer service agent with read-only database access'
 ```
@@ -296,9 +296,9 @@ redteam:
 
 ### Trace-Based Testing (Glass Box)
 
-[OpenTelemetry tracing](/docs/tracing/) gives Promptfoo evidence about what the agent actually did during a red-team test: LLM calls, guardrail decisions, tool executions, shell commands, searches, reasoning steps, and errors. Promptfoo can normalize those spans into an agent trajectory, which is a time-ordered summary of the run.
+[OpenTelemetry tracing](/docs/tracing/) gives artef evidence about what the agent actually did during a red-team test: LLM calls, guardrail decisions, tool executions, shell commands, searches, reasoning steps, and errors. artef can normalize those spans into an agent trajectory, which is a time-ordered summary of the run.
 
-In most red-team runs, you don't need to hand-write trajectory assertions for every generated case. Promptfoo's red-team plugins generate the attacks and graders. Tracing adds evidence that generated graders, iterative attack strategies, and follow-up regression evals can use:
+In most red-team runs, you don't need to hand-write trajectory assertions for every generated case. artef's red-team plugins generate the attacks and graders. Tracing adds evidence that generated graders, iterative attack strategies, and follow-up regression evals can use:
 
 - **Grading evidence**: Red-team grading can receive a compact trajectory summary to distinguish "the agent said it would not do that" from "the agent actually called the forbidden tool."
 - **Attack feedback**: Iterative strategies can use the previous attempt's trace summary to probe deeper on the next turn.
@@ -308,7 +308,7 @@ This creates an evidence loop:
 
 1. Attack strategy sends a prompt.
 2. Agent processes it, emitting traces.
-3. Promptfoo captures the spans and summarizes the trajectory.
+3. artef captures the spans and summarizes the trajectory.
 4. The summary is available to grading, investigation, and optionally the next attack iteration.
 5. You use the final output plus trajectory evidence to classify and reproduce the finding.
 
@@ -324,7 +324,7 @@ When `redteam.tracing.includeInAttack` is enabled, compatible attack strategies 
 - **Internal LLM calls**: Model names used by internal LLM spans
 - **Guardrail outcomes**: High-level observations may note triggered or blocking guardrails when the relevant attributes are present
 
-Avoid putting secrets or sensitive IDs in span names, tool names, or other attributes you choose to expose. Use trajectory assertions for argument-level regression checks, where Promptfoo can inspect trace data without feeding it back into the attacker.
+Avoid putting secrets or sensitive IDs in span names, tool names, or other attributes you choose to expose. Use trajectory assertions for argument-level regression checks, where artef can inspect trace data without feeding it back into the attacker.
 
 Example trace summary provided to an attacker:
 
@@ -387,9 +387,9 @@ This is optional. The main red-team workflow remains plugin-driven; trajectory a
 
 #### Configuration
 
-Enable root-level tracing so Promptfoo can receive spans, then enable red-team tracing where you want trace summaries used:
+Enable root-level tracing so artef can receive spans, then enable red-team tracing where you want trace summaries used:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tracing:
   enabled: true
   otlp:
@@ -455,7 +455,7 @@ Trace feedback is strongest with `jailbreak:meta` and `jailbreak:hydra`, which a
 
 #### Example Implementation
 
-See the [red team tracing example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-tracing-example) for a complete implementation with:
+See the [red team tracing example](https://github.com/artef/artef/tree/main/examples/redteam-tracing-example) for a complete implementation with:
 
 - Mock traced agent server
 - Trace emission setup
@@ -544,7 +544,7 @@ By testing individual components, you can identify which parts of your agent arc
 
 ## What's next?
 
-Promptfoo is a free open-source red teaming tool for LLM agents. If you'd like to learn more about how to set up a red team, check out the [red teaming](/docs/red-team/) introduction.
+artef is a free open-source red teaming tool for LLM agents. If you'd like to learn more about how to set up a red team, check out the [red teaming](/docs/red-team/) introduction.
 
 ### Related Documentation
 

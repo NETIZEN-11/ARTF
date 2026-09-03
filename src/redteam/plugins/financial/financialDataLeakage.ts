@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class FinancialDataLeakagePluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:financial:data-leakage';
+  readonly id = 'artef:redteam:financial:data-leakage';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

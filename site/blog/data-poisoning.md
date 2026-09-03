@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Defending Against Data Poisoning Attacks on LLMs: A Comprehensive Guide'
 sidebar_label: Defending Against Data Poisoning Attacks on LLMs—A Comprehensive Guide
 description: 'Data poisoning attacks can corrupt LLMs during training, fine-tuning, and RAG retrieval. Discover how attackers exploit your data pipeline and how to defend against it.'
@@ -34,7 +34,7 @@ Understanding how these attacks work and implementing preventative measures is c
   <div style={{ textAlign: 'center' }}>
     <img
       src="/img/blog/data-poisoning/poisoning-panda.jpeg"
-      alt="Promptfoo Panda as a chemist"
+      alt="artef Panda as a chemist"
       style={{ width: '70%' }}
     />
   </div>
@@ -76,7 +76,7 @@ Attackers may [upload poisoned models](https://www.darkreading.com/application-s
 
 ## Detection and Prevention Strategies
 
-To protect your LLM applications from [LLM vulnerabilities](https://www.promptfoo.dev/docs/red-team/llm-vulnerability-types/), including data poisoning attacks, it's essential to implement a comprehensive set of detection and prevention measures:
+To protect your LLM applications from [LLM vulnerabilities](https://www.artef.dev/docs/red-team/llm-vulnerability-types/), including data poisoning attacks, it's essential to implement a comprehensive set of detection and prevention measures:
 
 ### Implement Data Validation and Tracking to Mitigate Risk of Data Poisoning
 
@@ -90,7 +90,7 @@ Regularly monitor the outputs of your LLM for signs of unusual or undesirable be
 
 - **Implement Tracing**: LLM tracing provides a detailed snapshot of the decision-making and thought processes within LLMs as they generate responses. Tracing can help you monitor, debug, and understand the execution of an LLM application
 - **Use Golden Datasets**: Golden datasets in LLMs are high-quality, carefully curated collections of data used to evaluate and benchmark the performance of large language models. Use these datasets as a "ground truth" to evaluate the performance of your models.
-- **Test with Adversarial Examples**: [Use Promptfoo](https://www.promptfoo.dev/docs/red-team/quickstart/) to test your models with adversarial inputs to evaluate its robustness against potential attacks.
+- **Test with Adversarial Examples**: [Use artef](https://www.artef.dev/docs/red-team/quickstart/) to test your models with adversarial inputs to evaluate its robustness against potential attacks.
 - **Deploy Guardrails**: Use guardrails as a defense-in-depth measure to prevent the LLM from generating outputs that violate your policies.
 
 ### Limit Access to Training Processes to Prevent Data Poisoning
@@ -105,16 +105,16 @@ Restrict who can modify training data or initiate training processes.
 ### Enforce Supply Chain Security to Identify Poisoned Models
 
 - **Vet Your Sources**: Conduct thorough due diligence on model providers and training data sources.
-  - Review model cards and documentation to understand the model's training processes and performance. You can learn more about this in our [foundation model security](https://www.promptfoo.dev/blog/foundation-model-security/) blog post.
+  - Review model cards and documentation to understand the model's training processes and performance. You can learn more about this in our [foundation model security](https://www.artef.dev/blog/foundation-model-security/) blog post.
   - Verify that models downloaded from Hugging Face [pass their malware scans](https://huggingface.co/docs/hub/en/security-malware) and [pickling scans](https://huggingface.co/docs/hub/en/security-pickle).
 
 ### Red Team LLM Applications to Detect Data Poisoning
 
-- **Model Red Teaming**: Run an initial [red team](https://www.promptfoo.dev/docs/red-team/) assessment against any models pulled from shared or public repositories like Hugging Face.
-- **Assess Bias**: In Promptfoo's eval framework, use Promptfoo's [classifier assert type](https://www.promptfoo.dev/docs/configuration/expected-outputs/classifier/#bias-detection-example) to assess grounding, factuality, and bias in models pulled from Hugging Face.
-- **Test RAG Poisoning**: Test for susceptibility to RAG poisoning with [Promptfoo's RAG poisoning plugin](https://www.promptfoo.dev/docs/red-team/plugins/rag-poisoning/).
+- **Model Red Teaming**: Run an initial [red team](https://www.artef.dev/docs/red-team/) assessment against any models pulled from shared or public repositories like Hugging Face.
+- **Assess Bias**: In artef's eval framework, use artef's [classifier assert type](https://www.artef.dev/docs/configuration/expected-outputs/classifier/#bias-detection-example) to assess grounding, factuality, and bias in models pulled from Hugging Face.
+- **Test RAG Poisoning**: Test for susceptibility to RAG poisoning with [artef's RAG poisoning plugin](https://www.artef.dev/docs/red-team/plugins/rag-poisoning/).
 
-Implementing these [AI red teaming techniques](https://www.promptfoo.dev/docs/guides/llm-redteaming/) will help safeguard your models against various threats.
+Implementing these [AI red teaming techniques](https://www.artef.dev/docs/guides/llm-redteaming/) will help safeguard your models against various threats.
 
 ## Learning from Real-World Examples and Case Studies
 
@@ -127,8 +127,8 @@ Understanding real-world instances of data poisoning attacks can help you better
 
 Analyzing these examples and benchmarking LLM performance can help you identify weaknesses and improve model robustness. These examples highlight the importance of data integrity and the need for vigilant monitoring of your models' training data and outputs.
 
-## Take Action with Promptfoo
+## Take Action with artef
 
-Promptfoo is an open-source tool that tests and secures large language model applications. It identifies risks related to security, legal issues, and brand reputation by detecting problems like data leaks, prompt injections, and harmful content.
+artef is an open-source tool that tests and secures large language model applications. It identifies risks related to security, legal issues, and brand reputation by detecting problems like data leaks, prompt injections, and harmful content.
 
-Get started red teaming your LLMs by checking out our [Red Team Guide](https://www.promptfoo.dev/docs/red-team/).
+Get started red teaming your LLMs by checking out our [Red Team Guide](https://www.artef.dev/docs/red-team/).

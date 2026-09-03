@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -116,22 +116,22 @@ export default function EventsPage(): React.ReactElement {
   return (
     <Layout
       title="Events"
-      description="Meet the Promptfoo team at conferences and events. See live AI security demos, attend workshops, and connect with our security experts."
+      description="Meet the artef team at conferences and events. See live AI security demos, attend workshops, and connect with our security experts."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo Events | AI Security Conferences" />
+        <meta property="og:title" content="artef Events | AI Security Conferences" />
         <meta
           property="og:description"
-          content="Meet the Promptfoo team at security conferences. See live AI red teaming demos, attend workshops, and connect with our experts."
+          content="Meet the artef team at security conferences. See live AI red teaming demos, attend workshops, and connect with our experts."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/" />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/og/events-og.png" />
+        <meta property="og:url" content="https://www.artef.dev/events/" />
+        <meta property="og:image" content="https://www.artef.dev/img/og/events-og.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/og/events-og.png" />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/og/events-og.png" />
+        <link rel="canonical" href="https://www.artef.dev/events/" />
       </Head>
 
       <main className={styles.main}>
@@ -185,7 +185,7 @@ export default function EventsPage(): React.ReactElement {
             <div className={styles.ctaContent}>
               <h2 className={styles.ctaTitle}>Can't make it to an event?</h2>
               <p className={styles.ctaDescription}>
-                Book a personalized demo with our team and see how Promptfoo can secure your AI
+                Book a personalized demo with our team and see how artef can secure your AI
                 applications.
               </p>
               <Link to="/contact" className={styles.ctaButton}>

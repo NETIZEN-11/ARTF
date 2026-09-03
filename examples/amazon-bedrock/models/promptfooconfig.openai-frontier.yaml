@@ -1,8 +1,8 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'OpenAI GPT-5.6 Sol, Terra, and Luna via Amazon Bedrock'
 
 # Frontier models are served through Bedrock's OpenAI-compatible Responses API and
-# authenticate with an Amazon Bedrock API key. Export it before running (promptfoo reads it
+# authenticate with an Amazon Bedrock API key. Export it before running (artef reads it
 # automatically — no apiKey field needed):
 #   export AWS_BEARER_TOKEN_BEDROCK="..."
 
@@ -23,7 +23,7 @@ prompts:
     ]
 
 providers:
-  # Sol is available in us-east-1 and us-east-2. Promptfoo routes the bare Bedrock ID to
+  # Sol is available in us-east-1 and us-east-2. artef routes the bare Bedrock ID to
   # https://bedrock-mantle.<region>.api.aws/openai/v1/responses.
   - id: bedrock:openai.gpt-5.6-sol
     label: GPT-5.6 Sol (max reasoning)
@@ -81,6 +81,6 @@ tests:
     assert:
       # Deterministic assertions keep this example runnable with only a Bedrock API key.
       # (A model-graded assertion like `llm-rubric` would require a separate grader provider
-      # with its own credentials — see https://promptfoo.dev/docs/configuration/expected-outputs/model-graded/)
+      # with its own credentials — see https://artef.dev/docs/configuration/expected-outputs/model-graded/)
       - type: icontains-any
         value: ['data', 'model', 'train', 'learn', 'pattern']

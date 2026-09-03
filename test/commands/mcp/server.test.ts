@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockProcessEnv } from '../../util/utils';
 
 const { mockRandomUUID } = vi.hoisted(() => ({
@@ -67,8 +67,8 @@ vi.mock('../../../src/commands/mcp/tools/getEvaluationDetails', () => ({
   registerGetEvaluationDetailsTool: vi.fn(),
 }));
 
-vi.mock('../../../src/commands/mcp/tools/validatePromptfooConfig', () => ({
-  registerValidatePromptfooConfigTool: vi.fn(),
+vi.mock('../../../src/commands/mcp/tools/validateartefConfig', () => ({
+  registerValidateartefConfigTool: vi.fn(),
 }));
 
 vi.mock('../../../src/commands/mcp/tools/testProvider', () => ({
@@ -190,7 +190,7 @@ describe('MCP Server', () => {
       await createMcpServer();
 
       expect(mcpServerCalls.length).toBe(1);
-      expect(mcpServerCalls[0].name).toBe('Promptfoo MCP');
+      expect(mcpServerCalls[0].name).toBe('artef MCP');
       expect(mcpServerCalls[0].version).toBe('1.0.0');
     });
 
@@ -236,8 +236,8 @@ describe('MCP Server', () => {
       const { registerGetEvaluationDetailsTool } = await import(
         '../../../src/commands/mcp/tools/getEvaluationDetails'
       );
-      const { registerValidatePromptfooConfigTool } = await import(
-        '../../../src/commands/mcp/tools/validatePromptfooConfig'
+      const { registerValidateartefConfigTool } = await import(
+        '../../../src/commands/mcp/tools/validateartefConfig'
       );
       const { registerTestProviderTool } = await import(
         '../../../src/commands/mcp/tools/testProvider'
@@ -271,7 +271,7 @@ describe('MCP Server', () => {
       // Core evaluation tools
       expect(registerListEvaluationsTool).toHaveBeenCalled();
       expect(registerGetEvaluationDetailsTool).toHaveBeenCalled();
-      expect(registerValidatePromptfooConfigTool).toHaveBeenCalled();
+      expect(registerValidateartefConfigTool).toHaveBeenCalled();
       expect(registerTestProviderTool).toHaveBeenCalled();
       expect(registerRunAssertionTool).toHaveBeenCalled();
       expect(registerRunEvaluationTool).toHaveBeenCalled();

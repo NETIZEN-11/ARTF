@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import dedent from 'dedent';
@@ -182,11 +182,11 @@ async function loadCodexSecurity(): Promise<CodexSecurityModule> {
     throw new Error(
       dedent`Failed to load @openai/codex-security.
 
-      Promptfoo and the SDK require a supported even-numbered Node.js release: ^22.22.0, ^24.0.0, or ^26.0.0.
+      artef and the SDK require a supported even-numbered Node.js release: ^22.22.0, ^24.0.0, or ^26.0.0.
       Reinstall them together with:
-        npm install promptfoo @openai/codex-security
+        npm install artef @openai/codex-security
 
-      See https://www.promptfoo.dev/docs/providers/openai-codex-security/`,
+      See https://www.artef.dev/docs/providers/openai-codex-security/`,
     );
   }
 
@@ -195,21 +195,21 @@ async function loadCodexSecurity(): Promise<CodexSecurityModule> {
       dedent`The installed @openai/codex-security package is incompatible (${Array.from(incompatibleVersions).join(', ')}).
 
       Version ${MINIMUM_CODEX_SECURITY_SDK_VERSION} or newer is required for finding validation and accurate deep-worker cost tracking.
-      Install the compatible SDK alongside Promptfoo with:
-        npm install promptfoo @openai/codex-security@^${MINIMUM_CODEX_SECURITY_SDK_VERSION}
+      Install the compatible SDK alongside artef with:
+        npm install artef @openai/codex-security@^${MINIMUM_CODEX_SECURITY_SDK_VERSION}
 
-      See https://www.promptfoo.dev/docs/providers/openai-codex-security/`,
+      See https://www.artef.dev/docs/providers/openai-codex-security/`,
     );
   }
 
   throw new Error(
     dedent`The @openai/codex-security package is required but not installed.
 
-    Install it alongside Promptfoo with:
-      npm install promptfoo @openai/codex-security
+    Install it alongside artef with:
+      npm install artef @openai/codex-security
 
     Requires Node.js ^22.22.0, ^24.0.0, or ^26.0.0.
-    See https://www.promptfoo.dev/docs/providers/openai-codex-security/`,
+    See https://www.artef.dev/docs/providers/openai-codex-security/`,
   );
 }
 
@@ -334,7 +334,7 @@ export class OpenAICodexSecurityProvider implements ApiProvider {
       for (const key of ['OPENAI_API_KEY', 'CODEX_API_KEY'] as const) {
         if (this.env?.[key] && this.env[key] !== process.env[key]) {
           return {
-            error: `Codex Security does not support provider-scoped ${key}. Set ${key} in the Promptfoo process environment before running the evaluation.`,
+            error: `Codex Security does not support provider-scoped ${key}. Set ${key} in the artef process environment before running the evaluation.`,
           };
         }
       }

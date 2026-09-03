@@ -1,4 +1,4 @@
-import async from 'async';
+﻿import async from 'async';
 import chalk from 'chalk';
 import dedent from 'dedent';
 import { VERSION } from '../../constants';
@@ -43,7 +43,7 @@ export default class BestOfNProvider implements ApiProvider {
   readonly config: BestOfNConfig;
 
   id() {
-    return 'promptfoo:redteam:best-of-n';
+    return 'artef:redteam:best-of-n';
   }
 
   constructor(

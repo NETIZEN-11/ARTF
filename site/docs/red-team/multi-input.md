@@ -1,4 +1,4 @@
----
+﻿---
 title: Multi-Input Red Teaming
 sidebar_label: Multi-Input Testing
 sidebar_position: 10002
@@ -64,7 +64,7 @@ An attacker controlling both `vendor_id` and `description` can attempt authoriza
 
 You can set this up in either of these ways:
 
-1. Write a `promptfooconfig.yaml` file directly.
+1. Write a `artefconfig.yaml` file directly.
 2. Use the setup UI to define the target inputs and red team settings.
 
 If you are configuring this in the product, the setup UI looks like this:
@@ -119,18 +119,18 @@ redteam:
     - 'jailbreak-templates'
 ```
 
-You can also browse runnable examples in GitHub: [examples/redteam-multi-input](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-multi-input) for a standard multi-field app, or [examples/redteam-docx-document-upload](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-docx-document-upload) for a DOCX upload workflow.
+You can also browse runnable examples in GitHub: [examples/redteam-multi-input](https://github.com/artef/artef/tree/main/examples/redteam-multi-input) for a standard multi-field app, or [examples/redteam-docx-document-upload](https://github.com/artef/artef/tree/main/examples/redteam-docx-document-upload) for a DOCX upload workflow.
 
 ### Step 2: Run the Red Team
 
 ```bash
-npx promptfoo@latest redteam run -c finbot-redteam.yaml
+npx artef@latest redteam run -c finbot-redteam.yaml
 ```
 
 ### Step 3: View Results
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 The report shows which attack combinations successfully bypassed FinBot's controls:
@@ -185,12 +185,12 @@ targets:
 Each key becomes a variable that plugins will generate adversarial content for. The value can be a plain description string, or a structured definition with `description`, optional `type`, and optional `config`.
 
 :::note
-Define only your real application inputs here. In multi-input mode, Promptfoo automatically builds the internal `__prompt` payload from these fields for generation and grading, so you should not set `redteam.injectVar`, add a synthetic `prompt` input, or rewrite your target to use `{{prompt}}` just to make multi-input work.
+Define only your real application inputs here. In multi-input mode, artef automatically builds the internal `__prompt` payload from these fields for generation and grading, so you should not set `redteam.injectVar`, add a synthetic `prompt` input, or rewrite your target to use `{{prompt}}` just to make multi-input work.
 :::
 
 ### Typed Document And Media Inputs
 
-For upload or multimodal targets, use a structured input definition. Set `type` to `docx`, `pdf`, or `image` when Promptfoo should materialize generated text into that file or media value before calling your provider. Use `config.inputPurpose` to describe what a normal uploaded file should look like, `config.injectionPlacements` to choose where injected instructions may be placed, and `config.benign: true` for companion fields that should remain natural.
+For upload or multimodal targets, use a structured input definition. Set `type` to `docx`, `pdf`, or `image` when artef should materialize generated text into that file or media value before calling your provider. Use `config.inputPurpose` to describe what a normal uploaded file should look like, `config.injectionPlacements` to choose where injected instructions may be placed, and `config.benign: true` for companion fields that should remain natural.
 
 DOCX inputs support `body`, `comment`, `footnote`, `header`, and `footer` placements. PDF and image inputs support `body`, `header`, and `footer` placements.
 
@@ -212,7 +212,7 @@ targets:
           benign: true
 ```
 
-The provider receives `document` as a DOCX data URI and `question` as ordinary text. See the [DOCX document upload example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-docx-document-upload) for a complete provider and configuration.
+The provider receives `document` as a DOCX data URI and `question` as ordinary text. See the [DOCX document upload example](https://github.com/artef/artef/tree/main/examples/redteam-docx-document-upload) for a complete provider and configuration.
 
 ### Variable Naming
 
@@ -267,7 +267,7 @@ targets:
 
 ### Using with Custom Providers
 
-For custom providers, read the generated values from `context['vars']`. Promptfoo provides both the individual named inputs and the combined internal `__prompt` value automatically; you do not need to construct `__prompt` yourself. For example, in Python:
+For custom providers, read the generated values from `context['vars']`. artef provides both the individual named inputs and the combined internal `__prompt` value automatically; you do not need to construct `__prompt` yourself. For example, in Python:
 
 ```python
 def call_api(prompt, options, context):
@@ -337,14 +337,14 @@ metadata:
 
 ## Excluded Plugins
 
-Promptfoo automatically skips plugins that require a single string payload or dataset-backed prompt sets when multi-input mode is enabled. This currently includes:
+artef automatically skips plugins that require a single string payload or dataset-backed prompt sets when multi-input mode is enabled. This currently includes:
 
 - `ascii-smuggling`, `cca`, `cross-session-leak`, `special-token-injection`, and `system-prompt-override`
 - Dataset-backed plugins such as `beavertails`, `harmbench`, and `xstest`
 
 These plugins are skipped because their current implementations do not support multi-input mode yet.
 
-When one of these plugins is present in your configuration, Promptfoo logs the skipped IDs and continues with the supported plugins.
+When one of these plugins is present in your configuration, artef logs the skipped IDs and continues with the supported plugins.
 
 ## Best Practices
 
@@ -395,8 +395,8 @@ Standard single-input mode is simpler for applications with a single prompt fiel
 
 ## Related Concepts
 
-- [GitHub Example: redteam-multi-input](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-multi-input) — Browse the full runnable multi-input example
-- [GitHub Example: redteam-docx-document-upload](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-docx-document-upload) — Test indirect prompt injection through uploaded DOCX files
+- [GitHub Example: redteam-multi-input](https://github.com/artef/artef/tree/main/examples/redteam-multi-input) — Browse the full runnable multi-input example
+- [GitHub Example: redteam-docx-document-upload](https://github.com/artef/artef/tree/main/examples/redteam-docx-document-upload) — Test indirect prompt injection through uploaded DOCX files
 - [BOLA Plugin](/docs/red-team/plugins/bola/) — Test broken object-level authorization
 - [BFLA Plugin](/docs/red-team/plugins/bfla/) — Test broken function-level authorization
 - [HTTP Provider](/docs/providers/http/) — Configure HTTP API targets

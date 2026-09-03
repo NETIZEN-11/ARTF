@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 42
 title: OpenCode SDK
 description: 'Use OpenCode SDK for evals with 75+ providers, built-in tools, and terminal-native AI agent'
@@ -35,7 +35,7 @@ npm install @opencode-ai/sdk
 
 :::note
 
-Promptfoo treats the SDK package as an optional runtime dependency, so it only needs to be installed if you want to use the OpenCode SDK provider.
+artef treats the SDK package as an optional runtime dependency, so it only needs to be installed if you want to use the OpenCode SDK provider.
 
 :::
 
@@ -53,11 +53,11 @@ For OpenAI:
 export OPENAI_API_KEY=your_api_key_here
 ```
 
-If promptfoo starts the OpenCode server for you, you can also set `config.apiKey` together with `config.provider_id` in your provider config.
+If artef starts the OpenCode server for you, you can also set `config.apiKey` together with `config.provider_id` in your provider config.
 
 :::note
 
-If you connect to an existing OpenCode server with `baseUrl`, that server is responsible for authentication, MCP setup, and custom agents. Promptfoo can still send per-request options like `model`, `tools`, `format`, and `workspace`, but it cannot reconfigure the remote server.
+If you connect to an existing OpenCode server with `baseUrl`, that server is responsible for authentication, MCP setup, and custom agents. artef can still send per-request options like `model`, `tools`, `format`, and `workspace`, but it cannot reconfigure the remote server.
 
 :::
 
@@ -69,7 +69,7 @@ OpenCode supports 75+ providers - see [Supported Providers](#supported-providers
 
 Use `opencode:sdk` to access OpenCode's configured model:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - opencode:sdk
 
@@ -85,7 +85,7 @@ By default, OpenCode SDK runs in a temporary directory with no tools enabled. Wh
 
 Specify the provider and model directly in your config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: opencode:sdk
     config:
@@ -205,11 +205,11 @@ When enabling write/edit/bash tools, consider how you will reset files after eac
 | `tools`             | object  | Tool configuration                                                         | None; read-only with `working_dir`     |
 | `permission`        | object  | Permission configuration for tools                                         | No extra rules; wildcard-deny baseline |
 | `agent`             | string  | Built-in or preconfigured agent to use                                     | Default agent                          |
-| `custom_agent`      | object  | Custom agent configuration when promptfoo starts the OpenCode server       | None                                   |
+| `custom_agent`      | object  | Custom agent configuration when artef starts the OpenCode server       | None                                   |
 | `session_id`        | string  | Resume an existing session                                                 | Create new session                     |
 | `parent_session_id` | string  | Fork from an existing session (v2 server only); inherits compacted history | None                                   |
 | `persist_sessions`  | boolean | Reuse the same session for repeated calls with the same provider config    | `false`                                |
-| `mcp`               | object  | MCP server configuration when promptfoo starts the OpenCode server         | None                                   |
+| `mcp`               | object  | MCP server configuration when artef starts the OpenCode server         | None                                   |
 | `cache_mcp`         | boolean | Enable caching when MCP is configured                                      | `false`                                |
 
 ## Supported Providers
@@ -287,9 +287,9 @@ With `working_dir` specified, these read-only tools are enabled by default:
 
 \* Only enabled when `working_dir` is specified.
 
-Promptfoo starts with a wildcard deny so tools added by OpenCode, plugins, or MCP servers are not
+artef starts with a wildcard deny so tools added by OpenCode, plugins, or MCP servers are not
 silently enabled. A partial `tools` object is merged over these defaults. OpenCode groups `edit`,
-`write`, `patch`, and the upstream `apply_patch` tool under one `edit` permission; Promptfoo accepts
+`write`, `patch`, and the upstream `apply_patch` tool under one `edit` permission; artef accepts
 the documented aliases but rejects conflicting values for that group.
 
 ### Tool Configuration
@@ -377,15 +377,15 @@ Additional tools added by future OpenCode releases can be configured using the s
 
 :::note
 
-Promptfoo converts tool defaults and the object form above into the ordered `PermissionRuleset`
+artef converts tool defaults and the object form above into the ordered `PermissionRuleset`
 array the OpenCode v2 API expects when it creates a session. OpenCode evaluates the last matching
 rule, so put catch-all patterns before more specific patterns. Explicit `permission` entries are
 applied after the `tools` rules, matching OpenCode's native configuration precedence. An active
 custom agent's rules are applied last, matching OpenCode's agent-specific override behavior.
 
 OpenCode v1's public prompt API can atomically apply boolean `tools`, but not `permission` rules
-(including simple ask/allow/deny values and patterns). Promptfoo supports v1 permissions only as provider-level configuration on
-sessions started by Promptfoo. Remote (`baseUrl`), resumed, and per-prompt v1 policies must use
+(including simple ask/allow/deny values and patterns). artef supports v1 permissions only as provider-level configuration on
+sessions started by artef. Remote (`baseUrl`), resumed, and per-prompt v1 policies must use
 `tools`; unsupported combinations fail closed.
 
 :::
@@ -418,7 +418,7 @@ tests:
         value: review-standards
 ```
 
-Promptfoo normalizes OpenCode's native `skill` tool parts into
+artef normalizes OpenCode's native `skill` tool parts into
 `response.metadata.skillCalls`, so [`skill-used`](/docs/configuration/expected-outputs/deterministic/#skill-used)
 works the same way it does for Claude Agent SDK. Each normalized entry keeps the
 requested skill name and tool input, records tool failures with `is_error: true`,
@@ -448,7 +448,7 @@ providers:
       persist_sessions: true
 ```
 
-This reuse is independent of the promptfoo response cache. It is scoped to the lifetime of the provider instance. If you need to continue a session later, capture its `sessionId` and pass it back with `session_id`.
+This reuse is independent of the artef response cache. It is scoped to the lifetime of the provider instance. If you need to continue a session later, capture its `sessionId` and pass it back with `session_id`.
 
 ### Session Resumption
 
@@ -462,22 +462,22 @@ providers:
 ```
 
 OpenCode v2 accepts boolean `tools` on each prompt and atomically replaces the session's stored
-permission rules before execution. Promptfoo therefore reapplies its wildcard-deny baseline,
+permission rules before execution. artef therefore reapplies its wildcard-deny baseline,
 read-only defaults, and configured top-level or custom-agent `tools` when resuming with
 `session_id`. Granular `permission` rules cannot be represented by that prompt contract, so
-Promptfoo rejects non-empty top-level or custom-agent `permission` together with `session_id` on
+artef rejects non-empty top-level or custom-agent `permission` together with `session_id` on
 v2. Configure granular rules when creating the session.
 
 OpenCode v1 can atomically replace the tool map on each prompt, so `tools` remains supported with
 `session_id`. Its public SDK cannot atomically apply `permission` rules on an existing
-session, so Promptfoo rejects that combination. Create the session through a locally started
+session, so artef rejects that combination. Create the session through a locally started
 server when you need pattern-based rules.
 
 :::warning Remote approval state
 
 An existing `baseUrl` server is a trust boundary. OpenCode keeps in-memory “always allow” approvals,
 and that server-side state can override configured ask or deny patterns. Use a fresh, isolated server
-started by Promptfoo when policy isolation is required.
+started by artef when policy isolation is required.
 
 :::
 
@@ -523,7 +523,7 @@ providers:
           Analyze code for vulnerabilities and report findings.
 ```
 
-`custom_agent` is applied when promptfoo starts the OpenCode server itself. If you use `baseUrl`, define that agent on the target server and use `agent` to select it.
+`custom_agent` is applied when artef starts the OpenCode server itself. If you use `baseUrl`, define that agent on the target server and use `agent` to select it.
 
 | Parameter     | Type    | Description                               |
 | ------------- | ------- | ----------------------------------------- |
@@ -577,7 +577,7 @@ providers:
             scope: 'read write'
 ```
 
-Like `custom_agent`, `mcp` is server configuration. It applies when promptfoo starts the OpenCode server, not when you connect to an already-running server with `baseUrl`.
+Like `custom_agent`, `mcp` is server configuration. It applies when artef starts the OpenCode server, not when you connect to an already-running server with `baseUrl`.
 The wildcard-deny default also applies to MCP and plugin tools. Enabling a server does not grant its
 tools; opt in with the upstream `<server>_<tool>` IDs (or a narrow server prefix as shown above).
 
@@ -616,7 +616,7 @@ or environment into the persistent cache key.
 To disable caching:
 
 ```bash
-export PROMPTFOO_CACHE_ENABLED=false
+export artef_CACHE_ENABLED=false
 ```
 
 To bust the cache for a specific test:
@@ -634,7 +634,7 @@ When using tools that allow side effects (write, edit, bash), consider:
 
 - **Serial execution**: Set `evaluateOptions.maxConcurrency: 1` to prevent race conditions
 - **Git reset**: Use git to reset files after each test
-- **Extension hooks**: Use promptfoo hooks for setup/cleanup
+- **Extension hooks**: Use artef hooks for setup/cleanup
 - **Containers**: Run tests in containers for isolation
 
 Example with serial execution:
@@ -670,11 +670,11 @@ Choose based on your use case:
 
 ## Examples
 
-See the [examples directory](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-opencode-sdk) for complete implementations:
+See the [examples directory](https://github.com/artef/artef/tree/main/examples/provider-opencode-sdk) for complete implementations:
 
-- [Basic usage](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-opencode-sdk/basic) - Simple chat-only mode
-- [Working directory](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-opencode-sdk/working-dir) - Read-only local file access
-- [Structured output](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-opencode-sdk/structured-output) - JSON Schema-constrained responses
+- [Basic usage](https://github.com/artef/artef/tree/main/examples/provider-opencode-sdk/basic) - Simple chat-only mode
+- [Working directory](https://github.com/artef/artef/tree/main/examples/provider-opencode-sdk/working-dir) - Read-only local file access
+- [Structured output](https://github.com/artef/artef/tree/main/examples/provider-opencode-sdk/structured-output) - JSON Schema-constrained responses
 
 ## See Also
 

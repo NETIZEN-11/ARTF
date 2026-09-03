@@ -1,11 +1,11 @@
-# provider-nscale (Nscale Example (Cost-Effective AI Inference))
+﻿# provider-nscale (Nscale Example (Cost-Effective AI Inference))
 
-This example demonstrates how to use the Nscale provider with promptfoo to evaluate Nscale Serverless Inference API models, which offer cost-effective, high-performance AI inference with zero rate limits.
+This example demonstrates how to use the Nscale provider with artef to evaluate Nscale Serverless Inference API models, which offer cost-effective, high-performance AI inference with zero rate limits.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-nscale
+npx artef@latest init --example provider-nscale
 cd provider-nscale
 ```
 
@@ -32,22 +32,22 @@ NSCALE_SERVICE_TOKEN=your-service-token-here
 
 This repository contains an example configuration demonstrating Nscale's capabilities:
 
-### Basic Model Evaluation (`promptfooconfig.yaml`)
+### Basic Model Evaluation (`artefconfig.yaml`)
 
 This configuration evaluates two popular Nscale models on their ability to solve reasoning problems and generate creative content.
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 **Expected output:** You'll see a comparison of how each model handles different types of tasks, with metrics on accuracy, creativity, and response quality.
 
-### Image Generation Evaluation (`image-promptfooconfig.yaml`)
+### Image Generation Evaluation (`image-artefconfig.yaml`)
 
 This configuration compares Nscale's image generation models on various prompts to evaluate their quality and consistency.
 
 ```bash
-promptfoo eval -c image-promptfooconfig.yaml
+artef eval -c image-artefconfig.yaml
 ```
 
 **Expected output:** You'll see generated images from different models (Flux.1 Schnell, SDXL Lightning, Stable Diffusion XL) for comparison across various image types including landscapes, futuristic scenes, portraits, and abstract art.
@@ -104,7 +104,7 @@ Check the [official pricing page](https://docs.nscale.com/pricing) for the most 
 
 ## Learn More
 
-- [Nscale Provider Documentation](https://promptfoo.dev/docs/providers/nscale)
+- [Nscale Provider Documentation](https://artef.dev/docs/providers/nscale)
 - [Nscale API Reference](https://docs.nscale.com/)
 - [Nscale Serverless Inference](https://nscale.com/serverless)
 - [Nscale Model Marketplace](https://nscale.com/models)

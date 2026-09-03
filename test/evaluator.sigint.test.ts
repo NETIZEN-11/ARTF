@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -284,7 +284,7 @@ describe('evaluate SIGINT/abort handling', () => {
   });
 
   it('should redact streamed JSONL rows when user aborts before final export', async () => {
-    const outputPath = path.join(os.tmpdir(), `promptfoo-abort-${randomUUID()}.jsonl`);
+    const outputPath = path.join(os.tmpdir(), `artef-abort-${randomUUID()}.jsonl`);
     const abortController = new AbortController();
     let providerCallCount = 0;
     const provider = createMockProvider({

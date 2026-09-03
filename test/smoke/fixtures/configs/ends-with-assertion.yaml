@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Config for testing regex assertion with end-of-string pattern
 description: 'Smoke test - regex ends-with pattern'
 

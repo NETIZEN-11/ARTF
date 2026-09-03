@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../../src/util/fetch/index', async () => {
   const actual = await vi.importActual<typeof import('../../../src/util/fetch/index')>(
@@ -125,7 +125,7 @@ describe('A2AProvider', () => {
     );
     const requestBody = JSON.parse(vi.mocked(fetchWithTimeout).mock.calls[0]?.[1]?.body as string);
     expect(requestBody.message.contextId).toBe('session-1');
-    expect(requestBody.message.messageId).toMatch(/^promptfoo-/);
+    expect(requestBody.message.messageId).toMatch(/^artef-/);
   });
 
   it('sends standards-compliant default A2A messages', async () => {
@@ -198,7 +198,7 @@ describe('A2AProvider', () => {
       parts: [
         { text: 'Please answer the question in the image.' },
         {
-          filename: 'promptfoo-image.png',
+          filename: 'artef-image.png',
           mediaType: 'image/png',
           raw: 'base64-image',
         },
@@ -238,7 +238,7 @@ describe('A2AProvider', () => {
       role: 'ROLE_USER',
       parts: [
         {
-          filename: 'promptfoo-audio.mp3',
+          filename: 'artef-audio.mp3',
           mediaType: 'audio/mpeg',
           raw: 'base64-audio',
         },
@@ -291,7 +291,7 @@ describe('A2AProvider', () => {
           file: {
             fileWithBytes: 'base64-image',
             mimeType: 'image/jpeg',
-            name: 'promptfoo-image.png',
+            name: 'artef-image.png',
           },
           kind: 'file',
         },

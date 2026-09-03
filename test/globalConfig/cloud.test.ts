@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import { getEnvString } from '../../src/envars';
 import { CLOUD_API_HOST, CloudConfig, cloudConfig } from '../../src/globalConfig/cloud';
@@ -46,7 +46,7 @@ describe('CloudConfig', () => {
         id: 'test-id',
       });
       const config = new CloudConfig();
-      expect(config.getAppUrl()).toBe('https://www.promptfoo.app');
+      expect(config.getAppUrl()).toBe('https://www.artef.app');
       expect(config.getApiHost()).toBe(CLOUD_API_HOST);
       expect(config.getApiKey()).toBeUndefined();
     });
@@ -67,7 +67,7 @@ describe('CloudConfig', () => {
       });
       const restoreEnv = mockProcessEnv({
         API_HOST: 'https://env-file.example.com',
-        PROMPTFOO_CLOUD_API_URL: undefined,
+        artef_CLOUD_API_URL: undefined,
       });
 
       try {
@@ -91,8 +91,8 @@ describe('CloudConfig', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
       const restoreEnv = mockProcessEnv({
         API_HOST: 'https://env-file.example.com',
-        PROMPTFOO_CLOUD_API_URL: undefined,
-        PROMPTFOO_API_KEY: undefined,
+        artef_CLOUD_API_URL: undefined,
+        artef_API_KEY: undefined,
       });
 
       try {
@@ -105,11 +105,11 @@ describe('CloudConfig', () => {
       }
     });
 
-    it('should prefer PROMPTFOO_CLOUD_API_URL without warning about API_HOST', () => {
+    it('should prefer artef_CLOUD_API_URL without warning about API_HOST', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
       const restoreEnv = mockProcessEnv({
         API_HOST: 'https://env-file.example.com',
-        PROMPTFOO_CLOUD_API_URL: 'https://self-hosted.example.com',
+        artef_CLOUD_API_URL: 'https://self-hosted.example.com',
       });
 
       try {
@@ -128,7 +128,7 @@ describe('CloudConfig', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
       const restoreEnv = mockProcessEnv({
         API_HOST: undefined,
-        PROMPTFOO_CLOUD_API_URL: undefined,
+        artef_CLOUD_API_URL: undefined,
       });
       const originalConfig = cliState.config;
       cliState.config = { env: { API_HOST: 'https://attacker.example.com' } };
@@ -380,9 +380,9 @@ describe('CloudConfig', () => {
       ).rejects.toThrow('Failed to validate API token: Unauthorized');
     });
 
-    it('should persist the auth header name resolved from PROMPTFOO_CLOUD_AUTH_HEADER on Web UI login', async () => {
+    it('should persist the auth header name resolved from artef_CLOUD_AUTH_HEADER on Web UI login', async () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: 'X-Env-Header' });
+      const restoreEnv = mockProcessEnv({ artef_CLOUD_AUTH_HEADER: 'X-Env-Header' });
       const cloudConfigInstanceWithEnv = new CloudConfig();
 
       const mockFetchResponse = {
@@ -413,7 +413,7 @@ describe('CloudConfig', () => {
   });
 
   describe('on-prem sharing behavior', () => {
-    const onPremHost = 'https://promptfoo.example.com';
+    const onPremHost = 'https://artef.example.com';
     const onPremResponse = {
       user: {
         id: '1',
@@ -429,7 +429,7 @@ describe('CloudConfig', () => {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      app: { url: 'https://promptfoo.example.com' },
+      app: { url: 'https://artef.example.com' },
     };
 
     function makeFetch(body: object) {
@@ -501,7 +501,7 @@ describe('CloudConfig', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
         cloud: {
-          appUrl: 'https://promptfoo.example.com',
+          appUrl: 'https://artef.example.com',
           apiHost: onPremHost,
           apiKey: 'existing-key',
           sharing: false,
@@ -519,13 +519,13 @@ describe('CloudConfig', () => {
     });
 
     it.each([
-      'https://api.promptfoo.app.internal.example.com',
-      'https://onprem.example.com/prefix/api.promptfoo.app',
-      'https://api.promptfoo.app@onprem.example.com',
-      'https://www.promptfoo.app.internal.example.com',
-      'https://www.promptfoo.app@onprem.example.com',
-      'https://promptfoo.app.internal.example.com',
-      'https://promptfoo.app@onprem.example.com',
+      'https://api.artef.app.internal.example.com',
+      'https://onprem.example.com/prefix/api.artef.app',
+      'https://api.artef.app@onprem.example.com',
+      'https://www.artef.app.internal.example.com',
+      'https://www.artef.app@onprem.example.com',
+      'https://artef.app.internal.example.com',
+      'https://artef.app@onprem.example.com',
     ])('should enable sharing for on-prem URL %s', async (host) => {
       vi.mocked(fetchWithProxy).mockResolvedValue(
         makeFetch({ ...onPremResponse, hasActiveLicense: false }),
@@ -539,7 +539,7 @@ describe('CloudConfig', () => {
       );
     });
 
-    it.each(['https://api.promptfoo.app', 'https://www.promptfoo.app', 'https://promptfoo.app'])(
+    it.each(['https://api.artef.app', 'https://www.artef.app', 'https://artef.app'])(
       'should apply the license gate behind an API proxy for app URL %s',
       async (appUrl) => {
         vi.mocked(fetchWithProxy).mockResolvedValue(
@@ -583,12 +583,12 @@ describe('CloudConfig', () => {
       CLOUD_API_HOST.toUpperCase(),
       `${CLOUD_API_HOST}.`,
       `${CLOUD_API_HOST}/prefix`,
-      'https://www.promptfoo.app',
-      'https://WWW.PROMPTFOO.APP.',
-      'https://www.promptfoo.app/prefix',
-      'https://promptfoo.app',
-      'https://PROMPTFOO.APP.',
-      'https://promptfoo.app/prefix',
+      'https://www.artef.app',
+      'https://WWW.artef.APP.',
+      'https://www.artef.app/prefix',
+      'https://artef.app',
+      'https://artef.APP.',
+      'https://artef.app/prefix',
     ])('should apply the license gate to public cloud URL %s', async (host) => {
       const body = {
         ...onPremResponse,
@@ -613,13 +613,13 @@ describe('CloudConfig', () => {
   });
 
   describe('getApiKey with environment variable', () => {
-    const originalEnv = process.env.PROMPTFOO_API_KEY;
+    const originalEnv = process.env.artef_API_KEY;
 
     afterEach(() => {
       if (originalEnv === undefined) {
-        mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+        mockProcessEnv({ artef_API_KEY: undefined });
       } else {
-        mockProcessEnv({ PROMPTFOO_API_KEY: originalEnv });
+        mockProcessEnv({ artef_API_KEY: originalEnv });
       }
     });
 
@@ -628,16 +628,16 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiKey: 'config-key' },
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+      mockProcessEnv({ artef_API_KEY: undefined });
       const config = new CloudConfig();
       expect(config.getApiKey()).toBe('config-key');
     });
 
-    it('should return API key from PROMPTFOO_API_KEY env var when config is empty', () => {
+    it('should return API key from artef_API_KEY env var when config is empty', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: 'env-key' });
+      mockProcessEnv({ artef_API_KEY: 'env-key' });
       const config = new CloudConfig();
       expect(config.getApiKey()).toBe('env-key');
     });
@@ -647,7 +647,7 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiKey: 'config-key' },
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: 'env-key' });
+      mockProcessEnv({ artef_API_KEY: 'env-key' });
       const config = new CloudConfig();
       expect(config.getApiKey()).toBe('config-key');
     });
@@ -656,20 +656,20 @@ describe('CloudConfig', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+      mockProcessEnv({ artef_API_KEY: undefined });
       const config = new CloudConfig();
       expect(config.getApiKey()).toBeUndefined();
     });
   });
 
   describe('isEnabled with environment variable', () => {
-    const originalEnv = process.env.PROMPTFOO_API_KEY;
+    const originalEnv = process.env.artef_API_KEY;
 
     afterEach(() => {
       if (originalEnv === undefined) {
-        mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+        mockProcessEnv({ artef_API_KEY: undefined });
       } else {
-        mockProcessEnv({ PROMPTFOO_API_KEY: originalEnv });
+        mockProcessEnv({ artef_API_KEY: originalEnv });
       }
     });
 
@@ -678,16 +678,16 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiKey: 'config-key' },
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+      mockProcessEnv({ artef_API_KEY: undefined });
       const config = new CloudConfig();
       expect(config.isEnabled()).toBe(true);
     });
 
-    it('should return true when PROMPTFOO_API_KEY env var is set', () => {
+    it('should return true when artef_API_KEY env var is set', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: 'env-key' });
+      mockProcessEnv({ artef_API_KEY: 'env-key' });
       const config = new CloudConfig();
       expect(config.isEnabled()).toBe(true);
     });
@@ -696,20 +696,20 @@ describe('CloudConfig', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+      mockProcessEnv({ artef_API_KEY: undefined });
       const config = new CloudConfig();
       expect(config.isEnabled()).toBe(false);
     });
   });
 
   describe('getApiHost with environment variable', () => {
-    const originalEnv = process.env.PROMPTFOO_CLOUD_API_URL;
+    const originalEnv = process.env.artef_CLOUD_API_URL;
 
     afterEach(() => {
       if (originalEnv === undefined) {
-        mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: undefined });
+        mockProcessEnv({ artef_CLOUD_API_URL: undefined });
       } else {
-        mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: originalEnv });
+        mockProcessEnv({ artef_CLOUD_API_URL: originalEnv });
       }
     });
 
@@ -718,16 +718,16 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiHost: 'https://config-host.example.com' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: undefined });
+      mockProcessEnv({ artef_CLOUD_API_URL: undefined });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://config-host.example.com');
     });
 
-    it('should return API host from PROMPTFOO_CLOUD_API_URL env var when config is empty', () => {
+    it('should return API host from artef_CLOUD_API_URL env var when config is empty', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: 'https://env-host.example.com' });
+      mockProcessEnv({ artef_CLOUD_API_URL: 'https://env-host.example.com' });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://env-host.example.com');
     });
@@ -737,7 +737,7 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiHost: 'https://config-host.example.com' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: 'https://env-host.example.com' });
+      mockProcessEnv({ artef_CLOUD_API_URL: 'https://env-host.example.com' });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://config-host.example.com');
     });
@@ -746,7 +746,7 @@ describe('CloudConfig', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: undefined, API_HOST: undefined });
+      mockProcessEnv({ artef_CLOUD_API_URL: undefined, API_HOST: undefined });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe(CLOUD_API_HOST);
     });
@@ -756,7 +756,7 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiHost: 'https://onprem.example.com/' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: undefined });
+      mockProcessEnv({ artef_CLOUD_API_URL: undefined });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://onprem.example.com');
     });
@@ -766,16 +766,16 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiHost: 'https://onprem.example.com///' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: undefined });
+      mockProcessEnv({ artef_CLOUD_API_URL: undefined });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://onprem.example.com');
     });
 
-    it('should strip a trailing slash from the PROMPTFOO_CLOUD_API_URL env var', () => {
+    it('should strip a trailing slash from the artef_CLOUD_API_URL env var', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: 'https://env-host.example.com/' });
+      mockProcessEnv({ artef_CLOUD_API_URL: 'https://env-host.example.com/' });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://env-host.example.com');
     });
@@ -785,33 +785,33 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { apiHost: 'https://onprem.example.com/prefix/' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_API_URL: undefined });
+      mockProcessEnv({ artef_CLOUD_API_URL: undefined });
       const config = new CloudConfig();
       expect(config.getApiHost()).toBe('https://onprem.example.com/prefix');
     });
   });
 
   describe('getAuthHeaderName with environment variable', () => {
-    const originalEnv = process.env.PROMPTFOO_CLOUD_AUTH_HEADER;
+    const originalEnv = process.env.artef_CLOUD_AUTH_HEADER;
 
     afterEach(() => {
       if (originalEnv === undefined) {
-        mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: undefined });
+        mockProcessEnv({ artef_CLOUD_AUTH_HEADER: undefined });
       } else {
-        mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: originalEnv });
+        mockProcessEnv({ artef_CLOUD_AUTH_HEADER: originalEnv });
       }
     });
 
     it('should default to Authorization when neither config nor env var is set', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
-      mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: undefined });
+      mockProcessEnv({ artef_CLOUD_AUTH_HEADER: undefined });
       const config = new CloudConfig();
       expect(config.getAuthHeaderName()).toBe('Authorization');
     });
 
-    it('should return header name from PROMPTFOO_CLOUD_AUTH_HEADER env var when config is empty', () => {
+    it('should return header name from artef_CLOUD_AUTH_HEADER env var when config is empty', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
-      mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: 'X-Env-Header' });
+      mockProcessEnv({ artef_CLOUD_AUTH_HEADER: 'X-Env-Header' });
       const config = new CloudConfig();
       expect(config.getAuthHeaderName()).toBe('X-Env-Header');
     });
@@ -821,7 +821,7 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { authHeaderName: 'X-Config-Header' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: undefined });
+      mockProcessEnv({ artef_CLOUD_AUTH_HEADER: undefined });
       const config = new CloudConfig();
       expect(config.getAuthHeaderName()).toBe('X-Config-Header');
     });
@@ -831,7 +831,7 @@ describe('CloudConfig', () => {
         id: 'test-id',
         cloud: { authHeaderName: 'X-Config-Header' },
       });
-      mockProcessEnv({ PROMPTFOO_CLOUD_AUTH_HEADER: 'X-Env-Header' });
+      mockProcessEnv({ artef_CLOUD_AUTH_HEADER: 'X-Env-Header' });
       const config = new CloudConfig();
       expect(config.getAuthHeaderName()).toBe('X-Config-Header');
     });
@@ -839,10 +839,10 @@ describe('CloudConfig', () => {
 
   describe('setAuthHeaderName', () => {
     it('should persist the configured header name', () => {
-      cloudConfigInstance.setAuthHeaderName('X-Promptfoo-Api-Key');
+      cloudConfigInstance.setAuthHeaderName('X-artef-Api-Key');
       expect(writeGlobalConfigPartial).toHaveBeenCalledWith({
         cloud: expect.objectContaining({
-          authHeaderName: 'X-Promptfoo-Api-Key',
+          authHeaderName: 'X-artef-Api-Key',
         }),
       });
     });
@@ -851,7 +851,7 @@ describe('CloudConfig', () => {
   describe('getAuthHeaders', () => {
     it('should return undefined when no token is resolved', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({ id: 'test-id' });
-      mockProcessEnv({ PROMPTFOO_API_KEY: undefined });
+      mockProcessEnv({ artef_API_KEY: undefined });
       const config = new CloudConfig();
       expect(config.getAuthHeaders()).toBeUndefined();
     });
@@ -865,11 +865,11 @@ describe('CloudConfig', () => {
     it('should return the header under the configured custom name', () => {
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
-        cloud: { apiKey: 'test-key', authHeaderName: 'X-Promptfoo-Api-Key' },
+        cloud: { apiKey: 'test-key', authHeaderName: 'X-artef-Api-Key' },
       });
       const config = new CloudConfig();
       expect(config.getAuthHeaders()).toEqual({
-        'X-Promptfoo-Api-Key': 'Bearer test-key',
+        'X-artef-Api-Key': 'Bearer test-key',
       });
     });
   });
@@ -967,12 +967,12 @@ describe('CloudConfig', () => {
         },
         { url: 'https://test.app' },
         true,
-        'X-Promptfoo-Api-Key',
+        'X-artef-Api-Key',
       );
 
       expect(writeGlobalConfigPartial).toHaveBeenCalledWith({
         cloud: expect.objectContaining({
-          authHeaderName: 'X-Promptfoo-Api-Key',
+          authHeaderName: 'X-artef-Api-Key',
         }),
       });
     });

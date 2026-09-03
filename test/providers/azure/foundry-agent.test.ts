@@ -1,4 +1,4 @@
-import { SpanStatusCode, trace } from '@opentelemetry/api';
+﻿import { SpanStatusCode, trace } from '@opentelemetry/api';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { getCache, isCacheEnabled } from '../../../src/cache';
 import logger from '../../../src/logger';
@@ -616,7 +616,7 @@ describe('AzureFoundryAgentProvider', () => {
       const mockCache = {
         get: vi.fn().mockResolvedValue({
           output: 'cached response',
-          __promptfooFoundryAgent: { id: 'agent_123', name: 'weather-agent' },
+          __artefFoundryAgent: { id: 'agent_123', name: 'weather-agent' },
         }),
         set: vi.fn().mockResolvedValue(undefined),
       };
@@ -632,7 +632,7 @@ describe('AzureFoundryAgentProvider', () => {
       // A cache hit performs no LLM round, so no gen_ai.turn marker is emitted,
       // but the request is still wrapped in an agent span (with cache_hit set).
       expect(result.cached).toBe(true);
-      expect(result).not.toHaveProperty('__promptfooFoundryAgent');
+      expect(result).not.toHaveProperty('__artefFoundryAgent');
       expect(mockGetAgent).not.toHaveBeenCalled();
       expect(mockResponsesCreate).not.toHaveBeenCalled();
       expect(spans.filter((span) => span.name.startsWith('gen_ai.turn '))).toHaveLength(0);
@@ -642,7 +642,7 @@ describe('AzureFoundryAgentProvider', () => {
         'gen_ai.agent.id': 'agent_123',
         'gen_ai.agent.name': 'weather-agent',
       });
-      expect(agentSpan?.attributes['promptfoo.cache_hit']).toBe(true);
+      expect(agentSpan?.attributes['artef.cache_hit']).toBe(true);
     });
 
     it('restores the resolved agent identity from cache for a new legacy-ID provider', async () => {
@@ -650,7 +650,7 @@ describe('AzureFoundryAgentProvider', () => {
       const mockCache = {
         get: vi.fn().mockResolvedValue({
           output: 'cached response',
-          __promptfooFoundryAgent: { id: 'agent_123', name: 'weather-agent' },
+          __artefFoundryAgent: { id: 'agent_123', name: 'weather-agent' },
         }),
         set: vi.fn().mockResolvedValue(undefined),
       };
@@ -725,10 +725,10 @@ describe('AzureFoundryAgentProvider', () => {
       expect(agentSpans[0].attributes).toMatchObject({
         'gen_ai.usage.cache_read.input_tokens': 500,
       });
-      expect(agentSpans[0].attributes).not.toHaveProperty('promptfoo.usage.cached_response_tokens');
+      expect(agentSpans[0].attributes).not.toHaveProperty('artef.usage.cached_response_tokens');
       expect(agentSpans[1].attributes).toMatchObject({
         'gen_ai.usage.cache_read.input_tokens': 500,
-        'promptfoo.usage.cached_response_tokens': 3_000,
+        'artef.usage.cached_response_tokens': 3_000,
       });
     });
 
@@ -748,11 +748,11 @@ describe('AzureFoundryAgentProvider', () => {
 
       const result = await provider.callApi('test prompt');
 
-      expect(result).not.toHaveProperty('__promptfooFoundryAgent');
+      expect(result).not.toHaveProperty('__artefFoundryAgent');
       expect(mockCache.set).toHaveBeenCalledWith(
         expect.any(String),
         expect.objectContaining({
-          __promptfooFoundryAgent: { id: 'agent_123', name: 'weather-agent' },
+          __artefFoundryAgent: { id: 'agent_123', name: 'weather-agent' },
         }),
       );
     });

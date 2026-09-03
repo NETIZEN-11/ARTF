@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict';
+﻿import assert from 'node:assert/strict';
 import { execFile, execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import { createServer } from 'node:http';
@@ -320,9 +320,9 @@ function runInstalledBinVersion(consumerDir: string, configDir: string, binName:
   );
   assert(fs.existsSync(binPath), `Missing installed ${binName} bin: ${binPath}`);
   const envOverrides = {
-    PROMPTFOO_CONFIG_DIR: configDir,
-    PROMPTFOO_DISABLE_TELEMETRY: '1',
-    PROMPTFOO_DISABLE_UPDATE: 'true',
+    artef_CONFIG_DIR: configDir,
+    artef_DISABLE_TELEMETRY: '1',
+    artef_DISABLE_UPDATE: 'true',
   };
 
   if (process.platform === 'win32') {
@@ -341,8 +341,8 @@ function writeConsumerScripts(consumerDir: string): void {
   fs.writeFileSync(
     path.join(consumerDir, 'import-package.mjs'),
     [
-      "import { AssertionSchema, AtomicTestCaseSchema, TestSuiteSchema } from 'promptfoo';",
-      "import { EmailSchema, GetUserResponseSchema, InputsSchema, PromptSchema, hasFunctionToolCallValidator } from 'promptfoo/contracts';",
+      "import { AssertionSchema, AtomicTestCaseSchema, TestSuiteSchema } from 'artef';",
+      "import { EmailSchema, GetUserResponseSchema, InputsSchema, PromptSchema, hasFunctionToolCallValidator } from 'artef/contracts';",
       '',
       'for (const value of [AssertionSchema, AtomicTestCaseSchema, EmailSchema, GetUserResponseSchema, InputsSchema, PromptSchema, TestSuiteSchema]) {',
       "  if (!value || typeof value.safeParse !== 'function') {",
@@ -358,8 +358,8 @@ function writeConsumerScripts(consumerDir: string): void {
   fs.writeFileSync(
     path.join(consumerDir, 'require-package.cjs'),
     [
-      "const { AssertionSchema, AtomicTestCaseSchema, TestSuiteSchema } = require('promptfoo');",
-      "const { EmailSchema, GetUserResponseSchema, InputsSchema, PromptSchema, hasFunctionToolCallValidator } = require('promptfoo/contracts');",
+      "const { AssertionSchema, AtomicTestCaseSchema, TestSuiteSchema } = require('artef');",
+      "const { EmailSchema, GetUserResponseSchema, InputsSchema, PromptSchema, hasFunctionToolCallValidator } = require('artef/contracts');",
       '',
       'for (const value of [AssertionSchema, AtomicTestCaseSchema, EmailSchema, GetUserResponseSchema, InputsSchema, PromptSchema, TestSuiteSchema]) {',
       "  if (!value || typeof value.safeParse !== 'function') {",
@@ -375,14 +375,14 @@ function writeConsumerScripts(consumerDir: string): void {
   fs.writeFileSync(
     path.join(consumerDir, 'import-contracts.ts'),
     [
-      "import { GetUserResponseSchema, PromptSchema, hasFunctionToolCallValidator, isTransformFunction } from 'promptfoo/contracts';",
-      "import type { BlobRef, FunctionToolCallValidator, GetUserResponse, Prompt, ProviderResponse, TransformFunction } from 'promptfoo/contracts';",
+      "import { GetUserResponseSchema, PromptSchema, hasFunctionToolCallValidator, isTransformFunction } from 'artef/contracts';",
+      "import type { BlobRef, FunctionToolCallValidator, GetUserResponse, Prompt, ProviderResponse, TransformFunction } from 'artef/contracts';",
       '',
       "const prompt: Prompt = { label: 'Greeting', raw: 'Hello, world!' };",
       'const transform: TransformFunction<string, string> = (output) => output;',
       "const user: GetUserResponse = { email: 'user@example.com' };",
       'const validator: FunctionToolCallValidator = { validateFunctionToolCall() {} };',
-      "const blobRef: BlobRef = { hash: 'abc123', mimeType: 'image/png', provider: 'filesystem', sizeBytes: 3, uri: 'promptfoo://blob/abc123' };",
+      "const blobRef: BlobRef = { hash: 'abc123', mimeType: 'image/png', provider: 'filesystem', sizeBytes: 3, uri: 'artef://blob/abc123' };",
       "const response: ProviderResponse = { images: [{ blobRef }], output: 'ok' };",
       '',
       'GetUserResponseSchema.parse(user);',
@@ -409,12 +409,12 @@ function writeConsumerScripts(consumerDir: string): void {
   fs.writeFileSync(
     path.join(consumerDir, 'require-contracts.cts'),
     [
-      "import contracts = require('promptfoo/contracts');",
+      "import contracts = require('artef/contracts');",
       '',
       "const prompt: contracts.Prompt = { label: 'Greeting', raw: 'Hello, world!' };",
       "const user: contracts.GetUserResponse = { email: 'user@example.com' };",
       'const validator: contracts.FunctionToolCallValidator = { validateFunctionToolCall() {} };',
-      "const blobRef: contracts.BlobRef = { hash: 'abc123', mimeType: 'image/png', provider: 'filesystem', sizeBytes: 3, uri: 'promptfoo://blob/abc123' };",
+      "const blobRef: contracts.BlobRef = { hash: 'abc123', mimeType: 'image/png', provider: 'filesystem', sizeBytes: 3, uri: 'artef://blob/abc123' };",
       "const response: contracts.ProviderResponse = { images: [{ blobRef }], output: 'ok' };",
       'contracts.GetUserResponseSchema.parse(user);',
       'contracts.PromptSchema.parse(prompt);',
@@ -473,7 +473,7 @@ async function runInstalledCompressionEval(consumerDir: string, configDir: strin
     const address = server.address();
     assert(address && typeof address !== 'string', 'Failed to bind compressed response server');
 
-    const configPath = path.join(consumerDir, 'promptfooconfig.json');
+    const configPath = path.join(consumerDir, 'artefconfig.json');
     const outputPath = path.join(consumerDir, 'compression-results.json');
     const baseUrl = `http://127.0.0.1:${address.port}`;
     fs.writeFileSync(
@@ -503,14 +503,14 @@ async function runInstalledCompressionEval(consumerDir: string, configDir: strin
     const entrypointPath = path.join(
       consumerDir,
       'node_modules',
-      'promptfoo',
+      'artef',
       'dist',
       'src',
       'entrypoint.js',
     );
     assert(
       fs.existsSync(entrypointPath),
-      `Missing installed promptfoo entrypoint: ${entrypointPath}`,
+      `Missing installed artef entrypoint: ${entrypointPath}`,
     );
 
     await runAsync(
@@ -535,10 +535,10 @@ async function runInstalledCompressionEval(consumerDir: string, configDir: strin
         HTTP_PROXY: '',
         HTTPS_PROXY: '',
         NO_PROXY: '127.0.0.1,localhost',
-        PROMPTFOO_CONFIG_DIR: configDir,
-        PROMPTFOO_DISABLE_REMOTE_GENERATION: 'true',
-        PROMPTFOO_DISABLE_TELEMETRY: '1',
-        PROMPTFOO_DISABLE_UPDATE: 'true',
+        artef_CONFIG_DIR: configDir,
+        artef_DISABLE_REMOTE_GENERATION: 'true',
+        artef_DISABLE_TELEMETRY: '1',
+        artef_DISABLE_UPDATE: 'true',
         all_proxy: '',
         http_proxy: '',
         https_proxy: '',
@@ -546,10 +546,10 @@ async function runInstalledCompressionEval(consumerDir: string, configDir: strin
       },
     );
 
-    assert(fs.existsSync(outputPath), `Installed promptfoo did not write results: ${outputPath}`);
+    assert(fs.existsSync(outputPath), `Installed artef did not write results: ${outputPath}`);
     const evalOutput = JSON.parse(fs.readFileSync(outputPath, 'utf8')) as ArtifactEvalOutput;
     const results = evalOutput.results?.results;
-    assert(Array.isArray(results), 'Installed promptfoo output is missing evaluation results');
+    assert(Array.isArray(results), 'Installed artef output is missing evaluation results');
     assert.equal(results.length, 2, 'Expected one result for each compressed provider');
     for (const result of results) {
       assert.equal(result.success, true, `Compressed provider failed: ${JSON.stringify(result)}`);
@@ -576,7 +576,7 @@ async function runInstalledCompressionEval(consumerDir: string, configDir: strin
 }
 
 async function main(): Promise<void> {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-package-artifact-'));
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-package-artifact-'));
   const artifactsDir = path.join(tempDir, 'artifacts');
   const configDir = path.join(tempDir, 'config');
   const consumerDir = path.join(tempDir, 'consumer');
@@ -601,7 +601,7 @@ async function main(): Promise<void> {
     assert.equal(packResults.length, 1, 'Expected npm pack to produce one artifact');
 
     const [packResult] = packResults;
-    assert.equal(packResult.name, 'promptfoo');
+    assert.equal(packResult.name, 'artef');
     assertPackagedFiles(packResult);
 
     const tarballPath = path.join(artifactsDir, packResult.filename);
@@ -610,7 +610,7 @@ async function main(): Promise<void> {
     fs.writeFileSync(
       path.join(consumerDir, 'package.json'),
       JSON.stringify({
-        name: 'promptfoo-package-artifact-consumer',
+        name: 'artef-package-artifact-consumer',
         private: true,
         type: 'module',
       }),
@@ -632,7 +632,7 @@ async function main(): Promise<void> {
       },
     );
 
-    const installedPackageDir = path.join(consumerDir, 'node_modules', 'promptfoo');
+    const installedPackageDir = path.join(consumerDir, 'node_modules', 'artef');
     const installedPackageJson = JSON.parse(
       fs.readFileSync(path.join(installedPackageDir, 'package.json'), 'utf8'),
     ) as {
@@ -653,7 +653,7 @@ async function main(): Promise<void> {
     }
     assertInstalledWebApp(installedPackageDir);
 
-    for (const binName of ['promptfoo', 'pf']) {
+    for (const binName of ['artef', 'pf']) {
       assert.equal(
         runInstalledBinVersion(consumerDir, configDir, binName).trim(),
         packResult.version,

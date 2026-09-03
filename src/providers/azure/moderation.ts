@@ -1,4 +1,4 @@
-import crypto from 'node:crypto';
+﻿import crypto from 'node:crypto';
 
 import { getCache, isCacheEnabled } from '../../cache';
 import { getEnvString } from '../../envars';
@@ -52,7 +52,7 @@ interface AzureModerationConfig {
 function hashCacheValue(value: unknown): string {
   const serialized = typeof value === 'string' ? value : JSON.stringify(value);
   return crypto
-    .createHmac('sha256', 'promptfoo:azure:moderation-cache-key:v1')
+    .createHmac('sha256', 'artef:azure:moderation-cache-key:v1')
     .update(serialized ?? String(value))
     .digest('hex');
 }

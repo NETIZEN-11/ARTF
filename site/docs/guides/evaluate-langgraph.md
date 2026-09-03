@@ -1,12 +1,12 @@
----
+﻿---
 title: Evaluate LangGraph
 sidebar_label: Evaluate LangGraph
-description: Hands-on tutorial (July 2025) on evaluating and red-teaming LangGraph agents with Promptfoo—includes setup, YAML tests, and security scans.
+description: Hands-on tutorial (July 2025) on evaluating and red-teaming LangGraph agents with artef—includes setup, YAML tests, and security scans.
 keywords:
   [
     LangGraph evaluation,
     LangGraph red teaming,
-    Promptfoo tests,
+    artef tests,
     LLM security,
     stateful multi-agent graphs,
   ]
@@ -16,33 +16,33 @@ keywords:
 
 [LangGraph](https://github.com/langchain-ai/langgraph) is an advanced framework built on top of LangChain, designed to enable **stateful, multi-agent graphs** for complex workflows. Whether you're building chatbots, research pipelines, data enrichment flows, or tool-using agents, LangGraph helps you orchestrate chains of language models and functions into structured, interactive systems.
 
-With **Promptfoo**, you can run structured evaluations on LangGraph agents: defining test prompts, verifying outputs, benchmarking performance, and performing red team testing to uncover biases, safety gaps, and robustness issues.
+With **artef**, you can run structured evaluations on LangGraph agents: defining test prompts, verifying outputs, benchmarking performance, and performing red team testing to uncover biases, safety gaps, and robustness issues.
 
-By the end of this guide, you'll have a working project setup that connects LangGraph agents to Promptfoo, runs automated tests, and produces clear pass/fail insights—all reproducible and shareable with your team.
+By the end of this guide, you'll have a working project setup that connects LangGraph agents to artef, runs automated tests, and produces clear pass/fail insights—all reproducible and shareable with your team.
 
 ## Highlights
 
 - Setting up the project directory
-- Installing promptfoo, LangGraph, and dependencies
+- Installing artef, LangGraph, and dependencies
 - Writing provider and agent files
 - Configuring test cases in YAML
 - Running evaluations and viewing reports
 - (Optional) Running advanced red team scans for robustness
 
-To scaffold the LangGraph + Promptfoo example, you can run:
+To scaffold the LangGraph + artef example, you can run:
 
 ```bash
-npx promptfoo@latest init --example integration-langgraph
+npx artef@latest init --example integration-langgraph
 ```
 
 This will:
 
 - Initialize a scaffolded project
-- Set up promptfooconfig.yaml, agent scripts, test cases
+- Set up artefconfig.yaml, agent scripts, test cases
 - Let you immediately run:
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
 ## Requirements
@@ -89,7 +89,7 @@ You should see Node.js `v22.22.0` or newer. Node.js 24 LTS is recommended for se
 **Why do we need these?**
 
 - Python helps run local scripts and agents.
-- Node.js + npm are needed for [Promptfoo CLI](/docs/usage/command-line/) and managing related tools.
+- Node.js + npm are needed for [artef CLI](/docs/usage/command-line/) and managing related tools.
 
 If you're missing any of these, install them first before moving on.
 
@@ -98,24 +98,24 @@ If you're missing any of these, install them first before moving on.
 Run these commands in your terminal:
 
 ```bash
-mkdir langgraph-promptfoo
-cd langgraph-promptfoo
+mkdir langgraph-artef
+cd langgraph-artef
 ```
 
 What's happening here?
 
-- `mkdir langgraph-promptfoo`: Makes a fresh directory called `langgraph-promptfoo`.
-- `cd langgraph-promptfoo`: Moves you into that directory.
+- `mkdir langgraph-artef`: Makes a fresh directory called `langgraph-artef`.
+- `cd langgraph-artef`: Moves you into that directory.
 
 ## Step 3: Install the Required Libraries
 
-Now it's time to set up the key Python packages and the promptfoo CLI.
+Now it's time to set up the key Python packages and the artef CLI.
 
 In your project folder, run:
 
 ```bash
 pip install langgraph langchain langchain-openai python-dotenv
-npm install -g promptfoo
+npm install -g artef
 ```
 
 What are these?
@@ -124,19 +124,19 @@ What are these?
 - `langchain`: the underlying language model toolkit.
 - `langchain-openai`: OpenAI integration for LangChain (v0.3+ compatible).
 - `python-dotenv`: to securely load API keys.
-- `promptfoo`: CLI for testing + red teaming.
+- `artef`: CLI for testing + red teaming.
 
 Check everything installed:
 
 ```bash
 python3 -c "import langgraph, langchain, dotenv ; print('✅ Python libs ready')"
-npx promptfoo --version
+npx artef --version
 ```
 
-## Step 4: Initialize Promptfoo Project
+## Step 4: Initialize artef Project
 
 ```bash
-npx promptfoo init
+npx artef init
 ```
 
 - Pick **Not sure yet** to scaffold basic config.
@@ -145,11 +145,11 @@ npx promptfoo init
 At the end, you get:
 
 - README.md
-- promptfooconfig.yaml
+- artefconfig.yaml
 
-## Step 5: Write `agent.py`, `provider.py` and Edit `promptfooconfig.yaml`
+## Step 5: Write `agent.py`, `provider.py` and Edit `artefconfig.yaml`
 
-In this step, we'll define how our LangGraph research agent works, connect it to Promptfoo, and set up the YAML config for evaluation.
+In this step, we'll define how our LangGraph research agent works, connect it to artef, and set up the YAML config for evaluation.
 
 ### Create `agent.py`
 
@@ -258,9 +258,9 @@ if __name__ == "__main__":
     print("Provider result:", result)
 ```
 
-### Edit `promptfooconfig.yaml`
+### Edit `artefconfig.yaml`
 
-Open the generated `promptfooconfig.yaml` and update it like this:
+Open the generated `artefconfig.yaml` and update it like this:
 
 ```yaml
 # Description of this evaluation job
@@ -387,14 +387,14 @@ Now that everything is set up, it's time to run your first real evaluation:
 Run the evaluation:
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
 What happens here:
 
-Promptfoo kicks off the evaluation job you set up.
+artef kicks off the evaluation job you set up.
 
-- It uses the promptfooconfig.yaml to call your custom LangGraph provider (from agent.py + provider.py).
+- It uses the artefconfig.yaml to call your custom LangGraph provider (from agent.py + provider.py).
 - It feeds in the research prompt and collects the structured output.
 - It checks the results against your Python and YAML assertions (like checking for query, raw_info, and summary).
 - It shows a clear table: did the agent PASS or FAIL?
@@ -407,12 +407,12 @@ In this example, you can see:
 - Once done, you can even open the local web viewer to explore the full results:
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
-<img width="800" alt="Promptfoo evaluation results for LangGraph agent (July 2025)" src="/img/localeval-results.png" />
+<img width="800" alt="artef evaluation results for LangGraph agent (July 2025)" src="/img/localeval-results.png" />
 
-You just ran a full Promptfoo evaluation on a custom LangGraph agent.
+You just ran a full artef evaluation on a custom LangGraph agent.
 
 ## Step 8: Explore Results in the Web Viewer
 
@@ -421,7 +421,7 @@ Now that you've run your evaluation, let's visualize and explore the results.
 In your terminal, you launched:
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
 This started a local server (in the example, at http://localhost:15500) and prompted:
@@ -430,9 +430,9 @@ This started a local server (in the example, at http://localhost:15500) and prom
 Open URL in browser? (y/N):
 ```
 
-You typed `y`, and the browser opened with the Promptfoo dashboard.
+You typed `y`, and the browser opened with the artef dashboard.
 
-### What you see in the Promptfoo Web Viewer:
+### What you see in the artef Web Viewer:
 
 - **Top bar**: Your evaluation ID, author, and project details.
 - **Test cases table**: Shows each test case, its prompt, the provider used, and the pass/fail status.
@@ -440,11 +440,11 @@ You typed `y`, and the browser opened with the Promptfoo dashboard.
 - **Pass/fail summary**: A quick visual summary of how many tests passed, failed, or were skipped.
 - **Assertion results**: Breakdown of which assertions were run and whether they passed or failed.
 
-<img width="800" alt="Promptfoo dashboard showing LangGraph evaluation results" src="/img/evalresults-search.png" />
+<img width="800" alt="artef dashboard showing LangGraph evaluation results" src="/img/evalresults-search.png" />
 
 ## Step 9: Set Up Red Team Target (Custom LangGraph Provider)
 
-Now that your LangGraph agent is running and visible in the Promptfoo web dashboard, let's prepare it for red teaming.
+Now that your LangGraph agent is running and visible in the artef web dashboard, let's prepare it for red teaming.
 
 Red teaming will stress-test your LangGraph setup, checking for vulnerabilities, biases, or unsafe behaviors under tricky, adversarial prompts.
 
@@ -453,7 +453,7 @@ Red teaming will stress-test your LangGraph setup, checking for vulnerabilities,
 Before running red team tests, first initialize the red team configuration:
 
 ```bash
-npx promptfoo redteam init
+npx artef redteam init
 ```
 
 Under **Target Type**, select:
@@ -484,11 +484,11 @@ In Custom Configuration (JSON), you can leave defaults like:
 
 ### Why this matters
 
-- This setup tells Promptfoo which system to attack with red team tests.
+- This setup tells artef which system to attack with red team tests.
 - By wiring it to your local LangGraph agent, you ensure that all adversarial prompts will hit your code—helping you catch weak spots, improve safety, and make your agent more robust.
 
 <img width="800" alt="Red team target configuration for LangGraph agent" src="/img/redteammodel-local.png" />
-<img width="800" alt="Custom target configuration details in Promptfoo" src="/img/foundationmodel-testsetup.png" />
+<img width="800" alt="Custom target configuration details in artef" src="/img/foundationmodel-testsetup.png" />
 
 ### Additional Configuration
 
@@ -549,7 +549,7 @@ We clarify:
 Providing this context helps the red teaming tool generate meaningful and focused attacks, avoiding time wasted on irrelevant prompts.
 
 <img width="800" alt="Usage details configuration for LangGraph research agent" src="/img/application-details-framed.png" />
-<img width="800" alt="Core application configuration in Promptfoo red team setup" src="/img/foundationmodel--localrun.png" />
+<img width="800" alt="Core application configuration in artef red team setup" src="/img/foundationmodel--localrun.png" />
 
 ## Step 11: Finalize Plugin & Strategy Setup
 
@@ -570,12 +570,12 @@ Now choose how you want to launch the red teaming:
 **Option 1:** Save the YAML and run from terminal:
 
 ```bash
-npx promptfoo redteam run
+npx artef redteam run
 ```
 
 **Option 2:** Click Run Now in the browser interface.
 
-Once it starts, Promptfoo will:
+Once it starts, artef will:
 
 - Run all attack tests.
 - Show live CLI progress.
@@ -583,7 +583,7 @@ Once it starts, Promptfoo will:
 - Let you open the detailed web dashboard with:
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
 When complete, you'll get a full summary with vulnerability checks, token usage, pass rates, and detailed plugin/strategy results.
@@ -593,7 +593,7 @@ When complete, you'll get a full summary with vulnerability checks, token usage,
 
 ## Step 13: Check and summarize your results
 
-Go to the Promptfoo dashboard and review:
+Go to the artef dashboard and review:
 
 - No critical, high, medium, or low issues? ✅ Great—your LangGraph agent is resilient.
 - Security, compliance, and safety sections all pass? ✅ Your agent handles prompts responsibly.
@@ -604,7 +604,7 @@ Go to the Promptfoo dashboard and review:
 
 ## Conclusion
 
-You've successfully set up, tested, and red-teamed your LangGraph research agent using Promptfoo.
+You've successfully set up, tested, and red-teamed your LangGraph research agent using artef.
 
 With this workflow, you can confidently check agent performance, catch weaknesses, and share clear results with your team—all in a fast, repeatable way.
 
@@ -613,6 +613,6 @@ You're now ready to scale, improve, and deploy safer LangGraph-based systems wit
 ## Next Steps
 
 - Add a checkpoint saver to inspect intermediate states: See [LangGraph checkpoint documentation](https://langchain-ai.github.io/langgraph/reference/checkpoints/)
-- Explore RAG attacks and poison-document testing: Learn more in the [Promptfoo security documentation](/docs/red-team/)
+- Explore RAG attacks and poison-document testing: Learn more in the [artef security documentation](/docs/red-team/)
 - Set up version pinning with `requirements.txt` for reproducible environments
 - Use `.env.example` files for easier API key management

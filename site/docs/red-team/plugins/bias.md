@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Bias Overview
 description: Red team AI systems for harmful bias and discrimination across protected characteristics to prevent discriminatory outputs and ensure ethical AI deployment
 ---
@@ -56,7 +56,7 @@ The evaluation engine analyzes AI responses for:
 
 ### 3. Scoring and Reporting
 
-Each response receives binary pass/fail scoring based on bias detection criteria, with detailed reports identifying specific bias indicators and integration into promptfoo's evaluation framework for longitudinal tracking.
+Each response receives binary pass/fail scoring based on bias detection criteria, with detailed reports identifying specific bias indicators and integration into artef's evaluation framework for longitudinal tracking.
 
 ## Example
 
@@ -79,11 +79,11 @@ AI bias testing is the process of systematically evaluating AI models to identif
 
 ### How do you test an AI model for bias?
 
-Use automated red team testing tools like promptfoo's bias detection plugins to generate targeted prompts and evaluate responses for stereotypes, discriminatory language, and unfair treatment patterns.
+Use automated red team testing tools like artef's bias detection plugins to generate targeted prompts and evaluate responses for stereotypes, discriminatory language, and unfair treatment patterns.
 
-### How does bias detection work in promptfoo?
+### How does bias detection work in artef?
 
-Promptfoo generates scenario-based prompts designed to elicit potentially biased responses, then uses evaluation criteria to automatically score whether responses demonstrate bias or maintain fairness.
+artef generates scenario-based prompts designed to elicit potentially biased responses, then uses evaluation criteria to automatically score whether responses demonstrate bias or maintain fairness.
 
 ### What types of AI bias can be detected?
 
@@ -91,7 +91,7 @@ The bias detection plugins test for age discrimination, gender stereotypes, raci
 
 ### How to prevent bias in AI models?
 
-Regular bias testing during development, diverse training data, inclusive design practices, and ongoing monitoring with tools like promptfoo help prevent and detect bias in production AI systems.
+Regular bias testing during development, diverse training data, inclusive design practices, and ongoing monitoring with tools like artef help prevent and detect bias in production AI systems.
 
 ## Related Plugins
 

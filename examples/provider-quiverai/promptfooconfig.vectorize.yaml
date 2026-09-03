@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: QuiverAI vectorize — image-to-SVG comparison
 
 # The prompt is the image to vectorize (URL, data URL, or {url}/{base64} JSON).
@@ -31,15 +31,15 @@ defaultTest:
 
 tests:
   - vars:
-      image_url: https://raw.githubusercontent.com/promptfoo/promptfoo/main/site/static/android-chrome-192x192.png
+      image_url: https://raw.githubusercontent.com/artef/artef/main/site/static/android-chrome-192x192.png
     assert:
       - type: is-xml
       - type: llm-rubric
-        value: Contains the Promptfoo red panda mascot with a black magnifying glass.
+        value: Contains the artef red panda mascot with a black magnifying glass.
         threshold: 0.4
 
   - vars:
-      image_url: https://raw.githubusercontent.com/promptfoo/promptfoo/main/examples/google-vertex/assets/red-panda.jpg
+      image_url: https://raw.githubusercontent.com/artef/artef/main/examples/google-vertex/assets/red-panda.jpg
     assert:
       - type: is-xml
       - type: llm-rubric

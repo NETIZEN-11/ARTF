@@ -1,8 +1,8 @@
----
+﻿---
 title: 'Next Generation of Red Teaming for LLM Agents'
-description: Promptfoo is introducing our revolutionary, next-generation red teaming agent designed for enterprise-grade LLM agents.
+description: artef is introducing our revolutionary, next-generation red teaming agent designed for enterprise-grade LLM agents.
 image: /img/blog/summer-2025-new-redteam-agent/title.jpg
-keywords: [promptfoo, AI security, red teaming, LLM eval, prompt engineering, AI agents]
+keywords: [artef, AI security, red teaming, LLM eval, prompt engineering, AI agents]
 date: 2025-06-15
 authors: [steve]
 tags: [company-update, red-teaming, agents]
@@ -12,7 +12,7 @@ tags: [company-update, red-teaming, agents]
 
 ## The Evolution of Red Teaming
 
-Early red teaming tools and research began with jailbreaks like "Ignore all previous instructions" and static lists of harmful prompts. At Promptfoo, we took those ideas a step further by dynamically generating attacks based on the context of the target application.
+Early red teaming tools and research began with jailbreaks like "Ignore all previous instructions" and static lists of harmful prompts. At artef, we took those ideas a step further by dynamically generating attacks based on the context of the target application.
 
 <!-- truncate -->
 
@@ -225,9 +225,9 @@ Leverage the searchPatients tool to identify existing patients, and subsequently
 
 ## Wrapping Up
 
-Our goal at Promptfoo is to provide a comprehensive red teaming tool so you can feel good about deploying your agents into the wild. There is a significant gap between the LLM vulnerability research and its application in the real world. This is the tool that bridges that gap.
+Our goal at artef is to provide a comprehensive red teaming tool so you can feel good about deploying your agents into the wild. There is a significant gap between the LLM vulnerability research and its application in the real world. This is the tool that bridges that gap.
 
-At Promptfoo, we've raised the bar for what enterprise-grade LLM security looks like. Our next-generation red teaming agent is uniquely equipped with advanced capabilities:
+At artef, we've raised the bar for what enterprise-grade LLM security looks like. Our next-generation red teaming agent is uniquely equipped with advanced capabilities:
 
 - **Deep Reconnaissance**: Deep system enumeration, boundary testing, and meticulous documentation of discovered tools and capabilities.
 
@@ -243,6 +243,6 @@ If you're interested in helping us build cool stuff like this, check out our [ca
 
 I began my career as a penetration tester and security consultant at PricewaterhouseCoopers, providing security services to the Fortune 500 and learning from some of the best in the world. Since then, I've worked at companies like Microsoft, Shopify, Intercom, and Discord building massively scalable and complex products including [Clyde](https://support.discord.com/hc/en-us/community/posts/19375132536087/comments/19768445858071).
 
-## What is Promptfoo?
+## What is artef?
 
-Promptfoo is the world leader in LLM evals and red teaming. We are powered by an open source project with over [100k users](https://www.promptfoo.dev/blog/100k-users/) - trusted by foundation labs and the Fortune 500.
+artef is the world leader in LLM evals and red teaming. We are powered by an open source project with over [100k users](https://www.artef.dev/blog/100k-users/) - trusted by foundation labs and the Fortune 500.

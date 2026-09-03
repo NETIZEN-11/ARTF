@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+﻿import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 export interface RedteamJobState {
@@ -21,7 +21,7 @@ export const useRedteamJobStore = create<RedteamJobState>()(
       setHasHydrated: (hasHydrated: boolean) => set({ _hasHydrated: hasHydrated }),
     }),
     {
-      name: 'promptfoo-redteam-job',
+      name: 'artef-redteam-job',
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
       },

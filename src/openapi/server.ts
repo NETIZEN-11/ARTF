@@ -1,4 +1,4 @@
-import {
+﻿import {
   extendZodWithOpenApi,
   OpenAPIRegistry,
   OpenApiGeneratorV31,
@@ -1148,7 +1148,7 @@ export function createServerOpenApiRegistry() {
     path: '/api/user/login',
     operationId: 'loginUser',
     tags: ['User'],
-    summary: 'Authenticate with Promptfoo Cloud',
+    summary: 'Authenticate with artef Cloud',
     request: {
       body: jsonBody('LoginRequest', UserSchemas.Login.Request),
     },
@@ -1164,7 +1164,7 @@ export function createServerOpenApiRegistry() {
     path: '/api/user/logout',
     operationId: 'logoutUser',
     tags: ['User'],
-    summary: 'Clear Promptfoo Cloud authentication',
+    summary: 'Clear artef Cloud authentication',
     responses: {
       200: jsonResponse('LogoutResponse', UserSchemas.Logout.Response),
       500: serverError(),
@@ -1176,7 +1176,7 @@ export function createServerOpenApiRegistry() {
     path: '/api/user/cloud-config',
     operationId: 'getUserCloudConfig',
     tags: ['User'],
-    summary: 'Get Promptfoo Cloud app config',
+    summary: 'Get artef Cloud app config',
     responses: {
       200: jsonResponse('CloudConfigResponse', UserSchemas.CloudConfig.Response),
       500: serverError(),
@@ -1188,7 +1188,7 @@ export function createServerOpenApiRegistry() {
     path: '/api/version',
     operationId: 'getVersion',
     tags: ['Version'],
-    summary: 'Check Promptfoo version and update commands',
+    summary: 'Check artef version and update commands',
     responses: {
       200: jsonResponse('VersionResponse', VersionSchemas.Response),
       500: serverError(),
@@ -1259,15 +1259,15 @@ export function createServerOpenApiDocument() {
   return generator.generateDocument({
     openapi: SERVER_OPENAPI_VERSION,
     info: {
-      title: 'Promptfoo Local Server API',
+      title: 'artef Local Server API',
       version: VERSION,
       description:
-        'OpenAPI document generated from the shared Zod DTO schemas used by the Promptfoo local server and web UI.',
+        'OpenAPI document generated from the shared Zod DTO schemas used by the artef local server and web UI.',
     },
     servers: [
       {
         url: 'http://localhost:15500',
-        description: 'Default local Promptfoo server',
+        description: 'Default local artef server',
       },
     ],
   });

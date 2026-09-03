@@ -1,4 +1,4 @@
----
+﻿---
 title: AWS Bedrock
 sidebar_label: AWS Bedrock
 sidebar_position: 3
@@ -101,7 +101,7 @@ The `inferenceModelType` config option supports the following values:
 ### Example: Multi-Region Inference Profile
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   # Claude Opus 4.7 via global inference profile
   - id: bedrock:arn:aws:bedrock:us-east-2::inference-profile/global.anthropic.claude-opus-4-7
@@ -184,7 +184,7 @@ The `thinking` configuration controls Claude's reasoning behavior:
 
 - `type: enabled` - Activates extended thinking
 - `budget_tokens` - Maximum tokens allocated for thinking (minimum 1024)
-- For Claude Opus 4.7 and 4.8, promptfoo converts `type: enabled` to adaptive thinking because manual thinking is not accepted by those models.
+- For Claude Opus 4.7 and 4.8, artef converts `type: enabled` to adaptive thinking because manual thinking is not accepted by those models.
 
 Use `showThinking: true` to include the model's reasoning process in the output, or `false` to only show the final response.
 
@@ -302,7 +302,7 @@ The first available credential method is used automatically.
 
 Specify AWS access keys directly in your configuration. **For security, use environment variables instead of hardcoding credentials:**
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:us.anthropic.claude-3-5-sonnet-20241022-v2:0
     config:
@@ -340,7 +340,7 @@ Set the `AWS_BEARER_TOKEN_BEDROCK` environment variable:
 export AWS_BEARER_TOKEN_BEDROCK="your-api-key-here"
 ```
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:us.anthropic.claude-3-5-sonnet-20241022-v2:0
     config:
@@ -351,7 +351,7 @@ providers:
 
 Specify the API key directly in your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:us.anthropic.claude-3-5-sonnet-20241022-v2:0
     config:
@@ -375,7 +375,7 @@ For these advanced features, use traditional AWS IAM credentials instead.
 
 Use a named profile from your AWS configuration for AWS SSO setups or managing multiple AWS accounts:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:us.anthropic.claude-3-5-sonnet-20241022-v2:0
     config:
@@ -420,7 +420,7 @@ providers:
 
 Use the AWS SDK's standard credential chain:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:us.anthropic.claude-3-5-sonnet-20241022-v2:0
     config:
@@ -454,10 +454,10 @@ export AWS_DEFAULT_REGION="us-east-1"
 
 ## Example
 
-See [GitHub](https://github.com/promptfoo/promptfoo/tree/main/examples/amazon-bedrock) for full examples of Claude, Nova, AI21, Llama 3.3, Grok, Mantle Chat Completions, and OpenAI-compatible Bedrock model usage.
+See [GitHub](https://github.com/artef/artef/tree/main/examples/amazon-bedrock) for full examples of Claude, Nova, AI21, Llama 3.3, Grok, Mantle Chat Completions, and OpenAI-compatible Bedrock model usage.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Write a tweet about {{topic}}'
 
@@ -817,7 +817,7 @@ config:
 
 For Claude models (e.g., `anthropic.claude-fable-5`, `anthropic.claude-sonnet-5`, `anthropic.claude-sonnet-4-6`, `anthropic.claude-sonnet-4-5-20250929-v1:0`, `anthropic.claude-haiku-4-5-20251001-v1:0`, `anthropic.claude-sonnet-4-20250514-v1:0`, `anthropic.us.claude-3-5-sonnet-20241022-v2:0`), you can use the following configuration options:
 
-**Note**: Claude Opus 4.8 (`anthropic.claude-opus-4-8`) and Claude Opus 4.7 (`anthropic.claude-opus-4-7`) are available via cross-region inference profiles (`us.`, `eu.`, `jp.`, `global.`) and, in select regions, through the base foundation model ID. Claude Opus 4.6 (`anthropic.claude-opus-4-6-v1`) and Claude Opus 4.5 (`anthropic.claude-opus-4-5-20251101-v1:0`) require an inference profile ARN and cannot be used as a direct model ID. See the [Application Inference Profiles](#application-inference-profiles) section for setup. promptfoo automatically omits unsupported sampling parameters (`temperature`, `topP`, and `topK` — including raw `top_k` in `additionalModelRequestFields`) and converts configured manual thinking to adaptive thinking for Opus 4.7, Opus 4.8, Opus 5, and Sonnet 5.
+**Note**: Claude Opus 4.8 (`anthropic.claude-opus-4-8`) and Claude Opus 4.7 (`anthropic.claude-opus-4-7`) are available via cross-region inference profiles (`us.`, `eu.`, `jp.`, `global.`) and, in select regions, through the base foundation model ID. Claude Opus 4.6 (`anthropic.claude-opus-4-6-v1`) and Claude Opus 4.5 (`anthropic.claude-opus-4-5-20251101-v1:0`) require an inference profile ARN and cannot be used as a direct model ID. See the [Application Inference Profiles](#application-inference-profiles) section for setup. artef automatically omits unsupported sampling parameters (`temperature`, `topP`, and `topK` — including raw `top_k` in `additionalModelRequestFields`) and converts configured manual thinking to adaptive thinking for Opus 4.7, Opus 4.8, Opus 5, and Sonnet 5.
 
 **Note**: Claude Opus 5 (`anthropic.claude-opus-5`) is available through the base foundation model ID and the `us.`/`eu.`/`global.` cross-region inference profiles (e.g. `bedrock:global.anthropic.claude-opus-5`); use the `global.` profile for dynamic routing. Unlike Opus 4.7/4.8 there is no `jp.` profile — the Japan regions surface Opus 5 through `global.` only. Cost is reported on both the default `bedrock:` (InvokeModel) and `bedrock:converse:` paths — the `global.` endpoint bills at the standard $5/$25 rate and regional profiles (`us.`/`eu.`) add the 10% Claude 4.5+ regional premium.
 
@@ -836,7 +836,7 @@ Bedrock's Anthropic-compatible Messages endpoint through the explicit
 
 [Claude Mythos 5](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-mythos-5.html)
 is available only through the Anthropic-compatible Messages endpoint in `us-east-1`.
-Promptfoo routes the bare `bedrock:anthropic.claude-mythos-5` ID to that endpoint.
+artef routes the bare `bedrock:anthropic.claude-mythos-5` ID to that endpoint.
 Set a Bedrock API key in `AWS_BEARER_TOKEN_BEDROCK` or `config.apiKey`:
 
 ```yaml
@@ -855,10 +855,10 @@ model`. Opt in per region via the Data Retention API:
 aws bedrock put-account-data-retention --mode provider_data_share --region us-east-1
 ```
 
-Both models use always-on adaptive thinking, so promptfoo omits sampling controls,
+Both models use always-on adaptive thinking, so artef omits sampling controls,
 converts manual thinking budgets (`thinking: { type: 'enabled', budget_tokens: N }`)
 to adaptive thinking, and omits `thinking: { type: 'disabled' }`. Regional and geo
-endpoints cost 10% more than the global endpoint; Promptfoo applies that premium when
+endpoints cost 10% more than the global endpoint; artef applies that premium when
 calculating costs.
 
 ```yaml
@@ -931,7 +931,7 @@ Llama 3.2 Vision models (`us.meta.llama3-2-11b-instruct-v1:0`, `us.meta.llama3-2
 
 **Using InvokeModel API (legacy):**
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:us.meta.llama3-2-11b-instruct-v1:0
     config:
@@ -970,7 +970,7 @@ tests:
 
 **Using Converse API:**
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:converse:us.meta.llama3-2-11b-instruct-v1:0
     config:
@@ -1021,7 +1021,7 @@ config:
   temperature: 0.7
   top_p: 0.9
 
-  # Promptfoo control params
+  # artef control params
   showThinking: true # Optional: Control whether thinking content is included in output
 ```
 
@@ -1036,7 +1036,7 @@ requests and return the final assistant message directly.
 ### OpenAI Models
 
 Amazon Bedrock hosts two families of OpenAI models, and they are served by **different
-APIs**. promptfoo routes each `bedrock:openai.*` id to the correct one automatically.
+APIs**. artef routes each `bedrock:openai.*` id to the correct one automatically.
 
 #### Frontier models (GPT-5.x)
 
@@ -1048,7 +1048,7 @@ APIs**. promptfoo routes each `bedrock:openai.*` id to the correct one automatic
 
 The frontier models are served only through Bedrock's **OpenAI-compatible Responses API**
 on the regional mantle endpoint (`https://bedrock-mantle.<region>.api.aws/openai/v1/responses`) —
-not the native `InvokeModel` or `Converse` APIs. Promptfoo routes the bare
+not the native `InvokeModel` or `Converse` APIs. artef routes the bare
 `bedrock:openai.gpt-5.x` IDs to its OpenAI Responses provider, preserves the Bedrock request
 model ID, and returns the clean final answer. `us-east-2` is the default when no Region is
 configured; GPT-5.6 region availability is checked before a request is made.
@@ -1102,7 +1102,7 @@ receive a 90% discount, cache writes cost 1.25x the uncached input rate, and cac
 remain available for at least 30 minutes. Place
 `prompt_cache_breakpoint: { mode: explicit }` on a stable
 `input_text`, `input_image`, or `input_file` content block and set a stable
-`prompt_cache_key` when using explicit caching. Promptfoo records returned cache-read and
+`prompt_cache_key` when using explicit caching. artef records returned cache-read and
 cache-write usage; when cache-write usage is missing, its estimate includes the available
 token counts only. Requests above 272,000 input tokens use 2x input and 1.5x output
 pricing for the full request. Do not assume first-party Flex, Priority, or regional-processing
@@ -1135,7 +1135,7 @@ providers:
 
 #### Reasoning Effort
 
-Both families accept the `reasoning_effort` provider option. Promptfoo forwards it as the
+Both families accept the `reasoning_effort` provider option. artef forwards it as the
 native request field for GPT OSS and as `reasoning.effort` for the Responses API, allowing the
 selected model to validate the value:
 
@@ -1152,7 +1152,7 @@ When invoked through `InvokeModel`, the open-weight models prepend their chain-o
 wrapped in `<reasoning>...</reasoning>` before the final answer. This differs from OpenAI's
 first-party API, which hides chain-of-thought.
 
-By default promptfoo returns this output **verbatim**, so the reasoning stays visible to your
+By default artef returns this output **verbatim**, so the reasoning stays visible to your
 assertions and red-team graders — an eval framework should not hide model-returned content by
 default. Use `showThinking` to transform it:
 
@@ -1197,9 +1197,9 @@ providers:
 :::note
 
 - Grok 4.3 is **reasoning-first**: reasoning is always active and the effort is configurable
-  (`none` | `low` | `medium` | `high`). promptfoo forwards `reasoning_effort` (or
+  (`none` | `low` | `medium` | `high`). artef forwards `reasoning_effort` (or
   `reasoning: { effort }`) and surfaces reasoning token counts in `tokenUsage`.
-- Grok accepts an explicit `temperature`. When you omit it, promptfoo does not inject the OpenAI
+- Grok accepts an explicit `temperature`. When you omit it, artef does not inject the OpenAI
   provider default, so Bedrock uses Grok's model default instead.
 - **Cost is not reported** for Grok (`cost` is left undefined). The Responses
   billing tables are keyed on OpenAI model names; refer to the
@@ -1405,7 +1405,7 @@ Because of how model-graded evals are implemented, **the LLM grading models must
 
 To set this for all your test cases, add the [`defaultTest`](/docs/configuration/guide/#default-test-cases) property to your config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -1476,8 +1476,8 @@ Amazon Nova supports comprehensive vision understanding for both images and vide
 
 Here's an example configuration for running multimodal evaluations:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Bedrock Nova Eval with Images'
 
 prompts:
@@ -1517,9 +1517,9 @@ The prompt file (`nova_multimodal_prompt.json`) should be structured to include 
 ]
 ```
 
-See [GitHub](https://github.com/promptfoo/promptfoo/blob/main/examples/amazon-bedrock/models/promptfooconfig.nova.multimodal.yaml) for a runnable example.
+See [GitHub](https://github.com/artef/artef/blob/main/examples/amazon-bedrock/models/artefconfig.nova.multimodal.yaml) for a runnable example.
 
-When loading image files as variables, promptfoo automatically converts them to the appropriate format for the model. The supported image formats include:
+When loading image files as variables, artef automatically converts them to the appropriate format for the model. The supported image formats include:
 
 - jpg/jpeg
 - png
@@ -1562,7 +1562,7 @@ Bedrock reports an intervention differently by API:
 - Converse responses use `stopReason: guardrail_intervened`.
 - The standalone ApplyGuardrail API uses `action: GUARDRAIL_INTERVENED`.
 
-Promptfoo normalizes supported InvokeModel and non-streaming Converse interventions into top-level `guardrails.flagged`. Use [`not-guardrails`](/docs/configuration/expected-outputs/guardrails#inverse-assertion-not-guardrails) when a case must produce an intervention and `guardrails` for benign traffic:
+artef normalizes supported InvokeModel and non-streaming Converse interventions into top-level `guardrails.flagged`. Use [`not-guardrails`](/docs/configuration/expected-outputs/guardrails#inverse-assertion-not-guardrails) when a case must produce an intervention and `guardrails` for benign traffic:
 
 ```yaml
 tests:
@@ -1635,7 +1635,7 @@ Error: Unable to locate credentials. You can configure credentials by running "a
 
 The first request an account makes to a mantle-served model (OpenAI frontier, Grok,
 `bedrock:mantle:` ids) can trigger an automatic AWS Marketplace subscription. While it
-provisions, the endpoint returns HTTP 401 with this message and promptfoo aborts the run.
+provisions, the endpoint returns HTTP 401 with this message and artef aborts the run.
 Provisioning typically completes within a minute or two — re-run the eval once it does.
 
 #### SSO-Specific Issues
@@ -1657,7 +1657,7 @@ Enable debug logging to see which credentials are being used:
 
 ```bash
 export AWS_SDK_JS_LOG=1
-npx promptfoo eval
+npx artef eval
 ```
 
 This will show detailed AWS SDK logs including credential resolution.
@@ -1753,7 +1753,7 @@ To use the Knowledge Base provider, you need:
 
 Configure the Knowledge Base provider by specifying `kb` in your provider ID. Note that the model ID needs to include the regional prefix (`us.`, `eu.`, or `apac.`):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:kb:us.anthropic.claude-3-7-sonnet-20250219-v1:0
     config:
@@ -1785,7 +1785,7 @@ Configuration options include:
 
 Here's a complete example to test your Knowledge Base with a few questions:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'What is the capital of France?'
   - 'Tell me about quantum computing.'
@@ -1833,10 +1833,10 @@ When using the Knowledge Base provider, the response will include:
 
 The Knowledge Base provider supports extracting context from citations for evaluation using the `contextTransform` feature:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
-      query: 'What is promptfoo?'
+      query: 'What is artef?'
     assert:
       # Extract context from all citations
       - type: context-faithfulness
@@ -1862,7 +1862,7 @@ This approach allows you to:
 - **Assess relevance**: Check if retrieved context is relevant to the query
 - **Validate recall**: Ensure important information appears in retrieved context
 
-See the [Knowledge Base contextTransform example](https://github.com/promptfoo/promptfoo/tree/main/examples/amazon-bedrock) for complete configuration examples.
+See the [Knowledge Base contextTransform example](https://github.com/artef/artef/tree/main/examples/amazon-bedrock) for complete configuration examples.
 
 ## Bedrock Agents
 
@@ -1894,7 +1894,7 @@ for current Luma Ray regional availability.
 
 #### Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:video:luma.ray-v2:0
     config:
@@ -1929,7 +1929,7 @@ providers:
 
 #### Text-to-Video Example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:video:luma.ray-v2:0
     config:
@@ -1950,7 +1950,7 @@ tests:
 
 Animate images by providing start and/or end frames:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: bedrock:video:luma.ray-v2:0
     config:
@@ -1999,6 +1999,6 @@ Your AWS credentials need these IAM permissions:
 - [RAG Evaluation Guide](../guides/evaluate-rag.md) - Complete guide to evaluating RAG systems with context-based assertions
 - [Context-based Assertions](../configuration/expected-outputs/model-graded/index.md) - Documentation on context-faithfulness, context-relevance, and context-recall
 - [Configuration Reference](../configuration/reference.md) - Complete configuration options including contextTransform
-- [Command Line Interface](../usage/command-line.md) - How to use promptfoo from the command line
+- [Command Line Interface](../usage/command-line.md) - How to use artef from the command line
 - [Provider Options](../providers/index.md) - Overview of all supported providers
-- [Amazon Bedrock Examples](https://github.com/promptfoo/promptfoo/tree/main/examples/amazon-bedrock) - Runnable examples of Bedrock integration, including Knowledge Base and contextTransform examples
+- [Amazon Bedrock Examples](https://github.com/artef/artef/tree/main/examples/amazon-bedrock) - Runnable examples of Bedrock integration, including Knowledge Base and contextTransform examples

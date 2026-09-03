@@ -1,4 +1,4 @@
-export type ServerErrorPhase = 'startup' | 'runtime';
+﻿export type ServerErrorPhase = 'startup' | 'runtime';
 
 function buildServerErrorMessage(
   error: NodeJS.ErrnoException,
@@ -10,7 +10,7 @@ function buildServerErrorMessage(
     return `Server error: ${detail}`;
   }
   if (error.code === 'EADDRINUSE') {
-    return `Port ${port} is already in use. Do you have another Promptfoo instance running?`;
+    return `Port ${port} is already in use. Do you have another artef instance running?`;
   }
   return `Failed to start server: ${detail}`;
 }

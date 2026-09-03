@@ -1,4 +1,4 @@
-import { HIDDEN_METADATA_KEYS } from '@app/constants';
+﻿import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -57,7 +57,7 @@ describe('MetadataPanel', () => {
     expect(screen.queryByRole('link', { name: malformedUrl })).not.toBeInTheDocument();
   });
 
-  it("should render a 'View policy in Promptfoo Cloud' link in the value cell for 'policyName' when metadata contains both 'policyName' and a valid reusable 'policyId', and cloudConfig is enabled with an appUrl", () => {
+  it("should render a 'View policy in artef Cloud' link in the value cell for 'policyName' when metadata contains both 'policyName' and a valid reusable 'policyId', and cloudConfig is enabled with an appUrl", () => {
     const mockMetadata = {
       policyName: 'My Policy',
       policyId: '550e8400-e29b-41d4-a716-446655440000',
@@ -65,7 +65,7 @@ describe('MetadataPanel', () => {
 
     const mockCloudConfig = {
       isEnabled: true,
-      appUrl: 'https://cloud.promptfoo.com',
+      appUrl: 'https://cloud.artef.com',
     };
 
     renderWithProviders(
@@ -73,12 +73,12 @@ describe('MetadataPanel', () => {
     );
 
     const linkElement = screen.getByRole('link', {
-      name: /view policy in promptfoo cloud/i,
+      name: /view policy in artef cloud/i,
     });
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute(
       'href',
-      'https://cloud.promptfoo.com/redteam/plugins/policies/550e8400-e29b-41d4-a716-446655440000',
+      'https://cloud.artef.com/redteam/plugins/policies/550e8400-e29b-41d4-a716-446655440000',
     );
     expect(linkElement).toHaveAttribute('target', '_blank');
     expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
@@ -110,13 +110,13 @@ describe('MetadataPanel', () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it("should render a table with all metadata keys except 'citations' and '_promptfooFileMetadata' when metadata is provided", () => {
+  it("should render a table with all metadata keys except 'citations' and '_artefFileMetadata' when metadata is provided", () => {
     const mockMetadata = {
       stringKey: 'stringValue',
       numberKey: 123,
       objectKey: { nested: 'value' },
       citations: [{ source: 'doc1', content: 'citation content' }],
-      _promptfooFileMetadata: { fileName: 'test.txt', size: 1024 },
+      _artefFileMetadata: { fileName: 'test.txt', size: 1024 },
     };
 
     renderWithProviders(<MetadataPanel {...defaultProps} metadata={mockMetadata} />);
@@ -135,7 +135,7 @@ describe('MetadataPanel', () => {
 
     // Verify hidden metadata keys are not displayed
     expect(screen.queryByText('citations')).not.toBeInTheDocument();
-    expect(screen.queryByText('_promptfooFileMetadata')).not.toBeInTheDocument();
+    expect(screen.queryByText('_artefFileMetadata')).not.toBeInTheDocument();
   });
 
   it('should render a metadata value as a Link when the value is a valid URL string', () => {

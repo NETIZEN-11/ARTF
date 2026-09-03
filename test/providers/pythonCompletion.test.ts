@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -745,7 +745,7 @@ describe('PythonProvider', () => {
       );
     });
 
-    it('should use PROMPTFOO_PYTHON when config.pythonExecutable is not set', async () => {
+    it('should use artef_PYTHON when config.pythonExecutable is not set', async () => {
       // Reset mocks
       mockGetEnvInt.mockReset();
       mockGetEnvInt.mockReturnValue(undefined);
@@ -768,12 +768,12 @@ describe('PythonProvider', () => {
         expect.stringContaining('script.py'),
         'call_api',
         1,
-        '/venv/bin/python3', // from PROMPTFOO_PYTHON via getConfiguredPythonPath
+        '/venv/bin/python3', // from artef_PYTHON via getConfiguredPythonPath
         undefined,
       );
     });
 
-    it('should prioritize config.pythonExecutable over PROMPTFOO_PYTHON', async () => {
+    it('should prioritize config.pythonExecutable over artef_PYTHON', async () => {
       // Reset mocks
       mockGetEnvInt.mockReset();
       mockGetEnvInt.mockReturnValue(undefined);
@@ -868,9 +868,9 @@ describe('PythonProvider', () => {
         );
       });
 
-      it('should prioritize PROMPTFOO_PYTHON_WORKERS over cliState.maxConcurrency', async () => {
+      it('should prioritize artef_PYTHON_WORKERS over cliState.maxConcurrency', async () => {
         mockGetEnvInt.mockReset();
-        mockGetEnvInt.mockReturnValue(3); // PROMPTFOO_PYTHON_WORKERS=3
+        mockGetEnvInt.mockReturnValue(3); // artef_PYTHON_WORKERS=3
 
         // Set cliState.maxConcurrency (simulating -j flag)
         cliState.maxConcurrency = 8;
@@ -978,7 +978,7 @@ describe('PythonProvider', () => {
         );
       });
 
-      it('should warn and use 1 when PROMPTFOO_PYTHON_WORKERS is invalid (< 1)', async () => {
+      it('should warn and use 1 when artef_PYTHON_WORKERS is invalid (< 1)', async () => {
         mockGetEnvInt.mockReset();
         mockGetEnvInt.mockReturnValue(0); // Invalid env var value
 
@@ -986,7 +986,7 @@ describe('PythonProvider', () => {
         await provider.initialize();
 
         expect(logger.warn).toHaveBeenCalledWith(
-          expect.stringContaining('Invalid worker count 0 in PROMPTFOO_PYTHON_WORKERS'),
+          expect.stringContaining('Invalid worker count 0 in artef_PYTHON_WORKERS'),
         );
         expect(mockPythonWorkerPool).toHaveBeenCalledWith(
           expect.stringContaining('script.py'),

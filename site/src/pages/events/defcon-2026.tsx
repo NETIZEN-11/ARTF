@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -8,9 +8,9 @@ import { SITE_CONSTANTS } from '../../constants';
 import styles from './defcon-2026.module.css';
 
 const BOOTH = 'Booth #1412';
-const REPO_URL = 'https://github.com/promptfoo/promptfoo';
+const REPO_URL = 'https://github.com/artef/artef';
 const DESCRIPTION =
-  'Promptfoo demonstrated AI agent red teaming at OpenAI booth #1412 in LVCC West Hall, August 7-9, 2026, during DEF CON 34. Explore the demo and keep testing.';
+  'artef demonstrated AI agent red teaming at OpenAI booth #1412 in LVCC West Hall, August 7-9, 2026, during DEF CON 34. Explore the demo and keep testing.';
 
 const SCAN_PREAMBLE = [
   '[~] target: support-agent (14 tools, 3 data sources)',
@@ -57,28 +57,28 @@ export default function Defcon2026(): React.ReactElement {
   };
 
   return (
-    <Layout title="Promptfoo at DEF CON 34" description={DESCRIPTION}>
+    <Layout title="artef at DEF CON 34" description={DESCRIPTION}>
       <Head>
-        <meta property="og:title" content="Promptfoo at DEF CON 34 | AI agent red teaming" />
+        <meta property="og:title" content="artef at DEF CON 34 | AI agent red teaming" />
         <meta property="og:description" content={DESCRIPTION} />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/events/defcon-2026.jpg" />
+        <meta property="og:image" content="https://www.artef.dev/img/events/defcon-2026.jpg" />
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="1024" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/defcon-2026" />
+        <meta property="og:url" content="https://www.artef.dev/events/defcon-2026" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Promptfoo" />
+        <meta property="og:site_name" content="artef" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Promptfoo at DEF CON 34 | AI agent red teaming" />
+        <meta name="twitter:title" content="artef at DEF CON 34 | AI agent red teaming" />
         <meta name="twitter:description" content={DESCRIPTION} />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/events/defcon-2026.jpg" />
-        <meta name="twitter:site" content="@promptfoo" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/defcon-2026.jpg" />
+        <meta name="twitter:site" content="@artef" />
 
         <meta
           name="keywords"
-          content="DEF CON 34, DEF CON 2026, AI agent red teaming, excessive agency, prompt injection, memory poisoning, LLM security, OWASP LLM Top 10, Las Vegas, LVCC West Hall, OpenAI, promptfoo"
+          content="DEF CON 34, DEF CON 2026, AI agent red teaming, excessive agency, prompt injection, memory poisoning, LLM security, OWASP LLM Top 10, Las Vegas, LVCC West Hall, OpenAI, artef"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/defcon-2026" />
+        <link rel="canonical" href="https://www.artef.dev/events/defcon-2026" />
       </Head>
 
       <main className={styles.defconPage}>
@@ -91,7 +91,7 @@ export default function Defcon2026(): React.ReactElement {
             <div className={styles.heroContent}>
               <div className={styles.eyebrow}>DEF CON 34 // PAST EVENT</div>
               <p className={styles.identity}>
-                Promptfoo is part of OpenAI. We were at OpenAI booth #1412, August 7-9.
+                artef is part of OpenAI. We were at OpenAI booth #1412, August 7-9.
               </p>
               <h1 className={styles.heroTitle}>
                 GIVE YOUR AGENTS
@@ -208,7 +208,7 @@ export default function Defcon2026(): React.ReactElement {
               <article className={styles.card}>
                 <h3 className={styles.cardTitle}>Part of OpenAI</h3>
                 <p className={styles.cardBody}>
-                  Promptfoo is part of OpenAI. The CLI remains open source and works across model
+                  artef is part of OpenAI. The CLI remains open source and works across model
                   providers.
                 </p>
                 <div className={styles.cardTag}>[OPENAI]</div>
@@ -228,7 +228,7 @@ export default function Defcon2026(): React.ReactElement {
               <span className={styles.prompt} aria-hidden="true">
                 $
               </span>
-              promptfoo redteam run
+              artef redteam run
             </h2>
             <p className={styles.sectionLead}>
               Target-specific attacks find failures that static lists miss. Graders triage the
@@ -239,7 +239,7 @@ export default function Defcon2026(): React.ReactElement {
               <div className={styles.terminalWindow}>
                 <pre className={styles.terminalBody}>
                   <span className={`${styles.termLine} ${styles.lineCmd}`}>
-                    $ promptfoo redteam run -c redteam.yaml
+                    $ artef redteam run -c redteam.yaml
                   </span>
                   {SCAN_PREAMBLE.map((text) => (
                     <span key={text} className={`${styles.termLine} ${styles.lineInfo}`}>
@@ -282,7 +282,7 @@ export default function Defcon2026(): React.ReactElement {
             <h2 className={styles.sectionHeading}>The OpenAI security lineup</h2>
             <p className={styles.sectionLead}>
               Daybreak brings together OpenAI's cyber-defense work. Codex Security tests application
-              code, and Promptfoo tests deployed agents.
+              code, and artef tests deployed agents.
             </p>
             <div className={styles.cardGrid}>
               <article className={styles.card}>
@@ -304,7 +304,7 @@ export default function Defcon2026(): React.ReactElement {
                 <div className={styles.cardTag}>[SCAN_VALIDATE_PROPOSE]</div>
               </article>
               <article className={styles.card}>
-                <h3 className={styles.cardTitle}>Promptfoo</h3>
+                <h3 className={styles.cardTitle}>artef</h3>
                 <p className={styles.cardBody}>
                   We test what your deployed agent can be persuaded to do, including prompt
                   injection, tool misuse, memory poisoning, and excessive agency.
@@ -405,7 +405,7 @@ export default function Defcon2026(): React.ReactElement {
                 </div>
               </div>
               <p className={styles.runNote}>
-                We demonstrated Promptfoo at OpenAI booth #2967 during Black Hat, Aug 4-6, and
+                We demonstrated artef at OpenAI booth #2967 during Black Hat, Aug 4-6, and
                 OpenAI booth #1412 during DEF CON, Aug 7-9.
               </p>
               <Link to="/events/blackhat-2026/" className={styles.runLink}>

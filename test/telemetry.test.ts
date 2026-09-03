@@ -1,4 +1,4 @@
-import {
+﻿import {
   afterEach,
   beforeEach,
   describe,
@@ -51,8 +51,8 @@ vi.mock('../src/envars', async () => {
   return {
     ...actual,
     getEnvBool: vi.fn().mockImplementation((key) => {
-      if (key === 'PROMPTFOO_DISABLE_TELEMETRY') {
-        return (process.env as NodeJS.ProcessEnv).PROMPTFOO_DISABLE_TELEMETRY === '1';
+      if (key === 'artef_DISABLE_TELEMETRY') {
+        return (process.env as NodeJS.ProcessEnv).artef_DISABLE_TELEMETRY === '1';
       }
       if (key === 'IS_TESTING') {
         return (
@@ -63,11 +63,11 @@ vi.mock('../src/envars', async () => {
       return false;
     }),
     getEnvString: vi.fn().mockImplementation((key) => {
-      if (key === 'PROMPTFOO_POSTHOG_KEY') {
-        return process.env.PROMPTFOO_POSTHOG_KEY || 'test-key';
+      if (key === 'artef_POSTHOG_KEY') {
+        return process.env.artef_POSTHOG_KEY || 'test-key';
       }
-      if (key === 'PROMPTFOO_POSTHOG_HOST') {
-        return process.env.PROMPTFOO_POSTHOG_HOST || undefined;
+      if (key === 'artef_POSTHOG_HOST') {
+        return process.env.artef_POSTHOG_HOST || undefined;
       }
       if (key === 'NODE_ENV') {
         return process.env.NODE_ENV || undefined;
@@ -113,7 +113,7 @@ function resetModulesAndMockFetch(
 
 function setupTelemetryEnv(baseEnv: NodeJS.ProcessEnv) {
   mockProcessEnv({ ...baseEnv }, { clear: true });
-  mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-key' });
+  mockProcessEnv({ artef_POSTHOG_KEY: 'test-key' });
 }
 
 function restoreTelemetryEnv(env: NodeJS.ProcessEnv) {
@@ -155,7 +155,7 @@ describe('Telemetry', () => {
   });
 
   it('should not track events with PostHog when telemetry is disabled', () => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '1' });
+    mockProcessEnv({ artef_DISABLE_TELEMETRY: '1' });
     const telemetry = new Telemetry();
     telemetry.record('eval_ran', { foo: 'bar' });
     expect(sendEventSpy).not.toHaveBeenCalledWith('eval_ran', expect.anything());
@@ -187,7 +187,7 @@ describe('Telemetry', () => {
   });
 
   it('should include version in telemetry events', () => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+    mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
     const telemetry = new Telemetry();
     telemetry.record('eval_ran', { foo: 'bar' });
 
@@ -223,7 +223,7 @@ describe('Telemetry', () => {
     const isCIMock = vi.mocked(envars.isCI);
 
     try {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined }); // Clear IS_TESTING to allow fetch calls
 
       isCIMock.mockReturnValue(true);
@@ -282,7 +282,7 @@ describe('Telemetry', () => {
     await telemetry.saveConsent('test@example.com', { source: 'test' });
 
     expect(fetchWithTimeout).toHaveBeenCalledWith(
-      'https://api.promptfoo.dev/consent',
+      'https://api.artef.dev/consent',
       {
         method: 'POST',
         headers: {
@@ -301,7 +301,7 @@ describe('Telemetry', () => {
     await telemetry.saveConsent('test@example.com', { source: 'test' });
 
     expect(fetchWithTimeout).toHaveBeenCalledWith(
-      'https://api.promptfoo.dev/consent',
+      'https://api.artef.dev/consent',
       expect.objectContaining({
         method: 'POST',
         body: JSON.stringify({
@@ -314,7 +314,7 @@ describe('Telemetry', () => {
   });
 
   it('should not send user events when telemetry is disabled', async () => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '1' });
+    mockProcessEnv({ artef_DISABLE_TELEMETRY: '1' });
 
     resetModulesAndMockFetch();
 
@@ -337,9 +337,9 @@ describe('Telemetry', () => {
 
   describe('PostHog client initialization', () => {
     it('should initialize PostHog client when telemetry is enabled and POSTHOG_KEY is present', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       const mockPostHog = vi.fn().mockImplementation(() => ({
         identify: vi.fn(),
@@ -359,16 +359,16 @@ describe('Telemetry', () => {
       await telemetry.identify();
 
       expect(mockPostHog).toHaveBeenCalledWith('test-posthog-key', {
-        host: 'https://a.promptfoo.app',
+        host: 'https://a.artef.app',
         fetch: expect.any(Function),
         flushInterval: 0,
       });
     });
 
     it('should handle PostHog initialization errors gracefully', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       const mockPostHog = vi.fn().mockImplementation(() => {
         throw new Error('PostHog initialization failed');
@@ -433,8 +433,8 @@ describe('Telemetry', () => {
         return {
           ...actual,
           getEnvBool: vi.fn().mockImplementation((key: string) => {
-            if (key === 'PROMPTFOO_DISABLE_TELEMETRY') {
-              return (process.env as NodeJS.ProcessEnv).PROMPTFOO_DISABLE_TELEMETRY === '1';
+            if (key === 'artef_DISABLE_TELEMETRY') {
+              return (process.env as NodeJS.ProcessEnv).artef_DISABLE_TELEMETRY === '1';
             }
             if (key === 'IS_TESTING') {
               return (
@@ -445,11 +445,11 @@ describe('Telemetry', () => {
             return false;
           }),
           getEnvString: vi.fn().mockImplementation((key: string) => {
-            if (key === 'PROMPTFOO_POSTHOG_KEY') {
-              return process.env.PROMPTFOO_POSTHOG_KEY || 'test-key';
+            if (key === 'artef_POSTHOG_KEY') {
+              return process.env.artef_POSTHOG_KEY || 'test-key';
             }
-            if (key === 'PROMPTFOO_POSTHOG_HOST') {
-              return process.env.PROMPTFOO_POSTHOG_HOST || undefined;
+            if (key === 'artef_POSTHOG_HOST') {
+              return process.env.artef_POSTHOG_HOST || undefined;
             }
             if (key === 'NODE_ENV') {
               return process.env.NODE_ENV || undefined;
@@ -498,9 +498,9 @@ describe('Telemetry', () => {
     });
 
     it('should call PostHog identify via constructor when telemetry is enabled', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       const telemetryModule = await import('../src/telemetry');
       mockPostHogInstance.identify.mockClear();
@@ -526,9 +526,9 @@ describe('Telemetry', () => {
     });
 
     it('should handle PostHog identify errors gracefully', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       mockPostHogInstance.identify.mockImplementation(() => {
         throw new Error('Identify failed');
@@ -544,9 +544,9 @@ describe('Telemetry', () => {
     });
 
     it('should call PostHog capture when sending events', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       const telemetryModule = await import('../src/telemetry');
       const telemetry = new telemetryModule.Telemetry();
@@ -576,9 +576,9 @@ describe('Telemetry', () => {
     });
 
     it('should refresh mirrored person properties when sending events', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       const accounts = await import('../src/globalConfig/accounts');
       const getUserAuthInfoMock = vi.mocked(accounts.getUserAuthInfo);
@@ -639,7 +639,7 @@ describe('Telemetry', () => {
       const { fetchWithProxy: mockedFetchWithProxy } = await import('../src/util/fetch/index');
       const reportingCall = vi
         .mocked(mockedFetchWithProxy)
-        .mock.calls.find(([url]) => url === 'https://r.promptfoo.app/');
+        .mock.calls.find(([url]) => url === 'https://r.artef.app/');
       expect(reportingCall).toBeDefined();
       expect(JSON.parse((reportingCall?.[1]?.body as string) ?? '{}')).toMatchObject({
         event: 'eval_ran',
@@ -648,9 +648,9 @@ describe('Telemetry', () => {
     });
 
     it('should handle PostHog capture errors gracefully', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       mockPostHogInstance.capture.mockImplementation(() => {
         throw new Error('Capture failed');
@@ -666,9 +666,9 @@ describe('Telemetry', () => {
     });
 
     it('should handle PostHog flush errors silently', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       mockPostHogInstance.flush.mockRejectedValue(new Error('Flush failed'));
 
@@ -679,9 +679,9 @@ describe('Telemetry', () => {
     });
 
     it('should call PostHog shutdown when telemetry shutdown is called', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       mockPostHogInstance.shutdown = vi.fn().mockResolvedValue(undefined);
 
@@ -694,9 +694,9 @@ describe('Telemetry', () => {
     });
 
     it('should handle PostHog shutdown errors gracefully', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '0' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '0' });
       mockProcessEnv({ IS_TESTING: undefined });
-      mockProcessEnv({ PROMPTFOO_POSTHOG_KEY: 'test-posthog-key' });
+      mockProcessEnv({ artef_POSTHOG_KEY: 'test-posthog-key' });
 
       mockPostHogInstance.shutdown = vi.fn().mockRejectedValue(new Error('Shutdown failed'));
 
@@ -710,7 +710,7 @@ describe('Telemetry', () => {
     });
 
     it('should handle shutdown when PostHog client is not initialized', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '1' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '1' });
 
       const telemetryModule = await import('../src/telemetry');
       const telemetry = new telemetryModule.Telemetry();
@@ -721,7 +721,7 @@ describe('Telemetry', () => {
 
   describe('telemetry disabled recording', () => {
     it('should record telemetry disabled event only once', () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TELEMETRY: '1' });
+      mockProcessEnv({ artef_DISABLE_TELEMETRY: '1' });
       const telemetry = new Telemetry();
 
       telemetry.record('eval_ran', { foo: 'bar' });
@@ -766,7 +766,7 @@ describe('Telemetry', () => {
       await telemetry.saveConsent('test@example.com');
 
       expect(fetchWithTimeout).toHaveBeenCalledWith(
-        'https://api.promptfoo.dev/consent',
+        'https://api.artef.dev/consent',
         {
           method: 'POST',
           headers: {
@@ -780,8 +780,8 @@ describe('Telemetry', () => {
   });
 
   describe('beforeExit handler registration', () => {
-    const SHUTDOWN_HANDLER_KEY = Symbol.for('promptfoo.telemetry.shutdownHandler');
-    const TELEMETRY_INSTANCE_KEY = Symbol.for('promptfoo.telemetry.instance');
+    const SHUTDOWN_HANDLER_KEY = Symbol.for('artef.telemetry.shutdownHandler');
+    const TELEMETRY_INSTANCE_KEY = Symbol.for('artef.telemetry.instance');
 
     beforeEach(() => {
       // Clear the process-level flags before each test

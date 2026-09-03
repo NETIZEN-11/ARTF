@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Select Best
 description: 'Leverage AI models to automatically select and rank the best outputs from multiple LLM responses for quality optimization'
 ---
@@ -59,7 +59,7 @@ Like other model-graded assertions, you can override the default grader:
 1. Using the CLI:
 
    ```sh
-   promptfoo eval --grader openai:gpt-5-mini
+   artef eval --grader openai:gpt-5-mini
    ```
 
 2. Using test options:

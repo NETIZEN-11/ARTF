@@ -1,6 +1,6 @@
-import { REDTEAM_DEFAULTS } from '@promptfoo/redteam/constants';
-import type { Strategy } from '@promptfoo/redteam/constants';
-import type { RedteamStrategy } from '@promptfoo/redteam/types';
+﻿import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
+import type { Strategy } from '@artef/redteam/constants';
+import type { RedteamStrategy } from '@artef/redteam/types';
 
 import type { Config } from '../../types';
 

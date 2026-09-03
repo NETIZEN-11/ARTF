@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { fetchWithCache, getCache, isCacheEnabled } from '../cache';
 import { getEnvFloat, getEnvInt, getEnvString } from '../envars';
@@ -61,7 +61,7 @@ interface ReplicatePrediction {
   };
 }
 
-const REPLICATE_CACHE_KEY_HMAC_KEY = 'promptfoo:replicate:cache-key:v1';
+const REPLICATE_CACHE_KEY_HMAC_KEY = 'artef:replicate:cache-key:v1';
 
 function normalizeReplicateCacheValue(value: unknown): unknown {
   if (Array.isArray(value)) {

@@ -1,8 +1,8 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'OpenCode SDK session-level permission rules'
 
 prompts:
-  - 'Summarize in one sentence what provider_id is configured in the local promptfooconfig.yaml.'
+  - 'Summarize in one sentence what provider_id is configured in the local artefconfig.yaml.'
 
 providers:
   - id: opencode:sdk
@@ -11,7 +11,7 @@ providers:
       model: gpt-4o-mini
       working_dir: ../basic
       # Exercise both simple and pattern-based permission shapes.
-      # Promptfoo converts these into the ruleset the OpenCode v2 API expects.
+      # artef converts these into the ruleset the OpenCode v2 API expects.
       permission:
         read: allow
         grep: allow

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test config for #7353 - class-based provider with prototype id() method in redteam flow
 # This verifies that class-based providers work correctly in the redteam generate flow.
 #

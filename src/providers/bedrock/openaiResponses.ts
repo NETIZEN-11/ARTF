@@ -1,4 +1,4 @@
-import { OpenAiResponsesProvider } from '../openai/responses';
+﻿import { OpenAiResponsesProvider } from '../openai/responses';
 import {
   getBedrockMantleOrigin,
   isBedrockGrokModel,
@@ -20,7 +20,7 @@ type BedrockOpenAiResponsesCallApiOptions = Parameters<OpenAiResponsesProvider['
  *
  *   https://bedrock-mantle.<region>.api.aws/openai/v1/responses
  *
- * This module routes those model ids to promptfoo's OpenAI Responses provider pointed at
+ * This module routes those model ids to artef's OpenAI Responses provider pointed at
  * that endpoint, so `bedrock:openai.gpt-5.6-sol` produces output identical to the OpenAI
  * Platform `openai:responses:gpt-5.6-sol` provider. The open-weight `gpt-oss` models, by
  * contrast, are served via `InvokeModel` and continue to use the standard Bedrock path.
@@ -115,7 +115,7 @@ export class BedrockOpenAiResponsesProvider extends OpenAiResponsesProvider {
  * transport with the OpenAI frontier provider, but Grok has its own request semantics:
  *
  * - The capability/billing name strips the `xai.` prefix (→ `grok-4.3`).
- * - Grok is reasoning-first with a configurable `reasoning.effort`, so promptfoo forwards
+ * - Grok is reasoning-first with a configurable `reasoning.effort`, so artef forwards
  *   `reasoning` / `reasoning_effort`. Grok also accepts explicit `temperature` and `top_p`; only
  *   the inherited OpenAI Responses temperature default is omitted when the caller does not set
  *   one.
@@ -216,7 +216,7 @@ export function createBedrockOpenAiResponsesProvider(
       `Amazon Bedrock model "${modelName}" is served through Bedrock's OpenAI-compatible ` +
         `Responses API on the mantle endpoint, which authenticates with an Amazon Bedrock API ` +
         `key. Set the AWS_BEARER_TOKEN_BEDROCK environment variable (or config.apiKey). See ` +
-        `https://www.promptfoo.dev/docs/providers/aws-bedrock/${docsAnchor}`,
+        `https://www.artef.dev/docs/providers/aws-bedrock/${docsAnchor}`,
     );
   }
 

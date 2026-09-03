@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Card, CardContent } from '@app/components/ui/card';
@@ -6,7 +6,7 @@ import { Spinner } from '@app/components/ui/spinner';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { cn } from '@app/lib/utils';
 import { Lightbulb, Plus, RefreshCw, ThumbsDown } from 'lucide-react';
-import type { PolicyObject } from '@promptfoo/redteam/types';
+import type { PolicyObject } from '@artef/redteam/types';
 
 type PolicySuggestionsSidebarProps = {
   isGeneratingPolicies: boolean;

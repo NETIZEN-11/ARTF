@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_position: 10000
-description: Learn how to assess foundation model security risks through red teaming and static scanning using Promptfoo's security testing tools.
+description: Learn how to assess foundation model security risks through red teaming and static scanning using artef's security testing tools.
 keywords:
   [
     LLM security,
@@ -19,19 +19,19 @@ keywords:
 
 LLM security starts at the foundation model level. Assessing the security of foundation models is the first step to building secure Generative AI applications. This baseline will give you a starting point to understand what risks are associated with the foundation (or fine-tuned) models that you are using.
 
-Promptfoo provides a suite of tools to help you assess the security of foundation models through both red teaming and static scanning. This guide will help you assess the risks of foundation or fine-tuned models using Promptfoo's tools.
+artef provides a suite of tools to help you assess the security of foundation models through both red teaming and static scanning. This guide will help you assess the risks of foundation or fine-tuned models using artef's tools.
 
 ## Scanning live foundation models
 
-Promptfoo can conduct red team scans against live foundation models. These red team scans require inference requests to be made to the model provider's API.
+artef can conduct red team scans against live foundation models. These red team scans require inference requests to be made to the model provider's API.
 
-### Running scans in Promptfoo Cloud
+### Running scans in artef Cloud
 
-Promptfoo Cloud provides an easy way to run red team scans against live foundation models.
+artef Cloud provides an easy way to run red team scans against live foundation models.
 
-#### Creating a target in Promptfoo Cloud
+#### Creating a target in artef Cloud
 
-Within the Promptfoo application, navigate to the Targets page and click on the "New Target" button. Within the "General Settings" section, you have the option of setting up a new target as a foundation model.
+Within the artef application, navigate to the Targets page and click on the "New Target" button. Within the "General Settings" section, you have the option of setting up a new target as a foundation model.
 
 <div style={{ textAlign: 'center' }}>
     <img src="/img/foundationmodel-setup.png" style={{ width: '90%', height: 'auto' }} />
@@ -57,7 +57,7 @@ Click the "New Config" button to create a new scan. You will be prompted to eith
 
 Choose the "Foundation Model" presets and then select the strategies that you want to run against the model.
 
-Once complete, click the "Review" section to finalize your configuration. When you save your configuration, Promptfoo will create a CLI command that you can use to run the scan locally.
+Once complete, click the "Review" section to finalize your configuration. When you save your configuration, artef will create a CLI command that you can use to run the scan locally.
 
 <div style={{ textAlign: 'center' }}>
     <img src="/img/redteamrun-cli.png" style={{ width: '90%', height: 'auto' }} />
@@ -65,7 +65,7 @@ Once complete, click the "Review" section to finalize your configuration. When y
 
 #### Viewing results
 
-When you run the scan, you will receive a report within the Promptfoo application in the Reports section.
+When you run the scan, you will receive a report within the artef application in the Reports section.
 
 <div style={{ textAlign: 'center' }}>
     <img src="/img/redteam-reports.png" style={{ width: '90%', height: 'auto' }} />
@@ -97,10 +97,10 @@ Clicking on an individual eval will show you all the prompts, responses, and the
 
 ### Running scans locally through open-source
 
-You can also run a foundation model scan locally. Initiate a Promptfoo redteam in the CLI by running the following command:
+You can also run a foundation model scan locally. Initiate a artef redteam in the CLI by running the following command:
 
 ```bash
-promptfoo redteam init
+artef redteam init
 ```
 
 The red team UI will be displayed in your browser. You can then select the Foundation Model option to begin configuring your scan.
@@ -125,9 +125,9 @@ Results will be displayed in the "Evals" tab, where you will see a list of all t
 
 You can also compare the results of multiple foundation models. To do this, create a custom YAML file with the models that you want to compare.
 
-Here is a sample Promptfoo configuration file to run a red team scan against multiple foundation models at once:
+Here is a sample artef configuration file to run a red team scan against multiple foundation models at once:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: DeepSeek R1 0528 vs. GPT-5.4 Red Team
 
 targets:
@@ -158,15 +158,15 @@ strategies:
 
 ## Scanning static foundation or fine-tuned models
 
-Promptfoo can also scan static foundation or fine-tuned models through its ModelAudit tool. ModelAudit is a lightweight static security scanner for machine learning models integrated into Promptfoo. It allows you to quickly scan your AI/ML models for potential security risks before deploying them in production environments.
+artef can also scan static foundation or fine-tuned models through its ModelAudit tool. ModelAudit is a lightweight static security scanner for machine learning models integrated into artef. It allows you to quickly scan your AI/ML models for potential security risks before deploying them in production environments.
 
-By invoking `promptfoo scan-model`, you can use ModelAudit's static security scanning capabilities. The end result will look something like this:
+By invoking `artef scan-model`, you can use ModelAudit's static security scanning capabilities. The end result will look something like this:
 
 <div style={{ textAlign: 'center' }}>
     <img src="/img/docs/modelaudit/modelaudit-result.png" style={{ width: '90%', height: 'auto' }} />
 </div>
 
-Promptfoo's ModelAudit tool will scan for the following vulnerabilities:
+artef's ModelAudit tool will scan for the following vulnerabilities:
 
 - Malicious code embedded in pickled models
 - Suspicious TensorFlow operations
@@ -181,36 +181,36 @@ To scan a static model, you can use the `scan-model` command. Below are some exa
 #### Basic Command Structure
 
 ```bash
-promptfoo scan-model [OPTIONS] PATH...
+artef scan-model [OPTIONS] PATH...
 ```
 
 #### Examples
 
 ```bash
 # Scan a single model file
-promptfoo scan-model model.pkl
+artef scan-model model.pkl
 
 # Scan multiple models and directories
-promptfoo scan-model model.pkl model2.h5 models_directory
+artef scan-model model.pkl model2.h5 models_directory
 
 # Export results to JSON
-promptfoo scan-model model.pkl --format json --output results.json
+artef scan-model model.pkl --format json --output results.json
 
 # Add custom blacklist patterns
-promptfoo scan-model model.pkl --blacklist "unsafe_model" --blacklist "malicious_net"
+artef scan-model model.pkl --blacklist "unsafe_model" --blacklist "malicious_net"
 ```
 
 You can learn more about the ModelAudit tool in the [ModelAudit documentation](/docs/model-audit).
 
-## Promptfoo foundation model reports
+## artef foundation model reports
 
-Promptfoo also [provides a collection of reports](https://www.promptfoo.dev/models/) that you can use to assess the security of foundation models.
+artef also [provides a collection of reports](https://www.artef.dev/models/) that you can use to assess the security of foundation models.
 
 <div style={{ textAlign: 'center' }}>
     <img src="/img/foundationmodel-reports.png" style={{ width: '90%', height: 'auto' }} />
 </div>
 
-These reports are curated by the Promptfoo team and are a great starting point for your own research. You can even compare the results of the reports against each other to see how they stack up.
+These reports are curated by the artef team and are a great starting point for your own research. You can even compare the results of the reports against each other to see how they stack up.
 
 <div style={{ textAlign: 'center' }}>
     <img src="/img/foundationmodelreport-comparison.png" style={{ width: '90%', height: 'auto' }} />
@@ -221,10 +221,10 @@ These reports are curated by the Promptfoo team and are a great starting point f
 You can run an example red team against a foundation model using the following command:
 
 ```bash
-npx promptfoo@latest init --example redteam-foundation-model
+npx artef@latest init --example redteam-foundation-model
 ```
 
-This will run the same tests featured in promptfoo.dev/models.
+This will run the same tests featured in artef.dev/models.
 
 To configure this scan with your own model, follow these steps:
 
@@ -238,15 +238,15 @@ export ANTHROPIC_API_KEY=your_anthropic_api_key
 2. Configure your target model:
 
 ```bash
-promptfoo redteam run --target openrouter:...
+artef redteam run --target openrouter:...
 ```
 
 3. Run the red team test and save the output to a JSON file:
 
 ```bash
-promptfoo redteam run --output output.json
+artef redteam run --output output.json
 ```
 
-If this model hasn't been listed in Promptfoo's model directory, you can email results to inquiries@promptfoo.dev for inclusion on the promptfoo.dev/models page.
+If this model hasn't been listed in artef's model directory, you can email results to inquiries@artef.dev for inclusion on the artef.dev/models page.
 
 For more information on how to set up a red team, please refer to the [Red Team](/docs/red-team/quickstart/) documentation.

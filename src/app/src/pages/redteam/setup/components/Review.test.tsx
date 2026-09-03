@@ -1,4 +1,4 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
 import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
 import { useEmailVerification } from '@app/hooks/useEmailVerification';
@@ -203,7 +203,7 @@ const mockGetUnifiedConfig = vi.hoisted(() =>
     strategies: [],
   }),
 );
-vi.mock('@promptfoo/redteam/sharedFrontend', () => ({
+vi.mock('@artef/redteam/sharedFrontend', () => ({
   getUnifiedConfig: mockGetUnifiedConfig,
 }));
 
@@ -1141,7 +1141,7 @@ Application Details:
 
       const tooltip = screen.getByRole('tooltip');
       expect(tooltip).toHaveTextContent(
-        /Cannot connect to Promptfoo Cloud\. Please check your network/i,
+        /Cannot connect to artef Cloud\. Please check your network/i,
       );
     });
 
@@ -1163,7 +1163,7 @@ Application Details:
       // Check for the specific alert text
       expect(
         screen.getByText(
-          /Cannot connect to Promptfoo Cloud. The "Run Now" option requires a connection to Promptfoo Cloud./i,
+          /Cannot connect to artef Cloud. The "Run Now" option requires a connection to artef Cloud./i,
         ),
       ).toBeInTheDocument();
     });
@@ -1224,7 +1224,7 @@ Application Details:
       );
 
       // Check that no API health warning alert exists (but other alerts may exist)
-      expect(screen.queryByText(/Cannot connect to Promptfoo Cloud/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Cannot connect to artef Cloud/)).not.toBeInTheDocument();
       expect(screen.queryByText(/Remote generation is disabled/)).not.toBeInTheDocument();
       expect(screen.queryByText(/Checking connection status/)).not.toBeInTheDocument();
     });
@@ -1245,7 +1245,7 @@ Application Details:
       );
 
       // Check that no API health warning alert exists (but other alerts may exist)
-      expect(screen.queryByText(/Cannot connect to Promptfoo Cloud/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Cannot connect to artef Cloud/)).not.toBeInTheDocument();
       expect(screen.queryByText(/Remote generation is disabled/)).not.toBeInTheDocument();
       expect(screen.queryByText(/Checking connection status/)).not.toBeInTheDocument();
     });
@@ -1293,7 +1293,7 @@ Application Details:
       hoverElement(button);
 
       const tooltip = screen.getByRole('tooltip');
-      expect(tooltip).toHaveTextContent(/checking connection to promptfoo cloud/i);
+      expect(tooltip).toHaveTextContent(/checking connection to artef cloud/i);
     });
 
     it('should not show tooltip when API is connected', async () => {
@@ -1318,7 +1318,7 @@ Application Details:
         hoverElement(buttonWrapper);
 
         // Check that no tooltip is shown (check for various tooltip text patterns)
-        expect(screen.queryByText(/cannot connect to promptfoo cloud/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/cannot connect to artef cloud/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/remote generation is disabled/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/checking connection/i)).not.toBeInTheDocument();
       }
@@ -1346,7 +1346,7 @@ Application Details:
         hoverElement(buttonWrapper);
 
         // Check that no tooltip is shown
-        expect(screen.queryByText(/cannot connect to promptfoo cloud/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/cannot connect to artef cloud/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/remote generation is disabled/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/checking connection/i)).not.toBeInTheDocument();
       }
@@ -1529,7 +1529,7 @@ Application Details:
         await user.hover(buttonWrapper);
 
         // Check that no tooltip is shown
-        expect(screen.queryByText(/cannot connect to promptfoo cloud/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/cannot connect to artef cloud/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/remote generation is disabled/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/checking connection/i)).not.toBeInTheDocument();
       }
@@ -1662,7 +1662,7 @@ Application Details:
       );
 
       // Initially no API health alert should be shown
-      expect(screen.queryByText(/Cannot connect to Promptfoo Cloud/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Cannot connect to artef Cloud/)).not.toBeInTheDocument();
       expect(screen.queryByText(/Remote generation is disabled/)).not.toBeInTheDocument();
 
       // Change API status to blocked
@@ -1683,7 +1683,7 @@ Application Details:
       // Alert should now be visible
       expect(
         screen.getByText(
-          /Cannot connect to Promptfoo Cloud. The "Run Now" option requires a connection to Promptfoo Cloud./i,
+          /Cannot connect to artef Cloud. The "Run Now" option requires a connection to artef Cloud./i,
         ),
       ).toBeInTheDocument();
 
@@ -1707,7 +1707,7 @@ Application Details:
         screen.getByText(/Remote generation is disabled. The "Run Now" option is not available./),
       ).toBeInTheDocument();
       // Previous message should be gone
-      expect(screen.queryByText(/Cannot connect to Promptfoo Cloud/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Cannot connect to artef Cloud/)).not.toBeInTheDocument();
 
       // Change API status back to connected
       vi.mocked(useApiHealth).mockReturnValue({
@@ -1726,7 +1726,7 @@ Application Details:
 
       // Alert should disappear
       expect(screen.queryByText(/Remote generation is disabled/)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Cannot connect to Promptfoo Cloud/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Cannot connect to artef Cloud/)).not.toBeInTheDocument();
     });
 
     it('should update tooltip message when API health status changes', async () => {
@@ -1748,7 +1748,7 @@ Application Details:
       const button = screen.getByRole('button', { name: /run now/i });
 
       await user.hover(button);
-      expect(screen.getByRole('tooltip')).toHaveTextContent(/cannot connect to promptfoo cloud/i);
+      expect(screen.getByRole('tooltip')).toHaveTextContent(/cannot connect to artef cloud/i);
 
       // Change to disabled state and rerender
       vi.mocked(useApiHealth).mockReturnValue({
@@ -1785,7 +1785,7 @@ Application Details:
 
       await user.hover(screen.getByRole('button', { name: /run now/i }));
       expect(screen.getByRole('tooltip')).toHaveTextContent(
-        /checking connection to promptfoo cloud/i,
+        /checking connection to artef cloud/i,
       );
     });
   });

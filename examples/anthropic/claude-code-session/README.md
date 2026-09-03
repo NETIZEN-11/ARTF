@@ -1,6 +1,6 @@
-# anthropic/claude-code-session (Authenticate via Claude Code session)
+﻿# anthropic/claude-code-session (Authenticate via Claude Code session)
 
-This example shows how to run Promptfoo evals against the Anthropic Messages
+This example shows how to run artef evals against the Anthropic Messages
 API — including `llm-rubric` model-graded assertions — by reusing an existing
 local Claude Code session instead of creating a separate Anthropic Console API
 key.
@@ -12,7 +12,7 @@ same machine.
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example anthropic/claude-code-session
+npx artef@latest init --example anthropic/claude-code-session
 cd anthropic/claude-code-session
 ```
 
@@ -24,17 +24,17 @@ cd anthropic/claude-code-session
    claude /login
    ```
 
-   Promptfoo reads the OAuth credential that Claude Code stores in either the
+   artef reads the OAuth credential that Claude Code stores in either the
    macOS keychain (`Claude Code-credentials`) or
    `$HOME/.claude/.credentials.json`.
 
 2. Make sure `ANTHROPIC_API_KEY` is **unset** if you specifically want
-   Promptfoo to use your Claude Code session. If the env var is set, Promptfoo
+   artef to use your Claude Code session. If the env var is set, artef
    will prefer it over the OAuth credential.
 
 ## How it works
 
-The provider config sets `apiKeyRequired: false`, which tells Promptfoo to:
+The provider config sets `apiKeyRequired: false`, which tells artef to:
 
 - Skip its upfront API key check.
 - Load the Claude Code OAuth credential from the local session.
@@ -52,12 +52,12 @@ for current billing behavior.
 ## Run it
 
 ```bash
-promptfoo eval
-promptfoo view
+artef eval
+artef view
 ```
 
 ## Configuration
 
-See `promptfooconfig.yaml` — both the main provider and the `llm-rubric`
+See `artefconfig.yaml` — both the main provider and the `llm-rubric`
 grader point at `anthropic:messages:claude-sonnet-4-6` with
 `apiKeyRequired: false` so the entire eval runs on your Claude subscription.

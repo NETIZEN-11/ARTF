@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 
 /**
  * This module exports various prompts used for model graded evaluation.
@@ -56,7 +56,7 @@ export const DEFAULT_AGENT_GRADING_PROMPT = JSON.stringify([
 
 // Based on https://github.com/openai/evals/blob/main/evals/registry/modelgraded/fact.yaml
 // but modified for models capable of JSON output
-export const PROMPTFOO_FACTUALITY_PROMPT = JSON.stringify([
+export const artef_FACTUALITY_PROMPT = JSON.stringify([
   {
     role: 'system',
     content: dedent`

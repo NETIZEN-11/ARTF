@@ -1,9 +1,9 @@
-# eval-rag-full (Rag Full)
+﻿# eval-rag-full (Rag Full)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-rag-full
+npx artef@latest init --example eval-rag-full
 cd eval-rag-full
 ```
 
@@ -15,9 +15,9 @@ There are 3 parts:
 
 1. `ingest.py`: Chunks and loads PDFs into a vector database (PDFs are pulled from a public Google Cloud bucket)
 
-1. `retrieve.py`: Promptfoo-compatible provider that answers RAG questions using the database.
+1. `retrieve.py`: artef-compatible provider that answers RAG questions using the database.
 
-1. `promptfooconfig.yaml`: Test inputs and requirements.
+1. `artefconfig.yaml`: Test inputs and requirements.
 
 To get started:
 
@@ -33,15 +33,15 @@ To get started:
 
 Now we're ready to go.
 
-- Edit `promptfooconfig.yaml` to your liking to configure the questions you'd like to ask in your tests. Then run:
+- Edit `artefconfig.yaml` to your liking to configure the questions you'd like to ask in your tests. Then run:
 - Edit `retrieve.py` to control how context is loaded and questions are answered.
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
-Promptfoo is a Node.js CLI, but the `file://retrieve.py` provider runs inside Python. Keep the virtual environment active when running the eval, or set `PROMPTFOO_PYTHON=./venv/bin/python` so Promptfoo can import the packages from `requirements.txt`.
+artef is a Node.js CLI, but the `file://retrieve.py` provider runs inside Python. Keep the virtual environment active when running the eval, or set `artef_PYTHON=./venv/bin/python` so artef can import the packages from `requirements.txt`.
 
-Afterwards, you can view the results by running `npx promptfoo@latest view`
+Afterwards, you can view the results by running `npx artef@latest view`
 
-See `promptfooconfig.with-asserts.yaml` for a more complete example that compares the performance of two RAG configurations. The smaller retrieval configuration is intentionally expected to miss a couple of details so the comparison view demonstrates failures as well as passes.
+See `artefconfig.with-asserts.yaml` for a more complete example that compares the performance of two RAG configurations. The smaller retrieval configuration is intentionally expected to miss a couple of details so the comparison view demonstrates failures as well as passes.

@@ -1,4 +1,4 @@
-import { mockClipboard, mockDocumentExecCommand, mockWindowOpen } from '@app/tests/browserMocks';
+﻿import { mockClipboard, mockDocumentExecCommand, mockWindowOpen } from '@app/tests/browserMocks';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -52,7 +52,7 @@ describe('ShareModal', () => {
   it('displays signup prompt when cloud is not enabled', async () => {
     mockCallApi.mockResolvedValue(
       Response.json({
-        domain: 'promptfoo.app',
+        domain: 'artef.app',
         isCloudEnabled: false,
       }),
     );
@@ -62,14 +62,14 @@ describe('ShareModal', () => {
     await waitFor(() => {
       expect(screen.getByText('Share Evaluation')).toBeInTheDocument();
       expect(
-        screen.getByText(/You need to be logged in to your Promptfoo cloud account/),
+        screen.getByText(/You need to be logged in to your artef cloud account/),
       ).toBeInTheDocument();
       expect(screen.getByText('Take me there')).toBeInTheDocument();
     });
   });
 
   it('displays share URL when successfully generated', async () => {
-    const testUrl = 'https://promptfoo.app/eval/test-id';
+    const testUrl = 'https://artef.app/eval/test-id';
     mockOnShare.mockResolvedValue(testUrl);
 
     render(<ShareModal {...defaultProps} />);
@@ -81,7 +81,7 @@ describe('ShareModal', () => {
   });
 
   it('handles copy to clipboard functionality', async () => {
-    const testUrl = 'https://promptfoo.app/eval/test-id';
+    const testUrl = 'https://artef.app/eval/test-id';
     mockOnShare.mockResolvedValue(testUrl);
 
     render(<ShareModal {...defaultProps} />);
@@ -140,7 +140,7 @@ describe('ShareModal', () => {
   });
 
   it('calls onClose when close button is clicked', async () => {
-    const testUrl = 'https://promptfoo.app/eval/test-id';
+    const testUrl = 'https://artef.app/eval/test-id';
     mockOnShare.mockResolvedValue(testUrl);
 
     render(<ShareModal {...defaultProps} />);
@@ -160,7 +160,7 @@ describe('ShareModal', () => {
   it('opens external link when "Take me there" is clicked', async () => {
     mockCallApi.mockResolvedValue(
       Response.json({
-        domain: 'promptfoo.app',
+        domain: 'artef.app',
         isCloudEnabled: false,
       }),
     );
@@ -176,11 +176,11 @@ describe('ShareModal', () => {
     const takeButton = screen.getByText('Take me there');
     await userEvent.click(takeButton);
 
-    expect(mockOpen).toHaveBeenCalledWith('https://www.promptfoo.app', '_blank');
+    expect(mockOpen).toHaveBeenCalledWith('https://www.artef.app', '_blank');
   });
 
   it('shows organization access message for shared URLs', async () => {
-    const testUrl = 'https://promptfoo.app/eval/test-id';
+    const testUrl = 'https://artef.app/eval/test-id';
     mockOnShare.mockResolvedValue(testUrl);
 
     render(<ShareModal {...defaultProps} />);
@@ -193,7 +193,7 @@ describe('ShareModal', () => {
   });
 
   it('always displays organization access message when share URL is present', async () => {
-    const testUrl = 'https://promptfoo.app/eval/test-id';
+    const testUrl = 'https://artef.app/eval/test-id';
     mockOnShare.mockResolvedValue(testUrl);
 
     render(<ShareModal {...defaultProps} />);
@@ -214,7 +214,7 @@ describe('ShareModal', () => {
         isCloudEnabled: true,
       }),
     );
-    const testUrl = 'https://promptfoo.app/eval/test-id';
+    const testUrl = 'https://artef.app/eval/test-id';
     mockOnShare.mockResolvedValue(testUrl);
 
     render(<ShareModal {...defaultProps} />);
@@ -223,7 +223,7 @@ describe('ShareModal', () => {
       expect(screen.getByText('Your eval is ready to share')).toBeInTheDocument();
       expect(screen.getByDisplayValue(testUrl)).toBeInTheDocument();
       expect(
-        screen.queryByText(/You need to be logged in to your Promptfoo cloud account/),
+        screen.queryByText(/You need to be logged in to your artef cloud account/),
       ).not.toBeInTheDocument();
     });
   });
@@ -257,13 +257,13 @@ describe('ShareModal', () => {
     });
 
     expect(
-      screen.queryByText(/You need to be logged in to your Promptfoo cloud account/),
+      screen.queryByText(/You need to be logged in to your artef cloud account/),
     ).toBeNull();
   });
 
   it('refetches domain check and generates new share URL when evalId changes', async () => {
-    const testUrl1 = 'https://promptfoo.app/eval/test-id-1';
-    const testUrl2 = 'https://promptfoo.app/eval/test-id-2';
+    const testUrl1 = 'https://artef.app/eval/test-id-1';
+    const testUrl2 = 'https://artef.app/eval/test-id-2';
 
     // Must return a fresh Response for each call since Response body can only be consumed once
     mockCallApi.mockImplementation(() =>

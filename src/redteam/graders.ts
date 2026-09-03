@@ -1,4 +1,4 @@
-import { AegisGrader } from './plugins/aegis';
+﻿import { AegisGrader } from './plugins/aegis';
 import { REDTEAM_MEMORY_POISONING_PLUGIN_ID } from './plugins/agentic/constants';
 import { MemoryPoisoningPluginGrader } from './plugins/agentic/memoryPoisoning';
 import { AsciiSmugglingGrader } from './plugins/asciiSmuggling';
@@ -133,165 +133,165 @@ import type { RedteamAssertionTypes } from './types';
 
 export const GRADERS: Record<RedteamAssertionTypes, RedteamGraderBase> = {
   [REDTEAM_MEMORY_POISONING_PLUGIN_ID]: new MemoryPoisoningPluginGrader(),
-  'promptfoo:redteam:aegis': new AegisGrader(),
-  'promptfoo:redteam:ascii-smuggling': new AsciiSmugglingGrader(),
-  'promptfoo:redteam:beavertails': new BeavertailsGrader(),
-  'promptfoo:redteam:bfla': new BflaGrader(),
-  'promptfoo:redteam:bias': new BiasGrader(),
-  'promptfoo:redteam:bias:age': new BiasGrader(),
-  'promptfoo:redteam:bias:disability': new BiasGrader(),
-  'promptfoo:redteam:bias:gender': new BiasGrader(),
-  'promptfoo:redteam:bias:race': new BiasGrader(),
-  'promptfoo:redteam:bola': new BolaGrader(),
-  'promptfoo:redteam:cca': new CcaGrader(),
-  'promptfoo:redteam:competitors': new CompetitorsGrader(),
-  'promptfoo:redteam:contracts': new ContractsGrader(),
-  'promptfoo:redteam:coppa': new CoppaGrader(),
-  'promptfoo:redteam:cross-session-leak': new CrossSessionLeakGrader(),
-  'promptfoo:redteam:data-exfil': new DataExfilGrader(),
-  'promptfoo:redteam:debug-access': new DebugAccessGrader(),
-  'promptfoo:redteam:divergent-repetition': new DivergentRepetitionGrader(),
-  'promptfoo:redteam:ecommerce:compliance-bypass': new EcommerceComplianceBypassGrader(),
-  'promptfoo:redteam:ecommerce:order-fraud': new EcommerceOrderFraudGrader(),
-  'promptfoo:redteam:ecommerce:pci-dss': new EcommercePciDssGrader(),
-  'promptfoo:redteam:ecommerce:price-manipulation': new EcommercePriceManipulationGrader(),
-  'promptfoo:redteam:excessive-agency': new ExcessiveAgencyGrader(),
-  'promptfoo:redteam:ferpa': new FerpaGrader(),
-  'promptfoo:redteam:financial:calculation-error': new FinancialCalculationErrorPluginGrader(),
-  'promptfoo:redteam:financial:compliance-violation':
+  'artef:redteam:aegis': new AegisGrader(),
+  'artef:redteam:ascii-smuggling': new AsciiSmugglingGrader(),
+  'artef:redteam:beavertails': new BeavertailsGrader(),
+  'artef:redteam:bfla': new BflaGrader(),
+  'artef:redteam:bias': new BiasGrader(),
+  'artef:redteam:bias:age': new BiasGrader(),
+  'artef:redteam:bias:disability': new BiasGrader(),
+  'artef:redteam:bias:gender': new BiasGrader(),
+  'artef:redteam:bias:race': new BiasGrader(),
+  'artef:redteam:bola': new BolaGrader(),
+  'artef:redteam:cca': new CcaGrader(),
+  'artef:redteam:competitors': new CompetitorsGrader(),
+  'artef:redteam:contracts': new ContractsGrader(),
+  'artef:redteam:coppa': new CoppaGrader(),
+  'artef:redteam:cross-session-leak': new CrossSessionLeakGrader(),
+  'artef:redteam:data-exfil': new DataExfilGrader(),
+  'artef:redteam:debug-access': new DebugAccessGrader(),
+  'artef:redteam:divergent-repetition': new DivergentRepetitionGrader(),
+  'artef:redteam:ecommerce:compliance-bypass': new EcommerceComplianceBypassGrader(),
+  'artef:redteam:ecommerce:order-fraud': new EcommerceOrderFraudGrader(),
+  'artef:redteam:ecommerce:pci-dss': new EcommercePciDssGrader(),
+  'artef:redteam:ecommerce:price-manipulation': new EcommercePriceManipulationGrader(),
+  'artef:redteam:excessive-agency': new ExcessiveAgencyGrader(),
+  'artef:redteam:ferpa': new FerpaGrader(),
+  'artef:redteam:financial:calculation-error': new FinancialCalculationErrorPluginGrader(),
+  'artef:redteam:financial:compliance-violation':
     new FinancialComplianceViolationPluginGrader(),
-  'promptfoo:redteam:financial:confidential-disclosure':
+  'artef:redteam:financial:confidential-disclosure':
     new FinancialConfidentialDisclosurePluginGrader(),
-  'promptfoo:redteam:financial:counterfactual': new FinancialCounterfactualPluginGrader(),
-  'promptfoo:redteam:financial:data-leakage': new FinancialDataLeakagePluginGrader(),
-  'promptfoo:redteam:financial:defamation': new FinancialDefamationPluginGrader(),
-  'promptfoo:redteam:financial:hallucination': new FinancialHallucinationPluginGrader(),
-  'promptfoo:redteam:financial:impartiality': new FinancialImpartialityPluginGrader(),
-  'promptfoo:redteam:financial:japan-fiea-suitability':
+  'artef:redteam:financial:counterfactual': new FinancialCounterfactualPluginGrader(),
+  'artef:redteam:financial:data-leakage': new FinancialDataLeakagePluginGrader(),
+  'artef:redteam:financial:defamation': new FinancialDefamationPluginGrader(),
+  'artef:redteam:financial:hallucination': new FinancialHallucinationPluginGrader(),
+  'artef:redteam:financial:impartiality': new FinancialImpartialityPluginGrader(),
+  'artef:redteam:financial:japan-fiea-suitability':
     new FinancialJapanFieaSuitabilityPluginGrader(),
-  'promptfoo:redteam:financial:misconduct': new FinancialMisconductPluginGrader(),
-  'promptfoo:redteam:financial:sox-compliance': new FinancialSoxCompliancePluginGrader(),
-  'promptfoo:redteam:financial:sycophancy': new FinancialSycophancyPluginGrader(),
-  'promptfoo:redteam:goal-misalignment': new GoalMisalignmentGrader(),
-  'promptfoo:redteam:hallucination': new HallucinationGrader(),
-  'promptfoo:redteam:harmbench': new HarmbenchGrader(),
-  'promptfoo:redteam:harmful': new HarmfulGrader(),
-  'promptfoo:redteam:harmful:chemical-biological-weapons': new HarmfulGrader(),
-  'promptfoo:redteam:harmful:child-exploitation': new ChildExploitationGrader(),
-  'promptfoo:redteam:harmful:copyright-violations': new CopyrightViolationGrader(),
-  'promptfoo:redteam:harmful:cybercrime': new CybercrimeGrader(),
-  'promptfoo:redteam:harmful:cybercrime:malicious-code': new CybercrimeGrader(),
-  'promptfoo:redteam:harmful:graphic-content': new GraphicContentGrader(),
-  'promptfoo:redteam:harmful:harassment-bullying': new HarmfulGrader(),
-  'promptfoo:redteam:harmful:hate': new HateGrader(),
-  'promptfoo:redteam:harmful:illegal-activities': new IllegalActivitiesGrader(),
-  'promptfoo:redteam:harmful:illegal-drugs': new IllegalDrugsGrader(),
-  'promptfoo:redteam:harmful:illegal-drugs:meth': new IllegalDrugsGrader(),
-  'promptfoo:redteam:harmful:indiscriminate-weapons': new IndiscriminateWeaponsGrader(),
-  'promptfoo:redteam:harmful:insults': new InsultsGrader(),
-  'promptfoo:redteam:harmful:intellectual-property': new CopyrightViolationGrader(),
-  'promptfoo:redteam:harmful:misinformation-disinformation':
+  'artef:redteam:financial:misconduct': new FinancialMisconductPluginGrader(),
+  'artef:redteam:financial:sox-compliance': new FinancialSoxCompliancePluginGrader(),
+  'artef:redteam:financial:sycophancy': new FinancialSycophancyPluginGrader(),
+  'artef:redteam:goal-misalignment': new GoalMisalignmentGrader(),
+  'artef:redteam:hallucination': new HallucinationGrader(),
+  'artef:redteam:harmbench': new HarmbenchGrader(),
+  'artef:redteam:harmful': new HarmfulGrader(),
+  'artef:redteam:harmful:chemical-biological-weapons': new HarmfulGrader(),
+  'artef:redteam:harmful:child-exploitation': new ChildExploitationGrader(),
+  'artef:redteam:harmful:copyright-violations': new CopyrightViolationGrader(),
+  'artef:redteam:harmful:cybercrime': new CybercrimeGrader(),
+  'artef:redteam:harmful:cybercrime:malicious-code': new CybercrimeGrader(),
+  'artef:redteam:harmful:graphic-content': new GraphicContentGrader(),
+  'artef:redteam:harmful:harassment-bullying': new HarmfulGrader(),
+  'artef:redteam:harmful:hate': new HateGrader(),
+  'artef:redteam:harmful:illegal-activities': new IllegalActivitiesGrader(),
+  'artef:redteam:harmful:illegal-drugs': new IllegalDrugsGrader(),
+  'artef:redteam:harmful:illegal-drugs:meth': new IllegalDrugsGrader(),
+  'artef:redteam:harmful:indiscriminate-weapons': new IndiscriminateWeaponsGrader(),
+  'artef:redteam:harmful:insults': new InsultsGrader(),
+  'artef:redteam:harmful:intellectual-property': new CopyrightViolationGrader(),
+  'artef:redteam:harmful:misinformation-disinformation':
     new MisinformationDisinformationGrader(),
-  'promptfoo:redteam:harmful:non-violent-crime': new NonViolentCrimeGrader(),
-  'promptfoo:redteam:harmful:privacy': new HarmfulPrivacyGrader(),
-  'promptfoo:redteam:harmful:profanity': new ProfanityGrader(),
-  'promptfoo:redteam:harmful:radicalization': new RadicalizationGrader(),
-  'promptfoo:redteam:harmful:self-harm': new SelfHarmGrader(),
-  'promptfoo:redteam:harmful:sex-crime': new SexCrimeGrader(),
-  'promptfoo:redteam:harmful:sexual-content': new SexualContentGrader(),
-  'promptfoo:redteam:harmful:specialized-advice': new SpecializedAdviceGrader(),
-  'promptfoo:redteam:harmful:unsafe-practices': new UnsafePracticesGrader(),
-  'promptfoo:redteam:harmful:violent-crime': new ViolentCrimeGrader(),
-  'promptfoo:redteam:harmful:weapons:ied': new HarmfulGrader(),
-  'promptfoo:redteam:hijacking': new HijackingGrader(),
-  'promptfoo:redteam:imitation': new ImitationGrader(),
-  'promptfoo:redteam:indirect-prompt-injection': new IndirectPromptInjectionGrader(),
-  'promptfoo:redteam:insurance:coverage-discrimination':
+  'artef:redteam:harmful:non-violent-crime': new NonViolentCrimeGrader(),
+  'artef:redteam:harmful:privacy': new HarmfulPrivacyGrader(),
+  'artef:redteam:harmful:profanity': new ProfanityGrader(),
+  'artef:redteam:harmful:radicalization': new RadicalizationGrader(),
+  'artef:redteam:harmful:self-harm': new SelfHarmGrader(),
+  'artef:redteam:harmful:sex-crime': new SexCrimeGrader(),
+  'artef:redteam:harmful:sexual-content': new SexualContentGrader(),
+  'artef:redteam:harmful:specialized-advice': new SpecializedAdviceGrader(),
+  'artef:redteam:harmful:unsafe-practices': new UnsafePracticesGrader(),
+  'artef:redteam:harmful:violent-crime': new ViolentCrimeGrader(),
+  'artef:redteam:harmful:weapons:ied': new HarmfulGrader(),
+  'artef:redteam:hijacking': new HijackingGrader(),
+  'artef:redteam:imitation': new ImitationGrader(),
+  'artef:redteam:indirect-prompt-injection': new IndirectPromptInjectionGrader(),
+  'artef:redteam:insurance:coverage-discrimination':
     new InsuranceCoverageDiscriminationPluginGrader(),
-  'promptfoo:redteam:insurance:data-disclosure': new InsuranceDataDisclosurePluginGrader(),
-  'promptfoo:redteam:insurance:network-misinformation':
+  'artef:redteam:insurance:data-disclosure': new InsuranceDataDisclosurePluginGrader(),
+  'artef:redteam:insurance:network-misinformation':
     new InsuranceNetworkMisinformationPluginGrader(),
-  'promptfoo:redteam:insurance:phi-disclosure': new InsurancePhiDisclosurePluginGrader(),
-  'promptfoo:redteam:intent': new IntentGrader(),
-  'promptfoo:redteam:mcp': new MCPPluginGrader(),
-  'promptfoo:redteam:model-identification': new ModelIdentificationGrader(),
-  'promptfoo:redteam:medical:anchoring-bias': new MedicalAnchoringBiasPluginGrader(),
-  'promptfoo:redteam:medical:fda:ai-disclosure': new MedicalFdaAiDisclosurePluginGrader(),
-  'promptfoo:redteam:medical:fda:cyber-access-control':
+  'artef:redteam:insurance:phi-disclosure': new InsurancePhiDisclosurePluginGrader(),
+  'artef:redteam:intent': new IntentGrader(),
+  'artef:redteam:mcp': new MCPPluginGrader(),
+  'artef:redteam:model-identification': new ModelIdentificationGrader(),
+  'artef:redteam:medical:anchoring-bias': new MedicalAnchoringBiasPluginGrader(),
+  'artef:redteam:medical:fda:ai-disclosure': new MedicalFdaAiDisclosurePluginGrader(),
+  'artef:redteam:medical:fda:cyber-access-control':
     new MedicalFdaCyberAccessControlPluginGrader(),
-  'promptfoo:redteam:medical:fda:cyber-audit-tampering':
+  'artef:redteam:medical:fda:cyber-audit-tampering':
     new MedicalFdaCyberAuditTamperingPluginGrader(),
-  'promptfoo:redteam:medical:hallucination': new MedicalHallucinationPluginGrader(),
-  'promptfoo:redteam:medical:incorrect-knowledge': new MedicalIncorrectKnowledgePluginGrader(),
-  'promptfoo:redteam:medical:off-label-use': new MedicalOffLabelUsePluginGrader(),
-  'promptfoo:redteam:medical:prioritization-error': new MedicalPrioritizationErrorPluginGrader(),
-  'promptfoo:redteam:medical:sycophancy': new MedicalSycophancyPluginGrader(),
-  'promptfoo:redteam:off-topic': new OffTopicPluginGrader(),
-  'promptfoo:redteam:pharmacy:controlled-substance-compliance':
+  'artef:redteam:medical:hallucination': new MedicalHallucinationPluginGrader(),
+  'artef:redteam:medical:incorrect-knowledge': new MedicalIncorrectKnowledgePluginGrader(),
+  'artef:redteam:medical:off-label-use': new MedicalOffLabelUsePluginGrader(),
+  'artef:redteam:medical:prioritization-error': new MedicalPrioritizationErrorPluginGrader(),
+  'artef:redteam:medical:sycophancy': new MedicalSycophancyPluginGrader(),
+  'artef:redteam:off-topic': new OffTopicPluginGrader(),
+  'artef:redteam:pharmacy:controlled-substance-compliance':
     new PharmacyControlledSubstanceCompliancePluginGrader(),
-  'promptfoo:redteam:pharmacy:dosage-calculation': new PharmacyDosageCalculationPluginGrader(),
-  'promptfoo:redteam:pharmacy:drug-interaction': new PharmacyDrugInteractionPluginGrader(),
-  'promptfoo:redteam:telecom:cpni-disclosure': new TelecomCpniDisclosurePluginGrader(),
-  'promptfoo:redteam:telecom:location-disclosure': new TelecomLocationDisclosurePluginGrader(),
-  'promptfoo:redteam:telecom:account-takeover': new TelecomAccountTakeoverPluginGrader(),
-  'promptfoo:redteam:telecom:e911-misinformation': new TelecomE911MisinformationPluginGrader(),
-  'promptfoo:redteam:telecom:tcpa-violation': new TelecomTcpaViolationPluginGrader(),
-  'promptfoo:redteam:telecom:unauthorized-changes': new TelecomUnauthorizedChangesPluginGrader(),
-  'promptfoo:redteam:telecom:fraud-enablement': new TelecomFraudEnablementPluginGrader(),
-  'promptfoo:redteam:telecom:porting-misinformation':
+  'artef:redteam:pharmacy:dosage-calculation': new PharmacyDosageCalculationPluginGrader(),
+  'artef:redteam:pharmacy:drug-interaction': new PharmacyDrugInteractionPluginGrader(),
+  'artef:redteam:telecom:cpni-disclosure': new TelecomCpniDisclosurePluginGrader(),
+  'artef:redteam:telecom:location-disclosure': new TelecomLocationDisclosurePluginGrader(),
+  'artef:redteam:telecom:account-takeover': new TelecomAccountTakeoverPluginGrader(),
+  'artef:redteam:telecom:e911-misinformation': new TelecomE911MisinformationPluginGrader(),
+  'artef:redteam:telecom:tcpa-violation': new TelecomTcpaViolationPluginGrader(),
+  'artef:redteam:telecom:unauthorized-changes': new TelecomUnauthorizedChangesPluginGrader(),
+  'artef:redteam:telecom:fraud-enablement': new TelecomFraudEnablementPluginGrader(),
+  'artef:redteam:telecom:porting-misinformation':
     new TelecomPortingMisinformationPluginGrader(),
-  'promptfoo:redteam:telecom:billing-misinformation':
+  'artef:redteam:telecom:billing-misinformation':
     new TelecomBillingMisinformationPluginGrader(),
-  'promptfoo:redteam:telecom:coverage-misinformation':
+  'artef:redteam:telecom:coverage-misinformation':
     new TelecomCoverageMisinformationPluginGrader(),
-  'promptfoo:redteam:telecom:law-enforcement-request-handling':
+  'artef:redteam:telecom:law-enforcement-request-handling':
     new TelecomLawEnforcementRequestHandlingPluginGrader(),
-  'promptfoo:redteam:telecom:accessibility-violation':
+  'artef:redteam:telecom:accessibility-violation':
     new TelecomAccessibilityViolationPluginGrader(),
-  'promptfoo:redteam:teen-safety:harmful-body-ideals':
+  'artef:redteam:teen-safety:harmful-body-ideals':
     new TeenSafetyHarmfulBodyIdealsPluginGrader(),
-  'promptfoo:redteam:teen-safety:dangerous-content': new TeenSafetyDangerousContentPluginGrader(),
-  'promptfoo:redteam:teen-safety:dangerous-roleplay': new TeenSafetyDangerousRoleplayPluginGrader(),
-  'promptfoo:redteam:teen-safety:age-restricted-goods-and-services':
+  'artef:redteam:teen-safety:dangerous-content': new TeenSafetyDangerousContentPluginGrader(),
+  'artef:redteam:teen-safety:dangerous-roleplay': new TeenSafetyDangerousRoleplayPluginGrader(),
+  'artef:redteam:teen-safety:age-restricted-goods-and-services':
     new TeenSafetyAgeRestrictedGoodsAndServicesPluginGrader(),
-  'promptfoo:redteam:realestate:fair-housing-discrimination':
+  'artef:redteam:realestate:fair-housing-discrimination':
     new RealEstateFairHousingDiscriminationPluginGrader(),
-  'promptfoo:redteam:realestate:steering': new RealEstateSteeringPluginGrader(),
-  'promptfoo:redteam:realestate:discriminatory-listings':
+  'artef:redteam:realestate:steering': new RealEstateSteeringPluginGrader(),
+  'artef:redteam:realestate:discriminatory-listings':
     new RealEstateDiscriminatoryListingsPluginGrader(),
-  'promptfoo:redteam:realestate:lending-discrimination':
+  'artef:redteam:realestate:lending-discrimination':
     new RealEstateLendingDiscriminationPluginGrader(),
-  'promptfoo:redteam:realestate:valuation-bias': new RealEstateValuationBiasPluginGrader(),
-  'promptfoo:redteam:realestate:accessibility-discrimination':
+  'artef:redteam:realestate:valuation-bias': new RealEstateValuationBiasPluginGrader(),
+  'artef:redteam:realestate:accessibility-discrimination':
     new RealEstateAccessibilityDiscriminationPluginGrader(),
-  'promptfoo:redteam:realestate:advertising-discrimination':
+  'artef:redteam:realestate:advertising-discrimination':
     new RealEstateAdvertisingDiscriminationPluginGrader(),
-  'promptfoo:redteam:realestate:source-of-income': new RealEstateSourceOfIncomePluginGrader(),
-  'promptfoo:redteam:overreliance': new OverrelianceGrader(),
-  'promptfoo:redteam:pii': new PiiGrader(),
-  'promptfoo:redteam:pii:api-db': new PiiGrader(),
-  'promptfoo:redteam:pii:direct': new PiiGrader(),
-  'promptfoo:redteam:pii:session': new PiiGrader(),
-  'promptfoo:redteam:pii:social': new PiiGrader(),
-  'promptfoo:redteam:pliny': new PlinyGrader(),
-  'promptfoo:redteam:policy': new PolicyViolationGrader(),
-  'promptfoo:redteam:politics': new PoliticsGrader(),
-  'promptfoo:redteam:prompt-extraction': new PromptExtractionGrader(),
-  'promptfoo:redteam:rag-document-exfiltration': new RagDocumentExfiltrationGrader(),
-  'promptfoo:redteam:rag-source-attribution': new RagSourceAttributionGrader(),
-  'promptfoo:redteam:rbac': new RbacGrader(),
-  'promptfoo:redteam:reasoning-dos': new ReasoningDosGrader(),
-  'promptfoo:redteam:religion': new ReligionGrader(),
-  'promptfoo:redteam:shell-injection': new ShellInjectionGrader(),
-  'promptfoo:redteam:sql-injection': new SqlInjectionGrader(),
-  'promptfoo:redteam:ssrf': new SsrfGrader(),
-  'promptfoo:redteam:tool-discovery': new ToolDiscoveryGrader(),
-  'promptfoo:redteam:toxic-chat': new ToxicChatGrader(),
-  'promptfoo:redteam:unsafebench': new UnsafeBenchGrader(),
-  'promptfoo:redteam:unverifiable-claims': new UnverifiableClaimsGrader(),
-  'promptfoo:redteam:vlguard': new VLGuardGrader(),
-  'promptfoo:redteam:vlsu': new VLSUGrader(),
-  'promptfoo:redteam:wordplay': new WordplayGrader(),
+  'artef:redteam:realestate:source-of-income': new RealEstateSourceOfIncomePluginGrader(),
+  'artef:redteam:overreliance': new OverrelianceGrader(),
+  'artef:redteam:pii': new PiiGrader(),
+  'artef:redteam:pii:api-db': new PiiGrader(),
+  'artef:redteam:pii:direct': new PiiGrader(),
+  'artef:redteam:pii:session': new PiiGrader(),
+  'artef:redteam:pii:social': new PiiGrader(),
+  'artef:redteam:pliny': new PlinyGrader(),
+  'artef:redteam:policy': new PolicyViolationGrader(),
+  'artef:redteam:politics': new PoliticsGrader(),
+  'artef:redteam:prompt-extraction': new PromptExtractionGrader(),
+  'artef:redteam:rag-document-exfiltration': new RagDocumentExfiltrationGrader(),
+  'artef:redteam:rag-source-attribution': new RagSourceAttributionGrader(),
+  'artef:redteam:rbac': new RbacGrader(),
+  'artef:redteam:reasoning-dos': new ReasoningDosGrader(),
+  'artef:redteam:religion': new ReligionGrader(),
+  'artef:redteam:shell-injection': new ShellInjectionGrader(),
+  'artef:redteam:sql-injection': new SqlInjectionGrader(),
+  'artef:redteam:ssrf': new SsrfGrader(),
+  'artef:redteam:tool-discovery': new ToolDiscoveryGrader(),
+  'artef:redteam:toxic-chat': new ToxicChatGrader(),
+  'artef:redteam:unsafebench': new UnsafeBenchGrader(),
+  'artef:redteam:unverifiable-claims': new UnverifiableClaimsGrader(),
+  'artef:redteam:vlguard': new VLGuardGrader(),
+  'artef:redteam:vlsu': new VLSUGrader(),
+  'artef:redteam:wordplay': new WordplayGrader(),
   ...createCodingAgentGraders(),
 };
 
@@ -304,9 +304,9 @@ export function getGraderById(id: string): RedteamGraderBase | undefined {
   // First try to get the exact grader
   const grader = id in GRADERS ? GRADERS[id as keyof typeof GRADERS] : undefined;
 
-  // If not found but the ID starts with 'promptfoo:redteam:harmful', use the general harmful grader
-  if (!grader && id.startsWith('promptfoo:redteam:harmful')) {
-    return GRADERS['promptfoo:redteam:harmful'];
+  // If not found but the ID starts with 'artef:redteam:harmful', use the general harmful grader
+  if (!grader && id.startsWith('artef:redteam:harmful')) {
+    return GRADERS['artef:redteam:harmful'];
   }
 
   return grader;

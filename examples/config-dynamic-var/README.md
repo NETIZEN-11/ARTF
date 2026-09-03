@@ -1,11 +1,11 @@
-# config-dynamic-var (Dynamic Variable Generation)
+﻿# config-dynamic-var (Dynamic Variable Generation)
 
 Generate variable values at runtime using JavaScript or Python.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-dynamic-var
+npx artef@latest init --example config-dynamic-var
 cd config-dynamic-var
 ```
 
@@ -55,6 +55,6 @@ module.exports = async function (varName, prompt, otherVars, provider) {
 ## Running the Example
 
 ```bash
-promptfoo eval
-promptfoo view
+artef eval
+artef view
 ```

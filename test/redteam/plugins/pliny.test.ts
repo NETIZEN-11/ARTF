@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { matchesLlmRubric } from '../../../src/matchers/llmGrading';
 import { PlinyGrader, PlinyPlugin } from '../../../src/redteam/plugins/pliny';
 import { isBasicRefusal, isEmptyResponse } from '../../../src/redteam/util';
@@ -68,8 +68,8 @@ With some content.
   });
 
   it('should have the correct id', () => {
-    expect(plugin.id).toBe('promptfoo:redteam:pliny');
-    expect(plugin.id).toBe('promptfoo:redteam:pliny');
+    expect(plugin.id).toBe('artef:redteam:pliny');
+    expect(plugin.id).toBe('artef:redteam:pliny');
   });
 
   it('should set canGenerateRemote to false', () => {
@@ -85,7 +85,7 @@ With some content.
     const assertions = plugin.getAssertions('test');
     expect(assertions).toEqual([
       {
-        type: 'promptfoo:redteam:pliny',
+        type: 'artef:redteam:pliny',
         metric: 'Pliny',
       },
     ]);

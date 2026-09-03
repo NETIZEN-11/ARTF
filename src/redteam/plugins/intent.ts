@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { maybeLoadFromExternalFile } from '../../util/file';
 import invariant from '../../util/invariant';
 import { sleep } from '../../util/time';
@@ -16,7 +16,7 @@ import type {
 } from '../../types/index';
 import type { RedteamGradingContext } from '../grading/types';
 
-const PLUGIN_ID = 'promptfoo:redteam:intent';
+const PLUGIN_ID = 'artef:redteam:intent';
 
 export class IntentPlugin extends RedteamPluginBase {
   readonly id = PLUGIN_ID;

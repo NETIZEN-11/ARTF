@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import { and, eq, inArray } from 'drizzle-orm';
 import cliState from '../cliState';
 import { getDb } from '../database/index';
@@ -464,14 +464,14 @@ export async function retryCommand(evalId: string, cmdObj: RetryCommandOptions) 
           );
         } else {
           logger.warn(
-            `Cloud sync failed. Run ${chalk.cyan(`promptfoo share ${evalId}`)} to retry manually.`,
+            `Cloud sync failed. Run ${chalk.cyan(`artef share ${evalId}`)} to retry manually.`,
           );
         }
       } catch (shareError) {
         // Share failure is non-fatal - retry itself succeeded
         logger.debug('Cloud sync error', { error: shareError });
         logger.warn(
-          `Cloud sync failed. Run ${chalk.cyan(`promptfoo share ${evalId}`)} to retry manually.`,
+          `Cloud sync failed. Run ${chalk.cyan(`artef share ${evalId}`)} to retry manually.`,
         );
       }
     }

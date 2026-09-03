@@ -1,4 +1,4 @@
-import { AlwaysOffSampler, NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
+﻿import { AlwaysOffSampler, NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import logger from '../../src/logger';
@@ -60,7 +60,7 @@ describe('evaluatorTracing', () => {
     } as unknown as ReturnType<typeof getTraceStore>);
     resetTracingState();
     // Reset environment variables
-    mockProcessEnv({ PROMPTFOO_TRACING_ENABLED: undefined });
+    mockProcessEnv({ artef_TRACING_ENABLED: undefined });
   });
 
   describe('generateTraceId', () => {
@@ -169,7 +169,7 @@ describe('evaluatorTracing', () => {
     });
 
     it('should generate trace context when tracing is enabled via environment', async () => {
-      mockProcessEnv({ PROMPTFOO_TRACING_ENABLED: 'true' });
+      mockProcessEnv({ artef_TRACING_ENABLED: 'true' });
       const test: TestCase = {
         vars: { foo: 'bar' },
       };
@@ -278,7 +278,7 @@ describe('evaluatorTracing', () => {
     });
 
     it('should return true when environment variable is set', () => {
-      mockProcessEnv({ PROMPTFOO_TRACING_ENABLED: 'true' });
+      mockProcessEnv({ artef_TRACING_ENABLED: 'true' });
       const test: TestCase = { vars: {} };
       expect(isTracingEnabled(test)).toBe(true);
     });
@@ -497,7 +497,7 @@ describe('evaluatorTracing', () => {
       vi.mocked(getTraceStore).mockReturnValue({
         deleteOldTraces,
       } as unknown as ReturnType<typeof getTraceStore>);
-      mockProcessEnv({ PROMPTFOO_TRACING_ENABLED: 'true' });
+      mockProcessEnv({ artef_TRACING_ENABLED: 'true' });
 
       await startOtlpReceiverIfNeeded({
         providers: [],

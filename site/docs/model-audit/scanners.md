@@ -1,4 +1,4 @@
----
+﻿---
 description: Complete guide to ModelAudit's security scanners for different ML model formats including PyTorch, TensorFlow, Keras, ONNX, GGUF, and more.
 keywords:
   [
@@ -29,9 +29,9 @@ ModelAudit includes specialized scanners for different model formats and file ty
 Use `--list-scanners` to see the scanner IDs supported by your installed ModelAudit version. Then pass IDs or class names to `--scanners` to run only those scanners, or use `--exclude-scanner` to remove scanners from the default set.
 
 ```bash
-promptfoo scan-model --list-scanners
-promptfoo scan-model models/ --scanners pickle,tf_savedmodel
-promptfoo scan-model models/ --exclude-scanner weight_distribution
+artef scan-model --list-scanners
+artef scan-model models/ --scanners pickle,tf_savedmodel
+artef scan-model models/ --exclude-scanner weight_distribution
 ```
 
 The web UI exposes the same catalog in Advanced Scan Options.
@@ -609,7 +609,7 @@ ModelAudit includes license detection across all file formats to help organizati
 **Generate SBOM:**
 
 ```bash
-promptfoo scan-model ./models/ --sbom model-sbom.json
+artef scan-model ./models/ --sbom model-sbom.json
 ```
 
 The SBOM includes component information, license metadata, risk scores, and copyright details in CycloneDX format.

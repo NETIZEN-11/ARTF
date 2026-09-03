@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 2
 description: "Deploy Anthropic's Claude models including Opus, Sonnet, and Haiku for advanced reasoning and conversational AI applications"
 ---
@@ -36,16 +36,16 @@ providers:
       apiKeyRequired: false
 ```
 
-When `apiKeyRequired` is `false` and no `ANTHROPIC_API_KEY` is available, Promptfoo loads the Claude Code OAuth credential from:
+When `apiKeyRequired` is `false` and no `ANTHROPIC_API_KEY` is available, artef loads the Claude Code OAuth credential from:
 
 1. The macOS keychain entry `Claude Code-credentials` (darwin only), then
 2. `$HOME/.claude/.credentials.json` on Linux and macOS, or `%USERPROFILE%\.claude\.credentials.json` on Windows.
 
-Set `CLAUDE_CONFIG_DIR` to read the credential from a different Claude Code profile — the same environment variable the Claude Code CLI itself uses to relocate `~/.claude`. It can be set in your shell, in the config's top-level `env:` block, or in a provider's `env:` block (the provider-scoped value wins). On macOS, where Claude Code stores credentials in the system keychain, Promptfoo mirrors the CLI's profile-specific keychain entry: when `CLAUDE_CONFIG_DIR` is set, the credential is looked up under that profile's keychain service (derived from the configured directory) rather than the default one, so evals authenticate as the profile you selected.
+Set `CLAUDE_CONFIG_DIR` to read the credential from a different Claude Code profile — the same environment variable the Claude Code CLI itself uses to relocate `~/.claude`. It can be set in your shell, in the config's top-level `env:` block, or in a provider's `env:` block (the provider-scoped value wins). On macOS, where Claude Code stores credentials in the system keychain, artef mirrors the CLI's profile-specific keychain entry: when `CLAUDE_CONFIG_DIR` is set, the credential is looked up under that profile's keychain service (derived from the configured directory) rather than the default one, so evals authenticate as the profile you selected.
 
-Promptfoo authenticates requests with a Bearer token, sends the `claude-code-20250219,oauth-2025-04-20` beta headers, and prepends the required Claude Code identity system block (`"You are Claude Code, Anthropic's official CLI for Claude."`) to every Messages request. Your own system prompt is still forwarded as the next system block.
+artef authenticates requests with a Bearer token, sends the `claude-code-20250219,oauth-2025-04-20` beta headers, and prepends the required Claude Code identity system block (`"You are Claude Code, Anthropic's official CLI for Claude."`) to every Messages request. Your own system prompt is still forwarded as the next system block.
 
-If you haven't logged in yet, run `claude /login` to create a credential. Re-run it if Promptfoo warns that the credential has expired. Requests made this way are expected to count against your Claude subscription the same way calls from the Claude Code CLI do — check [Anthropic's documentation](https://docs.claude.com/en/docs/claude-code/overview) for current billing behavior.
+If you haven't logged in yet, run `claude /login` to create a credential. Re-run it if artef warns that the credential has expired. Requests made this way are expected to count against your Claude subscription the same way calls from the Claude Code CLI do — check [Anthropic's documentation](https://docs.claude.com/en/docs/claude-code/overview) for current billing behavior.
 
 This also enables [model-graded assertions](#model-graded-tests) such as `llm-rubric` to run without a separate Anthropic Console key — see [the example below](#model-graded-tests).
 
@@ -125,8 +125,8 @@ Claude models are available across multiple platforms. Here's how the model name
 | temperature     | ANTHROPIC_TEMPERATURE | Controls the randomness of the output (default: 0). Omitted when `top_p` is set.    |
 | max_tokens      | ANTHROPIC_MAX_TOKENS  | The maximum length of the generated text (default: 1024)                            |
 | cost            | -                     | Legacy per-token override applied to both input and output pricing                  |
-| inputCost       | -                     | Override input token pricing in promptfoo cost estimates                            |
-| outputCost      | -                     | Override output token pricing in promptfoo cost estimates                           |
+| inputCost       | -                     | Override input token pricing in artef cost estimates                            |
+| outputCost      | -                     | Override output token pricing in artef cost estimates                           |
 | top_p           | -                     | Controls nucleus sampling. Mutually exclusive with `temperature`.                   |
 | top_k           | -                     | Only sample from the top K options for each subsequent token                        |
 | stop_sequences  | -                     | Array of strings that will stop generation when encountered                         |
@@ -180,11 +180,11 @@ The Anthropic provider supports several options to customize the behavior of the
 - `metadata`: Request metadata (e.g., `user_id`) passed to the API.
 - `extra_body`: Additional parameters to pass directly to the Anthropic API request body.
 - `mcp`: Connect to one or more [Model Context Protocol](#model-context-protocol-mcp) servers. Tools exposed by the server become callable by Claude.
-- `max_tool_calls`: Maximum number of MCP tool executions promptfoo will perform per request before aborting the loop. Defaults to `8` and is only relevant when `mcp.enabled` is `true`.
+- `max_tool_calls`: Maximum number of MCP tool executions artef will perform per request before aborting the loop. Defaults to `8` and is only relevant when `mcp.enabled` is `true`.
 
 Example configuration with options and prompts:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-sonnet-4-5-20250929
     config:
@@ -211,7 +211,7 @@ providers:
 
 ### Classifier Refusals
 
-An Anthropic safety-classifier refusal can arrive as a successful Messages response with `stop_reason: refusal`. When the response also includes `stop_details`, Promptfoo returns the provider content as `output` and normalizes:
+An Anthropic safety-classifier refusal can arrive as a successful Messages response with `stop_reason: refusal`. When the response also includes `stop_details`, artef returns the provider content as `output` and normalizes:
 
 ```json
 {
@@ -223,9 +223,9 @@ An Anthropic safety-classifier refusal can arrive as a successful Messages respo
 }
 ```
 
-Promptfoo currently requires `stop_details` to create the top-level `guardrails` signal. A model-written refusal or `stop_reason: refusal` without details is therefore not the same assertion result. Treat the optional `stop_details.category` and `stop_details.explanation` as diagnostic evidence. API validation errors remain provider errors and skip assertions.
+artef currently requires `stop_details` to create the top-level `guardrails` signal. A model-written refusal or `stop_reason: refusal` without details is therefore not the same assertion result. Treat the optional `stop_details.category` and `stop_details.explanation` as diagnostic evidence. API validation errors remain provider errors and skip assertions.
 
-In a stream, the terminal refusal reason can arrive after partial text in the final message delta. Promptfoo merges those details before returning the provider response, and cached structured refusals preserve the signal. Use [`not-guardrails`](/docs/configuration/expected-outputs/guardrails#inverse-assertion-not-guardrails) to require the structured classifier signal. Use [`is-refusal`](/docs/configuration/expected-outputs/deterministic#is-refusal) for model-written refusal text.
+In a stream, the terminal refusal reason can arrive after partial text in the final message delta. artef merges those details before returning the provider response, and cached structured refusals preserve the signal. Use [`not-guardrails`](/docs/configuration/expected-outputs/guardrails#inverse-assertion-not-guardrails) to require the structured classifier signal. Use [`is-refusal`](/docs/configuration/expected-outputs/deterministic#is-refusal) for model-written refusal text.
 
 ### Metadata
 
@@ -243,7 +243,7 @@ providers:
 
 The Anthropic provider supports tool calling (function calling). Here's an example configuration for defining tools.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-sonnet-4-5-20250929
     config:
@@ -289,7 +289,7 @@ providers:
           max_content_tokens: 50000
 ```
 
-Promptfoo also supports the stable `web_fetch_20260209` variant. A newer version `web_fetch_20260309` adds `use_cache` support for controlling whether cached content is used:
+artef also supports the stable `web_fetch_20260209` variant. A newer version `web_fetch_20260309` adds `use_cache` support for controlling whether cached content is used:
 
 ```yaml
 providers:
@@ -375,7 +375,7 @@ This configuration allows the model to first search for relevant information, th
 
 ##### Memory Tool
 
-Anthropic's `memory_20250818` tool can be included in `tools`. Promptfoo passes this native tool definition through unchanged, which is useful for evaluating whether a model requests memory operations. Promptfoo does not manage Anthropic memory stores or run local memory handlers for you.
+Anthropic's `memory_20250818` tool can be included in `tools`. artef passes this native tool definition through unchanged, which is useful for evaluating whether a model requests memory operations. artef does not manage Anthropic memory stores or run local memory handlers for you.
 
 ```yaml
 providers:
@@ -413,7 +413,7 @@ providers:
 
 The Anthropic Messages provider can connect to any [MCP server](https://modelcontextprotocol.io) — stdio, SSE, or streamable HTTP — and execute the model's `tool_use` blocks against that server, feeding the `tool_result` back into the conversation until Claude produces a final reply.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-sonnet-4-6
     config:
@@ -435,7 +435,7 @@ providers:
 How it works:
 
 - Tools discovered on the MCP server are passed to Claude alongside any inline `tools`.
-- When Claude returns a `tool_use` block whose name matches an MCP tool, promptfoo calls the tool with the model's arguments and appends a matching `tool_result` block on the user turn.
+- When Claude returns a `tool_use` block whose name matches an MCP tool, artef calls the tool with the model's arguments and appends a matching `tool_result` block on the user turn.
 - The loop repeats until Claude returns text (no more `tool_use`) or `max_tool_calls` is hit. Tool errors are forwarded as `tool_result` blocks with `is_error: true` so the model can recover.
 - Non-MCP `tool_use` blocks (regular function tools, or built-ins like `web_search`) are passed through to the existing output and not auto-executed.
 
@@ -443,20 +443,20 @@ How it works:
 The disk response cache is skipped while `mcp.enabled` is `true`, because tool results can be non-deterministic between runs. Use `max_tool_calls` to bound spend.
 :::
 
-See the [MCP integration guide](/docs/integrations/mcp/) for full server configuration options (auth, timeouts, multiple servers, etc.) and the [Anthropic MCP example](https://github.com/promptfoo/promptfoo/tree/main/examples/anthropic/mcp).
+See the [MCP integration guide](/docs/integrations/mcp/) for full server configuration options (auth, timeouts, multiple servers, etc.) and the [Anthropic MCP example](https://github.com/artef/artef/tree/main/examples/anthropic/mcp).
 
-See the [Anthropic Tool Use Guide](https://docs.anthropic.com/en/docs/tool-use) for more information on how to define tools and the tool use example [here](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-tool-use).
+See the [Anthropic Tool Use Guide](https://docs.anthropic.com/en/docs/tool-use) for more information on how to define tools and the tool use example [here](https://github.com/artef/artef/tree/main/examples/eval-tool-use).
 
 ### Images / Vision
 
 You can include images in the prompts in Claude 3 models.
 
-See the [Claude vision example](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-vision).
+See the [Claude vision example](https://github.com/artef/artef/tree/main/examples/claude-vision).
 
 One important note: The Claude API only supports base64 representations of images.
 This is different from how OpenAI's vision works, as it supports grabbing images from a URL. As a result, if you are trying to compare Claude 3 and OpenAI vision capabilities, you will need to have separate prompts for each.
 
-See the [OpenAI vision example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-vision) to understand the differences.
+See the [OpenAI vision example](https://github.com/artef/artef/tree/main/examples/openai-vision) to understand the differences.
 
 ### Prompt Caching
 
@@ -464,7 +464,7 @@ Claude supports prompt caching to optimize API usage and reduce costs for repeti
 
 Supported on all Claude 3, 3.5, and 4 models. Basic example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-sonnet-4-5-20250929
 prompts:
@@ -511,7 +511,7 @@ See [Anthropic's Prompt Caching Guide](https://docs.anthropic.com/claude/docs/pr
 
 Claude can provide detailed citations when answering questions about documents. Basic example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-sonnet-4-5-20250929
 prompts:
@@ -560,13 +560,13 @@ tests:
 
 ### Claude Fable 5 and Mythos 5 notes
 
-Fable 5 and Mythos 5 use always-on adaptive thinking. Promptfoo omits unsupported
+Fable 5 and Mythos 5 use always-on adaptive thinking. artef omits unsupported
 `temperature`, `top_p`, and `top_k` values, converts legacy
 `thinking: { type: 'enabled', budget_tokens: N }` configs to adaptive thinking, and
 omits `thinking: { type: 'disabled' }` because thinking cannot be disabled.
 Set `thinking: { type: 'adaptive', display: 'summarized' }` to include a readable
 thinking summary; the default `display: 'omitted'` returns an empty thinking block,
-which Promptfoo excludes from the output.
+which artef excludes from the output.
 
 Both models use a 1M-token context window, support up to 128K output tokens, and are
 priced at $10 per million input tokens and $50 per million output tokens. Mythos 5
@@ -575,20 +575,20 @@ access is limited through Project Glasswing and may require provider approval. B
 ### Claude Opus 5 notes
 
 Opus 5 is the Opus-tier Claude 5 model, aimed at complex agentic coding and long-horizon
-work. It keeps Opus 4.8's request surface and pricing, with two behavior changes promptfoo
+work. It keeps Opus 4.8's request surface and pricing, with two behavior changes artef
 handles for you:
 
 - **Thinking is on by default.** Unlike Opus 4.7/4.8 — where omitting `thinking` meant no
   extended thinking — an omitted `thinking` block on Opus 5 runs adaptive thinking. Because
-  `max_tokens` caps thinking _plus_ response text, promptfoo sizes its default `max_tokens`
+  `max_tokens` caps thinking _plus_ response text, artef sizes its default `max_tokens`
   with thinking headroom (2048 instead of 1024) so responses aren't truncated mid-answer.
   Set `max_tokens` explicitly for anything longer.
 - **Disabling thinking is effort-gated.** `thinking: { type: 'disabled' }` is only accepted
-  at `effort` `high` or below; pairing it with `xhigh` or `max` returns a 400. Promptfoo
+  at `effort` `high` or below; pairing it with `xhigh` or `max` returns a 400. artef
   drops the rejected `thinking: { type: 'disabled' }` (keeping your `effort`) and logs a
   one-time warning. Lower `effort` to `high` if you actually need thinking off.
 - **Sampling controls are managed for you.** Like Opus 4.7/4.8, Opus 5 rejects
-  `temperature`, `top_p`, and `top_k` with a 400; promptfoo omits all three from every
+  `temperature`, `top_p`, and `top_k` with a 400; artef omits all three from every
   request, including its built-in `temperature: 0` default. A legacy
   `thinking: { type: 'enabled', budget_tokens: N }` config is converted to
   `thinking: { type: 'adaptive' }`.
@@ -599,11 +599,11 @@ handles for you:
 Opus 5 uses a 1M-token context window (both the default and the maximum) billed at a flat
 **$5 per million input / $25 per million output** — the same list rates as Opus 4.8, with no
 long-context surcharge above 200K tokens. Anthropic's fast mode ($10 / $50, Claude API only)
-is a separate research-preview rate that promptfoo does not encode. To track it, set
+is a separate research-preview rate that artef does not encode. To track it, set
 `inputCost: 10 / 1e6` and `outputCost: 50 / 1e6` — a single `cost` cannot express asymmetric
 rates, because it is applied as both the input and the output per-token price.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-opus-5
     config:
@@ -619,7 +619,7 @@ but like the Opus 4.7/4.8 and Fable 5 generation — it deprecates manual sampli
 controls at the model level:
 
 - **Sampling controls are managed for you.** Sonnet 5 rejects `temperature`, `top_p`,
-  and `top_k` with a 400; promptfoo omits all three from every request (including its
+  and `top_k` with a 400; artef omits all three from every request (including its
   built-in `temperature: 0` default). Setting any of them in config or
   `ANTHROPIC_TEMPERATURE` logs a one-time heads-up. This suppression also applies when
   you reach Sonnet 5 through AWS Bedrock, GCP Vertex, or Azure AI Foundry.
@@ -627,34 +627,34 @@ controls at the model level:
   `thinking: { type: 'enabled', budget_tokens: N }` config is converted to
   `thinking: { type: 'adaptive' }`; use `effort` to control reasoning depth.
 
-Sonnet 5 uses a 1M-token context window billed at a flat **$3 per million input / $15 per million output** — the full context window bills at the standard rate, with no long-context surcharge above 200K tokens (a 900K-token request bills at the same per-token rate as a 9K-token request). Anthropic's launch introductory pricing ($2 / $10 through Aug 31, 2026) is not encoded in promptfoo's cost calculation; set `inputCost: 2 / 1e6` and `outputCost: 10 / 1e6` to track the introductory rate (a single `cost` is applied as both the input and output rate, so it cannot express the two).
+Sonnet 5 uses a 1M-token context window billed at a flat **$3 per million input / $15 per million output** — the full context window bills at the standard rate, with no long-context surcharge above 200K tokens (a 900K-token request bills at the same per-token rate as a 9K-token request). Anthropic's launch introductory pricing ($2 / $10 through Aug 31, 2026) is not encoded in artef's cost calculation; set `inputCost: 2 / 1e6` and `outputCost: 10 / 1e6` to track the introductory rate (a single `cost` is applied as both the input and output rate, so it cannot express the two).
 
 ### Claude Opus 4.8 notes
 
-Opus 4.8 is Anthropic's most capable model and builds directly on Opus 4.7 — it supports the same feature set, so the Opus 4.7 guidance below applies unchanged. Promptfoo handles the model-level differences automatically:
+Opus 4.8 is Anthropic's most capable model and builds directly on Opus 4.7 — it supports the same feature set, so the Opus 4.7 guidance below applies unchanged. artef handles the model-level differences automatically:
 
-- **Sampling controls are managed for you.** Like Opus 4.7, Opus 4.8 samples adaptively and rejects `temperature`, `top_p`, and `top_k` (any of them returns a 400); promptfoo omits all three from every request. Setting any of them in config or `ANTHROPIC_TEMPERATURE` logs a one-time heads-up so you can clean the values out of your eval.
+- **Sampling controls are managed for you.** Like Opus 4.7, Opus 4.8 samples adaptively and rejects `temperature`, `top_p`, and `top_k` (any of them returns a 400); artef omits all three from every request. Setting any of them in config or `ANTHROPIC_TEMPERATURE` logs a one-time heads-up so you can clean the values out of your eval.
 - **Adaptive thinking is opt-in.** Set `thinking: { type: 'adaptive' }` to let the model decide how much to reason per request. Without an explicit `thinking` block the model runs **without** extended thinking, even at high effort. Manual budget-based thinking (`thinking: { type: 'enabled', budget_tokens: N }`) is rejected with a 400.
 - **`effort` defaults to `high` and `xhigh` is available.** Setting `effort: high` behaves the same as omitting it. Start with `xhigh` for coding and agentic work. See the [Effort Level](#effort-level) section.
 
-The same suppression applies when you reach Opus 4.8 through AWS Bedrock, GCP Vertex, or Azure AI Foundry — promptfoo omits the unsupported sampling parameters on each of those paths too (silently; the one-time warning above is specific to the Anthropic Messages provider).
+The same suppression applies when you reach Opus 4.8 through AWS Bedrock, GCP Vertex, or Azure AI Foundry — artef omits the unsupported sampling parameters on each of those paths too (silently; the one-time warning above is specific to the Anthropic Messages provider).
 
 ### Claude Opus 4.7 notes
 
-Opus 4.7 is designed around adaptive thinking and runs with the reasoning stack always on. Promptfoo handles the key differences from earlier Opus models automatically:
+Opus 4.7 is designed around adaptive thinking and runs with the reasoning stack always on. artef handles the key differences from earlier Opus models automatically:
 
-- **Temperature is managed for you.** Opus 4.7 samples adaptively and does not accept `temperature`; promptfoo omits the field from every request. Passing `temperature` in config or `ANTHROPIC_TEMPERATURE` logs a one-time heads-up so you can clean the value out of your eval.
+- **Temperature is managed for you.** Opus 4.7 samples adaptively and does not accept `temperature`; artef omits the field from every request. Passing `temperature` in config or `ANTHROPIC_TEMPERATURE` logs a one-time heads-up so you can clean the value out of your eval.
 - **Adaptive thinking is the default.** Use `thinking: { type: 'adaptive' }` (or leave `thinking` unset) to let the model choose how much to reason per request. Budget-based modes from older models aren't used on 4.7.
 - **`xhigh` effort level is available.** It sits between `high` and `max` and is a good starting point for coding and agentic tasks. See the [Effort Level](#effort-level) section.
 - **Updated tokenizer.** The same input can map to 1.0–1.35× more tokens than Opus 4.6, so measure real traffic if you're comparing costs.
 
-The same guidance applies when you reach Opus 4.7 through AWS Bedrock, GCP Vertex, or Azure AI Foundry — promptfoo suppresses `temperature` on each of those paths as well.
+The same guidance applies when you reach Opus 4.7 through AWS Bedrock, GCP Vertex, or Azure AI Foundry — artef suppresses `temperature` on each of those paths as well.
 
 ### Extended Thinking
 
 Claude supports an extended thinking capability that allows you to see the model's internal reasoning process before it provides the final answer. This can be configured using the `thinking` parameter:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   # Adaptive thinking (recommended for Claude Opus 4.7)
   - id: anthropic:messages:claude-opus-4-7
@@ -744,7 +744,7 @@ Example response with thinking enabled:
 
 By default, thinking content is included in the response output. You can control this behavior using the `showThinking` parameter:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-sonnet-4-5-20250929
     config:
@@ -912,7 +912,7 @@ providers:
 
 **Incompatible with:** citations, message prefilling
 
-See [Anthropic's guide](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs) and the [structured outputs example](https://github.com/promptfoo/promptfoo/tree/main/examples/anthropic/structured-outputs).
+See [Anthropic's guide](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs) and the [structured outputs example](https://github.com/artef/artef/tree/main/examples/anthropic/structured-outputs).
 
 ## Model-Graded Tests
 
@@ -931,7 +931,7 @@ defaultTest:
         apiKeyRequired: false
 ```
 
-See [Authenticating via a Claude Code session](#authenticating-via-a-claude-code-session) above for how the credential is loaded and what beta headers Promptfoo sets.
+See [Authenticating via a Claude Code session](#authenticating-via-a-claude-code-session) above for how the credential is loaded and what beta headers artef sets.
 
 Because of how model-graded evals are implemented, **the model must support chat-formatted prompts** (except for embedding or classification models).
 
@@ -939,7 +939,7 @@ You can override the grading provider in several ways:
 
 1. For all test cases using `defaultTest`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider: anthropic:messages:claude-sonnet-4-5-20250929
@@ -973,11 +973,11 @@ tests:
 
 ### Additional Capabilities
 
-- **Caching**: Promptfoo caches previous LLM requests by default.
+- **Caching**: artef caches previous LLM requests by default.
 - **Token Usage Tracking**: Provides detailed information on the number of tokens used in each request, aiding in usage monitoring and optimization.
 - **Cost Calculation**: Calculates the cost of each request based on the number of tokens generated and the specific model used.
 
-When using the Anthropic disk response cache across runs, assign each provider a distinct, non-secret `label`. Promptfoo uses that stable label to isolate cached responses without persisting API-key or OAuth-token fingerprints. Unlabeled providers receive an ephemeral per-instance namespace, which safely preserves repeated calls within a run without reusing responses across tenants or processes. Requests with custom headers bypass the disk response cache because those headers may contain tenant credentials.
+When using the Anthropic disk response cache across runs, assign each provider a distinct, non-secret `label`. artef uses that stable label to isolate cached responses without persisting API-key or OAuth-token fingerprints. Unlabeled providers receive an ephemeral per-instance namespace, which safely preserves repeated calls within a run without reusing responses across tenants or processes. Requests with custom headers bypass the disk response cache because those headers may contain tenant credentials.
 
 ```yaml
 providers:
@@ -999,24 +999,24 @@ We provide several example implementations demonstrating Claude's capabilities:
 
 #### Core Features
 
-- [Tool Use Example](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-tool-use) - Shows how to use Claude's tool calling capabilities
-- [MCP Example](https://github.com/promptfoo/promptfoo/tree/main/examples/anthropic/mcp) - Connect Claude to a Model Context Protocol server and let it execute the discovered tools
-- [Structured Outputs Example](https://github.com/promptfoo/promptfoo/tree/main/examples/anthropic/structured-outputs) - Demonstrates JSON outputs and strict tool use for guaranteed schema compliance
-- [Vision Example](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-vision) - Demonstrates using Claude's vision capabilities
+- [Tool Use Example](https://github.com/artef/artef/tree/main/examples/eval-tool-use) - Shows how to use Claude's tool calling capabilities
+- [MCP Example](https://github.com/artef/artef/tree/main/examples/anthropic/mcp) - Connect Claude to a Model Context Protocol server and let it execute the discovered tools
+- [Structured Outputs Example](https://github.com/artef/artef/tree/main/examples/anthropic/structured-outputs) - Demonstrates JSON outputs and strict tool use for guaranteed schema compliance
+- [Vision Example](https://github.com/artef/artef/tree/main/examples/claude-vision) - Demonstrates using Claude's vision capabilities
 
 #### Model Comparisons & Evaluations
 
-- [Claude vs GPT](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-claude-vs-gpt) - Compares Claude with GPT-5.4 on various tasks
-- [Claude vs GPT Image Analysis](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-claude-vs-gpt-image) - Compares Claude's and GPT's image analysis capabilities
+- [Claude vs GPT](https://github.com/artef/artef/tree/main/examples/compare-claude-vs-gpt) - Compares Claude with GPT-5.4 on various tasks
+- [Claude vs GPT Image Analysis](https://github.com/artef/artef/tree/main/examples/compare-claude-vs-gpt-image) - Compares Claude's and GPT's image analysis capabilities
 
 #### Cloud Platform Integrations
 
-- [Azure AI Foundry](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/claude) - Using Claude through Azure AI Foundry
-- [AWS Bedrock](https://github.com/promptfoo/promptfoo/tree/main/examples/amazon-bedrock) - Using Claude through AWS Bedrock
-- [Google Vertex AI](https://github.com/promptfoo/promptfoo/tree/main/examples/google-vertex) - Using Claude through Google Vertex AI
+- [Azure AI Foundry](https://github.com/artef/artef/tree/main/examples/azure/claude) - Using Claude through Azure AI Foundry
+- [AWS Bedrock](https://github.com/artef/artef/tree/main/examples/amazon-bedrock) - Using Claude through AWS Bedrock
+- [Google Vertex AI](https://github.com/artef/artef/tree/main/examples/google-vertex) - Using Claude through Google Vertex AI
 
 #### Agentic Evaluations
 
 - [Claude Agent SDK](/docs/providers/claude-agent-sdk/) - For agentic evals with file access, tool use, and MCP servers
 
-For more examples and general usage patterns, visit our [examples directory](https://github.com/promptfoo/promptfoo/tree/main/examples) on GitHub.
+For more examples and general usage patterns, visit our [examples directory](https://github.com/artef/artef/tree/main/examples) on GitHub.

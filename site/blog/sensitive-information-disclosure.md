@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: 'Sensitive Information Disclosure'
 title: 'Sensitive Information Disclosure in LLMs: Privacy and Compliance in Generative AI'
 description: 'LLMs can leak training data, PII, and corporate secrets. Discover how sensitive information disclosure happens and practical strategies to prevent data breaches.'
@@ -25,7 +25,7 @@ Imagine deploying an LLM application only to discover it's inadvertently reveali
 
 Unlike traditional data protection measures, sensitive information disclosure occurs when LLM applications memorize and reconstruct sensitive data through techniques that traditional security frameworks weren't designed to handle.
 
-This article serves as a guide to preventing sensitive information disclosure, focusing on the [OWASP LLM Top 10](https://www.promptfoo.dev/docs/red-team/owasp-llm-top-10/), which provides a specialized framework for addressing these specific vulnerabilities.
+This article serves as a guide to preventing sensitive information disclosure, focusing on the [OWASP LLM Top 10](https://www.artef.dev/docs/red-team/owasp-llm-top-10/), which provides a specialized framework for addressing these specific vulnerabilities.
 
 <!--truncate-->
 
@@ -54,7 +54,7 @@ Memorization can introduce security and privacy risks when the training data con
 
 ![A foundation model with multi-modal capabilities reproduces images that are nearly identical to a known person.](/img/blog/sensitive-information-disclosure/image_memorization.png)
 
-We first saw the implications of this risk in 2023 with GPT-3.5's deployment in ChatGPT. Researchers extracted a megabyte of sensitive training data by prompting the aligned model to repeat the word "poem" indefinitely, ultimately revealing email addresses and phone numbers. You can test for this vulnerability using Promptfoo's [divergent repetition plugin](https://www.promptfoo.dev/docs/red-team/plugins/divergent-repetition/).
+We first saw the implications of this risk in 2023 with GPT-3.5's deployment in ChatGPT. Researchers extracted a megabyte of sensitive training data by prompting the aligned model to repeat the word "poem" indefinitely, ultimately revealing email addresses and phone numbers. You can test for this vulnerability using artef's [divergent repetition plugin](https://www.artef.dev/docs/red-team/plugins/divergent-repetition/).
 
 Typically, LLMs deployed in production environments undergo alignment, where researchers ensure that the LLM's outputs adhere to human values, ethical standards, and organizational goals. This includes alignment that restricts a model's ability to reproduce training data that it's memorized. However, security research shows that alignment will only mitigate–and not totally eradicate–the risk of sensitive information disclosure.
 
@@ -117,11 +117,11 @@ Consider the type of data that has been used to train the model and apply the sa
 
 ### Red Teaming the Model
 
-Run red teams against the model or application to assess whether the model can be jailbroken to disclose sensitive information. You can achieve this in Promptfoo through several plugins:
+Run red teams against the model or application to assess whether the model can be jailbroken to disclose sensitive information. You can achieve this in artef through several plugins:
 
-- The [PII plugin](https://www.promptfoo.dev/docs/red-team/plugins/pii/) tests an AI system's ability to protect sensitive personal data.
-- The [harmful:privacy and harmful:intellectual-property plugins](https://www.promptfoo.dev/docs/red-team/plugins/harmful/) will assess whether privacy or IP violations could be exploited.
-- The [custom plugin](https://www.promptfoo.dev/docs/red-team/plugins/custom/) can attempt to extract data from the model based on your requirements, such as attempting to pull training data on proprietary information used to fine-tune a base model.
+- The [PII plugin](https://www.artef.dev/docs/red-team/plugins/pii/) tests an AI system's ability to protect sensitive personal data.
+- The [harmful:privacy and harmful:intellectual-property plugins](https://www.artef.dev/docs/red-team/plugins/harmful/) will assess whether privacy or IP violations could be exploited.
+- The [custom plugin](https://www.artef.dev/docs/red-team/plugins/custom/) can attempt to extract data from the model based on your requirements, such as attempting to pull training data on proprietary information used to fine-tune a base model.
 
 ### Secure the API Itself
 
@@ -129,6 +129,6 @@ If you are hosting the model through an API, apply the same security controls th
 
 ## Secure Your LLM the Right Way
 
-Preventing sensitive information disclosure in LLMs is vital, yet it represents just one facet of a holistic approach to LLM and AI security. Promptfoo's comprehensive testing suite is specifically designed to ensure your AI systems maintain both security and compliance.
+Preventing sensitive information disclosure in LLMs is vital, yet it represents just one facet of a holistic approach to LLM and AI security. artef's comprehensive testing suite is specifically designed to ensure your AI systems maintain both security and compliance.
 
-[Explore Promptfoo](https://www.promptfoo.dev/contact/) to learn more about how you can secure your LLM applications.
+[Explore artef](https://www.artef.dev/contact/) to learn more about how you can secure your LLM applications.

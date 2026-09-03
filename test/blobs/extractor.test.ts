@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   extractAndStoreBinaryData,
   isBlobStorageEnabled,
@@ -17,7 +17,7 @@ vi.mock('../../src/blobs/remoteUpload', () => ({
 vi.mock('../../src/blobs/index', () => ({
   storeBlob: vi.fn().mockResolvedValue({
     ref: {
-      uri: 'promptfoo://blob/abc123',
+      uri: 'artef://blob/abc123',
       hash: 'abc123',
     },
   }),
@@ -211,7 +211,7 @@ describe('Local blob extraction', () => {
     // Default mock implementations
     mockStoreBlob.mockResolvedValue({
       ref: {
-        uri: 'promptfoo://blob/abc123def456',
+        uri: 'artef://blob/abc123def456',
         hash: 'abc123def456',
       },
     });
@@ -245,7 +245,7 @@ describe('Local blob extraction', () => {
     const result = await extractAndStoreBinaryData(response);
     expect(result?.images?.[0].data).toBeUndefined();
     expect(result?.images?.[0].blobRef).toBeDefined();
-    expect(result?.images?.[0].blobRef?.uri).toContain('promptfoo://blob/');
+    expect(result?.images?.[0].blobRef?.uri).toContain('artef://blob/');
   });
 
   it('should reuse the same image blob when output and images contain identical data URIs', async () => {
@@ -296,7 +296,7 @@ describe('Local blob extraction', () => {
       images: [
         {
           blobRef: {
-            uri: 'promptfoo://blob/existing',
+            uri: 'artef://blob/existing',
             hash: 'existing',
             mimeType: 'image/png',
             sizeBytes: 100,
@@ -318,7 +318,7 @@ describe('Local blob extraction', () => {
         { data: `data:image/png;base64,${largeBase64}`, mimeType: 'image/png' },
         {
           blobRef: {
-            uri: 'promptfoo://blob/existing',
+            uri: 'artef://blob/existing',
             hash: 'existing',
             mimeType: 'image/jpeg',
             sizeBytes: 100,
@@ -343,8 +343,8 @@ describe('Local blob extraction', () => {
     const secondHash = 'b'.repeat(64);
     const response: ProviderResponse = {
       output:
-        `First promptfoo://blob/${firstHash} repeated promptfoo://blob/${firstHash} ` +
-        `second promptfoo://blob/${secondHash}`,
+        `First artef://blob/${firstHash} repeated artef://blob/${firstHash} ` +
+        `second artef://blob/${secondHash}`,
     };
 
     await extractAndStoreBinaryData(response, {
@@ -523,7 +523,7 @@ describe('Local blob extraction', () => {
     const result = await extractAndStoreBinaryData(response);
 
     expect(result?.output).toBe(svg);
-    expect(result?.metadata?.blobUris).toEqual(['promptfoo://blob/abc123def456']);
+    expect(result?.metadata?.blobUris).toEqual(['artef://blob/abc123def456']);
     expect(mockStoreBlob).toHaveBeenCalledTimes(1);
     expect(mockStoreBlob).toHaveBeenCalledWith(
       Buffer.from(svg),
@@ -540,7 +540,7 @@ describe('Local blob extraction', () => {
     const response: ProviderResponse = {
       output: svg,
       metadata: {
-        blobUris: [`promptfoo://blob/${sha256(Buffer.from(svg))}`],
+        blobUris: [`artef://blob/${sha256(Buffer.from(svg))}`],
       },
     };
 

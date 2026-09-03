@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { ChevronDown, ChevronsUpDown } from 'lucide-react';
 import { Button } from './button';
@@ -78,19 +78,19 @@ export const FAQExample: Story = {
 
     const faqs = [
       {
-        question: 'What is Promptfoo?',
+        question: 'What is artef?',
         answer:
-          'Promptfoo is an open-source framework for evaluating and testing LLM applications. It helps you ensure your prompts are working correctly.',
+          'artef is an open-source framework for evaluating and testing LLM applications. It helps you ensure your prompts are working correctly.',
       },
       {
         question: 'How do I get started?',
         answer:
-          'You can get started by installing promptfoo via npm and running your first evaluation. Check out our documentation for detailed guides.',
+          'You can get started by installing artef via npm and running your first evaluation. Check out our documentation for detailed guides.',
       },
       {
         question: 'Is it free to use?',
         answer:
-          'Yes, Promptfoo is completely open-source and free to use. You can self-host it or use our cloud offering.',
+          'Yes, artef is completely open-source and free to use. You can self-host it or use our cloud offering.',
       },
     ];
 

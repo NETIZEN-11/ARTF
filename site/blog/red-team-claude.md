@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How to Red Team Claude: Complete Security Testing Guide for Anthropic Models'
 description: "Claude is known for safety, but how secure is it really? Step-by-step guide to red teaming Anthropic's models and uncovering hidden vulnerabilities."
 image: /img/blog/red-team-claude.png
@@ -21,7 +21,7 @@ tags: [technical-guide, red-teaming, anthropic]
 
 Anthropic's Claude 4 represents a major leap in AI capabilities, especially with its extended thinking feature. But before deploying it in production, you need to test it for security vulnerabilities.
 
-This guide shows you how to quickly red team Claude 4 Sonnet using [Promptfoo](https://github.com/promptfoo/promptfoo), an open-source tool for adversarial AI testing.
+This guide shows you how to quickly red team Claude 4 Sonnet using [artef](https://github.com/artef/artef), an open-source tool for adversarial AI testing.
 
 <!-- truncate -->
 
@@ -41,16 +41,16 @@ export ANTHROPIC_API_KEY=your_anthropic_api_key
 ### Step 1: Initialize Your Project
 
 ```bash
-npx promptfoo@latest redteam init claude-4-redteam --no-gui
+npx artef@latest redteam init claude-4-redteam --no-gui
 cd claude-4-redteam
 ```
 
 ### Step 2: Configure Claude 4 Sonnet
 
-Edit `promptfooconfig.yaml`:
+Edit `artefconfig.yaml`:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 targets:
   - id: anthropic:messages:claude-sonnet-4-20250514
     label: claude-sonnet-4
@@ -66,13 +66,13 @@ redteam:
 ### Step 3: Run the Red Team
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 ### Step 4: View Results
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 That's it! You've just red teamed Claude 4 Sonnet. The report will show which vulnerabilities were found and their severity.
@@ -213,12 +213,12 @@ Create `custom-tests.yaml`:
 
 - **[Red Team Your Application](/docs/red-team/quickstart/)**: Move beyond model testing to full application security
 - **[CI/CD Integration](/docs/integrations/github-action/)**: Automate security testing in your pipeline
-- **[View Model Comparisons](https://www.promptfoo.dev/models/compare?base=claude-4-sonnet)**: See how Claude 4 stacks up
+- **[View Model Comparisons](https://www.artef.dev/models/compare?base=claude-4-sonnet)**: See how Claude 4 stacks up
 
 ## Additional Resources
 
-- [Claude 4 Sonnet Security Report](https://www.promptfoo.dev/models/reports/claude-4-sonnet)
-- [Promptfoo Red Team Documentation](/docs/red-team/quickstart/)
+- [Claude 4 Sonnet Security Report](https://www.artef.dev/models/reports/claude-4-sonnet)
+- [artef Red Team Documentation](/docs/red-team/quickstart/)
 - [LLM Vulnerability Types](/docs/red-team/llm-vulnerability-types/)
 - [Red Team Strategies](/docs/red-team/strategies/)
 - [Claude 4 Best Practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices)

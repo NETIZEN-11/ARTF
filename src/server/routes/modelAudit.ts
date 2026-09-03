@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+﻿import { spawn } from 'child_process';
 import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
@@ -28,7 +28,7 @@ const LIST_SCANNERS_ARGS = parseModelAuditArgs([], {
 function getModelAuditDelegationEnv(): NodeJS.ProcessEnv {
   return {
     ...process.env,
-    PROMPTFOO_DELEGATED: 'true',
+    artef_DELEGATED: 'true',
   };
 }
 

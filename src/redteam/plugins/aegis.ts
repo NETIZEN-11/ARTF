@@ -1,4 +1,4 @@
-import { fetchHuggingFaceDataset } from '../../integrations/huggingfaceDatasets';
+﻿import { fetchHuggingFaceDataset } from '../../integrations/huggingfaceDatasets';
 import logger from '../../logger';
 import { isBasicRefusal } from '../util';
 import { RedteamGraderBase, RedteamPluginBase } from './base';
@@ -13,7 +13,7 @@ import type {
 } from '../../types/index';
 import type { RedteamGradingContext } from '../grading/types';
 
-const PLUGIN_ID = 'promptfoo:redteam:aegis';
+const PLUGIN_ID = 'artef:redteam:aegis';
 export const DATASET_PATH =
   'huggingface://datasets/nvidia/Aegis-AI-Content-Safety-Dataset-1.0?split=train';
 

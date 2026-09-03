@@ -1,4 +1,4 @@
-import logger, { isDebugEnabled } from '../logger';
+﻿import logger, { isDebugEnabled } from '../logger';
 import { getSessionId } from '../redteam/util';
 import { maybeLoadConfigFromExternalFile } from '../util/file';
 import invariant from '../util/invariant';
@@ -6,7 +6,7 @@ import { safeJsonStringify } from '../util/json';
 import { getNunjucksEngine } from '../util/templates';
 import { sleep } from '../util/time';
 import { accumulateResponseTokenUsage, createEmptyTokenUsage } from '../util/tokenUsageUtils';
-import { PromptfooSimulatedUserProvider } from './promptfoo';
+import { artefSimulatedUserProvider } from './artef';
 
 import type {
   ApiProvider,
@@ -197,7 +197,7 @@ export class SimulatedUser implements ApiProvider {
 
   private async sendMessageToUser(
     messages: Message[],
-    userProvider: PromptfooSimulatedUserProvider,
+    userProvider: artefSimulatedUserProvider,
   ): Promise<{ messages: Message[]; response: ProviderResponse }> {
     logger.debug('[SimulatedUser] Sending message to simulated user provider');
 
@@ -298,7 +298,7 @@ export class SimulatedUser implements ApiProvider {
 
     const instructions = getNunjucksEngine().renderString(this.rawInstructions, context?.vars);
 
-    const userProvider = new PromptfooSimulatedUserProvider(
+    const userProvider = new artefSimulatedUserProvider(
       { instructions, redteamGenerationContext: this.redteamGenerationContext },
       this.taskId,
     );

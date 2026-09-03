@@ -1,4 +1,4 @@
-import * as fsPromises from 'fs/promises';
+﻿import * as fsPromises from 'fs/promises';
 import * as path from 'path';
 
 import { XMLParser } from 'fast-xml-parser';
@@ -44,7 +44,7 @@ const mockFileHandle = vi.hoisted(() => ({
   write: vi.fn().mockResolvedValue(undefined),
   close: vi.fn().mockResolvedValue(undefined),
 }));
-const JSONL_TEMP_DIRECTORY = '/tmp/promptfoo-jsonl-test';
+const JSONL_TEMP_DIRECTORY = '/tmp/artef-jsonl-test';
 const JSONL_BACKUP_PATH = path.join(JSONL_TEMP_DIRECTORY, 'backup.jsonl');
 const JSONL_REPLACEMENT_PATH = path.join(JSONL_TEMP_DIRECTORY, 'replacement.jsonl');
 
@@ -237,7 +237,7 @@ describe('writeOutput', () => {
   ])(
     'omits nested response metadata from $extension output when metadata stripping is enabled',
     async ({ extension, parse }) => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_STRIP_METADATA: 'true' });
+      const restoreEnv = mockProcessEnv({ artef_STRIP_METADATA: 'true' });
       try {
         const eval_ = new Eval({});
         await eval_.addResult({
@@ -298,8 +298,8 @@ describe('writeOutput', () => {
     'omits test-case metadata from $extension output when metadata stripping is enabled',
     async ({ extension, parse }) => {
       const restoreEnv = mockProcessEnv({
-        PROMPTFOO_STRIP_METADATA: 'true',
-        PROMPTFOO_STRIP_TEST_VARS: 'true',
+        artef_STRIP_METADATA: 'true',
+        artef_STRIP_TEST_VARS: 'true',
       });
 
       try {
@@ -359,7 +359,7 @@ describe('writeOutput', () => {
   );
 
   it('omits trace vars from JSON output when test variable stripping is enabled', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_STRIP_TEST_VARS: 'true' });
+    const restoreEnv = mockProcessEnv({ artef_STRIP_TEST_VARS: 'true' });
     const traceSpy = vi.spyOn(getTraceStore(), 'getTracesByEvaluation').mockResolvedValue([
       {
         traceId: 'trace-strip-vars',
@@ -395,7 +395,7 @@ describe('writeOutput', () => {
   });
 
   it('omits trace metadata when stripped vars are the only metadata', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_STRIP_TEST_VARS: 'true' });
+    const restoreEnv = mockProcessEnv({ artef_STRIP_TEST_VARS: 'true' });
     const traceSpy = vi.spyOn(getTraceStore(), 'getTracesByEvaluation').mockResolvedValue([
       {
         traceId: 'trace-strip-only-vars',
@@ -424,7 +424,7 @@ describe('writeOutput', () => {
   });
 
   it('omits trace metadata from JSON output when metadata stripping is enabled', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_STRIP_METADATA: 'true' });
+    const restoreEnv = mockProcessEnv({ artef_STRIP_METADATA: 'true' });
     const traceSpy = vi.spyOn(getTraceStore(), 'getTracesByEvaluation').mockResolvedValue([
       {
         traceId: 'trace-strip-metadata',
@@ -456,8 +456,8 @@ describe('writeOutput', () => {
 
   it('omits stripped prompt and response bodies from trace span attributes', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_STRIP_PROMPT_TEXT: 'true',
-      PROMPTFOO_STRIP_RESPONSE_OUTPUT: 'true',
+      artef_STRIP_PROMPT_TEXT: 'true',
+      artef_STRIP_RESPONSE_OUTPUT: 'true',
     });
     const traceSpy = vi.spyOn(getTraceStore(), 'getTracesByEvaluation').mockResolvedValue([
       {
@@ -470,8 +470,8 @@ describe('writeOutput', () => {
             name: 'provider',
             startTime: 1,
             attributes: {
-              'promptfoo.request.body': 'trace-prompt-secret',
-              'promptfoo.response.body': 'trace-response-secret',
+              'artef.request.body': 'trace-prompt-secret',
+              'artef.response.body': 'trace-response-secret',
               operation: 'provider-call',
             },
           },
@@ -665,7 +665,7 @@ describe('writeOutput', () => {
       promptId: 'prompt-1',
     });
 
-    await writeOutput('promptfoo.junit.xml', eval_, null);
+    await writeOutput('artef.junit.xml', eval_, null);
 
     const xml = vi.mocked(fsPromises.writeFile).mock.calls[0][1] as string;
     expect(xml).toMatch(/^<\?xml version="1\.0" encoding="UTF-8"\?>/);
@@ -673,7 +673,7 @@ describe('writeOutput', () => {
     expect(parsed.testsuites).toMatchObject({
       '@_errors': '1',
       '@_failures': '1',
-      '@_name': 'promptfoo',
+      '@_name': 'artef',
       '@_skipped': '0',
       '@_tests': '3',
       '@_time': '4.25',
@@ -718,15 +718,15 @@ describe('writeOutput', () => {
     expect(xml).not.toContain('Carol');
   });
 
-  it('keeps Promptfoo XML separate from JUnit XML', async () => {
+  it('keeps artef XML separate from JUnit XML', async () => {
     const eval_ = new Eval({});
 
     await writeOutput('output.xml', eval_, null);
     await writeOutput('output.junit.xml', eval_, null);
 
-    const promptfooXml = vi.mocked(fsPromises.writeFile).mock.calls[0][1] as string;
+    const artefXml = vi.mocked(fsPromises.writeFile).mock.calls[0][1] as string;
     const junitXml = vi.mocked(fsPromises.writeFile).mock.calls[1][1] as string;
-    expect(promptfooXml).toContain('<promptfoo>');
+    expect(artefXml).toContain('<artef>');
     expect(junitXml).toContain('<testsuites');
   });
 
@@ -1829,7 +1829,7 @@ describe('createOutputMetadata', () => {
     const metadata = createOutputMetadata(evalRecord);
 
     expect(metadata).toMatchObject({
-      promptfooVersion: expect.any(String),
+      artefVersion: expect.any(String),
       nodeVersion: expect.stringMatching(/^v\d+\.\d+\.\d+/),
       platform: expect.any(String),
       arch: expect.any(String),
@@ -1847,7 +1847,7 @@ describe('createOutputMetadata', () => {
     const metadata = createOutputMetadata(evalRecord);
 
     expect(metadata).toMatchObject({
-      promptfooVersion: expect.any(String),
+      artefVersion: expect.any(String),
       nodeVersion: expect.stringMatching(/^v\d+\.\d+\.\d+/),
       platform: expect.any(String),
       arch: expect.any(String),
@@ -1865,7 +1865,7 @@ describe('createOutputMetadata', () => {
     const metadata = createOutputMetadata(evalRecord);
 
     expect(metadata).toMatchObject({
-      promptfooVersion: expect.any(String),
+      artefVersion: expect.any(String),
       nodeVersion: expect.stringMatching(/^v\d+\.\d+\.\d+/),
       platform: expect.any(String),
       arch: expect.any(String),
@@ -1885,7 +1885,7 @@ describe('createOutputMetadata', () => {
 
     // When new Date() is given invalid input, it returns "Invalid Date"
     expect(metadata).toMatchObject({
-      promptfooVersion: expect.any(String),
+      artefVersion: expect.any(String),
       nodeVersion: expect.stringMatching(/^v\d+\.\d+\.\d+/),
       platform: expect.any(String),
       arch: expect.any(String),

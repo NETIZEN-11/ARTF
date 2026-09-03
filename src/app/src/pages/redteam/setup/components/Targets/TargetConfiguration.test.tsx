@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { renderWithProviders } from '@app/utils/testutils';
@@ -281,7 +281,7 @@ describe('TargetConfiguration', () => {
       renderWithProviders(<TargetConfiguration onNext={onNextMock} onBack={onBackMock} />);
 
       const docLink = screen.getByRole('link', { name: /View the documentation/i });
-      expect(docLink).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/providers/http');
+      expect(docLink).toHaveAttribute('href', 'https://www.artef.dev/docs/providers/http');
     });
 
     it('should display documentation link for OpenAI provider', () => {
@@ -298,7 +298,7 @@ describe('TargetConfiguration', () => {
       renderWithProviders(<TargetConfiguration onNext={onNextMock} onBack={onBackMock} />);
 
       const docLink = screen.getByRole('link', { name: /View the documentation/i });
-      expect(docLink).toHaveAttribute('href', 'https://www.promptfoo.dev/docs/providers/openai');
+      expect(docLink).toHaveAttribute('href', 'https://www.artef.dev/docs/providers/openai');
     });
   });
 

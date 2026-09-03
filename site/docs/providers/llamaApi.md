@@ -1,6 +1,6 @@
----
+﻿---
 title: Meta Llama API
-description: Use Meta's hosted Llama API service for text generation and multimodal tasks with promptfoo
+description: Use Meta's hosted Llama API service for text generation and multimodal tasks with artef
 ---
 
 # Meta Llama API
@@ -374,7 +374,7 @@ Meta Llama API has strong data commitments:
 
 ## Examples
 
-Check out the [examples directory](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-llama-cpp) for:
+Check out the [examples directory](https://github.com/artef/artef/tree/main/examples/provider-llama-cpp) for:
 
 - **Basic chat**: Simple text generation
 - **Multimodal**: Image understanding tasks
@@ -389,4 +389,4 @@ Check out the [examples directory](https://github.com/promptfoo/promptfoo/tree/m
 - [Together AI](/docs/providers/togetherai) - Hosts various open-source models including Llama
 - [OpenRouter](/docs/providers/openrouter) - Provides access to multiple AI models including Llama
 
-For questions and support, visit the [Llama API documentation](https://llama.developer.meta.com/docs) or join the [promptfoo Discord community](https://discord.gg/promptfoo).
+For questions and support, visit the [Llama API documentation](https://llama.developer.meta.com/docs) or join the [artef Discord community](https://discord.gg/artef).

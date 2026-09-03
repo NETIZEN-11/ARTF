@@ -1,4 +1,4 @@
-/**
+﻿/**
  * WARNING: The `counter` variable is NOT thread-safe. When running with concurrency > 1,
  * the counter may not accurately track test numbers. Consider using per-test metadata
  * for accurate tracking in concurrent scenarios.
@@ -6,7 +6,7 @@
 let counter = 0;
 
 /**
- * Handles different extension hooks for promptfoo.
+ * Handles different extension hooks for artef.
  *
  * IMPORTANT: The function signature is (hookName, context) where:
  * - hookName: 'beforeAll' | 'beforeEach' | 'afterEach' | 'afterAll'

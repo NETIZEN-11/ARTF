@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -15,7 +15,7 @@ import { useTelemetry } from '@app/hooks/useTelemetry';
 import { cn } from '@app/lib/utils';
 import { callApi } from '@app/utils/api';
 import { formatToolsAsJSDocs } from '@app/utils/discovery';
-import { type TargetPurposeDiscoveryResult } from '@promptfoo/redteam/commands/discover';
+import { type TargetPurposeDiscoveryResult } from '@artef/redteam/commands/discover';
 import { AlertTriangle, CheckCircle, ChevronDown, Info, Sparkles } from 'lucide-react';
 import { DEFAULT_HTTP_TARGET, useRedTeamConfig } from '../hooks/useRedTeamConfig';
 import { useRedTeamTargetConfigValidation } from '../hooks/useRedTeamTargetConfigValidation';
@@ -330,7 +330,7 @@ export default function Purpose({ onNext, onBack }: PromptsProps) {
                       Automatically analyze your target to discover its purpose, tools, and
                       limitations.{' '}
                       <a
-                        href="https://promptfoo.dev/docs/red-team/discovery"
+                        href="https://artef.dev/docs/red-team/discovery"
                         target="_blank"
                         className="text-primary/80 underline underline-offset-2 hover:text-primary"
                       >
@@ -379,7 +379,7 @@ export default function Purpose({ onNext, onBack }: PromptsProps) {
                         <AlertTriangle className="size-4" />
                         <AlertContent>
                           <AlertDescription>
-                            Cannot connect to Promptfoo API. Auto-discovery requires a healthy API
+                            Cannot connect to artef API. Auto-discovery requires a healthy API
                             connection.
                           </AlertDescription>
                         </AlertContent>
@@ -416,7 +416,7 @@ export default function Purpose({ onNext, onBack }: PromptsProps) {
                             </p>
                           </div>
                           <Code className="mt-2">
-                            promptfoo redteam discover -c redteam-config.yaml
+                            artef redteam discover -c redteam-config.yaml
                           </Code>
                         </div>
                       </>

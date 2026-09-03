@@ -1,6 +1,6 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 
 const prompts = [
   // Prompts can be raw text...
@@ -107,12 +107,12 @@ const tests = [
 ];
 
 (async () => {
-  const evalRecord = await promptfoo.evaluate({
+  const evalRecord = await artef.evaluate({
     prompts,
     providers,
     tests,
 
-    // Persist results locally so they are visible in the promptfoo viewer
+    // Persist results locally so they are visible in the artef viewer
     writeLatestResults: true,
 
     // Uncomment to enable sharing (requires cloud account or self-hosted server)

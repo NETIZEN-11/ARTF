@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { addInjections } from '../../../src/redteam/strategies/promptInjections/index';
 
 import type { TestCase } from '../../../src/types/index';
@@ -12,7 +12,7 @@ describe('addInjections', () => {
       {
         vars: { prompt: 'Tell me a joke' },
         metadata: { pluginId: 'harmful:test' },
-        assert: [{ type: 'promptfoo:redteam:harmful', metric: 'test' }],
+        assert: [{ type: 'artef:redteam:harmful', metric: 'test' }],
       },
     ];
 

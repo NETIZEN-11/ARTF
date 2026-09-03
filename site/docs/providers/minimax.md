@@ -1,4 +1,4 @@
----
+﻿---
 title: MiniMax Provider
 sidebar_label: MiniMax
 sidebar_position: 50
@@ -39,7 +39,7 @@ providers:
 - `top_p`
 - `tools` and `tool_choice` - Use these for tool calling. MiniMax rejects the deprecated `function_call` parameter.
 
-When MiniMax reports prompt-cache reads, promptfoo calculates cost using the returned cached token count and the model's cache-read rate.
+When MiniMax reports prompt-cache reads, artef calculates cost using the returned cached token count and the model's cache-read rate.
 
 ## Available Models
 

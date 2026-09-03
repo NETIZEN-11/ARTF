@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Team Target with File-Based Authentication
 
 prompts:
@@ -7,7 +7,7 @@ prompts:
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=bearer
+      url: https://example-app.artef.app/minnow/chat?auth_type=bearer
       method: POST
       headers:
         Content-Type: application/json

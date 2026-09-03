@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AWS Bedrock Base Provider
  *
  * Contains the abstract base class for all Bedrock providers.
@@ -30,7 +30,7 @@ export interface BedrockOptions {
   endpoint?: string;
 }
 
-const BEDROCK_CACHE_KEY_HMAC_KEY = 'promptfoo:bedrock:cache-key:v1';
+const BEDROCK_CACHE_KEY_HMAC_KEY = 'artef:bedrock:cache-key:v1';
 
 function hashBedrockCacheValue(value: unknown) {
   return createHmac('sha256', BEDROCK_CACHE_KEY_HMAC_KEY)

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Evaluate models through MLflow AI Gateway
 
 # MLflow AI Gateway routes requests to multiple LLM providers through a single

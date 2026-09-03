@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { readResult } from '../../../util/database';
 import { redactAzureBlobSasTokens } from '../../../util/sanitizer';
@@ -122,7 +122,7 @@ export function registerGetEvaluationDetailsTool(server: McpServer) {
             'get_evaluation_details',
             false,
             { originalError: error.message },
-            'Failed to access evaluation database. Ensure promptfoo is properly initialized.',
+            'Failed to access evaluation database. Ensure artef is properly initialized.',
           );
         }
 

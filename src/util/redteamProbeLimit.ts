@@ -1,4 +1,4 @@
-import { sql } from 'drizzle-orm';
+﻿import { sql } from 'drizzle-orm';
 import { getDb } from '../database/index';
 import { evalResultsTable, evalsTable } from '../database/tables';
 import { isLoggedIntoCloud } from '../globalConfig/accounts';
@@ -54,7 +54,7 @@ export interface ProbeLimitResult {
 
 /**
  * Check if the user is within the monthly redteam probe limit.
- * Users authenticated via `promptfoo auth login` (cloud users) are exempt.
+ * Users authenticated via `artef auth login` (cloud users) are exempt.
  */
 export async function checkRedteamProbeLimit(): Promise<ProbeLimitResult> {
   if (isLoggedIntoCloud()) {

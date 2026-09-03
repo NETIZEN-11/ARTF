@@ -1,5 +1,5 @@
-/**
- * @fileoverview Hooks for working w/ custom policies. Sharable between Promptfoo OSS and Promptfoo Cloud.
+﻿/**
+ * @fileoverview Hooks for working w/ custom policies. Sharable between artef OSS and artef Cloud.
  */
 
 import { useEffect, useMemo, useState } from 'react';
@@ -8,8 +8,8 @@ import {
   isValidPolicyObject,
   makeDefaultPolicyName,
   makeInlinePolicyId,
-} from '@promptfoo/redteam/plugins/policy/utils';
-import { type PolicyObject, type RedteamPluginObject } from '@promptfoo/redteam/types';
+} from '@artef/redteam/plugins/policy/utils';
+import { type PolicyObject, type RedteamPluginObject } from '@artef/redteam/types';
 
 /**
  * Reads custom policies from the table store and returns a map of policy IDs to policy objects.

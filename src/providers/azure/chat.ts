@@ -1,4 +1,4 @@
-import { fetchWithCache } from '../../cache';
+﻿import { fetchWithCache } from '../../cache';
 import { getEnvFloat, getEnvInt, getEnvString } from '../../envars';
 import logger from '../../logger';
 import {
@@ -112,7 +112,7 @@ export class AzureChatCompletionProvider extends AzureGenericProvider {
 
   /**
    * Grok 4 and newer reject `presence_penalty`, `frequency_penalty`, and `stop` — the
-   * deployment returns HTTP 400 for any request that sets them. promptfoo sends the two
+   * deployment returns HTTP 400 for any request that sets them. artef sends the two
    * penalties by default (they fall back to `0`, not `undefined`), so without this guard every
    * Grok 4+ deployment on Azure AI Foundry fails out of the box even with no user config.
    *
@@ -316,7 +316,7 @@ export class AzureChatCompletionProvider extends AzureGenericProvider {
       stopSequences: this.config.stop,
       frequencyPenalty: this.config.frequency_penalty,
       presencePenalty: this.config.presence_penalty,
-      // Promptfoo context from test case if available
+      // artef context from test case if available
       testIndex: context?.testIdx ?? (context?.test?.vars?.__testIdx as number | undefined),
       promptLabel: context?.prompt?.label,
       // W3C Trace Context for linking to evaluation trace

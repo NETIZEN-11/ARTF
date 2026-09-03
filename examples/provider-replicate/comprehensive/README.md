@@ -1,13 +1,13 @@
-# provider-replicate/comprehensive (Comprehensive Replicate Testing)
+﻿# provider-replicate/comprehensive (Comprehensive Replicate Testing)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-replicate/comprehensive
+npx artef@latest init --example provider-replicate/comprehensive
 cd provider-replicate/comprehensive
 ```
 
-This example demonstrates the full capabilities of the Replicate provider in promptfoo, including text generation and image generation.
+This example demonstrates the full capabilities of the Replicate provider in artef, including text generation and image generation.
 
 ## Environment Variables
 
@@ -46,12 +46,12 @@ export REPLICATE_API_TOKEN=r8_your_api_token_here
 2. Run the evaluation:
 
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 3. View the results:
    ```bash
-   promptfoo view
+   artef view
    ```
 
 ## Understanding the Configuration

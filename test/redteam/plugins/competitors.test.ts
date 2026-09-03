@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import { CompetitorsGrader } from '../../../src/redteam/plugins/competitors';
 
 import type { AssertionValue } from '../../../src/types/index';
@@ -11,7 +11,7 @@ describe('CompetitorsGrader', () => {
   });
 
   it('should have the correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:competitors');
+    expect(grader.id).toBe('artef:redteam:competitors');
   });
 
   describe('getSuggestions', () => {

@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Fireworks AI
-description: Configure Fireworks AI's serverless chat and embedding models through their OpenAI-compatible API for LLM evaluation and testing with promptfoo
+description: Configure Fireworks AI's serverless chat and embedding models through their OpenAI-compatible API for LLM evaluation and testing with artef
 ---
 
 # Fireworks AI
@@ -44,7 +44,7 @@ Many of Fireworks's flagship models are reasoning models that emit hidden reason
 Run the bundled example end-to-end:
 
 ```sh
-npx promptfoo@latest init --example provider-fireworks
+npx artef@latest init --example provider-fireworks
 ```
 
 ## Embeddings
@@ -69,7 +69,7 @@ Because the provider extends the OpenAI provider, all [OpenAI configuration para
 | `apiBaseUrl`                                       | Base URL override. Can also be set with the `FIREWORKS_API_BASE_URL` environment variable.                                                                 |
 | `apiHost`                                          | Host override for a proxy or gateway; resolves to `https://<apiHost>/v1`.                                                                                  |
 | `temperature`, `max_tokens`, `top_p`, `top_k`, ... | Standard OpenAI-compatible sampling parameters.                                                                                                            |
-| `cost`, `inputCost`, `outputCost`                  | Override promptfoo's cost estimate (USD per token). Use `inputCost` and `outputCost` for asymmetric pricing; `cost` is the shared fallback.                |
+| `cost`, `inputCost`, `outputCost`                  | Override artef's cost estimate (USD per token). Use `inputCost` and `outputCost` for asymmetric pricing; `cost` is the shared fallback.                |
 | `cacheReadInputCost`                               | Per-token rate for Fireworks server-side prompt-cache hits. Defaults to the full `inputCost` (no discount is assumed, since the discount varies by model). |
 
 | Environment variable     | Description                                                        |
@@ -79,7 +79,7 @@ Because the provider extends the OpenAI provider, all [OpenAI configuration para
 
 ### Cost tracking
 
-Fireworks prices each model differently, so promptfoo can't infer a per-token rate. Supply `inputCost` and `outputCost` to surface spend estimates in your eval results:
+Fireworks prices each model differently, so artef can't infer a per-token rate. Supply `inputCost` and `outputCost` to surface spend estimates in your eval results:
 
 ```yaml
 providers:

@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Building a Security Scanner for LLM Apps'
 description: 'We built a GitHub Action that scans pull requests for LLM-specific vulnerabilities. Learn why traditional security tools miss these issues and how we trace data flows to find prompt injection risks.'
 image: /img/blog/building-a-security-scanner-for-llm-apps/call-graph-io-flows.png
@@ -24,7 +24,7 @@ import styles from './building-a-security-scanner/styles/styles.module.css';
 
 # Building a Security Scanner for LLM Apps
 
-We're adding something new to Promptfoo's suite of AI security products: code scanning for LLM-related vulnerabilities. In this post, I will:
+We're adding something new to artef's suite of AI security products: code scanning for LLM-related vulnerabilities. In this post, I will:
 
 - Briefly introduce the new product
 - Explain why we think engineering teams need a scanner focused exclusively on interactions with LLMs and agents
@@ -32,7 +32,7 @@ We're adding something new to Promptfoo's suite of AI security products: code sc
 
 <!-- truncate -->
 
-While we see this as eventually evolving into at least a few distinct tools based on the same underlying scanning engine, the first incarnation is a [GitHub Action](https://www.promptfoo.dev/code-scanning/github-action/) that automatically reviews every new pull request for security issues related to LLMs and agents. To do this, it uses its own security-focused AI agents to examine the PR, tracing into the larger repo as needed to understand how new code fits in.
+While we see this as eventually evolving into at least a few distinct tools based on the same underlying scanning engine, the first incarnation is a [GitHub Action](https://www.artef.dev/code-scanning/github-action/) that automatically reviews every new pull request for security issues related to LLMs and agents. To do this, it uses its own security-focused AI agents to examine the PR, tracing into the larger repo as needed to understand how new code fits in.
 
 If it finds any problems, it will comment on the specific lines of code that are concerning, explain the issue, and suggest a fix. It will also supply a prompt an engineer can send straight to an AI coding agent.
 
@@ -44,7 +44,7 @@ If it doesn't find anything, you'll get an emotionally satisfying `👍 All Clea
 
 ## Focus matters
 
-We've been using this scanner in our own repos for several weeks now, and it's already flagged some issues that might have slipped through otherwise. We use other automatic code review tools, and we also require that every PR is reviewed by a 100% human engineer. But in a number of the cases that the Promptfoo scanner has found an issue, it was the only reviewer, human or bot, which flagged that particular issue.
+We've been using this scanner in our own repos for several weeks now, and it's already flagged some issues that might have slipped through otherwise. We use other automatic code review tools, and we also require that every PR is reviewed by a 100% human engineer. But in a number of the cases that the artef scanner has found an issue, it was the only reviewer, human or bot, which flagged that particular issue.
 
 I think one reason for this is, in a single word: _focus_. Because the scanner has a single job to do, and is designed to find a small set of specific problematic patterns, it's more effective at finding those patterns than either a human or LLM that's doing a more general review.
 
@@ -68,7 +68,7 @@ There are a lot of more specific vulnerabilities (check out the [OWASP top 10 fo
   - Data poisoning, embedding weaknesses, improper output handling, and excessive agency can all be viewed as vectors for prompt injection.
   - System prompt leakage falls under both sensitive information disclosure and jailbreak risk.
 - Are out of scope for code scanning.
-  - Supply chain vulnerabilities, model poisoning, and misinformation are problems in the model layer, not the code, though I should note that Promptfoo does also offer [model scanning](https://www.promptfoo.dev/model-security/).
+  - Supply chain vulnerabilities, model poisoning, and misinformation are problems in the model layer, not the code, though I should note that artef does also offer [model scanning](https://www.artef.dev/model-security/).
   - Unbounded consumption is difficult to judge from the code alone, as it depends on implicit assumptions for what kind of token usage is acceptable. Also, model providers have their own `maxTokens` limits and rate limits.
 
 Even sensitive information disclosure, which is a legitimate LLM-specific vulnerability class in its own right, is _most_ concerning when it coincides with prompt injection or jailbreak risk. Disclosing sensitive information to an LLM provider, while not ideal, is typically not directly exploitable, and is often an intentional tradeoff that developers make for the sake of building a useful app.
@@ -82,7 +82,7 @@ Jailbreak risk is definitely a major concern for LLM apps, but tends to have an 
 
 It's either fairly obvious, as in cases where a developer tries to use the system prompt for authorization or access control instead of deterministic checks. Or it's quite difficult, as in cases where many different attack styles need to be tried, or complex conversation state needs to be built up before a jailbreak succeeds.
 
-The obvious cases are definitely relevant to code scanning, and Promptfoo's code scanner certainly does look for them as it scans prompts. But exactly because they're obvious, they have less influence on the overall design of the scanner. As long as we are scanning prompts and identifying these kinds of issues, they will be flagged. Obvious jailbreak vectors are important to catch, but they aren't the hard part.
+The obvious cases are definitely relevant to code scanning, and artef's code scanner certainly does look for them as it scans prompts. But exactly because they're obvious, they have less influence on the overall design of the scanner. As long as we are scanning prompts and identifying these kinds of issues, they will be flagged. Obvious jailbreak vectors are important to catch, but they aren't the hard part.
 
 For the non-obvious cases, code scanning just isn't the right modality. You need [red teaming](/docs/red-team/) to simulate a wide variety of attacks (often involving many steps and complex state).
 
@@ -231,7 +231,7 @@ Our scanner did notice this during analysis, but filtered it out:
 
 That reasoning isn't wrong. Text-to-SQL is a common pattern in LLM apps, and many teams that use it _do_ rely on database-level permissions when they integrate libraries like LlamaIndex. They might _want_ the LLM to be able to execute "dangerous" queries like `DROP TABLE`. It all depends on what they're building and the security model. Flagging this at the library level would be overzealous. We only want to flag issues that are directly exploitable.
 
-That said, some teams might reasonably prefer a stricter approach. That's where [custom guidance](https://www.promptfoo.dev/docs/code-scanning/#custom-guidance) comes in. When we added this guidance to the scanner's config:
+That said, some teams might reasonably prefer a stricter approach. That's where [custom guidance](https://www.artef.dev/docs/code-scanning/#custom-guidance) comes in. When we added this guidance to the scanner's config:
 
 ```yaml
 guidance: |
@@ -247,8 +247,8 @@ It flagged the vulnerability instead:
 
 ## Wrapping up
 
-That's all I've got for now. If you're building on top of LLMs and want to try the scanner, you can [install the scanner here](https://github.com/apps/promptfoo-scanner).
+That's all I've got for now. If you're building on top of LLMs and want to try the scanner, you can [install the scanner here](https://github.com/apps/artef-scanner).
 
 We'll ask for your email during the setup flow, but you don't need an account or any API keys to try it. It takes a couple minutes to install, and runs automatically on every PR that's opened after that.
 
-While we think the scanner can already offer quite a bit of value to any project built on top of LLMs, it's still very much a work in progress. If you see false positives, it misses a vulnerability, or you have any other feedback, please don't hesitate to get in touch: dane@promptfoo.dev
+While we think the scanner can already offer quite a bit of value to any project built on top of LLMs, it's still very much a work in progress. If you see false positives, it misses a vulnerability, or you have any other feedback, please don't hesitate to get in touch: dane@artef.dev

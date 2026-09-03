@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import dotenv from 'dotenv';
 import { afterEach, beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
@@ -31,7 +31,7 @@ describe('setupEnv', () => {
     originalEnv = { ...process.env };
     // Ensure NODE_ENV is not set at the start of each test
     mockProcessEnv({ NODE_ENV: undefined });
-    mockProcessEnv({ PROMPTFOO_CONFIG_DIR: undefined });
+    mockProcessEnv({ artef_CONFIG_DIR: undefined });
     refreshConfigDirectoryPathFromEnv();
     setConfigDirectoryPath(undefined);
     // Spy on dotenv.config to verify it's called with the right parameters
@@ -99,7 +99,7 @@ describe('setupEnv', () => {
   it('should refresh the config directory after early env loading and freeze later changes', () => {
     const refreshConfigDirectorySpy = vi.spyOn(configManage, 'refreshConfigDirectoryPathFromEnv');
     dotenvConfigSpy.mockImplementation(() => {
-      mockProcessEnv({ PROMPTFOO_CONFIG_DIR: '/early/config' });
+      mockProcessEnv({ artef_CONFIG_DIR: '/early/config' });
       return { parsed: {} };
     });
 
@@ -107,7 +107,7 @@ describe('setupEnv', () => {
     expect(refreshConfigDirectorySpy).toHaveBeenCalledTimes(1);
     expect(getConfigDirectoryPath()).toBe('/early/config');
 
-    mockProcessEnv({ PROMPTFOO_CONFIG_DIR: '/late/config' });
+    mockProcessEnv({ artef_CONFIG_DIR: '/late/config' });
     expect(getConfigDirectoryPath()).toBe('/early/config');
   });
 

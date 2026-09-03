@@ -1,4 +1,4 @@
----
+﻿---
 title: Vercel AI Gateway
 sidebar_label: Vercel AI Gateway
 sidebar_position: 48
@@ -9,7 +9,7 @@ description: Access OpenAI, Anthropic, Google, and 20+ AI providers through Verc
 
 [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) provides a unified interface to access AI models from 20+ providers through a single API. This provider uses the official [Vercel AI SDK](https://ai-sdk.dev/).
 
-When [tracing](/docs/tracing/) is enabled, Promptfoo automatically turns on the AI SDK's built-in tracing for text generation, streaming, structured output, and embeddings. SDK spans inherit the current evaluation trace, including direct provider calls that supply a `traceparent`. Prompt and response content are not recorded. If you call the SDK directly from a [`file://` custom provider](/docs/providers/custom-api/), enable `experimental_telemetry` yourself; Promptfoo's [trajectory assertions](/docs/configuration/expected-outputs/deterministic/#trajectorytool-used) can normalize its tool-call spans from `ai.toolCall.name` plus the matching `ai.toolCall.args`, `ai.toolCall.arguments`, or `ai.toolCall.input` attributes.
+When [tracing](/docs/tracing/) is enabled, artef automatically turns on the AI SDK's built-in tracing for text generation, streaming, structured output, and embeddings. SDK spans inherit the current evaluation trace, including direct provider calls that supply a `traceparent`. Prompt and response content are not recorded. If you call the SDK directly from a [`file://` custom provider](/docs/providers/custom-api/), enable `experimental_telemetry` yourself; artef's [trajectory assertions](/docs/configuration/expected-outputs/deterministic/#trajectorytool-used) can normalize its tool-call spans from `ai.toolCall.name` plus the matching `ai.toolCall.args`, `ai.toolCall.arguments`, or `ai.toolCall.input` attributes.
 
 ## Setup
 
@@ -47,7 +47,7 @@ providers:
 
 ### Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vercel:openai/gpt-4o-mini
     config:
@@ -57,7 +57,7 @@ providers:
 
 ### Full Configuration Options
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vercel:anthropic/claude-sonnet-4.5
     config:
@@ -107,7 +107,7 @@ providers:
 
 Generate structured JSON output by providing a JSON schema:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vercel:openai/gpt-4o
     config:
@@ -142,7 +142,7 @@ tests:
 
 Enable streaming for real-time responses:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vercel:anthropic/claude-sonnet-4.5
     config:
@@ -171,7 +171,7 @@ For a complete list, see the [Vercel AI Gateway documentation](https://vercel.co
 
 Generate embeddings for text similarity, search, and RAG applications:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - vercel:embedding:openai/text-embedding-3-small
 
@@ -198,7 +198,7 @@ Supported embedding models:
 
 ### Multi-Provider Comparison
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vercel:openai/gpt-4o-mini
     config:
@@ -223,7 +223,7 @@ tests:
 
 ### JSON Response with Validation
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: vercel:openai/gpt-4o
     config:
@@ -273,7 +273,7 @@ tests:
 Enable debug logging to see detailed request/response information:
 
 ```bash
-LOG_LEVEL=debug promptfoo eval
+LOG_LEVEL=debug artef eval
 ```
 
 ## Related Links
@@ -281,4 +281,4 @@ LOG_LEVEL=debug promptfoo eval
 - [Vercel AI SDK Documentation](https://ai-sdk.dev/)
 - [Vercel AI Gateway](https://vercel.com/docs/ai-gateway)
 - [Supported Providers](https://vercel.com/docs/ai-gateway/models-and-providers)
-- [promptfoo Provider Guide](/docs/providers/)
+- [artef Provider Guide](/docs/providers/)

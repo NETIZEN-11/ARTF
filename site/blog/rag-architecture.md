@@ -1,7 +1,7 @@
----
+﻿---
 title: 'How Do You Secure RAG Applications?'
 description: 'RAG systems add retrieval, authorization, and data-poisoning risks beyond the base model. Learn the failure modes and controls that matter.'
-image: /img/blog/rag-architecture/promptfoo_panda_rag.png
+image: /img/blog/rag-architecture/artef_panda_rag.png
 keywords:
   [
     RAG security,
@@ -20,10 +20,10 @@ tags: [technical-guide, best-practices, rag]
 # How Do You Secure RAG Applications?
 
 <div style={{ textAlign: 'center' }}>
-    <img src="/img/blog/rag-architecture/promptfoo_panda_rag.png" alt="red panda using rag" style={{ width: '50%' }} />
+    <img src="/img/blog/rag-architecture/artef_panda_rag.png" alt="red panda using rag" style={{ width: '50%' }} />
 </div>
 
-In our [previous blog post](https://www.promptfoo.dev/blog/foundation-model-security/), we covered the security risks of foundation models. That is only the first layer of the application. Once a team adds proprietary or current data through fine-tuning or retrieval, the attack surface changes.
+In our [previous blog post](https://www.artef.dev/blog/foundation-model-security/), we covered the security risks of foundation models. That is only the first layer of the application. Once a team adds proprietary or current data through fine-tuning or retrieval, the attack surface changes.
 
 Most organizations will not train a frontier model from scratch. They will start with a foundation model, then adapt it with prompts, fine-tuning, retrieval, or some combination of the three. The security question is where that extra context comes from and who is allowed to see it.
 
@@ -152,7 +152,7 @@ User prompts should never be trusted within an authorization flow, and you shoul
 
 ### Prompt Injection
 
-RAG does not remove the usual [prompt injection](https://www.promptfoo.dev/blog/prompt-injection/) risk. If the application relies on system prompts alone to restrict behavior, a malicious user can still try to override those instructions directly.
+RAG does not remove the usual [prompt injection](https://www.artef.dev/blog/prompt-injection/) risk. If the application relies on system prompts alone to restrict behavior, a malicious user can still try to override those instructions directly.
 
 ### Context Injection
 
@@ -183,7 +183,7 @@ An attacker who can flood retrieval with irrelevant text can crowd out more impo
 
 ## Mitigating Controls for RAG
 
-Start by testing the complete retrieval path, not just the base model. A [promptfoo red team eval](https://www.promptfoo.dev/docs/guides/evaluate-rag/) configured for your RAG environment can help expose the highest-risk failure modes.
+Start by testing the complete retrieval path, not just the base model. A [artef red team eval](https://www.artef.dev/docs/guides/evaluate-rag/) configured for your RAG environment can help expose the highest-risk failure modes.
 
 The most important controls are concrete:
 

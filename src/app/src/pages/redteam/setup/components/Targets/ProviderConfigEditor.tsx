@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import deepEqual from 'fast-deep-equal';
 import { useRedTeamConfig } from '../../hooks/useRedTeamConfig';
@@ -254,12 +254,12 @@ function ProviderConfigEditor({
       } else if (!updatedTarget.config.request) {
         setBodyError(
           <>
-            Request body must contain <code>{'{{prompt}}'}</code> - this is where promptfoo will
+            Request body must contain <code>{'{{prompt}}'}</code> - this is where artef will
             inject the attack payload. Replace the user input value with <code>{'{{prompt}}'}</code>
-            . Promptfoo uses Nunjucks templating to replace <code>{'{{prompt}}'}</code> with the
+            . artef uses Nunjucks templating to replace <code>{'{{prompt}}'}</code> with the
             actual test content.{' '}
             <a
-              href="https://www.promptfoo.dev/docs/configuration/guide/#using-nunjucks-templates"
+              href="https://www.artef.dev/docs/configuration/guide/#using-nunjucks-templates"
               target="_blank"
               rel="noopener noreferrer"
             >

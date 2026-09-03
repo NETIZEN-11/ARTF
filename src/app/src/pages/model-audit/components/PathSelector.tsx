@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+﻿import React, { useCallback, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -100,7 +100,7 @@ function EnterpriseTabContent({
 
       <Button variant="outline" asChild>
         <a
-          href="https://promptfoo.dev/docs/guides/enterprise"
+          href="https://artef.dev/docs/guides/enterprise"
           target="_blank"
           rel="noopener noreferrer"
         >

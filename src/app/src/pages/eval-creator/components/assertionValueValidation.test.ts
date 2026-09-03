@@ -1,11 +1,11 @@
-import { BaseAssertionTypesSchema } from '@promptfoo/types';
+﻿import { BaseAssertionTypesSchema } from '@artef/types';
 import { describe, expect, it } from 'vitest';
 import {
   getAssertionValueError,
   getFirstRunnableAssertionValueError,
   getRunnableAssertionValueError,
 } from './assertionValueValidation';
-import type { Assertion } from '@promptfoo/types';
+import type { Assertion } from '@artef/types';
 
 const UNSUPPORTED_TYPE_MESSAGE = 'Select a supported assertion type before running.';
 

@@ -1,17 +1,17 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Card, CardContent } from '@app/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@app/components/ui/dialog';
 import { DropdownMenuItem, DropdownMenuItemIcon } from '@app/components/ui/dropdown-menu';
-import invariant from '@promptfoo/util/invariant';
-import { removeEmpty } from '@promptfoo/util/objectUtils';
+import invariant from '@artef/util/invariant';
+import { removeEmpty } from '@artef/util/objectUtils';
 import * as yaml from 'js-yaml';
 import { CheckCircle, Copy, Download } from 'lucide-react';
 import { DownloadFormat, downloadBlob, useDownloadEval } from '../../../hooks/useDownloadEval';
 import { useToast } from '../../../hooks/useToast';
 import { useTableStore as useResultsViewStore } from './store';
-import type { UnifiedConfig } from '@promptfoo/types';
+import type { UnifiedConfig } from '@artef/types';
 
 interface DownloadMenuItemProps {
   onClick: () => void;
@@ -39,7 +39,7 @@ interface CommandBlockProps {
 }
 
 function CommandBlock({ fileName, helpText, isDownloaded, onCopy }: CommandBlockProps) {
-  const commandText = `promptfoo eval -c ${fileName}`;
+  const commandText = `artef eval -c ${fileName}`;
 
   return (
     <div className="mt-4 p-4 bg-black/[0.02] dark:bg-white/[0.02] border border-black/[0.08] dark:border-white/[0.08] rounded-lg">
@@ -134,7 +134,7 @@ export function DownloadDialog({ open, onClose }: DownloadDialogProps) {
     successMessage: string,
     options: { skipInvalid?: boolean } = {},
   ) => {
-    const schemaLine = '# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json\n';
+    const schemaLine = '# yaml-language-server: $schema=https://artef.dev/config-schema.json\n';
 
     // Clean top-level empty properties
     const cleanConfig = removeEmpty(configToDownload);

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Comparing OpenAI image generation models
 
 prompts:
@@ -15,7 +15,7 @@ providers:
       # output_compression: 80 # 0-100, only set with jpeg/webp
       # moderation: auto # Options: auto, low
       # n: 1 # 1-10 images
-      # user: promptfoo-user # Optional end-user identifier
+      # user: artef-user # Optional end-user identifier
 
   # GPT Image 1.5 - High-quality GPT Image model
   - id: openai:image:gpt-image-1.5

@@ -1,6 +1,6 @@
----
+﻿---
 title: OpenAI Agents
-description: Test OpenAI Agents with tools, handoffs, sessions, sandbox workflows, and tracing in promptfoo.
+description: Test OpenAI Agents with tools, handoffs, sessions, sandbox workflows, and tracing in artef.
 keywords:
   [
     openai agents,
@@ -21,7 +21,7 @@ Test multi-turn agentic workflows built with the [@openai/agents](https://github
 :::note
 This page covers the JavaScript `@openai/agents` SDK and the built-in `openai:agents:*` provider.
 
-If you are using the Python `openai-agents` SDK, use the [OpenAI Agents Python SDK guide](/docs/guides/evaluate-openai-agents-python) and the [`openai-agents` example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-agents) instead.
+If you are using the Python `openai-agents` SDK, use the [OpenAI Agents Python SDK guide](/docs/guides/evaluate-openai-agents-python) and the [`openai-agents` example](https://github.com/artef/artef/tree/main/examples/openai-agents) instead.
 :::
 
 ## Prerequisites
@@ -62,8 +62,8 @@ For repeatable eval baselines, set a model explicitly on the exported SDK agent 
 | `runOptions`       | Additional non-streaming SDK `run()` options such as `conversationId` or filters    | -                     |
 | `executeTools`     | Execute function tools normally (`real`) or replace them with mocked results        | `real`                |
 | `toolMocks`        | Mocked tool outputs keyed by tool name, used when `executeTools` is `mock` or false | -                     |
-| `tracing`          | Enable Promptfoo OTLP export for SDK spans                                          | false                 |
-| `otlpEndpoint`     | Custom OTLP endpoint URL for Promptfoo tracing                                      | http://localhost:4318 |
+| `tracing`          | Enable artef OTLP export for SDK spans                                          | false                 |
+| `otlpEndpoint`     | Custom OTLP endpoint URL for artef tracing                                      | http://localhost:4318 |
 
 ## File-Based Configuration
 
@@ -87,7 +87,7 @@ Inline agent definitions follow the SDK `AgentOptions` surface for fields such a
 
 ## Multimodal Input
 
-If a rendered prompt is a JSON object or array that matches the SDK's `AgentInputItem` shape, Promptfoo passes it to `run()` as structured input instead of a plain string. This supports image, audio, and file inputs:
+If a rendered prompt is a JSON object or array that matches the SDK's `AgentInputItem` shape, artef passes it to `run()` as structured input instead of a plain string. This supports image, audio, and file inputs:
 
 ```yaml
 prompts:
@@ -117,7 +117,7 @@ Example prompt file (`prompts/vision-input.json`):
 ]
 ```
 
-Promptfoo resolves local image vars like `file://./images/cat.jpg` to data URLs before the prompt is passed to the SDK.
+artef resolves local image vars like `file://./images/cat.jpg` to data URLs before the prompt is passed to the SDK.
 
 Arbitrary JSON prompts that do not match an agent input item are still sent as plain text.
 
@@ -186,13 +186,13 @@ providers:
       outputGuardrails: file://./guardrails/output-guardrails.ts
 ```
 
-These OpenAI Agents SDK guardrails enforce the initial input and final output; tool guardrails are a separate SDK feature. In Promptfoo, a tripped SDK guardrail currently surfaces as a provider error, while a successful run does not populate the response used by Promptfoo's [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails). Test the application behavior with ordinary assertions, or wrap the provider and normalize tripwires when you need the guardrail assertion.
+These OpenAI Agents SDK guardrails enforce the initial input and final output; tool guardrails are a separate SDK feature. In artef, a tripped SDK guardrail currently surfaces as a provider error, while a successful run does not populate the response used by artef's [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails). Test the application behavior with ordinary assertions, or wrap the provider and normalize tripwires when you need the guardrail assertion.
 
 See OpenAI's [guardrails and human review guide](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals) for the SDK execution model.
 
 ## Sessions
 
-OpenAI Agents SDK sessions keep conversation history across agent runs. Promptfoo supports the SDK session classes directly and also provides YAML-friendly shortcuts for the built-in session types:
+OpenAI Agents SDK sessions keep conversation history across agent runs. artef supports the SDK session classes directly and also provides YAML-friendly shortcuts for the built-in session types:
 
 ```yaml
 providers:
@@ -222,9 +222,9 @@ providers:
       session: file://./sessions/support-session.ts
 ```
 
-Inline session definitions and exported session instances stay attached to the provider for later turns. Export a factory when you want Promptfoo to create a fresh session for each call.
+Inline session definitions and exported session instances stay attached to the provider for later turns. Export a factory when you want artef to create a fresh session for each call.
 
-If you need the full `run()` surface, use `runOptions`. Promptfoo reserves `context`, `maxTurns`, `signal`, and streaming mode, but passes through the remaining non-streaming SDK options:
+If you need the full `run()` surface, use `runOptions`. artef reserves `context`, `maxTurns`, `signal`, and streaming mode, but passes through the remaining non-streaming SDK options:
 
 ```yaml
 providers:
@@ -241,7 +241,7 @@ When an option needs executable code, such as `sessionInputCallback`, `callModel
 
 ## Local Context
 
-Promptfoo passes the current test vars into the SDK's local `context` object for each run. Tools and callbacks can read those values through `runContext.context`:
+artef passes the current test vars into the SDK's local `context` object for each run. Tools and callbacks can read those values through `runContext.context`:
 
 ```typescript
 export const lookupCustomerContext = tool({
@@ -367,7 +367,7 @@ For `SandboxAgent` workflows, use the SDK's sandbox capability helpers in the ex
 
 ## Retry Policies
 
-OpenAI Agents SDK v0.7 added opt-in retry settings on `modelSettings.retry`. Promptfoo supports YAML-friendly retry policy presets and passes them to the SDK as runtime callbacks.
+OpenAI Agents SDK v0.7 added opt-in retry settings on `modelSettings.retry`. artef supports YAML-friendly retry policy presets and passes them to the SDK as runtime callbacks.
 
 ```yaml
 providers:
@@ -392,7 +392,7 @@ providers:
 
 Supported preset policies are `never`, `providerSuggested`, `networkError`, and `retryAfter`.
 
-You can also compose them with `any` or `all`. If you are configuring Promptfoo in TypeScript or JavaScript instead of YAML, you can pass SDK retry callbacks directly.
+You can also compose them with `any` or `all`. If you are configuring artef in TypeScript or JavaScript instead of YAML, you can pass SDK retry callbacks directly.
 
 ## Mock Tool Execution
 
@@ -442,15 +442,15 @@ providers:
 Or enable globally:
 
 ```bash
-export PROMPTFOO_TRACING_ENABLED=true
-npx promptfoo eval
+export artef_TRACING_ENABLED=true
+npx artef eval
 ```
 
-Traces include agent execution spans, tool invocations, model calls, handoff events, token usage, and sandbox lifecycle spans. Promptfoo records the overall run as `invoke_agent` and normalizes Responses API model calls into `chat` spans with their model, token usage, and `openai.api.type: responses`. SDK tool spans become `tool.name`, `tool.arguments`, and `tool.output`, and sandbox command spans become command trajectory steps so the standard `trajectory:*` assertions work on both regular and sandbox runs.
+Traces include agent execution spans, tool invocations, model calls, handoff events, token usage, and sandbox lifecycle spans. artef records the overall run as `invoke_agent` and normalizes Responses API model calls into `chat` spans with their model, token usage, and `openai.api.type: responses`. SDK tool spans become `tool.name`, `tool.arguments`, and `tool.output`, and sandbox command spans become command trajectory steps so the standard `trajectory:*` assertions work on both regular and sandbox runs.
 
-When Promptfoo tracing is enabled, the provider adds Promptfoo OTLP export alongside any tracing processors already registered in the SDK. The exporter follows the evaluation's configured HTTP receiver, including IPv6 hosts and JSON- or protobuf-only receivers. Passing a trace context by itself does not enable export unless a receiver or explicit `otlpEndpoint` is available. If Promptfoo tracing is disabled, the SDK's own tracing behavior still applies; set `OPENAI_AGENTS_DISABLE_TRACING=1` if you also want to suppress the SDK exporter.
+When artef tracing is enabled, the provider adds artef OTLP export alongside any tracing processors already registered in the SDK. The exporter follows the evaluation's configured HTTP receiver, including IPv6 hosts and JSON- or protobuf-only receivers. Passing a trace context by itself does not enable export unless a receiver or explicit `otlpEndpoint` is available. If artef tracing is disabled, the SDK's own tracing behavior still applies; set `OPENAI_AGENTS_DISABLE_TRACING=1` if you also want to suppress the SDK exporter.
 
-Once Promptfoo is collecting those traces, you can assert on the agent's path instead of only its final message:
+Once artef is collecting those traces, you can assert on the agent's path instead of only its final message:
 
 ```yaml
 tests:
@@ -477,7 +477,7 @@ tests:
         provider: openai:gpt-5-mini
 ```
 
-See [Tracing](/docs/tracing/) for the eval-level OTLP setup required when you want Promptfoo to ingest and evaluate these traces directly.
+See [Tracing](/docs/tracing/) for the eval-level OTLP setup required when you want artef to ingest and evaluate these traces directly.
 
 ## Example: D&D Dungeon Master
 
@@ -515,19 +515,19 @@ tests:
 
 :::tip
 
-Try the interactive example: `npx promptfoo@latest init --example openai-agents-basic`
+Try the interactive example: `npx artef@latest init --example openai-agents-basic`
 
 :::
 
 ## Example: Advanced TypeScript Features
 
-For sessions, tracing assertions, sandbox agents, and skills, see the runnable [`openai-agents-advanced`](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-agents-advanced) example:
+For sessions, tracing assertions, sandbox agents, and skills, see the runnable [`openai-agents-advanced`](https://github.com/artef/artef/tree/main/examples/openai-agents-advanced) example:
 
 ```bash
-npx promptfoo@latest init --example openai-agents-advanced
+npx artef@latest init --example openai-agents-advanced
 cd openai-agents-advanced
-npx promptfoo eval -c promptfooconfig.yaml --no-cache -j 1
-npx promptfoo eval -c promptfooconfig.sandbox.yaml --no-cache
+npx artef eval -c artefconfig.yaml --no-cache -j 1
+npx artef eval -c artefconfig.sandbox.yaml --no-cache
 ```
 
 ## Scope
@@ -539,7 +539,7 @@ This provider targets non-streaming text and sandbox `run()` workflows. Use `ope
 | Variable                    | Description                |
 | --------------------------- | -------------------------- |
 | `OPENAI_API_KEY`            | OpenAI API key (required)  |
-| `PROMPTFOO_TRACING_ENABLED` | Enable tracing globally    |
+| `artef_TRACING_ENABLED` | Enable tracing globally    |
 | `OPENAI_BASE_URL`           | Custom OpenAI API base URL |
 | `OPENAI_ORGANIZATION`       | OpenAI organization ID     |
 
@@ -559,7 +559,7 @@ Tools must be async functions. Synchronous tools will cause runtime errors.
 
 - [OpenAI Provider](/docs/providers/openai) - Standard OpenAI completions and chat
 - [Codex Security SDK](/docs/providers/openai-codex-security) - Repository scans, finding validation, coverage, and scan cost evals
-- [OpenAI Agents Python SDK Guide](/docs/guides/evaluate-openai-agents-python) - Python SDK example with Promptfoo tracing and framework-specific provider wrapping
+- [OpenAI Agents Python SDK Guide](/docs/guides/evaluate-openai-agents-python) - Python SDK example with artef tracing and framework-specific provider wrapping
 - [Tracing](/docs/tracing) - OTLP ingestion and trajectory assertions
 - [Red Team Guide](/docs/red-team/quickstart) - Test agent safety
 - [Multi-turn Jailbreaks](/docs/red-team/strategies/multi-turn) - Stateful red-team strategy guidance

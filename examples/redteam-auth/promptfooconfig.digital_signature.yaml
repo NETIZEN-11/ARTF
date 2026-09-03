@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Team Target with Digital Signature Authentication
 
 prompts:
@@ -7,7 +7,7 @@ prompts:
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=digital_signature
+      url: https://example-app.artef.app/minnow/chat?auth_type=digital_signature
       method: POST
       headers:
         Content-Type: application/json
@@ -20,9 +20,9 @@ targets:
         certificateType: pem
         keyInputType: base64
         type: pem
-        privateKey: '{{env.PROMPTFOO_AUTH_PRIVATE_KEY}}'
+        privateKey: '{{env.artef_AUTH_PRIVATE_KEY}}'
         signatureValidityMs: 900000
-        signatureDataTemplate: 'promptfoo-app{{signatureTimestamp}}'
+        signatureDataTemplate: 'artef-app{{signatureTimestamp}}'
       stateful: true
       transformResponse: (json) => json
     label: Example App

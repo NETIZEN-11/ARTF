@@ -1,10 +1,10 @@
-import { mockClipboard } from '@app/tests/browserMocks';
+﻿import { mockClipboard } from '@app/tests/browserMocks';
 import { restoreTestTimers, useTestTimers } from '@app/tests/timers';
 import { act, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import PromptDialog from './PromptDialog';
-import type { ServerPromptWithMetadata } from '@promptfoo/types';
+import type { ServerPromptWithMetadata } from '@artef/types';
 
 const mockSelectedPrompt: ServerPromptWithMetadata = {
   id: 'prompt:1a2b3c4d5e6f',

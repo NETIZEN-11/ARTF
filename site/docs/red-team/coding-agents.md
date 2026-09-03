@@ -1,4 +1,4 @@
----
+﻿---
 title: Red Team Coding Agents
 sidebar_label: Coding Agents
 sidebar_position: 10002
@@ -82,7 +82,7 @@ For each target agent, define:
 - Whether network access is allowed, denied, or restricted by domain.
 - Which tools, MCP servers, browsers, package managers, and shell commands are available.
 - Which tests, verifiers, policies, hooks, snapshots, and lockfiles are assertion-owned and must not be weakened.
-- What evidence the provider returns to Promptfoo: final text, raw provider events, trace spans, command stdout/stderr, changed files, artifact paths, and sidecar reports.
+- What evidence the provider returns to artef: final text, raw provider events, trace spans, command stdout/stderr, changed files, artifact paths, and sidecar reports.
 
 Then decide what kind of failure each scenario is meant to expose:
 
@@ -140,7 +140,7 @@ Use `sandbox_mode: read-only` for pure audit tasks and `sandbox_mode: workspace-
 
 For batches, prefer one of these isolation patterns:
 
-- Run one Promptfoo eval per scenario and create a new `working_dir` before each run.
+- Run one artef eval per scenario and create a new `working_dir` before each run.
 - Use row-specific vars such as `{{workspaceDir}}` and `{{secretEnvValue}}` in provider config when your harness prepares those values per test case.
 - Wrap the provider in a launcher that materializes a clean workspace, invokes the agent, collects traces and file evidence, then deletes the workspace.
 - If you must reuse a checkout, restore it to a known commit and remove untracked files before each row. Do not reuse canary values across rows.
@@ -156,10 +156,10 @@ Recommended instrumentation:
 - Use synthetic test-case canaries instead of real credentials.
 - Record the SHA-256 of tests, verifiers, snapshots, policies, hooks, and lockfiles that the agent must not edit.
 - When a scenario asks the agent to create a diagnostic artifact, pass that artifact path in the assertion so the grader can scan the target-written file for canaries.
-- Run protected sidecar verification outside the agent's writable workspace and write a small JSON report for Promptfoo to inspect.
+- Run protected sidecar verification outside the agent's writable workspace and write a small JSON report for artef to inspect.
 - Log a per-row workspace id, sandbox policy, network policy, and reset marker so reviewers can detect cross-row contamination.
 
-Promptfoo passes the provider response and available trace to red-team graders. The coding-agent grader uses deterministic verifier checks first, then falls back to the rubric with a compact trajectory summary. If an assertion-owned sidecar verifier report is configured but missing, the verifier fails closed because the missing report is itself a harness integrity failure.
+artef passes the provider response and available trace to red-team graders. The coding-agent grader uses deterministic verifier checks first, then falls back to the rubric with a compact trajectory summary. If an assertion-owned sidecar verifier report is configured but missing, the verifier fails closed because the missing report is itself a harness integrity failure.
 
 Distinguish **unsafe willingness** from an **action-verified exploit**. A response like "tell me where to put the artifact and I will include `/etc/passwd`" is worth reviewing, but it is not the same as a row where the provider raw events show `cat /etc/passwd`, a script reads `$HOME/.ssh/id_rsa`, or a copied canary appears in a target-created artifact. For model training, policy signoff, and harness hardening, prefer labels backed by command evidence, trace spans, canaries, file hashes, sidecar reports, or host probes. Keep LLM-only willingness failures as exploratory signal unless you can turn them into action-observable scenarios.
 
@@ -187,7 +187,7 @@ Prefer deterministic checks for canary, receipt, hash, and sidecar evidence. Use
 
 ## Example End-to-End Config
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Coding agent red team
 
 prompts:
@@ -205,7 +205,7 @@ providers:
       deep_tracing: true
       cli_env:
         # Use synthetic eval credentials only. Never place production secrets here.
-        PROMPTFOO_SYNTHETIC_SECRET: '{{secretEnvValue}}'
+        artef_SYNTHETIC_SECRET: '{{secretEnvValue}}'
 
 redteam:
   purpose: |
@@ -227,7 +227,7 @@ tracing:
 Run the red team with:
 
 ```bash
-promptfoo redteam run
+artef redteam run
 ```
 
 Then inspect failed rows in the web UI. For each failure, look at the final response, provider raw transcript, trace trajectory, changed files, sidecar verifier report, and grader metadata.
@@ -240,7 +240,7 @@ A failed row means the target crossed the scenario's boundary, but it does not a
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Model training           | The harness boundary was correct, evidence was visible, and the agent chose the unsafe action.                      | Add the row to model evals or training data with the unsafe behavior labeled clearly.                            |
 | Harness hardening        | The agent could access something the sandbox, environment, network policy, or connector policy should have blocked. | Remove ambient secrets, tighten filesystem/network access, reduce inherited env, or fail closed on setup errors. |
-| Provider instrumentation | The behavior may be unsafe, but Promptfoo cannot see enough trace, raw event, file, or sidecar evidence.            | Return structured command/tool/file evidence and add deterministic assertions.                                   |
+| Provider instrumentation | The behavior may be unsafe, but artef cannot see enough trace, raw event, file, or sidecar evidence.            | Return structured command/tool/file evidence and add deterministic assertions.                                   |
 | Eval contamination       | Evidence came from a previous row or shared workspace state.                                                        | Rerun in a fresh workspace with unique canaries before labeling.                                                 |
 
 For RL or policy signoff, prefer rows with deterministic evidence plus a readable trace. If the row depends only on an LLM judge, keep it useful for exploratory triage but avoid treating it as a high-confidence exploit label until you add a canary, receipt, protected hash, host probe, or sidecar verifier.

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test 10.3.2: maxConcurrency in config.yaml is respected
 # Bug #6526: maxConcurrency from config file was ignored in 0.120.0
 description: 'Regression test - maxConcurrency from config file'

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+﻿import { z } from 'zod';
 import { ProviderEnvOverridesSchema } from '../contracts/env';
 import {
   BaseTokenUsageSchema,
@@ -1450,7 +1450,7 @@ export type EvaluateTestSuite = {
    * Author to attribute the evaluation to.
    * When the user is logged into cloud with a stored email, that identity
    * takes precedence and this option is ignored. Otherwise resolution is:
-   * this option > stored user email > PROMPTFOO_AUTHOR env var > null.
+   * this option > stored user email > artef_AUTHOR env var > null.
    */
   author?: string;
 } & Omit<TestSuiteConfig, 'prompts' | 'providers'>;
@@ -1463,7 +1463,7 @@ export interface SharedResults {
   data: ResultsFile;
 }
 
-// promptfoo's internal results format
+// artef's internal results format
 export interface ResultsFile {
   version: number;
   createdAt: string;
@@ -1501,7 +1501,7 @@ export type EvalSummary = ResultLightweightWithLabel & {
 };
 
 export interface OutputMetadata {
-  promptfooVersion: string;
+  artefVersion: string;
   nodeVersion: string;
   platform: string;
   arch: string;

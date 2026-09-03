@@ -1,9 +1,9 @@
-# config-pdf-variables (PDF Variables)
+﻿# config-pdf-variables (PDF Variables)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-pdf-variables
+npx artef@latest init --example config-pdf-variables
 cd config-pdf-variables
 ```
 
@@ -15,8 +15,8 @@ First, download some PDFs from arxiv.org:
 ./fetch_pdfs.sh
 ```
 
-This example is pre-configured in `promptfooconfig.yaml`. That means you can just run:
+This example is pre-configured in `artefconfig.yaml`. That means you can just run:
 
 ```bash
-promptfoo eval
+artef eval
 ```

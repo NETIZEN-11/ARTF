@@ -1,8 +1,8 @@
----
+﻿---
 sidebar_position: 13
 sidebar_label: Scenarios
 title: Scenario Configuration - Grouping Tests and Data
-description: Configure scenarios to group test data with evaluation tests. Learn how to organize and run multiple test combinations efficiently in promptfoo.
+description: Configure scenarios to group test data with evaluation tests. Learn how to organize and run multiple test combinations efficiently in artef.
 keywords:
   [
     test scenarios,
@@ -34,7 +34,7 @@ Speak in {{language}}: {{input}}
 Instead of creating individual `tests` for each combination,
 we can create a `scenarios` that groups this data and the tests/assertions together:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 scenarios:
   - config:
       - vars:
@@ -137,4 +137,4 @@ scenarios:
 
 This functionality allows you to easily run a wide range of tests without having to manually create each one. It also keeps your configuration file cleaner and easier to read.
 
-[1]: https://github.com/promptfoo/promptfoo/tree/main/examples/config-multiple-translations
+[1]: https://github.com/artef/artef/tree/main/examples/config-multiple-translations

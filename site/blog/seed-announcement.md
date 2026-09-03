@@ -1,25 +1,25 @@
----
-title: 'Promptfoo Raises $5M to Fix Vulnerabilities in AI Applications'
-description: 'Promptfoo raised $5M from Andreessen Horowitz to build the red team for AI applications. See our mission to fix vulnerabilities before they reach users.'
+﻿---
+title: 'artef Raises $5M to Fix Vulnerabilities in AI Applications'
+description: 'artef raised $5M from Andreessen Horowitz to build the red team for AI applications. See our mission to fix vulnerabilities before they reach users.'
 image: /img/blog/launch-announcement.png
 keywords:
   [
-    Promptfoo funding,
+    artef funding,
     AI security startup,
     LLM vulnerability testing,
     AI application security,
     seed funding announcement,
     AI safety investment,
-    Promptfoo news,
+    artef news,
   ]
 date: 2024-07-23
 authors: [ian]
 tags: [company-update]
 ---
 
-# Promptfoo raises $5M to fix vulnerabilities in AI applications
+# artef raises $5M to fix vulnerabilities in AI applications
 
-Today, we're excited to announce that [Promptfoo](https://www.promptfoo.dev/) has raised a $5M seed round led by Andreessen Horowitz to help developers find and fix vulnerabilities in their AI applications.
+Today, we're excited to announce that [artef](https://www.artef.dev/) has raised a $5M seed round led by Andreessen Horowitz to help developers find and fix vulnerabilities in their AI applications.
 
 AI adoption is at a critical juncture. Companies racing to build with LLMs face mounting security risks, legal uncertainty, and potential brand damage from new pitfalls like training data leaks and insecure integrations.
 
@@ -35,7 +35,7 @@ We believe in a pragmatic approach to AI security that hinges on fortifying the 
 
 As an engineering leader at Discord, I started the Platform Ecosystem org and spent years building Developer APIs at scale. When I switched to leading a team that built LLM-based products for millions of users, I learned firsthand that the most difficult part of shipping AI is making sure that the end result is safe, secure, and reliable. Because the surface area of LLMs is so large, traditional testing and security methods were not effective.
 
-I designed the first version of Promptfoo for people like me — application developers — with a focus on making it as easy as possible to test, discover, and fix LLM failures.
+I designed the first version of artef for people like me — application developers — with a focus on making it as easy as possible to test, discover, and fix LLM failures.
 
 Along the way, I was joined by my co-founder Michael, a longtime friend and engineering leader who scaled ML to hundreds of enterprises serving over 100 million people at Smile Identity. His hands-on experience in defending AI applications against real threats embodies our practical approach to security.
 
@@ -53,22 +53,22 @@ Today, over 25,000 software engineers at companies like Shopify, Amazon, and Ant
 
 We believe that AI thrives on open-source. The best security and evaluation tools will be grounded in the open-source principles of transparency and interoperability, not opaqueness and proprietary lock-in.
 
-With this in mind, we are developing Promptfoo as the [open-source](https://github.com/promptfoo/promptfoo) standard for performing AI pentests and red team evaluations.
+With this in mind, we are developing artef as the [open-source](https://github.com/artef/artef) standard for performing AI pentests and red team evaluations.
 
-We're honored to have the support of Andreessen Horowitz, who share our vision for open-source, application-focused AI security. We're also grateful for the participation of industry leaders like Tobi Lutke (CEO, Shopify), Stanislav Vishnevskiy (CTO, Discord), Frederic Kerrest (Vice-Chairman & Co-Founder, Okta), and many other top executives in the technology, security, and financial industries. Their belief in Promptfoo validates our approach, and their expertise strengthens our mission.
+We're honored to have the support of Andreessen Horowitz, who share our vision for open-source, application-focused AI security. We're also grateful for the participation of industry leaders like Tobi Lutke (CEO, Shopify), Stanislav Vishnevskiy (CTO, Discord), Frederic Kerrest (Vice-Chairman & Co-Founder, Okta), and many other top executives in the technology, security, and financial industries. Their belief in artef validates our approach, and their expertise strengthens our mission.
 
-We also acknowledge with gratitude the collaborative efforts of the open-source community. We remain deeply committed to Promptfoo's roots as an open-source project. Our contributors continue to be a driving force behind Promptfoo's development and success.
+We also acknowledge with gratitude the collaborative efforts of the open-source community. We remain deeply committed to artef's roots as an open-source project. Our contributors continue to be a driving force behind artef's development and success.
 
-## Take control of AI security with Promptfoo
+## Take control of AI security with artef
 
 The conversation around AI security is broken. Traditional security methods fall short for complex AI systems, and regulation misses the actual risks to consumers.
 
 The answer lies in empowering every developer to proactively find and fix vulnerabilities in their applications.
 
-Ready to build trustworthy, reliable AI applications? [Reach out](https://promptfoo.dev/contact/) to discuss options for your company.
+Ready to build trustworthy, reliable AI applications? [Reach out](https://artef.dev/contact/) to discuss options for your company.
 
 Ian Webster
 
-CEO, Promptfoo
+CEO, artef
 
 <!-- truncate -->

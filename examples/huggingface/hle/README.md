@@ -1,13 +1,13 @@
-# huggingface/hle (Humanity's Last Exam)
+﻿# huggingface/hle (Humanity's Last Exam)
 
 Evaluate LLMs against [Humanity's Last Exam (HLE)](https://arxiv.org/abs/2501.14249), a challenging benchmark created by 1,000+ experts across 500+ institutions. HLE features 3,000+ questions spanning 100+ subjects, designed to push AI capabilities to their limits.
 
-**📖 [Read the complete HLE benchmark guide →](https://www.promptfoo.dev/docs/guides/hle-benchmark/)**
+**📖 [Read the complete HLE benchmark guide →](https://www.artef.dev/docs/guides/hle-benchmark/)**
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example huggingface/hle
+npx artef@latest init --example huggingface/hle
 cd huggingface/hle
 ```
 
@@ -38,13 +38,13 @@ Get your token at [huggingface.co/settings/tokens](https://huggingface.co/settin
 Run the evaluation:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 View results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## What's Tested
@@ -105,4 +105,4 @@ prompts:
 
 - [HLE Paper](https://arxiv.org/abs/2501.14249)
 - [HLE Dataset](https://huggingface.co/datasets/cais/hle)
-- [Promptfoo Documentation](https://promptfoo.dev/docs/getting-started)
+- [artef Documentation](https://artef.dev/docs/getting-started)

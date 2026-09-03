@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Custom Ruby
 description: 'Create custom Ruby scripts for advanced model integrations, evaluations, and complex testing logic with full flexibility'
 ---
 
 # Ruby Provider
 
-The Ruby provider enables you to create custom evaluation logic using Ruby scripts. This allows you to integrate Promptfoo with any Ruby-based model, API, or custom logic.
+The Ruby provider enables you to create custom evaluation logic using Ruby scripts. This allows you to integrate artef with any Ruby-based model, API, or custom logic.
 
 **Common use cases:**
 
@@ -20,7 +20,7 @@ The Ruby provider enables you to create custom evaluation logic using Ruby scrip
 Before using the Ruby provider, ensure you have:
 
 - Ruby 2.7 or higher installed
-- Basic familiarity with Promptfoo configuration
+- Basic familiarity with artef configuration
 - Understanding of Ruby hashes and JSON
 
 ## Quick Start
@@ -42,10 +42,10 @@ def call_api(prompt, options, context)
 end
 ```
 
-### Step 2: Configure Promptfoo
+### Step 2: Configure artef
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 providers:
   - id: 'file://echo_provider.rb'
 
@@ -57,26 +57,26 @@ prompts:
 ### Step 3: Run the evaluation
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 That's it! You've created your first custom Ruby provider.
 
 ## How It Works
 
-When Promptfoo evaluates a test case with a Ruby provider:
+When artef evaluates a test case with a Ruby provider:
 
-1. **Promptfoo** prepares the prompt based on your configuration
-2. **Promptfoo** invokes `call_api` in your Ruby script with three parameters:
+1. **artef** prepares the prompt based on your configuration
+2. **artef** invokes `call_api` in your Ruby script with three parameters:
    - `prompt`: The final prompt string
    - `options`: Provider configuration from your YAML
    - `context`: Variables and metadata for the current test
 3. **Your Code** processes the prompt and returns a response
-4. **Promptfoo** validates the response and continues evaluation
+4. **artef** validates the response and continues evaluation
 
 ```text
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│ Promptfoo   │────▶│ Your Ruby    │────▶│ Your Logic  │
+│ artef   │────▶│ Your Ruby    │────▶│ Your Logic  │
 │ Evaluation  │     │ Provider     │     │ (API/Model) │
 └─────────────┘     └──────────────┘     └─────────────┘
       ▲                    │
@@ -144,13 +144,13 @@ Contains your provider configuration and metadata:
 {
   'id' => 'file://my_provider.rb',
   'config' => {
-    # Your custom configuration from promptfooconfig.yaml
+    # Your custom configuration from artefconfig.yaml
     'model_name' => 'gpt-3.5-turbo',
     'temperature' => 0.7,
     'max_tokens' => 100,
 
-    # Automatically added by promptfoo:
-    'basePath' => '/absolute/path/to/config'  # Directory containing your config (promptfooconfig.yaml)
+    # Automatically added by artef:
+    'basePath' => '/absolute/path/to/config'  # Directory containing your config (artefconfig.yaml)
   }
 }
 ```
@@ -172,7 +172,7 @@ For `call_api`, this provides information about the current test case:
   'test' => {
     'vars' => { ... },
     'metadata' => {
-      'pluginId' => '...',   # Redteam plugin (e.g. "promptfoo:redteam:harmful:hate")
+      'pluginId' => '...',   # Redteam plugin (e.g. "artef:redteam:harmful:hate")
       'strategyId' => '...',  # Redteam strategy (e.g. "jailbreak", "jailbreak-templates")
     },
   },
@@ -465,16 +465,16 @@ providers:
 
 ```bash
 # Use specific Ruby version globally
-export PROMPTFOO_RUBY=/usr/local/bin/ruby
-npx promptfoo@latest eval
+export artef_RUBY=/usr/local/bin/ruby
+npx artef@latest eval
 ```
 
 #### Ruby Detection Process
 
-Promptfoo automatically detects your Ruby installation in this priority order:
+artef automatically detects your Ruby installation in this priority order:
 
 1. **Provider config**: `rubyExecutable` in your config
-2. **Environment variable**: `PROMPTFOO_RUBY` (if set)
+2. **Environment variable**: `artef_RUBY` (if set)
 3. **Windows detection**: Uses `where ruby` (Windows only)
 4. **Smart detection**: Uses `ruby -e "puts RbConfig.ruby"` to find the actual Ruby path
 5. **Fallback commands**:
@@ -584,9 +584,9 @@ Set the aggregate `flagged` field explicitly; the directional fields do not cont
 
 | Issue                          | Solution                                                             |
 | ------------------------------ | -------------------------------------------------------------------- |
-| "Ruby not found" errors        | Set `PROMPTFOO_RUBY` env var or use `rubyExecutable` in config       |
+| "Ruby not found" errors        | Set `artef_RUBY` env var or use `rubyExecutable` in config       |
 | "cannot load such file" errors | Ensure required gems are installed with `gem install` or use bundler |
-| Script not executing           | Check file path is relative to `promptfooconfig.yaml`                |
+| Script not executing           | Check file path is relative to `artefconfig.yaml`                |
 | No output visible              | Use `LOG_LEVEL=debug` to see print statements                        |
 | JSON parsing errors            | Ensure prompt format matches your parsing logic                      |
 | Timeout errors                 | Optimize initialization code, load resources once                    |
@@ -596,7 +596,7 @@ Set the aggregate `flagged` field explicitly; the directional fields do not cont
 1. **Enable debug logging:**
 
    ```bash
-   LOG_LEVEL=debug npx promptfoo@latest eval
+   LOG_LEVEL=debug npx artef@latest eval
    ```
 
 2. **Add logging to your provider:**

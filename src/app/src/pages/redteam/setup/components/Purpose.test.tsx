@@ -1,4 +1,4 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { type ApiHealthResult, useApiHealth } from '@app/hooks/useApiHealth';
 import { callApi } from '@app/utils/api';
 import { render, screen, waitFor } from '@testing-library/react';
@@ -340,7 +340,7 @@ describe('Purpose Component', () => {
       await waitFor(() => {
         expect(
           screen.getByText(
-            /Cannot connect to Promptfoo API. Auto-discovery requires a healthy API connection./i,
+            /Cannot connect to artef API. Auto-discovery requires a healthy API connection./i,
           ),
         ).toBeInTheDocument();
       });

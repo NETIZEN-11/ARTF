@@ -1,9 +1,9 @@
-# provider-llama-cpp (Getting Started with Promptfoo and llama.cpp)
+﻿# provider-llama-cpp (Getting Started with artef and llama.cpp)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-llama-cpp
+npx artef@latest init --example provider-llama-cpp
 cd provider-llama-cpp
 ```
 
@@ -21,19 +21,19 @@ To start the server, use the following command:
 
 You can check if it's running by visiting [http://localhost:8080](http://localhost:8080).
 
-## Configuring Promptfoo
+## Configuring artef
 
-1. Edit the prompts in `promptfooconfig.yaml`.
+1. Edit the prompts in `artefconfig.yaml`.
 2. Run the evaluation:
 
    ```sh
-   npx promptfoo@latest eval
+   npx artef@latest eval
    ```
 
 3. View the results:
 
    ```sh
-   npx promptfoo@latest view
+   npx artef@latest view
    ```
 
 ## Note on Supported Models
@@ -46,4 +46,4 @@ We do not format the prompts for compatibility with `llama.cpp`. Prompts are pas
 
 ## Note on Caching
 
-Since promptfoo is unaware of the underlying model being run in `llama.cpp`, it will not invalidate the cache when the model is updated. This means you may see stale results from the cache if you change the model. Run `npx promptfoo@latest eval --no-cache` to perform the evaluation without using the cache.
+Since artef is unaware of the underlying model being run in `llama.cpp`, it will not invalidate the cache when the model is updated. This means you may see stale results from the cache if you change the model. Run `npx artef@latest eval --no-cache` to perform the evaluation without using the cache.

@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { RateLimitRegistry } from '../../src/scheduler/rateLimitRegistry';
 import { getFetchRetryContextMaxRetries } from '../../src/util/fetch/retryContext';
 
@@ -79,7 +79,7 @@ describe('RateLimitRegistry integration - provider maxRetries', () => {
   });
 
   it('should propagate fetch retry context when scheduler is disabled', async () => {
-    vi.stubEnv('PROMPTFOO_DISABLE_ADAPTIVE_SCHEDULER', 'true');
+    vi.stubEnv('artef_DISABLE_ADAPTIVE_SCHEDULER', 'true');
     try {
       const registry = new RateLimitRegistry({
         maxConcurrency: 1,

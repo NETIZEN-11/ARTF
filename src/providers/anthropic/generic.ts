@@ -1,4 +1,4 @@
-import { createHash, randomUUID } from 'crypto';
+﻿import { createHash, randomUUID } from 'crypto';
 
 import Anthropic from '@anthropic-ai/sdk';
 import { getEnvString } from '../../envars';
@@ -122,7 +122,7 @@ function getAnthropicCustomHeaderOverrides(
   };
 }
 
-const ANTHROPIC_CACHE_HASH_CONTEXT = 'promptfoo:anthropic:cache-key:v1';
+const ANTHROPIC_CACHE_HASH_CONTEXT = 'artef:anthropic:cache-key:v1';
 const MAX_EPHEMERAL_RESPONSE_CACHE_ENTRIES = 512;
 
 // Canonicalize before hashing so semantically identical plain objects with
@@ -176,7 +176,7 @@ export function hashAnthropicCacheValue(value: unknown): string {
  * `AnthropicMessagesProvider`. Claude Code OAuth tokens are gated to the
  * Messages API (`/v1/messages`) — forwarding them to the legacy
  * text-completion endpoint would fail at request time, which would cause
- * `anthropic:completion:*` configs to bypass promptfoo's upfront preflight
+ * `anthropic:completion:*` configs to bypass artef's upfront preflight
  * check and then produce a less useful error for every test case.
  */
 export class AnthropicGenericProvider implements ApiProvider {
@@ -338,7 +338,7 @@ export class AnthropicGenericProvider implements ApiProvider {
   }
 
   /**
-   * Whether promptfoo's preflight check should require an API key before
+   * Whether artef's preflight check should require an API key before
    * dispatching requests to this provider. Returns `false` only for
    * OAuth-capable subclasses (see {@link SUPPORTS_CLAUDE_CODE_OAUTH}) when
    * the user has opted in via `apiKeyRequired: false`. All other subclasses

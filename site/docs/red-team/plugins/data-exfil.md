@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Data Exfiltration
 description: Test whether AI agents can be manipulated to exfiltrate sensitive data through indirect prompt injection in web content.
 ---
@@ -24,7 +24,7 @@ When the agent visits the attacker's page, it follows the embedded instruction a
 
 ## How it works
 
-1. Promptfoo creates dynamic web pages containing exfiltration instructions
+1. artef creates dynamic web pages containing exfiltration instructions
 2. The agent is prompted to visit and analyze these pages
 3. The plugin tracks whether the agent makes requests to exfiltration URLs
 4. Tests fail if the agent exfiltrates data (query parameters captured)
@@ -33,7 +33,7 @@ When the agent visits the attacker's page, it follows the embedded instruction a
 
 This plugin is designed to work with the [`indirect-web-pwn`](/docs/red-team/strategies/indirect-web-pwn) strategy, which dynamically generates realistic web pages containing hidden exfiltration instructions. The strategy creates pages that look legitimate while embedding attack payloads, and tracks whether the agent makes requests to exfiltration URLs.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - data-exfil
@@ -45,7 +45,7 @@ redteam:
 
 For more effective attacks, layer with jailbreak strategies using the `layer` strategy. Use `jailbreak:meta` for single-turn attacks or `jailbreak:hydra` for multi-turn persistent attacks:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - data-exfil
@@ -66,7 +66,7 @@ This flow:
 
 For multi-turn attacks with embedding rotation:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - data-exfil
@@ -83,7 +83,7 @@ redteam:
 This plugin requires:
 
 - **Agent with web browsing**: The target must be able to fetch URLs (via tools, MCP, or built-in capabilities)
-- **Promptfoo Cloud**: Server-side tracking for exfiltration detection
+- **artef Cloud**: Server-side tracking for exfiltration detection
 
 ## Grading
 

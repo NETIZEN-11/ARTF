@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Google Sheets
 description: Import and export LLM test cases with Google Sheets integration. Configure public or authenticated access, write evaluation results, and run model-graded metrics.
 ---
 
 # Google Sheets Integration
 
-promptfoo allows you to import eval test cases directly from Google Sheets. This can be done either unauthenticated (if the sheet is public) or authenticated using Google's Default Application Credentials, typically with a service account for programmatic access.
+artef allows you to import eval test cases directly from Google Sheets. This can be done either unauthenticated (if the sheet is public) or authenticated using Google's Default Application Credentials, typically with a service account for programmatic access.
 
 ## Importing Test Cases from Google Sheets
 
@@ -13,8 +13,8 @@ promptfoo allows you to import eval test cases directly from Google Sheets. This
 
 For sheets that are accessible via "anyone with the link", simply specify the share URL in your configuration:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Public Google Sheet Example'
 prompts:
   - 'Please translate the following text to {{language}}: {{input}}'

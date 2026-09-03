@@ -1,9 +1,9 @@
-# huggingface/dataset (Huggingface Dataset)
+﻿# huggingface/dataset (Huggingface Dataset)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example huggingface/dataset
+npx artef@latest init --example huggingface/dataset
 cd huggingface/dataset
 ```
 
@@ -11,12 +11,12 @@ cd huggingface/dataset
 
 To get started, set your OPENAI_API_KEY environment variable, or other required keys for the providers you selected.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Jenkins
-description: Integrate Promptfoo's LLM testing into Jenkins pipelines with automated evaluation, credential management, and CI/CD workflows for production AI deployments
+description: Integrate artef's LLM testing into Jenkins pipelines with automated evaluation, credential management, and CI/CD workflows for production AI deployments
 ---
 
-# Setting up Promptfoo with Jenkins
+# Setting up artef with Jenkins
 
-This guide demonstrates how to integrate Promptfoo's LLM evaluation into your Jenkins pipeline. This setup enables automatic testing of your prompts and models whenever changes are made to your repository.
+This guide demonstrates how to integrate artef's LLM evaluation into your Jenkins pipeline. This setup enables automatic testing of your prompts and models whenever changes are made to your repository.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ This guide demonstrates how to integrate Promptfoo's LLM evaluation into your Je
 
 ### 1. Create Jenkinsfile
 
-Create a `Jenkinsfile` in your repository root. Here's a basic configuration that installs Promptfoo and runs evaluations:
+Create a `Jenkinsfile` in your repository root. Here's a basic configuration that installs artef and runs evaluations:
 
 ```groovy:Jenkinsfile
 pipeline {
@@ -26,13 +26,13 @@ pipeline {
 
     environment {
         OPENAI_API_KEY = credentials('openai-api-key')
-        PROMPTFOO_CACHE_PATH = '~/.promptfoo/cache'
+        artef_CACHE_PATH = '~/.artef/cache'
     }
 
     stages {
         stage('Setup') {
             steps {
-                sh 'npm install -g promptfoo'
+                sh 'npm install -g artef'
             }
         }
 
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'promptfoo eval -c promptfooconfig.yaml --prompts prompts/**/*.json --share -o output.json'
+                        sh 'artef eval -c artefconfig.yaml --prompts prompts/**/*.json --share -o output.json'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error("Prompt evaluation failed: ${e.message}")
@@ -96,13 +96,13 @@ To implement caching for better performance and reduced API costs:
 1. Create a cache directory on your Jenkins agent:
 
 ```bash
-mkdir -p ~/.promptfoo/cache
+mkdir -p ~/.artef/cache
 ```
 
 2. Ensure the Jenkins user has write permissions:
 
 ```bash
-chown -R jenkins:jenkins ~/.promptfoo/cache
+chown -R jenkins:jenkins ~/.artef/cache
 ```
 
 ### 4. Advanced Pipeline Configuration
@@ -126,7 +126,7 @@ pipeline {
 
     environment {
         OPENAI_API_KEY = credentials('openai-api-key')
-        PROMPTFOO_CACHE_PATH = '~/.promptfoo/cache'
+        artef_CACHE_PATH = '~/.artef/cache'
     }
 
     options {
@@ -141,7 +141,7 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'npm install -g promptfoo'
+                sh 'npm install -g artef'
             }
         }
 
@@ -153,8 +153,8 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            promptfoo eval \
-                                -c promptfooconfig.yaml \
+                            artef eval \
+                                -c artefconfig.yaml \
                                 --prompts prompts/**/*.json \
                                 --share \
                                 -o output.json
@@ -235,11 +235,11 @@ Common issues and solutions:
 3. **Cache problems:**
    - Verify cache path exists and is writable
    - Check disk space availability
-   - Clear cache if needed: `rm -rf ~/.promptfoo/cache/*`
+   - Clear cache if needed: `rm -rf ~/.artef/cache/*`
 
 4. **Node.js issues:**
    - Ensure Node.js is installed on the Jenkins agent
    - Verify npm is available in PATH
    - Consider using `nodejs` tool installer in Jenkins
 
-For more information on Promptfoo configuration and usage, refer to the [configuration reference](/docs/configuration/guide/).
+For more information on artef configuration and usage, refer to the [configuration reference](/docs/configuration/guide/).

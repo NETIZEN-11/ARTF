@@ -1,4 +1,4 @@
-import { OpenAiChatCompletionProvider } from '../openai/chat';
+﻿import { OpenAiChatCompletionProvider } from '../openai/chat';
 import {
   getBedrockMantleOrigin,
   isBedrockGrokModel,
@@ -127,7 +127,7 @@ export function createBedrockMantleChatProvider(
   if (isBedrockOpenAiResponsesModel(modelName)) {
     throw new Error(
       `Amazon Bedrock model "bedrock:mantle:${modelName}" does not support Chat Completions. ` +
-        `Use the bare "bedrock:${modelName}" id so promptfoo routes it through Bedrock's ` +
+        `Use the bare "bedrock:${modelName}" id so artef routes it through Bedrock's ` +
         `OpenAI-compatible Responses API.`,
     );
   }
@@ -146,7 +146,7 @@ export function createBedrockMantleChatProvider(
       `Amazon Bedrock model "bedrock:mantle:${modelName}" uses the OpenAI-compatible Chat ` +
         `Completions API on the mantle endpoint, which authenticates with an Amazon Bedrock API ` +
         `key. Set the AWS_BEARER_TOKEN_BEDROCK environment variable (or config.apiKey). See ` +
-        `https://www.promptfoo.dev/docs/providers/aws-bedrock/#mantle-chat-completions`,
+        `https://www.artef.dev/docs/providers/aws-bedrock/#mantle-chat-completions`,
     );
   }
 

@@ -1,4 +1,4 @@
-import type { UnifiedConfig } from 'promptfoo';
+﻿import type { UnifiedConfig } from 'artef';
 
 const config: UnifiedConfig = {
   description: 'A translator built with LLM',

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -12,10 +12,10 @@ import { Spinner } from '@app/components/ui/spinner';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
 import { useTelemetry } from '@app/hooks/useTelemetry';
-import { displayNameOverrides } from '@promptfoo/redteam/constants';
+import { displayNameOverrides } from '@artef/redteam/constants';
 import { stringify } from 'csv-stringify/browser/esm/sync';
 import { getPluginIdFromResult, getStrategyIdFromTest } from '../components/shared';
-import type { EvaluateResult, ResultsFile } from '@promptfoo/types';
+import type { EvaluateResult, ResultsFile } from '@artef/types';
 
 interface ReportDownloadButtonProps {
   evalDescription: string;

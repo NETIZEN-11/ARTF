@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Unified Google Provider for Gemini models.
  *
  * This provider handles both Google AI Studio and Vertex AI modes
@@ -72,7 +72,7 @@ function hasScorableSafetyAssertion(assertion: SafetyRelevantAssertion): boolean
   if (
     assertion.type === 'guardrails' ||
     assertion.type === 'not-guardrails' ||
-    assertion.type?.startsWith('promptfoo:redteam:')
+    assertion.type?.startsWith('artef:redteam:')
   ) {
     return true;
   }

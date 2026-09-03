@@ -1,4 +1,4 @@
-# openai-codex-sdk/bedrock (Codex SDK on Amazon Bedrock)
+﻿# openai-codex-sdk/bedrock (Codex SDK on Amazon Bedrock)
 
 Runs OpenAI's Codex coding agent against OpenAI frontier models hosted on **Amazon Bedrock**
 (`openai.gpt-5.6-sol`, `openai.gpt-5.6-terra`, and `openai.gpt-5.6-luna`) instead of the OpenAI Platform.
@@ -6,7 +6,7 @@ Runs OpenAI's Codex coding agent against OpenAI frontier models hosted on **Amaz
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-codex-sdk/bedrock
+npx artef@latest init --example openai-codex-sdk/bedrock
 ```
 
 ## Prerequisites
@@ -36,7 +36,7 @@ npx promptfoo@latest init --example openai-codex-sdk/bedrock
 - Sol, Terra, and Luna support `max` reasoning with a current Codex CLI. Codex `ultra`
   is a multi-agent mode for supported models, not an API reasoning-effort value.
 - AWS credentials and `AWS_REGION` are forwarded to the Codex CLI via `cli_env` because
-  promptfoo runs the CLI with a minimal environment by default. You may instead set
+  artef runs the CLI with a minimal environment by default. You may instead set
   `AWS_BEARER_TOKEN_BEDROCK` (a Bedrock API key), `AWS_PROFILE`, or
   `inherit_process_env: true`. If you use temporary credentials (SSO / STS / assumed
   roles / MFA), also forward `AWS_SESSION_TOKEN` (uncomment it in the config).
@@ -51,11 +51,11 @@ npx promptfoo@latest init --example openai-codex-sdk/bedrock
 > rather than a clear "credentials not set" message.
 
 For direct (non-agentic) inference against the same models, use the
-[`bedrock:` provider](https://www.promptfoo.dev/docs/providers/aws-bedrock/#openai-models)
+[`bedrock:` provider](https://www.artef.dev/docs/providers/aws-bedrock/#openai-models)
 (`bedrock:openai.gpt-5.6-sol`).
 
 ## Run it
 
 ```bash
-promptfoo eval -c examples/openai-codex-sdk/bedrock/promptfooconfig.yaml --no-cache
+artef eval -c examples/openai-codex-sdk/bedrock/artefconfig.yaml --no-cache
 ```

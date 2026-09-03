@@ -1,4 +1,4 @@
-import { type ZodType, z } from 'zod';
+﻿import { type ZodType, z } from 'zod';
 import { UnifiedConfigSchema } from '../src/types';
 import { TRANSFORM_KEYS } from '../src/util/transform';
 import { StringOrFunctionSchema } from '../src/validators/shared';
@@ -141,11 +141,11 @@ const {
 // Build final schema with proper structure and metadata
 const jsonSchema = {
   $schema: 'http://json-schema.org/draft-07/schema#',
-  $id: 'https://promptfoo.dev/config-schema.json',
-  title: 'Promptfoo Configuration Schema',
-  $ref: '#/definitions/PromptfooConfigSchema',
+  $id: 'https://artef.dev/config-schema.json',
+  title: 'artef Configuration Schema',
+  $ref: '#/definitions/artefConfigSchema',
   definitions: {
-    PromptfooConfigSchema: mainSchema,
+    artefConfigSchema: mainSchema,
     ...(zodDefinitions as Record<string, unknown>),
   },
 };

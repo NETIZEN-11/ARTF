@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class InsuranceNetworkMisinformationPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:insurance:network-misinformation';
+  readonly id = 'artef:redteam:insurance:network-misinformation';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

@@ -1,11 +1,11 @@
-# integration-browser/existing-session (Browser Existing Session)
+﻿# integration-browser/existing-session (Browser Existing Session)
 
 Test OAuth-authenticated applications by connecting to existing Chrome browser sessions.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-browser/existing-session
+npx artef@latest init --example integration-browser/existing-session
 cd integration-browser/existing-session
 ```
 
@@ -34,19 +34,19 @@ chrome --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-test
 # Manually log into your application in that Chrome instance
 
 # Run tests using the existing session
-npx promptfoo eval --filter-providers existing-session
+npx artef eval --filter-providers existing-session
 ```
 
 ### 3. For normal browser testing
 
 ```bash
 # Just run the tests (launches new browser)
-npx promptfoo eval --filter-providers new-browser
+npx artef eval --filter-providers new-browser
 ```
 
 ## Configuration
 
-The `promptfooconfig.yaml` includes both modes:
+The `artefconfig.yaml` includes both modes:
 
 ```yaml
 providers:
@@ -74,6 +74,6 @@ npm install playwright @playwright/browser-chromium playwright-extra puppeteer-e
 
 ## Files
 
-- `promptfooconfig.yaml` - Example configuration showing both modes
+- `artefconfig.yaml` - Example configuration showing both modes
 - `server.js` - Test web server
 - `test-page.html` - Mock authenticated chat interface

@@ -1,4 +1,4 @@
-import os from 'os';
+﻿import os from 'os';
 import path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -104,9 +104,9 @@ describe('createTempOutputPath', () => {
     expect(tempPath).toContain(os.tmpdir());
   });
 
-  it('should generate path with promptfoo-modelscan prefix', () => {
+  it('should generate path with artef-modelscan prefix', () => {
     const tempPath = createTempOutputPath();
-    expect(tempPath).toContain('promptfoo-modelscan-');
+    expect(tempPath).toContain('artef-modelscan-');
   });
 
   it('should generate path with .json extension', () => {
@@ -118,7 +118,7 @@ describe('createTempOutputPath', () => {
     const tempPath = createTempOutputPath();
     expect(path.basename(tempPath)).toBe('results.json');
     expect(path.basename(path.dirname(tempPath))).toMatch(
-      /^promptfoo-modelscan-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-[A-Za-z0-9]{6}$/,
+      /^artef-modelscan-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-[A-Za-z0-9]{6}$/,
     );
   });
 
@@ -150,7 +150,7 @@ describe('temp file workflow - expected fs behavior patterns', () => {
   it('documents: temp file paths use createTempOutputPath format', () => {
     // The temp file workflow uses createTempOutputPath to generate unique paths
     const tempFilePath = createTempOutputPath();
-    expect(tempFilePath).toContain('promptfoo-modelscan-');
+    expect(tempFilePath).toContain('artef-modelscan-');
     expect(tempFilePath).toMatch(/\.json$/);
   });
 

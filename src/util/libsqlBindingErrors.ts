@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 
 const libsqlPlatformPackagePattern = /@libsql\/(?<target>(?:darwin|linux|win32)-[a-z0-9-]+)/i;
 const moduleNotFoundCodes = new Set(['MODULE_NOT_FOUND', 'ERR_MODULE_NOT_FOUND']);
@@ -31,7 +31,7 @@ export function formatLibsqlBindingErrorMessage(error: unknown): string | undefi
 
   return chalk.yellow(
     [
-      `promptfoo could not load its SQLite dependency because the libsql binding for "${target}" is missing.`,
+      `artef could not load its SQLite dependency because the libsql binding for "${target}" is missing.`,
       '',
       `Detected platform: ${process.platform}-${process.arch}`,
       `Required package: @libsql/${target}`,
@@ -39,15 +39,15 @@ export function formatLibsqlBindingErrorMessage(error: unknown): string | undefi
       'If you are working from a project checkout:',
       '  Run: npm install',
       '',
-      'If promptfoo was installed globally with npm:',
-      '  Run: npm install -g promptfoo@latest',
+      'If artef was installed globally with npm:',
+      '  Run: npm install -g artef@latest',
       '',
       'If you are running through npx:',
-      '  Remove the cached npx install, then run npx -y promptfoo@latest again.',
+      '  Remove the cached npx install, then run npx -y artef@latest again.',
       '',
-      `If your platform is unsupported, file an issue at https://github.com/promptfoo/promptfoo/issues with "${process.platform}-${process.arch}" in the title.`,
+      `If your platform is unsupported, file an issue at https://github.com/artef/artef/issues with "${process.platform}-${process.arch}" in the title.`,
       '',
-      'More help: https://www.promptfoo.dev/docs/usage/troubleshooting/#libsql-binding-not-found',
+      'More help: https://www.artef.dev/docs/usage/troubleshooting/#libsql-binding-not-found',
     ].join('\n'),
   );
 }

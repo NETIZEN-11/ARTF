@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -14,7 +14,7 @@ describe('default config discovery logging', () => {
   const logCallback = vi.fn();
 
   beforeEach(() => {
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-config-logging-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-config-logging-'));
     previousLogLevel = getLogLevel();
     previousLogCallback = globalLogCallback;
     logCallback.mockReset();
@@ -45,7 +45,7 @@ describe('default config discovery logging', () => {
       } else {
         for (const extension of ['cjs', 'cts', 'js', 'mjs', 'mts', 'ts']) {
           expect(logCallback).toHaveBeenCalledWith(
-            expect.stringContaining(`promptfooconfig.${extension}`),
+            expect.stringContaining(`artefconfig.${extension}`),
           );
         }
         expect(logCallback).not.toHaveBeenCalledWith(
@@ -64,7 +64,7 @@ describe('default config discovery logging', () => {
   ])('loads an existing .$extension config at debug level', async ({ extension, source }) => {
     // Native Node loads this CommonJS .js config via the fallback in an ESM package.
     fs.writeFileSync(path.join(tempDir, 'package.json'), '{"type":"module"}');
-    const configPath = path.join(tempDir, `promptfooconfig.${extension}`);
+    const configPath = path.join(tempDir, `artefconfig.${extension}`);
     fs.writeFileSync(configPath, source);
     setLogLevel('debug');
 
@@ -96,7 +96,7 @@ describe('default config discovery logging', () => {
         error: { message: 'config initialization failed' },
       },
     ])('reports $name instead of ignoring the config', async ({ source, error }) => {
-      fs.writeFileSync(path.join(tempDir, 'promptfooconfig.mjs'), source);
+      fs.writeFileSync(path.join(tempDir, 'artefconfig.mjs'), source);
       setLogLevel(level);
 
       const thrown = await loadDefaultConfig(tempDir).catch((err) => err);

@@ -1,4 +1,4 @@
-import { getDefaultPort } from '../constants';
+﻿import { getDefaultPort } from '../constants';
 import logger from '../logger';
 import { formatLibsqlBindingErrorMessage } from '../util/libsqlBindingErrors';
 import { BrowserBehavior, checkServerRunning } from '../util/server';
@@ -9,7 +9,7 @@ async function main() {
   const port = getDefaultPort();
   const isRunning = await checkServerRunning(port);
   if (isRunning) {
-    logger.info(`Promptfoo server already running at http://localhost:${port}`);
+    logger.info(`artef server already running at http://localhost:${port}`);
     process.exitCode = 1;
     return;
   }

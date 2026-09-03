@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom/client';
+﻿import * as ReactDOM from 'react-dom/client';
 
 import { mockClipboard } from '@app/tests/browserMocks';
 import { useTestTimers } from '@app/tests/timers';
@@ -7,7 +7,7 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import EvalOutputPromptDialog from './EvalOutputPromptDialog';
-import type { AssertionType, GradingResult } from '@promptfoo/types';
+import type { AssertionType, GradingResult } from '@artef/types';
 
 // Mock the Citations component to verify it receives the correct props
 vi.mock('./Citations', () => ({
@@ -954,7 +954,7 @@ describe('EvalOutputPromptDialog cloud config', () => {
 
     // Should just show the policy name without link
     expect(screen.getByText('Test Policy')).toBeInTheDocument();
-    expect(screen.queryByText('View policy in Promptfoo Cloud')).not.toBeInTheDocument();
+    expect(screen.queryByText('View policy in artef Cloud')).not.toBeInTheDocument();
   });
 });
 

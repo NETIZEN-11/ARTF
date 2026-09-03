@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Custom Policy
 description: Red team custom AI policies by adding organization-specific rules, importing policies in batches, and reviewing separate policy results.
 ---
 
 # Policy Plugin
 
-Custom policies let you test the rules that are specific to your product, legal requirements, brand, or operating model. Instead of choosing a predefined vulnerability category, you write the behavior the target must follow, and Promptfoo generates probes that try to make the target violate it.
+Custom policies let you test the rules that are specific to your product, legal requirements, brand, or operating model. Instead of choosing a predefined vulnerability category, you write the behavior the target must follow, and artef generates probes that try to make the target violate it.
 
 Use custom policies for requirements such as:
 
@@ -25,8 +25,8 @@ In the red team setup flow, go to **Application Details** first and describe the
 From this screen you can:
 
 - **Add Policy** to create a named policy by hand.
-- **Upload CSV** to import many policies at once. The CSV must have a header row; Promptfoo uses the first column as the policy text and skips empty rows.
-- **Generate Suggestions** to ask Promptfoo to suggest policies from your application definition. This uses remote generation and appears when the setup has an application purpose.
+- **Upload CSV** to import many policies at once. The CSV must have a header row; artef uses the first column as the policy text and skips empty rows.
+- **Generate Suggestions** to ask artef to suggest policies from your application definition. This uses remote generation and appears when the setup has an application purpose.
 - Use the action button on a policy row to preview a generated test case for that policy.
 
 When adding a policy manually, give it a short name and write the rule as the target behavior you want enforced.
@@ -97,7 +97,7 @@ redteam:
             present.
 ```
 
-That object form works locally when `text` is present. Reusable policies stored in Promptfoo Cloud use UUID policy IDs. When a config references a reusable policy ID without inline text, `promptfoo redteam generate` resolves the policy text, name, and severity from Promptfoo Cloud before generation. Run `promptfoo auth login` first when using reusable Cloud policies.
+That object form works locally when `text` is present. Reusable policies stored in artef Cloud use UUID policy IDs. When a config references a reusable policy ID without inline text, `artef redteam generate` resolves the policy text, name, and severity from artef Cloud before generation. Run `artef auth login` first when using reusable Cloud policies.
 
 ## How Generation Works
 
@@ -109,7 +109,7 @@ The setup UI previews single-turn policy probes in small batches so regenerating
 
 ## How Results Are Graded
 
-Each policy result uses the `PolicyViolation:<policy id>` metric. Promptfoo also stores policy metadata on generated tests, including the policy text, policy ID, and policy name when available. Reports use that metadata to display custom policies separately from framework categories and to show readable policy names where possible.
+Each policy result uses the `PolicyViolation:<policy id>` metric. artef also stores policy metadata on generated tests, including the policy text, policy ID, and policy name when available. Reports use that metadata to display custom policies separately from framework categories and to show readable policy names where possible.
 
 The grader checks whether the target output violates the specific policy. A refusal, deflection, or irrelevant answer passes unless the policy explicitly requires a response.
 

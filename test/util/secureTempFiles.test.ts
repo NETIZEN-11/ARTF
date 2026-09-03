@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import { afterEach, describe, expect, it } from 'vitest';
@@ -19,7 +19,7 @@ describe('secure temporary files', () => {
   });
 
   it('creates private directories and exclusively writes restricted files', async () => {
-    tempDirectory = await createSecureTempDirectory('promptfoo-secure-temp-test-');
+    tempDirectory = await createSecureTempDirectory('artef-secure-temp-test-');
     const filePath = await writeSecureTempFile(tempDirectory, 'payload.json', '{"ok":true}');
 
     if (process.platform !== 'win32') {
@@ -33,7 +33,7 @@ describe('secure temporary files', () => {
   });
 
   it('rejects filenames that are not simple leaf names', async () => {
-    tempDirectory = await createSecureTempDirectory('promptfoo-secure-temp-test-');
+    tempDirectory = await createSecureTempDirectory('artef-secure-temp-test-');
 
     for (const filename of ['../payload.json', path.resolve('payload.json'), '.', '..', '']) {
       await expect(writeSecureTempFile(tempDirectory, filename, 'data')).rejects.toThrow(
@@ -43,7 +43,7 @@ describe('secure temporary files', () => {
   });
 
   it('rejects directory prefixes that are not simple leaf names', async () => {
-    for (const prefix of ['../promptfoo-', path.resolve('promptfoo-'), '.', '..', '']) {
+    for (const prefix of ['../artef-', path.resolve('artef-'), '.', '..', '']) {
       await expect(createSecureTempDirectory(prefix)).rejects.toThrow(
         'Secure temporary directory prefixes must be simple leaf names',
       );
@@ -51,7 +51,7 @@ describe('secure temporary files', () => {
   });
 
   it('removes the temporary directory recursively', async () => {
-    tempDirectory = await createSecureTempDirectory('promptfoo-secure-temp-test-');
+    tempDirectory = await createSecureTempDirectory('artef-secure-temp-test-');
     await writeSecureTempFile(tempDirectory, 'payload.json', 'data');
 
     await removeSecureTempDirectory(tempDirectory);

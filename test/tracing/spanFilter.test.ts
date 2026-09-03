@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { isRelevantSpan, matchesSpanFilter } from '../../src/tracing/spanFilter';
 
 describe('trace span relevance', () => {
@@ -49,10 +49,10 @@ describe('trace span relevance', () => {
   it('excludes grader model activity and grading errors from target evidence', () => {
     expect(
       isRelevantSpan({
-        attributes: { 'gen_ai.operation.name': 'chat', 'promptfoo.span.role': 'grader' },
+        attributes: { 'gen_ai.operation.name': 'chat', 'artef.span.role': 'grader' },
       }),
     ).toBe(false);
-    expect(isRelevantSpan({ attributes: { 'promptfoo.span.role': 'grader' }, statusCode: 2 })).toBe(
+    expect(isRelevantSpan({ attributes: { 'artef.span.role': 'grader' }, statusCode: 2 })).toBe(
       false,
     );
   });

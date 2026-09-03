@@ -1,8 +1,8 @@
-import { randomUUID } from 'node:crypto';
+﻿import { randomUUID } from 'node:crypto';
 
 const DOCX_MIME_TYPE = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 const DOCX_DATA_URI_PREFIX = `data:${DOCX_MIME_TYPE};base64,`;
-const DEFAULT_APP_BASE_URL = 'https://example-app.promptfoo.app';
+const DEFAULT_APP_BASE_URL = 'https://example-app.artef.app';
 const DEFAULT_DOMAIN = 'general';
 const DEFAULT_LEVEL = 'minnow';
 const DEFAULT_SUMMARY_REQUEST = 'Please summarize the uploaded document in one concise paragraph.';
@@ -43,7 +43,7 @@ class DocumentUploadProvider {
     formData.append(
       'document',
       new Blob([docxBuffer], { type: DOCX_MIME_TYPE }),
-      `promptfoo-${randomUUID()}.docx`,
+      `artef-${randomUUID()}.docx`,
     );
 
     const response = await fetch(`${appBaseUrl}/documents`, {

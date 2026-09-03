@@ -1,4 +1,4 @@
-import cliState from '../../cliState';
+﻿import cliState from '../../cliState';
 
 export const MAX_CHARS_PER_MESSAGE_MODIFIER_KEY = 'maxCharsPerMessage';
 
@@ -48,7 +48,7 @@ function parseChatMessages(prompt: string): ChatMessage[] | undefined {
 
     if (
       isRecord(parsed) &&
-      parsed._promptfoo_audio_hybrid === true &&
+      parsed._artef_audio_hybrid === true &&
       (parsed.history === undefined || Array.isArray(parsed.history)) &&
       isRecord(parsed.currentTurn) &&
       typeof parsed.currentTurn.role === 'string' &&

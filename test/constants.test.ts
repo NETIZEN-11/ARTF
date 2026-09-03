@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   CLOUD_PROVIDER_PREFIX,
   DEFAULT_API_BASE_URL,
@@ -34,8 +34,8 @@ describe('constants', () => {
     expect(DEFAULT_QUERY_LIMIT).toBe(100);
   });
 
-  it('should have DEFAULT_API_BASE_URL set to api.promptfoo.app', () => {
-    expect(DEFAULT_API_BASE_URL).toBe('https://api.promptfoo.app');
+  it('should have DEFAULT_API_BASE_URL set to api.artef.app', () => {
+    expect(DEFAULT_API_BASE_URL).toBe('https://api.artef.app');
   });
 
   it('should have REDTEAM_DEFAULTS with correct values', () => {
@@ -48,30 +48,30 @@ describe('constants', () => {
       expect(getShareApiBaseUrl()).toBe(DEFAULT_API_BASE_URL);
     });
 
-    it('should return PROMPTFOO_REMOTE_API_BASE_URL if set', () => {
-      mockProcessEnv({ PROMPTFOO_REMOTE_API_BASE_URL: 'https://remote.api.com' });
+    it('should return artef_REMOTE_API_BASE_URL if set', () => {
+      mockProcessEnv({ artef_REMOTE_API_BASE_URL: 'https://remote.api.com' });
       expect(getShareApiBaseUrl()).toBe('https://remote.api.com');
     });
   });
 
   describe('getDefaultShareViewBaseUrl', () => {
-    it('should return promptfoo.app by default', () => {
-      expect(getDefaultShareViewBaseUrl()).toBe('https://promptfoo.app');
+    it('should return artef.app by default', () => {
+      expect(getDefaultShareViewBaseUrl()).toBe('https://artef.app');
     });
 
-    it('should return PROMPTFOO_SHARING_APP_BASE_URL if set', () => {
-      mockProcessEnv({ PROMPTFOO_SHARING_APP_BASE_URL: 'https://custom.share.com' });
+    it('should return artef_SHARING_APP_BASE_URL if set', () => {
+      mockProcessEnv({ artef_SHARING_APP_BASE_URL: 'https://custom.share.com' });
       expect(getDefaultShareViewBaseUrl()).toBe('https://custom.share.com');
     });
   });
 
   describe('getShareViewBaseUrl', () => {
-    it('should return promptfoo.app by default', () => {
-      expect(getShareViewBaseUrl()).toBe('https://promptfoo.app');
+    it('should return artef.app by default', () => {
+      expect(getShareViewBaseUrl()).toBe('https://artef.app');
     });
 
-    it('should return PROMPTFOO_REMOTE_APP_BASE_URL if set', () => {
-      mockProcessEnv({ PROMPTFOO_REMOTE_APP_BASE_URL: 'https://remote.app.com' });
+    it('should return artef_REMOTE_APP_BASE_URL if set', () => {
+      mockProcessEnv({ artef_REMOTE_APP_BASE_URL: 'https://remote.app.com' });
       expect(getShareViewBaseUrl()).toBe('https://remote.app.com');
     });
   });
@@ -104,6 +104,6 @@ describe('constants', () => {
   });
 
   it('should have CLOUD_PROVIDER_PREFIX set correctly', () => {
-    expect(CLOUD_PROVIDER_PREFIX).toBe('promptfoo://provider/');
+    expect(CLOUD_PROVIDER_PREFIX).toBe('artef://provider/');
   });
 });

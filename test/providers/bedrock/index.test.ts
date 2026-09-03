@@ -1,4 +1,4 @@
-import { BedrockRuntime } from '@aws-sdk/client-bedrock-runtime';
+﻿import { BedrockRuntime } from '@aws-sdk/client-bedrock-runtime';
 import { NodeHttpHandler } from '@smithy/node-http-handler';
 import dedent from 'dedent';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -4283,7 +4283,7 @@ describe('AwsBedrockCompletionProvider', () => {
       createBedrockCacheKeyHash({
         config: {
           ...baseConfig,
-          profile: 'promptfoo-profile-b',
+          profile: 'artef-profile-b',
         } as BedrockClaudeMessagesCompletionOptions,
         params,
         region,
@@ -4302,7 +4302,7 @@ describe('AwsBedrockCompletionProvider', () => {
     for (const cacheKey of cacheKeys) {
       expect(cacheKey).toMatch(/^[a-f0-9]{64}:[a-f0-9]{64}$/);
       expect(cacheKey).not.toContain('PFQA_BEDROCK');
-      expect(cacheKey).not.toContain('promptfoo-profile');
+      expect(cacheKey).not.toContain('artef-profile');
       expect(cacheKey).not.toContain('bedrock-runtime');
     }
   });

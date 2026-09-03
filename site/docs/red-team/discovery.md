@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 10
 sidebar_label: Target Discovery
 title: Target Discovery Agent
@@ -7,19 +7,19 @@ description: Red team AI systems through automated target discovery to detect vu
 
 # Target Discovery
 
-Promptfoo's **Target Discovery Agent** automatically extracts useful information about generative AI systems that you want to red team. This information is used to craft adversarial inputs that are unique to the target system, improving attack efficacy and response evaluation quality.
+artef's **Target Discovery Agent** automatically extracts useful information about generative AI systems that you want to red team. This information is used to craft adversarial inputs that are unique to the target system, improving attack efficacy and response evaluation quality.
 
 ## Usage
 
 ```sh
-promptfoo redteam discover
+artef redteam discover
 ```
 
 ## When to use
 
-- **CLI**: Enhancing the [`redteam.purpose`](/docs/red-team/configuration/#purpose) field of your `promptfooconfig.yaml`
+- **CLI**: Enhancing the [`redteam.purpose`](/docs/red-team/configuration/#purpose) field of your `artefconfig.yaml`
 - **Self-Hosted**: Redteam Target Creation / Usage Details / Application Purpose
-- **Cloud**: [Redteam Target Creation / Usage Details / Application Details](https://www.promptfoo.app/redteam/targets/new#2)
+- **Cloud**: [Redteam Target Creation / Usage Details / Application Details](https://www.artef.app/redteam/targets/new#2)
 
 In Self-Hosted and Cloud, we find that mapping the answers to the given form fields works best:
 
@@ -41,14 +41,14 @@ The agent discovers four key areas:
 3. **Tools**: Available external functions, APIs, and their interfaces
 4. **User Context**: How the system perceives and categorizes users
 
-The responses are synthesized into a comprehensive profile to inform attack strategies. For privacy, target responses are not stored except in error cases where they may appear in Promptfoo Cloud's error logs for debugging purposes.
+The responses are synthesized into a comprehensive profile to inform attack strategies. For privacy, target responses are not stored except in error cases where they may appear in artef Cloud's error logs for debugging purposes.
 
 ## Troubleshooting
 
-If `promptfoo redteam discover` fails with `Remote server returned HTTP 400: Unknown task: target-purpose-discovery` (or a similar 400/404 error), your client is most likely out of date. Update with `npm install -g promptfoo@latest` and rerun.
+If `artef redteam discover` fails with `Remote server returned HTTP 400: Unknown task: target-purpose-discovery` (or a similar 400/404 error), your client is most likely out of date. Update with `npm install -g artef@latest` and rerun.
 
 Other common errors:
 
-- **HTTP 401 / 403** — Run `promptfoo auth login` and confirm your account has access to target discovery.
+- **HTTP 401 / 403** — Run `artef auth login` and confirm your account has access to target discovery.
 - **HTTP 429** — You are being rate limited; wait a moment and try again.
 - **HTTP 5xx** — The remote generation service is temporarily unavailable. Retry in a few minutes.

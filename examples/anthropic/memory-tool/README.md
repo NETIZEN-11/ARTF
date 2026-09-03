@@ -1,9 +1,9 @@
-# anthropic/memory-tool (Anthropic Memory Tool)
+﻿# anthropic/memory-tool (Anthropic Memory Tool)
 
-This example shows how to include Anthropic's native `memory_20250818` tool in a Promptfoo eval.
+This example shows how to include Anthropic's native `memory_20250818` tool in a artef eval.
 
 ```bash
-npx promptfoo@latest init --example anthropic/memory-tool
+npx artef@latest init --example anthropic/memory-tool
 cd anthropic/memory-tool
 ```
 
@@ -20,7 +20,7 @@ cd anthropic/memory-tool
 ## Running the Example
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Promptfoo sends the memory tool definition to Anthropic, but it does not create memory stores or run local memory handlers. Use this pattern to validate prompt behavior around memory-tool availability, or remove `tool_choice` when you want the model to request memory operations for assertion.
+artef sends the memory tool definition to Anthropic, but it does not create memory stores or run local memory handlers. Use this pattern to validate prompt behavior around memory-tool availability, or remove `tool_choice` when you want the model to request memory operations for assertion.

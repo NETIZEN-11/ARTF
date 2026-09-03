@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { doGenerateRedteam } from '../../../src/redteam/commands/generate';
 import { synthesize } from '../../../src/redteam/index';
 import * as configModule from '../../../src/util/config/load';
@@ -20,7 +20,7 @@ vi.mock('../../../src/util/config/load', async (importOriginal) => {
 vi.mock('../../../src/util/config/writer', async (importOriginal) => {
   return {
     ...(await importOriginal()),
-    writePromptfooConfig: vi.fn(),
+    writeartefConfig: vi.fn(),
   };
 });
 vi.mock('../../../src/providers', async (importOriginal) => {

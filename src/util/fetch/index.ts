@@ -1,4 +1,4 @@
-import * as fsPromises from 'node:fs/promises';
+﻿import * as fsPromises from 'node:fs/promises';
 import path from 'path';
 import type { ConnectionOptions } from 'tls';
 
@@ -39,12 +39,12 @@ const cachedProxyAgents: Map<string, Dispatcher> = new Map();
 
 /**
  * Get the connection pool size for HTTP agents.
- * Priority: PROMPTFOO_FETCH_CONNECTIONS env var > CLI -j flag > DEFAULT_MAX_CONCURRENCY (4).
- * Set PROMPTFOO_FETCH_CONNECTIONS to override independently of eval concurrency
+ * Priority: artef_FETCH_CONNECTIONS env var > CLI -j flag > DEFAULT_MAX_CONCURRENCY (4).
+ * Set artef_FETCH_CONNECTIONS to override independently of eval concurrency
  * (e.g., server deployments that need more connections than the default 4).
  */
 function getConnectionPoolSize(): number {
-  const envConnections = getEnvString('PROMPTFOO_FETCH_CONNECTIONS');
+  const envConnections = getEnvString('artef_FETCH_CONNECTIONS');
   if (envConnections != null) {
     const parsed = parseInt(envConnections, 10);
     if (!isNaN(parsed)) {
@@ -158,7 +158,7 @@ export function getFetchWithProxyHeaders(
   return {
     ...requestHeaders,
     ...optionHeaders,
-    'x-promptfoo-version': VERSION,
+    'x-artef-version': VERSION,
   };
 }
 
@@ -233,11 +233,11 @@ export async function fetchWithProxy(
   }
 
   const tlsOptions: ConnectionOptions = {
-    rejectUnauthorized: !getEnvBool('PROMPTFOO_INSECURE_SSL', true),
+    rejectUnauthorized: !getEnvBool('artef_INSECURE_SSL', true),
   };
 
   // Support custom CA certificates
-  const caCertPath = getEnvString('PROMPTFOO_CA_CERT_PATH');
+  const caCertPath = getEnvString('artef_CA_CERT_PATH');
   if (caCertPath) {
     try {
       const resolvedPath = path.resolve(cliState.basePath || '', caCertPath);
@@ -668,7 +668,7 @@ export async function fetchWithRetries(
   maxRetries = Math.max(0, maxRetries ?? contextMaxRetries ?? 4);
 
   let lastErrorMessage: string | undefined;
-  const backoff = getEnvInt('PROMPTFOO_REQUEST_BACKOFF_MS', 5000);
+  const backoff = getEnvInt('artef_REQUEST_BACKOFF_MS', 5000);
   const signal = options.signal ?? (url instanceof Request ? url.signal : undefined);
 
   for (let i = 0; i <= maxRetries; i++) {
@@ -681,7 +681,7 @@ export async function fetchWithRetries(
         timeout,
       );
 
-      if (getEnvBool('PROMPTFOO_RETRY_5XX') && response.status >= 500 && response.status < 600) {
+      if (getEnvBool('artef_RETRY_5XX') && response.status >= 500 && response.status < 600) {
         throw new Error(`Internal Server Error: ${response.status} ${response.statusText}`);
       }
 

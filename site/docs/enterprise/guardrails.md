@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_label: Guardrails
 sidebar_position: 55
-title: Adaptive Guardrails in Promptfoo Enterprise
+title: Adaptive Guardrails in artef Enterprise
 description: Automatically turn red team vulnerabilities into context-aware filters that intercept adversarial prompts before they reach LLM endpoints
 keywords: [guardrails, adaptive guardrails, llm security, prompt filtering, red team defense]
 ---
@@ -14,7 +14,7 @@ Adaptive guardrails close the loop between red teaming and production defense by
 
 :::note
 
-This page describes Promptfoo Enterprise's runtime enforcement product. To test a target's provider-reported safety decision in an eval, see the [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails) and [guardrail testing guide](/docs/guides/testing-guardrails).
+This page describes artef Enterprise's runtime enforcement product. To test a target's provider-reported safety decision in an eval, see the [`guardrails` assertion](/docs/configuration/expected-outputs/guardrails) and [guardrail testing guide](/docs/guides/testing-guardrails).
 
 :::
 
@@ -30,7 +30,7 @@ Each guardrail is tied to a specific red teaming target, allowing us to leverage
   <img src="/img/docs/guardrail-feedback-loop.jpg" alt="guardrails feedback loop" style={{ width: '70%' }} /> 
 </div>
 
-1. Red team tests generate attacks to test the AI application in risk areas configured via red team plugins and custom policies in Promptfoo
+1. Red team tests generate attacks to test the AI application in risk areas configured via red team plugins and custom policies in artef
 2. Vulnerabilities are discovered which are recorded for use in defenses
 3. Guardrail policies are created or updated to ensure vulnerabilities are addressed
 4. We block new attacks using the updated policies based on captured vulnerabilities
@@ -97,17 +97,17 @@ To integrate the guardrail into your application, select **Guardrails > Targets*
 Here, you'll find different ways of integrating your guardrail into your application. Initially, we suggest integrating it at the input and output steps of your application. At the bottom of this page you'll find the different placement options that you need to add to your requests. For your first integration, we suggest just setting up input and output calls, and integrating tool call input/output calls later.
 
 ```javascript
-const baseUrl = process.env.PROMPTFOO_API_BASE_URL ?? 'http://localhost:3200';
-const targetId = process.env.PROMPTFOO_TARGET_ID;
+const baseUrl = process.env.artef_API_BASE_URL ?? 'http://localhost:3200';
+const targetId = process.env.artef_TARGET_ID;
 
 if (!targetId) {
-  throw new Error('PROMPTFOO_TARGET_ID is required');
+  throw new Error('artef_TARGET_ID is required');
 }
 
 const response = await fetch(`${baseUrl}/api/v1/guardrails/${targetId}/evaluate`, {
   method: 'POST',
   headers: {
-    Authorization: `Bearer ${process.env.PROMPTFOO_API_KEY}`,
+    Authorization: `Bearer ${process.env.artef_API_KEY}`,
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
@@ -128,7 +128,7 @@ if (result.action === 'block' || result.action === 'error') {
 }
 ```
 
-Gate the model call on the aggregate `action`: `allow`, `log`, `warn`, `block`, or `error`. Choose an explicit policy for `warn` and `error`; do not let either fall through by accident. The endpoint evaluates every active guardrail attached to the target ID and also returns `severity`, `guardrailResults`, and `latencyMs`. A transforming policy can return `sanitizedContent`. Keep the per-guardrail results for audit and debugging instead of reducing the response to a boolean. See the [`POST /api/v1/guardrails/{id}/evaluate` endpoint](https://www.promptfoo.dev/docs/api-reference/#tag/guardrails) in the API reference for the full request and response schema.
+Gate the model call on the aggregate `action`: `allow`, `log`, `warn`, `block`, or `error`. Choose an explicit policy for `warn` and `error`; do not let either fall through by accident. The endpoint evaluates every active guardrail attached to the target ID and also returns `severity`, `guardrailResults`, and `latencyMs`. A transforming policy can return `sanitizedContent`. Keep the per-guardrail results for audit and debugging instead of reducing the response to a boolean. See the [`POST /api/v1/guardrails/{id}/evaluate` endpoint](https://www.artef.dev/docs/api-reference/#tag/guardrails) in the API reference for the full request and response schema.
 
 ### Parallel Execution
 
@@ -267,6 +267,6 @@ Yes. You can delete individual policies through the UI or API without triggering
 
 It blocks patterns similar to discovered vulnerabilities. Entirely new attack types require additional red team testing to be detected. This is why the feedback loop between testing and guardrail generation is important.
 
-### Does Promptfoo support third-party guardrails?
+### Does artef support third-party guardrails?
 
-Yes. In addition to adaptive guardrails, Promptfoo supports OpenAI Moderation, Microsoft Presidio, Azure AI Content Safety, and AWS Bedrock Guardrails. You can select the guardrail type during creation.
+Yes. In addition to adaptive guardrails, artef supports OpenAI Moderation, Microsoft Presidio, Azure AI Content Safety, and AWS Bedrock Guardrails. You can select the guardrail type during creation.

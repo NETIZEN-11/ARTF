@@ -1,4 +1,4 @@
-import type { AssertionOrSet } from '@promptfoo/types';
+﻿import type { AssertionOrSet } from '@artef/types';
 
 const CONTEXT_ASSERTION_TYPES = new Set([
   'context-faithfulness',

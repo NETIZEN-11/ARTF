@@ -1,4 +1,4 @@
-// Shared harness for the split OpenAI responses provider tests.
+﻿// Shared harness for the split OpenAI responses provider tests.
 //
 // Each split test file must import this module with a bare side-effect
 // import (`import './setup';`) BEFORE importing the modules under test, so
@@ -53,7 +53,7 @@ const ENV_KEYS_TO_CLEAR = [
   'OPENAI_BASE_URL',
   'OPENAI_API_HOST',
   'REQUEST_TIMEOUT_MS',
-  'PROMPTFOO_EVAL_TIMEOUT_MS',
+  'artef_EVAL_TIMEOUT_MS',
 ] as const;
 
 type OpenAiEnvKey = (typeof ENV_KEYS_TO_CLEAR)[number];

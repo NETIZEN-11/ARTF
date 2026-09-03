@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "http-provider-auth-signature-jks",
   "version": "1.0.0",
   "description": "Example HTTP provider with JKS certificate signature authentication",
@@ -10,11 +10,11 @@
   "dependencies": {
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
-    "promptfoo": "^0.121.0",
+    "artef": "^0.121.0",
     "jks-js": "^1.1.5"
   },
   "keywords": [
-    "promptfoo",
+    "artef",
     "authentication",
     "jks",
     "certificates",

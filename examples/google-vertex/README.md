@@ -1,11 +1,11 @@
-# google-vertex (Google Vertex AI Examples)
+﻿# google-vertex (Google Vertex AI Examples)
 
-Example configurations for testing Google Vertex AI models with promptfoo.
+Example configurations for testing Google Vertex AI models with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-vertex
+npx artef@latest init --example google-vertex
 cd google-vertex
 ```
 
@@ -53,11 +53,11 @@ cd google-vertex
 
 This example includes:
 
-- `promptfooconfig.gemini.yaml`: Gemini 3.7 Flash, 3.6 Flash, 3.5 Flash-Lite, and earlier models with function calling, system instructions, and safety settings
-- `promptfooconfig.claude.yaml`: Claude models for technical writing and code analysis
-- `promptfooconfig.llama.yaml`: Llama models with safety features and region configuration
-- `promptfooconfig.search.yaml`: Search grounding for real-time information
-- `promptfooconfig.response-schema.yaml`: Response schemas with structured output
+- `artefconfig.gemini.yaml`: Gemini 3.7 Flash, 3.6 Flash, 3.5 Flash-Lite, and earlier models with function calling, system instructions, and safety settings
+- `artefconfig.claude.yaml`: Claude models for technical writing and code analysis
+- `artefconfig.llama.yaml`: Llama models with safety features and region configuration
+- `artefconfig.search.yaml`: Search grounding for real-time information
+- `artefconfig.response-schema.yaml`: Response schemas with structured output
 
 Gemini 3.7 Flash and 3.6 Flash use Vertex AI's `global` endpoint. Gemini 3.5
 Flash-Lite supports `global`, `us`, and `eu`; the `us` and `eu` multi-regions
@@ -68,22 +68,22 @@ support manual sampling parameters such as `temperature`, `topP`, and `topK`.
 
 ```sh
 # Basic example
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 
 # Model-specific examples
-promptfoo eval -c promptfooconfig.gemini.yaml
-promptfoo eval -c promptfooconfig.claude.yaml
-promptfoo eval -c promptfooconfig.llama.yaml
+artef eval -c artefconfig.gemini.yaml
+artef eval -c artefconfig.claude.yaml
+artef eval -c artefconfig.llama.yaml
 
 # Search grounding tool and image understanding
-promptfoo eval -c promptfooconfig.search.yaml
-promptfoo eval -c promptfooconfig.image.yaml
+artef eval -c artefconfig.search.yaml
+artef eval -c artefconfig.image.yaml
 
 # Structured output with response schemas
-promptfoo eval -c promptfooconfig.response-schema.yaml
+artef eval -c artefconfig.response-schema.yaml
 
 # View results
-promptfoo view
+artef view
 ```
 
 ## Expected Results
@@ -92,7 +92,7 @@ Each configuration demonstrates different model capabilities, from function call
 
 ## Learn More
 
-- [Vertex AI Provider Documentation](https://www.promptfoo.dev/docs/providers/vertex/)
+- [Vertex AI Provider Documentation](https://www.artef.dev/docs/providers/vertex/)
 - [Google Cloud Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)
 - [Google documentation on Grounding with Google Search](https://ai.google.dev/docs/gemini_api/grounding)
 - [Google documentation on Image Understanding](https://ai.google.dev/gemini-api/docs/image-understanding#inline-image)

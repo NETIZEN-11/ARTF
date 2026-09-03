@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { configCache, loadDefaultConfig } from '../../../src/util/config/default';
@@ -26,7 +26,7 @@ describe('loadDefaultConfig', () => {
     expect(maybeReadConfig).toHaveBeenCalledTimes(9);
     expect(maybeReadConfig).toHaveBeenNthCalledWith(
       1,
-      path.normalize('/test/path/promptfooconfig.yaml'),
+      path.normalize('/test/path/artefconfig.yaml'),
     );
   });
 
@@ -40,7 +40,7 @@ describe('loadDefaultConfig', () => {
     const result = await loadDefaultConfig();
     expect(result).toEqual({
       defaultConfig: mockConfig,
-      defaultConfigPath: path.normalize('/test/path/promptfooconfig.json'),
+      defaultConfigPath: path.normalize('/test/path/artefconfig.json'),
     });
     expect(maybeReadConfig).toHaveBeenCalledTimes(3);
   });
@@ -54,11 +54,11 @@ describe('loadDefaultConfig', () => {
     expect(maybeReadConfig).toHaveBeenCalledTimes(2);
     expect(maybeReadConfig).toHaveBeenNthCalledWith(
       1,
-      path.normalize('/test/path/promptfooconfig.yaml'),
+      path.normalize('/test/path/artefconfig.yaml'),
     );
     expect(maybeReadConfig).toHaveBeenNthCalledWith(
       2,
-      path.normalize('/test/path/promptfooconfig.yml'),
+      path.normalize('/test/path/artefconfig.yml'),
     );
   });
 
@@ -70,9 +70,9 @@ describe('loadDefaultConfig', () => {
     const result = await loadDefaultConfig(customDir);
     expect(result).toEqual({
       defaultConfig: mockConfig,
-      defaultConfigPath: path.join(customDir, 'promptfooconfig.yaml'),
+      defaultConfigPath: path.join(customDir, 'artefconfig.yaml'),
     });
-    expect(maybeReadConfig).toHaveBeenCalledWith(path.join(customDir, 'promptfooconfig.yaml'));
+    expect(maybeReadConfig).toHaveBeenCalledWith(path.join(customDir, 'artefconfig.yaml'));
   });
 
   it('should use custom config name when provided', async () => {
@@ -95,14 +95,14 @@ describe('loadDefaultConfig', () => {
       .mockResolvedValueOnce(mockConfig1)
       .mockResolvedValueOnce(mockConfig2);
 
-    const result1 = await loadDefaultConfig(undefined, 'promptfooconfig');
+    const result1 = await loadDefaultConfig(undefined, 'artefconfig');
     const result2 = await loadDefaultConfig(undefined, 'redteam');
 
     expect(result1).not.toEqual(result2);
     expect(result1.defaultConfig).toEqual(mockConfig1);
     expect(result2.defaultConfig).toEqual(mockConfig2);
 
-    const cachedResult1 = await loadDefaultConfig(undefined, 'promptfooconfig');
+    const cachedResult1 = await loadDefaultConfig(undefined, 'artefconfig');
     const cachedResult2 = await loadDefaultConfig(undefined, 'redteam');
 
     expect(cachedResult1).toEqual(result1);

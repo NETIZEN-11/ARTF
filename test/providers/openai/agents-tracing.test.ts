@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { OTLPTracingExporter } from '../../../src/providers/openai/agents-tracing';
 import { decodeExportTraceServiceRequest } from '../../../src/tracing/protobuf';
 
@@ -35,7 +35,7 @@ describe('OTLPTracingExporter', () => {
     mockFetchWithProxy.mockResolvedValue({ ok: true });
   });
 
-  it('keeps provider token counts standard and namespaces Promptfoo totals', () => {
+  it('keeps provider token counts standard and namespaces artef totals', () => {
     const exporter = new OTLPTracingExporter() as any;
     const payload = exporter.transformToOTLP([
       {
@@ -64,7 +64,7 @@ describe('OTLPTracingExporter', () => {
       'gen_ai.request.model': 'gpt-4.1',
       'gen_ai.usage.input_tokens': 12,
       'gen_ai.usage.output_tokens': 8,
-      'promptfoo.usage.total_tokens': 20,
+      'artef.usage.total_tokens': 20,
     });
     expect(getAttributes(span)).not.toHaveProperty('gen_ai.usage.total_tokens');
   });
@@ -115,7 +115,7 @@ describe('OTLPTracingExporter', () => {
       'openai.api.type': 'responses',
       'openai.agents.span_type': 'response',
       'openai.response_id': 'resp_123',
-      'promptfoo.usage.total_tokens': 155,
+      'artef.usage.total_tokens': 155,
     });
     expect(getAttributes(spans[0])).not.toHaveProperty('gen_ai.request.model');
   });
@@ -132,7 +132,7 @@ describe('OTLPTracingExporter', () => {
           response_id: 'resp_123',
           _response: { id: 'resp_123', model: 'gpt-4.1-2025-04-14' },
         },
-        traceMetadata: { 'promptfoo.request_model': 'support-agent-alias' },
+        traceMetadata: { 'artef.request_model': 'support-agent-alias' },
         error: null,
       },
     ]);
@@ -142,7 +142,7 @@ describe('OTLPTracingExporter', () => {
       'gen_ai.request.model': 'support-agent-alias',
       'gen_ai.response.model': 'gpt-4.1-2025-04-14',
     });
-    expect(attributes).not.toHaveProperty('trace.metadata.promptfoo.request_model');
+    expect(attributes).not.toHaveProperty('trace.metadata.artef.request_model');
   });
 
   it.each([
@@ -164,7 +164,7 @@ describe('OTLPTracingExporter', () => {
       description: 'provider metadata propagated from a custom model object',
       model: 'custom-deployment',
       modelConfig: undefined,
-      metadata: { 'promptfoo.model_provider': 'litellm' },
+      metadata: { 'artef.model_provider': 'litellm' },
       expectedProvider: 'litellm',
     },
   ])(
@@ -184,7 +184,7 @@ describe('OTLPTracingExporter', () => {
 
       const attributes = getAttributes(payload.resourceSpans[0].scopeSpans[0].spans[0]);
       expect(attributes['gen_ai.provider.name']).toBe(expectedProvider);
-      expect(attributes).not.toHaveProperty('trace.metadata.promptfoo.model_provider');
+      expect(attributes).not.toHaveProperty('trace.metadata.artef.model_provider');
     },
   );
 
@@ -214,8 +214,8 @@ describe('OTLPTracingExporter', () => {
       spanId: 'span_0123456789abcdef',
       spanData: { type: 'generation', model: 'gpt-4.1' },
       traceMetadata: {
-        'promptfoo.otlp_endpoint': 'http://127.0.0.1:14318',
-        'promptfoo.otlp_format': 'protobuf',
+        'artef.otlp_endpoint': 'http://127.0.0.1:14318',
+        'artef.otlp_format': 'protobuf',
       },
       error: null,
     };
@@ -241,7 +241,7 @@ describe('OTLPTracingExporter', () => {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
       spanId: 'span_0123456789abcdef',
       spanData: { type: 'generation', model: 'gpt-4.1' },
-      traceMetadata: { 'promptfoo.otlp_endpoint': 'https://collector.example.com:4318' },
+      traceMetadata: { 'artef.otlp_endpoint': 'https://collector.example.com:4318' },
       error: null,
     };
 
@@ -305,7 +305,7 @@ describe('OTLPTracingExporter', () => {
     });
   });
 
-  it('uses Promptfoo service resources without exposing internal routing metadata', () => {
+  it('uses artef service resources without exposing internal routing metadata', () => {
     const exporter = new OTLPTracingExporter() as any;
     const payload = exporter.transformToOTLP([
       {
@@ -314,7 +314,7 @@ describe('OTLPTracingExporter', () => {
         spanId: 'span_0123456789abcdef',
         parentId: null,
         spanData: { type: 'response', response_id: 'resp_123' },
-        traceMetadata: { 'promptfoo.service_name': 'custom-promptfoo-service' },
+        traceMetadata: { 'artef.service_name': 'custom-artef-service' },
         error: null,
       },
       {
@@ -330,17 +330,17 @@ describe('OTLPTracingExporter', () => {
 
     expect(payload.resourceSpans).toHaveLength(2);
     expect(payload.resourceSpans[0].resource.attributes).toEqual([
-      { key: 'service.name', value: { stringValue: 'custom-promptfoo-service' } },
+      { key: 'service.name', value: { stringValue: 'custom-artef-service' } },
     ]);
     expect(payload.resourceSpans[1].resource.attributes).toEqual([
-      { key: 'service.name', value: { stringValue: 'promptfoo' } },
+      { key: 'service.name', value: { stringValue: 'artef' } },
     ]);
     expect(getAttributes(payload.resourceSpans[0].scopeSpans[0].spans[0])).not.toHaveProperty(
-      'trace.metadata.promptfoo.service_name',
+      'trace.metadata.artef.service_name',
     );
   });
 
-  it('maps function spans into Promptfoo trajectory-friendly tool attributes', () => {
+  it('maps function spans into artef trajectory-friendly tool attributes', () => {
     const exporter = new OTLPTracingExporter() as any;
     const payload = exporter.transformToOTLP([
       {
@@ -359,7 +359,7 @@ describe('OTLPTracingExporter', () => {
         traceMetadata: {
           'evaluation.id': 'eval-1',
           'test.case.id': 'case-1',
-          'promptfoo.parent_span_id': 'fedcba9876543210',
+          'artef.parent_span_id': 'fedcba9876543210',
         },
         error: null,
       },

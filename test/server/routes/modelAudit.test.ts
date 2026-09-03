@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+﻿import { spawn } from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -98,7 +98,7 @@ describe('Model Audit Routes', () => {
         ['scan', '--format', 'json', '--list-scanners'],
         expect.objectContaining({
           env: expect.objectContaining({
-            PROMPTFOO_DELEGATED: 'true',
+            artef_DELEGATED: 'true',
           }),
         }),
       );
@@ -342,7 +342,7 @@ describe('Model Audit Routes', () => {
           ]),
           expect.objectContaining({
             env: expect.objectContaining({
-              PROMPTFOO_DELEGATED: 'true',
+              artef_DELEGATED: 'true',
             }),
           }),
         );

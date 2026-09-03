@@ -1,4 +1,4 @@
-import {
+﻿import {
   type Attributes,
   context,
   propagation,
@@ -16,11 +16,11 @@ import type { CallApiContextParams, ProviderResponse } from '../types/index';
 import type { TokenUsage } from '../types/shared';
 
 export {
-  PROMPTFOO_RESOURCE_ATTR_PARENT_SPAN_ID,
-  PROMPTFOO_RESOURCE_ATTR_TRACE_ID,
+  artef_RESOURCE_ATTR_PARENT_SPAN_ID,
+  artef_RESOURCE_ATTR_TRACE_ID,
 } from './resourceAttributes';
 
-const TRACER_NAME = 'promptfoo.providers';
+const TRACER_NAME = 'artef.providers';
 const TRACER_VERSION = '1.0.0';
 
 // GenAI Semantic Convention attribute names
@@ -63,19 +63,19 @@ export const GenAIAttributes = {
   USAGE_CACHE_CREATION_INPUT_TOKENS: 'gen_ai.usage.cache_creation.input_tokens',
 } as const;
 
-// Promptfoo-specific attributes
-export const PromptfooAttributes = {
-  PROVIDER_ID: 'promptfoo.provider.id',
-  EVAL_ID: 'promptfoo.eval.id',
-  TEST_INDEX: 'promptfoo.test.index',
-  PROMPT_LABEL: 'promptfoo.prompt.label',
-  CACHE_HIT: 'promptfoo.cache_hit',
-  REQUEST_BODY: 'promptfoo.request.body',
-  RESPONSE_BODY: 'promptfoo.response.body',
-  USAGE_TOTAL_TOKENS: 'promptfoo.usage.total_tokens',
-  USAGE_CACHED_RESPONSE_TOKENS: 'promptfoo.usage.cached_response_tokens',
-  USAGE_ACCEPTED_PREDICTION_TOKENS: 'promptfoo.usage.accepted_prediction_tokens',
-  USAGE_REJECTED_PREDICTION_TOKENS: 'promptfoo.usage.rejected_prediction_tokens',
+// artef-specific attributes
+export const artefAttributes = {
+  PROVIDER_ID: 'artef.provider.id',
+  EVAL_ID: 'artef.eval.id',
+  TEST_INDEX: 'artef.test.index',
+  PROMPT_LABEL: 'artef.prompt.label',
+  CACHE_HIT: 'artef.cache_hit',
+  REQUEST_BODY: 'artef.request.body',
+  RESPONSE_BODY: 'artef.response.body',
+  USAGE_TOTAL_TOKENS: 'artef.usage.total_tokens',
+  USAGE_CACHED_RESPONSE_TOKENS: 'artef.usage.cached_response_tokens',
+  USAGE_ACCEPTED_PREDICTION_TOKENS: 'artef.usage.accepted_prediction_tokens',
+  USAGE_REJECTED_PREDICTION_TOKENS: 'artef.usage.rejected_prediction_tokens',
 } as const;
 
 type GenAIOperationName = 'chat' | 'text_completion' | 'embeddings' | 'invoke_agent';
@@ -156,7 +156,7 @@ export interface GenAISpanContext {
   agentName?: string;
   /** Distinguishes OpenAI's Responses and Chat Completions APIs. */
   openaiApiType?: 'responses' | 'chat_completions';
-  /** The promptfoo provider ID */
+  /** The artef provider ID */
   providerId: string;
 
   // Optional request parameters
@@ -168,7 +168,7 @@ export interface GenAISpanContext {
   frequencyPenalty?: number;
   presencePenalty?: number;
 
-  // Promptfoo context
+  // artef context
   evalId?: string;
   testIndex?: number;
   promptLabel?: string;
@@ -469,8 +469,8 @@ function buildRequestAttributes(
     [GenAIAttributes.PROVIDER_NAME]: getProviderName(ctx.system),
     [GenAIAttributes.OPERATION_NAME]: operationName,
 
-    // Promptfoo attributes
-    [PromptfooAttributes.PROVIDER_ID]: ctx.providerId,
+    // artef attributes
+    [artefAttributes.PROVIDER_ID]: ctx.providerId,
   };
 
   if (operationName === 'invoke_agent' && ctx.agentName) {
@@ -517,20 +517,20 @@ function buildRequestAttributes(
     attrs[GenAIAttributes.REQUEST_PRESENCE_PENALTY] = ctx.presencePenalty;
   }
 
-  // Promptfoo context
+  // artef context
   if (ctx.evalId) {
-    attrs[PromptfooAttributes.EVAL_ID] = ctx.evalId;
+    attrs[artefAttributes.EVAL_ID] = ctx.evalId;
   }
   if (ctx.testIndex !== undefined) {
-    attrs[PromptfooAttributes.TEST_INDEX] = ctx.testIndex;
+    attrs[artefAttributes.TEST_INDEX] = ctx.testIndex;
   }
   if (ctx.promptLabel) {
-    attrs[PromptfooAttributes.PROMPT_LABEL] = ctx.promptLabel;
+    attrs[artefAttributes.PROMPT_LABEL] = ctx.promptLabel;
   }
 
   // Request body (truncated, optionally sanitized)
   if (ctx.requestBody) {
-    attrs[PromptfooAttributes.REQUEST_BODY] = truncateBody(ctx.requestBody, ctx.sanitizeBodies);
+    attrs[artefAttributes.REQUEST_BODY] = truncateBody(ctx.requestBody, ctx.sanitizeBodies);
   }
 
   return attrs;
@@ -594,11 +594,11 @@ export function setGenAIResponseAttributes(
       span.setAttribute(GenAIAttributes.USAGE_OUTPUT_TOKENS, usage.completion);
     }
     if (usage.total !== undefined) {
-      span.setAttribute(PromptfooAttributes.USAGE_TOTAL_TOKENS, usage.total);
+      span.setAttribute(artefAttributes.USAGE_TOTAL_TOKENS, usage.total);
     }
     if (usage.cached !== undefined) {
       if (result.cacheHit === true) {
-        span.setAttribute(PromptfooAttributes.USAGE_CACHED_RESPONSE_TOKENS, usage.cached);
+        span.setAttribute(artefAttributes.USAGE_CACHED_RESPONSE_TOKENS, usage.cached);
       } else if (usage.completionDetails?.cacheReadInputTokens === undefined) {
         span.setAttribute(GenAIAttributes.USAGE_CACHE_READ_INPUT_TOKENS, usage.cached);
       }
@@ -614,13 +614,13 @@ export function setGenAIResponseAttributes(
       }
       if (usage.completionDetails.acceptedPrediction !== undefined) {
         span.setAttribute(
-          PromptfooAttributes.USAGE_ACCEPTED_PREDICTION_TOKENS,
+          artefAttributes.USAGE_ACCEPTED_PREDICTION_TOKENS,
           usage.completionDetails.acceptedPrediction,
         );
       }
       if (usage.completionDetails.rejectedPrediction !== undefined) {
         span.setAttribute(
-          PromptfooAttributes.USAGE_REJECTED_PREDICTION_TOKENS,
+          artefAttributes.USAGE_REJECTED_PREDICTION_TOKENS,
           usage.completionDetails.rejectedPrediction,
         );
       }
@@ -650,13 +650,13 @@ export function setGenAIResponseAttributes(
     span.setAttribute(GenAIAttributes.RESPONSE_FINISH_REASONS, result.finishReasons);
   }
 
-  // Promptfoo-specific response attributes
+  // artef-specific response attributes
   if (result.cacheHit !== undefined) {
-    span.setAttribute(PromptfooAttributes.CACHE_HIT, result.cacheHit);
+    span.setAttribute(artefAttributes.CACHE_HIT, result.cacheHit);
   }
   if (result.responseBody) {
     span.setAttribute(
-      PromptfooAttributes.RESPONSE_BODY,
+      artefAttributes.RESPONSE_BODY,
       truncateBody(result.responseBody, sanitize),
     );
   }
@@ -716,7 +716,7 @@ export function getCurrentSpanId(): string | undefined {
 /**
  * Build a `chat` GenAISpanContext from the fields every provider shares.
  *
- * The promptfoo context fields (eval id, test index, prompt label, traceparent)
+ * The artef context fields (eval id, test index, prompt label, traceparent)
  * and the request body are derived identically across providers; per-provider
  * request parameters (max tokens, temperature, etc.) are passed via `request`.
  */

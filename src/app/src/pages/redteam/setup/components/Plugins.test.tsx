@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { ToastProvider } from '@app/contexts/ToastContext';
@@ -71,7 +71,7 @@ vi.mock('./TestCaseDialog', () => ({
 
 vi.mock('./PluginsTab', async () => {
   const [{ DEFAULT_PLUGINS, MINIMAL_TEST_PLUGINS }, { useSearchParams }] = await Promise.all([
-    import('@promptfoo/redteam/constants'),
+    import('@artef/redteam/constants'),
     import('react-router-dom'),
   ]);
 
@@ -167,7 +167,7 @@ describe('Plugins', () => {
 
     expect(screen.getByRole('heading', { name: /Plugins/i, level: 1 })).toBeInTheDocument();
     expect(
-      screen.getByText(/Plugins are Promptfoo's modular system for testing/i),
+      screen.getByText(/Plugins are artef's modular system for testing/i),
     ).toBeInTheDocument();
 
     const nextButton = screen.getByRole('button', { name: /Next/i });

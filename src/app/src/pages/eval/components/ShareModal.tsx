@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import {
@@ -54,7 +54,7 @@ const ShareModal = ({ open, onClose, evalId, onShare }: ShareModalProps) => {
         };
 
         if (response.ok) {
-          const isPublicDomain = data.domain.includes('promptfoo.app');
+          const isPublicDomain = data.domain.includes('artef.app');
           if (isPublicDomain && !data.isCloudEnabled) {
             setShowNeedsSignup(true);
             return;
@@ -99,7 +99,7 @@ const ShareModal = ({ open, onClose, evalId, onShare }: ShareModalProps) => {
   };
 
   const handleConfirm = async () => {
-    window.open('https://www.promptfoo.app', '_blank');
+    window.open('https://www.artef.app', '_blank');
   };
 
   if (error) {
@@ -129,17 +129,17 @@ const ShareModal = ({ open, onClose, evalId, onShare }: ShareModalProps) => {
               <DialogTitle>Share Evaluation</DialogTitle>
             </DialogHeader>
             <DialogDescription className="py-4">
-              You need to be logged in to your Promptfoo cloud account to share your evaluation.
+              You need to be logged in to your artef cloud account to share your evaluation.
               <br />
               <br />
               Sign up for free or login to your existing account at{' '}
               <a
-                href="https://promptfoo.app"
+                href="https://artef.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
-                https://www.promptfoo.app
+                https://www.artef.app
               </a>
             </DialogDescription>
             <DialogFooter>

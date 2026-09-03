@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import path from 'path';
 
 import chalk from 'chalk';
@@ -182,10 +182,10 @@ async function getRemoteResponseErrorDetail(response: Response): Promise<string>
 }
 
 const REMOTE_ERROR_HINTS: Record<number, string> = {
-  400: 'This usually means your promptfoo client is out of date. Try `npm install -g promptfoo@latest` and rerun.',
-  401: 'Check that you are logged in (`promptfoo auth login`) and that your account has access to target discovery.',
-  403: 'Check that you are logged in (`promptfoo auth login`) and that your account has access to target discovery.',
-  404: 'This usually means your promptfoo client is out of date. Try `npm install -g promptfoo@latest` and rerun.',
+  400: 'This usually means your artef client is out of date. Try `npm install -g artef@latest` and rerun.',
+  401: 'Check that you are logged in (`artef auth login`) and that your account has access to target discovery.',
+  403: 'Check that you are logged in (`artef auth login`) and that your account has access to target discovery.',
+  404: 'This usually means your artef client is out of date. Try `npm install -g artef@latest` and rerun.',
   429: 'You are being rate limited. Wait a moment and try again.',
 };
 
@@ -258,7 +258,7 @@ export async function doTargetPurposeDiscovery(
           method: 'POST',
           // Auth is injected centrally at the fetch layer for the configured cloud
           // origin only, so the saved token is never sent to a custom
-          // PROMPTFOO_REMOTE_GENERATION_URL.
+          // artef_REMOTE_GENERATION_URL.
           headers: getRemoteGenerationHeaders(),
           body: JSON.stringify(
             TargetPurposeDiscoveryRequestSchema.parse({
@@ -370,19 +370,19 @@ export function discoverCommand(
         Run the Target Discovery Agent to automatically discover and report a target application's purpose,
         limitations, and tools, enhancing attack probe efficacy.
 
-        If neither a config file nor a target ID is provided, the current working directory will be checked for a promptfooconfig.yaml file,
+        If neither a config file nor a target ID is provided, the current working directory will be checked for a artefconfig.yaml file,
         and the first provider in that config will be used.
       `,
     )
-    .option('-c, --config <path>', 'Path to `promptfooconfig.yaml` configuration file.')
-    .option('-t, --target <id>', 'UUID of a target defined in Promptfoo Cloud to scan.')
+    .option('-c, --config <path>', 'Path to `artefconfig.yaml` configuration file.')
+    .option('-t, --target <id>', 'UUID of a target defined in artef Cloud to scan.')
     .action(async (rawArgs: Args) => {
       // Check that remote generation is enabled:
       if (neverGenerateRemote()) {
         logger.error(dedent`
           Target discovery relies on remote generation which is disabled.
 
-          To enable remote generation, unset the PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION environment variable.
+          To enable remote generation, unset the artef_DISABLE_REDTEAM_REMOTE_GENERATION environment variable.
         `);
         process.exitCode = 1;
         return;
@@ -447,7 +447,7 @@ export function discoverCommand(
         target = await loadApiProvider(providerOptions.id, { options: providerOptions });
         cloudTargetId = args.target;
       }
-      // Check the current working directory for a promptfooconfig.yaml file:
+      // Check the current working directory for a artefconfig.yaml file:
       else if (defaultConfig) {
         if (!defaultConfig.providers) {
           throw new Error('Config must contain a target or provider');
@@ -465,7 +465,7 @@ export function discoverCommand(
         logger.info(`Using config from ${chalk.italic(defaultConfigPath)}`);
       } else {
         logger.error(
-          'No config found, please specify a config file with the --config flag, a target with the --target flag, or run this command from a directory with a promptfooconfig.yaml file.',
+          'No config found, please specify a config file with the --config flag, a target with the --target flag, or run this command from a directory with a artefconfig.yaml file.',
         );
         process.exitCode = 1;
         return;

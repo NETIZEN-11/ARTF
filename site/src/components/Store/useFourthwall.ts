@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+﻿import { useCallback, useEffect, useState } from 'react';
 
 import type {
   FourthwallAttributeValue,
@@ -14,7 +14,7 @@ import type {
 // Decoded value: ptkn_1be7c822-bfc7-4167-83a6-95619ff7ed7f
 const STOREFRONT_TOKEN = atob('cHRrbl8xYmU3YzgyMi1iZmM3LTQxNjctODNhNi05NTYxOWZmN2VkN2Y=');
 const API_BASE = 'https://storefront-api.fourthwall.com/v1';
-const CHECKOUT_DOMAIN = 'https://promptfoo-shop.fourthwall.com';
+const CHECKOUT_DOMAIN = 'https://artef-shop.fourthwall.com';
 
 // Maximum pages to fetch (safety limit for pagination)
 const MAX_PAGES = 50;
@@ -175,7 +175,7 @@ export function useProduct(slug: string | null) {
 }
 
 // Cart operations
-const CART_STORAGE_KEY = 'promptfoo_cart_id';
+const CART_STORAGE_KEY = 'artef_cart_id';
 const storage = safeLocalStorage();
 
 export function useCart() {

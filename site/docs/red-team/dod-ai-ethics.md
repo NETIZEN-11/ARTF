@@ -1,4 +1,4 @@
----
+﻿---
 title: DoD AI Ethical Principles
 sidebar_position: 27
 description: Red team LLM applications against U.S. DoD AI ethical principles to test accountability, fairness, traceability, reliability, and governability
@@ -8,7 +8,7 @@ description: Red team LLM applications against U.S. DoD AI ethical principles to
 
 The U.S. Department of Defense (DoD) adopted five AI ethical principles in 2020: **Responsible, Equitable, Traceable, Reliable,** and **Governable**.
 
-Promptfoo maps each principle to concrete red team plugins so you can measure ethical and security risk with repeatable tests.
+artef maps each principle to concrete red team plugins so you can measure ethical and security risk with repeatable tests.
 
 ## Principle Overview
 
@@ -20,7 +20,7 @@ Promptfoo maps each principle to concrete red team plugins so you can measure et
 
 ## Scanning for DoD AI Ethics Alignment
 
-In Promptfoo UI, select the **DoD AI Ethical Principles** preset on the Plugins page.
+In artef UI, select the **DoD AI Ethical Principles** preset on the Plugins page.
 
 Or configure it directly:
 

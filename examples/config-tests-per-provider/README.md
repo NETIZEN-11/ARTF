@@ -1,4 +1,4 @@
-# config-tests-per-provider (Isolated Test Suites)
+﻿# config-tests-per-provider (Isolated Test Suites)
 
 This example demonstrates how to run different tests against different providers in a single evaluation using the `providers` filter on test cases.
 
@@ -12,13 +12,13 @@ This example demonstrates how to run different tests against different providers
 ## Setup
 
 ```bash
-npx promptfoo@latest init --example config-tests-per-provider
-npx promptfoo@latest eval
+npx artef@latest init --example config-tests-per-provider
+npx artef@latest eval
 ```
 
 ## The Problem
 
-Without filtering, promptfoo creates a cross-product of all tests × providers. If you have 2 tests and 2 providers, you get 4 test cases. This example shows how to run specific tests only against specific providers.
+Without filtering, artef creates a cross-product of all tests × providers. If you have 2 tests and 2 providers, you get 4 test cases. This example shows how to run specific tests only against specific providers.
 
 ## Features Demonstrated
 

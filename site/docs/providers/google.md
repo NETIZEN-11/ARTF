@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Google AI / Gemini
 description: Configure Google's Gemini models with support for text, images, and video inputs through Google AI Studio API for comprehensive multimodal LLM testing and evaluation
 ---
@@ -50,7 +50,7 @@ Create a `.env` file in your project root:
 GOOGLE_API_KEY=your_api_key_here
 ```
 
-Promptfoo automatically loads environment variables from `.env` files in your project directory. Make sure to add `.env` to your `.gitignore` file.
+artef automatically loads environment variables from `.env` files in your project directory. Make sure to add `.env` to your `.gitignore` file.
 
 #### Option 3: Provider Configuration
 
@@ -80,7 +80,7 @@ providers:
 Test your setup with a simple prompt:
 
 ```bash
-promptfoo eval --prompt "Hello, how are you?" --providers google:gemini-2.5-flash
+artef eval --prompt "Hello, how are you?" --providers google:gemini-2.5-flash
 ```
 
 ## Configuration Options
@@ -100,7 +100,7 @@ providers:
       apiBaseUrl: https://custom.googleapis.com
 ```
 
-For promptfoo's built-in cost estimates, Google providers also support `config.cost`,
+For artef's built-in cost estimates, Google providers also support `config.cost`,
 `config.inputCost`, and `config.outputCost`. Use `inputCost` and `outputCost` for separate
 prompt and completion pricing. The legacy `cost` option remains the shared fallback.
 
@@ -108,10 +108,10 @@ prompt and completion pricing. The legacy `cost` option remains the shared fallb
 
 ### 1. Basic Evaluation
 
-Create a simple `promptfooconfig.yaml`:
+Create a simple `artefconfig.yaml`:
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 providers:
   - google:gemini-2.5-flash
 
@@ -128,7 +128,7 @@ tests:
 Run the eval:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ### 2. Comparing Models
@@ -202,7 +202,7 @@ export GOOGLE_API_KEY="your_api_key_here"
 
 - Add delays between requests:
   ```yaml
-  # promptfooconfig.yaml
+  # artefconfig.yaml
   evaluateOptions:
     delay: 1000 # 1 second delay between API calls
   ```
@@ -224,7 +224,7 @@ export GOOGLE_API_KEY="your_api_key_here"
 1. **Enable verbose logging**:
 
    ```bash
-   promptfoo eval --verbose
+   artef eval --verbose
    ```
 
 2. **Test your API key directly**:
@@ -302,7 +302,7 @@ tokens and $7.50 per million output tokens. Both models support a 1,048,576-toke
 input context and up to 65,536 output tokens.
 
 Gemini 3.7 Flash, 3.6 Flash, and 3.5 Flash-Lite ignore the deprecated `temperature`,
-`topP`, and `topK` sampling controls. Promptfoo removes these parameters automatically.
+`topP`, and `topK` sampling controls. artef removes these parameters automatically.
 Use `thinkingLevel` to configure reasoning instead:
 
 ```yaml
@@ -329,7 +329,7 @@ support `MINIMAL` or the legacy `thinkingBudget` setting.
 Use the `google:embedding:` prefix (or the plural `google:embeddings:` alias) to call the Gemini API `embedContent` endpoint:
 
 - `google:embedding:gemini-embedding-001` - Recommended default. Multilingual plus code, up to 3,072 dimensions, 2,048 input-token limit
-- `google:embedding:gemini-embedding-2` - Latest Gemini embedding model for text input through promptfoo
+- `google:embedding:gemini-embedding-2` - Latest Gemini embedding model for text input through artef
 - `google:embedding:gemini-embedding-2-preview` - Preview alias for Gemini Embedding 2 ($0.20/1M input tokens)
 
 Optional config keys (forwarded as documented in Google's [embedContent reference](https://ai.google.dev/api/embeddings#EmbedContentRequest)):
@@ -399,7 +399,7 @@ providers:
       addWatermark: false            # Must be false when using seed
 ```
 
-See the [Google Imagen example](https://github.com/promptfoo/promptfoo/tree/main/examples/google-imagen).
+See the [Google Imagen example](https://github.com/artef/artef/tree/main/examples/google-imagen).
 
 ### Gemini Native Image Generation Models
 
@@ -443,11 +443,11 @@ providers:
         - googleSearch: {}
 ```
 
-See the [Google Imagen example](https://github.com/promptfoo/promptfoo/tree/main/examples/google-imagen) for Gemini image generation configurations.
+See the [Google Imagen example](https://github.com/artef/artef/tree/main/examples/google-imagen) for Gemini image generation configurations.
 
 ### Video Generation Models (Gemini Omni Flash)
 
-Gemini Omni Flash uses the Gemini Interactions API rather than `generateContent`; Promptfoo automatically routes both `google:gemini-omni-flash-preview` and `vertex:gemini-omni-flash-preview` to the correct endpoint and stores returned video in blob storage. Vertex uses OAuth and the configured Google Cloud project. Use `store: true` and `previousInteractionId` with the Google AI Studio route to conversationally edit a prior result; Vertex does not currently support follow-up interactions. Omni does not support grounding, code execution, or function-calling tools.
+Gemini Omni Flash uses the Gemini Interactions API rather than `generateContent`; artef automatically routes both `google:gemini-omni-flash-preview` and `vertex:gemini-omni-flash-preview` to the correct endpoint and stores returned video in blob storage. Vertex uses OAuth and the configured Google Cloud project. Use `store: true` and `previousInteractionId` with the Google AI Studio route to conversationally edit a prior result; Vertex does not currently support follow-up interactions. Omni does not support grounding, code execution, or function-calling tools.
 
 ```yaml
 providers:
@@ -602,13 +602,13 @@ referenceImages:
 
 #### Storage
 
-Generated videos are stored in promptfoo's blob storage system, which uses content-addressable hashing for deduplication. Videos with identical content share the same storage reference. Use `--no-cache` to force regeneration:
+Generated videos are stored in artef's blob storage system, which uses content-addressable hashing for deduplication. Videos with identical content share the same storage reference. Use `--no-cache` to force regeneration:
 
 ```bash
-promptfoo eval --no-cache
+artef eval --no-cache
 ```
 
-See the [Google Video example](https://github.com/promptfoo/promptfoo/tree/main/examples/google-video) for complete configurations.
+See the [Google Video example](https://github.com/artef/artef/tree/main/examples/google-video) for complete configurations.
 
 <a id="gemini-20-flash"></a>
 
@@ -737,7 +737,7 @@ System instructions support Nunjucks templating and can be loaded from external 
 
 ### Role Mapping Configuration
 
-Gemini models require specific role names in chat messages. By default, Promptfoo uses the `model` role for compatibility with newer Gemini versions (2.5+). For older Gemini versions that expect the `assistant` role, you can disable this:
+Gemini models require specific role names in chat messages. By default, artef uses the `model` role for compatibility with newer Gemini versions (2.5+). For older Gemini versions that expect the `assistant` role, you can disable this:
 
 ```yaml
 providers:
@@ -866,7 +866,7 @@ You can override providers in several ways:
 
 1. For all test cases using `defaultTest`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -935,7 +935,7 @@ providers:
           mode: 'auto' # or 'none' to disable
 ```
 
-For practical examples of function calling with Google AI models, see the [google-vertex-tools example](https://github.com/promptfoo/promptfoo/tree/main/examples/google-vertex-tools) which demonstrates both basic tool declarations and callback execution patterns that work with Google AI Studio models.
+For practical examples of function calling with Google AI models, see the [google-vertex-tools example](https://github.com/artef/artef/tree/main/examples/google-vertex-tools) which demonstrates both basic tool declarations and callback execution patterns that work with Google AI Studio models.
 
 ### Structured Output
 
@@ -1095,11 +1095,11 @@ URL context is particularly valuable for:
 
 For more details, see the [Google AI Studio documentation on URL Context](https://ai.google.dev/gemini-api/docs/url-context).
 
-For complete working examples of the search grounding, code execution, and url context features, see the [google-aistudio-tools examples](https://github.com/promptfoo/promptfoo/tree/main/examples/google-aistudio-tools).
+For complete working examples of the search grounding, code execution, and url context features, see the [google-aistudio-tools examples](https://github.com/artef/artef/tree/main/examples/google-aistudio-tools).
 
 ## Google Live API
 
-Promptfoo now supports Google's WebSocket-based Live API, which enables low-latency bidirectional voice and video interactions with Gemini models. This API provides real-time interactive capabilities beyond what's available in the standard REST API.
+artef now supports Google's WebSocket-based Live API, which enables low-latency bidirectional voice and video interactions with Gemini models. This API provides real-time interactive capabilities beyond what's available in the standard REST API.
 
 ### Using the Live Provider
 
@@ -1115,7 +1115,7 @@ providers:
       timeoutMs: 10000
 ```
 
-Gemini 3.1 Flash Live uses the `v1beta` WebSocket endpoint by default and produces native audio. If `response_modalities: ['text']` is configured, Promptfoo requests audio with output transcription so text-based assertions continue to work. Video must be supplied as individual `image/jpeg` or `image/png` frames, not as an inline video container such as `video/mp4`; Promptfoo paces multiple frames at one frame per second, bills those frames using the per-second video-input rate, and automatically terminates finite audio inputs. Promptfoo prices returned `IMAGE` and `DOCUMENT` input-token usage at the image rate and honors Gemini context-cache rates when the API reports cached-content usage.
+Gemini 3.1 Flash Live uses the `v1beta` WebSocket endpoint by default and produces native audio. If `response_modalities: ['text']` is configured, artef requests audio with output transcription so text-based assertions continue to work. Video must be supplied as individual `image/jpeg` or `image/png` frames, not as an inline video container such as `video/mp4`; artef paces multiple frames at one frame per second, bills those frames using the per-second video-input rate, and automatically terminates finite audio inputs. artef prices returned `IMAGE` and `DOCUMENT` input-token usage at the image rate and honors Gemini context-cache rates when the API reports cached-content usage.
 
 ### Key Features
 
@@ -1219,18 +1219,18 @@ Try the examples:
 
 ```sh
 # Initialize the basic text-only and function calling/tools examples
-promptfoo init --example google-live
+artef init --example google-live
 cd google-live
 
 # Basic text-only example
-promptfoo eval -c promptfooconfig.yaml -j 3
+artef eval -c artefconfig.yaml -j 3
 
 # Function calling and tools example
-promptfoo eval -c promptfooconfig.tools.yaml -j 3
+artef eval -c artefconfig.tools.yaml -j 3
 
 # Audio generation example
 cd ..
-promptfoo init --example google-live-audio
+artef init --example google-live-audio
 ```
 
 ### Limitations
@@ -1245,6 +1245,6 @@ For more details, see the [Google Live API documentation](https://ai.google.dev/
 ## See Also
 
 - [Vertex AI Provider](/docs/providers/vertex) - For enterprise features and advanced Google AI capabilities
-- [Google Examples](https://github.com/promptfoo/promptfoo/tree/main/examples) - Browse working examples for Google AI Studio
+- [Google Examples](https://github.com/artef/artef/tree/main/examples) - Browse working examples for Google AI Studio
 - [Gemini API Documentation](https://ai.google.dev/docs) - Official Google AI documentation
-- [Configuration Reference](/docs/configuration/reference) - Complete configuration options for promptfoo
+- [Configuration Reference](/docs/configuration/reference) - Complete configuration options for artef

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -25,42 +25,42 @@ export default function GartnerSecurity2026(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at Gartner Security & Risk Management Summit 2026"
-      description="Recap of Promptfoo at Gartner Security & Risk Management Summit 2026: briefings on continuous red teaming, guardrails, and executive reporting."
+      title="artef at Gartner Security & Risk Management Summit 2026"
+      description="Recap of artef at Gartner Security & Risk Management Summit 2026: briefings on continuous red teaming, guardrails, and executive reporting."
     >
       <Head>
         <meta
           property="og:title"
-          content="Promptfoo at Gartner Security & Risk Management Summit 2026"
+          content="artef at Gartner Security & Risk Management Summit 2026"
         />
         <meta
           property="og:description"
-          content="Recap of Promptfoo at Gartner Security 2026: briefings on continuous red teaming, guardrails, and executive reporting. Jun 1-3, National Harbor MD."
+          content="Recap of artef at Gartner Security 2026: briefings on continuous red teaming, guardrails, and executive reporting. Jun 1-3, National Harbor MD."
         />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/gartner-security-2026.jpg"
+          content="https://www.artef.dev/img/events/gartner-security-2026.jpg"
         />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/gartner-security-2026" />
+        <meta property="og:url" content="https://www.artef.dev/events/gartner-security-2026" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Promptfoo at Gartner Security & Risk Management Summit 2026"
+          content="artef at Gartner Security & Risk Management Summit 2026"
         />
         <meta
           name="twitter:description"
-          content="Recap of Promptfoo at Gartner Security 2026. Enterprise AI security, analyst briefings, and CISO discussions."
+          content="Recap of artef at Gartner Security 2026. Enterprise AI security, analyst briefings, and CISO discussions."
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/gartner-security-2026.jpg"
+          content="https://www.artef.dev/img/events/gartner-security-2026.jpg"
         />
         <meta
           name="keywords"
           content="Gartner Security 2026, risk management summit, AI security, enterprise security, CISO, Washington DC, AI governance"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/gartner-security-2026" />
+        <link rel="canonical" href="https://www.artef.dev/events/gartner-security-2026" />
       </Head>
 
       <main className={styles.gartnerPage}>
@@ -219,7 +219,7 @@ export default function GartnerSecurity2026(): React.ReactElement {
                 <Link to="/contact" className={styles.primaryButton}>
                   Schedule a Meeting
                 </Link>
-                <Link to="https://discord.gg/promptfoo" className={styles.secondaryButton}>
+                <Link to="https://discord.gg/artef" className={styles.secondaryButton}>
                   Join our Discord
                 </Link>
               </div>

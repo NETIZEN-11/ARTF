@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Hydra Multi-turn
 title: Hydra Multi-turn Strategy
 description: Adaptive multi-turn jailbreak agent that pivots across branches to uncover hidden vulnerabilities
@@ -17,9 +17,9 @@ Hydra has two target-delivery modes:
 
 ## Implementation
 
-Add the strategy to your `promptfooconfig.yaml` to enable multi-turn adaptive testing:
+Add the strategy to your `artefconfig.yaml` to enable multi-turn adaptive testing:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     # Basic usage
@@ -37,7 +37,7 @@ redteam:
 ```
 
 ::::info Cloud Required
-Hydra relies on Promptfoo Cloud to coordinate the attacker agent, maintain scan-wide learnings, and manage branching logic. Set `PROMPTFOO_REMOTE_GENERATION_URL` or sign in to Promptfoo Cloud before running this strategy.
+Hydra relies on artef Cloud to coordinate the attacker agent, maintain scan-wide learnings, and manage branching logic. Set `artef_REMOTE_GENERATION_URL` or sign in to artef Cloud before running this strategy.
 ::::
 
 ## Configuration Options
@@ -49,13 +49,13 @@ Hydra relies on Promptfoo Cloud to coordinate the attacker agent, maintain scan-
 | `stateful`      | `false` | When `true`, use target-managed session mode: Hydra sends only the newest turn, and the target provider must preserve earlier turns for that session. Keep `false` to replay the full transcript each time. |
 
 ::::tip
-Hydra manages attacker-side history and backtracking. Your target provider manages target-side persistence in `stateful: true` mode. In Promptfoo Cloud, Hydra can derive the mode from the target configuration. In the open-source CLI/UI, set `stateful: true` only after you configure sessions in the provider. See [Multi-Turn Session Management](/docs/red-team/troubleshooting/multi-turn-sessions).
+Hydra manages attacker-side history and backtracking. Your target provider manages target-side persistence in `stateful: true` mode. In artef Cloud, Hydra can derive the mode from the target configuration. In the open-source CLI/UI, set `stateful: true` only after you configure sessions in the provider. See [Multi-Turn Session Management](/docs/red-team/troubleshooting/multi-turn-sessions).
 ::::
 
 ## How It Works
 
 1. **Goal selection** – Hydra pulls the red team goal from the plugin metadata or injected variable.
-2. **Agent decisioning** – A coordinating agent in Promptfoo Cloud evaluates prior turns and chooses the next attack message.
+2. **Agent decisioning** – A coordinating agent in artef Cloud evaluates prior turns and chooses the next attack message.
 3. **Target probing** – The selected message is sent either as a replayed transcript or as the newest turn in a target-managed session.
 4. **Outcome grading** – Responses are graded with the configured plugin assertions and stored for later learning.
 5. **Adaptive branching** – On refusals, Hydra backtracks and explores alternate branches until it succeeds, exhausts `maxBacktracks`, or reaches `maxTurns`.

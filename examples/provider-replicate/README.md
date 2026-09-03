@@ -1,6 +1,6 @@
-# provider-replicate (Replicate)
+﻿# provider-replicate (Replicate)
 
-Examples for using promptfoo with [Replicate](https://replicate.com/).
+Examples for using artef with [Replicate](https://replicate.com/).
 
 ## Examples
 

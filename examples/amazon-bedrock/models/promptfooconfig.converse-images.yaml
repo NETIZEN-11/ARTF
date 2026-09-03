@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Bedrock Converse API - Image/Multimodal'
 
 prompts:
@@ -29,7 +29,7 @@ providers:
       region: us-east-1
       maxTokens: 1024
 
-# For Llama 3.2 Vision, see promptfooconfig.llama-vision.yaml (uses InvokeModel API)
+# For Llama 3.2 Vision, see artefconfig.llama-vision.yaml (uses InvokeModel API)
 
 tests:
   - vars:

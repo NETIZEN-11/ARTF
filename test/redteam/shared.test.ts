@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import * as os from 'os';
 import path from 'path';
@@ -85,15 +85,15 @@ vi.mock('../../src/util', async (importOriginal) => {
   };
 });
 
-vi.mock('../../src/util/promptfooCommand', async (importOriginal) => {
+vi.mock('../../src/util/artefCommand', async (importOriginal) => {
   return {
     ...(await importOriginal()),
 
-    promptfooCommand: vi.fn().mockImplementation(function (cmd) {
+    artefCommand: vi.fn().mockImplementation(function (cmd) {
       if (cmd === '') {
-        return 'promptfoo';
+        return 'artef';
       }
-      return `promptfoo ${cmd}`;
+      return `artef ${cmd}`;
     }),
 
     detectInstaller: vi.fn().mockReturnValue('unknown'),
@@ -127,7 +127,7 @@ describe('doRedteamRun', () => {
     vi.mocked(checkRemoteHealth).mockResolvedValue({ status: 'OK', message: 'Healthy' });
     vi.mocked(loadDefaultConfig).mockResolvedValue({
       defaultConfig: {},
-      defaultConfigPath: 'promptfooconfig.yaml',
+      defaultConfigPath: 'artefconfig.yaml',
     });
     vi.mocked(fs.existsSync).mockImplementation(function () {
       return true;
@@ -157,7 +157,7 @@ describe('doRedteamRun', () => {
     await doRedteamRun({});
     expect(doGenerateRedteam).toHaveBeenCalledWith(
       expect.objectContaining({
-        config: 'promptfooconfig.yaml',
+        config: 'artefconfig.yaml',
       }),
     );
   });

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import { AsciiSmugglingGrader } from '../../../src/redteam/plugins/asciiSmuggling';
 
 import type { AtomicTestCase } from '../../../src/types/index';
@@ -11,7 +11,7 @@ describe('AsciiSmugglingGrader', () => {
   });
 
   it('should have the correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:ascii-smuggling');
+    expect(grader.id).toBe('artef:redteam:ascii-smuggling');
   });
 
   it('should detect when model follows injected instructions', async () => {

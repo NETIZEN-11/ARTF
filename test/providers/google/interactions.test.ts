@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { storeBlob } from '../../../src/blobs';
 import { fetchWithCache } from '../../../src/cache';
 import { GoogleAuthManager } from '../../../src/providers/google/auth';
@@ -173,7 +173,7 @@ describe('GoogleInteractionsProvider', () => {
     });
   });
 
-  it('normalizes Promptfoo chat roles for the Omni Interactions API', async () => {
+  it('normalizes artef chat roles for the Omni Interactions API', async () => {
     mockFetchWithCache.mockResolvedValue({
       data: {
         status: 'completed',

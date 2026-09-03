@@ -1,18 +1,18 @@
----
-description: Promptfoo privacy notice covering personal information, telemetry, cookies, sharing, security, and contact information for consumer services.
+﻿---
+description: artef privacy notice covering personal information, telemetry, cookies, sharing, security, and contact information for consumer services.
 ---
 
-# PROMPTFOO PRIVACY NOTICE
+# artef PRIVACY NOTICE
 
 **Last Updated:** March 13, 2026
 
-This Privacy Notice describes how Promptfoo, Inc. (“**we**”, “**us**,” “**our**”, “**Promptfoo**”) collects, uses and discloses personal information about consumers who use our website ([https://www.promptfoo.dev/](https://www.promptfoo.dev/)) applications, products and services, tools and features, or otherwise interact with us for their personal, family or household purposes (collectively, the “**Services**”).
+This Privacy Notice describes how artef, Inc. (“**we**”, “**us**,” “**our**”, “**artef**”) collects, uses and discloses personal information about consumers who use our website ([https://www.artef.dev/](https://www.artef.dev/)) applications, products and services, tools and features, or otherwise interact with us for their personal, family or household purposes (collectively, the “**Services**”).
 
 Please note that this Privacy Notice does not apply to:
 
-- **Business Customers**. Personal information that we process as a processor or service provider for our business customers. When we serve as a processor or service provider, we process personal information at the direction of our business customers, and our business customers determine how they will use Promptfoo’s Services, including what (if any) personal information Promptfoo’s Services may process. If you have any questions about our business customers’ use of Promptfoo’s Services, please direct your question to the relevant business customer.
+- **Business Customers**. Personal information that we process as a processor or service provider for our business customers. When we serve as a processor or service provider, we process personal information at the direction of our business customers, and our business customers determine how they will use artef’s Services, including what (if any) personal information artef’s Services may process. If you have any questions about our business customers’ use of artef’s Services, please direct your question to the relevant business customer.
 - **Business Representatives.** Personal information of individuals representing businesses is not covered by this Privacy Notice.
-- **Employees and Job Applicants**. Personal information collected from our employees and individuals applying for employment with Promptfoo is not covered by this Privacy Notice.
+- **Employees and Job Applicants**. Personal information collected from our employees and individuals applying for employment with artef is not covered by this Privacy Notice.
 
 Please read this Privacy Notice carefully. By using any of the Services, you agree to the collection, use, and disclosure of your personal information as described in this Privacy Notice. If you do not agree to this Privacy Notice, please do not use or access the Services.
 
@@ -33,7 +33,7 @@ Some features of the Services may require you to directly provide us with certai
 - **Communications information**, such as any other personal information you choose to include in communications with us, for example, when sending a message through the Services.
 - **Other personal information** not specifically listed here, which we will use as described in this Privacy Notice or as otherwise disclosed at the time of collection.
 
-When you use the Promptfoo Command Line Interface (CLI) and library locally, the source code is executed on your machine, and any call to Language Model (LLM) APIs (OpenAI, Anthropic, etc.) are sent directly to the LLM provider. We do not have access to these requests or responses unless you provide us with access.
+When you use the artef Command Line Interface (CLI) and library locally, the source code is executed on your machine, and any call to Language Model (LLM) APIs (OpenAI, Anthropic, etc.) are sent directly to the LLM provider. We do not have access to these requests or responses unless you provide us with access.
 
 ### Information We Collect Automatically
 
@@ -44,7 +44,7 @@ We also automatically collect certain information about your interaction with th
 - **Online activity data**, such as pages or screens you viewed, search history, how long you spent on a page or screen, the website you visited before browsing to the Service, navigation paths between pages or screens, information about your activity on a page or screen, access times and duration of access, and whether you have opened our emails or clicked links within them.
 - **Telemetry data**, which helps us decide how to spend time on development. Unless you change the settings, an event is recorded when a command is run (such as init, eval, view) or an assertion is used. Telemetry data includes the assertion type (for example, is-json, similar, llm-rubric).
 
-If you opt-in, some features (called SimulatedUser and red team) send prompts to Promptfoo’s servers to generate responses, unless you change the settings. However, the AI model you are testing or evaluating always runs on your own system, not on Promptfoo’s servers.
+If you opt-in, some features (called SimulatedUser and red team) send prompts to artef’s servers to generate responses, unless you change the settings. However, the AI model you are testing or evaluating always runs on your own system, not on artef’s servers.
 
 We use Usage Data to provide our services, protect against fraud or abuse, for analytics, and to better understand user interaction with the Services. For more information on how we use Tracking Technologies and your choices, see the section below, _Cookies and Other Tracking Technologies_.
 
@@ -114,4 +114,4 @@ We are headquartered in the United States and may use service providers that ope
 
 ## HOW TO CONTACT US
 
-_Should you have any questions about our privacy practices or this Privacy Notice, please email us at [inquiries@promptfoo.dev](mailto:inquiries@promptfoo.dev)._
+_Should you have any questions about our privacy practices or this Privacy Notice, please email us at [inquiries@artef.dev](mailto:inquiries@artef.dev)._

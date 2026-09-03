@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import chalk from 'chalk';
 import {
@@ -431,12 +431,12 @@ describe('logger', () => {
       expectedDebugFile = path.join(
         '/mock/config',
         'logs',
-        'promptfoo-debug-2025-03-01_12-00-00-000Z.log',
+        'artef-debug-2025-03-01_12-00-00-000Z.log',
       );
       expectedErrorFile = path.join(
         '/mock/config',
         'logs',
-        'promptfoo-error-2025-03-01_12-00-00-000Z.log',
+        'artef-error-2025-03-01_12-00-00-000Z.log',
       );
       cliState = (await import('../src/cliState')).default;
       winston = await import('winston');
@@ -483,9 +483,9 @@ describe('logger', () => {
       expect(winston.default.transports.File).toHaveBeenCalledTimes(2);
     });
 
-    it('should respect PROMPTFOO_DISABLE_DEBUG_LOG', () => {
+    it('should respect artef_DISABLE_DEBUG_LOG', () => {
       mockGetEnvBool.mockImplementation((key, defaultValue) =>
-        key === 'PROMPTFOO_DISABLE_DEBUG_LOG' ? true : defaultValue,
+        key === 'artef_DISABLE_DEBUG_LOG' ? true : defaultValue,
       );
       (fsMock.existsSync as Mock).mockReturnValue(false);
 
@@ -500,9 +500,9 @@ describe('logger', () => {
       expect(mockLogger.add).toHaveBeenCalledTimes(1);
     });
 
-    it('should respect PROMPTFOO_DISABLE_ERROR_LOG', () => {
+    it('should respect artef_DISABLE_ERROR_LOG', () => {
       mockGetEnvBool.mockImplementation((key, defaultValue) =>
-        key === 'PROMPTFOO_DISABLE_ERROR_LOG' ? true : defaultValue,
+        key === 'artef_DISABLE_ERROR_LOG' ? true : defaultValue,
       );
       (fsMock.existsSync as Mock).mockReturnValue(false);
 
@@ -541,10 +541,10 @@ describe('logger', () => {
       expect(winston.default.transports.File).toHaveBeenCalledTimes(1);
     });
 
-    it('should respect PROMPTFOO_LOG_DIR environment variable', () => {
+    it('should respect artef_LOG_DIR environment variable', () => {
       const customLogDir = '/custom/log/dir';
       mockGetEnvString.mockImplementation((key: string, defaultValue: any) => {
-        if (key === 'PROMPTFOO_LOG_DIR') {
+        if (key === 'artef_LOG_DIR') {
           return customLogDir;
         }
         return defaultValue;
@@ -559,11 +559,11 @@ describe('logger', () => {
       const resolvedCustomLogDir = path.resolve(customLogDir);
       const expectedCustomDebugFile = path.join(
         resolvedCustomLogDir,
-        'promptfoo-debug-2025-03-01_12-00-00-000Z.log',
+        'artef-debug-2025-03-01_12-00-00-000Z.log',
       );
       const expectedCustomErrorFile = path.join(
         resolvedCustomLogDir,
-        'promptfoo-error-2025-03-01_12-00-00-000Z.log',
+        'artef-error-2025-03-01_12-00-00-000Z.log',
       );
 
       expect(cliState.debugLogFile).toBe(expectedCustomDebugFile);

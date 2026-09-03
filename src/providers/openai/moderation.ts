@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { fetchWithCache, getCache, getScopedCacheKey, isCacheEnabled } from '../../cache';
 import logger from '../../logger';
@@ -71,7 +71,7 @@ export type ImageInput = {
 
 type ModerationInput = string | (TextInput | ImageInput)[];
 
-const OPENAI_MODERATION_CACHE_HASH_KEY = 'promptfoo:openai:moderation-cache-key:v1';
+const OPENAI_MODERATION_CACHE_HASH_KEY = 'artef:openai:moderation-cache-key:v1';
 const OPENAI_MODERATION_INFLIGHT_REQUESTS = new Map<string, Promise<OpenAIModerationFetchResult>>();
 
 type OpenAIModerationFetchResult = {
@@ -273,7 +273,7 @@ export class OpenAiModerationProvider
 
     const headers = {
       'Content-Type': 'application/json',
-      'x-promptfoo-silent': 'true',
+      'x-artef-silent': 'true',
       ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
       ...this.getOpenAiRequestHeaders(),
     };

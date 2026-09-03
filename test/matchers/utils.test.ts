@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+﻿import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import cliState from '../../src/cliState';
 import {
   getAndCheckProvider,
@@ -27,20 +27,20 @@ describe('getRemoteGradingContext', () => {
   });
 
   it('prefers the actively selected provider configs', () => {
-    cliState.config = { providers: ['promptfoo://provider/excluded-target'] };
-    cliState.selectedProviderConfigs = ['promptfoo://provider/selected-target'];
+    cliState.config = { providers: ['artef://provider/excluded-target'] };
+    cliState.selectedProviderConfigs = ['artef://provider/selected-target'];
 
     expect(getRemoteGradingContext()).toEqual({ targetId: 'selected-target' });
   });
 
   it('falls back to the configured providers', () => {
-    cliState.config = { providers: ['promptfoo://provider/configured-target'] };
+    cliState.config = { providers: ['artef://provider/configured-target'] };
 
     expect(getRemoteGradingContext()).toEqual({ targetId: 'configured-target' });
   });
 
   it('does not fall back to configured providers when the filter matched nothing', () => {
-    cliState.config = { providers: ['promptfoo://provider/configured-target'] };
+    cliState.config = { providers: ['artef://provider/configured-target'] };
     cliState.selectedProviderConfigs = [];
 
     expect(getRemoteGradingContext()).toEqual({});
@@ -396,15 +396,15 @@ describe('tryParse and renderLlmRubricPrompt', () => {
   });
 });
 
-describe('PROMPTFOO_DISABLE_OBJECT_STRINGIFY environment variable', () => {
+describe('artef_DISABLE_OBJECT_STRINGIFY environment variable', () => {
   afterEach(() => {
     // Clean up environment variable after each test
-    mockProcessEnv({ PROMPTFOO_DISABLE_OBJECT_STRINGIFY: undefined });
+    mockProcessEnv({ artef_DISABLE_OBJECT_STRINGIFY: undefined });
   });
 
-  describe('Default behavior (PROMPTFOO_DISABLE_OBJECT_STRINGIFY=false)', () => {
+  describe('Default behavior (artef_DISABLE_OBJECT_STRINGIFY=false)', () => {
     beforeEach(() => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_OBJECT_STRINGIFY: 'false' });
+      mockProcessEnv({ artef_DISABLE_OBJECT_STRINGIFY: 'false' });
     });
 
     it('should stringify objects to prevent [object Object] issues', async () => {
@@ -430,9 +430,9 @@ describe('PROMPTFOO_DISABLE_OBJECT_STRINGIFY environment variable', () => {
     });
   });
 
-  describe('Object access enabled (PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true)', () => {
+  describe('Object access enabled (artef_DISABLE_OBJECT_STRINGIFY=true)', () => {
     beforeEach(() => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_OBJECT_STRINGIFY: 'true' });
+      mockProcessEnv({ artef_DISABLE_OBJECT_STRINGIFY: 'true' });
     });
 
     it('should allow direct object property access', async () => {

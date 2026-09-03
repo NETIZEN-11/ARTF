@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Replicate Llama 4 Scout model evaluation - A 17B parameter model with 16 experts
 
 prompts:

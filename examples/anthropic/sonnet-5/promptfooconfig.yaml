@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Claude Sonnet 5 agentic reasoning with effort and adaptive thinking
 
 prompts:
@@ -12,7 +12,7 @@ providers:
       # Sonnet pricing, with a 1M-token context window.
       #
       # Sonnet 5 deprecates manual sampling controls (temperature/top_p/top_k) at the
-      # model level — promptfoo omits them automatically, so don't set them here.
+      # model level — artef omits them automatically, so don't set them here.
       #
       # Adaptive thinking is opt-in: without an explicit `thinking` block the model
       # runs WITHOUT extended thinking even at high effort. Set it to let the model

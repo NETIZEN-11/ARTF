@@ -1,4 +1,4 @@
-/**
+﻿/**
  * BLEU (Bilingual Evaluation Understudy) Score Implementation
  *
  * Implementation based on:
@@ -167,7 +167,7 @@ export function calculateBleuScore(
 }
 
 /**
- * Handles BLEU score assertion for promptfoo.
+ * Handles BLEU score assertion for artef.
  * Compares output against reference(s) using BLEU metric.
  *
  * @param assertion - The assertion configuration

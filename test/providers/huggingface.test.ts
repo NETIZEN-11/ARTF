@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { clearCache } from '../../src/cache';
 import {
   HuggingfaceChatCompletionProvider,
@@ -25,12 +25,12 @@ vi.mock('../../src/database', async (importOriginal) => {
 
 vi.mock('../../src/globalConfig/cloud', () => {
   return {
-    CLOUD_API_HOST: 'https://api.promptfoo.app',
-    API_HOST: 'https://api.promptfoo.app',
+    CLOUD_API_HOST: 'https://api.artef.app',
+    API_HOST: 'https://api.artef.app',
     CloudConfig: vi.fn(),
     cloudConfig: {
       isEnabled: vi.fn().mockReturnValue(false),
-      getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.dev'),
+      getApiHost: vi.fn().mockReturnValue('https://api.artef.dev'),
       getApiKey: vi.fn().mockReturnValue('test-api-key'),
     },
   };

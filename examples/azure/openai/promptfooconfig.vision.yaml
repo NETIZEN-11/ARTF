@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Azure OpenAI vision model evaluation
 
 prompts:
@@ -9,7 +9,7 @@ providers:
   # Update with your Azure OpenAI deployment details
   - id: azure:chat:gpt-5
     config:
-      apiHost: promptfoo.openai.azure.com
+      apiHost: artef.openai.azure.com
       apiVersion: 2024-02-15-preview
       temperature: 0.1
       max_tokens: 500

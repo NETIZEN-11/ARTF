@@ -1,4 +1,4 @@
-import { type ChildProcess, spawn } from 'child_process';
+﻿import { type ChildProcess, spawn } from 'child_process';
 import { writeFileSync } from 'fs';
 
 import { Command } from 'commander';
@@ -16,7 +16,7 @@ vi.mock('../../src/logger');
 vi.mock('../../src/share', () => ({
   createShareableModelAuditUrl: vi
     .fn()
-    .mockResolvedValue('https://app.promptfoo.dev/model-audit/test-id'),
+    .mockResolvedValue('https://app.artef.dev/model-audit/test-id'),
   isModelAuditSharingEnabled: vi.fn().mockReturnValue(false),
 }));
 vi.mock('../../src/globalConfig/cloud', () => ({
@@ -300,7 +300,7 @@ describe('modelScanCommand', () => {
         stdio: 'inherit',
         env: {
           ...process.env,
-          PROMPTFOO_DELEGATED: 'true',
+          artef_DELEGATED: 'true',
         },
       },
     );
@@ -358,7 +358,7 @@ describe('modelScanCommand', () => {
     );
   });
 
-  it('should keep no-write JSON passthrough output free of promptfoo logs', async () => {
+  it('should keep no-write JSON passthrough output free of artef logs', async () => {
     const mockChildProcess = {
       killed: false,
       kill: vi.fn(),
@@ -1656,7 +1656,7 @@ describe('Temp file JSON output (CLI UI fix)', () => {
     expect(spawnOptions).toEqual({
       stdio: 'inherit',
       env: expect.objectContaining({
-        PROMPTFOO_DELEGATED: 'true',
+        artef_DELEGATED: 'true',
       }),
     });
   });
@@ -1685,11 +1685,11 @@ describe('Temp file JSON output (CLI UI fix)', () => {
     const scanCall = spawnCalls.find((call) => call[1].includes('scan'));
     const args = scanCall![1] as string[];
 
-    // Should not have temp file output (no promptfoo-modelscan in path)
+    // Should not have temp file output (no artef-modelscan in path)
     const outputIndex = args.indexOf('--output');
     if (outputIndex !== -1) {
       const outputPath = args[outputIndex + 1];
-      expect(outputPath).not.toMatch(/promptfoo-modelscan/);
+      expect(outputPath).not.toMatch(/artef-modelscan/);
     }
   });
 
@@ -1741,7 +1741,7 @@ describe('Sharing behavior', () => {
     isModelAuditSharingEnabledMock = vi.mocked(shareModule.isModelAuditSharingEnabled);
     createShareableModelAuditUrlMock.mockReset();
     createShareableModelAuditUrlMock.mockResolvedValue(
-      'https://app.promptfoo.dev/model-audit/test-id',
+      'https://app.artef.dev/model-audit/test-id',
     );
     isModelAuditSharingEnabledMock.mockReset();
     isModelAuditSharingEnabledMock.mockReturnValue(false);
@@ -1755,7 +1755,7 @@ describe('Sharing behavior', () => {
   afterEach(() => {
     mockExit.mockRestore();
     process.exitCode = 0;
-    mockProcessEnv({ PROMPTFOO_DISABLE_SHARING: undefined });
+    mockProcessEnv({ artef_DISABLE_SHARING: undefined });
   });
 
   // Helper to create a mock scan process that returns valid JSON results
@@ -1794,8 +1794,8 @@ describe('Sharing behavior', () => {
     return mockProcess;
   }
 
-  it('should not share when PROMPTFOO_DISABLE_SHARING env var is set', async () => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_SHARING: 'true' });
+  it('should not share when artef_DISABLE_SHARING env var is set', async () => {
+    mockProcessEnv({ artef_DISABLE_SHARING: 'true' });
     cloudConfigIsEnabledMock.mockReturnValue(true);
     isModelAuditSharingEnabledMock.mockReturnValue(true);
 

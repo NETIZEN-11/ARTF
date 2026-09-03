@@ -1,4 +1,4 @@
-import { EventEmitter } from 'node:events';
+﻿import { EventEmitter } from 'node:events';
 import http from 'node:http';
 
 import { Server as SocketIOServer } from 'socket.io';
@@ -82,13 +82,13 @@ describe('server', () => {
       const startupError = handleServerError(error, 3000);
 
       expect(logger.error).toHaveBeenCalledWith(
-        'Port 3000 is already in use. Do you have another Promptfoo instance running?',
+        'Port 3000 is already in use. Do you have another artef instance running?',
       );
       expect(startupError).toBeInstanceOf(ServerError);
       expect(startupError).toMatchObject({
         code: 'EADDRINUSE',
         phase: 'startup',
-        message: 'Port 3000 is already in use. Do you have another Promptfoo instance running?',
+        message: 'Port 3000 is already in use. Do you have another artef instance running?',
         port: 3000,
       });
     });
@@ -210,13 +210,13 @@ describe('server', () => {
         name: 'ServerError',
         code: 'EADDRINUSE',
         phase: 'startup',
-        message: 'Port 3000 is already in use. Do you have another Promptfoo instance running?',
+        message: 'Port 3000 is already in use. Do you have another artef instance running?',
         port: 3000,
       });
 
       expect(mockWatcher.close).toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledWith(
-        'Port 3000 is already in use. Do you have another Promptfoo instance running?',
+        'Port 3000 is already in use. Do you have another artef instance running?',
       );
     });
 

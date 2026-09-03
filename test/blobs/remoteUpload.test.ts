@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { shouldAttemptRemoteBlobUpload, uploadBlobRemote } from '../../src/blobs/remoteUpload';
 import { getEnvBool } from '../../src/envars';
 import { isLoggedIntoCloud } from '../../src/globalConfig/accounts';
@@ -43,7 +43,7 @@ describe('remote blob upload', () => {
       statusText: 'OK',
       json: async () => ({
         ref: {
-          uri: 'promptfoo://blob/abc123',
+          uri: 'artef://blob/abc123',
           hash: 'abc123',
         },
       }),
@@ -60,8 +60,8 @@ describe('remote blob upload', () => {
     expect(cloudConfig.getAuthHeaders).toHaveBeenCalledTimes(1);
   });
 
-  it('does not attempt remote upload when PROMPTFOO_DISABLE_SHARING is set', async () => {
-    vi.mocked(getEnvBool).mockImplementation((key) => key === 'PROMPTFOO_DISABLE_SHARING');
+  it('does not attempt remote upload when artef_DISABLE_SHARING is set', async () => {
+    vi.mocked(getEnvBool).mockImplementation((key) => key === 'artef_DISABLE_SHARING');
 
     expect(shouldAttemptRemoteBlobUpload()).toBe(false);
 
@@ -115,7 +115,7 @@ describe('remote blob upload', () => {
 
   it('posts blobs under a custom configured auth header name', async () => {
     vi.mocked(cloudConfig.getAuthHeaders).mockReturnValue({
-      'X-Promptfoo-Api-Key': 'Bearer test-api-key',
+      'X-artef-Api-Key': 'Bearer test-api-key',
     });
 
     await uploadBlobRemote(Buffer.from('image-bytes'), 'image/png', {
@@ -128,7 +128,7 @@ describe('remote blob upload', () => {
       'https://api.example.com/api/blobs',
       expect.objectContaining({
         headers: expect.objectContaining({
-          'X-Promptfoo-Api-Key': 'Bearer test-api-key',
+          'X-artef-Api-Key': 'Bearer test-api-key',
         }),
       }),
     );

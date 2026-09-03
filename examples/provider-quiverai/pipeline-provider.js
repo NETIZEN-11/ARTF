@@ -1,12 +1,12 @@
-// GPT Image-2 → QuiverAI vectorize pipeline.
+﻿// GPT Image-2 → QuiverAI vectorize pipeline.
 //
 // Generates a raster image with OpenAI's gpt-image-2 model, then vectorizes it
 // to SVG with QuiverAI Arrow. The whole chain is exposed as a single
-// promptfoo provider so it composes with assertions, rubrics, and other
+// artef provider so it composes with assertions, rubrics, and other
 // providers in the same eval.
 //
 // Required env: OPENAI_API_KEY, QUIVERAI_API_KEY.
-// Optional config (set via the provider's config: block in promptfooconfig.yaml):
+// Optional config (set via the provider's config: block in artefconfig.yaml):
 //   - imageModel:        OpenAI image model id (default: 'gpt-image-2')
 //   - imageSize:         Image API size string (default: '1024x1024').
 //                        gpt-image-2 also supports 'auto' and custom sizes

@@ -1,4 +1,4 @@
-import { XMLParser, XMLValidator } from 'fast-xml-parser';
+﻿import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import { getEnvBool } from '../envars';
 import logger from '../logger';
 import { sha256 } from '../util/createHash';
@@ -591,8 +591,8 @@ export async function extractAndStoreBinaryData(
 }
 
 export function isBlobStorageEnabled(): boolean {
-  // Single toggle: default to externalize; opt out with PROMPTFOO_INLINE_MEDIA=true
-  return !getEnvBool('PROMPTFOO_INLINE_MEDIA', false);
+  // Single toggle: default to externalize; opt out with artef_INLINE_MEDIA=true
+  return !getEnvBool('artef_INLINE_MEDIA', false);
 }
 
 async function recordExistingBlobReferences(

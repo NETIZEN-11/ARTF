@@ -1,9 +1,9 @@
-import {
+﻿import {
   looksLikeCredentialHeader,
   looksLikeCredentialValue,
   looksLikeRequestCredentialParameter,
 } from '@app/stores/evalConfig';
-import { REDTEAM_DEFAULTS } from '@promptfoo/redteam/constants';
+import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { getProviderType } from '../components/Targets/helpers';
@@ -12,7 +12,7 @@ import {
   registerTargetConfigReconciler,
   useRedTeamTargetConfigValidation,
 } from './useRedTeamTargetConfigValidation';
-import type { Plugin } from '@promptfoo/redteam/constants';
+import type { Plugin } from '@artef/redteam/constants';
 
 import type { ApplicationDefinition, Config, ProviderOptions } from '../types';
 
@@ -1608,7 +1608,7 @@ export const EXAMPLE_CONFIG: Config = {
     id: 'http',
     label: 'customer-support-agent-example',
     config: {
-      url: 'https://customer-service-chatbot-example.promptfoo.app',
+      url: 'https://customer-service-chatbot-example.artef.app',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

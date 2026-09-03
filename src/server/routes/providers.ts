@@ -1,4 +1,4 @@
-import { Router } from 'express';
+﻿import { Router } from 'express';
 import { z } from 'zod';
 import { getEnvString } from '../../envars';
 import { cloudConfig } from '../../globalConfig/cloud';
@@ -151,7 +151,7 @@ providersRouter.post('/http-generator', async (req: Request, res: Response): Pro
   const HOST = (
     cloudConfig.isEnabled()
       ? cloudConfig.getApiHost()
-      : getEnvString('PROMPTFOO_CLOUD_API_URL', 'https://api.promptfoo.app')
+      : getEnvString('artef_CLOUD_API_URL', 'https://api.artef.app')
   ).replace(/\/+$/, '');
 
   // The fetch layer injects the cloud auth header for the configured cloud origin

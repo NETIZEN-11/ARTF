@@ -1,13 +1,13 @@
-# config-ts (TypeScript Configuration Example)
+﻿# config-ts (TypeScript Configuration Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-ts
+npx artef@latest init --example config-ts
 cd config-ts
 ```
 
-This example demonstrates TypeScript configuration for promptfoo, including:
+This example demonstrates TypeScript configuration for artef, including:
 
 - Type-safe configuration with IDE autocompletion
 - Dynamic schema generation using Zod
@@ -29,7 +29,7 @@ npm install
 ### Basic TypeScript Configuration
 
 ```bash
-NODE_OPTIONS="--import tsx" promptfoo eval -c promptfooconfig.ts
+NODE_OPTIONS="--import tsx" artef eval -c artefconfig.ts
 ```
 
 This example translates text into French and Pirate speak.
@@ -37,7 +37,7 @@ This example translates text into French and Pirate speak.
 ### Dynamic Schema Generation
 
 ```bash
-NODE_OPTIONS="--import tsx" promptfoo eval -c promptfooconfig-with-schema.ts
+NODE_OPTIONS="--import tsx" artef eval -c artefconfig-with-schema.ts
 ```
 
 This example shows structured JSON outputs with fun translations into Pirate speak, Shakespeare English, and Gen Z slang.
@@ -45,12 +45,12 @@ This example shows structured JSON outputs with fun translations into Pirate spe
 View results:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Examples Overview
 
-### 1. Basic Configuration (`promptfooconfig.ts`)
+### 1. Basic Configuration (`artefconfig.ts`)
 
 Demonstrates:
 
@@ -58,7 +58,7 @@ Demonstrates:
 - Simple provider configuration with GPT-5 Mini
 - Basic translation examples
 
-### 2. Dynamic Schema Generation (`promptfooconfig-with-schema.ts`)
+### 2. Dynamic Schema Generation (`artefconfig-with-schema.ts`)
 
 Shows advanced features:
 

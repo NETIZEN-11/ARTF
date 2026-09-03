@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Link to Cloud Targets
-description: Link local custom providers to cloud targets in Promptfoo Cloud using linkedTargetId to consolidate findings and track performance over time
+description: Link local custom providers to cloud targets in artef Cloud using linkedTargetId to consolidate findings and track performance over time
 ---
 
 # Linking Local Targets to Cloud
@@ -11,14 +11,14 @@ When using custom providers (Python, JavaScript, HTTP), link your local configur
 
 ### Step 1: Get the Target ID
 
-1. Log in to Promptfoo Cloud (https://www.promptfoo.app/ or your on-prem URL)
+1. Log in to artef Cloud (https://www.artef.app/ or your on-prem URL)
 2. Navigate to the Targets page: `/redteam/targets`
 3. Find the target you want to link to
 4. Copy its ID (looks like `12345678-1234-1234-1234-123456789abc`)
 
 ### Step 2: Add to Provider Config
 
-Format the ID as `promptfoo://provider/<target-id>` and add to your provider config:
+Format the ID as `artef://provider/<target-id>` and add to your provider config:
 
 **Python provider:**
 
@@ -26,7 +26,7 @@ Format the ID as `promptfoo://provider/<target-id>` and add to your provider con
 providers:
   - id: 'file://my_provider.py'
     config:
-      linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'
+      linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'
       # Your other config...
 ```
 
@@ -36,7 +36,7 @@ providers:
 providers:
   - id: 'file://customProvider.js'
     config:
-      linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'
+      linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'
       # Your other config...
 ```
 
@@ -48,7 +48,7 @@ providers:
     config:
       url: 'https://api.example.com/endpoint'
       method: 'POST'
-      linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'
+      linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'
       headers:
         'Content-Type': 'application/json'
       body:
@@ -63,19 +63,19 @@ Results will now consolidate under the linked cloud target.
 
 ### "Invalid linkedTargetId format" Error
 
-**Problem:** linkedTargetId doesn't start with `promptfoo://provider/`
+**Problem:** linkedTargetId doesn't start with `artef://provider/`
 
-**Solution:** Ensure format is exactly `promptfoo://provider/<UUID>`:
+**Solution:** Ensure format is exactly `artef://provider/<UUID>`:
 
 ```yaml
 # ✅ Correct
-linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc'
+linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc'
 
 # ❌ Wrong - missing prefix
 linkedTargetId: '12345678-1234-1234-1234-123456789abc'
 
 # ❌ Wrong - incorrect prefix
-linkedTargetId: 'promptfoo://12345678-1234-1234-1234-123456789abc'
+linkedTargetId: 'artef://12345678-1234-1234-1234-123456789abc'
 ```
 
 ### "linkedTargetId not found" Error
@@ -87,7 +87,7 @@ linkedTargetId: 'promptfoo://12345678-1234-1234-1234-123456789abc'
 1. **Verify you're logged in:**
 
    ```bash
-   promptfoo auth status
+   artef auth status
    ```
 
 2. **Check the target exists:**
@@ -104,12 +104,12 @@ linkedTargetId: 'promptfoo://12345678-1234-1234-1234-123456789abc'
 
 **Warning message:** `linkedTargetId specified but cloud is not configured`
 
-**Problem:** You're not logged into Promptfoo Cloud
+**Problem:** You're not logged into artef Cloud
 
 **Solution:**
 
 ```bash
-promptfoo auth login
+artef auth login
 ```
 
 linkedTargetId only works when cloud features are enabled.

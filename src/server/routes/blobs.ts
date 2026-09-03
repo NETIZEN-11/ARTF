@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, like, sql } from 'drizzle-orm';
+﻿import { and, asc, desc, eq, like, sql } from 'drizzle-orm';
 import express from 'express';
 import { getBlobByHash, getBlobUrl } from '../../blobs';
 import { isBlobStorageEnabled } from '../../blobs/extractor';
@@ -69,7 +69,7 @@ function parseTimestamp(value: unknown): string {
  *
  * Security notes (OSS / local-only):
  * In the OSS version, this is a local-only server with no user authentication.
- * For multi-tenant deployments (e.g., Promptfoo Cloud), additional authorization
+ * For multi-tenant deployments (e.g., artef Cloud), additional authorization
  * is needed: verify the requesting user has access to the listed evaluations and
  * filter results by user/team ownership.
  *
@@ -449,7 +449,7 @@ blobsRouter.get('/:hash', async (req: Request, res: Response): Promise<void> => 
 
   // Security: Check that a reference exists for this blob
   // NOTE: In the OSS version, this is a local-only server with no user authentication.
-  // For multi-tenant deployments (e.g., Promptfoo Cloud), additional authorization is needed:
+  // For multi-tenant deployments (e.g., artef Cloud), additional authorization is needed:
   // - Verify the requesting user has access to the evaluation (reference.evalId)
   // - Check user/team ownership before serving the blob
   // - Implement proper session/token-based authentication

@@ -1,11 +1,11 @@
-# provider-perplexity (Perplexity API Examples)
+﻿# provider-perplexity (Perplexity API Examples)
 
 This example demonstrates how to use Perplexity's search-augmented chat models to get up-to-date answers with citations, structured outputs, and specialized reasoning.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-perplexity
+npx artef@latest init --example provider-perplexity
 cd provider-perplexity
 ```
 
@@ -37,7 +37,7 @@ export OPENAI_API_KEY=your_api_key_here
 
 This example includes multiple configuration files to demonstrate different Perplexity features:
 
-### 1. Basic Model Comparison (`promptfooconfig.yaml`)
+### 1. Basic Model Comparison (`artefconfig.yaml`)
 
 Compares different Perplexity search models against a traditional non-search model (GPT-4o-mini):
 
@@ -46,10 +46,10 @@ Compares different Perplexity search models against a traditional non-search mod
 - `sonar-reasoning`: Fast reasoning model with step-by-step thinking
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml
+npx artef@latest eval -c artefconfig.yaml
 ```
 
-### 2. Structured Outputs (`promptfooconfig.structured-output.yaml`)
+### 2. Structured Outputs (`artefconfig.structured-output.yaml`)
 
 Demonstrates Perplexity's structured output capabilities:
 
@@ -57,10 +57,10 @@ Demonstrates Perplexity's structured output capabilities:
 - Regex pattern matching for postal codes
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.structured-output.yaml
+npx artef@latest eval -c artefconfig.structured-output.yaml
 ```
 
-### 3. Advanced Search Filters (`promptfooconfig.search-filters.yaml`)
+### 3. Advanced Search Filters (`artefconfig.search-filters.yaml`)
 
 Shows how to use advanced search filtering options:
 
@@ -69,10 +69,10 @@ Shows how to use advanced search filtering options:
 - Domain filtering for trusted sources
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.search-filters.yaml
+npx artef@latest eval -c artefconfig.search-filters.yaml
 ```
 
-### 4. Research and Reasoning (`promptfooconfig.research-reasoning.yaml`)
+### 4. Research and Reasoning (`artefconfig.research-reasoning.yaml`)
 
 Demonstrates specialized models for research and reasoning:
 
@@ -81,7 +81,7 @@ Demonstrates specialized models for research and reasoning:
 - `r1-1776`: Offline model without search capabilities
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.research-reasoning.yaml
+npx artef@latest eval -c artefconfig.research-reasoning.yaml
 ```
 
 ## Usage
@@ -90,8 +90,8 @@ After initializing the example, you can run any of the configurations:
 
 ```bash
 cd provider-perplexity
-npx promptfoo@latest eval -c <config-file.yaml>
-npx promptfoo@latest view
+npx artef@latest eval -c <config-file.yaml>
+npx artef@latest view
 ```
 
 ## What You'll Learn

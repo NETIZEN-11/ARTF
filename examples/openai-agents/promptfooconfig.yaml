@@ -1,5 +1,5 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
-description: Long-horizon OpenAI Agents Python SDK with Promptfoo tracing
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
+description: Long-horizon OpenAI Agents Python SDK with artef tracing
 
 prompts:
   - '{{task}}'
@@ -114,7 +114,7 @@ tests:
       testCaseId: openai-agents-python-faq-only
     assert:
       - type: contains
-        value: Promptfoo-Air
+        value: artef-Air
       - type: trajectory:tool-used
         value: faq_lookup
       - type: not-trajectory:tool-used

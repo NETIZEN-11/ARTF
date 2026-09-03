@@ -1,10 +1,10 @@
----
-title: 'Promptfoo for Enterprise: AI Evaluation and Red Teaming at Scale'
-description: 'Scale AI security testing across your entire organization. Promptfoo Enterprise offers team management, SSO, audit logs, and continuous monitoring for production AI systems.'
+﻿---
+title: 'artef for Enterprise: AI Evaluation and Red Teaming at Scale'
+description: 'Scale AI security testing across your entire organization. artef Enterprise offers team management, SSO, audit logs, and continuous monitoring for production AI systems.'
 image: /img/continuous-testing.png
 keywords:
   [
-    Promptfoo Enterprise,
+    artef Enterprise,
     enterprise AI evaluation,
     LLM testing platform,
     AI red teaming,
@@ -18,11 +18,11 @@ authors: [ian]
 tags: [company-update]
 ---
 
-# Promptfoo for Enterprise
+# artef for Enterprise
 
 Today we're announcing new Enterprise features for teams developing and securing LLM applications.
 
-Over the past few months, Promptfoo has launched open-source support for the latest adversarial ML research techniques, new integrations with popular LLM providers, and features for evaluating complex RAG and agent architectures.
+Over the past few months, artef has launched open-source support for the latest adversarial ML research techniques, new integrations with popular LLM providers, and features for evaluating complex RAG and agent architectures.
 
 We're now expanding to support developers in larger teams. We've developed new capabilities for companies that recognize the importance of LLM security, seek tools for collaboration across development and security teams, and want higher visibility into the security of their LLM applications.
 
@@ -30,7 +30,7 @@ We're now expanding to support developers in larger teams. We've developed new c
 
 Enterprise customers have unique needs beyond individual developers and small teams - they require additional oversight, reporting, and compliance measures.
 
-To meet the needs of larger teams, Promptfoo Enterprise offers:
+To meet the needs of larger teams, artef Enterprise offers:
 
 ### Reports & Continuous Monitoring
 
@@ -63,7 +63,7 @@ To meet the needs of larger teams, Promptfoo Enterprise offers:
 
 ### On-Premise or Private Cloud Deployment
 
-- Deploy Promptfoo within your own infrastructure for maximum data security
+- Deploy artef within your own infrastructure for maximum data security
 - Strict security controls ensure your prompts and data never leave your network
 - Optional managed cloud service
 
@@ -73,4 +73,4 @@ To meet the needs of larger teams, Promptfoo Enterprise offers:
 - Priority support with a 24-hour SLA
 - Named account manager
 
-If your company is interested in signing up for Promptfoo Enterprise **[contact us](mailto:inquiries@promptfoo.dev)** so we can get you up and running with a proof of concept.
+If your company is interested in signing up for artef Enterprise **[contact us](mailto:inquiries@artef.dev)** so we can get you up and running with a proof of concept.

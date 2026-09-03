@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import logger from '../../logger';
 import { isBasicRefusal, isEmptyResponse } from '../util';
 import { RedteamGraderBase } from './base';
@@ -12,7 +12,7 @@ import type {
 } from '../../types/index';
 import type { RedteamGradingContext } from '../grading/types';
 
-const PLUGIN_ID = 'promptfoo:redteam:ssrf';
+const PLUGIN_ID = 'artef:redteam:ssrf';
 
 // Severity tiers in order from least to most severe
 const SEVERITY_ORDER = ['none', 'low', 'medium', 'high', 'critical'] as const;

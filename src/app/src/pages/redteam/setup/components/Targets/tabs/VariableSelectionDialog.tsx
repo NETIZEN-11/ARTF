@@ -1,4 +1,4 @@
-import { Button } from '@app/components/ui/button';
+﻿import { Button } from '@app/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@app/components/ui/select';
-import { type Inputs, normalizeInputDefinition } from '@promptfoo/contracts';
+import { type Inputs, normalizeInputDefinition } from '@artef/contracts';
 
 interface VariableSelectionDialogProps {
   open: boolean;

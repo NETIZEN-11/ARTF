@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Helicone
-description: Monitor and optimize LLM testing with Helicone integration in Promptfoo. Track usage, costs, and latency while managing prompts through an open-source observability platform.
+description: Monitor and optimize LLM testing with Helicone integration in artef. Track usage, costs, and latency while managing prompts through an open-source observability platform.
 ---
 
 # Helicone integration
@@ -27,6 +27,6 @@ To reference prompts in Helicone:
          # ...
    ```
 
-Variables from your promptfoo test cases will be automatically plugged into the Helicone prompt as variables.
+Variables from your artef test cases will be automatically plugged into the Helicone prompt as variables.
 
 You can follow [this guide](https://docs.helicone.ai/features/prompts#prompts-and-experiments) to create a Prompt using Helicone

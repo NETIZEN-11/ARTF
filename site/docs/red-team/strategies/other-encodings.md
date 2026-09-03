@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 102
 description: Learn how to test LLM resilience using camelCase, Morse code, Pig Latin, and emoji-based text transformations to bypass content filters and evaluate model security.
 ---
@@ -11,14 +11,14 @@ The other-encodings strategy collection provides multiple text transformation me
 
 You can use the `other-encodings` collection in your configuration to automatically include all encoding strategies in this collection:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - other-encodings # Includes camelCase, Morse code, Pig Latin, and emoji encoding
 ```
 
 This is equivalent to specifying each strategy individually:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - camelcase
   - morse
@@ -48,7 +48,7 @@ helloWorld
 
 Add the camelCase strategy individually to your red team configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - camelcase # Apply camelCase transformation
 ```
@@ -75,7 +75,7 @@ For example, "Hello World" becomes:
 
 Add the Morse code strategy individually to your red team configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - morse # Apply Morse code transformation
 ```
@@ -102,7 +102,7 @@ elloHay orldWay
 
 Add the Pig Latin strategy individually to your red team configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - piglatin # Apply Pig Latin transformation
 ```
@@ -121,7 +121,7 @@ The Emoji encoding strategy hides a UTF-8 payload inside invisible Unicode varia
 
 Add the emoji strategy individually to your red team configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - emoji # Hide text inside an emoji
 ```
@@ -130,8 +130,8 @@ strategies:
 
 Here's a complete example that applies the encoding collection to test cases:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Answer this question: {{prompt}}'
 

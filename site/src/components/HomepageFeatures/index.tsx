@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Link from '@docusaurus/Link';
 import { SITE_CONSTANTS } from '../../constants';
@@ -19,7 +19,7 @@ export default function HomepageFeatures() {
       ),
       image: '/img/security-coverage.png',
       image2x: '/img/security-coverage.png',
-      alt: 'promptfoo security coverage examples',
+      alt: 'artef security coverage examples',
       link: '/docs/red-team/llm-vulnerability-types/',
       cta: 'Learn More',
     },
@@ -39,7 +39,7 @@ export default function HomepageFeatures() {
       ),
       image: '/img/f500-usage.svg',
       image2x: '/img/f500-usage.svg',
-      alt: 'promptfoo quickstart',
+      alt: 'artef quickstart',
       link: '/docs/red-team/quickstart/',
       cta: 'Get Started',
       className: 'f500',
@@ -58,7 +58,7 @@ export default function HomepageFeatures() {
       ),
       image: '/img/compliance-frameworks.png',
       image2x: '/img/compliance-frameworks.png',
-      alt: 'promptfoo compliance reporting',
+      alt: 'artef compliance reporting',
       link: '/red-teaming/',
       cta: 'Learn More',
     },
@@ -80,7 +80,7 @@ export default function HomepageFeatures() {
         'Get started in minutes with our CLI tool, or choose our managed cloud or on-premises enterprise solutions for advanced features and support.',
       image: '/img/deploy-options.svg',
       image2x: '/img/deploy-options.svg',
-      alt: 'promptfoo deployment options',
+      alt: 'artef deployment options',
       link: '/contact/',
       cta: 'Get Started',
       className: 'noBorder',
@@ -90,7 +90,7 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <h2 className={styles.featuresTitle}>Why Promptfoo?</h2>
+        <h2 className={styles.featuresTitle}>Why artef?</h2>
         <div className={styles.featuresList}>
           {features.map((feature, idx) => (
             <div

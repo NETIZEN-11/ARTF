@@ -1,9 +1,9 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import {
   detectInstaller,
   isRunningUnderNpx,
-  promptfooCommand,
-} from '../../src/util/promptfooCommand';
+  artefCommand,
+} from '../../src/util/artefCommand';
 import { mockProcessEnv } from './utils';
 
 describe('nextCommand', () => {
@@ -110,47 +110,47 @@ describe('nextCommand', () => {
     });
   });
 
-  describe('promptfooCommand', () => {
+  describe('artefCommand', () => {
     it('should return npx command for npx installer', () => {
       mockProcessEnv({ npm_execpath: '/path/to/npx' });
-      expect(promptfooCommand('eval')).toBe('npx promptfoo@latest eval');
+      expect(artefCommand('eval')).toBe('npx artef@latest eval');
     });
 
     it('should return regular command for brew installer', () => {
       mockProcessEnv({ npm_config_prefix: '/usr/local/Homebrew/Cellar/node/20.0.0/bin' });
-      expect(promptfooCommand('eval')).toBe('promptfoo eval');
+      expect(artefCommand('eval')).toBe('artef eval');
     });
 
     it('should return regular command for npm-global installer', () => {
       mockProcessEnv({ npm_config_user_agent: 'npm/10.8.2 node/v18.20.4' });
-      expect(promptfooCommand('eval')).toBe('promptfoo eval');
+      expect(artefCommand('eval')).toBe('artef eval');
     });
 
     it('should return regular command for unknown installer', () => {
       mockProcessEnv({ npm_config_user_agent: 'yarn/1.22.0' });
-      expect(promptfooCommand('eval')).toBe('promptfoo eval');
+      expect(artefCommand('eval')).toBe('artef eval');
     });
 
     it('should handle complex subcommands', () => {
       mockProcessEnv({ npm_execpath: '/path/to/npx' });
-      expect(promptfooCommand('redteam init')).toBe('npx promptfoo@latest redteam init');
+      expect(artefCommand('redteam init')).toBe('npx artef@latest redteam init');
     });
 
     it('should handle subcommands with flags', () => {
       mockProcessEnv({ npm_execpath: '/path/to/npx' });
-      expect(promptfooCommand('eval -c config.yaml')).toBe(
-        'npx promptfoo@latest eval -c config.yaml',
+      expect(artefCommand('eval -c config.yaml')).toBe(
+        'npx artef@latest eval -c config.yaml',
       );
     });
 
     it('should handle empty subcommand for npx', () => {
       mockProcessEnv({ npm_execpath: '/path/to/npx' });
-      expect(promptfooCommand('')).toBe('npx promptfoo@latest');
+      expect(artefCommand('')).toBe('npx artef@latest');
     });
 
     it('should handle empty subcommand for non-npx', () => {
       mockProcessEnv({ npm_config_prefix: '/usr/local/Homebrew/Cellar/node/20.0.0/bin' });
-      expect(promptfooCommand('')).toBe('promptfoo');
+      expect(artefCommand('')).toBe('artef');
     });
   });
 

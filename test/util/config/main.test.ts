@@ -1,4 +1,4 @@
-import * as os from 'os';
+﻿import * as os from 'os';
 import * as path from 'path';
 
 import * as yaml from 'js-yaml';
@@ -10,7 +10,7 @@ import {
   refreshConfigDirectoryPathFromEnv,
   setConfigDirectoryPath,
 } from '../../../src/util/config/manage';
-import { writePromptfooConfig } from '../../../src/util/config/writer';
+import { writeartefConfig } from '../../../src/util/config/writer';
 import { mockProcessEnv } from '../../util/utils';
 
 import type { UnifiedConfig } from '../../../src/types/index';
@@ -61,14 +61,14 @@ vi.mock('../../../src/logger', () => ({
 
 describe('config', () => {
   const mockHomedir = '/mock/home';
-  const defaultConfigPath = path.join(mockHomedir, '.promptfoo');
+  const defaultConfigPath = path.join(mockHomedir, '.artef');
   let restoreEnv: () => void;
 
   beforeEach(() => {
     vi.resetAllMocks();
     vi.mocked(os.homedir).mockReturnValue(mockHomedir);
     mockFs.existsSync.mockReturnValue(false);
-    restoreEnv = mockProcessEnv({ PROMPTFOO_CONFIG_DIR: undefined });
+    restoreEnv = mockProcessEnv({ artef_CONFIG_DIR: undefined });
     refreshConfigDirectoryPathFromEnv();
     setConfigDirectoryPath(undefined);
   });
@@ -85,7 +85,7 @@ describe('config', () => {
     });
 
     it('reads a config directory refreshed after early env-file loading', () => {
-      const restoreConfigDir = mockProcessEnv({ PROMPTFOO_CONFIG_DIR: '/env-file/config' });
+      const restoreConfigDir = mockProcessEnv({ artef_CONFIG_DIR: '/env-file/config' });
       try {
         refreshConfigDirectoryPathFromEnv();
         expect(getConfigDirectoryPath()).toBe('/env-file/config');
@@ -97,7 +97,7 @@ describe('config', () => {
 
     it('does not let eval config env overrides move the global config directory', () => {
       const originalConfig = cliState.config;
-      cliState.config = { env: { PROMPTFOO_CONFIG_DIR: '/eval-config/path' } };
+      cliState.config = { env: { artef_CONFIG_DIR: '/eval-config/path' } };
       try {
         expect(getConfigDirectoryPath()).toBe(defaultConfigPath);
       } finally {
@@ -106,7 +106,7 @@ describe('config', () => {
     });
 
     it('does not move after later process environment changes', () => {
-      const restoreConfigDir = mockProcessEnv({ PROMPTFOO_CONFIG_DIR: '/late/config' });
+      const restoreConfigDir = mockProcessEnv({ artef_CONFIG_DIR: '/late/config' });
       try {
         expect(getConfigDirectoryPath()).toBe(defaultConfigPath);
       } finally {
@@ -144,7 +144,7 @@ describe('config', () => {
     it('overrides the environment variable', () => {
       const envPath = '/env/path';
       const newPath = '/new/path';
-      const restoreConfigDir = mockProcessEnv({ PROMPTFOO_CONFIG_DIR: envPath });
+      const restoreConfigDir = mockProcessEnv({ artef_CONFIG_DIR: envPath });
       try {
         setConfigDirectoryPath(newPath);
         expect(getConfigDirectoryPath()).toBe(newPath);
@@ -155,7 +155,7 @@ describe('config', () => {
   });
 });
 
-describe('writePromptfooConfig', () => {
+describe('writeartefConfig', () => {
   const mockOutputPath = '/mock/output/path.yaml';
 
   beforeEach(() => {
@@ -167,11 +167,11 @@ describe('writePromptfooConfig', () => {
     const mockYaml = 'description: Test config\n';
     vi.mocked(yaml.dump).mockReturnValue(mockYaml);
 
-    writePromptfooConfig(mockConfig, mockOutputPath);
+    writeartefConfig(mockConfig, mockOutputPath);
 
     expect(mockFs.writeFileSync).toHaveBeenCalledWith(
       mockOutputPath,
-      `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json\n${mockYaml}`,
+      `# yaml-language-server: $schema=https://artef.dev/config-schema.json\n${mockYaml}`,
     );
   });
 
@@ -184,7 +184,7 @@ describe('writePromptfooConfig', () => {
       defaultTest: { assert: [{ type: 'equals', value: 'default assertion' }] },
     };
 
-    writePromptfooConfig(mockConfig, mockOutputPath);
+    writeartefConfig(mockConfig, mockOutputPath);
 
     const dumpCall = vi.mocked(yaml.dump).mock.calls[0][0];
     const keys = Object.keys(dumpCall);
@@ -194,7 +194,7 @@ describe('writePromptfooConfig', () => {
   it('uses js-yaml to dump the config with skipInvalid option', () => {
     const mockConfig: Partial<UnifiedConfig> = { description: 'Test config' };
 
-    writePromptfooConfig(mockConfig, mockOutputPath);
+    writeartefConfig(mockConfig, mockOutputPath);
 
     expect(yaml.dump).toHaveBeenCalledWith(expect.anything(), { skipInvalid: true });
   });
@@ -203,7 +203,7 @@ describe('writePromptfooConfig', () => {
     vi.mocked(yaml.dump).mockReturnValueOnce('');
     const mockConfig: Partial<UnifiedConfig> = {};
 
-    writePromptfooConfig(mockConfig, mockOutputPath);
+    writeartefConfig(mockConfig, mockOutputPath);
     expect(mockFs.writeFileSync).not.toHaveBeenCalled();
     expect(logger.warn).toHaveBeenCalledWith('Warning: config is empty, skipping write');
   });
@@ -221,7 +221,7 @@ describe('writePromptfooConfig', () => {
       outputPath: './output',
     };
 
-    writePromptfooConfig(mockConfig, mockOutputPath);
+    writeartefConfig(mockConfig, mockOutputPath);
 
     const dumpCall = vi.mocked(yaml.dump).mock.calls[0][0];
     expect(dumpCall).toEqual(expect.objectContaining(mockConfig));
@@ -234,7 +234,7 @@ describe('writePromptfooConfig', () => {
       providers: ['provider1'],
     };
 
-    writePromptfooConfig(mockConfig, mockOutputPath);
+    writeartefConfig(mockConfig, mockOutputPath);
 
     const dumpCall = vi.mocked(yaml.dump).mock.calls[0][0];
     expect(dumpCall).toHaveProperty('description', 'Config with undefined');

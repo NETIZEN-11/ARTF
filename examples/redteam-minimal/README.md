@@ -1,9 +1,9 @@
-# redteam-minimal (Redteam: Minimal)
+﻿# redteam-minimal (Redteam: Minimal)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-minimal
+npx artef@latest init --example redteam-minimal
 cd redteam-minimal
 ```
 
@@ -14,14 +14,14 @@ A minimal red team setup demonstrating basic configuration and strategies.
 - API keys for LLM providers set as environment variables:
   - `OPENAI_API_KEY` - Get from [OpenAI API keys page](https://platform.openai.com/api-keys)
   - `ANTHROPIC_API_KEY` - Get from [Anthropic Console](https://console.anthropic.com/) (optional)
-- A target application or system to test (configured in `promptfooconfig.yaml`)
+- A target application or system to test (configured in `artefconfig.yaml`)
 
 ## Quick Start
 
 Run the red team evaluation:
 
 ```bash
-promptfoo redteam run
+artef redteam run
 ```
 
 ## Expected Results

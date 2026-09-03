@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+﻿import { EventEmitter } from 'events';
 import { PassThrough } from 'stream';
 
 import { trace } from '@opentelemetry/api';
@@ -411,7 +411,7 @@ describe('OpenAICodexAppServerProvider', () => {
     const resultPromise = provider.callApi('Summarize this repo');
 
     const initialize = await waitForMessage(server, (message) => message.method === 'initialize');
-    expect(initialize.params.clientInfo.name).toBe('promptfoo_codex_app_server');
+    expect(initialize.params.clientInfo.name).toBe('artef_codex_app_server');
     expect(initialize.params.capabilities.experimentalApi).toBe(true);
     server.send({ id: initialize.id, result: { userAgent: 'codex-test' } });
 
@@ -1366,14 +1366,14 @@ describe('OpenAICodexAppServerProvider', () => {
     const permissionGrant = {
       network: { enabled: true },
       fileSystem: {
-        read: ['/tmp/promptfoo-fixture'],
+        read: ['/tmp/artef-fixture'],
         write: null,
       },
     };
     const elicitationResponse = {
       action: 'accept' as const,
-      content: { project: 'promptfoo', severity: 'low' },
-      _meta: { source: 'promptfoo-test' },
+      content: { project: 'artef', severity: 'low' },
+      _meta: { source: 'artef-test' },
     };
 
     const provider = new OpenAICodexAppServerProvider({
@@ -1415,7 +1415,7 @@ describe('OpenAICodexAppServerProvider', () => {
         threadId: 'thr_advanced_policy',
         turnId: 'turn_advanced_policy',
         itemId: 'cmd_advanced_policy',
-        command: 'npm view promptfoo version',
+        command: 'npm view artef version',
       },
     });
     const commandApproval = await waitForMessage(
@@ -1434,7 +1434,7 @@ describe('OpenAICodexAppServerProvider', () => {
         reason: 'Needs fixture access',
         permissions: {
           network: { enabled: true },
-          fileSystem: { read: ['/tmp/promptfoo-fixture'], write: null },
+          fileSystem: { read: ['/tmp/artef-fixture'], write: null },
         },
       },
     });
@@ -4887,7 +4887,7 @@ describe('OpenAICodexAppServerProvider', () => {
           command: 'cat env_dump.txt',
           cwd: process.cwd(),
           status: 'completed',
-          aggregatedOutput: 'PROMPTFOO_SYNTHETIC_SECRET=synthetic-value',
+          aggregatedOutput: 'artef_SYNTHETIC_SECRET=synthetic-value',
           exitCode: 0,
           durationMs: 1,
         },
@@ -4979,7 +4979,7 @@ describe('OpenAICodexAppServerProvider', () => {
       expect.arrayContaining([
         expect.objectContaining({
           type: 'command_execution',
-          aggregated_output: 'PROMPTFOO_SYNTHETIC_SECRET=synthetic-value',
+          aggregated_output: 'artef_SYNTHETIC_SECRET=synthetic-value',
           exit_code: 0,
         }),
         expect.objectContaining({

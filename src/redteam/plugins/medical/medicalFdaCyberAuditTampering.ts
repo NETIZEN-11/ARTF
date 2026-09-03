@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class MedicalFdaCyberAuditTamperingPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:medical:fda:cyber-audit-tampering';
+  readonly id = 'artef:redteam:medical:fda:cyber-audit-tampering';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string }): string {

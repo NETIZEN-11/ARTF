@@ -1,4 +1,4 @@
-const path = require('path');
+﻿const path = require('path');
 const fs = require('fs').promises;
 const { default: satori } = require('satori');
 const matter = require('gray-matter');
@@ -239,7 +239,7 @@ async function generatePricingTemplate() {
                     fontWeight: 600,
                     color: '#ff7a7a',
                   },
-                  children: 'promptfoo',
+                  children: 'artef',
                 },
               },
             ].filter(Boolean),
@@ -400,7 +400,7 @@ async function generateAboutTemplate() {
                     fontWeight: 600,
                     color: '#ff7a7a',
                   },
-                  children: 'promptfoo',
+                  children: 'artef',
                 },
               },
             ].filter(Boolean),
@@ -528,7 +528,7 @@ async function generateContactTemplate() {
                     fontWeight: 600,
                     color: '#ff7a7a',
                   },
-                  children: 'promptfoo',
+                  children: 'artef',
                 },
               },
             ].filter(Boolean),
@@ -557,7 +557,7 @@ async function generateContactTemplate() {
               color: 'rgba(255, 255, 255, 0.7)',
               marginBottom: 50,
             },
-            children: 'See how Promptfoo can secure your AI infrastructure',
+            children: 'See how artef can secure your AI infrastructure',
           },
         },
         // Trust signal
@@ -656,7 +656,7 @@ async function generatePressTemplate() {
                     fontWeight: 600,
                     color: '#ff7a7a',
                   },
-                  children: 'promptfoo',
+                  children: 'artef',
                 },
               },
             ].filter(Boolean),
@@ -815,7 +815,7 @@ async function generateStoreTemplate() {
                                 fontWeight: 600,
                                 color: '#ff7a7a',
                               },
-                              children: 'promptfoo',
+                              children: 'artef',
                             },
                           },
                         ].filter(Boolean),
@@ -857,7 +857,7 @@ async function generateStoreTemplate() {
                           color: 'rgba(255, 255, 255, 0.7)',
                           marginBottom: 40,
                         },
-                        children: 'Official Promptfoo Merchandise',
+                        children: 'Official artef Merchandise',
                       },
                     },
                     // Tags row
@@ -1002,7 +1002,7 @@ async function generateEventsTemplate() {
                     fontWeight: 600,
                     color: '#ff7a7a',
                   },
-                  children: 'promptfoo',
+                  children: 'artef',
                 },
               },
             ].filter(Boolean),
@@ -1182,7 +1182,7 @@ async function generateSolutionTemplate(options) {
                           color: '#ff7a7a',
                           marginRight: 'auto',
                         },
-                        children: 'promptfoo',
+                        children: 'artef',
                       },
                     },
                     // Vertical badge
@@ -1356,7 +1356,7 @@ async function generateTelecomTemplate() {
 // Generate Satori JSX template for OG image
 async function generateSatoriTemplate(metadata = {}) {
   const {
-    title = 'Promptfoo',
+    title = 'artef',
     breadcrumbs = [],
     routePath = '',
     ogTitle = null,
@@ -1368,7 +1368,7 @@ async function generateSatoriTemplate(metadata = {}) {
 
   // Use custom OG title if provided
   const displayTitle = ogTitle || title;
-  const truncatedTitle = truncateText(displayTitle || 'Promptfoo Documentation', 70);
+  const truncatedTitle = truncateText(displayTitle || 'artef Documentation', 70);
 
   // Format breadcrumbs - limit to 2 levels for cleaner look
   const breadcrumbText = breadcrumbs.length > 0 ? breadcrumbs.slice(0, 2).join(' › ') : pageType;
@@ -1456,7 +1456,7 @@ async function generateSatoriTemplate(metadata = {}) {
                           color: '#ff7a7a',
                           marginRight: 'auto',
                         },
-                        children: 'promptfoo',
+                        children: 'artef',
                       },
                     },
                     // Page type badge
@@ -1553,7 +1553,7 @@ async function generateSatoriTemplate(metadata = {}) {
                           fontSize: 16,
                           color: 'rgba(255, 122, 122, 0.8)',
                         },
-                        children: 'promptfoo.dev',
+                        children: 'artef.dev',
                       },
                     },
                   ],
@@ -2026,7 +2026,7 @@ async function runStandaloneTest() {
       routePath: '/docs/test/',
     },
     {
-      title: 'Getting Started with Promptfoo',
+      title: 'Getting Started with artef',
       breadcrumbs: ['Guide'],
       routePath: '/guides/getting-started/',
     },
@@ -2270,7 +2270,7 @@ module.exports = function (context, options) {
                     let html = await fs.readFile(htmlPath, 'utf8');
 
                     const newOgImageUrl = `${siteConfig.url}${imageUrl}`;
-                    const defaultThumbnailUrl = 'https://www.promptfoo.dev/img/thumbnail.png';
+                    const defaultThumbnailUrl = 'https://www.artef.dev/img/thumbnail.png';
 
                     // If HTML contains the default thumbnail URL, replace all instances
                     if (html.includes(defaultThumbnailUrl)) {
@@ -2414,7 +2414,7 @@ module.exports = function (context, options) {
         '/solutions/telecom/',
       ];
 
-      const defaultThumbnailUrl = 'https://www.promptfoo.dev/img/thumbnail.png';
+      const defaultThumbnailUrl = 'https://www.artef.dev/img/thumbnail.png';
       for (const routePath of specialPages) {
         const imageUrl = generatedImages.get(routePath);
         if (imageUrl) {

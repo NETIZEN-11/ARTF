@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Multi-Agent System Example with AWS Bedrock Agents
 # This example demonstrates testing multiple specialized agents working together
 

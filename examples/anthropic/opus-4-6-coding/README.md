@@ -1,11 +1,11 @@
-# anthropic/opus-4-6-coding (Claude Opus 4.6 Advanced Coding)
+﻿# anthropic/opus-4-6-coding (Claude Opus 4.6 Advanced Coding)
 
 This example demonstrates Claude Opus 4.6's state-of-the-art coding and reasoning capabilities, showcasing its ability to handle complex software engineering tasks with ambiguity and tradeoff analysis.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example anthropic/opus-4-6-coding
+npx artef@latest init --example anthropic/opus-4-6-coding
 cd anthropic/opus-4-6-coding
 ```
 
@@ -33,10 +33,10 @@ Claude Opus 4.6 is the best model in the world for coding, agents, and computer 
 export ANTHROPIC_API_KEY=your_api_key_here
 
 # Run the evaluation
-npx promptfoo@latest eval
+npx artef@latest eval
 
 # View results
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Expected Results
@@ -52,4 +52,4 @@ The evaluation tests Opus 4.6's ability to:
 
 - [Claude Opus 4.6 announcement](https://www.anthropic.com/news/claude-opus-4-6)
 - [Anthropic documentation](https://docs.anthropic.com)
-- [Promptfoo Anthropic provider docs](https://promptfoo.dev/docs/providers/anthropic)
+- [artef Anthropic provider docs](https://artef.dev/docs/providers/anthropic)

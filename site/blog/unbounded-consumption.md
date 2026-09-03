@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: 'Beyond DoS: How Unbounded Consumption is Reshaping LLM Security'
 title: 'Beyond DoS: How Unbounded Consumption is Reshaping LLM Security'
 description: 'OWASP replaced DoS attacks with "unbounded consumption" in their 2025 Top 10. Learn why this broader threat category matters and how to defend against it.'
@@ -31,7 +31,7 @@ So what is the difference between Model Denial of Service (DoS) and Unbounded Co
   <div style={{ textAlign: 'center' }}>
     <img
       src="/img/blog/unbounded-consumption/panda-eating-tokens.png"
-      alt="Promptfoo Panda Eating Tokens"
+      alt="artef Panda Eating Tokens"
       style={{ width: '70%' }}
     />
   </div>
@@ -219,7 +219,7 @@ Several tools help implement security measures at the application level to compl
 
 Timeout implementation tools prevent long-running queries from tying up your system. Traffic analysis systems can identify and block suspicious patterns.
 
-Also, implementing safety settings in AI models can prevent the exploitation of vulnerabilities and enhance security. Developers can improve security by [creating a Custom Plugin](/docs/red-team/plugins/custom/) for Promptfoo tailored to their needs.
+Also, implementing safety settings in AI models can prevent the exploitation of vulnerabilities and enhance security. Developers can improve security by [creating a Custom Plugin](/docs/red-team/plugins/custom/) for artef tailored to their needs.
 
 Combining these tools and technologies creates a robust defense against LLM unbounded consumption attacks while maintaining service availability for legitimate users. The key is implementing multiple layers of protection that work together to identify, prevent, and mitigate potential attacks.
 
@@ -257,14 +257,14 @@ To mitigate LLM DoS attacks, implement scalable strategies such as dynamic rate 
 - **Automated Testing**: Scale testing protocols to match application complexity.
 - **Threat Awareness**: Stay updated on new attack vectors and emerging threats.
 
-## Testing for Unbounded Consumption with Promptfoo
+## Testing for Unbounded Consumption with artef
 
-Promptfoo provides several ways of testing unbounded consumption through both its [red teaming](/docs/red-team/) and [evaluations](/docs/intro/) frameworks:
+artef provides several ways of testing unbounded consumption through both its [red teaming](/docs/red-team/) and [evaluations](/docs/intro/) frameworks:
 
 Test for potential DoS vulnerabilities:
 
 - **Resource consumption testing**: Generate prompts designed to consume excessive resources.
-- **Rate limiting checks**: Verify that proper rate limiting is in place using the [`--repeat` argument](/docs/usage/command-line/#promptfoo-eval).
+- **Rate limiting checks**: Verify that proper rate limiting is in place using the [`--repeat` argument](/docs/usage/command-line/#artef-eval).
 - **Divergent repetition testing**: Use the `divergent-repetition` plugin to test for vulnerabilities related to repetitive pattern exploitation.
 
 ### Divergent Repetition Testing
@@ -283,9 +283,9 @@ redteam:
     - divergent-repetition
 ```
 
-### Testing with Promptfoo Evals
+### Testing with artef Evals
 
-Running rate limiting checks can be completed using the Promptfoo evals framework.
+Running rate limiting checks can be completed using the artef evals framework.
 
 Here's an example test case:
 
@@ -299,8 +299,8 @@ tests:
         value: output.length < 1000
 ```
 
-## Strengthen Your LLM Security with Promptfoo
+## Strengthen Your LLM Security with artef
 
-As attacks on LLMs become more sophisticated, it's essential to have robust security measures in place. At Promptfoo, we specialize in enhancing your LLM security posture.
+As attacks on LLMs become more sophisticated, it's essential to have robust security measures in place. At artef, we specialize in enhancing your LLM security posture.
 
-[Contact us](https://www.promptfoo.dev/contact/) to discuss how Promptfoo can improve your LLM security posture.
+[Contact us](https://www.artef.dev/contact/) to discuss how artef can improve your LLM security posture.

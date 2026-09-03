@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+﻿import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -52,11 +52,11 @@ const createDefaultCitation = (packageJson: PackageJson): Citation => ({
       'given-names': 'Ian',
     },
   ],
-  title: 'promptfoo',
+  title: 'artef',
   version: packageJson.version,
   'date-released': new Date().toISOString().slice(0, 10),
-  url: 'https://promptfoo.dev',
-  'repository-code': 'https://github.com/promptfoo/promptfoo',
+  url: 'https://artef.dev',
+  'repository-code': 'https://github.com/artef/artef',
   license: packageJson.license,
   type: 'software',
   description: packageJson.description,
@@ -72,7 +72,7 @@ async function getReleaseDate(version: string): Promise<string | null> {
   try {
     // biome-ignore lint/style/noRestrictedGlobals: Standalone script, fetchWithProxy not needed
     const response = await fetch(
-      `https://api.github.com/repos/promptfoo/promptfoo/releases/tags/${version}`,
+      `https://api.github.com/repos/artef/artef/releases/tags/${version}`,
     );
     if (!response.ok) {
       if (response.status === 404) {

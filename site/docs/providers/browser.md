@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Web Browser
 description: 'Execute LLM evaluations directly in browsers using WebGPU acceleration and local models for privacy-preserving testing'
 ---
@@ -36,13 +36,13 @@ When using browser automation:
 
 ## Prerequisites
 
-The browser provider requires Playwright and the stealth plugin. Install these packages in the project where you run promptfoo:
+The browser provider requires Playwright and the stealth plugin. Install these packages in the project where you run artef:
 
 ```bash
 npm install playwright @playwright/browser-chromium playwright-extra puppeteer-extra-plugin-stealth
 ```
 
-Note: Currently, promptfoo's browser provider only supports Chromium-based browsers (Chrome, Edge). The provider uses `playwright-extra` with the Chromium engine for enhanced stealth capabilities.
+Note: Currently, artef's browser provider only supports Chromium-based browsers (Chrome, Edge). The provider uses `playwright-extra` with the Chromium engine for enhanced stealth capabilities.
 
 ## Configuration
 
@@ -148,7 +148,7 @@ providers:
 
 **Key options:**
 
-- `persistSession: true` - Keep the browser page open between `callApi()` invocations. Because this is a stateful workflow, Promptfoo runs it with concurrency `1`.
+- `persistSession: true` - Keep the browser page open between `callApi()` invocations. Because this is a stateful workflow, artef runs it with concurrency `1`.
 - `runOnce: true` on steps - Execute only on the first turn (skip on subsequent turns)
 
 This is essential for testing multi-turn jailbreak strategies against chat interfaces where you need to maintain conversation context.
@@ -300,7 +300,7 @@ tests:
 
 ## Using as a Library
 
-If you are using promptfoo as a [node library](/docs/usage/node-package/), you can provide the equivalent provider config:
+If you are using artef as a [node library](/docs/usage/node-package/), you can provide the equivalent provider config:
 
 ```js
 {
@@ -338,7 +338,7 @@ Note: All string values in the config support Nunjucks templating. This means yo
 
 ### Browser Support
 
-While Playwright supports multiple browsers (Chromium, Firefox, and WebKit), promptfoo's browser provider currently only implements Chromium support. This includes:
+While Playwright supports multiple browsers (Chromium, Firefox, and WebKit), artef's browser provider currently only implements Chromium support. This includes:
 
 - **Chrome** - Google's browser
 - **Edge** - Microsoft's Chromium-based browser
@@ -399,7 +399,7 @@ The [Playwright Recorder Chrome Extension](https://chrome.google.com/webstore/de
 3. Click the extension icon and start recording
 4. Perform your actions (click, type, etc.)
 5. Stop recording and copy the generated selectors/code
-6. Adapt the code for promptfoo's browser provider format
+6. Adapt the code for artef's browser provider format
 
 This extension is especially useful because it:
 
@@ -453,7 +453,7 @@ providers:
 Get detailed information about each action:
 
 ```bash
-npx promptfoo@latest eval --verbose
+npx artef@latest eval --verbose
 ```
 
 #### 3. Take Screenshots
@@ -569,7 +569,7 @@ providers:
 Here's a complete example testing a login workflow:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Test login functionality
 
 prompts:
@@ -672,4 +672,4 @@ providers:
 
 ---
 
-For more examples, check out the [headless-browser example](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-browser/headless) in our GitHub repository.
+For more examples, check out the [headless-browser example](https://github.com/artef/artef/tree/main/examples/integration-browser/headless) in our GitHub repository.

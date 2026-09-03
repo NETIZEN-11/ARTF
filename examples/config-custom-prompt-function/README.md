@@ -1,29 +1,29 @@
-# config-custom-prompt-function (Prompt Functions and Format Examples)
+﻿# config-custom-prompt-function (Prompt Functions and Format Examples)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-custom-prompt-function
+npx artef@latest init --example config-custom-prompt-function
 cd config-custom-prompt-function
 ```
 
-This example demonstrates the full range of prompt formats supported by promptfoo, with special focus on prompt functions that can return both content and configuration.
+This example demonstrates the full range of prompt formats supported by artef, with special focus on prompt functions that can return both content and configuration.
 
 ## Quick Start
 
 ```bash
 # Copy this example to your project
-npx promptfoo@latest init --example config-custom-prompt-function
+npx artef@latest init --example config-custom-prompt-function
 
 # Set required API keys
 export OPENAI_API_KEY=your_openai_key
 export ANTHROPIC_API_KEY=your_anthropic_key
 
 # Run the evaluation
-npx promptfoo@latest eval
+npx artef@latest eval
 
 # View results
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## What This Example Shows
@@ -55,7 +55,7 @@ npx promptfoo@latest view
 - `prompt_python.py` - Python examples
 - `prompt_config.js/py` - Functions returning dynamic configuration
 - `subfolder/` - Demonstrates nested file structures
-- `promptfooconfig.yaml` - Complete configuration showing all prompt types
+- `artefconfig.yaml` - Complete configuration showing all prompt types
 
 ## Configuration Features
 
@@ -78,7 +78,7 @@ To adapt this example:
 
 Learn more about:
 
-- [Prompt Formats](https://www.promptfoo.dev/docs/configuration/prompts/#prompts)
-- [Prompt Functions](https://www.promptfoo.dev/docs/configuration/prompts/#prompt-functions)
-- [Provider Configuration](https://www.promptfoo.dev/docs/providers/)
-- [JSON Schema Response Formats](https://www.promptfoo.dev/docs/providers/openai/#json-mode-structured-outputs)
+- [Prompt Formats](https://www.artef.dev/docs/configuration/prompts/#prompts)
+- [Prompt Functions](https://www.artef.dev/docs/configuration/prompts/#prompt-functions)
+- [Provider Configuration](https://www.artef.dev/docs/providers/)
+- [JSON Schema Response Formats](https://www.artef.dev/docs/providers/openai/#json-mode-structured-outputs)

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: file://./src/openai-agent-provider.js
     config:
@@ -14,7 +14,7 @@ providers:
         6. Don't ask for confirmation before using a tool or doing something, just do it.
       mcpServers:
         - command: 'npx' ## NPX Example
-          args: ['-y', '@promptfoo/evil-mcp-server@latest']
+          args: ['-y', '@artef/evil-mcp-server@latest']
         - command: 'node' # Command example (could use python, etc.)
           args: ['./src/mcp_server/index.js'] # CHANGE THIS TO THE MCP SERVER YOU WANT TO USE
         - url: 'http://localhost:8080/mcp' # URL Example (python server.py)

@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 import fs from 'fs/promises';
 
 import { BLOB_MAX_SIZE, recordBlobReference, storeBlob } from '../blobs';
@@ -445,7 +445,7 @@ async function createImportedV2Eval(evalData: any, context: ImportedEvalContext)
 export function importCommand(program: Command) {
   program
     .command('import <file>')
-    .description('Import a Promptfoo eval JSON export or an OpenAI Evals JSONL export')
+    .description('Import a artef eval JSON export or an OpenAI Evals JSONL export')
     .option('--new-id', 'Generate a new eval ID instead of preserving the original')
     .option('--force', 'Replace existing eval with the same ID')
     .action(async (file, cmdObj) => {

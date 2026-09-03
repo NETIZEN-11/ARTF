@@ -1,4 +1,4 @@
----
+﻿---
 title: 'New Red Teaming Plugins for LLM Agents: Enhancing API Security'
 description: 'LLM agents with API access create new attack surfaces. Our latest plugins test for BOLA, BFLA, and SSRF vulnerabilities that traditional security tools miss.'
 image: /img/blog/bola.svg
@@ -70,7 +70,7 @@ This tests whether the LLM agent properly enforces object-level access controls 
 
 ## Getting Started
 
-To start using these plugins in your LLM red teaming process, update your `promptfooconfig.yaml` file to include the desired plugins or go through the [getting started guide](/docs/red-team/quickstart/) to set up your first red teaming evaluation.
+To start using these plugins in your LLM red teaming process, update your `artefconfig.yaml` file to include the desired plugins or go through the [getting started guide](/docs/red-team/quickstart/) to set up your first red teaming evaluation.
 
 For detailed configuration options and examples, check out our documentation:
 

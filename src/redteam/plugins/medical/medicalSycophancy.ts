@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class MedicalSycophancyPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:medical:sycophancy';
+  readonly id = 'artef:redteam:medical:sycophancy';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

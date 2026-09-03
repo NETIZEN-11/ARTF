@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Moonshot (Kimi)
-description: Configure Moonshot AI's OpenAI-compatible API to evaluate Kimi K3 and K2 thinking, chat, and vision models with promptfoo
+description: Configure Moonshot AI's OpenAI-compatible API to evaluate Kimi K3 and K2 thinking, chat, and vision models with artef
 ---
 
 # Moonshot (Kimi)
@@ -72,8 +72,8 @@ Any other parameter supported by the OpenAI provider is forwarded as-is.
 
 The `kimi-k3` and `kimi-k2.x` models are reasoning models and behave differently from the `moonshot-v1` family:
 
-- **Fixed sampling parameters.** Kimi pins `temperature` (`1.0` with thinking on), `top_p`, `n`, and the penalties to fixed values and returns a `400` ("invalid temperature: only 1 is allowed for this model") for any other value. The provider therefore does **not** send promptfoo's default `temperature`/`max_tokens` for `kimi-*` models — leave them unset (recommended) or set `temperature: 1`. The `moonshot-v1` models accept arbitrary sampling values.
-- **Reasoning output.** Kimi returns a separate `reasoning_content` stream that promptfoo surfaces with a `Thinking: …` prefix. Set `showThinking: false` when you assert on structured output (for example `is-json`) so the reasoning doesn't contaminate the parsed result.
+- **Fixed sampling parameters.** Kimi pins `temperature` (`1.0` with thinking on), `top_p`, `n`, and the penalties to fixed values and returns a `400` ("invalid temperature: only 1 is allowed for this model") for any other value. The provider therefore does **not** send artef's default `temperature`/`max_tokens` for `kimi-*` models — leave them unset (recommended) or set `temperature: 1`. The `moonshot-v1` models accept arbitrary sampling values.
+- **Reasoning output.** Kimi returns a separate `reasoning_content` stream that artef surfaces with a `Thinking: …` prefix. Set `showThinking: false` when you assert on structured output (for example `is-json`) so the reasoning doesn't contaminate the parsed result.
 - **Token budget.** Reasoning tokens count against the output budget. When you leave the token limit unset the provider lets Moonshot apply its server default (32k for K2.x, 131k for K3); if you set one, leave generous headroom for the answer. Moonshot's canonical field is `max_completion_tokens` (`max_tokens` is a deprecated alias) — the provider sends `max_completion_tokens` for `kimi-*` models whichever of the two you configure.
 - **Controlling thinking.** The two generations use different, mutually exclusive controls:
   - `kimi-k3` is always thinking and accepts a top-level `reasoning_effort` field, which the provider forwards from `config.reasoning_effort`. Currently only `max` (the default) is accepted; Moonshot plans more levels. Do **not** send the K2.x `thinking` parameter to K3 — the API rejects it.
@@ -110,10 +110,10 @@ prompts:
 
 tests:
   - vars:
-      text: 'Promptfoo is an open-source tool for testing and evaluating LLM apps.'
+      text: 'artef is an open-source tool for testing and evaluating LLM apps.'
 ```
 
-A runnable comparison lives in [examples/provider-moonshot](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-moonshot).
+A runnable comparison lives in [examples/provider-moonshot](https://github.com/artef/artef/tree/main/examples/provider-moonshot).
 
 ## API Details
 

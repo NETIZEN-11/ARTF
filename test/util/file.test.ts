@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import path from 'path';
 
 import { globSync, hasMagic } from 'glob';
@@ -1663,7 +1663,7 @@ describe('file utilities', () => {
       });
     });
 
-    it('should handle non-existent file path gracefully when PROMPTFOO_STRICT_FILES is false', async () => {
+    it('should handle non-existent file path gracefully when artef_STRICT_FILES is false', async () => {
       vi.spyOn(fs, 'statSync').mockImplementation(() => {
         throw new Error('File does not exist');
       });
@@ -1675,13 +1675,13 @@ describe('file utilities', () => {
       });
     });
 
-    it('should throw an error for non-existent file path when PROMPTFOO_STRICT_FILES is true', async () => {
-      mockProcessEnv({ PROMPTFOO_STRICT_FILES: 'true' });
+    it('should throw an error for non-existent file path when artef_STRICT_FILES is true', async () => {
+      mockProcessEnv({ artef_STRICT_FILES: 'true' });
       vi.spyOn(fs, 'statSync').mockImplementation(() => {
         throw new Error('File does not exist');
       });
       expect(() => parsePathOrGlob('/base', 'nonexistent.js')).toThrow('File does not exist');
-      mockProcessEnv({ PROMPTFOO_STRICT_FILES: undefined });
+      mockProcessEnv({ artef_STRICT_FILES: undefined });
     });
 
     it('should properly test file existence when function name in the path', async () => {

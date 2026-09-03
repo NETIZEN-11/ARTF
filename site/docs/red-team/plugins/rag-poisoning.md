@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: RAG Poisoning
 description: Red team RAG systems by testing document poisoning attacks and context manipulation to protect AI knowledge bases from malicious content injection and data leakage
 ---
 
 # RAG Poisoning
 
-Promptfoo includes a RAG Poisoning utility that tests your system's resilience against adversarial attacks on the document retrieval process.
+artef includes a RAG Poisoning utility that tests your system's resilience against adversarial attacks on the document retrieval process.
 
 Poisoning occurs when an attacker injects malicious content into the RAG context or knowledge base that can manipulate the LLM's responses in unintended ways.
 
@@ -29,9 +29,9 @@ These attacks can be particularly effective because:
 
 At a high level, your poisoning process looks like this:
 
-1. **Poison some test documents** using `promptfoo redteam poison`
+1. **Poison some test documents** using `artef redteam poison`
 2. **Add these documents** to your RAG system's knowledge base
-3. **Run an automated [red team](/docs/red-team/quickstart/) scan** using `promptfoo redteam run`
+3. **Run an automated [red team](/docs/red-team/quickstart/) scan** using `artef redteam run`
 
 ### Generating documents
 
@@ -40,7 +40,7 @@ Let's start by generating some poisoned test documents. The system works by taki
 Run the command with the documents you want to poison:
 
 ```sh
-promptfoo redteam poison document1.txt document2.txt --goal "Extract API keys"
+artef redteam poison document1.txt document2.txt --goal "Extract API keys"
 ```
 
 This will create poisoned versions of your documents that attempt to exploit common RAG vulnerabilities.
@@ -49,21 +49,21 @@ Note that `goal` is optional, but can be used to specify the type of poisoning y
 
 The poison command sends the complete document contents, requested goal, and account email to the
 configured remote-generation endpoint. It has no local fallback. Setting either
-`PROMPTFOO_DISABLE_REMOTE_GENERATION=true` or
-`PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true` prevents the command from sending the document;
+`artef_DISABLE_REMOTE_GENERATION=true` or
+`artef_DISABLE_REDTEAM_REMOTE_GENERATION=true` prevents the command from sending the document;
 the command exits with an error instead.
 
 You can also use folders or globs to target multiple documents:
 
 ```sh
-promptfoo redteam poison documents/
+artef redteam poison documents/
 ```
 
 ### Add documents
 
 Adding documents to your RAG knowledge base will depend on your specific system.
 
-If you have Promptfoo configured for gray-box testing, you can simply add a `{{documents}}` variable to your prompt. See [prompt configuration](/docs/configuration/prompts/).
+If you have artef configured for gray-box testing, you can simply add a `{{documents}}` variable to your prompt. See [prompt configuration](/docs/configuration/prompts/).
 
 ### Running a scan
 
@@ -82,7 +82,7 @@ redteam:
 Then run the scan:
 
 ```sh
-promptfoo redteam run
+artef redteam run
 ```
 
 See the [red team quickstart](/docs/red-team/quickstart/) guide for more information.

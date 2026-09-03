@@ -1,17 +1,17 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Mock traced HTTP server for testing red team tracing
  *
  * This server:
  * 1. Accepts requests with traceparent headers
- * 2. Emits OTLP trace spans to promptfoo's OTLP receiver
+ * 2. Emits OTLP trace spans to artef's OTLP receiver
  * 3. Returns responses with trace context
  *
  * Usage:
  *   node server.js
  *
  * Then in another terminal:
- *   npm run local -- eval -c promptfooconfig.yaml
+ *   npm run local -- eval -c artefconfig.yaml
  */
 
 const express = require('express');
@@ -270,7 +270,7 @@ app.listen(PORT, () => {
 ║        -d '{"prompt": "Hello world"}'                  ║
 ║                                                        ║
 ║   Or run red team test:                                ║
-║   npm run local -- eval -c promptfooconfig.yaml        ║
+║   npm run local -- eval -c artefconfig.yaml        ║
 ╚════════════════════════════════════════════════════════╝
   `);
 });

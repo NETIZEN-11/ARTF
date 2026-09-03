@@ -1,4 +1,4 @@
-import { getEnvBool, getEnvString } from '../../../envars';
+﻿import { getEnvBool, getEnvString } from '../../../envars';
 import {
   HARM_PLUGINS,
   LLAMA_GUARD_ENABLED_CATEGORIES,
@@ -10,12 +10,12 @@ import { getShortPluginId } from '../../util';
 import type { Assertion, AssertionType, TestCase } from '../../../types/index';
 
 export function getHarmfulAssertions(harmCategory: keyof typeof HARM_PLUGINS): Assertion[] {
-  const assertionType: AssertionType = `promptfoo:redteam:${harmCategory}`;
+  const assertionType: AssertionType = `artef:redteam:${harmCategory}`;
   // Use the specific subcategory as the metric name to show granular metrics
   const metricName = categoryAliases[harmCategory] || harmCategory;
   const assertions: Assertion[] = [{ metric: metricName, type: assertionType }];
 
-  if (getEnvBool('PROMPTFOO_DISABLE_REDTEAM_MODERATION', true)) {
+  if (getEnvBool('artef_DISABLE_REDTEAM_MODERATION', true)) {
     return assertions;
   }
 

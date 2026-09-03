@@ -1,4 +1,4 @@
-import { IncomingMessage, ServerResponse } from 'node:http';
+﻿import { IncomingMessage, ServerResponse } from 'node:http';
 import { Duplex } from 'node:stream';
 
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -73,7 +73,7 @@ const mocks = vi.hoisted(() => ({
     getMany: vi.fn(),
   },
   neverGenerateRemote: vi.fn(),
-  promptfooEvaluate: vi.fn(),
+  artefEvaluate: vi.fn(),
   readResult: vi.fn(),
   retrieveMedia: vi.fn(),
   setUserEmail: vi.fn(),
@@ -134,7 +134,7 @@ vi.mock('../../../src/globalConfig/cloud', () => ({
 }));
 
 vi.mock('../../../src/node', () => ({
-  evaluate: mocks.promptfooEvaluate,
+  evaluate: mocks.artefEvaluate,
 }));
 
 vi.mock('../../../src/models/eval', () => ({
@@ -156,7 +156,7 @@ vi.mock('../../../src/providers/index', () => ({
 }));
 
 vi.mock('../../../src/redteam/remoteGeneration', () => ({
-  getRemoteGenerationUrl: vi.fn(() => 'https://api.promptfoo.dev/task'),
+  getRemoteGenerationUrl: vi.fn(() => 'https://api.artef.dev/task'),
   getRemoteHealthUrl: vi.fn(() => null),
   neverGenerateRemote: mocks.neverGenerateRemote,
 }));
@@ -217,7 +217,7 @@ vi.mock('../../../src/util/fetch/index', () => ({
   fetchWithProxy: mocks.fetchWithProxy,
 }));
 
-vi.mock('../../../src/util/promptfooCommand', () => ({
+vi.mock('../../../src/util/artefCommand', () => ({
   isRunningUnderNpx: mocks.isRunningUnderNpx,
 }));
 
@@ -294,12 +294,12 @@ function setupDefaultMocks() {
   mocks.checkEmailStatus.mockResolvedValue({ hasEmail: false, status: 'no_email' });
   mocks.checkModelAuditInstalled.mockResolvedValue({ installed: false, version: null });
   mocks.checkRemoteHealth.mockResolvedValue({ status: 'OK', message: 'healthy' });
-  mocks.cloudConfig.getApiHost.mockReturnValue('https://api.promptfoo.dev');
-  mocks.cloudConfig.getAppUrl.mockReturnValue('https://app.promptfoo.dev');
+  mocks.cloudConfig.getApiHost.mockReturnValue('https://api.artef.dev');
+  mocks.cloudConfig.getAppUrl.mockReturnValue('https://app.artef.dev');
   mocks.cloudConfig.isEnabled.mockReturnValue(false);
   mocks.deleteEval.mockResolvedValue(undefined);
   mocks.deleteEvals.mockReturnValue(undefined);
-  mocks.determineShareDomain.mockReturnValue({ domain: 'https://app.promptfoo.dev' });
+  mocks.determineShareDomain.mockReturnValue({ domain: 'https://app.artef.dev' });
   mocks.evalModel.findById.mockResolvedValue(null);
   mocks.getAvailableProviders.mockReturnValue([]);
   mocks.getEnvBool.mockReturnValue(false);
@@ -324,7 +324,7 @@ function setupDefaultMocks() {
   mocks.getUpdateCommands.mockReturnValue({
     alternative: null,
     commandType: 'npm',
-    primary: 'npm install -g promptfoo',
+    primary: 'npm install -g artef',
   });
   mocks.getUserEmail.mockReturnValue('');
   mocks.getUserId.mockReturnValue('user-1');

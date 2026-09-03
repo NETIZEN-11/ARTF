@@ -1,7 +1,7 @@
-type TestDatabaseClient = Pick<import('@libsql/client/node').Client, 'close' | 'execute'>;
+﻿type TestDatabaseClient = Pick<import('@libsql/client/node').Client, 'close' | 'execute'>;
 
-const TEST_DATABASE_CLIENTS_KEY = '__promptfooTestDatabaseClients';
-const TEST_DATABASE_OPERATION_QUEUE_KEY = '__promptfooTestDatabaseOperationQueue';
+const TEST_DATABASE_CLIENTS_KEY = '__artefTestDatabaseClients';
+const TEST_DATABASE_OPERATION_QUEUE_KEY = '__artefTestDatabaseOperationQueue';
 type TestDatabaseGlobal = typeof globalThis & {
   [TEST_DATABASE_CLIENTS_KEY]?: Set<TestDatabaseClient>;
   [TEST_DATABASE_OPERATION_QUEUE_KEY]?: Promise<void>;

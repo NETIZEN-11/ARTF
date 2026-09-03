@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -227,27 +227,27 @@ const PressContent = () => {
               mb: 2,
             }}
           >
-            Resources and information for media coverage of Promptfoo
+            Resources and information for media coverage of artef
           </Typography>
         </Box>
 
         {/* Company Overview Section */}
         <Box
-          id="about-promptfoo"
+          id="about-artef"
           className={styles.section}
           sx={{
             mb: 8,
           }}
         >
-          <SectionHeading id="about-promptfoo">About Promptfoo</SectionHeading>
+          <SectionHeading id="about-artef">About artef</SectionHeading>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            Promptfoo is a leading provider of AI security solutions, helping developers and
+            artef is a leading provider of AI security solutions, helping developers and
             enterprises build secure, reliable AI applications. Based in {COMPANY_INFO.headquarters}
-            , Promptfoo is now part of OpenAI and continues as an open-source AI security project.
+            , artef is now part of OpenAI and continues as an open-source AI security project.
           </Typography>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
             Our core product is an open-source pentesting and evaluation framework used by{' '}
-            {SITE_CONSTANTS.USER_COUNT_DISPLAY}+ developers. Promptfoo is among the most popular
+            {SITE_CONSTANTS.USER_COUNT_DISPLAY}+ developers. artef is among the most popular
             evaluation frameworks and is the first product to adapt AI-specific pentesting
             techniques to your application.
           </Typography>
@@ -346,7 +346,7 @@ const PressContent = () => {
         >
           <SectionHeading id="educational-resources">Educational Resources</SectionHeading>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            Leading AI platforms have integrated Promptfoo into their official educational
+            Leading AI platforms have integrated artef into their official educational
             materials, recognizing it as an essential tool for LLM application development,
             evaluation, and security. These courses and workshops, developed in partnership with
             industry leaders, provide comprehensive training on building reliable AI applications.
@@ -388,7 +388,7 @@ const PressContent = () => {
         >
           <SectionHeading id="brand-assets">Brand Assets</SectionHeading>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            Download official Promptfoo logos and brand assets for media use.
+            Download official artef logos and brand assets for media use.
           </Typography>
           <Grid container spacing={4}>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -409,7 +409,7 @@ const PressContent = () => {
                     mt: 2,
                   }}
                 >
-                  Promptfoo Logo (SVG)
+                  artef Logo (SVG)
                 </Typography>
                 <a href="/img/logo-panda.svg" download>
                   Download
@@ -508,14 +508,14 @@ const PressPage = () => {
 
   return (
     <Layout
-      title="Press | Promptfoo"
-      description="Press resources and media information for Promptfoo - Leading the future of AI security testing."
+      title="Press | artef"
+      description="Press resources and media information for artef - Leading the future of AI security testing."
     >
       <Head>
-        <meta property="og:title" content="Press Center - Promptfoo" />
+        <meta property="og:title" content="Press Center - artef" />
         <meta
           property="og:description"
-          content="Press resources and media information for Promptfoo - Leading the future of AI security testing."
+          content="Press resources and media information for artef - Leading the future of AI security testing."
         />
         <meta property="og:image" content={`${siteUrl}/img/og/press-og.png`} />
         <meta property="og:image:width" content="1200" />
@@ -523,10 +523,10 @@ const PressPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${siteUrl}/press`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Press Center - Promptfoo" />
+        <meta name="twitter:title" content="Press Center - artef" />
         <meta
           name="twitter:description"
-          content="Press resources and media information for Promptfoo - Leading the future of AI security testing."
+          content="Press resources and media information for artef - Leading the future of AI security testing."
         />
         <meta name="twitter:image" content={`${siteUrl}/img/og/press-og.png`} />
         <link rel="canonical" href={`${siteUrl}/press`} />

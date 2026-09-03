@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MCPProvider } from '../../src/providers/mcp';
 import { maybeWrapMcpProviderForRedteam } from '../../src/redteam/mcpTargetProvider';
 import {
@@ -12,7 +12,7 @@ import type { CallApiContextParams, CallApiOptionsParams, ProviderResponse } fro
 const providerManagerMocks = vi.hoisted(() => ({
   getProvider: vi.fn(),
 }));
-const promptfooProviderMocks = vi.hoisted(() => ({
+const artefProviderMocks = vi.hoisted(() => ({
   materializeMcpToolCallRemote: vi.fn(),
 }));
 
@@ -22,7 +22,7 @@ vi.mock('../../src/redteam/providers/shared', () => ({
   },
 }));
 vi.mock('../../src/redteam/extraction/util', () => ({
-  materializeMcpToolCallRemote: promptfooProviderMocks.materializeMcpToolCallRemote,
+  materializeMcpToolCallRemote: artefProviderMocks.materializeMcpToolCallRemote,
 }));
 
 class FakeMcpProvider extends MCPProvider {
@@ -105,11 +105,11 @@ describe('maybeWrapMcpProviderForRedteam', () => {
 
   beforeEach(() => {
     providerManagerMocks.getProvider.mockReset();
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockReset();
+    artefProviderMocks.materializeMcpToolCallRemote.mockReset();
   });
 
   it('uses remote materialization for invalid redteam target calls before they reach MCP providers', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
       remoteMaterializedCall(),
     );
 
@@ -118,7 +118,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
 
     await wrapped.callApi(searchCompaniesPrompt, redteamContext());
 
-    expect(promptfooProviderMocks.materializeMcpToolCallRemote).toHaveBeenCalledWith(
+    expect(artefProviderMocks.materializeMcpToolCallRemote).toHaveBeenCalledWith(
       {
         intentValue: searchCompaniesPrompt,
         purpose: 'Search companies',
@@ -134,7 +134,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('attributes remote materialization to attacker usage without adding a target probe', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
       remoteMaterializedCall({
         completion: 3,
         numRequests: 1,
@@ -160,7 +160,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('preserves cached remote materialization without incurring attacker usage', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
       ...remoteMaterializedCall({ completion: 3, numRequests: 1, prompt: 7, total: 10 }),
       cached: true,
     });
@@ -192,7 +192,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('preserves fresh target tokens and requests when cached materialization is merged', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
       prompt: JSON.stringify(searchCompaniesCall),
       cached: true,
       tokenUsage: {
@@ -240,7 +240,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('does not incur a cached target request when materialization is also cached', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
       ...remoteMaterializedCall({ completion: 3, numRequests: 1, prompt: 7, total: 10 }),
       cached: true,
     });
@@ -270,19 +270,19 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('passes linked cloud target context to remote materialization', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
       remoteMaterializedCall(),
     );
 
     const target = new FakeMcpProvider(
       [searchCompaniesTool],
-      'promptfoo://provider/cloud-target-123',
+      'artef://provider/cloud-target-123',
     );
     const wrapped = maybeWrapMcpProviderForRedteam(target, redteamMetadata('harmful:hate'));
 
     await wrapped.callApi(searchCompaniesPrompt, redteamContext());
 
-    expect(promptfooProviderMocks.materializeMcpToolCallRemote).toHaveBeenCalledWith(
+    expect(artefProviderMocks.materializeMcpToolCallRemote).toHaveBeenCalledWith(
       expect.objectContaining({
         targetId: 'cloud-target-123',
       }),
@@ -301,7 +301,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
     await wrapped.callApi(prompt, redteamContext(prompt));
 
     expect(providerManagerMocks.getProvider).not.toHaveBeenCalled();
-    expect(promptfooProviderMocks.materializeMcpToolCallRemote).not.toHaveBeenCalled();
+    expect(artefProviderMocks.materializeMcpToolCallRemote).not.toHaveBeenCalled();
     expect(target.calls).toHaveLength(1);
     expect(parseToolCall(target.calls[0].prompt)).toEqual({
       tool: 'search_companies',
@@ -323,12 +323,12 @@ describe('maybeWrapMcpProviderForRedteam', () => {
 
     expect(response).toEqual({ output: 'ok' });
     expect(providerManagerMocks.getProvider).not.toHaveBeenCalled();
-    expect(promptfooProviderMocks.materializeMcpToolCallRemote).not.toHaveBeenCalled();
+    expect(artefProviderMocks.materializeMcpToolCallRemote).not.toHaveBeenCalled();
     expect(target.calls).toEqual([{ prompt: 'Plain prompt', context: undefined, options }]);
   });
 
   it('uses local fallback materialization when remote generation is disabled', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockResolvedValueOnce({
       id: () => 'openai:test',
       callApi: async () => ({
@@ -342,7 +342,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
 
     const response = await wrapped.callApi(searchCompaniesPrompt, redteamContext());
 
-    expect(promptfooProviderMocks.materializeMcpToolCallRemote).toHaveBeenCalledTimes(1);
+    expect(artefProviderMocks.materializeMcpToolCallRemote).toHaveBeenCalledTimes(1);
     expect(providerManagerMocks.getProvider).toHaveBeenCalledWith({ jsonOnly: true });
     expect(parseToolCall(target.calls[0].prompt)).toEqual(searchCompaniesCall);
     expect(response.tokenUsage?.attacker).toMatchObject({
@@ -370,7 +370,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('preserves cached local materialization in logical but not incurred attacker usage', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockResolvedValueOnce({
       id: () => 'openai:test',
       callApi: async () => ({
@@ -410,7 +410,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('does not confuse a fully prompt-cached local request with a cached response', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockResolvedValueOnce({
       id: () => 'openai:test',
       callApi: async () => ({
@@ -434,7 +434,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('returns a materialization error when inference provider is unavailable', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockRejectedValueOnce(
       new Error('No repair provider configured'),
     );
@@ -466,7 +466,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('returns a materialization error when inference provider calls fail', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockResolvedValueOnce({
       id: () => 'openai:test',
       callApi: async () => {
@@ -484,7 +484,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('preserves paid materialization usage when the inference request fails', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockResolvedValueOnce({
       id: () => 'openai:test',
       callApi: async () => {
@@ -509,7 +509,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('does not invent target probes when cached materialization returns invalid output', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(undefined);
     providerManagerMocks.getProvider.mockResolvedValueOnce({
       id: () => 'openai:test',
       callApi: async () => ({
@@ -557,7 +557,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('counts an attempted target probe when cached materialization precedes a target error', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce({
       ...remoteMaterializedCall({ completion: 3, numRequests: 1, prompt: 7, total: 10 }),
       cached: true,
     });
@@ -583,7 +583,7 @@ describe('maybeWrapMcpProviderForRedteam', () => {
   });
 
   it('returns a materialization error when the wrapped provider call fails', async () => {
-    promptfooProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
+    artefProviderMocks.materializeMcpToolCallRemote.mockResolvedValueOnce(
       remoteMaterializedCall(),
     );
 

@@ -1,9 +1,9 @@
-# claude-vision (Claude Vision)
+﻿# claude-vision (Claude Vision)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example claude-vision
+npx artef@latest init --example claude-vision
 cd claude-vision
 ```
 
@@ -19,11 +19,11 @@ To get started, set your environment variables:
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 Afterwards, you can view the results by running:
 
 ```sh
-promptfoo view
+artef view
 ```

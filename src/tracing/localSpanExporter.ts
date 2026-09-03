@@ -1,4 +1,4 @@
-import { ExportResultCode } from '@opentelemetry/core';
+﻿import { ExportResultCode } from '@opentelemetry/core';
 import logger from '../logger';
 import { getTraceStore, type SpanData, type TraceStore } from './store';
 import type { ExportResult } from '@opentelemetry/core';
@@ -12,7 +12,7 @@ function delay(ms: number): Promise<void> {
 
 /**
  * A span exporter that writes spans to the local TraceStore (SQLite).
- * This allows OTEL spans to be stored locally for analysis in the promptfoo UI.
+ * This allows OTEL spans to be stored locally for analysis in the artef UI.
  */
 export class LocalSpanExporter implements SpanExporter {
   /**

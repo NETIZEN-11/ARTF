@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import {
@@ -18,7 +18,7 @@ import {
   STRATEGIES_REQUIRING_REMOTE_SET,
   strategyDescriptions,
   strategyDisplayNames,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { AlertTriangle, ChevronRight } from 'lucide-react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useRedTeamConfig } from '../hooks/useRedTeamConfig';
@@ -35,7 +35,7 @@ import {
   STRATEGIES_REQUIRING_CONFIG,
 } from './strategies/utils';
 import { TestCaseGenerationProvider } from './TestCaseGenerationProvider';
-import type { RedteamStrategyObject, StrategyConfig } from '@promptfoo/redteam/types';
+import type { RedteamStrategyObject, StrategyConfig } from '@artef/redteam/types';
 
 import type { ConfigDialogState, StrategyCardData } from './strategies/types';
 
@@ -165,10 +165,10 @@ export default function Strategies({ onNext, onBack }: StrategiesProps) {
       // Allow deselection even when disabled, but block selection
       if (isStrategyDisabled(strategyId) && !isSelected) {
         if (STRATEGIES_ENTERPRISE_ONLY.has(strategyId)) {
-          toast.showToast('This strategy is available in Promptfoo Enterprise.', 'error');
+          toast.showToast('This strategy is available in artef Enterprise.', 'error');
         } else {
           toast.showToast(
-            'This strategy requires remote generation to be enabled. Unset PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION.',
+            'This strategy requires remote generation to be enabled. Unset artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION.',
             'error',
           );
         }
@@ -424,7 +424,7 @@ export default function Strategies({ onNext, onBack }: StrategiesProps) {
             these inputs are delivered to maximize attack success rates.{' '}
             <RouterLink
               className="underline"
-              to="https://www.promptfoo.dev/docs/red-team/strategies/"
+              to="https://www.artef.dev/docs/red-team/strategies/"
               target="_blank"
             >
               Learn More
@@ -447,8 +447,8 @@ export default function Strategies({ onNext, onBack }: StrategiesProps) {
             <AlertDescription>
               Some strategies require remote generation and are currently unavailable. These
               strategies include GOAT, GCG, audio, video, and other advanced attack techniques. To
-              enable them, unset the <code>PROMPTFOO_DISABLE_REMOTE_GENERATION</code> or{' '}
-              <code>PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION</code> environment variables.
+              enable them, unset the <code>artef_DISABLE_REMOTE_GENERATION</code> or{' '}
+              <code>artef_DISABLE_REDTEAM_REMOTE_GENERATION</code> environment variables.
             </AlertDescription>
           </AlertContent>
         </Alert>

@@ -1,9 +1,9 @@
-# provider-fireworks (Fireworks AI)
+﻿# provider-fireworks (Fireworks AI)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-fireworks
+npx artef@latest init --example provider-fireworks
 cd provider-fireworks
 ```
 
@@ -14,10 +14,10 @@ Set your `FIREWORKS_API_KEY` environment variable. You can get a key from [firew
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-View the results with `promptfoo view`.
+View the results with `artef view`.
 
 ## What this shows
 

@@ -1,4 +1,4 @@
-import { resolve } from 'node:path';
+﻿import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as path from 'path';
 
@@ -55,7 +55,7 @@ export type RunDbMigrationsOptions = {
 function resolveMigrationsFolder(): string {
   const dir = getCurrentDir();
   if (dir.includes('dist/src')) {
-    // When running from bundled dist (e.g., npx promptfoo or dist/src/main.js)
+    // When running from bundled dist (e.g., npx artef or dist/src/main.js)
     // Navigate to project root and find drizzle folder in dist
     const projectRoot = dir.split('dist/src')[0];
     return path.join(projectRoot, 'dist', 'drizzle');
@@ -63,7 +63,7 @@ function resolveMigrationsFolder(): string {
   // PF Cloud runtime scans:
   if (dir.includes('dist/server/src')) {
     const projectRoot = dir.split('dist/server/src')[0];
-    return path.join(projectRoot, 'dist', 'promptfoo', 'drizzle');
+    return path.join(projectRoot, 'dist', 'artef', 'drizzle');
   }
   // When running from source (e.g., src/migrate.ts)
   return path.join(dir, '..', 'drizzle');

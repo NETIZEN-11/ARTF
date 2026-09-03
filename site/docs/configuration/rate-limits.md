@@ -1,4 +1,4 @@
----
+﻿---
 title: Rate Limits
 description: Configure automatic rate limit handling with exponential backoff, header-aware delays, and adaptive concurrency for LLM provider APIs.
 sidebar_label: Rate Limits
@@ -7,7 +7,7 @@ sidebar_position: 15
 
 # Rate Limits
 
-Promptfoo automatically handles rate limits from LLM providers. When a provider returns HTTP 429 or similar rate limit errors, requests are automatically retried with exponential backoff.
+artef automatically handles rate limits from LLM providers. When a provider returns HTTP 429 or similar rate limit errors, requests are automatically retried with exponential backoff.
 
 ## Automatic Handling
 
@@ -20,7 +20,7 @@ Rate limit handling is built into the evaluator and requires no configuration:
 
 ### Supported Headers
 
-Promptfoo parses rate limit headers from major providers:
+artef parses rate limit headers from major providers:
 
 | Provider     | Headers                                                                                                          |
 | ------------ | ---------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ Promptfoo parses rate limit headers from major providers:
 
 ### Transient Error Handling
 
-Promptfoo automatically retries requests that fail with transient server errors:
+artef automatically retries requests that fail with transient server errors:
 
 | Status Code | Description         | Retry Condition                                      |
 | ----------- | ------------------- | ---------------------------------------------------- |
@@ -50,7 +50,7 @@ The scheduler uses AIMD (Additive Increase, Multiplicative Decrease) to optimize
 2. After sustained successful requests, concurrency increases by 1
 3. When remaining quota drops below 10% (from headers), concurrency is proactively reduced
 
-This allows you to set a higher `maxConcurrency` and let promptfoo find the optimal rate automatically.
+This allows you to set a higher `maxConcurrency` and let artef find the optimal rate automatically.
 
 ## Configuration
 
@@ -66,7 +66,7 @@ evaluateOptions:
 Or via CLI:
 
 ```bash
-promptfoo eval --max-concurrency 10
+artef eval --max-concurrency 10
 ```
 
 The adaptive scheduler will reduce this if rate limits are encountered, but cannot exceed your configured maximum.
@@ -83,23 +83,23 @@ evaluateOptions:
 Or via CLI:
 
 ```bash
-promptfoo eval --delay 1000
+artef eval --delay 1000
 ```
 
 Or via environment variable:
 
 ```bash
-PROMPTFOO_DELAY_MS=1000 promptfoo eval
+artef_DELAY_MS=1000 artef eval
 ```
 
 ### Backoff Configuration
 
-Promptfoo has two retry layers:
+artef has two retry layers:
 
 1. **Provider-level retry** (scheduler): Retries `callApi()` with 1-second base backoff, up to 3 times by default. If a provider config sets `maxRetries`, the scheduler uses that value (including `0` to disable scheduler retries entirely).
 2. **HTTP-level retry**: Retries failed HTTP requests. Defaults to 4 retries, or the provider's `maxRetries` when set.
 
-When a provider config includes `maxRetries`, promptfoo propagates that value to both layers. Explicit per-call overrides (e.g. a provider that passes a specific `maxRetries` to `fetchWithRetries`) still take precedence. For direct `fetchWithProxy` calls, transient retries (502/503/504/524) are disabled when the provider sets `maxRetries: 0`.
+When a provider config includes `maxRetries`, artef propagates that value to both layers. Explicit per-call overrides (e.g. a provider that passes a specific `maxRetries` to `fetchWithRetries`) still take precedence. For direct `fetchWithProxy` calls, transient retries (502/503/504/524) are disabled when the provider sets `maxRetries: 0`.
 
 Example — disable retries for a provider to fail fast on rate limits:
 
@@ -114,21 +114,21 @@ Environment variables for the scheduler:
 
 | Environment Variable                   | Description                                | Default  |
 | -------------------------------------- | ------------------------------------------ | -------- |
-| `PROMPTFOO_DISABLE_ADAPTIVE_SCHEDULER` | Disable adaptive concurrency (use fixed)   | false    |
-| `PROMPTFOO_MIN_CONCURRENCY`            | Minimum concurrency (floor for adaptive)   | 1        |
-| `PROMPTFOO_SCHEDULER_QUEUE_TIMEOUT_MS` | Timeout for queued requests (0 to disable) | 300000ms |
+| `artef_DISABLE_ADAPTIVE_SCHEDULER` | Disable adaptive concurrency (use fixed)   | false    |
+| `artef_MIN_CONCURRENCY`            | Minimum concurrency (floor for adaptive)   | 1        |
+| `artef_SCHEDULER_QUEUE_TIMEOUT_MS` | Timeout for queued requests (0 to disable) | 300000ms |
 
 Environment variables for HTTP-level retry:
 
 | Environment Variable           | Description                       | Default |
 | ------------------------------ | --------------------------------- | ------- |
-| `PROMPTFOO_REQUEST_BACKOFF_MS` | Base delay for HTTP retry backoff | 5000ms  |
-| `PROMPTFOO_RETRY_5XX`          | Retry on HTTP 500 errors          | false   |
+| `artef_REQUEST_BACKOFF_MS` | Base delay for HTTP retry backoff | 5000ms  |
+| `artef_RETRY_5XX`          | Retry on HTTP 500 errors          | false   |
 
 Example:
 
 ```bash
-PROMPTFOO_REQUEST_BACKOFF_MS=10000 PROMPTFOO_RETRY_5XX=true promptfoo eval
+artef_REQUEST_BACKOFF_MS=10000 artef_RETRY_5XX=true artef eval
 ```
 
 The scheduler's retry handles most rate limiting automatically. The HTTP-level retry provides additional resilience for network issues.
@@ -176,7 +176,7 @@ return {
 To see rate limit events, enable debug logging:
 
 ```bash
-LOG_LEVEL=debug promptfoo eval -c config.yaml
+LOG_LEVEL=debug artef eval -c config.yaml
 ```
 
 Events logged:

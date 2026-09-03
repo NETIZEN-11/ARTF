@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 export interface LogFileInfo {
@@ -8,7 +8,7 @@ export interface LogFileInfo {
 }
 
 /**
- * Get all promptfoo log files from a directory, sorted by modification time (newest first).
+ * Get all artef log files from a directory, sorted by modification time (newest first).
  *
  * @param logDir - Directory containing log files
  * @returns Array of log file information objects, sorted by newest first.
@@ -31,7 +31,7 @@ export function getLogFiles(logDir: string): LogFileInfo[] {
   const logFiles: LogFileInfo[] = [];
 
   for (const entry of entries) {
-    if (!entry.isFile() || !entry.name.startsWith('promptfoo-') || !entry.name.endsWith('.log')) {
+    if (!entry.isFile() || !entry.name.startsWith('artef-') || !entry.name.endsWith('.log')) {
       continue;
     }
 

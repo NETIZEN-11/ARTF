@@ -1,6 +1,6 @@
----
+﻿---
 title: Evaluate OSWorld with Inspect
-description: Run OSWorld computer-use benchmark evals in Promptfoo with Inspect, GPT-5.5, Docker-backed desktop sandboxes, scorer output, eval logs, and local traces.
+description: Run OSWorld computer-use benchmark evals in artef with Inspect, GPT-5.5, Docker-backed desktop sandboxes, scorer output, eval logs, and local traces.
 sidebar_position: 66
 ---
 
@@ -8,7 +8,7 @@ sidebar_position: 66
 
 OSWorld is a [computer-use benchmark](https://arxiv.org/abs/2404.07972) for agents that operate a real desktop. A task may ask the model to edit a spreadsheet, use a browser, modify a document, or configure an app. The agent receives screenshots, uses mouse and keyboard tools, and is graded against the final VM state.
 
-The `integration-inspect-osworld` example runs an OSWorld eval through [Inspect](https://inspect.aisi.org.uk/) and reports the score back to Promptfoo. Use this pattern when the benchmark already has a mature desktop harness and you want Promptfoo to own the config, assertions, result table, traces, and CI gate around it.
+The `integration-inspect-osworld` example runs an OSWorld eval through [Inspect](https://inspect.aisi.org.uk/) and reports the score back to artef. Use this pattern when the benchmark already has a mature desktop harness and you want artef to own the config, assertions, result table, traces, and CI gate around it.
 
 This guide shows you how to:
 
@@ -28,7 +28,7 @@ stateful graders, not only text assertions.
 
 The default example uses Inspect's `inspect_evals/osworld_small` task, a smaller
 OSWorld corpus packaged for Inspect. A second config,
-`promptfooconfig.full.yaml`, switches to `inspect_evals/osworld` with
+`artefconfig.full.yaml`, switches to `inspect_evals/osworld` with
 `include_connected=true` for every Inspect-supported full-corpus sample. In the
 Inspect version used here, that means 21 default small-suite samples and 246
 full-corpus samples. That full run is still an Inspect-supported subset of the
@@ -36,7 +36,7 @@ upstream OSWorld paper corpus, not all 369 upstream tasks.
 
 In the sample shown above, OSWorld opens `NetIncome.xlsx` in LibreOffice Calc and asks the agent to compute totals for the `Revenue` and `Total Expenses` columns on a new sheet. That is one generated row in the full suite. Inspect provides the Ubuntu desktop sandbox, screenshots, computer tool, model loop, and scorer.
 
-Use a simple pass-through prompt such as `{{prompt}}` for Promptfoo's row label; Inspect reads the actual task instruction from the OSWorld dataset.
+Use a simple pass-through prompt such as `{{prompt}}` for artef's row label; Inspect reads the actual task instruction from the OSWorld dataset.
 
 The dated full-corpus GPT-5.5 run later in this guide finished with 242 scored
 rows after reruns: 139 passes, 103 scored failures, and 4 repeated provider
@@ -49,14 +49,14 @@ must be reported separately.
 
 The example is intentionally thin:
 
-1. Promptfoo calls `provider.py` once for each test case.
+1. artef calls `provider.py` once for each test case.
 2. The provider starts `inspect eval <task> --sample-id <id>`.
 3. Inspect runs the desktop sandbox and agent loop.
 4. Inspect writes a `.eval` log with screenshots, model messages, tool calls, files, scores, and metadata.
-5. The provider runs `inspect log dump`, parses the sample score, and returns normal Promptfoo output and metadata.
+5. The provider runs `inspect log dump`, parses the sample score, and returns normal artef output and metadata.
 6. `assertion.py` passes only when the OSWorld sample score is `1.0`.
 
-This means Promptfoo owns orchestration and reporting. Inspect owns the agent runtime and OSWorld grading.
+This means artef owns orchestration and reporting. Inspect owns the agent runtime and OSWorld grading.
 
 For each generated small-suite row, the provider effectively runs:
 
@@ -75,11 +75,11 @@ inspect log dump /absolute/path/to/inspect_logs/<run>/<file>.eval
 
 The example has six moving parts:
 
-- `promptfooconfig.yaml` is the small-suite Promptfoo entrypoint. It selects GPT-5.5, sets both timeouts, enables tracing, and loads OSWorld rows from `osworld_tests.py`.
-- `promptfooconfig.full.yaml` is the full-suite entrypoint. It switches the Inspect task to `inspect_evals/osworld`, sets `include_connected=true`, and loads the full generated row list.
-- `osworld_tests.py` calls Inspect's OSWorld task loader and returns one Promptfoo test case per supported small-suite or full-corpus sample, with app and sample metadata for filtering.
-- `provider.py` is a file provider with `call_api(prompt, options, context)`. It resolves paths to absolute locations, runs Inspect, dumps the `.eval` file to JSON, and returns Promptfoo output plus metadata.
-- `assertion.py` reads `context.providerResponse.metadata.score` and turns the OSWorld scorer result into a normal Promptfoo pass or fail.
+- `artefconfig.yaml` is the small-suite artef entrypoint. It selects GPT-5.5, sets both timeouts, enables tracing, and loads OSWorld rows from `osworld_tests.py`.
+- `artefconfig.full.yaml` is the full-suite entrypoint. It switches the Inspect task to `inspect_evals/osworld`, sets `include_connected=true`, and loads the full generated row list.
+- `osworld_tests.py` calls Inspect's OSWorld task loader and returns one artef test case per supported small-suite or full-corpus sample, with app and sample metadata for filtering.
+- `provider.py` is a file provider with `call_api(prompt, options, context)`. It resolves paths to absolute locations, runs Inspect, dumps the `.eval` file to JSON, and returns artef output plus metadata.
+- `assertion.py` reads `context.providerResponse.metadata.score` and turns the OSWorld scorer result into a normal artef pass or fail.
 - `inspect_logs/` is gitignored run state. Inspect stores screenshots, model messages, tool calls, files, scorer output, and token usage there.
 
 The provider treats three states differently:
@@ -114,23 +114,23 @@ starting with the full suite.
 Create the example:
 
 ```bash
-npx promptfoo@latest init --example integration-inspect-osworld
+npx artef@latest init --example integration-inspect-osworld
 cd integration-inspect-osworld
 ```
 
 Start with one exact sample:
 
 ```bash
-PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
-  promptfoo eval -c promptfooconfig.yaml --no-cache \
+artef_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
+  artef eval -c artefconfig.yaml --no-cache \
     --filter-metadata sample_id=42e0a640-4f19-4b28-973d-729602b5a4a7
 ```
 
 Then broaden to an app subset once the wrapper works end to end:
 
 ```bash
-PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
-  promptfoo eval -c promptfooconfig.yaml --no-cache \
+artef_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
+  artef eval -c artefconfig.yaml --no-cache \
     --filter-metadata app=libreoffice_calc --max-concurrency 1 \
     -o osworld-libreoffice-calc.json
 ```
@@ -144,25 +144,25 @@ After the exact sample and app slice both work, run the full traced
 `osworld_small` suite:
 
 ```bash
-PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
-  promptfoo eval -c promptfooconfig.yaml --no-cache --max-concurrency 6 \
+artef_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
+  artef eval -c artefconfig.yaml --no-cache --max-concurrency 6 \
     -o osworld-small-results.json
 ```
 
-To run the same flow from the promptfoo repository source tree:
+To run the same flow from the artef repository source tree:
 
 ```bash
-PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
-  npm run local -- eval -c examples/integration-inspect-osworld/promptfooconfig.yaml --no-cache \
+artef_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
+  npm run local -- eval -c examples/integration-inspect-osworld/artefconfig.yaml --no-cache \
     --max-concurrency 6 -o osworld-small-results.json
 ```
 
-To run Inspect's full supported corpus through Promptfoo, use the dedicated
+To run Inspect's full supported corpus through artef, use the dedicated
 full-suite config:
 
 ```bash
-PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
-  promptfoo eval -c promptfooconfig.full.yaml --no-cache --max-concurrency 3 \
+artef_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
+  artef eval -c artefconfig.full.yaml --no-cache --max-concurrency 3 \
     -o osworld-full-results.json
 ```
 
@@ -180,7 +180,7 @@ the small config's 30-minute limit:
 providers:
   - id: file://provider.py
     config:
-      timeout: 7500000 # Promptfoo Python worker timeout, in ms
+      timeout: 7500000 # artef Python worker timeout, in ms
       timeoutSeconds: 7200 # Inspect subprocess timeout, in seconds
 ```
 
@@ -194,7 +194,7 @@ providers:
     label: OSWorld via Inspect
     config:
       defaultModel: openai/gpt-5.5
-      timeout: 1800000 # Promptfoo Python worker timeout, in ms
+      timeout: 1800000 # artef Python worker timeout, in ms
       timeoutSeconds: 1800 # Inspect subprocess timeout, in seconds
 ```
 
@@ -230,7 +230,7 @@ tests: file://osworld_tests.py:generate_full_tests
 
 `osworld_tests.py` delegates sample selection to Inspect. It loads the
 supported OSWorld samples, derives app metadata from each sample's
-`example.json` path, and returns normal Promptfoo test cases:
+`example.json` path, and returns normal artef test cases:
 
 ```python title="osworld_tests.py"
 from pathlib import Path
@@ -274,8 +274,8 @@ Those generated `vars` arrive in `provider.py` as `context["vars"]["app"]` and
 run subsets without editing the dataset:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml --filter-metadata app=vscode
-promptfoo eval -c promptfooconfig.yaml \
+artef eval -c artefconfig.yaml --filter-metadata app=vscode
+artef eval -c artefconfig.yaml \
   --filter-metadata sample_id=42e0a640-4f19-4b28-973d-729602b5a4a7
 ```
 
@@ -289,10 +289,10 @@ Use the run scopes intentionally:
 1. `mockllm/model --limit 0` checks the Inspect CLI shape without model spend.
 2. `--filter-metadata sample_id=...` is the smallest real end-to-end validation.
 3. `--filter-metadata app=...` is a broader app slice and may include multiple samples.
-4. No filter on `promptfooconfig.yaml` runs the full small suite.
-5. `promptfooconfig.full.yaml` runs Inspect's full supported corpus and is the benchmark-style configuration.
+4. No filter on `artefconfig.yaml` runs the full small suite.
+5. `artefconfig.full.yaml` runs Inspect's full supported corpus and is the benchmark-style configuration.
 
-The example enables Promptfoo tracing directly:
+The example enables artef tracing directly:
 
 ```yaml
 tracing:
@@ -334,12 +334,12 @@ OSWorld scorer returned `0.0`. Treat provider errors differently: those
 indicate setup, Docker, model SDK, timeout, Inspect tool execution, or log
 parsing failures before a scored sample was produced.
 
-On subprocess failures, the wrapper keeps Promptfoo results compact: it returns a
+On subprocess failures, the wrapper keeps artef results compact: it returns a
 concise error and stores the local log path/status/duration, but it does not copy
 captured Inspect stdout or stderr into result metadata. Use the local Inspect logs
 for detailed screenshots, tool output, and trajectory debugging.
 
-Inspect the exported Promptfoo JSON first:
+Inspect the exported artef JSON first:
 
 ```bash
 jq '.results.results[] | {
@@ -387,7 +387,7 @@ score, count it as a normal pass or fail. If it errors again, inspect the
 ## Reference GPT-5.5 run
 
 As a larger smoke test, we ran all 21 `osworld_small` samples with exact
-`sample_id` selectors, GPT-5.5, Promptfoo tracing enabled, and
+`sample_id` selectors, GPT-5.5, artef tracing enabled, and
 `--max-concurrency 6`. The concurrent run produced one unscored Inspect
 computer-tool runtime error. Rerunning that exact sample alone produced a normal
 score of `0.0`, so the final report below treats it as a scored failure rather
@@ -400,8 +400,8 @@ For a comparable run, use the checked-in Python loader, keep the same provider
 and `defaultTest` assertion block, and export the results:
 
 ```bash
-PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
-  promptfoo eval -c promptfooconfig.yaml --no-cache --max-concurrency 6 \
+artef_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
+  artef eval -c artefconfig.yaml --no-cache --max-concurrency 6 \
     -o osworld-small-results.json
 ```
 
@@ -416,8 +416,8 @@ PROMPTFOO_ENABLE_OTEL=true OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 \
 | Scored failures after rerun     |                         8 / 21 |
 | Provider errors after rerun     |                         0 / 21 |
 | Mean OSWorld score              |                          0.665 |
-| Promptfoo trace records         |                             21 |
-| Promptfoo Python provider spans |                             21 |
+| artef trace records         |                             21 |
+| artef Python provider spans |                             21 |
 | Total token counter after rerun |                      3,806,976 |
 
 The strongest app clusters in that run were `gimp` and `libreoffice_calc`
@@ -451,7 +451,7 @@ We also ran the dedicated full-suite config against every Inspect-supported
 full-corpus sample in the installed version:
 
 ```bash
-promptfoo eval -c promptfooconfig.full.yaml --no-cache --max-concurrency 3 \
+artef eval -c artefconfig.full.yaml --no-cache --max-concurrency 3 \
   -o osworld-full-results.json
 ```
 
@@ -519,24 +519,24 @@ The viewer shows screenshots, intermediate model messages, tool calls, files, sc
 
 ## Tracing
 
-The example config starts Promptfoo's local OTLP receiver and passes a W3C
-`traceparent` into the Python provider. Set `PROMPTFOO_ENABLE_OTEL=true` so the
+The example config starts artef's local OTLP receiver and passes a W3C
+`traceparent` into the Python provider. Set `artef_ENABLE_OTEL=true` so the
 Python provider wrapper records a child span with the prompt, response, token
 usage, status, eval id, and test case id.
 
 Trace-level visibility into OSWorld itself still lives in Inspect: every run
 writes a `.eval` log, and `inspect view` displays the desktop trajectory.
-Promptfoo receives one provider span per sample plus result metadata: output
+artef receives one provider span per sample plus result metadata: output
 text, score, token usage, sample id, status, and `inspect_log_path`.
 
-You can verify that Promptfoo stored provider spans by checking the result's
-trace in the Promptfoo UI, or by asserting on raw spans in a separate
+You can verify that artef stored provider spans by checking the result's
+trace in the artef UI, or by asserting on raw spans in a separate
 trace-focused config. The real desktop trajectory remains in Inspect unless you
 build a bridge from Inspect events to OpenTelemetry spans.
 
-To make the desktop actions Promptfoo-native tracing, the wrapper would need to
-translate Inspect events into OpenTelemetry spans or expose a Promptfoo trace
-object. Without that bridge, Promptfoo trace assertions such as
+To make the desktop actions artef-native tracing, the wrapper would need to
+translate Inspect events into OpenTelemetry spans or expose a artef trace
+object. Without that bridge, artef trace assertions such as
 `trajectory:tool-used` cannot see the OSWorld mouse, keyboard, or screenshot
 steps.
 
@@ -544,13 +544,13 @@ steps.
 
 To reimplement the wrapper in another repo:
 
-1. Create a Promptfoo file provider with `call_api(prompt, options, context)`.
+1. Create a artef file provider with `call_api(prompt, options, context)`.
 2. Put shared assertions and trace metadata in `defaultTest`, then load generated rows with `tests: file://osworld_tests.py:generate_tests`.
 3. Read `vars.sample_id` for exact runs, and keep `vars.app` for filtering and result grouping.
 4. Resolve `basePath`, `logRoot`, and `--log-dir` to absolute paths before invoking Inspect.
 5. Run `inspect eval inspect_evals/osworld_small --model <model> --sample-id <id> --log-dir <dir>` for exact samples.
 6. Run `inspect log dump <file.eval>` and require `samples[0].scores.osworld_scorer.value` for the selected sample. Treat missing per-sample scorer output as a provider error instead of falling back to aggregate metrics.
-7. Return Promptfoo `output`, `metadata.score`, `metadata.status`, `metadata.sample_id`, `metadata.inspect_log_path`, and `tokenUsage`.
+7. Return artef `output`, `metadata.score`, `metadata.status`, `metadata.sample_id`, `metadata.inspect_log_path`, and `tokenUsage`.
 8. Make assertion pass/fail depend on the OSWorld score, not the provider's final text.
 9. Keep Inspect `.eval` logs out of git and inspect them when scores or provider errors look surprising.
 
@@ -558,10 +558,10 @@ To reimplement the wrapper in another repo:
 
 Use this wrapper when you want to:
 
-- Run a real OSWorld desktop task from promptfoo.
+- Run a real OSWorld desktop task from artef.
 - Compare models on a small number of expensive computer-use samples.
-- Store benchmark scores beside other Promptfoo evals.
+- Store benchmark scores beside other artef evals.
 - Use Inspect's viewer for detailed trajectory review.
-- Add Promptfoo assertions or CI gates around Inspect's scorer output.
+- Add artef assertions or CI gates around Inspect's scorer output.
 
 Avoid treating this as a cheap smoke test. OSWorld samples are slow, stateful, and token-heavy. Start with one app or one exact `sample_id`, inspect the `.eval` log, then expand the sample set once the model and environment are stable.

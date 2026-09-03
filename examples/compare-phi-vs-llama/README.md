@@ -1,9 +1,9 @@
-# compare-phi-vs-llama (Phi Vs Llama)
+﻿# compare-phi-vs-llama (Phi Vs Llama)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example compare-phi-vs-llama
+npx artef@latest init --example compare-phi-vs-llama
 cd compare-phi-vs-llama
 ```
 
@@ -16,12 +16,12 @@ ollama pull llama3
 ollama pull phi3
 ```
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

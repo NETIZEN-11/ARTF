@@ -1,13 +1,13 @@
-# compare-agentic-sdks (Agentic SDK Comparison)
+﻿# compare-agentic-sdks (Agentic SDK Comparison)
 
 Compare OpenAI Codex SDK, Claude Agent SDK, and OpenCode SDK on a security audit task.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example compare-agentic-sdks
-npx promptfoo eval
-npx promptfoo view
+npx artef@latest init --example compare-agentic-sdks
+npx artef eval
+npx artef view
 ```
 
 ## What This Compares

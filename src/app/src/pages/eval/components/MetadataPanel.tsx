@@ -1,9 +1,9 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
+﻿import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import {
   determinePolicyTypeFromId,
   makeCustomPolicyCloudUrl,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import { Check, Copy, ExternalLink, SlidersHorizontal } from 'lucide-react';
 import { ellipsize } from '../../../../../util/text';
 
@@ -91,7 +91,7 @@ export function MetadataPanel({
                             className="flex items-center gap-1 text-primary hover:underline"
                             data-testid="pf-cloud-policy-detail-link"
                           >
-                            <span>View policy in Promptfoo Cloud</span>
+                            <span>View policy in artef Cloud</span>
                             <ExternalLink className="size-3.5" />
                           </a>
                         )}

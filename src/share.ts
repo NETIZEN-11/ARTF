@@ -1,4 +1,4 @@
-import { URL } from 'url';
+﻿import { URL } from 'url';
 
 import input from '@inquirer/input';
 import chalk from 'chalk';
@@ -61,7 +61,7 @@ export function isSharingEnabled(evalRecord: Eval): boolean {
     return true;
   }
 
-  if (sharingEnvUrl && !sharingEnvUrl.includes('api.promptfoo.app')) {
+  if (sharingEnvUrl && !sharingEnvUrl.includes('api.artef.app')) {
     return true;
   }
 
@@ -77,7 +77,7 @@ export function isModelAuditSharingEnabled(): boolean {
   const sharingEnvUrl = getShareApiBaseUrl();
   const cloudSharingUrl = cloudConfig.isEnabled() ? cloudConfig.getApiHost() : null;
 
-  if (sharingEnvUrl && !sharingEnvUrl.includes('api.promptfoo.app')) {
+  if (sharingEnvUrl && !sharingEnvUrl.includes('api.artef.app')) {
     return true;
   }
 
@@ -94,7 +94,7 @@ export function determineShareDomain(eval_: Eval): ShareDomainResult {
     `Share config: isCloudEnabled=${cloudConfig.isEnabled()}, sharing=${JSON.stringify(sharing)}, evalId=${eval_.id}`,
   );
 
-  const envAppBaseUrl = getEnvString('PROMPTFOO_REMOTE_APP_BASE_URL');
+  const envAppBaseUrl = getEnvString('artef_REMOTE_APP_BASE_URL');
 
   // Determine domain: cloud config takes priority, then eval config, then env var, then default
   const domain = cloudConfig.isEnabled()
@@ -427,7 +427,7 @@ async function sendChunkedResults(
   // Cloud shares upload referenced blobs at share time; self-hosted shares inline blob
   // bytes into the payload instead. At most one of these caches is active.
   const inlineBlobs =
-    isBlobStorageEnabled() && getEnvBool('PROMPTFOO_SHARE_INLINE_BLOBS', !cloudConfig.isEnabled());
+    isBlobStorageEnabled() && getEnvBool('artef_SHARE_INLINE_BLOBS', !cloudConfig.isEnabled());
   const inlineCache = inlineBlobs ? createBlobInlineCache() : null;
   const remoteBlobUploadCache =
     cloudConfig.isEnabled() && !inlineBlobs ? createRemoteBlobUploadCache() : null;
@@ -448,7 +448,7 @@ async function sendChunkedResults(
 
   // Determine how many results per chunk
   const TARGET_CHUNK_SIZE = 0.9 * 1024 * 1024; // 900KB in bytes
-  const envChunkSize = getEnvInt('PROMPTFOO_SHARE_CHUNK_SIZE');
+  const envChunkSize = getEnvInt('artef_SHARE_CHUNK_SIZE');
   const calculatedChunkSize = Math.max(1, Math.floor(TARGET_CHUNK_SIZE / largestSize));
   // Validate env chunk size - must be a positive integer, otherwise fall back to calculated
   const resultsPerChunk =
@@ -611,7 +611,7 @@ async function handleEmailCollection(evalRecord: Eval): Promise<void> {
     return;
   }
 
-  if (!process.stdout.isTTY || isCI() || getEnvBool('PROMPTFOO_DISABLE_SHARE_EMAIL_REQUEST')) {
+  if (!process.stdout.isTTY || isCI() || getEnvBool('artef_DISABLE_SHARE_EMAIL_REQUEST')) {
     return;
   }
 
@@ -662,7 +662,7 @@ export async function getShareableUrl(
   const { domain } = determineShareDomain(eval_);
 
   // For custom self-hosted setups, ensure we're using the same domain as the API
-  const customDomain = getEnvString('PROMPTFOO_REMOTE_APP_BASE_URL');
+  const customDomain = getEnvString('artef_REMOTE_APP_BASE_URL');
   const finalDomain = customDomain || domain;
 
   const fullUrl = cloudConfig.isEnabled()
@@ -687,7 +687,7 @@ export async function createShareableUrl(
   const { silent = false, showAuth = false } = options;
 
   // If sharing is explicitly disabled, return null
-  if (getEnvBool('PROMPTFOO_DISABLE_SHARING')) {
+  if (getEnvBool('artef_DISABLE_SHARING')) {
     logger.debug('Sharing is explicitly disabled, returning null');
     return null;
   }
@@ -798,8 +798,8 @@ export async function createShareableModelAuditUrl(
   auditRecord: ModelAudit,
   showAuth: boolean = false,
 ): Promise<string | null> {
-  if (getEnvBool('PROMPTFOO_DISABLE_SHARING')) {
-    logger.debug('Skipping model audit share because PROMPTFOO_DISABLE_SHARING is enabled');
+  if (getEnvBool('artef_DISABLE_SHARING')) {
+    logger.debug('Skipping model audit share because artef_DISABLE_SHARING is enabled');
     return null;
   }
 

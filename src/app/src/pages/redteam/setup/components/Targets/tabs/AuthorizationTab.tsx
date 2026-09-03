@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -486,7 +486,7 @@ const AuthorizationTab: React.FC<AuthorizationTabProps> = ({
                 <p className="text-sm text-muted-foreground">
                   Load a token from a JavaScript, TypeScript, or Python auth file. See{' '}
                   <a
-                    href="https://www.promptfoo.dev/docs/providers/http/#file-based-authentication"
+                    href="https://www.artef.dev/docs/providers/http/#file-based-authentication"
                     target="_blank"
                     rel="noreferrer"
                     className="text-primary hover:underline"
@@ -505,9 +505,9 @@ const AuthorizationTab: React.FC<AuthorizationTabProps> = ({
         <div className="mt-6 space-y-6">
           <p className="text-sm">
             Configure signature-based authentication for secure API calls. Your private key is never
-            sent to Promptfoo and will always be stored locally on your system. See{' '}
+            sent to artef and will always be stored locally on your system. See{' '}
             <a
-              href="https://www.promptfoo.dev/docs/providers/http/#digital-signature-authentication"
+              href="https://www.artef.dev/docs/providers/http/#digital-signature-authentication"
               target="_blank"
               rel="noreferrer"
               className="text-primary hover:underline"
@@ -808,7 +808,7 @@ const AuthorizationTab: React.FC<AuthorizationTabProps> = ({
                   });
                 }}
                 placeholder="Enter keystore password"
-                helperText="Password for the JKS keystore. Can also be set via PROMPTFOO_JKS_PASSWORD environment variable."
+                helperText="Password for the JKS keystore. Can also be set via artef_JKS_PASSWORD environment variable."
                 showValue={showKeystorePassword}
                 onToggleVisibility={() => setShowKeystorePassword(!showKeystorePassword)}
               />
@@ -914,7 +914,7 @@ const AuthorizationTab: React.FC<AuthorizationTabProps> = ({
                       });
                     }}
                     placeholder="Enter PFX password"
-                    helperText="Password for the PFX certificate file. Can also be set via PROMPTFOO_PFX_PASSWORD environment variable."
+                    helperText="Password for the PFX certificate file. Can also be set via artef_PFX_PASSWORD environment variable."
                     showValue={showPfxPassword}
                     onToggleVisibility={() => setShowPfxPassword(!showPfxPassword)}
                   />

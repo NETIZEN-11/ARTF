@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Handling Multiple Response Types like Guardrails
 description: Red team LLM guardrail bypasses by testing multiple response type handling to protect AI systems from evasion attacks and policy violations
 ---
@@ -60,7 +60,7 @@ class CustomApiProvider {
       message: prompt,
     };
 
-    // Fetch the data from the API using promptfoo's cache. You can use your own fetch implementation if preferred.
+    // Fetch the data from the API using artef's cache. You can use your own fetch implementation if preferred.
     const response = await fetch(
       URL,
       {

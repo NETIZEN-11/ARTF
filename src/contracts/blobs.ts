@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Portable blob reference format used across API/UI boundaries.
- * Example URI: promptfoo://blob/<hash>
+ * Example URI: artef://blob/<hash>
  */
 export interface BlobRef {
   uri: string;

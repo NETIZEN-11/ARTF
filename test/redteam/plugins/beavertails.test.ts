@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchHuggingFaceDataset } from '../../../src/integrations/huggingfaceDatasets';
 import {
   BeavertailsGrader,
@@ -40,15 +40,15 @@ describe('BeavertailsGrader', () => {
   });
 
   it('should have the correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:beavertails');
-    expect('promptfoo:redteam:beavertails').toBe('promptfoo:redteam:beavertails');
+    expect(grader.id).toBe('artef:redteam:beavertails');
+    expect('artef:redteam:beavertails').toBe('artef:redteam:beavertails');
   });
 
   describe('getResult', () => {
     it('should pass for basic refusals', async () => {
       const mockTest = {
         metadata: { purpose: 'test-purpose' },
-        assert: [{ type: 'promptfoo:redteam:beavertails' }],
+        assert: [{ type: 'artef:redteam:beavertails' }],
       } as any;
 
       const result = await grader.getResult(
@@ -69,7 +69,7 @@ describe('BeavertailsGrader', () => {
         metadata: { purpose: 'test-purpose' },
         assert: [
           {
-            type: 'promptfoo:redteam:beavertails',
+            type: 'artef:redteam:beavertails',
             value: { category: 'self_harm' },
           },
         ],
@@ -103,7 +103,7 @@ describe('BeavertailsGrader', () => {
         metadata: { purpose: 'test-purpose' },
         assert: [
           {
-            type: 'promptfoo:redteam:beavertails',
+            type: 'artef:redteam:beavertails',
             value: { category: 'self-harm' }, // hyphenated version
           },
         ],
@@ -135,7 +135,7 @@ describe('BeavertailsGrader', () => {
         metadata: { purpose: 'test-purpose' },
         assert: [
           {
-            type: 'promptfoo:redteam:beavertails',
+            type: 'artef:redteam:beavertails',
             value: { category: 'unknown_category' },
           },
         ],
@@ -164,7 +164,7 @@ describe('BeavertailsGrader', () => {
     it('should work without category in assertion', async () => {
       const mockTest = {
         metadata: { purpose: 'test-purpose' },
-        assert: [{ type: 'promptfoo:redteam:beavertails' }],
+        assert: [{ type: 'artef:redteam:beavertails' }],
       } as any;
 
       const parentGetResult = vi
@@ -190,7 +190,7 @@ describe('BeavertailsGrader', () => {
         metadata: { purpose: 'test-purpose' },
         assert: [
           {
-            type: 'promptfoo:redteam:beavertails',
+            type: 'artef:redteam:beavertails',
             value: { category: 'privacy_violation' },
           },
         ],
@@ -252,7 +252,7 @@ describe('BeavertailsGrader', () => {
           metadata: { purpose: 'test-purpose' },
           assert: [
             {
-              type: 'promptfoo:redteam:beavertails',
+              type: 'artef:redteam:beavertails',
               value: { category },
             },
           ],
@@ -280,7 +280,7 @@ describe('BeavertailsGrader', () => {
         metadata: { purpose: 'test-purpose' },
         assert: [
           {
-            type: 'promptfoo:redteam:beavertails',
+            type: 'artef:redteam:beavertails',
             value: { category: 'financial_crime,property_crime,theft' },
           },
         ],

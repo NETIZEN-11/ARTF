@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_position: 1
 sidebar_label: Overview
-title: Configuration Overview - Getting Started with Promptfoo
-description: Complete guide to configuring promptfoo for LLM evaluation. Learn prompts, providers, test cases, assertions, and advanced features with examples.
+title: Configuration Overview - Getting Started with artef
+description: Complete guide to configuring artef for LLM evaluation. Learn prompts, providers, test cases, assertions, and advanced features with examples.
 keywords:
   [
-    promptfoo configuration,
+    artef configuration,
     LLM evaluation setup,
     prompt testing,
     AI model comparison,
@@ -47,7 +47,7 @@ For more information on setting up a prompt file, see [input and output files](/
 
 :::
 
-Running `promptfoo eval` over this config will result in a _matrix view_ that you can use to evaluate GPT vs Gemini.
+Running `artef eval` over this config will result in a _matrix view_ that you can use to evaluate GPT vs Gemini.
 
 ## Use assertions to validate output
 
@@ -166,7 +166,7 @@ tests:
 ```
 
 :::tip
-Test files can be defined in YAML/JSON, JSONL, [CSV](/docs/configuration/test-cases#csv-format), and TypeScript/JavaScript. Promptfoo also supports external datasets from [Google Sheets](/docs/integrations/google-sheets) and [Azure Blob Storage](/docs/configuration/test-cases#azure-blob-storage).
+Test files can be defined in YAML/JSON, JSONL, [CSV](/docs/configuration/test-cases#csv-format), and TypeScript/JavaScript. artef also supports external datasets from [Google Sheets](/docs/integrations/google-sheets) and [Azure Blob Storage](/docs/configuration/test-cases#azure-blob-storage).
 :::
 
 ## Import vars from separate files
@@ -237,7 +237,7 @@ module.exports = async function (varName, prompt, otherVars, provider) {
 };
 ```
 
-See the [dynamic-var example](https://github.com/promptfoo/promptfoo/tree/main/examples/config-dynamic-var) for a complete working example.
+See the [dynamic-var example](https://github.com/artef/artef/tree/main/examples/config-dynamic-var) for a complete working example.
 
 ### Python variables
 
@@ -350,7 +350,7 @@ You can load `defaultTest` configuration from external files using `defaultTest:
 
 ### YAML references
 
-promptfoo configurations support JSON schema [references](https://opis.io/json-schema/2.x/references.html), which define reusable blocks.
+artef configurations support JSON schema [references](https://opis.io/json-schema/2.x/references.html), which define reusable blocks.
 
 Use the `$ref` key to re-use assertions without having to fully define them more than once. Here's an example:
 
@@ -443,7 +443,7 @@ Use Nunjucks templates to exert additional control over your prompt templates, i
 
 In the above examples, `vars` values are strings. But `vars` can be any JSON or YAML entity, including nested objects. You can manipulate these objects in the prompt, which are [nunjucks](https://mozilla.github.io/nunjucks/) templates:
 
-promptfooconfig.yaml:
+artefconfig.yaml:
 
 ```yaml
 tests:
@@ -492,7 +492,7 @@ The corresponding `prompt.txt` file simply passes through the `previous_messages
 {{ previous_messages | dump }}
 ```
 
-Running `promptfoo eval -p prompt.txt -c path_to.yaml` will call the Chat Completion API with the following prompt:
+Running `artef eval -p prompt.txt -c path_to.yaml` will call the Chat Completion API with the following prompt:
 
 ```json
 [
@@ -582,7 +582,7 @@ If a secret is already present in your shell environment (or loaded via `--env-f
 
 ## Tools and Functions
 
-promptfoo supports tool use and function calling with Google, OpenAI and Anthropic models, as well as other provider-specific configurations like temperature and number of tokens. For more information on defining functions and tools, see the [Google Vertex provider docs](/docs/providers/vertex/#function-calling-and-tools), [Google AIStudio provider docs](/docs/providers/google/#tool-calling), [Google Live provider docs](/docs/providers/google#function-calling-example), [OpenAI provider docs](/docs/providers/openai#using-tools) and the [Anthropic provider docs](/docs/providers/anthropic#tool-calling).
+artef supports tool use and function calling with Google, OpenAI and Anthropic models, as well as other provider-specific configurations like temperature and number of tokens. For more information on defining functions and tools, see the [Google Vertex provider docs](/docs/providers/vertex/#function-calling-and-tools), [Google AIStudio provider docs](/docs/providers/google/#tool-calling), [Google Live provider docs](/docs/providers/google#function-calling-example), [OpenAI provider docs](/docs/providers/openai#using-tools) and the [Anthropic provider docs](/docs/providers/anthropic#tool-calling).
 
 ## Thinking Output
 
@@ -847,30 +847,30 @@ For detailed information on the config structure, see [Configuration Reference](
 If you have multiple sets of tests, it helps to split them into multiple config files. Use the `--config` or `-c` parameter to run each individual config:
 
 ```
-promptfoo eval -c usecase1.yaml
+artef eval -c usecase1.yaml
 ```
 
 and
 
 ```
-promptfoo eval -c usecase2.yaml
+artef eval -c usecase2.yaml
 ```
 
 You can run multiple configs at the same time, which will combine them into a single eval. For example:
 
 ```
-promptfoo eval -c my_configs/*
+artef eval -c my_configs/*
 ```
 
 or
 
 ```
-promptfoo eval -c config1.yaml -c config2.yaml -c config3.yaml
+artef eval -c config1.yaml -c config2.yaml -c config3.yaml
 ```
 
 ## Loading tests from CSV
 
-YAML is nice, but some organizations maintain their LLM tests in spreadsheets for ease of collaboration. promptfoo supports a special [CSV file format](/docs/configuration/test-cases#csv-format).
+YAML is nice, but some organizations maintain their LLM tests in spreadsheets for ease of collaboration. artef supports a special [CSV file format](/docs/configuration/test-cases#csv-format).
 
 ```yaml
 prompts:
@@ -883,7 +883,7 @@ providers:
 tests: file://tests.csv
 ```
 
-promptfoo also has built-in ability to pull test cases from a Google Sheet. The easiest way to get started is to set the sheet visible to "anyone with the link". For example:
+artef also has built-in ability to pull test cases from a Google Sheet. The easiest way to get started is to set the sheet visible to "anyone with the link". For example:
 
 ```yaml
 prompts:
@@ -896,11 +896,11 @@ providers:
 tests: https://docs.google.com/spreadsheets/d/1eqFnv1vzkPvS7zG-mYsqNDwOzvSaiIAsKB3zKg9H18c/edit?usp=sharing
 ```
 
-Here's a [full example](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-google-sheets).
+Here's a [full example](https://github.com/artef/artef/tree/main/examples/integration-google-sheets).
 
-See [Google Sheets integration](/docs/integrations/google-sheets) for details on how to set up promptfoo to access a private spreadsheet.
+See [Google Sheets integration](/docs/integrations/google-sheets) for details on how to set up artef to access a private spreadsheet.
 
-Promptfoo can also load test sets from Azure Blob Storage:
+artef can also load test sets from Azure Blob Storage:
 
 ```yaml
 // highlight-next-line

@@ -1,4 +1,4 @@
-import { spawnSync } from 'child_process';
+﻿import { spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -35,8 +35,8 @@ describe('integration-inspect-osworld example provider', () => {
 
     const pythonProbe = 'import sys; print(sys.executable)';
     const candidates = [
-      ...(process.env.PROMPTFOO_PYTHON
-        ? [{ command: process.env.PROMPTFOO_PYTHON, args: ['-c', pythonProbe] }]
+      ...(process.env.artef_PYTHON
+        ? [{ command: process.env.artef_PYTHON, args: ['-c', pythonProbe] }]
         : []),
       ...(process.env.PYTHON ? [{ command: process.env.PYTHON, args: ['-c', pythonProbe] }] : []),
       ...(process.env.PYTHON3 ? [{ command: process.env.PYTHON3, args: ['-c', pythonProbe] }] : []),
@@ -435,14 +435,14 @@ print(json.dumps({
       } as any);
 
       expect(result.error).toBe(
-        'Inspect CLI command is empty. Set providers[0].config.inspectCommand or PROMPTFOO_OSWORLD_INSPECT_COMMAND.',
+        'Inspect CLI command is empty. Set providers[0].config.inspectCommand or artef_OSWORLD_INSPECT_COMMAND.',
       );
     } finally {
       await provider.shutdown();
     }
   }, 20_000);
 
-  it('finds Inspect logs when promptfoo passes a relative basePath', async () => {
+  it('finds Inspect logs when artef passes a relative basePath', async () => {
     const tempDir = makeTempDir();
     const providerDir = path.join(tempDir, 'example');
     fs.mkdirSync(providerDir, { recursive: true });
@@ -769,7 +769,7 @@ sys.exit(4)
       } as any);
 
       expect(result.error).toBe(
-        'Inspect returned sample other-sample, but Promptfoo requested requested-sample.',
+        'Inspect returned sample other-sample, but artef requested requested-sample.',
       );
       expect(result.metadata).toMatchObject({
         requested_sample_id: 'requested-sample',

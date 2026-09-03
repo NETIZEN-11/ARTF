@@ -1,4 +1,4 @@
-// Core HttpProvider tests: API calls, raw requests, body processing, headers, response transforms, sanitization.
+﻿// Core HttpProvider tests: API calls, raw requests, body processing, headers, response transforms, sanitization.
 import './setup';
 
 import path from 'path';
@@ -2031,7 +2031,7 @@ describe('HttpProvider', () => {
     });
 
     it('should redact multipart raw request bodies in debug metadata', async () => {
-      const boundary = '----WebKitFormBoundaryPromptFooABC123';
+      const boundary = '----WebKitFormBoundaryartefABC123';
       const opaqueToken = 'A'.repeat(64);
       const rawRequest = dedent`
         POST /upload HTTP/1.1

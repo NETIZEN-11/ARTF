@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import fsPromises from 'fs/promises';
 import os from 'os';
 import path from 'path';
@@ -84,7 +84,7 @@ async function createTempVideoEnvironment(): Promise<{
   outputPath: string;
   cleanup: () => Promise<void>;
 }> {
-  const tempDir = path.join(os.tmpdir(), 'promptfoo-video');
+  const tempDir = path.join(os.tmpdir(), 'artef-video');
   await fsPromises.mkdir(tempDir, { recursive: true });
 
   const outputPath = path.join(tempDir, `output-video-${randomUUID()}.mp4`);
@@ -224,7 +224,7 @@ export async function addVideoToBase64(
           ...testCase,
           assert: testCase.assert?.map((assertion) => ({
             ...assertion,
-            metric: assertion.type?.startsWith('promptfoo:redteam:')
+            metric: assertion.type?.startsWith('artef:redteam:')
               ? `${assertion.type?.split(':').pop() || assertion.metric}/Video-Encoded`
               : assertion.metric,
           })),

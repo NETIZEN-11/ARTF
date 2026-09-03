@@ -1,22 +1,22 @@
----
+﻿---
 sidebar_position: 20
 sidebar_label: Node package
-description: Integrate LLM testing into Node.js apps with promptfoo's evaluate() function. Configure providers, run test suites, and analyze results using TypeScript/JavaScript APIs.
+description: Integrate LLM testing into Node.js apps with artef's evaluate() function. Configure providers, run test suites, and analyze results using TypeScript/JavaScript APIs.
 ---
 
 # Using the node package
 
 ## Installation
 
-promptfoo is available as a node package [on npm](https://www.npmjs.com/package/promptfoo):
+artef is available as a node package [on npm](https://www.npmjs.com/package/artef):
 
 ```sh
-npm install promptfoo
+npm install artef
 ```
 
 :::note
 
-promptfoo requires Node.js `22.22.0` or newer. Node.js 24 LTS is recommended. See the
+artef requires Node.js `22.22.0` or newer. Node.js 24 LTS is recommended. See the
 [runtime support guide](/docs/installation#nodejs-runtime-support).
 
 :::
@@ -27,18 +27,18 @@ For deeper programmatic usage, see the [Node API reference](/docs/usage/node-api
 
 ## Usage
 
-Use `promptfoo` as a library in your project by importing the `evaluate` function and other utilities:
+Use `artef` as a library in your project by importing the `evaluate` function and other utilities:
 
 ```ts
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 
-const evalRecord = await promptfoo.evaluate(testSuite, options);
+const evalRecord = await artef.evaluate(testSuite, options);
 const results = await evalRecord.toEvaluateSummary();
 ```
 
 The evaluate function takes the following parameters:
 
-- `testSuite`: the Javascript equivalent of the promptfooconfig.yaml as a [`TestSuiteConfiguration` object](/docs/configuration/reference#testsuiteconfiguration).
+- `testSuite`: the Javascript equivalent of the artefconfig.yaml as a [`TestSuiteConfiguration` object](/docs/configuration/reference#testsuiteconfiguration).
 
 - `options`: misc options related to how the test harness runs, as an [`EvaluateOptions` object](/docs/configuration/reference#evaluateoptions).
 
@@ -51,7 +51,7 @@ A `ProviderFunction` is a Javascript function that implements an LLM API call. I
 You can load providers using the `loadApiProvider` function:
 
 ```ts
-import { loadApiProvider } from 'promptfoo';
+import { loadApiProvider } from 'artef';
 
 // Load a provider with default options
 const provider = await loadApiProvider('openai:o3-mini');
@@ -139,9 +139,9 @@ When using the node package, you can pass JavaScript functions directly as `tran
 This enables better IDE support, type checking, and debugging:
 
 ```ts
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 
-const evalRecord = await promptfoo.evaluate({
+const evalRecord = await artef.evaluate({
   prompts: ['What tools did you use to answer: {{question}}'],
   providers: ['openai:gpt-5-mini'],
   tests: [
@@ -185,12 +185,12 @@ For more on transforms, see [Transforming Outputs](/docs/configuration/guide#tra
 
 ## Example
 
-`promptfoo` exports an `evaluate` function that you can use to run prompt evaluations.
+`artef` exports an `evaluate` function that you can use to run prompt evaluations.
 
 ```js
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 
-const evalRecord = await promptfoo.evaluate(
+const evalRecord = await artef.evaluate(
   {
     prompts: ['Rephrase this in French: {{body}}', 'Rephrase this like a pirate: {{body}}'],
     providers: ['openai:gpt-5-mini'],
@@ -217,15 +217,15 @@ const results = await evalRecord.toEvaluateSummary();
 console.log(results);
 ````
 
-This code imports the `promptfoo` library, defines the evaluation options, and then calls the `evaluate` function with these options.
+This code imports the `artef` library, defines the evaluation options, and then calls the `evaluate` function with these options.
 
 You can also supply functions as `prompts`, `providers`, or `asserts`:
 
 ```js
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 
 (async () => {
-  const evalRecord = await promptfoo.evaluate({
+  const evalRecord = await artef.evaluate({
     prompts: [
       'Rephrase this in French: {{body}}',
       (vars) => {
@@ -274,7 +274,7 @@ import promptfoo from 'promptfoo';
 })();
 ```
 
-There's a full example on Github [here](https://github.com/promptfoo/promptfoo/tree/main/examples/config-node-package).
+There's a full example on Github [here](https://github.com/artef/artef/tree/main/examples/config-node-package).
 
 Here's the example output in JSON format:
 
@@ -327,7 +327,7 @@ Here's the example output in JSON format:
 To get a shareable URL, set `sharing: true` along with `writeLatestResults: true`:
 
 ```js
-const evalRecord = await promptfoo.evaluate({
+const evalRecord = await artef.evaluate({
   prompts: ['Your prompt here'],
   providers: ['openai:gpt-5-mini'],
   tests: [{ vars: { input: 'test' } }],
@@ -336,7 +336,7 @@ const evalRecord = await promptfoo.evaluate({
 });
 const results = await evalRecord.toEvaluateSummary();
 
-console.log(results.shareableUrl); // https://app.promptfoo.dev/eval/abc123
+console.log(results.shareableUrl); // https://app.artef.dev/eval/abc123
 ```
 
-Requires a [Promptfoo Cloud](/docs/enterprise) account or self-hosted server. For self-hosted, pass `sharing: { apiBaseUrl, appBaseUrl }` instead of `true`.
+Requires a [artef Cloud](/docs/enterprise) account or self-hosted server. For self-hosted, pass `sharing: { apiBaseUrl, appBaseUrl }` instead of `true`.

@@ -1,11 +1,11 @@
----
-sidebar_label: Using LangChain PromptTemplate with Promptfoo
-description: Learn how to test LangChain PromptTemplate outputs systematically with Promptfoo's evaluation tools to validate prompt formatting and variable injection
+﻿---
+sidebar_label: Using LangChain PromptTemplate with artef
+description: Learn how to test LangChain PromptTemplate outputs systematically with artef's evaluation tools to validate prompt formatting and variable injection
 ---
 
-# Using LangChain PromptTemplate with Promptfoo
+# Using LangChain PromptTemplate with artef
 
-LangChain PromptTemplate is commonly used to format prompts with injecting variables. Promptfoo allows you to evaluate and test your prompts systematically. Combining the two can streamline your workflow, enabling you to test the prompts that use LangChain PromptTemplate in application code directly within Promptfoo.
+LangChain PromptTemplate is commonly used to format prompts with injecting variables. artef allows you to evaluate and test your prompts systematically. Combining the two can streamline your workflow, enabling you to test the prompts that use LangChain PromptTemplate in application code directly within artef.
 
 ## Example of LangChain PromptTemplate
 
@@ -61,11 +61,11 @@ export async function evaluatePrompt(prompt: string): Promise<EvaluationResult> 
 }
 ```
 
-## Testing with Promptfoo
+## Testing with artef
 
-To make the evaluation of prompts more seamless, the prompts can be loaded directly into Promptfoo tests. This way, whenever the prompts are updated in the application, the tests can evaluate the most up-to-date prompt.
+To make the evaluation of prompts more seamless, the prompts can be loaded directly into artef tests. This way, whenever the prompts are updated in the application, the tests can evaluate the most up-to-date prompt.
 
-Change the prompt to a function that can be loaded in the Promptfoo configuration file, as described in the [prompt functions documentation](/docs/configuration/prompts/). Change how the substitution of variables is done to regular JS substitution.
+Change the prompt to a function that can be loaded in the artef configuration file, as described in the [prompt functions documentation](/docs/configuration/prompts/). Change how the substitution of variables is done to regular JS substitution.
 
 ```tsx
 export function toneEvaluationInstructions({ vars }: { vars: { prompt: string } }): string {
@@ -98,7 +98,7 @@ ${vars.prompt}
 In this example, we're using Typescript (.ts) - but you can use regular Javascript (.js) too
 :::
 
-In Promptfoo tests, load the prompt. Promptfoo passes test variables to prompt functions through the `vars` object. The example above destructures `vars` from the prompt function context and accesses the test value as `vars.prompt`. See [JavaScript prompt functions](/docs/configuration/prompts/#javascript-functions) for the full context shape.
+In artef tests, load the prompt. artef passes test variables to prompt functions through the `vars` object. The example above destructures `vars` from the prompt function context and accesses the test value as `vars.prompt`. See [JavaScript prompt functions](/docs/configuration/prompts/#javascript-functions) for the full context shape.
 
 ```yaml
 prompts:
@@ -115,24 +115,24 @@ tests:
       - type: is-json
 ```
 
-To avoid formatting conflicts between LangChain and Promptfoo, ensure Promptfoo's internal templating engine is disabled. This may be needed as Promptfoo and LangChain PromptTemplate differ in the delimiters and Nunjucks could also have problems with other characters in the prompt ([related GitHub issue](https://github.com/promptfoo/promptfoo/pull/405/files)).
+To avoid formatting conflicts between LangChain and artef, ensure artef's internal templating engine is disabled. This may be needed as artef and LangChain PromptTemplate differ in the delimiters and Nunjucks could also have problems with other characters in the prompt ([related GitHub issue](https://github.com/artef/artef/pull/405/files)).
 
 Do this by setting the environment variable:
 
 ```bash
-export PROMPTFOO_DISABLE_TEMPLATING=true
+export artef_DISABLE_TEMPLATING=true
 ```
 
 An example of formatting issues between Nunjucks and LangChain PromptTemplate:
 
 - `{{...}}` with LangChain PromptTemplate marks escaping the curly brace and `{...}` is used for substitution
-- `{{...}}` with Promptfoo is used for substitution
+- `{{...}}` with artef is used for substitution
 
 Finally, change how variables are passed to the prompt in application code.
 
 ```tsx
 export async function evaluatePrompt(prompt: string): Promise<EvaluationResult> {
-  // Pass the prompt in the same `{ vars }` shape Promptfoo uses, so the same
+  // Pass the prompt in the same `{ vars }` shape artef uses, so the same
   // function works from both tests and application code. The result is a fully
   // rendered string, so `attemptCompletion` takes a single argument here — no
   // LangChain `PromptTemplate` is needed.
@@ -144,4 +144,4 @@ export async function evaluatePrompt(prompt: string): Promise<EvaluationResult> 
 }
 ```
 
-This setup allows you to load the most up-to-date prompts from your application code, test them continuously, and integrate with LangChain PromptTemplate by properly handling the formatting differences between the two systems. For more information, see the [LangChain PromptTemplate documentation](https://python.langchain.com/api_reference/core/prompts/langchain_core.prompts.prompt.PromptTemplate.html) and [Promptfoo's prompt functions guide](/docs/configuration/prompts/).
+This setup allows you to load the most up-to-date prompts from your application code, test them continuously, and integrate with LangChain PromptTemplate by properly handling the formatting differences between the two systems. For more information, see the [LangChain PromptTemplate documentation](https://python.langchain.com/api_reference/core/prompts/langchain_core.prompts.prompt.PromptTemplate.html) and [artef's prompt functions guide](/docs/configuration/prompts/).

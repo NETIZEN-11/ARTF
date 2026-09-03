@@ -1,4 +1,4 @@
-import { createHmac, randomBytes } from 'node:crypto';
+﻿import { createHmac, randomBytes } from 'node:crypto';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -16,7 +16,7 @@ import type { OpenAICodexSDKConfig } from './codex-sdk';
 const CODEX_AUTH_FILENAME = 'auth.json';
 const CODEX_DEFAULT_PROVIDERS_CACHE_EVICTION_GRACE_MS = 60_000;
 const CODEX_DEFAULT_PROVIDERS_CACHE_MAX_ENTRIES = 32;
-const CODEX_DEFAULT_PROVIDERS_CACHE_HMAC_CONTEXT = 'promptfoo:codex-default-provider-cache-key';
+const CODEX_DEFAULT_PROVIDERS_CACHE_HMAC_CONTEXT = 'artef:codex-default-provider-cache-key';
 const CODEX_DEFAULT_PROVIDERS_CACHE_HMAC_KEY = randomBytes(32);
 const CODEX_SDK_PACKAGE_NAME = '@openai/codex-sdk';
 
@@ -105,7 +105,7 @@ function getTempDirectory(): string {
 function getCodexDefaultWorkingDir(): string {
   if (!codexDefaultWorkingDir) {
     codexDefaultWorkingDir = fs.mkdtempSync(
-      path.join(getTempDirectory(), 'promptfoo-codex-default-'),
+      path.join(getTempDirectory(), 'artef-codex-default-'),
     );
   }
 

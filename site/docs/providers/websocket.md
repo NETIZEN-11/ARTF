@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: WebSockets
 description: Configure WebSocket endpoints for real-time LLM inference with custom message templates, response parsing, and secure authentication for bidirectional API integration
 ---
 
 # WebSockets
 
-The WebSocket provider allows you to connect to a WebSocket endpoint for inference. This is useful for real-time, bidirectional communication. WebSockets are often used to stream messages that contain partial responses to improve the perceived performance of LLM applications. Promptfoo supports a range of implementations from servers that respond with a single message containing the full response, to those that stream a series of partial responses.
+The WebSocket provider allows you to connect to a WebSocket endpoint for inference. This is useful for real-time, bidirectional communication. WebSockets are often used to stream messages that contain partial responses to improve the perceived performance of LLM applications. artef supports a range of implementations from servers that respond with a single message containing the full response, to those that stream a series of partial responses.
 
 ## Configuration
 
@@ -94,7 +94,7 @@ Some WebSocket endpoints stream their replies as multiple messages (for example,
   - `result`: the updated accumulated result you want to carry forward.
   - `complete` (boolean): set `true` only when you’ve received the final message and want to stop streaming and return the result.
 
-When `complete` is `false`, promptfoo keeps the WebSocket open and waits for the next message. When `true`, the connection is closed and `result` is returned (after being normalized as a `ProviderResponse`). The `timeoutMs` deadline covers the entire request, streamed messages included, so a stream that never reports `complete` fails with a timeout error instead of waiting indefinitely. Raise `timeoutMs` if your target legitimately streams for longer than the default 5 minutes.
+When `complete` is `false`, artef keeps the WebSocket open and waits for the next message. When `true`, the connection is closed and `result` is returned (after being normalized as a `ProviderResponse`). The `timeoutMs` deadline covers the entire request, streamed messages included, so a stream that never reports `complete` fails with a timeout error instead of waiting indefinitely. Raise `timeoutMs` if your target legitimately streams for longer than the default 5 minutes.
 
 :::info
 `data` is the browser/Node `MessageEvent`. Most servers send the useful payload in `data.data` as a string. Parse it if needed:
@@ -207,7 +207,7 @@ You can also point to a named export: `file://scripts/wsStreamHandler.js:myHandl
 
 ## Using as a Library
 
-If you are using promptfoo as a node library, you can provide the equivalent provider config:
+If you are using artef as a node library, you can provide the equivalent provider config:
 
 ```js
 {

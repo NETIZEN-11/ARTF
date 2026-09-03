@@ -1,4 +1,4 @@
-import useApiConfig from '@app/stores/apiConfig';
+﻿import useApiConfig from '@app/stores/apiConfig';
 import { mockCallApiResponse, rejectCallApi, resetCallApiMock } from '@app/tests/apiMocks';
 import { callApi, fetchUserEmail } from '@app/utils/api';
 import { act, renderHook } from '@testing-library/react';
@@ -75,7 +75,7 @@ describe('useEmailVerification', () => {
           canProceed: false,
           needsEmail: false,
           error:
-            'You have exceeded the maximum cloud inference limit. Please contact inquiries@promptfoo.dev to upgrade your account.',
+            'You have exceeded the maximum cloud inference limit. Please contact inquiries@artef.dev to upgrade your account.',
         },
       },
       {

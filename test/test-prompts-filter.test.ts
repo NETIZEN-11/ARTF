@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { isAllowedPrompt } from '../src/evaluator';
 import { doesPromptRefMatch, isPromptAllowed } from '../src/util/promptMatching';
 import {
@@ -212,7 +212,7 @@ describe('validateTestPromptReferences', () => {
         validateTestPromptReferences(tests, prompts, undefined, {
           promptReferenceSources: [
             {
-              path: 'promptfooconfig.yaml',
+              path: 'artefconfig.yaml',
               content: [
                 'providers:',
                 '  - openai:gpt-4.1-mini',
@@ -228,7 +228,7 @@ describe('validateTestPromptReferences', () => {
           ],
         }),
       ).toThrow(
-        /promptfooconfig\.yaml:9:9: Test #1 \("Missing prompt"\) references prompt "Missing Prompt" which does not exist/,
+        /artefconfig\.yaml:9:9: Test #1 \("Missing prompt"\) references prompt "Missing Prompt" which does not exist/,
       );
     });
 
@@ -244,7 +244,7 @@ describe('validateTestPromptReferences', () => {
         validateTestPromptReferences(tests, prompts, undefined, {
           promptReferenceSources: [
             {
-              path: 'promptfooconfig.yaml',
+              path: 'artefconfig.yaml',
               content: [
                 'prompts:',
                 '  - id: prompt-a',
@@ -263,7 +263,7 @@ describe('validateTestPromptReferences', () => {
           ],
         }),
       ).toThrow(
-        /promptfooconfig\.yaml:12:9: Test #1 \("Missing prompt"\) references prompt "Missing Prompt" which does not exist/,
+        /artefconfig\.yaml:12:9: Test #1 \("Missing prompt"\) references prompt "Missing Prompt" which does not exist/,
       );
     });
 
@@ -273,13 +273,13 @@ describe('validateTestPromptReferences', () => {
         validateTestPromptReferences([], prompts, defaultTest, {
           promptReferenceSources: [
             {
-              path: 'promptfooconfig.yaml',
+              path: 'artefconfig.yaml',
               content: ['defaultTest:', '  prompts:', '    - Missing Default'].join('\n'),
             },
           ],
         }),
       ).toThrow(
-        /promptfooconfig\.yaml:3:7: defaultTest references prompt "Missing Default" which does not exist/,
+        /artefconfig\.yaml:3:7: defaultTest references prompt "Missing Default" which does not exist/,
       );
     });
 
@@ -291,7 +291,7 @@ describe('validateTestPromptReferences', () => {
         validateTestPromptReferences(tests, prompts, undefined, {
           promptReferenceSources: [
             {
-              path: 'promptfooconfig.yaml',
+              path: 'artefconfig.yaml',
               content: [
                 'prompts:',
                 '  - id: prompt-a',
@@ -308,7 +308,7 @@ describe('validateTestPromptReferences', () => {
           ],
         }),
       ).toThrow(
-        /promptfooconfig\.yaml:9:9: Test #1 \("Target duplicate"\) references prompt "Missing Prompt" which does not exist/,
+        /artefconfig\.yaml:9:9: Test #1 \("Target duplicate"\) references prompt "Missing Prompt" which does not exist/,
       );
     });
 
@@ -321,7 +321,7 @@ describe('validateTestPromptReferences', () => {
         validateTestPromptReferences(tests, promptsWithGhost, undefined, {
           promptReferenceSources: [
             {
-              path: 'promptfooconfig.yaml',
+              path: 'artefconfig.yaml',
               content: [
                 'prompts:',
                 '  - raw: x',
@@ -336,7 +336,7 @@ describe('validateTestPromptReferences', () => {
           ],
         }),
       ).toThrow(
-        /promptfooconfig\.yaml:8:9: Test #1 \("substr"\) references prompt "Ghost" which does not exist/,
+        /artefconfig\.yaml:8:9: Test #1 \("substr"\) references prompt "Ghost" which does not exist/,
       );
     });
 
@@ -349,7 +349,7 @@ describe('validateTestPromptReferences', () => {
         validateTestPromptReferences(tests, prompts, defaultTest, {
           promptReferenceSources: [
             {
-              path: 'promptfooconfig.yaml',
+              path: 'artefconfig.yaml',
               content: [
                 'prompts:',
                 '  - id: prompt-a',
@@ -366,7 +366,7 @@ describe('validateTestPromptReferences', () => {
           ],
         }),
       ).toThrow(
-        /promptfooconfig\.yaml:10:7: defaultTest references prompt "Missing Prompt" which does not exist/,
+        /artefconfig\.yaml:10:7: defaultTest references prompt "Missing Prompt" which does not exist/,
       );
     });
 

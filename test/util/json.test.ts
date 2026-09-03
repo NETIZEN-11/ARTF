@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { ResultFailureReason } from '../../src/types/index';
 import {
@@ -25,12 +25,12 @@ describe('json utilities', () => {
     });
 
     beforeEach(() => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_AJV_STRICT_MODE: undefined });
+      mockProcessEnv({ artef_DISABLE_AJV_STRICT_MODE: undefined });
       resetAjv();
     });
 
     afterEach(() => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_AJV_STRICT_MODE: undefined });
+      mockProcessEnv({ artef_DISABLE_AJV_STRICT_MODE: undefined });
     });
 
     it('should create an Ajv instance with default options', () => {
@@ -39,8 +39,8 @@ describe('json utilities', () => {
       expect(ajv.opts.strictSchema).toBe(true);
     });
 
-    it('should disable strict mode when PROMPTFOO_DISABLE_AJV_STRICT_MODE is set', () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_AJV_STRICT_MODE: 'true' });
+    it('should disable strict mode when artef_DISABLE_AJV_STRICT_MODE is set', () => {
+      mockProcessEnv({ artef_DISABLE_AJV_STRICT_MODE: 'true' });
       const ajv = getAjv();
       expect(ajv.opts.strictSchema).toBe(false);
     });

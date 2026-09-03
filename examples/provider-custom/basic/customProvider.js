@@ -1,5 +1,5 @@
-// const promptfoo = require('../../dist/src/index.js').default;
-const promptfoo = require('promptfoo').default;
+﻿// const artef = require('../../dist/src/index.js').default;
+const artef = require('artef').default;
 
 class CustomApiProvider {
   constructor(options) {
@@ -27,8 +27,8 @@ class CustomApiProvider {
       temperature: Number.parseFloat(this.config?.temperature) || 0,
     };
 
-    // Fetch the data from the API using promptfoo's cache. You can use your own fetch implementation if preferred.
-    const { data, cached: _cached } = await promptfoo.cache.fetchWithCache(
+    // Fetch the data from the API using artef's cache. You can use your own fetch implementation if preferred.
+    const { data, cached: _cached } = await artef.cache.fetchWithCache(
       'https://api.openai.com/v1/chat/completions',
       {
         method: 'POST',

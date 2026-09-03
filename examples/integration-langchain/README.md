@@ -1,15 +1,15 @@
-# integration-langchain (Langchain Python)
+﻿# integration-langchain (Langchain Python)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-langchain
+npx artef@latest init --example integration-langchain
 cd integration-langchain
 ```
 
 ## Usage
 
-This example shows how to run a Python LangChain Expression Language (LCEL) chain with Promptfoo. It compares GPT-5 with a math-focused LangChain prompt-and-output-parser pipeline.
+This example shows how to run a Python LangChain Expression Language (LCEL) chain with artef. It compares GPT-5 with a math-focused LangChain prompt-and-output-parser pipeline.
 
 This example requires Python 3.10 or newer. Create and activate a virtual environment, then
 install the requirements:
@@ -29,5 +29,5 @@ export OPENAI_API_KEY=your-api-key
 Then run the eval:
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```

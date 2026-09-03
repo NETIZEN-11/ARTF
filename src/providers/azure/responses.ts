@@ -1,4 +1,4 @@
-import { fetchWithCache } from '../../cache';
+﻿import { fetchWithCache } from '../../cache';
 import { getEnvFloat, getEnvInt, getEnvString } from '../../envars';
 import logger from '../../logger';
 import {
@@ -286,7 +286,7 @@ export class AzureResponsesProvider extends AzureGenericProvider {
     const isDeepResearchModel = this.deploymentName.includes('deep-research');
     let timeout = getRequestTimeoutMs();
     if (isDeepResearchModel) {
-      const evalTimeout = getEnvInt('PROMPTFOO_EVAL_TIMEOUT_MS', 0);
+      const evalTimeout = getEnvInt('artef_EVAL_TIMEOUT_MS', 0);
       timeout = evalTimeout > 0 ? evalTimeout : LONG_RUNNING_MODEL_TIMEOUT_MS;
       logger.debug(`Using timeout of ${timeout}ms for deep research model ${this.deploymentName}`);
     }

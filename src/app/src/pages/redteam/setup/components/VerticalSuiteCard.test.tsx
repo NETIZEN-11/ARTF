@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { ToastProvider } from '@app/contexts/ToastContext';
@@ -8,7 +8,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TestCaseGenerationProvider } from './TestCaseGenerationProvider';
 import VerticalSuiteCard from './VerticalSuiteCard';
-import type { Plugin } from '@promptfoo/redteam/constants';
+import type { Plugin } from '@artef/redteam/constants';
 
 // Mock dependencies
 vi.mock('@app/hooks/useApiHealth', () => ({

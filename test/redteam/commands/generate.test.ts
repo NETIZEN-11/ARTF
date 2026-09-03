@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 
 import { Command } from 'commander';
 import * as yaml from 'js-yaml';
@@ -34,7 +34,7 @@ import {
 } from '../../../src/util/cloud';
 import * as configModule from '../../../src/util/config/load';
 import { readConfig } from '../../../src/util/config/load';
-import { writePromptfooConfig } from '../../../src/util/config/writer';
+import { writeartefConfig } from '../../../src/util/config/writer';
 import { getCustomPolicies } from '../../../src/util/generation';
 import { checkRedteamProbeLimit } from '../../../src/util/redteamProbeLimit';
 import { createMockProvider } from '../../factories/provider';
@@ -153,10 +153,10 @@ vi.mock('../../../src/util', async (importOriginal) => {
   };
 });
 
-vi.mock('../../../src/util/promptfooCommand', async (importOriginal) => {
+vi.mock('../../../src/util/artefCommand', async (importOriginal) => {
   return {
     ...(await importOriginal()),
-    promptfooCommand: vi.fn().mockReturnValue('promptfoo redteam init'),
+    artefCommand: vi.fn().mockReturnValue('artef redteam init'),
     detectInstaller: vi.fn().mockReturnValue('unknown'),
     isRunningUnderNpx: vi.fn().mockReturnValue(false),
   };
@@ -188,7 +188,7 @@ vi.mock('../../../src/envars', async () => ({
   ...(await vi.importActual('../../../src/envars')),
 
   getEnvBool: vi.fn().mockImplementation(function (key) {
-    if (key === 'PROMPTFOO_REDTEAM_ENABLE_PURPOSE_DISCOVERY_AGENT') {
+    if (key === 'artef_REDTEAM_ENABLE_PURPOSE_DISCOVERY_AGENT') {
       return true;
     }
     return false;
@@ -214,7 +214,7 @@ vi.mock('../../../src/util/generation', async () => ({
 vi.mock('../../../src/util/config/writer', async (importOriginal) => {
   return {
     ...(await importOriginal()),
-    writePromptfooConfig: vi.fn(),
+    writeartefConfig: vi.fn(),
   };
 });
 
@@ -231,13 +231,13 @@ vi.mock('../../../src/globalConfig/cloud', async (importOriginal) => {
     CloudConfig: vi.fn().mockImplementation(function () {
       return {
         isEnabled: vi.fn().mockReturnValue(false),
-        getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.app'),
+        getApiHost: vi.fn().mockReturnValue('https://api.artef.app'),
       };
     }),
 
     cloudConfig: {
       isEnabled: vi.fn().mockReturnValue(false),
-      getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.app'),
+      getApiHost: vi.fn().mockReturnValue('https://api.artef.app'),
     },
   };
 });
@@ -373,7 +373,7 @@ describe('doGenerateRedteam', () => {
         strategies: expect.any(Array),
       }),
     );
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         defaultTest: {
           metadata: {
@@ -408,7 +408,7 @@ describe('doGenerateRedteam', () => {
       const configPath = 'config.yaml';
       const outputPath = 'output.yaml';
       const configContent = yaml.dump({
-        providers: ['promptfoo://provider/team-a', 'promptfoo://provider/team-b'],
+        providers: ['artef://provider/team-a', 'artef://provider/team-b'],
         redteam: { plugins: ['harmful:hate'] },
       });
       let generatedOutput: Partial<UnifiedConfig> | undefined;
@@ -444,7 +444,7 @@ describe('doGenerateRedteam', () => {
       };
 
       await doGenerateRedteam(options);
-      generatedOutput = vi.mocked(writePromptfooConfig).mock.calls[0][0];
+      generatedOutput = vi.mocked(writeartefConfig).mock.calls[0][0];
       const firstHash = generatedOutput.metadata?.configHash;
       expect(firstHash).toEqual(expect.any(String));
 
@@ -460,7 +460,7 @@ describe('doGenerateRedteam', () => {
       await doGenerateRedteam({ ...options, ...changedFilters });
 
       expect(synthesize).toHaveBeenCalledTimes(1);
-      const changedOutput = vi.mocked(writePromptfooConfig).mock.calls[0][0];
+      const changedOutput = vi.mocked(writeartefConfig).mock.calls[0][0];
       expect(changedOutput.metadata?.configHash).not.toBe(firstHash);
     },
   );
@@ -502,7 +502,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         metadata: expect.objectContaining({
           generationTokenUsage: {
@@ -562,7 +562,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    const generatedConfig = vi.mocked(writePromptfooConfig).mock.calls.at(-1)?.[0];
+    const generatedConfig = vi.mocked(writeartefConfig).mock.calls.at(-1)?.[0];
     expect(generatedConfig?.metadata).not.toHaveProperty('generationTokenUsage');
   });
 
@@ -591,7 +591,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         defaultTest: {
           metadata: {
@@ -645,7 +645,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    const updatedConfig = vi.mocked(writePromptfooConfig).mock.calls.at(-1)?.[0];
+    const updatedConfig = vi.mocked(writeartefConfig).mock.calls.at(-1)?.[0];
     expect(updatedConfig?.metadata).not.toHaveProperty('generationTokenUsage');
   });
 
@@ -681,7 +681,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         description: 'My custom scan description',
         tests: expect.any(Array),
@@ -717,7 +717,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         description: 'My custom scan description',
         tests: expect.any(Array),
@@ -1085,7 +1085,7 @@ describe('doGenerateRedteam', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         redteam: expect.objectContaining({
           entities: ['Company X', 'John Doe', 'Product Y'],
@@ -1693,7 +1693,7 @@ describe('doGenerateRedteam', () => {
         return 'test@example.com';
       });
       vi.mocked(cloudConfig.getApiHost).mockImplementation(function () {
-        return 'https://api.promptfoo.app';
+        return 'https://api.artef.app';
       });
 
       vi.mocked(synthesize).mockResolvedValue({
@@ -1720,14 +1720,14 @@ describe('doGenerateRedteam', () => {
 
       await doGenerateRedteam(options);
 
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.any(Object),
         'output.yaml',
         expect.arrayContaining([
           expect.stringContaining('REDTEAM CONFIGURATION'),
           expect.stringContaining('Generated:'),
           expect.stringContaining('test@example.com'),
-          expect.stringContaining('https://api.promptfoo.app'),
+          expect.stringContaining('https://api.artef.app'),
           expect.stringContaining('Test Configuration:'),
         ]),
       );
@@ -1765,7 +1765,7 @@ describe('doGenerateRedteam', () => {
 
       await doGenerateRedteam(options);
 
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.any(Object),
         'output.yaml',
         expect.arrayContaining([expect.stringContaining('Not logged in')]),
@@ -1804,7 +1804,7 @@ describe('doGenerateRedteam', () => {
 
       await doGenerateRedteam(options);
 
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.any(Object),
         'config.yaml',
         expect.arrayContaining([
@@ -1863,7 +1863,7 @@ describe('doGenerateRedteam', () => {
 
       await doGenerateRedteam(options);
 
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.any(Object),
         'output.yaml',
         expect.arrayContaining([
@@ -1881,7 +1881,7 @@ describe('doGenerateRedteam', () => {
         return 'test@example.com';
       });
       vi.mocked(cloudConfig.getApiHost).mockImplementation(function () {
-        return 'https://api.promptfoo.app';
+        return 'https://api.artef.app';
       });
 
       vi.mocked(synthesize).mockResolvedValue({
@@ -1908,10 +1908,10 @@ describe('doGenerateRedteam', () => {
 
       await doGenerateRedteam(options);
 
-      const headerComments = vi.mocked(writePromptfooConfig).mock.calls[0][2];
+      const headerComments = vi.mocked(writeartefConfig).mock.calls[0][2];
       expect(headerComments).toBeDefined();
       expect(headerComments!.some((comment) => comment.includes('Author:'))).toBe(false);
-      expect(headerComments!.some((comment) => comment.includes('https://api.promptfoo.app'))).toBe(
+      expect(headerComments!.some((comment) => comment.includes('https://api.artef.app'))).toBe(
         true,
       );
     });
@@ -1922,7 +1922,7 @@ describe('doGenerateRedteam', () => {
       // Mock cloudConfig to be enabled
       const mockCloudConfig = {
         isEnabled: vi.fn().mockReturnValue(true),
-        getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.app'),
+        getApiHost: vi.fn().mockReturnValue('https://api.artef.app'),
       };
       vi.mocked(cloudConfig).isEnabled = mockCloudConfig.isEnabled;
 
@@ -1970,7 +1970,7 @@ describe('doGenerateRedteam', () => {
       // Mock cloudConfig to be enabled
       const mockCloudConfig = {
         isEnabled: vi.fn().mockReturnValue(true),
-        getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.app'),
+        getApiHost: vi.fn().mockReturnValue('https://api.artef.app'),
       };
       vi.mocked(cloudConfig).isEnabled = mockCloudConfig.isEnabled;
 
@@ -3017,7 +3017,7 @@ describe('doGenerateRedteam', () => {
           purpose: 'Root purpose for Alice',
         }),
       );
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.objectContaining({
           defaultTest: expect.objectContaining({
             metadata: expect.objectContaining({
@@ -3252,7 +3252,7 @@ describe('doGenerateRedteam', () => {
         }),
       );
       expect(vi.mocked(synthesize).mock.calls[0][0].purpose).not.toContain('Root purpose');
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.objectContaining({
           redteam: expect.objectContaining({
             purpose: 'Root purpose for {{ user_name }}',
@@ -3323,7 +3323,7 @@ describe('doGenerateRedteam', () => {
       await doGenerateRedteam(options);
 
       // Verify the written config includes context metadata in test cases
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.objectContaining({
           tests: expect.arrayContaining([
             expect.objectContaining({
@@ -3389,7 +3389,7 @@ describe('doGenerateRedteam', () => {
       await doGenerateRedteam(options);
 
       // Verify context vars are merged into test case vars
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.objectContaining({
           tests: expect.arrayContaining([
             expect.objectContaining({
@@ -3507,7 +3507,7 @@ describe('doGenerateRedteam', () => {
       expect(synthesize).toHaveBeenCalledTimes(1);
 
       // Test case should have context metadata without contextVars
-      expect(writePromptfooConfig).toHaveBeenCalledWith(
+      expect(writeartefConfig).toHaveBeenCalledWith(
         expect.objectContaining({
           tests: expect.arrayContaining([
             expect.objectContaining({
@@ -3640,8 +3640,8 @@ describe('doGenerateRedteam with external defaultTest', () => {
 
     await doGenerateRedteam(options);
 
-    // Check that writePromptfooConfig was called with the correct defaultTest
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    // Check that writeartefConfig was called with the correct defaultTest
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         defaultTest: expect.objectContaining({
           metadata: expect.objectContaining({
@@ -3697,7 +3697,7 @@ describe('doGenerateRedteam with external defaultTest', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         defaultTest: expect.objectContaining({
           assert: [{ type: 'equals', value: 'test' }],
@@ -3752,7 +3752,7 @@ describe('doGenerateRedteam with external defaultTest', () => {
 
     await doGenerateRedteam(options);
 
-    expect(writePromptfooConfig).toHaveBeenCalledWith(
+    expect(writeartefConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         defaultTest: expect.objectContaining({
           metadata: expect.objectContaining({
@@ -3908,7 +3908,7 @@ describe('redteam generate command with target option', () => {
     // Verify that the target was added to the config for backwards compatibility
     expect(mockConfig.targets).toEqual([
       {
-        id: `promptfoo://provider/${targetUUID}`,
+        id: `artef://provider/${targetUUID}`,
         config: {},
       },
     ]);
@@ -3961,7 +3961,7 @@ describe('redteam generate command with target option', () => {
     expect(getConfigFromCloud).toHaveBeenCalledWith(configUUID, targetUUID);
     expect(mockConfig.targets).toEqual([
       {
-        id: `promptfoo://provider/${targetUUID}`,
+        id: `artef://provider/${targetUUID}`,
         config: {},
       },
     ]);
@@ -4024,7 +4024,7 @@ describe('redteam generate command with target option', () => {
 
     // Should log error message
     expect(logger.error).toHaveBeenCalledWith(
-      `Target ID (-t) can only be used when -c is used with a cloud config UUID. To use a cloud target inside of a config set the id of the target to promptfoo://provider/${targetUUID}.`,
+      `Target ID (-t) can only be used when -c is used with a cloud config UUID. To use a cloud target inside of a config set the id of the target to artef://provider/${targetUUID}.`,
     );
 
     // Should set exit code to 1
@@ -4051,7 +4051,7 @@ describe('redteam generate command with target option', () => {
 
     // Should log error message
     expect(logger.error).toHaveBeenCalledWith(
-      `Target ID (-t) can only be used when -c is used with a cloud config UUID. To use a cloud target inside of a config set the id of the target to promptfoo://provider/${targetUUID}.`,
+      `Target ID (-t) can only be used when -c is used with a cloud config UUID. To use a cloud target inside of a config set the id of the target to artef://provider/${targetUUID}.`,
     );
 
     // Should set exit code to 1
@@ -4277,7 +4277,7 @@ describe('target ID extraction for retry strategy', () => {
         providers: [
           {
             id: 'file://local-provider.ts',
-            config: { linkedTargetId: 'promptfoo://provider/cloud-target-123' },
+            config: { linkedTargetId: 'artef://provider/cloud-target-123' },
           },
         ],
         redteam: {
@@ -4305,7 +4305,7 @@ describe('target ID extraction for retry strategy', () => {
 
   it('should preserve target context for a scalar Cloud provider', async () => {
     vi.mocked(isCloudProvider).mockImplementation((providerId) =>
-      providerId.startsWith('promptfoo://provider/'),
+      providerId.startsWith('artef://provider/'),
     );
     vi.mocked(getCloudDatabaseId).mockReturnValue('cloud-target-123');
     vi.mocked(configModule.resolveConfigs).mockResolvedValue({
@@ -4316,7 +4316,7 @@ describe('target ID extraction for retry strategy', () => {
         tests: [],
       },
       config: {
-        providers: 'promptfoo://provider/cloud-target-123',
+        providers: 'artef://provider/cloud-target-123',
         redteam: {
           plugins: ['harmful:hate' as unknown as RedteamPluginObject],
           strategies: [],
@@ -4335,17 +4335,17 @@ describe('target ID extraction for retry strategy', () => {
     expect(synthesize).toHaveBeenCalledWith(
       expect.objectContaining({
         cloudTargetDatabaseId: 'cloud-target-123',
-        targetIds: ['promptfoo://provider/cloud-target-123'],
+        targetIds: ['artef://provider/cloud-target-123'],
       }),
     );
   });
 
   it('should preserve target context for a map-form Cloud provider', async () => {
     vi.mocked(isCloudProvider).mockImplementation((providerId) =>
-      providerId.startsWith('promptfoo://provider/'),
+      providerId.startsWith('artef://provider/'),
     );
     vi.mocked(getCloudDatabaseId).mockImplementation((providerId) =>
-      providerId.replace('promptfoo://provider/', ''),
+      providerId.replace('artef://provider/', ''),
     );
     vi.mocked(configModule.resolveConfigs).mockResolvedValue({
       basePath: '/mock/path',
@@ -4355,13 +4355,13 @@ describe('target ID extraction for retry strategy', () => {
         tests: [],
       },
       config: {
-        providers: [{ 'promptfoo://provider/cloud-target-123': {} }],
+        providers: [{ 'artef://provider/cloud-target-123': {} }],
         redteam: {
           plugins: ['harmful:hate' as unknown as RedteamPluginObject],
           strategies: [],
         },
       },
-      selectedProviderConfigs: [{ 'promptfoo://provider/cloud-target-123': {} }],
+      selectedProviderConfigs: [{ 'artef://provider/cloud-target-123': {} }],
     });
 
     await doGenerateRedteam({
@@ -4375,17 +4375,17 @@ describe('target ID extraction for retry strategy', () => {
     expect(synthesize).toHaveBeenCalledWith(
       expect.objectContaining({
         cloudTargetDatabaseId: 'cloud-target-123',
-        targetIds: ['promptfoo://provider/cloud-target-123'],
+        targetIds: ['artef://provider/cloud-target-123'],
       }),
     );
   });
 
   it('should derive target context from the provider selected by a filter', async () => {
     vi.mocked(isCloudProvider).mockImplementation((providerId) =>
-      providerId.startsWith('promptfoo://provider/'),
+      providerId.startsWith('artef://provider/'),
     );
     vi.mocked(getCloudDatabaseId).mockImplementation((providerId) =>
-      providerId.replace('promptfoo://provider/', ''),
+      providerId.replace('artef://provider/', ''),
     );
     vi.mocked(configModule.resolveConfigs).mockResolvedValue({
       basePath: '/mock/path',
@@ -4395,13 +4395,13 @@ describe('target ID extraction for retry strategy', () => {
         tests: [],
       },
       config: {
-        providers: ['promptfoo://provider/excluded-target', 'promptfoo://provider/selected-target'],
+        providers: ['artef://provider/excluded-target', 'artef://provider/selected-target'],
         redteam: {
           plugins: ['harmful:hate' as unknown as RedteamPluginObject],
           strategies: [],
         },
       },
-      selectedProviderConfigs: ['promptfoo://provider/selected-target'],
+      selectedProviderConfigs: ['artef://provider/selected-target'],
     });
 
     await doGenerateRedteam({
@@ -4419,14 +4419,14 @@ describe('target ID extraction for retry strategy', () => {
     );
     expect(checkCloudPermissions).toHaveBeenCalledWith(
       expect.objectContaining({
-        providers: ['promptfoo://provider/selected-target'],
+        providers: ['artef://provider/selected-target'],
       }),
     );
     expect(getPluginSeverityOverridesFromCloud).toHaveBeenCalledWith('selected-target');
     expect(synthesize).toHaveBeenCalledWith(
       expect.objectContaining({
         cloudTargetDatabaseId: 'selected-target',
-        targetIds: ['promptfoo://provider/selected-target'],
+        targetIds: ['artef://provider/selected-target'],
       }),
     );
   });

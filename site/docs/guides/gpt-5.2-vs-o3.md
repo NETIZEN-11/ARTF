@@ -1,4 +1,4 @@
----
+﻿---
 title: 'GPT-5.2 vs o3: Benchmark on Your Own Data'
 sidebar_label: 'GPT-5.2 vs o3'
 description: 'Benchmark OpenAI o3 reasoning model against GPT-5.2 for cost, latency, and accuracy to optimize model selection decisions'
@@ -12,7 +12,7 @@ OpenAI's o3 is a reasoning model designed to spend more time thinking before res
 The models make different cost, latency, and quality tradeoffs. Benchmark representative tasks
 from your workload before selecting one.
 
-This guide describes how to compare `o3` against `gpt-5.2` using promptfoo, with a focus on performance, cost, and latency.
+This guide describes how to compare `o3` against `gpt-5.2` using artef, with a focus on performance, cost, and latency.
 
 The end result will be a side-by-side comparison that looks similar to this:
 
@@ -22,7 +22,7 @@ The end result will be a side-by-side comparison that looks similar to this:
 
 Before we begin, you'll need:
 
-- promptfoo CLI installed. If not, refer to the [installation guide](/docs/installation).
+- artef CLI installed. If not, refer to the [installation guide](/docs/installation).
 - An active OpenAI API key set as the `OPENAI_API_KEY` environment variable.
 
 ## Step 1: Setup
@@ -36,7 +36,7 @@ cd openai-o3-comparison
 
 ## Step 2: Configure the Comparison
 
-Create a `promptfooconfig.yaml` file to define your comparison.
+Create a `artefconfig.yaml` file to define your comparison.
 
 1. **Prompts**:
    Define the prompt template that will be used for all test cases. In this example, we're using riddles:
@@ -97,7 +97,7 @@ Create a `promptfooconfig.yaml` file to define your comparison.
 
 Now, let's put it all together in the final configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: 'GPT-5.2 vs o3 comparison'
 prompts:
   - 'Solve this riddle: {{riddle}}'
@@ -139,10 +139,10 @@ This configuration sets up a comprehensive comparison between gpt-5.2 and o3 usi
 
 ## Step 3: Run the Comparison
 
-Execute the comparison using the `promptfoo eval` command:
+Execute the comparison using the `artef eval` command:
 
 ```sh
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This will run each test case against both models and output the results.
@@ -150,7 +150,7 @@ This will run each test case against both models and output the results.
 To view the results in a web interface, run:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ![o3 vs gpt-5.2 comparison](/img/docs/o1-vs-gpt.jpg)

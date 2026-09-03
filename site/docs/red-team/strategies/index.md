@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Overview
 title: Red Team Strategies
 description: Comprehensive catalog of red team attack strategies for systematically identifying and exploiting LLM application vulnerabilities
@@ -32,7 +32,7 @@ The [Meta Agent](/docs/red-team/strategies/meta/) dynamically builds an attack t
 
 For most applications, this configuration provides comprehensive red team coverage:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - jailbreak:meta # Single-turn agentic attacks
@@ -43,7 +43,7 @@ redteam:
 
 <StrategyTable showRemoteStatus />
 
-_🌐 indicates that strategy uses remote inference in Promptfoo Community edition_
+_🌐 indicates that strategy uses remote inference in artef Community edition_
 
 ## Strategy Categories
 
@@ -84,7 +84,7 @@ All single-turn strategies can be applied to multi-turn applications, but multi-
 
 ### Basic Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - jailbreak:meta # string syntax
@@ -95,7 +95,7 @@ redteam:
 
 Strategies can be applied to specific plugins or the entire test suite. By default, strategies are applied to all plugins. You can override this by specifying the `plugins` option in the strategy which will only apply the strategy to the specified plugins.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: jailbreak:tree
@@ -108,7 +108,7 @@ redteam:
 
 Chain strategies in order with the `layer` strategy. This is useful when you want to apply a transformation first, then another technique:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: layer

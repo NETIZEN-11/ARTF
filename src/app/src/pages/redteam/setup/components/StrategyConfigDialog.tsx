@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -30,10 +30,10 @@ import {
   MULTI_MODAL_STRATEGIES,
   MULTI_TURN_STRATEGIES,
   type MultiTurnStrategy,
-} from '@promptfoo/redteam/constants/strategies';
+} from '@artef/redteam/constants/strategies';
 import { AlertTriangle, ArrowDown, ArrowUp, Info, Trash2, X } from 'lucide-react';
 import { STRATEGIES_REQUIRING_CONFIG } from './strategies/utils';
-import type { StrategyConfig } from '@promptfoo/redteam/types';
+import type { StrategyConfig } from '@artef/redteam/types';
 
 import type { StrategyCardData } from './strategies/types';
 
@@ -686,7 +686,7 @@ export default function StrategyConfigDialog({
             className="mt-0.5"
           />
           <Label htmlFor="custom-stateful" className="text-sm font-normal">
-            When enabled, Promptfoo should only send the current request and assume your system
+            When enabled, artef should only send the current request and assume your system
             remembers interaction history
           </Label>
         </div>
@@ -744,7 +744,7 @@ export default function StrategyConfigDialog({
         </div>
 
         <p className="text-xs text-muted-foreground">
-          {strategyName} requires Promptfoo Cloud remote generation.
+          {strategyName} requires artef Cloud remote generation.
         </p>
       </div>
     );
@@ -793,7 +793,7 @@ export default function StrategyConfigDialog({
           className="mt-0.5"
         />
         <Label htmlFor="multi-turn-stateful" className="text-sm font-normal">
-          When enabled, Promptfoo should only send the current request and assume your system
+          When enabled, artef should only send the current request and assume your system
           remembers interaction history
         </Label>
       </div>

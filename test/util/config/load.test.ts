@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as path from 'path';
 
 import { globSync } from 'glob';
@@ -22,7 +22,7 @@ import {
   resolveConfigs,
 } from '../../../src/util/config/load';
 import { maybeLoadFromExternalFile } from '../../../src/util/file';
-import { isRunningUnderNpx } from '../../../src/util/promptfooCommand';
+import { isRunningUnderNpx } from '../../../src/util/artefCommand';
 import { sanitizeTracingConfigForPersistence } from '../../../src/util/sanitizer';
 import { readTests } from '../../../src/util/testCaseReader';
 import { createMockProvider } from '../../factories/provider';
@@ -110,21 +110,21 @@ vi.mock('../../../src/util', async () => {
   };
 });
 
-vi.mock('../../../src/util/promptfooCommand', () => {
-  const mockPromptfooCommand = vi.fn();
+vi.mock('../../../src/util/artefCommand', () => {
+  const mockartefCommand = vi.fn();
   const mockIsRunningUnderNpx = vi.fn();
 
   // Set up the mock to return appropriate values based on isRunningUnderNpx
-  mockPromptfooCommand.mockImplementation((cmd) => {
+  mockartefCommand.mockImplementation((cmd) => {
     const isNpx = mockIsRunningUnderNpx();
     if (cmd === '') {
-      return isNpx ? 'npx promptfoo@latest' : 'promptfoo';
+      return isNpx ? 'npx artef@latest' : 'artef';
     }
-    return isNpx ? `npx promptfoo@latest ${cmd}` : `promptfoo ${cmd}`;
+    return isNpx ? `npx artef@latest ${cmd}` : `artef ${cmd}`;
   });
 
   return {
-    promptfooCommand: mockPromptfooCommand,
+    artefCommand: mockartefCommand,
     detectInstaller: vi.fn().mockReturnValue('unknown'),
     isRunningUnderNpx: mockIsRunningUnderNpx,
   };
@@ -742,7 +742,7 @@ describe('combineConfigs', () => {
     );
 
     expect(consoleSpy).toHaveBeenCalledWith(
-      'Warning: Multiple configurations and extensions detected. Currently, all extensions are run across all configs and do not respect their original promptfooconfig. Please file an issue on our GitHub repository if you need support for this use case.',
+      'Warning: Multiple configurations and extensions detected. Currently, all extensions are run across all configs and do not respect their original artefconfig. Please file an issue on our GitHub repository if you need support for this use case.',
     );
 
     consoleSpy.mockRestore();
@@ -774,7 +774,7 @@ describe('combineConfigs', () => {
     );
 
     expect(consoleSpy).toHaveBeenCalledWith(
-      'Warning: Multiple configurations and extensions detected. Currently, all extensions are run across all configs and do not respect their original promptfooconfig. Please file an issue on our GitHub repository if you need support for this use case.',
+      'Warning: Multiple configurations and extensions detected. Currently, all extensions are run across all configs and do not respect their original artefconfig. Please file an issue on our GitHub repository if you need support for this use case.',
     );
     consoleSpy.mockRestore();
   });
@@ -1182,7 +1182,7 @@ describe('combineConfigs', () => {
   });
 
   it('preserves all CallApiFunction providers without deduping them', async () => {
-    // Regression test for https://github.com/promptfoo/promptfoo/issues/9383:
+    // Regression test for https://github.com/artef/artef/issues/9383:
     // JSON.stringify(fn) returns undefined, so dedupe used to collapse function providers.
     const providerA = async (prompt: string) => ({ output: `a: ${prompt}` });
     const providerB = async (prompt: string) => ({ output: `b: ${prompt}` });
@@ -1194,7 +1194,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toEqual([providerA, providerB, providerC]);
   });
@@ -1222,7 +1222,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toHaveLength(2);
   });
@@ -1240,7 +1240,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toHaveLength(2);
   });
@@ -1254,7 +1254,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toEqual([provider]);
   });
@@ -1281,7 +1281,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toEqual([providerA, providerB]);
   });
@@ -1305,7 +1305,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toEqual([provider]);
   });
@@ -1320,7 +1320,7 @@ describe('combineConfigs', () => {
       tests: [{ vars: { prompt: 'hi' } }],
     });
 
-    const result = await combineConfigs(['promptfooconfig.ts']);
+    const result = await combineConfigs(['artefconfig.ts']);
 
     expect(result.providers).toEqual([sharedProvider]);
   });
@@ -1591,8 +1591,8 @@ describe('resolveConfigs', () => {
 
   it('should return the provider configs selected by a target filter', async () => {
     const providers = [
-      { id: 'promptfoo://provider/excluded-target', config: { label: 'excluded' } },
-      { id: 'promptfoo://provider/selected-target', config: { label: 'selected' } },
+      { id: 'artef://provider/excluded-target', config: { label: 'excluded' } },
+      { id: 'artef://provider/selected-target', config: { label: 'selected' } },
     ];
     vi.mocked(fs.existsSync).mockReturnValue(true);
     vi.mocked(fs.readFileSync).mockReturnValue(JSON.stringify({ prompts: ['prompt1'], providers }));
@@ -1793,8 +1793,8 @@ describe('resolveConfigs', () => {
     const defaultConfig = {};
 
     await expect(resolveConfigs(cmdObj, defaultConfig)).rejects.toMatchObject({
-      message: 'No promptfooconfig found',
-      cliMessage: expect.stringContaining('No promptfooconfig found'),
+      message: 'No artefconfig found',
+      cliMessage: expect.stringContaining('No artefconfig found'),
       logLevel: 'warn',
     });
 
@@ -1804,11 +1804,11 @@ describe('resolveConfigs', () => {
   it('should throw an error if no providers are provided', async () => {
     const cmdObj = { config: ['config.json'] };
     const defaultConfig = {};
-    const promptfooConfig = {
+    const artefConfig = {
       prompts: ['Act as a travel guide for {{location}}'],
     };
 
-    vi.mocked(fs.readFileSync).mockReturnValueOnce(JSON.stringify(promptfooConfig));
+    vi.mocked(fs.readFileSync).mockReturnValueOnce(JSON.stringify(artefConfig));
     vi.mocked(globSync).mockReturnValueOnce(['config.json']);
 
     await expect(resolveConfigs(cmdObj, defaultConfig)).rejects.toThrowError(
@@ -1842,12 +1842,12 @@ describe('resolveConfigs', () => {
 
   it('should throw an error if configured prompts resolve to an empty set', async () => {
     const cmdObj = { config: ['config.json'] };
-    const promptfooConfig = {
+    const artefConfig = {
       prompts: ['Act as a travel guide for {{location}}'],
       providers: ['openai:gpt-4.1'],
     };
 
-    vi.mocked(fs.readFileSync).mockReturnValueOnce(JSON.stringify(promptfooConfig));
+    vi.mocked(fs.readFileSync).mockReturnValueOnce(JSON.stringify(artefConfig));
     vi.mocked(globSync).mockReturnValueOnce(['config.json']);
     vi.mocked(readPrompts).mockResolvedValueOnce([]);
 
@@ -1863,11 +1863,11 @@ describe('resolveConfigs', () => {
   it('should allow dataset generation configs to omit providers', async () => {
     const cmdObj = { config: ['config.json'] };
     const defaultConfig = {};
-    const promptfooConfig = {
+    const artefConfig = {
       prompts: ['Act as a travel guide for {{location}}'],
     };
 
-    vi.mocked(fs.readFileSync).mockReturnValueOnce(JSON.stringify(promptfooConfig));
+    vi.mocked(fs.readFileSync).mockReturnValueOnce(JSON.stringify(artefConfig));
     vi.mocked(globSync).mockReturnValueOnce(['config.json']);
 
     expect(

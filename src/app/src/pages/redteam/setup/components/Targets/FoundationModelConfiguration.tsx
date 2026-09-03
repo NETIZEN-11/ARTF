@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -138,7 +138,7 @@ const FoundationModelConfiguration = ({
         name: 'OpenAI',
         defaultModel: DEFAULT_OPENAI_TARGET_ID,
         placeholder: OPENAI_TARGET_PLACEHOLDER,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/openai',
+        docUrl: 'https://www.artef.dev/docs/providers/openai',
         envVar: 'OPENAI_API_KEY',
       },
       anthropic: {
@@ -146,70 +146,70 @@ const FoundationModelConfiguration = ({
         defaultModel: 'anthropic:messages:claude-sonnet-4-5-20250929',
         placeholder:
           'anthropic:messages:claude-sonnet-4-5-20250929, anthropic:messages:claude-haiku-4-5-20251001',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/anthropic',
+        docUrl: 'https://www.artef.dev/docs/providers/anthropic',
         envVar: 'ANTHROPIC_API_KEY',
       },
       google: {
         name: 'Google AI Studio',
         defaultModel: 'google:gemini-3.7-flash',
         placeholder: 'google:gemini-3.7-flash, google:gemini-3.5-flash-lite',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/google',
+        docUrl: 'https://www.artef.dev/docs/providers/google',
         envVar: 'GOOGLE_API_KEY | GEMINI_API_KEY | PALM_API_KEY',
       },
       vertex: {
         name: 'Google Vertex AI',
         defaultModel: 'vertex:gemini-3.7-flash',
         placeholder: 'vertex:gemini-3.7-flash, vertex:gemini-3.5-flash-lite',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/vertex',
+        docUrl: 'https://www.artef.dev/docs/providers/vertex',
         envVar: 'GOOGLE_APPLICATION_CREDENTIALS',
       },
       mistral: {
         name: 'Mistral AI',
         defaultModel: 'mistral:mistral-large-latest',
         placeholder: 'mistral:mistral-large-latest, mistral:mistral-small-latest',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/mistral',
+        docUrl: 'https://www.artef.dev/docs/providers/mistral',
         envVar: 'MISTRAL_API_KEY',
       },
       cohere: {
         name: 'Cohere',
         defaultModel: 'cohere:command-a-03-2025',
         placeholder: 'cohere:command-a-03-2025, cohere:command-r-plus-08-2024',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/cohere',
+        docUrl: 'https://www.artef.dev/docs/providers/cohere',
         envVar: 'COHERE_API_KEY',
       },
       groq: {
         name: 'Groq',
         defaultModel: 'groq:llama-3.1-70b-versatile',
         placeholder: 'groq:llama-3.1-70b-versatile, groq:mixtral-8x7b-32768',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/groq',
+        docUrl: 'https://www.artef.dev/docs/providers/groq',
         envVar: 'GROQ_API_KEY',
       },
       deepseek: {
         name: 'DeepSeek',
         defaultModel: 'deepseek:deepseek-chat',
         placeholder: 'deepseek:deepseek-chat, deepseek:deepseek-coder',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/deepseek',
+        docUrl: 'https://www.artef.dev/docs/providers/deepseek',
         envVar: 'DEEPSEEK_API_KEY',
       },
       azure: {
         name: 'Azure OpenAI',
         defaultModel: 'azure:chat:gpt-4o',
         placeholder: 'azure:chat:your-deployment-name',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/azure',
+        docUrl: 'https://www.artef.dev/docs/providers/azure',
         envVar: 'AZURE_OPENAI_API_KEY',
       },
       bedrock: {
         name: 'AWS Bedrock',
         defaultModel: 'bedrock:global.anthropic.claude-sonnet-5',
         placeholder: 'global.anthropic.claude-sonnet-5',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/aws-bedrock',
+        docUrl: 'https://www.artef.dev/docs/providers/aws-bedrock',
         envVar: 'AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY',
       },
       openrouter: {
         name: 'OpenRouter',
         defaultModel: 'openrouter:openai/gpt-5.4',
         placeholder: 'openrouter:openai/gpt-5.4, openrouter:anthropic/claude-opus-4.7',
-        docUrl: 'https://www.promptfoo.dev/docs/providers/openrouter',
+        docUrl: 'https://www.artef.dev/docs/providers/openrouter',
         envVar: 'OPENROUTER_API_KEY',
       },
     };
@@ -219,7 +219,7 @@ const FoundationModelConfiguration = ({
         name: type.charAt(0).toUpperCase() + type.slice(1),
         defaultModel: `${type}:model`,
         placeholder: `${type}:model-name`,
-        docUrl: 'https://www.promptfoo.dev/docs/providers',
+        docUrl: 'https://www.artef.dev/docs/providers',
         envVar: `${type.toUpperCase()}_API_KEY`,
       }
     );

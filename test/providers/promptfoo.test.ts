@@ -1,12 +1,12 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getEnvBool, getEnvString } from '../../src/envars';
 import { getUserEmail } from '../../src/globalConfig/accounts';
 import {
-  PromptfooChatCompletionProvider,
-  PromptfooHarmfulCompletionProvider,
-  PromptfooSimulatedUserProvider,
+  artefChatCompletionProvider,
+  artefHarmfulCompletionProvider,
+  artefSimulatedUserProvider,
   REDTEAM_SIMULATED_USER_TASK_ID,
-} from '../../src/providers/promptfoo';
+} from '../../src/providers/artef';
 import { fetchWithRetries } from '../../src/util/fetch/index';
 
 vi.mock('../../src/cache');
@@ -22,20 +22,20 @@ vi.mock('../../src/globalConfig/cloud', async (importOriginal) => {
         return false;
       }
       getApiHost() {
-        return 'https://api.promptfoo.app';
+        return 'https://api.artef.app';
       }
     },
   };
 });
 
-describe('PromptfooHarmfulCompletionProvider', () => {
+describe('artefHarmfulCompletionProvider', () => {
   const options = {
     harmCategory: 'test-category',
     n: 1,
     purpose: 'test-purpose',
   };
 
-  let provider: PromptfooHarmfulCompletionProvider;
+  let provider: artefHarmfulCompletionProvider;
 
   beforeEach(() => {
     vi.resetAllMocks();
@@ -48,7 +48,7 @@ describe('PromptfooHarmfulCompletionProvider', () => {
     vi.mocked(getEnvBool).mockImplementation(function () {
       return false;
     });
-    provider = new PromptfooHarmfulCompletionProvider(options);
+    provider = new artefHarmfulCompletionProvider(options);
   });
 
   it('should initialize with correct options', () => {
@@ -58,12 +58,12 @@ describe('PromptfooHarmfulCompletionProvider', () => {
   });
 
   it('should return correct id', () => {
-    expect(provider.id()).toBe('promptfoo:redteam:test-category');
+    expect(provider.id()).toBe('artef:redteam:test-category');
   });
 
   it('should return correct string representation', () => {
     expect(provider.toString()).toBe(
-      '[Promptfoo Harmful Completion Provider test-purpose - test-category]',
+      '[artef Harmful Completion Provider test-purpose - test-category]',
     );
   });
 
@@ -104,7 +104,7 @@ describe('PromptfooHarmfulCompletionProvider', () => {
   });
 
   it('should include target context in harmful generation requests', async () => {
-    provider = new PromptfooHarmfulCompletionProvider({
+    provider = new artefHarmfulCompletionProvider({
       ...options,
       targetId: 'cloud-target-123',
     });
@@ -163,22 +163,22 @@ describe('PromptfooHarmfulCompletionProvider', () => {
     expect(result.error).toContain('[HarmfulCompletionProvider]');
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REMOTE_GENERATION is set', async () => {
+  it('should return error when artef_DISABLE_REMOTE_GENERATION is set', async () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
 
     const result = await provider.callApi('test prompt');
 
     expect(result.error).toContain('Remote generation is disabled');
     expect(result.error).toContain('Harmful content generation requires');
-    expect(result.error).toContain('PROMPTFOO_DISABLE_REMOTE_GENERATION');
+    expect(result.error).toContain('artef_DISABLE_REMOTE_GENERATION');
     expect(fetchWithRetries).not.toHaveBeenCalled();
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION is set', async () => {
+  it('should return error when artef_DISABLE_REDTEAM_REMOTE_GENERATION is set', async () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
 
     const result = await provider.callApi('test prompt');
@@ -215,14 +215,14 @@ describe('PromptfooHarmfulCompletionProvider', () => {
   });
 });
 
-describe('PromptfooChatCompletionProvider', () => {
+describe('artefChatCompletionProvider', () => {
   const options = {
     jsonOnly: true,
     preferSmallModel: false,
     task: 'crescendo' as const,
   };
 
-  let provider: PromptfooChatCompletionProvider;
+  let provider: artefChatCompletionProvider;
 
   beforeEach(() => {
     vi.resetAllMocks();
@@ -235,15 +235,15 @@ describe('PromptfooChatCompletionProvider', () => {
     vi.mocked(getEnvBool).mockImplementation(function () {
       return false;
     });
-    provider = new PromptfooChatCompletionProvider(options);
+    provider = new artefChatCompletionProvider(options);
   });
 
   it('should return correct id', () => {
-    expect(provider.id()).toBe('promptfoo:chatcompletion');
+    expect(provider.id()).toBe('artef:chatcompletion');
   });
 
   it('should return correct string representation', () => {
-    expect(provider.toString()).toBe('[Promptfoo Chat Completion Provider]');
+    expect(provider.toString()).toBe('[artef Chat Completion Provider]');
   });
 
   it('should handle successful API call', async () => {
@@ -276,7 +276,7 @@ describe('PromptfooChatCompletionProvider', () => {
   });
 
   it('should include target context in remote task requests', async () => {
-    provider = new PromptfooChatCompletionProvider({
+    provider = new artefChatCompletionProvider({
       ...options,
       targetId: 'cloud-target-123',
     });
@@ -315,7 +315,7 @@ describe('PromptfooChatCompletionProvider', () => {
         label: 'history',
       },
       vars: {
-        __promptfooRemoteMaterialization: {
+        __artefRemoteMaterialization: {
           injectVar: 'prompt',
           inputs: {
             document: {
@@ -433,22 +433,22 @@ describe('PromptfooChatCompletionProvider', () => {
     expect(result.error).toBe('API call error: Error: API Error');
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REMOTE_GENERATION is set', async () => {
+  it('should return error when artef_DISABLE_REMOTE_GENERATION is set', async () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
 
     const result = await provider.callApi('test prompt');
 
     expect(result.error).toContain('Remote generation is disabled');
     expect(result.error).toContain('This red team strategy requires');
-    expect(result.error).toContain('PROMPTFOO_DISABLE_REMOTE_GENERATION');
+    expect(result.error).toContain('artef_DISABLE_REMOTE_GENERATION');
     expect(fetchWithRetries).not.toHaveBeenCalled();
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION is set', async () => {
+  it('should return error when artef_DISABLE_REDTEAM_REMOTE_GENERATION is set', async () => {
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
 
     const result = await provider.callApi('test prompt');
@@ -489,13 +489,13 @@ describe('PromptfooChatCompletionProvider', () => {
   });
 });
 
-describe('PromptfooSimulatedUserProvider', () => {
+describe('artefSimulatedUserProvider', () => {
   const options = {
     id: 'test-agent',
     instructions: 'test instructions',
   };
 
-  let provider: PromptfooSimulatedUserProvider;
+  let provider: artefSimulatedUserProvider;
 
   beforeEach(() => {
     vi.resetAllMocks();
@@ -505,7 +505,7 @@ describe('PromptfooSimulatedUserProvider', () => {
     vi.mocked(getEnvBool).mockImplementation(function () {
       return false;
     });
-    provider = new PromptfooSimulatedUserProvider(options, 'test-id');
+    provider = new artefSimulatedUserProvider(options, 'test-id');
   });
 
   it('should return correct id', () => {
@@ -513,12 +513,12 @@ describe('PromptfooSimulatedUserProvider', () => {
   });
 
   it('should return default id if not provided', () => {
-    const defaultProvider = new PromptfooSimulatedUserProvider({}, 'test-id');
-    expect(defaultProvider.id()).toBe('promptfoo:agent');
+    const defaultProvider = new artefSimulatedUserProvider({}, 'test-id');
+    expect(defaultProvider.id()).toBe('artef:agent');
   });
 
   it('should return correct string representation', () => {
-    expect(provider.toString()).toBe('[Promptfoo Agent Provider]');
+    expect(provider.toString()).toBe('[artef Agent Provider]');
   });
 
   it('should handle successful API call', async () => {
@@ -543,7 +543,7 @@ describe('PromptfooSimulatedUserProvider', () => {
   });
 
   it('should include target context in task requests', async () => {
-    const providerWithTarget = new PromptfooSimulatedUserProvider(
+    const providerWithTarget = new artefSimulatedUserProvider(
       {
         instructions: 'test instructions',
         targetId: 'cloud-target-123',
@@ -591,10 +591,10 @@ describe('PromptfooSimulatedUserProvider', () => {
     expect(result.error).toBe('API call error: Error: Network Error');
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REMOTE_GENERATION is set for regular task', async () => {
-    const regularProvider = new PromptfooSimulatedUserProvider({}, 'tau');
+  it('should return error when artef_DISABLE_REMOTE_GENERATION is set for regular task', async () => {
+    const regularProvider = new artefSimulatedUserProvider({}, 'tau');
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
 
     const result = await regularProvider.callApi(
@@ -603,15 +603,15 @@ describe('PromptfooSimulatedUserProvider', () => {
 
     expect(result.error).toContain('Remote generation is disabled');
     expect(result.error).toContain('SimulatedUser requires');
-    expect(result.error).toContain('PROMPTFOO_DISABLE_REMOTE_GENERATION');
+    expect(result.error).toContain('artef_DISABLE_REMOTE_GENERATION');
     expect(result.tokenUsage).toEqual({ numRequests: 0 });
     expect(fetchWithRetries).not.toHaveBeenCalled();
   });
 
-  it('should NOT be disabled when PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION is set for regular task', async () => {
-    const regularProvider = new PromptfooSimulatedUserProvider({}, 'tau');
+  it('should NOT be disabled when artef_DISABLE_REDTEAM_REMOTE_GENERATION is set for regular task', async () => {
+    const regularProvider = new artefSimulatedUserProvider({}, 'tau');
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
 
     const mockResponse = new Response(
@@ -635,10 +635,10 @@ describe('PromptfooSimulatedUserProvider', () => {
     expect(fetchWithRetries).toHaveBeenCalled();
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REMOTE_GENERATION is set for redteam task', async () => {
-    const redteamProvider = new PromptfooSimulatedUserProvider({}, REDTEAM_SIMULATED_USER_TASK_ID);
+  it('should return error when artef_DISABLE_REMOTE_GENERATION is set for redteam task', async () => {
+    const redteamProvider = new artefSimulatedUserProvider({}, REDTEAM_SIMULATED_USER_TASK_ID);
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REMOTE_GENERATION';
     });
 
     const result = await redteamProvider.callApi(
@@ -647,16 +647,16 @@ describe('PromptfooSimulatedUserProvider', () => {
 
     expect(result.error).toContain('Remote generation is disabled');
     expect(result.error).toContain(
-      'PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION',
+      'artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION',
     );
     expect(result.tokenUsage).toEqual({ numRequests: 0 });
     expect(fetchWithRetries).not.toHaveBeenCalled();
   });
 
-  it('should return error when PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION is set for redteam task', async () => {
-    const redteamProvider = new PromptfooSimulatedUserProvider({}, REDTEAM_SIMULATED_USER_TASK_ID);
+  it('should return error when artef_DISABLE_REDTEAM_REMOTE_GENERATION is set for redteam task', async () => {
+    const redteamProvider = new artefSimulatedUserProvider({}, REDTEAM_SIMULATED_USER_TASK_ID);
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
 
     const result = await redteamProvider.callApi(
@@ -665,21 +665,21 @@ describe('PromptfooSimulatedUserProvider', () => {
 
     expect(result.error).toContain('Remote generation is disabled');
     expect(result.error).toContain(
-      'PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION',
+      'artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION',
     );
     expect(result.tokenUsage).toEqual({ numRequests: 0 });
     expect(fetchWithRetries).not.toHaveBeenCalled();
   });
 
   it('should show integration: regular SimulatedUser works while redteam is disabled', async () => {
-    // This is the key feature: PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION should
+    // This is the key feature: artef_DISABLE_REDTEAM_REMOTE_GENERATION should
     // NOT affect regular (non-redteam) SimulatedUser tasks
-    const regularProvider = new PromptfooSimulatedUserProvider({}, 'tau');
-    const redteamProvider = new PromptfooSimulatedUserProvider({}, REDTEAM_SIMULATED_USER_TASK_ID);
+    const regularProvider = new artefSimulatedUserProvider({}, 'tau');
+    const redteamProvider = new artefSimulatedUserProvider({}, REDTEAM_SIMULATED_USER_TASK_ID);
 
     // Set only the redteam-specific flag
     vi.mocked(getEnvBool).mockImplementation(function (key: string) {
-      return key === 'PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION';
+      return key === 'artef_DISABLE_REDTEAM_REMOTE_GENERATION';
     });
 
     const mockResponse = new Response(

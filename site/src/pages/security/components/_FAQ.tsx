@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import dedent from 'dedent';
@@ -6,17 +6,17 @@ import styles from '../styles.module.css';
 
 const faqs = [
   {
-    question: `What's the difference between Promptfoo Open Source and Promptfoo Enterprise?`,
+    question: `What's the difference between artef Open Source and artef Enterprise?`,
     answer: dedent`
-      Promptfoo Open Source is a free, open-source version of our platform that focuses specifically on local testing and one-off scans.
+      artef Open Source is a free, open-source version of our platform that focuses specifically on local testing and one-off scans.
 
-      Promptfoo Enterprise is our commercial version that offers additional capabilities such as team collaboration, continuous monitoring, a centralized security dashboard, customized plugins, SSO, access control, cloud deployment options, and priority support with SLA guarantees.
+      artef Enterprise is our commercial version that offers additional capabilities such as team collaboration, continuous monitoring, a centralized security dashboard, customized plugins, SSO, access control, cloud deployment options, and priority support with SLA guarantees.
     `,
   },
   {
-    question: `How does Promptfoo differ from other LLM security tools?`,
+    question: `How does artef differ from other LLM security tools?`,
     answer: dedent`
-      Promptfoo is the only LLM security tool that includes the following:
+      artef is the only LLM security tool that includes the following:
 
       - Dynamic test sets that are unique to your application.
       - ML search & optimization algorithms that explore the state space of your application to find novel vulnerabilities.
@@ -27,9 +27,9 @@ const faqs = [
     `,
   },
   {
-    question: 'What types of LLM vulnerabilities can Promptfoo detect?',
+    question: 'What types of LLM vulnerabilities can artef detect?',
     answer: dedent`
-      Promptfoo covers a wide range of vulnerabilities. This includes:
+      artef covers a wide range of vulnerabilities. This includes:
 
       - Prompt injections
       - Jailbreaks
@@ -42,9 +42,9 @@ const faqs = [
     `,
   },
   {
-    question: 'How does Promptfoo integrate with existing development workflows?',
+    question: 'How does artef integrate with existing development workflows?',
     answer: dedent`
-      Promptfoo integrates with common CI/CD pipelines, allowing for continuous vulnerability detection throughout the development lifecycle. It offers:
+      artef integrates with common CI/CD pipelines, allowing for continuous vulnerability detection throughout the development lifecycle. It offers:
 
       - Support for popular CI/CD platforms
       - Configurable scans on code changes, pull requests, or scheduled intervals
@@ -52,9 +52,9 @@ const faqs = [
     `,
   },
   {
-    question: 'What deployment options are available for Promptfoo?',
+    question: 'What deployment options are available for artef?',
     answer: dedent`
-      Promptfoo offers both cloud-based and on-premises solutions. The on-premises option provides complete data isolation and control over your infrastructure.
+      artef offers both cloud-based and on-premises solutions. The on-premises option provides complete data isolation and control over your infrastructure.
     `,
   },
 ];

@@ -1,4 +1,4 @@
-import { buildIsolatedAnthropicClientOptions } from '../anthropic/generic';
+﻿import { buildIsolatedAnthropicClientOptions } from '../anthropic/generic';
 import { AnthropicMessagesProvider } from '../anthropic/messages';
 import {
   getBedrockMantleOrigin,
@@ -62,7 +62,7 @@ export function createBedrockAnthropicMessagesProvider(
     throw new Error(
       `Amazon Bedrock model "${modelName}" is served through Bedrock's Anthropic-compatible ` +
         `Messages API. Set AWS_BEARER_TOKEN_BEDROCK (or config.apiKey). See ` +
-        `https://www.promptfoo.dev/docs/providers/aws-bedrock/#claude-fable-and-mythos-models`,
+        `https://www.artef.dev/docs/providers/aws-bedrock/#claude-fable-and-mythos-models`,
     );
   }
 

@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const crypto = require('crypto');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
@@ -20,7 +20,7 @@ const SIGNATURE_CONFIG = {
   timestampHeader: 'timestamp',
   clientIdHeader: 'client-id',
   signatureValidityMs: 300000, // 5 minutes
-  signatureDataTemplate: 'promptfoo-app{{timestamp}}',
+  signatureDataTemplate: 'artef-app{{timestamp}}',
   signatureAlgorithm: 'SHA256',
 };
 

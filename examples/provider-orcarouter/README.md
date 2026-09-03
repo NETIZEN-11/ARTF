@@ -1,11 +1,11 @@
-# provider-orcarouter (OrcaRouter Provider)
+﻿# provider-orcarouter (OrcaRouter Provider)
 
 This example shows how to use [OrcaRouter](https://www.orcarouter.ai/), an OpenAI-compatible adaptive routing gateway, to evaluate prompts against multiple upstream models through a single endpoint.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-orcarouter
+npx artef@latest init --example provider-orcarouter
 cd provider-orcarouter
 ```
 
@@ -21,7 +21,7 @@ cd provider-orcarouter
 3. Run the evaluation:
 
    ```bash
-   npx promptfoo@latest eval
+   npx artef@latest eval
    ```
 
 ## What this example does
@@ -31,4 +31,4 @@ This example demonstrates:
 - Calling a specific upstream model (`openai/gpt-4o-mini`) through OrcaRouter.
 - Using the `orcarouter:orcarouter/auto` adaptive router, which picks an upstream per request according to the workspace-level strategy configured in the [routing console](https://www.orcarouter.ai/console/routing).
 
-For the full model catalog, see [orcarouter.ai/models](https://www.orcarouter.ai/models). For provider docs, see the [OrcaRouter provider page](https://www.promptfoo.dev/docs/providers/orcarouter).
+For the full model catalog, see [orcarouter.ai/models](https://www.orcarouter.ai/models). For provider docs, see the [OrcaRouter provider page](https://www.artef.dev/docs/providers/orcarouter).

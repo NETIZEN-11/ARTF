@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, MockedFunction, vi } from 'vitest';
 import * as cache from '../../../src/cache';
 import logger from '../../../src/logger';
 import * as imageDatasetUtils from '../../../src/redteam/plugins/imageDatasetUtils';
@@ -31,7 +31,7 @@ describe('VLGuardPlugin', () => {
   describe('constructor', () => {
     it('should initialize with default config', () => {
       const plugin = new VLGuardPlugin(mockProvider, 'test purpose', 'image', {});
-      expect(plugin.id).toBe('promptfoo:redteam:vlguard');
+      expect(plugin.id).toBe('artef:redteam:vlguard');
     });
 
     it('should validate categories in config', () => {
@@ -74,7 +74,7 @@ describe('VLGuardPlugin', () => {
 
       expect(assertions).toEqual([
         {
-          type: 'promptfoo:redteam:vlguard',
+          type: 'artef:redteam:vlguard',
           metric: 'VLGuard',
         },
       ]);
@@ -822,7 +822,7 @@ describe('VLGuardGrader', () => {
 
   describe('id', () => {
     it('should have correct plugin ID', () => {
-      expect(grader.id).toBe('promptfoo:redteam:vlguard');
+      expect(grader.id).toBe('artef:redteam:vlguard');
     });
   });
 

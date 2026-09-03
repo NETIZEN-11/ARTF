@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import { XAIResponsesProvider } from '../../../src/providers/xai/responses';
 
@@ -297,7 +297,7 @@ describe('XAIResponsesProvider', () => {
     expect(result.cost).toBe(0.015);
   });
 
-  it('reports zero incremental cost for promptfoo-cached responses', async () => {
+  it('reports zero incremental cost for artef-cached responses', async () => {
     mockFetchWithCache.mockResolvedValueOnce({
       data: {
         ...createMockResponseData('grok-4.5'),

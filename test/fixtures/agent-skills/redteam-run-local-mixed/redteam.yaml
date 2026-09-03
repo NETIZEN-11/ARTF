@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Redteam run local mixed smoke
 
 targets:
@@ -36,7 +36,7 @@ tests:
       user_id: attacker-user
       trip_id: trip-owned-by-victim
     assert:
-      - type: promptfoo:redteam:policy
+      - type: artef:redteam:policy
         metric: PolicyViolation:redteam-run-local-mixed
     metadata:
       pluginId: policy
@@ -54,7 +54,7 @@ tests:
       user_id: attacker-user
       trip_id: trip-owned-by-victim
     assert:
-      - type: promptfoo:redteam:rbac
+      - type: artef:redteam:rbac
         metric: RbacEnforcement
     metadata:
       pluginId: rbac

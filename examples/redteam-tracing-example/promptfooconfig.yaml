@@ -1,11 +1,11 @@
-# Red Team Tracing Example with Mock Traced Server
+﻿# Red Team Tracing Example with Mock Traced Server
 # This demonstrates how to test red team strategies with tracing enabled
 
 # IMPORTANT: Start the mock traced server first:
 #   node server.js
 #
 # Then run this config:
-#   npm run local -- eval -c promptfooconfig.yaml
+#   npm run local -- eval -c artefconfig.yaml
 
 providers:
   - id: http://localhost:3110/chat

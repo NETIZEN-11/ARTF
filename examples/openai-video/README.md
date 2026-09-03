@@ -1,13 +1,13 @@
-# openai-video (OpenAI Sora Video Generation)
+﻿# openai-video (OpenAI Sora Video Generation)
 
-This example demonstrates how to use OpenAI's Sora video generation models with Promptfoo.
+This example demonstrates how to use OpenAI's Sora video generation models with artef.
 
 ## Setup
 
 Initialize this example:
 
 ```bash
-npx promptfoo@latest init --example openai-video
+npx artef@latest init --example openai-video
 cd openai-video
 ```
 
@@ -22,13 +22,13 @@ export OPENAI_API_KEY=your_api_key_here
 Run the evaluation:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 View results in the web UI:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Models
@@ -53,7 +53,7 @@ This example compares two Sora models:
 
 ## Output
 
-Generated videos are stored in the promptfoo media storage (`~/.promptfoo/media/`) and displayed in the web viewer with playback controls.
+Generated videos are stored in the artef media storage (`~/.artef/media/`) and displayed in the web viewer with playback controls.
 
 ## Notes
 

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import { Command, InvalidArgumentError } from 'commander';
 import logger from '../logger';
 import { optimizePromptTestSuite } from '../optimizer/promptOptimizer';
@@ -6,7 +6,7 @@ import telemetry from '../telemetry';
 import { type UnifiedConfig } from '../types/index';
 import { resolveConfigs } from '../util/config/load';
 import { printBorder, setupEnv } from '../util/index';
-import { promptfooCommand } from '../util/promptfooCommand';
+import { artefCommand } from '../util/artefCommand';
 
 interface OptimizeOptions {
   config?: string;
@@ -23,7 +23,7 @@ export async function doOptimize(options: OptimizeOptions): Promise<void> {
   const configPath = options.config || options.defaultConfigPath;
   if (!configPath) {
     throw new Error(
-      `Could not find a config file. Pass --config path/to/promptfooconfig.yaml or run "${promptfooCommand(
+      `Could not find a config file. Pass --config path/to/artefconfig.yaml or run "${artefCommand(
         'init',
       )}" to create one.`,
     );
@@ -140,7 +140,7 @@ export function optimizeCommand(
   const command = program
     .command('optimize')
     .description('Optimize one prompt against one configured provider')
-    .option('-c, --config <path>', 'Path to configuration file. Defaults to promptfooconfig.yaml')
+    .option('-c, --config <path>', 'Path to configuration file. Defaults to artefconfig.yaml')
     .option('--prompt-index <index>', 'Zero-based prompt index to optimize', parsePromptIndex, 0)
     .option(
       '--provider-index <index>',

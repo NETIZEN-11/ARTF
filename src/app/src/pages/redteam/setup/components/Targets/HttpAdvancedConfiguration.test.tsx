@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { TooltipProvider } from '@app/components/ui/tooltip';
 import { renderWithProviders } from '@app/utils/testutils';
@@ -6,7 +6,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import HttpAdvancedConfiguration from './HttpAdvancedConfiguration';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 vi.mock('@app/hooks/useToast', () => ({
   useToast: () => ({
@@ -201,7 +201,7 @@ describe('HttpAdvancedConfiguration', () => {
     const docsLink = screen.getByRole('link', { name: /docs/i });
     expect(docsLink).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/http/#token-estimation',
+      'https://www.artef.dev/docs/providers/http/#token-estimation',
     );
   });
 

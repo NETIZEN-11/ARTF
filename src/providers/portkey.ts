@@ -1,4 +1,4 @@
-import { getEnvString } from '../envars';
+﻿import { getEnvString } from '../envars';
 import { OpenAiChatCompletionProvider } from './openai/chat';
 import { hasHeaderOverride } from './openai/index';
 
@@ -35,7 +35,7 @@ interface PortkeyProviderOptions extends ProviderOptions {
 
 const PORTKEY_CONFIG_PREFIX = 'portkey';
 
-/** Sets the gateway URL promptfoo calls, so it is not forwarded as a header. */
+/** Sets the gateway URL artef calls, so it is not forwarded as a header. */
 const PORTKEY_API_BASE_URL_KEY = 'portkeyApiBaseUrl';
 
 export function toKebabCase(str: string): string {
@@ -50,7 +50,7 @@ function toHeaderValue(value: unknown): string {
  * Builds the request headers from `portkey*` config keys, applying `config.headers` last.
  *
  * Only `portkey`-prefixed keys are mapped. Everything else in the provider config is either a
- * request body parameter (`max_tokens`) or promptfoo bookkeeping (`basePath`); forwarding
+ * request body parameter (`max_tokens`) or artef bookkeeping (`basePath`); forwarding
  * those leaked local state to the gateway and could produce invalid header values.
  *
  * `portkeyApiKey` is passed in rather than read from config so an environment-supplied

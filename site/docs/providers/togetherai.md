@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Together AI
 description: "Deploy open-source models at scale using Together AI's optimized inference platform with serverless GPU infrastructure"
 ---
@@ -13,10 +13,10 @@ Together AI's API is compatible with OpenAI's API, which means all parameters av
 
 ## Basic Configuration
 
-Configure a Together AI model in your promptfoo configuration:
+Configure a Together AI model in your artef configuration:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: togetherai:meta-llama/Llama-4-Scout-Instruct
     config:
@@ -113,8 +113,8 @@ For a complete list of all 200+ available models and their specifications, refer
 
 ## Example Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.jsons
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.jsons
 providers:
   - id: togetherai:meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8
     config:

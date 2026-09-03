@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -54,7 +54,7 @@ function PricingTable() {
         'Centralized security/compliance dashboard',
         'Customizable attack profiles and target settings',
         'SSO and granular permission profiles',
-        'Promptfoo API access',
+        'artef API access',
         'Managed cloud deployment',
         'Professional services support',
         'Priority support & SLA guarantees',
@@ -212,7 +212,7 @@ function FeatureComparisonTable() {
       items: [
         { name: 'CI/CD integration', community: true, enterprise: true, enterpriseOnPrem: true },
         {
-          name: 'Promptfoo API integration',
+          name: 'artef API integration',
           community: false,
           enterprise: true,
           enterpriseOnPrem: true,
@@ -406,7 +406,7 @@ function DemoCTA() {
   return (
     <section className={styles.demoCTA}>
       <h2>Ready to get started?</h2>
-      <p>Schedule a demo to see how Promptfoo can help secure your LLM applications.</p>
+      <p>Schedule a demo to see how artef can help secure your LLM applications.</p>
       <Link
         to="/contact/"
         className={clsx('button', 'button--lg', 'button--primary', styles.demoButton)}

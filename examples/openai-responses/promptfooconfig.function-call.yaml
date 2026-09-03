@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Function Calling with OpenAI Responses API
 prompts:
   - 'What is the weather like in {{location}}?'

@@ -1,4 +1,4 @@
-import { fetchWithCache } from '../../cache';
+﻿import { fetchWithCache } from '../../cache';
 import { getEnvFloat, getEnvInt, getEnvString } from '../../envars';
 import logger from '../../logger';
 import { formatRateLimitErrorMessage, HttpRateLimitError } from '../../util/fetch/errors';
@@ -371,7 +371,7 @@ export class OpenAiChatCompletionProvider extends OpenAiGenericProvider {
       temperature: this.config.temperature,
       topP: this.config.top_p,
       stopSequences: this.config.stop,
-      // Promptfoo context from test case if available
+      // artef context from test case if available
       evalId: context?.evaluationId || context?.test?.metadata?.evaluationId,
       testIndex: context?.testIdx ?? (context?.test?.vars?.__testIdx as number | undefined),
       promptLabel: context?.prompt?.label,

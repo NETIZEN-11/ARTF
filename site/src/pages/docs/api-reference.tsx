@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 
 import Layout from '@theme/Layout';
 
@@ -17,7 +17,7 @@ export default function ApiReference() {
     script.addEventListener('load', () => {
       // Once Scalar is loaded from the CDN, we can reference the object
       (window as any).Scalar.createApiReference('#app', {
-        url: 'https://api.promptfoo.app/static/openapi.json',
+        url: 'https://api.artef.app/static/openapi.json',
       });
     });
     document.head.appendChild(script);
@@ -53,7 +53,7 @@ export default function ApiReference() {
   }, []);
 
   return (
-    <Layout title="API Reference | Promptfoo" description="API Reference">
+    <Layout title="API Reference | artef" description="API Reference">
       <main id="app"></main>
     </Layout>
   );

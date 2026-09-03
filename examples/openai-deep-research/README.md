@@ -1,9 +1,9 @@
-# openai-deep-research (OpenAI Deep Research Models)
+﻿# openai-deep-research (OpenAI Deep Research Models)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-deep-research
+npx artef@latest init --example openai-deep-research
 cd openai-deep-research
 ```
 
@@ -29,14 +29,14 @@ export OPENAI_API_KEY=your-key-here
 
 ```bash
 # Set a 10-minute timeout for deep research tasks
-export PROMPTFOO_EVAL_TIMEOUT_MS=600000
-promptfoo eval
+export artef_EVAL_TIMEOUT_MS=600000
+artef eval
 ```
 
 For local development:
 
 ```bash
-PROMPTFOO_EVAL_TIMEOUT_MS=600000 npm run local -- eval -c examples/openai-deep-research/promptfooconfig.yaml
+artef_EVAL_TIMEOUT_MS=600000 npm run local -- eval -c examples/openai-deep-research/artefconfig.yaml
 ```
 
 ## What's happening?
@@ -139,7 +139,7 @@ Deep research responses include:
 
 ## Troubleshooting
 
-- **Timeouts**: Increase `PROMPTFOO_EVAL_TIMEOUT_MS` if evaluations time out
+- **Timeouts**: Increase `artef_EVAL_TIMEOUT_MS` if evaluations time out
 - **Incomplete responses**: Increase `max_output_tokens` to 50,000 or higher
 - **429 errors**: May indicate rate limits or access restrictions
 - **Tool validation errors**: Ensure `web_search_preview` is configured
@@ -155,6 +155,6 @@ Deep research responses include:
 ## Learn More
 
 - [OpenAI Deep Research Guide](https://platform.openai.com/docs/guides/deep-research)
-- [Promptfoo Documentation](https://promptfoo.dev/docs)
+- [artef Documentation](https://artef.dev/docs)
 - [MCP Integration Guide](https://platform.openai.com/docs/mcp)
 - [Building a Deep Research Compatible MCP Server](mcp-server-example.md)

@@ -1,6 +1,6 @@
-# integration-sharepoint (SharePoint Integration Example)
+﻿# integration-sharepoint (SharePoint Integration Example)
 
-This example demonstrates how to use promptfoo with Microsoft SharePoint to import test cases from CSV files stored in SharePoint.
+This example demonstrates how to use artef with Microsoft SharePoint to import test cases from CSV files stored in SharePoint.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ This example demonstrates how to use promptfoo with Microsoft SharePoint to impo
    Swahili,Hello world,similar(0.8):hello world
    ```
 
-4. **Update `promptfooconfig.yaml`** with your SharePoint URL:
+4. **Update `artefconfig.yaml`** with your SharePoint URL:
    ```yaml
    tests: https://yourcompany.sharepoint.com/sites/yoursite/Shared%20Documents/test-cases.csv
    ```
@@ -43,8 +43,8 @@ This example demonstrates how to use promptfoo with Microsoft SharePoint to impo
 npm install
 
 # Scaffold the example
-npx promptfoo@latest init --example integration-sharepoint
+npx artef@latest init --example integration-sharepoint
 
 # Run the eval
-npx promptfoo eval
+npx artef eval
 ```

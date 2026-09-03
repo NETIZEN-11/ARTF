@@ -1,4 +1,4 @@
-# Documentation Writing Guidelines for Red Team Docs
+﻿# Documentation Writing Guidelines for Red Team Docs
 
 This file provides guidance for writing and maintaining documentation in the site/docs/red-team directory.
 
@@ -38,7 +38,7 @@ report output.
 ### Technical Depth with Keywords
 
 - "How It Works" sections include technical processes and terminology
-- Include brand terms naturally (e.g., "Promptfoo's evaluation framework")
+- Include brand terms naturally (e.g., "artef's evaluation framework")
 - Use domain-specific keywords that developers actually search for
 - Maintain clean prose while incorporating search-optimized language
 

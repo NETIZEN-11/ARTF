@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -721,7 +721,7 @@ describe('GolangProvider', () => {
     it('should import named provider packages from a separate wrapper directory', async () => {
       mockMkdtempSync
         .mockReturnValueOnce('/tmp/golang-provider-xyz')
-        .mockReturnValueOnce('/tmp/golang-provider-xyz/.promptfoo-wrapper-abc');
+        .mockReturnValueOnce('/tmp/golang-provider-xyz/.artef-wrapper-abc');
       mockExecFile.mockImplementation(((
         file: string,
         args: any[],
@@ -765,7 +765,7 @@ describe('GolangProvider', () => {
         'go',
         expect.arrayContaining(['build', 'wrapper.go', 'provider.go']),
         expect.objectContaining({
-          cwd: '/tmp/golang-provider-xyz/.promptfoo-wrapper-abc',
+          cwd: '/tmp/golang-provider-xyz/.artef-wrapper-abc',
         }),
         expect.any(Function),
       );

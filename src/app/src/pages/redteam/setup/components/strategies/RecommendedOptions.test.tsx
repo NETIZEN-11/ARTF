@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RecommendedOptions } from './RecommendedOptions';
@@ -46,7 +46,7 @@ describe('RecommendedOptions', () => {
     const user = userEvent.setup();
     render(<RecommendedOptions {...defaultProps} isMultiTurnEnabled={true} />);
 
-    const yesRadioButton = screen.getByLabelText(/Yes – Promptfoo should only send/);
+    const yesRadioButton = screen.getByLabelText(/Yes – artef should only send/);
 
     await user.click(yesRadioButton);
 
@@ -65,7 +65,7 @@ describe('RecommendedOptions', () => {
       />,
     );
 
-    const noRadioButton = screen.getByLabelText(/No – Promptfoo should resend/);
+    const noRadioButton = screen.getByLabelText(/No – artef should resend/);
 
     await user.click(noRadioButton);
 

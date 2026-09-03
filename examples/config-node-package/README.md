@@ -1,13 +1,13 @@
-# config-node-package (Node Package)
+﻿# config-node-package (Node Package)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-node-package
+npx artef@latest init --example config-node-package
 cd config-node-package
 ```
 
-This example demonstrates using promptfoo from a Node.js script.
+This example demonstrates using artef from a Node.js script.
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ node full-eval.js
 
 The script will:
 
-- Run evaluations programmatically using the promptfoo Node.js API
+- Run evaluations programmatically using the artef Node.js API
 - Save results to `output.json`
 - Display evaluation metrics in the console
-- Allow you to view detailed results with `promptfoo view`
+- Allow you to view detailed results with `artef view`

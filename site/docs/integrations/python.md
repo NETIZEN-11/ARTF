@@ -1,11 +1,11 @@
----
+﻿---
 title: Python Integration
 sidebar_label: Python
 sidebar_position: 1
-description: Use Python for promptfoo evals - providers, assertions, test generators, and prompts. Integrates with LangChain, LangGraph, CrewAI, and more.
+description: Use Python for artef evals - providers, assertions, test generators, and prompts. Integrates with LangChain, LangGraph, CrewAI, and more.
 keywords:
   [
-    promptfoo python,
+    artef python,
     python llm testing,
     python eval,
     python provider,
@@ -26,7 +26,7 @@ import PythonFileViewer from '@site/src/components/PythonFileViewer';
 
 # Python
 
-Promptfoo is written in TypeScript and runs via Node.js, but it has first-class Python support. You can use Python for any part of your eval pipeline without writing JavaScript.
+artef is written in TypeScript and runs via Node.js, but it has first-class Python support. You can use Python for any part of your eval pipeline without writing JavaScript.
 
 **Use Python for:**
 
@@ -36,10 +36,10 @@ Promptfoo is written in TypeScript and runs via Node.js, but it has first-class 
 - [**Prompts**](#prompts): build prompts dynamically based on test variables
 - [**Framework integrations**](#framework-integrations): test LangChain, LangGraph, CrewAI, and other agent frameworks
 
-The `file://` prefix tells promptfoo to execute a Python function. Promptfoo automatically detects your Python installation.
+The `file://` prefix tells artef to execute a Python function. artef automatically detects your Python installation.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://prompts.py:create_prompt # Python generates the prompt
 
@@ -106,7 +106,7 @@ def call_api(prompt, options, context):
 <!-- prettier-ignore-end -->
 
 ```bash
-npx promptfoo@latest init --example provider-python
+npx artef@latest init --example provider-python
 ```
 
 ---
@@ -232,18 +232,18 @@ Test Python agent frameworks by wrapping them as providers:
 
 | Framework          | Example                                                                                                      | Guide                                                                  |
 | ------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| **LangGraph**      | [`langgraph`](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-langgraph)               | [Evaluate LangGraph agents](/docs/guides/evaluate-langgraph)           |
-| **LangChain**      | [`langchain-python`](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-langchain)        | [Test LLM chains](/docs/configuration/testing-llm-chains)              |
-| **CrewAI**         | [`crewai`](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-crewai)                     | [Evaluate CrewAI agents](/docs/guides/evaluate-crewai)                 |
-| **OpenAI Agents**  | [`openai-agents`](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-agents)                   | [OpenAI Agents Python SDK](/docs/guides/evaluate-openai-agents-python) |
-| **PydanticAI**     | [`pydantic-ai`](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-pydantic-ai)           | Type-safe agents with Pydantic                                         |
-| **Google ADK**     | [`integration-google-adk`](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-google-adk) | [Evaluate Google ADK agents](/docs/guides/evaluate-google-adk)         |
-| **Strands Agents** | [`strands-agents`](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-strands-agents)     | AWS open-source agent framework                                        |
+| **LangGraph**      | [`langgraph`](https://github.com/artef/artef/tree/main/examples/integration-langgraph)               | [Evaluate LangGraph agents](/docs/guides/evaluate-langgraph)           |
+| **LangChain**      | [`langchain-python`](https://github.com/artef/artef/tree/main/examples/integration-langchain)        | [Test LLM chains](/docs/configuration/testing-llm-chains)              |
+| **CrewAI**         | [`crewai`](https://github.com/artef/artef/tree/main/examples/integration-crewai)                     | [Evaluate CrewAI agents](/docs/guides/evaluate-crewai)                 |
+| **OpenAI Agents**  | [`openai-agents`](https://github.com/artef/artef/tree/main/examples/openai-agents)                   | [OpenAI Agents Python SDK](/docs/guides/evaluate-openai-agents-python) |
+| **PydanticAI**     | [`pydantic-ai`](https://github.com/artef/artef/tree/main/examples/integration-pydantic-ai)           | Type-safe agents with Pydantic                                         |
+| **Google ADK**     | [`integration-google-adk`](https://github.com/artef/artef/tree/main/examples/integration-google-adk) | [Evaluate Google ADK agents](/docs/guides/evaluate-google-adk)         |
+| **Strands Agents** | [`strands-agents`](https://github.com/artef/artef/tree/main/examples/integration-strands-agents)     | AWS open-source agent framework                                        |
 
 To get started with any example:
 
 ```bash
-npx promptfoo@latest init --example integration-langgraph
+npx artef@latest init --example integration-langgraph
 ```
 
 ---
@@ -252,10 +252,10 @@ npx promptfoo@latest init --example integration-langgraph
 
 ```python
 # Install
-!npm install -g promptfoo
+!npm install -g artef
 
 # Create config
-%%writefile promptfooconfig.yaml
+%%writefile artefconfig.yaml
 prompts:
   - "Explain {{topic}}"
 providers:
@@ -265,10 +265,10 @@ tests:
       topic: machine learning
 
 # Run
-!npx promptfoo eval
+!npx artef eval
 ```
 
-**[Open in Google Colab](https://colab.research.google.com/gist/typpo/734a5f53eb1922f90198538dbe17aa27/promptfoo-example-1.ipynb)**
+**[Open in Google Colab](https://colab.research.google.com/gist/typpo/734a5f53eb1922f90198538dbe17aa27/artef-example-1.ipynb)**
 
 ---
 
@@ -279,7 +279,7 @@ tests:
 Set a custom Python executable:
 
 ```bash
-export PROMPTFOO_PYTHON=/path/to/python3
+export artef_PYTHON=/path/to/python3
 ```
 
 Or configure per-provider in YAML:
@@ -304,7 +304,7 @@ export PYTHONPATH=/path/to/modules:$PYTHONPATH
 Enable debug output to see Python execution details:
 
 ```bash
-LOG_LEVEL=debug npx promptfoo eval
+LOG_LEVEL=debug npx artef eval
 ```
 
 ---

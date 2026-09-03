@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import { z } from 'zod';
 import { disableCache } from '../cache';
@@ -298,7 +298,7 @@ async function loadProvidersForTesting(
             config: {
               maxRetries: 1,
               headers: {
-                'x-promptfoo-silent': 'true',
+                'x-artef-silent': 'true',
               },
             },
           },
@@ -313,7 +313,7 @@ async function loadProvidersForTesting(
     // Load all providers from config
     if (!config.providers || (Array.isArray(config.providers) && config.providers.length === 0)) {
       logger.info(
-        'No providers found in configuration to test. Add providers to your config or run `promptfoo validate -t <provider-id>` to test a specific provider.',
+        'No providers found in configuration to test. Add providers to your config or run `artef validate -t <provider-id>` to test a specific provider.',
       );
       return [];
     }
@@ -572,10 +572,10 @@ export function validateCommand(
   // Add 'config' subcommand
   validateCmd
     .command('config', { isDefault: true })
-    .description('Validate a promptfoo configuration file')
+    .description('Validate a artef configuration file')
     .option(
       '-c, --config <paths...>',
-      'Path to configuration file. Automatically loads promptfooconfig.yaml',
+      'Path to configuration file. Automatically loads artefconfig.yaml',
     )
     .action(async (opts: ValidateOptions) => {
       await doValidate(opts, defaultConfig, defaultConfigPath);

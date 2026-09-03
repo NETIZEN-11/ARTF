@@ -1,4 +1,4 @@
----
+﻿---
 title: 'ModelAudit vs ModelScan: Comparing ML Model Security Scanners'
 description: 'Compare ModelAudit and ModelScan for ML model security scanning. Learn how comprehensive format support and detection capabilities differ between these tools.'
 image: /img/blog/modelaudit/modelaudit-vs-modelscan.jpg
@@ -9,9 +9,9 @@ tags: [tool-comparison, best-practices]
 
 # ModelAudit vs ModelScan: Comparing ML Model Security Scanners
 
-As organizations increasingly adopt machine learning models from various sources, ensuring their security has become critical. Two tools have emerged to address this need: Promptfoo's [ModelAudit](/docs/model-audit/) and Protect AI's ModelScan.
+As organizations increasingly adopt machine learning models from various sources, ensuring their security has become critical. Two tools have emerged to address this need: artef's [ModelAudit](/docs/model-audit/) and Protect AI's ModelScan.
 
-To help security teams understand their options, we conducted a comparison using 11 test files containing documented security vulnerabilities. **The setup of this comparison is entirely open-source and can be [accessed on Github](https://github.com/promptfoo/modelaudit-comparisons#)**.
+To help security teams understand their options, we conducted a comparison using 11 test files containing documented security vulnerabilities. **The setup of this comparison is entirely open-source and can be [accessed on Github](https://github.com/artef/modelaudit-comparisons#)**.
 
 <!-- truncate -->
 
@@ -103,7 +103,7 @@ Notable differences:
 - SBOM generation capability
 - Risk scoring for prioritization
 
-Model Audit is also not just a CLI - it comes with an optional UI via the `promptfoo` package:
+Model Audit is also not just a CLI - it comes with an optional UI via the `artef` package:
 
 ![modelaudit ui](/img/docs/modelaudit/model-audit-results.png)
 
@@ -121,7 +121,7 @@ For organizations implementing ML security scanning:
 
 ## Reproducibility
 
-All test files and comparison scripts are available [on Github](https://github.com/promptfoo/modelaudit-comparisons) for independent verification:
+All test files and comparison scripts are available [on Github](https://github.com/artef/modelaudit-comparisons) for independent verification:
 
 ```bash
 # Generate test files

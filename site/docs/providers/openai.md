@@ -1,4 +1,4 @@
----
+﻿---
 title: OpenAI
 sidebar_position: 1
 description: 'Configure OpenAI models including GPT-5.6, GPT-5.5, GPT-4.1, o-series reasoning, embeddings, and assistants for comprehensive AI evals'
@@ -16,7 +16,7 @@ export OPENAI_API_KEY=your_api_key_here
 
 The OpenAI provider supports the following model formats:
 
-- `openai:<model name>` - auto-routes known OpenAI model IDs to their supported promptfoo provider (chat, completions, speech, realtime, or responses); unknown model names default to Chat Completions. Use an explicit endpoint prefix when you need deterministic routing.
+- `openai:<model name>` - auto-routes known OpenAI model IDs to their supported artef provider (chat, completions, speech, realtime, or responses); unknown model names default to Chat Completions. Use an explicit endpoint prefix when you need deterministic routing.
 - `openai:chat:<model name>` - uses chat models against the `/v1/chat/completions` endpoint
 - `openai:responses:<model name>` - uses responses API models over HTTP connections
 - `openai:assistant:<assistant id>` - use an assistant
@@ -41,7 +41,7 @@ The OpenAI provider supports the following model formats:
 - `openai:codex-app-server` / `openai:codex-desktop` - runs the experimental Codex app-server protocol for rich-client event, approval, sandbox, skill, plugin, and thread lifecycle evals
 
 The `openai:<endpoint>:<model name>` construction is useful for newly released or custom models.
-Specify the endpoint explicitly when the model is not yet recognized by promptfoo's auto-routing.
+Specify the endpoint explicitly when the model is not yet recognized by artef's auto-routing.
 
 ```yaml
 providers:
@@ -56,9 +56,9 @@ providers:
         effort: minimal # GPT-5.5 uses none instead
 ```
 
-The OpenAI provider supports a handful of [configuration options](https://github.com/promptfoo/promptfoo/blob/main/src/providers/openai/types.ts), such as `temperature`, `max_tokens`, `max_completion_tokens`, `functions`, and `tools`, which can be used to customize model behavior like so:
+The OpenAI provider supports a handful of [configuration options](https://github.com/artef/artef/blob/main/src/providers/openai/types.ts), such as `temperature`, `max_tokens`, `max_completion_tokens`, `functions`, and `tools`, which can be used to customize model behavior like so:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-4.1-mini
     config:
@@ -72,7 +72,7 @@ providers:
 > **Note:** OpenAI models can also be accessed through [Azure OpenAI](/docs/providers/azure/), which offers additional enterprise features, compliance options, and regional availability.
 
 Requests sent by built-in OpenAI providers to the OpenAI API include the
-`X-OpenAI-Originator: promptfoo` header for source attribution. To route requests with a
+`X-OpenAI-Originator: artef` header for source attribution. To route requests with a
 different originator value, override this header through the `headers` configuration option.
 
 ## Formatting chat messages
@@ -83,7 +83,7 @@ For information on setting up chat conversation, see [chat threads](/docs/config
 
 The `providers` list takes a `config` key that allows you to set parameters like `temperature` for non-reasoning models, `max_tokens`, `max_completion_tokens` for GPT-5 family chat models, and [others](https://platform.openai.com/docs/api-reference/chat/create). For example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-4.1-mini
     config:
@@ -109,18 +109,18 @@ Supported parameters include:
 | `functions`              | Allows you to define custom functions. Each function should be an object with a `name`, optional `description`, and `parameters`.                                                                                                                                                                                                                           |
 | `functionToolCallbacks`  | A map of function tool names to function callbacks. Each callback should accept a string and return a string or a `Promise<string>`.                                                                                                                                                                                                                        |
 | `headers`                | Additional headers to include in the request.                                                                                                                                                                                                                                                                                                               |
-| `cost`                   | Legacy per-token override applied to both input and output pricing in promptfoo cost estimates.                                                                                                                                                                                                                                                             |
-| `inputCost`              | Override input token pricing in promptfoo cost estimates.                                                                                                                                                                                                                                                                                                   |
-| `outputCost`             | Override output token pricing in promptfoo cost estimates.                                                                                                                                                                                                                                                                                                  |
-| `audioCost`              | Legacy per-token override applied to both audio input and audio output pricing in promptfoo cost estimates.                                                                                                                                                                                                                                                 |
-| `audioInputCost`         | Override audio input token pricing in promptfoo cost estimates.                                                                                                                                                                                                                                                                                             |
-| `audioOutputCost`        | Override audio output token pricing in promptfoo cost estimates.                                                                                                                                                                                                                                                                                            |
+| `cost`                   | Legacy per-token override applied to both input and output pricing in artef cost estimates.                                                                                                                                                                                                                                                             |
+| `inputCost`              | Override input token pricing in artef cost estimates.                                                                                                                                                                                                                                                                                                   |
+| `outputCost`             | Override output token pricing in artef cost estimates.                                                                                                                                                                                                                                                                                                  |
+| `audioCost`              | Legacy per-token override applied to both audio input and audio output pricing in artef cost estimates.                                                                                                                                                                                                                                                 |
+| `audioInputCost`         | Override audio input token pricing in artef cost estimates.                                                                                                                                                                                                                                                                                             |
+| `audioOutputCost`        | Override audio output token pricing in artef cost estimates.                                                                                                                                                                                                                                                                                            |
 | `max_tokens`             | Controls maximum output length for non-reasoning requests. Not used by reasoning-capable models (o-series, `codex-mini-latest`, and GPT-5 family). Use `max_completion_tokens` (Chat Completions) or `max_output_tokens` (Responses API) instead.                                                                                                           |
 | `maxRetries`             | Maximum number of retry attempts for failed API requests. Defaults to 4. Set to 0 to disable retries. Hard-quota responses (`insufficient_quota`, `billing_hard_limit_reached`, `access_terminated`, etc.) are never retried regardless of this setting — retrying an exhausted account only amplifies load.                                                |
 | `metadata`               | Key-value pairs for request tagging and organization.                                                                                                                                                                                                                                                                                                       |
 | `omitDefaults`           | Omits hardcoded defaults for `temperature` and `max_tokens`/`max_output_tokens` unless values are explicitly set via config or environment variables. Supported by `openai:chat` and `openai:responses`.                                                                                                                                                    |
 | `organization`           | Your OpenAI organization key.                                                                                                                                                                                                                                                                                                                               |
-| `passthrough`            | A flexible object that allows passing arbitrary parameters directly to the OpenAI API request body. Useful for experimental, new, or provider-specific parameters not yet explicitly supported in promptfoo. This parameter is merged into the final API request and can override other settings.                                                           |
+| `passthrough`            | A flexible object that allows passing arbitrary parameters directly to the OpenAI API request body. Useful for experimental, new, or provider-specific parameters not yet explicitly supported in artef. This parameter is merged into the final API request and can override other settings.                                                           |
 | `presence_penalty`       | Applies a penalty to tokens that have already appeared, encouraging the model to introduce new topics.                                                                                                                                                                                                                                                      |
 | `prompt_cache_key`       | Stable key for repeated prompts with shared prefixes. Use it consistently to improve prompt-cache hit rates. Supported by Chat Completions and Responses.                                                                                                                                                                                                   |
 | `prompt_cache_options`   | GPT-5.6 prompt-cache controls. Set `mode` to `implicit` or `explicit`; the only supported TTL is `30m`, and explicit mode supports cache breakpoints in supported request content.                                                                                                                                                                          |
@@ -130,7 +130,7 @@ Supported parameters include:
 | `seed`                   | Seed used for deterministic output.                                                                                                                                                                                                                                                                                                                         |
 | `stop`                   | Defines a list of tokens that signal the end of the output.                                                                                                                                                                                                                                                                                                 |
 | `store`                  | Whether to store the conversation for future retrieval (boolean).                                                                                                                                                                                                                                                                                           |
-| `temperature`            | Controls the randomness of the AI's output for non-reasoning models. Promptfoo omits it for reasoning-capable models (o-series, `codex-mini-latest`, and GPT-5 family) because it is unsupported by many of those models.                                                                                                                                   |
+| `temperature`            | Controls the randomness of the AI's output for non-reasoning models. artef omits it for reasoning-capable models (o-series, `codex-mini-latest`, and GPT-5 family) because it is unsupported by many of those models.                                                                                                                                   |
 | `tool_choice`            | Controls whether the AI should use a tool. See [OpenAI Tools documentation](https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools)                                                                                                                                                                                                   |
 | `tools`                  | Allows you to define custom tools. See [OpenAI Tools documentation](https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools)                                                                                                                                                                                                           |
 | `top_p`                  | Controls the nucleus sampling, a method that helps control the randomness of the AI's output.                                                                                                                                                                                                                                                               |
@@ -228,9 +228,9 @@ providers:
 
 ## Models
 
-OpenAI updates aliases, dated snapshots, and pricing frequently. Promptfoo supports explicit
+OpenAI updates aliases, dated snapshots, and pricing frequently. artef supports explicit
 endpoint syntax like `openai:chat:<model>` and `openai:responses:<model>` for newly released
-models right away, while the tables below call out the common model IDs promptfoo knows about
+models right away, while the tables below call out the common model IDs artef knows about
 for routing and cost estimation. Check the official
 [OpenAI models docs](https://developers.openai.com/api/docs/models) and
 [API pricing](https://developers.openai.com/api/docs/pricing) for the latest availability and rates.
@@ -239,7 +239,7 @@ for routing and cost estimation. Check the official
 
 Fine-tuned model IDs can be used with their corresponding endpoint, for example
 `openai:chat:ft:gpt-4.1-mini-2025-04-14:company-name::ID` or
-`openai:completion:ft:babbage-002:company-name::ID`. Promptfoo recognizes the published
+`openai:completion:ft:babbage-002:company-name::ID`. artef recognizes the published
 inference rates for fine-tuned GPT-4.1, GPT-4o, GPT-3.5, GPT-4, o4-mini, Babbage, and Davinci
 bases, including cached-input and Batch rates where available. Flex and Priority pricing is not
 inferred for fine-tuned models. See the
@@ -323,7 +323,7 @@ GPT-5.1 introduces several improvements over GPT-5:
 
 Fast, low-latency responses:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.1
     config:
@@ -334,7 +334,7 @@ providers:
 
 Complex coding and reasoning tasks:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.1
     config:
@@ -377,7 +377,7 @@ GPT-5.1-Codex-Max is OpenAI's frontier agentic coding model, built on an updated
 
 #### Usage Examples
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.1-codex-max
     config:
@@ -388,7 +388,7 @@ providers:
 
 For latency-insensitive tasks requiring maximum quality:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.1-codex-max
     config:
@@ -449,7 +449,7 @@ Standard GPT-5.2 and its chat alias are available via both the Chat Completions 
 
 **Chat Completions API:**
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-5.2-chat-latest
     config:
@@ -464,7 +464,7 @@ providers:
 
 **Responses API:**
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.2-codex
     config:
@@ -480,7 +480,7 @@ providers:
 
 Fast, low-latency responses (no reasoning):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   # Chat API
   - id: openai:chat:gpt-5.2
@@ -499,7 +499,7 @@ providers:
 GPT-5.2-pro (including dated snapshots) is Responses-only and supports `medium`, `high`, and
 `xhigh` reasoning effort; `none` and `low` are rejected by the API:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.2-pro
     config:
@@ -524,7 +524,7 @@ providers:
 
 ### GPT-5.3 Instant
 
-GPT-5.3 Instant is exposed as `gpt-5.3-chat-latest`. Promptfoo also supports GPT-5.3 coding variants for agentic/code workflows.
+GPT-5.3 Instant is exposed as `gpt-5.3-chat-latest`. artef also supports GPT-5.3 coding variants for agentic/code workflows.
 
 #### Available Models
 
@@ -540,7 +540,7 @@ GPT-5.3 Instant is exposed as `gpt-5.3-chat-latest`. Promptfoo also supports GPT
 
 #### Usage Examples
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-5.3-chat-latest
     config:
@@ -575,9 +575,9 @@ the explicit `openai:chat:` or `openai:responses:` prefix when endpoint selectio
 
 GPT-5.6 supports `max` reasoning and `reasoning.mode: pro` across Sol, Terra, and Luna. Codex `ultra` is available for Sol and Terra through the [Codex SDK](/docs/providers/openai-codex-sdk) or [Codex app-server](/docs/providers/openai-codex-app-server) provider as a multi-agent mode, not a Responses API reasoning value.
 
-Prompt-cache reads receive a 90% discount, and cache writes cost 1.25 times the input rate. Promptfoo applies both when the API returns `cached_tokens` and `cache_write_tokens`; if a compatible gateway omits cache-write usage, the estimate includes the available token counts only. Requests above 272,000 input tokens use 2x input and 1.5x output pricing for the entire request. Fast mode also accepts the previous `priority` service-tier name. Regional processing endpoints add a 10% uplift. Each tier has a 1,050,000-token context window and 128,000 maximum output tokens.
+Prompt-cache reads receive a 90% discount, and cache writes cost 1.25 times the input rate. artef applies both when the API returns `cached_tokens` and `cache_write_tokens`; if a compatible gateway omits cache-write usage, the estimate includes the available token counts only. Requests above 272,000 input tokens use 2x input and 1.5x output pricing for the entire request. Fast mode also accepts the previous `priority` service-tier name. Regional processing endpoints add a 10% uplift. Each tier has a 1,050,000-token context window and 128,000 maximum output tokens.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.6
     config:
@@ -619,12 +619,12 @@ GPT-5.5 is a high-capability GPT-5 family model for professional work and agenti
 - **Reasoning effort**: `gpt-5.5` supports `none`, `low`, `medium`, `high`, and `xhigh`. In Chat Completions, set `reasoning_effort`; in Responses API, set `reasoning.effort`.
 - **Endpoint support**: `gpt-5.5` supports Chat Completions and Responses API. `gpt-5.5-pro` is Responses API only and supports Batch API.
 - **Cached input**: `gpt-5.5` cached input tokens are $0.50 per 1M. `gpt-5.5-pro` has no cached-input discount.
-- **Cost estimates**: Promptfoo uses returned usage metadata for GPT-5.5 pricing and infers Batch, Flex, or Priority rates when the API response or configured `service_tier` identifies that tier.
+- **Cost estimates**: artef uses returned usage metadata for GPT-5.5 pricing and infers Batch, Flex, or Priority rates when the API response or configured `service_tier` identifies that tier.
 - **Long-running requests**: `gpt-5.5-pro` automatically receives the same 10-minute timeout as other GPT-5 pro models.
 
 #### Usage Examples
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-5.5
     config:
@@ -668,12 +668,12 @@ GPT-5.4 is a GPT-5 family model for complex professional work, agentic coding, a
 - **Long-context pricing**: `gpt-5.4` and `gpt-5.4-pro` use higher long-context rates when prompts exceed 272,000 input tokens.
 - **Max output tokens**: 128,000 tokens
 - **Reasoning effort**: `gpt-5.4`, `gpt-5.4-mini`, and `gpt-5.4-nano` support `none`, `low`, `medium`, `high`, `xhigh`. `gpt-5.4-pro` supports `medium`, `high`, `xhigh`.
-- **Endpoint support**: `gpt-5.4`, `gpt-5.4-mini`, and `gpt-5.4-nano` support Chat Completions and Responses API. `gpt-5.4-pro` is Responses API only. Promptfoo's Codex SDK provider supports `gpt-5.4`, `gpt-5.4-pro`, and the newer GPT-5.5 line.
+- **Endpoint support**: `gpt-5.4`, `gpt-5.4-mini`, and `gpt-5.4-nano` support Chat Completions and Responses API. `gpt-5.4-pro` is Responses API only. artef's Codex SDK provider supports `gpt-5.4`, `gpt-5.4-pro`, and the newer GPT-5.5 line.
 - **Cached input**: `gpt-5.4` cached input tokens $0.25 per 1M, `gpt-5.4-mini` $0.075 per 1M, and `gpt-5.4-nano` $0.02 per 1M. `gpt-5.4-pro` has no cached-input discount.
 
 #### Usage Examples
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-5.4-mini
     config:
@@ -717,7 +717,7 @@ Reasoning models, like `o1`, `o3`, `o3-pro`, `o3-mini`, and `o4-mini`, are large
 
 When using reasoning models, there are important differences in how tokens are handled:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:o1
     config:
@@ -747,8 +747,8 @@ Both `o1` and `o3-mini` models have a 128,000 token context window, while `o3-pr
 
 You can include images in the prompt by using content blocks. For example, here's an example config:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://prompt.json
 
@@ -784,7 +784,7 @@ And an example `prompt.json`:
 ]
 ```
 
-See the [OpenAI vision example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-vision).
+See the [OpenAI vision example](https://github.com/artef/artef/tree/main/examples/openai-vision).
 
 ### Generating images
 
@@ -795,17 +795,17 @@ OpenAI supports image generation via `openai:image:<model>`. Supported models in
 - `gpt-image-1` - High-quality image generation model
 - `gpt-image-1-mini` - Cost-efficient version of GPT Image 1
 
-`dall-e-3` and `dall-e-2` were [retired from the OpenAI API](https://developers.openai.com/api/docs/deprecations) on May 12, 2026. Promptfoo retains request compatibility for gateways that still expose them; use a current GPT Image model for new evals.
+`dall-e-3` and `dall-e-2` were [retired from the OpenAI API](https://developers.openai.com/api/docs/deprecations) on May 12, 2026. artef retains request compatibility for gateways that still expose them; use a current GPT Image model for new evals.
 
 The `openai:image` provider uses the Image API generations endpoint. It supports text-to-image generation; image edit/reference inputs (`image`, `mask`, `input_fidelity`), streaming (`stream`/`partial_images`), and variations are not implemented in this provider.
 
-See the [OpenAI image generation example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-images).
+See the [OpenAI image generation example](https://github.com/artef/artef/tree/main/examples/openai-images).
 
 #### GPT Image 2
 
 GPT Image 2 is OpenAI's latest image generation model. It supports the standard GPT Image output controls plus custom sizes that satisfy OpenAI's dimensional constraints.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:image:gpt-image-2
     config:
@@ -816,7 +816,7 @@ providers:
       output_compression: 80 # 0-100, only set with jpeg/webp
       moderation: auto # auto or low
       n: 1 # 1-10 images
-      user: promptfoo-user # optional end-user identifier
+      user: artef-user # optional end-user identifier
 ```
 
 | Parameter            | Description                        | Options                                                                                     |
@@ -840,13 +840,13 @@ For custom `size` values, both dimensions must be multiples of 16, the maximum e
 | Medium  | $0.053    | $0.041    | $0.041    |
 | High    | $0.211    | $0.165    | $0.165    |
 
-These are output image estimates. Input text tokens may also apply, and OpenAI may return usage data for the request. For GPT Image 2 `quality: auto`, omitted quality, or custom sizes, promptfoo leaves `cost` unset and preserves the returned usage in `tokenUsage`/`metadata.usage` instead of guessing.
+These are output image estimates. Input text tokens may also apply, and OpenAI may return usage data for the request. For GPT Image 2 `quality: auto`, omitted quality, or custom sizes, artef leaves `cost` unset and preserves the returned usage in `tokenUsage`/`metadata.usage` instead of guessing.
 
 #### GPT Image 1.5
 
 GPT Image 1.5 is a high-quality image generation model with strong instruction following, prompt adherence, and photorealistic quality. It uses token-based pricing for more flexible cost control.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:image:gpt-image-1.5
     config:
@@ -879,14 +879,14 @@ GPT Image 1.5 uses token-based pricing at $5/1M input text tokens, $10/1M output
 
 `chatgpt-image-latest` is also supported through `openai:image:chatgpt-image-latest`. It uses
 the same generation parameters and per-image/token rates as GPT Image 1.5; OpenAI recommends
-GPT Image 2 for new integrations. Promptfoo currently supports image generation, not the Images
+GPT Image 2 for new integrations. artef currently supports image generation, not the Images
 API edit or inpainting operations.
 
 #### GPT Image 1
 
 GPT Image 1 is a high-quality image generation model with superior instruction following, text rendering, and real-world knowledge.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:image:gpt-image-1
     config:
@@ -919,7 +919,7 @@ providers:
 
 GPT Image 1 Mini is a cost-efficient version of GPT Image 1 with the same capabilities at lower cost.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:image:gpt-image-1-mini
     config:
@@ -941,8 +941,8 @@ providers:
 
 #### Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'In the style of Van Gogh: {{subject}}'
   - 'In the style of Dali: {{subject}}'
@@ -977,7 +977,7 @@ pricing tier, not a separate model ID; select a supported Pro resolution instead
 
 ### Basic Usage
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:video:sora-2
     config:
@@ -1001,7 +1001,7 @@ providers:
 
 ### Example Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'A cinematic shot of: {{scene}}'
 
@@ -1026,7 +1026,7 @@ tests:
 
 Generate videos starting from a source image using `input_reference`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:video:sora-2
     config:
@@ -1038,7 +1038,7 @@ prompts:
 ```
 
 The `input_reference` accepts a `file://` path, image URL, base64-encoded image data, data URL,
-or an uploaded-file reference such as `{ file_id: file_123 }`. Promptfoo sends the documented
+or an uploaded-file reference such as `{ file_id: file_123 }`. artef sends the documented
 `{ image_url: ... }` or `{ file_id: ... }` JSON shape to OpenAI; object references must provide
 exactly one of `image_url` or `file_id`.
 
@@ -1046,11 +1046,11 @@ Reusable Sora characters can be supplied with `characters: [{ id: char_123 }]`; 
 characters can be used in one generation, and the character name should also appear in the prompt.
 
 Credential-bearing image URLs and authenticated custom video gateways always bypass the persistent
-video cache. Promptfoo does not place authentication headers or their fingerprints in long-lived
+video cache. artef does not place authentication headers or their fingerprints in long-lived
 cache keys. Prompts, tenant headers, and gateway URL paths containing credentials also bypass
 persistent caching.
 
-Sora characters and `file_id` image references are project-scoped resources. Promptfoo only caches
+Sora characters and `file_id` image references are project-scoped resources. artef only caches
 their generated videos when an explicit, non-secret project or tenant header such as
 `OpenAI-Project` or `X-Tenant-Id` is configured; `OpenAI-Organization` alone does not isolate
 projects.
@@ -1062,7 +1062,7 @@ so routed gateways can authorize the full job lifecycle.
 
 Remix an existing Sora video with a new prompt using `remix_video_id`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:video:sora-2
     config:
@@ -1074,7 +1074,7 @@ prompts:
 
 The `remix_video_id` is the video ID returned from a previous Sora generation (found in `response.video.id`).
 Remixes inherit the source video's model, size, and duration; creation-only options such as
-`size`, `seconds`, `input_reference`, and `characters` are ignored. Promptfoo reports cost and
+`size`, `seconds`, `input_reference`, and `characters` are ignored. artef reports cost and
 metadata using the completed remix job returned by OpenAI.
 
 :::note
@@ -1082,7 +1082,7 @@ Remixed videos are not cached since each remix produces unique results even with
 :::
 
 OpenAI has deprecated the remix endpoint and recommends `POST /v1/videos/edits` for new
-integrations. Promptfoo currently exposes the legacy `remix_video_id` path and does not implement
+integrations. artef currently exposes the legacy `remix_video_id` path and does not implement
 the newer Videos API edits or extensions endpoints.
 
 ### Viewing Generated Videos
@@ -1093,7 +1093,7 @@ Videos are automatically displayed in the web viewer with playback controls. The
 - Video metadata (model, size, duration)
 - Thumbnail preview (if enabled)
 
-Videos are stored in promptfoo's media storage (`~/.promptfoo/media/`) and served via the web interface.
+Videos are stored in artef's media storage (`~/.artef/media/`) and served via the web interface.
 
 ### Pricing
 
@@ -1104,7 +1104,7 @@ Videos are stored in promptfoo's media storage (`~/.promptfoo/media/`) and serve
 | sora-2-pro (1024p: `1792x1024`/portrait) | $0.50           |
 | sora-2-pro (1080p: `1920x1080`/portrait) | $0.70           |
 
-Sora Pro supports 1080p creation and remixes at the published $0.70-per-second rate. Promptfoo
+Sora Pro supports 1080p creation and remixes at the published $0.70-per-second rate. artef
 reports the rate using the completed video's returned resolution.
 
 ## Web Search Support
@@ -1120,7 +1120,7 @@ and verify facts.
 
 To enable web search with the OpenAI Responses API, use the `openai:responses` provider format and add either the standard `web_search` tool or the preview `web_search_preview` tool to your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.1
     config:
@@ -1132,7 +1132,7 @@ To preserve an existing Chat Completions search integration, use a built-in sear
 models retrieve information before each response and return URL citations in
 `response.metadata.annotations`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-5-search-api
     config:
@@ -1152,8 +1152,8 @@ The `search-rubric` assertion type uses web search to quickly verify current inf
 
 Example configuration:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'What is the current temperature in {{city}}?'
 
@@ -1237,8 +1237,8 @@ export async function getTools() {
 
 :::
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://prompt.txt
 providers:
@@ -1283,7 +1283,7 @@ Sometimes OpenAI function calls don't match `tools` schemas. Use an [`is-valid-o
 
 To further test `tools` definitions, you can use the `javascript` assertion and/or `transform` directives. For example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       city: Boston
@@ -1348,8 +1348,8 @@ They can also include functions that dynamically reference vars:
 
 Use the `functions` config to define custom functions. Each function should be an object with a `name`, optional `description`, and `parameters`. For example:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - file://prompt.txt
 providers:
@@ -1393,7 +1393,7 @@ Sometimes OpenAI function calls don't match `functions` schemas. Use [`is-valid-
 
 To further test function call definitions, you can use the `javascript` assertion and/or `transform` directives. For example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       city: Boston
@@ -1426,14 +1426,14 @@ Tool definitions can be loaded from JSON, YAML, Python, or JavaScript files. For
 
 To load your functions from a file, specify the file path in your provider configuration like so:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - file://./path/to/provider_with_function.yaml
 ```
 
 You can also use a pattern to load multiple files:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - file://./path/to/provider_*.yaml
 ```
@@ -1464,13 +1464,13 @@ config:
 
 ## Using `response_format`
 
-Promptfoo supports the `response_format` parameter, which allows you to specify the expected output format.
+artef supports the `response_format` parameter, which allows you to specify the expected output format.
 
 `response_format` can be included in the provider config, or in the prompt config.
 
 #### Prompt config example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - label: 'Prompt #1'
     raw: 'You are a helpful math tutor. Solve {{problem}}'
@@ -1482,7 +1482,7 @@ prompts:
 
 #### Provider config example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:chat:gpt-5.4-mini
     config:
@@ -1563,25 +1563,25 @@ config:
   response_format: file://./schemas/{{ schema_name }}.json
 ```
 
-For a complete example with the Chat API, see the [OpenAI Structured Output example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-structured-output) or initialize it with:
+For a complete example with the Chat API, see the [OpenAI Structured Output example](https://github.com/artef/artef/tree/main/examples/openai-structured-output) or initialize it with:
 
 ```bash
-npx promptfoo@latest init --example openai-structured-output
+npx artef@latest init --example openai-structured-output
 ```
 
-For an example with the Responses API, see the [OpenAI Responses API example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-responses) and run:
+For an example with the Responses API, see the [OpenAI Responses API example](https://github.com/artef/artef/tree/main/examples/openai-responses) and run:
 
 ```bash
-npx promptfoo@latest init --example openai-responses
+npx artef@latest init --example openai-responses
 cd openai-responses
-npx promptfoo@latest eval -c promptfooconfig.external-format.yaml
+npx artef@latest eval -c artefconfig.external-format.yaml
 ```
 
 #### Per-test structured output
 
 You can use different JSON schemas for different test cases using the `test.options` field. This allows a single prompt to produce different structured output formats depending on the test:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Answer this question: {{question}}'
 
@@ -1613,7 +1613,7 @@ tests:
         value: output.winner === 'item1' || output.winner === 'item2' || output.winner === 'tie'
 ```
 
-Each schema file contains the complete `response_format` object. See the [per-test schema example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-structured-output/per-test-schema.yaml) for a full working configuration.
+Each schema file contains the complete `response_format` object. See the [per-test schema example](https://github.com/artef/artef/tree/main/examples/openai-structured-output/per-test-schema.yaml) for a full working configuration.
 
 ## Supported environment variables
 
@@ -1629,8 +1629,8 @@ These OpenAI-related environment variables are supported:
 | `OPENAI_BASE_URL`              | Alternate full base URL, including any gateway path/query. Used if `OPENAI_API_BASE_URL` is not set.                     |
 | `OPENAI_API_KEY`               | OpenAI API key.                                                                                                          |
 | `OPENAI_ORGANIZATION`          | The OpenAI organization key to use.                                                                                      |
-| `PROMPTFOO_DELAY_MS`           | Number of milliseconds to delay between API calls. Useful if you are hitting OpenAI rate limits (defaults to 0).         |
-| `PROMPTFOO_REQUEST_BACKOFF_MS` | Base number of milliseconds to backoff and retry if a request fails (defaults to 5000).                                  |
+| `artef_DELAY_MS`           | Number of milliseconds to delay between API calls. Useful if you are hitting OpenAI rate limits (defaults to 0).         |
+| `artef_REQUEST_BACKOFF_MS` | Base number of milliseconds to backoff and retry if a request fails (defaults to 5000).                                  |
 
 ## Evaluating assistants
 
@@ -1671,8 +1671,8 @@ The following properties can be overwritten in provider config:
 
 Here's an example of a more detailed config:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'Write a tweet about {{topic}}'
 providers:
@@ -1710,13 +1710,13 @@ the directory containing your config). Paths that escape the base directory
 rejected with `Path traversal rejected: ...`.
 
 Move callback files into your project, or set
-`PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD=true` to opt out (not recommended —
+`artef_DISABLE_CALLBACK_PATH_GUARD=true` to opt out (not recommended —
 the guard mitigates malicious callback paths supplied via shared configs).
 
 :::
 
 ```js
-module.exports = /** @type {import('promptfoo').TestSuiteConfig} */ ({
+module.exports = /** @type {import('artef').TestSuiteConfig} */ ({
   prompts: 'Please add the following numbers together: {{a}} and {{b}}',
   providers: [
     {
@@ -1809,7 +1809,7 @@ You can include audio files in your prompts using the following format:
 
 With a corresponding configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - id: file://audio-input.json
     label: Audio Input
@@ -1840,10 +1840,10 @@ The audio configuration supports these parameters:
 | `speed`   | Speaking speed multiplier      | 1.0     | Any number between 0.25 and 4.0         |
 | `bitrate` | Bitrate for compressed formats | -       | e.g., "128k", "256k"                    |
 
-In the web UI, audio outputs display with an embedded player and transcript. For a complete working example, see the [OpenAI audio example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-audio) or initialize it with:
+In the web UI, audio outputs display with an embedded player and transcript. For a complete working example, see the [OpenAI audio example](https://github.com/artef/artef/tree/main/examples/openai-audio) or initialize it with:
 
 ```bash
-npx promptfoo@latest init --example openai-audio
+npx artef@latest init --example openai-audio
 ```
 
 ### Text-to-speech
@@ -1854,7 +1854,7 @@ Use `openai:tts:<model>` or `openai:speech:<model>` to generate playable audio t
 `tts-1-hd`, and `tts-1-hd-1106`. The March 2025 mini snapshot is scheduled for removal on
 July 23, 2026; prefer the current alias or December snapshot for new evals.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Welcome to the evaluation.'
 
@@ -1870,10 +1870,10 @@ providers:
 Speech input is limited to 4,096 characters. `instructions` is supported by GPT-4o mini TTS,
 not `tts-1` or `tts-1-hd`. Custom voices can be provided as `voice: { id: voice_123 }` and support
 the current `language` and `format` fields. `format` is an alias for `response_format`: the speech
-API ignores a top-level `format` field, so promptfoo sends the value as `response_format`. If both
+API ignores a top-level `format` field, so artef sends the value as `response_format`. If both
 are set, the explicit `response_format` takes precedence.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:tts:gpt-4o-mini-tts
     config:
@@ -1884,13 +1884,13 @@ providers:
 
 The legacy models are billed at $15 and $30 per million characters, respectively. GPT-4o mini TTS
 is billed using input and audio-output tokens; the binary speech response does not expose usage, so
-promptfoo leaves `cost` unset instead of estimating it.
+artef leaves `cost` unset instead of estimating it.
 
 Use `passthrough` to send experimental speech fields or gateway-specific request options that do
 not yet have a dedicated provider setting.
 
 Custom speech gateways authenticated through headers or URL credentials always bypass the speech
-cache. Promptfoo does not place authentication headers or their fingerprints in long-lived cache
+cache. artef does not place authentication headers or their fingerprints in long-lived cache
 keys, preventing differently authenticated calls from sharing audio. Speech inputs, instructions,
 passthrough values, tenant headers, and gateway URL paths containing credentials also bypass
 persistent caching. Header credentials such as `authorization` or `x-api-key` satisfy the
@@ -1903,7 +1903,7 @@ non-secret project or tenant header such as `OpenAI-Project` or `X-Tenant-Id`;
 ### Audio transcription
 
 OpenAI provides dedicated transcription models for converting speech to text. GPT-4o transcription
-models report token usage, which promptfoo prices using the published input/output token rates; the
+models report token usage, which artef prices using the published input/output token rates; the
 per-minute figures below are OpenAI's cost estimates. Whisper is billed per minute.
 
 **Available transcription models:**
@@ -1920,7 +1920,7 @@ per-minute figures below are OpenAI's cost estimates. Whisper is billed per minu
 
 To use transcription models, specify the provider format `openai:transcription:<model name>`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{ audio_file }}'
 
@@ -1959,7 +1959,7 @@ tests:
 | `known_speaker_names`      | Up to four known speaker identifiers     | Array of strings                      |
 | `known_speaker_references` | Matching 2-10 second audio data URLs     | Array of data URLs                    |
 
-Supported audio formats include MP3, MP4, MPEG, MPGA, M4A, WAV, and WEBM. Promptfoo
+Supported audio formats include MP3, MP4, MPEG, MPGA, M4A, WAV, and WEBM. artef
 automatically sets `chunking_strategy: auto` for diarization, which is required for inputs longer
 than 30 seconds. `timestamp_granularities` is only sent for `whisper-1`, and `prompt` is not
 supported for diarization. See OpenAI's
@@ -1982,7 +1982,7 @@ chunking_strategy:
 
 The diarization model identifies different speakers in the audio:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{ audio_file }}'
 
@@ -2006,10 +2006,10 @@ tests:
         value: Guest
 ```
 
-For a complete working example, see the [OpenAI audio transcription example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-audio-transcription) or initialize it with:
+For a complete working example, see the [OpenAI audio transcription example](https://github.com/artef/artef/tree/main/examples/openai-audio-transcription) or initialize it with:
 
 ```bash
-npx promptfoo@latest init --example openai-audio-transcription
+npx artef@latest init --example openai-audio-transcription
 ```
 
 ## Realtime API Models
@@ -2041,7 +2041,7 @@ use `'inf'` to allow the model maximum.
 
 To use the OpenAI Realtime API, use the provider format `openai:realtime:<model name>`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:realtime:gpt-realtime-1.5
     config:
@@ -2062,7 +2062,7 @@ The Realtime API configuration supports these parameters in addition to standard
 
 | Parameter                    | Description                                                                     | Default                | Options                                                             |
 | ---------------------------- | ------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------- |
-| `modalities`                 | Promptfoo shorthand for requested output mode                                   | ['text', 'audio']      | 'text', 'audio'                                                     |
+| `modalities`                 | artef shorthand for requested output mode                                   | ['text', 'audio']      | 'text', 'audio'                                                     |
 | `voice`                      | Voice for audio generation                                                      | 'alloy'                | alloy, ash, ballad, coral, echo, sage, shimmer, verse, cedar, marin |
 | `instructions`               | System instructions for the model                                               | 'You are a helpful...' | Any text string                                                     |
 | `input_audio_format`         | Format of audio input                                                           | 'pcm16'                | 'pcm16', 'g711_ulaw', 'g711_alaw'                                   |
@@ -2078,7 +2078,7 @@ The Realtime API configuration supports these parameters in addition to standard
 | `toolCallTimeout`            | Per-call timeout for `functionCallHandler`                                      | 30000                  | Milliseconds                                                        |
 | `maxToolIterations`          | Maximum tool-to-follow-up rounds allowed in one turn                            | 8                      | Integer from 1-64                                                   |
 
-Promptfoo accepts the configuration names above for backward compatibility, then sends the current GA Realtime wire shape to OpenAI: `type: 'realtime'`, native `output_modalities`, nested `audio.input` / `audio.output`, and the documented top-level tool fields.
+artef accepts the configuration names above for backward compatibility, then sends the current GA Realtime wire shape to OpenAI: `type: 'realtime'`, native `output_modalities`, nested `audio.input` / `audio.output`, and the documented top-level tool fields.
 
 `gpt-realtime-whisper` can be used as `input_audio_transcription.model` inside a conversational Realtime session. Its `delay` field is supported there; `prompt` is not supported for that model. OpenAI also exposes `gpt-realtime-translate` through a separate Realtime translation-session API; that is a different endpoint from the conversational `openai:realtime:*` provider documented here.
 
@@ -2104,7 +2104,7 @@ The Realtime API supports function calling via tools, similar to the Chat API. H
 
 Realtime tools can be supplied inline or loaded through the same `file://` tool references supported by the rest of the OpenAI provider. The native Realtime format matches the OpenAI docs: function tools use top-level fields, and `tool_choice` is passed through in the Realtime shape you provide.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:realtime:gpt-realtime-1.5
     config:
@@ -2124,16 +2124,16 @@ providers:
 
 Realtime function tools use top-level `name`, `description`, and `parameters` fields, exactly as shown in the [OpenAI Realtime function-calling guide](https://developers.openai.com/api/docs/guides/realtime-conversations#configure-callable-functions). Native Realtime `tool_choice` values are sent unchanged.
 
-For compatibility with shared Chat Completions configs, promptfoo also accepts nested Chat-style function tool objects such as `type: function` plus `function: { ... }` and converts only those legacy shapes into the native Realtime format before sending them.
+For compatibility with shared Chat Completions configs, artef also accepts nested Chat-style function tool objects such as `type: function` plus `function: { ... }` and converts only those legacy shapes into the native Realtime format before sending them.
 
-When you provide a custom `functionCallHandler`, promptfoo forwards the model-emitted tool name and arguments to that handler. `toolCallTimeout` bounds each handler invocation, and `maxToolIterations` stops runaway tool-follow-up loops within a single turn. If the handler performs side effects, validate the function name and parse or validate the arguments before acting on them. For deterministic eval checks, use an [`is-valid-openai-tools-call`](/docs/configuration/expected-outputs/deterministic/#is-valid-openai-tools-call) assertion when you need to enforce an exact schema match.
+When you provide a custom `functionCallHandler`, artef forwards the model-emitted tool name and arguments to that handler. `toolCallTimeout` bounds each handler invocation, and `maxToolIterations` stops runaway tool-follow-up loops within a single turn. If the handler performs side effects, validate the function name and parse or validate the arguments before acting on them. For deterministic eval checks, use an [`is-valid-openai-tools-call`](/docs/configuration/expected-outputs/deterministic/#is-valid-openai-tools-call) assertion when you need to enforce an exact schema match.
 
 ### Complete Example
 
-For a complete working example that demonstrates the Realtime API capabilities, see the [OpenAI Realtime API example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-realtime) or initialize it with:
+For a complete working example that demonstrates the Realtime API capabilities, see the [OpenAI Realtime API example](https://github.com/artef/artef/tree/main/examples/openai-realtime) or initialize it with:
 
 ```bash
-npx promptfoo@latest init --example openai-realtime
+npx artef@latest init --example openai-realtime
 ```
 
 This example includes:
@@ -2147,7 +2147,7 @@ This example includes:
 
 ### Input and Message Format
 
-When using the Realtime API with promptfoo, you can specify the prompt in JSON format:
+When using the Realtime API with artef, you can specify the prompt in JSON format:
 
 ```json title="realtime-input.json"
 [
@@ -2163,7 +2163,7 @@ When using the Realtime API with promptfoo, you can specify the prompt in JSON f
 ]
 ```
 
-Promptfoo preserves the native Realtime user-content items accepted by OpenAI, including `input_text`, `input_audio`, and `input_image`:
+artef preserves the native Realtime user-content items accepted by OpenAI, including `input_text`, `input_audio`, and `input_image`:
 
 ```json title="realtime-multimodal-input.json"
 [
@@ -2191,7 +2191,7 @@ Use `input_image` only with Realtime models that support image input, such as th
 
 ### Multi-Turn Conversations
 
-The Realtime API supports multi-turn conversations with persistent context. For implementation details and examples, see the [OpenAI Realtime example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-realtime), which demonstrates both single-turn interactions and conversation threading using the `conversationId` metadata property.
+The Realtime API supports multi-turn conversations with persistent context. For implementation details and examples, see the [OpenAI Realtime example](https://github.com/artef/artef/tree/main/examples/openai-realtime), which demonstrates both single-turn interactions and conversation threading using the `conversationId` metadata property.
 
 > **Important**: When implementing multi-turn conversations, use `type: "input_text"` for user inputs and `type: "text"` for assistant responses.
 
@@ -2239,7 +2239,7 @@ The Responses API supports a wide range of models, including:
 - `gpt-5-pro` - Premium GPT-5 model with highest reasoning capability ($15/$120 per 1M tokens)
 
 The Pro and Codex variants of GPT-5, GPT-5.1, GPT-5.2, and GPT-5.3, along with `o1-pro`, `o3-pro`,
-and `computer-use-preview`, are Responses-only. Promptfoo auto-routes their bare IDs to Responses.
+and `computer-use-preview`, are Responses-only. artef auto-routes their bare IDs to Responses.
 Several older Codex and computer-use snapshots have published July 23, 2026 shutdown dates; check
 OpenAI's deprecation schedule before adding new eval coverage. `codex-mini-latest` has already
 been shut down; OpenAI recommends `gpt-5-codex-mini` as its Responses API replacement. `gpt-5-pro`
@@ -2250,7 +2250,7 @@ and its dated snapshot require `reasoning.effort: high`, while
 
 To use the OpenAI Responses API, use the provider format `openai:responses:<model name>`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5
     config:
@@ -2284,7 +2284,7 @@ The Responses API supports OpenAI's MCP integration, allowing models to use remo
 
 To use MCP tools with the Responses API, add them to the `tools` array:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5
     config:
@@ -2310,7 +2310,7 @@ providers:
 
 Most MCP servers require authentication. Use the `headers` parameter to provide API keys or tokens:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5
     config:
@@ -2327,7 +2327,7 @@ providers:
 
 To limit which tools are available from an MCP server, use the `allowed_tools` parameter:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5
     config:
@@ -2343,7 +2343,7 @@ providers:
 
 By default, OpenAI requires approval before sharing data with MCP servers. You can configure approval settings:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Never require approval for all tools
 providers:
   - id: openai:responses:gpt-5
@@ -2368,8 +2368,8 @@ providers:
 
 #### Complete MCP Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts:
   - 'What are the transport protocols supported in the MCP specification for {{repo}}?'
 
@@ -2391,17 +2391,17 @@ tests:
         value: 'transport protocols'
 ```
 
-For a complete working example, see the [OpenAI MCP example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-mcp) or initialize it with:
+For a complete working example, see the [OpenAI MCP example](https://github.com/artef/artef/tree/main/examples/openai-mcp) or initialize it with:
 
 ```bash
-npx promptfoo@latest init --example openai-mcp
+npx artef@latest init --example openai-mcp
 ```
 
 ### Reasoning Models
 
 When using reasoning models like `o1`, `o1-pro`, `o3`, `o3-pro`, `o3-mini`, or `o4-mini`, you can control the reasoning effort:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:o3
     config:
@@ -2432,7 +2432,7 @@ For current specifications and pricing information, refer to [OpenAI API pricing
 
 Example configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:o3
     config:
@@ -2471,7 +2471,7 @@ All deep research models:
 
 Example configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:o4-mini-deep-research
     config:
@@ -2482,7 +2482,7 @@ providers:
 
 #### Advanced Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:o3-deep-research
     config:
@@ -2546,7 +2546,7 @@ Example response structure:
 
 1. **Use Background Mode**: For production, always use `background: true` to handle long response times
 2. **Set High Token Limits**: Use `max_output_tokens: 50000` or higher
-3. **Configure Timeouts**: Set `PROMPTFOO_EVAL_TIMEOUT_MS=600000` for 10-minute timeouts
+3. **Configure Timeouts**: Set `artef_EVAL_TIMEOUT_MS=600000` for 10-minute timeouts
 4. **Control Costs**: Use `max_tool_calls` to limit the number of searches
 5. **Enhance Prompts**: Consider using a faster model to clarify/rewrite prompts before deep research
 
@@ -2555,7 +2555,7 @@ Example response structure:
 Deep research models, GPT-5 pro variants, and any Responses request with `background: true`
 automatically use appropriate timeouts:
 
-- If `PROMPTFOO_EVAL_TIMEOUT_MS` is set, it bounds the full API call, including background creation
+- If `artef_EVAL_TIMEOUT_MS` is set, it bounds the full API call, including background creation
   and polling
 - Otherwise, these long-running requests default to a 10-minute timeout (600,000ms)
 - Regular foreground requests continue to use the standard 5-minute timeout
@@ -2567,22 +2567,22 @@ automatically use appropriate timeouts:
   tenant header such as `OpenAI-Project` or `X-Tenant-Id` isolates the request.
   `OpenAI-Organization` alone does not isolate project API keys. When multiple eval processes
   resume the same persisted job, its completed usage is attributed exactly once. Running
-  `promptfoo cache clear` also clears the associated billing-claim markers.
-- Background streams preserve `stream: true`; promptfoo captures the response ID and cancels
+  `artef cache clear` also clears the associated billing-claim markers.
+- Background streams preserve `stream: true`; artef captures the response ID and cancels
   upstream work when an eval stops, including IDs that arrive shortly after the eval timeout
 
 Example:
 
 ```bash
 # Set a custom timeout for all evaluations
-export PROMPTFOO_EVAL_TIMEOUT_MS=900000  # 15 minutes
+export artef_EVAL_TIMEOUT_MS=900000  # 15 minutes
 
 # Or set the default API timeout (affects all providers)
 export REQUEST_TIMEOUT_MS=600000  # 10 minutes
 ```
 
 :::tip
-Deep research models require high `max_output_tokens` values (50,000+) and long timeouts. Set `PROMPTFOO_EVAL_TIMEOUT_MS=600000` for 10-minute timeouts.
+Deep research models require high `max_output_tokens` values (50,000+) and long timeouts. Set `artef_EVAL_TIMEOUT_MS=600000` for 10-minute timeouts.
 :::
 
 :::warning
@@ -2596,7 +2596,7 @@ Deep research models require at least one supported data source. The provider wi
 **Automatic timeout behavior:**
 
 - GPT-5 pro variants automatically get a 10-minute timeout (600,000ms) - **no configuration needed**
-- If you need longer, set `PROMPTFOO_EVAL_TIMEOUT_MS` (e.g., 900000 for 15 minutes)
+- If you need longer, set `artef_EVAL_TIMEOUT_MS` (e.g., 900000 for 15 minutes)
 - `REQUEST_TIMEOUT_MS` is **ignored** for GPT-5 pro variants (the automatic timeout takes precedence)
 
 **Most users won't need any timeout configuration** - the automatic 10-minute timeout is sufficient for most GPT-5 pro requests.
@@ -2605,27 +2605,27 @@ Deep research models require at least one supported data source. The provider wi
 
 ```bash
 # Only if you need more than the automatic 10 minutes
-export PROMPTFOO_EVAL_TIMEOUT_MS=1200000   # 20 minutes
+export artef_EVAL_TIMEOUT_MS=1200000   # 20 minutes
 
 # For infrastructure reliability (recommended)
-export PROMPTFOO_RETRY_5XX=true            # Retry 502 Bad Gateway errors
-export PROMPTFOO_REQUEST_BACKOFF_MS=10000  # Longer retry backoff
+export artef_RETRY_5XX=true            # Retry 502 Bad Gateway errors
+export artef_REQUEST_BACKOFF_MS=10000  # Longer retry backoff
 
 # Reduce concurrency to avoid rate limits
-promptfoo eval --max-concurrency 2
+artef eval --max-concurrency 2
 ```
 
 **Common GPT-5 pro errors and solutions:**
 
 If you encounter errors with GPT-5 pro models:
 
-1. **Request timed out** - If a GPT-5 pro model needs more than the automatic 10 minutes, set `PROMPTFOO_EVAL_TIMEOUT_MS=1200000` (20 minutes)
-2. **502 Bad Gateway** - Enable `PROMPTFOO_RETRY_5XX=true` to retry Cloudflare/OpenAI infrastructure timeouts
+1. **Request timed out** - If a GPT-5 pro model needs more than the automatic 10 minutes, set `artef_EVAL_TIMEOUT_MS=1200000` (20 minutes)
+2. **502 Bad Gateway** - Enable `artef_RETRY_5XX=true` to retry Cloudflare/OpenAI infrastructure timeouts
 3. **getaddrinfo ENOTFOUND** - Transient DNS errors; reduce concurrency with `--max-concurrency 2`
-4. **Upstream connection errors** - OpenAI load balancer issues; increase backoff with `PROMPTFOO_REQUEST_BACKOFF_MS=10000`
+4. **Upstream connection errors** - OpenAI load balancer issues; increase backoff with `artef_REQUEST_BACKOFF_MS=10000`
 
 :::tip
-GPT-5 pro models automatically get a 10-minute timeout. If you see infrastructure errors (502, DNS failures), enable `PROMPTFOO_RETRY_5XX=true` and reduce concurrency.
+GPT-5 pro models automatically get a 10-minute timeout. If you see infrastructure errors (502, DNS failures), enable `artef_RETRY_5XX=true` and reduce concurrency.
 :::
 
 ### Sending Images in Prompts
@@ -2683,10 +2683,10 @@ require extended retention, so `prompt_cache_retention: in_memory` will fail the
 GPT-5.6 and later deprecate `prompt_cache_retention`; use `prompt_cache_options.ttl` instead.
 
 GPT-5.6 also supports `prompt_cache_options`. The `implicit` mode below keeps automatic
-breakpoint placement for ordinary prompts. When the API reports `cache_write_tokens`, Promptfoo
+breakpoint placement for ordinary prompts. When the API reports `cache_write_tokens`, artef
 prices those writes at 1.25 times the active input rate.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.6
     config:
@@ -2703,7 +2703,7 @@ The `include` option requests extra structured payloads in the raw Responses obj
 For example, `web_search_call.results` returns search results when you need to inspect
 them in assertions or downstream tooling:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.5
     config:
@@ -2718,7 +2718,7 @@ providers:
 
 The Responses API supports tool and function calling, similar to the Chat API:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5
     config:
@@ -2757,27 +2757,27 @@ For comprehensive Azure Responses API documentation, see the [Azure provider doc
 
 ### Complete Example
 
-For a complete working example, see the [OpenAI Responses API example](https://github.com/promptfoo/promptfoo/tree/main/examples/openai-responses) or initialize it with:
+For a complete working example, see the [OpenAI Responses API example](https://github.com/artef/artef/tree/main/examples/openai-responses) or initialize it with:
 
 ```bash
-npx promptfoo@latest init --example openai-responses
+npx artef@latest init --example openai-responses
 ```
 
 ## Troubleshooting
 
 ### OpenAI rate limits
 
-Promptfoo automatically handles OpenAI rate limits with retry and adaptive concurrency. See [Rate Limits](/docs/configuration/rate-limits) for details.
+artef automatically handles OpenAI rate limits with retry and adaptive concurrency. See [Rate Limits](/docs/configuration/rate-limits) for details.
 
 If you need manual control, you can:
 
 1. **Reduce concurrency** with `--max-concurrency 1` in the CLI or `evaluateOptions.maxConcurrency` in config
 2. **Add fixed delays** with `--delay 3000` (milliseconds) or `evaluateOptions.delay` in config
-3. **Adjust backoff** with `PROMPTFOO_REQUEST_BACKOFF_MS` environment variable (default: 5000ms)
+3. **Adjust backoff** with `artef_REQUEST_BACKOFF_MS` environment variable (default: 5000ms)
 
 ### OpenAI flakiness
 
-To retry HTTP requests that are Internal Server errors, set the `PROMPTFOO_RETRY_5XX` environment variable to `1`.
+To retry HTTP requests that are Internal Server errors, set the `artef_RETRY_5XX` environment variable to `1`.
 
 ## Agentic Providers
 
@@ -2806,7 +2806,7 @@ See the [OpenAI Agents documentation](/docs/providers/openai-agents) for full co
 
 For agentic coding tasks with working directory access and structured JSON output, use the [OpenAI Codex SDK provider](/docs/providers/openai-codex-sdk). This provider supports the GPT-5.6 family, GPT-5.5, GPT-5.4, and Codex-optimized GPT-5 models for code generation. You can select a model inline with `openai:codex:gpt-5.6-sol` or via `config.model` when you need additional options:
 
-Promptfoo preserves SDK-reported input, output, cached input, and reasoning output tokens in `tokenUsage` when Codex returns them.
+artef preserves SDK-reported input, output, cached input, and reasoning output tokens in `tokenUsage` when Codex returns them.
 
 ```yaml
 providers:

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Guardrails Evaluation Template - Tests guardrails effectiveness against prompt injection, jailbreaking, harmful content, and PII leakage
 targets:
   - openai:chat:gpt-4o-mini

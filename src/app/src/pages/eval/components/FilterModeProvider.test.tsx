@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import FilterModeProvider, { DEFAULT_FILTER_MODE, useFilterMode } from './FilterModeProvider';
-import type { EvalResultsFilterMode } from '@promptfoo/types';
+import type { EvalResultsFilterMode } from '@artef/types';
 
 const TestConsumer = () => {
   const { filterMode } = useFilterMode();

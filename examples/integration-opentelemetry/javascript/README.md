@@ -1,21 +1,21 @@
-# integration-opentelemetry/javascript (OpenTelemetry Tracing Example)
+﻿# integration-opentelemetry/javascript (OpenTelemetry Tracing Example)
 
-This example demonstrates how to use OpenTelemetry to trace the internal operations of your LLM providers during Promptfoo evaluations.
+This example demonstrates how to use OpenTelemetry to trace the internal operations of your LLM providers during artef evaluations.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example integration-opentelemetry/javascript
+npx artef@latest init --example integration-opentelemetry/javascript
 cd integration-opentelemetry/javascript
 npm install
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 To run the trajectory assertion variant from this directory, use:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.trajectory.yaml --no-cache
+npx artef@latest eval -c artefconfig.trajectory.yaml --no-cache
 ```
 
 ## Environment Variables
@@ -24,7 +24,7 @@ This example requires no API keys - it uses a simulated provider that demonstrat
 
 ## Overview
 
-Promptfoo's OpenTelemetry integration allows you to:
+artef's OpenTelemetry integration allows you to:
 
 - Trace internal operations of your providers without a custom SDK
 - Use standard OpenTelemetry libraries in any language
@@ -33,25 +33,25 @@ Promptfoo's OpenTelemetry integration allows you to:
 
 ## How It Works
 
-1. **OTLP receiver starts automatically** - Promptfoo ensures the receiver is ready before evaluations begin
-2. **Promptfoo generates a trace context** for each test case evaluation
+1. **OTLP receiver starts automatically** - artef ensures the receiver is ready before evaluations begin
+2. **artef generates a trace context** for each test case evaluation
 3. **The trace context is passed to providers** via the `traceparent` field
 4. **Providers create child spans** using standard OpenTelemetry SDKs
-5. **Traces are sent to Promptfoo's OTLP endpoint** (port 4318 by default)
-6. **Promptfoo correlates traces** with evaluations for analysis
+5. **Traces are sent to artef's OTLP endpoint** (port 4318 by default)
+6. **artef correlates traces** with evaluations for analysis
 
 ## Files in This Example
 
 | File                        | Description                                           |
 | --------------------------- | ----------------------------------------------------- |
-| `promptfooconfig.yaml`      | Evaluation config with tracing enabled and assertions |
+| `artefconfig.yaml`      | Evaluation config with tracing enabled and assertions |
 | `provider-simple-traced.js` | Simulated RAG provider with comprehensive tracing     |
 | `trace-assertions.js`       | Custom JavaScript assertion for trace validation      |
 | `package.json`              | OpenTelemetry dependencies (v2.x API)                 |
 
 ## Tracing Configuration
 
-Enable tracing in your `promptfooconfig.yaml`:
+Enable tracing in your `artefconfig.yaml`:
 
 ```yaml
 tracing:
@@ -65,7 +65,7 @@ tracing:
 
 ## Instrumenting Your Provider
 
-The provider receives trace context from Promptfoo via the `traceparent` field. Here's the pattern used in this example:
+The provider receives trace context from artef via the `traceparent` field. Here's the pattern used in this example:
 
 ```javascript
 const { trace, context, SpanStatusCode } = require('@opentelemetry/api');
@@ -91,10 +91,10 @@ provider.register();
 const tracer = trace.getTracer('my-provider');
 
 module.exports = {
-  async callApi(prompt, promptfooContext) {
-    // Parse trace context from Promptfoo
-    if (promptfooContext?.traceparent) {
-      const matches = promptfooContext.traceparent.match(
+  async callApi(prompt, artefContext) {
+    // Parse trace context from artef
+    if (artefContext?.traceparent) {
+      const matches = artefContext.traceparent.match(
         /^(\d{2})-([a-f0-9]{32})-([a-f0-9]{16})-(\d{2})$/,
       );
       if (matches) {
@@ -156,21 +156,21 @@ assert:
       max_count: 0
 ```
 
-The trajectory-specific config at `promptfooconfig.trajectory.yaml` adds:
+The trajectory-specific config at `artefconfig.trajectory.yaml` adds:
 
 - `trajectory:tool-used`
 - `trajectory:tool-args-match`
 - `trajectory:tool-sequence`
 - `trajectory:step-count`
 
-Promptfoo accepts generic tool span attributes such as `tool.name` and `tool.arguments`, and it also recognizes Vercel AI SDK telemetry attributes such as `ai.toolCall.name`, `ai.toolCall.args`, `ai.toolCall.arguments`, and `ai.toolCall.input`.
+artef accepts generic tool span attributes such as `tool.name` and `tool.arguments`, and it also recognizes Vercel AI SDK telemetry attributes such as `ai.toolCall.name`, `ai.toolCall.args`, `ai.toolCall.arguments`, and `ai.toolCall.input`.
 
 ## Viewing Traces
 
 After running an evaluation, view traces in the web UI:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 Click on any test result to see the "Trace Timeline" section showing:
@@ -185,14 +185,14 @@ Click on any test result to see the "Trace Timeline" section showing:
 Configure OpenTelemetry using standard environment variables:
 
 ```bash
-# Custom endpoint (defaults to Promptfoo's receiver)
+# Custom endpoint (defaults to artef's receiver)
 export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 
 # Headers for authentication with external collectors
 export OTEL_EXPORTER_OTLP_HEADERS="api-key=your-key"
 
 # Enable tracing via environment variable
-export PROMPTFOO_TRACING_ENABLED=true
+export artef_TRACING_ENABLED=true
 ```
 
 ## Forward to External Collectors
@@ -213,11 +213,11 @@ tracing:
 
 ### Context Naming Conflicts
 
-If you see `context.active is not a function`, the OpenTelemetry `context` API conflicts with Promptfoo's context parameter. Rename the parameter:
+If you see `context.active is not a function`, the OpenTelemetry `context` API conflicts with artef's context parameter. Rename the parameter:
 
 ```javascript
-async callApi(prompt, promptfooContext) {
-  // Use promptfooContext for Promptfoo's context
+async callApi(prompt, artefContext) {
+  // Use artefContext for artef's context
   // Use context from @opentelemetry/api for tracing
 }
 ```
@@ -226,7 +226,7 @@ async callApi(prompt, promptfooContext) {
 
 1. Verify `tracing.enabled: true` in config
 2. Check OTLP receiver is running (look for port 4318 in logs)
-3. Ensure trace context is properly parsed from `promptfooContext.traceparent`
+3. Ensure trace context is properly parsed from `artefContext.traceparent`
 4. Call `spanProcessor.forceFlush()` before returning from provider
 
 ## Dependencies

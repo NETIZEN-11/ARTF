@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import dedent from 'dedent';
 import { globSync } from 'glob';
@@ -52,7 +52,7 @@ describe('readPrompts', () => {
     vi.clearAllMocks();
   });
   afterEach(() => {
-    mockProcessEnv({ PROMPTFOO_STRICT_FILES: undefined });
+    mockProcessEnv({ artef_STRICT_FILES: undefined });
     vi.mocked(fs.readFileSync).mockReset();
     vi.mocked(fs.statSync).mockReset();
     vi.mocked(globSync).mockReset();
@@ -73,8 +73,8 @@ describe('readPrompts', () => {
     await expect(readPrompts('')).rejects.toThrow('Invalid input prompt: ""');
   });
 
-  it('should throw an error when PROMPTFOO_STRICT_FILES is true and the file does not exist', async () => {
-    mockProcessEnv({ PROMPTFOO_STRICT_FILES: 'true' });
+  it('should throw an error when artef_STRICT_FILES is true and the file does not exist', async () => {
+    mockProcessEnv({ artef_STRICT_FILES: 'true' });
     vi.mocked(fs.statSync).mockReturnValueOnce({ isDirectory: () => false } as fs.Stats);
     vi.mocked(fs.readFileSync).mockImplementationOnce(() => {
       throw new Error("ENOENT: no such file or directory, stat 'non-existent-file.txt'");
@@ -92,7 +92,7 @@ describe('readPrompts', () => {
     vi.mocked(fs.readFileSync).mockReturnValueOnce('');
     vi.mocked(fs.statSync).mockReturnValueOnce({ isDirectory: () => false } as fs.Stats);
     vi.mocked(maybeFilePath).mockReturnValueOnce(true);
-    mockProcessEnv({ PROMPTFOO_STRICT_FILES: 'true' });
+    mockProcessEnv({ artef_STRICT_FILES: 'true' });
     await expect(readPrompts(['prompts.txt'])).rejects.toThrow(
       'There are no prompts in "prompts.txt"',
     );
@@ -102,7 +102,7 @@ describe('readPrompts', () => {
   it('should throw an error for an unsupported file format', async () => {
     vi.mocked(fs.statSync).mockReturnValueOnce({ isDirectory: () => false } as fs.Stats);
     vi.mocked(maybeFilePath).mockReturnValueOnce(true);
-    mockProcessEnv({ PROMPTFOO_STRICT_FILES: 'true' });
+    mockProcessEnv({ artef_STRICT_FILES: 'true' });
     await expect(readPrompts(['unsupported.for.mat'])).rejects.toThrow(
       'There are no prompts in "unsupported.for.mat"',
     );

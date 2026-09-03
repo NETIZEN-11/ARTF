@@ -1,20 +1,20 @@
----
+﻿---
 sidebar_label: vLLM
-description: "Run vLLM's OpenAI-compatible server with promptfoo, including local chat targets, self-hosted judges, and thinking-model grading."
+description: "Run vLLM's OpenAI-compatible server with artef, including local chat targets, self-hosted judges, and thinking-model grading."
 ---
 
 # vLLM
 
 [vLLM's OpenAI-compatible server](https://docs.vllm.ai/en/latest/serving/openai_compatible_server/)
 implements `/v1/chat/completions`, `/v1/completions`, `/v1/responses`, and `/v1/embeddings`.
-Promptfoo connects to it through the OpenAI provider by changing `apiBaseUrl`.
+artef connects to it through the OpenAI provider by changing `apiBaseUrl`.
 
 Use this page when:
 
 - vLLM is the model under test
 - vLLM is the local LLM-as-a-judge provider for model-graded assertions such as
   `llm-rubric`, `g-eval`, `factuality`, `answer-relevance`, `context-*`, or `select-best`
-- your vLLM model returns a separate `reasoning` field and promptfoo should grade only the final `content`
+- your vLLM model returns a separate `reasoning` field and artef should grade only the final `content`
 
 ## Start a vLLM server
 
@@ -39,11 +39,11 @@ curl http://localhost:8000/v1/chat/completions \
   }'
 ```
 
-`apiBaseUrl` should be the `/v1` root. Promptfoo appends `/chat/completions`,
+`apiBaseUrl` should be the `/v1` root. artef appends `/chat/completions`,
 `/completions`, or `/embeddings` depending on the provider type.
 
 For a wiring-only smoke test, a tiny reasoning model such as `Qwen/Qwen3-0.6B` can verify that
-promptfoo reaches vLLM and that `showThinking` behaves correctly. Do not use a tiny model as a real
+artef reaches vLLM and that `showThinking` behaves correctly. Do not use a tiny model as a real
 judge; use it only to test the endpoint, parser, and config shape:
 
 ```bash
@@ -58,7 +58,7 @@ vllm serve Qwen/Qwen3-0.6B \
 
 ### Example judge models
 
-Keep `--served-model-name` short and stable; promptfoo uses that alias in
+Keep `--served-model-name` short and stable; artef uses that alias in
 `openai:chat:<served-model-name>`.
 
 #### GPT-OSS
@@ -103,7 +103,7 @@ calling, the tool flags are optional for ordinary model-graded assertions; keep
 
 ## Use vLLM as the target model
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{question}}'
 
@@ -139,7 +139,7 @@ export OPENAI_API_KEY=token-abc123
 Model-graded assertions call a separate grading provider. Configure that provider under
 `defaultTest.options.provider` when every model-graded assertion should use the same vLLM judge:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{answer}}'
 
@@ -196,7 +196,7 @@ When vLLM is started with a reasoning parser, responses may include:
 - `message.reasoning_content` or `message.reasoning`: hidden reasoning extracted by vLLM
 - `message.content`: final answer
 
-Promptfoo's OpenAI-compatible chat provider includes reasoning in the returned output by default:
+artef's OpenAI-compatible chat provider includes reasoning in the returned output by default:
 
 ```text
 Thinking: <reasoning>
@@ -207,10 +207,10 @@ Thinking: <reasoning>
 That is useful when vLLM is the target model, because assertions can inspect the full visible output.
 It is usually wrong when vLLM is the judge, because model-graded assertions consume the judge output
 as the material to parse, embed, classify, or score. If the reasoning text contains JSON-looking
-scratchpad content, attribution markers, candidate sentences, or numeric choices, promptfoo can use
+scratchpad content, attribution markers, candidate sentences, or numeric choices, artef can use
 that scratchpad before the final answer.
 
-Set `showThinking: false` on vLLM judge providers so promptfoo discards reasoning fields and parses
+Set `showThinking: false` on vLLM judge providers so artef discards reasoning fields and parses
 only `content`.
 
 This depends on vLLM successfully splitting the response. If the request stops before the model
@@ -220,7 +220,7 @@ final content. Increase the server `--max-model-len` and provider `max_tokens`, 
 for judge calls with `chat_template_kwargs.enable_thinking: false`.
 
 `search-rubric` is special because it requires web search. A plain vLLM chat server is not a
-web-search-capable grader; promptfoo will prefer or load a search-capable provider instead. The
+web-search-capable grader; artef will prefer or load a search-capable provider instead. The
 `showThinking` guidance applies to the search provider that actually grades the assertion.
 
 This applies to every model-graded assertion that consumes text from the judge. JSON-first metrics
@@ -230,7 +230,7 @@ read a scratchpad number as the winning index.
 
 ### Disable thinking at the vLLM API level
 
-`showThinking: false` only changes what promptfoo reads from the response; the model may still spend
+`showThinking: false` only changes what artef reads from the response; the model may still spend
 tokens thinking. For small local judges and CI smoke tests, disabling thinking is often faster and
 avoids truncated `<think>` content. Qwen3 and GLM chat templates support disabling thinking per
 request through `chat_template_kwargs`:
@@ -267,7 +267,7 @@ defaultTest:
 
 Keep `showThinking: false` even when you pass model-specific controls such as
 `include_reasoning: false` or `chat_template_kwargs.enable_thinking: false`. Those controls save
-tokens when vLLM honors them; `showThinking: false` is the promptfoo-side guard.
+tokens when vLLM honors them; `showThinking: false` is the artef-side guard.
 
 ## Provider maps for text and embeddings
 
@@ -298,7 +298,7 @@ defaultTest:
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `API key is not set`                                                                                     | Set `apiKey` in provider config, or set `OPENAI_API_KEY`. If vLLM was started without `--api-key`, any placeholder such as `empty` is fine.                                                                      |
 | `ECONNREFUSED`                                                                                           | Use `127.0.0.1` instead of `localhost`, verify the vLLM port, and confirm Docker or a remote host exposes the port.                                                                                              |
-| Promptfoo calls OpenAI instead of vLLM                                                                   | Put `apiBaseUrl: http://.../v1` on the provider object, or set `OPENAI_BASE_URL`. Do not set `apiBaseUrl` to `/v1/chat/completions`.                                                                             |
+| artef calls OpenAI instead of vLLM                                                                   | Put `apiBaseUrl: http://.../v1` on the provider object, or set `OPENAI_BASE_URL`. Do not set `apiBaseUrl` to `/v1/chat/completions`.                                                                             |
 | Judge returns `Could not extract JSON`, wrong categories, odd RAG scores, or wrong `select-best` winners | Set `showThinking: false` on the judge provider and keep the full provider object in `defaultTest.options.provider` or `assert.provider`.                                                                        |
 | Judge output still starts with `<think>` even with `showThinking: false`                                 | The generation was truncated before vLLM split reasoning into `reasoning_content`. Increase `--max-model-len` / `max_tokens`, or disable thinking via `passthrough.chat_template_kwargs.enable_thinking: false`. |
 | `search-rubric` uses a different provider than vLLM                                                      | This is expected unless the configured provider has web-search capability. Plain vLLM chat is not a search provider; configure a web-search-capable grader for `search-rubric`.                                  |
@@ -307,7 +307,7 @@ defaultTest:
 Run with `--no-cache` while debugging:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml --no-cache -o results.json
+artef eval -c artefconfig.yaml --no-cache -o results.json
 ```
 
 Then inspect the judge result:

@@ -1,9 +1,9 @@
-# claude-agent-sdk/advanced-options (Claude Agent SDK Advanced Options)
+﻿# claude-agent-sdk/advanced-options (Claude Agent SDK Advanced Options)
 
 This example demonstrates advanced Claude Agent SDK configuration options including sandbox settings, runtime configuration, and CLI arguments.
 
 ```bash
-npx promptfoo@latest init --example claude-agent-sdk/advanced-options
+npx artef@latest init --example claude-agent-sdk/advanced-options
 cd claude-agent-sdk/advanced-options
 ```
 
@@ -24,7 +24,7 @@ export ANTHROPIC_API_KEY=your_api_key_here
 ## Usage
 
 ```bash
-cd advanced-options && promptfoo eval
+cd advanced-options && artef eval
 ```
 
 ## Features Demonstrated
@@ -98,7 +98,7 @@ providers:
       max_concurrent_subagents: 40
 ```
 
-Promptfoo defaults to five nesting levels; the SDK defaults to 20 concurrent subagents when `max_concurrent_subagents` is omitted.
+artef defaults to five nesting levels; the SDK defaults to 20 concurrent subagents when `max_concurrent_subagents` is omitted.
 
 ### Permission Bypass (Use with Caution)
 

@@ -1,4 +1,4 @@
-import fsSync from 'fs';
+﻿import fsSync from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -258,7 +258,7 @@ async function listLogFiles(type: LogType): Promise<void> {
     logger.info(dedent`
       No log files found.
 
-      Log files are created when running commands like ${chalk.cyan('promptfoo eval')}.
+      Log files are created when running commands like ${chalk.cyan('artef eval')}.
       Log directory: ${chalk.gray(logDir)}
     `);
     return;
@@ -283,7 +283,7 @@ async function listLogFiles(type: LogType): Promise<void> {
   logger.info(wrapTable(tableData, columnWidths) as string);
   printBorder();
 
-  logger.info(`Run ${chalk.green('promptfoo logs <filename>')} to view a specific log file.`);
+  logger.info(`Run ${chalk.green('artef logs <filename>')} to view a specific log file.`);
   logger.info(`Log directory: ${chalk.gray(getLogDirectory())}`);
 }
 
@@ -327,7 +327,7 @@ async function resolveLogPath(file: string | undefined, type: LogType): Promise<
 export function logsCommand(program: Command) {
   const logsCmd = program
     .command('logs [file]')
-    .description('View promptfoo log files')
+    .description('View artef log files')
     .option('--type <type>', 'Log type: debug, error, or all', 'all')
     .option('-n, --lines <count>', 'Number of lines to display from end')
     .option('--head <count>', 'Number of lines to display from start')
@@ -417,13 +417,13 @@ export function logsCommand(program: Command) {
               logger.error(dedent`
                 Log file not found: ${chalk.bold(file)}
 
-                Run ${chalk.cyan('promptfoo logs --list')} to see available log files.
+                Run ${chalk.cyan('artef logs --list')} to see available log files.
               `);
             } else {
               logger.error(dedent`
                 No log files found.
 
-                Log files are created when running commands like ${chalk.cyan('promptfoo eval')}.
+                Log files are created when running commands like ${chalk.cyan('artef eval')}.
                 Log directory: ${chalk.gray(logDir)}
               `);
             }
@@ -466,7 +466,7 @@ export function logsCommand(program: Command) {
       },
     );
 
-  // Subcommand: promptfoo logs list
+  // Subcommand: artef logs list
   logsCmd
     .command('list')
     .description('List available log files')

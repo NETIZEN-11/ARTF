@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Test file for simpleVideo strategy
  *
  * Tests core functionality with proper mocks to avoid depending on fs, ffmpeg, etc.
@@ -198,7 +198,7 @@ describe('simpleVideo strategy', () => {
         },
         assert: [
           {
-            type: 'promptfoo:redteam:test',
+            type: 'artef:redteam:test',
             metric: 'test-metric',
           },
         ],

@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
 import { VERSION } from '../../../src/constants';
 import logger from '../../../src/logger';
@@ -38,7 +38,7 @@ vi.mock('../../../src/logger', () => ({
 vi.mock('../../../src/redteam/remoteGeneration', async (importOriginal) => {
   return {
     ...(await importOriginal()),
-    getRemoteGenerationUrl: vi.fn().mockReturnValue('https://api.promptfoo.app/api/v1/task'),
+    getRemoteGenerationUrl: vi.fn().mockReturnValue('https://api.artef.app/api/v1/task'),
   };
 });
 
@@ -46,7 +46,7 @@ describe('fetchRemoteGeneration', () => {
   let restoreEnv: () => void;
 
   beforeAll(() => {
-    restoreEnv = mockProcessEnv({ PROMPTFOO_REMOTE_GENERATION_URL: undefined });
+    restoreEnv = mockProcessEnv({ artef_REMOTE_GENERATION_URL: undefined });
   });
 
   afterAll(() => {
@@ -56,7 +56,7 @@ describe('fetchRemoteGeneration', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(getRemoteGenerationUrl).mockImplementation(function () {
-      return 'https://api.promptfoo.app/api/v1/task';
+      return 'https://api.artef.app/api/v1/task';
     });
   });
 
@@ -76,7 +76,7 @@ describe('fetchRemoteGeneration', () => {
 
     expect(result).toBe('This is a purpose');
     expect(fetchWithCache).toHaveBeenCalledWith(
-      'https://api.promptfoo.app/api/v1/task',
+      'https://api.artef.app/api/v1/task',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -108,7 +108,7 @@ describe('fetchRemoteGeneration', () => {
 
     expect(result).toEqual(['Entity1', 'Entity2']);
     expect(fetchWithCache).toHaveBeenCalledWith(
-      'https://api.promptfoo.app/api/v1/task',
+      'https://api.artef.app/api/v1/task',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -209,7 +209,7 @@ describe('fetchRemoteGeneration', () => {
     });
 
     expect(fetchWithCache).toHaveBeenCalledWith(
-      'https://api.promptfoo.app/api/v1/task',
+      'https://api.artef.app/api/v1/task',
       expect.objectContaining({
         body: JSON.stringify({
           task: 'purpose',

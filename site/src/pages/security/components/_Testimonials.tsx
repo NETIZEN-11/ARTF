@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 
 import styles from '../styles.module.css';
 
 const testimonials = [
   {
     quote:
-      "Promptfoo has significantly improved our LLM security posture. It's an essential tool for any enterprise working with AI.",
+      "artef has significantly improved our LLM security posture. It's an essential tool for any enterprise working with AI.",
     author: 'Jane Doe, CTO at TechCorp',
   },
   {

@@ -1,18 +1,18 @@
-# provider-golang (Golang Provider Example)
+﻿# provider-golang (Golang Provider Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-golang
+npx artef@latest init --example provider-golang
 cd provider-golang
 ```
 
-This example demonstrates how to structure a Go-based provider for promptfoo. For detailed documentation, see [Go Provider](https://www.promptfoo.dev/docs/providers/go/) documentation.
+This example demonstrates how to structure a Go-based provider for artef. For detailed documentation, see [Go Provider](https://www.artef.dev/docs/providers/go/) documentation.
 
 To get started with this example:
 
 ```sh
-promptfoo init --example provider-golang
+artef init --example provider-golang
 ```
 
 ## Directory Structure
@@ -29,7 +29,7 @@ provider-golang/
 │   └── utils.go      # Configuration
 ├── evaluation/       # Alternative implementation
 │   └── main.go      # Provider with same interface
-└── promptfooconfig.yml  # Config comparing both implementations
+└── artefconfig.yml  # Config comparing both implementations
 ```
 
 The structure demonstrates how to:
@@ -58,13 +58,13 @@ The structure demonstrates how to:
 Run the comparison:
 
 ```sh
-npx promptfoo eval
+npx artef eval
 ```
 
 Then view the results with:
 
 ```sh
-npx promptfoo view
+npx artef view
 ```
 
 ## Configuration

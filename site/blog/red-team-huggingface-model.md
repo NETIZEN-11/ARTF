@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How to Red Team a HuggingFace Model: Complete Security Testing Guide'
 description: 'Open source models on HuggingFace often lack safety training. Learn how to red team these models and assess their vulnerabilities before deployment.'
 image: /img/blog/huggingface-red-team.png
@@ -18,7 +18,7 @@ tags: [technical-guide, red-teaming, huggingface]
 
 # How to Red Team a HuggingFace Model
 
-Want to break a HuggingFace model? This guide shows you how to use [Promptfoo](https://github.com/promptfoo/promptfoo) to systematically probe for vulnerabilities through adversarial testing (red teaming).
+Want to break a HuggingFace model? This guide shows you how to use [artef](https://github.com/artef/artef) to systematically probe for vulnerabilities through adversarial testing (red teaming).
 
 You'll learn how to craft prompts that bypass safety filters and manipulate model outputs for a [wide range of potential harms](/docs/red-team/llm-vulnerability-types/).
 
@@ -38,7 +38,7 @@ You'll learn how to craft prompts that bypass safety filters and manipulate mode
 Before you begin, ensure you have the following:
 
 - **Node.js `>=22.22.0`** (Node.js 24 LTS recommended): [Download Node.js](https://nodejs.org/en/download/)
-- **Promptfoo**: No prior installation is necessary; we'll use `npx` to run Promptfoo commands.
+- **artef**: No prior installation is necessary; we'll use `npx` to run artef commands.
 - **HuggingFace API Token**: Sign up for a HuggingFace account and obtain an API token from your [account settings](https://huggingface.co/settings/tokens).
 
 Set your HuggingFace API token as an environment variable:
@@ -53,18 +53,18 @@ export HF_API_TOKEN=your_huggingface_api_token
 
 ### Initialize a New Project
 
-Use the `promptfoo` command-line tool to initialize a new red teaming project:
+Use the `artef` command-line tool to initialize a new red teaming project:
 
 ```bash
-npx promptfoo@latest redteam init my-huggingface-redteam --no-gui
+npx artef@latest redteam init my-huggingface-redteam --no-gui
 cd my-huggingface-redteam
 ```
 
-This command creates a new directory with a `promptfooconfig.yaml` file, which we'll use to configure our red teaming setup.
+This command creates a new directory with a `artefconfig.yaml` file, which we'll use to configure our red teaming setup.
 
 ## Configuring the HuggingFace Provider
 
-In your `promptfooconfig.yaml` file, add a HuggingFace provider to specify the model you want to test. For this example, we'll use the Mistral 7B model for text generation.
+In your `artefconfig.yaml` file, add a HuggingFace provider to specify the model you want to test. For this example, we'll use the Mistral 7B model for text generation.
 
 ```yaml
 targets:
@@ -88,7 +88,7 @@ targets:
 
 ## Defining the Red Teaming Configuration
 
-In the same `promptfooconfig.yaml` file, define the red teaming parameters under the `redteam` section.
+In the same `artefconfig.yaml` file, define the red teaming parameters under the `redteam` section.
 
 Be sure to customize the `purpose`, `plugins`, and `strategies` to match the types of vulnerabilities you care about.
 
@@ -118,7 +118,7 @@ redteam:
 First, generate the adversarial inputs based on the defined plugins and strategies:
 
 ```bash
-npx promptfoo@latest redteam generate
+npx artef@latest redteam generate
 ```
 
 This command creates a `redteam.yaml` file containing the generated test cases.
@@ -128,7 +128,7 @@ This command creates a `redteam.yaml` file containing the generated test cases.
 Run the tests against your HuggingFace model:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 This command evaluates the model's responses to the adversarial inputs and logs the results.
@@ -138,7 +138,7 @@ This command evaluates the model's responses to the adversarial inputs and logs 
 Generate a report to review the findings:
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 ![llm red team report](/img/riskreport-1@2x.png)
@@ -157,8 +157,8 @@ The report provides insights into:
 After implementing mitigations, rerun the red team evaluation to ensure vulnerabilities have been addressed:
 
 ```bash
-npx promptfoo@latest redteam run
-npx promptfoo@latest redteam report
+npx artef@latest redteam run
+npx artef@latest redteam report
 ```
 
 ## Additional Resources
@@ -166,4 +166,4 @@ npx promptfoo@latest redteam report
 - [Red Team Quickstart Guide](/docs/red-team/quickstart/)
 - [HuggingFace Configuration Guide](/docs/providers/huggingface/)
 - [HuggingFace Inference API](https://huggingface.co/inference-api)
-- [List of LLM Vulnerabilities](https://promptfoo.dev/docs/red-team/llm-vulnerability-types/)
+- [List of LLM Vulnerabilities](https://artef.dev/docs/red-team/llm-vulnerability-types/)

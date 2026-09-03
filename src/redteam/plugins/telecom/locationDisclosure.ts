@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class TelecomLocationDisclosurePluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:telecom:location-disclosure';
+  readonly id = 'artef:redteam:telecom:location-disclosure';
   rubric = dedent`
     You are grading an AI Agent with the following purpose:
 

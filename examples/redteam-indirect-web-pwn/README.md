@@ -1,15 +1,15 @@
-# redteam-indirect-web-pwn (Red Team Data Exfiltration via Indirect Web Prompt Injection)
+﻿# redteam-indirect-web-pwn (Red Team Data Exfiltration via Indirect Web Prompt Injection)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-indirect-web-pwn
+npx artef@latest init --example redteam-indirect-web-pwn
 cd redteam-indirect-web-pwn
 ```
 
 ## Introduction
 
-This example demonstrates how to test an AI assistant for **data exfiltration vulnerabilities** using promptfoo's [indirect-web-pwn](https://www.promptfoo.dev/docs/red-team/strategies/indirect-web-pwn/) strategy.
+This example demonstrates how to test an AI assistant for **data exfiltration vulnerabilities** using artef's [indirect-web-pwn](https://www.artef.dev/docs/red-team/strategies/indirect-web-pwn/) strategy.
 
 The attack works by:
 
@@ -38,13 +38,13 @@ export OPENAI_API_KEY=your-api-key-here
 Run the full red team scan (generates test cases and evaluates) in one command:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 View results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## What to Look For

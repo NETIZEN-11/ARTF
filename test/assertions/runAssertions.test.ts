@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderMetricName, runAssertions } from '../../src/assertions/index';
 import { OpenAiChatCompletionProvider } from '../../src/providers/openai/chat';
 import { DefaultGradingJsonProvider } from '../../src/providers/openai/defaults';
@@ -495,7 +495,7 @@ describe('runAssertions', () => {
     const test: AtomicTestCase = {
       assert: [
         {
-          type: 'promptfoo:redteam:medical:prioritization-error' as const,
+          type: 'artef:redteam:medical:prioritization-error' as const,
           value: 'test assertion',
         },
       ],
@@ -540,7 +540,7 @@ describe('runAssertions', () => {
     };
 
     const assertion = {
-      type: 'promptfoo:redteam:medical:prioritization-error' as const,
+      type: 'artef:redteam:medical:prioritization-error' as const,
       value: 'test assertion',
     };
 

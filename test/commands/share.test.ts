@@ -1,4 +1,4 @@
-import { Command } from 'commander';
+﻿import { Command } from 'commander';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   createAndDisplayShareableModelAuditUrl,
@@ -61,7 +61,7 @@ describe('Share Command', () => {
         return true;
       });
       const mockEval = { id: 'test-eval-id' } as Eval;
-      const mockUrl = 'https://app.promptfoo.dev/eval/test-eval-id';
+      const mockUrl = 'https://app.artef.dev/eval/test-eval-id';
 
       vi.mocked(createShareableUrl).mockResolvedValue(mockUrl);
 
@@ -74,7 +74,7 @@ describe('Share Command', () => {
 
     it('should pass showAuth parameter correctly', async () => {
       const mockEval = { id: 'test-eval-id' } as Eval;
-      const mockUrl = 'https://app.promptfoo.dev/eval/test-eval-id';
+      const mockUrl = 'https://app.artef.dev/eval/test-eval-id';
 
       vi.mocked(createShareableUrl).mockResolvedValue(mockUrl);
 
@@ -109,7 +109,7 @@ describe('Share Command', () => {
         modelPath: '/path/to/model',
         results: {},
       } as ModelAudit;
-      const mockUrl = 'https://app.promptfoo.dev/model-audit/test-audit-id';
+      const mockUrl = 'https://app.artef.dev/model-audit/test-audit-id';
 
       vi.mocked(createShareableModelAuditUrl).mockResolvedValue(mockUrl);
 
@@ -126,7 +126,7 @@ describe('Share Command', () => {
         modelPath: '/path/to/model',
         results: {},
       } as ModelAudit;
-      const mockUrl = 'https://app.promptfoo.dev/model-audit/test-audit-id';
+      const mockUrl = 'https://app.artef.dev/model-audit/test-audit-id';
 
       vi.mocked(createShareableModelAuditUrl).mockResolvedValue(mockUrl);
 
@@ -378,71 +378,71 @@ describe('Share Command', () => {
       expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('View results:'));
     });
 
-    it('should use promptfoo.app by default if no environment variables are set', () => {
+    it('should use artef.app by default if no environment variables are set', () => {
       vi.mocked(envars.getEnvString).mockImplementation(function () {
         return '';
       });
 
       const baseUrl =
-        envars.getEnvString('PROMPTFOO_SHARING_APP_BASE_URL') ||
-        envars.getEnvString('PROMPTFOO_REMOTE_APP_BASE_URL');
-      const hostname = baseUrl ? new URL(baseUrl).hostname : 'promptfoo.app';
+        envars.getEnvString('artef_SHARING_APP_BASE_URL') ||
+        envars.getEnvString('artef_REMOTE_APP_BASE_URL');
+      const hostname = baseUrl ? new URL(baseUrl).hostname : 'artef.app';
 
-      expect(hostname).toBe('promptfoo.app');
+      expect(hostname).toBe('artef.app');
     });
 
-    it('should use PROMPTFOO_SHARING_APP_BASE_URL for hostname when set', () => {
+    it('should use artef_SHARING_APP_BASE_URL for hostname when set', () => {
       vi.mocked(envars.getEnvString).mockImplementation(function (key) {
-        if (key === 'PROMPTFOO_SHARING_APP_BASE_URL') {
+        if (key === 'artef_SHARING_APP_BASE_URL') {
           return 'https://custom-domain.com';
         }
         return '';
       });
 
       const baseUrl =
-        envars.getEnvString('PROMPTFOO_SHARING_APP_BASE_URL') ||
-        envars.getEnvString('PROMPTFOO_REMOTE_APP_BASE_URL');
-      const hostname = baseUrl ? new URL(baseUrl).hostname : 'app.promptfoo.dev';
+        envars.getEnvString('artef_SHARING_APP_BASE_URL') ||
+        envars.getEnvString('artef_REMOTE_APP_BASE_URL');
+      const hostname = baseUrl ? new URL(baseUrl).hostname : 'app.artef.dev';
 
       expect(hostname).toBe('custom-domain.com');
     });
 
-    it('should use PROMPTFOO_REMOTE_APP_BASE_URL for hostname when PROMPTFOO_SHARING_APP_BASE_URL is not set', () => {
+    it('should use artef_REMOTE_APP_BASE_URL for hostname when artef_SHARING_APP_BASE_URL is not set', () => {
       vi.mocked(envars.getEnvString).mockImplementation(function (key) {
-        if (key === 'PROMPTFOO_REMOTE_APP_BASE_URL') {
+        if (key === 'artef_REMOTE_APP_BASE_URL') {
           return 'https://self-hosted-domain.com';
         }
         return '';
       });
 
       const baseUrl =
-        envars.getEnvString('PROMPTFOO_SHARING_APP_BASE_URL') ||
-        envars.getEnvString('PROMPTFOO_REMOTE_APP_BASE_URL');
-      const hostname = baseUrl ? new URL(baseUrl).hostname : 'app.promptfoo.dev';
+        envars.getEnvString('artef_SHARING_APP_BASE_URL') ||
+        envars.getEnvString('artef_REMOTE_APP_BASE_URL');
+      const hostname = baseUrl ? new URL(baseUrl).hostname : 'app.artef.dev';
 
       expect(hostname).toBe('self-hosted-domain.com');
     });
 
-    it('should prioritize PROMPTFOO_SHARING_APP_BASE_URL over PROMPTFOO_REMOTE_APP_BASE_URL', () => {
+    it('should prioritize artef_SHARING_APP_BASE_URL over artef_REMOTE_APP_BASE_URL', () => {
       vi.mocked(envars.getEnvString).mockImplementation(function (key) {
-        if (key === 'PROMPTFOO_SHARING_APP_BASE_URL') {
+        if (key === 'artef_SHARING_APP_BASE_URL') {
           return 'https://sharing-domain.com';
         }
-        if (key === 'PROMPTFOO_REMOTE_APP_BASE_URL') {
+        if (key === 'artef_REMOTE_APP_BASE_URL') {
           return 'https://remote-domain.com';
         }
         return '';
       });
 
       const baseUrl =
-        envars.getEnvString('PROMPTFOO_SHARING_APP_BASE_URL') ||
-        envars.getEnvString('PROMPTFOO_REMOTE_APP_BASE_URL');
-      const hostname = baseUrl ? new URL(baseUrl).hostname : 'app.promptfoo.dev';
+        envars.getEnvString('artef_SHARING_APP_BASE_URL') ||
+        envars.getEnvString('artef_REMOTE_APP_BASE_URL');
+      const hostname = baseUrl ? new URL(baseUrl).hostname : 'app.artef.dev';
 
       expect(hostname).toBe('sharing-domain.com');
     });
 
-    it('should use sharing config from promptfooconfig.yaml', async () => {
+    it('should use sharing config from artefconfig.yaml', async () => {
       const mockEval = {
         id: 'test-eval-id',
         prompts: ['test prompt'],
@@ -467,7 +467,7 @@ describe('Share Command', () => {
         defaultConfig: {
           sharing: mockSharing,
         },
-        defaultConfigPath: 'promptfooconfig.yaml',
+        defaultConfigPath: 'artefconfig.yaml',
       });
 
       vi.mocked(isSharingEnabled).mockImplementation(function (evalObj) {
@@ -506,7 +506,7 @@ describe('Share Command', () => {
       });
       vi.mocked(loadDefaultConfig).mockResolvedValue({
         defaultConfig: {},
-        defaultConfigPath: 'promptfooconfig.yaml',
+        defaultConfigPath: 'artefconfig.yaml',
       });
 
       const shareCmd = program.commands.find((c) => c.name() === 'share');
@@ -536,7 +536,7 @@ describe('Share Command', () => {
         return true;
       });
       vi.mocked(createShareableUrl).mockResolvedValue(
-        'https://app.promptfoo.dev/eval/test-eval-id',
+        'https://app.artef.dev/eval/test-eval-id',
       );
 
       const shareCmd = program.commands.find((c) => c.name() === 'share');
@@ -559,7 +559,7 @@ describe('Share Command', () => {
         return true;
       });
       vi.mocked(createShareableUrl).mockResolvedValue(
-        'https://app.promptfoo.dev/eval/specific-eval-id',
+        'https://app.artef.dev/eval/specific-eval-id',
       );
 
       const shareCmd = program.commands.find((c) => c.name() === 'share');

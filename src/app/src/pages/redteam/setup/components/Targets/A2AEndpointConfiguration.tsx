@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -57,7 +57,7 @@ type A2AProviderConfig = Record<string, unknown> & {
 
 const A2A_STRUCTURED_CONFIG_KEYS = new Set(['url', 'agentCardUrl', 'auth']);
 
-const A2A_DOC_URL = 'https://www.promptfoo.dev/docs/providers/a2a/';
+const A2A_DOC_URL = 'https://www.artef.dev/docs/providers/a2a/';
 
 const A2A_CONFIG_EXAMPLE = {
   mode: 'auto',
@@ -524,7 +524,7 @@ const A2AEndpointConfiguration = ({
             placeholder="a2a or a2a:https://agent.example.com/a2a/v1"
           />
           <p className="text-sm text-muted-foreground">
-            Agent2Agent (A2A) HTTP+JSON endpoint configuration. Promptfoo sends test prompts as A2A
+            Agent2Agent (A2A) HTTP+JSON endpoint configuration. artef sends test prompts as A2A
             messages and reads final messages, task artifacts, or streaming events. See{' '}
             <a
               href={A2A_DOC_URL}

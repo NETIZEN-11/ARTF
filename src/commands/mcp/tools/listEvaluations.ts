@@ -1,4 +1,4 @@
-import { z } from 'zod';
+﻿import { z } from 'zod';
 import { getEvalSummaries } from '../../../models/eval';
 import { evaluationCache, paginate } from '../lib/performance';
 import { createToolResponse } from '../lib/utils';
@@ -74,7 +74,7 @@ export function registerListEvaluationsTool(server: McpServer) {
             'list_evaluations',
             false,
             { originalError: error.message },
-            'Failed to access evaluation database. Ensure promptfoo is properly initialized.',
+            'Failed to access evaluation database. Ensure artef is properly initialized.',
           );
         }
 

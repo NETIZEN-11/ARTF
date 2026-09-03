@@ -1,4 +1,4 @@
-import * as fsPromises from 'node:fs/promises';
+﻿import * as fsPromises from 'node:fs/promises';
 import path from 'node:path';
 
 import { Agent, interceptors, ProxyAgent } from 'undici';
@@ -26,8 +26,8 @@ import { clearProxyEnv, createMockResponse, mockProcessEnv, PROXY_ENV_KEYS } fro
 
 const FETCH_TEST_ENV_KEYS = [
   ...PROXY_ENV_KEYS,
-  'PROMPTFOO_INSECURE_SSL',
-  'PROMPTFOO_CA_CERT_PATH',
+  'artef_INSECURE_SSL',
+  'artef_CA_CERT_PATH',
 ] as const;
 
 function mockFetchTestEnv(): () => void {
@@ -57,7 +57,7 @@ vi.mock('../src/logger', () => ({
 
 vi.mock('../src/globalConfig/cloud', () => ({
   cloudConfig: {
-    getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.dev'),
+    getApiHost: vi.fn().mockReturnValue('https://api.artef.dev'),
     getApiKey: vi.fn(),
     getAuthHeaderName: vi.fn().mockReturnValue('Authorization'),
     getCurrentOrganizationId: vi.fn(),
@@ -117,23 +117,23 @@ vi.mock('../src/envars', () => {
       if (key === 'no_proxy' && process.env.no_proxy) {
         return process.env.no_proxy;
       }
-      if (key === 'PROMPTFOO_CA_CERT_PATH' && process.env.PROMPTFOO_CA_CERT_PATH) {
-        return process.env.PROMPTFOO_CA_CERT_PATH;
+      if (key === 'artef_CA_CERT_PATH' && process.env.artef_CA_CERT_PATH) {
+        return process.env.artef_CA_CERT_PATH;
       }
-      if (key === 'PROMPTFOO_INSECURE_SSL') {
-        return process.env.PROMPTFOO_INSECURE_SSL || defaultValue;
+      if (key === 'artef_INSECURE_SSL') {
+        return process.env.artef_INSECURE_SSL || defaultValue;
       }
       return defaultValue;
     }),
     getEnvBool: vi.fn().mockImplementation((key: string, defaultValue: boolean = false) => {
-      if (key === 'PROMPTFOO_RETRY_5XX_ENABLED') {
-        return (process.env as NodeJS.ProcessEnv).PROMPTFOO_RETRY_5XX_ENABLED === 'true';
+      if (key === 'artef_RETRY_5XX_ENABLED') {
+        return (process.env as NodeJS.ProcessEnv).artef_RETRY_5XX_ENABLED === 'true';
       }
-      if (key === 'PROMPTFOO_INSECURE_SSL') {
-        return (process.env as NodeJS.ProcessEnv).PROMPTFOO_INSECURE_SSL === 'true';
+      if (key === 'artef_INSECURE_SSL') {
+        return (process.env as NodeJS.ProcessEnv).artef_INSECURE_SSL === 'true';
       }
-      if (key === 'PROMPTFOO_RETRY_5XX') {
-        return (process.env as NodeJS.ProcessEnv).PROMPTFOO_RETRY_5XX === 'true';
+      if (key === 'artef_RETRY_5XX') {
+        return (process.env as NodeJS.ProcessEnv).artef_RETRY_5XX === 'true';
       }
       return defaultValue;
     }),
@@ -164,7 +164,7 @@ describe('fetchWithProxy', () => {
     vi.clearAllMocks();
     clearAgentCache();
     vi.spyOn(global, 'fetch').mockResolvedValue(new Response());
-    vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://api.promptfoo.dev');
+    vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://api.artef.dev');
     vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('Authorization');
     vi.mocked(ProxyAgent).mockClear();
     cliState.basePath = undefined;
@@ -187,7 +187,7 @@ describe('fetchWithProxy', () => {
       url,
       expect.objectContaining({
         headers: expect.objectContaining({
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         }),
       }),
     );
@@ -205,7 +205,7 @@ describe('fetchWithProxy', () => {
       expect.objectContaining({
         headers: {
           authorization: 'Bearer request-token',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -223,7 +223,7 @@ describe('fetchWithProxy', () => {
       expect.objectContaining({
         headers: {
           Accept: 'application/json',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -241,7 +241,7 @@ describe('fetchWithProxy', () => {
         headers: {
           'Content-Type': 'application/json',
           Authorization: expect.any(String),
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -258,7 +258,7 @@ describe('fetchWithProxy', () => {
       expect.objectContaining({
         headers: {
           'Content-Type': 'application/json',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -291,19 +291,19 @@ describe('fetchWithProxy', () => {
         headers: {
           Authorization: 'Bearer token123',
           'Content-Type': 'application/json',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
   });
 
-  it('should add cloud auth only for the exact Promptfoo cloud origin', async () => {
+  it('should add cloud auth only for the exact artef cloud origin', async () => {
     vi.mocked(cloudConfig.getApiKey).mockReturnValue('cloud-token');
 
-    await fetchWithProxy('https://api.promptfoo.dev/api/v1/task');
+    await fetchWithProxy('https://api.artef.dev/api/v1/task');
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://api.promptfoo.dev/api/v1/task',
+      'https://api.artef.dev/api/v1/task',
       expect.objectContaining({
         headers: expect.objectContaining({
           Authorization: 'Bearer cloud-token',
@@ -316,13 +316,13 @@ describe('fetchWithProxy', () => {
     vi.mocked(cloudConfig.getApiKey).mockReturnValue('old-saved-key');
     vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('Authorization');
 
-    await fetchWithProxy('https://api.promptfoo.dev/api/v1/users/me', {
+    await fetchWithProxy('https://api.artef.dev/api/v1/users/me', {
       headers: { 'X-Custom-Auth': 'Bearer new-candidate-key' },
       skipCloudAuthInjection: true,
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://api.promptfoo.dev/api/v1/users/me',
+      'https://api.artef.dev/api/v1/users/me',
       expect.objectContaining({
         headers: expect.objectContaining({
           'X-Custom-Auth': 'Bearer new-candidate-key',
@@ -337,12 +337,12 @@ describe('fetchWithProxy', () => {
     vi.mocked(cloudConfig.getApiKey).mockReturnValue('old-saved-key');
     vi.mocked(cloudConfig.getAuthHeaderName).mockReturnValue('Authorization');
 
-    await fetchWithProxy('https://api.promptfoo.dev/api/v1/users/me', {
+    await fetchWithProxy('https://api.artef.dev/api/v1/users/me', {
       headers: { 'X-Custom-Auth': 'Bearer new-candidate-key' },
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://api.promptfoo.dev/api/v1/users/me',
+      'https://api.artef.dev/api/v1/users/me',
       expect.objectContaining({
         headers: expect.objectContaining({
           'X-Custom-Auth': 'Bearer new-candidate-key',
@@ -352,13 +352,13 @@ describe('fetchWithProxy', () => {
     );
   });
 
-  it('should not add cloud auth to lookalike Promptfoo cloud hosts', async () => {
+  it('should not add cloud auth to lookalike artef cloud hosts', async () => {
     vi.mocked(cloudConfig.getApiKey).mockReturnValue('cloud-token');
 
-    await fetchWithProxy('https://api.promptfoo.dev.evil.example/api/v1/task');
+    await fetchWithProxy('https://api.artef.dev.evil.example/api/v1/task');
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://api.promptfoo.dev.evil.example/api/v1/task',
+      'https://api.artef.dev.evil.example/api/v1/task',
       expect.objectContaining({
         headers: expect.not.objectContaining({
           Authorization: 'Bearer cloud-token',
@@ -385,7 +385,7 @@ describe('fetchWithProxy', () => {
       expect.objectContaining({
         headers: {
           Authorization: 'Bearer token123',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -400,7 +400,7 @@ describe('fetchWithProxy', () => {
       expect.objectContaining({
         headers: {
           Authorization: 'Basic OnBhc3N3b3Jk',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -415,7 +415,7 @@ describe('fetchWithProxy', () => {
       expect.objectContaining({
         headers: {
           Authorization: 'Basic dXNlcm5hbWU6',
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
@@ -439,22 +439,22 @@ describe('fetchWithProxy', () => {
           'Content-Type': 'application/json',
           'X-Custom-Header': 'value',
           Authorization: expect.any(String),
-          'x-promptfoo-version': VERSION,
+          'x-artef-version': VERSION,
         },
       }),
     );
   });
 
-  it('should use custom CA certificate when PROMPTFOO_CA_CERT_PATH is set', async () => {
+  it('should use custom CA certificate when artef_CA_CERT_PATH is set', async () => {
     const mockCertPath = path.normalize('/path/to/cert.pem');
     const mockCertContent = 'mock-cert-content';
     const mockProxyUrl = 'http://proxy.example.com';
 
     mockProcessEnv({ HTTPS_PROXY: mockProxyUrl });
-    mockProcessEnv({ PROMPTFOO_CA_CERT_PATH: mockCertPath });
+    mockProcessEnv({ artef_CA_CERT_PATH: mockCertPath });
 
     vi.mocked(getEnvString).mockImplementation((key: string, defaultValue: string = '') => {
-      if (key === 'PROMPTFOO_CA_CERT_PATH') {
+      if (key === 'artef_CA_CERT_PATH') {
         return mockCertPath;
       }
       if (key === 'HTTPS_PROXY') {
@@ -463,7 +463,7 @@ describe('fetchWithProxy', () => {
       return defaultValue;
     });
     vi.mocked(getEnvBool).mockImplementation((key: string, defaultValue: boolean = false) => {
-      if (key === 'PROMPTFOO_INSECURE_SSL') {
+      if (key === 'artef_INSECURE_SSL') {
         return false;
       }
       return defaultValue;
@@ -507,10 +507,10 @@ describe('fetchWithProxy', () => {
     const mockProxyUrl = 'http://proxy.example.com';
 
     mockProcessEnv({ HTTPS_PROXY: mockProxyUrl });
-    mockProcessEnv({ PROMPTFOO_CA_CERT_PATH: mockCertPath });
+    mockProcessEnv({ artef_CA_CERT_PATH: mockCertPath });
 
     vi.mocked(getEnvString).mockImplementation((key: string, defaultValue: string = '') => {
-      if (key === 'PROMPTFOO_CA_CERT_PATH') {
+      if (key === 'artef_CA_CERT_PATH') {
         return mockCertPath;
       }
       if (key === 'HTTPS_PROXY') {
@@ -519,7 +519,7 @@ describe('fetchWithProxy', () => {
       return defaultValue;
     });
     vi.mocked(getEnvBool).mockImplementation((key: string, defaultValue: boolean = false) => {
-      if (key === 'PROMPTFOO_INSECURE_SSL') {
+      if (key === 'artef_INSECURE_SSL') {
         return false;
       }
       return defaultValue;
@@ -554,11 +554,11 @@ describe('fetchWithProxy', () => {
     );
   });
 
-  it('should disable SSL verification when PROMPTFOO_INSECURE_SSL is true', async () => {
+  it('should disable SSL verification when artef_INSECURE_SSL is true', async () => {
     const mockProxyUrl = 'http://proxy.example.com';
 
     mockProcessEnv({ HTTPS_PROXY: mockProxyUrl });
-    mockProcessEnv({ PROMPTFOO_INSECURE_SSL: 'true' });
+    mockProcessEnv({ artef_INSECURE_SSL: 'true' });
 
     vi.mocked(getEnvString).mockImplementation((key: string, defaultValue: string = '') => {
       if (key === 'HTTPS_PROXY') {
@@ -567,7 +567,7 @@ describe('fetchWithProxy', () => {
       return defaultValue;
     });
     vi.mocked(getEnvBool).mockImplementation((key: string, defaultValue: boolean = false) => {
-      if (key === 'PROMPTFOO_INSECURE_SSL') {
+      if (key === 'artef_INSECURE_SSL') {
         return true;
       }
       return defaultValue;
@@ -604,12 +604,12 @@ describe('fetchWithProxy', () => {
     const mockProxyUrl = 'http://proxy.example.com';
 
     mockProcessEnv({ HTTPS_PROXY: mockProxyUrl });
-    mockProcessEnv({ PROMPTFOO_CA_CERT_PATH: mockCertPath });
+    mockProcessEnv({ artef_CA_CERT_PATH: mockCertPath });
 
     cliState.basePath = mockBasePath;
 
     vi.mocked(getEnvString).mockImplementation((key: string, defaultValue: string = '') => {
-      if (key === 'PROMPTFOO_CA_CERT_PATH') {
+      if (key === 'artef_CA_CERT_PATH') {
         return mockCertPath;
       }
       if (key === 'HTTPS_PROXY') {
@@ -618,7 +618,7 @@ describe('fetchWithProxy', () => {
       return defaultValue;
     });
     vi.mocked(getEnvBool).mockImplementation((key: string, defaultValue: boolean = false) => {
-      if (key === 'PROMPTFOO_INSECURE_SSL') {
+      if (key === 'artef_INSECURE_SSL') {
         return false;
       }
       return defaultValue;
@@ -766,10 +766,10 @@ describe('fetchWithProxy', () => {
       expect(ProxyAgent).toHaveBeenCalledWith({
         uri: testCase.expected.url,
         proxyTls: {
-          rejectUnauthorized: !getEnvBool('PROMPTFOO_INSECURE_SSL', true),
+          rejectUnauthorized: !getEnvBool('artef_INSECURE_SSL', true),
         },
         requestTls: {
-          rejectUnauthorized: !getEnvBool('PROMPTFOO_INSECURE_SSL', true),
+          rejectUnauthorized: !getEnvBool('artef_INSECURE_SSL', true),
         },
         headersTimeout: getRequestTimeoutMs(),
         keepAliveTimeout: 30_000,
@@ -806,10 +806,10 @@ describe('fetchWithProxy', () => {
       expect(ProxyAgent).toHaveBeenCalledWith({
         uri: testCase.expected.url,
         proxyTls: {
-          rejectUnauthorized: !getEnvBool('PROMPTFOO_INSECURE_SSL', true),
+          rejectUnauthorized: !getEnvBool('artef_INSECURE_SSL', true),
         },
         requestTls: {
-          rejectUnauthorized: !getEnvBool('PROMPTFOO_INSECURE_SSL', true),
+          rejectUnauthorized: !getEnvBool('artef_INSECURE_SSL', true),
         },
         headersTimeout: getRequestTimeoutMs(),
         keepAliveTimeout: 30_000,
@@ -1393,9 +1393,9 @@ describe('fetchWithRetries', () => {
     expect(sleep).toHaveBeenCalledTimes(1);
   });
 
-  it('should handle 5XX errors when PROMPTFOO_RETRY_5XX is true', async () => {
+  it('should handle 5XX errors when artef_RETRY_5XX is true', async () => {
     vi.mocked(getEnvBool).mockImplementation((key: string) => {
-      if (key === 'PROMPTFOO_RETRY_5XX') {
+      if (key === 'artef_RETRY_5XX') {
         return true;
       }
       return false;
@@ -2483,9 +2483,9 @@ describe('fetchWithRetries with disableTransientRetries', () => {
     vi.mocked(sleep).mockClear();
     vi.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve(new Response()));
     vi.clearAllMocks();
-    // Ensure PROMPTFOO_RETRY_5XX is false so 503 responses don't throw
+    // Ensure artef_RETRY_5XX is false so 503 responses don't throw
     vi.mocked(getEnvBool).mockImplementation((key: string, defaultValue: boolean = false) => {
-      if (key === 'PROMPTFOO_RETRY_5XX') {
+      if (key === 'artef_RETRY_5XX') {
         return false;
       }
       return defaultValue;

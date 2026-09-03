@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import { VERSION } from '../../constants';
 import { renderPrompt } from '../../evaluatorHelpers';
@@ -147,7 +147,7 @@ export default class GoatProvider implements ApiProvider {
   }> = [];
 
   id() {
-    return 'promptfoo:redteam:goat';
+    return 'artef:redteam:goat';
   }
 
   constructor(
@@ -556,7 +556,7 @@ export default class GoatProvider implements ApiProvider {
             // Build hybrid payload with conversation history + current transformed turn
             const historyWithoutCurrentTurn = messages.slice(0, -1);
             const hybridPayload = {
-              _promptfoo_audio_hybrid: true,
+              _artef_audio_hybrid: true,
               history: historyWithoutCurrentTurn,
               currentTurn: {
                 role: 'user' as const,

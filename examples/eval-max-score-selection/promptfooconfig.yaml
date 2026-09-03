@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Max-score assertion for objective output selection
 
 # This example demonstrates how max-score can objectively select the best implementation

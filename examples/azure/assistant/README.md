@@ -1,11 +1,11 @@
-# azure/assistant (Azure OpenAI Assistants API with Tools)
+﻿# azure/assistant (Azure OpenAI Assistants API with Tools)
 
 Evaluate Azure OpenAI Assistants with file search, function tools, and multi-tool interactions.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example azure/assistant
+npx artef@latest init --example azure/assistant
 cd azure/assistant
 ```
 
@@ -35,9 +35,9 @@ You can set these in a `.env` file or directly in your environment.
 
 This example includes several configuration files, each demonstrating different tool capabilities:
 
-1. **promptfooconfig-file-search.yaml** - File search tool only
-2. **promptfooconfig-function.yaml** - Function tool capability with a weather API implementation
-3. **promptfooconfig-multi-tool.yaml** - Combined file search and function tools
+1. **artefconfig-file-search.yaml** - File search tool only
+2. **artefconfig-function.yaml** - Function tool capability with a weather API implementation
+3. **artefconfig-multi-tool.yaml** - Combined file search and function tools
 
 ### Running Different Configurations
 
@@ -45,13 +45,13 @@ To run a specific configuration:
 
 ```bash
 # File search example
-npx promptfoo@latest eval -c promptfooconfig-file-search.yaml
+npx artef@latest eval -c artefconfig-file-search.yaml
 
 # Function tool capability example
-npx promptfoo@latest eval -c promptfooconfig-function.yaml
+npx artef@latest eval -c artefconfig-function.yaml
 
 # Multi-tool example
-npx promptfoo@latest eval -c promptfooconfig-multi-tool.yaml
+npx artef@latest eval -c artefconfig-multi-tool.yaml
 ```
 
 ## Tool Capabilities
@@ -166,7 +166,7 @@ This is particularly useful for session management, audit logging, and tracking 
 
 ## Documentation
 
-For more information about using Azure OpenAI with promptfoo, including authentication methods, provider types, and configuration options, see the [official Azure provider documentation](https://www.promptfoo.dev/docs/providers/azure/).
+For more information about using Azure OpenAI with artef, including authentication methods, provider types, and configuration options, see the [official Azure provider documentation](https://www.artef.dev/docs/providers/azure/).
 
 ## Notes
 

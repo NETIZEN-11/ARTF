@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { DEFAULT_MAX_CONCURRENCY } from '../../../constants';
 import logger from '../../../logger';
@@ -47,8 +47,8 @@ export function registerRedteamGenerateTool(server: McpServer) {
         .optional()
         .describe(
           dedent`
-            Path to the promptfoo configuration file.
-            Defaults to "promptfooconfig.yaml" in current directory.
+            Path to the artef configuration file.
+            Defaults to "artefconfig.yaml" in current directory.
             Example: "./my-config.yaml"
           `,
         ),
@@ -142,7 +142,7 @@ export function registerRedteamGenerateTool(server: McpServer) {
         .boolean()
         .optional()
         .prefault(false)
-        .describe('Write results to the promptfoo configuration file instead of separate output'),
+        .describe('Write results to the artef configuration file instead of separate output'),
       remote: z
         .boolean()
         .optional()
@@ -222,7 +222,7 @@ export function registerRedteamGenerateTool(server: McpServer) {
         }
 
         logger.debug(
-          `Generating redteam tests with config: ${configPath || 'promptfooconfig.yaml'}`,
+          `Generating redteam tests with config: ${configPath || 'artefconfig.yaml'}`,
         );
 
         // Generate test cases with timeout protection
@@ -249,7 +249,7 @@ export function registerRedteamGenerateTool(server: McpServer) {
             status: 'completed',
             duration: endTime - startTime,
             timestamp: new Date().toISOString(),
-            configPath: configPath || 'promptfooconfig.yaml',
+            configPath: configPath || 'artefconfig.yaml',
             outputPath: output || (write ? 'written to config' : 'redteam.yaml'),
           },
           configuration: {
@@ -317,7 +317,7 @@ export function registerRedteamGenerateTool(server: McpServer) {
               ? 'Run "redteam_run" to execute the generated tests'
               : `Run "redteam_run" with output: "${output || 'redteam.yaml'}" to execute the tests`,
             viewConfig: write
-              ? `Generated tests were added to your config file: ${configPath || 'promptfooconfig.yaml'}`
+              ? `Generated tests were added to your config file: ${configPath || 'artefconfig.yaml'}`
               : `Generated tests were written to: ${output || 'redteam.yaml'}`,
           },
         };
@@ -343,7 +343,7 @@ export function registerRedteamGenerateTool(server: McpServer) {
 
         const errorData = {
           configuration: {
-            configPath: args.configPath || 'promptfooconfig.yaml',
+            configPath: args.configPath || 'artefconfig.yaml',
             output: args.output,
             purpose: args.purpose,
             plugins: args.plugins,

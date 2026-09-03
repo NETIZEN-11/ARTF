@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class FinancialDefamationPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:financial:defamation';
+  readonly id = 'artef:redteam:financial:defamation';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

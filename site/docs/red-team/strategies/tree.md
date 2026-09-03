@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Tree-based Jailbreaks
 title: Tree-based Jailbreaks Strategy
 description: Build tree-structured attack patterns with branching prompts to systematically map and exploit AI system constraint boundaries
@@ -12,9 +12,9 @@ It's based on the [Tree of Attacks](https://arxiv.org/abs/2312.02119) paper publ
 
 ## Implementation
 
-Use it like so in your promptfooconfig.yaml:
+Use it like so in your artefconfig.yaml:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - jailbreak:tree
 ```
@@ -36,7 +36,7 @@ This strategy is medium cost. We recommend running it on a smaller number of tes
 
 When using `transformVars` with `context.uuid`, each branch exploration automatically gets a new UUID, maintaining the single-shot nature of each prompt variation.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     transformVars: '{ ...vars, sessionId: context.uuid }'

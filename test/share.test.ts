@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+﻿import { randomUUID } from 'node:crypto';
 
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createRemoteBlobUploadCache, uploadBlobRefsForShare } from '../src/blobs/shareUpload';
@@ -116,10 +116,10 @@ vi.mock('../src/constants', async () => {
   const actual = await vi.importActual<typeof import('../src/constants')>('../src/constants');
   return {
     ...actual,
-    DEFAULT_API_BASE_URL: 'https://api.promptfoo.app',
-    getShareApiBaseUrl: vi.fn().mockReturnValue('https://api.promptfoo.app'),
-    getDefaultShareViewBaseUrl: vi.fn().mockReturnValue('https://promptfoo.app'),
-    getShareViewBaseUrl: vi.fn().mockReturnValue('https://promptfoo.app'),
+    DEFAULT_API_BASE_URL: 'https://api.artef.app',
+    getShareApiBaseUrl: vi.fn().mockReturnValue('https://api.artef.app'),
+    getDefaultShareViewBaseUrl: vi.fn().mockReturnValue('https://artef.app'),
+    getShareViewBaseUrl: vi.fn().mockReturnValue('https://artef.app'),
   };
 });
 
@@ -169,7 +169,7 @@ describe('isSharingEnabled', () => {
     vi.clearAllMocks();
     vi.mocked(cloudConfig.isEnabled).mockReturnValue(false);
     // Reset the mock to default value for each test
-    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.promptfoo.app');
+    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.artef.app');
   });
 
   it('returns true when sharing config is set in eval record', () => {
@@ -184,7 +184,7 @@ describe('isSharingEnabled', () => {
     expect(isSharingEnabled(mockEval as Eval)).toBe(true);
   });
 
-  it('returns true when sharing env URL is set and not api.promptfoo.app', () => {
+  it('returns true when sharing env URL is set and not api.artef.app', () => {
     vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://custom-api.example.com');
 
     const mockEval: Partial<Eval> = {
@@ -207,7 +207,7 @@ describe('isSharingEnabled', () => {
 
   it('returns false when no sharing options are enabled', () => {
     // Explicitly ensure we're using the default mock return value
-    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.promptfoo.app');
+    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.artef.app');
     vi.mocked(cloudConfig.isEnabled).mockReturnValue(false);
 
     const mockEval: Partial<Eval> = {
@@ -219,7 +219,7 @@ describe('isSharingEnabled', () => {
 
   it('returns false when sharing config is not an object', () => {
     // Explicitly ensure we're using the default mock return value
-    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.promptfoo.app');
+    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.artef.app');
     vi.mocked(cloudConfig.isEnabled).mockReturnValue(false);
 
     const mockEval: Partial<Eval> = {
@@ -236,7 +236,7 @@ describe('determineShareDomain', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(envars.getEnvString).mockImplementation((_key: string) => '');
-    vi.mocked(constants.getDefaultShareViewBaseUrl).mockReturnValue('https://promptfoo.app');
+    vi.mocked(constants.getDefaultShareViewBaseUrl).mockReturnValue('https://artef.app');
   });
 
   it('should use DEFAULT_SHARE_VIEW_BASE_URL when no custom domain is specified', () => {
@@ -248,13 +248,13 @@ describe('determineShareDomain', () => {
     };
 
     const result = determineShareDomain(mockEval as Eval);
-    expect(result.domain).toBe('https://promptfoo.app');
+    expect(result.domain).toBe('https://artef.app');
   });
 
-  it('should use PROMPTFOO_REMOTE_APP_BASE_URL when specified', () => {
+  it('should use artef_REMOTE_APP_BASE_URL when specified', () => {
     const customDomain = 'https://my-custom-instance.com';
     vi.mocked(envars.getEnvString).mockImplementation((key: string) => {
-      if (key === 'PROMPTFOO_REMOTE_APP_BASE_URL') {
+      if (key === 'artef_REMOTE_APP_BASE_URL') {
         return customDomain;
       }
       return '';
@@ -294,7 +294,7 @@ describe('determineShareDomain', () => {
     const envAppBaseUrl = 'https://env-specified-domain.com';
 
     vi.mocked(envars.getEnvString).mockImplementation((key: string) => {
-      if (key === 'PROMPTFOO_REMOTE_APP_BASE_URL') {
+      if (key === 'artef_REMOTE_APP_BASE_URL') {
         return envAppBaseUrl;
       }
       return '';
@@ -360,7 +360,7 @@ describe('model audit sharing', () => {
   } as unknown as ModelAudit;
 
   it('does not upload when sharing is disabled', async () => {
-    vi.mocked(envars.getEnvBool).mockImplementation((key) => key === 'PROMPTFOO_DISABLE_SHARING');
+    vi.mocked(envars.getEnvBool).mockImplementation((key) => key === 'artef_DISABLE_SHARING');
 
     const result = await createShareableModelAuditUrl(mockAudit);
 
@@ -397,9 +397,9 @@ describe('createShareableUrl', () => {
     vi.mocked(envars.getEnvString).mockImplementation((_key: string) => '');
     vi.mocked(envars.isCI).mockReturnValue(false);
     vi.mocked(envars.getEnvBool).mockReturnValue(false);
-    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.promptfoo.app');
-    vi.mocked(constants.getDefaultShareViewBaseUrl).mockReturnValue('https://promptfoo.app');
-    vi.mocked(constants.getShareViewBaseUrl).mockReturnValue('https://promptfoo.app');
+    vi.mocked(constants.getShareApiBaseUrl).mockReturnValue('https://api.artef.app');
+    vi.mocked(constants.getDefaultShareViewBaseUrl).mockReturnValue('https://artef.app');
+    vi.mocked(constants.getShareViewBaseUrl).mockReturnValue('https://artef.app');
     vi.mocked(createRemoteBlobUploadCache).mockReturnValue(new Map());
     vi.mocked(uploadBlobRefsForShare).mockResolvedValue(undefined);
     mockFetch.mockReset();
@@ -408,7 +408,7 @@ describe('createShareableUrl', () => {
   });
 
   it('does not initialize remote blob uploads when sharing is globally disabled', async () => {
-    vi.mocked(envars.getEnvBool).mockImplementation((key) => key === 'PROMPTFOO_DISABLE_SHARING');
+    vi.mocked(envars.getEnvBool).mockImplementation((key) => key === 'artef_DISABLE_SHARING');
 
     await expect(createShareableUrl(buildMockEval() as Eval)).resolves.toBeNull();
 
@@ -564,7 +564,7 @@ describe('createShareableUrl', () => {
     });
 
     const result = await createShareableUrl(mockEval as Eval);
-    expect(result).toBe(`https://promptfoo.app/eval/${newId}`);
+    expect(result).toBe(`https://artef.app/eval/${newId}`);
 
     // Mock for second call
     const newId2 = randomUUID();
@@ -699,7 +699,7 @@ describe('createShareableUrl', () => {
       const result = {
         id: 'result-1',
         promptIdx: 2,
-        response: { output: `promptfoo://blob/${hash}` },
+        response: { output: `artef://blob/${hash}` },
         testIdx: 1,
       } as EvalResult;
       mockEval.config = { sharing: false };
@@ -790,12 +790,12 @@ describe('createShareableUrl', () => {
         }),
       );
       expect(uploadBlobRefsForShare).not.toHaveBeenCalled();
-      expect(result).toBe(`https://promptfoo.app/eval/${mockEval.id}`);
+      expect(result).toBe(`https://artef.app/eval/${mockEval.id}`);
     });
 
     it('inlines blob refs scoped to the local eval for default self-hosted shares', async () => {
       vi.mocked(cloudConfig.isEnabled).mockReturnValue(false);
-      // Honor env-var defaults so PROMPTFOO_SHARE_INLINE_BLOBS falls back to its
+      // Honor env-var defaults so artef_SHARE_INLINE_BLOBS falls back to its
       // self-hosted default (true) instead of the flat-false mock used elsewhere.
       vi.mocked(envars.getEnvBool).mockImplementation((_key, defaultValue) =>
         Boolean(defaultValue),
@@ -813,7 +813,7 @@ describe('createShareableUrl', () => {
 
       const result = await createShareableUrl(mockEval as Eval);
 
-      expect(result).toBe(`https://promptfoo.app/eval/${mockEval.id}`);
+      expect(result).toBe(`https://artef.app/eval/${mockEval.id}`);
       expect(inlineBlobRefsForShare).toHaveBeenCalledWith(
         expect.anything(),
         expect.any(Map),
@@ -1071,7 +1071,7 @@ describe('createShareableUrl', () => {
 
     const customDomain = 'https://my-custom-instance.com';
     vi.mocked(envars.getEnvString).mockImplementation((key: string) => {
-      if (key === 'PROMPTFOO_REMOTE_APP_BASE_URL') {
+      if (key === 'artef_REMOTE_APP_BASE_URL') {
         return customDomain;
       }
       return '';

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../src/cache';
 import { cloudConfig } from '../src/globalConfig/cloud';
 import guardrails, { type AdaptiveRequest } from '../src/guardrails';
@@ -43,7 +43,7 @@ describe('guardrails', () => {
     // Default to the non-cloud path so existing assertions stay deterministic
     // regardless of the local machine's cloud-login state.
     vi.mocked(cloudConfig.isEnabled).mockReturnValue(false);
-    vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://api.promptfoo.app');
+    vi.mocked(cloudConfig.getApiHost).mockReturnValue('https://api.artef.app');
     vi.mocked(cloudConfig.getApiKey).mockReturnValue(undefined);
     // Mirrors the real cloudConfig.getAuthHeaders(): undefined with no key,
     // otherwise a Bearer token under the (default Authorization) header name.
@@ -290,7 +290,7 @@ describe('guardrails', () => {
     it('should call fetchWithCache with correct parameters', async () => {
       const mockResponse = {
         data: {
-          model: 'promptfoo-adaptive-prompt',
+          model: 'artef-adaptive-prompt',
           adaptedPrompt: 'Adapted test input',
           modifications: [
             {
@@ -314,7 +314,7 @@ describe('guardrails', () => {
 
       const result = await guardrails.adaptive(request);
       expect(fetchWithCache).toHaveBeenCalledWith(
-        'https://api.promptfoo.app/v1/adaptive',
+        'https://api.artef.app/v1/adaptive',
         {
           method: 'POST',
           headers: {
@@ -334,7 +334,7 @@ describe('guardrails', () => {
     it('should handle missing policies parameter', async () => {
       const mockResponse = {
         data: {
-          model: 'promptfoo-adaptive-prompt',
+          model: 'artef-adaptive-prompt',
           adaptedPrompt: 'Adapted test input',
           modifications: [],
         },
@@ -350,7 +350,7 @@ describe('guardrails', () => {
 
       const result = await guardrails.adaptive(request);
       expect(fetchWithCache).toHaveBeenCalledWith(
-        'https://api.promptfoo.app/v1/adaptive',
+        'https://api.artef.app/v1/adaptive',
         {
           method: 'POST',
           headers: {
@@ -395,7 +395,7 @@ describe('guardrails', () => {
         'json',
       );
       const [calledUrl] = vi.mocked(fetchWithCache).mock.calls[0];
-      expect(calledUrl).not.toContain('api.promptfoo.app');
+      expect(calledUrl).not.toContain('api.artef.app');
     });
 
     it('routes adaptive requests to the configured cloud host with a bearer token', async () => {
@@ -418,7 +418,7 @@ describe('guardrails', () => {
         'json',
       );
       const [calledUrl] = vi.mocked(fetchWithCache).mock.calls[0];
-      expect(calledUrl).not.toContain('api.promptfoo.app');
+      expect(calledUrl).not.toContain('api.artef.app');
     });
 
     it('strips a trailing slash on the configured host (no //v1)', async () => {
@@ -436,7 +436,7 @@ describe('guardrails', () => {
       await guardrails.guard('test input');
 
       const [calledUrl, opts] = vi.mocked(fetchWithCache).mock.calls[0];
-      expect(calledUrl).toBe('https://api.promptfoo.app/v1/guard');
+      expect(calledUrl).toBe('https://api.artef.app/v1/guard');
       // getApiHost() must not be consulted on the non-cloud path, and no token is sent.
       expect(cloudConfig.getApiHost).not.toHaveBeenCalled();
       expect((opts?.headers as Record<string, string>)?.Authorization).toBeUndefined();
@@ -455,11 +455,11 @@ describe('guardrails', () => {
       expect(headers.Authorization).toBeUndefined();
     });
 
-    it('lets an explicit PROMPTFOO_REMOTE_API_BASE_URL override win, without leaking the token', async () => {
+    it('lets an explicit artef_REMOTE_API_BASE_URL override win, without leaking the token', async () => {
       // Regression guard: logged-in users who redirect guardrails to a private
       // endpoint must keep that override (codex P2 on the original PR). The cloud
       // bearer token must NOT be sent to the override host.
-      vi.stubEnv('PROMPTFOO_REMOTE_API_BASE_URL', 'https://guardrails-override.example.com');
+      vi.stubEnv('artef_REMOTE_API_BASE_URL', 'https://guardrails-override.example.com');
       vi.mocked(cloudConfig.isEnabled).mockReturnValue(true);
       vi.mocked(cloudConfig.getApiHost).mockReturnValue(ONPREM_HOST);
 

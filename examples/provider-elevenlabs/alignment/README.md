@@ -1,14 +1,14 @@
-# provider-elevenlabs/alignment (ElevenLabs Forced Alignment)
+﻿# provider-elevenlabs/alignment (ElevenLabs Forced Alignment)
 
 Generate time-aligned subtitles (SRT/VTT) from audio and transcripts using ElevenLabs forced alignment.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example provider-elevenlabs/alignment
+npx artef@latest init --example provider-elevenlabs/alignment
 cd provider-elevenlabs/alignment
 export ELEVENLABS_API_KEY=your_api_key_here
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## What this tests

@@ -1,9 +1,9 @@
-# provider-http/auth-signature-jks (HTTP provider with JKS certificate signature authentication)
+﻿# provider-http/auth-signature-jks (HTTP provider with JKS certificate signature authentication)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-http/auth-signature-jks
+npx artef@latest init --example provider-http/auth-signature-jks
 cd provider-http/auth-signature-jks
 ```
 
@@ -32,7 +32,7 @@ npm install
 # Generate a self-signed certificate and store it in a JKS keystore
 keytool -genkeypair -alias client -keyalg RSA -keysize 2048 \
   -keystore clientkeystore.jks -storepass password -keypass password \
-  -dname "CN=PromptFoo Test, OU=Test, O=Test, L=Test, ST=Test, C=US" \
+  -dname "CN=artef Test, OU=Test, O=Test, L=Test, ST=Test, C=US" \
   -validity 365
 ```
 
@@ -62,26 +62,26 @@ If you're unsure about the alias or contents of your JKS keystore, you can inspe
 keytool -list -keystore clientkeystore.jks -storepass password
 ```
 
-This will show all aliases in the keystore. Update the `keyAlias` in both `app.js` and `promptfooconfig.yaml` to match your actual alias.
+This will show all aliases in the keystore. Update the `keyAlias` in both `app.js` and `artefconfig.yaml` to match your actual alias.
 
 ## Running Tests
 
 ```bash
 # Set the keystore password via environment variable
-export PROMPTFOO_JKS_PASSWORD=password
+export artef_JKS_PASSWORD=password
 
 # Run test cases
-promptfoo eval --no-cache
+artef eval --no-cache
 
 # View results
-promptfoo view
+artef view
 ```
 
-Alternatively, you can uncomment the `keystorePassword` line in `promptfooconfig.yaml` and run directly:
+Alternatively, you can uncomment the `keystorePassword` line in `artefconfig.yaml` and run directly:
 
 ```bash
 # Run test cases (with password in config)
-promptfoo eval --no-cache
+artef eval --no-cache
 ```
 
 **IMPORTANT**: Be sure to run with `--no-cache` when testing! Otherwise it may cache responses from good signatures.
@@ -97,7 +97,7 @@ promptfoo eval --no-cache
 
 This example demonstrates using environment variables for sensitive data:
 
-- `PROMPTFOO_JKS_PASSWORD` - Password for the JKS keystore (alternative to config keystorePassword)
+- `artef_JKS_PASSWORD` - Password for the JKS keystore (alternative to config keystorePassword)
 - `KEYSTORE_PASSWORD` - Password for the JKS keystore (used by server)
 - `KEY_PASSWORD` - Password for the private key (used by server)
 
@@ -108,8 +108,8 @@ You can provide the keystore password in two ways:
 1. **Via environment variable (recommended for production):**
 
    ```bash
-   export PROMPTFOO_JKS_PASSWORD=password
-   promptfoo eval
+   export artef_JKS_PASSWORD=password
+   artef eval
    ```
 
 2. **Via configuration file:**

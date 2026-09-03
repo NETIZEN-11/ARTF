@@ -1,4 +1,4 @@
-import { createRequire } from 'node:module';
+﻿import { createRequire } from 'node:module';
 import * as fs from 'fs';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -176,8 +176,8 @@ describe('evaluatorHelpers', () => {
 
   describe('renderPrompt', () => {
     beforeEach(() => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
-      mockProcessEnv({ PROMPTFOO_DISABLE_JSON_AUTOESCAPE: undefined });
+      mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
+      mockProcessEnv({ artef_DISABLE_JSON_AUTOESCAPE: undefined });
     });
 
     it('should render a prompt with a single variable', async () => {
@@ -320,15 +320,15 @@ describe('evaluatorHelpers', () => {
     it('should load external js package in renderPrompt and execute the exported function', async () => {
       const prompt = toPrompt('Test prompt with {{ var1 }}');
       const vars = {
-        var1: 'package:@promptfoo/fake:testFunction',
+        var1: 'package:@artef/fake:testFunction',
       };
       const evaluateOptions = {};
 
       const require = createRequire('');
-      vi.mocked(require.resolve).mockReturnValueOnce('/node_modules/@promptfoo/fake/index.js');
+      vi.mocked(require.resolve).mockReturnValueOnce('/node_modules/@artef/fake/index.js');
 
       // Register dynamic module mock for the package
-      mockDynamicModule('/node_modules/@promptfoo/fake/index.js', {
+      mockDynamicModule('/node_modules/@artef/fake/index.js', {
         testFunction: (varName: any, _prompt: any, _vars: any) => ({
           output: `Dynamic value for ${varName}`,
         }),
@@ -341,15 +341,15 @@ describe('evaluatorHelpers', () => {
     it('should throw a clear error when a package variable does not export a function', async () => {
       const prompt = toPrompt('Test prompt with {{ var1 }}');
       const vars = {
-        var1: 'package:@promptfoo/fake:testFunction',
+        var1: 'package:@artef/fake:testFunction',
       };
 
-      mockDynamicModule('/node_modules/@promptfoo/fake/index.js', {
+      mockDynamicModule('/node_modules/@artef/fake/index.js', {
         testFunction: false,
       });
 
       await expect(renderPrompt(prompt, vars, {})).rejects.toThrow(
-        'Variable source malformed: package:@promptfoo/fake:testFunction must export a function. Received: boolean',
+        'Variable source malformed: package:@artef/fake:testFunction must export a function. Received: boolean',
       );
     });
 
@@ -385,13 +385,13 @@ describe('evaluatorHelpers', () => {
       expect(renderedPrompt).toBe('Test prompt with {"key":"valueFromYaml"}');
     });
 
-    describe('with PROMPTFOO_DISABLE_TEMPLATING', () => {
+    describe('with artef_DISABLE_TEMPLATING', () => {
       beforeEach(() => {
-        mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'true' });
+        mockProcessEnv({ artef_DISABLE_TEMPLATING: 'true' });
       });
 
       afterEach(() => {
-        mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
+        mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
       });
 
       it('should return raw prompt when templating is disabled', async () => {
@@ -402,11 +402,11 @@ describe('evaluatorHelpers', () => {
     });
 
     it('should render normally when templating is enabled', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'false' });
+      mockProcessEnv({ artef_DISABLE_TEMPLATING: 'false' });
       const prompt = toPrompt('Test prompt {{ var1 }}');
       const renderedPrompt = await renderPrompt(prompt, { var1: 'value1' }, {});
       expect(renderedPrompt).toBe('Test prompt value1');
-      mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
+      mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
     });
 
     it('should respect Nunjucks raw tags when variable is provided as a string', async () => {

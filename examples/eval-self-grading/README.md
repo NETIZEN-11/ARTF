@@ -1,9 +1,9 @@
-# eval-self-grading (Self Grading)
+﻿# eval-self-grading (Self Grading)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-self-grading
+npx artef@latest init --example eval-self-grading
 cd eval-self-grading
 ```
 
@@ -11,16 +11,16 @@ cd eval-self-grading
 
 This example shows how you can have an LLM grade its own output according to predefined expectations.
 
-The configuration is provided in `promptfooconfig.yaml`.
+The configuration is provided in `artefconfig.yaml`.
 
 Run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 You can also define the tests in a CSV file:
 
 ```bash
-promptfoo eval --tests tests.csv
+artef eval --tests tests.csv
 ```

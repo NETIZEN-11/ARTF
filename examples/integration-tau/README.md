@@ -1,9 +1,9 @@
-# integration-tau (Tau Simulated User Example)
+﻿# integration-tau (Tau Simulated User Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-tau
+npx artef@latest init --example integration-tau
 cd integration-tau
 ```
 
@@ -21,8 +21,8 @@ The example uses **mocked airline functions** to simulate a booking system witho
 ## Quick Start
 
 1. **Set your API key**: `export OPENAI_API_KEY=your_api_key_here`
-2. **Run the evaluation**: `promptfoo eval`
-3. **View results**: `promptfoo view`
+2. **Run the evaluation**: `artef eval`
+3. **View results**: `artef view`
 
 ## What You'll See
 
@@ -53,4 +53,4 @@ Agent: Perfect! Your flight is confirmed. Confirmation: CF8X2M1K
 
 ## Learn More
 
-For more information about the Simulated User Provider and other promptfoo features, visit the [documentation at promptfoo.dev](https://promptfoo.dev/docs/providers/simulated-user/).
+For more information about the Simulated User Provider and other artef features, visit the [documentation at artef.dev](https://artef.dev/docs/providers/simulated-user/).

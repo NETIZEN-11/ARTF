@@ -1,4 +1,4 @@
-import { FOUNDATION_PLUGINS, PII_PLUGINS } from './plugins';
+﻿import { FOUNDATION_PLUGINS, PII_PLUGINS } from './plugins';
 
 import type { Plugin } from './plugins';
 import type { Strategy } from './strategies';
@@ -293,7 +293,7 @@ export const OWASP_AGENTIC_TOP_10_MAPPING: Record<
 
 /**
  * Maps each major phase of the OWASP GenAI Red Teaming Blueprint
- * to relevant Promptfoo plugins and strategies for automated testing.
+ * to relevant artef plugins and strategies for automated testing.
  */
 export const OWASP_LLM_RED_TEAM_MAPPING: Record<
   string,
@@ -498,7 +498,7 @@ const MITRE_ATLAS_AI_ATTACK_STAGING_MAPPING: FrameworkMapping = {
 
 export const MITRE_ATLAS_MAPPING: Record<string, FrameworkMapping> = {
   'mitre:atlas:ai-attack-staging': MITRE_ATLAS_AI_ATTACK_STAGING_MAPPING,
-  // No promptfoo plugin directly validates model access level yet; keep the alias for matrix completeness.
+  // No artef plugin directly validates model access level yet; keep the alias for matrix completeness.
   'mitre:atlas:ai-model-access': {
     plugins: [],
     strategies: [],
@@ -832,7 +832,7 @@ export const ISO_42001_MAPPING: Record<string, { plugins: Plugin[]; strategies: 
 
 /**
  * EU General Data Protection Regulation (GDPR)
- * Maps key GDPR articles to relevant Promptfoo plugins for testing AI/LLM systems
+ * Maps key GDPR articles to relevant artef plugins for testing AI/LLM systems
  * for compliance with data protection requirements.
  *
  * Sources:

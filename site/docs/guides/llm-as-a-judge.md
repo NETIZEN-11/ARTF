@@ -1,7 +1,7 @@
----
+﻿---
 title: 'LLM as a Judge Evaluation Guide'
 sidebar_label: LLM as a Judge
-description: 'Build LLM-as-a-judge evals in Promptfoo with rubric prompts, model-graded scoring, multi-judge voting, bias checks, and prompt injection defense patterns.'
+description: 'Build LLM-as-a-judge evals in artef with rubric prompts, model-graded scoring, multi-judge voting, bias checks, and prompt injection defense patterns.'
 keywords:
   [
     llm as a judge,
@@ -14,7 +14,7 @@ keywords:
     model graded evaluation,
     model-graded evals,
     llm evaluator,
-    promptfoo llm judge,
+    artef llm judge,
   ]
 sidebar_position: 5
 ---
@@ -23,7 +23,7 @@ sidebar_position: 5
 
 Use LLM as a judge when exact-match tests are too brittle for open-ended output: helpfulness,
 tone, factuality, safety, RAG faithfulness, or preference between two answers. This guide shows
-runnable Promptfoo configs for `llm-rubric`, `g-eval`, `factuality`, `select-best`, multi-judge
+runnable artef configs for `llm-rubric`, `g-eval`, `factuality`, `select-best`, multi-judge
 voting, and injection-safe judge prompts.
 
 :::tip TL;DR
@@ -35,11 +35,11 @@ voting, and injection-safe judge prompts.
 
 :::
 
-## Quickstart with Promptfoo
+## Quickstart with artef
 
 Create a minimal LLM-as-a-judge eval with one model under test and one grader model:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Answer: {{question}}'
 
@@ -69,8 +69,8 @@ tests:
 Run it:
 
 ```bash
-npx promptfoo eval --no-cache -o results.json
-npx promptfoo view
+npx artef eval --no-cache -o results.json
+npx artef view
 ```
 
 The judge returns a structured verdict for each row:
@@ -88,7 +88,7 @@ The judge returns a structured verdict for each row:
 If your judge runs behind an OpenAI-compatible API such as vLLM, configure the full provider object
 under `defaultTest.options.provider`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{answer}}'
 
@@ -115,7 +115,7 @@ tests:
 ```
 
 `showThinking: false` matters for thinking-capable local judges. vLLM can return reasoning in a
-separate `reasoning_content` or `reasoning` field and the final verdict in `content`; promptfoo
+separate `reasoning_content` or `reasoning` field and the final verdict in `content`; artef
 should grade only the final content. Do not also put `provider: openai:chat:llm_judge` on the
 assertion, because that shorthand overrides the full provider object and drops the `apiBaseUrl`,
 `apiKey`, and `showThinking` settings.
@@ -320,7 +320,7 @@ and generated answer together:
 - [`context-recall`](/docs/configuration/expected-outputs/model-graded/context-recall) — Does the context contain the information needed to answer? Measures retrieval completeness.
 - [`answer-relevance`](/docs/configuration/expected-outputs/model-graded/answer-relevance) — Is the output relevant to the original query?
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{answer}}'
 
@@ -363,7 +363,7 @@ complete examples.
 Use [`search-rubric`](/docs/configuration/expected-outputs/model-graded/search-rubric) when the
 judge needs web search to verify a claim:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'The Eiffel Tower is in Paris, France.'
 
@@ -405,7 +405,7 @@ See [`select-best`](/docs/configuration/expected-outputs/model-graded/select-bes
 
 ### Choosing an approach
 
-| Approach              | When to use                               | Promptfoo type                                                                    |
+| Approach              | When to use                               | artef type                                                                    |
 | --------------------- | ----------------------------------------- | --------------------------------------------------------------------------------- |
 | Direct scoring        | Simple criteria, fast iteration           | `llm-rubric`                                                                      |
 | Chain-of-thought      | Complex multi-dimensional criteria        | `g-eval`                                                                          |
@@ -484,7 +484,7 @@ This is more debuggable—you see exactly which dimension failed.
 
 ## Understanding pass vs. score
 
-Promptfoo's `llm-rubric` returns two values:
+artef's `llm-rubric` returns two values:
 
 - **`pass`**: Boolean that directly controls pass/fail
 - **`score`**: Numeric (0.0-1.0) for metrics and analysis
@@ -600,7 +600,7 @@ tests:
 
 Here's a complete example showing a passing and failing output:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - |
     Answer this support question using only the allowed policy facts.
@@ -684,7 +684,7 @@ Build 30-50 diverse examples covering success cases, failure modes, and edge cas
 
 ```text
 eval/
-  promptfooconfig.yaml
+  artefconfig.yaml
   tests/
     golden.yaml      # Development set - tune rubric here
     holdout.yaml     # Test set - never tune on this
@@ -696,7 +696,7 @@ eval/
 
 Add human labels to your test cases using metadata:
 
-```yaml title="eval/promptfooconfig.yaml"
+```yaml title="eval/artefconfig.yaml"
 prompts:
   - |
     Question: {{question}}
@@ -753,8 +753,8 @@ Return pass=true if the answer meets the criteria, otherwise pass=false.
 ### Step 4: Run and measure agreement
 
 ```bash
-npx promptfoo eval -c eval/promptfooconfig.yaml -o results.json --no-cache
-npx promptfoo view
+npx artef eval -c eval/artefconfig.yaml -o results.json --no-cache
+npx artef view
 ```
 
 Inspect the exported JSON to compare human labels against judge results:
@@ -775,7 +775,7 @@ Refine rubric wording until agreement is >90%.
 Run against holdout examples (that you never tuned on) to check for overfitting:
 
 ```bash
-npx promptfoo eval -c eval/promptfooconfig.yaml --filter-metadata split=holdout -o holdout-results.json --no-cache
+npx artef eval -c eval/artefconfig.yaml --filter-metadata split=holdout -o holdout-results.json --no-cache
 ```
 
 If holdout agreement is significantly lower than development agreement, your rubric is overfit.
@@ -1056,10 +1056,10 @@ tests:
 ```
 
 ```bash
-npx promptfoo eval --filter-metadata risk=high --grader openai:responses:gpt-5.4 --no-cache
+npx artef eval --filter-metadata risk=high --grader openai:responses:gpt-5.4 --no-cache
 ```
 
-## Promptfoo's model-graded assertions
+## artef's model-graded assertions
 
 | Type                                                                                                 | Purpose                                           | Default model               |
 | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------- |
@@ -1081,7 +1081,7 @@ npx promptfoo eval --filter-metadata risk=high --grader openai:responses:gpt-5.4
 ### CI integration
 
 ```yaml title=".github/workflows/eval.yml"
-name: promptfoo eval
+name: artef eval
 
 on:
   pull_request:
@@ -1095,10 +1095,10 @@ jobs:
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: '24'
-      - uses: promptfoo/promptfoo-action@v1
+      - uses: artef/artef-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          config: promptfooconfig.yaml
+          config: artefconfig.yaml
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
@@ -1106,11 +1106,11 @@ jobs:
 ### Caching
 
 ```bash
-npx promptfoo eval              # Uses cached provider responses
-npx promptfoo eval --no-cache   # Fresh provider responses for development
+npx artef eval              # Uses cached provider responses
+npx artef eval --no-cache   # Fresh provider responses for development
 ```
 
-Cache location: `~/.promptfoo/cache`. See [caching docs](/docs/configuration/caching) for cache
+Cache location: `~/.artef/cache`. See [caching docs](/docs/configuration/caching) for cache
 paths, TTLs, and explicit cache clearing.
 
 ### Grader model selection
@@ -1124,7 +1124,7 @@ paths, TTLs, and explicit cache clearing.
 Override via CLI:
 
 ```bash
-npx promptfoo eval --grader openai:responses:gpt-5-mini
+npx artef eval --grader openai:responses:gpt-5-mini
 ```
 
 ## Debugging judges
@@ -1132,7 +1132,7 @@ npx promptfoo eval --grader openai:responses:gpt-5-mini
 When scores seem wrong:
 
 1. **Check the reason**: The judge returns a `reason` field explaining its decision
-2. **View in UI**: Run `npx promptfoo view` and click into failed tests
+2. **View in UI**: Run `npx artef view` and click into failed tests
 3. **Test obvious cases**: Create clear pass/fail examples to verify judge behavior
 4. **Check for injection**: If scores are unexpectedly high, inspect the output for manipulation attempts
 5. **Check thinking output**: For OpenAI-compatible local judges, set `showThinking: false` if reasoning text appears before the final verdict
@@ -1171,7 +1171,7 @@ Write more specific rubrics—ambiguity is the main cause of variance. Use low-p
 
 Use [`conversation-relevance`](/docs/configuration/expected-outputs/model-graded/conversation-relevance) or pass the conversation history as a variable in your rubric.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{_conversation}}'
 
@@ -1195,7 +1195,7 @@ tests:
 
 ## Further reading
 
-**Promptfoo docs:**
+**artef docs:**
 
 - [llm-rubric configuration](/docs/configuration/expected-outputs/model-graded/llm-rubric)
 - [Model-graded metrics reference](/docs/configuration/expected-outputs/model-graded/)

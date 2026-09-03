@@ -1,4 +1,4 @@
-import { promisify } from 'util';
+﻿import { promisify } from 'util';
 import { gzip } from 'zlib';
 
 import { CONSENT_ENDPOINT, EVENTS_ENDPOINT, R_ENDPOINT } from '../../constants';
@@ -10,7 +10,7 @@ import type { FetchOptions } from './types';
 
 const gzipAsync = promisify(gzip);
 
-export const PROMPTFOO_TEAM_ID_HEADER = 'x-promptfoo-team-id';
+export const artef_TEAM_ID_HEADER = 'x-artef-team-id';
 
 function isConnectionError(error: Error) {
   return (
@@ -55,7 +55,7 @@ function getSafeProxyForConnectionLog(): string {
 }
 
 /**
- * Returns true when `url` targets the configured Promptfoo Cloud origin: the public
+ * Returns true when `url` targets the configured artef Cloud origin: the public
  * cloud host by default, or the on-prem host when one is configured via
  * `cloudConfig.getApiHost()`. Matching is scheme+host+port exact (`URL.origin`), so
  * look-alike hosts, HTTP downgrades, and different ports never match. Matching is
@@ -64,7 +64,7 @@ function getSafeProxyForConnectionLog(): string {
  * (returns false) when either URL is unparseable, so a misconfigured host never leaks
  * the token.
  */
-export function isPromptfooCloudApiHost(url: string | URL | Request): boolean {
+export function isartefCloudApiHost(url: string | URL | Request): boolean {
   try {
     const targetUrl = url instanceof Request ? url.url : url.toString();
     return new URL(targetUrl).origin === new URL(cloudConfig.getApiHost()).origin;
@@ -76,28 +76,28 @@ export function isPromptfooCloudApiHost(url: string | URL | Request): boolean {
 /**
  * Resolves the header name used to carry the Cloud API credential (defaults to
  * `Authorization`, but may be configured to a different name via
- * `promptfoo auth login --auth-header-name` or `PROMPTFOO_CLOUD_AUTH_HEADER`).
+ * `artef auth login --auth-header-name` or `artef_CLOUD_AUTH_HEADER`).
  */
 export function getCloudAuthHeaderName(): string {
   return cloudConfig.getAuthHeaderName();
 }
 
 /**
- * Resolves the auth header value for a request to the configured Promptfoo
+ * Resolves the auth header value for a request to the configured artef
  * Cloud origin, or `undefined` when the request is not cloud-bound or no API key is
  * saved. Centralizing this keeps the live request (`monkeyPatchFetch`) and the cache
  * key (`getHeadersForCacheKey` in cache.ts) in lockstep.
  */
 export function getCloudBearerToken(url: string | URL | Request): string | undefined {
-  if (!isPromptfooCloudApiHost(url)) {
+  if (!isartefCloudApiHost(url)) {
     return undefined;
   }
   const token = cloudConfig.getApiKey();
   return token ? `Bearer ${token}` : undefined;
 }
 
-function isPromptfooCloudTaskUrl(url: string | URL | Request): boolean {
-  if (!isPromptfooCloudApiHost(url)) {
+function isartefCloudTaskUrl(url: string | URL | Request): boolean {
+  if (!isartefCloudApiHost(url)) {
     return false;
   }
 
@@ -112,7 +112,7 @@ function isPromptfooCloudTaskUrl(url: string | URL | Request): boolean {
 
 /** Returns the persisted CLI team for authenticated Cloud task requests. */
 export function getCloudTaskTeamId(url: string | URL | Request): string | undefined {
-  if (!isPromptfooCloudTaskUrl(url)) {
+  if (!isartefCloudTaskUrl(url)) {
     return undefined;
   }
 
@@ -163,7 +163,7 @@ export async function monkeyPatchFetch(
   const NO_LOG_URLS = [R_ENDPOINT, CONSENT_ENDPOINT, EVENTS_ENDPOINT];
   const urlString = getRequestUrlString(url);
   const callerHeaders = getEffectiveHeaders(url, options?.headers);
-  const isSilent = new Headers(callerHeaders).get('x-promptfoo-silent') === 'true';
+  const isSilent = new Headers(callerHeaders).get('x-artef-silent') === 'true';
   const logEnabled = !NO_LOG_URLS.some((logUrl) => matchesNoLogUrl(urlString, logUrl)) && !isSilent;
 
   const opts: RequestInit = {
@@ -187,7 +187,7 @@ export async function monkeyPatchFetch(
   // override an auth header the caller set explicitly — token validation/rotation
   // sends the token being validated, not the saved one. The header name itself may
   // be configured to something other than `Authorization` via
-  // `promptfoo auth login --auth-header-name` or PROMPTFOO_CLOUD_AUTH_HEADER.
+  // `artef auth login --auth-header-name` or artef_CLOUD_AUTH_HEADER.
   // Only resolve the header name once we know a credential will actually be
   // injected, so non-cloud-bound requests never depend on `getAuthHeaderName`.
   // Callers validating/rotating a not-yet-saved credential under a header name
@@ -206,8 +206,8 @@ export async function monkeyPatchFetch(
 
     const cloudTaskTeamId = getCloudTaskTeamId(url);
     const headersWithAuth = getEffectiveHeaders(url, opts.headers);
-    if (cloudTaskTeamId && !hasHeader(headersWithAuth, PROMPTFOO_TEAM_ID_HEADER)) {
-      opts.headers = setHeader(headersWithAuth, PROMPTFOO_TEAM_ID_HEADER, cloudTaskTeamId);
+    if (cloudTaskTeamId && !hasHeader(headersWithAuth, artef_TEAM_ID_HEADER)) {
+      opts.headers = setHeader(headersWithAuth, artef_TEAM_ID_HEADER, cloudTaskTeamId);
     }
   }
   try {

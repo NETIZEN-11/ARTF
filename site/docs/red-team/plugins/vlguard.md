@@ -1,4 +1,4 @@
----
+﻿---
 title: VLGuard
 description: Test multi-modal models with potentially unsafe imagery from the VLGuard dataset to evaluate content moderation capabilities
 keywords: [red team, multi-modal, image, safety, content moderation, unsafe content, vlguard]
@@ -25,7 +25,7 @@ export HF_TOKEN=your_huggingface_token  # or HF_API_TOKEN
 
 2. Enable the plugin in your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - vlguard # Use all categories
@@ -123,7 +123,7 @@ Create a JSON prompt file to properly handle images:
 
 Reference this JSON prompt in your complete configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://image-prompt.json
 

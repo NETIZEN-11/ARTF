@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How to Red Team a LangChain Application: Complete Security Testing Guide'
 description: 'LangChain apps combine multiple AI components, creating complex attack surfaces. Learn how to red team agents, chains, and tool integrations systematically.'
 image: /img/blog/langchain/red-team-langchain-banner.jpg
@@ -19,7 +19,7 @@ tags: [technical-guide, red-teaming]
 
 # How to Red Team a LangChain Application
 
-Want to test your LangChain application for vulnerabilities? This guide shows you how to use [Promptfoo](https://github.com/promptfoo/promptfoo) to systematically probe for security issues through adversarial testing (red teaming) of your LangChain chains and agents.
+Want to test your LangChain application for vulnerabilities? This guide shows you how to use [artef](https://github.com/artef/artef) to systematically probe for security issues through adversarial testing (red teaming) of your LangChain chains and agents.
 
 You'll learn how to use adversarial LLM models to test your LangChain application's security mechanisms and identify potential vulnerabilities in your chains.
 
@@ -43,7 +43,7 @@ Before you begin, ensure you have the following:
 
 - **Python**: Python 3.8 or later
 - **Node.js `>=22.22.0`** (Node.js 24 LTS recommended)
-- **Promptfoo**: No prior installation needed; we'll use `npx`
+- **artef**: No prior installation needed; we'll use `npx`
 - **LangChain**: Install via pip: `pip install langchain`
 - **API Keys**: For your LLM provider (e.g., OpenAI, Anthropic)
 
@@ -122,15 +122,15 @@ def call_api(prompt, options, context):
         }
 ```
 
-For a full end-to-end red team configuration example, see [Github](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-langchain).
+For a full end-to-end red team configuration example, see [Github](https://github.com/artef/artef/tree/main/examples/redteam-langchain).
 
 ## Understanding Plugins and Strategies
 
-Promptfoo's red teaming system is built around the concept of [plugins](/docs/red-team/plugins/) and [strategies](/docs/red-team/strategies/).
+artef's red teaming system is built around the concept of [plugins](/docs/red-team/plugins/) and [strategies](/docs/red-team/strategies/).
 
 ### What are Plugins?
 
-Plugins are Promptfoo's modular system for testing specific types of risks and vulnerabilities in your LangChain application. Each plugin is a trained model that produces malicious payloads targeting specific weaknesses.
+Plugins are artef's modular system for testing specific types of risks and vulnerabilities in your LangChain application. Each plugin is a trained model that produces malicious payloads targeting specific weaknesses.
 
 See the [full plugins documentation](/docs/red-team/plugins/) for details.
 
@@ -141,7 +141,7 @@ Plugins are organized into categories:
 - **Access Control**: Tests for RBAC and authorization issues
 - **Business Logic**: Tests for competitor mentions, excessive agency, etc.
 
-You can also create [custom policies](/docs/red-team/plugins/policy/) or upload your own [promptfoo plugins](/docs/red-team/plugins/custom/) to test specific business requirements or regulatory compliance.
+You can also create [custom policies](/docs/red-team/plugins/policy/) or upload your own [artef plugins](/docs/red-team/plugins/custom/) to test specific business requirements or regulatory compliance.
 
 ### What are Strategies?
 
@@ -157,7 +157,7 @@ For a complete list of vulnerabilities that can be tested, see our [LLM vulnerab
 
 ## Define the Red Teaming Configuration
 
-Next, configure your red teaming setup in `promptfooconfig.yaml`.
+Next, configure your red teaming setup in `artefconfig.yaml`.
 
 ```yaml
 targets:
@@ -191,7 +191,7 @@ redteam:
 The `redteam run` command will generate and run adversarial test cases that are customized to your application:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 This can take a few minutes to complete, depending on how many plugins and strategies you have configured.
@@ -201,7 +201,7 @@ This can take a few minutes to complete, depending on how many plugins and strat
 Generate a comprehensive report:
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 You'll see a report like this:
@@ -229,13 +229,13 @@ Common mitigations for LangChain applications include:
 After implementing fixes, rerun the evaluation:
 
 ```bash
-npx promptfoo@latest redteam run
-npx promptfoo@latest redteam report
+npx artef@latest redteam run
+npx artef@latest redteam report
 ```
 
 ## Additional Resources
 
-- [Promptfoo Red Team Guide](/docs/red-team/quickstart/)
+- [artef Red Team Guide](/docs/red-team/quickstart/)
 - [Python Provider Documentation](/docs/providers/python/)
 - [LLM Vulnerability Types](/docs/red-team/llm-vulnerability-types/)
 - [LangChain Documentation](https://python.langchain.com/docs/tutorials/)

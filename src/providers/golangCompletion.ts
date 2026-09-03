@@ -1,4 +1,4 @@
-import { execFile } from 'child_process';
+﻿import { execFile } from 'child_process';
 import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
@@ -146,7 +146,7 @@ export class GolangProvider implements ApiProvider {
             throw new Error('Could not determine Go provider import path');
           }
 
-          buildDir = await fs.mkdtemp(path.join(tempDir, '.promptfoo-wrapper-'));
+          buildDir = await fs.mkdtemp(path.join(tempDir, '.artef-wrapper-'));
           await fs.writeFile(
             path.join(buildDir, 'provider.go'),
             `package main\n\nimport provider ${JSON.stringify(packageInfo.ImportPath)}\n\nvar CallApi = provider.CallApi\n`,

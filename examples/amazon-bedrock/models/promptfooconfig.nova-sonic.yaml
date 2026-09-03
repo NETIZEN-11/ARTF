@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Amazon Bedrock Nova Sonic with a conversation
 
 providers:
@@ -37,7 +37,7 @@ defaultTest:
     type: text
     conversationId: date_thread
 
-# The conversationId is a special metadata field that promptfoo uses to maintain conversation history between tests.
+# The conversationId is a special metadata field that artef uses to maintain conversation history between tests.
 # When multiple tests share the same conversationId (like "date_thread" here), each test's response is added to the
 # conversation history, allowing the model to reference previous exchanges. This enables testing of multi-turn
 # conversations where context from earlier interactions affects later responses.

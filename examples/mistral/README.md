@@ -1,11 +1,11 @@
-# mistral (Mistral AI Chat Models)
+﻿# mistral (Mistral AI Chat Models)
 
 This example demonstrates Mistral AI's chat models, including Magistral reasoning models, current multimodal models, and shows how to use Mistral models for evaluation grading and embeddings.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example mistral
+npx artef@latest init --example mistral
 cd mistral
 ```
 
@@ -58,15 +58,15 @@ This example requires:
 export MISTRAL_API_KEY=your_api_key_here
 
 # Run the evaluation
-promptfoo eval
+artef eval
 
 # View results in the web UI
-promptfoo view
+artef view
 ```
 
 ## Configuration Highlights
 
-This example showcases several advanced promptfoo features:
+This example showcases several advanced artef features:
 
 - **Provider overrides** for grading and embeddings
 - **Multiple assertion types** including llm-rubric and similarity
@@ -81,27 +81,27 @@ This example includes multiple configuration files for different use cases:
 
 ### Mathematical Reasoning
 
-- **`promptfooconfig.aime2024.yaml`** - Advanced mathematical competition problems (AIME2024 dataset)
-- **`promptfooconfig.reasoning.yaml`** - Step-by-step logical problem solving
+- **`artefconfig.aime2024.yaml`** - Advanced mathematical competition problems (AIME2024 dataset)
+- **`artefconfig.reasoning.yaml`** - Step-by-step logical problem solving
 
 ### Model Capabilities
 
-- **`promptfooconfig.comparison.yaml`** - Compare reasoning across all Mistral models
-- **`promptfooconfig.code-generation.yaml`** - Multi-language programming with Codestral
-- **`promptfooconfig.multimodal.yaml`** - Vision and text processing with current Mistral multimodal models
+- **`artefconfig.comparison.yaml`** - Compare reasoning across all Mistral models
+- **`artefconfig.code-generation.yaml`** - Multi-language programming with Codestral
+- **`artefconfig.multimodal.yaml`** - Vision and text processing with current Mistral multimodal models
 
 ### Advanced Features
 
-- **`promptfooconfig.tool-use.yaml`** - Function calling and tool integration
-- **`promptfooconfig.tool-routing.yaml`** - End-to-end QA for tool-only, mixed content+tool_calls, file-based tools, and plain chat output
-- **`promptfooconfig.json-mode.yaml`** - Structured JSON output generation
-- **`promptfooconfig.yaml`** - Main example with evaluation using Mistral models
+- **`artefconfig.tool-use.yaml`** - Function calling and tool integration
+- **`artefconfig.tool-routing.yaml`** - End-to-end QA for tool-only, mixed content+tool_calls, file-based tools, and plain chat output
+- **`artefconfig.json-mode.yaml`** - Structured JSON output generation
+- **`artefconfig.yaml`** - Main example with evaluation using Mistral models
 
 Run any specific configuration:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.aime2024.yaml  # Mathematical reasoning
-npx promptfoo@latest eval -c promptfooconfig.comparison.yaml  # Model comparison
+npx artef@latest eval -c artefconfig.aime2024.yaml  # Mathematical reasoning
+npx artef@latest eval -c artefconfig.comparison.yaml  # Model comparison
 ```
 
 ## Additional Resources

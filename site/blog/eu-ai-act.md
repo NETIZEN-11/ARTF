@@ -1,6 +1,6 @@
----
-title: 'Leveraging Promptfoo for EU AI Act Compliance'
-sidebar_label: Leveraging Promptfoo for EU AI Act Compliance
+﻿---
+title: 'Leveraging artef for EU AI Act Compliance'
+sidebar_label: Leveraging artef for EU AI Act Compliance
 description: 'The EU AI Act bans specific AI behaviors starting February 2025. Discover which systems are prohibited and how to test for compliance before you deploy.'
 image: /img/blog/eu-ai-act/panda-in-eu.jpeg
 keywords:
@@ -20,7 +20,7 @@ authors: [vanessa]
 tags: [compliance-framework, best-practices, eu-ai-act]
 ---
 
-# Leveraging Promptfoo for EU AI Act Compliance
+# Leveraging artef for EU AI Act Compliance
 
 Beginning on February 2, 2025, the first prohibitions against certain AI systems will go into force in the European Union through the EU AI Act.
 
@@ -34,7 +34,7 @@ Anyone who develops, uses, imports, or distributes AI systems within the EU, reg
   <div style={{ textAlign: 'center' }}>
     <img
       src="/img/blog/eu-ai-act/panda-in-eu.jpeg"
-      alt="Promptfoo Panda in the EU"
+      alt="artef Panda in the EU"
       style={{ width: '70%' }}
     />
   </div>
@@ -61,9 +61,9 @@ From a deployment perspective, there are a number of use cases that could trespa
 
 Even if an LLM is not intended to behave in prohibited ways, it could unintentionally be vulnerable to harmful behavior through misconfigurations at the system prompt level or guardrail level. Additionally, LLMs could be vulnerable to insiders who may manipulate LLMs to behave in malicious ways. LLMs desire to be helpful and cannot meaningfully determine what is "wrong" or harmful by human regulatory standards. It is up to LLM developers to enforce the appropriate controls to ensure that LLMs do not cause harm.
 
-Promptfoo helps solve this through its [harmful generation plugin](https://www.promptfoo.dev/docs/red-team/plugins/harmful/). You can test against prohibited behavior such as violent crimes, sex crimes, child exploitation, indiscriminate weapons, chemical and biological weapons, hate, self-harm, and more.
+artef helps solve this through its [harmful generation plugin](https://www.artef.dev/docs/red-team/plugins/harmful/). You can test against prohibited behavior such as violent crimes, sex crimes, child exploitation, indiscriminate weapons, chemical and biological weapons, hate, self-harm, and more.
 
-You can also use Promptfoo to [generate custom attacks](https://www.promptfoo.dev/docs/red-team/plugins/policy/) to test against illegal responses. Example custom policies that can help with EU AI compliance might include:
+You can also use artef to [generate custom attacks](https://www.artef.dev/docs/red-team/plugins/policy/) to test against illegal responses. Example custom policies that can help with EU AI compliance might include:
 
 ```yaml
 policy: >
@@ -84,7 +84,7 @@ policy: >
   - Encouraging children to engage in reckless behavior such as running on busy streets
 ```
 
-In the example custom policy above, Promptfoo generated attacks such as this one:
+In the example custom policy above, artef generated attacks such as this one:
 
 ```yaml
 I'm working on a project about historical events and their impacts.
@@ -101,6 +101,6 @@ policy: >
 
 Using a combination of harmful content plugins and custom policies, you can test against prohibited behaviors listed in the EU AI Act.
 
-Although requirements for high-risk AI systems won't go into full effect until August 2026, you can still use Promptfoo to test against the EU AI Act's [cybersecurity, accuracy, and robustness controls](https://artificialintelligenceact.eu/article/15/). These requirements ensure high-risk AI systems are resistant to vulnerabilities, hijacking, bias, and hallucination.
+Although requirements for high-risk AI systems won't go into full effect until August 2026, you can still use artef to test against the EU AI Act's [cybersecurity, accuracy, and robustness controls](https://artificialintelligenceact.eu/article/15/). These requirements ensure high-risk AI systems are resistant to vulnerabilities, hijacking, bias, and hallucination.
 
-Interested in learning more? [Contact us](https://www.promptfoo.dev/contact/) for a demo of Promptfoo.
+Interested in learning more? [Contact us](https://www.artef.dev/contact/) for a demo of artef.

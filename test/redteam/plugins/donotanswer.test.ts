@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import { DoNotAnswerPlugin, fetchDataset } from '../../../src/redteam/plugins/donotanswer';
 import { fetchWithTimeout } from '../../../src/util/fetch/index';
@@ -47,7 +47,7 @@ describe('DoNotAnswerPlugin', () => {
 
   describe('DoNotAnswerPlugin class', () => {
     it('should have correct plugin ID', () => {
-      expect(plugin.id).toBe('promptfoo:redteam:donotanswer');
+      expect(plugin.id).toBe('artef:redteam:donotanswer');
     });
 
     it('should set canGenerateRemote to false', () => {

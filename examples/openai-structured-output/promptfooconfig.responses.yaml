@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'OpenAI Responses API with External Schema File Example'
 prompts:
   - 'Analyze the following customer support query: "{{query}}" and respond with structured JSON data.'

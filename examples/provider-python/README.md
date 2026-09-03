@@ -1,17 +1,17 @@
-# provider-python (Python Provider)
+﻿# provider-python (Python Provider)
 
-This example demonstrates how to create a custom Python provider for promptfoo that integrates with the OpenAI API.
+This example demonstrates how to create a custom Python provider for artef that integrates with the OpenAI API.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-python
+npx artef@latest init --example provider-python
 cd provider-python
 ```
 
 ## Overview
 
-The Python provider allows you to use Python code as a provider in promptfoo evaluations. This is useful when you need to:
+The Python provider allows you to use Python code as a provider in artef evaluations. This is useful when you need to:
 
 1. Call APIs from Python libraries
 2. Implement custom logic before or after calling LLMs
@@ -33,7 +33,7 @@ You can set this in a `.env` file or directly in your environment.
 ## Files
 
 - `provider.py` - The Python provider implementation that calls OpenAI's API
-- `promptfooconfig.yaml` - Configuration for promptfoo evaluation with proper YAML schema reference
+- `artefconfig.yaml` - Configuration for artef evaluation with proper YAML schema reference
 - `configs/` directory:
   - `fileConfig.yaml` - YAML configuration for model settings
   - `fileConfig.js` - JavaScript configuration for formatting options
@@ -60,7 +60,7 @@ When you run this example, you'll see:
 
 ## File Reference Configuration
 
-The example demonstrates how to load configuration values from external files using the `file://` protocol directly in the `promptfooconfig.yaml` file. It shows three main file types:
+The example demonstrates how to load configuration values from external files using the `file://` protocol directly in the `artefconfig.yaml` file. It shows three main file types:
 
 1. **YAML file** (`configs/fileConfig.yaml`): Contains model settings like temperature and max tokens
 2. **JavaScript file** (`configs/fileConfig.js`): Provides formatting options through a function export
@@ -74,7 +74,7 @@ The provider supports loading from:
 - Python files (`.py`)
 - Text files (`.txt`, `.md`)
 
-You can see how this works in the `promptfooconfig.yaml` file:
+You can see how this works in the `artefconfig.yaml` file:
 
 ```yaml
 providers:
@@ -91,9 +91,9 @@ providers:
 Run the example with:
 
 ```bash
-npx promptfoo@latest evaluate -c examples/provider-python/promptfooconfig.yaml
+npx artef@latest evaluate -c examples/provider-python/artefconfig.yaml
 ```
 
 ## Learn More
 
-For more information on creating custom providers, see the [promptfoo documentation](https://promptfoo.dev/docs/providers/python/).
+For more information on creating custom providers, see the [artef documentation](https://artef.dev/docs/providers/python/).

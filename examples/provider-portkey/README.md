@@ -1,9 +1,9 @@
-# provider-portkey (Portkey Test)
+﻿# provider-portkey (Portkey Test)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-portkey
+npx artef@latest init --example provider-portkey
 cd provider-portkey
 ```
 
@@ -15,7 +15,7 @@ There are two examples:
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

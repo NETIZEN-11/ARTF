@@ -1,5 +1,5 @@
----
-displayed_sidebar: promptfoo
+﻿---
+displayed_sidebar: artef
 sidebar_label: HuggingFace Datasets
 title: Loading Test Cases from HuggingFace Datasets
 description: Load HuggingFace datasets directly for LLM evaluation with automatic splits, filtering, and format conversion capabilities
@@ -8,7 +8,7 @@ keywords:
     huggingface datasets,
     test cases,
     dataset integration,
-    promptfoo datasets,
+    artef datasets,
     ml evaluation,
     dataset import,
     existing datasets,
@@ -19,7 +19,7 @@ pagination_next: configuration/scenarios
 
 # HuggingFace Datasets
 
-Promptfoo can import test cases directly from [HuggingFace datasets](https://huggingface.co/docs/datasets) using the `huggingface://datasets/` prefix.
+artef can import test cases directly from [HuggingFace datasets](https://huggingface.co/docs/datasets) using the `huggingface://datasets/` prefix.
 
 ## Basic usage
 
@@ -32,7 +32,7 @@ tests: huggingface://datasets/fka/awesome-chatgpt-prompts
 Run the evaluation:
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
 Each dataset row becomes a test case with all dataset fields available as variables.
@@ -53,7 +53,7 @@ tests: huggingface://datasets/fka/awesome-chatgpt-prompts?split=validation&confi
 
 Dataset fields automatically become prompt variables. Here's how:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - "Question: {{question}}\nAnswer:"
 
@@ -109,7 +109,7 @@ Authentication is required for private datasets and gated models. For public dat
 
 ### Basic chatbot evaluation
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Testing with HuggingFace dataset
 
 prompts:
@@ -123,7 +123,7 @@ tests: huggingface://datasets/fka/awesome-chatgpt-prompts?split=train
 
 ### Question answering with limits
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: SQUAD evaluation with authentication
 
 prompts:
@@ -142,9 +142,9 @@ env:
 
 | Example                                                                                                           | Use Case          | Key Features         |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------- | -------------------- |
-| [Basic Setup](https://github.com/promptfoo/promptfoo/tree/main/examples/huggingface/dataset)                      | Simple evaluation | Default parameters   |
-| [MMLU-Pro Comparison](https://github.com/promptfoo/promptfoo/tree/main/examples/compare-gpt-model-tiers-mmlu-pro) | Query parameters  | Split, config, limit |
-| [Red Team Safety](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-beavertails)                  | Safety testing    | BeaverTails dataset  |
+| [Basic Setup](https://github.com/artef/artef/tree/main/examples/huggingface/dataset)                      | Simple evaluation | Default parameters   |
+| [MMLU-Pro Comparison](https://github.com/artef/artef/tree/main/examples/compare-gpt-model-tiers-mmlu-pro) | Query parameters  | Split, config, limit |
+| [Red Team Safety](https://github.com/artef/artef/tree/main/examples/redteam-beavertails)                  | Safety testing    | BeaverTails dataset  |
 
 ## Troubleshooting
 

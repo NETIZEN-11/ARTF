@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Langfuse
-description: Integrate Langfuse prompts with Promptfoo for LLM testing. Configure version control, labels, and collaborative prompt management using environment variables and SDK setup.
+description: Integrate Langfuse prompts with artef for LLM testing. Configure version control, labels, and collaborative prompt management using environment variables and SDK setup.
 ---
 
 # Langfuse integration
@@ -24,7 +24,7 @@ description: Integrate Langfuse prompts with Promptfoo for LLM testing. Configur
 
 ## Using Langfuse prompts
 
-Use the `langfuse://` prefix in your promptfoo configuration to reference prompts managed in Langfuse.
+Use the `langfuse://` prefix in your artef configuration to reference prompts managed in Langfuse.
 
 To retrieve application traces from Langfuse during evals, configure the [`langfuse` external trace provider](/docs/tracing/#langfuse). Trace retrieval uses Langfuse's public API directly and does not require installing the Langfuse client SDK.
 
@@ -91,13 +91,13 @@ tests:
 
 ### Variable substitution
 
-Variables from your promptfoo test cases are automatically passed to Langfuse prompts. If your Langfuse prompt contains variables like `{{user_query}}` or `{{context}}`, they will be replaced with the corresponding values from your test cases.
+Variables from your artef test cases are automatically passed to Langfuse prompts. If your Langfuse prompt contains variables like `{{user_query}}` or `{{context}}`, they will be replaced with the corresponding values from your test cases.
 
 ### Label-based deployment
 
 Using labels is recommended for production scenarios as it allows you to:
 
-- Deploy new prompt versions without changing your promptfoo configuration
+- Deploy new prompt versions without changing your artef configuration
 - Use different prompts for different environments (production, staging, development)
 - A/B test different prompt versions
 - Roll back to previous versions quickly in Langfuse
@@ -115,7 +115,7 @@ Common label patterns:
 1. **Use labels instead of version numbers** for production deployments to avoid hardcoding version numbers in your config
 2. **Use descriptive prompt names** that clearly indicate their purpose
 3. **Test prompts in staging** before promoting them to production
-4. **Version control your promptfoo configs** even though prompts are managed in Langfuse
+4. **Version control your artef configs** even though prompts are managed in Langfuse
 
 ### Limitations
 

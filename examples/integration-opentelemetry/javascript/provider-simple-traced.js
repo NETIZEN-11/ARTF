@@ -1,4 +1,4 @@
-// provider-simple-traced.js
+﻿// provider-simple-traced.js
 // RAG/Agent provider with intricate OpenTelemetry tracing
 
 const { trace, context, SpanStatusCode } = require('@opentelemetry/api');
@@ -82,17 +82,17 @@ class SimpleTracedProvider {
     return 'simple-traced-provider';
   }
 
-  async callApi(prompt, promptfooContext) {
+  async callApi(prompt, artefContext) {
     console.log('[Provider] Called with:', {
-      traceparent: promptfooContext?.traceparent,
-      evaluationId: promptfooContext?.evaluationId,
-      testCaseId: promptfooContext?.testCaseId,
+      traceparent: artefContext?.traceparent,
+      evaluationId: artefContext?.evaluationId,
+      testCaseId: artefContext?.testCaseId,
     });
 
-    // Check if we have trace context from Promptfoo
-    if (promptfooContext?.traceparent) {
+    // Check if we have trace context from artef
+    if (artefContext?.traceparent) {
       // Parse W3C trace context
-      const matches = promptfooContext.traceparent.match(
+      const matches = artefContext.traceparent.match(
         /^(\d{2})-([a-f0-9]{32})-([a-f0-9]{16})-(\d{2})$/,
       );
 
@@ -100,7 +100,7 @@ class SimpleTracedProvider {
         const [, _version, traceId, parentId, traceFlags] = matches;
         console.log('[Provider] Using trace context:', { traceId, parentId });
 
-        // Create parent context from Promptfoo's trace
+        // Create parent context from artef's trace
         const parentCtx = trace.setSpanContext(context.active(), {
           traceId,
           spanId: parentId,
@@ -109,21 +109,21 @@ class SimpleTracedProvider {
         });
 
         // Run our operations within the parent context
-        return context.with(parentCtx, () => this._tracedCallApi(prompt, promptfooContext));
+        return context.with(parentCtx, () => this._tracedCallApi(prompt, artefContext));
       }
     }
 
     console.log('[Provider] No trace context, running without tracing');
-    return this._untracedCallApi(prompt, promptfooContext);
+    return this._untracedCallApi(prompt, artefContext);
   }
 
-  async _tracedCallApi(prompt, promptfooContext) {
+  async _tracedCallApi(prompt, artefContext) {
     // Use the improved runInSpan for the main workflow
     return runInSpan(
       'rag_agent_workflow',
       {
-        'promptfoo.evaluation_id': promptfooContext.evaluationId,
-        'promptfoo.test_case_id': promptfooContext.testCaseId,
+        'artef.evaluation_id': artefContext.evaluationId,
+        'artef.test_case_id': artefContext.testCaseId,
         'prompt.text': prompt,
         'prompt.length': prompt.length,
         'agent.type': 'rag_assistant',
@@ -395,7 +395,7 @@ class SimpleTracedProvider {
     );
   }
 
-  async _untracedCallApi(prompt, promptfooContext) {
+  async _untracedCallApi(prompt, artefContext) {
     // Simple implementation without tracing
     await new Promise((resolve) => setTimeout(resolve, 100));
 

@@ -1,4 +1,4 @@
-import type { OpenAiSharedOptions } from './types';
+﻿import type { OpenAiSharedOptions } from './types';
 
 /**
  * Configuration options for the OpenAI ChatKit Provider
@@ -17,7 +17,7 @@ export interface OpenAiChatKitOptions extends OpenAiSharedOptions {
   /**
    * User identifier for the ChatKit session.
    * If not set, a unique ID with timestamp is generated.
-   * @default 'promptfoo-eval-<timestamp>'
+   * @default 'artef-eval-<timestamp>'
    */
   userId?: string;
 

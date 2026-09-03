@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Cloudera
 description: Configure Cloudera's OpenAI-compatible endpoints and Llama models for secure enterprise LLM testing with CDP authentication and custom namespace deployment
 ---
@@ -26,7 +26,7 @@ export CDP_TOKEN=your-token-here
 
 Here's a basic example of how to use the Cloudera provider:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: cloudera:your-model-name
     config:
@@ -83,7 +83,7 @@ The Cloudera provider is built on top of the OpenAI protocol, which means it sup
 
 Example chat conversation:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'You are a helpful assistant. Answer the following question: {{user_input}}'
 

@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
@@ -1736,7 +1736,7 @@ describe('OpenClaw Provider', () => {
       expect(agentReq.method).toBe('agent');
       expect(agentReq.params.message).toBe('Hello agent');
       expect(agentReq.params.agentId).toBe('main');
-      expect(agentReq.params.sessionKey).toMatch(/^promptfoo-[0-9a-f-]{36}$/);
+      expect(agentReq.params.sessionKey).toMatch(/^artef-[0-9a-f-]{36}$/);
 
       // Verify wait request
       expect(waitReq.method).toBe('agent.wait');
@@ -2152,7 +2152,7 @@ describe('OpenClaw Provider', () => {
       const { agentReq, waitReq } = simulateHandshake(onMessage);
 
       expect(agentReq.params.agentId).toBe('dev');
-      expect(agentReq.params.sessionKey).toMatch(/^agent:dev:promptfoo-[0-9a-f-]{36}$/);
+      expect(agentReq.params.sessionKey).toMatch(/^agent:dev:artef-[0-9a-f-]{36}$/);
 
       onMessage(
         Buffer.from(
@@ -2219,7 +2219,7 @@ describe('OpenClaw Provider', () => {
         config: {
           gateway_url: 'http://test:18789',
           auth_token: 'test-token',
-          device_family: 'promptfoo-e2e',
+          device_family: 'artef-e2e',
         },
       });
 
@@ -2227,10 +2227,10 @@ describe('OpenClaw Provider', () => {
       const onMessage = getMessageHandler();
       const { connectReq, waitReq } = simulateHandshake(onMessage);
 
-      expect(connectReq.params.client.deviceFamily).toBe('promptfoo-e2e');
+      expect(connectReq.params.client.deviceFamily).toBe('artef-e2e');
       expect(deviceAuthMocks.buildSignedOpenClawDevice).toHaveBeenCalledWith(
         expect.objectContaining({
-          deviceFamily: 'promptfoo-e2e',
+          deviceFamily: 'artef-e2e',
           token: 'test-token',
         }),
       );

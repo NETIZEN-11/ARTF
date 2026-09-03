@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Overview
 description: Red team LLM plugins by deploying trained adversarial models to detect vulnerabilities, prevent prompt injection attacks, and protect AI systems from malicious payloads
 ---
@@ -16,13 +16,13 @@ CATEGORY_DESCRIPTIONS,
 
 ## What are Plugins?
 
-Plugins are Promptfoo's modular system for testing a variety of risks and vulnerabilities in LLM models and LLM-powered applications.
+Plugins are artef's modular system for testing a variety of risks and vulnerabilities in LLM models and LLM-powered applications.
 
 Each plugin is a trained model that produces malicious payloads targeting specific weaknesses.
 
 ![Plugin Flow](/img/docs/plugin-flow.svg)
 
-Promptfoo supports {PLUGINS.length} plugins across {PLUGIN_CATEGORIES.length} categories: {humanReadableCategoryList.toLowerCase()}.
+artef supports {PLUGINS.length} plugins across {PLUGIN_CATEGORIES.length} categories: {humanReadableCategoryList.toLowerCase()}.
 
 <ul>
   {CATEGORY_DESCRIPTIONS.map((category) => {
@@ -34,7 +34,7 @@ Promptfoo supports {PLUGINS.length} plugins across {PLUGIN_CATEGORIES.length} ca
   })}
 </ul>
 
-Promptfoo also supports various risk management frameworks based on common security frameworks and standards.
+artef also supports various risk management frameworks based on common security frameworks and standards.
 
 | Framework                                                            | Plugin ID       | Example Specification      |
 | -------------------------------------------------------------------- | --------------- | -------------------------- |
@@ -45,7 +45,7 @@ Promptfoo also supports various risk management frameworks based on common secur
 | [**ISO/IEC 42001**](/docs/red-team/iso-42001/)                       | iso:42001       | iso:42001:privacy          |
 | [**Data Protection**](/docs/red-team/gdpr/)                          | gdpr            | gdpr:art5                  |
 | [**EU AI Act**](/docs/red-team/eu-ai-act/)                           | eu:ai-act       | eu:ai-act:art5             |
-| **Promptfoo Recommended**                                            | default         | default                    |
+| **artef Recommended**                                            | default         | default                    |
 
 ## Available Plugins
 
@@ -53,9 +53,9 @@ Click on a plugin to see its documentation.
 
 <PluginTable shouldGroupByCategory showRemoteStatus />
 
-_🌐 indicates that plugin uses remote inference in Promptfoo Community edition_
+_🌐 indicates that plugin uses remote inference in artef Community edition_
 
-Some plugins point to your own LLM provider to generate adversarial probes (like `policy` and `intent`), while others must point to Promptfoo's remote generation endpoint for specialized attack generation (like `harmful:*` and security-focused plugins).
+Some plugins point to your own LLM provider to generate adversarial probes (like `policy` and `intent`), while others must point to artef's remote generation endpoint for specialized attack generation (like `harmful:*` and security-focused plugins).
 
 ## How to Select Plugins
 
@@ -108,7 +108,7 @@ Memory poisoning attacks attempt to inject malicious instructions into an agent'
 
 ### Basic Usage
 
-Add plugins to your `promptfooconfig.yaml`:
+Add plugins to your `artefconfig.yaml`:
 
 ```yaml
 plugins:
@@ -249,7 +249,7 @@ plugins:
 
 ## Custom Business Logic
 
-Promptfoo also supports custom test cases to reflect more nuanced requirements, whether you have certain benchmarks you want to test against or have specific behavioral standards defined by your legal, compliance, marketing, or brand teams. This could include enforcing policies such as an AI code of conduct or preventing an LLM from responding in ways that might breach legal requirements, such as in the [EU AI Act](/blog/eu-ai-act/).
+artef also supports custom test cases to reflect more nuanced requirements, whether you have certain benchmarks you want to test against or have specific behavioral standards defined by your legal, compliance, marketing, or brand teams. This could include enforcing policies such as an AI code of conduct or preventing an LLM from responding in ways that might breach legal requirements, such as in the [EU AI Act](/blog/eu-ai-act/).
 
 ### Custom Policies
 
@@ -291,7 +291,7 @@ plugins:
 
 ### Custom prompts
 
-You can also include custom prompts using the [Intent (Custom Prompts) plugin](intent.md). Intents are seed prompts that Promptfoo turns into one base test case per prompt. Selected strategies can transform single-turn seeds, while nested arrays run as authored multi-step sequences.
+You can also include custom prompts using the [Intent (Custom Prompts) plugin](intent.md). Intents are seed prompts that artef turns into one base test case per prompt. Selected strategies can transform single-turn seeds, while nested arrays run as authored multi-step sequences.
 
 Unlike the policy plugin, which enforces guidelines, the intent plugin actively attempts to elicit particular (potentially undesirable) behaviors from the model.
 
@@ -335,7 +335,7 @@ The JSON file should look like:
 
 Note: Nested arrays create multi-step intents that are executed in sequence.
 
-Promptfoo expects a single-column CSV with a header, such as:
+artef expects a single-column CSV with a header, such as:
 
 | intent                                                                 |
 | ---------------------------------------------------------------------- |

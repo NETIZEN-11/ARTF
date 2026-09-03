@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -9,7 +9,7 @@ import styles from './blackhat-2026.module.css';
 
 const BOOTH = 'Booth #2967';
 const DESCRIPTION =
-  'Promptfoo demonstrated AI agent red teaming at OpenAI booth #2967 in the Black Hat Business Hall, August 4-6, 2026. Explore the demos and request a follow-up.';
+  'artef demonstrated AI agent red teaming at OpenAI booth #2967 in the Black Hat Business Hall, August 4-6, 2026. Explore the demos and request a follow-up.';
 
 /**
  * A single line of a rendered product artifact (transcript, grader output, CI
@@ -111,7 +111,7 @@ interface LineupEntry {
 
 /**
  * Describe each security product by what it tests. Daybreak includes Codex Security,
- * but Promptfoo should not be presented as a Daybreak product.
+ * but artef should not be presented as a Daybreak product.
  */
 const LINEUP: LineupEntry[] = [
   {
@@ -121,8 +121,8 @@ const LINEUP: LineupEntry[] = [
   },
   {
     input: 'your deployed agent',
-    title: 'Promptfoo',
-    body: 'We test the agent you actually ship for prompt injection, jailbreaks, tool misuse, and excessive agency. Codex Security checks the code; Promptfoo checks the agent.',
+    title: 'artef',
+    body: 'We test the agent you actually ship for prompt injection, jailbreaks, tool misuse, and excessive agency. Codex Security checks the code; artef checks the agent.',
   },
 ];
 
@@ -229,34 +229,34 @@ export default function BlackHat2026(): React.ReactElement {
   };
 
   return (
-    <Layout title="Promptfoo at Black Hat USA 2026" description={DESCRIPTION}>
+    <Layout title="artef at Black Hat USA 2026" description={DESCRIPTION}>
       <Head>
-        <meta property="og:title" content="Promptfoo at Black Hat USA 2026 | AI Security" />
+        <meta property="og:title" content="artef at Black Hat USA 2026 | AI Security" />
         <meta property="og:description" content={DESCRIPTION} />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/blackhat-2026.jpg"
+          content="https://www.artef.dev/img/events/blackhat-2026.jpg"
         />
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="1024" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/blackhat-2026" />
+        <meta property="og:url" content="https://www.artef.dev/events/blackhat-2026" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Promptfoo" />
+        <meta property="og:site_name" content="artef" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Promptfoo at Black Hat USA 2026 | AI Security" />
+        <meta name="twitter:title" content="artef at Black Hat USA 2026 | AI Security" />
         <meta name="twitter:description" content={DESCRIPTION} />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/blackhat-2026.jpg"
+          content="https://www.artef.dev/img/events/blackhat-2026.jpg"
         />
-        <meta name="twitter:site" content="@promptfoo" />
+        <meta name="twitter:site" content="@artef" />
 
         <meta
           name="keywords"
           content="Black Hat USA 2026, AI security, LLM security, prompt injection, jailbreaking, red teaming, agent security, AI vulnerability testing, OWASP LLM Top 10"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/blackhat-2026" />
+        <link rel="canonical" href="https://www.artef.dev/events/blackhat-2026" />
       </Head>
 
       <main className={styles.page}>
@@ -271,14 +271,14 @@ export default function BlackHat2026(): React.ReactElement {
                 <span className={styles.eyebrowDot} aria-hidden="true" />
                 Black Hat USA 2026 // Past event
               </p>
-              <p className={styles.identity}>Promptfoo at OpenAI booth #2967</p>
+              <p className={styles.identity}>artef at OpenAI booth #2967</p>
               <h1 className={styles.heroTitle}>
                 Break the agent.
                 <br />
                 <span className={styles.titleAccent}>Keep the evidence.</span>
               </h1>
               <p className={styles.heroSubtitle}>
-                Black Hat USA 2026 has ended. Promptfoo is part of OpenAI, and we demonstrated
+                Black Hat USA 2026 has ended. artef is part of OpenAI, and we demonstrated
                 attacks against real AI applications at OpenAI booth #2967. Explore the demos below,
                 or get in touch to test your own application.
               </p>
@@ -429,14 +429,14 @@ export default function BlackHat2026(): React.ReactElement {
               <h2 className={styles.sectionTitle}>The rest of the lineup</h2>
               <p className={styles.sectionSubtitle}>
                 Daybreak is OpenAI's broader cyber-defense initiative. Codex Security checks your
-                code, while Promptfoo tests the agent you ship.
+                code, while artef tests the agent you ship.
               </p>
             </div>
             <div className={styles.lineupFrame}>
               <p className={styles.lineupFrameLabel}>Daybreak</p>
               <p className={styles.lineupFrameBody}>
                 Daybreak brings together OpenAI models, Codex Security, and security partners to
-                help defenders find, verify, and fix vulnerabilities. Promptfoo complements that
+                help defenders find, verify, and fix vulnerabilities. artef complements that
                 work by testing deployed AI agents.
               </p>
               <div className={styles.lineupPair}>
@@ -519,14 +519,14 @@ export default function BlackHat2026(): React.ReactElement {
           <div className={styles.container}>
             <h2 className={styles.finalTitle}>Missed us at Black Hat?</h2>
             <p className={styles.finalCopy}>
-              The conference is over, but you can still see Promptfoo in action. Request a demo to
+              The conference is over, but you can still see artef in action. Request a demo to
               talk through your application.
             </p>
             <div className={styles.ctaButtons}>
               <Link to="/contact/" className={styles.primaryButton}>
                 Request a demo
               </Link>
-              <Link to="https://discord.gg/promptfoo" className={styles.secondaryButton}>
+              <Link to="https://discord.gg/artef" className={styles.secondaryButton}>
                 Join our Discord
               </Link>
             </div>

@@ -1,4 +1,4 @@
-import './setup';
+﻿import './setup';
 
 import { randomUUID } from 'crypto';
 
@@ -1053,7 +1053,7 @@ describeEvaluator('evaluator token usage', () => {
       prompts: [toPrompt('Test prompt')],
       tests: [
         {
-          assert: [{ type: 'promptfoo:redteam:harmful:hate' }],
+          assert: [{ type: 'artef:redteam:harmful:hate' }],
           metadata: { pluginId: 'harmful:hate', strategyId: 'jailbreak:hydra' },
         },
       ],

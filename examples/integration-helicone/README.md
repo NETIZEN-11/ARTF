@@ -1,13 +1,13 @@
-# integration-helicone (Helicone AI Gateway)
+﻿# integration-helicone (Helicone AI Gateway)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-helicone
+npx artef@latest init --example integration-helicone
 cd integration-helicone
 ```
 
-This example demonstrates how to use the Helicone AI Gateway provider in promptfoo to route requests through a self-hosted Helicone AI Gateway instance for unified provider access.
+This example demonstrates how to use the Helicone AI Gateway provider in artef to route requests through a self-hosted Helicone AI Gateway instance for unified provider access.
 
 ## What This Example Shows
 
@@ -45,9 +45,9 @@ This example demonstrates how to use the Helicone AI Gateway provider in promptf
 
    The gateway will start on `http://localhost:8080` by default.
 
-3. **Install promptfoo** (if you haven't already):
+3. **Install artef** (if you haven't already):
    ```bash
-   npm install -g promptfoo
+   npm install -g artef
    ```
 
 ## Running the Example
@@ -55,7 +55,7 @@ This example demonstrates how to use the Helicone AI Gateway provider in promptf
 From this directory, run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 This will:
@@ -70,7 +70,7 @@ This will:
 1. **Request Routing**: Each request is sent to the local Helicone AI Gateway at `http://localhost:8080`
 2. **Provider Selection**: The gateway routes each request to the appropriate provider (OpenAI, Anthropic, or Groq)
 3. **Unified Interface**: All providers use the same OpenAI-compatible request/response format
-4. **Response Comparison**: promptfoo compares the responses from each provider
+4. **Response Comparison**: artef compares the responses from each provider
 
 ## Gateway Features
 
@@ -167,14 +167,14 @@ providers:
 For detailed request logging:
 
 ```bash
-LOG_LEVEL=debug promptfoo eval
+LOG_LEVEL=debug artef eval
 ```
 
 ## Learn More
 
 - [Helicone Documentation](https://docs.helicone.ai/)
-- [promptfoo Helicone Provider Guide](/docs/providers/helicone/)
-- [promptfoo Documentation](https://promptfoo.dev/docs/)
+- [artef Helicone Provider Guide](/docs/providers/helicone/)
+- [artef Documentation](https://artef.dev/docs/)
 
 ## Next Steps
 

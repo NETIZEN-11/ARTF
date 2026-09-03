@@ -1,4 +1,4 @@
-import { getEnvBool, getEnvString } from '../envars';
+﻿import { getEnvBool, getEnvString } from '../envars';
 
 /**
  * Configuration for OpenTelemetry tracing.
@@ -9,7 +9,7 @@ export interface OtelConfig {
    */
   enabled: boolean;
   /**
-   * Service name to use in traces. Defaults to 'promptfoo'.
+   * Service name to use in traces. Defaults to 'artef'.
    */
   serviceName: string;
   /**
@@ -33,14 +33,14 @@ export interface OtelConfig {
  */
 export function getOtelConfigFromEnv(): OtelConfig {
   const endpoint =
-    getEnvString('PROMPTFOO_OTEL_ENDPOINT') || getEnvString('OTEL_EXPORTER_OTLP_ENDPOINT');
+    getEnvString('artef_OTEL_ENDPOINT') || getEnvString('OTEL_EXPORTER_OTLP_ENDPOINT');
 
   return {
-    enabled: getEnvBool('PROMPTFOO_OTEL_ENABLED', false),
-    serviceName: getEnvString('PROMPTFOO_OTEL_SERVICE_NAME', 'promptfoo'),
+    enabled: getEnvBool('artef_OTEL_ENABLED', false),
+    serviceName: getEnvString('artef_OTEL_SERVICE_NAME', 'artef'),
     endpoint: endpoint || undefined,
-    localExport: getEnvBool('PROMPTFOO_OTEL_LOCAL_EXPORT', true),
-    debug: getEnvBool('PROMPTFOO_OTEL_DEBUG', false),
+    localExport: getEnvBool('artef_OTEL_LOCAL_EXPORT', true),
+    debug: getEnvBool('artef_OTEL_DEBUG', false),
   };
 }
 

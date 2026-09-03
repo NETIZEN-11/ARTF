@@ -1,6 +1,6 @@
-# UI Guidelines
+﻿# UI Guidelines
 
-Rules for writing React components in the Promptfoo frontend.
+Rules for writing React components in the artef frontend.
 
 ## 1. Typography: Semantic HTML with Tailwind
 

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 31
 sidebar_label: Output Formats
 title: Output Formats - Results Export and Analysis
@@ -25,19 +25,19 @@ Save and analyze your evaluation results in various formats.
 
 ```bash
 # Interactive web viewer (default)
-promptfoo eval
+artef eval
 
 # Save as HTML report
-promptfoo eval --output results.html
+artef eval --output results.html
 
 # Export as JSON for further processing
-promptfoo eval --output results.json
+artef eval --output results.json
 
 # Create CSV for spreadsheet analysis
-promptfoo eval --output results.csv
+artef eval --output results.csv
 
 # Generate JUnit XML for CI test-report integrations
-promptfoo eval --output results.junit.xml
+artef eval --output results.junit.xml
 ```
 
 ## Available Formats
@@ -47,7 +47,7 @@ promptfoo eval --output results.junit.xml
 Generate a visual, shareable report:
 
 ```bash
-promptfoo eval --output report.html
+artef eval --output report.html
 ```
 
 **Features:**
@@ -64,7 +64,7 @@ promptfoo eval --output report.html
 Export complete evaluation data:
 
 ```bash
-promptfoo eval --output results.json
+artef eval --output results.json
 ```
 
 **Structure:**
@@ -89,7 +89,7 @@ promptfoo eval --output results.json
 Create spreadsheet-compatible data:
 
 ```bash
-promptfoo eval --output results.csv
+artef eval --output results.csv
 ```
 
 **Columns include:**
@@ -108,7 +108,7 @@ promptfoo eval --output results.csv
 Human-readable structured data:
 
 ```bash
-promptfoo eval --output results.yaml
+artef eval --output results.yaml
 ```
 
 **Use when:** Reviewing results in a text editor or version control.
@@ -118,7 +118,7 @@ promptfoo eval --output results.yaml
 Each line contains one JSON result:
 
 ```bash
-promptfoo eval --output results.jsonl
+artef eval --output results.jsonl
 ```
 
 **Use when:** Working with very large evaluations or when JSON export fails with memory errors.
@@ -169,7 +169,7 @@ where a single top-level assertion produced no nested `componentResults`.
 Compact CI test-report output:
 
 ```bash
-promptfoo eval --output results.junit.xml
+artef eval --output results.junit.xml
 ```
 
 **Structure:**
@@ -193,26 +193,26 @@ Failed assertions:
 JUnit XML intentionally stays compact:
 
 - one `testsuite` per prompt/provider pair so CI groups related cases together
-- one `testcase` per eval result so every promptfoo test appears in CI
+- one `testcase` per eval result so every artef test appears in CI
 - `failure` for failed assertions and `error` for provider/runtime errors so CI can distinguish incorrect behavior from execution problems
-- concise failure/error summaries only; use JSON, HTML, or Promptfoo XML when you need assertion reasons, provider errors, prompts, variables, raw model outputs, or full config
+- concise failure/error summaries only; use JSON, HTML, or artef XML when you need assertion reasons, provider errors, prompts, variables, raw model outputs, or full config
 
 A JUnit report viewer can render the same file into a compact pass/fail report:
 
 ![Rendered JUnit XML report showing one suite, two failures, and two passing tests](/img/docs/configuration/junit-xml-report.png)
 
-### Promptfoo XML Full Export
+### artef XML Full Export
 
 Full eval data for XML-only consumers:
 
 ```bash
-promptfoo eval --output results.xml
+artef eval --output results.xml
 ```
 
 **Structure:**
 
 ```xml
-<promptfoo>
+<artef>
   <evalId>abc-123-def</evalId>
   <results>
     <version>3</version>
@@ -224,16 +224,16 @@ promptfoo eval --output results.xml
   </results>
   <config>...</config>
   <shareableUrl>...</shareableUrl>
-</promptfoo>
+</artef>
 ```
 
-**Use when:** A downstream system specifically requires the full Promptfoo export in XML. This is not a JUnit-compatible CI report format; use JUnit XML for CI dashboards and test-report viewers.
+**Use when:** A downstream system specifically requires the full artef export in XML. This is not a JUnit-compatible CI report format; use JUnit XML for CI dashboards and test-report viewers.
 
 ## Configuration Options
 
 ### Setting Output Path in Config
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Specify default output file
 outputPath: evaluations/latest_results.html
 
@@ -249,18 +249,18 @@ Generate multiple formats simultaneously:
 
 ```bash
 # Command line
-promptfoo eval --output results.html --output results.json
+artef eval --output results.html --output results.json
 
 # Or use shell commands
-promptfoo eval --output results.json && \
-promptfoo eval --output results.csv
+artef eval --output results.json && \
+artef eval --output results.csv
 ```
 
 ## Output Contents
 
 ### Structured Output Fields
 
-`json`, `yaml`, `yml`, `txt`, and Promptfoo XML outputs include:
+`json`, `yaml`, `yml`, `txt`, and artef XML outputs include:
 
 | Field       | Description                  |
 | ----------- | ---------------------------- |
@@ -274,7 +274,7 @@ promptfoo eval --output results.csv
 
 :::warning
 
-`json`, `yaml`, `yml`, `txt`, `html`, and Promptfoo XML outputs include the eval `config`. Sensitive fields are redacted using Promptfoo's sanitizer rules on a best-effort basis (not comprehensive). Non-sensitive `config.env` values may still appear in exports.
+`json`, `yaml`, `yml`, `txt`, `html`, and artef XML outputs include the eval `config`. Sensitive fields are redacted using artef's sanitizer rules on a best-effort basis (not comprehensive). Non-sensitive `config.env` values may still appear in exports.
 
 JUnit XML omits the eval config, prompts, variables, raw model outputs, assertion reasons, and provider error payloads by design so CI test-report viewers stay compact and do not become a second full export surface.
 
@@ -341,7 +341,7 @@ print(summary)
 
 ```text
 project/
-├── promptfooconfig.yaml
+├── artefconfig.yaml
 ├── evaluations/
 │   ├── 2024-01-15-baseline.html
 │   ├── 2024-01-16-improved.html
@@ -352,7 +352,7 @@ project/
 
 ```bash
 # Include date and experiment name
-promptfoo eval --output "results/$(date +%Y%m%d)-gpt4-temperature-test.html"
+artef eval --output "results/$(date +%Y%m%d)-gpt4-temperature-test.html"
 ```
 
 ### 3. Version Control Considerations
@@ -374,7 +374,7 @@ evaluations/*.json
 # run_evaluation.sh
 
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-promptfoo eval \
+artef eval \
   --output "reports/${TIMESTAMP}-full.json" \
   --output "reports/${TIMESTAMP}-summary.html"
 ```
@@ -383,7 +383,7 @@ promptfoo eval \
 
 ### Web Viewer
 
-The default web viewer (`promptfoo view`) provides:
+The default web viewer (`artef view`) provides:
 
 - Real-time updates during evaluation
 - Interactive exploration
@@ -395,19 +395,19 @@ HTML outputs are self-contained:
 
 ```bash
 # Generate report
-promptfoo eval --output team-review.html
+artef eval --output team-review.html
 
 # Share via email, Slack, etc.
 # No external dependencies required
 ```
 
-### Promptfoo Share
+### artef Share
 
 For collaborative review:
 
 ```bash
 # Share results with your team
-promptfoo share
+artef share
 ```
 
 Creates a shareable link with:
@@ -436,7 +436,7 @@ Ensure proper encoding for international content:
 
 ```bash
 # Explicitly set encoding
-LANG=en_US.UTF-8 promptfoo eval --output results.csv
+LANG=en_US.UTF-8 artef eval --output results.csv
 ```
 
 ### Performance Tips

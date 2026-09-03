@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 
 import { extractAndStoreBinaryData, isBlobStorageEnabled } from '../../blobs/extractor';
 import { shouldAttemptRemoteBlobUpload } from '../../blobs/remoteUpload';
@@ -6,7 +6,7 @@ import cliState from '../../cliState';
 import { getEnvBool } from '../../envars';
 import logger from '../../logger';
 import { OpenAiChatCompletionProvider } from '../../providers/openai/chat';
-import { PromptfooChatCompletionProvider } from '../../providers/promptfoo';
+import { artefChatCompletionProvider } from '../../providers/artef';
 import {
   getProviderCallTracingContext,
   type RateLimitRegistry,
@@ -935,9 +935,9 @@ export async function tryUnblocking({
 }> {
   try {
     // Unblocking is disabled by default, enable via environment variable
-    if (!getEnvBool('PROMPTFOO_ENABLE_UNBLOCKING')) {
+    if (!getEnvBool('artef_ENABLE_UNBLOCKING')) {
       logger.debug(
-        '[Unblocking] Disabled by default (set PROMPTFOO_ENABLE_UNBLOCKING=true to enable)',
+        '[Unblocking] Disabled by default (set artef_ENABLE_UNBLOCKING=true to enable)',
       );
       // Return a response that will not increment numRequests
       return {
@@ -962,7 +962,7 @@ export async function tryUnblocking({
     logger.debug('[Unblocking] Attempting to unblock with blocking-question-analysis task');
 
     // Create unblocking provider
-    const unblockingProvider = new PromptfooChatCompletionProvider({
+    const unblockingProvider = new artefChatCompletionProvider({
       task: 'blocking-question-analysis',
       jsonOnly: true,
       preferSmallModel: false,

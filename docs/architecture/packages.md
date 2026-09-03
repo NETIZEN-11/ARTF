@@ -1,6 +1,6 @@
-# Internal Package Boundaries
+﻿# Internal Package Boundaries
 
-Promptfoo still publishes one package today, but the repository is beginning to
+artef still publishes one package today, but the repository is beginning to
 model the internal boundaries that would support a future multi-package split.
 
 ## Current Private Layers
@@ -40,7 +40,7 @@ npm run architecture:check
 
 `src/contracts` and its `src/contracts.ts` public entrypoint are the first intentionally
 leaf-safe surface. They currently own the dependency-free-or-`zod` subset that can plausibly become a future
-`@promptfoo/schema` package:
+`@artef/schema` package:
 
 - shared token/input contracts
 - browser-safe common and user API DTOs
@@ -82,7 +82,7 @@ dependency-light state implementation for embedded evaluators and focused tests.
 resume append behavior. The evaluator orchestrates evaluation behavior without
 importing the concrete `Eval` model.
 
-The checker also resolves cross-layer source aliases such as `@promptfoo/*`.
+The checker also resolves cross-layer source aliases such as `@artef/*`.
 The browser-only `@app/*` alias stays inside the `app` layer. Alias spelling
 does not exempt a browser import from the same layer and path checks as a
 relative import.

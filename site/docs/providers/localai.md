@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: LocalAI
 description: 'Run self-hosted OpenAI-compatible APIs locally with LocalAI for private, offline LLM deployment and testing environments'
 ---
@@ -23,9 +23,9 @@ The model name is typically the filename of the `.gguf` file that you downloaded
 
 ## Configuring parameters
 
-You can set parameters like `temperature` and `apiBaseUrl` ([full list here](https://github.com/promptfoo/promptfoo/blob/main/src/providers/localai.ts#L16)). For example, using [LocalAI's lunademo](https://localai.io/docs/getting-started/models/):
+You can set parameters like `temperature` and `apiBaseUrl` ([full list here](https://github.com/artef/artef/blob/main/src/providers/localai.ts#L16)). For example, using [LocalAI's lunademo](https://localai.io/docs/getting-started/models/):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: localai:lunademo
     config:

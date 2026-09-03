@@ -1,4 +1,4 @@
-module.exports = /** @type {import('promptfoo').TestSuiteConfig} */ ({
+﻿module.exports = /** @type {import('artef').TestSuiteConfig} */ ({
   description: 'OpenAI Realtime API function-calling demonstration',
   prompts: ['file://realtime-input.json'],
   providers: [

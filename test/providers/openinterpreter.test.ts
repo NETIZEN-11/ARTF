@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+﻿import { EventEmitter } from 'events';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -205,14 +205,14 @@ describe('OpenInterpreterProvider', () => {
     ]);
     expect(options.shell).toBeUndefined();
     expect(options.env.UNRELATED_SECRET_TOKEN).toBeUndefined();
-    expect(options.env.INTERPRETER_HOME).toContain('promptfoo-openinterpreter-home-');
+    expect(options.env.INTERPRETER_HOME).toContain('artef-openinterpreter-home-');
     expect(fs.statSync(options.env.INTERPRETER_HOME).isDirectory()).toBe(true);
     expect(threadStart.params).toMatchObject({
       sandbox: 'read-only',
       approvalPolicy: 'untrusted',
       ephemeral: true,
     });
-    expect(threadStart.params.cwd).toContain('promptfoo-openinterpreter-workspace-');
+    expect(threadStart.params.cwd).toContain('artef-openinterpreter-workspace-');
     expect(fs.readdirSync(threadStart.params.cwd)).toEqual([]);
     expect(turnStart.params.input).toEqual([
       { type: 'text', text: 'Say hello', text_elements: [] },
@@ -1183,7 +1183,7 @@ describe('OpenInterpreterProvider', () => {
     mocks.spawn.mockReturnValue(server.proc);
     const defaultPromise = provider.callApi('temporary workspace');
     const { threadStart } = await startTurn(server);
-    expect(threadStart.params.cwd).toContain('promptfoo-openinterpreter-workspace-');
+    expect(threadStart.params.cwd).toContain('artef-openinterpreter-workspace-');
     completeTurn(server, 'temporary');
     await expect(defaultPromise).resolves.toMatchObject({ output: 'temporary' });
   });
@@ -1635,7 +1635,7 @@ describe('OpenInterpreterProvider', () => {
   });
 
   it('removes an allocated temporary home if delegate construction fails', () => {
-    const prefix = 'promptfoo-openinterpreter-home-';
+    const prefix = 'artef-openinterpreter-home-';
     const mkdtemp = vi.spyOn(fs, 'mkdtempSync');
     vi.spyOn(providerRegistry, 'register').mockImplementationOnce(() => {
       throw new Error('registration failed');

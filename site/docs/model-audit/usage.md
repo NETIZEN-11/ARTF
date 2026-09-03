@@ -1,4 +1,4 @@
----
+﻿---
 title: ModelAudit Advanced Usage
 sidebar_label: Advanced Usage
 sidebar_position: 120
@@ -46,7 +46,7 @@ Authentication for all remote services is now handled exclusively via environmen
 ```bash
 # Authenticate for private models
 export HF_TOKEN=your_token_here
-promptfoo scan-model hf://your-org/private-model
+artef scan-model hf://your-org/private-model
 ```
 
 #### JFrog Artifactory
@@ -58,7 +58,7 @@ promptfoo scan-model hf://your-org/private-model
 # Authenticate using an API token
 export JFROG_URL="https://your-domain.jfrog.io"
 export JFROG_API_TOKEN="your-api-token"
-promptfoo scan-model "https://your-domain.jfrog.io/artifactory/repo/model.pkl"
+artef scan-model "https://your-domain.jfrog.io/artifactory/repo/model.pkl"
 ```
 
 #### MLflow Model Registry
@@ -71,7 +71,7 @@ promptfoo scan-model "https://your-domain.jfrog.io/artifactory/repo/model.pkl"
 export MLFLOW_TRACKING_URI="https://your-mlflow-server.com"
 export MLFLOW_TRACKING_USERNAME="your-username"
 export MLFLOW_TRACKING_PASSWORD="your-password"
-promptfoo scan-model models:/model-name/version
+artef scan-model models:/model-name/version
 ```
 
 #### Amazon S3
@@ -82,7 +82,7 @@ promptfoo scan-model models:/model-name/version
 export AWS_ACCESS_KEY_ID="your-access-key"
 export AWS_SECRET_ACCESS_KEY="your-secret-key"
 export AWS_DEFAULT_REGION="us-east-1"
-promptfoo scan-model s3://my-bucket/model.pkl
+artef scan-model s3://my-bucket/model.pkl
 ```
 
 #### Google Cloud Storage
@@ -91,7 +91,7 @@ promptfoo scan-model s3://my-bucket/model.pkl
 
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account-key.json"
-promptfoo scan-model gs://my-bucket/model.pt
+artef scan-model gs://my-bucket/model.pt
 ```
 
 #### Cloudflare R2
@@ -103,7 +103,7 @@ promptfoo scan-model gs://my-bucket/model.pt
 export AWS_ACCESS_KEY_ID="your-r2-access-key"
 export AWS_SECRET_ACCESS_KEY="your-r2-secret-key"
 export AWS_ENDPOINT_URL="https://your-account.r2.cloudflarestorage.com"
-promptfoo scan-model r2://my-bucket/model.safetensors
+artef scan-model r2://my-bucket/model.safetensors
 ```
 
 ### Migration from Deprecated Flags
@@ -128,10 +128,10 @@ Scan public or private models from the HuggingFace Hub.
 
 ```bash
 # Public model
-promptfoo scan-model https://huggingface.co/bert-base-uncased
+artef scan-model https://huggingface.co/bert-base-uncased
 
 # Private model (requires HF_TOKEN to be set)
-promptfoo scan-model hf://your-org/private-model
+artef scan-model hf://your-org/private-model
 ```
 
 ### Cloud Storage (S3, GCS, R2)
@@ -140,13 +140,13 @@ Scan models stored in cloud buckets. See the [Authentication](#authentication-an
 
 ```bash
 # Scan from S3
-promptfoo scan-model s3://my-bucket/model.pkl
+artef scan-model s3://my-bucket/model.pkl
 
 # Scan from Google Cloud Storage
-promptfoo scan-model gs://my-bucket/model.pt
+artef scan-model gs://my-bucket/model.pt
 
 # Scan from Cloudflare R2
-promptfoo scan-model r2://my-bucket/model.safetensors
+artef scan-model r2://my-bucket/model.safetensors
 ```
 
 ### Model Registries (MLflow, JFrog)
@@ -155,10 +155,10 @@ Scan models from MLflow or JFrog Artifactory. See the [Authentication](#authenti
 
 ```bash
 # Scan from MLflow
-promptfoo scan-model models:/MyModel/Latest
+artef scan-model models:/MyModel/Latest
 
 # Scan from JFrog Artifactory
-promptfoo scan-model "https://your-domain.jfrog.io/artifactory/models/model.pkl"
+artef scan-model "https://your-domain.jfrog.io/artifactory/models/model.pkl"
 ```
 
 ### DVC Integration
@@ -167,7 +167,7 @@ ModelAudit automatically resolves DVC pointer files:
 
 ```bash
 # Scans the actual model file referenced by the .dvc file
-promptfoo scan-model model.pkl.dvc
+artef scan-model model.pkl.dvc
 ```
 
 ## Configuration Options
@@ -176,40 +176,40 @@ ModelAudit's behavior can be customized through command-line options. While conf
 
 ```bash
 # Set blacklist patterns
-promptfoo scan-model models/ \
+artef scan-model models/ \
   --blacklist "deepseek" \
   --blacklist "qwen" \
   --blacklist "unsafe_model"
 
 # Set resource limits
-promptfoo scan-model models/ \
+artef scan-model models/ \
   --max-size 1GB \
   --timeout 600
 
 # Combine multiple options
-promptfoo scan-model models/ \
+artef scan-model models/ \
   --blacklist "suspicious_pattern" \
   --max-size 1GB \
   --timeout 600 \
   --verbose
 
 # Enable strict mode for enhanced security validation
-promptfoo scan-model model.pkl --strict
+artef scan-model model.pkl --strict
 
 # Discover available scanner IDs and class names
-promptfoo scan-model --list-scanners
+artef scan-model --list-scanners
 
 # Run only selected scanners by ID
-promptfoo scan-model models/ --scanners pickle,tf_savedmodel
+artef scan-model models/ --scanners pickle,tf_savedmodel
 
 # Repeat scanner-selection flags when that is clearer in scripts
-promptfoo scan-model models/ --scanners pickle --scanners tf_savedmodel
+artef scan-model models/ --scanners pickle --scanners tf_savedmodel
 
 # Exclude a scanner from the default scanner set
-promptfoo scan-model models/ --exclude-scanner weight_distribution
+artef scan-model models/ --exclude-scanner weight_distribution
 
 # Strict mode with additional output options
-promptfoo scan-model models/ \
+artef scan-model models/ \
   --strict \
   --no-write \
   --format sarif \
@@ -220,21 +220,21 @@ Use `--scanners` for focused triage scans. Use `--exclude-scanner` when the defa
 
 ### Sharing Results
 
-When connected to promptfoo Cloud, model audit results are automatically shared by default. This provides a web-based interface to view, analyze, and collaborate on scan results.
+When connected to artef Cloud, model audit results are automatically shared by default. This provides a web-based interface to view, analyze, and collaborate on scan results.
 
 ```bash
 # Results are automatically shared when cloud is enabled
-promptfoo scan-model models/
+artef scan-model models/
 
 # Explicitly enable sharing
-promptfoo scan-model models/ --share
+artef scan-model models/ --share
 
 # Disable sharing for this scan
-promptfoo scan-model models/ --no-share
+artef scan-model models/ --no-share
 
 # Disable sharing globally via environment variable
-export PROMPTFOO_DISABLE_SHARING=true
-promptfoo scan-model models/
+export artef_DISABLE_SHARING=true
+artef scan-model models/
 ```
 
 ## CI/CD Integration
@@ -268,11 +268,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           pip install modelaudit[all]
 
       - name: Scan models
-        run: promptfoo scan-model models/ --no-write --format sarif --output model-scan.sarif
+        run: artef scan-model models/ --no-write --format sarif --output model-scan.sarif
 
       - name: Upload SARIF to GitHub Advanced Security
         uses: github/codeql-action/upload-sarif@v3
@@ -298,10 +298,10 @@ model_security_scan:
   image: python:3.10
   script:
     - pip install modelaudit[all]
-    - npm install -g promptfoo
+    - npm install -g artef
     - |
       scan_status=0
-      promptfoo scan-model models/ --format json --output scan-results.json || scan_status=$?
+      artef scan-model models/ --format json --output scan-results.json || scan_status=$?
       if [ "$scan_status" -gt 1 ]; then exit "$scan_status"; fi
     - jq -e '[.issues[]? | select(.severity == "critical")] | length == 0' scan-results.json
   artifacts:
@@ -327,7 +327,7 @@ repos:
     hooks:
       - id: modelaudit
         name: ModelAudit
-        entry: promptfoo scan-model
+        entry: artef scan-model
         language: system
         files: '\.(pkl|h5|pb|pt|pth|keras|hdf5|json|yaml|yml|zip|onnx|safetensors|bin|tflite|msgpack|pmml|joblib|npy|gguf|ggml)$'
         pass_filenames: true
@@ -369,7 +369,7 @@ results = scan_model_directory_or_file("path/to/models/", **config)
 When using `--format json`, ModelAudit outputs structured results:
 
 ```bash
-promptfoo scan-model model.pkl --format json --output results.json
+artef scan-model model.pkl --format json --output results.json
 ```
 
 Use the [ModelAudit JSON Schema](/schemas/modelaudit/modelaudit-scan-result.schema.json) and [example result](/examples/modelaudit/modelaudit-scan-result.example.json) to validate `--format json` output.
@@ -390,13 +390,13 @@ ModelAudit supports SARIF (Static Analysis Results Interchange Format) 2.1.0 out
 
 ```bash
 # Output SARIF to stdout
-promptfoo scan-model model.pkl --format sarif
+artef scan-model model.pkl --format sarif
 
 # Save SARIF to file
-promptfoo scan-model model.pkl --no-write --format sarif --output results.sarif
+artef scan-model model.pkl --no-write --format sarif --output results.sarif
 
 # Scan multiple models with SARIF output
-promptfoo scan-model models/ --no-write --format sarif --output scan-results.sarif
+artef scan-model models/ --no-write --format sarif --output scan-results.sarif
 ```
 
 ### SARIF Structure
@@ -476,7 +476,7 @@ SARIF output enables integration with:
 - name: Scan models
   id: scan
   continue-on-error: true
-  run: promptfoo scan-model models/ --no-write --format sarif --output model-scan.sarif
+  run: artef scan-model models/ --no-write --format sarif --output model-scan.sarif
 
 - name: Upload SARIF to GitHub
   if: always()
@@ -495,7 +495,7 @@ SARIF output enables integration with:
 ```yaml
 # azure-pipelines.yml
 - script: |
-    promptfoo scan-model models/ --no-write --format sarif --output $(Build.ArtifactStagingDirectory)/model-scan.sarif
+    artef scan-model models/ --no-write --format sarif --output $(Build.ArtifactStagingDirectory)/model-scan.sarif
   displayName: 'Scan models'
 
 - task: PublishSecurityAnalysisLogs@3
@@ -510,7 +510,7 @@ SARIF output enables integration with:
 
 ```bash
 # Generate SARIF for local viewing
-promptfoo scan-model . --no-write --format sarif --output scan.sarif
+artef scan-model . --no-write --format sarif --output scan.sarif
 
 # Open in VS Code with SARIF Viewer extension
 code scan.sarif
@@ -532,7 +532,7 @@ SARIF output is compatible with:
 Generate CycloneDX-compliant SBOMs with license information:
 
 ```bash
-promptfoo scan-model models/ --sbom model-sbom.json
+artef scan-model models/ --sbom model-sbom.json
 ```
 
 The SBOM includes:
@@ -567,7 +567,7 @@ The SBOM includes:
    Solution: Increase the timeout:
 
    ```bash
-   promptfoo scan-model model.pkl --timeout 7200  # 2 hours for very large models
+   artef scan-model model.pkl --timeout 7200  # 2 hours for very large models
    ```
 
 3. **File Size Limits**
@@ -579,7 +579,7 @@ The SBOM includes:
    Solution: Increase the maximum file size:
 
    ```bash
-   promptfoo scan-model model.pkl --max-size 3GB
+   artef scan-model model.pkl --max-size 3GB
    ```
 
 4. **Unknown Format**

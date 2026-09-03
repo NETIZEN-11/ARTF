@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: BeaverTails
 description: Red team LLM safety boundaries using BeaverTails dataset of 330k harmful prompts to protect AI systems from abuse, hate speech, and malicious content exploitation
 ---
@@ -38,7 +38,7 @@ export HF_TOKEN=your_huggingface_token  # or HF_API_TOKEN
 
 2. Enable the plugin in your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - beavertails

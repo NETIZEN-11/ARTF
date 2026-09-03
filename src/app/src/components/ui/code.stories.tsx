@@ -1,4 +1,4 @@
-import { Code } from './code';
+﻿import { Code } from './code';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Code> = {
@@ -35,7 +35,7 @@ export const JSONExample: Story = {
   render: () => (
     <Code>
       {`{
-  "name": "promptfoo",
+  "name": "artef",
   "version": "1.0.0",
   "description": "LLM evaluation framework",
   "providers": ["openai:gpt-4", "anthropic:claude-3"]
@@ -66,7 +66,7 @@ tests:
 
 // Shell command
 export const ShellCommand: Story = {
-  render: () => <Code>npx promptfoo eval -c promptfooconfig.yaml</Code>,
+  render: () => <Code>npx artef eval -c artefconfig.yaml</Code>,
 };
 
 // API response
@@ -114,10 +114,10 @@ export const InContext: Story = {
   render: () => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Installation</h3>
-      <p className="text-sm text-muted-foreground">Install promptfoo using npm:</p>
-      <Code>npm install -g promptfoo</Code>
+      <p className="text-sm text-muted-foreground">Install artef using npm:</p>
+      <Code>npm install -g artef</Code>
       <p className="text-sm text-muted-foreground">Or using npx:</p>
-      <Code>npx promptfoo init</Code>
+      <Code>npx artef init</Code>
     </div>
   ),
 };

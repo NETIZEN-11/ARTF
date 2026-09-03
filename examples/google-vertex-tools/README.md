@@ -1,17 +1,17 @@
-# google-vertex-tools (Google Vertex Tools)
+﻿# google-vertex-tools (Google Vertex Tools)
 
 Example configurations for testing Google Vertex AI models with function calling and tool callbacks.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-vertex-tools
+npx artef@latest init --example google-vertex-tools
 cd google-vertex-tools
 ```
 
 ## Purpose
 
-This example demonstrates how to use [Vertex AI models](https://www.promptfoo.dev/docs/providers/vertex/) with:
+This example demonstrates how to use [Vertex AI models](https://www.artef.dev/docs/providers/vertex/) with:
 
 - Function calling and tool declarations
 - Function callback execution with local implementations
@@ -53,18 +53,18 @@ This example demonstrates how to use [Vertex AI models](https://www.promptfoo.de
 
 This example includes two different approaches:
 
-### Basic Tool Declaration (`promptfooconfig.yaml`)
+### Basic Tool Declaration (`artefconfig.yaml`)
 
 Uses external tool definitions and validates function calls without execution:
 
-- `promptfooconfig.yaml` - YAML configuration with external tools
+- `artefconfig.yaml` - YAML configuration with external tools
 - `tools.json` - Function definitions for weather lookup
 
-### Function Callbacks (`promptfooconfig-callback.js`)
+### Function Callbacks (`artefconfig-callback.js`)
 
 Demonstrates actual function execution with local callbacks:
 
-- `promptfooconfig-callback.js` - JavaScript configuration with inline tools and callbacks
+- `artefconfig-callback.js` - JavaScript configuration with inline tools and callbacks
 - Includes local function implementation for adding numbers
 
 ## Running the Examples
@@ -72,19 +72,19 @@ Demonstrates actual function execution with local callbacks:
 1. **Basic tool declaration example:**
 
    ```sh
-   promptfoo eval -c promptfooconfig.yaml
+   artef eval -c artefconfig.yaml
    ```
 
 2. **Function callback example:**
 
    ```sh
-   promptfoo eval -c promptfooconfig-callback.js
+   artef eval -c artefconfig-callback.js
    ```
 
 3. **View results:**
 
    ```sh
-   promptfoo view
+   artef view
    ```
 
 ## Expected Results
@@ -94,7 +94,7 @@ Demonstrates actual function execution with local callbacks:
 
 ## Learn More
 
-- [Vertex AI Provider Documentation](https://www.promptfoo.dev/docs/providers/vertex/)
+- [Vertex AI Provider Documentation](https://www.artef.dev/docs/providers/vertex/)
 - [Google Cloud Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)
-- [Function Calling Documentation](https://www.promptfoo.dev/docs/providers/vertex/#function-calling)
-- [promptfoo Documentation](https://www.promptfoo.dev/docs/)
+- [Function Calling Documentation](https://www.artef.dev/docs/providers/vertex/#function-calling)
+- [artef Documentation](https://www.artef.dev/docs/)

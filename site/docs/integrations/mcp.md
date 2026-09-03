@@ -1,17 +1,17 @@
----
-title: Using MCP (Model Context Protocol) in Promptfoo
+﻿---
+title: Using MCP (Model Context Protocol) in artef
 description: Enable Model Context Protocol (MCP) integration for enhanced tool use, persistent memory, and agentic workflows across providers
 sidebar_label: Model Context Protocol (MCP)
 sidebar_position: 20
 ---
 
-# Using MCP (Model Context Protocol) in Promptfoo
+# Using MCP (Model Context Protocol) in artef
 
-Promptfoo supports the Model Context Protocol (MCP) for advanced tool use, and agentic workflows. MCP allows you to connect your Promptfoo providers to an external MCP server, such as the [modelcontextprotocol/server-memory](https://github.com/modelcontextprotocol/server-memory), to enable tool orchestration, and more.
+artef supports the Model Context Protocol (MCP) for advanced tool use, and agentic workflows. MCP allows you to connect your artef providers to an external MCP server, such as the [modelcontextprotocol/server-memory](https://github.com/modelcontextprotocol/server-memory), to enable tool orchestration, and more.
 
 :::note MCP SDK dependency
 
-Promptfoo's general MCP integration uses the optional `@modelcontextprotocol/sdk` runtime package. Standard npm installs include optional dependencies, but installs that omit them need:
+artef's general MCP integration uses the optional `@modelcontextprotocol/sdk` runtime package. Standard npm installs include optional dependencies, but installs that omit them need:
 
 ```bash
 npm install @modelcontextprotocol/sdk
@@ -21,9 +21,9 @@ npm install @modelcontextprotocol/sdk
 
 ## Basic Configuration
 
-To enable MCP for a provider, add the `mcp` block to your provider's `config` in your `promptfooconfig.yaml`:
+To enable MCP for a provider, add the `mcp` block to your provider's `config` in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Testing MCP memory server integration with Google AI Studio
 providers:
   - id: google:gemini-2.0-flash
@@ -95,11 +95,11 @@ This can be useful when:
 
 ## Connecting a Single Provider to Multiple MCP Servers
 
-Promptfoo allows a single provider to connect to multiple MCP servers by using the `servers` array in your provider's MCP config. All tools from all connected servers will be available to the provider.
+artef allows a single provider to connect to multiple MCP servers by using the `servers` array in your provider's MCP config. All tools from all connected servers will be available to the provider.
 
 ### Example: One Provider, Multiple MCP Servers
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: openai:responses:gpt-5.1
     config:
@@ -143,9 +143,9 @@ This configuration connects a single provider to multiple MCP servers, giving it
 
 ## Using Multiple MCP Servers
 
-You can configure multiple MCP servers by assigning different MCP server configurations to different providers in your `promptfooconfig.yaml`. Each provider can have its own `mcp.server` block, allowing you to run separate memory/tool servers for different models or use cases.
+You can configure multiple MCP servers by assigning different MCP server configurations to different providers in your `artefconfig.yaml`. Each provider can have its own `mcp.server` block, allowing you to run separate memory/tool servers for different models or use cases.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Using multiple MCP servers
 providers:
   - id: google:gemini-2.0-flash
@@ -190,7 +190,7 @@ This setup is useful for testing, benchmarking, or running isolated agentic work
 
 ## Supported Providers
 
-MCP is supported by most major providers in Promptfoo, including:
+MCP is supported by most major providers in artef, including:
 
 - Google Gemini (AI Studio, Vertex)
 - OpenAI (and compatible providers like Groq, Together, etc.)
@@ -209,7 +209,7 @@ For detailed information about using MCP with OpenAI's Responses API, see the [O
 
 ## Tool Schema Compatibility
 
-Promptfoo automatically handles JSON Schema compatibility between MCP servers and LLM providers by removing provider-incompatible metadata fields (like `$schema`) while preserving supported features. Tools with no input parameters work without modification.
+artef automatically handles JSON Schema compatibility between MCP servers and LLM providers by removing provider-incompatible metadata fields (like `$schema`) while preserving supported features. Tools with no input parameters work without modification.
 
 ## Timeout Configuration
 

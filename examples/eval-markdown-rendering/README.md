@@ -1,20 +1,20 @@
-# eval-markdown-rendering (Markdown Rendering)
+﻿# eval-markdown-rendering (Markdown Rendering)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-markdown-rendering
+npx artef@latest init --example eval-markdown-rendering
 cd eval-markdown-rendering
 ```
 
 ## Usage
 
-To get started, edit promptfooconfig.yaml.
+To get started, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

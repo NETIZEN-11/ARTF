@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { renderPrompt } from '../src/evaluatorHelpers';
 
 describe('renderPrompt with skipRenderVars', () => {
@@ -44,13 +44,13 @@ describe('renderPrompt with skipRenderVars', () => {
   it('should skip package: dereferencing for variables in skipRenderVars array', async () => {
     const prompt = { raw: 'User input: {{user_input}}', label: 'test' };
     const vars = {
-      user_input: 'package:@promptfoo/does-not-exist:testFunction',
+      user_input: 'package:@artef/does-not-exist:testFunction',
     };
 
     await expect(renderPrompt(prompt, vars)).rejects.toThrow('Package not found');
 
     const result = await renderPrompt(prompt, vars, {}, undefined, ['user_input']);
-    expect(result).toBe('User input: package:@promptfoo/does-not-exist:testFunction');
+    expect(result).toBe('User input: package:@artef/does-not-exist:testFunction');
   });
 
   it('should still render other variables not in skipRenderVars', async () => {

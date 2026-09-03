@@ -1,17 +1,17 @@
-# provider-ruby (Ruby Provider)
+﻿# provider-ruby (Ruby Provider)
 
-This example demonstrates how to create a custom Ruby provider for promptfoo that integrates with the OpenAI API.
+This example demonstrates how to create a custom Ruby provider for artef that integrates with the OpenAI API.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-ruby
+npx artef@latest init --example provider-ruby
 cd provider-ruby
 ```
 
 ## Overview
 
-The Ruby provider allows you to use Ruby code as a provider in promptfoo evaluations. This example also demonstrates Ruby assertions for custom validation logic.
+The Ruby provider allows you to use Ruby code as a provider in artef evaluations. This example also demonstrates Ruby assertions for custom validation logic.
 
 **Ruby Provider** is useful when you need to:
 
@@ -43,7 +43,7 @@ You can set this in a `.env` file or directly in your environment.
 
 - `provider.rb` - The Ruby provider implementation that calls OpenAI's API
 - `assert.rb` - Custom Ruby assertion functions for validation
-- `promptfooconfig.yaml` - Configuration for promptfoo evaluation with proper YAML schema reference
+- `artefconfig.yaml` - Configuration for artef evaluation with proper YAML schema reference
 
 ## Implementation Details
 
@@ -84,12 +84,12 @@ When you run this example, you'll see:
 Run the example with:
 
 ```bash
-npx promptfoo@latest evaluate -c examples/provider-ruby/promptfooconfig.yaml
+npx artef@latest evaluate -c examples/provider-ruby/artefconfig.yaml
 ```
 
 ## Learn More
 
-For more information, see the promptfoo documentation:
+For more information, see the artef documentation:
 
-- [Ruby Provider](https://promptfoo.dev/docs/providers/ruby/)
-- [Ruby Assertions](https://promptfoo.dev/docs/configuration/expected-outputs/ruby/)
+- [Ruby Provider](https://artef.dev/docs/providers/ruby/)
+- [Ruby Assertions](https://artef.dev/docs/configuration/expected-outputs/ruby/)

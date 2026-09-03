@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   remoteGenerationContextPayload,
   resolveRedteamGenerationContext,
@@ -15,11 +15,11 @@ describe('remoteGenerationContext', () => {
   });
 
   it('extracts provider target ids and cloud target id from direct cloud providers', () => {
-    const providerTargetIds = ['openai:gpt-4o-mini', 'promptfoo://provider/cloud-target-123'];
+    const providerTargetIds = ['openai:gpt-4o-mini', 'artef://provider/cloud-target-123'];
     const context = getRedteamGenerationContextFromProviders(providerTargetIds, providerTargetIds);
 
     expect(context).toEqual({
-      providerTargetIds: ['openai:gpt-4o-mini', 'promptfoo://provider/cloud-target-123'],
+      providerTargetIds: ['openai:gpt-4o-mini', 'artef://provider/cloud-target-123'],
       cloudTargetId: 'cloud-target-123',
     });
   });
@@ -30,7 +30,7 @@ describe('remoteGenerationContext', () => {
         {
           id: 'file://local-provider.ts',
           config: {
-            linkedTargetId: 'promptfoo://provider/linked-target-123',
+            linkedTargetId: 'artef://provider/linked-target-123',
           },
         },
       ],
@@ -49,7 +49,7 @@ describe('remoteGenerationContext', () => {
         {
           'openai:gpt-4o-mini': {
             config: {
-              linkedTargetId: 'promptfoo://provider/mapped-linked-target',
+              linkedTargetId: 'artef://provider/mapped-linked-target',
             },
           },
         },
@@ -67,14 +67,14 @@ describe('remoteGenerationContext', () => {
     const context = resolveRedteamGenerationContext({
       cloudTargetDatabaseId: 'legacy-target',
       redteamGenerationContext: {
-        providerTargetIds: ['promptfoo://provider/context-target'],
+        providerTargetIds: ['artef://provider/context-target'],
         cloudTargetId: 'context-target',
       },
-      targetIds: ['promptfoo://provider/target-id'],
+      targetIds: ['artef://provider/target-id'],
     });
 
     expect(context).toEqual({
-      providerTargetIds: ['promptfoo://provider/context-target'],
+      providerTargetIds: ['artef://provider/context-target'],
       cloudTargetId: 'context-target',
     });
   });

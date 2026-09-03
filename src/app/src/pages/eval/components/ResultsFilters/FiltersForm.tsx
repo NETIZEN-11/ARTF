@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Input } from '@app/components/ui/input';
@@ -13,8 +13,8 @@ import {
 } from '@app/components/ui/select';
 import { Spinner } from '@app/components/ui/spinner';
 import { cn } from '@app/lib/utils';
-import { displayNameOverrides, severityDisplayNames } from '@promptfoo/redteam/constants/metadata';
-import { formatPolicyIdentifierAsMetric } from '@promptfoo/redteam/plugins/policy/utils';
+import { displayNameOverrides, severityDisplayNames } from '@artef/redteam/constants/metadata';
+import { formatPolicyIdentifierAsMetric } from '@artef/redteam/plugins/policy/utils';
 import { Plus, SlidersHorizontal, X } from 'lucide-react';
 import { useDebounce } from 'use-debounce';
 import { type ResultsFilter, useTableStore } from '../store';

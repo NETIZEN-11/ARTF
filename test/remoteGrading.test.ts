@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../src/cache';
 import { getUserEmail } from '../src/globalConfig/accounts';
 import { getRequestTimeoutMs } from '../src/providers/shared';
@@ -58,7 +58,7 @@ describe('doRemoteGrading', () => {
 
   it('preserves grader error metadata from remote grading results', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -89,7 +89,7 @@ describe('doRemoteGrading', () => {
       metadata: { graderError: true },
     });
     expect(fetchWithCache).toHaveBeenCalledWith(
-      'https://api.promptfoo.test/task',
+      'https://api.artef.test/task',
       expect.objectContaining({
         method: 'POST',
         headers: { authorization: 'Bearer test' },
@@ -100,7 +100,7 @@ describe('doRemoteGrading', () => {
 
   it('does not add grader error metadata when remote grading succeeds without metadata', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -133,7 +133,7 @@ describe('doRemoteGrading', () => {
 
   it('counts one remote grading task while preserving usage from all internal model calls', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -169,7 +169,7 @@ describe('doRemoteGrading', () => {
 
   it('does not count a cached remote grading result as a new grading-task request', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -194,7 +194,7 @@ describe('doRemoteGrading', () => {
 
   it('preserves cache provenance when a cached grading result did not report token usage', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -219,7 +219,7 @@ describe('doRemoteGrading', () => {
 
   it('derives cached token counts from prompt and completion when the total is missing', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -246,7 +246,7 @@ describe('doRemoteGrading', () => {
     const traceparent = '00-0123456789abcdef0123456789abcdef-0123456789abcdef-01';
     vi.mocked(getActiveTraceparent).mockReturnValue(traceparent);
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockImplementation((extraHeaders) => ({
       authorization: 'Bearer test',
       ...extraHeaders,
@@ -263,7 +263,7 @@ describe('doRemoteGrading', () => {
 
     expect(getRemoteGenerationHeaders).toHaveBeenCalledWith({ traceparent });
     expect(fetchWithCache).toHaveBeenCalledWith(
-      'https://api.promptfoo.test/task',
+      'https://api.artef.test/task',
       expect.objectContaining({
         headers: { authorization: 'Bearer test', traceparent },
       }),
@@ -273,7 +273,7 @@ describe('doRemoteGrading', () => {
 
   it('redacts inline image data from remote grading debug logs', async () => {
     vi.mocked(getUserEmail).mockReturnValue('user@example.com');
-    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.promptfoo.test/task');
+    vi.mocked(getRemoteGenerationUrl).mockReturnValue('https://api.artef.test/task');
     vi.mocked(getRemoteGenerationHeaders).mockReturnValue({ authorization: 'Bearer test' });
     vi.mocked(getRequestTimeoutMs).mockReturnValue(1234);
     vi.mocked(fetchWithCache).mockResolvedValueOnce({
@@ -308,7 +308,7 @@ describe('doRemoteGrading', () => {
     expect(firstDebugPayload.body.images[0].data).toBe('[REDACTED_IMAGE_DATA]');
     expect(containsString(mockLoggerDebug.mock.calls, 'abc123')).toBe(false);
     expect(fetchWithCache).toHaveBeenCalledWith(
-      'https://api.promptfoo.test/task',
+      'https://api.artef.test/task',
       expect.objectContaining({
         body: expect.stringContaining('abc123'),
       }),

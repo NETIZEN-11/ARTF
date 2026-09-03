@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: DoNotAnswer
 description: Red team harmful content handling by testing LLM responses to discriminatory, privacy-violating, and adult queries to prevent misuse and ensure responsible AI behavior
 ---
@@ -64,7 +64,7 @@ targets:
 Run with:
 
 ```sh
-promptfoo redteam run
+artef redteam run
 ```
 
 Once complete, you'll be able to view the evaluation results:

@@ -1,9 +1,9 @@
-# compare-claude-vs-gpt-image (Image Analysis Example)
+﻿# compare-claude-vs-gpt-image (Image Analysis Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example compare-claude-vs-gpt-image
+npx artef@latest init --example compare-claude-vs-gpt-image
 cd compare-claude-vs-gpt-image
 ```
 
@@ -26,16 +26,16 @@ To get started, set your environment variables:
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 
-If you do not have access to all of these providers, simply comment out the providers you do not have access to in `promptfooconfig.yaml`.
+If you do not have access to all of these providers, simply comment out the providers you do not have access to in `artefconfig.yaml`.
 
 Then run:
 
 ```sh
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 Afterwards, you can view the results by running:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```

@@ -1,22 +1,22 @@
-# simple-cli (Simple Cli)
+﻿# simple-cli (Simple Cli)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example simple-cli
+npx artef@latest init --example simple-cli
 cd simple-cli
 ```
 
 ## Usage
 
-This example is pre-configured in `promptfooconfig.yaml`. That means you can just run:
+This example is pre-configured in `artefconfig.yaml`. That means you can just run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 To override prompts, providers, output, etc. you can run:
 
 ```bash
-promptfoo eval --prompts prompts.txt --providers openai:chat --output output.json
+artef eval --prompts prompts.txt --providers openai:chat --output output.json
 ```

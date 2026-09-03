@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Manual Input
 description: 'Manually provide test responses without LLM API calls for rapid prototyping, debugging, and baseline evaluation testing'
 ---
@@ -9,18 +9,18 @@ The Manual Input Provider allows you to manually enter responses for each prompt
 
 ## Configuration
 
-To use the provider, set the provider id to `promptfoo:manual-input` in your configuration file:
+To use the provider, set the provider id to `artef:manual-input` in your configuration file:
 
 ```yaml
 providers:
-  - promptfoo:manual-input
+  - artef:manual-input
 ```
 
 By default, the provider will prompt the user on the CLI for a single line of output. To open an editor that supports multiline input:
 
 ```yaml
 providers:
-  - id: promptfoo:manual-input
+  - id: artef:manual-input
     config:
       multiline: true
 ```
@@ -30,5 +30,5 @@ providers:
 To make manual input easier on the command line, set concurrency to 1 and disable progress bars:
 
 ```sh
-promptfoo eval -j 1 --no-progress-bar
+artef eval -j 1 --no-progress-bar
 ```

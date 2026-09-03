@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+﻿import { useCallback, useMemo, useState } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -35,7 +35,7 @@ import {
   riskCategories,
   subCategoryDescriptions,
   UI_DISABLED_WHEN_REMOTE_UNAVAILABLE,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import {
   AlertCircle,
   ChevronDown,
@@ -58,7 +58,7 @@ import { TestCaseGenerateButton } from './TestCaseDialog';
 import { useTestCaseGeneration } from './TestCaseGenerationProvider';
 import VerticalSuiteCard from './VerticalSuiteCard';
 import { DOMAIN_SPECIFIC_PLUGINS, VERTICAL_SUITES } from './verticalSuites';
-import type { PluginConfig } from '@promptfoo/redteam/types';
+import type { PluginConfig } from '@artef/redteam/types';
 
 import type { LocalPluginConfig } from '../types';
 
@@ -589,7 +589,7 @@ export default function PluginsTab({
                       feature: 'redteam_config_enterprise_upgrade_clicked',
                       source: 'vertical_suite_card',
                     });
-                    window.open('https://www.promptfoo.dev/pricing/', '_blank');
+                    window.open('https://www.artef.dev/pricing/', '_blank');
                   }}
                 />
               ))}
@@ -612,7 +612,7 @@ export default function PluginsTab({
                     onClick={() => {
                       if (pluginDisabled) {
                         toast.showToast(
-                          'This plugin requires remote generation to be enabled. Unset PROMPTFOO_DISABLE_REMOTE_GENERATION or PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION.',
+                          'This plugin requires remote generation to be enabled. Unset artef_DISABLE_REMOTE_GENERATION or artef_DISABLE_REDTEAM_REMOTE_GENERATION.',
                           'error',
                         );
                         return;
@@ -655,8 +655,8 @@ export default function PluginsTab({
                             </TooltipTrigger>
                             <TooltipContent>
                               This plugin requires remote generation. Unset
-                              PROMPTFOO_DISABLE_REMOTE_GENERATION or
-                              PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION to enable.
+                              artef_DISABLE_REMOTE_GENERATION or
+                              artef_DISABLE_REDTEAM_REMOTE_GENERATION to enable.
                             </TooltipContent>
                           </Tooltip>
                         )}
@@ -681,7 +681,7 @@ export default function PluginsTab({
                             ? 'This plugin requires remote generation'
                             : apiHealthStatus === 'connected'
                               ? `Generate a test case for ${displayNameOverrides[plugin] || categoryAliases[plugin] || plugin}`
-                              : 'Promptfoo Cloud connection is required for test generation'
+                              : 'artef Cloud connection is required for test generation'
                         }
                       />
                       {isSelected && (

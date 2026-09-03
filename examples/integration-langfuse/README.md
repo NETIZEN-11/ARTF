@@ -1,6 +1,6 @@
-# integration-langfuse (Langfuse Prompt Management)
+﻿# integration-langfuse (Langfuse Prompt Management)
 
-This example demonstrates how to use Langfuse prompt management with labels in promptfoo.
+This example demonstrates how to use Langfuse prompt management with labels in artef.
 
 ## Why use labels?
 
@@ -38,14 +38,14 @@ Labels allow you to:
 To get started with this example:
 
 ```bash
-npx promptfoo@latest init --example integration-langfuse
+npx artef@latest init --example integration-langfuse
 cd integration-langfuse
 ```
 
 ## Running the example
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 ## Expected outputs
@@ -61,7 +61,7 @@ After running the eval, you should see:
 
 ### Two syntax options
 
-Promptfoo supports two ways to reference Langfuse prompts with labels:
+artef supports two ways to reference Langfuse prompts with labels:
 
 1. **Explicit @ syntax** (recommended for clarity)
 

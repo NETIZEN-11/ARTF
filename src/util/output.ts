@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import * as fsPromises from 'fs/promises';
 import * as os from 'os';
 import * as path from 'path';
@@ -18,7 +18,7 @@ import {
   getResultIndexKey,
   sanitizeResultForJsonlArtifact,
 } from '../models/evalResult';
-import { PromptfooAttributes } from '../tracing/genaiTracer';
+import { artefAttributes } from '../tracing/genaiTracer';
 import {
   type CsvRow,
   type ExportedBlobAsset,
@@ -199,7 +199,7 @@ async function rewriteJsonlWithExternalBackup(
   preparedReplacementPath?: string,
   recoveredResults?: EvaluateResult[],
 ): Promise<void> {
-  const tempDirectory = await fsPromises.mkdtemp(path.join(os.tmpdir(), 'promptfoo-jsonl-'));
+  const tempDirectory = await fsPromises.mkdtemp(path.join(os.tmpdir(), 'artef-jsonl-'));
   const backupPath = path.join(tempDirectory, 'backup.jsonl');
   const replacementPath = path.join(tempDirectory, 'replacement.jsonl');
   let overwriteAttempted = false;
@@ -344,10 +344,10 @@ function sanitizeConfigForOutput(config: Eval['config']): OutputFile['config'] {
 }
 
 function projectTracesForOutput(traces: NonNullable<OutputFile['traces']>) {
-  const shouldStripMetadata = getEnvBool('PROMPTFOO_STRIP_METADATA', false);
-  const shouldStripPromptText = getEnvBool('PROMPTFOO_STRIP_PROMPT_TEXT', false);
-  const shouldStripResponseOutput = getEnvBool('PROMPTFOO_STRIP_RESPONSE_OUTPUT', false);
-  const shouldStripTestVars = getEnvBool('PROMPTFOO_STRIP_TEST_VARS', false);
+  const shouldStripMetadata = getEnvBool('artef_STRIP_METADATA', false);
+  const shouldStripPromptText = getEnvBool('artef_STRIP_PROMPT_TEXT', false);
+  const shouldStripResponseOutput = getEnvBool('artef_STRIP_RESPONSE_OUTPUT', false);
+  const shouldStripTestVars = getEnvBool('artef_STRIP_TEST_VARS', false);
 
   if (
     !shouldStripMetadata &&
@@ -385,10 +385,10 @@ function projectTracesForOutput(traces: NonNullable<OutputFile['traces']>) {
 
         const projectedAttributes = { ...span.attributes };
         if (shouldStripPromptText) {
-          delete projectedAttributes[PromptfooAttributes.REQUEST_BODY];
+          delete projectedAttributes[artefAttributes.REQUEST_BODY];
         }
         if (shouldStripResponseOutput) {
-          delete projectedAttributes[PromptfooAttributes.RESPONSE_BODY];
+          delete projectedAttributes[artefAttributes.RESPONSE_BODY];
         }
 
         const { attributes: _attributes, ...projectedSpan } = span;
@@ -404,7 +404,7 @@ function projectTracesForOutput(traces: NonNullable<OutputFile['traces']>) {
 }
 
 function resultsForMediaExportScan(results: OutputFile['results']): unknown {
-  if (!getEnvBool('PROMPTFOO_STRIP_RESPONSE_OUTPUT', false)) {
+  if (!getEnvBool('artef_STRIP_RESPONSE_OUTPUT', false)) {
     return results;
   }
 
@@ -441,7 +441,7 @@ export function createOutputMetadata(evalRecord: Eval) {
   }
 
   return {
-    promptfooVersion: VERSION,
+    artefVersion: VERSION,
     nodeVersion: process.version,
     platform: os.platform(),
     arch: os.arch(),
@@ -686,7 +686,7 @@ export async function writeOutput(
       : undefined;
     const tempOutputPath = path.join(
       path.dirname(jsonlOutputPath),
-      `.promptfoo-${randomUUID()}.tmp`,
+      `.artef-${randomUUID()}.tmp`,
     );
     try {
       try {
@@ -768,7 +768,7 @@ export async function writeOutput(
       indentBy: '  ',
     });
     const xmlData = xmlBuilder.build({
-      promptfoo: {
+      artef: {
         evalId: evalRecord.id,
         results: sanitizeForXml(summary),
         config: sanitizeForXml(redactedConfig),

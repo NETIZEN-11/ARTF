@@ -1,4 +1,4 @@
-import React, {
+﻿import React, {
   createContext,
   useCallback,
   useContext,
@@ -16,11 +16,11 @@ import {
   isMultiTurnStrategy,
   type Plugin,
   type Strategy,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { useRedTeamTargetConfigValidation } from '../hooks/useRedTeamTargetConfigValidation';
 import { type Config } from '../types';
 import { TestCaseDialog } from './TestCaseDialog';
-import type { ConversationMessage } from '@promptfoo/redteam/types';
+import type { ConversationMessage } from '@artef/redteam/types';
 
 import type {
   GeneratedTestCase,
@@ -190,7 +190,7 @@ async function callTestExecutionApi(
  * - Use the same state for single and multi-turn generation (arrays)
  * - Use the same functions (use a `turn` argument)
  * - Use `useState` instead of `useRef` for storing values
- * - See https://github.com/promptfoo/promptfoo/blob/01fb999fb799c33564323a78262233607da051d8/src/app/src/pages/redteam/setup/components/TestCaseGenerationProvider.tsx
+ * - See https://github.com/artef/artef/blob/01fb999fb799c33564323a78262233607da051d8/src/app/src/pages/redteam/setup/components/TestCaseGenerationProvider.tsx
  *    for state of thi file prior to adding multi-turn support.
  */
 export const TestCaseGenerationProvider: React.FC<{

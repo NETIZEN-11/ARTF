@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2025 Promptfoo, Inc
+﻿/**
+ * Copyright (c) 2025 artef, Inc
  * See LICENSE.md for license details
  */
 import dedent from 'dedent';
@@ -7,7 +7,7 @@ import { RedteamGraderBase } from './base';
 
 import type { AssertionValue, ResultSuggestion } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:reasoning-dos';
+const PLUGIN_ID = 'artef:redteam:reasoning-dos';
 
 export class ReasoningDosGrader extends RedteamGraderBase {
   id = PLUGIN_ID;

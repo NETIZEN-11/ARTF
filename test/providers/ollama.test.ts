@@ -1,4 +1,4 @@
-import { trace } from '@opentelemetry/api';
+﻿import { trace } from '@opentelemetry/api';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../src/cache';
 import {
@@ -742,7 +742,7 @@ describe('Ollama provider tracing', () => {
         testIdx: 7,
       });
 
-      expect(attributes['promptfoo.test.index']).toBe(7);
+      expect(attributes['artef.test.index']).toBe(7);
     } finally {
       getTracer.mockRestore();
     }

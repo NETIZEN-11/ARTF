@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How to Red Team GPT: Complete Security Testing Guide for OpenAI Models'
 description: "OpenAI's latest GPT models are more capable but also more vulnerable. Discover new attack vectors and systematic approaches to testing GPT security."
 image: /img/blog/gpt-red-team.png
@@ -20,11 +20,11 @@ tags: [technical-guide, red-teaming, openai]
 
 # How to Red Team GPT
 
-OpenAI's GPT-4.1 and GPT-4.5 represents a significant leap in AI capabilities, especially for coding and instruction following. But with great power comes great responsibility. This guide shows you how to use [Promptfoo](https://github.com/promptfoo/promptfoo) to systematically test these models for vulnerabilities through adversarial red teaming.
+OpenAI's GPT-4.1 and GPT-4.5 represents a significant leap in AI capabilities, especially for coding and instruction following. But with great power comes great responsibility. This guide shows you how to use [artef](https://github.com/artef/artef) to systematically test these models for vulnerabilities through adversarial red teaming.
 
 GPT's enhanced instruction following and long-context capabilities make it particularly interesting to red team, as these features can be both strengths and potential attack vectors.
 
-You can also jump directly to the [GPT 4.1 security report](https://www.promptfoo.dev/models/reports/gpt-5) and [compare it to other models](https://www.promptfoo.dev/models/compare?base=gpt-5).
+You can also jump directly to the [GPT 4.1 security report](https://www.artef.dev/models/reports/gpt-5) and [compare it to other models](https://www.artef.dev/models/compare?base=gpt-5).
 
 <!-- truncate -->
 
@@ -43,7 +43,7 @@ Before you begin, ensure you have:
 
 - **Node.js `>=22.22.0`** (Node.js 24 LTS recommended): [Download Node.js](https://nodejs.org/en/download/)
 - **OpenAI API Key**: Sign up for an [OpenAI account](https://platform.openai.com/) and obtain an API key
-- **Promptfoo**: No prior installation needed; we'll use `npx` to run commands
+- **artef**: No prior installation needed; we'll use `npx` to run commands
 
 Set your OpenAI API key as an environment variable:
 
@@ -58,18 +58,18 @@ export OPENAI_API_KEY=your_openai_api_key
 Initialize a new red teaming project specifically for GPT-4.1:
 
 ```bash
-npx promptfoo@latest redteam init gpt-5-redteam --no-gui
+npx artef@latest redteam init gpt-5-redteam --no-gui
 cd gpt-5-redteam
 ```
 
-This creates a `promptfooconfig.yaml` file that we'll customize for GPT-4.1.
+This creates a `artefconfig.yaml` file that we'll customize for GPT-4.1.
 
 ## Configuring GPT-4.1 for Red Teaming
 
-Edit your `promptfooconfig.yaml` to target GPT-4.1:
+Edit your `artefconfig.yaml` to target GPT-4.1:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Team Evaluation for GPT-4.1
 
 targets:
@@ -109,7 +109,7 @@ redteam:
 Generate adversarial test cases:
 
 ```bash
-npx promptfoo@latest redteam generate
+npx artef@latest redteam generate
 ```
 
 This creates a `redteam.yaml` file with test cases designed to probe GPT-4.1's vulnerabilities.
@@ -119,13 +119,13 @@ This creates a `redteam.yaml` file with test cases designed to probe GPT-4.1's v
 Run the evaluation:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 Or, to make things go quicker:
 
 ```bash
-npx promptfoo@latest redteam run --max-concurrency 30
+npx artef@latest redteam run --max-concurrency 30
 ```
 
 ### Step 3: View the Report
@@ -133,7 +133,7 @@ npx promptfoo@latest redteam run --max-concurrency 30
 View a detailed vulnerability report:
 
 ```bash
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 ### Report Analysis
@@ -170,7 +170,7 @@ redteam:
 Run evaluations separately:
 
 ```bash
-npx promptfoo@latest redteam run -c gpt4.1-mini-config.yaml
+npx artef@latest redteam run -c gpt4.1-mini-config.yaml
 ```
 
 ### Benchmarking Against GPT-4o
@@ -187,7 +187,7 @@ targets:
 # Use the same redteam configuration for fair comparison
 ```
 
-You can also view the [GPT 4.1 vs 4o comparison](https://www.promptfoo.dev/models/compare?base=gpt-5). Interestingly, 4.1 tends to fare worse on these metrics due to philosophical shifts in approach to safety and security by OpenAI (i.e., OpenAI is leaning toward less "censorship" or subjective refusals).
+You can also view the [GPT 4.1 vs 4o comparison](https://www.artef.dev/models/compare?base=gpt-5). Interestingly, 4.1 tends to fare worse on these metrics due to philosophical shifts in approach to safety and security by OpenAI (i.e., OpenAI is leaning toward less "censorship" or subjective refusals).
 
 ## Advanced Techniques
 
@@ -245,7 +245,7 @@ plugins:
 
 ## Additional Resources
 
-- [GPT 4.1 Security Report](https://promptfoo.dev/models/reports/gpt-5)
-- [Promptfoo Red Team Documentation](/docs/red-team/quickstart/)
+- [GPT 4.1 Security Report](https://artef.dev/models/reports/gpt-5)
+- [artef Red Team Documentation](/docs/red-team/quickstart/)
 - [LLM Vulnerability Types](/docs/red-team/llm-vulnerability-types/)
 - [Red Team Configuration Guide](/docs/red-team/configuration/)

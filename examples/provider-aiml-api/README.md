@@ -1,4 +1,4 @@
-# provider-aiml-api (AI/ML API Provider)
+﻿# provider-aiml-api (AI/ML API Provider)
 
 This example shows how to use AI/ML API to compare different language models on a fun task - telling jokes!
 
@@ -16,7 +16,7 @@ AI/ML API provides access to 300+ models through a single API key, making it eas
 
 3. Run the evaluation:
    ```bash
-   npx promptfoo@latest eval
+   npx artef@latest eval
    ```
 
 ## What this example does
@@ -35,6 +35,6 @@ The models are asked to tell jokes about different topics, and we evaluate:
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-aiml-api
+npx artef@latest init --example provider-aiml-api
 cd provider-aiml-api
 ```

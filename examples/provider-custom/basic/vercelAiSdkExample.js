@@ -1,8 +1,8 @@
-// Example from @Codeshark-NET https://github.com/promptfoo/promptfoo/issues/922
+﻿// Example from @Codeshark-NET https://github.com/artef/artef/issues/922
 // @ts-check
 import { anthropic } from '@ai-sdk/anthropic';
 import { generateObject } from 'ai';
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 import { promptSchema } from './schemaValidation.mjs';
 
 class CustomProvider {
@@ -19,7 +19,7 @@ class CustomProvider {
   }
 
   async callApi(prompt, context) {
-    const cache = await promptfoo.default.cache.getCache();
+    const cache = await artef.default.cache.getCache();
 
     // Create a unique cache key based on the prompt and context
     const cacheKey = `api:${this.providerId}:${prompt}}`; // :${JSON.stringify(context)

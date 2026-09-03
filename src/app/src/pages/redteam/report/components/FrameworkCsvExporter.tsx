@@ -1,6 +1,6 @@
-import { Button } from '@app/components/ui/button';
+﻿import { Button } from '@app/components/ui/button';
 import { DownloadIcon } from '@app/components/ui/icons';
-import { formatASRForDisplay } from '@promptfoo/app/src/utils/redteam';
+import { formatASRForDisplay } from '@artef/app/src/utils/redteam';
 import {
   ALIASED_PLUGIN_MAPPINGS,
   DOD_AI_ETHICS_PRINCIPLE_NAMES,
@@ -10,8 +10,8 @@ import {
   OWASP_LLM_TOP_10_NAMES,
   riskCategorySeverityMap,
   Severity,
-} from '@promptfoo/redteam/constants';
-import { calculateAttackSuccessRate } from '@promptfoo/redteam/metrics';
+} from '@artef/redteam/constants';
+import { calculateAttackSuccessRate } from '@artef/redteam/metrics';
 import {
   type CategoryStats,
   categorizePlugins,

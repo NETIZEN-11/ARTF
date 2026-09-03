@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Choosing the Best GPT Model
 description: Compare GPT-5.2 vs GPT-5-mini performance on your custom data with automated benchmarks to evaluate reasoning capabilities, costs, and response latency metrics
 ---
@@ -17,7 +17,7 @@ The end result will be a side-by-side comparison that looks like this:
 
 To start, make sure you have:
 
-- promptfoo CLI installed. If not, refer to the [installation guide](/docs/installation).
+- artef CLI installed. If not, refer to the [installation guide](/docs/installation).
 - An active OpenAI API key set as the `OPENAI_API_KEY` environment variable. See [OpenAI configuration](/docs/providers/openai) for details.
 
 ## Step 1: Setup
@@ -29,9 +29,9 @@ mkdir gpt-comparison
 cd gpt-comparison
 ```
 
-Create a `promptfooconfig.yaml` with both models:
+Create a `artefconfig.yaml` with both models:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openai:gpt-5-mini
   - openai:gpt-5.2
@@ -41,7 +41,7 @@ providers:
 
 For our comparison, we'll use a simple prompt:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Solve this riddle: {{riddle}}'
 ```
@@ -52,7 +52,7 @@ Feel free to add multiple prompts and tailor to your use case.
 
 Above, we have a `{{riddle}}` placeholder variable. Each test case runs the prompts with a different riddle:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       riddle: 'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?'
@@ -67,13 +67,13 @@ tests:
 Execute the comparison with the following command:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This will process the riddles against both GPT-5-mini and GPT-5.2, providing you with side-by-side results in your command line interface:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Step 5: Automatic evaluation
@@ -119,7 +119,7 @@ tests:
         threshold: 4000
 ```
 
-After setting up your assertions, rerun the `promptfoo eval` command. This automated process helps quickly determine which model best fits your reasoning task requirements.
+After setting up your assertions, rerun the `artef eval` command. This automated process helps quickly determine which model best fits your reasoning task requirements.
 
 For more info on available assertion types, see [assertions & metrics](/docs/configuration/expected-outputs/).
 

@@ -1,4 +1,4 @@
-import { promises as fsPromises } from 'fs';
+﻿import { promises as fsPromises } from 'fs';
 import { join } from 'path';
 
 import { themes } from 'prism-react-renderer';
@@ -53,12 +53,12 @@ function buildTimestampPlugin(): Plugin {
 }
 
 const config: Config = {
-  title: 'Promptfoo',
+  title: 'artef',
   tagline: 'Ship secure AI agents and LLM applications',
   favicon: '/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://www.promptfoo.dev',
+  url: 'https://www.artef.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -67,8 +67,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'promptfoo', // Usually your GitHub org/user name.
-  projectName: 'promptfoo', // Usually your repo name.
+  organizationName: 'artef', // Usually your GitHub org/user name.
+  projectName: 'artef', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
@@ -106,7 +106,7 @@ const config: Config = {
         },
         blog: {
           blogDescription:
-            'Learn how to test and secure AI applications with practical guides on LLM red teaming, evaluations, real-world vulnerabilities, and updates from Promptfoo.',
+            'Learn how to test and secure AI applications with practical guides on LLM red teaming, evaluations, real-world vulnerabilities, and updates from artef.',
           showReadingTime: false,
           blogSidebarCount: 0,
           postsPerPage: 20,
@@ -131,9 +131,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'promptfoo',
+      title: 'artef',
       logo: {
-        alt: 'promptfoo logo',
+        alt: 'artef logo',
         src: 'img/logo-panda.svg',
       },
       items: [
@@ -228,7 +228,7 @@ const config: Config = {
             {
               to: '/store/',
               label: 'Swag',
-              description: 'Official Promptfoo merch and swag',
+              description: 'Official artef merch and swag',
             },
           ],
         },
@@ -243,9 +243,9 @@ const config: Config = {
           className: 'header-book-demo-link',
         },
         {
-          to: 'https://promptfoo.app',
+          to: 'https://artef.app',
           position: 'right',
-          'aria-label': 'Promptfoo App',
+          'aria-label': 'artef App',
           label: 'Log in',
         },
         {
@@ -253,7 +253,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://discord.gg/promptfoo',
+          href: 'https://discord.gg/artef',
           position: 'right',
           className: 'header-discord-link',
           'aria-label': 'Discord community',
@@ -292,7 +292,7 @@ const config: Config = {
             },
             {
               label: 'Status',
-              href: 'https://status.promptfoo.app/',
+              href: 'https://status.artef.app/',
             },
           ],
         },
@@ -330,11 +330,11 @@ const config: Config = {
             },
             {
               label: 'Foundation Model Reports',
-              to: 'https://www.promptfoo.dev/models/',
+              to: 'https://www.artef.dev/models/',
             },
             {
               label: 'Language Model Security DB',
-              to: 'https://www.promptfoo.dev/lm-security-db/',
+              to: 'https://www.artef.dev/lm-security-db/',
             },
             {
               label: 'Running Benchmarks',
@@ -391,7 +391,7 @@ const config: Config = {
             },
             {
               label: 'Log in',
-              to: 'https://promptfoo.app',
+              to: 'https://artef.app',
             },
           ],
         },
@@ -400,15 +400,15 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/promptfoo/promptfoo#readme',
+              href: 'https://github.com/artef/artef#readme',
             },
             {
               label: 'Discord',
-              href: 'https://discord.gg/promptfoo',
+              href: 'https://discord.gg/artef',
             },
             {
               label: 'LinkedIn',
-              href: 'https://www.linkedin.com/company/promptfoo/',
+              href: 'https://www.linkedin.com/company/artef/',
             },
             {
               label: 'Privacy Policy',
@@ -420,7 +420,7 @@ const config: Config = {
             },
             {
               label: 'Trust Center',
-              href: 'https://trust.promptfoo.dev',
+              href: 'https://trust.artef.dev',
             },
             {
               html: '<a href="#manage-cookies" class="footer__link-item">Cookie Settings</a>',
@@ -436,7 +436,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Promptfoo, Inc.`,
+      copyright: `© ${new Date().getFullYear()} artef, Inc.`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -462,7 +462,7 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: '0b4fcfd05976eb0aaf4b7c51ec4fcd23',
 
-      indexName: 'promptfoo',
+      indexName: 'artef',
     },
   } satisfies Preset.ThemeConfig,
 
@@ -583,7 +583,7 @@ const config: Config = {
             to: '/docs/guides/',
           },
           {
-            from: '/docs/guides/building-trust-in-ai-with-portkey-and-promptfoo',
+            from: '/docs/guides/building-trust-in-ai-with-portkey-and-artef',
             to: '/docs/guides/',
           },
           {
@@ -675,19 +675,19 @@ const config: Config = {
         path: './releases',
         authorsMapPath: '../blog/authors.yml',
         blogTitle: 'Release Notes',
-        blogDescription: 'promptfoo release notes and updates',
+        blogDescription: 'artef release notes and updates',
         blogSidebarCount: 0,
         blogSidebarTitle: 'Recent Releases',
         postsPerPage: 10,
         showReadingTime: false,
         feedOptions: {
           type: 'all',
-          title: 'promptfoo Release Notes',
-          description: 'Stay updated with the latest promptfoo releases',
-          copyright: `© ${new Date().getFullYear()} promptfoo`,
+          title: 'artef Release Notes',
+          description: 'Stay updated with the latest artef releases',
+          copyright: `© ${new Date().getFullYear()} artef`,
           language: 'en',
         },
-        editUrl: 'https://github.com/promptfoo/promptfoo/tree/main/site',
+        editUrl: 'https://github.com/artef/artef/tree/main/site',
       },
     ],
   ],

@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import DatasetDialog from './DatasetDialog';
-import type { TestCasesWithMetadata } from '@promptfoo/types';
+import type { TestCasesWithMetadata } from '@artef/types';
 
 describe('DatasetDialog', () => {
   it('keeps the prompts table wide enough to scroll on narrow screens', () => {

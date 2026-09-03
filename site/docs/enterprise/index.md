@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Overview
-title: Promptfoo Enterprise - Secure LLM Application Testing
-description: 'Deploy Promptfoo Enterprise for scalable LLM security testing with cloud hosting, on-premises options, and team collaboration'
+title: artef Enterprise - Secure LLM Application Testing
+description: 'Deploy artef Enterprise for scalable LLM security testing with cloud hosting, on-premises options, and team collaboration'
 keywords:
   [
-    promptfoo enterprise,
-    promptfoo enterprise on-prem,
+    artef enterprise,
+    artef enterprise on-prem,
     llm security,
     llm testing,
     llm red teaming,
@@ -13,13 +13,13 @@ keywords:
   ]
 ---
 
-# Promptfoo Enterprise
+# artef Enterprise
 
-Promptfoo offers two deployment options to meet your security needs:
+artef offers two deployment options to meet your security needs:
 
-**Promptfoo Enterprise** is our hosted SaaS solution that lets you securely scan your LLM applications without managing infrastructure.
+**artef Enterprise** is our hosted SaaS solution that lets you securely scan your LLM applications without managing infrastructure.
 
-**Promptfoo Enterprise On-Prem** is our on-premises solution that includes a dedicated runner for deployments behind your firewall.
+**artef Enterprise On-Prem** is our on-premises solution that includes a dedicated runner for deployments behind your firewall.
 
 Both solutions offer a suite of tools to help you secure your LLM applications, including:
 
@@ -28,28 +28,28 @@ Both solutions offer a suite of tools to help you secure your LLM applications, 
 - Detailed reporting and analytics to monitor the security of your LLM applications
 - Remediation suggestions to help you fix vulnerabilities
 - Advanced filtering to find and sort through evals
-- Sharing and exporting functions to integrate Promptfoo with your existing tools
+- Sharing and exporting functions to integrate artef with your existing tools
 
 Our platform works with any LLM application, agent, or foundation model that is live and ready for inference.
 
-![Promptfoo Dashboard (Enterprise interface shown)](/img/enterprise-docs/promptfoo-dashboard.png)
+![artef Dashboard (Enterprise interface shown)](/img/enterprise-docs/artef-dashboard.png)
 
 ## Deployment Options
 
 We offer two deployment models:
 
-- **Promptfoo Enterprise**: Our fully-managed SaaS solution maintained by Promptfoo, allowing you to get started immediately with no infrastructure requirements.
+- **artef Enterprise**: Our fully-managed SaaS solution maintained by artef, allowing you to get started immediately with no infrastructure requirements.
 
-- **Promptfoo Enterprise On-Prem**: Our self-hosted solution that can be deployed on any cloud provider, including AWS, Azure, and GCP. Includes a dedicated runner component for executing scans within your network perimeter.
+- **artef Enterprise On-Prem**: Our self-hosted solution that can be deployed on any cloud provider, including AWS, Azure, and GCP. Includes a dedicated runner component for executing scans within your network perimeter.
 
 ![Basic red team architecture](/img/docs/red-team-basic-architecture.png)
 
 ## Product Comparison
 
-| Feature                                             | Community                       | Promptfoo Enterprise                         | Promptfoo Enterprise On-Prem                 |
+| Feature                                             | Community                       | artef Enterprise                         | artef Enterprise On-Prem                 |
 | --------------------------------------------------- | ------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | Deployment                                          | Command line tool               | Fully-managed SaaS                           | Self-hosted, on-premises                     |
-| Infrastructure                                      | Local                           | Managed by Promptfoo                         | Managed by your team                         |
+| Infrastructure                                      | Local                           | Managed by artef                         | Managed by your team                         |
 | Dedicated Runner                                    | ❌                              | ❌                                           | ✅                                           |
 | Network Isolation                                   | ❌                              | ❌                                           | ✅                                           |
 | Model & Application Evals                           | ✅                              | ✅                                           | ✅                                           |
@@ -72,8 +72,8 @@ Both Enterprise products support [sharing results](/docs/usage/sharing) through 
 
 ## Connection with Open-Source
 
-Both Promptfoo Enterprise and Promptfoo Enterprise On-Prem are fully compatible with the open-source version of Promptfoo. This means that you can use your existing open-source Promptfoo results with either solution.
+Both artef Enterprise and artef Enterprise On-Prem are fully compatible with the open-source version of artef. This means that you can use your existing open-source artef results with either solution.
 
 ## Learn more
 
-If you are interested in learning more about Promptfoo Enterprise, please [contact us](/contact/).
+If you are interested in learning more about artef Enterprise, please [contact us](/contact/).

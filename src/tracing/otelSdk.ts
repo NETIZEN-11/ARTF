@@ -1,4 +1,4 @@
-import { DiagConsoleLogger, DiagLogLevel, diag, propagation } from '@opentelemetry/api';
+﻿import { DiagConsoleLogger, DiagLogLevel, diag, propagation } from '@opentelemetry/api';
 import { W3CTraceContextPropagator } from '@opentelemetry/core';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { resourceFromAttributes } from '@opentelemetry/resources';
@@ -16,7 +16,7 @@ let provider: NodeTracerProvider | null = null;
 let initialized = false;
 
 // Use a global symbol to track handlers across module resets (important for tests)
-const OTEL_HANDLERS_KEY = Symbol.for('promptfoo.otelHandlers');
+const OTEL_HANDLERS_KEY = Symbol.for('artef.otelHandlers');
 
 interface OtelHandlers {
   sigTermHandler: (() => void) | null;
@@ -43,7 +43,7 @@ function getHandlers(): OtelHandlers {
  * Initialize the OpenTelemetry SDK for tracing LLM provider calls.
  *
  * This sets up:
- * - A NodeTracerProvider with promptfoo service info
+ * - A NodeTracerProvider with artef service info
  * - LocalSpanExporter for storing spans in TraceStore (SQLite)
  * - Optional OTLPTraceExporter for external backends (Jaeger, Honeycomb, etc.)
  *

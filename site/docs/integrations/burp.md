@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Burp Suite
-description: Test LLM applications for jailbreak vulnerabilities by integrating Promptfoo's red teaming capabilities with Burp Suite Intruder for automated security scanning and testing
+description: Test LLM applications for jailbreak vulnerabilities by integrating artef's red teaming capabilities with Burp Suite Intruder for automated security scanning and testing
 ---
 
 # Finding LLM Jailbreaks with Burp Suite
 
-This guide shows how to integrate Promptfoo's application-level jailbreak creation with Burp Suite's Intruder feature for security testing of LLM-powered applications.
+This guide shows how to integrate artef's application-level jailbreak creation with Burp Suite's Intruder feature for security testing of LLM-powered applications.
 
 The end result is a Burp Suite Intruder configuration that can be used to test for LLM jailbreak vulnerabilities.
 
@@ -17,14 +17,14 @@ The end result is a Burp Suite Intruder configuration that can be used to test f
 
 Burp Suite integration allows you to:
 
-1. Generate adversarial test cases using Promptfoo's red teaming capabilities
+1. Generate adversarial test cases using artef's red teaming capabilities
 2. Export these test cases in a format compatible with Burp Intruder
 3. Use the test cases as payloads in Burp Suite for security testing
 
 ## Prerequisites
 
 - Burp Suite Community Edition or Professional Edition
-- Promptfoo installed (`npm install -g promptfoo`)
+- artef installed (`npm install -g artef`)
 
 ## Configuration Steps
 
@@ -45,7 +45,7 @@ This will generate a `.burp` file containing all unique test inputs from your ev
 First, generate adversarial test cases and export them in Burp format:
 
 ```bash
-promptfoo redteam generate -o payloads.burp --burp-escape-json
+artef redteam generate -o payloads.burp --burp-escape-json
 ```
 
 :::tip
@@ -61,13 +61,13 @@ The `--burp-escape-json` flag is important when your payloads will be inserted i
    - Mark the injection points where you want to test the payloads
    - Go to the "Payloads" tab
    - Click "Load" and select your `payloads.burp` file
-4. Under "Payload processing", enable URL-decoding (promptfoo's .burp output is URL-encoded to support multi-line payloads)
+4. Under "Payload processing", enable URL-decoding (artef's .burp output is URL-encoded to support multi-line payloads)
 
 ![Burp Intruder LLM red teaming configuration](/img/docs/burp/burp-jailbreak-intruder-setup.png)
 
 #### Example Configuration
 
-Here's an example of generating targeted test cases. In `promptfooconfig.yaml`:
+Here's an example of generating targeted test cases. In `artefconfig.yaml`:
 
 ```yaml
 redteam:
@@ -82,7 +82,7 @@ redteam:
 Generate Burp-compatible payloads:
 
 ```bash
-promptfoo redteam generate -o payloads.burp --burp-escape-json
+artef redteam generate -o payloads.burp --burp-escape-json
 ```
 
 This will create a file with payloads ready for use in Burp Intruder.

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -49,7 +49,7 @@ const TlsHttpsConfigTab: React.FC<TlsHttpsConfigTabProps> = ({
         Configure TLS certificates for secure HTTPS connections, including custom CA certificates,
         client certificates for mutual TLS, and PFX certificate bundles. See{' '}
         <a
-          href="https://www.promptfoo.dev/docs/providers/http/#tlshttps-configuration"
+          href="https://www.artef.dev/docs/providers/http/#tlshttps-configuration"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"

@@ -1,7 +1,7 @@
-{
-  "name": "promptfoo_dev",
+﻿{
+  "name": "artef_dev",
   "dockerComposeFile": ["docker-compose.yml"],
-  "service": "promptfoo_dev",
+  "service": "artef_dev",
   "workspaceFolder": "/workspace",
   "remoteUser": "node",
   "customizations": {

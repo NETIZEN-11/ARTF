@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 
 import { z } from 'zod';
 import { fetchWithCache, getCache, isCacheEnabled } from '../cache';
@@ -165,7 +165,7 @@ function sortObject(obj: any): any {
 }
 
 const WATSONX_SECRET_FIELD_NAMES = new Set(['apiKey', 'apiBearerToken']);
-const WATSONX_CACHE_HASH_KEY = 'promptfoo:watsonx:cache-key:v1';
+const WATSONX_CACHE_HASH_KEY = 'artef:watsonx:cache-key:v1';
 const WATSONX_TEXT_GENERATION_CACHE_VERSION = 'v2';
 
 function hashWatsonXCacheValue(value: unknown): string {

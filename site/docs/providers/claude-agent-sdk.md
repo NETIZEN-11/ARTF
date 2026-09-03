@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 3
 title: Claude Agent SDK
 description: 'Use Claude Agent SDK for evals with configurable tools, permissions, MCP servers, and more'
@@ -43,7 +43,7 @@ Example of setting the environment variable:
 export ANTHROPIC_API_KEY=your_api_key_here
 ```
 
-If Claude Agent SDK will authenticate through an existing local Claude Code session instead of `ANTHROPIC_API_KEY`, disable Promptfoo's upfront API key check:
+If Claude Agent SDK will authenticate through an existing local Claude Code session instead of `ANTHROPIC_API_KEY`, disable artef's upfront API key check:
 
 ```yaml
 providers:
@@ -52,7 +52,7 @@ providers:
       apiKeyRequired: false
 ```
 
-This is useful when you're using a local Claude Code binary with an active session, such as Claude Code monthly plans. Promptfoo will skip its preflight API key validation, but the SDK still needs to be able to authenticate on its own.
+This is useful when you're using a local Claude Code binary with an active session, such as Claude Code monthly plans. artef will skip its preflight API key validation, but the SDK still needs to be able to authenticate on its own.
 
 ## Other Model Providers
 
@@ -84,7 +84,7 @@ export CLAUDE_CODE_USE_VERTEX=true
 
 By default, Claude Agent SDK runs in a temporary directory with no tools enabled, using the `default` permission mode. This makes it behave similarly to the standard [Anthropic provider](/docs/providers/anthropic/). It has no access to the file system (read or write) and can't run system commands.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - anthropic:claude-agent-sdk
 
@@ -138,7 +138,7 @@ prompts:
 | Parameter                            | Type             | Description                                                                                                  | Default                  |
 | ------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------ |
 | `apiKey`                             | string           | Anthropic API key                                                                                            | Environment variable     |
-| `apiKeyRequired`                     | boolean          | Require Promptfoo to find an Anthropic API key before calling the SDK. Set to `false` for local SDK auth.    | `true`                   |
+| `apiKeyRequired`                     | boolean          | Require artef to find an Anthropic API key before calling the SDK. Set to `false` for local SDK auth.    | `true`                   |
 | `working_dir`                        | string           | Directory for file operations                                                                                | Temporary directory      |
 | `model`                              | string           | Primary model to use (passed to Claude Agent SDK)                                                            | Claude Agent SDK default |
 | `fallback_model`                     | string           | Fallback model if primary fails. Accepts a comma-separated list, tried in order.                             | Claude Agent SDK default |
@@ -233,7 +233,7 @@ Unless you specify a `custom_system_prompt`, the default Claude Code system prom
 Set `exclude_dynamic_sections: true` to strip per-user context (working directory, auto-memory, git status) from the preset prompt. This keeps the prompt-caching prefix static across runs, which matters for high-volume evals. The stripped context is re-injected as the first user message. Has no effect when `custom_system_prompt` is set.
 
 :::info
-Note that this differs slightly from the Claude Agent SDK's behavior when used independently of Promptfoo. The Agent SDK will _not_ use the Claude Code system prompt by default unless it's specified—it will instead use an empty system prompt if none is provided. If you want to use an empty system prompt with this provider, set `custom_system_prompt` to an empty string.
+Note that this differs slightly from the Claude Agent SDK's behavior when used independently of artef. The Agent SDK will _not_ use the Claude Code system prompt by default unless it's specified—it will instead use an empty system prompt if none is provided. If you want to use an empty system prompt with this provider, set `custom_system_prompt` to an empty string.
 :::
 
 ## Tools and Permissions
@@ -343,12 +343,12 @@ providers:
 ```
 
 The `tools` option specifies the available built-in tools. The Agent SDK's `allowedTools` setting
-auto-approves matching tools; it does not remove other tools. When `tools` is omitted, Promptfoo also
+auto-approves matching tools; it does not remove other tools. When `tools` is omitted, artef also
 uses its default, custom, or appended allowed list as the availability set so the documented no-tool
 and read-only defaults are enforced. When `tools` is supplied explicitly, custom/appended allowed
 lists only control auto-approval within that base. `disallowed_tools` always denies matching tools.
 `allow_all_tools` selects the Claude Code tool preset but does not by itself bypass the configured
-permission mode. For derived availability, Promptfoo also includes the tools required by configured
+permission mode. For derived availability, artef also includes the tools required by configured
 features: `AskUserQuestion` for `ask_user_question`, `Skill` for `skills`, `Task` for programmatic
 `agents`, and `ExitPlanMode` for plan mode. An explicit `tools` list remains authoritative.
 
@@ -515,7 +515,7 @@ Claude automatically invokes the relevant skill when a task matches the skill's 
 
 ### Testing Skill Invocation
 
-Promptfoo normalizes Claude `Skill` tool invocations into `response.metadata.skillCalls`, so skill evals can use the same `skill-used` assertion style as Codex. The underlying `Skill` tool calls are still available in [`response.metadata.toolCalls`](#tool-call-tracking) when you need the raw tool payload.
+artef normalizes Claude `Skill` tool invocations into `response.metadata.skillCalls`, so skill evals can use the same `skill-used` assertion style as Codex. The underlying `Skill` tool calls are still available in [`response.metadata.toolCalls`](#tool-call-tracking) when you need the raw tool payload.
 
 ```yaml
 providers:
@@ -573,7 +573,7 @@ This ensures tests don't depend on user-specific skills that may not be present 
 
 ### Example: Complete Skills Testing Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:claude-agent-sdk
     config:
@@ -881,11 +881,11 @@ providers:
     config:
       extra_args:
         verbose: null # boolean flag (adds --verbose)
-        name: 'promptfoo-eval' # adds --name promptfoo-eval
+        name: 'artef-eval' # adds --name artef-eval
 ```
 
 Policy-changing Claude CLI flags are rejected in `extra_args`. Use supported structured provider
-options for those controls so Promptfoo can validate their combined behavior.
+options for those controls so artef can validate their combined behavior.
 
 ### Custom Executable Path
 
@@ -903,7 +903,7 @@ providers:
 For running Claude Code in VMs, containers, or remote environments, you can provide a custom spawn function when using the provider programmatically:
 
 ```typescript
-import { loadApiProvider } from 'promptfoo';
+import { loadApiProvider } from 'artef';
 
 const provider = await loadApiProvider('anthropic:claude-agent-sdk', {
   options: {
@@ -941,7 +941,7 @@ providers:
 
 ### Subagent Limits
 
-Claude Agent SDK 0.3.217 limits concurrent subagents to 20. Promptfoo preserves the previous maximum nesting depth of five; set either limit to a positive integer when your eval needs different behavior:
+Claude Agent SDK 0.3.217 limits concurrent subagents to 20. artef preserves the previous maximum nesting depth of five; set either limit to a positive integer when your eval needs different behavior:
 
 ```yaml
 providers:
@@ -980,7 +980,7 @@ Available behaviors:
 The convenience callback fails closed for unrelated permission requests that are not already
 approved by SDK permission rules. Provide `can_use_tool` for explicit custom handling. Enabling
 `allow_all_tools` changes tool availability but does not make this callback approve unrelated tools.
-With `permission_mode: dontAsk`, Promptfoo answers enabled question automation through a narrow
+With `permission_mode: dontAsk`, artef answers enabled question automation through a narrow
 pre-tool hook while preserving the SDK's fail-closed mode for every other unmatched request. An
 explicit `tools` exclusion, `disallowed_tools` rule, or matching user-hook denial remains
 authoritative.
@@ -990,7 +990,7 @@ authoritative.
 For custom answer selection logic when using the provider programmatically, you can provide your own `canUseTool` callback:
 
 ```typescript
-import { loadApiProvider } from 'promptfoo';
+import { loadApiProvider } from 'artef';
 
 const provider = await loadApiProvider('anthropic:claude-agent-sdk', {
   options: {
@@ -1048,7 +1048,7 @@ If you're testing scenarios where the agent asks questions, consider what answer
 
 ## Hooks
 
-Promptfoo preserves all configured hooks, so callbacks receive the SDK's native input shape and return values are honored as documented upstream. Unless `forward_subagent_text` is enabled, Promptfoo first installs a `TaskOutput` hook that removes raw subagent transcripts before the main agent can read them. Hooks are programmatic-only — define them in a JS/TS provider file rather than YAML.
+artef preserves all configured hooks, so callbacks receive the SDK's native input shape and return values are honored as documented upstream. Unless `forward_subagent_text` is enabled, artef first installs a `TaskOutput` hook that removes raw subagent transcripts before the main agent can read them. Hooks are programmatic-only — define them in a JS/TS provider file rather than YAML.
 
 The `PostToolUse` event lets you rewrite tool output before the model sees it. Return `updatedToolOutput` to replace the result for any tool (built-in or MCP):
 
@@ -1127,9 +1127,9 @@ assert:
       return grepCall?.output?.includes('expected match');
 ```
 
-For skill evals specifically, prefer the deterministic [`skill-used`](/docs/configuration/expected-outputs/deterministic/#skill-used) assertion over raw JavaScript when possible. Promptfoo derives `metadata.skillCalls` from these `Skill` tool calls automatically.
+For skill evals specifically, prefer the deterministic [`skill-used`](/docs/configuration/expected-outputs/deterministic/#skill-used) assertion over raw JavaScript when possible. artef derives `metadata.skillCalls` from these `Skill` tool calls automatically.
 
-By default, only subagent `tool_use` and `tool_result` blocks reach `metadata.toolCalls` — the subagent's text and thinking are summarised away. If `TaskOutput` returns an unsummarized background-subagent transcript, Promptfoo redacts it before the main agent sees the tool result and again from tool metadata, tracing, and cached eval results. Set `forward_subagent_text: true` to forward the full subagent transcript so consumers can render or assert against the nested conversation:
+By default, only subagent `tool_use` and `tool_result` blocks reach `metadata.toolCalls` — the subagent's text and thinking are summarised away. If `TaskOutput` returns an unsummarized background-subagent transcript, artef redacts it before the main agent sees the tool result and again from tool metadata, tracing, and cached eval results. Set `forward_subagent_text: true` to forward the full subagent transcript so consumers can render or assert against the nested conversation:
 
 ```yaml
 providers:
@@ -1194,7 +1194,7 @@ tracing:
 
 ### Deep tracing (SDK-internal events)
 
-Set `deep_tracing: true` to capture the Claude SDK's own model, tool, and subagent spans. Enable the OTLP HTTP receiver so Promptfoo can ingest native spans, select a supported export format, and avoid duplicating its own turn and tool spans. If no receiver is running, Promptfoo keeps its own spans. Prompt and tool-content logging remains off unless you explicitly enable it.
+Set `deep_tracing: true` to capture the Claude SDK's own model, tool, and subagent spans. Enable the OTLP HTTP receiver so artef can ingest native spans, select a supported export format, and avoid duplicating its own turn and tool spans. If no receiver is running, artef keeps its own spans. Prompt and tool-content logging remains off unless you explicitly enable it.
 
 ```yaml
 providers:
@@ -1220,7 +1220,7 @@ config:
     OTEL_EXPORTER_OTLP_PROTOCOL: 'http/json'
 ```
 
-The receiver's `/v1/logs` endpoint accepts JSON only. The provider automatically injects `OTEL_RESOURCE_ATTRIBUTES=promptfoo.trace_id=...,promptfoo.parent_span_id=...` so logs link to the correct evaluation trace even though the SDK's logs signal doesn't natively inherit `TRACEPARENT`.
+The receiver's `/v1/logs` endpoint accepts JSON only. The provider automatically injects `OTEL_RESOURCE_ATTRIBUTES=artef.trace_id=...,artef.parent_span_id=...` so logs link to the correct evaluation trace even though the SDK's logs signal doesn't natively inherit `TRACEPARENT`.
 
 ## Caching Behavior
 
@@ -1241,7 +1241,7 @@ providers:
 
 Authenticated MCP configurations, custom headers, URLs containing credentials, signed/query URLs,
 and stdio servers with arguments remain uncached even when `cache_mcp` is true. Stdio arguments can
-contain positional credentials such as database URLs, so Promptfoo does not put them into persistent
+contain positional credentials such as database URLs, so artef does not put them into persistent
 cache keys.
 
 The subprocess environment is excluded from persistent cache keys and replaced with a non-secret,
@@ -1257,7 +1257,7 @@ their external account identity can rotate without a stable secret in the reques
 To disable caching globally:
 
 ```bash
-export PROMPTFOO_CACHE_ENABLED=false
+export artef_CACHE_ENABLED=false
 ```
 
 You can also include `bustCache: true` in the configuration to prevent reading from the cache.
@@ -1272,8 +1272,8 @@ When using Claude Agent SDK with configurations that allow side effects, like wr
 This increases complexity, so first consider if you can achieve your goal with a read-only configuration. If you do need to test with side effects, here are some strategies that can help:
 
 - **Serial execution**: Set `evaluateOptions.maxConcurrency: 1` in your config or use `--max-concurrency 1` CLI flag
-- **Hooks**: Use promptfoo [extension hooks](/docs/configuration/reference/#extension-hooks) to reset the environment after each test run
-- **Wrapper scripts**: Handle setup/cleanup outside of promptfoo
+- **Hooks**: Use artef [extension hooks](/docs/configuration/reference/#extension-hooks) to reset the environment after each test run
+- **Wrapper scripts**: Handle setup/cleanup outside of artef
 - **Use git**: If you're using a custom working directory, you can use git to reset the files after each test run
 - **Use a container**: Run tests that might run commands in a container to protect the host system
 
@@ -1281,15 +1281,15 @@ This increases complexity, so first consider if you can achieve your goal with a
 
 Here are a few complete example implementations:
 
-- [Basic usage](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#basic-usage) - Basic usage with no tools
-- [Working directory](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#working-directory) - Read-only access to a working directory
-- [Advanced editing](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#advanced-editing) - File edits and working directory reset in an extension hook
-- [MCP integration](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#mcp-integration) - Read-only MCP server integration with weather API
-- [Structured output](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#structured-output) - JSON schema validation for agent responses
-- [Advanced options](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#advanced-options) - Sandbox, runtime configuration, and CLI arguments
-- [AskUserQuestion handling](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#askuserquestion-handling) - Automated handling of user questions in evaluations
-- [Skills testing](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#skills-testing) - Testing Agent Skills with the SDK
-- [Plugins](https://github.com/promptfoo/promptfoo/tree/main/examples/claude-agent-sdk#plugins) - Loading plugins to extend agent capabilities
+- [Basic usage](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#basic-usage) - Basic usage with no tools
+- [Working directory](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#working-directory) - Read-only access to a working directory
+- [Advanced editing](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#advanced-editing) - File edits and working directory reset in an extension hook
+- [MCP integration](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#mcp-integration) - Read-only MCP server integration with weather API
+- [Structured output](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#structured-output) - JSON schema validation for agent responses
+- [Advanced options](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#advanced-options) - Sandbox, runtime configuration, and CLI arguments
+- [AskUserQuestion handling](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#askuserquestion-handling) - Automated handling of user questions in evaluations
+- [Skills testing](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#skills-testing) - Testing Agent Skills with the SDK
+- [Plugins](https://github.com/artef/artef/tree/main/examples/claude-agent-sdk#plugins) - Loading plugins to extend agent capabilities
 
 ## See Also
 

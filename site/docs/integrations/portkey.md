@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Portkey AI
-description: Integrate Portkey AI gateway with promptfoo for LLM testing, including prompt management, observability, and custom configurations with OpenAI models and APIs.
+description: Integrate Portkey AI gateway with artef for LLM testing, including prompt management, observability, and custom configurations with OpenAI models and APIs.
 ---
 
 # Portkey AI integration
@@ -27,15 +27,15 @@ To reference prompts in Portkey:
          topic: ...
    ```
 
-Variables from your promptfoo test cases will be automatically plugged into the Portkey prompt as variables. The resulting prompt will be rendered and returned to promptfoo, and used as the prompt for the test case.
+Variables from your artef test cases will be automatically plugged into the Portkey prompt as variables. The resulting prompt will be rendered and returned to artef, and used as the prompt for the test case.
 
-Note that promptfoo does not follow the temperature, model, and other parameters set in Portkey. You must set them in the `providers` configuration yourself.
+Note that artef does not follow the temperature, model, and other parameters set in Portkey. You must set them in the `providers` configuration yourself.
 
 ## Using Portkey gateway
 
-The Portkey AI gateway is directly supported by promptfoo. See also:
+The Portkey AI gateway is directly supported by artef. See also:
 
-- [Portkey's documentation on integrating promptfoo](https://portkey.ai/docs/integrations/libraries/promptfoo)
+- [Portkey's documentation on integrating artef](https://portkey.ai/docs/integrations/libraries/artef)
 
 Example:
 
@@ -55,7 +55,7 @@ A Portkey request can carry two credentials, and they are sent in different plac
 | Your Portkey key            | `x-portkey-api-key`     | `PORTKEY_API_KEY`, or `portkeyApiKey` in config |
 | The upstream provider's key | `Authorization: Bearer` | `OPENAI_API_KEY`, or `apiKey` in config         |
 
-When Portkey holds the provider credential — a model catalog provider slug or a virtual key — the Portkey key is all you need, and promptfoo does not forward a provider key. A provider key is only sent for direct passthrough, such as `portkeyProvider: openai` with no slug.
+When Portkey holds the provider credential — a model catalog provider slug or a virtual key — the Portkey key is all you need, and artef does not forward a provider key. A provider key is only sent for direct passthrough, such as `portkeyProvider: openai` with no slug.
 
 To send additional headers, use `config.headers`:
 
@@ -90,13 +90,13 @@ providers:
 
 ## Portkey MCP Gateway
 
-Promptfoo can connect to [Portkey's MCP Gateway](https://portkey.ai/docs/product/mcp-gateway/) in two ways. Use the [`mcp` provider](/docs/providers/mcp/) to test or red team the MCP server directly. To test an LLM application that uses the server, add the same server block to the model provider's [`mcp` config](/docs/integrations/mcp/).
+artef can connect to [Portkey's MCP Gateway](https://portkey.ai/docs/product/mcp-gateway/) in two ways. Use the [`mcp` provider](/docs/providers/mcp/) to test or red team the MCP server directly. To test an LLM application that uses the server, add the same server block to the model provider's [`mcp` config](/docs/integrations/mcp/).
 
 `PORTKEY_API_BASE_URL` does not configure the MCP connection. It sets the OpenAI-compatible chat-completions endpoint used by the `portkey:` provider and defaults to `https://api.portkey.ai/v1`. Put the MCP Gateway URL in `server.url` instead.
 
 The gateway exposes each registered server at `https://mcp.portkey.ai/<server-slug>/mcp`, where `<server-slug>` is the slug from Portkey's MCP Registry. For non-interactive CLI and CI runs, send a workspace user API key with `mcp invoke` permission in the `x-portkey-api-key` header. Without an API key, Portkey starts an interactive OAuth flow intended for browser-based clients. See [Portkey's authentication guide](https://portkey.ai/docs/product/mcp-gateway/authentication).
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{prompt}}'
 
@@ -119,4 +119,4 @@ tests:
         value: 'expected result'
 ```
 
-Each functional test sends one JSON tool call in the form `{"tool": "tool_name", "args": {...}}`. For a red-team run, use the same `id: mcp` target with the [`mcp` plugin](/docs/red-team/plugins/mcp/); Promptfoo converts generated attacks into valid calls to the server's tools.
+Each functional test sends one JSON tool call in the form `{"tool": "tool_name", "args": {...}}`. For a red-team run, use the same `id: mcp` target with the [`mcp` plugin](/docs/red-team/plugins/mcp/); artef converts generated attacks into valid calls to the server's tools.

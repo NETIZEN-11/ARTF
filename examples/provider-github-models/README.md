@@ -1,9 +1,9 @@
-# provider-github-models (GitHub Models Provider)
+﻿# provider-github-models (GitHub Models Provider)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-github-models
+npx artef@latest init --example provider-github-models
 cd provider-github-models
 ```
 
@@ -25,13 +25,13 @@ This example tests the GitHub Models API integration:
 ## Run the Evaluation
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ## View Results
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Available Models

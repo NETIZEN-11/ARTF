@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: LiteLLM provider example - unified interface for multiple LLMs
 
 # This example demonstrates the LiteLLM provider, which provides a unified

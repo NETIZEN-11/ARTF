@@ -1,11 +1,11 @@
-# provider-watsonx (IBM WatsonX Model Comparison)
+﻿# provider-watsonx (IBM WatsonX Model Comparison)
 
 This example compares IBM Granite, Meta Llama, and Mistral models available through IBM watsonx.ai.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-watsonx
+npx artef@latest init --example provider-watsonx
 cd provider-watsonx
 ```
 
@@ -32,19 +32,19 @@ Follow the instructions in [watsonx.md](../../site/docs/providers/watsonx.md) to
 ## Running the Example
 
 ```sh
-promptfoo eval
+artef eval
 ```
 
 Or with the local build:
 
 ```sh
-npm run local -- eval --config examples/provider-watsonx/promptfooconfig.yaml
+npm run local -- eval --config examples/provider-watsonx/artefconfig.yaml
 ```
 
 Afterwards, view the results:
 
 ```sh
-promptfoo view
+artef view
 ```
 
 ## Models Tested

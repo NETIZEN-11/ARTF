@@ -1,4 +1,4 @@
-import {
+﻿import {
   addTraceProcessor,
   BatchTraceProcessor,
   getOrCreateTrace,
@@ -35,7 +35,7 @@ import type { OpenAiAgentsOptions, OpenAiAgentsSessionFactory } from './agents-t
 /**
  * OpenAI Agents Provider
  *
- * Integrates openai-agents-js SDK as a promptfoo provider.
+ * Integrates openai-agents-js SDK as a artef provider.
  * Supports multi-turn agent workflows with tools, handoffs, and tracing.
  */
 export class OpenAiAgentsProvider extends OpenAiGenericProvider {
@@ -155,7 +155,7 @@ export class OpenAiAgentsProvider extends OpenAiGenericProvider {
       this.agentConfig.tracing === true ||
       Boolean(context?.traceparent && hasConfiguredExporter) ||
       context?.test?.metadata?.tracingEnabled === true ||
-      process.env.PROMPTFOO_TRACING_ENABLED === 'true';
+      process.env.artef_TRACING_ENABLED === 'true';
 
     if (!tracingEnabled) {
       logger.debug('[AgentsProvider] Tracing not enabled');
@@ -224,7 +224,7 @@ export class OpenAiAgentsProvider extends OpenAiGenericProvider {
         getModelProviderName(explicitModel),
       );
 
-      // Run the agent within the evaluator trace when Promptfoo supplied one so
+      // Run the agent within the evaluator trace when artef supplied one so
       // nested agent spans stay attached to trajectory assertions and UI traces.
       const executeRun = () =>
         getOrCreateTrace(
@@ -577,12 +577,12 @@ function buildTraceMetadata(
     ...(context?.evaluationId ? { 'evaluation.id': context.evaluationId } : {}),
     ...(context?.testCaseId ? { 'test.case.id': context.testCaseId } : {}),
     ...(traceContext?.parentSpanId
-      ? { 'promptfoo.parent_span_id': traceContext.parentSpanId }
+      ? { 'artef.parent_span_id': traceContext.parentSpanId }
       : {}),
-    ...(otlpEndpoint ? { 'promptfoo.otlp_endpoint': otlpEndpoint } : {}),
-    ...(otlpFormat === 'protobuf' ? { 'promptfoo.otlp_format': otlpFormat } : {}),
-    ...(requestedModel ? { 'promptfoo.request_model': requestedModel } : {}),
-    ...(modelProvider ? { 'promptfoo.model_provider': modelProvider } : {}),
+    ...(otlpEndpoint ? { 'artef.otlp_endpoint': otlpEndpoint } : {}),
+    ...(otlpFormat === 'protobuf' ? { 'artef.otlp_format': otlpFormat } : {}),
+    ...(requestedModel ? { 'artef.request_model': requestedModel } : {}),
+    ...(modelProvider ? { 'artef.model_provider': modelProvider } : {}),
   };
 }
 

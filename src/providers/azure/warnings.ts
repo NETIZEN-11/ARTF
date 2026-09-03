@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import { MODEL_GRADED_ASSERTION_TYPES } from '../../assertions/index';
 import logger from '../../logger';
 
@@ -42,7 +42,7 @@ export function maybeEmitAzureOpenAiWarning(testSuite: TestSuite, tests: TestCas
           `You are using model-graded assertions of types ${chalk.bold(
             assertTypes,
           )} while testing an Azure provider. You may need to override these to use your Azure deployment. To learn more, see ${chalk.bold(
-            `https://promptfoo.dev/docs/providers/azure/#model-graded-tests`,
+            `https://artef.dev/docs/providers/azure/#model-graded-tests`,
           )}`,
         ),
       );

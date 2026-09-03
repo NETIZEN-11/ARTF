@@ -1,11 +1,11 @@
-import { mockClipboard } from '@app/tests/browserMocks';
+﻿import { mockClipboard } from '@app/tests/browserMocks';
 import { restoreTestTimers, type TestTimers, useTestTimers } from '@app/tests/timers';
 import { renderWithProviders as baseRender } from '@app/utils/testutils';
 import {
   type AssertionType,
   type EvaluateTableOutput,
   ResultFailureReason,
-} from '@promptfoo/types';
+} from '@artef/types';
 import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -2942,7 +2942,7 @@ describe('EvalOutputCell metrics pills setting', () => {
  * Tests for lightbox functionality with inline images.
  * These tests verify the fix for issue #969 (markdown re-rendering)
  * by testing that the lightbox toggle works correctly with useCallback.
- * @see https://github.com/promptfoo/promptfoo/issues/969
+ * @see https://github.com/artef/artef/issues/969
  */
 describe('EvalOutputCell inline image lightbox', () => {
   const mockOnRating = vi.fn();

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 import { usePageMeta } from '@app/hooks/usePageMeta';
 import { callApi } from '@app/utils/api';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import Prompts from './Prompts';
-import type { ServerPromptWithMetadata } from '@promptfoo/types';
+import type { ServerPromptWithMetadata } from '@artef/types';
 
 interface PromptsPageProps {
   showDatasetColumn?: boolean;

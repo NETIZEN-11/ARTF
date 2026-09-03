@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import { DEFAULT_CONFIG_EXTENSIONS } from './extensions';
 import { maybeReadConfig } from './load';
@@ -17,13 +17,13 @@ export const configCache = new Map<
  * Loads the default configuration file from the specified directory.
  *
  * @param dir - The directory to search for configuration files. Defaults to the current working directory.
- * @param configName - The name of the configuration file to load. Defaults to 'promptfooconfig'.
+ * @param configName - The name of the configuration file to load. Defaults to 'artefconfig'.
  * @returns A promise that resolves to an object containing the default configuration and its file path.
  * The default configuration is partial, and the file path may be undefined if no configuration is found.
  */
 export async function loadDefaultConfig(
   dir?: string,
-  configName: string = 'promptfooconfig',
+  configName: string = 'artefconfig',
 ): Promise<{
   defaultConfig: Partial<UnifiedConfig>;
   defaultConfigPath: string | undefined;

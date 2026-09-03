@@ -1,4 +1,4 @@
-/**
+﻿/**
  * To run:
  *
  * ```sh
@@ -30,7 +30,7 @@ import {
   type Plugin,
   RAG_PLUGINS,
   riskCategories,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';

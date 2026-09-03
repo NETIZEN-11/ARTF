@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { processJinjaFile } from '../../../src/prompts/processors/jinja';
@@ -15,7 +15,7 @@ describe('processJinjaFile', () => {
   it('should process a Jinja2 file without a label', () => {
     const filePath = 'template.j2';
     const fileContent =
-      'You are a helpful assistant for Promptfoo.\nPlease answer the following question about {{ topic }}: {{ question }}';
+      'You are a helpful assistant for artef.\nPlease answer the following question about {{ topic }}: {{ question }}';
     mockReadFileSync.mockReturnValue(fileContent);
 
     const result = processJinjaFile(filePath, {});
@@ -33,7 +33,7 @@ describe('processJinjaFile', () => {
   it('should process a Jinja2 file with a label', () => {
     const filePath = 'template.j2';
     const fileContent =
-      'You are a helpful assistant for Promptfoo.\nPlease answer the following question about {{ topic }}: {{ question }}';
+      'You are a helpful assistant for artef.\nPlease answer the following question about {{ topic }}: {{ question }}';
     mockReadFileSync.mockReturnValue(fileContent);
 
     const result = processJinjaFile(filePath, { label: 'Custom Label' });
@@ -51,7 +51,7 @@ describe('processJinjaFile', () => {
   it('should include config when provided', () => {
     const filePath = 'template.j2';
     const fileContent =
-      'You are a helpful assistant for Promptfoo.\nPlease answer the following question about {{ topic }}: {{ question }}';
+      'You are a helpful assistant for artef.\nPlease answer the following question about {{ topic }}: {{ question }}';
     const config = { temperature: 0.7, max_tokens: 150 };
     mockReadFileSync.mockReturnValue(fileContent);
 

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 25
 description: Red team LLM applications against OWASP API Security Top 10 vulnerabilities to protect AI systems from broken authorization, SSRF, and API-specific attacks
 ---
@@ -35,7 +35,7 @@ LLM applications with API access create unique security challenges:
 
 ## Scanning for OWASP API Security Risks
 
-Promptfoo helps identify API security vulnerabilities in LLM applications through red teaming:
+artef helps identify API security vulnerabilities in LLM applications through red teaming:
 
 ```yaml
 redteam:
@@ -494,7 +494,7 @@ When securing LLM applications against API vulnerabilities:
 
 ## What's Next
 
-API security for LLM applications is an evolving field as new attack patterns emerge. Regular testing with Promptfoo helps ensure your LLM applications maintain strong API security posture.
+API security for LLM applications is an evolving field as new attack patterns emerge. Regular testing with artef helps ensure your LLM applications maintain strong API security posture.
 
 To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
 

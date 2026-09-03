@@ -1,4 +1,4 @@
-import { getEnvBool, getEnvInt } from '../envars';
+﻿import { getEnvBool, getEnvInt } from '../envars';
 import { loadYaml } from '../util/yamlLoad';
 
 import type { ApiProvider } from '../types/index';
@@ -158,7 +158,7 @@ export function parseChatPrompt<T>(prompt: string, defaultValue: T): T {
       // Try JSON
       return JSON.parse(prompt) as T;
     } catch (err) {
-      if (getEnvBool('PROMPTFOO_REQUIRE_JSON_PROMPTS') || looksLikeJson(trimmedPrompt)) {
+      if (getEnvBool('artef_REQUIRE_JSON_PROMPTS') || looksLikeJson(trimmedPrompt)) {
         throw new Error(`Chat Completion prompt is not a valid JSON string: ${err}\n\n${prompt}`);
       }
       // Fall back to the provided default value
@@ -177,9 +177,9 @@ export function toTitleCase(str: string) {
   return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-export function isPromptfooSampleTarget(provider: ApiProvider) {
+export function isartefSampleTarget(provider: ApiProvider) {
   const url = provider.config?.url;
-  return url?.includes('promptfoo.app') || url?.includes('promptfoo.dev');
+  return url?.includes('artef.app') || url?.includes('artef.dev');
 }
 
 // ==================

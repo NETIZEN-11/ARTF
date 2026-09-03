@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 
 import { parse } from 'csv-parse/sync';
 import logger from '../../logger';
@@ -8,10 +8,10 @@ import { RedteamPluginBase } from './base';
 
 import type { Assertion, TestCase } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:donotanswer';
+const PLUGIN_ID = 'artef:redteam:donotanswer';
 
 const PRODUCTION_DATASET_URL =
-  'https://raw.githubusercontent.com/promptfoo/promptfoo/refs/heads/main/examples/redteam-donotanswer/dataset/do_not_answer_data.csv';
+  'https://raw.githubusercontent.com/artef/artef/refs/heads/main/examples/redteam-donotanswer/dataset/do_not_answer_data.csv';
 
 // Development URL - for local testing
 // const DEV_DATASET_URL =

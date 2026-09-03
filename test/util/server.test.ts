@@ -1,4 +1,4 @@
-import opener from 'opener';
+﻿import opener from 'opener';
 import { beforeEach, describe, expect, it, type MockedFunction, vi } from 'vitest';
 import { getDefaultPort, VERSION } from '../../src/constants';
 import logger from '../../src/logger';
@@ -66,7 +66,7 @@ describe('Server Utilities', () => {
         `http://localhost:${getDefaultPort()}/health`,
         {
           headers: {
-            'x-promptfoo-silent': 'true',
+            'x-artef-silent': 'true',
           },
         },
       );
@@ -114,7 +114,7 @@ describe('Server Utilities', () => {
 
       expect(mockFetchWithProxy).toHaveBeenCalledWith(`http://localhost:${customPort}/health`, {
         headers: {
-          'x-promptfoo-silent': 'true',
+          'x-artef-silent': 'true',
         },
       });
     });
@@ -200,7 +200,7 @@ describe('Server Utilities', () => {
       vi.clearAllMocks();
       // Setup default mock for getRemoteVersionUrl to return a valid URL
       vi.mocked(remoteGeneration.getRemoteVersionUrl).mockReturnValue(
-        'https://api.promptfoo.app/version',
+        'https://api.artef.app/version',
       );
     });
 
@@ -214,7 +214,7 @@ describe('Server Utilities', () => {
 
       const result = await checkServerFeatureSupport(featureName, requiredDate);
 
-      expect(mockFetchWithProxy).toHaveBeenCalledWith('https://api.promptfoo.app/version', {
+      expect(mockFetchWithProxy).toHaveBeenCalledWith('https://api.artef.app/version', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });

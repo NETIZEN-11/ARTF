@@ -1,4 +1,4 @@
-// These are exposed on the frontend under the framework compliance section
+﻿// These are exposed on the frontend under the framework compliance section
 export const FRAMEWORK_COMPLIANCE_IDS = [
   'mitre:atlas',
   'nist:ai:measure',
@@ -196,7 +196,7 @@ export function isFanoutStrategy(strategyId: string): strategyId is FanOutStrate
 }
 
 // Strategies that require remote generation to function
-// These strategies will be disabled in the UI when PROMPTFOO_DISABLE_REMOTE_GENERATION is set
+// These strategies will be disabled in the UI when artef_DISABLE_REMOTE_GENERATION is set
 export const STRATEGIES_REQUIRING_REMOTE = [
   'audio',
   'citation',

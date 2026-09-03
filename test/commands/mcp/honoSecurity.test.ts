@@ -1,4 +1,4 @@
-import { Hono } from 'hono';
+﻿import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { NONCE, secureHeaders } from 'hono/secure-headers';
 import { describe, expect, it } from 'vitest';
@@ -18,7 +18,7 @@ describe('MCP Hono dependency security', () => {
 
     // No comma anywhere, so every offset in the run is a fresh backtracking start.
     // The run has to be interior: `Headers` strips leading and trailing whitespace.
-    const padded = `x-promptfoo-probe${' '.repeat(60_000)}x-promptfoo-tail`;
+    const padded = `x-artef-probe${' '.repeat(60_000)}x-artef-tail`;
     const started = performance.now();
     const response = await app.request('http://localhost/', {
       method: 'OPTIONS',
@@ -31,7 +31,7 @@ describe('MCP Hono dependency security', () => {
     const elapsedMs = performance.now() - started;
 
     expect(response.status).toBe(204);
-    expect(response.headers.get('access-control-allow-headers')).toContain('x-promptfoo-probe');
+    expect(response.headers.get('access-control-allow-headers')).toContain('x-artef-probe');
     // 4.12.32 needs ~2s for this input and scales quadratically; the patched parser
     // is sub-millisecond. The bound is loose enough for a slow CI runner.
     expect(elapsedMs).toBeLessThan(1_000);

@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { fetchWithCache } from '../../cache';
 import { VERSION } from '../../constants';
@@ -32,7 +32,7 @@ export const RedTeamGenerationResponse = z.object({
 
 export type RedTeamTask = 'purpose' | 'entities';
 
-interface PromptfooMcpMaterializationOptions {
+interface artefMcpMaterializationOptions {
   intentValue?: unknown;
   purpose?: string;
   targetId?: string;
@@ -64,7 +64,7 @@ export async function fetchRemoteGeneration(
   provider?: ApiProvider,
 ): Promise<string | string[]> {
   invariant(
-    !getEnvBool('PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION'),
+    !getEnvBool('artef_DISABLE_REDTEAM_REMOTE_GENERATION'),
     'fetchRemoteGeneration should never be called when remote generation is disabled',
   );
   let responseRecorded = false;
@@ -108,7 +108,7 @@ export async function fetchRemoteGeneration(
 }
 
 export async function materializeMcpToolCallRemote(
-  options: PromptfooMcpMaterializationOptions,
+  options: artefMcpMaterializationOptions,
   callApiOptions?: CallApiOptionsParams,
 ): Promise<
   { cached?: boolean; prompt: string; tokenUsage?: ProviderResponse['tokenUsage'] } | undefined

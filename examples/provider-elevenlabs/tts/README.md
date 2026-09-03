@@ -1,9 +1,9 @@
-# provider-elevenlabs/tts (ElevenLabs Text-to-Speech)
+﻿# provider-elevenlabs/tts (ElevenLabs Text-to-Speech)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-elevenlabs/tts
+npx artef@latest init --example provider-elevenlabs/tts
 cd provider-elevenlabs/tts
 ```
 
@@ -27,14 +27,14 @@ export ELEVENLABS_API_KEY=your_api_key_here
 ## Run the example
 
 ```bash
-npx promptfoo@latest eval -c ./promptfooconfig.yaml
+npx artef@latest eval -c ./artefconfig.yaml
 ```
 
 Or view in the UI:
 
 ```bash
-npx promptfoo@latest eval -c ./promptfooconfig.yaml
-npx promptfoo@latest view
+npx artef@latest eval -c ./artefconfig.yaml
+npx artef@latest view
 ```
 
 ## What to look for

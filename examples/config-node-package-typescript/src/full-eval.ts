@@ -1,7 +1,7 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 
-import promptfoo from 'promptfoo';
-import type { EvaluateTestSuite } from 'promptfoo';
+import artef from 'artef';
+import type { EvaluateTestSuite } from 'artef';
 
 const prompts: EvaluateTestSuite['prompts'] = [
   // Prompts can be raw text...
@@ -87,12 +87,12 @@ const tests = [
 ];
 
 (async () => {
-  const evalRecord = await promptfoo.evaluate({
+  const evalRecord = await artef.evaluate({
     prompts,
     providers,
     tests,
 
-    // Persist results locally so they are visible in the promptfoo viewer
+    // Persist results locally so they are visible in the artef viewer
     writeLatestResults: true,
   });
   const results = await evalRecord.toEvaluateSummary();

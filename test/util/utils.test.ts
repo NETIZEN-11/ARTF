@@ -1,14 +1,14 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { mockGlobal, mockProcessEnv } from './utils';
 
 const envKeys = [
-  'PROMPTFOO_TEST_UTIL_ORIGINAL',
-  'PROMPTFOO_TEST_UTIL_OVERRIDE',
-  'PROMPTFOO_TEST_UTIL_CREATED',
+  'artef_TEST_UTIL_ORIGINAL',
+  'artef_TEST_UTIL_OVERRIDE',
+  'artef_TEST_UTIL_CREATED',
 ];
 
 const originalEnv = Object.fromEntries(envKeys.map((key) => [key, process.env[key]]));
-const testGlobalName = '__PROMPTFOO_TEST_UTIL_GLOBAL__';
+const testGlobalName = '__artef_TEST_UTIL_GLOBAL__';
 
 function restoreTestEnv(): void {
   for (const key of envKeys) {
@@ -31,45 +31,45 @@ afterEach(() => {
 
 describe('mockProcessEnv', () => {
   it('applies overrides and restores the previous environment snapshot', () => {
-    mockProcessEnv({ PROMPTFOO_TEST_UTIL_ORIGINAL: 'original' });
+    mockProcessEnv({ artef_TEST_UTIL_ORIGINAL: 'original' });
 
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_TEST_UTIL_ORIGINAL: 'override',
-      PROMPTFOO_TEST_UTIL_OVERRIDE: 'set',
+      artef_TEST_UTIL_ORIGINAL: 'override',
+      artef_TEST_UTIL_OVERRIDE: 'set',
     });
 
-    mockProcessEnv({ PROMPTFOO_TEST_UTIL_CREATED: 'created-by-test' });
+    mockProcessEnv({ artef_TEST_UTIL_CREATED: 'created-by-test' });
 
-    expect(process.env.PROMPTFOO_TEST_UTIL_ORIGINAL).toBe('override');
-    expect(process.env.PROMPTFOO_TEST_UTIL_OVERRIDE).toBe('set');
+    expect(process.env.artef_TEST_UTIL_ORIGINAL).toBe('override');
+    expect(process.env.artef_TEST_UTIL_OVERRIDE).toBe('set');
 
     restoreEnv();
 
-    expect(process.env.PROMPTFOO_TEST_UTIL_ORIGINAL).toBe('original');
-    expect(process.env.PROMPTFOO_TEST_UTIL_OVERRIDE).toBeUndefined();
-    expect(process.env.PROMPTFOO_TEST_UTIL_CREATED).toBeUndefined();
+    expect(process.env.artef_TEST_UTIL_ORIGINAL).toBe('original');
+    expect(process.env.artef_TEST_UTIL_OVERRIDE).toBeUndefined();
+    expect(process.env.artef_TEST_UTIL_CREATED).toBeUndefined();
   });
 
   it('can start from an empty environment without replacing the process.env object', () => {
-    mockProcessEnv({ PROMPTFOO_TEST_UTIL_ORIGINAL: 'original' });
+    mockProcessEnv({ artef_TEST_UTIL_ORIGINAL: 'original' });
     const envReference = process.env;
 
     const restoreEnv = mockProcessEnv(
       {
-        PROMPTFOO_TEST_UTIL_OVERRIDE: 'only-value',
+        artef_TEST_UTIL_OVERRIDE: 'only-value',
       },
       { clear: true },
     );
 
     expect(process.env).toBe(envReference);
-    expect(process.env.PROMPTFOO_TEST_UTIL_ORIGINAL).toBeUndefined();
-    expect(process.env.PROMPTFOO_TEST_UTIL_OVERRIDE).toBe('only-value');
+    expect(process.env.artef_TEST_UTIL_ORIGINAL).toBeUndefined();
+    expect(process.env.artef_TEST_UTIL_OVERRIDE).toBe('only-value');
 
     restoreEnv();
 
     expect(process.env).toBe(envReference);
-    expect(process.env.PROMPTFOO_TEST_UTIL_ORIGINAL).toBe('original');
-    expect(process.env.PROMPTFOO_TEST_UTIL_OVERRIDE).toBeUndefined();
+    expect(process.env.artef_TEST_UTIL_ORIGINAL).toBe('original');
+    expect(process.env.artef_TEST_UTIL_OVERRIDE).toBeUndefined();
   });
 });
 
@@ -113,9 +113,9 @@ describe('removeTempDir', () => {
     });
     const { removeTempDir } = await import('./utils');
 
-    removeTempDir('/tmp/promptfoo-test-dir');
+    removeTempDir('/tmp/artef-test-dir');
 
-    expect(rmSync).toHaveBeenCalledWith('/tmp/promptfoo-test-dir', {
+    expect(rmSync).toHaveBeenCalledWith('/tmp/artef-test-dir', {
       force: true,
       maxRetries: 3,
       recursive: true,

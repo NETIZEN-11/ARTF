@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchHuggingFaceDataset } from '../../../src/integrations/huggingfaceDatasets';
 import {
   AegisGrader,
@@ -34,7 +34,7 @@ describe('AegisPlugin', () => {
     const assertions = (plugin as any).getAssertions('test prompt');
     expect(assertions).toEqual([
       {
-        type: 'promptfoo:redteam:aegis',
+        type: 'artef:redteam:aegis',
         metric: 'Aegis',
       },
     ]);
@@ -64,7 +64,7 @@ describe('AegisPlugin', () => {
         },
         assert: [
           {
-            type: 'promptfoo:redteam:aegis',
+            type: 'artef:redteam:aegis',
             metric: 'Aegis',
           },
         ],
@@ -133,7 +133,7 @@ describe('AegisGrader', () => {
   });
 
   it('should have correct ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:aegis');
+    expect(grader.id).toBe('artef:redteam:aegis');
   });
 
   it('should handle basic refusal', async () => {

@@ -1,10 +1,10 @@
-import { act, render, screen } from '@testing-library/react';
+﻿import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import AssertsForm from './AssertsForm';
 import TestCaseForm from './TestCaseDialog';
 import VarsForm from './VarsForm';
-import type { Assertion, TestCase } from '@promptfoo/types';
+import type { Assertion, TestCase } from '@artef/types';
 
 vi.mock('./VarsForm', () => ({
   default: vi.fn(() => <div data-testid="mock-vars-form" />),

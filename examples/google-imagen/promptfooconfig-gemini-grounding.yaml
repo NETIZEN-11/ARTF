@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Gemini image generation with search grounding
 
 prompts:
@@ -15,7 +15,7 @@ providers:
 defaultTest:
   assert:
     - type: javascript
-      value: output.length > 0 && (output.startsWith('data:image/') || output.startsWith('promptfoo://blob/'))
+      value: output.length > 0 && (output.startsWith('data:image/') || output.startsWith('artef://blob/'))
 
 tests:
   - vars:

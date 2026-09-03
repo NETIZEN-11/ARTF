@@ -1,9 +1,9 @@
-# n8n-agent (n8n AI Agent Evaluation)
+﻿# n8n-agent (n8n AI Agent Evaluation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example n8n-agent
+npx artef@latest init --example n8n-agent
 ```
 
 This example demonstrates how to evaluate n8n AI agents and workflows using the n8n provider.
@@ -18,7 +18,7 @@ This example demonstrates how to evaluate n8n AI agents and workflows using the 
 1. Create an n8n workflow with a Webhook trigger node
 2. Add your AI agent logic (e.g., AI Agent node, OpenAI node)
 3. Configure the workflow to return the agent's response
-4. Update `promptfooconfig.yaml` with your webhook URL:
+4. Update `artefconfig.yaml` with your webhook URL:
 
 ```yaml
 providers:
@@ -35,10 +35,10 @@ export N8N_API_KEY=your-api-key  # If your webhook requires authentication
 
 ```bash
 # Run the evaluation
-npx promptfoo eval
+npx artef eval
 
 # View results
-npx promptfoo view
+npx artef view
 ```
 
 ## Configuration Options

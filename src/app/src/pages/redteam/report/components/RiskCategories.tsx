@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+﻿import { useId, useState } from 'react';
 
 import { Card, CardContent } from '@app/components/ui/card';
 import {
@@ -14,14 +14,14 @@ import {
   displayNameOverrides,
   riskCategories,
   subCategoryDescriptions,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { CheckCircle, ChevronDown, ChevronRight, XCircle } from 'lucide-react';
 import { type CategoryStats } from './FrameworkComplianceUtils';
 import RiskCategoryDrawer from './RiskCategoryDrawer';
 import { getPassRateStyles } from './shared';
 import { useReportStore } from './store';
-import type { TopLevelCategory } from '@promptfoo/redteam/constants';
-import type { GradingResult } from '@promptfoo/types';
+import type { TopLevelCategory } from '@artef/redteam/constants';
+import type { GradingResult } from '@artef/types';
 
 interface RiskCategoriesProps {
   categoryStats: CategoryStats;

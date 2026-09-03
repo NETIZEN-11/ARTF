@@ -1,7 +1,7 @@
-import {
+﻿import {
   deserializePolicyIdFromMetric,
   isPolicyMetric,
-} from '@promptfoo/redteam/plugins/policy/utils';
+} from '@artef/redteam/plugins/policy/utils';
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
@@ -12,13 +12,13 @@ import {
   useTestCounts,
 } from './hooks';
 import { useTableStore } from './store';
-import type { EvaluateTable } from '@promptfoo/types';
+import type { EvaluateTable } from '@artef/types';
 
 vi.mock('./store', () => ({
   useTableStore: vi.fn(),
 }));
 
-vi.mock('@promptfoo/redteam/plugins/policy/utils', () => ({
+vi.mock('@artef/redteam/plugins/policy/utils', () => ({
   isPolicyMetric: vi.fn(),
   deserializePolicyIdFromMetric: vi.fn(),
 }));

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 52
 sidebar_label: Ruby
 description: Create advanced Ruby validation scripts with complex logic, external APIs, and custom libraries for sophisticated output grading
@@ -296,11 +296,11 @@ tests:
 
 ## Overriding the Ruby binary
 
-By default, promptfoo will run `ruby` in your shell. Make sure `ruby` points to the appropriate executable.
+By default, artef will run `ruby` in your shell. Make sure `ruby` points to the appropriate executable.
 
 If a `ruby` binary is not present, you will see a "ruby: command not found" error.
 
-To override the Ruby binary, set the `PROMPTFOO_RUBY` environment variable. You may set it to a path (such as `/path/to/ruby`) or just an executable in your PATH (such as `ruby`).
+To override the Ruby binary, set the `artef_RUBY` environment variable. You may set it to a path (such as `/path/to/ruby`) or just an executable in your PATH (such as `ruby`).
 
 ## Negation
 

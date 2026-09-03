@@ -1,6 +1,6 @@
-# integration-crewai (CrewAI Integration)
+﻿# integration-crewai (CrewAI Integration)
 
-This example shows how to use **CrewAI agents** with promptfoo to evaluate AI agent performance.
+This example shows how to use **CrewAI agents** with artef to evaluate AI agent performance.
 
 ## What is CrewAI?
 
@@ -11,7 +11,7 @@ CrewAI is a framework for orchestrating role-playing, autonomous AI agents. By f
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-crewai
+npx artef@latest init --example integration-crewai
 cd integration-crewai
 ```
 
@@ -53,16 +53,16 @@ pip install -r requirements.txt
 
 Note: The openai package and other dependencies (langchain, pydantic, etc.) will be automatically installed as dependencies of crewai.
 
-Install promptfoo CLI:
+Install artef CLI:
 
 ```bash
-npm install -g promptfoo
+npm install -g artef
 ```
 
 ## Files
 
-- `agent.py`: Contains the CrewAI agent setup and promptfoo provider interface
-- `promptfooconfig.yaml`: Configures prompts, providers, and tests for evaluation
+- `agent.py`: Contains the CrewAI agent setup and artef provider interface
+- `artefconfig.yaml`: Configures prompts, providers, and tests for evaluation
 
 ### Note on Reliability
 
@@ -73,13 +73,13 @@ When using a real LLM, you may notice that the agent's output is not always reli
 Run the evaluation:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 Explore results in browser:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Troubleshooting

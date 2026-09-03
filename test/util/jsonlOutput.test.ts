@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -30,7 +30,7 @@ describe('JSONL output with proper line endings', () => {
   let mockEval: any;
 
   beforeEach(() => {
-    tempDir = createTempDir('promptfoo-jsonl-test-');
+    tempDir = createTempDir('artef-jsonl-test-');
     tempFilePath = path.join(tempDir, 'test-export.jsonl');
 
     mockEval = {

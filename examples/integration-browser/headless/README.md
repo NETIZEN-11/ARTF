@@ -1,11 +1,11 @@
-# integration-browser/headless (Headless Browser Automation)
+﻿# integration-browser/headless (Headless Browser Automation)
 
 A browser automation example demonstrating how to test web applications using Playwright.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-browser/headless
+npx artef@latest init --example integration-browser/headless
 cd integration-browser/headless
 ```
 
@@ -49,20 +49,20 @@ This starts a local server at http://localhost:7860
 2. **Run the browser automation tests**:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml
+npx artef@latest eval -c artefconfig.yaml
 ```
 
 3. **View the results**:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Test Results
 
 ### Chatbot Example
 
-The main configuration (`promptfooconfig.yaml`) tests a chatbot interface with a 100% pass rate:
+The main configuration (`artefconfig.yaml`) tests a chatbot interface with a 100% pass rate:
 
 ```text
 ┌─────────────────────────────────────────────────┬─────────────────────────────────────────────────┐
@@ -173,7 +173,7 @@ steps:
 | Elements not found      | Use browser DevTools to verify selectors        |
 | Timing issues           | Increase wait times or use `waitForNewChildren` |
 | Want to see the browser | Set `headless: false` in the configuration      |
-| Need detailed logs      | Run with `npx promptfoo@latest eval --verbose`  |
+| Need detailed logs      | Run with `npx artef@latest eval --verbose`  |
 
 ## Additional Resources
 

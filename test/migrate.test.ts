@@ -1,4 +1,4 @@
-import * as path from 'path';
+﻿import * as path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -92,7 +92,7 @@ describe('migrate', () => {
       await runDbMigrations();
 
       expect(mockMigrate).toHaveBeenCalledWith(mockDb, {
-        migrationsFolder: path.join('/project/', 'dist', 'promptfoo', 'drizzle'),
+        migrationsFolder: path.join('/project/', 'dist', 'artef', 'drizzle'),
       });
     });
 

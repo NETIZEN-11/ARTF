@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import cliState from '../../cliState';
@@ -180,7 +180,7 @@ export class CallbackPathTraversalError extends Error {
     super(
       `Path traversal rejected: '${filePath}' resolves outside the configured base directory. ` +
         `Place the callback file inside the base directory, or set ` +
-        `PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD=true to opt out (NOT recommended).`,
+        `artef_DISABLE_CALLBACK_PATH_GUARD=true to opt out (NOT recommended).`,
     );
     this.name = 'CallbackPathTraversalError';
     this.filePath = filePath;
@@ -189,7 +189,7 @@ export class CallbackPathTraversalError extends Error {
 }
 
 function isCallbackPathGuardDisabled(): boolean {
-  const value = process.env.PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD;
+  const value = process.env.artef_DISABLE_CALLBACK_PATH_GUARD;
   return (
     value !== undefined && ['1', 'true', 'yes', 'yup', 'yeppers'].includes(value.toLowerCase())
   );
@@ -212,7 +212,7 @@ function isCallbackPathGuardDisabled(): boolean {
  * downstream `importModule` call will fail naturally with `ENOENT` and the
  * lexical guard remains in force.
  *
- * Opt-out: setting `PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD=true` disables both
+ * Opt-out: setting `artef_DISABLE_CALLBACK_PATH_GUARD=true` disables both
  * checks for backward compatibility with configs that load callbacks from
  * outside basePath. Disabling it weakens the protection against malicious
  * callback file paths supplied via config.

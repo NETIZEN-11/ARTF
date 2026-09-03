@@ -1,8 +1,8 @@
-import { createContext, useContext, useMemo } from 'react';
+﻿import { createContext, useContext, useMemo } from 'react';
 
 import { useSearchParamState } from '@app/hooks/useSearchParamState';
 import { z } from 'zod';
-import type { EvalResultsFilterMode } from '@promptfoo/types';
+import type { EvalResultsFilterMode } from '@artef/types';
 
 export const DEFAULT_FILTER_MODE = 'all';
 

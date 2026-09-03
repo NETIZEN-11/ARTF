@@ -1,4 +1,4 @@
-import type { TestCase } from '../../types/index';
+﻿import type { TestCase } from '../../types/index';
 import type { Inputs } from '../../types/shared';
 
 export function addIterativeJailbreaks(
@@ -9,10 +9,10 @@ export function addIterativeJailbreaks(
 ): TestCase[] {
   const providerName =
     strategy === 'iterative'
-      ? 'promptfoo:redteam:iterative'
+      ? 'artef:redteam:iterative'
       : strategy === 'iterative:tree'
-        ? 'promptfoo:redteam:iterative:tree'
-        : 'promptfoo:redteam:iterative:meta';
+        ? 'artef:redteam:iterative:tree'
+        : 'artef:redteam:iterative:meta';
 
   const metricSuffix =
     strategy === 'iterative'

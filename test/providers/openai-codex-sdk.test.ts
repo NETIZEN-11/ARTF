@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, MockInstance, vi } from 'vitest';
@@ -168,15 +168,15 @@ describe('OpenAICodexSDKProvider', () => {
       expect(provider.config.maxRetries).toBe(5);
     });
 
-    it('should accept promptfoo cloud linkedTargetId metadata', () => {
+    it('should accept artef cloud linkedTargetId metadata', () => {
       const provider = new OpenAICodexSDKProvider({
         config: {
-          linkedTargetId: 'promptfoo://provider/12345678-1234-1234-1234-123456789abc',
+          linkedTargetId: 'artef://provider/12345678-1234-1234-1234-123456789abc',
         },
       });
 
       expect(provider.config.linkedTargetId).toBe(
-        'promptfoo://provider/12345678-1234-1234-1234-123456789abc',
+        'artef://provider/12345678-1234-1234-1234-123456789abc',
       );
     });
 
@@ -603,7 +603,7 @@ describe('OpenAICodexSDKProvider', () => {
         );
       });
 
-      it('should fall back to the promptfoo package root when cliState.basePath and cwd do not contain the SDK', async () => {
+      it('should fall back to the artef package root when cliState.basePath and cwd do not contain the SDK', async () => {
         mockRun.mockResolvedValue(createMockResponse('Response'));
         cliState.basePath = '/tmp/external-config';
         const packageRoot = path.resolve(getDirectory(), '..');
@@ -843,7 +843,7 @@ describe('OpenAICodexSDKProvider', () => {
             {
               id: 'item-1',
               type: 'command_execution',
-              command: "/bin/zsh -lc 'cat /tmp/promptfoo-codex-home/skills/home-skill/SKILL.md'",
+              command: "/bin/zsh -lc 'cat /tmp/artef-codex-home/skills/home-skill/SKILL.md'",
               aggregated_output: '',
               exit_code: 0,
               status: 'completed',
@@ -854,7 +854,7 @@ describe('OpenAICodexSDKProvider', () => {
         const provider = new OpenAICodexSDKProvider({
           config: {
             cli_env: {
-              CODEX_HOME: '/tmp/promptfoo-codex-home',
+              CODEX_HOME: '/tmp/artef-codex-home',
             },
           },
           env: { OPENAI_API_KEY: 'test-api-key' },
@@ -865,7 +865,7 @@ describe('OpenAICodexSDKProvider', () => {
           skillCalls: [
             {
               name: 'home-skill',
-              path: '/tmp/promptfoo-codex-home/skills/home-skill/SKILL.md',
+              path: '/tmp/artef-codex-home/skills/home-skill/SKILL.md',
               source: 'heuristic',
             },
           ],
@@ -876,14 +876,14 @@ describe('OpenAICodexSDKProvider', () => {
         const originalHome = process.env.HOME;
         const originalUserProfile = process.env.USERPROFILE;
         mockProcessEnv({ HOME: undefined });
-        mockProcessEnv({ USERPROFILE: 'C:\\Users\\promptfoo' });
+        mockProcessEnv({ USERPROFILE: 'C:\\Users\\artef' });
 
         mockRun.mockResolvedValue(
           createMockResponse('USERPROFILE-SKILL', undefined, [
             {
               id: 'item-1',
               type: 'command_execution',
-              command: "/bin/zsh -lc 'cat C:/Users/promptfoo/.codex/skills/profile-skill/SKILL.md'",
+              command: "/bin/zsh -lc 'cat C:/Users/artef/.codex/skills/profile-skill/SKILL.md'",
               aggregated_output: '',
               exit_code: 0,
               status: 'completed',
@@ -901,7 +901,7 @@ describe('OpenAICodexSDKProvider', () => {
             skillCalls: [
               {
                 name: 'profile-skill',
-                path: 'C:/Users/promptfoo/.codex/skills/profile-skill/SKILL.md',
+                path: 'C:/Users/artef/.codex/skills/profile-skill/SKILL.md',
                 source: 'heuristic',
               },
             ],
@@ -2325,7 +2325,7 @@ describe('OpenAICodexSDKProvider', () => {
     describe('environment variables', () => {
       it('should use a minimal shell env by default instead of inheriting all process variables', async () => {
         mockRun.mockResolvedValue(createMockResponse('Response'));
-        mockProcessEnv({ PROMPTFOO_TEST_EXISTING: 'present' });
+        mockProcessEnv({ artef_TEST_EXISTING: 'present' });
 
         try {
           const provider = new OpenAICodexSDKProvider({
@@ -2347,12 +2347,12 @@ describe('OpenAICodexSDKProvider', () => {
           expect(MockCodex).toHaveBeenCalledWith(
             expect.objectContaining({
               env: expect.not.objectContaining({
-                PROMPTFOO_TEST_EXISTING: 'present',
+                artef_TEST_EXISTING: 'present',
               }),
             }),
           );
         } finally {
-          mockProcessEnv({ PROMPTFOO_TEST_EXISTING: undefined });
+          mockProcessEnv({ artef_TEST_EXISTING: undefined });
         }
       });
 
@@ -2362,7 +2362,7 @@ describe('OpenAICodexSDKProvider', () => {
         const provider = new OpenAICodexSDKProvider({
           env: {
             OPENAI_API_KEY: 'test-api-key',
-            PROMPTFOO_SHOULD_NOT_LEAK: 'secret',
+            artef_SHOULD_NOT_LEAK: 'secret',
           } as any,
         });
 
@@ -2379,13 +2379,13 @@ describe('OpenAICodexSDKProvider', () => {
         expect(MockCodex).toHaveBeenCalledWith(
           expect.objectContaining({
             env: expect.not.objectContaining({
-              PROMPTFOO_SHOULD_NOT_LEAK: 'secret',
+              artef_SHOULD_NOT_LEAK: 'secret',
             }),
           }),
         );
       });
 
-      it('should warn when promptfoo-level env overrides are ignored by the Codex CLI env', async () => {
+      it('should warn when artef-level env overrides are ignored by the Codex CLI env', async () => {
         const warnSpy = vi.spyOn(logger, 'warn').mockImplementation(() => {});
         mockRun.mockResolvedValue(createMockResponse('Response'));
 
@@ -2399,7 +2399,7 @@ describe('OpenAICodexSDKProvider', () => {
         await provider.callApi('Test prompt');
 
         expect(warnSpy).toHaveBeenCalledWith(
-          '[CodexSDK] Ignoring promptfoo-level env overrides for the Codex CLI process. ' +
+          '[CodexSDK] Ignoring artef-level env overrides for the Codex CLI process. ' +
             'Move these keys into config.cli_env if Codex shell commands need them.',
           { envKeys: ['CODEX_HOME'] },
         );
@@ -2416,7 +2416,7 @@ describe('OpenAICodexSDKProvider', () => {
 
       it('should use custom cli_env', async () => {
         mockRun.mockResolvedValue(createMockResponse('Response'));
-        mockProcessEnv({ PROMPTFOO_TEST_EXISTING: 'present' });
+        mockProcessEnv({ artef_TEST_EXISTING: 'present' });
 
         try {
           const provider = new OpenAICodexSDKProvider({
@@ -2446,16 +2446,16 @@ describe('OpenAICodexSDKProvider', () => {
           expect(MockCodex).toHaveBeenCalledWith(
             expect.objectContaining({
               env: expect.not.objectContaining({
-                PROMPTFOO_TEST_EXISTING: 'present',
+                artef_TEST_EXISTING: 'present',
               }),
             }),
           );
         } finally {
-          mockProcessEnv({ PROMPTFOO_TEST_EXISTING: undefined });
+          mockProcessEnv({ artef_TEST_EXISTING: undefined });
         }
       });
 
-      it('should propagate promptfoo trace resource attributes for deep tracing', async () => {
+      it('should propagate artef trace resource attributes for deep tracing', async () => {
         mockRun.mockResolvedValue(createMockResponse('Response'));
         const traceId = '0af7651916cd43dd8448eb211c80319c';
         const spanId = 'b7ad6b7169203331';
@@ -2464,7 +2464,7 @@ describe('OpenAICodexSDKProvider', () => {
             deep_tracing: true,
             cli_env: {
               OTEL_RESOURCE_ATTRIBUTES:
-                'deployment.environment=test,promptfoo.trace_id=stale,promptfoo.parent_span_id=stale',
+                'deployment.environment=test,artef.trace_id=stale,artef.parent_span_id=stale',
             },
           },
           env: { OPENAI_API_KEY: 'test-api-key' },
@@ -2481,8 +2481,8 @@ describe('OpenAICodexSDKProvider', () => {
             env: expect.objectContaining({
               TRACEPARENT: `00-${traceId}-${spanId}-01`,
               OTEL_RESOURCE_ATTRIBUTES:
-                `deployment.environment=test,promptfoo.trace_id=${traceId},` +
-                `promptfoo.parent_span_id=${spanId}`,
+                `deployment.environment=test,artef.trace_id=${traceId},` +
+                `artef.parent_span_id=${spanId}`,
             }),
             config: expect.objectContaining({
               otel: {
@@ -2596,7 +2596,7 @@ describe('OpenAICodexSDKProvider', () => {
             env: expect.objectContaining({
               TRACEPARENT: `00-${activeTraceId}-${activeSpanId}-01`,
               OTEL_RESOURCE_ATTRIBUTES:
-                `promptfoo.trace_id=${activeTraceId},` + `promptfoo.parent_span_id=${activeSpanId}`,
+                `artef.trace_id=${activeTraceId},` + `artef.parent_span_id=${activeSpanId}`,
             }),
           }),
         );
@@ -2627,7 +2627,7 @@ describe('OpenAICodexSDKProvider', () => {
             expect.objectContaining({
               env: expect.objectContaining({
                 TRACEPARENT: `00-${traceId}-${spanId}-01`,
-                OTEL_RESOURCE_ATTRIBUTES: `promptfoo.trace_id=${traceId},promptfoo.parent_span_id=${spanId}`,
+                OTEL_RESOURCE_ATTRIBUTES: `artef.trace_id=${traceId},artef.parent_span_id=${spanId}`,
               }),
             }),
           );
@@ -2879,7 +2879,7 @@ describe('OpenAICodexSDKProvider', () => {
       it('should merge cli_env with inherited process env when inherit_process_env is enabled', async () => {
         mockRun.mockResolvedValue(createMockResponse('Response'));
 
-        mockProcessEnv({ PROMPTFOO_TEST_EXISTING: 'present' });
+        mockProcessEnv({ artef_TEST_EXISTING: 'present' });
         try {
           const provider = new OpenAICodexSDKProvider({
             config: {
@@ -2894,14 +2894,14 @@ describe('OpenAICodexSDKProvider', () => {
           expect(MockCodex).toHaveBeenCalledWith(
             expect.objectContaining({
               env: expect.objectContaining({
-                PROMPTFOO_TEST_EXISTING: 'present',
+                artef_TEST_EXISTING: 'present',
                 CODEX_HOME: '/tmp/codex-home',
                 OPENAI_API_KEY: 'test-api-key',
               }),
             }),
           );
         } finally {
-          mockProcessEnv({ PROMPTFOO_TEST_EXISTING: undefined });
+          mockProcessEnv({ artef_TEST_EXISTING: undefined });
         }
       });
 
@@ -3954,13 +3954,13 @@ describe('OpenAICodexSDKProvider', () => {
           {
             type: 'command_execution',
             command:
-              "/bin/zsh -lc 'cat /tmp/promptfoo-codex-home/skills/token-skill/SKILL.md && cat .agents/skills/repo-skill/SKILL.md'",
+              "/bin/zsh -lc 'cat /tmp/artef-codex-home/skills/token-skill/SKILL.md && cat .agents/skills/repo-skill/SKILL.md'",
           },
-          ['/tmp/promptfoo-codex-home'],
+          ['/tmp/artef-codex-home'],
         ),
       ).toEqual({
         'codex.command':
-          "/bin/zsh -lc 'cat /tmp/promptfoo-codex-home/skills/token-skill/SKILL.md && cat .agents/skills/repo-skill/SKILL.md'",
+          "/bin/zsh -lc 'cat /tmp/artef-codex-home/skills/token-skill/SKILL.md && cat .agents/skills/repo-skill/SKILL.md'",
       });
 
       expect(
@@ -3968,23 +3968,23 @@ describe('OpenAICodexSDKProvider', () => {
           {
             type: 'command_execution',
             command:
-              "/bin/zsh -lc 'cat /tmp/promptfoo-codex-home/skills/token-skill/SKILL.md && cat .agents/skills/repo-skill/SKILL.md'",
+              "/bin/zsh -lc 'cat /tmp/artef-codex-home/skills/token-skill/SKILL.md && cat .agents/skills/repo-skill/SKILL.md'",
             status: 'completed',
             exit_code: 0,
             aggregated_output:
-              '/tmp/promptfoo-codex-home/skills/token-skill/SKILL.md\n.agents/skills/repo-skill/SKILL.md\n',
+              '/tmp/artef-codex-home/skills/token-skill/SKILL.md\n.agents/skills/repo-skill/SKILL.md\n',
           },
-          ['/tmp/promptfoo-codex-home'],
+          ['/tmp/artef-codex-home'],
         ),
       ).toEqual({
         'codex.exit_code': 0,
         'codex.status': 'completed',
         'codex.output':
-          '/tmp/promptfoo-codex-home/skills/token-skill/SKILL.md\n.agents/skills/repo-skill/SKILL.md\n',
-        'promptfoo.skill.count': 2,
-        'promptfoo.skill.names': 'token-skill,repo-skill',
-        'promptfoo.skill.paths':
-          '/tmp/promptfoo-codex-home/skills/token-skill/SKILL.md,.agents/skills/repo-skill/SKILL.md',
+          '/tmp/artef-codex-home/skills/token-skill/SKILL.md\n.agents/skills/repo-skill/SKILL.md\n',
+        'artef.skill.count': 2,
+        'artef.skill.names': 'token-skill,repo-skill',
+        'artef.skill.paths':
+          '/tmp/artef-codex-home/skills/token-skill/SKILL.md,.agents/skills/repo-skill/SKILL.md',
       });
 
       expect(
@@ -3996,7 +3996,7 @@ describe('OpenAICodexSDKProvider', () => {
             aggregated_output: 'cat: command not found',
             command: "/bin/zsh -lc 'cat .agents/skills/token-skill/SKILL.md'",
           },
-          ['/tmp/promptfoo-codex-home'],
+          ['/tmp/artef-codex-home'],
         ),
       ).toEqual({
         'codex.exit_code': 127,

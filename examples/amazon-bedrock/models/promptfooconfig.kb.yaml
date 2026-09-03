@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Knowledge Base RAG with contextTransform evaluation
 
 prompts:
@@ -24,7 +24,7 @@ providers:
       max_tokens: 1000
 tests:
   - vars:
-      query: 'How do I set up my first promptfoo configuration file?'
+      query: 'How do I set up my first artef configuration file?'
   - vars:
       query: 'What authentication is required for OpenAI and Anthropic providers?'
   - vars:
@@ -37,7 +37,7 @@ tests:
   # Example using contextTransform to extract context from Knowledge Base citations
   - vars:
       # `context-faithfulness` and `context-relevance` require the `query` variable to be defined.
-      query: 'How do I set up my first promptfoo configuration file?'
+      query: 'How do I set up my first artef configuration file?'
     assert:
       # Basic content assertions
       - type: contains

@@ -1,13 +1,13 @@
----
+﻿---
 sidebar_position: 4
 title: Azure OpenAI Provider
-description: Configure and use Azure OpenAI models with promptfoo for evals, including GPT-4, reasoning models, assistants, Azure AI Foundry, and vision capabilities
+description: Configure and use Azure OpenAI models with artef for evals, including GPT-4, reasoning models, assistants, Azure AI Foundry, and vision capabilities
 keywords: [azure, openai, gpt-4, vision, reasoning models, assistants, azure ai foundry, evaluation]
 ---
 
 # Azure
 
-The `azure` provider enables you to use Azure OpenAI Service models with Promptfoo. It shares configuration settings with the [OpenAI provider](/docs/providers/openai).
+The `azure` provider enables you to use Azure OpenAI Service models with artef. It shares configuration settings with the [OpenAI provider](/docs/providers/openai).
 
 ## Setup
 
@@ -70,7 +70,7 @@ The Service Principal must have the **Cognitive Services OpenAI User** role (or 
 
 ### Option 3: Azure CLI Authentication
 
-Authenticate with Azure CLI using `az login` before running promptfoo. This is the fallback option if the parameters for the previous options are not provided.
+Authenticate with Azure CLI using `az login` before running artef. This is the fallback option if the parameters for the previous options are not provided.
 
 Optionally, you can also set:
 
@@ -142,13 +142,13 @@ For the complete list of models with pricing, see the [Azure model catalog](http
 
 Microsoft's [model lifecycle table](https://learn.microsoft.com/azure/foundry/openai/concepts/model-retirement-schedule) lists `gpt-5.6-sol`, `gpt-5.6-terra`, and `gpt-5.6-luna` model version `2026-07-09` as generally available. Azure documents Global Standard availability worldwide and Data Zone Standard availability in the US and EU; check the [current region matrix](https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure-region-availability) before deploying.
 
-Azure does not document the bare `gpt-5.6` alias. Deploy a concrete tier, then use your customer-defined deployment name with `azure:chat:` or `azure:responses:`. Promptfoo accepts arbitrary deployment names and auto-detects GPT-5 reasoning behavior when the name includes a recognizable GPT-5 model ID. Built-in standard and long-context cost estimates are available when the deployment name exactly matches `gpt-5.6`, `gpt-5.6-sol`, `gpt-5.6-terra`, or `gpt-5.6-luna`; an opaque alias cannot be matched automatically, so no cost is reported for it. Separately, set `isReasoningModel: true` on an opaque alias to keep GPT-5 reasoning request behavior (this does not affect cost matching).
+Azure does not document the bare `gpt-5.6` alias. Deploy a concrete tier, then use your customer-defined deployment name with `azure:chat:` or `azure:responses:`. artef accepts arbitrary deployment names and auto-detects GPT-5 reasoning behavior when the name includes a recognizable GPT-5 model ID. Built-in standard and long-context cost estimates are available when the deployment name exactly matches `gpt-5.6`, `gpt-5.6-sol`, `gpt-5.6-terra`, or `gpt-5.6-luna`; an opaque alias cannot be matched automatically, so no cost is reported for it. Separately, set `isReasoningModel: true` on an opaque alias to keep GPT-5 reasoning request behavior (this does not affect cost matching).
 
 The Azure pricing table also recognizes `gpt-5.5-pro`, `gpt-5.2-pro`, their dated snapshots, and current `gpt-audio`/`gpt-realtime` aliases and dated snapshots (each family's mini and 1.5 variants included). For the models Azure publishes priority rates for (the GPT-5.6 family and several GPT-5.1–5.5 snapshots), cost estimates apply the priority multiplier when the request carries `service_tier: priority` — set it under `passthrough` for `azure:chat`/`azure:completion`, or as the top-level `service_tier` option for `azure:responses`. Audio-capable models report separate text and audio-token costs, and cached input tokens are billed at the catalog's discounted cache-read rates across the supported model families.
 
 ### Azure Realtime API
 
-Use `azure:realtime:<deployment name>` for current GA Realtime deployments. Promptfoo connects to the Azure GA WebSocket endpoint (`/openai/v1/realtime?model=<deployment name>`), forwards API-key or Microsoft Entra authentication, isolates persistent sessions by `conversationId`, and reports separate text, audio, image, and cached-input token costs. Explicit HTTP proxy base URLs are also supported.
+Use `azure:realtime:<deployment name>` for current GA Realtime deployments. artef connects to the Azure GA WebSocket endpoint (`/openai/v1/realtime?model=<deployment name>`), forwards API-key or Microsoft Entra authentication, isolates persistent sessions by `conversationId`, and reports separate text, audio, image, and cached-input token costs. Explicit HTTP proxy base URLs are also supported.
 
 ```yaml
 providers:
@@ -167,7 +167,7 @@ The Azure OpenAI Responses API is a stateful API that brings together the best c
 
 ### Using the Responses API
 
-To use the Azure Responses API with promptfoo, use the `azure:responses` provider type:
+To use the Azure Responses API with artef, use the `azure:responses` provider type:
 
 ```yaml
 providers:
@@ -201,7 +201,7 @@ The Responses API supports Azure deployments backed by current Azure OpenAI resp
 - **Specialized Models**: `computer-use-preview`, `gpt-image-1`, `codex-mini-latest`
 - **Deep Research Models**: `o3-deep-research`, `o4-mini-deep-research`
 
-Use your Azure deployment name in promptfoo, even if it differs from the underlying model ID.
+Use your Azure deployment name in artef, even if it differs from the underlying model ID.
 
 ### Reasoning Effort, Tokens, and Summaries
 
@@ -211,17 +211,17 @@ Azure does not expose a reasoning model's private chain-of-thought. Configuring
 `reasoning_effort` controls how much reasoning work the model may perform; it does not
 make hidden reasoning steps visible.
 
-| Provider type     | Reasoning request behavior                                                                                                                | Visible promptfoo output                                                                                                                                              |
+| Provider type     | Reasoning request behavior                                                                                                                | Visible artef output                                                                                                                                              |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `azure:chat`      | For reasoning deployments, sends `reasoning_effort` and `max_completion_tokens`; set `isReasoningModel: true` for aliases                 | Assistant `message.content`. If Azure reports `completion_tokens_details.reasoning_tokens`, promptfoo records that count in `tokenUsage.completionDetails.reasoning`. |
+| `azure:chat`      | For reasoning deployments, sends `reasoning_effort` and `max_completion_tokens`; set `isReasoningModel: true` for aliases                 | Assistant `message.content`. If Azure reports `completion_tokens_details.reasoning_tokens`, artef records that count in `tokenUsage.completionDetails.reasoning`. |
 | `azure:responses` | For reasoning deployments, maps `reasoning_effort` to `reasoning.effort` and uses `max_output_tokens`; set `isReasoningModel` for aliases | Assistant output plus an Azure-provided reasoning **summary** when the response contains a non-empty `output` reasoning item. It is not raw chain-of-thought.         |
 
 For `azure:responses`, the current provider exposes Azure's summary request through
 `passthrough.reasoning`. Keep `effort` and `summary` in that same raw object because
 `passthrough` supplies the final Responses API field:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Compare Azure reasoning output surfaces
 
 prompts:
@@ -256,10 +256,10 @@ tests:
 Set `AZURE_API_KEY`, replace the deployment names and `apiHost`, then run:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache -o output.json
+npx artef@latest eval -c artefconfig.yaml --no-cache -o output.json
 ```
 
-If Azure returns a Responses API reasoning summary, promptfoo includes it in normalized
+If Azure returns a Responses API reasoning summary, artef includes it in normalized
 output as `Reasoning: <summary>` before the assistant answer and preserves the API
 response in `raw`. A returned reasoning token count without summary text indicates
 hidden reasoning usage, not missing chain-of-thought output.
@@ -385,7 +385,7 @@ config:
 Here's a comprehensive example using multiple Azure Responses API features:
 
 ```yaml
-# promptfooconfig.yaml
+# artefconfig.yaml
 description: Azure Responses API evaluation
 
 providers:
@@ -550,7 +550,7 @@ AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME=text-embedding-3-small
 
 This deployment will automatically be used whenever embeddings are required, such as for similarity comparisons or dataset generation. You can also override the embedding provider in your configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -601,7 +601,7 @@ If you want to authenticate with a **Service Principal (SPN)** instead of an API
 1. **Register an application** in [Azure Entra ID](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps) (formerly Azure AD) to create a Service Principal.
 2. **Create a client secret** for the app registration under _Certificates & secrets_.
 3. **Assign the role** `Cognitive Services OpenAI User` (or `Cognitive Services Contributor`) to the Service Principal on your Azure OpenAI resource. Go to your resource's **Access control (IAM)** > **Add role assignment**.
-4. **Install the `@azure/identity` package** — promptfoo uses it to obtain tokens from Azure Entra ID:
+4. **Install the `@azure/identity` package** — artef uses it to obtain tokens from Azure Entra ID:
 
 ```sh
 npm install @azure/identity
@@ -642,19 +642,19 @@ providers:
 
 ### How It Works
 
-When client credentials are provided, promptfoo uses the `@azure/identity` library to create a `ClientSecretCredential` and requests an access token scoped to Azure Cognitive Services (`https://cognitiveservices.azure.com/.default`). The token is then sent as a `Bearer` token in the `Authorization` header instead of an API key.
+When client credentials are provided, artef uses the `@azure/identity` library to create a `ClientSecretCredential` and requests an access token scoped to Azure Cognitive Services (`https://cognitiveservices.azure.com/.default`). The token is then sent as a `Bearer` token in the `Authorization` header instead of an API key.
 
-If neither an API key nor client credentials are provided, promptfoo falls back to `AzureCliCredential` (i.e., your `az login` session) — see [Option 3](#option-3-azure-cli-authentication).
+If neither an API key nor client credentials are provided, artef falls back to `AzureCliCredential` (i.e., your `az login` session) — see [Option 3](#option-3-azure-cli-authentication).
 
 The `azureAuthorityHost` defaults to `https://login.microsoftonline.com` if not specified. The `azureTokenScope` defaults to `https://cognitiveservices.azure.com/.default`, the scope required to authenticate with Azure Cognitive Services. You typically don't need to change these unless you're working with a sovereign cloud (e.g., Azure Government or Azure China).
 
 ## Model-Graded Tests
 
-[Model-graded assertions](/docs/configuration/expected-outputs/model-graded/) such as `factuality` or `llm-rubric` use a default OpenAI grader model unless overridden. When `AZURE_DEPLOYMENT_NAME` is set (and `OPENAI_API_KEY` is not), promptfoo automatically uses the specified Azure deployment for grading. You can also explicitly override the grader as shown below.
+[Model-graded assertions](/docs/configuration/expected-outputs/model-graded/) such as `factuality` or `llm-rubric` use a default OpenAI grader model unless overridden. When `AZURE_DEPLOYMENT_NAME` is set (and `OPENAI_API_KEY` is not), artef automatically uses the specified Azure deployment for grading. You can also explicitly override the grader as shown below.
 
 The easiest way to do this for _all_ your test cases is to add the [`defaultTest`](/docs/configuration/guide/#default-test-cases) property to your config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -697,7 +697,7 @@ tests:
 
 When you have tests that use both text-based assertions (like `llm-rubric`, `answer-relevance`) and embedding-based assertions (like `similar`), you can configure different Azure deployments for each type using the **provider type map** pattern:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -720,7 +720,7 @@ The `similar` assertion type requires an embedding model such as `text-embedding
 
 For example, override the embedding deployment in your config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -831,7 +831,7 @@ requirements:
 For `azure:responses` reasoning deployments, use `max_output_tokens` and the Responses
 configuration documented above.
 
-Since Azure allows custom deployment names that don't necessarily reflect the underlying model type, set `isReasoningModel: true` for aliases or deployment names that do not identify the reasoning model. Promptfoo auto-detects common o-series, GPT-5, DeepSeek-R1, Phi reasoning, and Grok reasoning deployment names. The explicit configuration below works with chat and completion endpoints:
+Since Azure allows custom deployment names that don't necessarily reflect the underlying model type, set `isReasoningModel: true` for aliases or deployment names that do not identify the reasoning model. artef auto-detects common o-series, GPT-5, DeepSeek-R1, Phi reasoning, and Grok reasoning deployment names. The explicit configuration below works with chat and completion endpoints:
 
 ```yaml
 # For chat endpoints
@@ -893,14 +893,14 @@ If you encounter this error with `azure:chat` or `azure:completion`:
 API response error: unsupported_parameter Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.
 ```
 
-For a custom or aliased reasoning deployment, this commonly means Promptfoo is not
+For a custom or aliased reasoning deployment, this commonly means artef is not
 treating it as a reasoning model because `isReasoningModel: true` is missing. Update
 your config as shown above.
 
 For `azure:responses`, use `max_output_tokens`, not `max_completion_tokens`. If you
 request a reasoning summary and only see a final answer or a reasoning token count,
 check that the Azure deployment supports Responses reasoning summaries and returned a
-non-empty reasoning `summary` item. Promptfoo cannot expose hidden reasoning tokens as
+non-empty reasoning `summary` item. artef cannot expose hidden reasoning tokens as
 text.
 
 ## Using Vision Models
@@ -957,7 +957,7 @@ tests:
 
 ### Example
 
-See the [Azure OpenAI example](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/openai) for a complete working example with image analysis. Use `promptfooconfig.vision.yaml` for vision-specific features.
+See the [Azure OpenAI example](https://github.com/artef/artef/tree/main/examples/azure/openai) for a complete working example with image analysis. Use `artefconfig.vision.yaml` for vision-specific features.
 
 ## Using Claude Models
 
@@ -965,9 +965,9 @@ Azure AI Foundry exposes Claude through two endpoint families. Pick the one that
 
 ### Option 1 (recommended): Anthropic Messages endpoint
 
-Per Anthropic's own Foundry integration, every Claude deployment publishes a native Messages endpoint at `https://<resource>.services.ai.azure.com/anthropic/v1/messages`. Point promptfoo's `anthropic:messages` provider at that base URL and you get the full Anthropic provider feature set — adaptive thinking, `xhigh` effort, automatic sampling-parameter suppression for Fable 5 and Opus 4.7/4.8 (`temperature`/`top_p`/`top_k`), and Anthropic list pricing (note that Bedrock regional/geo endpoints and non-global Vertex regions carry a 10% premium for Claude 5 models):
+Per Anthropic's own Foundry integration, every Claude deployment publishes a native Messages endpoint at `https://<resource>.services.ai.azure.com/anthropic/v1/messages`. Point artef's `anthropic:messages` provider at that base URL and you get the full Anthropic provider feature set — adaptive thinking, `xhigh` effort, automatic sampling-parameter suppression for Fable 5 and Opus 4.7/4.8 (`temperature`/`top_p`/`top_k`), and Anthropic list pricing (note that Bedrock regional/geo endpoints and non-global Vertex regions carry a 10% premium for Claude 5 models):
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: anthropic:messages:claude-opus-4-8
     config:
@@ -976,13 +976,13 @@ providers:
       max_tokens: 1024
 ```
 
-Promptfoo appends `/v1/messages` to the base URL automatically, so set `apiBaseUrl` to the `https://…/anthropic` prefix shown above.
+artef appends `/v1/messages` to the base URL automatically, so set `apiBaseUrl` to the `https://…/anthropic` prefix shown above.
 
 ### Option 2: Azure OpenAI-compatible chat endpoint
 
 The same deployment also accepts OpenAI-style chat completion requests. Use this if you want a single provider type across Azure Claude and Azure OpenAI deployments:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: azure:chat:claude-opus-4-7
     config:
@@ -1035,7 +1035,7 @@ command has no flag for it yet, so create the deployment via the REST API
 
 ### Claude Configuration Example
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 description: Azure Claude evaluation
 
 providers:
@@ -1062,7 +1062,7 @@ tests:
 
 Azure AI Foundry provides access to Meta's Llama models, including Llama 4:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: azure:chat:Llama-4-Maverick-17B-128E-Instruct-FP8
     config:
@@ -1088,7 +1088,7 @@ Azure AI supports DeepSeek models such as DeepSeek-R1. Like other reasoning mode
 2. Use `max_completion_tokens` instead of `max_tokens`
 3. Set API version to '2025-04-01-preview' (or later)
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: azure:chat:DeepSeek-R1
     config:
@@ -1117,12 +1117,12 @@ Adjust `reasoning_effort` to control response quality vs. speed: `low` for faste
 
 ## Using Microsoft MAI Models
 
-Microsoft's first-party **MAI** model family splits across two promptfoo provider types. Availability varies, so check the per-model notes below before relying on a model.
+Microsoft's first-party **MAI** model family splits across two artef provider types. Availability varies, so check the per-model notes below before relying on a model.
 
 - **Image generation** models (`MAI-Image-2.5`, `MAI-Image-2.5-Flash`, `MAI-Image-2e`, `MAI-Image-2` — all currently **Preview**) are [Foundry Models sold by Azure](https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure), served from a Microsoft-managed `/mai/v1/images/generations` route, and use the dedicated **`azure:image`** provider. This path is fully supported and tested.
-- **Text / reasoning / coding** models (`MAI-DS-R1`, `MAI-Thinking-1`, `MAI-Code-1-Flash`) speak the standard chat-completions API and use **`azure:chat`**. promptfoo recognizes them for cost and reasoning detection, but their Azure availability is limited today — see [Reasoning chat](#reasoning-chat-azurechat).
+- **Text / reasoning / coding** models (`MAI-DS-R1`, `MAI-Thinking-1`, `MAI-Code-1-Flash`) speak the standard chat-completions API and use **`azure:chat`**. artef recognizes them for cost and reasoning detection, but their Azure availability is limited today — see [Reasoning chat](#reasoning-chat-azurechat).
 
-Deploy a model to a Microsoft Foundry (AIServices) resource, then point promptfoo at the resource's `*.services.ai.azure.com` endpoint:
+Deploy a model to a Microsoft Foundry (AIServices) resource, then point artef at the resource's `*.services.ai.azure.com` endpoint:
 
 ```bash
 az cognitiveservices account deployment create \
@@ -1137,7 +1137,7 @@ export AZURE_API_KEY=<key>   # or authenticate with `az login` (Entra ID)
 
 ### Image generation (`azure:image`)
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - '{{prompt}}'
 
@@ -1154,22 +1154,22 @@ tests:
   - vars:
       prompt: A photorealistic red cube on a clean white background, studio lighting
     assert:
-      # The image is returned as a base64 PNG, which promptfoo stores as a blob ref.
+      # The image is returned as a base64 PNG, which artef stores as a blob ref.
       - type: javascript
-        value: output.startsWith('promptfoo://blob/') || output.startsWith('data:image/')
+        value: output.startsWith('artef://blob/') || output.startsWith('data:image/')
 ```
 
 The provider returns the generated image as a base64 PNG data URL (rendered inline in the web viewer) and reports token usage and per-image cost from the API's token counts. The MAI image API has shipped two response shapes — a `usage` object (`num_output_tokens` plus `num_input_text_tokens`/`num_input_image_tokens`) and a legacy top-level `num_output_tokens` — and the provider reads both. The model's `revised_prompt` is surfaced in `metadata.revisedPrompt`.
 
-To grade generated images with a vision LLM, use an `llm-rubric` assertion with a vision-capable grader and a custom `rubricPrompt` that passes the image as an `image_url` block, and run with `PROMPTFOO_INLINE_MEDIA=true` so `{{output}}` is an inline data URL the grader can read. See the [`azure-mai` example](https://github.com/promptfoo/promptfoo/tree/main/examples/azure-mai) for a complete vision-grading config.
+To grade generated images with a vision LLM, use an `llm-rubric` assertion with a vision-capable grader and a custom `rubricPrompt` that passes the image as an `image_url` block, and run with `artef_INLINE_MEDIA=true` so `{{output}}` is an inline data URL the grader can read. See the [`azure-mai` example](https://github.com/artef/artef/tree/main/examples/azure-mai) for a complete vision-grading config.
 
 ### Reasoning chat (`azure:chat`)
 
-MAI text models run through the standard `azure:chat` provider. **Availability is limited:** `MAI-DS-R1` is marked **Deprecated** in the Azure model catalog, and `MAI-Thinking-1` / `MAI-Code-1-Flash` are in **private preview** and may not appear in the public CLI catalog. promptfoo already recognizes these names for cost and reasoning detection, so they work through `azure:chat` once your subscription can deploy them — confirm availability with `az cognitiveservices model list`.
+MAI text models run through the standard `azure:chat` provider. **Availability is limited:** `MAI-DS-R1` is marked **Deprecated** in the Azure model catalog, and `MAI-Thinking-1` / `MAI-Code-1-Flash` are in **private preview** and may not appear in the public CLI catalog. artef already recognizes these names for cost and reasoning detection, so they work through `azure:chat` once your subscription can deploy them — confirm availability with `az cognitiveservices model list`.
 
-promptfoo auto-detects `MAI-Thinking-1` and `MAI-DS-R1` as reasoning models by name: it sends `max_completion_tokens` (instead of `max_tokens`) and drops `temperature`. It still sends default `top_p`/`presence_penalty`/`frequency_penalty` unless you set `omitDefaults: true` — do that if a deployment rejects those sampling parameters. `MAI-Code-1-Flash` is treated as a standard chat model.
+artef auto-detects `MAI-Thinking-1` and `MAI-DS-R1` as reasoning models by name: it sends `max_completion_tokens` (instead of `max_tokens`) and drops `temperature`. It still sends default `top_p`/`presence_penalty`/`frequency_penalty` unless you set `omitDefaults: true` — do that if a deployment rejects those sampling parameters. `MAI-Code-1-Flash` is treated as a standard chat model.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: azure:chat:mai-thinking-1
     config:
@@ -1214,7 +1214,7 @@ Azure OpenAI Assistants support tool calling. Define tool schemas via `tools` an
 
 Callbacks referenced by `file://` URLs are loaded with a path-traversal guard:
 the resolved path must stay inside the config's `basePath`. Move the callback
-file into your project or set `PROMPTFOO_DISABLE_CALLBACK_PATH_GUARD=true` to
+file into your project or set `artef_DISABLE_CALLBACK_PATH_GUARD=true` to
 opt out. See [OpenAI provider docs](./openai.md#automatically-handling-function-tool-calls)
 for details.
 
@@ -1301,13 +1301,13 @@ tests:
       topic: bananas
 ```
 
-For complete working examples of Azure OpenAI Assistants with various tool configurations, check out the [Azure Assistant example directory](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/assistant).
+For complete working examples of Azure OpenAI Assistants with various tool configurations, check out the [Azure Assistant example directory](https://github.com/artef/artef/tree/main/examples/azure/assistant).
 
 See the guide on [How to evaluate OpenAI assistants](/docs/guides/evaluate-openai-assistants/) for more information on how to compare different models, instructions, and more.
 
 ## Azure AI Foundry Agents
 
-Azure AI Foundry Agents let promptfoo run an existing Foundry agent through the Azure AI Projects SDK (`@azure/ai-projects`) and the v2 agent runtime. Promptfoo resolves the agent from your Azure AI Foundry project, then calls the Responses API with an `agent_reference`.
+Azure AI Foundry Agents let artef run an existing Foundry agent through the Azure AI Projects SDK (`@azure/ai-projects`) and the v2 agent runtime. artef resolves the agent from your Azure AI Foundry project, then calls the Responses API with an `agent_reference`.
 
 ### Key Differences from Standard Azure Assistants
 
@@ -1394,7 +1394,7 @@ Configure those on the Foundry agent definition itself instead of on the eval re
 
 ### Function Tools with Azure Foundry Agents
 
-Promptfoo can handle Responses API `function_call` outputs for Foundry agents. If every requested function has a configured callback, promptfoo executes the callbacks locally and sends `function_call_output` items back with `previous_response_id`.
+artef can handle Responses API `function_call` outputs for Foundry agents. If every requested function has a configured callback, artef executes the callbacks locally and sends `function_call_output` items back with `previous_response_id`.
 
 You can define callbacks at the provider level or override them per prompt:
 
@@ -1432,7 +1432,7 @@ The function callbacks receive two parameters:
 - `args`: JSON-encoded function arguments
 - `context`: `{ threadId, runId, assistantId, provider }`
 
-If a callback is missing, promptfoo returns the unresolved function call in the model output instead of trying to fake a tool result.
+If a callback is missing, artef returns the unresolved function call in the model output instead of trying to fake a tool result.
 
 ### Agent-Defined Tools and Resources
 
@@ -1541,7 +1541,7 @@ Use standard Azure Assistants when:
 
 ### Example Repository
 
-For complete working examples, check out the [Azure Foundry Agent example directory](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/foundry-agent).
+For complete working examples, check out the [Azure Foundry Agent example directory](https://github.com/artef/artef/tree/main/examples/azure/foundry-agent).
 
 ## Video Generation (Sora)
 
@@ -1620,12 +1620,12 @@ tests:
 
 - [OpenAI Provider](/docs/providers/openai) - The base provider that Azure shares configuration with
 - [Evaluating Assistants](/docs/guides/evaluate-openai-assistants/) - Learn how to compare different models and instructions
-- [Azure Examples](https://github.com/promptfoo/promptfoo/tree/main/examples/azure) - All Azure examples in one place:
-  - [OpenAI](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/openai) - Chat, vision, and embedding examples
-  - [Claude](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/claude) - Anthropic Claude on Azure AI Foundry
-  - [Llama](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/llama) - Meta Llama models
-  - [DeepSeek](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/deepseek) - DeepSeek reasoning models
-  - [Mistral](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/mistral) - Mistral models
-  - [Comparison](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/comparison) - Multi-provider comparison
-  - [Assistants](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/assistant) - Assistant with tools examples
-  - [Foundry Agent](https://github.com/promptfoo/promptfoo/tree/main/examples/azure/foundry-agent) - Azure AI Foundry Agents
+- [Azure Examples](https://github.com/artef/artef/tree/main/examples/azure) - All Azure examples in one place:
+  - [OpenAI](https://github.com/artef/artef/tree/main/examples/azure/openai) - Chat, vision, and embedding examples
+  - [Claude](https://github.com/artef/artef/tree/main/examples/azure/claude) - Anthropic Claude on Azure AI Foundry
+  - [Llama](https://github.com/artef/artef/tree/main/examples/azure/llama) - Meta Llama models
+  - [DeepSeek](https://github.com/artef/artef/tree/main/examples/azure/deepseek) - DeepSeek reasoning models
+  - [Mistral](https://github.com/artef/artef/tree/main/examples/azure/mistral) - Mistral models
+  - [Comparison](https://github.com/artef/artef/tree/main/examples/azure/comparison) - Multi-provider comparison
+  - [Assistants](https://github.com/artef/artef/tree/main/examples/azure/assistant) - Assistant with tools examples
+  - [Foundry Agent](https://github.com/artef/artef/tree/main/examples/azure/foundry-agent) - Azure AI Foundry Agents

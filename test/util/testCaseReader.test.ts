@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as path from 'path';
 
 import dedent from 'dedent';
@@ -635,7 +635,7 @@ not valid json`,
 
     const result = await readStandaloneTestsFile('test.csv');
 
-    expect(getEnvString).toHaveBeenCalledWith('PROMPTFOO_CSV_DELIMITER', ',');
+    expect(getEnvString).toHaveBeenCalledWith('artef_CSV_DELIMITER', ',');
     expect(fs.readFileSync).toHaveBeenCalledWith(expect.stringContaining('test.csv'), 'utf-8');
     expect(result).toEqual([
       {
@@ -661,7 +661,7 @@ not valid json`,
 
     const result = await readStandaloneTestsFile('test.csv');
 
-    expect(getEnvString).toHaveBeenCalledWith('PROMPTFOO_CSV_DELIMITER', ',');
+    expect(getEnvString).toHaveBeenCalledWith('artef_CSV_DELIMITER', ',');
     expect(fs.readFileSync).toHaveBeenCalledWith(expect.stringContaining('test.csv'), 'utf-8');
     expect(result).toEqual([
       {
@@ -1358,7 +1358,7 @@ describe('readTests', () => {
 
     await readTests(unsupportedTests as any);
     expect(logger.warn).toHaveBeenCalledWith(
-      expect.stringContaining("Warning: Unsupported 'tests' format in promptfooconfig.yaml."),
+      expect.stringContaining("Warning: Unsupported 'tests' format in artefconfig.yaml."),
     );
   });
 
@@ -1586,14 +1586,14 @@ describe('readTests', () => {
     vi.mocked(fs.readFileSync).mockReturnValue(yaml.dump(testWithAssertInVars));
     vi.mocked(globSync).mockReturnValue(['test.yaml']);
     vi.mocked(getEnvBool).mockImplementation(
-      (key) => !key.includes('PROMPTFOO_NO_TESTCASE_ASSERT_WARNING'),
+      (key) => !key.includes('artef_NO_TESTCASE_ASSERT_WARNING'),
     );
 
     const result = await readTests(['test.yaml']);
     expect(result).toHaveLength(1);
     expect(result[0]).toEqual(testWithAssertInVars[0]);
     expect(logger.warn).toHaveBeenCalledWith(
-      expect.stringContaining('PROMPTFOO_NO_TESTCASE_ASSERT_WARNING'),
+      expect.stringContaining('artef_NO_TESTCASE_ASSERT_WARNING'),
     );
   });
 
@@ -1609,13 +1609,13 @@ describe('readTests', () => {
     vi.mocked(fs.readFileSync).mockReturnValue(yaml.dump(testWithAssertInVars));
     vi.mocked(globSync).mockReturnValue(['test.yaml']);
     vi.mocked(getEnvBool).mockImplementation(
-      (key) => key === 'PROMPTFOO_NO_TESTCASE_ASSERT_WARNING',
+      (key) => key === 'artef_NO_TESTCASE_ASSERT_WARNING',
     );
 
     await readTests('test.yaml');
 
     expect(logger.warn).not.toHaveBeenCalledWith(
-      expect.stringContaining('PROMPTFOO_NO_TESTCASE_ASSERT_WARNING'),
+      expect.stringContaining('artef_NO_TESTCASE_ASSERT_WARNING'),
     );
   });
 
@@ -2051,9 +2051,9 @@ my_test_label,What is the date?,{"answer":""},file://../get_context.py`;
     vi.mocked(fs.readFileSync).mockRestore();
   });
 
-  it('should enforce strict mode when PROMPTFOO_CSV_STRICT=true', async () => {
+  it('should enforce strict mode when artef_CSV_STRICT=true', async () => {
     vi.mocked(getEnvBool).mockImplementation((key, defaultValue = false) =>
-      key === 'PROMPTFOO_CSV_STRICT' ? true : defaultValue,
+      key === 'artef_CSV_STRICT' ? true : defaultValue,
     );
 
     const csvContent = `label,query,expected_json_format,context
@@ -2079,7 +2079,7 @@ another_label,What is the time?,too,many,columns,here`;
     // Use default settings (not strict mode) to get past quote checking
     vi.mocked(getEnvBool).mockImplementation((_key, defaultValue = false) => defaultValue);
     vi.mocked(getEnvString).mockImplementation((key, defaultValue) =>
-      key === 'PROMPTFOO_CSV_DELIMITER' ? ',' : defaultValue || '',
+      key === 'artef_CSV_DELIMITER' ? ',' : defaultValue || '',
     );
 
     // The CSV parser should throw an error about inconsistent column count

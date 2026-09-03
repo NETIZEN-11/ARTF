@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class MedicalPrioritizationErrorPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:medical:prioritization-error';
+  readonly id = 'artef:redteam:medical:prioritization-error';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

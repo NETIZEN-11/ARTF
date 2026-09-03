@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -22,25 +22,25 @@ export default function SecTor2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at SecTor 2025"
-      description="Promptfoo at SecTor 2025 in Toronto. Arsenal demos, security tools showcase, and connecting with Canada's enterprise security community."
+      title="artef at SecTor 2025"
+      description="artef at SecTor 2025 in Toronto. Arsenal demos, security tools showcase, and connecting with Canada's enterprise security community."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at SecTor 2025 - Toronto" />
+        <meta property="og:title" content="artef at SecTor 2025 - Toronto" />
         <meta
           property="og:description"
-          content="Join Promptfoo at SecTor 2025 in Toronto. Arsenal demos, LLM security tools, and enterprise AI security discussions."
+          content="Join artef at SecTor 2025 in Toronto. Arsenal demos, LLM security tools, and enterprise AI security discussions."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/sector-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/sector-2025" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:image" content="https://www.promptfoo.dev/img/events/sector-2025.jpg" />
-        <meta name="twitter:image" content="https://www.promptfoo.dev/img/events/sector-2025.jpg" />
+        <meta property="og:image" content="https://www.artef.dev/img/events/sector-2025.jpg" />
+        <meta name="twitter:image" content="https://www.artef.dev/img/events/sector-2025.jpg" />
         <meta
           name="keywords"
           content="SecTor 2025, Toronto security conference, Arsenal, AI security tools, Canada cybersecurity, LLM security"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/sector-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/sector-2025" />
       </Head>
 
       <main className={styles.sectorPage}>
@@ -118,7 +118,7 @@ export default function SecTor2025(): React.ReactElement {
                 See the Arsenal
               </a>
               <Link to="/docs/red-team/" className={styles.secondaryCta}>
-                Try Promptfoo
+                Try artef
               </Link>
             </div>
           </div>
@@ -130,13 +130,13 @@ export default function SecTor2025(): React.ReactElement {
             <div className={styles.sectionHeader}>
               <h2 className={styles.sectionTitle}>Arsenal Showcase</h2>
               <p className={styles.sectionSubtitle}>
-                Promptfoo was selected for the SecTor Arsenal, showcasing open-source security tools
+                artef was selected for the SecTor Arsenal, showcasing open-source security tools
                 to Canada's enterprise security community.
               </p>
             </div>
             <div className={styles.arsenalCard}>
               <div className={styles.arsenalBadge}>SecTor Arsenal 2025</div>
-              <h3 className={styles.arsenalTitle}>Promptfoo: Open-Source LLM Red Teaming</h3>
+              <h3 className={styles.arsenalTitle}>artef: Open-Source LLM Red Teaming</h3>
               <p className={styles.arsenalDescription}>
                 Live demonstrations of automated AI security testing, including prompt injection
                 detection, jailbreak attempts, and data exfiltration scenarios against real-world
@@ -317,7 +317,7 @@ export default function SecTor2025(): React.ReactElement {
                 <Link to="/docs/red-team/quickstart/" className={styles.primaryCta}>
                   Get Started
                 </Link>
-                <Link to="https://discord.gg/promptfoo" className={styles.secondaryCta}>
+                <Link to="https://discord.gg/artef" className={styles.secondaryCta}>
                   Join Discord
                 </Link>
               </div>

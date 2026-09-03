@@ -1,4 +1,4 @@
-type UnknownRecord = Record<string, unknown>;
+﻿type UnknownRecord = Record<string, unknown>;
 
 /**
  * Content-part types the Responses API accepts. Anything already using one of these is passed
@@ -60,7 +60,7 @@ function normalizeContentPart(part: unknown, role: unknown): unknown {
 /**
  * Normalize a Responses API `input` array authored in the chat-completions format.
  *
- * promptfoo prompts are commonly written as chat messages (`{ type: 'text' }`,
+ * artef prompts are commonly written as chat messages (`{ type: 'text' }`,
  * `{ type: 'image_url', image_url: { url } }`), but the Responses API rejects those part types
  * outright — xAI answers 422 and OpenAI 400 ("Supported values are: 'input_text',
  * 'input_image', ..."), so multimodal prompts fail on every `*:responses:*` provider. Rewriting

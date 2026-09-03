@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { handleContainsJson, handleIsJson } from '../../src/assertions/json';
 import { createMockProvider, createProviderResponse } from '../factories/provider';
 import { createAtomicTestCase } from '../factories/testSuite';
@@ -53,7 +53,7 @@ describe('handleIsJson', () => {
       makeParams({
         assertion: { type: 'is-json', value: NAME_SCHEMA_YAML },
         renderedValue: NAME_SCHEMA_YAML as AssertionValue,
-        outputString: '{"name": "promptfoo"}',
+        outputString: '{"name": "artef"}',
       }),
     );
     expect(pass.pass).toBe(true);
@@ -79,7 +79,7 @@ describe('handleIsJson', () => {
           required: ['name'],
           properties: { name: { type: 'string' } },
         },
-        outputString: '{"name": "promptfoo"}',
+        outputString: '{"name": "artef"}',
       }),
     );
     expect(result.pass).toBe(true);
@@ -92,7 +92,7 @@ describe('handleIsJson', () => {
           assertion: { type: 'is-json', value: 'file://schema.json' },
           renderedValue: 'file://schema.json' as AssertionValue,
           valueFromScript: undefined,
-          outputString: '{"name": "promptfoo"}',
+          outputString: '{"name": "artef"}',
         }),
       ),
     ).toThrow('is-json references a file that does not export a JSON schema');
@@ -127,7 +127,7 @@ describe('handleContainsJson', () => {
       makeParams({
         assertion: { type: 'contains-json', value: NAME_SCHEMA_YAML },
         renderedValue: NAME_SCHEMA_YAML as AssertionValue,
-        outputString: 'result: {"name": "promptfoo"}',
+        outputString: 'result: {"name": "artef"}',
       }),
     );
     expect(pass.pass).toBe(true);
@@ -153,7 +153,7 @@ describe('handleContainsJson', () => {
           required: ['name'],
           properties: { name: { type: 'string' } },
         },
-        outputString: 'result: {"name": "promptfoo"}',
+        outputString: 'result: {"name": "artef"}',
       }),
     );
     expect(result.pass).toBe(true);
@@ -166,7 +166,7 @@ describe('handleContainsJson', () => {
           assertion: { type: 'contains-json', value: 'file://schema.json' },
           renderedValue: 'file://schema.json' as AssertionValue,
           valueFromScript: undefined,
-          outputString: 'result: {"name": "promptfoo"}',
+          outputString: 'result: {"name": "artef"}',
         }),
       ),
     ).toThrow('contains-json references a file that does not export a JSON schema');

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Amazon Nova Reel Video Generation
 
 providers:
@@ -13,7 +13,7 @@ providers:
       # seed: 12345
 
 prompts:
-  # Promptfoo red panda mascot themed prompts
+  # artef red panda mascot themed prompts
   - 'A cute red panda sitting at a desk reviewing documents, wearing small round glasses, soft warm lighting, camera slowly zooms in on the focused expression'
   - 'An adorable red panda mascot walking through a futuristic data center with glowing servers, purple and teal ambient lighting, camera follows alongside'
 

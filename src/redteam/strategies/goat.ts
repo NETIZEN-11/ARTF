@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 
 import type { TestCase, TestCaseWithPlugin } from '../../types/index';
 import type { Inputs } from '../../types/shared';
@@ -18,7 +18,7 @@ export async function addGoatTestCases(
     return {
       ...testCase,
       provider: {
-        id: 'promptfoo:redteam:goat',
+        id: 'artef:redteam:goat',
         config: {
           injectVar,
           ...config,

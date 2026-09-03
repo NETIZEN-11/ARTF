@@ -1,11 +1,11 @@
-# redteam-azure-assistant (Red Team Azure Assistant)
+﻿# redteam-azure-assistant (Red Team Azure Assistant)
 
 Red team testing for Azure OpenAI Assistants with function tools to evaluate security boundaries.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-azure-assistant
+npx artef@latest init --example redteam-azure-assistant
 cd redteam-azure-assistant
 ```
 
@@ -25,27 +25,27 @@ This example demonstrates how to security test an Azure OpenAI Assistant that ha
    ```
 
 2. **Update configuration**:
-   - Edit `promptfooconfig.yaml`
+   - Edit `artefconfig.yaml`
    - Replace `azure:assistant:asst_V3UgNCNUSAtHQdit8YimCKlJ` with your Assistant ID
    - Update `apiHost` to your Azure endpoint
 
 3. **Generate security tests**:
 
    ```bash
-   npx promptfoo@latest redteam generate
+   npx artef@latest redteam generate
    ```
 
 4. **Run the security evaluation**:
 
    ```bash
-   npx promptfoo@latest redteam eval
+   npx artef@latest redteam eval
    ```
 
 5. **View results**:
    ```bash
-   npx promptfoo@latest redteam report
+   npx artef@latest redteam report
    # or
-   npx promptfoo@latest view
+   npx artef@latest view
    ```
 
 ## What's Included
@@ -69,7 +69,7 @@ This example tests if an HR assistant can be manipulated to:
 
 1. Update the provider ID and API host
 2. Customize the HR data in `callbacks/hr-database.js`
-3. Modify security instructions in `promptfooconfig.yaml`
+3. Modify security instructions in `artefconfig.yaml`
 4. Adjust entities in the redteam section to match your needs
 
 ## Security Notice
@@ -78,5 +78,5 @@ This example contains simulated sensitive data for educational purposes. Use res
 
 ## Documentation
 
-- [LLM redteaming documentation](https://www.promptfoo.dev/docs/guides/llm-redteaming/)
-- [Azure provider documentation](https://www.promptfoo.dev/docs/providers/azure/)
+- [LLM redteaming documentation](https://www.artef.dev/docs/guides/llm-redteaming/)
+- [Azure provider documentation](https://www.artef.dev/docs/providers/azure/)

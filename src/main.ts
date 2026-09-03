@@ -1,4 +1,4 @@
-import { Command } from 'commander';
+﻿import { Command } from 'commander';
 import cliState from './cliState';
 import { codeScansCommand } from './codeScan/index';
 import { authCommand } from './commands/auth';
@@ -55,9 +55,9 @@ async function main() {
   setupEnvFilesFromArgv(argv);
   initializeRunLogging();
 
-  // Set PROMPTFOO_DISABLE_UPDATE=true in CI to prevent hanging on network requests
-  if (!process.env.PROMPTFOO_DISABLE_UPDATE && typeof process.env.CI !== 'undefined') {
-    Object.assign(process.env, { PROMPTFOO_DISABLE_UPDATE: 'true' });
+  // Set artef_DISABLE_UPDATE=true in CI to prevent hanging on network requests
+  if (!process.env.artef_DISABLE_UPDATE && typeof process.env.CI !== 'undefined') {
+    Object.assign(process.env, { artef_DISABLE_UPDATE: 'true' });
   }
 
   await checkForUpdates();
@@ -68,7 +68,7 @@ async function main() {
     ? { defaultConfig: {}, defaultConfigPath: undefined }
     : await loadDefaultConfig();
 
-  const program = new Command('promptfoo');
+  const program = new Command('artef');
   program
     .version(VERSION)
     .showHelpAfterError()

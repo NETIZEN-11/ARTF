@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Provider wrapper that adds rate limiting to any ApiProvider.
  *
  * Use this to wrap providers before passing them to redteam/assertion
@@ -24,7 +24,7 @@ import type { RateLimitRegistry } from './rateLimitRegistry';
  * Symbol to mark providers that have already been wrapped.
  * Prevents double-wrapping which could cause issues.
  */
-const WRAPPED_SYMBOL = Symbol.for('promptfoo.rateLimitWrapped');
+const WRAPPED_SYMBOL = Symbol.for('artef.rateLimitWrapped');
 
 /**
  * Type to represent a provider with the rate limit wrapper symbol.

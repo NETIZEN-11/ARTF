@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Anthropic Messages provider with MCP tool execution'
 
 prompts:
@@ -10,7 +10,7 @@ providers:
     config:
       max_tokens: 1500
       temperature: 0
-      # Cap how many MCP rounds promptfoo will run per request. Default is 8.
+      # Cap how many MCP rounds artef will run per request. Default is 8.
       max_tool_calls: 5
       mcp:
         enabled: true
@@ -30,12 +30,12 @@ tests:
         value: 'The response identifies at least one MCP transport (stdio, SSE, or streamable HTTP) and explains its purpose.'
 
   - vars:
-      question: 'What is the high-level architecture of the promptfoo/promptfoo repository according to its docs?'
+      question: 'What is the high-level architecture of the artef/artef repository according to its docs?'
     assert:
       - type: contains
-        value: 'promptfoo'
+        value: 'artef'
       - type: llm-rubric
-        value: 'The response describes promptfoo as an evaluation framework for LLMs (or similar wording) and mentions at least one concrete feature such as evals, redteam, providers, or assertions.'
+        value: 'The response describes artef as an evaluation framework for LLMs (or similar wording) and mentions at least one concrete feature such as evals, redteam, providers, or assertions.'
 
   # Demonstrate the loop terminating gracefully when the model decides it has
   # enough information without further tool calls.

@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import { getGradingProvider } from '../../src/matchers/providers';
 import { loadApiProvider } from '../../src/providers/index';
@@ -147,13 +147,13 @@ describe('getGradingProvider', () => {
       expect(result).toBe(azureProvider);
     });
 
-    it('should skip defaultTest.provider when it is promptfoo:simulated-user', async () => {
+    it('should skip defaultTest.provider when it is artef:simulated-user', async () => {
       const defaultProvider = createMockProvider({ id: 'default-provider' });
 
       (cliState as any).config = {
         defaultTest: {
           provider: {
-            id: 'promptfoo:simulated-user',
+            id: 'artef:simulated-user',
             config: {
               maxTurns: 3,
             },
@@ -167,13 +167,13 @@ describe('getGradingProvider', () => {
       expect(result).toBe(defaultProvider);
     });
 
-    it('should fall back to defaultTest.options.provider when defaultTest.provider is promptfoo:simulated-user', async () => {
+    it('should fall back to defaultTest.options.provider when defaultTest.provider is artef:simulated-user', async () => {
       const azureProvider = createMockProvider({ id: 'azureopenai:chat:gpt-4' });
 
       (cliState as any).config = {
         defaultTest: {
           provider: {
-            id: 'promptfoo:simulated-user',
+            id: 'artef:simulated-user',
             config: {
               maxTurns: 3,
             },

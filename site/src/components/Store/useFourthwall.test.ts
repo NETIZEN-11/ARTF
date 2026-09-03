@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   formatPrice,
   getAttributeName,
@@ -144,7 +144,7 @@ describe('getCheckoutUrl', () => {
   it('generates correct checkout URL', () => {
     const url = getCheckoutUrl('cart-123', 'USD');
     expect(url).toBe(
-      'https://promptfoo-shop.fourthwall.com/checkout/?cartCurrency=USD&cartId=cart-123',
+      'https://artef-shop.fourthwall.com/checkout/?cartCurrency=USD&cartId=cart-123',
     );
   });
 

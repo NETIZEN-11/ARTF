@@ -1,5 +1,5 @@
-import { Building2, HeartPulse, Phone, Pill, Shield, ShoppingCart } from 'lucide-react';
-import type { Plugin } from '@promptfoo/redteam/constants';
+﻿import { Building2, HeartPulse, Phone, Pill, Shield, ShoppingCart } from 'lucide-react';
+import type { Plugin } from '@artef/redteam/constants';
 
 import type { VerticalSuite } from './VerticalSuiteCard';
 

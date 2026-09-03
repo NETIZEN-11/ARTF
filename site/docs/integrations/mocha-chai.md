@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: Mocha/Chai
-description: Integrate Promptfoo LLM testing with Mocha and Chai to automate prompt quality checks using semantic similarity, factuality, and custom assertions in your test suite.
+description: Integrate artef LLM testing with Mocha and Chai to automate prompt quality checks using semantic similarity, factuality, and custom assertions in your test suite.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Testing prompts with Mocha/Chai
 
-`promptfoo` can be integrated with test frameworks like [Mocha](https://mochajs.org/) and assertion libraries like [Chai](https://www.chaijs.com/) in order to evaluate prompts as part of existing testing and CI workflows.
+`artef` can be integrated with test frameworks like [Mocha](https://mochajs.org/) and assertion libraries like [Chai](https://www.chaijs.com/) in order to evaluate prompts as part of existing testing and CI workflows.
 
 This guide includes examples that show how to create Mocha test cases for desired prompt quality using semantic similarity and LLM grading.
 
@@ -20,7 +20,7 @@ Before you begin, make sure you have the following node packages installed:
 
 - [mocha](https://mochajs.org/#installation): `npm install --save-dev mocha`
 - [chai](https://www.chaijs.com/guide/installation/): `npm install --save-dev chai`
-- promptfoo: `npm install --save-dev promptfoo`
+- artef: `npm install --save-dev artef`
 
 ## Creating custom chai assertions
 
@@ -38,7 +38,7 @@ Create a new file called `assertions.js` and add the following:
 
 ```javascript
 import { Assertion } from 'chai';
-import { assertions } from 'promptfoo';
+import { assertions } from 'artef';
 
 const { matchesSimilarity, matchesLlmRubric } = assertions;
 
@@ -97,8 +97,8 @@ Assertion.addAsyncMethod('toMatchClosedQA', async function (input, expected, gra
 
 ```typescript
 import { Assertion } from 'chai';
-import { assertions } from 'promptfoo';
-import type { GradingConfig } from 'promptfoo';
+import { assertions } from 'artef';
+import type { GradingConfig } from 'artef';
 
 const { matchesSimilarity, matchesLlmRubric } = assertions;
 

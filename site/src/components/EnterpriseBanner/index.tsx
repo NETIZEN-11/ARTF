@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
@@ -25,7 +25,7 @@ export default function EnterpriseBanner(): React.ReactElement {
       <span className={styles.text}>
         This feature requires{' '}
         <Link to="/docs/enterprise/" className={styles.link}>
-          Promptfoo Enterprise
+          artef Enterprise
         </Link>
         .
       </span>

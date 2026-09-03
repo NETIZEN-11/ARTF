@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 
 import { restoreTestTimers, useTestTimers } from '@app/tests/timers';
 import { callApi } from '@app/utils/api';
@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import Eval from './Eval';
 import { useResultsViewSettingsStore, useTableStore } from './store';
-import type { EvaluateTable } from '@promptfoo/types';
+import type { EvaluateTable } from '@artef/types';
 
 const {
   mockNavigate,
@@ -278,7 +278,7 @@ describe('Eval', () => {
 
     // Should show loading state, NOT empty state
     expect(queryByText('Waiting for eval data')).toBeInTheDocument();
-    expect(queryByText('Welcome to Promptfoo')).not.toBeInTheDocument();
+    expect(queryByText('Welcome to artef')).not.toBeInTheDocument();
   });
 
   it('should show results when table is available', async () => {

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 // `nscale.test.ts` mocks `src/providers/openai` wholesale, so it can only assert
 // the shape of the config object handed to the OpenAI provider — never what is
@@ -102,7 +102,7 @@ describe('Nscale request construction', () => {
     });
   });
 
-  it('does not leak any promptfoo-level provider option into the body', async () => {
+  it('does not leak any artef-level provider option into the body', async () => {
     const { body } = await callWithConfig({
       apiKey: 'tok',
       apiKeyEnvar: 'NSCALE_SERVICE_TOKEN',

@@ -1,14 +1,14 @@
-{
-  "name": "promptfoo",
+﻿{
+  "name": "artef",
   "version": "0.1.1",
-  "description": "Teaches AI coding agents to connect providers and targets, write promptfoo eval suites, and set up or run red team scans",
+  "description": "Teaches AI coding agents to connect providers and targets, write artef eval suites, and set up or run red team scans",
   "author": {
-    "name": "Promptfoo",
-    "email": "support@promptfoo.dev",
-    "url": "https://www.promptfoo.dev"
+    "name": "artef",
+    "email": "support@artef.dev",
+    "url": "https://www.artef.dev"
   },
-  "homepage": "https://www.promptfoo.dev/docs/integrations/agent-skill",
-  "repository": "https://github.com/promptfoo/promptfoo",
+  "homepage": "https://www.artef.dev/docs/integrations/agent-skill",
+  "repository": "https://github.com/artef/artef",
   "license": "MIT",
-  "keywords": ["eval", "redteam", "provider", "testing", "llm", "promptfoo"]
+  "keywords": ["eval", "redteam", "provider", "testing", "llm", "artef"]
 }

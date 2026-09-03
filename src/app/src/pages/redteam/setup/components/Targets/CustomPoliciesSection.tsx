@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+﻿import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import { DataTable } from '@app/components/data-table/data-table';
 import { Button } from '@app/components/ui/button';
@@ -20,13 +20,13 @@ import { useTelemetry } from '@app/hooks/useTelemetry';
 import { useToast } from '@app/hooks/useToast';
 import { cn } from '@app/lib/utils';
 import { callApi } from '@app/utils/api';
-import { makeDefaultPolicyName, makeInlinePolicyId } from '@promptfoo/redteam/plugins/policy/utils';
+import { makeDefaultPolicyName, makeInlinePolicyId } from '@artef/redteam/plugins/policy/utils';
 import { Pencil, Plus, Trash2, Upload } from 'lucide-react';
 import { useRedTeamConfig } from '../../hooks/useRedTeamConfig';
 import { TestCaseGenerateButton } from '../TestCaseDialog';
 import { useTestCaseGeneration } from '../TestCaseGenerationProvider';
 import { PolicySuggestionsSidebar } from './PolicySuggestionsSidebar';
-import type { PolicyObject } from '@promptfoo/redteam/types';
+import type { PolicyObject } from '@artef/redteam/types';
 import type { ColumnDef, RowSelectionState } from '@tanstack/react-table';
 
 type PolicyRow = {
@@ -363,7 +363,7 @@ export const CustomPoliciesSection = () => {
 
   /**
    * Generates custom policies for an application given its definition and a sample of existing
-   * policies. Generation occurs remotely in Promptfoo Cloud.
+   * policies. Generation occurs remotely in artef Cloud.
    */
   const handleGeneratePolicies = useCallback(async () => {
     if (!config.applicationDefinition?.purpose) {
@@ -660,7 +660,7 @@ export const CustomPoliciesSection = () => {
               tooltipTitle={
                 apiHealthStatus === 'connected'
                   ? undefined
-                  : 'Promptfoo Cloud connection is required for test generation'
+                  : 'artef Cloud connection is required for test generation'
               }
             />
           </div>

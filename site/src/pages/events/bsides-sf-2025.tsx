@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -22,31 +22,31 @@ export default function BSidesSF2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at BSides SF 2025"
-      description="Recap of Promptfoo at BSides San Francisco 2025. Community connections and AI security discussions during RSA week."
+      title="artef at BSides SF 2025"
+      description="Recap of artef at BSides San Francisco 2025. Community connections and AI security discussions during RSA week."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at BSides SF 2025" />
+        <meta property="og:title" content="artef at BSides SF 2025" />
         <meta
           property="og:description"
-          content="Recap of Promptfoo at BSides San Francisco 2025. Community-driven security and AI discussions."
+          content="Recap of artef at BSides San Francisco 2025. Community-driven security and AI discussions."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/bsides-sf-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/bsides-sf-2025" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/bsides-sf-2025.jpg"
+          content="https://www.artef.dev/img/events/bsides-sf-2025.jpg"
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/bsides-sf-2025.jpg"
+          content="https://www.artef.dev/img/events/bsides-sf-2025.jpg"
         />
         <meta
           name="keywords"
           content="BSides SF 2025, BSides San Francisco, security conference, AI security, hacker community, RSA week"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/bsides-sf-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/bsides-sf-2025" />
       </Head>
 
       <main className={styles.bsidesPage}>

@@ -1,9 +1,9 @@
-# redteam-starter (Redteam Starter)
+﻿# redteam-starter (Redteam Starter)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-starter
+npx artef@latest init --example redteam-starter
 cd redteam-starter
 ```
 
@@ -12,5 +12,5 @@ cd redteam-starter
 This runs a redteam against an example public HTTP chatbot endpoint.
 
 ```bash
-promptfoo redteam run
+artef redteam run
 ```

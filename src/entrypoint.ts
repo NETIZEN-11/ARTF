@@ -1,5 +1,5 @@
-/**
- * Entry point for the promptfoo CLI.
+﻿/**
+ * Entry point for the artef CLI.
  *
  * This file intentionally has NO dependencies to ensure the Node.js version
  * check runs before any module loading that might fail on older versions.
@@ -24,8 +24,8 @@ type ParseNodeEngineVersionOptions = {
 };
 
 // Build-time constants injected by tsdown from package.json engines field
-declare const __PROMPTFOO_NODE_ENGINE_RANGE__: string | undefined;
-declare const __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] | undefined;
+declare const __artef_NODE_ENGINE_RANGE__: string | undefined;
+declare const __artef_NODE_ENGINE_COMPARATOR_SETS__: NodeEngineComparator[][] | undefined;
 
 const fallbackNodeEngineRange = '>=22.22.0';
 const fallbackNodeEngineComparatorSets: NodeEngineComparator[][] = [
@@ -33,13 +33,13 @@ const fallbackNodeEngineComparatorSets: NodeEngineComparator[][] = [
 ];
 
 const nodeEngineRange =
-  typeof __PROMPTFOO_NODE_ENGINE_RANGE__ === 'undefined'
+  typeof __artef_NODE_ENGINE_RANGE__ === 'undefined'
     ? fallbackNodeEngineRange
-    : __PROMPTFOO_NODE_ENGINE_RANGE__;
+    : __artef_NODE_ENGINE_RANGE__;
 const nodeEngineComparatorSets =
-  typeof __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__ === 'undefined'
+  typeof __artef_NODE_ENGINE_COMPARATOR_SETS__ === 'undefined'
     ? fallbackNodeEngineComparatorSets
-    : __PROMPTFOO_NODE_ENGINE_COMPARATOR_SETS__;
+    : __artef_NODE_ENGINE_COMPARATOR_SETS__;
 function parseNodeEngineVersion(
   version: string,
   options: ParseNodeEngineVersionOptions = {},
@@ -118,7 +118,7 @@ function isSupportedNodeEngineVersion(currentVersion: string): boolean | null {
 
 function formatUnsupportedNodeVersionMessage(currentVersion: string): string {
   return [
-    '\x1b[33mpromptfoo requires a supported Node.js runtime.',
+    '\x1b[33martef requires a supported Node.js runtime.',
     '',
     `Detected: ${currentVersion}`,
     `Required: ${nodeEngineRange}`,
@@ -164,7 +164,7 @@ const invokedAsCli =
 if (invokedAsCli && requestsStructuredCodeScanOutput(process.argv.slice(2))) {
   // Reserve stdout for the SARIF/JSON payload: quiet the logger and route
   // whatever it still emits to stderr so it cannot corrupt that payload.
-  Object.assign(process.env, { LOG_LEVEL: 'error', PROMPTFOO_LOG_TO_STDERR: 'true' });
+  Object.assign(process.env, { LOG_LEVEL: 'error', artef_LOG_TO_STDERR: 'true' });
 }
 
 // Update argv[1] so isMainModule() in main.ts correctly detects CLI execution.

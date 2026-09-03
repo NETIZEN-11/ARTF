@@ -1,9 +1,9 @@
-# provider-replicate/llama4-scout (Replicate Llama 4 Scout)
+﻿# provider-replicate/llama4-scout (Replicate Llama 4 Scout)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-replicate/llama4-scout
+npx artef@latest init --example provider-replicate/llama4-scout
 cd provider-replicate/llama4-scout
 ```
 
@@ -45,13 +45,13 @@ This example:
 2. Run the evaluation:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 3. View the results:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Model Configuration

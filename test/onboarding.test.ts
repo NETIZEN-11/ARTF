@@ -1,4 +1,4 @@
-import { rm } from 'fs/promises';
+﻿import { rm } from 'fs/promises';
 
 import { AbortPromptError, ExitPromptError } from '@inquirer/core';
 import * as yaml from 'js-yaml';
@@ -179,7 +179,7 @@ describe('createDummyFiles', () => {
     await createDummyFiles(tempDir, false);
 
     const configCall = mockFs.writeFileSync.mock.calls.find((call: any[]) =>
-      call[0].toString().endsWith('promptfooconfig.yaml'),
+      call[0].toString().endsWith('artefconfig.yaml'),
     );
     const readmeCall = mockFs.writeFileSync.mock.calls.find((call: any[]) =>
       call[0].toString().endsWith('README.md'),
@@ -215,7 +215,7 @@ describe('createDummyFiles', () => {
     await createDummyFiles(tempDir, true);
 
     const configCall = mockFs.writeFileSync.mock.calls.find((call: any[]) =>
-      call[0].toString().endsWith('promptfooconfig.yaml'),
+      call[0].toString().endsWith('artefconfig.yaml'),
     );
     const contextCall = mockFs.writeFileSync.mock.calls.find((call: any[]) =>
       call[0].toString().endsWith('context.py'),
@@ -282,7 +282,7 @@ describe('createDummyFiles', () => {
     );
 
     const configCall = mockFs.writeFileSync.mock.calls.find((call: any[]) =>
-      call[0].toString().endsWith('promptfooconfig.yaml'),
+      call[0].toString().endsWith('artefconfig.yaml'),
     );
     const config = yaml.load(configCall?.[1] as string) as { providers: typeof googleModels };
 
@@ -308,7 +308,7 @@ describe('createDummyFiles', () => {
   });
 
   it('should prompt for confirmation when files exist', async () => {
-    mockFs.existsSync.mockImplementation((path: string) => path.includes('promptfooconfig.yaml'));
+    mockFs.existsSync.mockImplementation((path: string) => path.includes('artefconfig.yaml'));
 
     mockConfirm.mockResolvedValueOnce(true);
     mockSelect.mockResolvedValueOnce('compare').mockResolvedValueOnce('openai:gpt-4o');
@@ -354,7 +354,7 @@ describe('initializeProject', () => {
   });
 
   it('should print current-directory next steps for the redteam path', async () => {
-    // `promptfoo init` with no directory arg, choosing "Run a red team evaluation".
+    // `artef init` with no directory arg, choosing "Run a red team evaluation".
     mockSelect.mockResolvedValueOnce('redteam');
 
     const infoSpy = vi.spyOn(logger, 'info').mockImplementation(() => logger);

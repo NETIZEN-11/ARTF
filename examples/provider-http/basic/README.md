@@ -1,19 +1,19 @@
-# provider-http/basic (HTTP Provider Example)
+﻿# provider-http/basic (HTTP Provider Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-http/basic
+npx artef@latest init --example provider-http/basic
 cd provider-http/basic
 ```
 
-This example demonstrates how to configure and use HTTP providers with promptfoo to integrate with external API endpoints.
+This example demonstrates how to configure and use HTTP providers with artef to integrate with external API endpoints.
 
 ## Quick Start
 
 1. Visit the [HTTP Provider Generator](/http-provider-generator) to automatically generate configurations based on your HTTP endpoint.
 2. Enter your request configuration and sample response.
-3. Copy the generated configuration to your promptfoo config file.
+3. Copy the generated configuration to your artef config file.
 
 ## Example Configuration
 
@@ -50,20 +50,20 @@ providers:
    - Modify the request body structure
    - Update the transformResponse to match your API's response format
 3. Test the configuration using the [HTTP Provider Generator](/http-provider-generator)
-4. Save the working configuration to your promptfoo config file
+4. Save the working configuration to your artef config file
 
 ## Testing Locally
 
 To test your configuration:
 
-1. Create a promptfooconfig.yaml file with your configuration
+1. Create a artefconfig.yaml file with your configuration
 2. Run the evaluation:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 3. View the results:
    ```bash
-   promptfoo view
+   artef view
    ```
 
 For development and testing, you can use services like [webhook.site](https://webhook.site) to create test endpoints.

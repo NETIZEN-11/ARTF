@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Dataset loader for TruthfulQA factuality evaluation
- * Loads the EleutherAI/truthful_qa_mc dataset and formats it for promptfoo
+ * Loads the EleutherAI/truthful_qa_mc dataset and formats it for artef
  */
 import * as fs from 'fs';
 import * as path from 'path';
@@ -30,9 +30,9 @@ interface FactualityAssertion {
 }
 
 /**
- * Structure of a promptfoo test case
+ * Structure of a artef test case
  */
-interface PromptfooTestCase {
+interface artefTestCase {
   vars: {
     question: string; // Question to be answered by the model
   };
@@ -55,7 +55,7 @@ interface PromptfooTestCase {
  */
 
 /**
- * Fetches TruthfulQA dataset from HuggingFace API and formats it for promptfoo
+ * Fetches TruthfulQA dataset from HuggingFace API and formats it for artef
  */
 export interface DatasetLoaderConfig {
   dataset?: string;
@@ -64,7 +64,7 @@ export interface DatasetLoaderConfig {
   maxRows?: number;
 }
 
-export async function generate_tests(cfg: DatasetLoaderConfig = {}): Promise<PromptfooTestCase[]> {
+export async function generate_tests(cfg: DatasetLoaderConfig = {}): Promise<artefTestCase[]> {
   // Define dataset constants with destructuring defaults
   const {
     dataset = 'EleutherAI/truthful_qa_mc',
@@ -123,8 +123,8 @@ export async function generate_tests(cfg: DatasetLoaderConfig = {}): Promise<Pro
     const data: HuggingFaceDatasetResponse = await response.json();
     console.log(`Successfully fetched ${data.rows.length} rows from TruthfulQA dataset`);
 
-    // Convert to promptfoo test cases
-    const testCases: PromptfooTestCase[] = data.rows.map((item, index) => {
+    // Convert to artef test cases
+    const testCases: artefTestCase[] = data.rows.map((item, index) => {
       const { question, choices, label } = item.row;
 
       // Get the correct answer text from the choices array using the label index

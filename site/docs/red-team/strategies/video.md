@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Video Inputs
 title: Video Jailbreaking Strategy
 description: Evaluate video-capable AI models against adversarial video inputs with embedded text designed to bypass safety filters
@@ -38,10 +38,10 @@ AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAu1tZGF0...
 
 ## Implementation
 
-Use it in your promptfooconfig.yaml like this:
+Use it in your artefconfig.yaml like this:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Multi-modal redteam'
 targets:
   - bedrock:amazon.nova-lite-v1:0
@@ -88,7 +88,7 @@ You should update the prompt.json to match the prompt format of your LLM provide
 :::
 
 :::note
-The `{{video}}` syntax in the examples is a Nunjucks template variable. When promptfoo processes your prompt, it replaces `{{video}}` with the base64-encoded video data.
+The `{{video}}` syntax in the examples is a Nunjucks template variable. When artef processes your prompt, it replaces `{{video}}` with the base64-encoded video data.
 :::
 
 ## Requirements

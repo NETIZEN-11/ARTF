@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import * as path from 'path';
 
 import checkbox, { Separator } from '@inquirer/checkbox';
@@ -13,7 +13,7 @@ import { readGlobalConfig, writeGlobalConfigPartial } from '../../globalConfig/g
 import logger from '../../logger';
 import { GEMINI_FLASH_MODELS } from '../../providers/google/shared';
 import telemetry, { type EventProperties } from '../../telemetry';
-import { promptfooCommand } from '../../util/promptfooCommand';
+import { artefCommand } from '../../util/artefCommand';
 import { extractVariablesFromTemplate, getNunjucksEngine } from '../../util/templates';
 import {
   ADDITIONAL_STRATEGIES,
@@ -30,11 +30,11 @@ import { doGenerateRedteam } from './generate';
 
 import type { ProviderOptions, RedteamPluginObject } from '../../types/index';
 
-const REDTEAM_CONFIG_TEMPLATE = `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+const REDTEAM_CONFIG_TEMPLATE = `# yaml-language-server: $schema=https://artef.dev/config-schema.json
 
 # Red teaming configuration
 
-# Docs: https://promptfoo.dev/docs/red-team/configuration
+# Docs: https://artef.dev/docs/red-team/configuration
 description: "My first red team"
 
 {% if prompts.length > 0 -%}
@@ -45,13 +45,13 @@ prompts:
   {% if prompts.length > 0 and not prompts[0].startsWith('file://') -%}
   # You can also reference external prompts, e.g.
   # - file:///path/to/prompt.json
-  # Learn more: https://promptfoo.dev/docs/configuration/prompts/
+  # Learn more: https://artef.dev/docs/configuration/prompts/
   {% endif %}
 {% endif -%}
 
 targets:
   # Red team targets. To talk directly to your application, use a custom provider.
-  # See https://promptfoo.dev/docs/red-team/configuration/#providers
+  # See https://artef.dev/docs/red-team/configuration/#providers
   {% for provider in providers -%}
   {% if provider is string -%}
   - {{ provider }}
@@ -109,7 +109,7 @@ redteam:
 `;
 
 const CUSTOM_PROVIDER_TEMPLATE = `# Custom provider for red teaming
-# Docs: https://promptfoo.dev/docs/red-team/configuration/#providers
+# Docs: https://artef.dev/docs/red-team/configuration/#providers
 
 import http.client
 import urllib.parse
@@ -209,7 +209,7 @@ export async function redteamInit(directory: string | undefined) {
     await fs.mkdir(projectDir, { recursive: true });
   }
 
-  const configPath = path.join(projectDir, 'promptfooconfig.yaml');
+  const configPath = path.join(projectDir, 'artefconfig.yaml');
 
   console.clear();
   logger.info(chalk.bold('Red Team Configuration\n'));
@@ -486,7 +486,7 @@ export async function redteamInit(directory: string | undefined) {
         dedent`${chalk.bold('Warning:')} Skipping indirect prompt injection plugin because no prompt is specified.
         You can re-add this plugin after adding a prompt in your redteam config.
 
-        Learn more: https://www.promptfoo.dev/docs/red-team/plugins/indirect-prompt-injection`,
+        Learn more: https://www.artef.dev/docs/red-team/plugins/indirect-prompt-injection`,
       );
     } else {
       const variables = extractVariablesFromTemplate(prompts[0]);
@@ -512,7 +512,7 @@ export async function redteamInit(directory: string | undefined) {
         logger.warn(
           dedent`${chalk.bold('Warning:')} Skipping indirect prompt injection plugin because it requires at least two {{variables}} in the prompt.
 
-          Learn more: https://www.promptfoo.dev/docs/red-team/plugins/indirect-prompt-injection`,
+          Learn more: https://www.artef.dev/docs/red-team/plugins/indirect-prompt-injection`,
         );
       }
     }
@@ -660,7 +660,7 @@ export async function redteamInit(directory: string | undefined) {
         chalk.green(dedent`
           To generate test cases and run your red team, use the command:
 
-              ${chalk.bold(promptfooCommand('redteam run'))}
+              ${chalk.bold(artefCommand('redteam run'))}
         `),
     );
     return;
@@ -697,7 +697,7 @@ export async function redteamInit(directory: string | undefined) {
         '\n' +
           chalk.blue(
             'To generate test cases and run your red team later, use the command: ' +
-              chalk.bold(promptfooCommand('redteam run')),
+              chalk.bold(artefCommand('redteam run')),
           ),
       );
     }

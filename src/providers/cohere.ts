@@ -1,4 +1,4 @@
-import { fetchWithCache } from '../cache';
+﻿import { fetchWithCache } from '../cache';
 import { getEnvString } from '../envars';
 import logger from '../logger';
 import { type GenAISpanContext, type GenAISpanResult, withGenAISpan } from '../tracing/genaiTracer';
@@ -43,7 +43,7 @@ interface CohereChatOptions {
   frequency_penalty?: number;
   presence_penalty?: number;
 
-  // promptfoo-provided options
+  // artef-provided options
   showDocuments?: boolean;
   showSearchQueries?: boolean;
 }
@@ -192,7 +192,7 @@ export class CohereChatCompletionProvider implements ApiProvider {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${this.apiKey}`,
-            'X-Client-Name': getEnvString('COHERE_CLIENT_NAME') || 'promptfoo',
+            'X-Client-Name': getEnvString('COHERE_CLIENT_NAME') || 'artef',
           },
           body: JSON.stringify(body),
         },
@@ -294,7 +294,7 @@ export class CohereEmbeddingProvider implements ApiEmbeddingProvider {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${this.getApiKey()}`,
-            'X-Client-Name': getEnvString('COHERE_CLIENT_NAME') || 'promptfoo',
+            'X-Client-Name': getEnvString('COHERE_CLIENT_NAME') || 'artef',
           },
           body: JSON.stringify(body),
         },

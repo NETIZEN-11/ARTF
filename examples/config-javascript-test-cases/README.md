@@ -1,9 +1,9 @@
-# config-javascript-test-cases (JavaScript/TypeScript Test Cases Example)
+﻿# config-javascript-test-cases (JavaScript/TypeScript Test Cases Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-javascript-test-cases
+npx artef@latest init --example config-javascript-test-cases
 cd config-javascript-test-cases
 ```
 
@@ -11,7 +11,7 @@ This example demonstrates different ways to generate test cases using JavaScript
 
 ## Files
 
-- `promptfooconfig.yaml` - Configuration file specifying prompts and providers
+- `artefconfig.yaml` - Configuration file specifying prompts and providers
 - `staticTests.ts` - Static test cases with type checking examples
 - `dynamicTests.ts` - Dynamic test case generation from a simulated database
 
@@ -20,7 +20,7 @@ This example demonstrates different ways to generate test cases using JavaScript
 1. Install dependencies:
 
    ```bash
-   npm install promptfoo
+   npm install artef
    ```
 
 2. Set up your API key:
@@ -32,5 +32,5 @@ This example demonstrates different ways to generate test cases using JavaScript
 3. Run the evaluation:
 
    ```bash
-   npx promptfoo eval
+   npx artef eval
    ```

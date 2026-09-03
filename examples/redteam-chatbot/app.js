@@ -1,5 +1,5 @@
-const express = require('express');
-const { loadApiProvider } = require('promptfoo');
+﻿const express = require('express');
+const { loadApiProvider } = require('artef');
 
 const app = express();
 app.use(express.json());

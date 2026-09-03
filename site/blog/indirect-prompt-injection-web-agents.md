@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Indirect Prompt Injection in Web-Browsing Agents'
 description: 'Test if AI browsing agents follow malicious instructions or leak data with the indirect-web-pwn strategy.'
 image: /img/docs/indirect-web-pwn-architecture.png
@@ -42,7 +42,7 @@ Here's what the attack flow looks like:
 
 ![Indirect Web Pwn Architecture](/img/docs/indirect-web-pwn-architecture.png)
 
-1. Promptfoo generates a realistic web page with a hidden attack payload embedded in it
+1. artef generates a realistic web page with a hidden attack payload embedded in it
 2. The agent is asked to visit and summarize the page
 3. The agent fetches the page and processes the content — including the hidden instructions
 4. We check whether the agent followed the malicious instructions or exfiltrated data
@@ -126,7 +126,7 @@ The strategy works with any plugin, but the detection mechanism depends on what 
 
 When paired with the `data-exfil` plugin, the attack tries to trick the agent into encoding sensitive data into URL parameters - things like API keys, environment variables, or user data - and sending them to an external endpoint.
 
-Detection is **deterministic**. The Promptfoo server tracks HTTP requests to the exfil endpoint. If the agent makes a request, it's a fail. No LLM judgment needed.
+Detection is **deterministic**. The artef server tracks HTTP requests to the exfil endpoint. If the agent makes a request, it's a fail. No LLM judgment needed.
 
 A typical exfil attack looks like this: the hidden instructions on the page tell the agent to read environment variables and embed them in a markdown image URL:
 
@@ -217,14 +217,14 @@ If your agent has all three, `indirect-web-pwn` will tell you how bad it is.
 Get started with the example:
 
 ```bash
-npx promptfoo@latest init --example redteam-indirect-web-pwn
+npx artef@latest init --example redteam-indirect-web-pwn
 ```
 
 Or add the strategy to your existing red team config. See the [full documentation](/docs/red-team/strategies/indirect-web-pwn) for all configuration options.
 
 **Requirements:**
 
-- Promptfoo Cloud account (for server-side page generation and exfil tracking)
+- artef Cloud account (for server-side page generation and exfil tracking)
 - A target agent with web browsing capability (via tools, MCP, or built-in browser)
 
 ## Resources
@@ -232,5 +232,5 @@ Or add the strategy to your existing red team config. See the [full documentatio
 - [Indirect Web Pwn documentation](/docs/red-team/strategies/indirect-web-pwn)
 - [Data Exfiltration Plugin](/docs/red-team/plugins/data-exfil)
 - [Layer Strategy](/docs/red-team/strategies/layer)
-- [Example on GitHub](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-indirect-web-pwn)
+- [Example on GitHub](https://github.com/artef/artef/tree/main/examples/redteam-indirect-web-pwn)
 - [Lethal Trifecta blog post](/blog/lethal-trifecta-testing/)

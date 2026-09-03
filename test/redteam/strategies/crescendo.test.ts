@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addCrescendo } from '../../../src/redteam/strategies/crescendo';
 
 import type { TestCase } from '../../../src/types/index';
@@ -29,7 +29,7 @@ describe('addCrescendo', () => {
       description: 'Test case 1',
       vars: { input: 'test input' },
       provider: {
-        id: 'promptfoo:redteam:crescendo',
+        id: 'artef:redteam:crescendo',
         config: {
           injectVar: 'input',
           someConfig: 'value',
@@ -62,7 +62,7 @@ describe('addCrescendo', () => {
     expect(result).toHaveLength(1);
     expect(result[0].assert).toBeUndefined();
     expect(result[0].provider).toEqual({
-      id: 'promptfoo:redteam:crescendo',
+      id: 'artef:redteam:crescendo',
       config: {
         injectVar: 'input',
       },
@@ -96,7 +96,7 @@ describe('addCrescendo', () => {
       vars: { input: 'test' },
       otherProp: 'should be preserved',
       provider: {
-        id: 'promptfoo:redteam:crescendo',
+        id: 'artef:redteam:crescendo',
         config: {
           injectVar: 'input',
         },
@@ -124,7 +124,7 @@ describe('addCrescendo', () => {
       };
 
       const testAssertion = {
-        type: 'promptfoo:redteam:policy' as const,
+        type: 'artef:redteam:policy' as const,
         metric: 'PolicyViolation:test/Crescendo',
       };
 
@@ -140,7 +140,7 @@ describe('addCrescendo', () => {
 
       expect(storedResult.assertion).toBeDefined();
       expect(storedResult.assertion?.value).toBe(mockRenderedRubric);
-      expect(storedResult.assertion?.type).toBe('promptfoo:redteam:policy');
+      expect(storedResult.assertion?.type).toBe('artef:redteam:policy');
       expect(storedResult.assertion?.metric).toBe('PolicyViolation:test/Crescendo');
     });
 
@@ -151,7 +151,7 @@ describe('addCrescendo', () => {
         score: 0,
         reason: 'Failed',
         assertion: {
-          type: 'promptfoo:redteam:harmful' as const,
+          type: 'artef:redteam:harmful' as const,
           metric: 'Harmful/Crescendo',
           value: 'old value',
         },
@@ -165,7 +165,7 @@ describe('addCrescendo', () => {
       };
 
       expect(storedResult.assertion?.value).toBe(mockRenderedRubric);
-      expect(storedResult.assertion?.type).toBe('promptfoo:redteam:harmful');
+      expect(storedResult.assertion?.type).toBe('artef:redteam:harmful');
       expect(storedResult.assertion?.metric).toBe('Harmful/Crescendo');
     });
 

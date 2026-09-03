@@ -1,4 +1,4 @@
-import { z } from 'zod';
+﻿import { z } from 'zod';
 import {
   CODING_AGENT_COLLECTIONS,
   CODING_AGENT_PLUGIN_ALIASES,
@@ -1379,7 +1379,7 @@ export const PLUGIN_PRESET_DESCRIPTIONS: Record<string, string> = {
   'OWASP Gen AI Red Team': 'Red teaming best practices',
   'OWASP LLM Top 10': 'LLM security vulnerabilities',
   RAG: 'Retrieval scenarios and access control',
-  Recommended: 'Broad set of plugins by Promptfoo',
+  Recommended: 'Broad set of plugins by artef',
   MCP: 'Plugins for tool-use systems',
 } as const;
 

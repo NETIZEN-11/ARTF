@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Databricks
 description: Configure Databricks Foundation Model APIs with Llama-3, Claude, and custom endpoints for unified access to hosted and external LLMs through OpenAI-compatible interface
 ---
@@ -34,7 +34,7 @@ export DATABRICKS_TOKEN=your-token-here
 
 Access pre-configured Foundation Model endpoints with simple configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: databricks:databricks-meta-llama-3-3-70b-instruct
     config:
@@ -87,7 +87,7 @@ The Databricks provider extends the [OpenAI configuration options](/docs/provide
 
 ### Advanced Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: databricks:databricks-claude-3-7-sonnet
     config:
@@ -124,7 +124,7 @@ providers:
 
 Vision models on Databricks require structured JSON prompts similar to OpenAI's format. Here's how to use them:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://vision-prompt.json
 
@@ -224,7 +224,7 @@ Usage data is available through Databricks system tables:
 
 ## Example: Multi-Model Comparison
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Explain quantum computing to a 10-year-old'
 

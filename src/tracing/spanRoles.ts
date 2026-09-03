@@ -1,17 +1,17 @@
-import { context, createContextKey, trace } from '@opentelemetry/api';
+﻿import { context, createContextKey, trace } from '@opentelemetry/api';
 
-export const SPAN_ROLE_ATTRIBUTE = 'promptfoo.span.role';
+export const SPAN_ROLE_ATTRIBUTE = 'artef.span.role';
 
-export type PromptfooSpanRole = 'test_case' | 'target' | 'grader';
+export type artefSpanRole = 'test_case' | 'target' | 'grader';
 
-const SPAN_ROLE_CONTEXT_KEY = createContextKey('promptfoo.span.role');
+const SPAN_ROLE_CONTEXT_KEY = createContextKey('artef.span.role');
 
 /** Keep evaluator-owned grading activity distinct from the target's behavior. */
-export function getActiveSpanRole(): PromptfooSpanRole | undefined {
-  return context.active().getValue(SPAN_ROLE_CONTEXT_KEY) as PromptfooSpanRole | undefined;
+export function getActiveSpanRole(): artefSpanRole | undefined {
+  return context.active().getValue(SPAN_ROLE_CONTEXT_KEY) as artefSpanRole | undefined;
 }
 
-export function withSpanRole<T>(role: PromptfooSpanRole, fn: () => T): T {
+export function withSpanRole<T>(role: artefSpanRole, fn: () => T): T {
   return context.with(context.active().setValue(SPAN_ROLE_CONTEXT_KEY, role), fn);
 }
 

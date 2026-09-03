@@ -1,13 +1,13 @@
-# google-live (Google Live API with Gemini)
+﻿# google-live (Google Live API with Gemini)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-live
+npx artef@latest init --example google-live
 cd google-live
 ```
 
-This example demonstrates how to use promptfoo with Google's WebSocket-based Live API, which enables low-latency bidirectional interactions with Gemini models. The example includes four different configurations:
+This example demonstrates how to use artef with Google's WebSocket-based Live API, which enables low-latency bidirectional interactions with Gemini models. The example includes four different configurations:
 
 1. Basic query demonstration
 2. Multiline conversation demonstration
@@ -16,7 +16,7 @@ This example demonstrates how to use promptfoo with Google's WebSocket-based Liv
 
 ## Prerequisites
 
-- promptfoo CLI installed (`npm install -g promptfoo` or `brew install promptfoo`)
+- artef CLI installed (`npm install -g artef` or `brew install artef`)
 - Google AI Studio API key set as `GOOGLE_API_KEY`
 - For the stateful API example: Python 3 with Flask installed (`pip install flask`)
 
@@ -27,39 +27,39 @@ You can obtain a Google AI Studio API key from the [Google AI Studio website](ht
 You can initialize this example with:
 
 ```bash
-npx promptfoo@latest init --example google-live
+npx artef@latest init --example google-live
 ```
 
 This will create a directory with all necessary configuration files. After running any evaluation, you can view the results by running:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ### Basic Query Example
 
-The basic configuration in `promptfooconfig.yaml` demonstrates a simple query to the Gemini model:
+The basic configuration in `artefconfig.yaml` demonstrates a simple query to the Gemini model:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml -j 3
+artef eval -c artefconfig.yaml -j 3
 ```
 
 > Note: Rate limits of 3 concurrent sessions per API key apply, which is why we use `-j 3` to limit concurrency.
 
 ### Multiline Conversation Example
 
-The multiline configuration in `promptfooconfig.multiline.yaml` demonstrates a multi-turn conversation:
+The multiline configuration in `artefconfig.multiline.yaml` demonstrates a multi-turn conversation:
 
 ```bash
-promptfoo eval -c promptfooconfig.multiline.yaml -j 3
+artef eval -c artefconfig.multiline.yaml -j 3
 ```
 
 ### Function Calling and Tools Example
 
-The tools configuration in `promptfooconfig.tools.yaml` demonstrates function calling (where the model can invoke defined functions) and built-in Google Search:
+The tools configuration in `artefconfig.tools.yaml` demonstrates function calling (where the model can invoke defined functions) and built-in Google Search:
 
 ```bash
-promptfoo eval -c promptfooconfig.tools.yaml -j 3
+artef eval -c artefconfig.tools.yaml -j 3
 ```
 
 ### Stateful API Example
@@ -67,14 +67,14 @@ promptfoo eval -c promptfooconfig.tools.yaml -j 3
 This example runs a local Python API that maintains state between function calls:
 
 ```bash
-promptfoo eval -c promptfooconfig.statefulapi.yaml -j 3
+artef eval -c artefconfig.statefulapi.yaml -j 3
 ```
 
 **Setup:**
 
 - Requires Python 3 with Flask (`pip install flask`)
 - Uses `python3` command by default
-- Custom Python path: Set `pythonExecutable` in config or use `PROMPTFOO_PYTHON` environment variable
+- Custom Python path: Set `pythonExecutable` in config or use `artef_PYTHON` environment variable
 - Runs on port 8765 (configured in both the Python file and YAML config)
 
 If you encounter errors, check that:
@@ -104,7 +104,7 @@ If you encounter errors, check that:
 
 ### 4. Stateful API Integration
 
-- Promptfoo spawns a local Python API that maintains state between calls
+- artef spawns a local Python API that maintains state between calls
 - Demonstrates how to integrate an external service with LLM function calling
 - Shows how to test stateful interactions with assertions
 

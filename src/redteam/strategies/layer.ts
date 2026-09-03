@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 import { remoteGenerationContextPayload } from '../remoteGenerationContext';
 import { getAttackProviderFullId, isAttackProvider } from '../shared/attackProviders';
 import { withPersistableGenerationProvider } from './types';
@@ -83,11 +83,11 @@ export async function addLayerTestCases(
       // Get the full provider ID
       const providerId = getAttackProviderFullId(stepObj.id);
       const shouldPersistGenerationProvider = [
-        'promptfoo:redteam:crescendo',
-        'promptfoo:redteam:custom',
-        'promptfoo:redteam:iterative',
-        'promptfoo:redteam:iterative:meta',
-        'promptfoo:redteam:iterative:tree',
+        'artef:redteam:crescendo',
+        'artef:redteam:custom',
+        'artef:redteam:iterative',
+        'artef:redteam:iterative:meta',
+        'artef:redteam:iterative:tree',
       ].includes(providerId);
       const metricSuffix = getMetricSuffix(stepObj.id);
       const label = typeof config?.label === 'string' ? config.label : undefined;
@@ -188,7 +188,7 @@ export async function addLayerTestCases(
  * Gets the metric suffix for an attack provider.
  */
 function getMetricSuffix(stepId: string): string {
-  const baseId = stepId.replace('promptfoo:redteam:', '').replace('jailbreak:', '');
+  const baseId = stepId.replace('artef:redteam:', '').replace('jailbreak:', '');
   const suffixMap: Record<string, string> = {
     // Multi-turn conversational strategies
     hydra: 'Hydra',

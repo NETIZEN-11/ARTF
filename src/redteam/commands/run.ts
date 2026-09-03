@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import { z } from 'zod';
 import cliState from '../../cliState';
@@ -32,7 +32,7 @@ export function redteamRunCommand(program: Command) {
     )
     .option(
       '-c, --config [path]',
-      'Path to configuration file or cloud config UUID. Defaults to promptfooconfig.yaml',
+      'Path to configuration file or cloud config UUID. Defaults to artefconfig.yaml',
     )
     .option(
       '-o, --output [path]',

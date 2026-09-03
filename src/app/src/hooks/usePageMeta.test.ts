@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react';
+﻿import { renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { usePageMeta } from './usePageMeta';
 
@@ -45,10 +45,10 @@ describe('usePageMeta', () => {
     vi.restoreAllMocks();
   });
 
-  it('should set document title with promptfoo suffix', () => {
+  it('should set document title with artef suffix', () => {
     renderHook(() => usePageMeta({ title: 'Test Page' }));
 
-    expect(document.title).toBe('Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
   });
 
   it('should set meta description when provided', () => {
@@ -65,7 +65,7 @@ describe('usePageMeta', () => {
   it('should set Open Graph title', () => {
     renderHook(() => usePageMeta({ title: 'Test Page' }));
 
-    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', 'Test Page | promptfoo');
+    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', 'Test Page | artef');
   });
 
   it('should set Open Graph description when provided', () => {
@@ -101,7 +101,7 @@ describe('usePageMeta', () => {
       renderHook(() => usePageMeta({ title: 'Test Page' }));
     }).not.toThrow();
 
-    expect(document.title).toBe('Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
   });
 
   it('should restore original values on cleanup', () => {
@@ -113,7 +113,7 @@ describe('usePageMeta', () => {
     );
 
     // Verify values were set
-    expect(document.title).toBe('Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
     expect(mockDescriptionTag.setAttribute).toHaveBeenCalledWith('content', 'Test description');
 
     // Clear mocks to track cleanup calls
@@ -138,13 +138,13 @@ describe('usePageMeta', () => {
       },
     );
 
-    expect(document.title).toBe('Initial Title | promptfoo');
+    expect(document.title).toBe('Initial Title | artef');
     expect(mockDescriptionTag.setAttribute).toHaveBeenCalledWith('content', 'Initial description');
 
     // Update props
     rerender({ title: 'Updated Title', description: 'Updated description' });
 
-    expect(document.title).toBe('Updated Title | promptfoo');
+    expect(document.title).toBe('Updated Title | artef');
     expect(mockDescriptionTag.setAttribute).toHaveBeenCalledWith('content', 'Updated description');
   });
 
@@ -152,8 +152,8 @@ describe('usePageMeta', () => {
     renderHook(() => usePageMeta({ title: 'Test Page' }));
 
     // Should set title and og:title
-    expect(document.title).toBe('Test Page | promptfoo');
-    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', 'Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
+    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', 'Test Page | artef');
 
     // Should not set description, og:description, or og:image
     expect(mockDescriptionTag.setAttribute).not.toHaveBeenCalled();
@@ -170,9 +170,9 @@ describe('usePageMeta', () => {
       }),
     );
 
-    expect(document.title).toBe('Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
     expect(mockDescriptionTag.setAttribute).toHaveBeenCalledWith('content', 'Test description');
-    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', 'Test Page | promptfoo');
+    expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith('content', 'Test Page | artef');
     expect(mockOgDescriptionTag.setAttribute).toHaveBeenCalledWith('content', 'Test description');
     expect(mockOgImageTag.setAttribute).toHaveBeenCalledWith(
       'content',
@@ -201,11 +201,11 @@ describe('usePageMeta', () => {
       }),
     );
 
-    expect(document.title).toBe(`${longString} | promptfoo`);
+    expect(document.title).toBe(`${longString} | artef`);
     expect(mockDescriptionTag.setAttribute).toHaveBeenCalledWith('content', longString);
     expect(mockOgTitleTag.setAttribute).toHaveBeenCalledWith(
       'content',
-      `${longString} | promptfoo`,
+      `${longString} | artef`,
     );
     expect(mockOgDescriptionTag.setAttribute).toHaveBeenCalledWith('content', longString);
   });
@@ -213,7 +213,7 @@ describe('usePageMeta', () => {
   it('should handle undefined description gracefully', () => {
     renderHook(() => usePageMeta({ title: 'Test Page', description: undefined }));
 
-    expect(document.title).toBe('Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
     expect(mockDescriptionTag.setAttribute).not.toHaveBeenCalled();
     expect(mockOgDescriptionTag.setAttribute).not.toHaveBeenCalled();
   });
@@ -221,7 +221,7 @@ describe('usePageMeta', () => {
   it('should handle null description gracefully', () => {
     renderHook(() => usePageMeta({ title: 'Test Page', description: null as any }));
 
-    expect(document.title).toBe('Test Page | promptfoo');
+    expect(document.title).toBe('Test Page | artef');
     expect(mockDescriptionTag.setAttribute).not.toHaveBeenCalled();
     expect(mockOgDescriptionTag.setAttribute).not.toHaveBeenCalled();
   });

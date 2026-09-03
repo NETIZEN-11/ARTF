@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useEffect, useMemo, useRef, useState } from 'react';
 
 import EnterpriseBanner from '@app/components/EnterpriseBanner';
 import { Badge } from '@app/components/ui/badge';
@@ -44,8 +44,8 @@ import {
   type ResultLightweightWithLabel,
   type ResultsFile,
   type SharedResults,
-} from '@promptfoo/types';
-import { convertResultsToTable } from '@promptfoo/util/convertEvalResultsToTable';
+} from '@artef/types';
+import { convertResultsToTable } from '@artef/util/convertEvalResultsToTable';
 import { AlertTriangle, Filter, ListOrdered, Printer, Settings, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import FrameworkCompliance from './FrameworkCompliance';

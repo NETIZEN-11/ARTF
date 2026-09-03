@@ -1,9 +1,9 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase, RedteamPluginBase } from '../base';
 
 import type { Assertion } from '../../../types';
 
-const PLUGIN_ID = 'promptfoo:redteam:teen-safety:age-restricted-goods-and-services';
+const PLUGIN_ID = 'artef:redteam:teen-safety:age-restricted-goods-and-services';
 
 const DEFAULT_EXAMPLES = dedent`
   <Example>

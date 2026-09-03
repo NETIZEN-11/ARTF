@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Retry Failed Tests
 title: Retry Strategy
 description: Implement regression testing by automatically retrying failed cases to ensure consistent model behavior across deployments
@@ -6,7 +6,7 @@ description: Implement regression testing by automatically retrying failed cases
 
 # Retry Strategy
 
-The retry strategy automatically incorporates previously failed test cases into your test suite, creating a regression testing system for target LLM systems. Each red team scan learns from past failures, making promptfoo increasingly effective at finding vulnerabilities in your target. The retry strategy runs first in your pipeline, allowing other strategies to build upon these historical test cases.
+The retry strategy automatically incorporates previously failed test cases into your test suite, creating a regression testing system for target LLM systems. Each red team scan learns from past failures, making artef increasingly effective at finding vulnerabilities in your target. The retry strategy runs first in your pipeline, allowing other strategies to build upon these historical test cases.
 
 :::note
 The retry strategy is target-specific - it only retries test cases that previously failed against the same target system (identified by target label). This ensures that the retried test cases are relevant to the specific target's known vulnerabilities.
@@ -16,7 +16,7 @@ The retry strategy is target-specific - it only retries test cases that previous
 
 To include the retry strategy in your red teaming setup:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: 'retry'
@@ -36,7 +36,7 @@ For example, with the above configuration and two plugins specified, the retry s
 
 For basic usage without configuration:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: retry
@@ -55,7 +55,7 @@ The retry strategy works by:
 
 If you have a test suite with:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - id: harmful:hate

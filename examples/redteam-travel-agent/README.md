@@ -1,9 +1,9 @@
-# redteam-travel-agent (Redteam Travel Agent)
+﻿# redteam-travel-agent (Redteam Travel Agent)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-travel-agent
+npx artef@latest init --example redteam-travel-agent
 cd redteam-travel-agent
 ```
 
@@ -20,11 +20,11 @@ We check for things like:
 To run the pre-generated eval (`redteam.yaml`):
 
 ```bash
-promptfoo redteam eval
+artef redteam eval
 ```
 
 To re-generate tests and run the red team eval:
 
 ```bash
-promptfoo redteam run
+artef redteam run
 ```

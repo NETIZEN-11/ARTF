@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Ollama
 description: "Run open-source LLMs locally using Ollama's streamlined interface for rapid prototyping and offline model evaluation"
 ---
@@ -52,7 +52,7 @@ Supported environment variables:
 
 To pass configuration options to Ollama, use the `config` key like so:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: ollama:chat:llama3.3
     config:
@@ -64,7 +64,7 @@ providers:
 
 You can also pass arbitrary fields directly to the Ollama API using the `passthrough` option:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: ollama:chat:llama3.3
     config:
@@ -78,7 +78,7 @@ providers:
 
 Ollama chat models that support function calling (like Llama 3.1, Llama 3.3, Qwen, and others) can use tools with the `tools` config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'What is the weather like in {{city}}?'
 
@@ -114,7 +114,7 @@ tests:
 
 Ollama can be used as a local grading provider for assertions that require language model evaluation. When you have tests that use both text-based assertions (like `llm-rubric`, `answer-relevance`) and embedding-based assertions (like `similar`), you can configure different Ollama models for each type:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -148,13 +148,13 @@ tests:
         threshold: 0.85
 ```
 
-When running with `--max-concurrency 1` and no per-eval timeout, Promptfoo groups eligible model-graded assertion calls by grading provider ID to reduce local model switching. This is not request batching; each assertion call still runs separately, and report row order is unchanged.
+When running with `--max-concurrency 1` and no per-eval timeout, artef groups eligible model-graded assertion calls by grading provider ID to reduce local model switching. This is not request batching; each assertion call still runs separately, and report row order is unchanged.
 
 ### Using Ollama Embedding Models for Similarity Assertions
 
 Ollama's embedding models can be used with the `similar` assertion to check semantic similarity between outputs and expected values:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - ollama:chat:llama3.2
 
@@ -177,7 +177,7 @@ tests:
 
 You can also set the embedding provider globally for all similarity assertions:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 defaultTest:
   options:
     provider:
@@ -216,14 +216,14 @@ OLLAMA_BASE_URL=http://192.168.1.100:11434
 ```
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml --env-file .env
+artef eval -c artefconfig.yaml --env-file .env
 ```
 
 Make sure the Ollama server is listening on `0.0.0.0` so it accepts remote connections. For Docker Compose, this is typically the default. If running Ollama directly, set `OLLAMA_HOST=0.0.0.0:11434` before starting the server.
 
 ## `localhost` and IPv4 vs IPv6
 
-If locally developing with `localhost` (promptfoo's default),
+If locally developing with `localhost` (artef's default),
 and Ollama API calls are failing with `ECONNREFUSED`,
 then there may be an IPv4 vs IPv6 issue going on with `localhost`.
 Ollama's default host uses [`127.0.0.1`](https://github.com/jmorganca/ollama/blob/main/api/client.go#L19),
@@ -235,17 +235,17 @@ To investigate and fix this issue, there's a few possible solutions:
 1. Change Ollama server to use IPv6 addressing by running
    `export OLLAMA_HOST=":11434"` before starting the Ollama server.
    Note this IPv6 support requires Ollama version `0.0.20` or newer.
-2. Change promptfoo to directly use an IPv4 address by configuring
+2. Change artef to directly use an IPv4 address by configuring
    `export OLLAMA_BASE_URL="http://127.0.0.1:11434"`.
 3. Update your OS's [`hosts`](<https://en.wikipedia.org/wiki/Hosts_(file)>) file
    to bind `localhost` to IPv4.
 
 ## Evaluating models serially
 
-By default, promptfoo evaluates all providers concurrently for each prompt. However, you can run evaluations serially using the `-j 1` option:
+By default, artef evaluates all providers concurrently for each prompt. However, you can run evaluations serially using the `-j 1` option:
 
 ```bash
-promptfoo eval -j 1
+artef eval -j 1
 ```
 
 This sets concurrency to 1, which means:

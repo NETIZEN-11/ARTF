@@ -1,4 +1,4 @@
----
+﻿---
 title: CometAPI
 description: Use 500+ AI models from multiple providers through CometAPI's unified OpenAI-compatible interface
 sidebar_label: CometAPI
@@ -6,7 +6,7 @@ sidebar_label: CometAPI
 
 # CometAPI
 
-The `cometapi` provider lets you use [CometAPI](https://www.cometapi.com/?utm_source=promptfoo&utm_campaign=integration&utm_medium=integration&utm_content=integration) via OpenAI-compatible endpoints. It supports hundreds of models across vendors.
+The `cometapi` provider lets you use [CometAPI](https://www.cometapi.com/?utm_source=artef&utm_campaign=integration&utm_medium=integration&utm_content=integration) via OpenAI-compatible endpoints. It supports hundreds of models across vendors.
 
 ## Setup
 
@@ -94,7 +94,7 @@ providers:
 You can run the included example configuration:
 
 ```bash
-npx promptfoo@latest init --example provider-cometapi
+npx artef@latest init --example provider-cometapi
 ```
 
 ### Command Line Usage
@@ -102,19 +102,19 @@ npx promptfoo@latest init --example provider-cometapi
 **Text Generation:**
 
 ```bash
-npx promptfoo@latest eval --prompts "Write a haiku about AI" -r cometapi:chat:gpt-5-mini
+npx artef@latest eval --prompts "Write a haiku about AI" -r cometapi:chat:gpt-5-mini
 ```
 
 **Image Generation:**
 
 ```bash
-npx promptfoo@latest eval --prompts "A futuristic robot in a garden" -r cometapi:image:dall-e-3
+npx artef@latest eval --prompts "A futuristic robot in a garden" -r cometapi:image:dall-e-3
 ```
 
 **Vision/Multimodal:**
 
 ```bash
-npx promptfoo@latest eval --prompts "Describe what's in this image: {{image_url}}" --vars image_url="https://example.com/image.jpg" -r cometapi:chat:gpt-4o
+npx artef@latest eval --prompts "Describe what's in this image: {{image_url}}" --vars image_url="https://example.com/image.jpg" -r cometapi:chat:gpt-4o
 ```
 
 ### Configuration Examples

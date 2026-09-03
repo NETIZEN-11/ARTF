@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { sanitizeTraceAttributes } from '../../src/tracing/sanitizeAttributes';
 
 describe('sanitizeTraceAttributes', () => {
@@ -10,10 +10,10 @@ describe('sanitizeTraceAttributes', () => {
           'gen_ai.usage.cache_read.input_tokens': 4,
           'gen_ai.usage.cache_creation.input_tokens': 5,
           'gen_ai.usage.total_tokens': 12,
-          'promptfoo.usage.total_tokens': 12,
-          'promptfoo.usage.cached_response_tokens': 6,
-          'promptfoo.usage.accepted_prediction_tokens': 7,
-          'promptfoo.usage.rejected_prediction_tokens': 8,
+          'artef.usage.total_tokens': 12,
+          'artef.usage.cached_response_tokens': 6,
+          'artef.usage.accepted_prediction_tokens': 7,
+          'artef.usage.rejected_prediction_tokens': 8,
           'llm.usage.prompt_tokens': 9,
           'llm.usage.completion_tokens': 10,
           'llm.usage.total_tokens': 19,
@@ -28,10 +28,10 @@ describe('sanitizeTraceAttributes', () => {
       'gen_ai.usage.cache_read.input_tokens': 4,
       'gen_ai.usage.cache_creation.input_tokens': 5,
       'gen_ai.usage.total_tokens': 12,
-      'promptfoo.usage.total_tokens': 12,
-      'promptfoo.usage.cached_response_tokens': 6,
-      'promptfoo.usage.accepted_prediction_tokens': 7,
-      'promptfoo.usage.rejected_prediction_tokens': 8,
+      'artef.usage.total_tokens': 12,
+      'artef.usage.cached_response_tokens': 6,
+      'artef.usage.accepted_prediction_tokens': 7,
+      'artef.usage.rejected_prediction_tokens': 8,
       'llm.usage.prompt_tokens': 9,
       'llm.usage.completion_tokens': 10,
       'llm.usage.total_tokens': 19,

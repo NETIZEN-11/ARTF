@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, MockInstance, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, MockInstance, vi } from 'vitest';
 import { MemoryPoisoningProvider } from '../../../../src/redteam/providers/agentic/memoryPoisoning';
 import { createMockProvider, type MockApiProvider } from '../../../factories/provider';
 
@@ -22,7 +22,7 @@ describe('MemoryPoisoningProvider', () => {
   });
 
   it('should have correct ID', () => {
-    expect(provider.id()).toBe('promptfoo:redteam:agentic:memory-poisoning');
+    expect(provider.id()).toBe('artef:redteam:agentic:memory-poisoning');
   });
 
   it('should throw error if required context is missing', async () => {

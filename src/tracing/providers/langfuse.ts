@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 import { getNormalizedToolAttributes } from '../toolAttributes';
 import {
   fetchWithProxy,
@@ -236,7 +236,7 @@ function observationAttributes(observation: LangfuseObservation): Record<string,
     }),
     ...(totalTokens !== undefined && {
       'langfuse.usage.total_tokens': totalTokens,
-      'promptfoo.usage.total_tokens': totalTokens,
+      'artef.usage.total_tokens': totalTokens,
     }),
     ...(reasoningTokens !== undefined && {
       'gen_ai.usage.reasoning.output_tokens': reasoningTokens,

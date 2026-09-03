@@ -1,4 +1,4 @@
-import { realpathSync } from 'node:fs';
+﻿import { realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -149,7 +149,7 @@ function getCommandPath(command: Command): string {
 
   while (current) {
     const name = current.name();
-    if (name && name !== 'promptfoo') {
+    if (name && name !== 'artef') {
       parts.unshift(name);
     }
     current = current.parent as Command | null;

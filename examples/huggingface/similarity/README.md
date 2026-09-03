@@ -1,9 +1,9 @@
-# huggingface/similarity (Huggingface Similarity)
+﻿# huggingface/similarity (Huggingface Similarity)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example huggingface/similarity
+npx artef@latest init --example huggingface/similarity
 cd huggingface/similarity
 ```
 
@@ -11,12 +11,12 @@ cd huggingface/similarity
 
 To get started, set your HF_API_TOKEN environment variable.
 
-Next, change a few of the prompts in prompts.txt and edit promptfooconfig.yaml.
+Next, change a few of the prompts in prompts.txt and edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

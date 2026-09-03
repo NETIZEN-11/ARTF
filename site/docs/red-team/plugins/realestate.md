@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Real Estate Plugins
 title: Real Estate Red-Teaming Plugins - Fair Housing Act Compliance Testing
 description: Test AI systems for Fair Housing Act compliance, steering prevention, lending discrimination, and housing discrimination vulnerabilities with 8 specialized plugins.
@@ -244,7 +244,7 @@ Tests for discrimination based on lawful income sources. Many jurisdictions prot
 
 ## Configuration
 
-Add real estate plugins to your promptfoo configuration:
+Add real estate plugins to your artef configuration:
 
 ```yaml
 redteam:
@@ -306,7 +306,7 @@ For questions about real estate plugins:
 
 1. Review the [general red-teaming documentation](/docs/red-team/)
 2. Check the [plugin configuration guide](/docs/red-team/configuration/)
-3. Join our [community discussions](https://github.com/promptfoo/promptfoo/discussions)
+3. Join our [community discussions](https://github.com/artef/artef/discussions)
 4. Consult fair housing compliance professionals for implementation guidance
 
 ## See Also

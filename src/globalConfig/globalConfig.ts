@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Functions for manipulating the global configuration file, which lives at
- * ~/.promptfoo/promptfoo.yaml by default.
+ * ~/.artef/artef.yaml by default.
  */
 import * as fs from 'fs';
 import * as path from 'path';
@@ -13,14 +13,14 @@ import type { GlobalConfig } from '../configTypes';
 
 export function writeGlobalConfig(config: GlobalConfig): void {
   fs.writeFileSync(
-    path.join(getConfigDirectoryPath(true), 'promptfoo.yaml') /* createIfNotExists */,
+    path.join(getConfigDirectoryPath(true), 'artef.yaml') /* createIfNotExists */,
     yaml.dump(config),
   );
 }
 
 export function readGlobalConfig(): GlobalConfig {
   const configDir = getConfigDirectoryPath();
-  const configFilePath = path.join(configDir, 'promptfoo.yaml');
+  const configFilePath = path.join(configDir, 'artef.yaml');
   let globalConfig: GlobalConfig = { id: crypto.randomUUID() };
   if (fs.existsSync(configFilePath)) {
     globalConfig = (loadYaml(fs.readFileSync(configFilePath, 'utf-8')) as GlobalConfig) || {};

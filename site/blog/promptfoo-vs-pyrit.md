@@ -1,9 +1,9 @@
----
-description: "Detailed comparison of Promptfoo and Microsoft's PyRIT for LLM security testing. Covers attack methods, RAG testing, CI/CD integration, and selection criteria."
-image: /img/blog/pyrit/promptfoo-vs-pyrit.jpg
+﻿---
+description: "Detailed comparison of artef and Microsoft's PyRIT for LLM security testing. Covers attack methods, RAG testing, CI/CD integration, and selection criteria."
+image: /img/blog/pyrit/artef-vs-pyrit.jpg
 keywords:
   [
-    promptfoo,
+    artef,
     PyRIT,
     LLM security,
     AI red teaming,
@@ -19,13 +19,13 @@ authors: [ian]
 tags: [tool-comparison, red-teaming, pyrit]
 ---
 
-# Promptfoo vs PyRIT: A Practical Comparison of LLM Red Teaming Tools
+# artef vs PyRIT: A Practical Comparison of LLM Red Teaming Tools
 
-As enterprises deploy AI applications at scale, red teaming has become essential for identifying vulnerabilities before they reach production. Two prominent open-source tools have emerged in this space: Promptfoo and Microsoft's PyRIT.
+As enterprises deploy AI applications at scale, red teaming has become essential for identifying vulnerabilities before they reach production. Two prominent open-source tools have emerged in this space: artef and Microsoft's PyRIT.
 
 ## Quick Comparison
 
-| Feature               | Promptfoo                        | PyRIT                    |
+| Feature               | artef                        | PyRIT                    |
 | --------------------- | -------------------------------- | ------------------------ |
 | **Setup Time**        | Minutes (Web/CLI wizard)         | Hours (Python scripting) |
 | **Attack Generation** | Automatic, context-aware         | Manual configuration     |
@@ -42,17 +42,17 @@ PyRIT interface:
 
 ![pyrit](/img/blog/pyrit/pyrit.png)
 
-Promptfoo interface (Promptfoo has a [CLI](/docs/red-team/quickstart/#run-the-scan) too, but here is its web view):
+artef interface (artef has a [CLI](/docs/red-team/quickstart/#run-the-scan) too, but here is its web view):
 
-![Promptfoo interface](https://www.promptfoo.dev/img/riskreport-1@2x.png)
+![artef interface](https://www.artef.dev/img/riskreport-1@2x.png)
 
 :::info
-**Key Takeaway**: Promptfoo is like a security scanner for AI apps - automated and developer-friendly. PyRIT is like a security _framework_ - it provides building blocks but requires expertise to implement.
+**Key Takeaway**: artef is like a security scanner for AI apps - automated and developer-friendly. PyRIT is like a security _framework_ - it provides building blocks but requires expertise to implement.
 :::
 
 ## Different Tools for Different Teams
 
-**Promptfoo** is a red teaming toolkit designed for engineering teams building AI applications. It dynamically generates application-specific attacks using specialized models, testing for vulnerabilities like prompt injections, data leaks, and unauthorized tool usage. The tool integrates directly into CI/CD pipelines and provides actionable security reports.
+**artef** is a red teaming toolkit designed for engineering teams building AI applications. It dynamically generates application-specific attacks using specialized models, testing for vulnerabilities like prompt injections, data leaks, and unauthorized tool usage. The tool integrates directly into CI/CD pipelines and provides actionable security reports.
 
 **PyRIT (Python Risk Identification Toolkit)** is a Python framework from Microsoft's AI Red Team that provides building blocks for creating custom red teaming scenarios. It enables security researchers to orchestrate AI-vs-AI attacks, where an attacker agent attempts to exploit a target system while a judge evaluates the results.
 
@@ -60,7 +60,7 @@ Promptfoo interface (Promptfoo has a [CLI](/docs/red-team/quickstart/#run-the-sc
 
 The tools take fundamentally different approaches to generating attacks:
 
-### Promptfoo: Context-Aware Automation
+### artef: Context-Aware Automation
 
 - Generates thousands of application-specific attacks automatically
 - Adapts prompts based on your app's purpose (e.g., "banking chatbot" gets finance-specific attacks)
@@ -79,7 +79,7 @@ Both tools address core LLM security risks, but with different areas of focus:
 
 ### RAG and Data Security
 
-Promptfoo's Built-in RAG Tests:
+artef's Built-in RAG Tests:
 
 - Direct and indirect prompt injections
 - Unauthorized data retrieval
@@ -94,7 +94,7 @@ PyRIT's RAG Capabilities:
 
 ### Agent and Tool Misuse
 
-Promptfoo provides pre-built tests for:
+artef provides pre-built tests for:
 
 - Unauthorized tool execution
 - Privilege escalation attempts
@@ -108,17 +108,17 @@ PyRIT includes:
 
 ## Integration and Workflow
 
-### Promptfoo: Built for DevSecOps
+### artef: Built for DevSecOps
 
 ```bash
 # Setup in minutes
-npx promptfoo@latest redteam setup
+npx artef@latest redteam setup
 
 # Run in CI/CD
-promptfoo redteam run
+artef redteam run
 
 # View results
-promptfoo redteam report
+artef redteam report
 ```
 
 **Features:**
@@ -151,7 +151,7 @@ results = orchestrator.run(attacker, target)
 
 ## Community and Ecosystem
 
-### Promptfoo
+### artef
 
 - 200,000+ users since 2023
 - Used by 44 Fortune 500 companies
@@ -168,20 +168,20 @@ results = orchestrator.run(attacker, target)
 - Regular updates for new attack techniques
 
 :::info
-Promptfoo offers ISO 27001 compliance and enterprise support. PyRIT is pure open-source with community support.
+artef offers ISO 27001 compliance and enterprise support. PyRIT is pure open-source with community support.
 :::
 
 ## Standards, Compliance, and Reporting
 
-Promptfoo maps results to OWASP, NIST RMF, MITRE ATLAS, and the EU AI Act, producing ready‑to‑share reports.
+artef maps results to OWASP, NIST RMF, MITRE ATLAS, and the EU AI Act, producing ready‑to‑share reports.
 
 ![gen ai compliance test](/img/compliance-frameworks.png)
 
 ## Enterprise Readiness
 
-For organizations evaluating these tools at scale, enterprise features and support can be a key decision point. While both PyRIT and Promptfoo are open-source, Promptfoo has an Enterprise edition.
+For organizations evaluating these tools at scale, enterprise features and support can be a key decision point. While both PyRIT and artef are open-source, artef has an Enterprise edition.
 
-Available in Promptfoo Enterprise:
+Available in artef Enterprise:
 
 - On-premise deployment - Run entirely within your infrastructure
 - Professional support with SLAs
@@ -198,7 +198,7 @@ The enterprise version also includes a web-based dashboard where teams can:
 
 ## Making the Right Choice
 
-In general, Promptfoo is a good choice if you:
+In general, artef is a good choice if you:
 
 - Want comprehensive coverage without heavy custom code
 - Need continuous security testing in CI/CD
@@ -211,4 +211,4 @@ PyRIT is a good choice if you:
 - Prefer programmatic control
 - Enjoy writing Python and building tools
 
-The tools are ultimately quite different. Promptfoo's adversarial models remove the need to manually come up with hundreds of test cases yourself. PyRIT provides a lot of scripting power, whereas Promptfoo is extensible but easier to integrate up-front.
+The tools are ultimately quite different. artef's adversarial models remove the need to manually come up with hundreds of test cases yourself. PyRIT provides a lot of scripting power, whereas artef is extensible but easier to integrate up-front.

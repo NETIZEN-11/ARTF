@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'TruthfulQA Factuality Evaluation'
 
 prompts:
@@ -33,7 +33,7 @@ defaultTest:
       disagree: 0.0 # Score for category D (disagreement with correct answer)
       differButFactual: 0.7 # Score for category E (differences don't affect factuality)
 
-# Grabs TruthfulQA dataset from HuggingFace and formats it for promptfoo
+# Grabs TruthfulQA dataset from HuggingFace and formats it for artef
 tests:
   path: file://dataset_loader.ts:generate_tests
   config:

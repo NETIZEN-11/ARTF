@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 26
 description: Red team LLM applications against EU AI Act requirements to ensure compliance with prohibited practices and high-risk system regulations
 ---
@@ -18,7 +18,7 @@ The EU AI Act categorizes AI systems into four risk levels:
 3. **Limited Risk** - Transparency requirements
 4. **Minimal Risk** - No additional requirements
 
-Promptfoo's red teaming capabilities focus on testing for prohibited practices (Article 5) and high-risk system requirements (Annex III).
+artef's red teaming capabilities focus on testing for prohibited practices (Article 5) and high-risk system requirements (Annex III).
 
 ## Article 5: Prohibited AI Practices
 
@@ -46,7 +46,7 @@ Annex III defines categories of high-risk AI systems that require compliance wit
 
 ## Scanning for EU AI Act Compliance
 
-Promptfoo helps identify compliance issues with the EU AI Act through red teaming:
+artef helps identify compliance issues with the EU AI Act through red teaming:
 
 ```yaml
 redteam:
@@ -554,7 +554,7 @@ redteam:
 
 ## What's Next
 
-The EU AI Act is a living regulation with ongoing guidance and standards development. Regular testing with Promptfoo helps maintain compliance as requirements evolve.
+The EU AI Act is a living regulation with ongoing guidance and standards development. Regular testing with artef helps maintain compliance as requirements evolve.
 
 To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
 

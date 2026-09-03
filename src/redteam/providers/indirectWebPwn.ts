@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+﻿import { randomUUID } from 'node:crypto';
 
 import { getUserEmail } from '../../globalConfig/accounts';
 import logger from '../../logger';
@@ -79,7 +79,7 @@ export default class IndirectWebPwnProvider implements ApiProvider {
   readonly config: IndirectWebPwnConfig;
 
   id() {
-    return 'promptfoo:redteam:indirect-web-pwn';
+    return 'artef:redteam:indirect-web-pwn';
   }
 
   constructor(

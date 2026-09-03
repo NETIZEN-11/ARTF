@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 import { getNormalizedToolAttributes } from '../toolAttributes';
 import {
   fetchWithProxy,
@@ -149,7 +149,7 @@ export class BraintrustProvider implements TraceProvider {
     const normalizedTraceId = traceId.toLowerCase();
     const maxSpans = Math.min(options?.maxSpans ?? MAX_SPANS, MAX_SPANS);
     // Braintrust native root_span_id values do not necessarily match W3C trace IDs.
-    // Customers should log the propagated ID as metadata.trace_id or metadata.promptfoo_trace_id.
+    // Customers should log the propagated ID as metadata.trace_id or metadata.artef_trace_id.
     // The traces shape returns every span in a matching trace, including child spans that do
     // not repeat the correlation metadata.
     const query = [
@@ -158,8 +158,8 @@ export class BraintrustProvider implements TraceProvider {
       `FROM project_logs('${this.projectId}', shape => 'traces')`,
       'WHERE created >= now() - INTERVAL 1 DAY',
       `  AND (metadata.trace_id = '${normalizedTraceId}'`,
-      `    OR metadata.promptfoo_trace_id = '${normalizedTraceId}'`,
-      `    OR metadata."promptfoo.trace_id" = '${normalizedTraceId}'`,
+      `    OR metadata.artef_trace_id = '${normalizedTraceId}'`,
+      `    OR metadata."artef.trace_id" = '${normalizedTraceId}'`,
       `    OR root_span_id = '${normalizedTraceId}')`,
       `LIMIT ${maxSpans}`,
     ].join('\n');

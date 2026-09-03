@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: ROT13 Encoding
 title: ROT13 Encoding Strategy
 description: Assess AI defense against ROT13 cipher obfuscation that rotates letters to evade content detection and safety mechanisms
@@ -10,9 +10,9 @@ The ROT13 Encoding strategy tests an AI system's ability to resist encoded input
 
 ## Implementation
 
-Use it in your `promptfooconfig.yaml`:
+Use it in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - rot13
 ```

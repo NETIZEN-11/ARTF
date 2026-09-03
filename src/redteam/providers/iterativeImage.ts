@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { getEnvInt } from '../../envars';
 import { renderPrompt } from '../../evaluatorHelpers';
 import logger from '../../logger';
@@ -292,7 +292,7 @@ async function runRedteamConversation({
 
   let targetPrompt: string | null = null;
 
-  const numIterations = getEnvInt('PROMPTFOO_NUM_JAILBREAK_ITERATIONS', 4);
+  const numIterations = getEnvInt('artef_NUM_JAILBREAK_ITERATIONS', 4);
 
   for (let i = 0; i < numIterations; i++) {
     try {
@@ -617,7 +617,7 @@ class RedteamIterativeProvider implements ApiProvider {
   }
 
   id() {
-    return 'promptfoo:redteam:iterative:image';
+    return 'artef:redteam:iterative:image';
   }
 
   async callApi(

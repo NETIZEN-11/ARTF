@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -57,7 +57,7 @@ const AboutPageContent = () => {
               mb: 2,
             }}
           >
-            Promptfoo helps developers and enterprises build secure, reliable AI applications.
+            artef helps developers and enterprises build secure, reliable AI applications.
           </Typography>
         </Box>
 
@@ -84,7 +84,7 @@ const AboutPageContent = () => {
                 when we were on the front lines.
               </Typography>
               <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-                Based in San Francisco, California, Promptfoo is now part of OpenAI. Promptfoo
+                Based in San Francisco, California, artef is now part of OpenAI. artef
                 remains open source, and we continue to build tools for secure, reliable AI
                 applications.
               </Typography>
@@ -100,7 +100,7 @@ const AboutPageContent = () => {
               >
                 <img
                   src="/img/logo-panda.svg"
-                  alt="Promptfoo Logo"
+                  alt="artef Logo"
                   style={{ maxWidth: '100%', maxHeight: '150px', height: 'auto' }}
                 />
               </Box>
@@ -235,7 +235,7 @@ const AboutPageContent = () => {
               mb: 8,
             }}
           >
-            We're grateful to the investors and operators who backed Promptfoo early and helped us
+            We're grateful to the investors and operators who backed artef early and helped us
             build open-source, application-focused AI security.
           </Typography>
           <Grid
@@ -337,7 +337,7 @@ const AboutPageContent = () => {
             An Incredible Open Source Community
           </Typography>
           <Typography variant="body1" component="p" align="center" sx={{ mb: 2 }}>
-            Promptfoo is proud to be supported by a vibrant community of over{' '}
+            artef is proud to be supported by a vibrant community of over{' '}
             {SITE_CONSTANTS.CONTRIBUTOR_COUNT} open source contributors.
           </Typography>
           <Box
@@ -347,10 +347,10 @@ const AboutPageContent = () => {
               mt: 4,
             }}
           >
-            <a href="https://github.com/promptfoo/promptfoo/graphs/contributors">
+            <a href="https://github.com/artef/artef/graphs/contributors">
               <img
-                src="https://contrib.rocks/image?repo=promptfoo/promptfoo"
-                alt="Promptfoo Contributors"
+                src="https://contrib.rocks/image?repo=artef/artef"
+                alt="artef Contributors"
               />
             </a>
           </Box>
@@ -373,7 +373,7 @@ const AboutPageContent = () => {
             Ready to Secure Your AI Applications?
           </Typography>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            Join leading enterprises who trust Promptfoo to fortify their AI applications.
+            Join leading enterprises who trust artef to fortify their AI applications.
           </Typography>
           <Link className="button button--primary button--lg" to="/contact/">
             Get in Touch
@@ -390,14 +390,14 @@ const AboutPage = () => {
 
   return (
     <Layout
-      title="About Promptfoo | AI Security Experts"
-      description="Learn about Promptfoo's mission to secure AI applications and our team of industry veterans."
+      title="About artef | AI Security Experts"
+      description="Learn about artef's mission to secure AI applications and our team of industry veterans."
     >
       <Head>
-        <meta property="og:title" content="About Promptfoo - Securing the Future of AI" />
+        <meta property="og:title" content="About artef - Securing the Future of AI" />
         <meta
           property="og:description"
-          content="Learn about Promptfoo's mission to secure AI applications and our team of industry veterans."
+          content="Learn about artef's mission to secure AI applications and our team of industry veterans."
         />
         <meta property="og:image" content={`${siteUrl}/img/og/about-og.png`} />
         <meta property="og:image:width" content="1200" />
@@ -405,10 +405,10 @@ const AboutPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${siteUrl}/about`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Promptfoo - Securing the Future of AI" />
+        <meta name="twitter:title" content="About artef - Securing the Future of AI" />
         <meta
           name="twitter:description"
-          content="Learn about Promptfoo's mission to secure AI applications and our team of industry veterans."
+          content="Learn about artef's mission to secure AI applications and our team of industry veterans."
         />
         <meta name="twitter:image" content={`${siteUrl}/img/og/about-og.png`} />
         <link rel="canonical" href={`${siteUrl}/about`} />

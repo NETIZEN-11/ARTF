@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+﻿import { randomUUID } from 'crypto';
 import fs from 'fs/promises';
 import * as os from 'os';
 import * as path from 'path';
@@ -12,7 +12,7 @@ import { checkRemoteHealth } from '../util/apiHealth';
 import { loadDefaultConfig } from '../util/config/default';
 import { pathExists } from '../util/file';
 import { formatDuration } from '../util/formatDuration';
-import { promptfooCommand } from '../util/promptfooCommand';
+import { artefCommand } from '../util/artefCommand';
 import { initVerboseToggle } from '../util/verboseToggle';
 import { doGenerateRedteam } from './commands/generate';
 import { getRemoteHealthUrl } from './remoteGeneration';
@@ -41,7 +41,7 @@ export async function doRedteamRun(options: RedteamRunOptions): Promise<Eval | u
         });
 
   try {
-    let configPath: string = options.config ?? 'promptfooconfig.yaml';
+    let configPath: string = options.config ?? 'artefconfig.yaml';
 
     // If output filepath is not provided, locate the out file in the same directory as the config file:
     let redteamPath;
@@ -56,7 +56,7 @@ export async function doRedteamRun(options: RedteamRunOptions): Promise<Eval | u
     try {
       const healthUrl = getRemoteHealthUrl();
       if (healthUrl) {
-        logger.debug(`Checking Promptfoo API health at ${healthUrl}...`);
+        logger.debug(`Checking artef API health at ${healthUrl}...`);
         const healthResult = await checkRemoteHealth(healthUrl);
         if (healthResult.status !== 'OK') {
           throw new Error(
@@ -191,12 +191,12 @@ export async function doRedteamRun(options: RedteamRunOptions): Promise<Eval | u
       if (options.liveRedteamConfig) {
         logger.info(
           chalk.blue(
-            `To view the results, click the ${chalk.bold('View Report')} button or run ${chalk.bold(promptfooCommand('redteam report'))} on the command line.`,
+            `To view the results, click the ${chalk.bold('View Report')} button or run ${chalk.bold(artefCommand('redteam report'))} on the command line.`,
           ),
         );
       } else {
         logger.info(
-          chalk.blue(`To view the results, run ${chalk.bold(promptfooCommand('redteam report'))}`),
+          chalk.blue(`To view the results, run ${chalk.bold(artefCommand('redteam report'))}`),
         );
       }
     }

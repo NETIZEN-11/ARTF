@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+﻿import { useCallback, useMemo } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -11,7 +11,7 @@ import {
   CONFIGURABLE_STRATEGIES_SET,
   DEFAULT_STRATEGIES_SET,
   MULTI_MODAL_STRATEGIES_SET,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { Lock, Settings } from 'lucide-react';
 import { TestCaseGenerateButton } from './../TestCaseDialog';
 import { useStrategyTestGeneration } from './useStrategyTestGeneration';
@@ -141,8 +141,8 @@ export function StrategyItem({
                   </TooltipTrigger>
                   <TooltipContent>
                     This strategy requires remote generation. Unset
-                    PROMPTFOO_DISABLE_REMOTE_GENERATION or
-                    PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION to enable.
+                    artef_DISABLE_REMOTE_GENERATION or
+                    artef_DISABLE_REDTEAM_REMOTE_GENERATION to enable.
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -155,7 +155,7 @@ export function StrategyItem({
                     </Badge>
                   </TooltipTrigger>
                   <TooltipContent>
-                    This strategy is available in Promptfoo Enterprise
+                    This strategy is available in artef Enterprise
                   </TooltipContent>
                 </Tooltip>
               )}

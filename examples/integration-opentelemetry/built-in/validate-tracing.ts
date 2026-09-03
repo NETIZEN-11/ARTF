@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+﻿#!/usr/bin/env npx tsx
 
 /**
  * OTEL Tracing Validation Script
@@ -27,7 +27,7 @@ tracerProvider.register();
 
 // Now import providers (after OTEL is set up)
 import { OpenAiChatCompletionProvider } from '../../../src/providers/openai/chat';
-import { GenAIAttributes, PromptfooAttributes } from '../../../src/tracing/genaiTracer';
+import { GenAIAttributes, artefAttributes } from '../../../src/tracing/genaiTracer';
 
 interface ValidationResult {
   name: string;
@@ -126,10 +126,10 @@ async function validateProvider(
       });
     }
 
-    // Validate Promptfoo attributes
-    const providerId = span.attributes[PromptfooAttributes.PROVIDER_ID];
+    // Validate artef attributes
+    const providerId = span.attributes[artefAttributes.PROVIDER_ID];
     results.push({
-      name: `${providerName}: promptfoo.provider.id`,
+      name: `${providerName}: artef.provider.id`,
       passed: !!providerId,
       message: providerId ? `Value: ${providerId}` : 'Missing attribute',
     });

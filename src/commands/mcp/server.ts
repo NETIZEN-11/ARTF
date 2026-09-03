@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+﻿import { randomUUID } from 'node:crypto';
 
 import { getRequestListener } from '@hono/node-server';
 import express from 'express';
@@ -18,7 +18,7 @@ import { registerRunAssertionTool } from './tools/runAssertion';
 import { registerRunEvaluationTool } from './tools/runEvaluation';
 import { registerShareEvaluationTool } from './tools/shareEvaluation';
 import { registerTestProviderTool } from './tools/testProvider';
-import { registerValidatePromptfooConfigTool } from './tools/validatePromptfooConfig';
+import { registerValidateartefConfigTool } from './tools/validateartefConfig';
 
 function setMcpTransport(transport: 'http' | 'stdio'): void {
   Object.assign(process.env, { MCP_TRANSPORT: transport });
@@ -70,15 +70,15 @@ async function loadMcpStdioTransport(): Promise<
 }
 
 /**
- * Creates an MCP server with tools for interacting with promptfoo
+ * Creates an MCP server with tools for interacting with artef
  */
 export async function createMcpServer() {
   const { McpServer } = await loadMcpServerSdk();
   const server = new McpServer({
-    name: 'Promptfoo MCP',
+    name: 'artef MCP',
     version: '1.0.0',
     description:
-      'MCP server for LLM evaluation, red teaming, and security testing with promptfoo. Provides tools for running evaluations, testing providers, generating datasets, and performing security assessments.',
+      'MCP server for LLM evaluation, red teaming, and security testing with artef. Provides tools for running evaluations, testing providers, generating datasets, and performing security assessments.',
   });
 
   // Track MCP server creation
@@ -93,7 +93,7 @@ export async function createMcpServer() {
   // Register core evaluation tools
   registerListEvaluationsTool(server);
   registerGetEvaluationDetailsTool(server);
-  registerValidatePromptfooConfigTool(server);
+  registerValidateartefConfigTool(server);
   registerTestProviderTool(server);
   registerRunAssertionTool(server);
   registerRunEvaluationTool(server);
@@ -162,14 +162,14 @@ export async function startHttpMcpServer(port: number): Promise<void> {
 
   // Health check
   app.get('/health', (_req, res) => {
-    res.status(200).json({ status: 'OK', message: 'Promptfoo MCP server is running' });
+    res.status(200).json({ status: 'OK', message: 'artef MCP server is running' });
   });
 
   // Return a Promise that only resolves when the server shuts down
   // This keeps long-running commands running until SIGINT/SIGTERM
   return new Promise<void>((resolve) => {
     const httpServer = app.listen(port, () => {
-      logger.info(`Promptfoo MCP server running at http://localhost:${port}`);
+      logger.info(`artef MCP server running at http://localhost:${port}`);
       logger.info(`MCP endpoint: http://localhost:${port}/mcp`);
       logger.info(`SSE endpoint: http://localhost:${port}/mcp/sse`);
 

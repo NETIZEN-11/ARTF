@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getRemoteHealthUrl } from '../../src/redteam/remoteGeneration';
 import { checkRemoteHealth } from '../../src/util/apiHealth';
 import { fetchWithTimeout } from '../../src/util/fetch/index';
@@ -31,8 +31,8 @@ const mockedFetchWithTimeout = vi.mocked(fetchWithTimeout);
 describe('API Health Utilities', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockProcessEnv({ PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: undefined });
-    mockProcessEnv({ PROMPTFOO_REMOTE_GENERATION_URL: undefined });
+    mockProcessEnv({ artef_DISABLE_REDTEAM_REMOTE_GENERATION: undefined });
+    mockProcessEnv({ artef_REMOTE_GENERATION_URL: undefined });
 
     mockIsEnabled.mockReset();
     mockGetApiHost.mockReset();
@@ -42,12 +42,12 @@ describe('API Health Utilities', () => {
 
   describe('getRemoteHealthUrl', () => {
     it('should return null when remote generation is disabled', () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION: 'true' });
+      mockProcessEnv({ artef_DISABLE_REDTEAM_REMOTE_GENERATION: 'true' });
       expect(getRemoteHealthUrl()).toBeNull();
     });
 
     it('should use custom URL when provided', () => {
-      mockProcessEnv({ PROMPTFOO_REMOTE_GENERATION_URL: 'https://custom-api.example.com/task' });
+      mockProcessEnv({ artef_REMOTE_GENERATION_URL: 'https://custom-api.example.com/task' });
       expect(getRemoteHealthUrl()).toBe('https://custom-api.example.com/health');
     });
 
@@ -59,7 +59,7 @@ describe('API Health Utilities', () => {
 
     it('should use default URL when no configuration is provided', () => {
       mockIsEnabled.mockReturnValue(false);
-      expect(getRemoteHealthUrl()).toBe('https://api.promptfoo.app/health');
+      expect(getRemoteHealthUrl()).toBe('https://api.artef.app/health');
     });
   });
 

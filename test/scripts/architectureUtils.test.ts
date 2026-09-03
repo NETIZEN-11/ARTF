@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -145,8 +145,8 @@ describe('resolveInternalModule', () => {
     it('resolves configured source aliases', () => {
       write('src/core/util.ts');
       expect(
-        resolveInternalModule(repoRoot, 'src/app/component.tsx', '@promptfoo/core/util', {
-          '@promptfoo': 'src',
+        resolveInternalModule(repoRoot, 'src/app/component.tsx', '@artef/core/util', {
+          '@artef': 'src',
         }),
       ).toBe('src/core/util.ts');
     });
@@ -154,8 +154,8 @@ describe('resolveInternalModule', () => {
     it('resolves exact configured source aliases', () => {
       write('src/index.ts');
       expect(
-        resolveInternalModule(repoRoot, 'src/app/component.tsx', '@promptfoo', {
-          '@promptfoo': 'src',
+        resolveInternalModule(repoRoot, 'src/app/component.tsx', '@artef', {
+          '@artef': 'src',
         }),
       ).toBe('src/index.ts');
     });
@@ -164,9 +164,9 @@ describe('resolveInternalModule', () => {
       write('src/app/foo.ts');
       write('src/app/src/foo.ts');
       expect(
-        resolveInternalModule(repoRoot, 'src/app/component.tsx', '@promptfoo/app/foo', {
-          '@promptfoo': 'src',
-          '@promptfoo/app': 'src/app/src',
+        resolveInternalModule(repoRoot, 'src/app/component.tsx', '@artef/app/foo', {
+          '@artef': 'src',
+          '@artef/app': 'src/app/src',
         }),
       ).toBe('src/app/src/foo.ts');
     });
@@ -454,7 +454,7 @@ describe('findViolations', () => {
     return {
       publicFacade: 'src/index.ts',
       aliases: {
-        '@promptfoo': 'src',
+        '@artef': 'src',
       },
       ignoredRoots: ['src/__mocks__'],
       layers: [
@@ -606,7 +606,7 @@ describe('findViolations', () => {
   it('reports a layer violation without a duplicate path violation', () => {
     write('src/index.ts');
     write('src/shared/not-allowed.ts', 'export const x = 1;');
-    write('src/app/a.ts', "import { x } from '@promptfoo/shared/not-allowed';");
+    write('src/app/a.ts', "import { x } from '@artef/shared/not-allowed';");
 
     const config = configWithLayerRules();
     config.layers[1].allowedDependencies = [];
@@ -616,7 +616,7 @@ describe('findViolations', () => {
         kind: 'layer',
         importer: 'src/app/a.ts',
         importerLayer: 'app',
-        specifier: '@promptfoo/shared/not-allowed',
+        specifier: '@artef/shared/not-allowed',
         imported: 'src/shared/not-allowed.ts',
         importedLayer: 'shared',
       },
@@ -626,7 +626,7 @@ describe('findViolations', () => {
   it('allows explicitly configured layer dependencies', () => {
     write('src/index.ts');
     write('src/shared/allowed.ts', 'export const x = 1;');
-    write('src/app/a.ts', "import { x } from '@promptfoo/shared/allowed';");
+    write('src/app/a.ts', "import { x } from '@artef/shared/allowed';");
 
     expect(findViolations(repoRoot, configWithLayerRules())).toEqual([]);
   });
@@ -645,7 +645,7 @@ describe('findViolations', () => {
   it('flags new imports outside a restricted layer path allowlist', () => {
     write('src/index.ts');
     write('src/shared/not-allowed.ts', 'export const x = 1;');
-    write('src/app/a.ts', "import { x } from '@promptfoo/shared/not-allowed';");
+    write('src/app/a.ts', "import { x } from '@artef/shared/not-allowed';");
 
     expect(findViolations(repoRoot, configWithLayerRules())).toMatchObject([
       {
@@ -661,7 +661,7 @@ describe('findViolations', () => {
   it('does not treat restricted layer directory entries as broad allowlist roots', () => {
     write('src/index.ts');
     write('src/shared/new-file.ts', 'export const x = 1;');
-    write('src/app/a.ts', "import { x } from '@promptfoo/shared/new-file';");
+    write('src/app/a.ts', "import { x } from '@artef/shared/new-file';");
 
     const config = configWithLayerRules();
     config.layers[1].allowedImportPaths = ['src/shared'];
@@ -680,7 +680,7 @@ describe('findViolations', () => {
   it('flags restricted layer dependencies referenced through inline import types', () => {
     write('src/index.ts');
     write('src/shared/not-allowed.ts', 'export interface X {}');
-    write('src/app/a.ts', "export type X = import('@promptfoo/shared/not-allowed').X;");
+    write('src/app/a.ts', "export type X = import('@artef/shared/not-allowed').X;");
 
     expect(findViolations(repoRoot, configWithLayerRules())).toMatchObject([
       {
@@ -699,8 +699,8 @@ describe('findViolations', () => {
     write(
       'src/app/a.ts',
       `
-        export { x } from '@promptfoo/shared/not-allowed';
-        import('@promptfoo/shared/not-allowed');
+        export { x } from '@artef/shared/not-allowed';
+        import('@artef/shared/not-allowed');
       `,
     );
 

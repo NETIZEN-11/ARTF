@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Understanding AI Agent Security'
 description: 'AI agents are powerful but vulnerable. Discover the biggest security risks and how to protect your agentic systems from hijacking, excessive access, and multi-turn attacks.'
 image: /img/blog/agent-security/panda_tools.png
@@ -21,7 +21,7 @@ tags: [security-vulnerability, best-practices, agents]
 
 # Understanding AI Agent Security
 
-In an earlier blog post, we discussed the [use-cases for RAG architecture](https://www.promptfoo.dev/blog/rag-architecture/) and its secure design principles. While RAG is powerful for providing context-aware answers, what if you want an LLM application to autonomously execute tasks? This is where AI agents come in.
+In an earlier blog post, we discussed the [use-cases for RAG architecture](https://www.artef.dev/blog/rag-architecture/) and its secure design principles. While RAG is powerful for providing context-aware answers, what if you want an LLM application to autonomously execute tasks? This is where AI agents come in.
 
 <!-- truncate -->
 
@@ -124,7 +124,7 @@ Together, excessive agency and a prompt injection attack can force an AI agent t
 
 ### Excessive Agency
 
-AI agents with excessive access (or unrestricted access) to tools, APIs, and databases can pose tremendous risks for data exfiltration and sensitive information disclosure. They can also introduce the risk of [unbounded consumption attacks](https://www.promptfoo.dev/blog/unbounded-consumption/) against databases and APIs if rate limiting and input sanitation aren't applied. This is caused by a lack of robust authorization mechanisms, overly-permissive tool calling, and lack of input sanitation.
+AI agents with excessive access (or unrestricted access) to tools, APIs, and databases can pose tremendous risks for data exfiltration and sensitive information disclosure. They can also introduce the risk of [unbounded consumption attacks](https://www.artef.dev/blog/unbounded-consumption/) against databases and APIs if rate limiting and input sanitation aren't applied. This is caused by a lack of robust authorization mechanisms, overly-permissive tool calling, and lack of input sanitation.
 
 ![Excessive Agency](/img/blog/agent-security/sql_injection.png)
 
@@ -140,7 +140,7 @@ Not all attacks can be executed in a single prompt. LLM agents may be vulnerable
 
 ![Multi-Turn Conversational Attacks](/img/blog/agent-security/conversation.png)
 
-An example of multi-step conversational attacks can be seen using Promptfoo itself, where we use reasoning for agentic attacks against other LLMs through multi-turn conversations in strategies such as [GOAT](https://www.promptfoo.dev/docs/red-team/strategies/goat/) and [Crescendo](https://www.promptfoo.dev/docs/red-team/strategies/multi-turn/).
+An example of multi-step conversational attacks can be seen using artef itself, where we use reasoning for agentic attacks against other LLMs through multi-turn conversations in strategies such as [GOAT](https://www.artef.dev/docs/red-team/strategies/goat/) and [Crescendo](https://www.artef.dev/docs/red-team/strategies/multi-turn/).
 
 ### Inadvertent (But Harmful) Actions
 
@@ -201,8 +201,8 @@ Consider the following controls when deploying AI agents:
 - Implement monitoring and alerting for AI agents to detect anomalous behavior.
 - Enforce any secondary controls that you would apply to other systems or employees, such as fraud alerting mechanisms and multi-factor authentication for sensitive transactions.
 
-## Red Teaming AI Agents with Promptfoo
+## Red Teaming AI Agents with artef
 
-Promptfoo supports red teaming against AI agents through tailored strategies and plugins. We've even [compiled a guide](https://www.promptfoo.dev/docs/red-team/agents/) specifically for red teaming AI agents.
+artef supports red teaming against AI agents through tailored strategies and plugins. We've even [compiled a guide](https://www.artef.dev/docs/red-team/agents/) specifically for red teaming AI agents.
 
-Curious about learning more about agentic red teaming? [Contact us](https://www.promptfoo.dev/contact/) to schedule a demo.
+Curious about learning more about agentic red teaming? [Contact us](https://www.artef.dev/contact/) to schedule a demo.

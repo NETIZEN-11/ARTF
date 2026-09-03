@@ -1,6 +1,6 @@
-import React from 'react';
+﻿import React from 'react';
 
-import { type EvaluateResult, type GradingResult } from '@promptfoo/types';
+import { type EvaluateResult, type GradingResult } from '@artef/types';
 import { render, screen } from '@testing-library/react';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import PluginStrategyFlow from './PluginStrategyFlow';

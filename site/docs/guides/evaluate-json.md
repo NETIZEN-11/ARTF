@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Evaluating JSON Outputs
 description: Validate and test LLM JSON outputs with automated schema checks and field assertions to ensure reliable, well-formed data structures in your AI applications
 ---
@@ -43,7 +43,7 @@ assert:
 
 If you want to validate the structure of the JSON output, you can define a JSON schema. Here's an example of using the `is-json` assertion with a schema that requires `color` to be a string and `countries` to be a list of strings:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - "Output a JSON object that contains the keys `color` and `countries`, describing the following object: {{item}}"
 
@@ -140,12 +140,12 @@ tests:
 
 ## Example
 
-See the full example in [Github](https://github.com/promptfoo/promptfoo/tree/main/examples/eval-json-output).
+See the full example in [Github](https://github.com/artef/artef/tree/main/examples/eval-json-output).
 
 ## Conclusion
 
 By using JavaScript within your assertions, you can perform complex checks on JSON outputs, including targeting specific fields. The `transform` can be used to tailor the output for similarity checks.
 
-promptfoo is free and open-source software. To install promptfoo and get started, see the [getting started guide](/docs/getting-started).
+artef is free and open-source software. To install artef and get started, see the [getting started guide](/docs/getting-started).
 
 For more on different assertion types available, see [assertions documentation](/docs/configuration/expected-outputs). You might also be interested in [Evaluating RAG pipelines](/docs/guides/evaluate-rag) guide, which provides insights into evaluating retrieval-augmented generation applications.

@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+﻿import { useCallback } from 'react';
 
 import { Button } from '@app/components/ui/button';
 import { Card } from '@app/components/ui/card';
 import { Checkbox } from '@app/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { cn } from '@app/lib/utils';
-import { CONFIGURABLE_STRATEGIES_SET } from '@promptfoo/redteam/constants';
+import { CONFIGURABLE_STRATEGIES_SET } from '@artef/redteam/constants';
 import { Settings } from 'lucide-react';
 import { TestCaseGenerateButton } from '../TestCaseDialog';
 import { useStrategyTestGeneration } from './useStrategyTestGeneration';
@@ -150,7 +150,7 @@ function HeroStrategyCard({
         {/* Remote generation warning */}
         {isDisabled && isRemoteGenerationDisabled && (
           <div className="rounded border border-destructive/30 bg-destructive/10 px-2 py-1.5 text-xs text-destructive">
-            Requires remote generation. Unset PROMPTFOO_DISABLE_REMOTE_GENERATION to enable.
+            Requires remote generation. Unset artef_DISABLE_REMOTE_GENERATION to enable.
           </div>
         )}
       </div>

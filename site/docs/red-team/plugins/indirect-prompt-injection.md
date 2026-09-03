@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Indirect Prompt Injection
 description: Test whether untrusted data sources like RAG documents, emails, or user profiles can hijack your LLM's behavior through embedded instructions.
 ---
@@ -36,12 +36,12 @@ The model follows the injected instruction instead of answering the travel quest
 ## How it works
 
 1. Specify which template variable contains untrusted data
-2. Promptfoo injects adversarial payloads into that variable
+2. artef injects adversarial payloads into that variable
 3. Tests fail if the model follows the injected instructions
 
 ## Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - |
     You are a travel agent. The user's name is {{name}}.

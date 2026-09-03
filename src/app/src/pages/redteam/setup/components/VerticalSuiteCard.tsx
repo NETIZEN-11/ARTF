@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+﻿import React, { useCallback, useMemo, useState } from 'react';
 
 import { Badge } from '@app/components/ui/badge';
 import { Button } from '@app/components/ui/button';
@@ -13,7 +13,7 @@ import {
   riskCategorySeverityMap,
   Severity,
   subCategoryDescriptions,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { ChevronDown, HelpCircle, Lock, Settings } from 'lucide-react';
 import { requiresPluginConfig } from '../constants';
 import {
@@ -22,7 +22,7 @@ import {
 } from './pluginDocumentationMap';
 import { TestCaseGenerateButton } from './TestCaseDialog';
 import { useTestCaseGeneration } from './TestCaseGenerationProvider';
-import type { Plugin } from '@promptfoo/redteam/constants';
+import type { Plugin } from '@artef/redteam/constants';
 
 interface PluginGroup {
   name: string;
@@ -133,7 +133,7 @@ export default function VerticalSuiteCard({
       if (onUpgradeClick) {
         onUpgradeClick();
       } else {
-        window.open('https://www.promptfoo.dev/pricing/', '_blank');
+        window.open('https://www.artef.dev/pricing/', '_blank');
       }
     },
     [onUpgradeClick],
@@ -185,7 +185,7 @@ export default function VerticalSuiteCard({
                     </Badge>
                   </TooltipTrigger>
                   <TooltipContent>
-                    This feature is only available in Promptfoo Enterprise
+                    This feature is only available in artef Enterprise
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -408,12 +408,12 @@ export default function VerticalSuiteCard({
                               isGenerating={generatingTestCase && generatingPlugin === plugin}
                               tooltipTitle={
                                 isLocked
-                                  ? 'This feature requires Promptfoo Enterprise'
+                                  ? 'This feature requires artef Enterprise'
                                   : pluginDisabled
                                     ? 'This plugin requires remote generation'
                                     : apiHealthStatus === 'connected'
                                       ? `Generate a test case for ${displayNameOverrides[plugin] || plugin}`
-                                      : 'Promptfoo Cloud connection is required for test generation'
+                                      : 'artef Cloud connection is required for test generation'
                               }
                             />
 

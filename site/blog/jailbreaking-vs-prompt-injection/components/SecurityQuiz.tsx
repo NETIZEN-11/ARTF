@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 import styles from './SecurityQuiz.module.css';
 
@@ -288,7 +288,7 @@ export default function SecurityQuiz() {
               Try Again
             </button>
             <button
-              onClick={() => window.open('https://github.com/promptfoo/promptfoo', '_blank')}
+              onClick={() => window.open('https://github.com/artef/artef', '_blank')}
               className={styles.cta}
             >
               Test Your Systems

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getShareAuthorizedBlob } from '../../src/blobs';
 import { uploadBlobRemote } from '../../src/blobs/remoteUpload';
 import { createRemoteBlobUploadCache, uploadBlobRefsForShare } from '../../src/blobs/shareUpload';
@@ -42,7 +42,7 @@ describe('share-time blob upload', () => {
         mimeType: 'image/png',
         provider: 'cloud',
         sizeBytes: 11,
-        uri: `promptfoo://blob/${'a'.repeat(64)}`,
+        uri: `artef://blob/${'a'.repeat(64)}`,
       },
     });
   });
@@ -53,13 +53,13 @@ describe('share-time blob upload', () => {
 
     await uploadBlobRefsForShare(
       {
-        output: `promptfoo://blob/${hash}`,
-        images: [{ blobRef: { hash, uri: `promptfoo://blob/${hash}` } }],
+        output: `artef://blob/${hash}`,
+        images: [{ blobRef: { hash, uri: `artef://blob/${hash}` } }],
       },
       cache,
       { localEvalId: 'local-eval-123', remoteEvalId: 'remote-eval-123', promptIdx: 2, testIdx: 1 },
     );
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, {
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, cache, {
       localEvalId: 'local-eval-123',
       remoteEvalId: 'remote-eval-123',
       promptIdx: 2,
@@ -82,13 +82,13 @@ describe('share-time blob upload', () => {
     const hash = '7'.repeat(64);
     const cache = createRemoteBlobUploadCache();
 
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, {
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, cache, {
       localEvalId: 'local-eval-123',
       remoteEvalId: 'remote-eval-123',
       promptIdx: 2,
       testIdx: 1,
     });
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, {
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, cache, {
       localEvalId: 'local-eval-123',
       remoteEvalId: 'remote-eval-123',
       promptIdx: 4,
@@ -123,13 +123,13 @@ describe('share-time blob upload', () => {
     const hash = '0'.repeat(64);
     const cache = createRemoteBlobUploadCache();
 
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, {
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, cache, {
       localEvalId: 'local-eval-zero',
       remoteEvalId: 'remote-eval-zero',
       promptIdx: 0,
       testIdx: 0,
     });
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, {
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, cache, {
       localEvalId: 'local-eval-zero',
       remoteEvalId: 'remote-eval-zero',
     });
@@ -156,7 +156,7 @@ describe('share-time blob upload', () => {
     const hash = 'd'.repeat(64);
     vi.mocked(getShareAuthorizedBlob).mockResolvedValue(null);
 
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, createRemoteBlobUploadCache(), {
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, createRemoteBlobUploadCache(), {
       localEvalId: 'local-eval-unauthorized',
       remoteEvalId: 'remote-eval-unauthorized',
     });
@@ -170,7 +170,7 @@ describe('share-time blob upload', () => {
     vi.mocked(uploadBlobRemote).mockRejectedValue(new Error('network unavailable'));
 
     await expect(
-      uploadBlobRefsForShare(`promptfoo://blob/${hash}`, createRemoteBlobUploadCache(), {
+      uploadBlobRefsForShare(`artef://blob/${hash}`, createRemoteBlobUploadCache(), {
         localEvalId: 'local-eval-456',
         remoteEvalId: 'remote-eval-456',
       }),
@@ -191,7 +191,7 @@ describe('share-time blob upload', () => {
     vi.mocked(uploadBlobRemote).mockResolvedValue(null);
 
     await expect(
-      uploadBlobRefsForShare(`promptfoo://blob/${hash}`, createRemoteBlobUploadCache(), {
+      uploadBlobRefsForShare(`artef://blob/${hash}`, createRemoteBlobUploadCache(), {
         localEvalId: 'local-eval-789',
         remoteEvalId: 'remote-eval-789',
       }),
@@ -212,8 +212,8 @@ describe('share-time blob upload', () => {
     const cache = createRemoteBlobUploadCache();
     const context = { localEvalId: 'local-eval-999', remoteEvalId: 'remote-eval-999' };
 
-    await uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, context);
-    await uploadBlobRefsForShare({ output: `promptfoo://blob/${hash}` }, cache, context);
+    await uploadBlobRefsForShare(`artef://blob/${hash}`, cache, context);
+    await uploadBlobRefsForShare({ output: `artef://blob/${hash}` }, cache, context);
 
     expect(getShareAuthorizedBlob).toHaveBeenCalledOnce();
     expect(uploadBlobRemote).not.toHaveBeenCalled();
@@ -232,8 +232,8 @@ describe('share-time blob upload', () => {
     const context = { localEvalId: 'local-eval-111', remoteEvalId: 'remote-eval-111' };
 
     const uploads = Promise.all([
-      uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, context),
-      uploadBlobRefsForShare(`promptfoo://blob/${hash}`, cache, context),
+      uploadBlobRefsForShare(`artef://blob/${hash}`, cache, context),
+      uploadBlobRefsForShare(`artef://blob/${hash}`, cache, context),
     ]);
     releaseAuth?.(storedBlob);
     await uploads;
@@ -247,7 +247,7 @@ describe('share-time blob upload', () => {
     vi.mocked(getShareAuthorizedBlob).mockRejectedValue(new Error('db locked'));
 
     await expect(
-      uploadBlobRefsForShare(`promptfoo://blob/${hash}`, createRemoteBlobUploadCache(), {
+      uploadBlobRefsForShare(`artef://blob/${hash}`, createRemoteBlobUploadCache(), {
         localEvalId: 'local-eval-222',
         remoteEvalId: 'remote-eval-222',
       }),

@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import async from 'async';
@@ -114,7 +114,7 @@ import type {
   ScoringFunction,
 } from '../types/index';
 
-const ASSERTIONS_MAX_CONCURRENCY = getEnvInt('PROMPTFOO_ASSERTIONS_MAX_CONCURRENCY', 3);
+const ASSERTIONS_MAX_CONCURRENCY = getEnvInt('artef_ASSERTIONS_MAX_CONCURRENCY', 3);
 const DEFAULT_TRACE_FETCH_MAX_ATTEMPTS = 6;
 const DEFAULT_TRACE_FETCH_RETRY_DELAY_MS = 250;
 const DEFAULT_TRACE_FETCH_STABLE_POLLS = 2;
@@ -167,7 +167,7 @@ function assertionMayNeedTraceContext(assertion: AssertionOrSet): boolean {
     return assertion.assert.some(assertionMayNeedTraceContext);
   }
 
-  if (assertion.type.startsWith('promptfoo:redteam:coding-agent:')) {
+  if (assertion.type.startsWith('artef:redteam:coding-agent:')) {
     return true;
   }
 
@@ -184,18 +184,18 @@ async function loadTraceData(traceId: string): Promise<TraceData | null> {
   const traceStore = getTraceStore();
   const maxAttempts = Math.min(
     MAX_TRACE_FETCH_MAX_ATTEMPTS,
-    Math.max(1, getEnvInt('PROMPTFOO_TRACE_FETCH_MAX_ATTEMPTS', DEFAULT_TRACE_FETCH_MAX_ATTEMPTS)),
+    Math.max(1, getEnvInt('artef_TRACE_FETCH_MAX_ATTEMPTS', DEFAULT_TRACE_FETCH_MAX_ATTEMPTS)),
   );
   const retryDelayMs = Math.min(
     MAX_TRACE_FETCH_RETRY_DELAY_MS,
     Math.max(
       0,
-      getEnvInt('PROMPTFOO_TRACE_FETCH_RETRY_DELAY_MS', DEFAULT_TRACE_FETCH_RETRY_DELAY_MS),
+      getEnvInt('artef_TRACE_FETCH_RETRY_DELAY_MS', DEFAULT_TRACE_FETCH_RETRY_DELAY_MS),
     ),
   );
   const stablePolls = Math.min(
     MAX_TRACE_FETCH_STABLE_POLLS,
-    Math.max(1, getEnvInt('PROMPTFOO_TRACE_FETCH_STABLE_POLLS', DEFAULT_TRACE_FETCH_STABLE_POLLS)),
+    Math.max(1, getEnvInt('artef_TRACE_FETCH_STABLE_POLLS', DEFAULT_TRACE_FETCH_STABLE_POLLS)),
   );
 
   let lastSpanCount = -1;
@@ -392,7 +392,7 @@ export function getAssertionBaseType(assertion: Assertion): AssertionType {
  *
  * @example Basic usage
  * ```typescript
- * import { assertions } from 'promptfoo';
+ * import { assertions } from 'artef';
  *
  * const result = await assertions.runAssertion({
  *   assertion: { type: 'contains', value: '4' },
@@ -647,7 +647,7 @@ async function runAssertionInternal({
   };
 
   // Check for redteam assertions first
-  if (assertionParams.baseType.startsWith('promptfoo:redteam:')) {
+  if (assertionParams.baseType.startsWith('artef:redteam:')) {
     return handleRedteam(assertionParams);
   }
 
@@ -728,7 +728,7 @@ export async function runAssertion(
  *
  * @example Basic usage
  * ```typescript
- * import { assertions } from 'promptfoo';
+ * import { assertions } from 'artef';
  *
  * const result = await assertions.runAssertions({
  *   assertions: [

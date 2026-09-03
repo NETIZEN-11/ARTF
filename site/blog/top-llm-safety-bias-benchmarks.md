@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Top 10 Open Datasets for LLM Safety, Toxicity & Bias Evaluation'
 description: 'A comprehensive guide to the most important open-source datasets for evaluating LLM safety, including toxicity detection, bias measurement, and truthfulness benchmarks.'
 image: /img/blog/safety-benchmarks/hero-image.png
@@ -203,13 +203,13 @@ Another important open resource is the Anthropic red-teaming dialogues dataset (
 
 ## Using These Datasets in Practice
 
-While these datasets provide invaluable benchmarks, evaluating your LLM against them can be challenging. Tools like [promptfoo](https://promptfoo.dev) make it easy to integrate these safety benchmarks into your testing pipeline.
+While these datasets provide invaluable benchmarks, evaluating your LLM against them can be challenging. Tools like [artef](https://artef.dev) make it easy to integrate these safety benchmarks into your testing pipeline.
 
 ### Red Team Evaluation
 
-Promptfoo's red team feature allows you to automatically test your LLM against adversarial attacks similar to those in the Anthropic Red Team dataset:
+artef's red team feature allows you to automatically test your LLM against adversarial attacks similar to those in the Anthropic Red Team dataset:
 
-![Promptfoo Red Team Evaluation Results](/img/blog/safety-benchmarks/promptfoo-redteam-evaluation.png)
+![artef Red Team Evaluation Results](/img/blog/safety-benchmarks/artef-redteam-evaluation.png)
 
 ### Comprehensive Risk Assessment
 
@@ -235,4 +235,4 @@ By incorporating such datasets into your development and testing pipeline, you'l
 
 ## Get Started
 
-Ready to evaluate your LLM's safety? Check out [promptfoo's red team documentation](https://promptfoo.dev/docs/red-team/) to start testing your model against these industry-standard benchmarks.
+Ready to evaluate your LLM's safety? Check out [artef's red team documentation](https://artef.dev/docs/red-team/) to start testing your model against these industry-standard benchmarks.

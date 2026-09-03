@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { TestSuiteSchema, UnifiedConfigSchema } from '../../../types/index';
 import { loadDefaultConfig } from '../../../util/config/default';
@@ -17,11 +17,11 @@ interface ValidationResults {
 }
 
 /**
- * Tool to validate promptfoo configuration files
+ * Tool to validate artef configuration files
  */
-export function registerValidatePromptfooConfigTool(server: McpServer) {
+export function registerValidateartefConfigTool(server: McpServer) {
   server.tool(
-    'validate_promptfoo_config',
+    'validate_artef_config',
     {
       configPaths: z
         .array(z.string().min(1, 'Config path cannot be empty'))
@@ -29,8 +29,8 @@ export function registerValidatePromptfooConfigTool(server: McpServer) {
         .describe(
           dedent`
             Paths to configuration files to validate.
-            Examples: ["promptfooconfig.yaml"], ["config/eval.yaml", "config/prompts.yaml"].
-            Defaults to "promptfooconfig.yaml" in current directory.
+            Examples: ["artefconfig.yaml"], ["config/eval.yaml", "config/prompts.yaml"].
+            Defaults to "artefconfig.yaml" in current directory.
           `,
         ),
     },
@@ -45,19 +45,19 @@ export function registerValidatePromptfooConfigTool(server: McpServer) {
           defaultConfig = result.defaultConfig;
         } catch (error) {
           return createToolResponse(
-            'validate_promptfoo_config',
+            'validate_artef_config',
             false,
             {
               originalError: error instanceof Error ? error.message : 'Unknown error',
-              suggestion: 'Run "npm install -g promptfoo" or check your installation',
+              suggestion: 'Run "npm install -g artef" or check your installation',
             },
-            'Failed to load default configuration. Ensure promptfoo is properly installed.',
+            'Failed to load default configuration. Ensure artef is properly installed.',
           );
         }
 
         // Use the same logic as the validate command
         const configPathsArray =
-          configPaths || (process.cwd() ? ['promptfooconfig.yaml'] : undefined);
+          configPaths || (process.cwd() ? ['artefconfig.yaml'] : undefined);
 
         const { config, testSuite } = await resolveConfigs(
           { config: configPathsArray },
@@ -105,16 +105,16 @@ export function registerValidatePromptfooConfigTool(server: McpServer) {
             configFiles: configPathsArray,
           };
 
-          return createToolResponse('validate_promptfoo_config', true, {
+          return createToolResponse('validate_artef_config', true, {
             ...validationResults,
             summary,
           });
         }
 
         return validationResults.isValid
-          ? createToolResponse('validate_promptfoo_config', true, validationResults)
+          ? createToolResponse('validate_artef_config', true, validationResults)
           : createToolResponse(
-              'validate_promptfoo_config',
+              'validate_artef_config',
               false,
               validationResults,
               'Configuration validation failed',
@@ -122,11 +122,11 @@ export function registerValidatePromptfooConfigTool(server: McpServer) {
       } catch (error: unknown) {
         if (error instanceof Error && error.message.includes('ENOENT')) {
           return createToolResponse(
-            'validate_promptfoo_config',
+            'validate_artef_config',
             false,
             {
               providedPaths: configPaths,
-              suggestion: 'Run "promptfoo init" to create a new configuration file',
+              suggestion: 'Run "artef init" to create a new configuration file',
             },
             'Configuration file not found. Check the file path or create a new config.',
           );
@@ -139,7 +139,7 @@ export function registerValidatePromptfooConfigTool(server: McpServer) {
               ? error.message
               : 'Unknown error occurred';
         return createToolResponse(
-          'validate_promptfoo_config',
+          'validate_artef_config',
           false,
           undefined,
           `Failed to validate configuration: ${errorMessage}`,

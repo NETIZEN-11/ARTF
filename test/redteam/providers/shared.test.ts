@@ -1,6 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../../src/cliState';
-import { PromptfooChatCompletionProvider } from '../../../src/providers/promptfoo';
+import { artefChatCompletionProvider } from '../../../src/providers/artef';
 import {
   ATTACKER_MODEL,
   ATTACKER_MODEL_SMALL,
@@ -855,7 +855,7 @@ describe('shared redteam provider utilities', () => {
         },
       } as CallApiContextParams;
       const prompt = JSON.stringify({
-        _promptfoo_audio_hybrid: true,
+        _artef_audio_hybrid: true,
         history: [
           { role: 'user', content: 'tiny' },
           { role: 'assistant', content: 'this assistant response is long and should be ignored' },
@@ -895,7 +895,7 @@ describe('shared redteam provider utilities', () => {
         },
       } as CallApiContextParams;
       const prompt = JSON.stringify({
-        _promptfoo_audio_hybrid: true,
+        _artef_audio_hybrid: true,
         history: [],
         currentTurn: {
           role: 'user',
@@ -1292,18 +1292,18 @@ describe('shared redteam provider utilities', () => {
 
   // New tests for tryUnblocking env flag
   describe('tryUnblocking environment flag', () => {
-    const originalEnv = process.env.PROMPTFOO_ENABLE_UNBLOCKING;
+    const originalEnv = process.env.artef_ENABLE_UNBLOCKING;
 
     afterEach(() => {
       if (originalEnv === undefined) {
-        mockProcessEnv({ PROMPTFOO_ENABLE_UNBLOCKING: undefined });
+        mockProcessEnv({ artef_ENABLE_UNBLOCKING: undefined });
       } else {
-        mockProcessEnv({ PROMPTFOO_ENABLE_UNBLOCKING: originalEnv });
+        mockProcessEnv({ artef_ENABLE_UNBLOCKING: originalEnv });
       }
     });
 
-    it('short-circuits by default when PROMPTFOO_ENABLE_UNBLOCKING is not set', async () => {
-      mockProcessEnv({ PROMPTFOO_ENABLE_UNBLOCKING: undefined });
+    it('short-circuits by default when artef_ENABLE_UNBLOCKING is not set', async () => {
+      mockProcessEnv({ artef_ENABLE_UNBLOCKING: undefined });
 
       const result = await tryUnblocking({
         messages: [],
@@ -1317,8 +1317,8 @@ describe('shared redteam provider utilities', () => {
       expect(mockedCheckServerFeatureSupport).not.toHaveBeenCalled();
     });
 
-    it('checks server support when PROMPTFOO_ENABLE_UNBLOCKING=true', async () => {
-      mockProcessEnv({ PROMPTFOO_ENABLE_UNBLOCKING: 'true' });
+    it('checks server support when artef_ENABLE_UNBLOCKING=true', async () => {
+      mockProcessEnv({ artef_ENABLE_UNBLOCKING: 'true' });
       mockedCheckServerFeatureSupport.mockResolvedValue(false);
 
       const result = await tryUnblocking({
@@ -1336,10 +1336,10 @@ describe('shared redteam provider utilities', () => {
     });
 
     it('preserves analysis usage when no blocking question is found', async () => {
-      mockProcessEnv({ PROMPTFOO_ENABLE_UNBLOCKING: 'true' });
+      mockProcessEnv({ artef_ENABLE_UNBLOCKING: 'true' });
       mockedCheckServerFeatureSupport.mockResolvedValue(true);
       const callApi = vi
-        .spyOn(PromptfooChatCompletionProvider.prototype, 'callApi')
+        .spyOn(artefChatCompletionProvider.prototype, 'callApi')
         .mockResolvedValue({
           output: { isBlocking: false },
           tokenUsage: { total: 18, prompt: 11, completion: 7, numRequests: 1 },
@@ -1362,10 +1362,10 @@ describe('shared redteam provider utilities', () => {
     });
 
     it('preserves analysis usage when the unblocking provider returns an error', async () => {
-      mockProcessEnv({ PROMPTFOO_ENABLE_UNBLOCKING: 'true' });
+      mockProcessEnv({ artef_ENABLE_UNBLOCKING: 'true' });
       mockedCheckServerFeatureSupport.mockResolvedValue(true);
       const callApi = vi
-        .spyOn(PromptfooChatCompletionProvider.prototype, 'callApi')
+        .spyOn(artefChatCompletionProvider.prototype, 'callApi')
         .mockResolvedValue({
           error: 'analysis failed after inference',
           tokenUsage: { total: 13, prompt: 8, completion: 5, numRequests: 1 },

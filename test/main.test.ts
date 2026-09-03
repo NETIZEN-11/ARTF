@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -160,7 +160,7 @@ describe('addCommonOptionsRecursively', () => {
 
   beforeEach(async () => {
     await loadMainModule();
-    program = new Command('promptfoo');
+    program = new Command('artef');
     program.action(() => {});
     subCommand = program.command('subcommand');
     subCommand.action(() => {});
@@ -322,7 +322,7 @@ describe('addCommonOptionsRecursively', () => {
     const preActionFn = mockHookRegister.mock.calls[0][1];
     const originalArgv = process.argv;
 
-    process.argv = ['node', 'promptfoo', 'code-scans', 'run', '.', '--json', '--verbose'];
+    process.argv = ['node', 'artef', 'code-scans', 'run', '.', '--json', '--verbose'];
 
     try {
       preActionFn({

@@ -1,11 +1,11 @@
-import { randomBytes } from 'crypto';
+﻿import { randomBytes } from 'crypto';
 
 import { ROOT_CONTEXT, type Span, SpanKind, TraceFlags, trace } from '@opentelemetry/api';
 import cliState from '../cliState';
 import { getEnvBool } from '../envars';
 import logger from '../logger';
 import telemetry from '../telemetry';
-import { getGenAITracer, PromptfooAttributes } from './genaiTracer';
+import { getGenAITracer, artefAttributes } from './genaiTracer';
 import { SPAN_ROLE_ATTRIBUTE } from './spanRoles';
 
 import type { TestCase, TestSuite } from '../types/index';
@@ -92,7 +92,7 @@ function acquireStartedOtlpReceiver(): boolean {
 
 function isTracingEnabledForSuite(testSuite: TestSuite): boolean {
   return (
-    getEnvBool('PROMPTFOO_TRACING_ENABLED', false) ||
+    getEnvBool('artef_TRACING_ENABLED', false) ||
     testSuite.tracing?.enabled === true ||
     (typeof testSuite.defaultTest === 'object' &&
       testSuite.defaultTest?.metadata?.tracingEnabled === true) ||
@@ -322,12 +322,12 @@ export async function stopOtlpReceiverIfNeeded(
  * Tracing is enabled if any of the following are true:
  * 1. Test case metadata has `tracingEnabled: true`
  * 2. TestSuite YAML config has `tracing.enabled: true`
- * 3. Environment variable `PROMPTFOO_TRACING_ENABLED` is set to true
+ * 3. Environment variable `artef_TRACING_ENABLED` is set to true
  */
 export function isTracingEnabled(test: TestCase, testSuite?: TestSuite): boolean {
   const metadataEnabled = test.metadata?.tracingEnabled === true;
   const yamlConfigEnabled = testSuite?.tracing?.enabled === true;
-  const envEnabled = getEnvBool('PROMPTFOO_TRACING_ENABLED', false);
+  const envEnabled = getEnvBool('artef_TRACING_ENABLED', false);
 
   const result = metadataEnabled || yamlConfigEnabled || envEnabled;
 
@@ -389,23 +389,23 @@ export async function generateTraceContextIfNeeded(
 
   const rootAttributes: Record<string, string | number> = {
     [SPAN_ROLE_ATTRIBUTE]: 'test_case',
-    [PromptfooAttributes.EVAL_ID]: evaluationId,
-    [PromptfooAttributes.TEST_INDEX]: testIdx,
-    'promptfoo.test_case.id': testCaseId,
-    'promptfoo.prompt.index': promptIdx,
+    [artefAttributes.EVAL_ID]: evaluationId,
+    [artefAttributes.TEST_INDEX]: testIdx,
+    'artef.test_case.id': testCaseId,
+    'artef.prompt.index': promptIdx,
   };
   if (executionMetadata.providerId) {
-    rootAttributes[PromptfooAttributes.PROVIDER_ID] = executionMetadata.providerId;
+    rootAttributes[artefAttributes.PROVIDER_ID] = executionMetadata.providerId;
   }
   if (executionMetadata.promptLabel) {
-    rootAttributes[PromptfooAttributes.PROMPT_LABEL] = executionMetadata.promptLabel;
+    rootAttributes[artefAttributes.PROMPT_LABEL] = executionMetadata.promptLabel;
   }
   if (executionMetadata.repeatIndex !== undefined) {
-    rootAttributes['promptfoo.repeat.index'] = executionMetadata.repeatIndex;
+    rootAttributes['artef.repeat.index'] = executionMetadata.repeatIndex;
   }
 
   const candidateRootSpan = getGenAITracer().startSpan(
-    'promptfoo.test_case',
+    'artef.test_case',
     { kind: SpanKind.INTERNAL, attributes: rootAttributes },
     ROOT_CONTEXT,
   );

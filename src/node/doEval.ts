@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import * as path from 'path';
 
 import chalk from 'chalk';
@@ -56,7 +56,7 @@ import {
   warnOnDegradedJsonlRecovery,
   writeMultipleOutputs,
 } from '../util/index';
-import { promptfooCommand } from '../util/promptfooCommand';
+import { artefCommand } from '../util/artefCommand';
 import { checkProviderApiKeys } from '../util/provider';
 import { shouldShareResults } from '../util/sharing';
 import { resolveTestsWatchPaths } from '../util/testCaseReader';
@@ -311,7 +311,7 @@ export async function doEval(
 
   if (configArgs.length > 1 && uuidConfigArgs.length > 0) {
     throw new Error(
-      'Cloud config UUID mode supports exactly one -c value. Use: promptfoo eval -c <cloud-config-uuid>',
+      'Cloud config UUID mode supports exactly one -c value. Use: artef eval -c <cloud-config-uuid>',
     );
   }
 
@@ -371,7 +371,7 @@ export async function doEval(
       // rather than be appended (e.g. `--config base.yaml dir/ override.yaml`).
       const resolvedConfigPaths: string[] = [];
       const configlessDirs: string[] = [];
-      const noConfigHint = `Looked for promptfooconfig.{${DEFAULT_CONFIG_EXTENSIONS.join(',')}}. Run "${promptfooCommand('init')}" or pass --config path/to/promptfooconfig.yaml.`;
+      const noConfigHint = `Looked for artefconfig.{${DEFAULT_CONFIG_EXTENSIONS.join(',')}}. Run "${artefCommand('init')}" or pass --config path/to/artefconfig.yaml.`;
       for (const configPath of configPaths) {
         const configStats = await fs.stat(configPath).catch(() => undefined);
         if (!configStats?.isDirectory()) {
@@ -576,7 +576,7 @@ export async function doEval(
       config.providers[0].id === 'http'
     ) {
       const maybeUrl: unknown = (config.providers[0] as any)?.config?.url;
-      if (typeof maybeUrl === 'string' && maybeUrl.includes('promptfoo.app')) {
+      if (typeof maybeUrl === 'string' && maybeUrl.includes('artef.app')) {
         telemetry.record('feature_used', {
           feature: 'redteam_run_with_example',
         });
@@ -841,7 +841,7 @@ export async function doEval(
 
         ${z.prettifyError(testSuiteSchema.error)}
 
-      Please review your promptfooconfig.yaml configuration.`),
+      Please review your artefconfig.yaml configuration.`),
       );
     }
 
@@ -981,7 +981,7 @@ export async function doEval(
     if (paused && cmdObj.write !== false) {
       printBorder();
       logger.info(`${chalk.yellow('⏸')} Evaluation paused. ID: ${chalk.cyan(evalRecord.id)}`);
-      logger.info(`» Resume with: ${chalk.green.bold('promptfoo eval --resume ' + evalRecord.id)}`);
+      logger.info(`» Resume with: ${chalk.green.bold('artef eval --resume ' + evalRecord.id)}`);
       printBorder();
       return ret;
     }
@@ -1000,7 +1000,7 @@ export async function doEval(
       configSharing: config.sharing,
     });
     const hasExplicitDisable =
-      cmdObj.share === false || cmdObj.noShare === true || getEnvBool('PROMPTFOO_DISABLE_SHARING');
+      cmdObj.share === false || cmdObj.noShare === true || getEnvBool('artef_DISABLE_SHARING');
 
     const canShareEval = isSharingEnabled(evalRecord);
 
@@ -1188,7 +1188,7 @@ export async function doEval(
       if (initialization) {
         const configPaths = (cmdObj.config || [defaultConfigPath]).filter(Boolean) as string[];
         if (!configPaths.length) {
-          const message = `Could not locate config file(s) to watch. Pass --config path/to/promptfooconfig.yaml or run from a directory containing promptfooconfig.{${DEFAULT_CONFIG_EXTENSIONS.join(
+          const message = `Could not locate config file(s) to watch. Pass --config path/to/artefconfig.yaml or run from a directory containing artefconfig.{${DEFAULT_CONFIG_EXTENSIONS.join(
             ',',
           )}}.`;
           return failEvalRun(message, isCliInvocation, {
@@ -1287,14 +1287,14 @@ export async function doEval(
           );
       }
     } else {
-      const passRateThreshold = getEnvFloat('PROMPTFOO_PASS_RATE_THRESHOLD', 100);
-      const failedTestExitCode = getEnvInt('PROMPTFOO_FAILED_TEST_EXIT_CODE', 100);
+      const passRateThreshold = getEnvFloat('artef_PASS_RATE_THRESHOLD', 100);
+      const failedTestExitCode = getEnvInt('artef_FAILED_TEST_EXIT_CODE', 100);
 
       if (
         isCliInvocation &&
         passRate < (Number.isFinite(passRateThreshold) ? passRateThreshold : 100)
       ) {
-        if (getEnvFloat('PROMPTFOO_PASS_RATE_THRESHOLD') !== undefined) {
+        if (getEnvFloat('artef_PASS_RATE_THRESHOLD') !== undefined) {
           logger.info(
             chalk.white(
               `Pass rate ${chalk.red.bold(passRate.toFixed(2))}${chalk.red('%')} is below the threshold of ${chalk.red.bold(passRateThreshold)}${chalk.red('%')}`,

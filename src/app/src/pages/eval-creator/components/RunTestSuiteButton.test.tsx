@@ -1,4 +1,4 @@
-import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
+﻿import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
 import { useStore } from '@app/stores/evalConfig';
 import {
   getCallApiMock,
@@ -167,7 +167,7 @@ describe('RunTestSuiteButton', () => {
 
     const [, requestInit] = getCallApiMock().mock.calls[0] as [string, RequestInit];
     expect(JSON.parse(requestInit.body as string)).toMatchObject({ tracing });
-    expect(localStorage.getItem('promptfoo')).not.toContain('browser-runtime-secret');
+    expect(localStorage.getItem('artef')).not.toContain('browser-runtime-secret');
   });
 
   it('should include the source eval id when rerunning a loaded evaluation', async () => {

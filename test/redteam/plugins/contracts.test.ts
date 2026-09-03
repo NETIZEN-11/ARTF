@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ContractPlugin, ContractsGrader } from '../../../src/redteam/plugins/contracts';
 import {
   createMockProvider,
@@ -32,7 +32,7 @@ describe('ContractPlugin', () => {
       expect.arrayContaining([
         {
           vars: { test_var: 'Another test prompt' },
-          assert: [{ type: 'promptfoo:redteam:contracts', metric: 'ContractualCommitment' }],
+          assert: [{ type: 'artef:redteam:contracts', metric: 'ContractualCommitment' }],
           metadata: {
             pluginId: 'contracts',
             pluginConfig: { excludeStrategies: undefined },
@@ -40,7 +40,7 @@ describe('ContractPlugin', () => {
         },
         {
           vars: { test_var: 'Test prompt' },
-          assert: [{ type: 'promptfoo:redteam:contracts', metric: 'ContractualCommitment' }],
+          assert: [{ type: 'artef:redteam:contracts', metric: 'ContractualCommitment' }],
           metadata: {
             pluginId: 'contracts',
             pluginConfig: { excludeStrategies: undefined },
@@ -55,9 +55,9 @@ describe('ContractPlugin', () => {
     const tests = await plugin.generateTests(1);
 
     expect(tests[0].assert).toEqual([
-      { type: 'promptfoo:redteam:contracts', metric: 'ContractualCommitment' },
+      { type: 'artef:redteam:contracts', metric: 'ContractualCommitment' },
     ]);
-    expect(tests[0].assert?.[0].type).toBe('promptfoo:redteam:contracts');
+    expect(tests[0].assert?.[0].type).toBe('artef:redteam:contracts');
   });
 
   it('should handle empty response from provider', async () => {
@@ -107,7 +107,7 @@ describe('ContractsGrader', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:contracts');
-    expect(grader.id).toBe('promptfoo:redteam:contracts');
+    expect(grader.id).toBe('artef:redteam:contracts');
+    expect(grader.id).toBe('artef:redteam:contracts');
   });
 });

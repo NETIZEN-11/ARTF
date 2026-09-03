@@ -1,4 +1,4 @@
-import { Router } from 'express';
+﻿import { Router } from 'express';
 import { z } from 'zod';
 import { getEnvBool } from '../../envars';
 import {
@@ -65,7 +65,7 @@ userRouter.post('/email', async (req: Request, res: Response): Promise<void> => 
     await telemetry.record('webui_api', {
       event: 'email_set',
       email,
-      selfHosted: getEnvBool('PROMPTFOO_SELF_HOSTED'),
+      selfHosted: getEnvBool('artef_SELF_HOSTED'),
     });
     await telemetry.saveConsent(email, {
       source: 'webui_redteam',
@@ -137,7 +137,7 @@ userRouter.post('/login', async (req: Request, res: Response): Promise<void> => 
     await telemetry.record('webui_api', {
       event: 'api_key_login',
       email: user.email,
-      selfHosted: getEnvBool('PROMPTFOO_SELF_HOSTED'),
+      selfHosted: getEnvBool('artef_SELF_HOSTED'),
     });
     await telemetry.saveConsent(user.email, {
       source: 'web_login',
@@ -193,7 +193,7 @@ userRouter.post('/logout', async (_req: Request, res: Response): Promise<void> =
 });
 
 /**
- * Returns information about the Promptfoo Cloud config for the current user.
+ * Returns information about the artef Cloud config for the current user.
  */
 userRouter.get('/cloud-config', async (_req: Request, res: Response): Promise<void> => {
   try {

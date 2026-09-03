@@ -1,33 +1,33 @@
-# provider-hyperbolic (Hyperbolic AI Provider)
+﻿# provider-hyperbolic (Hyperbolic AI Provider)
 
-This directory contains examples for testing Hyperbolic AI models with promptfoo.
+This directory contains examples for testing Hyperbolic AI models with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-hyperbolic
+npx artef@latest init --example provider-hyperbolic
 cd provider-hyperbolic
 ```
 
 ## Examples
 
-### Quick Test (`promptfooconfig.yaml`)
+### Quick Test (`artefconfig.yaml`)
 
 Basic functionality test with Llama-3.1-70B to verify API connectivity.
 
-### Reasoning Models (`promptfooconfig.reasoning.yaml`)
+### Reasoning Models (`artefconfig.reasoning.yaml`)
 
 Creative reasoning puzzles using DeepSeek-V3 and Llama-3.1-70B models.
 
-### Image Generation (`promptfooconfig.image-generation.yaml`)
+### Image Generation (`artefconfig.image-generation.yaml`)
 
 Text-to-image generation using SDXL1.0-base model.
 
-### Audio Generation (`promptfooconfig.audio-generation.yaml`)
+### Audio Generation (`artefconfig.audio-generation.yaml`)
 
 Text-to-speech synthesis using Melo-TTS model.
 
-### Multimodal Vision (`promptfooconfig.multimodal.yaml`)
+### Multimodal Vision (`artefconfig.multimodal.yaml`)
 
 Vision-language tasks using Qwen2.5-VL-7B model.
 
@@ -37,22 +37,22 @@ To run any of these examples:
 
 ```bash
 # Quick connectivity test
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 
 # Reasoning capabilities
-npx promptfoo eval -c promptfooconfig.reasoning.yaml
+npx artef eval -c artefconfig.reasoning.yaml
 
 # Image generation
-npx promptfoo eval -c promptfooconfig.image-generation.yaml
+npx artef eval -c artefconfig.image-generation.yaml
 
 # Audio synthesis
-npx promptfoo eval -c promptfooconfig.audio-generation.yaml
+npx artef eval -c artefconfig.audio-generation.yaml
 
 # Vision-language tasks
-npx promptfoo eval -c promptfooconfig.multimodal.yaml
+npx artef eval -c artefconfig.multimodal.yaml
 
 # View results in web UI
-npx promptfoo view
+npx artef view
 ```
 
 ## Prerequisites
@@ -64,4 +64,4 @@ npx promptfoo view
 
 - Free tier allows 60 requests/minute, Pro tier allows 600 requests/minute
 - Some models may require Pro tier access
-- See [Hyperbolic provider documentation](https://promptfoo.dev/docs/providers/hyperbolic) for detailed configuration options
+- See [Hyperbolic provider documentation](https://artef.dev/docs/providers/hyperbolic) for detailed configuration options

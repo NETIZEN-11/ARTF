@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -79,7 +79,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             name after a colon.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/providers/python/',
+        docUrl: 'https://www.artef.dev/docs/providers/python/',
         examples: {
           title: 'Python Provider Examples',
           items: [
@@ -107,7 +107,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             specify an export name after a colon.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/providers/custom-api/',
+        docUrl: 'https://www.artef.dev/docs/providers/custom-api/',
         examples: {
           title: 'JavaScript Provider Examples',
           items: [
@@ -137,7 +137,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             should accept prompts via stdin and output responses to stdout.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/providers/custom-api/',
+        docUrl: 'https://www.artef.dev/docs/providers/custom-api/',
         examples: {
           title: 'Go Provider Examples',
           items: [
@@ -164,7 +164,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             output the response to stdout.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/providers/custom-script/',
+        docUrl: 'https://www.artef.dev/docs/providers/custom-script/',
         examples: {
           title: 'Exec Provider Examples',
           items: [
@@ -194,7 +194,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             tool use and context management.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/providers/mcp/',
+        docUrl: 'https://www.artef.dev/docs/providers/mcp/',
         examples: {
           title: 'MCP Provider Examples',
           items: [
@@ -217,7 +217,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
         targetIdLabel: 'Model ID',
         targetIdPlaceholder: 'bedrock:global.anthropic.claude-sonnet-5',
         helpText: <>AWS Bedrock model identifier. Requires AWS credentials configured.</>,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/aws-bedrock/',
+        docUrl: 'https://www.artef.dev/docs/providers/aws-bedrock/',
         examples: {
           title: 'Bedrock Model Examples',
           items: [
@@ -244,7 +244,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
         targetIdLabel: 'Endpoint Name',
         targetIdPlaceholder: 'sagemaker:my-endpoint-name',
         helpText: <>SageMaker endpoint name. Requires AWS credentials configured.</>,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/aws-bedrock/#sagemaker',
+        docUrl: 'https://www.artef.dev/docs/providers/aws-bedrock/#sagemaker',
         examples: {
           title: 'SageMaker Examples',
           items: [
@@ -269,7 +269,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
         targetIdLabel: 'Model Name',
         targetIdPlaceholder: 'ollama:llama3.2 or ollama:chat:mistral',
         helpText: <>Ollama model name. Make sure Ollama is running locally.</>,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/ollama/',
+        docUrl: 'https://www.artef.dev/docs/providers/ollama/',
         examples: {
           title: 'Ollama Model Examples',
           items: [
@@ -294,7 +294,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
         targetIdLabel: 'Model Path',
         targetIdPlaceholder: 'vllm:meta-llama/Llama-2-7b-hf',
         helpText: <>vLLM model path. Can be a HuggingFace model ID or local path.</>,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/vllm/',
+        docUrl: 'https://www.artef.dev/docs/providers/vllm/',
         examples: {
           title: 'vLLM Model Examples',
           items: [
@@ -317,7 +317,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
         targetIdLabel: 'Model Name',
         targetIdPlaceholder: 'localai:gpt4all-j',
         helpText: <>LocalAI model name. Ensure LocalAI server is running.</>,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/localai/',
+        docUrl: 'https://www.artef.dev/docs/providers/localai/',
         examples: {
           title: 'LocalAI Model Examples',
           items: [
@@ -345,7 +345,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             first.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/providers/llama.cpp/',
+        docUrl: 'https://www.artef.dev/docs/providers/llama.cpp/',
         examples: {
           title: `${providerType === 'llamafile' ? 'Llamafile' : 'llama.cpp'} Examples`,
           items: [
@@ -368,7 +368,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
         targetIdLabel: 'Target ID',
         targetIdPlaceholder: 'openinterpreter',
         helpText: <>Run coding-agent evaluations against an Open Interpreter app-server.</>,
-        docUrl: 'https://www.promptfoo.dev/docs/providers/openinterpreter/',
+        docUrl: 'https://www.artef.dev/docs/providers/openinterpreter/',
         examples: {
           title: 'Open Interpreter Target Example',
           items: [{ code: 'openinterpreter', description: 'Open Interpreter app-server target' }],
@@ -394,7 +394,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
           <>
             The configuration string for your custom target. See{' '}
             <a
-              href="https://www.promptfoo.dev/docs/red-team/configuration/#custom-providerstargets"
+              href="https://www.artef.dev/docs/red-team/configuration/#custom-providerstargets"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
@@ -404,7 +404,7 @@ const getProviderConfig = (providerType?: string): ProviderConfig => {
             for more information.
           </>
         ),
-        docUrl: 'https://www.promptfoo.dev/docs/red-team/configuration/#custom-providerstargets',
+        docUrl: 'https://www.artef.dev/docs/red-team/configuration/#custom-providerstargets',
         examples: {
           title: 'Provider String Examples',
           items: [

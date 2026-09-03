@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -67,31 +67,31 @@ export default function BSidesSeattle2026(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at BSides Seattle 2026"
+      title="artef at BSides Seattle 2026"
       description="Recap of BSides Seattle 2026: hands-on AI red teaming demos, hallway-track threat intel, and practical ways to harden LLM apps."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at BSides Seattle 2026" />
+        <meta property="og:title" content="artef at BSides Seattle 2026" />
         <meta
           property="og:description"
           content="Recap of BSides Seattle 2026: hands-on AI red teaming demos and practical ways to harden LLM apps. Feb 27-28, Building 92, Redmond."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/bsides-seattle-2026" />
+        <meta property="og:url" content="https://www.artef.dev/events/bsides-seattle-2026" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/bsides-seattle-2026.jpg"
+          content="https://www.artef.dev/img/events/bsides-seattle-2026.jpg"
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/bsides-seattle-2026.jpg"
+          content="https://www.artef.dev/img/events/bsides-seattle-2026.jpg"
         />
         <meta
           name="keywords"
           content="BSides Seattle 2026, security conference, AI security, LLM security, Pacific Northwest, Seattle, red teaming"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/bsides-seattle-2026" />
+        <link rel="canonical" href="https://www.artef.dev/events/bsides-seattle-2026" />
       </Head>
 
       <main className={styles.bsidesPage}>
@@ -125,7 +125,7 @@ export default function BSidesSeattle2026(): React.ReactElement {
         <section className={styles.heroContent}>
           <div className={styles.container}>
             <p className={styles.heroSubtitle}>
-              Promptfoo engineers ran live demos of AI red teaming: prompt injection, jailbreaks,
+              artef engineers ran live demos of AI red teaming: prompt injection, jailbreaks,
               and data exfiltration against real-world LLM apps. People brought their use cases and
               left with a testing plan they could run in CI.
             </p>
@@ -213,7 +213,7 @@ export default function BSidesSeattle2026(): React.ReactElement {
                 <p>Our engineers ran a session on Red Teaming for AI at 2:30PM each day.</p>
               </a>
               <a
-                href="https://discord.com/invite/promptfoo"
+                href="https://discord.com/invite/artef"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.spiritCard}
@@ -263,7 +263,7 @@ export default function BSidesSeattle2026(): React.ReactElement {
                   Join our Discord community to connect with our team and the AI security community.
                 </p>
                 <a
-                  href="https://discord.gg/promptfoo"
+                  href="https://discord.gg/artef"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.cardLink}
@@ -306,7 +306,7 @@ export default function BSidesSeattle2026(): React.ReactElement {
               </p>
               <div className={styles.ctaButtons}>
                 <a
-                  href="https://discord.gg/promptfoo"
+                  href="https://discord.gg/artef"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.primaryCta}

@@ -1,11 +1,11 @@
-# azure/deepseek (Azure DeepSeek Models)
+﻿# azure/deepseek (Azure DeepSeek Models)
 
-This example demonstrates how to use DeepSeek models on Azure AI Foundry with promptfoo, including the DeepSeek-R1 reasoning model.
+This example demonstrates how to use DeepSeek models on Azure AI Foundry with artef, including the DeepSeek-R1 reasoning model.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example azure/deepseek
+npx artef@latest init --example azure/deepseek
 cd azure/deepseek
 ```
 
@@ -44,11 +44,11 @@ providers:
 ## Running the Example
 
 ```bash
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 ## Documentation
 
-- [Azure Provider Documentation](https://promptfoo.dev/docs/providers/azure/)
+- [Azure Provider Documentation](https://artef.dev/docs/providers/azure/)
 - [DeepSeek on Azure](https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/)

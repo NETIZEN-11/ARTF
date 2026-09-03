@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { CustomProvider, MemorySystem } from '../../../../src/redteam/providers/custom/index';
 import { redteamProviderManager, tryUnblocking } from '../../../../src/redteam/providers/shared';
 import { checkServerFeatureSupport } from '../../../../src/util/server';
@@ -23,11 +23,11 @@ vi.mock('../../../../src/globalConfig/accounts', async (importOriginal) => ({
   isLoggedIntoCloud: vi.fn().mockReturnValue(true),
 }));
 
-vi.mock('../../../../src/providers/promptfoo', async (importOriginal) => {
+vi.mock('../../../../src/providers/artef', async (importOriginal) => {
   return {
     ...(await importOriginal()),
 
-    PromptfooChatCompletionProvider: vi.fn().mockImplementation(function () {
+    artefChatCompletionProvider: vi.fn().mockImplementation(function () {
       return {
         id: () => 'mock-unblocking',
         callApi: vi.fn(),
@@ -207,7 +207,7 @@ describe('CustomProvider', () => {
   });
 
   it('should return correct provider id', () => {
-    expect(customProvider.id()).toBe('promptfoo:redteam:custom');
+    expect(customProvider.id()).toBe('artef:redteam:custom');
   });
 
   it('preserves attacker usage when prompt generation fails after inference', async () => {

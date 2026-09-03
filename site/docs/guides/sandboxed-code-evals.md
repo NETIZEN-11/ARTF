@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Sandboxed Evaluations of LLM-Generated Code
 description: Safely evaluate and benchmark LLM-generated code in isolated Docker containers to prevent security risks and catch errors before production deployment
 ---
@@ -13,7 +13,7 @@ This is where sandboxed evaluations come in. By running LLM-generated code in a 
 2. Benchmark different LLMs or prompts to find which produce the most reliable code.
 3. Catch potential errors, infinite loops, or resource-intensive operations before they impact the host system.
 
-In this tutorial, we'll use promptfoo to set up an automated pipeline for generating Python code with an LLM, executing it in a secure sandbox using epicbox, and evaluating the results.
+In this tutorial, we'll use artef to set up an automated pipeline for generating Python code with an LLM, executing it in a secure sandbox using epicbox, and evaluating the results.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ Make sure you have the following installed:
 - Node.js and npm
 - Python 3.9+
 - Docker
-- promptfoo (`npm install -g promptfoo`)
+- artef (`npm install -g artef`)
 - epicbox (`pip install epicbox`)
 - urllib3 < 2 (`pip install 'urllib3<2'`)
 
@@ -34,9 +34,9 @@ docker pull python:3.9-alpine
 
 ## Configuration
 
-### Create the promptfoo configuration file
+### Create the artef configuration file
 
-Create a file named `promptfooconfig.yaml`:
+Create a file named `artefconfig.yaml`:
 
 ```yaml
 prompts: file://code_generation_prompt.txt
@@ -70,8 +70,8 @@ defaultTest:
 
 This configuration does several important things:
 
-1. It tells promptfoo to use our prompt template
-1. We're testing GPT-5 and Llama 4 (you can replace this with a [provider](/docs/providers) of your choice. Promptfoo supports both local and commercial providers).
+1. It tells artef to use our prompt template
+1. We're testing GPT-5 and Llama 4 (you can replace this with a [provider](/docs/providers) of your choice. artef supports both local and commercial providers).
 1. It defines coding problems. For each problem, it specifies the function name, a test input, and the expected output.
 1. It sets up a Python-based assertion that will run for each test case, validating the generated code.
 
@@ -151,7 +151,7 @@ print(result)
 Execute the following command in your terminal:
 
 ```
-promptfoo eval
+artef eval
 ```
 
 This command will:
@@ -166,7 +166,7 @@ This command will:
 After running the evaluation, open the web viewer:
 
 ```
-promptfoo view
+artef view
 ```
 
 This will display a summary of the results. You can analyze:
@@ -179,7 +179,7 @@ This will display a summary of the results. You can analyze:
 
 ## What's next
 
-To further explore promptfoo's capabilities, consider:
+To further explore artef's capabilities, consider:
 
 - Testing different LLM [providers](/docs/providers)
 - Modify your prompt

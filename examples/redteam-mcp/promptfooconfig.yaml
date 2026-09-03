@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Teaming MCP with tool use capabilities
 
 providers:
@@ -7,7 +7,7 @@ providers:
       mcp:
         enabled: true
         server:
-          url: https://customer-service-mcp-server-example.promptfoo.app/mcp
+          url: https://customer-service-mcp-server-example.artef.app/mcp
 
 ## The prompt is intentionally vulnerable. The redteam tests are designed to test the tool use.
 prompts:

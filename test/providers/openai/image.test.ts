@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
 import { OpenAiImageProvider } from '../../../src/providers/openai/image';
 import { mockProcessEnv } from '../../util/utils';
@@ -71,7 +71,7 @@ describe('OpenAiImageProvider', () => {
           headers: expect.objectContaining({
             'Content-Type': 'application/json',
             Authorization: 'Bearer test-key',
-            'X-OpenAI-Originator': 'promptfoo',
+            'X-OpenAI-Originator': 'artef',
           }),
           body: expect.stringContaining('"prompt":"Generate a cat"'),
         }),
@@ -777,7 +777,7 @@ describe('OpenAiImageProvider', () => {
 
     it('should pass user through for gpt-image-2 requests', async () => {
       const provider = new OpenAiImageProvider('gpt-image-2', {
-        config: { apiKey: 'test-key', user: 'promptfoo-user-123' } as any,
+        config: { apiKey: 'test-key', user: 'artef-user-123' } as any,
       });
 
       await provider.callApi('test prompt');
@@ -785,7 +785,7 @@ describe('OpenAiImageProvider', () => {
       const callArgs = vi.mocked(fetchWithCache).mock.calls[0];
       const body = JSON.parse(callArgs[1]!.body as string);
 
-      expect(body.user).toBe('promptfoo-user-123');
+      expect(body.user).toBe('artef-user-123');
     });
 
     it('should reject invalid gpt-image-2 custom sizes', async () => {

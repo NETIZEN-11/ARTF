@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 3
 sidebar_label: Configuration
 description: Red team your LLM configuration settings using automated vulnerability scanning to detect misconfigurations and prevent unauthorized access to AI system parameters
@@ -10,7 +10,7 @@ import StrategyTable from '../\_shared/StrategyTable';
 
 # Red team Configuration
 
-The `redteam` section in your `promptfooconfig.yaml` file is used when generating redteam tests via `promptfoo redteam run` or `promptfoo redteam generate`. It allows you to specify the plugins and other parameters of your red team tests.
+The `redteam` section in your `artefconfig.yaml` file is used when generating redteam tests via `artef redteam run` or `artef redteam generate`. It allows you to specify the plugins and other parameters of your red team tests.
 
 The most important components of your red team configuration are:
 
@@ -23,11 +23,11 @@ The most important components of your red team configuration are:
 
 Red teams happen in three steps:
 
-- `promptfoo redteam init` to initialize a basic red team configuration
-- `promptfoo redteam run` to generate adversarial test cases and run them against the target
-- `promptfoo redteam report` to view the results
+- `artef redteam init` to initialize a basic red team configuration
+- `artef redteam run` to generate adversarial test cases and run them against the target
+- `artef redteam report` to view the results
 
-`promptfoo redteam run` is a shortcut that combines `redteam generate` and `redteam eval` steps, ensuring that your generated test cases are always synced with the latest configuration.
+`artef redteam run` is a shortcut that combines `redteam generate` and `redteam eval` steps, ensuring that your generated test cases are always synced with the latest configuration.
 
 In CI/CD, use repeatable `--tag key=value` options with `redteam run` or
 `redteam eval` to record run-specific context without changing your scan template or
@@ -35,7 +35,7 @@ generated `redteam.yaml`. Tags are saved with the eval and included when results
 shared.
 
 ```bash
-promptfoo redteam run --tag ci.run-id="$CI_RUN_ID" --tag git.sha="$GIT_SHA"
+artef redteam run --tag ci.run-id="$CI_RUN_ID" --tag git.sha="$GIT_SHA"
 ```
 
 ### Generation token accounting
@@ -60,7 +60,7 @@ and test generation. A failed request still increments `numRequests` when its to
 unavailable. Reusing a complete cached response adds neither requests nor newly consumed tokens;
 provider-side prompt caching during an actual model request still counts that request.
 
-`promptfoo redteam run` attributes generation tokens to the evaluation only when it generated the
+`artef redteam run` attributes generation tokens to the evaluation only when it generated the
 suite during that run. Running an existing generated suite does not charge its historical
 generation usage again. `metadata.generationAccounting` is reserved for internally persisted
 current-run accounting and should not be added to reusable configurations.
@@ -113,11 +113,11 @@ redteam:
 | `maxConcurrency`             | `number`                  | Maximum number of concurrent plugin generation requests                                                 | 4                                                |
 | `delay`                      | `number`                  | Delay in milliseconds between plugin generation requests; forces concurrency to 1 when greater than 0   | 0                                                |
 
-For multi-input testing, define `inputs` on the target/provider rather than under `redteam`. Promptfoo automatically stores the combined payload in `__prompt` for internal use, so you should not set `injectVar` or create a manual `prompt` field just to support multi-input configs. See [Multi-Input Red Teaming](/docs/red-team/multi-input/) for end-to-end examples.
+For multi-input testing, define `inputs` on the target/provider rather than under `redteam`. artef automatically stores the combined payload in `__prompt` for internal use, so you should not set `injectVar` or create a manual `prompt` field just to support multi-input configs. See [Multi-Input Red Teaming](/docs/red-team/multi-input/) for end-to-end examples.
 
 ### Framework Filtering
 
-Use the optional `redteam.frameworks` array when you only care about a subset of the built-in compliance programs. This filters which frameworks appear in the generated report, `promptfoo redteam run`, and future automation surfaces.
+Use the optional `redteam.frameworks` array when you only care about a subset of the built-in compliance programs. This filters which frameworks appear in the generated report, `artef redteam run`, and future automation surfaces.
 
 Examples of allowed framework IDs:
 
@@ -138,7 +138,7 @@ redteam:
     - nist:ai:measure
 ```
 
-If the field is omitted, Promptfoo will continue to include every supported framework.
+If the field is omitted, artef will continue to include every supported framework.
 
 ### Plugin Configuration
 
@@ -162,7 +162,7 @@ plugins:
 
 You can customize how test outputs are graded using two complementary configuration options.
 
-`graderExamples` can be configured globally at `redteam.graderExamples` or per plugin at `plugins[].config.graderExamples`. When both are set, Promptfoo merges them and applies global examples first.
+`graderExamples` can be configured globally at `redteam.graderExamples` or per plugin at `plugins[].config.graderExamples`. When both are set, artef merges them and applies global examples first.
 
 ```yaml
 redteam:
@@ -346,7 +346,7 @@ testGenerationInstructions: |
 
 ### Message Length Limits
 
-Use `redteam.maxCharsPerMessage` to cap each generated user message before it is sent to your target. Promptfoo adds this limit to generation prompts, retries plugin outputs that exceed it, drops oversized strategy outputs, and fails a red team eval before calling the target if the rendered user message is still too long.
+Use `redteam.maxCharsPerMessage` to cap each generated user message before it is sent to your target. artef adds this limit to generation prompts, retries plugin outputs that exceed it, drops oversized strategy outputs, and fails a red team eval before calling the target if the rendered user message is still too long.
 
 ```yaml
 redteam:
@@ -377,7 +377,7 @@ If `numTests` is not specified for a plugin, it will use the global `numTests` v
 
 #### Available Plugins
 
-To see the list of available plugins on the command line, run `promptfoo redteam plugins`.
+To see the list of available plugins on the command line, run `artef redteam plugins`.
 
 #### Criminal Plugins
 
@@ -424,7 +424,7 @@ plugins:
 
 ### Standards
 
-Promptfoo supports several preset configurations based on common security frameworks and standards.
+artef supports several preset configurations based on common security frameworks and standards.
 
 #### NIST AI Risk Management Framework (AI RMF)
 
@@ -561,7 +561,7 @@ You can also add named policies in the Web UI from **Plugins > Custom Policies**
 To see a complete list of available plugins, run:
 
 ```bash
-promptfoo redteam plugins
+artef redteam plugins
 ```
 
 ### Custom Plugins
@@ -628,7 +628,7 @@ The severity levels affect:
 - Issue prioritization in vulnerability tables
 - Dashboard statistics and metrics
 
-See [source code](https://github.com/promptfoo/promptfoo/blob/main/src/redteam/constants/metadata.ts#L504) for a list of default severity levels.
+See [source code](https://github.com/artef/artef/blob/main/src/redteam/constants/metadata.ts#L504) for a list of default severity levels.
 
 ### Strategies
 
@@ -663,7 +663,7 @@ strategies:
 
 Custom strategies are JavaScript files that implement a `action` function. You can use them to apply transformations to the base test cases.
 
-See the [example custom strategy](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-custom-strategy) for more information.
+See the [example custom strategy](https://github.com/artef/artef/tree/main/examples/redteam-custom-strategy) for more information.
 
 ```yaml
 strategies:
@@ -738,13 +738,13 @@ redteam:
     - rbac
 ```
 
-When contexts are defined, promptfoo generates tests for each context separately. A non-empty context `purpose` overrides the root `redteam.purpose` for both attack generation and grading. If a context `purpose` is omitted or blank, it inherits the root purpose instead.
+When contexts are defined, artef generates tests for each context separately. A non-empty context `purpose` overrides the root `redteam.purpose` for both attack generation and grading. If a context `purpose` is omitted or blank, it inherits the root purpose instead.
 
 The `vars` are merged into each test case and passed to your provider, allowing your [custom provider script](/docs/providers/custom-script/) to set up the appropriate test environment (e.g., loading a specific session, setting user permissions).
 
 #### Purpose Templates
 
-Root and context purposes support the same Nunjucks-style string templating used elsewhere in Promptfoo. Root purpose templates render with `defaultTest.vars`. Context purpose templates render with `defaultTest.vars` plus that context's `vars`, with context vars taking precedence when keys overlap.
+Root and context purposes support the same Nunjucks-style string templating used elsewhere in artef. Root purpose templates render with `defaultTest.vars`. Context purpose templates render with `defaultTest.vars` plus that context's `vars`, with context vars taking precedence when keys overlap.
 
 ```yaml
 defaultTest:
@@ -769,7 +769,7 @@ The `alice` context renders its own purpose as `You are testing SupportDesk as u
 
 #### Loading File Content in Vars
 
-Use the `file://` prefix to load file contents. Paths are resolved relative to your config file's directory, regardless of where you run `promptfoo` from:
+Use the `file://` prefix to load file contents. Paths are resolved relative to your config file's directory, regardless of where you run `artef` from:
 
 ```yaml
 redteam:
@@ -838,11 +838,11 @@ Your choice of attack provider is extremely important for the quality of your re
 
 ### How attacks are generated
 
-By default, Promptfoo uses your local OpenAI key for redteam attack generation and grading. If you do not have a key, Promptfoo will automatically proxy requests to our API for generation and grading. The eval of your target model is always performed locally.
+By default, artef uses your local OpenAI key for redteam attack generation and grading. If you do not have a key, artef will automatically proxy requests to our API for generation and grading. The eval of your target model is always performed locally.
 
 The `redteam.provider` configuration controls both attack generation and grading. For details on configuring grading behavior, see [Configuring the Grader](/docs/red-team/troubleshooting/grading-results/).
 
-You can force 100% local generation by setting the `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION` environment variable to `true`. Note that the quality of local generation depends greatly on the model that you configure, and is generally low for most models.
+You can force 100% local generation by setting the `artef_DISABLE_REDTEAM_REMOTE_GENERATION` environment variable to `true`. Note that the quality of local generation depends greatly on the model that you configure, and is generally low for most models.
 
 :::note
 Custom plugins and strategies require an OpenAI key or your own provider configuration.
@@ -853,7 +853,7 @@ Custom plugins and strategies require an OpenAI key or your own provider configu
 To use the `openai:chat:gpt-5-mini` model, you can override the provider on the command line:
 
 ```sh
-npx promptfoo@latest redteam generate --provider openai:chat:gpt-5-mini
+npx artef@latest redteam generate --provider openai:chat:gpt-5-mini
 ```
 
 Or in the config:
@@ -891,21 +891,21 @@ Some providers such as Anthropic may disable your account for generating harmful
 
 ### Remote Generation
 
-By default, promptfoo uses a remote service for generating adversarial inputs. This service is optimized for high-quality, diverse test cases. However, you can disable this feature and fall back to local generation by setting the `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION` environment variable to `true`.
+By default, artef uses a remote service for generating adversarial inputs. This service is optimized for high-quality, diverse test cases. However, you can disable this feature and fall back to local generation by setting the `artef_DISABLE_REDTEAM_REMOTE_GENERATION` environment variable to `true`.
 
 :::info Cloud Users
-If you're logged into Promptfoo Cloud, remote generation is preferred by default to ensure you benefit from cloud features and the latest improvements. You can still opt-out by setting `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true`.
+If you're logged into artef Cloud, remote generation is preferred by default to ensure you benefit from cloud features and the latest improvements. You can still opt-out by setting `artef_DISABLE_REDTEAM_REMOTE_GENERATION=true`.
 :::
 
 :::warning
 Disabling remote generation may result in lower quality adversarial inputs. For best results, we recommend using the default remote generation service.
 :::
 
-If you need to use a custom provider for generation, you can still benefit from our remote service by leaving `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION` set to `false` (the default). This allows you to use a custom provider for your target model while still leveraging our optimized generation service for creating adversarial inputs.
+If you need to use a custom provider for generation, you can still benefit from our remote service by leaving `artef_DISABLE_REDTEAM_REMOTE_GENERATION` set to `false` (the default). This allows you to use a custom provider for your target model while still leveraging our optimized generation service for creating adversarial inputs.
 
 ### Custom Providers/Targets
 
-Promptfoo is very flexible and allows you to configure almost any code or API, with dozens of [providers](/docs/providers) supported out of the box.
+artef is very flexible and allows you to configure almost any code or API, with dozens of [providers](/docs/providers) supported out of the box.
 
 - **Public APIs**: See setup instructions for [OpenAI](/docs/providers/openai), [Azure](/docs/providers/azure), [Anthropic](/docs/providers/anthropic), [Mistral](/docs/providers/mistral), [HuggingFace](/docs/providers/huggingface), [AWS Bedrock](/docs/providers/aws-bedrock), and many [more](/docs/providers).
 - **Custom**: In some cases your target application may require customized setups. See how to call your existing [Javascript](/docs/providers/custom-api), [Python](/docs/providers/python), [any other executable](/docs/providers/custom-script) or [API endpoint](/docs/providers/http).
@@ -937,7 +937,7 @@ Content-Type: application/json
 {"prompt": "Tell me a joke"}
 ```
 
-Then, in your Promptfoo config, you can reference it like this:
+Then, in your artef config, you can reference it like this:
 
 ```yaml
 targets:
@@ -1100,10 +1100,10 @@ Configuration values can be set in multiple ways, with the following precedence 
 1. **Command-line flags** - Override all other settings
 
    ```bash
-   promptfoo redteam run --force --max-concurrency 5
+   artef redteam run --force --max-concurrency 5
    ```
 
-2. **Configuration file** (`promptfooconfig.yaml`) - Base configuration with env overrides
+2. **Configuration file** (`artefconfig.yaml`) - Base configuration with env overrides
 
    ```yaml
    redteam:
@@ -1116,13 +1116,13 @@ Configuration values can be set in multiple ways, with the following precedence 
 3. **Environment variables** - System-level settings
 
    ```bash
-   export PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true
+   export artef_DISABLE_REDTEAM_REMOTE_GENERATION=true
    export OPENAI_API_KEY=your-key-here
    ```
 
 ## Best Practices
 
-1. Start with a configuration created by `promptfoo redteam init`
+1. Start with a configuration created by `artef redteam init`
 2. Remove irrelevant plugins for your use case
 3. Adjust `numTests` for individual plugins based on importance
 4. Run a red team eval and generate additional tests as needed
@@ -1170,7 +1170,7 @@ redteam:
 
 ## Adding custom tests
 
-In some cases, you may already have a set of tests that you want to use in addition to the ones that Promptfoo generates.
+In some cases, you may already have a set of tests that you want to use in addition to the ones that artef generates.
 
 There are two approaches:
 
@@ -1189,11 +1189,11 @@ The `redteam.yaml` file contains a metadata section with a configHash value at t
 
 ### Loading custom tests from CSV
 
-Promptfoo supports loading tests from CSV as well as Google Sheets. See [CSV loading](/docs/configuration/guide/#loading-tests-from-csv) and [Google Sheets](/docs/integrations/google-sheets/) for more info.
+artef supports loading tests from CSV as well as Google Sheets. See [CSV loading](/docs/configuration/guide/#loading-tests-from-csv) and [Google Sheets](/docs/integrations/google-sheets/) for more info.
 
 ### Loading tests from HuggingFace datasets
 
-Promptfoo can load test cases directly from [HuggingFace datasets](https://huggingface.co/docs/datasets). This is useful when you want to use existing datasets for testing or red teaming. For example:
+artef can load test cases directly from [HuggingFace datasets](https://huggingface.co/docs/datasets). This is useful when you want to use existing datasets for testing or red teaming. For example:
 
 ```yaml
 tests: huggingface://datasets/fka/awesome-chatgpt-prompts

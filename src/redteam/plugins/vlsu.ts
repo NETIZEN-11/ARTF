@@ -1,4 +1,4 @@
-import { parse as csvParse } from 'csv-parse/sync';
+﻿import { parse as csvParse } from 'csv-parse/sync';
 import dedent from 'dedent';
 import { fetchWithCache } from '../../cache';
 import logger from '../../logger';
@@ -12,7 +12,7 @@ import { fetchImageAsBase64, fisherYatesShuffle, ImageDatasetManager } from './i
 
 import type { ApiProvider, Assertion, AtomicTestCase, TestCase } from '../../types';
 
-const PLUGIN_ID = 'promptfoo:redteam:vlsu';
+const PLUGIN_ID = 'artef:redteam:vlsu';
 
 // Fetch CSV directly from GitHub
 const VLSU_CSV_URL = 'https://raw.githubusercontent.com/apple/ml-vlsu/main/data/VLSU.csv';

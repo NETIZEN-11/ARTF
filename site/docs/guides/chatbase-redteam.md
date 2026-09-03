@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Red Teaming a Chatbase Chatbot
 description: Learn how to test and secure Chatbase RAG chatbots against multi-turn conversation attacks with automated red teaming techniques and security benchmarks
 ---
@@ -19,14 +19,14 @@ This makes single-turn systems inherently more secure since attackers can't mani
 
 Modern conversational AI, including Chatbase, maintains context throughout the interaction. When users ask follow-up questions, the system understands the context from previous messages, enabling natural dialogue.
 
-In Promptfoo, this state is managed through a `conversationId` that links messages together. While this enables a better user experience, it introduces security challenges. Attackers might try to manipulate the conversation context across multiple messages, either building false premises or attempting to extract sensitive information.
+In artef, this state is managed through a `conversationId` that links messages together. While this enables a better user experience, it introduces security challenges. Attackers might try to manipulate the conversation context across multiple messages, either building false premises or attempting to extract sensitive information.
 
 ## Initial Setup
 
 ### Prerequisites
 
 - Node.js `>=22.22.0`
-- promptfoo CLI (`npm install -g promptfoo`)
+- artef CLI (`npm install -g artef`)
 - Chatbase API credentials:
   - API Bearer Token (from your Chatbase dashboard)
   - Chatbot ID (found in your bot's settings)
@@ -36,7 +36,7 @@ In Promptfoo, this state is managed through a `conversationId` that links messag
 1. Initialize the red team testing environment:
 
 ```bash
-promptfoo redteam init
+artef redteam init
 ```
 
 2. Configure your Chatbase target in the setup UI. Your configuration file should look similar to this:
@@ -77,7 +77,7 @@ defaultTest:
 
 ### Strategy Configuration
 
-Enable multi-turn testing strategies in your `promptfooconfig.yaml`:
+Enable multi-turn testing strategies in your `artefconfig.yaml`:
 
 ```yaml
 strategies:
@@ -98,13 +98,13 @@ Run your tests with these commands:
 
 ```bash
 # Generate test cases
-promptfoo redteam generate
+artef redteam generate
 
 # Execute evaluation
-promptfoo redteam eval
+artef redteam eval
 
 # View detailed results in the web UI
-promptfoo view
+artef view
 ```
 
 ## Common issues and solutions
@@ -117,5 +117,5 @@ If you encounter issues:
 ## Additional Resources
 
 - [Chatbase API Documentation](https://www.chatbase.co/docs)
-- [Promptfoo HTTP Provider Guide](/docs/providers/http)
+- [artef HTTP Provider Guide](/docs/providers/http)
 - [Multi-turn Testing Strategies](/docs/red-team/strategies/multi-turn)

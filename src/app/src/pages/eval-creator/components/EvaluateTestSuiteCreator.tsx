@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 import { PageContainer, PageHeader } from '@app/components/layout';
 import { Button } from '@app/components/ui/button';
@@ -16,7 +16,7 @@ import { useToast } from '@app/hooks/useToast';
 import { cn } from '@app/lib/utils';
 import { useStore } from '@app/stores/evalConfig';
 import { callApi } from '@app/utils/api';
-import { loadYaml } from '@promptfoo/util/yamlLoad';
+import { loadYaml } from '@artef/util/yamlLoad';
 import { Check, Upload } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ConfigureEnvButton from './ConfigureEnvButton';
@@ -28,7 +28,7 @@ import { StepSection } from './StepSection';
 import { countTests, normalizePrompts, normalizeProviders } from './setupReadiness';
 import TestCasesSection from './TestCasesSection';
 import YamlEditor from './YamlEditor';
-import type { UnifiedConfig } from '@promptfoo/types';
+import type { UnifiedConfig } from '@artef/types';
 
 type SetupStepId = 1 | 2 | 3 | 4;
 type EditorTab = 'ui' | 'yaml';

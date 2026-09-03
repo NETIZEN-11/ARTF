@@ -1,6 +1,6 @@
----
+﻿---
 sidebar_label: 'GPT vs Claude vs Gemini'
-description: 'Compare GPT, Claude, and Gemini performance on your own data with promptfoo. Run side-by-side evaluations of cost, latency, and quality to find the best model for your use case.'
+description: 'Compare GPT, Claude, and Gemini performance on your own data with artef. Run side-by-side evaluations of cost, latency, and quality to find the best model for your use case.'
 ---
 
 # GPT vs Claude vs Gemini: Benchmark on Your Own Data
@@ -9,7 +9,7 @@ When evaluating the performance of LLMs, generic benchmarks will only get you so
 
 So, the sensible thing to do is run an eval on your own data.
 
-This guide will walk you through setting up a comparison between OpenAI's GPT-5.4, Anthropic's Claude Sonnet 4.6, and Google's Gemini 3.1 Pro Preview using `promptfoo`. The end result is a side-by-side evaluation of how these models perform on custom tasks:
+This guide will walk you through setting up a comparison between OpenAI's GPT-5.4, Anthropic's Claude Sonnet 4.6, and Google's Gemini 3.1 Pro Preview using `artef`. The end result is a side-by-side evaluation of how these models perform on custom tasks:
 
 <div style={{textAlign: 'center'}}><img src="/img/docs/gpt-vs-claude-vs-gemini-overview.jpg" alt="LLM model comparison" style={{maxWidth: '80%'}} /></div>
 
@@ -17,7 +17,7 @@ This guide will walk you through setting up a comparison between OpenAI's GPT-5.
 
 Before getting started, make sure you have:
 
-- The `promptfoo` CLI installed ([installation instructions](/docs/getting-started))
+- The `artef` CLI installed ([installation instructions](/docs/getting-started))
 - API keys for the providers you want to test:
   - `OPENAI_API_KEY` for OpenAI ([configuration](/docs/providers/openai))
   - `ANTHROPIC_API_KEY` for Anthropic ([configuration](/docs/providers/anthropic))
@@ -28,11 +28,11 @@ Before getting started, make sure you have:
 Create a new directory for your comparison project:
 
 ```sh
-npx promptfoo@latest init --example compare-gpt-vs-claude-vs-gemini
+npx artef@latest init --example compare-gpt-vs-claude-vs-gemini
 cd compare-gpt-vs-claude-vs-gemini
 ```
 
-Open the `promptfooconfig.yaml` file. This is where you'll configure the models to test, the prompts to use, and the test cases to run.
+Open the `artefconfig.yaml` file. This is where you'll configure the models to test, the prompts to use, and the test cases to run.
 
 ### Configure the Models
 
@@ -144,7 +144,7 @@ tests:
 The `assert` blocks allow you to automatically check the model outputs for expected content. This is useful for tracking performance over time as you refine your prompts.
 
 :::tip
-`promptfoo` supports a very wide variety of assertions, ranging from basic asserts to model-graded to assertions specialized for RAG applications.
+`artef` supports a very wide variety of assertions, ranging from basic asserts to model-graded to assertions specialized for RAG applications.
 
 [Learn more here](/docs/configuration/expected-outputs)
 :::
@@ -154,15 +154,15 @@ The `assert` blocks allow you to automatically check the model outputs for expec
 With your configuration complete, you can kick off the evaluation:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This will run each test case against all configured models and record the results.
 
-To view the results, start up the `promptfoo` viewer:
+To view the results, start up the `artef` viewer:
 
 ```sh
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 This will display a comparison view showing how each model performed on each test case:
@@ -172,7 +172,7 @@ This will display a comparison view showing how each model performed on each tes
 You can also output the raw results data to a file:
 
 ```
-npx promptfoo@latest eval -o results.json
+npx artef@latest eval -o results.json
 ```
 
 ## Step 4: Analyze the Results
@@ -269,9 +269,9 @@ You can use `llm-rubric` to run free-form assertions. For example, here we use t
 
 ## Testing Vision and Multimodal
 
-If you're working on an application that involves classifying images, you can set up a comparison using promptfoo. Here's an example of a binary image classification task:
+If you're working on an application that involves classifying images, you can set up a comparison using artef. Here's an example of a binary image classification task:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - openai:chat:gpt-5.4
   - anthropic:messages:claude-sonnet-4-6
@@ -299,7 +299,7 @@ tests:
         value: 'dog'
 ```
 
-Run the comparison with the `promptfoo eval` command to see how each model performs on your image classification task. While larger models may provide higher accuracy, smaller models' lower cost makes them an attractive option for applications where cost-efficiency is crucial.
+Run the comparison with the `artef eval` command to see how each model performs on your image classification task. While larger models may provide higher accuracy, smaller models' lower cost makes them an attractive option for applications where cost-efficiency is crucial.
 
 The tradeoff between cost, latency, and accuracy is going to be tailored for each application. That's why it's important to run your own evaluation.
 
@@ -307,8 +307,8 @@ The tradeoff between cost, latency, and accuracy is going to be tailored for eac
 
 By running this type of targeted evaluation, you can gain valuable insights into how these models are likely to perform on your application's real-world data and tasks.
 
-`promptfoo` makes it easy to set up a repeatable evaluation pipeline so you can test models as they evolve and measure the impact of model and prompt changes.
+`artef` makes it easy to set up a repeatable evaluation pipeline so you can test models as they evolve and measure the impact of model and prompt changes.
 
 **The key here is that your results may vary based on your LLM needs, so we encourage you to enter your own test cases and choose the model that is best for you.**
 
-To learn more about `promptfoo`, check out the [getting started guide](/docs/getting-started) and [configuration reference](/docs/configuration/guide).
+To learn more about `artef`, check out the [getting started guide](/docs/getting-started) and [configuration reference](/docs/configuration/guide).

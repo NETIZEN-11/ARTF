@@ -1,6 +1,6 @@
-# xai (xAI)
+﻿# xai (xAI)
 
-Examples for using promptfoo with [xAI's Grok](https://x.ai/) models.
+Examples for using artef with [xAI's Grok](https://x.ai/) models.
 
 ## Examples
 

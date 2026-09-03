@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Test 11.2.1: JSON chat message parsing
 # Bug #6568: Incorrect parsing of JSON vs non-JSON chat messages in 0.120.1
 description: 'Regression test - JSON chat message parsing'

@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -47,8 +47,8 @@ describe('nodeEvaluatorRuntime', () => {
     ({ disabled, processValue, expected }) => {
       const previousConfig = cliState.config;
       const restoreEnvironment = mockProcessEnv({
-        PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS: disabled ? 'true' : 'false',
-        PROMPTFOO_SELF_HOSTED: 'false',
+        artef_DISABLE_TEMPLATE_ENV_VARS: disabled ? 'true' : 'false',
+        artef_SELF_HOSTED: 'false',
         TEMPO_TOKEN: processValue,
       });
       cliState.config = {
@@ -81,7 +81,7 @@ describe('nodeEvaluatorRuntime', () => {
   );
 
   it('creates and closes JSONL writers for JSONL output paths only', async () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-evaluator-runtime-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-evaluator-runtime-'));
     tempDirs.push(tempDir);
     const jsonlPath = path.join(tempDir, 'results.jsonl');
     const uppercaseJsonlPath = path.join(tempDir, 'uppercase.JSONL');
@@ -102,7 +102,7 @@ describe('nodeEvaluatorRuntime', () => {
   });
 
   it('truncates by default and appends when resuming', async () => {
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-evaluator-runtime-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-evaluator-runtime-'));
     tempDirs.push(tempDir);
     const jsonlPath = path.join(tempDir, 'results.jsonl');
 

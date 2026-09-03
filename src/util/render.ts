@@ -1,4 +1,4 @@
-import { getEnvBool } from '../envars';
+﻿import { getEnvBool } from '../envars';
 import logger from '../logger';
 import { getNunjucksEngine } from './templates';
 
@@ -33,7 +33,7 @@ export function renderEnvOnlyInObject<T>(
   envOverrides?: EnvOverrides,
   replaceBase?: boolean,
 ): T {
-  if (getEnvBool('PROMPTFOO_DISABLE_TEMPLATING')) {
+  if (getEnvBool('artef_DISABLE_TEMPLATING')) {
     return obj;
   }
 
@@ -116,7 +116,7 @@ export function renderEnvOnlyInObject<T>(
 
 export function renderVarsInObject<T>(obj: T, vars?: Record<string, VarValue>): T {
   // Renders nunjucks template strings with context variables
-  if (!vars || getEnvBool('PROMPTFOO_DISABLE_TEMPLATING')) {
+  if (!vars || getEnvBool('artef_DISABLE_TEMPLATING')) {
     return obj;
   }
   if (typeof obj === 'string') {

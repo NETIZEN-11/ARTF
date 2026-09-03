@@ -1,6 +1,6 @@
----
+﻿---
 title: 'Harder, Better, Prompter, Stronger: AI system prompt hardening'
-description: 'Learn techniques for hardening AI prompts against injection attacks and security vulnerabilities with Promptfoo examples'
+description: 'Learn techniques for hardening AI prompts against injection attacks and security vulnerabilities with artef examples'
 image: /img/blog/harder-better-prompter-stronger/header.jpg
 keywords:
   [
@@ -15,7 +15,7 @@ keywords:
     instruction shielding,
     syntax reinforcement,
     layered prompting,
-    Promptfoo evaluations,
+    artef evaluations,
   ]
 date: 2025-07-01
 authors: [tabs]
@@ -84,10 +84,10 @@ Ultimately, we should have a pipeline for our prompts consisting of tools. Most 
 
 Imagine we've started building our prompt pipeline. We're excited to send out our app into the wild. It's a tad uncomfortable because we don't have anything to confirm our system prompt's strength - so it's time for evaluations (evals).
 
-We can do this with Promptfoo. It's open source, so you can get started yourself (I work here—what a coincidence). I assure you that I have not accidentally uploaded any API keys, so you'd need your own.
+We can do this with artef. It's open source, so you can get started yourself (I work here—what a coincidence). I assure you that I have not accidentally uploaded any API keys, so you'd need your own.
 
 <!-- prettier-ignore-start -->
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'You are a {{role}} at Aperture Science. {{input}}'
 
@@ -118,16 +118,16 @@ There are four main parts to the file:
 - `defaultTest` - Default test properties applied to all tests.
 - `tests` - Individual tests. Note the `{{variables}}` from the prompts showing up under vars.
 
-There's a handy table for [assertion types](https://www.promptfoo.dev/docs/configuration/expected-outputs/#assertion-types) if you're interested.
+There's a handy table for [assertion types](https://www.artef.dev/docs/configuration/expected-outputs/#assertion-types) if you're interested.
 
 For our demonstration, we'll be skipping the defaultTest section, which is optional. Assertions are also technically optional, but we'll be using them to demonstrate the effects of system prompt hardening.
 
 To run an eval:
 
-1. Install Promptfoo: `npm install -g promptfoo`
-2. Add the basic example: `promptfoo init --example getting-started`
-3. Run the eval: `npx promptfoo@latest eval`
-4. (Optional) Open the viewer in the browser: `npx promptfoo@latest viewer`
+1. Install artef: `npm install -g artef`
+2. Add the basic example: `artef init --example getting-started`
+3. Run the eval: `npx artef@latest eval`
+4. (Optional) Open the viewer in the browser: `npx artef@latest viewer`
 
 The default view looks like this:
 
@@ -355,7 +355,7 @@ If you're wondering if this would've been enough to stop a rogue AI, you'd be co
 
 </div>
 
-The Promptfoo files used in this article are available on [GitHub](https://github.com/promptfoo/promptfoo) should you want to run them yourself.
+The artef files used in this article are available on [GitHub](https://github.com/artef/artef) should you want to run them yourself.
 
 And that's it! May you successfully channel David Goggins while developing your system prompts.
 

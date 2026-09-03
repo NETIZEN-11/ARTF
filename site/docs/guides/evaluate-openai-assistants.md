@@ -1,4 +1,4 @@
----
+﻿---
 title: How to evaluate OpenAI Assistants
 sidebar_label: Evaluating OpenAI Assistants
 description: Compare OpenAI Assistant configurations and measure performance across different prompts, models, and tools to optimize your AI application's accuracy and reliability
@@ -17,7 +17,7 @@ existing integrations.
 
 [Test-driven development](/docs/intro#workflow-and-philosophy) allows you to compare prompts, models, and tools while measuring improvement and avoiding unexplained regressions. It's an example of [systematic iteration vs. trial and error](https://ianww.com/blog/2023/05/21/prompt-engineering-framework).
 
-This guide walks you through using promptfoo to select the best prompt, model, and tools using OpenAI's Assistants API. It assumes that you've already [set up](/docs/getting-started) promptfoo.
+This guide walks you through using artef to select the best prompt, model, and tools using OpenAI's Assistants API. It assumes that you've already [set up](/docs/getting-started) artef.
 
 ## Step 1: Create an assistant
 
@@ -35,7 +35,7 @@ An eval config has a few key components:
 - `providers`: The assistant(s) and/or LLM APIs you want to test
 - `tests`: Individual test cases to try
 
-Let's set up a basic `promptfooconfig.yaml`:
+Let's set up a basic `artefconfig.yaml`:
 
 ```yaml
 prompts:
@@ -56,7 +56,7 @@ tests:
 Now that we've set up the config, run the eval on your command line:
 
 ```
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 This will produce a simple view of assistant outputs. It records the conversation, as well as code interpreter, function, and file-search inputs and outputs:
@@ -67,7 +67,7 @@ This is a basic view, but now we're ready to actually get serious with our eval.
 
 ## Comparing multiple assistants
 
-To compare different assistants, reference them in the `providers` section of your `promptfooconfig.yaml`. For example:
+To compare different assistants, reference them in the `providers` section of your `artefconfig.yaml`. For example:
 
 ```yaml
 providers:
@@ -128,9 +128,9 @@ tests:
 
 In this example, the `contains` assertion checks if the assistant's response contains the word 'banana'. The `similar` assertion checks if the assistant's response is semantically similar to 'I love bananas!' with a cosine similarity threshold of 0.6.
 
-There are many different [assertions](https://promptfoo.dev/docs/configuration/expected-outputs/) to consider, ranging from simple metrics (such as string matching) to complex metrics (such as model-graded evaluations). I strongly encourage you to set up assertions that are tailored to your use case.
+There are many different [assertions](https://artef.dev/docs/configuration/expected-outputs/) to consider, ranging from simple metrics (such as string matching) to complex metrics (such as model-graded evaluations). I strongly encourage you to set up assertions that are tailored to your use case.
 
-Based on these assertions, promptfoo will automatically score the different versions of your assistants, so that you can pick the top performing one.
+Based on these assertions, artef will automatically score the different versions of your assistants, so that you can pick the top performing one.
 
 ## Next steps
 

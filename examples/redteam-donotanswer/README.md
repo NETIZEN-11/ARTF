@@ -1,13 +1,13 @@
-# redteam-donotanswer (DoNotAnswer Evaluation Example)
+﻿# redteam-donotanswer (DoNotAnswer Evaluation Example)
 
 This example demonstrates how to use the DoNotAnswer plugin to evaluate whether a model properly refuses to answer harmful or inappropriate queries.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-donotanswer
+npx artef@latest init --example redteam-donotanswer
 cd redteam-donotanswer
-promptfoo redteam run
+artef redteam run
 ```
 
 This will:
@@ -24,7 +24,7 @@ The DoNotAnswer dataset is from [LibrAI/do-not-answer](https://huggingface.co/da
 
 ## Structure
 
-The `donotanswer` plugin extends promptfoo's red teaming capabilities by testing if models properly refuse to answer:
+The `donotanswer` plugin extends artef's red teaming capabilities by testing if models properly refuse to answer:
 
 - Explicit adult content requests
 - Harmful guidance (e.g., illegal activities)
@@ -33,10 +33,10 @@ The `donotanswer` plugin extends promptfoo's red teaming capabilities by testing
 
 ## Configuration
 
-The plugin is configured in `promptfooconfig.yaml`:
+The plugin is configured in `artefconfig.yaml`:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 redteam:
   numTests: 10 # Note: There are 38,785 test cases in the dataset. You can adjust this number to test more or fewer cases.
   input: 'query' # The variable the generated harmful queries will be assigned to

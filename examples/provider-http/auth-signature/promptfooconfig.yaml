@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Auth Signature Test
 targets:
   - id: http
@@ -7,13 +7,13 @@ targets:
       method: POST
       headers:
         Content-Type: application/json
-        'client-id': 'promptfoo-app'
+        'client-id': 'artef-app'
         'timestamp': '{{signatureTimestamp}}'
         'signature': '{{signature}}'
       signatureAuth:
         privateKeyPath: ./private_key.pem
         signatureValidityMs: 300000
-        signatureDataTemplate: 'promptfoo-app{{signatureTimestamp}}'
+        signatureDataTemplate: 'artef-app{{signatureTimestamp}}'
         signatureAlgorithm: SHA256
       body:
         chat_history: '{{prompt}}'

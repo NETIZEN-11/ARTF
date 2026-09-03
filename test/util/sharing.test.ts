@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { shouldShareResults } from '../../src/util/sharing';
 
 vi.mock('../../src/envars', () => ({
@@ -35,7 +35,7 @@ describe('shouldShareResults', () => {
       expect(shouldShareResults({ cliShare: false })).toBe(false);
     });
 
-    it('should return false when PROMPTFOO_DISABLE_SHARING env var is set', () => {
+    it('should return false when artef_DISABLE_SHARING env var is set', () => {
       vi.mocked(getEnvBool).mockReturnValue(true);
       expect(shouldShareResults({})).toBe(false);
     });

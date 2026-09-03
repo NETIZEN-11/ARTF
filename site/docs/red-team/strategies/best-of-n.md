@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Best-of-N
 title: Best-of-N Jailbreaking Strategy
 description: Execute black-box jailbreaking by testing multiple prompt variations simultaneously to maximize bypass success probability
@@ -14,9 +14,9 @@ Introduced by [Hughes et al. (2024)](https://arxiv.org/abs/2412.03556), it achie
 While this technique achieves high attack success rates - 89% on GPT-4o and 78% on Claude 3.5 Sonnet - it generally requires a very large number of samples to achieve this.
 :::
 
-Use it like so in your `promptfooconfig.yaml`:
+Use it like so in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: best-of-n
     config:
@@ -103,5 +103,5 @@ The attack success rate follows a power-law scaling with the number of samples, 
 - [GOAT Strategy](goat.md)
 - [Iterative Jailbreaks](iterative.md)
 - [Multi-turn Jailbreaks](multi-turn.md)
-- [Best of N configuration example](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-bestOfN-strategy)
+- [Best of N configuration example](https://github.com/artef/artef/tree/main/examples/redteam-bestOfN-strategy)
 - [Red Team Strategies](/docs/red-team/strategies/) - Full strategy catalog

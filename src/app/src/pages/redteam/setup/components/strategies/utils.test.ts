@@ -1,11 +1,11 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   getEstimatedDuration,
   getEstimatedProbes,
   getStrategyId,
   isStrategyConfigured,
 } from './utils';
-import type { RedteamStrategy } from '@promptfoo/redteam/types';
+import type { RedteamStrategy } from '@artef/redteam/types';
 
 import type { Config } from '../../types';
 

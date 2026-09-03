@@ -1,6 +1,6 @@
----
+﻿---
 title: AWS Bedrock Agents
-description: Configure and test Amazon Bedrock Agents in promptfoo, including setup, authentication, session management, knowledge bases, and tracing options.
+description: Configure and test Amazon Bedrock Agents in artef, including setup, authentication, session management, knowledge bases, and tracing options.
 sidebar_label: AWS Bedrock Agents
 ---
 
@@ -247,7 +247,7 @@ tests:
 
 :::note
 
-`enableTrace` exposes Amazon Bedrock's native agent trace in `context.providerResponse.metadata.trace`. That is separate from promptfoo's OpenTelemetry `context.trace`. Use JavaScript assertions against `metadata.trace` for Bedrock-specific action group details, and use [promptfoo tracing](/docs/tracing/) plus trajectory assertions when you want OTEL-based workflow checks.
+`enableTrace` exposes Amazon Bedrock's native agent trace in `context.providerResponse.metadata.trace`. That is separate from artef's OpenTelemetry `context.trace`. Use JavaScript assertions against `metadata.trace` for Bedrock-specific action group details, and use [artef tracing](/docs/tracing/) plus trajectory assertions when you want OTEL-based workflow checks.
 
 :::
 
@@ -306,8 +306,8 @@ The provider returns responses with the following structure:
 
 ### Basic Agent Testing
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Test customer support agent'
 
 providers:
@@ -409,8 +409,8 @@ The provider includes specific error messages for common issues:
 ## Performance Optimization
 
 1. **Use caching** for identical queries. Responses are cached by default — there is no
-   per-provider flag. Disable caching with `promptfoo eval --no-cache` or
-   `PROMPTFOO_CACHE_ENABLED=false`.
+   per-provider flag. Disable caching with `artef eval --no-cache` or
+   `artef_CACHE_ENABLED=false`.
 
 2. **Optimize Knowledge Base Queries**:
 

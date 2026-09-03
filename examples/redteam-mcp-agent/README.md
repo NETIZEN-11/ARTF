@@ -1,11 +1,11 @@
-# redteam-mcp-agent (Red Team MCP Agent)
+﻿# redteam-mcp-agent (Red Team MCP Agent)
 
 This example demonstrates how to red team test AI agents that integrate with Model Context Protocol (MCP) servers. It creates a custom OpenAI-based ReAct agent provider that can interact with MCP servers, allowing you to test agent behavior when given access to potentially malicious tools.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-mcp-agent
+npx artef@latest init --example redteam-mcp-agent
 cd redteam-mcp-agent
 ```
 
@@ -54,7 +54,7 @@ export OPENAI_API_KEY=your-openai-api-key-here
 3. **Run the red team tests:**
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 ## Project Structure
@@ -68,7 +68,7 @@ redteam-mcp-agent/
 │   └── mcp_server/               # Example MCP server
 │       ├── index.js              # Server entry point
 │       └── tools/                # Tool implementations
-├── promptfooconfig.yaml          # Main configuration
+├── artefconfig.yaml          # Main configuration
 ├── redteam.yaml                  # Generated red team test cases
 ├── server.py                     # Python MCP server example
 └── package.json                  # Node.js dependencies
@@ -76,7 +76,7 @@ redteam-mcp-agent/
 
 ## Configuration
 
-### promptfooconfig.yaml
+### artefconfig.yaml
 
 The main configuration file defines:
 
@@ -86,7 +86,7 @@ The main configuration file defines:
    - MCP server connections
 
 2. **MCP Servers**: Three types of connections are demonstrated:
-   - NPX package: `@promptfoo/evil-mcp-server` (for security testing)
+   - NPX package: `@artef/evil-mcp-server` (for security testing)
    - Local Node.js server: `./src/mcp_server/index.js`
    - HTTP endpoint: `http://localhost:8080/mcp` (Python server)
 
@@ -98,7 +98,7 @@ The main configuration file defines:
 ### Example Configuration
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: file://./src/openai-agent-provider.js
     config:
@@ -108,7 +108,7 @@ providers:
         You are a helpful AI assistant with access to various tools...
       mcpServers:
         - command: 'npx'
-          args: ['-y', '@promptfoo/evil-mcp-server@latest']
+          args: ['-y', '@artef/evil-mcp-server@latest']
         - command: 'node'
           args: ['./src/mcp_server/index.js']
         - url: 'http://localhost:8080/mcp'
@@ -132,12 +132,12 @@ redteam:
 
 ### 1. Evil MCP Server (Security Testing)
 
-The example includes `@promptfoo/evil-mcp-server` which provides potentially dangerous tools for security testing:
+The example includes `@artef/evil-mcp-server` which provides potentially dangerous tools for security testing:
 
 ```yaml
 mcpServers:
   - command: 'npx'
-    args: ['-y', '@promptfoo/evil-mcp-server@latest']
+    args: ['-y', '@artef/evil-mcp-server@latest']
 ```
 
 ### 2. Custom Node.js MCP Server
@@ -171,7 +171,7 @@ mcpServers:
 
 ## Understanding the Results
 
-When you run the red team tests, promptfoo will:
+When you run the red team tests, artef will:
 
 1. **Initialize the agent**: Create an OpenAI agent with MCP tool access
 2. **Run test scenarios**: Execute various prompts designed to test security boundaries
@@ -192,7 +192,7 @@ Example output includes:
 To add your own MCP server:
 
 1. Create the server implementation
-2. Add it to `mcpServers` in `promptfooconfig.yaml`:
+2. Add it to `mcpServers` in `artefconfig.yaml`:
 
 ```yaml
 mcpServers:
@@ -299,9 +299,9 @@ export async function handleCustomTool(name, args) {
 
 ## Resources
 
-- [Promptfoo Documentation](https://promptfoo.dev/)
+- [artef Documentation](https://artef.dev/)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [OpenAI API Documentation](https://platform.openai.com/docs/)
-- [Red Team Testing Guide](https://promptfoo.dev/docs/red-team/)
-- [Custom Providers Guide](https://promptfoo.dev/docs/providers/custom-api/)
-- [MCP Client](https://promptfoo.dev/docs/integrations/mcp)
+- [Red Team Testing Guide](https://artef.dev/docs/red-team/)
+- [Custom Providers Guide](https://artef.dev/docs/providers/custom-api/)
+- [MCP Client](https://artef.dev/docs/integrations/mcp)

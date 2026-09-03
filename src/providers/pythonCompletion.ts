@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import { getCache, isCacheEnabled } from '../cache';
@@ -259,7 +259,7 @@ export class PythonProvider implements ApiProvider {
 
   /**
    * Determine worker count based on config and environment
-   * Priority: config.workers > PROMPTFOO_PYTHON_WORKERS env > cliState.maxConcurrency (-j flag) > default 1
+   * Priority: config.workers > artef_PYTHON_WORKERS env > cliState.maxConcurrency (-j flag) > default 1
    *
    * Explicit Python-specific settings (config.workers, env var) take precedence over
    * general concurrency hints (-j flag) because users may limit Python workers due to
@@ -277,15 +277,15 @@ export class PythonProvider implements ApiProvider {
     }
 
     // 2. Environment variable (explicit Python-specific setting)
-    const envWorkers = getEnvInt('PROMPTFOO_PYTHON_WORKERS');
+    const envWorkers = getEnvInt('artef_PYTHON_WORKERS');
     if (envWorkers !== undefined) {
       if (envWorkers < 1) {
         logger.warn(
-          `Invalid worker count ${envWorkers} in PROMPTFOO_PYTHON_WORKERS, using minimum of 1`,
+          `Invalid worker count ${envWorkers} in artef_PYTHON_WORKERS, using minimum of 1`,
         );
         return 1;
       }
-      logger.debug(`Python provider using ${envWorkers} workers (from PROMPTFOO_PYTHON_WORKERS)`);
+      logger.debug(`Python provider using ${envWorkers} workers (from artef_PYTHON_WORKERS)`);
       return envWorkers;
     }
 

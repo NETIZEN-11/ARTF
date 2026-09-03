@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 import Ajv2020 from 'ajv/dist/2020';
@@ -47,7 +47,7 @@ describe('ModelAudit JSON Schema', () => {
   it('declares its public Draft 2020-12 identifier', () => {
     expect(schema.$schema).toBe('https://json-schema.org/draft/2020-12/schema');
     expect(schema.$id).toBe(
-      'https://www.promptfoo.dev/schemas/modelaudit/modelaudit-scan-result.schema.json',
+      'https://www.artef.dev/schemas/modelaudit/modelaudit-scan-result.schema.json',
     );
   });
 

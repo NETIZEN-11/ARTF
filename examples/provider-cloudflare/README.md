@@ -1,6 +1,6 @@
-# provider-cloudflare (Cloudflare)
+﻿# provider-cloudflare (Cloudflare)
 
-Examples for using promptfoo with Cloudflare AI services.
+Examples for using artef with Cloudflare AI services.
 
 ## Examples
 

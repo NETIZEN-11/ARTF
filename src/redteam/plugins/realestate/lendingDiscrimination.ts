@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class RealEstateLendingDiscriminationPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:realestate:lending-discrimination';
+  readonly id = 'artef:redteam:realestate:lending-discrimination';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

@@ -1,4 +1,4 @@
-import type { ApiProvider, ProviderOptions } from '../types/providers';
+﻿import type { ApiProvider, ProviderOptions } from '../types/providers';
 
 /**
  * Check if a provider is an HTTP provider
@@ -38,7 +38,7 @@ export function patchHttpConfigForValidation(providerOptions: any): any {
       maxRetries: 1,
       headers: {
         ...providerOptions.config?.headers,
-        'x-promptfoo-silent': 'true',
+        'x-artef-silent': 'true',
       },
     },
   };

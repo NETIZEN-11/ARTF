@@ -1,13 +1,13 @@
-# integration-docker/basic (Docker Comparison)
+﻿# integration-docker/basic (Docker Comparison)
 
 [Docker Model Runner](https://docs.docker.com/ai/model-runner/) makes it easy to manage, run, and deploy AI models using Docker. Designed for developers, Docker Model Runner streamlines the process of pulling, running, and serving large language models (LLMs) and other AI models directly from Docker Hub or any OCI-compliant registry.
 
 ## Getting Started
 
-1. Create a promptfoo project with docker examples
+1. Create a artef project with docker examples
 
 ```bash
-npx promptfoo@latest init --example integration-docker/basic
+npx artef@latest init --example integration-docker/basic
 cd integration-docker/basic
 ```
 
@@ -36,11 +36,11 @@ Note: These six models together require ~20 GiB of disk storage.
 ## Simple Example
 
 ```bash
-promptfoo eval -c promptfooconfig.comparison.simple.yaml
+artef eval -c artefconfig.comparison.simple.yaml
 ```
 
 ## Advanced Example
 
 ```bash
-promptfoo eval -c promptfooconfig.comparison.advanced.yaml
+artef eval -c artefconfig.comparison.advanced.yaml
 ```

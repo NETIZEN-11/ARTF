@@ -1,4 +1,4 @@
-import fsSync from 'fs';
+﻿import fsSync from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -16,7 +16,7 @@ vi.mock('../../src/logger', () => ({
   },
 }));
 
-const mockGetConfigDirectoryPath = vi.fn().mockReturnValue('/home/user/.promptfoo');
+const mockGetConfigDirectoryPath = vi.fn().mockReturnValue('/home/user/.artef');
 vi.mock('../../src/util/config/manage', () => ({
   getConfigDirectoryPath: () => mockGetConfigDirectoryPath(),
 }));
@@ -42,7 +42,7 @@ describe('util/logs', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    mockGetConfigDirectoryPath.mockReturnValue('/home/user/.promptfoo');
+    mockGetConfigDirectoryPath.mockReturnValue('/home/user/.artef');
     mockGetEnvString.mockReturnValue('');
   });
 
@@ -51,14 +51,14 @@ describe('util/logs', () => {
   });
 
   describe('getLogDirectory', () => {
-    it('returns default directory when PROMPTFOO_LOG_DIR not set', () => {
+    it('returns default directory when artef_LOG_DIR not set', () => {
       mockGetEnvString.mockReturnValue('');
 
       const result = getLogDirectory();
-      expect(result).toBe(path.join('/home/user/.promptfoo', 'logs'));
+      expect(result).toBe(path.join('/home/user/.artef', 'logs'));
     });
 
-    it('respects PROMPTFOO_LOG_DIR environment variable', () => {
+    it('respects artef_LOG_DIR environment variable', () => {
       mockGetEnvString.mockReturnValue('/custom/log/dir');
 
       const result = getLogDirectory();
@@ -86,11 +86,11 @@ describe('util/logs', () => {
       expect(result).toEqual([]);
     });
 
-    it('filters non-promptfoo files', async () => {
+    it('filters non-artef files', async () => {
       mockFs.access.mockResolvedValue(undefined);
       mockFs.readdir.mockResolvedValue([
         'other-file.log',
-        'promptfoo-debug-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
         'readme.txt',
       ] as any);
       mockFs.stat.mockResolvedValue({
@@ -101,14 +101,14 @@ describe('util/logs', () => {
       const result = await getLogFiles();
 
       expect(result).toHaveLength(1);
-      expect(result[0].name).toBe('promptfoo-debug-2024-01-01_10-00-00.log');
+      expect(result[0].name).toBe('artef-debug-2024-01-01_10-00-00.log');
     });
 
     it('filters by type when specified', async () => {
       mockFs.access.mockResolvedValue(undefined);
       mockFs.readdir.mockResolvedValue([
-        'promptfoo-debug-2024-01-01_10-00-00.log',
-        'promptfoo-error-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
+        'artef-error-2024-01-01_10-00-00.log',
       ] as any);
       mockFs.stat.mockResolvedValue({
         mtime: new Date('2024-01-01T10:00:00Z'),
@@ -130,8 +130,8 @@ describe('util/logs', () => {
     it('sorts by modification time (newest first)', async () => {
       mockFs.access.mockResolvedValue(undefined);
       mockFs.readdir.mockResolvedValue([
-        'promptfoo-debug-2024-01-01_10-00-00.log',
-        'promptfoo-debug-2024-01-02_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-02_10-00-00.log',
       ] as any);
 
       const dates = [new Date('2024-01-01T10:00:00Z'), new Date('2024-01-02T10:00:00Z')];
@@ -154,8 +154,8 @@ describe('util/logs', () => {
     it('correctly identifies log types', async () => {
       mockFs.access.mockResolvedValue(undefined);
       mockFs.readdir.mockResolvedValue([
-        'promptfoo-debug-2024-01-01_10-00-00.log',
-        'promptfoo-error-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
+        'artef-error-2024-01-01_10-00-00.log',
       ] as any);
       mockFs.stat.mockResolvedValue({
         mtime: new Date('2024-01-01T10:00:00Z'),
@@ -192,11 +192,11 @@ describe('util/logs', () => {
       expect(result).toEqual([]);
     });
 
-    it('filters non-promptfoo files', () => {
+    it('filters non-artef files', () => {
       mockFsSync.existsSync.mockReturnValue(true);
       mockFsSync.readdirSync.mockReturnValue([
         'other-file.log',
-        'promptfoo-debug-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
         'readme.txt',
       ] as any);
       mockFsSync.statSync.mockReturnValue({
@@ -207,14 +207,14 @@ describe('util/logs', () => {
       const result = getLogFilesSync();
 
       expect(result).toHaveLength(1);
-      expect(result[0].name).toBe('promptfoo-debug-2024-01-01_10-00-00.log');
+      expect(result[0].name).toBe('artef-debug-2024-01-01_10-00-00.log');
     });
 
     it('filters by type when specified', () => {
       mockFsSync.existsSync.mockReturnValue(true);
       mockFsSync.readdirSync.mockReturnValue([
-        'promptfoo-debug-2024-01-01_10-00-00.log',
-        'promptfoo-error-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
+        'artef-error-2024-01-01_10-00-00.log',
       ] as any);
       mockFsSync.statSync.mockReturnValue({
         mtime: new Date('2024-01-01T10:00:00Z'),
@@ -249,8 +249,8 @@ describe('util/logs', () => {
     });
 
     it('resolves filenames in log directory', () => {
-      const filename = 'promptfoo-debug-2024-01-01_10-00-00.log';
-      const expectedPath = path.join('/home/user/.promptfoo/logs', filename);
+      const filename = 'artef-debug-2024-01-01_10-00-00.log';
+      const expectedPath = path.join('/home/user/.artef/logs', filename);
 
       mockFsSync.existsSync.mockImplementation((p) => {
         // Return false for absolute path check, true for log directory path
@@ -265,10 +265,10 @@ describe('util/logs', () => {
     });
 
     it('performs fuzzy matching on partial names', () => {
-      const logDir = path.join('/home/user/.promptfoo', 'logs');
+      const logDir = path.join('/home/user/.artef', 'logs');
       mockFsSync.readdirSync.mockReturnValue([
-        'promptfoo-debug-2024-01-01_10-00-00.log',
-        'promptfoo-debug-2024-01-02_10-00-00.log',
+        'artef-debug-2024-01-01_10-00-00.log',
+        'artef-debug-2024-01-02_10-00-00.log',
       ] as any);
       mockFsSync.statSync.mockReturnValue({
         mtime: new Date('2024-01-01T10:00:00Z'),

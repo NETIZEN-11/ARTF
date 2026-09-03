@@ -1,12 +1,12 @@
-import React from 'react';
+﻿import React from 'react';
 
-import { type Plugin as PluginType, Severity } from '@promptfoo/redteam/constants';
-import { isValidPolicyObject, makeInlinePolicyId } from '@promptfoo/redteam/plugins/policy/utils';
-import { getRiskCategorySeverityMap } from '@promptfoo/redteam/sharedFrontend';
+import { type Plugin as PluginType, Severity } from '@artef/redteam/constants';
+import { isValidPolicyObject, makeInlinePolicyId } from '@artef/redteam/plugins/policy/utils';
+import { getRiskCategorySeverityMap } from '@artef/redteam/sharedFrontend';
 import { type TestResultStats } from './FrameworkComplianceUtils';
 import SeverityCard from './SeverityCard';
 import { useReportStore } from './store';
-import type { RedteamPluginObject } from '@promptfoo/redteam/types';
+import type { RedteamPluginObject } from '@artef/redteam/types';
 
 interface OverviewProps {
   categoryStats: Record<PluginType, TestResultStats>;

@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import { warnIfRedteamConfigHasNoTests } from '../../../src/util/eval/redteamWarning';
 
@@ -40,7 +40,7 @@ describe('redteam warning in eval command', () => {
     expect(logger.warn).toHaveBeenCalledWith(
       expect.stringContaining('redteam section but no test cases'),
     );
-    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('promptfoo redteam generate'));
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('artef redteam generate'));
   });
 
   it('should not warn when scenarios are present even if tests is empty', () => {

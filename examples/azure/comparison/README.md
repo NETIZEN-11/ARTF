@@ -1,11 +1,11 @@
-# azure/comparison (Azure Model Comparison)
+﻿# azure/comparison (Azure Model Comparison)
 
 This example demonstrates how to compare models from different providers on Azure AI Foundry, including OpenAI, Anthropic Claude, Meta Llama, and Mistral.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example azure/comparison
+npx artef@latest init --example azure/comparison
 cd azure/comparison
 ```
 
@@ -16,7 +16,7 @@ cd azure/comparison
 
 ```bash
 export AZURE_API_KEY=your-api-key
-# Set apiHost in promptfooconfig.yaml for each provider's deployment
+# Set apiHost in artefconfig.yaml for each provider's deployment
 ```
 
 ## Models Compared
@@ -31,13 +31,13 @@ export AZURE_API_KEY=your-api-key
 ## Running the Example
 
 ```bash
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 ## Customization
 
-Modify `promptfooconfig.yaml` to:
+Modify `artefconfig.yaml` to:
 
 - Add or remove models
 - Change test questions
@@ -53,5 +53,5 @@ Modify `promptfooconfig.yaml` to:
 
 ## Documentation
 
-- [Azure Provider Documentation](https://promptfoo.dev/docs/providers/azure/)
+- [Azure Provider Documentation](https://artef.dev/docs/providers/azure/)
 - [Azure AI Foundry](https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/)

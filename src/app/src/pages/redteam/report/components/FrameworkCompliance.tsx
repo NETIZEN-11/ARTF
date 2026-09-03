@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Card, CardContent } from '@app/components/ui/card';
 import { cn } from '@app/lib/utils';
@@ -9,8 +9,8 @@ import {
   type FrameworkComplianceId,
   riskCategorySeverityMap,
   Severity,
-} from '@promptfoo/redteam/constants';
-import { calculateAttackSuccessRate } from '@promptfoo/redteam/metrics';
+} from '@artef/redteam/constants';
+import { calculateAttackSuccessRate } from '@artef/redteam/metrics';
 import FrameworkCard from './FrameworkCard';
 import {
   categorizePlugins,
@@ -19,7 +19,7 @@ import {
 } from './FrameworkComplianceUtils';
 import CSVExporter from './FrameworkCsvExporter';
 import { useReportStore } from './store';
-import type { UnifiedConfig } from '@promptfoo/types';
+import type { UnifiedConfig } from '@artef/types';
 
 interface FrameworkComplianceProps {
   evalId: string;

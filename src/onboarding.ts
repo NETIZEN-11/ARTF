@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import confirm from '@inquirer/confirm';
@@ -11,15 +11,15 @@ import logger from './logger';
 import { redteamInit } from './redteam/commands/init';
 import telemetry, { type EventProperties } from './telemetry';
 import { pathExists } from './util/file';
-import { promptfooCommand } from './util/promptfooCommand';
+import { artefCommand } from './util/artefCommand';
 import { getNunjucksEngine } from './util/templates';
 
 import type { EnvOverrides } from './types/env';
 import type { ProviderOptions } from './types/providers';
 
-const CONFIG_TEMPLATE = `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+const CONFIG_TEMPLATE = `# yaml-language-server: $schema=https://artef.dev/config-schema.json
 
-# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+# Learn more about building a configuration: https://artef.dev/docs/configuration/guide
 
 description: "My eval"
 
@@ -47,14 +47,14 @@ tests:
 
   - vars:
       inquiry: "I want to return my widget"
-      # See how to use dynamic context to e.g. use a vector store https://promptfoo.dev/docs/guides/evaluate-rag/#using-dynamic-context
+      # See how to use dynamic context to e.g. use a vector store https://artef.dev/docs/guides/evaluate-rag/#using-dynamic-context
       {% if language == 'javascript' -%}
       context: file://context.js
       {%- else -%}
       context: file://context.py
       {%- endif %}
     assert:
-      # For more information on assertions, see https://promptfoo.dev/docs/configuration/expected-outputs
+      # For more information on assertions, see https://artef.dev/docs/configuration/expected-outputs
 
       # Make sure output contains the phrase "return label"
       - type: icontains
@@ -76,7 +76,7 @@ tests:
         Username: Foobar
         Account ID: 123456
     assert:
-      # For more information on model-graded evals, see https://promptfoo.dev/docs/configuration/expected-outputs/model-graded
+      # For more information on model-graded evals, see https://artef.dev/docs/configuration/expected-outputs/model-graded
       - type: llm-rubric
         value: ensure that the output is friendly and empathetic
 {%- else %}
@@ -86,7 +86,7 @@ tests:
   - vars:
       topic: avocado toast
     assert:
-      # For more information on assertions, see https://promptfoo.dev/docs/configuration/expected-outputs
+      # For more information on assertions, see https://artef.dev/docs/configuration/expected-outputs
 
       # Make sure output contains the word "avocado"
       - type: icontains
@@ -99,13 +99,13 @@ tests:
   - vars:
       topic: new york city
     assert:
-      # For more information on model-graded evals, see https://promptfoo.dev/docs/configuration/expected-outputs/model-graded
+      # For more information on model-graded evals, see https://artef.dev/docs/configuration/expected-outputs/model-graded
       - type: llm-rubric
         value: ensure that the output is funny
 {% endif %}
 `;
 
-const PYTHON_PROVIDER = `# Learn more about building a Python provider: https://promptfoo.dev/docs/providers/python/
+const PYTHON_PROVIDER = `# Learn more about building a Python provider: https://artef.dev/docs/providers/python/
 
 def call_api(prompt, options, context):
     # The 'options' parameter contains additional configuration for the API call.
@@ -140,7 +140,7 @@ def call_api(prompt, options, context):
     return result
 `;
 
-const JAVASCRIPT_PROVIDER = `// Learn more about building a JavaScript provider: https://promptfoo.dev/docs/providers/custom-api
+const JAVASCRIPT_PROVIDER = `// Learn more about building a JavaScript provider: https://artef.dev/docs/providers/custom-api
 // customApiProvider.js
 
 class CustomApiProvider {
@@ -179,7 +179,7 @@ class CustomApiProvider {
 module.exports = CustomApiProvider;
 `;
 
-const BASH_PROVIDER = `# Learn more about building any generic provider: https://promptfoo.dev/docs/providers/custom-script
+const BASH_PROVIDER = `# Learn more about building any generic provider: https://artef.dev/docs/providers/custom-script
 
 # Anything printed to standard output will be captured as the output of the provider
 
@@ -190,7 +190,7 @@ php my_script.php
 `;
 
 const WINDOWS_PROVIDER = `@echo off
-REM Learn more about building any generic provider: https://promptfoo.dev/docs/providers/custom-script
+REM Learn more about building any generic provider: https://artef.dev/docs/providers/custom-script
 
 REM Anything printed to standard output will be captured as the output of the provider
 
@@ -200,7 +200,7 @@ REM You can also call external scripts or executables
 REM php my_script.php
 `;
 
-const PYTHON_VAR = `# Learn more about using dynamic variables: https://promptfoo.dev/docs/configuration/guide/#import-vars-from-separate-files
+const PYTHON_VAR = `# Learn more about using dynamic variables: https://artef.dev/docs/configuration/guide/#import-vars-from-separate-files
 def get_var(var_name, prompt, other_vars):
     # This is where you can fetch documents from a database, call an API, etc.
     # ...
@@ -218,7 +218,7 @@ def get_var(var_name, prompt, other_vars):
     # return { 'error': 'Error message' }
 `;
 
-const JAVASCRIPT_VAR = `// Learn more about using dynamic variables: https://promptfoo.dev/docs/configuration/guide/#import-vars-from-separate-files
+const JAVASCRIPT_VAR = `// Learn more about using dynamic variables: https://artef.dev/docs/configuration/guide/#import-vars-from-separate-files
 module.exports = function (varName, prompt, otherVars) {
   // This is where you can fetch documents from a database, call an API, etc.
   // ...
@@ -248,7 +248,7 @@ function getDefaultReadme(action?: string): string {
         ? 'agent evaluation'
         : 'prompt evaluation';
 
-  return `# Promptfoo ${useCase}
+  return `# artef ${useCase}
 
 ## Quick start
 
@@ -261,26 +261,26 @@ export OPENAI_API_KEY=sk-...
 # export GOOGLE_API_KEY=...
 \`\`\`
 
-2. Edit \`promptfooconfig.yaml\` to customize prompts, providers, and test cases.
+2. Edit \`artefconfig.yaml\` to customize prompts, providers, and test cases.
 
 3. Run the evaluation:
 
 \`\`\`bash
-${promptfooCommand('eval')}
+${artefCommand('eval')}
 \`\`\`
 
 4. View results in your browser:
 
 \`\`\`bash
-${promptfooCommand('view')}
+${artefCommand('view')}
 \`\`\`
 
 ## Learn more
 
-- Configuration guide: https://promptfoo.dev/docs/configuration/guide
-- All providers: https://promptfoo.dev/docs/providers
-- Assertions & metrics: https://promptfoo.dev/docs/configuration/expected-outputs
-- Examples: https://github.com/promptfoo/promptfoo/tree/main/examples
+- Configuration guide: https://artef.dev/docs/configuration/guide
+- All providers: https://artef.dev/docs/providers
+- Assertions & metrics: https://artef.dev/docs/configuration/expected-outputs
+- Examples: https://github.com/artef/artef/tree/main/examples
 `;
 }
 
@@ -400,7 +400,7 @@ export async function createDummyFiles(
     recordOnboardingStep('start');
 
     logger.info(
-      chalk.bold('\nWelcome to Promptfoo!\n') +
+      chalk.bold('\nWelcome to artef!\n') +
         chalk.gray("We'll set up a configuration file to get you started.\n"),
     );
 
@@ -710,7 +710,7 @@ export async function createDummyFiles(
   });
 
   await writeFile({
-    file: 'promptfooconfig.yaml',
+    file: 'artefconfig.yaml',
     contents: config,
     required: true,
   });
@@ -729,8 +729,8 @@ export async function initializeProject(directory: string | null, interactive: b
     const result = await createDummyFiles(directory, interactive);
     const { outDirectory, ...telemetryDetails } = result;
 
-    const runCommand = promptfooCommand('eval');
-    const viewCommand = promptfooCommand('view');
+    const runCommand = artefCommand('eval');
+    const viewCommand = artefCommand('view');
 
     logger.info('');
     if (outDirectory === '.') {
@@ -740,7 +740,7 @@ export async function initializeProject(directory: string | null, interactive: b
         `  ${chalk.bold('2.')} Run ${chalk.cyan(viewCommand)} to view results in your browser`,
       );
     } else {
-      logger.info(chalk.green(`✅ Wrote promptfooconfig.yaml to ./${outDirectory}\n`));
+      logger.info(chalk.green(`✅ Wrote artefconfig.yaml to ./${outDirectory}\n`));
       logger.info(`  ${chalk.bold('1.')} Run ${chalk.cyan(`cd ${outDirectory}`)}`);
       logger.info(`  ${chalk.bold('2.')} Run ${chalk.cyan(runCommand)} to evaluate your prompts`);
       logger.info(
@@ -748,12 +748,12 @@ export async function initializeProject(directory: string | null, interactive: b
       );
     }
     logger.info('');
-    logger.info(chalk.gray(`  Docs: https://promptfoo.dev/docs/configuration/guide`));
+    logger.info(chalk.gray(`  Docs: https://artef.dev/docs/configuration/guide`));
 
     return telemetryDetails;
   } catch (err) {
     if (err instanceof AbortPromptError || err instanceof ExitPromptError) {
-      const runCommand = promptfooCommand('init');
+      const runCommand = artefCommand('init');
       logger.info(
         '\n' +
           chalk.blue('Initialization paused. To continue setup later, use the command: ') +
@@ -761,7 +761,7 @@ export async function initializeProject(directory: string | null, interactive: b
       );
       logger.info(
         chalk.blue('For help or feedback, visit ') +
-          chalk.green('https://www.promptfoo.dev/contact/'),
+          chalk.green('https://www.artef.dev/contact/'),
       );
       await recordOnboardingStep('early exit');
       process.exitCode = 130;

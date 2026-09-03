@@ -1,31 +1,31 @@
----
-name: promptfoo-evals
+﻿---
+name: artef-evals
 description: >
-  Write, refine, run, and QA non-redteam promptfoo eval suites after the target
+  Write, refine, run, and QA non-redteam artef eval suites after the target
   or provider already works: prompts, vars, test cases, assertions,
   model-graded rubrics, transforms, datasets, output exports, filters, and CI
   gates. Use for regression tests and eval-suite authoring. Do not use for
   connecting a new target/provider, mapping HTTP requests or auth, smoke-testing
-  an endpoint, or redteam plugin/strategy setup; use `promptfoo-provider-setup`
+  an endpoint, or redteam plugin/strategy setup; use `artef-provider-setup`
   for connection work instead.
 ---
 
-# Promptfoo Evals
+# artef Evals
 
 Build a small eval that answers one product question clearly, run it with fresh
 results, then inspect the exported artifact before expanding.
 
 Read `references/eval-patterns.md` when you need concrete YAML patterns,
 assertion examples, or CI snippets.
-For deep promptfoo feature questions that are not covered here, consult
-`https://www.promptfoo.dev/llms-full.txt`.
+For deep artef feature questions that are not covered here, consult
+`https://www.artef.dev/llms-full.txt`.
 
 ## Inputs
 
 Infer these from the repo or user prompt:
 
 - Behavior being evaluated and what "good" means.
-- Target/provider already configured, or whether `promptfoo-provider-setup` is
+- Target/provider already configured, or whether `artef-provider-setup` is
   needed first.
 - Prompt shape and variables.
 - Test data source: inline cases, CSV/JSON, generated data, production examples,
@@ -34,16 +34,16 @@ Infer these from the repo or user prompt:
   JavaScript assertions, model-graded rubrics, or a mix.
 - Output needs: JSON export, comparison, CI gate, or human triage.
 
-If the provider does not work yet, switch to `promptfoo-provider-setup`. If the
-task is adversarial security scanning, switch to `promptfoo-redteam-setup` or
-`promptfoo-redteam-run`.
+If the provider does not work yet, switch to `artef-provider-setup`. If the
+task is adversarial security scanning, switch to `artef-redteam-setup` or
+`artef-redteam-run`.
 
 ## Workflow
 
 ### 1. State the eval question
 
-Search for existing configs first: `promptfooconfig.yaml`,
-`promptfooconfig.yml`, or repo `evals`/`promptfoo` directories. Extend an
+Search for existing configs first: `artefconfig.yaml`,
+`artefconfig.yml`, or repo `evals`/`artef` directories. Extend an
 existing suite when possible.
 
 Write one sentence for the behavior under test, then choose 3-10 starter cases.
@@ -53,7 +53,7 @@ For new suites, prefer this layout unless the repo already has a convention:
 
 ```text
 evals/<suite-name>/
-  promptfooconfig.yaml
+  artefconfig.yaml
   prompts/
   tests/
 ```
@@ -74,7 +74,7 @@ cannot capture. Configure a local or explicit grader for reproducible QA.
 
 Include:
 
-- `# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json`
+- `# yaml-language-server: $schema=https://artef.dev/config-schema.json`
 - A short `description`
 - Field order: `description`, `env`, `prompts`, `providers`, `defaultTest`,
   `scenarios`, `tests`
@@ -91,19 +91,19 @@ material in the rubric via `{{variable}}` so the grader can actually compare.
 
 ### 4. Validate and run
 
-From the promptfoo repo:
+From the artef repo:
 
 ```bash
 source ~/.nvm/nvm.sh && nvm use
-npm run local -- validate config -c path/to/promptfooconfig.yaml
-npm run local -- eval -c path/to/promptfooconfig.yaml -o /tmp/eval-results.json --no-cache --no-share
+npm run local -- validate config -c path/to/artefconfig.yaml
+npm run local -- eval -c path/to/artefconfig.yaml -o /tmp/eval-results.json --no-cache --no-share
 ```
 
 Outside the repo:
 
 ```bash
-npx promptfoo@latest validate config -c path/to/promptfooconfig.yaml
-npx promptfoo@latest eval -c path/to/promptfooconfig.yaml -o /tmp/eval-results.json --no-cache --no-share
+npx artef@latest validate config -c path/to/artefconfig.yaml
+npx artef@latest eval -c path/to/artefconfig.yaml -o /tmp/eval-results.json --no-cache --no-share
 ```
 
 Inspect the output JSON for `results.stats`, `response.output`, `score`,

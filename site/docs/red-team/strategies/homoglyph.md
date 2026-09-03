@@ -1,4 +1,4 @@
----
+﻿---
 title: Homoglyph Encoding Strategy
 sidebar_label: Homoglyph Encoding
 description: Learn how to use homoglyphs (visually similar Unicode characters) to test AI system defenses against content filter bypasses.
@@ -30,9 +30,9 @@ Homoglyph attacks exploit the visual similarity between different Unicode charac
 
 ## Implementation
 
-Use it in your `promptfooconfig.yaml`:
+Use it in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - homoglyph
 ```

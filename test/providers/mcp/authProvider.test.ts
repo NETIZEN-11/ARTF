@@ -1,7 +1,7 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   clearOAuthTokenCache,
-  PromptfooOAuthClientProvider,
+  artefOAuthClientProvider,
 } from '../../../src/providers/mcp/authProvider';
 
 // Mock the util module to avoid actual HTTP requests
@@ -9,7 +9,7 @@ vi.mock('../../../src/providers/mcp/util', () => ({
   getOAuthToken: vi.fn().mockResolvedValue('mock-access-token'),
 }));
 
-describe('PromptfooOAuthClientProvider', () => {
+describe('artefOAuthClientProvider', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     clearOAuthTokenCache();
@@ -21,7 +21,7 @@ describe('PromptfooOAuthClientProvider', () => {
 
   describe('client_credentials grant', () => {
     it('should create provider with correct metadata', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -38,7 +38,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should prepare token request with correct grant type', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -56,7 +56,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should use scope parameter when provided', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -74,7 +74,7 @@ describe('PromptfooOAuthClientProvider', () => {
 
   describe('password grant', () => {
     it('should prepare token request with username and password', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'password',
         tokenUrl: 'https://auth.example.com/token',
@@ -90,7 +90,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should include optional clientId and clientSecret', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'password',
         clientId: 'optional-client',
@@ -108,7 +108,7 @@ describe('PromptfooOAuthClientProvider', () => {
 
   describe('token caching', () => {
     it('should save and retrieve tokens', async () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -136,8 +136,8 @@ describe('PromptfooOAuthClientProvider', () => {
         tokenUrl: 'https://auth.example.com/token',
       };
 
-      const provider1 = new PromptfooOAuthClientProvider(config);
-      const provider2 = new PromptfooOAuthClientProvider(config);
+      const provider1 = new artefOAuthClientProvider(config);
+      const provider2 = new artefOAuthClientProvider(config);
 
       const tokens = {
         access_token: 'shared-token',
@@ -155,7 +155,7 @@ describe('PromptfooOAuthClientProvider', () => {
       const { getOAuthToken } = await import('../../../src/providers/mcp/util');
       vi.mocked(getOAuthToken).mockResolvedValueOnce('fresh-token');
 
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'client-1',
@@ -171,7 +171,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should invalidate tokens when requested', async () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -198,7 +198,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should invalidate all credentials when scope is "all"', async () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -225,7 +225,7 @@ describe('PromptfooOAuthClientProvider', () => {
 
   describe('client information', () => {
     it('should save and retrieve client information', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'original-client',
@@ -246,7 +246,7 @@ describe('PromptfooOAuthClientProvider', () => {
 
   describe('non-interactive flow methods', () => {
     it('should throw on redirectToAuthorization', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -260,7 +260,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should throw on codeVerifier', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -272,7 +272,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should not throw on saveCodeVerifier (no-op)', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -287,7 +287,7 @@ describe('PromptfooOAuthClientProvider', () => {
 
   describe('client metadata', () => {
     it('should have correct token_endpoint_auth_method when client secret is present', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -299,7 +299,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should have token_endpoint_auth_method as "none" when no client secret', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'password',
         tokenUrl: 'https://auth.example.com/token',
@@ -311,7 +311,7 @@ describe('PromptfooOAuthClientProvider', () => {
     });
 
     it('should have empty redirect_uris for non-interactive flows', () => {
-      const provider = new PromptfooOAuthClientProvider({
+      const provider = new artefOAuthClientProvider({
         type: 'oauth',
         grantType: 'client_credentials',
         clientId: 'test-client',
@@ -330,7 +330,7 @@ describe('clearOAuthTokenCache', () => {
   });
 
   it('should clear all cached tokens', async () => {
-    const provider = new PromptfooOAuthClientProvider({
+    const provider = new artefOAuthClientProvider({
       type: 'oauth',
       grantType: 'client_credentials',
       clientId: 'test-client',
@@ -352,7 +352,7 @@ describe('clearOAuthTokenCache', () => {
     const { getOAuthToken } = await import('../../../src/providers/mcp/util');
     vi.mocked(getOAuthToken).mockResolvedValueOnce('fresh-token-after-clear');
 
-    const newProvider = new PromptfooOAuthClientProvider({
+    const newProvider = new artefOAuthClientProvider({
       type: 'oauth',
       grantType: 'client_credentials',
       clientId: 'test-client',

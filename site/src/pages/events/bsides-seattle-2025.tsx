@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -33,31 +33,31 @@ export default function BSidesSeattle2025(): React.ReactElement {
 
   return (
     <Layout
-      title="Promptfoo at BSides Seattle 2025"
-      description="Promptfoo sponsored BSides Seattle 2025 and joined the PNW security community in Redmond."
+      title="artef at BSides Seattle 2025"
+      description="artef sponsored BSides Seattle 2025 and joined the PNW security community in Redmond."
     >
       <Head>
-        <meta property="og:title" content="Promptfoo at BSides Seattle 2025" />
+        <meta property="og:title" content="artef at BSides Seattle 2025" />
         <meta
           property="og:description"
-          content="Recap of Promptfoo at BSides Seattle 2025. Community-driven security, AI red teaming demos, and PNW vibes."
+          content="Recap of artef at BSides Seattle 2025. Community-driven security, AI red teaming demos, and PNW vibes."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.promptfoo.dev/events/bsides-seattle-2025" />
+        <meta property="og:url" content="https://www.artef.dev/events/bsides-seattle-2025" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:image"
-          content="https://www.promptfoo.dev/img/events/bsides-seattle-2025.jpg"
+          content="https://www.artef.dev/img/events/bsides-seattle-2025.jpg"
         />
         <meta
           name="twitter:image"
-          content="https://www.promptfoo.dev/img/events/bsides-seattle-2025.jpg"
+          content="https://www.artef.dev/img/events/bsides-seattle-2025.jpg"
         />
         <meta
           name="keywords"
           content="BSides Seattle 2025, security conference, AI security, LLM security, Pacific Northwest, Seattle"
         />
-        <link rel="canonical" href="https://www.promptfoo.dev/events/bsides-seattle-2025" />
+        <link rel="canonical" href="https://www.artef.dev/events/bsides-seattle-2025" />
       </Head>
 
       <main className={styles.bsidesPage}>
@@ -253,10 +253,10 @@ export default function BSidesSeattle2025(): React.ReactElement {
                 Let's connect.
               </p>
               <div className={styles.ctaButtons}>
-                <Link to="https://discord.gg/promptfoo" className={styles.primaryCta}>
+                <Link to="https://discord.gg/artef" className={styles.primaryCta}>
                   Join Discord
                 </Link>
-                <Link to="https://github.com/promptfoo/promptfoo" className={styles.secondaryCta}>
+                <Link to="https://github.com/artef/artef" className={styles.secondaryCta}>
                   Star on GitHub
                 </Link>
               </div>

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { addLayerTestCases } from '../../../src/redteam/strategies/layer';
 
 import type { Strategy } from '../../../src/redteam/strategies/index';
@@ -458,7 +458,7 @@ describe('addLayerTestCases', () => {
       const testCases: TestCaseWithPlugin[] = [
         {
           vars: { input: 'test' },
-          assert: [{ type: 'promptfoo:redteam:harmful:test' as const, metric: 'Harmful/Test' }],
+          assert: [{ type: 'artef:redteam:harmful:test' as const, metric: 'Harmful/Test' }],
           metadata: { pluginId: 'test-plugin' },
         },
       ];
@@ -477,7 +477,7 @@ describe('addLayerTestCases', () => {
       expect(provider).toBeDefined();
       expect(typeof provider).toBe('object');
       if (typeof provider === 'object' && provider !== null && 'id' in provider) {
-        expect(provider.id).toBe('promptfoo:redteam:hydra');
+        expect(provider.id).toBe('artef:redteam:hydra');
         expect(provider.config).toEqual(
           expect.objectContaining({
             injectVar: 'input',
@@ -511,7 +511,7 @@ describe('addLayerTestCases', () => {
       const provider = result[0].provider;
       expect(typeof provider).toBe('object');
       if (typeof provider === 'object' && provider !== null && 'id' in provider) {
-        expect(provider.id).toBe('promptfoo:redteam:crescendo');
+        expect(provider.id).toBe('artef:redteam:crescendo');
         expect(provider.config).toEqual(
           expect.objectContaining({
             _perTurnLayers: ['image'],
@@ -540,7 +540,7 @@ describe('addLayerTestCases', () => {
       const provider = result[0].provider;
       expect(typeof provider).toBe('object');
       if (typeof provider === 'object' && provider !== null && 'id' in provider) {
-        expect(provider.id).toBe('promptfoo:redteam:goat');
+        expect(provider.id).toBe('artef:redteam:goat');
       }
     });
 
@@ -564,7 +564,7 @@ describe('addLayerTestCases', () => {
       const provider = result[0].provider;
       expect(typeof provider).toBe('object');
       if (typeof provider === 'object' && provider !== null && 'id' in provider) {
-        expect(provider.id).toBe('promptfoo:redteam:iterative');
+        expect(provider.id).toBe('artef:redteam:iterative');
       }
     });
 
@@ -588,7 +588,7 @@ describe('addLayerTestCases', () => {
       const provider = result[0].provider;
       expect(typeof provider).toBe('object');
       if (typeof provider === 'object' && provider !== null && 'id' in provider) {
-        expect(provider.id).toBe('promptfoo:redteam:iterative:meta');
+        expect(provider.id).toBe('artef:redteam:iterative:meta');
       }
     });
 
@@ -612,7 +612,7 @@ describe('addLayerTestCases', () => {
       const provider = result[0].provider;
       expect(typeof provider).toBe('object');
       if (typeof provider === 'object' && provider !== null && 'id' in provider) {
-        expect(provider.id).toBe('promptfoo:redteam:iterative:tree');
+        expect(provider.id).toBe('artef:redteam:iterative:tree');
       }
     });
 
@@ -754,7 +754,7 @@ describe('addLayerTestCases', () => {
       const testCasesWithAssert: TestCaseWithPlugin[] = [
         {
           vars: { input: 'test' },
-          assert: [{ type: 'promptfoo:redteam:test' as const, metric: 'TestMetric' }],
+          assert: [{ type: 'artef:redteam:test' as const, metric: 'TestMetric' }],
           metadata: { pluginId: 'test-plugin' },
         },
       ];

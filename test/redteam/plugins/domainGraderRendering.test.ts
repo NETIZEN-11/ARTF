@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { getGraderById } from '../../../src/redteam/graders';
 import { FinancialCalculationErrorPluginGrader } from '../../../src/redteam/plugins/financial/financialCalculationError';
 import { FinancialComplianceViolationPluginGrader } from '../../../src/redteam/plugins/financial/financialComplianceViolation';
@@ -42,125 +42,125 @@ type RenderingGrader = {
 const RENDERING_GRADERS: [string, string, new () => RenderingGrader][] = [
   [
     'financial calculation error',
-    'promptfoo:redteam:financial:calculation-error',
+    'artef:redteam:financial:calculation-error',
     FinancialCalculationErrorPluginGrader,
   ],
   [
     'financial compliance violation',
-    'promptfoo:redteam:financial:compliance-violation',
+    'artef:redteam:financial:compliance-violation',
     FinancialComplianceViolationPluginGrader,
   ],
   [
     'financial data leakage',
-    'promptfoo:redteam:financial:data-leakage',
+    'artef:redteam:financial:data-leakage',
     FinancialDataLeakagePluginGrader,
   ],
   [
     'financial hallucination',
-    'promptfoo:redteam:financial:hallucination',
+    'artef:redteam:financial:hallucination',
     FinancialHallucinationPluginGrader,
   ],
   [
     'financial japan fiea suitability',
-    'promptfoo:redteam:financial:japan-fiea-suitability',
+    'artef:redteam:financial:japan-fiea-suitability',
     FinancialJapanFieaSuitabilityPluginGrader,
   ],
   [
     'financial sycophancy',
-    'promptfoo:redteam:financial:sycophancy',
+    'artef:redteam:financial:sycophancy',
     FinancialSycophancyPluginGrader,
   ],
   [
     'insurance coverage discrimination',
-    'promptfoo:redteam:insurance:coverage-discrimination',
+    'artef:redteam:insurance:coverage-discrimination',
     InsuranceCoverageDiscriminationPluginGrader,
   ],
   [
     'insurance data disclosure',
-    'promptfoo:redteam:insurance:data-disclosure',
+    'artef:redteam:insurance:data-disclosure',
     InsuranceDataDisclosurePluginGrader,
   ],
   [
     'insurance network misinformation',
-    'promptfoo:redteam:insurance:network-misinformation',
+    'artef:redteam:insurance:network-misinformation',
     InsuranceNetworkMisinformationPluginGrader,
   ],
   [
     'insurance phi disclosure',
-    'promptfoo:redteam:insurance:phi-disclosure',
+    'artef:redteam:insurance:phi-disclosure',
     InsurancePhiDisclosurePluginGrader,
   ],
   [
     'medical anchoring bias',
-    'promptfoo:redteam:medical:anchoring-bias',
+    'artef:redteam:medical:anchoring-bias',
     MedicalAnchoringBiasPluginGrader,
   ],
   [
     'medical hallucination',
-    'promptfoo:redteam:medical:hallucination',
+    'artef:redteam:medical:hallucination',
     MedicalHallucinationPluginGrader,
   ],
   [
     'medical incorrect knowledge',
-    'promptfoo:redteam:medical:incorrect-knowledge',
+    'artef:redteam:medical:incorrect-knowledge',
     MedicalIncorrectKnowledgePluginGrader,
   ],
   [
     'medical prioritization error',
-    'promptfoo:redteam:medical:prioritization-error',
+    'artef:redteam:medical:prioritization-error',
     MedicalPrioritizationErrorPluginGrader,
   ],
-  ['medical sycophancy', 'promptfoo:redteam:medical:sycophancy', MedicalSycophancyPluginGrader],
-  ['off topic', 'promptfoo:redteam:off-topic', OffTopicPluginGrader],
+  ['medical sycophancy', 'artef:redteam:medical:sycophancy', MedicalSycophancyPluginGrader],
+  ['off topic', 'artef:redteam:off-topic', OffTopicPluginGrader],
   [
     'pharmacy controlled substance compliance',
-    'promptfoo:redteam:pharmacy:controlled-substance-compliance',
+    'artef:redteam:pharmacy:controlled-substance-compliance',
     PharmacyControlledSubstanceCompliancePluginGrader,
   ],
   [
     'pharmacy dosage calculation',
-    'promptfoo:redteam:pharmacy:dosage-calculation',
+    'artef:redteam:pharmacy:dosage-calculation',
     PharmacyDosageCalculationPluginGrader,
   ],
   [
     'pharmacy drug interaction',
-    'promptfoo:redteam:pharmacy:drug-interaction',
+    'artef:redteam:pharmacy:drug-interaction',
     PharmacyDrugInteractionPluginGrader,
   ],
   [
     'real estate accessibility discrimination',
-    'promptfoo:redteam:realestate:accessibility-discrimination',
+    'artef:redteam:realestate:accessibility-discrimination',
     RealEstateAccessibilityDiscriminationPluginGrader,
   ],
   [
     'real estate advertising discrimination',
-    'promptfoo:redteam:realestate:advertising-discrimination',
+    'artef:redteam:realestate:advertising-discrimination',
     RealEstateAdvertisingDiscriminationPluginGrader,
   ],
   [
     'real estate discriminatory listings',
-    'promptfoo:redteam:realestate:discriminatory-listings',
+    'artef:redteam:realestate:discriminatory-listings',
     RealEstateDiscriminatoryListingsPluginGrader,
   ],
   [
     'real estate fair housing discrimination',
-    'promptfoo:redteam:realestate:fair-housing-discrimination',
+    'artef:redteam:realestate:fair-housing-discrimination',
     RealEstateFairHousingDiscriminationPluginGrader,
   ],
   [
     'real estate lending discrimination',
-    'promptfoo:redteam:realestate:lending-discrimination',
+    'artef:redteam:realestate:lending-discrimination',
     RealEstateLendingDiscriminationPluginGrader,
   ],
   [
     'real estate source of income',
-    'promptfoo:redteam:realestate:source-of-income',
+    'artef:redteam:realestate:source-of-income',
     RealEstateSourceOfIncomePluginGrader,
   ],
-  ['real estate steering', 'promptfoo:redteam:realestate:steering', RealEstateSteeringPluginGrader],
+  ['real estate steering', 'artef:redteam:realestate:steering', RealEstateSteeringPluginGrader],
   [
     'real estate valuation bias',
-    'promptfoo:redteam:realestate:valuation-bias',
+    'artef:redteam:realestate:valuation-bias',
     RealEstateValuationBiasPluginGrader,
   ],
 ];

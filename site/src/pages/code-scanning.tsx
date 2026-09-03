@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -24,7 +24,7 @@ function HeroSection() {
           className={styles.heroImage}
         />
         <div className={styles.logoSection}>
-          Promptfoo is trusted by teams at...
+          artef is trusted by teams at...
           <LogoContainer className={styles.heroLogos} noBackground noBorder />
         </div>
       </div>
@@ -352,7 +352,7 @@ export default function CodeScanning(): React.ReactElement {
       description="AI-powered code scanning that finds LLM security vulnerabilities in pull requests. Detect prompt injection, PII exposure, and jailbreak risks before you merge."
     >
       <Head>
-        <meta property="og:image" content="https://www.promptfoo.dev/img/meta/code-scanning.png" />
+        <meta property="og:image" content="https://www.artef.dev/img/meta/code-scanning.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className={styles.pageContainer}>

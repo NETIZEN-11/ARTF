@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import { getUserEmail } from './globalConfig/accounts';
 import logger from './logger';
@@ -6,7 +6,7 @@ import { fetchWithProxy } from './util/fetch/index';
 import { promptUser } from './util/readline';
 
 /**
- * Send feedback to the promptfoo API
+ * Send feedback to the artef API
  */
 export async function sendFeedback(feedback: string) {
   if (!feedback.trim()) {
@@ -14,7 +14,7 @@ export async function sendFeedback(feedback: string) {
   }
 
   try {
-    const resp = await fetchWithProxy('https://api.promptfoo.dev/api/feedback', {
+    const resp = await fetchWithProxy('https://api.artef.dev/api/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export async function gatherFeedback(message?: string) {
     // Get user email if logged in
     const userEmail = getUserEmail();
 
-    logger.info(chalk.blue.bold('\n📝 promptfoo Feedback'));
+    logger.info(chalk.blue.bold('\n📝 artef Feedback'));
     logger.info(chalk.dim('─'.repeat(40)));
 
     // Get feedback message

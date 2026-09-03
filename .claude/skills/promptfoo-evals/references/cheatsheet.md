@@ -1,11 +1,11 @@
-# Promptfoo Eval Cheatsheet
+﻿# artef Eval Cheatsheet
 
 ## Config structure
 
 Field order: description, env, prompts, providers, defaultTest, scenarios, tests.
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Summarization quality' # 3-10 words
 
 prompts:
@@ -360,19 +360,19 @@ defaultTest:
 Always use `--no-cache` during development to avoid stale results.
 
 ```bash
-npx promptfoo@latest validate config -c path/to/promptfooconfig.yaml
-npx promptfoo@latest eval -c path/to/promptfooconfig.yaml -o output.json --no-cache --no-share
+npx artef@latest validate config -c path/to/artefconfig.yaml
+npx artef@latest eval -c path/to/artefconfig.yaml -o output.json --no-cache --no-share
 ```
 
 For CI/non-UI workflows, use `-o output.json` and check `success`, `score`, and
 `error` fields.
 
-Inside the promptfoo repo, use the local build:
+Inside the artef repo, use the local build:
 
 ```bash
 source ~/.nvm/nvm.sh && nvm use
-npm run local -- validate config -c path/to/promptfooconfig.yaml
-npm run local -- eval -c path/to/promptfooconfig.yaml -o output.json --no-cache --no-share
+npm run local -- validate config -c path/to/artefconfig.yaml
+npm run local -- eval -c path/to/artefconfig.yaml -o output.json --no-cache --no-share
 ```
 
 Add `--env-file .env` only when the eval needs local credentials and that file

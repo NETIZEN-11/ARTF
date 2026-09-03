@@ -1,12 +1,12 @@
-{
+﻿{
   "name": "simple-mcp-example",
   "version": "1.0.0",
-  "description": "Example MCP server for testing the promptfoo MCP provider",
+  "description": "Example MCP server for testing the artef MCP provider",
   "type": "module",
   "main": "example-server.js",
   "scripts": {
     "start": "node example-server.js",
-    "test": "promptfoo eval"
+    "test": "artef eval"
   },
   "dependencies": {
     "@hono/node-server": "2.1.1",
@@ -14,15 +14,15 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "promptfoo": "*"
+    "artef": "*"
   },
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "promptfoo",
+    "artef",
     "security-testing",
     "red-team"
   ],
-  "author": "promptfoo",
+  "author": "artef",
   "license": "MIT"
 }

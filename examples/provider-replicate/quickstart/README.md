@@ -1,13 +1,13 @@
-# provider-replicate/quickstart (Replicate Quick Start)
+﻿# provider-replicate/quickstart (Replicate Quick Start)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-replicate/quickstart
+npx artef@latest init --example provider-replicate/quickstart
 cd provider-replicate/quickstart
 ```
 
-This is a minimal example to test the Replicate provider with promptfoo.
+This is a minimal example to test the Replicate provider with artef.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ This is a minimal example to test the Replicate provider with promptfoo.
 
 3. Run the evaluation:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 ## What This Tests

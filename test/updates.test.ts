@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockProcessEnv } from './util/utils';
 
 // Create mock for exec - using vi.hoisted to ensure it's available in vi.mock factory
@@ -66,7 +66,7 @@ describe('getLatestVersion', () => {
     } as never);
 
     await expect(getLatestVersion()).rejects.toThrow(
-      'Failed to fetch package information for promptfoo',
+      'Failed to fetch package information for artef',
     );
   });
 });
@@ -76,7 +76,7 @@ describe('getUpdateCommands', () => {
     expect(
       getUpdateCommands({ isContainer: false, isOfficialDockerImage: true, isNpx: false }),
     ).toEqual({
-      primary: 'docker pull ghcr.io/promptfoo/promptfoo:latest',
+      primary: 'docker pull ghcr.io/artef/artef:latest',
       alternative: null,
       commandType: 'docker',
     });
@@ -91,15 +91,15 @@ describe('getUpdateCommands', () => {
     expect(
       getUpdateCommands({ isContainer: false, isOfficialDockerImage: false, isNpx: true }),
     ).toEqual({
-      primary: 'npx promptfoo@latest',
-      alternative: 'npm install -g promptfoo@latest',
+      primary: 'npx artef@latest',
+      alternative: 'npm install -g artef@latest',
       commandType: 'npx',
     });
     expect(
       getUpdateCommands({ isContainer: false, isOfficialDockerImage: false, isNpx: false }),
     ).toEqual({
-      primary: 'npm install -g promptfoo@latest',
-      alternative: 'npx promptfoo@latest',
+      primary: 'npm install -g artef@latest',
+      alternative: 'npx artef@latest',
       commandType: 'npm',
     });
   });
@@ -112,7 +112,7 @@ describe('checkForUpdates', () => {
   beforeEach(() => {
     // Reset fetchWithTimeout to clear any queued mockResolvedValueOnce from other tests
     vi.mocked(fetchWithTimeout).mockReset();
-    restoreEnv = mockProcessEnv({ PROMPTFOO_DISABLE_UPDATE: undefined });
+    restoreEnv = mockProcessEnv({ artef_DISABLE_UPDATE: undefined });
     loggerInfoSpy = vi.spyOn(logger, 'info').mockImplementation(() => logger);
   });
 
@@ -121,8 +121,8 @@ describe('checkForUpdates', () => {
     restoreEnv();
   });
 
-  it('should skip the update check when PROMPTFOO_DISABLE_UPDATE is set', async () => {
-    const restoreDisableUpdate = mockProcessEnv({ PROMPTFOO_DISABLE_UPDATE: 'true' });
+  it('should skip the update check when artef_DISABLE_UPDATE is set', async () => {
+    const restoreDisableUpdate = mockProcessEnv({ artef_DISABLE_UPDATE: 'true' });
     try {
       expect(await checkForUpdates()).toBe(false);
       expect(fetchWithTimeout).not.toHaveBeenCalled();
@@ -134,8 +134,8 @@ describe('checkForUpdates', () => {
 
   it('should tell official-image users to pull a new image', async () => {
     const restoreDocker = mockProcessEnv({
-      PROMPTFOO_OFFICIAL_DOCKER_IMAGE: 'true',
-      PROMPTFOO_RUNNING_IN_DOCKER: 'true',
+      artef_OFFICIAL_DOCKER_IMAGE: 'true',
+      artef_RUNNING_IN_DOCKER: 'true',
     });
     vi.mocked(fetchWithTimeout).mockResolvedValueOnce({
       ok: true,
@@ -149,14 +149,14 @@ describe('checkForUpdates', () => {
     }
 
     expect(loggerInfoSpy).toHaveBeenCalledWith(
-      expect.stringContaining('docker pull ghcr.io/promptfoo/promptfoo:latest'),
+      expect.stringContaining('docker pull ghcr.io/artef/artef:latest'),
     );
   });
 
   it('should require a source update before rebuilding a custom container', async () => {
     const restoreContainer = mockProcessEnv({
-      PROMPTFOO_OFFICIAL_DOCKER_IMAGE: undefined,
-      PROMPTFOO_RUNNING_IN_DOCKER: 'true',
+      artef_OFFICIAL_DOCKER_IMAGE: undefined,
+      artef_RUNNING_IN_DOCKER: 'true',
     });
     vi.mocked(fetchWithTimeout).mockResolvedValueOnce({
       ok: true,
@@ -170,7 +170,7 @@ describe('checkForUpdates', () => {
     }
 
     expect(loggerInfoSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Update the Promptfoo source, dependency, or parent image'),
+      expect.stringContaining('Update the artef source, dependency, or parent image'),
     );
   });
 
@@ -216,7 +216,7 @@ describe('getModelAuditLatestVersion', () => {
     expect(version).toBe('0.1.7');
     expect(fetchWithTimeout).toHaveBeenCalledWith(
       'https://pypi.org/pypi/modelaudit/json',
-      { headers: { 'x-promptfoo-silent': 'true' } },
+      { headers: { 'x-artef-silent': 'true' } },
       10000,
     );
   });
@@ -273,7 +273,7 @@ describe('checkModelAuditUpdates', () => {
 
   beforeEach(() => {
     loggerInfoSpy = vi.spyOn(logger, 'info').mockImplementation(() => logger);
-    restoreEnv = mockProcessEnv({ PROMPTFOO_DISABLE_UPDATE: undefined });
+    restoreEnv = mockProcessEnv({ artef_DISABLE_UPDATE: undefined });
   });
 
   afterEach(() => {
@@ -326,8 +326,8 @@ describe('checkModelAuditUpdates', () => {
     expect(result).toBeFalsy();
   });
 
-  it('should return false when PROMPTFOO_DISABLE_UPDATE is set', async () => {
-    const restoreDisableUpdate = mockProcessEnv({ PROMPTFOO_DISABLE_UPDATE: 'true' });
+  it('should return false when artef_DISABLE_UPDATE is set', async () => {
+    const restoreDisableUpdate = mockProcessEnv({ artef_DISABLE_UPDATE: 'true' });
     try {
       vi.mocked(fetchWithTimeout).mockReset();
 

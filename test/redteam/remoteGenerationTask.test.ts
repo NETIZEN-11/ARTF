@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../src/cache';
 import { getUserEmail } from '../../src/globalConfig/accounts';
 import { trackGenerationTokenUsage } from '../../src/redteam/generationTokenUsage';
@@ -215,7 +215,7 @@ describe('postRemoteGenerationTask', () => {
     });
 
     await postRemoteGenerationTask({ task: 'gcg' }, undefined, {
-      headers: { 'x-promptfoo-silent': 'true' },
+      headers: { 'x-artef-silent': 'true' },
       bustCache: true,
     });
 
@@ -225,7 +225,7 @@ describe('postRemoteGenerationTask', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-promptfoo-silent': 'true',
+          'x-artef-silent': 'true',
         },
         body: JSON.stringify({ task: 'gcg', email: 'test@example.com' }),
       },

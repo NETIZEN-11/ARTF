@@ -1,1 +1,1 @@
-export const REDTEAM_MEMORY_POISONING_PLUGIN_ID = 'promptfoo:redteam:agentic:memory-poisoning';
+﻿export const REDTEAM_MEMORY_POISONING_PLUGIN_ID = 'artef:redteam:agentic:memory-poisoning';

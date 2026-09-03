@@ -1,9 +1,9 @@
-{
+﻿{
   "publicFacade": "src/index.ts",
   "leafLayers": ["contracts"],
   "aliases": {
     "@app": "src/app/src",
-    "@promptfoo": "src"
+    "@artef": "src"
   },
   "ignoredRoots": ["src/__mocks__"],
   "tierOrder": [

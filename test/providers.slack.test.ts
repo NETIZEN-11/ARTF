@@ -1,4 +1,4 @@
-import { WebAPIPlatformError, WebAPIRateLimitedError, WebClient } from '@slack/web-api';
+﻿import { WebAPIPlatformError, WebAPIRateLimitedError, WebClient } from '@slack/web-api';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SlackProvider } from '../src/providers/slack';
 import { fetchWithProxy } from '../src/util/fetch/index';
@@ -108,7 +108,7 @@ describe('SlackProvider', () => {
 
       const forwardedHeaders = new Headers(vi.mocked(fetchWithProxy).mock.calls[0]?.[1]?.headers);
       expect(forwardedHeaders.get('Authorization')).toBe('Bearer xoxb-test-token');
-      expect(forwardedHeaders.get('x-promptfoo-silent')).toBe('true');
+      expect(forwardedHeaders.get('x-artef-silent')).toBe('true');
     });
   });
 

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Audio Inputs
 title: Audio Jailbreaking Strategy
 description: Assess multimodal AI vulnerabilities using audio-encoded text attacks to circumvent content moderation and safety filters
@@ -16,9 +16,9 @@ This strategy is useful for:
 2. Evaluating if audio-encoded text can bypass content filters that typically scan plain text
 3. Assessing model behavior when handling multi-modal inputs (text converted to speech format)
 
-Use it like so in your promptfooconfig.yaml:
+Use it like so in your artefconfig.yaml:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - audio
 ```

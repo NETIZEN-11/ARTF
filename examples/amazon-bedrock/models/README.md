@@ -1,9 +1,9 @@
-# amazon-bedrock/models (Amazon Bedrock Examples)
+﻿# amazon-bedrock/models (Amazon Bedrock Examples)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example amazon-bedrock/models
+npx artef@latest init --example amazon-bedrock/models
 cd amazon-bedrock/models
 ```
 
@@ -16,7 +16,7 @@ cd amazon-bedrock/models
    export AWS_SECRET_ACCESS_KEY="your_secret_key"
    ```
 
-   See [authentication docs](https://www.promptfoo.dev/docs/providers/aws-bedrock/#authentication) for other auth methods, including SSO profiles.
+   See [authentication docs](https://www.artef.dev/docs/providers/aws-bedrock/#authentication) for other auth methods, including SSO profiles.
 
 2. Request model access in your AWS region:
    - Visit the [AWS Bedrock Model Access page](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess)
@@ -36,28 +36,28 @@ cd amazon-bedrock/models
 
 This directory contains several example configurations for different Bedrock models:
 
-- [`promptfooconfig.claude.yaml`](promptfooconfig.claude.yaml) - Claude 4.6 Opus, Claude 4.1 Opus, Claude 4 Opus/Sonnet, Claude Haiku 4.5
-- [`promptfooconfig.openai.yaml`](promptfooconfig.openai.yaml) - OpenAI GPT-OSS models (120B and 20B) with reasoning effort
-- [`promptfooconfig.openai-frontier.yaml`](promptfooconfig.openai-frontier.yaml) - OpenAI GPT-5.6 Sol, Terra, and Luna with reasoning, explicit prompt caching, and streaming
-- [`promptfooconfig.grok.yaml`](promptfooconfig.grok.yaml) - xAI Grok 4.3 on the Bedrock Mantle endpoint (requires `AWS_BEARER_TOKEN_BEDROCK`)
-- [`promptfooconfig.mantle.yaml`](promptfooconfig.mantle.yaml) - `bedrock:mantle:` Chat Completions endpoint for mantle-only models like GLM 4.6 and DeepSeek V3.1 (requires `AWS_BEARER_TOKEN_BEDROCK`)
-- [`promptfooconfig.llama.yaml`](promptfooconfig.llama.yaml) - Llama3
-- [`promptfooconfig.mistral.yaml`](promptfooconfig.mistral.yaml) - Mistral
-- [`promptfooconfig.openai-compatible.yaml`](promptfooconfig.openai-compatible.yaml) - OpenAI-compatible families: Z.AI GLM, MiniMax, Moonshot Kimi, NVIDIA Nemotron, Google Gemma, Writer Palmyra
-- [`promptfooconfig.nova.yaml`](promptfooconfig.nova.yaml) - Amazon's Nova models
-- [`promptfooconfig.nova.tool.yaml`](promptfooconfig.nova.tool.yaml) - Nova with tool usage examples
-- [`promptfooconfig.nova.multimodal.yaml`](promptfooconfig.nova.multimodal.yaml) - Nova with multimodal capabilities
-- [`promptfooconfig.kb.yaml`](promptfooconfig.kb.yaml) - Knowledge Base RAG example with citations and contextTransform
-- [`promptfooconfig.inference-profiles.yaml`](promptfooconfig.inference-profiles.yaml) - Comprehensive Application Inference Profiles example with multiple model types
-- [`promptfooconfig.inference-profiles-simple.yaml`](promptfooconfig.inference-profiles-simple.yaml) - Simple production-ready inference profile setup for high availability
-- [`promptfooconfig.yaml`](promptfooconfig.yaml) - Combined evaluation across multiple providers
-- [`promptfooconfig.nova-sonic.yaml`](promptfooconfig.nova-sonic.yaml) - Amazon Nova Sonic model for audio
-- [`promptfooconfig.converse.yaml`](promptfooconfig.converse.yaml) - Converse API with extended thinking (ultrathink)
-- [`promptfooconfig.converse-mcp.yaml`](promptfooconfig.converse-mcp.yaml) - Converse API with Model Context Protocol (MCP) tools
+- [`artefconfig.claude.yaml`](artefconfig.claude.yaml) - Claude 4.6 Opus, Claude 4.1 Opus, Claude 4 Opus/Sonnet, Claude Haiku 4.5
+- [`artefconfig.openai.yaml`](artefconfig.openai.yaml) - OpenAI GPT-OSS models (120B and 20B) with reasoning effort
+- [`artefconfig.openai-frontier.yaml`](artefconfig.openai-frontier.yaml) - OpenAI GPT-5.6 Sol, Terra, and Luna with reasoning, explicit prompt caching, and streaming
+- [`artefconfig.grok.yaml`](artefconfig.grok.yaml) - xAI Grok 4.3 on the Bedrock Mantle endpoint (requires `AWS_BEARER_TOKEN_BEDROCK`)
+- [`artefconfig.mantle.yaml`](artefconfig.mantle.yaml) - `bedrock:mantle:` Chat Completions endpoint for mantle-only models like GLM 4.6 and DeepSeek V3.1 (requires `AWS_BEARER_TOKEN_BEDROCK`)
+- [`artefconfig.llama.yaml`](artefconfig.llama.yaml) - Llama3
+- [`artefconfig.mistral.yaml`](artefconfig.mistral.yaml) - Mistral
+- [`artefconfig.openai-compatible.yaml`](artefconfig.openai-compatible.yaml) - OpenAI-compatible families: Z.AI GLM, MiniMax, Moonshot Kimi, NVIDIA Nemotron, Google Gemma, Writer Palmyra
+- [`artefconfig.nova.yaml`](artefconfig.nova.yaml) - Amazon's Nova models
+- [`artefconfig.nova.tool.yaml`](artefconfig.nova.tool.yaml) - Nova with tool usage examples
+- [`artefconfig.nova.multimodal.yaml`](artefconfig.nova.multimodal.yaml) - Nova with multimodal capabilities
+- [`artefconfig.kb.yaml`](artefconfig.kb.yaml) - Knowledge Base RAG example with citations and contextTransform
+- [`artefconfig.inference-profiles.yaml`](artefconfig.inference-profiles.yaml) - Comprehensive Application Inference Profiles example with multiple model types
+- [`artefconfig.inference-profiles-simple.yaml`](artefconfig.inference-profiles-simple.yaml) - Simple production-ready inference profile setup for high availability
+- [`artefconfig.yaml`](artefconfig.yaml) - Combined evaluation across multiple providers
+- [`artefconfig.nova-sonic.yaml`](artefconfig.nova-sonic.yaml) - Amazon Nova Sonic model for audio
+- [`artefconfig.converse.yaml`](artefconfig.converse.yaml) - Converse API with extended thinking (ultrathink)
+- [`artefconfig.converse-mcp.yaml`](artefconfig.converse-mcp.yaml) - Converse API with Model Context Protocol (MCP) tools
 
 ## Converse API Example
 
-The Converse API example (`promptfooconfig.converse.yaml`) demonstrates the unified Bedrock Converse API with extended thinking (ultrathink) support.
+The Converse API example (`artefconfig.converse.yaml`) demonstrates the unified Bedrock Converse API with extended thinking (ultrathink) support.
 
 ### Key Features
 
@@ -83,12 +83,12 @@ providers:
 Run the Converse API example with:
 
 ```bash
-promptfoo eval -c examples/amazon-bedrock/models/promptfooconfig.converse.yaml
+artef eval -c examples/amazon-bedrock/models/artefconfig.converse.yaml
 ```
 
 ## Converse MCP Example
 
-The Converse MCP example (`promptfooconfig.converse-mcp.yaml`) demonstrates how to attach Model Context Protocol (MCP) servers to a Bedrock Converse provider. MCP tools are discovered from the configured server, converted to Bedrock Converse tool definitions, and executed when the model requests a tool call.
+The Converse MCP example (`artefconfig.converse-mcp.yaml`) demonstrates how to attach Model Context Protocol (MCP) servers to a Bedrock Converse provider. MCP tools are discovered from the configured server, converted to Bedrock Converse tool definitions, and executed when the model requests a tool call.
 
 ### Configuration
 
@@ -113,7 +113,7 @@ providers:
 Run the Converse MCP example with:
 
 ```bash
-promptfoo eval -c examples/amazon-bedrock/models/promptfooconfig.converse-mcp.yaml
+artef eval -c examples/amazon-bedrock/models/artefconfig.converse-mcp.yaml
 ```
 
 Replace the `servers` entry with a local `command`/`args`, `path`, or another remote `url` to use your own MCP server.
@@ -128,14 +128,14 @@ Replace the `servers` entry with a local `command`/`args`, `path`, or another re
 
 ## Knowledge Base Example
 
-The Knowledge Base example (`promptfooconfig.kb.yaml`) demonstrates how to use AWS Bedrock Knowledge Base for Retrieval Augmented Generation (RAG).
+The Knowledge Base example (`artefconfig.kb.yaml`) demonstrates how to use AWS Bedrock Knowledge Base for Retrieval Augmented Generation (RAG).
 
 ### Knowledge Base Setup
 
 For this example, you'll need to:
 
 1. Create a Knowledge Base in AWS Bedrock
-2. Configure it to crawl or ingest content (the example assumes promptfoo documentation content)
+2. Configure it to crawl or ingest content (the example assumes artef documentation content)
 3. Use the Amazon Titan Embeddings model for vector embeddings
 4. Update the config with your Knowledge Base ID:
 
@@ -154,7 +154,7 @@ When running the Knowledge Base example, you'll see:
 - Citations from source documents that show where information was retrieved from
 - Example of `contextTransform` feature extracting context from citations for evaluation
 
-The example includes questions about promptfoo configuration, providers, and evaluation techniques that work well with the embedded promptfoo documentation.
+The example includes questions about artef configuration, providers, and evaluation techniques that work well with the embedded artef documentation.
 
 **Note**: You'll need to update the `knowledgeBaseId` with your actual Knowledge Base ID and ensure the Knowledge Base is configured to work with the selected Claude model.
 
@@ -162,7 +162,7 @@ For detailed Knowledge Base setup instructions, see the [AWS Bedrock Knowledge B
 
 ## Application Inference Profiles Example
 
-The Application Inference Profiles example (`promptfooconfig.inference-profiles.yaml`) demonstrates how to use AWS Bedrock's inference profiles for multi-region failover and cost optimization.
+The Application Inference Profiles example (`artefconfig.inference-profiles.yaml`) demonstrates how to use AWS Bedrock's inference profiles for multi-region failover and cost optimization.
 
 ### Key Benefits of Inference Profiles
 
@@ -207,10 +207,10 @@ providers:
 
 We provide two inference profile examples:
 
-1. **Comprehensive Example** (`promptfooconfig.inference-profiles.yaml`):
+1. **Comprehensive Example** (`artefconfig.inference-profiles.yaml`):
 
    ```bash
-   promptfoo eval -c examples/amazon-bedrock/models/promptfooconfig.inference-profiles.yaml
+   artef eval -c examples/amazon-bedrock/models/artefconfig.inference-profiles.yaml
    ```
 
    This includes:
@@ -219,9 +219,9 @@ We provide two inference profile examples:
    - Use of inference profiles for grading assertions
    - Various model-specific configurations
 
-2. **Simple Production Example** (`promptfooconfig.inference-profiles-simple.yaml`):
+2. **Simple Production Example** (`artefconfig.inference-profiles-simple.yaml`):
    ```bash
-   promptfoo eval -c examples/amazon-bedrock/models/promptfooconfig.inference-profiles-simple.yaml
+   artef eval -c examples/amazon-bedrock/models/artefconfig.inference-profiles-simple.yaml
    ```
    This demonstrates:
    - A realistic customer support use case
@@ -233,7 +233,7 @@ We provide two inference profile examples:
 
 ## OpenAI Models Example
 
-The OpenAI example (`promptfooconfig.openai.yaml`) demonstrates OpenAI's GPT-OSS models available through AWS Bedrock:
+The OpenAI example (`artefconfig.openai.yaml`) demonstrates OpenAI's GPT-OSS models available through AWS Bedrock:
 
 - **openai.gpt-oss-120b-1:0** - 120 billion parameter model with strong reasoning capabilities
 - **openai.gpt-oss-20b-1:0** - 20 billion parameter model, more cost-effective
@@ -247,12 +247,12 @@ The OpenAI example (`promptfooconfig.openai.yaml`) demonstrates OpenAI's GPT-OSS
 Run the OpenAI example with:
 
 ```bash
-promptfoo eval -c examples/amazon-bedrock/models/promptfooconfig.openai.yaml
+artef eval -c examples/amazon-bedrock/models/artefconfig.openai.yaml
 ```
 
 ## OpenAI Frontier Models Example
 
-The frontier example (`promptfooconfig.openai-frontier.yaml`) demonstrates OpenAI's GPT-5.x frontier models on Bedrock:
+The frontier example (`artefconfig.openai-frontier.yaml`) demonstrates OpenAI's GPT-5.x frontier models on Bedrock:
 
 - **openai.gpt-5.6-sol** - Flagship reasoning tier (available in `us-east-1` and `us-east-2`)
 - **openai.gpt-5.6-terra** - Balanced tier (available in `us-east-1`, `us-east-2`, and `us-west-2`)
@@ -260,7 +260,7 @@ The frontier example (`promptfooconfig.openai-frontier.yaml`) demonstrates OpenA
 
 ### Key Features
 
-- **Responses API**: Frontier models are served through Bedrock's OpenAI-compatible Responses API (`https://bedrock-mantle.<region>.api.aws/openai/v1/responses`), not `InvokeModel` or `Converse`. Promptfoo routes `bedrock:openai.gpt-5.x` there automatically and preserves the Bedrock model ID.
+- **Responses API**: Frontier models are served through Bedrock's OpenAI-compatible Responses API (`https://bedrock-mantle.<region>.api.aws/openai/v1/responses`), not `InvokeModel` or `Converse`. artef routes `bedrock:openai.gpt-5.x` there automatically and preserves the Bedrock model ID.
 - **Bedrock API key auth**: Unlike the gpt-oss models (AWS SDK credentials), the frontier models authenticate with an Amazon Bedrock API key. Export it first:
 
   ```bash
@@ -276,7 +276,7 @@ These are the same model IDs that back OpenAI's [Codex](https://developers.opena
 Run the frontier example with:
 
 ```bash
-promptfoo eval -c examples/amazon-bedrock/models/promptfooconfig.openai-frontier.yaml --no-cache
+artef eval -c examples/amazon-bedrock/models/artefconfig.openai-frontier.yaml --no-cache
 ```
 
 ## New Converse API Features (SDK 3.943+)
@@ -314,11 +314,11 @@ Error responses include categorized error types in `metadata.errorType`:
 1. Run the evaluation:
 
    ```bash
-   promptfoo eval -c [path/to/config.yaml]
+   artef eval -c [path/to/config.yaml]
    ```
 
 2. View the results:
 
    ```bash
-   promptfoo view
+   artef view
    ```

@@ -1,4 +1,4 @@
-import { serializeContext } from '../assertions/contextUtils';
+﻿import { serializeContext } from '../assertions/contextUtils';
 import {
   ANSWER_RELEVANCY_GENERATE,
   CONTEXT_FAITHFULNESS_LONGFORM,
@@ -186,7 +186,7 @@ export async function matchesContextRecall(
 
   // Filter to only include lines that contain attribution markers.
   // This handles cases where LLMs add preamble text before the classification list.
-  // See: https://github.com/promptfoo/promptfoo/issues/1506
+  // See: https://github.com/artef/artef/issues/1506
   const attributedTokenLower = CONTEXT_RECALL_ATTRIBUTED_TOKEN.toLowerCase();
   const notAttributedTokenLower = CONTEXT_RECALL_NOT_ATTRIBUTED_TOKEN.toLowerCase();
   const sentences = splitIntoSentences(resp.output).filter((line) => {

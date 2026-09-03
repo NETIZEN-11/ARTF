@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Compare Codex skill versions
 
 prompts:
@@ -61,7 +61,7 @@ providers:
       working_dir: '{{ env.CODEX_SKILL_COMPARE_V2_DIR | default("./fixtures/v2") }}'
 
 defaultTest:
-  # Without `disableVarExpansion`, Promptfoo would fan each YAML-list var into
+  # Without `disableVarExpansion`, artef would fan each YAML-list var into
   # one test case per element (src/evaluator.ts:generateVarCombinations), which
   # would split each comparison test in two and break max-score selection.
   options:

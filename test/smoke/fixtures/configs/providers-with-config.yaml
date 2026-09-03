@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Config with multiple providers that have labels and config options.
 # Uses ProviderOptionsMap format with overridden IDs so that the bare
 # string 'echo' does NOT match any config provider by id/label/suffix,

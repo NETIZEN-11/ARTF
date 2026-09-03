@@ -1,4 +1,4 @@
-import { trace } from '@opentelemetry/api';
+﻿import { trace } from '@opentelemetry/api';
 import OpenAI from 'openai';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { disableCache, enableCache } from '../../../src/cache';
@@ -144,7 +144,7 @@ describe('OpenAI Provider', () => {
       expect(OpenAI).toHaveBeenCalledWith(
         expect.objectContaining({
           defaultHeaders: expect.objectContaining({
-            'X-OpenAI-Originator': 'promptfoo',
+            'X-OpenAI-Originator': 'artef',
           }),
         }),
       );

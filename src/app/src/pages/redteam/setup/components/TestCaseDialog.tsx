@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -32,7 +32,7 @@ import {
   isMultiTurnStrategy,
   type Plugin,
   type Strategy,
-} from '@promptfoo/redteam/constants';
+} from '@artef/redteam/constants';
 import { ExternalLink, Info, Sparkles } from 'lucide-react';
 import { useRedTeamTargetConfigValidation } from '../hooks/useRedTeamTargetConfigValidation';
 import {
@@ -280,7 +280,7 @@ export const TestCaseGenerateButton: React.FC<{
   const buttonLabel =
     targetConfigError ||
     tooltipTitle ||
-    (isRemoteDisabled ? 'Requires Promptfoo Cloud connection' : 'Generate a test case');
+    (isRemoteDisabled ? 'Requires artef Cloud connection' : 'Generate a test case');
 
   return (
     <Tooltip open={shouldRenderTooltip} onOpenChange={setShouldRenderTooltip}>
@@ -305,7 +305,7 @@ export const TestCaseGenerateButton: React.FC<{
       <TooltipContent>
         {targetConfigError ||
           (isRemoteDisabled
-            ? 'Requires Promptfoo Cloud connection'
+            ? 'Requires artef Cloud connection'
             : tooltipTitle || 'Generate test case')}
       </TooltipContent>
     </Tooltip>

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addCustom } from '../../../src/redteam/strategies/custom';
 
 import type { TestCase } from '../../../src/types/index';
@@ -35,7 +35,7 @@ describe('addCustom', () => {
       expect(result[0]).toEqual({
         vars: { query: 'Tell me a joke' },
         provider: {
-          id: 'promptfoo:redteam:custom',
+          id: 'artef:redteam:custom',
           config: {
             injectVar: 'query',
             variant: '',
@@ -61,7 +61,7 @@ describe('addCustom', () => {
       expect(result[1]).toEqual({
         vars: { query: 'What is the weather?' },
         provider: {
-          id: 'promptfoo:redteam:custom',
+          id: 'artef:redteam:custom',
           config: {
             injectVar: 'query',
             variant: '',
@@ -91,7 +91,7 @@ describe('addCustom', () => {
       expect(result[0]).toEqual({
         vars: { query: 'Tell me a joke' },
         provider: {
-          id: 'promptfoo:redteam:custom:aggressive',
+          id: 'artef:redteam:custom:aggressive',
           config: {
             injectVar: 'query',
             variant: 'aggressive',
@@ -121,7 +121,7 @@ describe('addCustom', () => {
 
       // Check provider ID and variant extraction
       expect(result[0].provider).toEqual({
-        id: 'promptfoo:redteam:custom:greeting-strategy',
+        id: 'artef:redteam:custom:greeting-strategy',
         config: {
           injectVar: 'query',
           variant: 'greeting-strategy',
@@ -221,7 +221,7 @@ describe('addCustom', () => {
       expect(result[0].assert).toBeUndefined();
       expect(typeof result[0].provider).toBe('object');
       const provider = result[0].provider as { id: string; config: any };
-      expect(provider.id).toBe('promptfoo:redteam:custom:test');
+      expect(provider.id).toBe('artef:redteam:custom:test');
     });
 
     it('should handle test cases with multiple assertions', () => {
@@ -273,21 +273,21 @@ describe('addCustom', () => {
       const result = addCustom(mockTestCases, injectVar, config, 'custom');
       expect(typeof result[0].provider).toBe('object');
       const provider = result[0].provider as { id: string; config: any };
-      expect(provider.id).toBe('promptfoo:redteam:custom');
+      expect(provider.id).toBe('artef:redteam:custom');
     });
 
     it('should generate correct provider ID for compound custom', () => {
       const result = addCustom(mockTestCases, injectVar, config, 'custom:variant');
       expect(typeof result[0].provider).toBe('object');
       const provider = result[0].provider as { id: string; config: any };
-      expect(provider.id).toBe('promptfoo:redteam:custom:variant');
+      expect(provider.id).toBe('artef:redteam:custom:variant');
     });
 
     it('should handle complex variant names in provider ID', () => {
       const result = addCustom(mockTestCases, injectVar, config, 'custom:complex-variant-name');
       expect(typeof result[0].provider).toBe('object');
       const provider = result[0].provider as { id: string; config: any };
-      expect(provider.id).toBe('promptfoo:redteam:custom:complex-variant-name');
+      expect(provider.id).toBe('artef:redteam:custom:complex-variant-name');
     });
   });
 });

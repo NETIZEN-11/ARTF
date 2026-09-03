@@ -1,4 +1,4 @@
----
+﻿---
 title: Your model upgrade just broke your agent's safety
 description: Model upgrades can change refusal, instruction-following, and tool-use behavior. Here's how to prevent safety regressions in agentic apps.
 image: /img/blog/model-upgrades-break-agent-safety/header.jpg
@@ -252,7 +252,7 @@ Run your own tests on your own data. Third-party numbers are a starting point, n
 - [ ] "Helpful-but-unsafe" behavior (model complies but should not)
 - [ ] Tool-call rate changes for sensitive tools
 
-**Example regression test (Promptfoo YAML):**
+**Example regression test (artef YAML):**
 
 ```yaml
 # Run against baseline and candidate to catch regressions
@@ -329,4 +329,4 @@ Models update, prompts evolve, and attackers iterate. You cannot test once and c
 
 If a failure happens even once in testing, that behavior is available to an attacker. Continuous testing makes regressions visible before you ship them.
 
-**What safety regression have you seen after a model upgrade?** Email [shuo@promptfoo.dev](mailto:shuo@promptfoo.dev)
+**What safety regression have you seen after a model upgrade?** Email [shuo@artef.dev](mailto:shuo@artef.dev)

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Preventing Hallucinations
 description: Measure and reduce LLM hallucinations using perplexity metrics, RAG, and controlled decoding techniques to achieve 85%+ factual accuracy in AI outputs
 ---
@@ -27,13 +27,13 @@ In this guide, we'll cover how to:
 
 ## Defining Test Cases
 
-To get started, we'll use [promptfoo](/docs/intro), an eval framework for LLMs. The YAML configuration format runs each prompt through a series of example inputs (aka "test case") and checks if they meet requirements (aka "assert").
+To get started, we'll use [artef](/docs/intro), an eval framework for LLMs. The YAML configuration format runs each prompt through a series of example inputs (aka "test case") and checks if they meet requirements (aka "assert").
 
 For example, let's imagine we're building an app that provides real-time information. This presents a potential hallucination scenario as LLMs don't have access to real-time data.
 
 Let's create a YAML file that defines test cases for real-time inquiries:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       question: What's the weather in New York?
@@ -96,7 +96,7 @@ Note that the above is just an example. The key here is to use a test framework 
 
 Once you've set up a few prompts, add them to the config file:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 // highlight-next-line
 prompts: [file://prompt1.txt, file://prompt2.txt]
 tests:
@@ -107,7 +107,7 @@ tests:
         value: does not claim to know the current weather in New York
 ```
 
-Now, we'll run `promptfoo eval` and produce a quantified side-by-side view that scores the performance of multiple prompts against each other. Running the `promptfoo view` command afterward displays the following assessment:
+Now, we'll run `artef eval` and produce a quantified side-by-side view that scores the performance of multiple prompts against each other. Running the `artef view` command afterward displays the following assessment:
 
 ![llm hallucination eval](/img/docs/hallucination-example-1.png)
 
@@ -222,7 +222,7 @@ tests:
         value: does not claim to know the current weather in New York
 ```
 
-Running `promptfoo eval` and `promptfoo view` will produce a similar view to the one in the previous section, except comparing the plain GPT approach versus the retrieval-augmented approach:
+Running `artef eval` and `artef view` will produce a similar view to the one in the previous section, except comparing the plain GPT approach versus the retrieval-augmented approach:
 
 ![comparing langchain and vanilla gpt for hallucinations](/img/docs/hallucination-example-2.png)
 
@@ -246,7 +246,7 @@ tests:
         value: does not claim to know the current weather in New York
 ```
 
-`promptfoo eval` will run each test case against both models, allowing us to compare their performance.
+`artef eval` will run each test case against both models, allowing us to compare their performance.
 
 ### Controlled Decoding
 

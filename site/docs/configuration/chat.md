@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Chat threads
 sidebar_position: 32
 title: Chat Conversations and Multi-Turn Threads
@@ -43,7 +43,7 @@ Most providers support full "multishot" chat conversations, including multiple a
 
 One way to do this, if you are using the OpenAI format, is by creating a list of `{role, content}` objects. Here's an example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://prompt.json
 
@@ -102,7 +102,7 @@ This simplifies the config, but we need to work some magic in the prompt templat
 
 Using nunjucks templates, we can combine multiple chat messages. Here's an example in which the previous conversation is a fixture for _all_ tests. Each case tests a different follow-up message:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Set up the conversation history
 defaultTest:
   vars:
@@ -186,7 +186,7 @@ Use `completion.input` as a shortcut to get the last user message. In a chat-for
 
 Here's an example test config. Note how each question assumes context from the previous output:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       question: Who founded Facebook?
@@ -221,9 +221,9 @@ Here is the corresponding prompt:
 
 The prompt inserts the previous conversation into the test case, creating a full turn-by-turn conversation:
 
-![multiple turn conversation eval](https://github.com/promptfoo/promptfoo/assets/310310/70048ae5-34ce-46f0-bd28-42d3aa96f03e)
+![multiple turn conversation eval](https://github.com/artef/artef/assets/310310/70048ae5-34ce-46f0-bd28-42d3aa96f03e)
 
-Try it yourself by using the [full example config](https://github.com/promptfoo/promptfoo/tree/main/examples/config-multi-turn).
+Try it yourself by using the [full example config](https://github.com/artef/artef/tree/main/examples/config-multi-turn).
 
 :::info
 When a prompt references `_conversation` as a Nunjucks variable, the eval will run single-threaded (concurrency of 1).
@@ -281,7 +281,7 @@ Here's an example that prompts OpenAI with a JSON object of the structure `{quer
 
 Here's the associated config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - file://prompt.json
 providers:
@@ -310,7 +310,7 @@ The `storeOutputAs` option makes it possible to reference previous outputs in mu
 
 Here's an example:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Respond to the user: {{message}}'
 
@@ -336,7 +336,7 @@ This creates `favoriteFruit` and `reason` vars on-the-go, as the chatbot answers
 
 Outputs can be modified before storage using the `transform` property:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 tests:
   - vars:
       message: "What's your favorite fruit? You must pick one. Output the name of a fruit only"
@@ -361,4 +361,4 @@ Transforms can be Javascript snippets or they can be entire separate Python or J
 - [Test Configuration](/docs/configuration/guide) - Complete guide to setting up test configurations
 - [Transformer Functions](/docs/configuration/guide/#transforming-outputs) - How to transform outputs between test cases
 - [Nunjucks Templates](https://mozilla.github.io/nunjucks/templating.html) - Documentation for the template language used in prompt files
-- [Multi-turn Conversation Example](https://github.com/promptfoo/promptfoo/tree/main/examples/config-multi-turn) - Complete example of multi-turn conversations
+- [Multi-turn Conversation Example](https://github.com/artef/artef/tree/main/examples/config-multi-turn) - Complete example of multi-turn conversations

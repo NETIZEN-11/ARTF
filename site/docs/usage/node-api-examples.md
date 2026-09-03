@@ -1,20 +1,20 @@
----
+﻿---
 sidebar_label: Node API Examples
 sidebar_position: 22
 title: Node API examples
-description: Practical examples for using promptfoo programmatically from Node.js, including evals, assertions, providers, caching, and integrations.
+description: Practical examples for using artef programmatically from Node.js, including evals, assertions, providers, caching, and integrations.
 ---
 
 # Advanced Node API Examples
 
-Practical examples demonstrating advanced use cases with the promptfoo Node module.
+Practical examples demonstrating advanced use cases with the artef Node module.
 
 ## Basic Examples
 
 ### Example 1: Simple Evaluation
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Translate to Spanish: {{ text }}'],
@@ -38,7 +38,7 @@ console.log(`Pass rate: ${results.stats.successes}/${results.results.length}`);
 Test the same prompts against different providers:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Summarize: {{ article }}'],
@@ -68,7 +68,7 @@ results.results.forEach((result) => {
 Programmatically generate tests from a dataset:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const questions = [
   { q: 'What is 2+2?', a: '4' },
@@ -103,7 +103,7 @@ const evalRecord = await evaluate({
 Execute custom JavaScript logic for complex grading:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Generate: {{ topic }}'],
@@ -139,7 +139,7 @@ const evalRecord = await evaluate({
 Access test context, provider info, and trace data in assertions:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Respond to: {{ user_message }}'],
@@ -189,7 +189,7 @@ const evalRecord = await evaluate({
 Load multiple providers and evaluate them independently:
 
 ```typescript
-import { assertions, loadApiProviders } from 'promptfoo';
+import { assertions, loadApiProviders } from 'artef';
 
 async function batchTestProviders() {
   const providers = await loadApiProviders(
@@ -242,7 +242,7 @@ await batchTestProviders();
 Control caching for different test scenarios:
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 async function runWithCacheControl() {
   const testSuite = {
@@ -286,7 +286,7 @@ await runWithCacheControl();
 Compare two model versions with isolated caches:
 
 ```typescript
-import { cache, evaluate } from 'promptfoo';
+import { cache, evaluate } from 'artef';
 
 async function abTestModels(testSuite, oldModel, newModel) {
   // Test old model with isolated cache
@@ -339,7 +339,7 @@ console.log(`Winner: ${comparison.winnerModel}`);
 Generate adversarial test cases:
 
 ```typescript
-import { redteam } from 'promptfoo';
+import { redteam } from 'artef';
 
 async function generateAdversarialTests() {
   const result = await redteam.generate({
@@ -371,7 +371,7 @@ const adversarialTests = await generateAdversarialTests();
 Extend red team with custom attack plugins:
 
 ```typescript
-import { redteam } from 'promptfoo';
+import { redteam } from 'artef';
 
 class CustomSecurityPlugin extends redteam.Base.Plugin {
   async run(params: { target: Prompt; injectVar?: string; options?: Record<string, unknown> }) {
@@ -409,7 +409,7 @@ export default CustomSecurityPlugin;
 Load test cases and expected outputs from external sources:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
@@ -465,7 +465,7 @@ const results = await evaluateWithExternalData();
 Process evaluation results as they complete:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 async function streamingEvaluation() {
   const evalRecord = await evaluate(
@@ -503,7 +503,7 @@ await streamingEvaluation();
 Use Claude for semantic evaluation:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Summarize: {{ text }}'],
@@ -535,7 +535,7 @@ const evalRecord = await evaluate({
 Compare outputs semantically:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate({
   prompts: ['Translate to French: {{ text }}'],
@@ -564,7 +564,7 @@ const evalRecord = await evaluate({
 Run tests efficiently with concurrency control:
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 const evalRecord = await evaluate(
   {
@@ -588,7 +588,7 @@ const evalRecord = await evaluate(
 Format evaluation results for display:
 
 ```typescript
-import { evaluate, generateTable } from 'promptfoo';
+import { evaluate, generateTable } from 'artef';
 
 const evalRecord = await evaluate(testSuite);
 const table = await evalRecord.getTable();
@@ -603,7 +603,7 @@ console.log(generateTable(table, 50));
 ### Example 17: Robust Evaluation with Error Handling
 
 ```typescript
-import { evaluate } from 'promptfoo';
+import { evaluate } from 'artef';
 
 async function safeEvaluate(testSuite) {
   try {
@@ -646,7 +646,7 @@ const results = await safeEvaluate(testSuite);
 All examples work with TypeScript. Add type annotations for full IDE support:
 
 ```typescript
-import { evaluate, EvaluateSummary, EvaluateTestSuite } from 'promptfoo';
+import { evaluate, EvaluateSummary, EvaluateTestSuite } from 'artef';
 
 async function typedEvaluation(): Promise<EvaluateSummary> {
   const testSuite: EvaluateTestSuite = {

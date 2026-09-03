@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: 'Luma Ray 2 Video Generation on AWS Bedrock'
 
 # Luma Ray 2 produces high-quality videos from text prompts.
@@ -22,7 +22,7 @@ providers:
       aspectRatio: '16:9'
 
 prompts:
-  # Promptfoo red panda mascot themed prompts
+  # artef red panda mascot themed prompts
   - 'A cute red panda wearing glasses typing on a glowing laptop in a cozy tech office, soft purple and teal lighting, modern tech aesthetic, the red panda looks focused and intelligent'
   - 'An adorable red panda in a lab coat examining holographic data visualizations, futuristic tech environment with orange and purple accent lights, cinematic lighting'
   - 'A friendly red panda mascot waving at the camera in front of a wall of code and security shields, modern office setting, warm lighting, professional but approachable style'

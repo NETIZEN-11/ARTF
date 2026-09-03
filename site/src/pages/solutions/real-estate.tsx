@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -58,7 +58,7 @@ export default function RealEstate() {
       description="Red team real estate AI for Fair Housing Act compliance across 7 protected classes, anti-steering, lending discrimination, and valuation bias."
     >
       <Head>
-        <meta property="og:title" content="AI Security for Real Estate | Promptfoo" />
+        <meta property="og:title" content="AI Security for Real Estate | artef" />
         <meta
           property="og:description"
           content="Red team AI for fair housing compliance and discrimination testing in real estate."
@@ -258,7 +258,7 @@ export default function RealEstate() {
                 <h3>8 plugins. 7 protected classes. One systematic test.</h3>
                 <p>
                   Fair housing violations carry penalties up to $150,000 per offense, plus private
-                  litigation. Promptfoo&apos;s real estate plugins systematically test every AI
+                  litigation. artef&apos;s real estate plugins systematically test every AI
                   touchpoint&mdash;from property search to lending to advertising&mdash;across all 7
                   federally protected classes.
                 </p>
@@ -290,7 +290,7 @@ export default function RealEstate() {
                 <p>
                   Historical redlining patterns persist in automated valuation models. The PAVE Task
                   Force identified algorithmic bias in property appraisals as a key barrier to
-                  housing equity. Promptfoo tests your AVM and appraisal AI for demographic
+                  housing equity. artef tests your AVM and appraisal AI for demographic
                   correlation in valuations.
                 </p>
                 <ul style={{ marginTop: '1.5rem', paddingLeft: '1.25rem' }}>
@@ -338,7 +338,7 @@ export default function RealEstate() {
         {/* Benefits */}
         <section className={styles.benefitsSection}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why real estate teams choose Promptfoo</h2>
+            <h2 className={styles.sectionTitle}>Why real estate teams choose artef</h2>
 
             <div className={styles.benefitsList}>
               <div className={styles.benefitItem}>

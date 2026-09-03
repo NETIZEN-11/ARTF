@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+﻿import { randomUUID } from 'node:crypto';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -253,7 +253,7 @@ export function calculateVideoCost(
  * - Video remixing (with remix_video_id)
  *
  * Videos are generated asynchronously via polling, then downloaded
- * to ~/.promptfoo/media/video/ and served via API routes.
+ * to ~/.artef/media/video/ and served via API routes.
  */
 export class OpenAiVideoProvider extends OpenAiGenericProvider {
   config: OpenAiVideoOptions;

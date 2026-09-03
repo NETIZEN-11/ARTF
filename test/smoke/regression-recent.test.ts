@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Regression tests for recently fixed bugs (0.119.x and beyond).
  *
  * These tests verify that bugs fixed in recent releases don't regress.
@@ -548,7 +548,7 @@ tests:
           ['redteam', 'generate', '-c', configPath, '--no-cache'],
           {
             cwd: path.join(FIXTURES_DIR, 'configs'),
-            env: { PROMPTFOO_DISABLE_REMOTE_GENERATION: 'true' },
+            env: { artef_DISABLE_REMOTE_GENERATION: 'true' },
           },
         );
 

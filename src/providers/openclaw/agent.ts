@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 
 import WebSocket from 'ws';
 import { VERSION } from '../../constants';
@@ -187,7 +187,7 @@ export class OpenClawAgentProvider implements ApiProvider {
     // Keep eval runs isolated from the user's persistent main session unless explicitly pinned.
     const sessionKey = buildOpenClawAgentSessionKey(
       this.agentId,
-      this.openclawConfig.session_key || `promptfoo-${crypto.randomUUID()}`,
+      this.openclawConfig.session_key || `artef-${crypto.randomUUID()}`,
     );
 
     const firstResult = await this.callApiOnce(prompt, sessionKey);
@@ -539,7 +539,7 @@ export class OpenClawAgentProvider implements ApiProvider {
       maxProtocol: MAX_OPENCLAW_PROTOCOL_VERSION,
       client: {
         id: CLIENT_ID,
-        displayName: 'promptfoo',
+        displayName: 'artef',
         version: VERSION,
         platform: process.platform,
         ...(this.openclawConfig.device_family && {

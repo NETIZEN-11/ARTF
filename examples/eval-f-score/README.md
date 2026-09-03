@@ -1,13 +1,13 @@
-# eval-f-score (F-Score HuggingFace Dataset Sentiment Analysis Eval)
+﻿# eval-f-score (F-Score HuggingFace Dataset Sentiment Analysis Eval)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-f-score
+npx artef@latest init --example eval-f-score
 cd eval-f-score
 ```
 
-This project evaluates GPT-4o-mini's zero-shot performance on IMDB movie review sentiment analysis using promptfoo. Each model response includes:
+This project evaluates GPT-4o-mini's zero-shot performance on IMDB movie review sentiment analysis using artef. Each model response includes:
 
 - Sentiment classification
 - Confidence score (1-10)
@@ -18,7 +18,7 @@ This project evaluates GPT-4o-mini's zero-shot performance on IMDB movie review 
 Set your OpenAI API key and run the evaluation:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ## Dataset
@@ -42,7 +42,7 @@ python prepare_data.py
 
 ## Metrics Overview
 
-The evaluation implements F-score and related metrics using promptfoo's assertion system:
+The evaluation implements F-score and related metrics using artef's assertion system:
 
 1. **Base Metrics** calculated for each test case using JavaScript assertions:
 

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file iterativeTree.ts
  * @description This file implements an iterative red team attack provider based on the paper:
  * "Red Teaming Language Models via Iterative Refinement" (https://arxiv.org/abs/2312.02119).
@@ -17,7 +17,7 @@ import dedent from 'dedent';
 import { renderPrompt } from '../../evaluatorHelpers';
 import { isLoggedIntoCloud } from '../../globalConfig/accounts';
 import logger from '../../logger';
-import { PromptfooChatCompletionProvider } from '../../providers/promptfoo';
+import { artefChatCompletionProvider } from '../../providers/artef';
 import invariant from '../../util/invariant';
 import { extractFirstJsonObject } from '../../util/json';
 import { getNunjucksEngine } from '../../util/templates';
@@ -1342,7 +1342,7 @@ class RedteamIterativeTreeProvider implements ApiProvider {
       maxWidth = Math.min(maxWidth, UNAUTHED_MAX_WIDTH);
       maxAttempts = Math.min(maxAttempts, UNAUTHED_MAX_ATTEMPTS);
       logger.warn(
-        'jailbreak:tree parameters reduced for unauthenticated users. Run `promptfoo auth login` for full access.',
+        'jailbreak:tree parameters reduced for unauthenticated users. Run `artef auth login` for full access.',
       );
     }
 
@@ -1354,7 +1354,7 @@ class RedteamIterativeTreeProvider implements ApiProvider {
    * @returns The provider's identifier string.
    */
   id(): string {
-    return 'promptfoo:redteam:iterative:tree';
+    return 'artef:redteam:iterative:tree';
   }
 
   /**
@@ -1377,13 +1377,13 @@ class RedteamIterativeTreeProvider implements ApiProvider {
     let gradingProvider: ApiProvider;
 
     if (shouldGenerateRemote()) {
-      gradingProvider = new PromptfooChatCompletionProvider({
+      gradingProvider = new artefChatCompletionProvider({
         task: 'judge',
         jsonOnly: true,
         preferSmallModel: false,
         ...remoteGenerationContextPayload(this.config.targetId),
       });
-      redteamProvider = new PromptfooChatCompletionProvider({
+      redteamProvider = new artefChatCompletionProvider({
         task: 'iterative:tree',
         jsonOnly: true,
         preferSmallModel: false,

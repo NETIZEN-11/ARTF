@@ -1,9 +1,9 @@
-# compare-deepseek-r1-vs-openai-o1 (DeepSeek-R1 vs OpenAI o1 Comparison)
+﻿# compare-deepseek-r1-vs-openai-o1 (DeepSeek-R1 vs OpenAI o1 Comparison)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example compare-deepseek-r1-vs-openai-o1
+npx artef@latest init --example compare-deepseek-r1-vs-openai-o1
 cd compare-deepseek-r1-vs-openai-o1
 ```
 
@@ -11,7 +11,7 @@ This example demonstrates how to benchmark DeepSeek's R1 model against OpenAI's 
 
 ## Prerequisites
 
-- promptfoo CLI installed (`npm install -g promptfoo` or `brew install promptfoo`)
+- artef CLI installed (`npm install -g artef` or `brew install artef`)
 - OpenAI API key set as `OPENAI_API_KEY`
 - DeepSeek API key set as `DEEPSEEK_API_KEY`
 - Hugging Face account and access token (for MMLU dataset)
@@ -36,7 +36,7 @@ To access the MMLU dataset, you'll need to authenticate with Hugging Face:
 
 ## Running the Eval
 
-1. Get a local copy of the promptfooconfig.
+1. Get a local copy of the artefconfig.
 
    You can clone this repository and from the root directory run:
 
@@ -47,19 +47,19 @@ To access the MMLU dataset, you'll need to authenticate with Hugging Face:
    or you can get the example with:
 
    ```bash
-   promptfoo init --example compare-deepseek-r1-vs-openai-o1
+   artef init --example compare-deepseek-r1-vs-openai-o1
    ```
 
 2. Run the evaluation:
 
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 3. View the results in a web interface:
 
    ```bash
-   promptfoo view
+   artef view
    ```
 
 ## What's Being Tested
@@ -72,11 +72,11 @@ This comparison evaluates both models on reasoning tasks from the MMLU benchmark
 4. **College Mathematics**: Advanced mathematical concepts
 5. **Logical Fallacies**: Flaw identification in reasoning
 
-Each subject uses 10 questions to keep the test manageable. You can edit this in `promptfooconfig.yaml`.
+Each subject uses 10 questions to keep the test manageable. You can edit this in `artefconfig.yaml`.
 
 ## Test Structure
 
-The configuration in `promptfooconfig.yaml`:
+The configuration in `artefconfig.yaml`:
 
 1. **Prompt Template**: Encourages step-by-step reasoning for multiple choice questions
 2. **Quality Checks**:
@@ -91,7 +91,7 @@ The configuration in `promptfooconfig.yaml`:
 
 ## Customizing
 
-You can modify the test by editing `promptfooconfig.yaml`:
+You can modify the test by editing `artefconfig.yaml`:
 
 1. Add more MMLU subjects:
 
@@ -148,5 +148,5 @@ You can modify the test by editing `promptfooconfig.yaml`:
 
 ## Additional Resources
 
-- [DeepSeek provider documentation](https://promptfoo.dev/docs/providers/deepseek)
+- [DeepSeek provider documentation](https://artef.dev/docs/providers/deepseek)
 - [MMLU benchmark](https://huggingface.co/datasets/cais/mmlu)

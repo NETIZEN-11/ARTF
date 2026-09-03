@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import * as path from 'path';
 
 import cliState from './cliState';
@@ -235,7 +235,7 @@ function detectMimeFromBase64(base64Data: string): string | null {
  * @param skipRenderVars - Optional array of variable names to skip special loading and template
  *                         rendering for. This is critical for red team testing where injection
  *                         variables contain attack payloads (e.g., SSTI, XSS) that should NOT be
- *                         evaluated by Promptfoo before reaching the target.
+ *                         evaluated by artef before reaching the target.
  * @returns The rendered prompt string
  */
 export async function renderPrompt(
@@ -298,14 +298,14 @@ export async function renderPrompt(
         vars[varName] = JSON.stringify(
           loadYaml(await fs.readFile(filePath, 'utf8')) as string | object,
         );
-      } else if (fileExtension === 'pdf' && !getEnvBool('PROMPTFOO_DISABLE_PDF_AS_TEXT')) {
+      } else if (fileExtension === 'pdf' && !getEnvBool('artef_DISABLE_PDF_AS_TEXT')) {
         telemetry.record('feature_used', {
           feature: 'extract_text_from_pdf',
         });
         vars[varName] = await extractTextFromPDF(filePath);
       } else if (
         (isImageFile(filePath) || isVideoFile(filePath) || isAudioFile(filePath)) &&
-        !getEnvBool('PROMPTFOO_DISABLE_MULTIMEDIA_AS_BASE64')
+        !getEnvBool('artef_DISABLE_MULTIMEDIA_AS_BASE64')
       ) {
         const fileType = isImageFile(filePath)
           ? 'image'
@@ -496,7 +496,7 @@ export async function renderPrompt(
   }
   // Render prompt
   try {
-    if (getEnvBool('PROMPTFOO_DISABLE_JSON_AUTOESCAPE')) {
+    if (getEnvBool('artef_DISABLE_JSON_AUTOESCAPE')) {
       // Pre-process: auto-wrap in {% raw %} if partial Nunjucks tags detected
       basePrompt = autoWrapRawIfPartialNunjucks(basePrompt);
       return nunjucks.renderString(basePrompt, vars);
@@ -662,7 +662,7 @@ export function getExtensionHookName(extension: string): string | undefined {
  * `file://...:fn` prompts carry, so it is dropped on the round-trip. Without
  * restoring it, the evaluator falls back to sending the prompt's raw source as text
  * instead of executing the function
- * (https://github.com/promptfoo/promptfoo/issues/9653).
+ * (https://github.com/artef/artef/issues/9653).
  *
  * A returned prompt is matched to an original by `label` (the stable identifier for
  * file-based prompts) and the function is only restored when the original carried one

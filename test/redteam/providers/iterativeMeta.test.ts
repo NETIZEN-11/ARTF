@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import RedteamIterativeMetaProvider, {
   runMetaAgentRedteam,
 } from '../../../src/redteam/providers/iterativeMeta';
@@ -153,7 +153,7 @@ describe('RedteamIterativeMetaProvider', () => {
       mockNeverGenerateRemote.mockReturnValue(false);
 
       expect(() => new RedteamIterativeMetaProvider({ injectVar: 'query' })).toThrow(
-        'jailbreak:meta strategy requires remote generation, which is currently disabled for this configuration. To enable it, run with --remote, set PROMPTFOO_REMOTE_GENERATION_URL to a self-hosted endpoint, or log into Promptfoo Cloud with `promptfoo auth login`.',
+        'jailbreak:meta strategy requires remote generation, which is currently disabled for this configuration. To enable it, run with --remote, set artef_REMOTE_GENERATION_URL to a self-hosted endpoint, or log into artef Cloud with `artef auth login`.',
       );
     });
 
@@ -162,7 +162,7 @@ describe('RedteamIterativeMetaProvider', () => {
       mockNeverGenerateRemote.mockReturnValue(true);
 
       expect(() => new RedteamIterativeMetaProvider({ injectVar: 'query' })).toThrow(
-        /jailbreak:meta strategy requires remote generation, which has been explicitly disabled\. To enable it, unset (PROMPTFOO_DISABLE_REMOTE_GENERATION|PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION)/,
+        /jailbreak:meta strategy requires remote generation, which has been explicitly disabled\. To enable it, unset (artef_DISABLE_REMOTE_GENERATION|artef_DISABLE_REDTEAM_REMOTE_GENERATION)/,
       );
     });
   });
@@ -224,7 +224,7 @@ describe('RedteamIterativeMetaProvider', () => {
         targetProvider: mockTargetProvider,
         test: {
           vars: { query: 'test' },
-          assert: [{ type: 'promptfoo:redteam:harmful', metric: 'Harmful' }],
+          assert: [{ type: 'artef:redteam:harmful', metric: 'Harmful' }],
         } as AtomicTestCase,
         vars: { query: 'test' },
       });
@@ -265,7 +265,7 @@ describe('RedteamIterativeMetaProvider', () => {
         targetProvider: mockTargetProvider,
         test: {
           vars: { query: 'test' },
-          assert: [{ type: 'promptfoo:redteam:harmful', metric: 'Harmful' }],
+          assert: [{ type: 'artef:redteam:harmful', metric: 'Harmful' }],
         } as AtomicTestCase,
         vars: { query: 'test' },
       });
@@ -559,7 +559,7 @@ describe('RedteamIterativeMetaProvider', () => {
       };
 
       const testAssertion = {
-        type: 'promptfoo:redteam:policy' as const,
+        type: 'artef:redteam:policy' as const,
         metric: 'PolicyViolation:test',
       };
 
@@ -575,7 +575,7 @@ describe('RedteamIterativeMetaProvider', () => {
 
       expect(storedResult.assertion).toBeDefined();
       expect(storedResult.assertion?.value).toBe(mockRenderedRubric);
-      expect(storedResult.assertion?.type).toBe('promptfoo:redteam:policy');
+      expect(storedResult.assertion?.type).toBe('artef:redteam:policy');
     });
 
     it('should use grade.assertion when present', () => {
@@ -585,7 +585,7 @@ describe('RedteamIterativeMetaProvider', () => {
         score: 0,
         reason: 'Failed',
         assertion: {
-          type: 'promptfoo:redteam:harmful' as const,
+          type: 'artef:redteam:harmful' as const,
           metric: 'Harmful',
           value: 'old value',
         },
@@ -599,7 +599,7 @@ describe('RedteamIterativeMetaProvider', () => {
       };
 
       expect(storedResult.assertion?.value).toBe(mockRenderedRubric);
-      expect(storedResult.assertion?.type).toBe('promptfoo:redteam:harmful');
+      expect(storedResult.assertion?.type).toBe('artef:redteam:harmful');
     });
 
     it('should not create assertion for AssertionSet', () => {
@@ -1287,7 +1287,7 @@ describe('RedteamIterativeMetaProvider', () => {
         targetProvider: mockTargetProvider,
         test: {
           vars: { query: 'test' },
-          assert: [{ type: 'promptfoo:redteam:harmful', metric: 'Harmful' }],
+          assert: [{ type: 'artef:redteam:harmful', metric: 'Harmful' }],
         } as AtomicTestCase,
         vars: { query: 'test' },
       });

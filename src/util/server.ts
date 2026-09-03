@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import opener from 'opener';
 import { getDefaultPort, VERSION } from '../constants';
 import logger from '../logger';
@@ -104,7 +104,7 @@ export async function checkServerRunning(port = getDefaultPort()): Promise<boole
   try {
     const response = await fetchWithProxy(`http://localhost:${port}/health`, {
       headers: {
-        'x-promptfoo-silent': 'true',
+        'x-artef-silent': 'true',
       },
     });
     const data = await response.json();
@@ -163,8 +163,8 @@ export async function openBrowser(
  * ```typescript
  * // Prompt user to open login page
  * await openAuthBrowser(
- *   'https://promptfoo.app',
- *   'https://promptfoo.app/welcome',
+ *   'https://artef.app',
+ *   'https://artef.app/welcome',
  *   BrowserBehavior.ASK
  * );
  * ```

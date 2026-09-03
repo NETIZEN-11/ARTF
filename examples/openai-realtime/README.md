@@ -1,13 +1,13 @@
-# openai-realtime (OpenAI Realtime API Example)
+﻿# openai-realtime (OpenAI Realtime API Example)
 
-This example demonstrates how to use promptfoo to test OpenAI's Realtime API capabilities. The Realtime API allows for real-time communication with `gpt-realtime-2`, `gpt-realtime-1.5`, and `gpt-realtime` using WebSockets, supporting text, audio, and model-dependent image inputs plus text/audio outputs.
+This example demonstrates how to use artef to test OpenAI's Realtime API capabilities. The Realtime API allows for real-time communication with `gpt-realtime-2`, `gpt-realtime-1.5`, and `gpt-realtime` using WebSockets, supporting text, audio, and model-dependent image inputs plus text/audio outputs.
 
 ## Quick Start
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-realtime
+npx artef@latest init --example openai-realtime
 cd openai-realtime
 ```
 
@@ -50,12 +50,12 @@ You can also use environment variables like `OPENAI_API_BASE_URL` or `OPENAI_BAS
 
 ## Files
 
-- `promptfooconfig.yaml`: Configuration file defining the providers and tests
-- `promptfooconfig-gpt-realtime.yaml`: Comprehensive gpt-realtime-1.5 model demonstration with audio support
-- `promptfooconfig-function-calling.js`: Runnable function-calling example with a local handler
+- `artefconfig.yaml`: Configuration file defining the providers and tests
+- `artefconfig-gpt-realtime.yaml`: Comprehensive gpt-realtime-1.5 model demonstration with audio support
+- `artefconfig-function-calling.js`: Runnable function-calling example with a local handler
 - `test-webui-audio.yaml`: Simple audio test for WebUI playback
 - `realtime-input.json`: JSON template for the realtime input prompt
-- `promptfooconfig-conversation.yaml`: Configuration for multi-turn conversation tests
+- `artefconfig-conversation.yaml`: Configuration for multi-turn conversation tests
 - `realtime-conversation.js`: JavaScript prompt function for multi-turn conversations
 
 ## Multi-Turn Conversations
@@ -69,12 +69,12 @@ The Realtime API supports maintaining conversation history across multiple turns
 To run the multi-turn conversation example:
 
 ```bash
-npx promptfoo eval -c examples/openai-realtime/promptfooconfig-conversation.yaml
+npx artef eval -c examples/openai-realtime/artefconfig-conversation.yaml
 ```
 
 ### How Multi-Turn Conversations Work
 
-The multi-turn conversation example demonstrates how the OpenAI Realtime API can maintain context across multiple exchanges. This is implemented using promptfoo's built-in support for conversation history through the `_conversation` variable and metadata.
+The multi-turn conversation example demonstrates how the OpenAI Realtime API can maintain context across multiple exchanges. This is implemented using artef's built-in support for conversation history through the `_conversation` variable and metadata.
 
 #### Key Components
 
@@ -82,7 +82,7 @@ The multi-turn conversation example demonstrates how the OpenAI Realtime API can
 2. **JavaScript Prompt Function**: The main approach uses a JavaScript function to properly format conversations
 3. **Conversation IDs**: Each test with the same `conversationId` metadata value is part of the same conversation thread
 
-When using `conversationId` in the metadata of tests, promptfoo automatically:
+When using `conversationId` in the metadata of tests, artef automatically:
 
 - Groups tests with the same ID into a conversation thread
 - Makes previous exchanges available in each subsequent test
@@ -219,7 +219,7 @@ We also provide a JSON template approach for reference:
 ]
 ```
 
-> **Note**: JSON validators may show errors for this template because of the Nunjucks expressions, but promptfoo will correctly process this file at runtime. This approach uses the `_conversation` variable to maintain conversation history in a way that works with the Realtime API.
+> **Note**: JSON validators may show errors for this template because of the Nunjucks expressions, but artef will correctly process this file at runtime. This approach uses the `_conversation` variable to maintain conversation history in a way that works with the Realtime API.
 
 ### Conversation Threads
 
@@ -232,7 +232,7 @@ Each thread maintains its own independent context while tests are evaluated.
 
 ## About the Realtime API Implementation
 
-The provider implementation in promptfoo creates a direct WebSocket connection with the OpenAI Realtime API, following the official protocol:
+The provider implementation in artef creates a direct WebSocket connection with the OpenAI Realtime API, following the official protocol:
 
 1. **WebSocket Connection**: Establishes a secure WebSocket connection to `wss://api.openai.com/v1/realtime?model=MODEL_ID`
 2. **Authentication**: Authenticates using the API key in the request headers
@@ -311,7 +311,7 @@ Structured Realtime prompts can also preserve the native multimodal user-content
 
 Use `input_image` only with Realtime models that support image input, such as the current `gpt-realtime*` family.
 
-Promptfoo keeps the existing `modalities` config key for compatibility, but sends the current GA Realtime wire shape to OpenAI under the hood.
+artef keeps the existing `modalities` config key for compatibility, but sends the current GA Realtime wire shape to OpenAI under the hood.
 
 ### Function Calling Support
 
@@ -340,13 +340,13 @@ providers:
       tool_choice: auto
 ```
 
-If you reuse a Chat Completions-style tools file that wraps those fields under `function:`, promptfoo still accepts it as a compatibility input and normalizes only that legacy shape before sending it to the Realtime API.
+If you reuse a Chat Completions-style tools file that wraps those fields under `function:`, artef still accepts it as a compatibility input and normalizes only that legacy shape before sending it to the Realtime API.
 
-When you provide a custom `functionCallHandler`, promptfoo forwards the model-emitted tool name and arguments to your handler. Use `toolCallTimeout` to bound each handler invocation and `maxToolIterations` to cap chained tool-follow-up rounds in one turn. Validate the function name and parse or validate the arguments before side effects in your application code.
+When you provide a custom `functionCallHandler`, artef forwards the model-emitted tool name and arguments to your handler. Use `toolCallTimeout` to bound each handler invocation and `maxToolIterations` to cap chained tool-follow-up rounds in one turn. Validate the function name and parse or validate the arguments before side effects in your application code.
 
 #### Implementing a Custom Function Handler
 
-To use function calling in your application, implement a function call handler. The runnable `promptfooconfig-function-calling.js` example includes one end to end; here is the same core pattern:
+To use function calling in your application, implement a function call handler. The runnable `artefconfig-function-calling.js` example includes one end to end; here is the same core pattern:
 
 ```javascript
 // In your application code
@@ -380,7 +380,7 @@ const config = {
 
 ## Audio Support
 
-The Realtime API supports both text and audio interactions. promptfoo now includes full audio support:
+The Realtime API supports both text and audio interactions. artef now includes full audio support:
 
 ### Supported Models and Features
 
@@ -389,7 +389,7 @@ The Realtime API supports both text and audio interactions. promptfoo now includ
 - **gpt-realtime**: General-availability realtime model with text and audio support
   - Supports new voices: `cedar` and `marin` (in addition to existing voices)
   - Audio output is automatically converted from PCM16 to WAV format for browser playback
-  - Use `promptfoo view` to access the WebUI and play generated audio files
+  - Use `artef view` to access the WebUI and play generated audio files
 
 ### Audio Configuration
 
@@ -407,14 +407,14 @@ providers:
 ### Audio Examples
 
 - `test-webui-audio.yaml`: Simple audio test for WebUI playback
-- `promptfooconfig-gpt-realtime.yaml`: Comprehensive gpt-realtime model demonstration
+- `artefconfig-gpt-realtime.yaml`: Comprehensive gpt-realtime model demonstration
 
 ## Running the Example
 
-From the root directory of promptfoo, run:
+From the root directory of artef, run:
 
 ```bash
-npx promptfoo eval -c examples/openai-realtime/promptfooconfig.yaml
+npx artef eval -c examples/openai-realtime/artefconfig.yaml
 ```
 
 ## Troubleshooting WebSocket Connection Issues

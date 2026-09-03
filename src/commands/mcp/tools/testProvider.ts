@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { z } from 'zod';
 import { loadApiProvider, loadApiProviders } from '../../../providers/index';
 import { createToolResponse, withTimeout } from '../lib/utils';
@@ -192,7 +192,7 @@ export function registerTestProviderTool(server: McpServer) {
             {
               providerId,
               suggestion:
-                'Use format like "openai:gpt-4" or check available providers with "promptfoo providers"',
+                'Use format like "openai:gpt-4" or check available providers with "artef providers"',
               examples: [
                 'openai:gpt-4o',
                 'anthropic:messages:claude-3-sonnet',

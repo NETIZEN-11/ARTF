@@ -1,9 +1,9 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase, RedteamPluginBase } from './base';
 
 import type { Assertion } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:rbac';
+const PLUGIN_ID = 'artef:redteam:rbac';
 
 const DEFAULT_EXAMPLES = dedent`
     <Example>

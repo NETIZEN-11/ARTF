@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { afterEach, beforeEach, describe, expect, it, Mock, MockInstance, vi } from 'vitest';
 import cliState from '../../../src/cliState';
 import { matchesLlmRubric } from '../../../src/matchers/llmGrading';
@@ -1404,7 +1404,7 @@ describe('RedteamGraderBase', () => {
     );
 
     const grading = (matchesLlmRubric as Mock).mock.calls[0][2];
-    expect(Object.getOwnPropertyDescriptor(grading, '__promptfooPreferRemote')?.value).toBe(true);
+    expect(Object.getOwnPropertyDescriptor(grading, '__artefPreferRemote')?.value).toBe(true);
   });
 
   it('should prefer remote grading when defaultTest.provider is a target provider', async () => {
@@ -1430,7 +1430,7 @@ describe('RedteamGraderBase', () => {
     );
 
     const grading = (matchesLlmRubric as Mock).mock.calls[0][2];
-    expect(Object.getOwnPropertyDescriptor(grading, '__promptfooPreferRemote')?.value).toBe(true);
+    expect(Object.getOwnPropertyDescriptor(grading, '__artefPreferRemote')?.value).toBe(true);
   });
 
   describe('grader examples', () => {

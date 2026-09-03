@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -15,7 +15,7 @@ import {
   normalizePromptsForJob,
   normalizeProviders,
 } from './setupReadiness';
-import type { CreateJobResponse, GetJobResponse } from '@promptfoo/types/api/eval';
+import type { CreateJobResponse, GetJobResponse } from '@artef/types/api/eval';
 
 const RunTestSuiteButton = () => {
   const navigate = useNavigate();

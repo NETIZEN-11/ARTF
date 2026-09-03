@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import {
   handleTrajectoryStepCount,
   handleTrajectoryToolArgsMatch,
@@ -31,7 +31,7 @@ const mockTraceData: TraceData = {
       startTime: 1000,
       endTime: 1800,
       attributes: {
-        'promptfoo.provider.id': 'openai:gpt-5',
+        'artef.provider.id': 'openai:gpt-5',
       },
     },
     {

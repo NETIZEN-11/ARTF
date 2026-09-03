@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Jest & Vitest
 description: Integrate LLM testing into Jest and Vitest workflows with custom matchers for semantic similarity, factuality checks, and automated prompt quality validation
 ---
@@ -10,9 +10,9 @@ import JestExampleImage from '../assets/jest-example.png';
 
 # Testing prompts with Jest and Vitest
 
-`promptfoo` can be integrated with test frameworks like [Jest](https://jestjs.io/) and [Vitest](https://vitest.dev/) to evaluate prompts as part of existing testing and CI workflows.
+`artef` can be integrated with test frameworks like [Jest](https://jestjs.io/) and [Vitest](https://vitest.dev/) to evaluate prompts as part of existing testing and CI workflows.
 
-This guide includes examples that show how to create test cases for desired prompt quality using semantic similarity and LLM grading. You can also skip to the [full example code](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-jest).
+This guide includes examples that show how to create test cases for desired prompt quality using semantic similarity and LLM grading. You can also skip to the [full example code](https://github.com/artef/artef/tree/main/examples/integration-jest).
 
 For more information on supported checks, see the [Assertions & Metrics documentation](/docs/configuration/expected-outputs/).
 
@@ -22,7 +22,7 @@ Before you begin, make sure you have the following node packages installed:
 
 - [jest](https://jestjs.io/docs/getting-started): `npm install --save-dev jest`
 - [vitest](https://vitest.dev/guide/): `npm install --save-dev vitest`
-- promptfoo: `npm install --save-dev promptfoo`
+- artef: `npm install --save-dev artef`
 
 ## Creating custom matchers
 
@@ -39,7 +39,7 @@ Create a new file called `matchers.js` and add the following:
   <TabItem value="Javascript" label="Javascript" default>
 
 ```javascript
-import { assertions } from 'promptfoo';
+import { assertions } from 'artef';
 
 const { matchesSimilarity, matchesLlmRubric } = assertions;
 
@@ -117,8 +117,8 @@ export function installMatchers() {
   <TabItem value="Typescript" label="Typescript" default>
 
 ```typescript
-import { assertions } from 'promptfoo';
-import type { GradingConfig } from 'promptfoo';
+import { assertions } from 'artef';
+import type { GradingConfig } from 'artef';
 
 const { matchesSimilarity, matchesLlmRubric } = assertions;
 

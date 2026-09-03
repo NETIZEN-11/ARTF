@@ -1,13 +1,13 @@
-# integration-github-action (GitHub Action)
+﻿# integration-github-action (GitHub Action)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-github-action
+npx artef@latest init --example integration-github-action
 cd integration-github-action
 ```
 
-This folder contains a standalone GitHub Action that runs **promptfoo** when a pull request modifies prompts.
+This folder contains a standalone GitHub Action that runs **artef** when a pull request modifies prompts.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Edit [standalone-action.yaml](./standalone-action.yaml) as needed and add it to 
 
 When triggered, the action will:
 
-- Install promptfoo in the GitHub runner environment
+- Install artef in the GitHub runner environment
 - Run evaluations on the modified prompts
 - Post results as PR comments or check results
 - Fail the check if evaluations don't meet configured thresholds

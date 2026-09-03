@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import path from 'path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -207,7 +207,7 @@ describe('OpenAICodexSecurityProvider', () => {
       const provider = new OpenAICodexSecurityProvider();
 
       expect(await provider.callApi('Scan')).toEqual({
-        error: expect.stringContaining('npm install promptfoo @openai/codex-security'),
+        error: expect.stringContaining('npm install artef @openai/codex-security'),
       });
     });
 
@@ -222,12 +222,12 @@ describe('OpenAICodexSecurityProvider', () => {
       expect(response.error).toContain('^22.22.0');
     });
 
-    it('ignores an outdated trusted SDK and loads a compatible Promptfoo installation', async () => {
+    it('ignores an outdated trusted SDK and loads a compatible artef installation', async () => {
       const firstTrustedRoot = path.resolve(getDirectory(), '..');
       vi.mocked(resolvePackageEntryPoint).mockImplementation((_packageName, basePath) =>
         basePath === firstTrustedRoot
           ? '/legacy/@openai/codex-security/dist/index.js'
-          : '/promptfoo/@openai/codex-security/dist/index.js',
+          : '/artef/@openai/codex-security/dist/index.js',
       );
       vi.mocked(importModule).mockImplementation(async (entryPoint) =>
         String(entryPoint).startsWith('/legacy/')
@@ -240,7 +240,7 @@ describe('OpenAICodexSecurityProvider', () => {
 
       expect(response.metadata?.sdkVersion).toBe('0.1.18');
       expect(importModule).toHaveBeenCalledWith('/legacy/@openai/codex-security/dist/index.js');
-      expect(importModule).toHaveBeenCalledWith('/promptfoo/@openai/codex-security/dist/index.js');
+      expect(importModule).toHaveBeenCalledWith('/artef/@openai/codex-security/dist/index.js');
     });
 
     it('continues searching trusted install paths when the first SDK cannot be imported', async () => {
@@ -248,7 +248,7 @@ describe('OpenAICodexSecurityProvider', () => {
       vi.mocked(resolvePackageEntryPoint).mockImplementation((_packageName, basePath) =>
         basePath === firstTrustedRoot
           ? '/broken/@openai/codex-security/dist/index.js'
-          : '/promptfoo/@openai/codex-security/dist/index.js',
+          : '/artef/@openai/codex-security/dist/index.js',
       );
       vi.mocked(importModule).mockImplementation(async (entryPoint) => {
         if (String(entryPoint).startsWith('/broken/')) {
@@ -262,7 +262,7 @@ describe('OpenAICodexSecurityProvider', () => {
 
       expect(response.metadata?.sdkVersion).toBe('0.1.18');
       expect(importModule).toHaveBeenCalledWith('/broken/@openai/codex-security/dist/index.js');
-      expect(importModule).toHaveBeenCalledWith('/promptfoo/@openai/codex-security/dist/index.js');
+      expect(importModule).toHaveBeenCalledWith('/artef/@openai/codex-security/dist/index.js');
     });
 
     it('never imports SDK packages from an adversarial repository or config directory', async () => {
@@ -270,7 +270,7 @@ describe('OpenAICodexSecurityProvider', () => {
       vi.mocked(resolvePackageEntryPoint).mockImplementation((_packageName, basePath) =>
         basePath === '/adversarial/repository'
           ? '/adversarial/repository/node_modules/@openai/codex-security/dist/index.js'
-          : '/promptfoo/node_modules/@openai/codex-security/dist/index.js',
+          : '/artef/node_modules/@openai/codex-security/dist/index.js',
       );
       const provider = new OpenAICodexSecurityProvider({
         config: { basePath: '/adversarial/repository', repository: '.' },
@@ -284,7 +284,7 @@ describe('OpenAICodexSecurityProvider', () => {
         '/adversarial/repository',
       );
       expect(importModule).toHaveBeenCalledWith(
-        '/promptfoo/node_modules/@openai/codex-security/dist/index.js',
+        '/artef/node_modules/@openai/codex-security/dist/index.js',
       );
       expect(importModule).not.toHaveBeenCalledWith(
         '/adversarial/repository/node_modules/@openai/codex-security/dist/index.js',
@@ -299,7 +299,7 @@ describe('OpenAICodexSecurityProvider', () => {
       const response = await provider.callApi('Scan');
 
       expect(response.error).toContain('does not support provider-scoped OPENAI_API_KEY');
-      expect(response.error).toContain('Promptfoo process environment');
+      expect(response.error).toContain('artef process environment');
       expect(mockRun).not.toHaveBeenCalled();
     });
 
@@ -310,7 +310,7 @@ describe('OpenAICodexSecurityProvider', () => {
       const response = await provider.callApi('Scan');
 
       expect(response.error).toContain('package is incompatible (0.1.8)');
-      expect(response.error).toContain('npm install promptfoo @openai/codex-security@^0.1.18');
+      expect(response.error).toContain('npm install artef @openai/codex-security@^0.1.18');
       expect(mockRun).not.toHaveBeenCalled();
     });
 
@@ -319,7 +319,7 @@ describe('OpenAICodexSecurityProvider', () => {
       vi.mocked(resolvePackageEntryPoint).mockImplementation((_packageName, basePath) =>
         basePath === firstTrustedRoot
           ? '/legacy/@openai/codex-security/dist/index.js'
-          : '/promptfoo/@openai/codex-security/dist/index.js',
+          : '/artef/@openai/codex-security/dist/index.js',
       );
       vi.mocked(importModule).mockImplementation(async (entryPoint) =>
         String(entryPoint).startsWith('/legacy/')
@@ -331,7 +331,7 @@ describe('OpenAICodexSecurityProvider', () => {
       const response = await provider.callApi('Scan');
 
       expect(response.error).toContain('package is incompatible (0.1.8, 0.1.10)');
-      expect(response.error).toContain('npm install promptfoo @openai/codex-security@^0.1.18');
+      expect(response.error).toContain('npm install artef @openai/codex-security@^0.1.18');
       expect(mockRun).not.toHaveBeenCalled();
     });
 
@@ -492,7 +492,7 @@ describe('OpenAICodexSecurityProvider', () => {
       });
     });
 
-    it('distinguishes SDK prompt-cache tokens from cached Promptfoo scan responses', async () => {
+    it('distinguishes SDK prompt-cache tokens from cached artef scan responses', async () => {
       const provider = new OpenAICodexSecurityProvider({
         config: { operation: 'deep-security-scan' },
       });

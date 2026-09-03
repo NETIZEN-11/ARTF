@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Test for GitHub Issue #2248
- * https://github.com/promptfoo/promptfoo/issues/2248
+ * https://github.com/artef/artef/issues/2248
  *
  * Bug: When clicking on datasets after row 10 (page 2+), the popup shows
  * data for the wrong row. Row 11 shows row 1's data, row 12 shows row 2's data, etc.

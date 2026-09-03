@@ -1,14 +1,14 @@
----
+﻿---
 title: Release Notes
 sidebar_position: 100
-description: Track monthly Promptfoo releases featuring new providers, security plugins, performance improvements, and community contributions
+description: Track monthly artef releases featuring new providers, security plugins, performance improvements, and community contributions
 tags: [releases, changelog, updates, features]
-keywords: [Promptfoo releases, changelog, updates, features, monthly summaries]
+keywords: [artef releases, changelog, updates, features, monthly summaries]
 ---
 
 # Release Notes
 
-Full release history for Promptfoo open source can be found on [GitHub](https://github.com/promptfoo/promptfoo/releases).
+Full release history for artef open source can be found on [GitHub](https://github.com/artef/artef/releases).
 
 ## January 2026 Release Highlights {#january-2026}
 
@@ -47,7 +47,7 @@ This month we shipped **adaptive rate limiting**, **Transformers.js for local in
 - **Provider config hover** - View provider configuration details on hover in eval results
 - **Session ID column** - `metadata.sessionId` surfaced as a variable column in tables and exports
 - **User-rated filter** - Filter to show only manually rated results
-- **`promptfoo logs`** - New command for viewing log files directly
+- **`artef logs`** - New command for viewing log files directly
 
 #### Rate Limiting
 
@@ -248,7 +248,7 @@ This month we shipped **Hydra multi-turn strategy**, **code scanning**, **Claude
 #### Integrations
 
 - **Microsoft SharePoint** - Load datasets from SharePoint
-- **Cloud trace sharing** - Share trace data to Promptfoo Cloud
+- **Cloud trace sharing** - Share trace data to artef Cloud
 
 #### Model Audit
 
@@ -440,7 +440,7 @@ This month we shipped **reusable custom policies**, **risk scoring**, **8 new AI
 
 #### Pause/Resume Evaluations
 
-Use `Ctrl+C` to pause long-running evaluations and `promptfoo eval --resume` to continue later.
+Use `Ctrl+C` to pause long-running evaluations and `artef eval --resume` to continue later.
 
 #### UI & Developer Experience
 
@@ -457,8 +457,8 @@ Use `Ctrl+C` to pause long-running evaluations and `promptfoo eval --resume` to 
 #### Export & Integration
 
 - **Enhanced CSV exports** - Includes latency, grader reason, and grader comment
-- **Log export** - `promptfoo export logs` creates tar.gz for debugging
-- **Default cloud sharing** - Auto-enable sharing when connected to Promptfoo Cloud
+- **Log export** - `artef export logs` creates tar.gz for debugging
+- **Default cloud sharing** - Auto-enable sharing when connected to artef Cloud
 - **CI progress reporting** - Text-based milestone reporting for long-running evals
 
 #### Configuration
@@ -721,7 +721,7 @@ As AI applications increasingly use voice interfaces and visual content, you nee
 
 Supply chain attacks through compromised models are a growing threat. We've significantly enhanced our static model security scanner to help you verify model integrity before deployment, checking for everything from malicious pickle files to subtle statistical anomalies that might indicate trojaned models.
 
-**New Web Interface**: ModelAudit now includes a visual UI accessible at `/model-audit` when running `promptfoo view`:
+**New Web Interface**: ModelAudit now includes a visual UI accessible at `/model-audit` when running `artef view`:
 
 - Visual file/directory selection with drag-and-drop support
 - Real-time scanning progress with live updates
@@ -747,7 +747,7 @@ Supply chain attacks through compromised models are a growing threat. We've sign
 - **Assertion Generation** - Automatically generate test assertions based on your use cases, saving time in test creation
 - **SQLite WAL Mode** - Improved performance and reliability for local evaluations with better concurrent access
 - **Enhanced Token Tracking** - Per-provider token usage statistics help you monitor costs across different LLM providers
-- **Evaluation Time Limits** - New `PROMPTFOO_MAX_EVAL_TIME_MS` environment variable prevents runaway evaluations from consuming excessive resources
+- **Evaluation Time Limits** - New `artef_MAX_EVAL_TIME_MS` environment variable prevents runaway evaluations from consuming excessive resources
 - **Custom Headers Support** - Added support for custom headers in Azure and Google Gemini providers for enterprise authentication needs
 - **WebSocket Header Support** - Enhanced WebSocket providers with custom header capabilities
 
@@ -763,7 +763,7 @@ Generic attacks often miss system-specific vulnerabilities. We've added powerful
 
 2. **[Adaptive Red Team Strategies](/docs/red-team/strategies/)** - Define complex multi-turn attack strategies with enhanced capabilities for targeted testing
 
-3. **[Grader Customization](/docs/red-team/troubleshooting/grading-results/#customizing-graders-for-specific-plugins-in-promptfoo-enterprise)** - Fine-tune evaluation criteria at the plugin level with concrete examples for more accurate assessments
+3. **[Grader Customization](/docs/red-team/troubleshooting/grading-results/#customizing-graders-for-specific-plugins-in-artef-enterprise)** - Fine-tune evaluation criteria at the plugin level with concrete examples for more accurate assessments
 
 4. **Cloud-based Plugin Severity Overrides** - Enterprise users can centrally manage and customize severity levels for red team plugins across their organization
 

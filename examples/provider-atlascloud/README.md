@@ -1,6 +1,6 @@
-# provider-atlascloud (Atlas Cloud Example)
+﻿# provider-atlascloud (Atlas Cloud Example)
 
-This directory contains an example configuration for using [Atlas Cloud](https://www.atlascloud.ai/) with promptfoo.
+This directory contains an example configuration for using [Atlas Cloud](https://www.atlascloud.ai/) with artef.
 
 Atlas Cloud exposes an OpenAI-compatible LLM API, so it is a good fit for prompt and model evaluation workflows across multiple model families behind a single provider account.
 
@@ -16,14 +16,14 @@ Atlas Cloud exposes an OpenAI-compatible LLM API, so it is a good fit for prompt
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example provider-atlascloud
+npx artef@latest init --example provider-atlascloud
 cd provider-atlascloud
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 ```
 
 ## Example Config
 
-The included `promptfooconfig.yaml` demonstrates:
+The included `artefconfig.yaml` demonstrates:
 
 - Multiple Atlas Cloud-hosted chat models
 - Standard OpenAI-style generation parameters
@@ -49,6 +49,6 @@ providers:
 
 ## Resources
 
-- [Atlas Cloud Provider Docs](https://www.promptfoo.dev/docs/providers/atlascloud/)
+- [Atlas Cloud Provider Docs](https://www.artef.dev/docs/providers/atlascloud/)
 - [Atlas Cloud Docs](https://www.atlascloud.ai/docs)
-- [Promptfoo Docs](https://www.promptfoo.dev/docs/)
+- [artef Docs](https://www.artef.dev/docs/)

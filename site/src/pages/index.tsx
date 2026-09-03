@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -103,7 +103,7 @@ function BridgeSection() {
     <section className={styles.bridgeSection}>
       <div className="container">
         <div className={styles.bridgeStatement}>
-          <strong>{SITE_CONSTANTS.FORTUNE_500_COUNT} of the Fortune 500</strong> use Promptfoo in
+          <strong>{SITE_CONSTANTS.FORTUNE_500_COUNT} of the Fortune 500</strong> use artef in
           their AI development lifecycle. Here's how:
         </div>
       </div>
@@ -181,8 +181,8 @@ function HomepageWalkthrough() {
       description: (
         <>
           <p className={styles.walkthroughHeading}>Automated red teaming for agents & RAGs</p>
-          <p>Promptfoo simulates real users to uncover application-specific vulnerabilities:</p>
-          <CopyCodeBox command="npx promptfoo@latest redteam setup" />
+          <p>artef simulates real users to uncover application-specific vulnerabilities:</p>
+          <CopyCodeBox command="npx artef@latest redteam setup" />
           <p>Custom attacks generated for your target:</p>
           <ul>
             <li>Direct and indirect prompt injections</li>
@@ -217,9 +217,9 @@ function HomepageWalkthrough() {
         <>
           <p className={styles.walkthroughHeading}>Build reliable prompts, RAGs, and agents</p>
           <p>Start testing the performance of your models, prompts, and tools in minutes:</p>
-          <CopyCodeBox command="npx promptfoo@latest init" />
+          <CopyCodeBox command="npx artef@latest init" />
           <p>
-            Promptfoo runs locally and integrates directly with your app - no SDKs, cloud
+            artef runs locally and integrates directly with your app - no SDKs, cloud
             dependencies, or logins.
           </p>
           <p>
@@ -435,14 +435,14 @@ function SolutionSection() {
   return (
     <section id="solution" className={styles.solutionSection}>
       <div className="container">
-        <div className={styles.sectionEyebrow}>THE PROMPTFOO APPROACH</div>
+        <div className={styles.sectionEyebrow}>THE artef APPROACH</div>
         <h2 className={styles.sectionTitle}>
           AI security testing built into
           <br />
           your development workflow
         </h2>
         <p className={styles.sectionSubtitle}>
-          From integration to remediation, Promptfoo meets you wherever you're building.
+          From integration to remediation, artef meets you wherever you're building.
         </p>
 
         <div className={styles.solutionGrid}>
@@ -505,14 +505,14 @@ function SolutionSection() {
 
         {/*
         <div className={styles.featureHighlight}>
-          <h3>💡 What Makes Promptfoo Different</h3>
+          <h3>💡 What Makes artef Different</h3>
           <p>
             Unlike runtime-only solutions that only catch issues in production, or manual testing
-            that can't scale, Promptfoo embeds security testing into your development process—where
+            that can't scale, artef embeds security testing into your development process—where
             fixes are 10x faster and cheaper.
           </p>
           <blockquote className={styles.testimonialQuote}>
-            "We evaluated three solutions. Only Promptfoo could handle our scale, complexity, and
+            "We evaluated three solutions. Only artef could handle our scale, complexity, and
             integrate with our developer workflows without slowing them down."
             <cite>— Director of Product Security, Fortune 100 Financial Services Company</cite>
           </blockquote>
@@ -597,7 +597,7 @@ function CommunitySection() {
           <div className={styles.communityStatCard}>
             <AnimatedCounter target={SITE_CONSTANTS.USER_COUNT_DISPLAY} suffix="+" />
             <div className={styles.communityStatLabel}>Open Source Users</div>
-            <p>Developers securing AI applications with Promptfoo</p>
+            <p>Developers securing AI applications with artef</p>
           </div>
           <div className={styles.communityStatCard}>
             <AnimatedCounter target={String(SITE_CONSTANTS.CONTRIBUTOR_COUNT)} suffix="+" />
@@ -618,7 +618,7 @@ function CommunitySection() {
               <GroupsIcon /> Open Source Foundation
             </h3>
             <p>
-              Promptfoo's open source core is trusted by {SITE_CONSTANTS.USER_COUNT_DISPLAY}+
+              artef's open source core is trusted by {SITE_CONSTANTS.USER_COUNT_DISPLAY}+
               developers worldwide—from solo developers to Fortune 100 security teams.
             </p>
             <h4>What This Means For You:</h4>
@@ -638,7 +638,7 @@ function CommunitySection() {
                 <strong>Transparency</strong> - See exactly how security decisions are made
               </li>
             </ul>
-            <Link to="https://github.com/promptfoo/promptfoo#readme" className="button button--secondary">
+            <Link to="https://github.com/artef/artef#readme" className="button button--secondary">
               Try Open Source
             </Link>
           </div>
@@ -694,7 +694,7 @@ function AsSeenOnSection() {
         <div className={styles.sectionEyebrow}>Used by the best</div>
         <h2 className={styles.sectionTitle}>Trusted by AI Leaders</h2>
         <p className={styles.sectionSubtitle}>
-          See how teams at OpenAI and Anthropic use Promptfoo to build better AI applications.
+          See how teams at OpenAI and Anthropic use artef to build better AI applications.
         </p>
         <div className={styles.asSeenOnGrid}>
           <a
@@ -713,7 +713,7 @@ function AsSeenOnSection() {
                 Build Hours
               </h3>
               <p>
-                "Promptfoo is really powerful because you can iterate on prompts, configure tests in
+                "artef is really powerful because you can iterate on prompts, configure tests in
                 YAML, and view everything locally... it's faster and more straightforward"
               </p>
               <span className={styles.watchNow}>Watch the Video →</span>
@@ -737,7 +737,7 @@ function AsSeenOnSection() {
                 Courses
               </h3>
               <p>
-                "Promptfoo offers a streamlined, out-of-the-box solution that can significantly
+                "artef offers a streamlined, out-of-the-box solution that can significantly
                 reduce the time and effort required for comprehensive prompt testing."
               </p>
               <span className={styles.watchNow}>See the Course →</span>
@@ -759,7 +759,7 @@ function PersonaSection() {
       title: 'For CISOs & Security Leadership',
       subtitle: 'Strategy & Risk Management',
       description:
-        "You're responsible for securing AI across the enterprise while enabling innovation. Promptfoo gives you the platform to scale security without scaling headcount.",
+        "You're responsible for securing AI across the enterprise while enabling innovation. artef gives you the platform to scale security without scaling headcount.",
       benefits: [
         {
           title: 'Comprehensive AI security posture',
@@ -788,7 +788,7 @@ function PersonaSection() {
       title: 'For Security Directors',
       subtitle: 'Depth & Automation',
       description:
-        'You need a solution that actually works at enterprise scale, integrates with your existing tools, and your team will adopt. Promptfoo delivers the depth you need without the complexity.',
+        'You need a solution that actually works at enterprise scale, integrates with your existing tools, and your team will adopt. artef delivers the depth you need without the complexity.',
       benefits: [
         {
           title: `Proven at global scale - ${SITE_CONSTANTS.FORTUNE_500_COUNT} of the Fortune 500`,
@@ -816,7 +816,7 @@ function PersonaSection() {
       title: 'For Developers & AI Engineers',
       subtitle: 'Speed & Enablement',
       description:
-        "You're building AI applications and need security testing that fits your workflow—not another blocker. Promptfoo was built by developers, for developers.",
+        "You're building AI applications and need security testing that fits your workflow—not another blocker. artef was built by developers, for developers.",
       benefits: [
         {
           title: 'Security feedback in your pull requests',
@@ -849,7 +849,7 @@ function PersonaSection() {
         <div className={styles.sectionEyebrow}>SOLUTIONS FOR EVERY TEAM</div>
         <h2 className={styles.sectionTitle}>Security that works for everyone</h2>
         <p className={styles.sectionSubtitle}>
-          Whether you're building AI security strategy or writing code, Promptfoo meets you where
+          Whether you're building AI security strategy or writing code, artef meets you where
           you are.
         </p>
 
@@ -918,9 +918,9 @@ function FAQSection() {
 
   const faqs = [
     {
-      question: 'How is Promptfoo different from runtime security tools?',
+      question: 'How is artef different from runtime security tools?',
       answer:
-        "Promptfoo shifts left to catch vulnerabilities in development, not after deployment. We integrate with CI/CD to provide security feedback in pull requests. Runtime tools only protect production—by then, fixes are 10x more expensive and time-consuming. We also offer runtime guardrails, but they're informed by red team testing—creating a feedback loop that makes protection smarter.",
+        "artef shifts left to catch vulnerabilities in development, not after deployment. We integrate with CI/CD to provide security feedback in pull requests. Runtime tools only protect production—by then, fixes are 10x more expensive and time-consuming. We also offer runtime guardrails, but they're informed by red team testing—creating a feedback loop that makes protection smarter.",
     },
     {
       question: "What's the difference between open source and enterprise?",
@@ -940,7 +940,7 @@ function FAQSection() {
     {
       question: "What if we're already using another AI security tool?",
       answer:
-        'Great! Many customers use Promptfoo alongside existing tools. We integrate with your security stack (Datadog, Splunk, Jira, etc.) and often find vulnerabilities other tools miss. Many customers run head-to-head evaluations and choose Promptfoo for our depth, automation, and application-focused approach.',
+        'Great! Many customers use artef alongside existing tools. We integrate with your security stack (Datadog, Splunk, Jira, etc.) and often find vulnerabilities other tools miss. Many customers run head-to-head evaluations and choose artef for our depth, automation, and application-focused approach.',
     },
     {
       question: 'How do you stay current with new threats?',
@@ -1011,7 +1011,7 @@ export default function Home(): React.ReactElement {
       wrapperClassName="homepage-wrapper"
     >
       <Head>
-        <meta property="og:image" content="https://www.promptfoo.dev/img/meta/homepage.png" />
+        <meta property="og:image" content="https://www.artef.dev/img/meta/homepage.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <HomepageHeader />

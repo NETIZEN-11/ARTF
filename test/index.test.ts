@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as cache from '../src/cache';
 import { evaluate as doEvaluate } from '../src/evaluator';
 import * as index from '../src/index';
@@ -2132,7 +2132,7 @@ describe('evaluate sharing functionality', () => {
   });
 
   it('should create shareable URL when sharing is enabled', async () => {
-    const mockUrl = 'https://app.promptfoo.dev/eval/test-123';
+    const mockUrl = 'https://app.artef.dev/eval/test-123';
     isSharingEnabledMock.mockReturnValue(true);
     createShareableUrlMock.mockResolvedValue(mockUrl);
 

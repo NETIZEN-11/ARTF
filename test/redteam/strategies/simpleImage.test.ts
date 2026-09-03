@@ -1,4 +1,4 @@
-import { SingleBar } from 'cli-progress';
+﻿import { SingleBar } from 'cli-progress';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import logger from '../../../src/logger';
 import { addImageToBase64 } from '../../../src/redteam/strategies/simpleImage';
@@ -46,7 +46,7 @@ describe('Image strategy', () => {
           metric: 'test-metric',
         },
         {
-          type: 'promptfoo:redteam:jailbreak',
+          type: 'artef:redteam:jailbreak',
           value: 'should update this metric',
           metric: 'jailbreak-metric',
         },
@@ -81,7 +81,7 @@ describe('Image strategy', () => {
             metric: 'test-metric',
           },
           {
-            type: 'promptfoo:redteam:jailbreak',
+            type: 'artef:redteam:jailbreak',
             value: 'should update this metric',
             metric: 'jailbreak/Image-Encoded',
           },

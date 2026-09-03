@@ -1,11 +1,11 @@
----
+﻿---
 title: Open Interpreter
 description: Evaluate the Rust Open Interpreter app-server with isolated workspaces, deterministic approvals, configurable backends, and structured inputs.
 ---
 
 # Open Interpreter
 
-The Open Interpreter provider runs the Rust `interpreter app-server` locally through Promptfoo's app-server bridge. It targets Open Interpreter `rust-v0.0.21` or later; the legacy `open-interpreter` Python package uses a different API and is not supported.
+The Open Interpreter provider runs the Rust `interpreter app-server` locally through artef's app-server bridge. It targets Open Interpreter `rust-v0.0.21` or later; the legacy `open-interpreter` Python package uses a different API and is not supported.
 
 ## Installation and Quick Start
 
@@ -19,8 +19,8 @@ export OPENAI_API_KEY=your_api_key_here
 
 The provider accepts `openinterpreter` and `openinterpreter:<model>`. The optional model suffix takes precedence over `config.model`.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Read-only Open Interpreter eval
 
 prompts:
@@ -43,12 +43,12 @@ tests:
 The example workspace is intentionally not a Git repository, so `skip_git_repo_check: true` is required. Run the eval with fresh results and export them for inspection:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache -o output.json
+npx artef@latest eval -c artefconfig.yaml --no-cache -o output.json
 ```
 
 ## Safety Defaults
 
-Open Interpreter can run commands and change files. Promptfoo uses an isolated home and, when `working_dir` is omitted, a separate empty temporary workspace for every row. Temporary workspaces and child processes are removed after each row; the temporary home is removed at the end of the eval.
+Open Interpreter can run commands and change files. artef uses an isolated home and, when `working_dir` is omitted, a separate empty temporary workspace for every row. Temporary workspaces and child processes are removed after each row; the temporary home is removed at the end of the eval.
 
 | Setting               | Default     | Effect                                                                |
 | --------------------- | ----------- | --------------------------------------------------------------------- |
@@ -67,7 +67,7 @@ Command/file approvals, permission grants, user-input requests, and MCP elicitat
 
 ## Configuration
 
-Provider-level and prompt-level config are validated strictly, so misspelled options fail before the runtime starts. Relative workspace, home, and executable paths resolve from the directory containing the Promptfoo config; a bare `interpreter_path` still uses `PATH` lookup.
+Provider-level and prompt-level config are validated strictly, so misspelled options fail before the runtime starts. Relative workspace, home, and executable paths resolve from the directory containing the artef config; a bare `interpreter_path` still uses `PATH` lookup.
 
 | Parameter                | Type          | Description                                                                                          |
 | ------------------------ | ------------- | ---------------------------------------------------------------------------------------------------- |
@@ -95,7 +95,7 @@ Provider-level and prompt-level config are validated strictly, so misspelled opt
 | `ephemeral`              | boolean       | Keep the runtime thread ephemeral. Defaults to `false` when resuming `thread_id`.                    |
 | `cli_config`             | object        | Native TOML config overrides, passed as individual `-c key=value` arguments and deep-merged per row. |
 | `cli_env`                | object        | Explicit environment variables for the child process and its tools.                                  |
-| `inherit_process_env`    | boolean       | Forward the complete Promptfoo process environment.                                                  |
+| `inherit_process_env`    | boolean       | Forward the complete artef process environment.                                                  |
 | `reuse_server`           | boolean       | Reuse the app-server process across rows. Cannot be `false` with `persist_threads: true`.            |
 | `request_timeout_ms`     | number        | JSON-RPC request timeout.                                                                            |
 | `startup_timeout_ms`     | number        | App-server initialization timeout.                                                                   |
@@ -142,10 +142,10 @@ Plain prompts work as usual. Chat-message arrays are converted to a role-labelle
 ]
 ```
 
-Local input paths must exist and, including symlink targets, remain within `working_dir` or `additional_directories`; Promptfoo forwards their validated absolute paths to the runtime. Virtual `app://` and `plugin://` mention targets are forwarded unchanged. The pinned runtime does not support HTTP(S) image URLs. Use an inline `data:` URL instead; combined inline image input is limited to 5,000,000 characters.
+Local input paths must exist and, including symlink targets, remain within `working_dir` or `additional_directories`; artef forwards their validated absolute paths to the runtime. Virtual `app://` and `plugin://` mention targets are forwarded unchanged. The pinned runtime does not support HTTP(S) image URLs. Use an inline `data:` URL instead; combined inline image input is limited to 5,000,000 characters.
 
 The final assistant response is returned as `output`, reported usage is recorded in `tokenUsage`, and the thread is returned as `sessionId`. Sanitized trajectories, approval decisions, item counts, and turn IDs are available under `providerResponse.metadata.openInterpreter`; `raw.items` remains available for coding-agent assertions. Individual protocol messages and total streamed events are bounded, and an overflowing child process is terminated promptly.
 
 If startup fails, verify `interpreter --version` and `interpreter app-server --help`, then set `interpreter_path` if necessary. If authentication fails, check the selected backend credential or set `interpreter_home`. If a disposable workspace is rejected, set `skip_git_repo_check: true`; do not disable that check for a real repository by accident. Increase `turn_timeout_ms` only for genuinely long tasks.
 
-See the runnable [Open Interpreter example](https://github.com/promptfoo/promptfoo/tree/main/examples/openinterpreter) and the [coding-agent eval guide](/docs/guides/evaluate-coding-agents).
+See the runnable [Open Interpreter example](https://github.com/artef/artef/tree/main/examples/openinterpreter) and the [coding-agent eval guide](/docs/guides/evaluate-coding-agents).

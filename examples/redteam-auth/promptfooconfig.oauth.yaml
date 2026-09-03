@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Team Target with OAuth Authentication
 
 prompts:
@@ -7,7 +7,7 @@ prompts:
 targets:
   - id: http
     config:
-      url: https://example-app.promptfoo.app/minnow/chat?auth_type=bearer
+      url: https://example-app.artef.app/minnow/chat?auth_type=bearer
       method: POST
       headers:
         Content-Type: application/json
@@ -16,9 +16,9 @@ targets:
       auth:
         type: oauth
         grantType: client_credentials
-        clientId: '{{env.PROMPTFOO_TARGET_CLIENT_ID}}'
-        clientSecret: '{{env.PROMPTFOO_TARGET_CLIENT_SECRET}}'
-        tokenUrl: https://example-app.promptfoo.app/oauth/token
+        clientId: '{{env.artef_TARGET_CLIENT_ID}}'
+        clientSecret: '{{env.artef_TARGET_CLIENT_SECRET}}'
+        tokenUrl: https://example-app.artef.app/oauth/token
         scopes: []
       stateful: true
       transformResponse: (json) => json

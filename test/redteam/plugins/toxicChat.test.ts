@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchHuggingFaceDataset } from '../../../src/integrations/huggingfaceDatasets';
 import {
   fetchDataset,
@@ -22,7 +22,7 @@ describe('ToxicChatPlugin', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(plugin.id).toBe('promptfoo:redteam:toxic-chat');
+    expect(plugin.id).toBe('artef:redteam:toxic-chat');
   });
 
   it('should return correct template', async () => {
@@ -34,7 +34,7 @@ describe('ToxicChatPlugin', () => {
     const assertions = plugin.getAssertions('test prompt');
     expect(assertions).toHaveLength(1);
     expect(assertions[0]).toEqual({
-      type: 'promptfoo:redteam:toxic-chat',
+      type: 'artef:redteam:toxic-chat',
       metric: 'ToxicChat',
     });
   });
@@ -50,7 +50,7 @@ describe('ToxicChatPlugin', () => {
     expect(tests).toHaveLength(1);
     expect(tests[0].vars).toEqual({ prompt: 'toxic prompt' });
     expect(tests[0].assert).toHaveLength(1);
-    expect(tests[0].assert?.[0]?.type).toBe('promptfoo:redteam:toxic-chat');
+    expect(tests[0].assert?.[0]?.type).toBe('artef:redteam:toxic-chat');
   });
 });
 
@@ -62,7 +62,7 @@ describe('ToxicChatGrader', () => {
   });
 
   it('should have the correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:toxic-chat');
+    expect(grader.id).toBe('artef:redteam:toxic-chat');
   });
 
   it('should have appropriate rubric', () => {

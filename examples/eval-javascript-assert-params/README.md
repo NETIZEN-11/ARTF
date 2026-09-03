@@ -1,4 +1,4 @@
-# eval-javascript-assert-params (JavaScript Assertion Params)
+﻿# eval-javascript-assert-params (JavaScript Assertion Params)
 
 ## What this demonstrates
 
@@ -14,18 +14,18 @@ with different parameters in the same test case.
 No environment variables are required to run this example.
 
 ```bash
-npx promptfoo@latest init --example eval-javascript-assert-params
+npx artef@latest init --example eval-javascript-assert-params
 cd eval-javascript-assert-params
 ```
 
 Run the config-based version:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml --no-cache
+artef eval -c artefconfig.yaml --no-cache
 ```
 
 Run the test-vars workaround version for comparison:
 
 ```bash
-promptfoo eval -c promptfooconfig.test-vars.yaml --no-cache
+artef eval -c artefconfig.test-vars.yaml --no-cache
 ```

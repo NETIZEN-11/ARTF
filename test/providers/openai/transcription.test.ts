@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
@@ -196,7 +196,7 @@ describe('OpenAiTranscriptionProvider', () => {
           method: 'POST',
           headers: expect.objectContaining({
             Authorization: 'Bearer test-key',
-            'X-OpenAI-Originator': 'promptfoo',
+            'X-OpenAI-Originator': 'artef',
           }),
         }),
         expect.any(Number),

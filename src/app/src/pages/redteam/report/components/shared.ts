@@ -1,9 +1,9 @@
-import { type categoryAliases, categoryAliasesReverse } from '@promptfoo/redteam/constants';
+﻿import { type categoryAliases, categoryAliasesReverse } from '@artef/redteam/constants';
 import {
   deserializePolicyIdFromMetric,
   isPolicyMetric,
-} from '@promptfoo/redteam/plugins/policy/utils';
-import type { EvaluateResult, GradingResult } from '@promptfoo/types';
+} from '@artef/redteam/plugins/policy/utils';
+import type { EvaluateResult, GradingResult } from '@artef/types';
 
 // TODO(ian): Need a much easier way to get the pluginId (and strategyId) from a result
 

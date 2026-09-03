@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import CloseIcon from '@mui/icons-material/Close';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -9,8 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
 
-const DISCORD_URL = 'https://discord.gg/promptfoo';
-const GITHUB_URL = 'https://github.com/promptfoo/promptfoo';
+const DISCORD_URL = 'https://discord.gg/artef';
+const GITHUB_URL = 'https://github.com/artef/artef';
 
 function DiscordIcon(props: React.ComponentProps<typeof SvgIcon>) {
   return (

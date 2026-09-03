@@ -1,4 +1,4 @@
-import { getEnvString } from '../../../envars';
+﻿import { getEnvString } from '../../../envars';
 import logger from '../../../logger';
 import { ElevenLabsCache } from '../cache';
 import { ElevenLabsClient } from '../client';
@@ -108,7 +108,7 @@ export class ElevenLabsTTSProvider implements ApiProvider {
         logger.debug('[ElevenLabs TTS] Creating pronunciation dictionary from rules');
         const dictionary = await createPronunciationDictionary(
           this.client,
-          `promptfoo-dict-${Date.now()}`,
+          `artef-dict-${Date.now()}`,
           this.config.pronunciationRules,
         );
         this.config.pronunciationDictionaryId = dictionary.id;

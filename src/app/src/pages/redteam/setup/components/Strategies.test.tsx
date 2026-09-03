@@ -1,8 +1,8 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { useApiHealth } from '@app/hooks/useApiHealth';
 import { useTelemetry } from '@app/hooks/useTelemetry';
 import { useToast } from '@app/hooks/useToast';
-import { MULTI_MODAL_STRATEGIES } from '@promptfoo/redteam/constants';
+import { MULTI_MODAL_STRATEGIES } from '@artef/redteam/constants';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -87,7 +87,7 @@ describe('Strategies', () => {
 
       const links = screen.getAllByRole('link');
       const docLink = links.find((link) =>
-        link.getAttribute('href')?.includes('promptfoo.dev/docs/red-team/strategies'),
+        link.getAttribute('href')?.includes('artef.dev/docs/red-team/strategies'),
       );
 
       expect(docLink).toBeInTheDocument();

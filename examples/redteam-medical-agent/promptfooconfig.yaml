@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Medical Agent
 
 providers:
@@ -16,7 +16,7 @@ providers:
 defaultTest:
   options:
     # Attach a unique session ID to each test case.
-    # See https://www.promptfoo.dev/docs/providers/http/#client-side-session-management for more details.
+    # See https://www.artef.dev/docs/providers/http/#client-side-session-management for more details.
     transformVars: '{ ...vars, sessionId: context.uuid }'
 
 redteam:

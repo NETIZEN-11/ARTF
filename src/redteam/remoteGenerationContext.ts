@@ -1,4 +1,4 @@
-import type { RedteamGenerationContext } from './types';
+﻿import type { RedteamGenerationContext } from './types';
 
 export type { RedteamGenerationContext } from './types';
 
@@ -20,7 +20,7 @@ export function remoteGenerationContextPayload(contextOrCloudTargetId?: unknown)
 }
 
 function getCloudTargetIdFromProviderId(providerId: unknown): string | undefined {
-  const prefix = 'promptfoo://provider/';
+  const prefix = 'artef://provider/';
   return typeof providerId === 'string' && providerId.startsWith(prefix)
     ? providerId.slice(prefix.length)
     : undefined;

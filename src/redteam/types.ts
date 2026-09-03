@@ -1,4 +1,4 @@
-import { z } from 'zod';
+﻿import { z } from 'zod';
 import { type Inputs, InputsSchema } from '../types/shared';
 import { type FrameworkComplianceId, type Plugin, Severity, SeveritySchema } from './constants';
 import { isValidPolicyId } from './plugins/policy/validators';
@@ -311,7 +311,7 @@ export interface SynthesizeOptions extends CommonOptions {
 
 export type RedteamGenerationContext = RemoteGenerationContext;
 
-export type RedteamAssertionTypes = `promptfoo:redteam:${string}`;
+export type RedteamAssertionTypes = `artef:redteam:${string}`;
 
 export interface RedteamRunOptions {
   id?: string;

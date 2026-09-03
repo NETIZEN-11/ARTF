@@ -1,11 +1,11 @@
-import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
-import { displayNameOverrides } from '@promptfoo/redteam/constants';
+﻿import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
+import { displayNameOverrides } from '@artef/redteam/constants';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import StrategyStats from './StrategyStats';
-import type { PolicyObject, RedteamPluginObject } from '@promptfoo/redteam/types';
-import type { EvaluateResult } from '@promptfoo/types';
+import type { PolicyObject, RedteamPluginObject } from '@artef/redteam/types';
+import type { EvaluateResult } from '@artef/types';
 
 import type { TestWithMetadata } from './shared';
 

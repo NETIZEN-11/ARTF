@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: AI/ML API
 description: "Access 200+ open-source AI models via AIML API's unified interface with consistent pricing and simplified integration"
 ---
@@ -21,7 +21,7 @@ Example of setting the environment variable:
 export AIML_API_KEY=your_api_key_here
 ```
 
-Get your API key at [aimlapi.com](https://aimlapi.com/app/?utm_source=promptfoo&utm_medium=github&utm_campaign=integration).
+Get your API key at [aimlapi.com](https://aimlapi.com/app/?utm_source=artef&utm_medium=github&utm_campaign=integration).
 
 ## Provider Formats
 
@@ -53,10 +53,10 @@ aimlapi:<model_name>
 
 ## Configuration
 
-Configure the provider in your promptfoo configuration file:
+Configure the provider in your artef configuration file:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: aimlapi:chat:deepseek-r1
     config:
@@ -114,14 +114,14 @@ AI/ML API offers models from multiple providers. Here are some of the most popul
 - **Voyage Large 2**: `voyage-large-2` - High-quality embeddings
 - **BGE M3**: `bge-m3` - Multilingual embeddings
 
-For a complete list of all 300+ available models, visit the [AI/ML API Models page](https://aimlapi.com/models?utm_source=promptfoo&utm_medium=github&utm_campaign=integration).
+For a complete list of all 300+ available models, visit the [AI/ML API Models page](https://aimlapi.com/models?utm_source=artef&utm_medium=github&utm_campaign=integration).
 
 ## Example Configurations
 
 ### Basic Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - aimlapi:chat:deepseek-r1
   - aimlapi:chat:gpt-5-mini
@@ -140,8 +140,8 @@ tests:
 
 ### Advanced Configuration with Multiple Models
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   # Reasoning model with low temperature
   - id: aimlapi:chat:deepseek-r1
@@ -186,8 +186,8 @@ tests:
 
 ### Embedding Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: aimlapi:embedding:text-embedding-3-large
     config:
@@ -207,8 +207,8 @@ tests:
 
 ### JSON Mode Example
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: aimlapi:chat:gpt-5
     config:
@@ -242,7 +242,7 @@ tests:
 Test your setup with working examples:
 
 ```bash
-npx promptfoo@latest init --example provider-aiml-api
+npx artef@latest init --example provider-aiml-api
 ```
 
 This includes tested configurations for comparing multiple models, evaluating reasoning capabilities, and measuring response quality.

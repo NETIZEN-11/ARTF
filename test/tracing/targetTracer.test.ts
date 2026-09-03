@@ -1,6 +1,6 @@
-import { SpanKind, SpanStatusCode } from '@opentelemetry/api';
+﻿import { SpanKind, SpanStatusCode } from '@opentelemetry/api';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { PromptfooAttributes } from '../../src/tracing/genaiTracer';
+import { artefAttributes } from '../../src/tracing/genaiTracer';
 import { TargetAttributes, withTargetSpan } from '../../src/tracing/targetTracer';
 
 const mocks = vi.hoisted(() => {
@@ -66,16 +66,16 @@ describe('universal target tracing', () => {
         attributes: expect.objectContaining({
           [TargetAttributes.TARGET_TYPE]: 'provider',
           [TargetAttributes.TARGET_LABEL]: 'Customer provider',
-          [PromptfooAttributes.PROVIDER_ID]: 'python:customer_provider.py',
-          [PromptfooAttributes.PROMPT_LABEL]: 'test prompt',
-          [PromptfooAttributes.EVAL_ID]: 'eval-1',
-          [PromptfooAttributes.TEST_INDEX]: 3,
+          [artefAttributes.PROVIDER_ID]: 'python:customer_provider.py',
+          [artefAttributes.PROMPT_LABEL]: 'test prompt',
+          [artefAttributes.EVAL_ID]: 'eval-1',
+          [artefAttributes.TEST_INDEX]: 3,
         }),
       },
       { traceId: 'parent' },
       expect.any(Function),
     );
-    expect(mocks.span.setAttribute).toHaveBeenCalledWith(PromptfooAttributes.CACHE_HIT, true);
+    expect(mocks.span.setAttribute).toHaveBeenCalledWith(artefAttributes.CACHE_HIT, true);
     expect(mocks.span.setStatus).toHaveBeenCalledWith({ code: SpanStatusCode.OK });
     expect(mocks.span.end).toHaveBeenCalledOnce();
   });
@@ -113,8 +113,8 @@ describe('universal target tracing', () => {
     const [name, options] = mocks.tracer.startActiveSpan.mock.calls[0];
     expect(name).toBe('grader provider Judge provider');
     expect(options.attributes).toMatchObject({
-      [PromptfooAttributes.PROVIDER_ID]: 'openai:judge',
-      'promptfoo.span.role': 'grader',
+      [artefAttributes.PROVIDER_ID]: 'openai:judge',
+      'artef.span.role': 'grader',
     });
     expect(options.attributes).not.toHaveProperty(TargetAttributes.TARGET_TYPE);
     expect(options.attributes).not.toHaveProperty(TargetAttributes.TARGET_LABEL);

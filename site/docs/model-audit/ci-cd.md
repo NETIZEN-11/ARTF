@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: CI/CD
 description: Integrate ModelAudit into GitHub Actions, GitLab CI, Jenkins, and CircleCI pipelines for automated ML model security scanning with SARIF output and deployment gates
 keywords:
@@ -70,9 +70,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Promptfoo and ModelAudit
+      - name: Install artef and ModelAudit
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           pip install modelaudit
 
       - name: Get changed model files
@@ -99,7 +99,7 @@ jobs:
             if [ -f "$file" ]; then
               echo "Scanning: $file"
               report_id=$(printf '%s' "$file" | sha256sum | cut -d ' ' -f1)
-              promptfoo scan-model "$file" \
+              artef scan-model "$file" \
                 --format json \
                 --output "scan_results/${report_id}.json" || true
             fi
@@ -179,14 +179,14 @@ jobs:
 
       - name: Install tools
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           pip install modelaudit
 
       - name: Scan models directory
         id: scan
         continue-on-error: true
         run: |
-          promptfoo scan-model models/ \
+          artef scan-model models/ \
             --no-write \
             --format sarif \
             --output modelaudit.sarif
@@ -234,13 +234,13 @@ jobs:
 
       - name: Install tools
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           pip install modelaudit[all]
 
       - name: Comprehensive model scan
         continue-on-error: true
         run: |
-          promptfoo scan-model models/ \
+          artef scan-model models/ \
             --format json \
             --output scan_results.json \
             --strict \
@@ -334,12 +334,12 @@ jobs:
 
       - name: Install tools
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           pip install modelaudit[all]
 
       - name: Strict security scan
         run: |
-          promptfoo scan-model models/production/ \
+          artef scan-model models/production/ \
             --strict \
             --format json \
             --output results.json
@@ -358,7 +358,7 @@ model-security-scan:
 
   before_script:
     - apt-get update && apt-get install -y python3 python3-pip
-    - npm install -g promptfoo
+    - npm install -g artef
     - pip3 install modelaudit
 
   script:
@@ -375,7 +375,7 @@ model-security-scan:
           if [ -f "$file" ]; then
             report_id=$(printf '%s' "$file" | sha256sum | cut -d ' ' -f1)
             file_status=0
-            promptfoo scan-model "$file" \
+            artef scan-model "$file" \
               --format json \
               --output "scan_results/${report_id}.json" || file_status=$?
             if [ "$file_status" -gt "$scan_status" ]; then scan_status=$file_status; fi
@@ -409,7 +409,7 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
-                    npm install -g promptfoo
+                    npm install -g artef
                     pip install modelaudit
                 '''
             }
@@ -432,7 +432,7 @@ pipeline {
                             def reportFile = "scan_${file.bytes.encodeHex().toString()}.json"
                             withEnv(["MODEL_FILE=${file}", "REPORT_FILE=${reportFile}"]) {
                                 sh '''
-                                    promptfoo scan-model "$MODEL_FILE" \
+                                    artef scan-model "$MODEL_FILE" \
                                       --format json \
                                       --output "$REPORT_FILE"
                                 '''
@@ -494,7 +494,7 @@ jobs:
       - run:
           name: Install tools
           command: |
-            npm install -g promptfoo
+            npm install -g artef
             pip install modelaudit
 
       - run:
@@ -507,7 +507,7 @@ jobs:
             if [ -n "$CHANGED" ]; then
               echo "$CHANGED" | while read -r file; do
                 if [ -f "$file" ]; then
-                  promptfoo scan-model "$file" --format json >> scan_results.json
+                  artef scan-model "$file" --format json >> scan_results.json
                 fi
               done
             fi
@@ -552,7 +552,7 @@ workflows:
 - name: Parallel scan
   run: |
     find models/ -name "*.pkl" -print0 | \
-      xargs -0 -P 4 -I {} promptfoo scan-model {} --format json --output {}.json
+      xargs -0 -P 4 -I {} artef scan-model {} --format json --output {}.json
 ```
 
 ### Security
@@ -569,7 +569,7 @@ For large models (8GB+):
 ```yaml
 - name: Scan large model
   run: |
-    promptfoo scan-model large_model.bin \
+    artef scan-model large_model.bin \
       --timeout 1800 \
       --verbose \
       --format json \
@@ -584,7 +584,7 @@ For large models (8GB+):
   with:
     timeout_minutes: 10
     max_attempts: 3
-    command: promptfoo scan-model models/ --format json --output results.json
+    command: artef scan-model models/ --format json --output results.json
 ```
 
 ### Notifications
@@ -616,21 +616,21 @@ For large models (8GB+):
 ### Verbose Output
 
 ```bash
-promptfoo scan-model models/ --verbose
+artef scan-model models/ --verbose
 ```
 
 ### File Size Limits
 
 ```bash
 # Set maximum file size
-promptfoo scan-model models/ --max-size 1GB
+artef scan-model models/ --max-size 1GB
 ```
 
 ### Dry Run
 
 ```bash
 # Preview scan without processing
-promptfoo scan-model models/ --dry-run
+artef scan-model models/ --dry-run
 ```
 
 ## Next Steps

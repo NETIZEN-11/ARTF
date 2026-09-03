@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../../src/cache';
 import {
   buildStructuredImageOutputs,
@@ -166,9 +166,9 @@ describe('OpenAI Image Provider Functions', () => {
     });
 
     it('should include user parameter from config', () => {
-      const config = { user: 'promptfoo-user-123' };
+      const config = { user: 'artef-user-123' };
       const body = prepareRequestBody('gpt-image-2', 'prompt', '1024x1024', 'b64_json', config);
-      expect(body.user).toBe('promptfoo-user-123');
+      expect(body.user).toBe('artef-user-123');
     });
 
     it('should include DALL-E 3 specific parameters', () => {

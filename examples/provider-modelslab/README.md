@@ -1,4 +1,4 @@
-# provider-modelslab (ModelsLab Image Generation)
+﻿# provider-modelslab (ModelsLab Image Generation)
 
 Compare text-to-image generation models using the [ModelsLab API](https://docs.modelslab.com).
 
@@ -13,7 +13,7 @@ Compare text-to-image generation models using the [ModelsLab API](https://docs.m
 ## Usage
 
 ```bash
-npx promptfoo@latest init --example provider-modelslab
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest init --example provider-modelslab
+npx artef@latest eval
+npx artef@latest view
 ```

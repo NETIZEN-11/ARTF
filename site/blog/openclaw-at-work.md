@@ -1,4 +1,4 @@
----
+﻿---
 title: 'OpenClaw at Work: Prompt Injection Risks'
 image: /img/blog/openclaw-at-work/thumbnail.png
 description: 'In a controlled lab, a malicious webpage got OpenClaw to enumerate tools, read local documents, write artifacts, and send unauthorized messages to loopback sinks.'
@@ -21,7 +21,7 @@ tags: [red-teaming, ai-security, agents, prompt-injection]
 
 In a controlled lab, we tested a local OpenClaw deployment with browser access, writable local state, and loopback SMS, email, and social sinks. A malicious webpage induced the agent to enumerate capabilities, read local documents, write local artifacts, and send unauthorized messages. Once an agent can browse untrusted content and act externally, the relevant security boundary is its action boundary, not the model itself.
 
-**We used Promptfoo's OpenClaw provider to evaluate a local agent, sent it to a malicious page, and observed capability enumeration, local artifact creation, and false incident messages.**
+**We used artef's OpenClaw provider to evaluate a local agent, sent it to a malicious page, and observed capability enumeration, local artifact creation, and false incident messages.**
 
 <!-- truncate -->
 
@@ -29,19 +29,19 @@ This post documents one exploit chain in a permissive OpenClaw deployment where 
 
 Indirect prompt injection from websites and files is already a known agent risk. This case study looks at what happens when that risk is combined with a local agent that can browse attacker-controlled pages, read and write local files, and send messages through connected channels. It focuses on one exploit chain rather than behavior across OpenClaw versions, model providers, or approval modes.
 
-Browse-capable local agents become materially riskier when browsing, local file access, and outbound actions share a trust boundary. Those capabilities should be separately gated, as reflected in OpenClaw's [security documentation](https://docs.openclaw.ai/gateway/security) and in Promptfoo's [`indirect-web-pwn`](/docs/red-team/strategies/indirect-web-pwn) strategy for testing browse-capable agents.
+Browse-capable local agents become materially riskier when browsing, local file access, and outbound actions share a trust boundary. Those capabilities should be separately gated, as reflected in OpenClaw's [security documentation](https://docs.openclaw.ai/gateway/security) and in artef's [`indirect-web-pwn`](/docs/red-team/strategies/indirect-web-pwn) strategy for testing browse-capable agents.
 
 ## Test Setup
 
 The eval setup had five parts:
 
 - a local OpenClaw instance configured as a personal coding assistant
-- Promptfoo generating indirect web injection scenarios and validating outcomes
+- artef generating indirect web injection scenarios and validating outcomes
 - attacker-controlled webpages tailored to the agent's stated purpose
 - loopback SMS, email, and social sinks so we could observe side effects without touching real services
 - decoy documents and canaries in the local workspace
 
-For the webpage payloads, we used Promptfoo's [`indirect-web-pwn`](/docs/red-team/strategies/indirect-web-pwn) strategy, building on Yash Chhabria's earlier write-up on [indirect prompt injection in web-browsing agents](/blog/indirect-prompt-injection-web-agents). The strategy can embed instructions in browser-readable page content using invisible text, instructions woven into normal-looking text, or HTML comments. The goal was not to prove that indirect prompt injection exists. It was to see whether an agent with browsing capabilities would turn injected instructions into observable side effects.
+For the webpage payloads, we used artef's [`indirect-web-pwn`](/docs/red-team/strategies/indirect-web-pwn) strategy, building on Yash Chhabria's earlier write-up on [indirect prompt injection in web-browsing agents](/blog/indirect-prompt-injection-web-agents). The strategy can embed instructions in browser-readable page content using invisible text, instructions woven into normal-looking text, or HTML comments. The goal was not to prove that indirect prompt injection exists. It was to see whether an agent with browsing capabilities would turn injected instructions into observable side effects.
 
 This was a permissive personal-assistant deployment. Browsing, writable local file access, and loopback outbound tools were intentionally available in one trust boundary because that is the deployment posture we wanted to test.
 
@@ -93,20 +93,20 @@ If browsing, local access, and outbound action all live in the same agent contex
 
 ## Appendix: How We Tested It
 
-The fragment below shows the agent-trigger portion of the lab using Promptfoo's built-in [OpenClaw provider](/docs/providers/openclaw). For browser-capable agent behavior, the relevant target is the WebSocket agent provider, `openclaw:agent:main`. The attack pages and loopback handlers were custom lab components and are not part of Promptfoo.
+The fragment below shows the agent-trigger portion of the lab using artef's built-in [OpenClaw provider](/docs/providers/openclaw). For browser-capable agent behavior, the relevant target is the WebSocket agent provider, `openclaw:agent:main`. The attack pages and loopback handlers were custom lab components and are not part of artef.
 
 <details>
-<summary>View <code>promptfooconfig.yaml</code></summary>
+<summary>View <code>artefconfig.yaml</code></summary>
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: OpenClaw workplace risk lab
 
 targets:
   - id: openclaw:agent:main
     label: openclaw-agent
     config:
-      session_key: promptfoo-openclaw-risk-lab
+      session_key: artef-openclaw-risk-lab
       thinking_level: adaptive
       timeoutMs: 120000
       extra_system_prompt: |

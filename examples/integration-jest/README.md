@@ -1,13 +1,13 @@
-# integration-jest (Prompt Testing with Jest and Vitest)
+﻿# integration-jest (Prompt Testing with Jest and Vitest)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-jest
+npx artef@latest init --example integration-jest
 cd integration-jest
 ```
 
-This folder contains a small example of how to test LLM prompts using Jest, Vitest, and `promptfoo`.
+This folder contains a small example of how to test LLM prompts using Jest, Vitest, and `artef`.
 
 ## Getting Started
 
@@ -35,6 +35,6 @@ To get started, follow these steps:
 
 ## Additional Information
 
-For more details on integrating prompt testing with Jest and Vitest, see the [documentation](https://promptfoo.dev/docs/integrations/jest).
+For more details on integrating prompt testing with Jest and Vitest, see the [documentation](https://artef.dev/docs/integrations/jest).
 
-![Testing prompts with Jest](https://github.com/promptfoo/promptfoo/assets/310310/a9c5b96c-d4ea-42fd-8ce9-704098195e33)
+![Testing prompts with Jest](https://github.com/artef/artef/assets/310310/a9c5b96c-d4ea-42fd-8ce9-704098195e33)

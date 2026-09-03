@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../src/envars', () => ({
   getEnvString: vi.fn().mockReturnValue(undefined),
@@ -90,7 +90,7 @@ describe('runtime utilities', () => {
     it('should return true when npm_lifecycle_script contains npx', () => {
       (vi.mocked(getEnvString) as any).mockImplementation((key: string) => {
         if (key === 'npm_lifecycle_script') {
-          return 'npx promptfoo eval';
+          return 'npx artef eval';
         }
         return undefined;
       });

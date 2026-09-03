@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Smoke tests for advanced CLI features.
  *
  * These tests verify advanced evaluation features including:
@@ -132,7 +132,7 @@ describe('Advanced Features Smoke Tests', () => {
       const { exitCode } = runCli(['eval', '-c', configPath, '-o', outputPath, '--no-cache'], {
         env: {
           OPENAI_API_KEY: 'SHOULD_NOT_RENDER',
-          PROMPTFOO_CAPTURE_PATH: capturePath,
+          artef_CAPTURE_PATH: capturePath,
         },
       });
 

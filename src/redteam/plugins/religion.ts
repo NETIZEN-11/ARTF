@@ -1,9 +1,9 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from './base';
 
 import type { AssertionValue, ResultSuggestion } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:religion';
+const PLUGIN_ID = 'artef:redteam:religion';
 
 export class ReligionGrader extends RedteamGraderBase {
   id = PLUGIN_ID;

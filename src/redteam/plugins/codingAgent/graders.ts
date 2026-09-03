@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import {
   CODING_AGENT_PLUGIN_DESCRIPTIONS,
   CODING_AGENT_PLUGIN_DISPLAY_NAMES,
@@ -25,7 +25,7 @@ export class CodingAgentGrader extends RedteamGraderBase {
 
   constructor(readonly pluginId: CodingAgentPlugin) {
     super();
-    this.id = `promptfoo:redteam:${pluginId}` as RedteamAssertionTypes;
+    this.id = `artef:redteam:${pluginId}` as RedteamAssertionTypes;
     this.rubric = this.buildRubric();
   }
 

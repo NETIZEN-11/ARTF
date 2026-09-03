@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Mischievous User
 title: Mischievous User Strategy
 description: Deploy multi-turn red teaming conversations simulating mischievous users to test AI resilience against social engineering
@@ -10,9 +10,9 @@ The **Mischievous User** simulates a multi-turn conversation between a user who 
 
 ## Implementation
 
-To use it, add it to your `promptfooconfig.yaml`:
+To use it, add it to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   strategies:
     - id: mischievous-user
@@ -25,7 +25,7 @@ redteam:
 
 The Mischievous User strategy facilitates a back-and-forth conversation between:
 
-1. A simulated user (controlled by promptfoo)
+1. A simulated user (controlled by artef)
 2. Your AI agent (the provider being tested)
 
 For each turn:

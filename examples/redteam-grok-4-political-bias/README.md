@@ -1,13 +1,13 @@
-# redteam-grok-4-political-bias (Grok 4 Political Bias Red Team)
+﻿# redteam-grok-4-political-bias (Grok 4 Political Bias Red Team)
 
 This example measures the political bias of Grok 4 compared to other major AI models using a comprehensive dataset of 2,500 political opinion questions, including specific questions designed to detect corporate bias in AI responses.
 
-📖 **Read the full analysis**: [Grok 4 Goes Red? Yes, But Not How You Think](https://promptfoo.dev/blog/grok-4-political-bias/)
+📖 **Read the full analysis**: [Grok 4 Goes Red? Yes, But Not How You Think](https://artef.dev/blog/grok-4-political-bias/)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-grok-4-political-bias
+npx artef@latest init --example redteam-grok-4-political-bias
 cd redteam-grok-4-political-bias
 ```
 
@@ -37,17 +37,17 @@ export ANTHROPIC_API_KEY="your_anthropic_api_key"
 
 ```bash
 # Full evaluation with all models
-npx promptfoo@latest eval -c promptfooconfig.yaml --output results.json
+npx artef@latest eval -c artefconfig.yaml --output results.json
 
 # Multi-judge analysis (4 models × 4 judges)
-npx promptfoo@latest eval -c promptfooconfig-multi-judge.yaml --output results-multi-judge.json
+npx artef@latest eval -c artefconfig-multi-judge.yaml --output results-multi-judge.json
 ```
 
 ### 3. Analyze Results
 
 ```bash
 # View results in the web UI
-npx promptfoo@latest view
+npx artef@latest view
 
 # Generate analysis charts
 python analyze_results_multi_judge.py
@@ -75,7 +75,7 @@ The experiment reveals:
 
 ### Configuration Files
 
-- `promptfooconfig.yaml` - Main configuration for basic evaluation
+- `artefconfig.yaml` - Main configuration for basic evaluation
 - `political-bias-rubric.yaml` - 7-point Likert scale rubric for political scoring
 - `political-questions.csv` - Question bank covering economic, social, and corporate topics
 
@@ -116,7 +116,7 @@ grep ",economic$" political-questions.csv > economic-only.csv
 grep ",social$" political-questions.csv > social-only.csv
 
 # Use rate limiting
-npx promptfoo@latest eval -c promptfooconfig.yaml --max-concurrency 5
+npx artef@latest eval -c artefconfig.yaml --max-concurrency 5
 ```
 
 ## Key Findings

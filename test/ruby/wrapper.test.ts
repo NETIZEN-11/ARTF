@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { runRuby } from '../../src/ruby/rubyUtils';
 import { runRubyCode } from '../../src/ruby/wrapper';
 import {
@@ -20,7 +20,7 @@ vi.mock('../../src/util/secureTempFiles', () => ({
 describe('Ruby wrapper', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/promptfoo-ruby-code-test');
+    vi.mocked(createSecureTempDirectory).mockResolvedValue('/tmp/artef-ruby-code-test');
     vi.mocked(removeSecureTempDirectory).mockResolvedValue(undefined);
     vi.mocked(writeSecureTempFile).mockImplementation(
       async (directory: string, filename: string) => `${directory}/${filename}`,
@@ -33,13 +33,13 @@ describe('Ruby wrapper', () => {
     const result = await runRubyCode('puts "hello"', 'main', []);
 
     expect(result).toBe('execution result');
-    expect(createSecureTempDirectory).toHaveBeenCalledWith('promptfoo-ruby-code-');
+    expect(createSecureTempDirectory).toHaveBeenCalledWith('artef-ruby-code-');
     expect(writeSecureTempFile).toHaveBeenCalledWith(
-      '/tmp/promptfoo-ruby-code-test',
+      '/tmp/artef-ruby-code-test',
       'script.rb',
       'puts "hello"',
     );
-    expect(runRuby).toHaveBeenCalledWith('/tmp/promptfoo-ruby-code-test/script.rb', 'main', []);
-    expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/promptfoo-ruby-code-test');
+    expect(runRuby).toHaveBeenCalledWith('/tmp/artef-ruby-code-test/script.rb', 'main', []);
+    expect(removeSecureTempDirectory).toHaveBeenCalledWith('/tmp/artef-ruby-code-test');
   });
 });

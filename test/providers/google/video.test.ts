@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
@@ -91,7 +91,7 @@ describe('GoogleVideoProvider', () => {
     // Default mock for blob storage
     mockStoreBlob.mockResolvedValue({
       ref: {
-        uri: 'promptfoo://blob/abc123def456',
+        uri: 'artef://blob/abc123def456',
         hash: 'abc123def456',
         mimeType: 'video/mp4',
         sizeBytes: 1024,
@@ -383,12 +383,12 @@ describe('GoogleVideoProvider', () => {
       expect(result.error).toBeUndefined();
       expect(result.cached).toBe(false);
       expect(result.output).toContain('[Video:');
-      expect(result.output).toContain('promptfoo://blob/');
+      expect(result.output).toContain('artef://blob/');
       expect(result.video).toBeDefined();
       expect(result.video?.format).toBe('mp4');
       expect(result.video?.model).toBe('veo-3.1-generate-preview');
       expect(result.video?.blobRef).toBeDefined();
-      expect(result.video?.blobRef?.uri).toContain('promptfoo://blob/');
+      expect(result.video?.blobRef?.uri).toContain('artef://blob/');
       expect(result.video?.url).toBe(result.video?.blobRef?.uri); // url matches blobRef.uri
       // 3 requests: job creation, 2 polls (one in progress, one done)
       expect(mockRequest).toHaveBeenCalledTimes(3);
@@ -460,7 +460,7 @@ describe('GoogleVideoProvider', () => {
 
       expect(result.error).toBeUndefined();
       expect(result.video?.model).toBe('veo-3.1-generate-preview');
-      expect(result.video?.blobRef?.uri).toContain('promptfoo://blob/');
+      expect(result.video?.blobRef?.uri).toContain('artef://blob/');
       expect(mockStoreBlob).toHaveBeenCalledWith(
         expect.any(Buffer),
         'video/mp4',
@@ -751,7 +751,7 @@ describe('GoogleVideoProvider', () => {
       // Mock deduplicated blob storage response
       mockStoreBlob.mockResolvedValueOnce({
         ref: {
-          uri: 'promptfoo://blob/existinghash123',
+          uri: 'artef://blob/existinghash123',
           hash: 'existinghash123',
           mimeType: 'video/mp4',
           sizeBytes: 1024,

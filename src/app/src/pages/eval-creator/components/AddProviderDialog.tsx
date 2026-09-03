@@ -1,4 +1,4 @@
-// Import Prism for syntax highlighting in provider configurations
+﻿// Import Prism for syntax highlighting in provider configurations
 import '@app/lib/prism';
 import '@app/pages/redteam/setup/components/Targets/syntax-highlighting.css';
 
@@ -17,7 +17,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tool
 import ProviderConfigEditor from '@app/pages/redteam/setup/components/Targets/ProviderConfigEditor';
 import ProviderTypeSelector from '@app/pages/redteam/setup/components/Targets/ProviderTypeSelector';
 import type { ProviderOptions as RedteamProviderOptions } from '@app/pages/redteam/setup/types';
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 interface AddProviderDialogProps {
   open: boolean;

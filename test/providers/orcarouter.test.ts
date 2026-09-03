@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { clearCache } from '../../src/cache';
 import { createOrcaRouterProvider, OrcaRouterProvider } from '../../src/providers/orcarouter';
 import * as fetchModule from '../../src/util/fetch/index';
@@ -53,8 +53,8 @@ describe('OrcaRouter', () => {
           apiKeyEnvar: 'ORCAROUTER_API_KEY',
           apiBaseUrl: ORCAROUTER_API_BASE,
           headers: {
-            'HTTP-Referer': 'https://promptfoo.dev/',
-            'X-Title': 'promptfoo',
+            'HTTP-Referer': 'https://artef.dev/',
+            'X-Title': 'artef',
           },
           passthrough: {},
         },
@@ -73,7 +73,7 @@ describe('OrcaRouter', () => {
         config: { headers: { 'X-Title': 'my-app', 'X-Custom': 'foo' } },
       });
       expect(p.config.headers).toEqual({
-        'HTTP-Referer': 'https://promptfoo.dev/',
+        'HTTP-Referer': 'https://artef.dev/',
         'X-Title': 'my-app',
         'X-Custom': 'foo',
       });
@@ -218,8 +218,8 @@ describe('OrcaRouter', () => {
         expect(url).toBe(`${ORCAROUTER_API_BASE}/chat/completions`);
         expect((init as RequestInit | undefined)?.headers).toMatchObject({
           Authorization: 'Bearer default-test-key',
-          'HTTP-Referer': 'https://promptfoo.dev/',
-          'X-Title': 'promptfoo',
+          'HTTP-Referer': 'https://artef.dev/',
+          'X-Title': 'artef',
         });
       } finally {
         restoreEnv();
@@ -256,8 +256,8 @@ describe('OrcaRouter', () => {
         const headers = (init as RequestInit | undefined)?.headers as Record<string, string>;
         expect(headers).not.toHaveProperty('Authorization');
         expect(headers).toMatchObject({
-          'HTTP-Referer': 'https://promptfoo.dev/',
-          'X-Title': 'promptfoo',
+          'HTTP-Referer': 'https://artef.dev/',
+          'X-Title': 'artef',
         });
       } finally {
         restoreEnv();

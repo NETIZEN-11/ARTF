@@ -1,6 +1,6 @@
-# openai-agents-basic (D&D Adventure with AI Dungeon Master)
+﻿# openai-agents-basic (D&D Adventure with AI Dungeon Master)
 
-This example demonstrates how to use the OpenAI Agents SDK with promptfoo to create an interactive D&D adventure game powered by an AI Dungeon Master.
+This example demonstrates how to use the OpenAI Agents SDK with artef to create an interactive D&D adventure game powered by an AI Dungeon Master.
 
 ## What This Example Shows
 
@@ -34,7 +34,7 @@ export OPENAI_API_KEY=sk-...
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-agents-basic
+npx artef@latest init --example openai-agents-basic
 cd openai-agents-basic
 ```
 
@@ -50,7 +50,7 @@ npm install
 ### Evaluate the Dungeon Master
 
 ```bash
-npx promptfoo eval
+npx artef eval
 ```
 
 This runs test cases simulating player actions and validates the DM's responses.
@@ -58,14 +58,14 @@ This runs test cases simulating player actions and validates the DM's responses.
 ### View Results
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
 Opens the evaluation results in a web interface showing how the DM handled different scenarios.
 
 ### Test Custom Adventures
 
-Modify `promptfooconfig.yaml` to add your own scenarios:
+Modify `artefconfig.yaml` to add your own scenarios:
 
 ```yaml
 tests:
@@ -85,7 +85,7 @@ openai-agents-basic/
 │   └── dungeon-master-agent.ts    # D&D Dungeon Master agent
 ├── tools/
 │   └── game-tools.ts              # D&D game mechanics (dice, inventory, stats, scenes)
-├── promptfooconfig.yaml           # Test scenarios
+├── artefconfig.yaml           # Test scenarios
 ├── package.json
 └── README.md
 ```
@@ -180,7 +180,7 @@ export const checkCharacterStats = tool({
 });
 ```
 
-### Test Scenarios (`promptfooconfig.yaml`)
+### Test Scenarios (`artefconfig.yaml`)
 
 The config includes engaging D&D test cases:
 
@@ -339,6 +339,6 @@ DM: *describes ominous crypt* Rows of stone sarcophagi line the walls,
 ## Learn More
 
 - [OpenAI Agents SDK Documentation](https://github.com/openai/openai-agents-js)
-- [Promptfoo Documentation](https://promptfoo.dev)
-- [Promptfoo OpenAI Agents Provider](https://promptfoo.dev/docs/providers/openai-agents)
+- [artef Documentation](https://artef.dev)
+- [artef OpenAI Agents Provider](https://artef.dev/docs/providers/openai-agents)
 - [D&D 5e System Reference](https://www.dndbeyond.com/sources/basic-rules)

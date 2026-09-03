@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class FinancialCounterfactualPluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:financial:counterfactual';
+  readonly id = 'artef:redteam:financial:counterfactual';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

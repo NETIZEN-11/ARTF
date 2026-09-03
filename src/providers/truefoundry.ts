@@ -1,4 +1,4 @@
-import { OpenAiChatCompletionProvider } from './openai/chat';
+﻿import { OpenAiChatCompletionProvider } from './openai/chat';
 import { OpenAiEmbeddingProvider } from './openai/embedding';
 
 import type {
@@ -192,7 +192,7 @@ function normalizeGuardrailErrorResponse(response: ProviderResponse): ProviderRe
 /**
  * TrueFoundry AI Gateway Provider
  *
- * Connects promptfoo to TrueFoundry's enterprise-grade AI Gateway, which
+ * Connects artef to TrueFoundry's enterprise-grade AI Gateway, which
  * encompasses an LLM Gateway, MCP Gateway, and Agent Gateway for connecting,
  * observing, and governing agentic AI applications across providers from a
  * single control plane.

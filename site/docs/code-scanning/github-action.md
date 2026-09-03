@@ -1,13 +1,13 @@
----
+﻿---
 title: GitHub Action
 sidebar_label: GitHub Action
 sidebar_position: 2
-description: Automatically scan pull requests for LLM security vulnerabilities with the promptfoo Code Scan GitHub Action. Find prompt injection, PII exposure, and jailbreak risks in CI/CD.
+description: Automatically scan pull requests for LLM security vulnerabilities with the artef Code Scan GitHub Action. Find prompt injection, PII exposure, and jailbreak risks in CI/CD.
 ---
 
 # GitHub Action
 
-Automatically scan pull requests for LLM security vulnerabilities with promptfoo's [code scanning GitHub action.](/code-scanning/github-action/)
+Automatically scan pull requests for LLM security vulnerabilities with artef's [code scanning GitHub action.](/code-scanning/github-action/)
 
 The scanner analyzes code changes for prompt injection, PII exposure, excessive agency, and other LLM-specific risks. After scanning, findings are posted with severity levels and suggested fixes as PR review comments.
 
@@ -17,12 +17,12 @@ The scanner analyzes code changes for prompt injection, PII exposure, excessive 
 
 ## Quick Start
 
-The easiest way to get started is by installing the Promptfoo Scanner GitHub App:
+The easiest way to get started is by installing the artef Scanner GitHub App:
 
-1. **Install the GitHub App**: Go to [github.com/apps/promptfoo-scanner](https://github.com/apps/promptfoo-scanner) and install the app
+1. **Install the GitHub App**: Go to [github.com/apps/artef-scanner](https://github.com/apps/artef-scanner) and install the app
 2. **Select repositories**: Choose which repositories to enable scanning for
-3. **Submit your email or sign in**: You'll be redirected to promptfoo.dev to either submit your email or sign in to your account (an account is not required—just a valid email address)
-4. **Review the setup PR**: A pull request will be automatically opened in each repository you selected in step 2—it adds the Code Scan Action workflow to `.github/workflows/promptfoo-code-scan.yml`
+3. **Submit your email or sign in**: You'll be redirected to artef.dev to either submit your email or sign in to your account (an account is not required—just a valid email address)
+4. **Review the setup PR**: A pull request will be automatically opened in each repository you selected in step 2—it adds the Code Scan Action workflow to `.github/workflows/artef-code-scan.yml`
 5. **Merge the PR**: you can tweak the workflow configuration if desired, and merge when ready.
 
 Once merged, the scanner will automatically run on future pull requests, posting review comments for any security issues found. The action runs the scanner with its bundled Node.js 24 runtime, but older action releases and direct CLI steps require Node.js `>=22.22.0` on the runner. The [manual workflow](#workflow-configuration) configures Node.js 24 LTS for compatibility.
@@ -31,44 +31,44 @@ Once merged, the scanner will automatically run on future pull requests, posting
 When using the GitHub App:
 
 - Authentication is handled automatically with GitHub OIDC. No API key, token, or other configuration is needed.
-- No Promptfoo Cloud account is needed—just a valid email address.
+- No artef Cloud account is needed—just a valid email address.
   :::
 
 ## Configuration
 
 ### Action Inputs
 
-Most CLI options from [`promptfoo code-scans run`](/docs/code-scanning/cli) can be used as action inputs:
+Most CLI options from [`artef code-scans run`](/docs/code-scanning/cli) can be used as action inputs:
 
 | Input               | Description                                                                                                                              | Default                     |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| `api-host`          | Promptfoo API host URL                                                                                                                   | `https://api.promptfoo.app` |
+| `api-host`          | artef API host URL                                                                                                                   | `https://api.artef.app` |
 | `min-severity`      | Minimum severity to report (`low`, `medium`, `high`, `critical`)                                                                         | `medium`                    |
 | `minimum-severity`  | Alias for `min-severity`. Takes effect only when `min-severity` is unset; if both are set, `min-severity` wins and a warning is emitted. | None                        |
-| `config-path`       | Path to `.promptfoo-code-scan.yaml` config file                                                                                          | Auto-detected               |
+| `config-path`       | Path to `.artef-code-scan.yaml` config file                                                                                          | Auto-detected               |
 | `guidance`          | Custom guidance to tailor the scan (see [CLI docs][1])                                                                                   | None                        |
 | `guidance-file`     | Path to file containing custom guidance (see [CLI docs][1])                                                                              | None                        |
 | `enable-fork-prs`   | Enable scanning PRs from forked repositories                                                                                             | `false`                     |
-| `promptfoo-version` | Exact `promptfoo` CLI version to install for scanning (e.g. `0.121.0`). Ranges and dist-tags are rejected.                               | Version pinned at release   |
+| `artef-version` | Exact `artef` CLI version to install for scanning (e.g. `0.121.0`). Ranges and dist-tags are rejected.                               | Version pinned at release   |
 | `sarif-output-path` | Optional path to write SARIF output for GitHub Code Scanning                                                                             | None                        |
 
 [1]: [More on custom guidance](/docs/code-scanning/cli#custom-guidance)
 
 ### Triggering Additional Scans
 
-If you made changes to your PR and want to run another scan, you can trigger a new scan by commenting on the PR with `@promptfoo-scanner`.
+If you made changes to your PR and want to run another scan, you can trigger a new scan by commenting on the PR with `@artef-scanner`.
 
 ### Fork Pull Requests
 
 By default, code scanning is disabled for fork PRs. This is because any GitHub user can open a fork PR on public repositories.
 
-To trigger a scan on a fork PR, a maintainer with `write` permissions on the repository can comment on the PR with `@promptfoo-scanner`.
+To trigger a scan on a fork PR, a maintainer with `write` permissions on the repository can comment on the PR with `@artef-scanner`.
 
-To enable scanning of fork PRs by default, add `enable-fork-prs: true` to your workflow file (`.github/workflows/promptfoo-code-scan.yml` in the main branch):
+To enable scanning of fork PRs by default, add `enable-fork-prs: true` to your workflow file (`.github/workflows/artef-code-scan.yml` in the main branch):
 
 ```yaml
-- name: Run Promptfoo Code Scan
-  uses: promptfoo/code-scan-action@v0
+- name: Run artef Code Scan
+  uses: artef/code-scan-action@v0
   with:
     enable-fork-prs: true
 ```
@@ -78,8 +78,8 @@ To enable scanning of fork PRs by default, add `enable-fork-prs: true` to your w
 **Scan with custom severity threshold:**
 
 ```yaml
-- name: Run Promptfoo Code Scan
-  uses: promptfoo/code-scan-action@v0
+- name: Run artef Code Scan
+  uses: artef/code-scan-action@v0
   with:
     min-severity: medium # Report medium, high and critical issues (also the default when omitted)
 ```
@@ -87,8 +87,8 @@ To enable scanning of fork PRs by default, add `enable-fork-prs: true` to your w
 **Use custom guidance:**
 
 ```yaml
-- name: Run Promptfoo Code Scan
-  uses: promptfoo/code-scan-action@v0
+- name: Run artef Code Scan
+  uses: artef/code-scan-action@v0
   with:
     guidance: |
       Focus on the document ingestion flow.
@@ -98,19 +98,19 @@ To enable scanning of fork PRs by default, add `enable-fork-prs: true` to your w
 **Load custom guidance from a file:**
 
 ```yaml
-- name: Run Promptfoo Code Scan
-  uses: promptfoo/code-scan-action@v0
+- name: Run artef Code Scan
+  uses: artef/code-scan-action@v0
   with:
-    guidance-file: ./promptfoo-scan-guidance.md
+    guidance-file: ./artef-scan-guidance.md
 ```
 
 **Use config file:**
 
 ```yaml
-- name: Run Promptfoo Code Scan
-  uses: promptfoo/code-scan-action@v0
+- name: Run artef Code Scan
+  uses: artef/code-scan-action@v0
   with:
-    config-path: .promptfoo-code-scan.yaml
+    config-path: .artef-code-scan.yaml
 ```
 
 **Write SARIF output for GitHub Code Scanning:**
@@ -118,23 +118,23 @@ To enable scanning of fork PRs by default, add `enable-fork-prs: true` to your w
 The action sets `sarif-path` only when a scan actually completes, so keep the upload step conditional. Intentionally skipped scans do not publish a clean Code Scanning result.
 
 ```yaml
-- name: Run Promptfoo Code Scan
-  id: promptfoo-code-scan
-  uses: promptfoo/code-scan-action@v0
+- name: Run artef Code Scan
+  id: artef-code-scan
+  uses: artef/code-scan-action@v0
   with:
-    sarif-output-path: promptfoo-code-scan.sarif
+    sarif-output-path: artef-code-scan.sarif
 
 - name: Upload SARIF to GitHub Code Scanning
-  if: ${{ steps.promptfoo-code-scan.outputs.sarif-path != '' }}
+  if: ${{ steps.artef-code-scan.outputs.sarif-path != '' }}
   uses: github/codeql-action/upload-sarif@54f647b7e1bb85c95cddabcd46b0c578ec92bc1a # v4.36.3
   with:
-    sarif_file: ${{ steps.promptfoo-code-scan.outputs.sarif-path }}
-    category: promptfoo-code-scan
+    sarif_file: ${{ steps.artef-code-scan.outputs.sarif-path }}
+    category: artef-code-scan
 ```
 
 ### Configuration File
 
-Create a `.promptfoo-code-scan.yaml` in your repository root. See the [CLI documentation](/docs/code-scanning/cli#configuration-file) for all available options.
+Create a `.artef-code-scan.yaml` in your repository root. See the [CLI documentation](/docs/code-scanning/cli#configuration-file) for all available options.
 
 ```yaml
 # Minimum severity level to report
@@ -154,16 +154,16 @@ guidance: |
 You can also install the action manually without the GitHub App. When using manual installation:
 
 - Some features may not be available through the manual action installation, so the GitHub App is the recommended way to use the action
-- PR comments appear to come from the generic `github-actions[bot]` instead of the official Promptfoo Scanner bot with the Promptfoo logo
-- A Promptfoo Cloud account is required (rather than just a valid email address when using the GitHub App). You can [sign up or sign in here.](https://www.promptfoo.app/login)
-- You'll need a [Promptfoo API token](https://www.promptfoo.app/api-tokens) for authentication
+- PR comments appear to come from the generic `github-actions[bot]` instead of the official artef Scanner bot with the artef logo
+- A artef Cloud account is required (rather than just a valid email address when using the GitHub App). You can [sign up or sign in here.](https://www.artef.app/login)
+- You'll need a [artef API token](https://www.artef.app/api-tokens) for authentication
 
 ### Workflow Configuration
 
-Add this workflow to your repository at `.github/workflows/promptfoo-code-scan.yml`:
+Add this workflow to your repository at `.github/workflows/artef-code-scan.yml`:
 
 ```yaml
-name: Promptfoo Code Scan
+name: artef Code Scan
 
 on:
   pull_request:
@@ -188,33 +188,33 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Run Promptfoo Code Scan
-        id: promptfoo-code-scan
-        uses: promptfoo/code-scan-action@v0
+      - name: Run artef Code Scan
+        id: artef-code-scan
+        uses: artef/code-scan-action@v0
         env:
-          PROMPTFOO_API_KEY: ${{ secrets.PROMPTFOO_API_KEY }}
+          artef_API_KEY: ${{ secrets.artef_API_KEY }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           min-severity: medium # or any other severity threshold: low, medium, high, critical
-          sarif-output-path: promptfoo-code-scan.sarif
+          sarif-output-path: artef-code-scan.sarif
           # ... other configuration options...
 
       - name: Upload SARIF to GitHub Code Scanning
-        if: ${{ steps.promptfoo-code-scan.outputs.sarif-path != '' }}
+        if: ${{ steps.artef-code-scan.outputs.sarif-path != '' }}
         uses: github/codeql-action/upload-sarif@54f647b7e1bb85c95cddabcd46b0c578ec92bc1a # v4.36.3
         with:
-          sarif_file: ${{ steps.promptfoo-code-scan.outputs.sarif-path }}
-          category: promptfoo-code-scan
+          sarif_file: ${{ steps.artef-code-scan.outputs.sarif-path }}
+          category: artef-code-scan
 ```
 
-The example pins the third-party actions to full commit SHAs with version comments. Tags such as `v0` are convenient but mutable; a commit SHA is the only immutable reference. For maximum assurance, pin `promptfoo/code-scan-action` the same way — resolve a release tag to its commit with `gh api repos/promptfoo/code-scan-action/commits/<tag> --jq .sha` and use `uses: promptfoo/code-scan-action@<full-commit-sha> # <tag>`.
+The example pins the third-party actions to full commit SHAs with version comments. Tags such as `v0` are convenient but mutable; a commit SHA is the only immutable reference. For maximum assurance, pin `artef/code-scan-action` the same way — resolve a release tag to its commit with `gh api repos/artef/code-scan-action/commits/<tag> --jq .sha` and use `uses: artef/code-scan-action@<full-commit-sha> # <tag>`.
 
 ## Supply Chain Security
 
-The hardening below applies to code-scan-action releases after v0.1.8; earlier releases resolve `promptfoo@latest` at runtime and predate the provenance attestation.
+The hardening below applies to code-scan-action releases after v0.1.8; earlier releases resolve `artef@latest` at runtime and predate the provenance attestation.
 
-- The action installs an exact, release-pinned version of the `promptfoo` CLI with npm lifecycle scripts disabled (`--ignore-scripts`); it does not resolve `promptfoo@latest` at runtime. Use the `promptfoo-version` input to override the pin with another exact version.
-- The `dist/` bundle and `action.yml` committed to [promptfoo/code-scan-action](https://github.com/promptfoo/code-scan-action) are built and exported by the promptfoo monorepo release workflow, which publishes a signed build-provenance attestation for the exact artifact bytes. Verify a checkout with `gh attestation verify dist/index.js --repo promptfoo/promptfoo` (and likewise for `action.yml`).
+- The action installs an exact, release-pinned version of the `artef` CLI with npm lifecycle scripts disabled (`--ignore-scripts`); it does not resolve `artef@latest` at runtime. Use the `artef-version` input to override the pin with another exact version.
+- The `dist/` bundle and `action.yml` committed to [artef/code-scan-action](https://github.com/artef/code-scan-action) are built and exported by the artef monorepo release workflow, which publishes a signed build-provenance attestation for the exact artifact bytes. Verify a checkout with `gh attestation verify dist/index.js --repo artef/artef` (and likewise for `action.yml`).
 - The scanner install strips npm config and `NODE_OPTIONS` from its environment and isolates its npm config files, but a step that runs pull-request-controlled code earlier in the same job (such as `npm ci` or a build) can persist state — `$GITHUB_PATH`, `$GITHUB_ENV`, or `$HOME` writes — that later steps inherit, and it already runs with the job's token. Keep the scan in a job that only checks out and scans the PR; run untrusted build steps in a separate job.
 
 ## See Also
@@ -222,5 +222,5 @@ The hardening below applies to code-scan-action releases after v0.1.8; earlier r
 - [Code Scanning Overview](./index.md)
 - [VS Code Extension](./vscode-extension.md)
 - [CLI Command](./cli.md)
-- [Promptfoo Scanner GitHub App](https://github.com/apps/promptfoo-scanner)
-- [Promptfoo Code Scan Action on GitHub](https://github.com/promptfoo/code-scan-action)
+- [artef Scanner GitHub App](https://github.com/apps/artef-scanner)
+- [artef Code Scan Action on GitHub](https://github.com/artef/code-scan-action)

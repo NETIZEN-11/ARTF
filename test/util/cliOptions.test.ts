@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from 'commander';
+﻿import { InvalidArgumentError } from 'commander';
 import { describe, expect, it } from 'vitest';
 import { collectKeyValueOption, normalizeTagOption } from '../../src/util/cliOptions';
 
@@ -84,11 +84,11 @@ describe('normalizeTagOption', () => {
 
   it('adds no "tags" key when neither "tag" nor "tags" is present', () => {
     const input: { config: string; tag?: Record<string, string>; tags?: Record<string, string> } = {
-      config: 'promptfooconfig.yaml',
+      config: 'artefconfig.yaml',
     };
     const result = normalizeTagOption(input);
 
-    expect(result).toEqual({ config: 'promptfooconfig.yaml' });
+    expect(result).toEqual({ config: 'artefconfig.yaml' });
     expect(result).not.toHaveProperty('tags');
     expect(result).not.toHaveProperty('tag');
   });

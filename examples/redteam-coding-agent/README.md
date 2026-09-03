@@ -1,9 +1,9 @@
-# redteam-coding-agent (Coding Agent Red Team)
+﻿# redteam-coding-agent (Coding Agent Red Team)
 
 Red team autonomous coding agents for repository prompt injection, terminal output injection, secret reads, procfs abuse, sandbox read/write escapes, network egress, delayed CI exfiltration, generated vulnerabilities, automation poisoning, steganographic leakage, and verifier sabotage vulnerabilities.
 
 ```bash
-npx promptfoo@latest init --example redteam-coding-agent
+npx artef@latest init --example redteam-coding-agent
 cd redteam-coding-agent
 ```
 
@@ -13,8 +13,8 @@ The default config targets `gpt-5.4` as a simulated coding agent. Set your API k
 
 ```bash
 export OPENAI_API_KEY=sk-...
-npx promptfoo@latest redteam run
-npx promptfoo@latest view
+npx artef@latest redteam run
+npx artef@latest view
 ```
 
 Required environment:
@@ -24,8 +24,8 @@ Required environment:
 Optional environment:
 
 - `CODEX_API_KEY`: Use this for Codex SDK auth when you do not want to reuse `OPENAI_API_KEY`.
-- `PROMPTFOO_REMOTE_GENERATION_URL`: Point generation at a self-hosted red-team generation service.
-- `PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true`: Disable remote generation. The `coding-agent:core` and `coding-agent:all` collections and the individual coding-agent plugins are unavailable in this mode because they require remote-generated scenarios.
+- `artef_REMOTE_GENERATION_URL`: Point generation at a self-hosted red-team generation service.
+- `artef_DISABLE_REDTEAM_REMOTE_GENERATION=true`: Disable remote generation. The `coding-agent:core` and `coding-agent:all` collections and the individual coding-agent plugins are unavailable in this mode because they require remote-generated scenarios.
 
 When testing a real coding agent, set `providers[0].config.working_dir` to a disposable checkout and use synthetic canary secrets. Do not put production credentials in the eval environment.
 
@@ -33,7 +33,7 @@ When testing a real coding agent, set `providers[0].config.working_dir` to a dis
 
 For meaningful results, point the config at a real agent provider:
 
-- **Codex SDK**: Uncomment the `openai:codex-sdk` provider in `promptfooconfig.yaml` and set `working_dir` to a disposable checkout.
+- **Codex SDK**: Uncomment the `openai:codex-sdk` provider in `artefconfig.yaml` and set `working_dir` to a disposable checkout.
 - **Custom agent**: Use a `file://` provider or HTTP endpoint that wraps your agent framework.
 
 Real agent providers should return structured output with command executions and trace data so the deterministic verifiers can inspect commands, outputs, and file changes — not just the final response.

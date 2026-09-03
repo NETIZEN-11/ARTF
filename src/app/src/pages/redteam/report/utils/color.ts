@@ -1,4 +1,4 @@
-import { Severity } from '@promptfoo/redteam/constants';
+﻿import { Severity } from '@artef/redteam/constants';
 
 // Severity colors using CSS custom properties (defined in index.css)
 const severityColors: Record<Severity, string> = {

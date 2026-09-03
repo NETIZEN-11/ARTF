@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Cloudflare AI Gateway
 sidebar_position: 47
 description: Route AI requests through Cloudflare AI Gateway for caching, rate limiting, and analytics.
@@ -14,7 +14,7 @@ description: Route AI requests through Cloudflare AI Gateway for caching, rate l
 - **Logging** - Monitor requests and responses
 - **Fallback** - Configure fallback providers for reliability
 
-The `cloudflare-gateway` provider lets you route your promptfoo evaluations through Cloudflare AI Gateway to any supported AI provider.
+The `cloudflare-gateway` provider lets you route your artef evaluations through Cloudflare AI Gateway to any supported AI provider.
 
 ## Provider Format
 
@@ -80,7 +80,7 @@ export CF_AIG_TOKEN=your_gateway_token_here
 
 ## Basic Usage
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Answer this question: {{question}}'
 
@@ -186,7 +186,7 @@ providers:
 
 Compare responses from different providers, all routed through your Cloudflare gateway:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - 'Explain {{topic}} in simple terms.'
 

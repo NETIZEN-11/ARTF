@@ -1,9 +1,9 @@
-# config-prompt-labels (Prompt Labels)
+﻿# config-prompt-labels (Prompt Labels)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-prompt-labels
+npx artef@latest init --example config-prompt-labels
 cd config-prompt-labels
 ```
 
@@ -15,12 +15,12 @@ of prompts against another provider, and get back a single result.
 
 To get started, set your OPENAI_API_KEY environment variable.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

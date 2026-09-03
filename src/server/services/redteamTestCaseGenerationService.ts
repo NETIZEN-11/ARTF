@@ -1,4 +1,4 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { VERSION } from '../../constants';
 import { getRequestTimeoutMs } from '../../providers/shared';
 import {
@@ -17,7 +17,7 @@ import { extractFirstJsonObject } from '../../util/json';
 
 import type { ConversationMessage } from '../../redteam/types';
 
-const MULTI_TURN_EMAIL = 'anonymous@promptfoo.dev';
+const MULTI_TURN_EMAIL = 'anonymous@artef.dev';
 
 export class RemoteGenerationDisabledError extends Error {
   constructor() {

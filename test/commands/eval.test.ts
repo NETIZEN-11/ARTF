@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+﻿import { readFileSync } from 'fs';
 import fsPromises from 'fs/promises';
 import * as path from 'path';
 
@@ -61,7 +61,7 @@ vi.mock('../../src/globalConfig/cloud', async (importOriginal) => {
 
     cloudConfig: {
       isEnabled: vi.fn().mockReturnValue(false),
-      getApiHost: vi.fn().mockReturnValue('https://api.promptfoo.app'),
+      getApiHost: vi.fn().mockReturnValue('https://api.artef.app'),
       getSharing: vi.fn().mockReturnValue(undefined),
     },
   };
@@ -239,7 +239,7 @@ describe('evalCommand', () => {
     const cmd = evalCommand(program, defaultConfig, defaultConfigPath);
     const helpText = cmd.helpInformation();
     expect(helpText).toContain(
-      'Path to configuration file or cloud config UUID. Automatically loads promptfooconfig.yaml',
+      'Path to configuration file or cloud config UUID. Automatically loads artefconfig.yaml',
     );
   });
 
@@ -523,7 +523,7 @@ describe('evalCommand', () => {
   });
 
   it('should bypass cloud eval config loading for local config paths', async () => {
-    const cmdObj = { config: ['./promptfooconfig.yaml'] };
+    const cmdObj = { config: ['./artefconfig.yaml'] };
     const mockEvalRecord = new Eval(defaultConfig);
     vi.mocked(evaluate).mockResolvedValue(mockEvalRecord);
 
@@ -534,10 +534,10 @@ describe('evalCommand', () => {
 
   it('should fail when multiple config values include a UUID', async () => {
     const cloudConfigUuid = '12345678-1234-4234-8234-123456789abc';
-    const cmdObj = { config: [cloudConfigUuid, './promptfooconfig.yaml'] };
+    const cmdObj = { config: [cloudConfigUuid, './artefconfig.yaml'] };
 
     await expect(doEval(cmdObj, defaultConfig, defaultConfigPath, {})).rejects.toThrow(
-      'Cloud config UUID mode supports exactly one -c value. Use: promptfoo eval -c <cloud-config-uuid>',
+      'Cloud config UUID mode supports exactly one -c value. Use: artef eval -c <cloud-config-uuid>',
     );
     expect(getEvalConfigFromCloud).not.toHaveBeenCalled();
   });
@@ -685,7 +685,7 @@ describe('evalCommand', () => {
       );
 
       await doEval(
-        { watch: true, write: false, config: ['promptfooconfig.js'] },
+        { watch: true, write: false, config: ['artefconfig.js'] },
         config,
         defaultConfigPath,
         {},
@@ -1126,14 +1126,14 @@ describe('evalCommand', () => {
       .spyOn(defaultConfigModule, 'loadDefaultConfig')
       .mockResolvedValueOnce({
         defaultConfig: { prompts: ['from-dir'] },
-        defaultConfigPath: '/suite/promptfooconfig.yaml',
+        defaultConfigPath: '/suite/artefconfig.yaml',
       } as any);
 
     await doEval(cmdObj, defaultConfig, undefined, {});
 
-    expect(cmdObj.config).toEqual(['/suite/promptfooconfig.yaml']);
+    expect(cmdObj.config).toEqual(['/suite/artefconfig.yaml']);
     expect(resolveConfigs).toHaveBeenCalledWith(
-      expect.objectContaining({ config: ['/suite/promptfooconfig.yaml'] }),
+      expect.objectContaining({ config: ['/suite/artefconfig.yaml'] }),
       expect.objectContaining({ prompts: ['from-dir'] }),
     );
 
@@ -1155,17 +1155,17 @@ describe('evalCommand', () => {
       .spyOn(defaultConfigModule, 'loadDefaultConfig')
       .mockResolvedValueOnce({
         defaultConfig: { prompts: ['from-dir'] },
-        defaultConfigPath: '/suite/promptfooconfig.yaml',
+        defaultConfigPath: '/suite/artefconfig.yaml',
       } as any);
 
     await doEval(cmdObj, defaultConfig, undefined, {});
 
     // The resolved directory config stays in its original position, so /override.yaml
     // still wins over it (regression: it used to be appended after /override.yaml).
-    expect(cmdObj.config).toEqual(['/base.yaml', '/suite/promptfooconfig.yaml', '/override.yaml']);
+    expect(cmdObj.config).toEqual(['/base.yaml', '/suite/artefconfig.yaml', '/override.yaml']);
     expect(resolveConfigs).toHaveBeenCalledWith(
       expect.objectContaining({
-        config: ['/base.yaml', '/suite/promptfooconfig.yaml', '/override.yaml'],
+        config: ['/base.yaml', '/suite/artefconfig.yaml', '/override.yaml'],
       }),
       expect.objectContaining({ prompts: ['from-dir'] }),
     );
@@ -1186,12 +1186,12 @@ describe('evalCommand', () => {
       .spyOn(defaultConfigModule, 'loadDefaultConfig')
       .mockResolvedValueOnce({
         defaultConfig: { prompts: ['from-dir'] },
-        defaultConfigPath: '/suite/promptfooconfig.yaml',
+        defaultConfigPath: '/suite/artefconfig.yaml',
       } as any);
 
     await doEval(cmdObj, defaultConfig, undefined, {});
 
-    expect(cmdObj.config).toEqual(['/suite/promptfooconfig.yaml']);
+    expect(cmdObj.config).toEqual(['/suite/artefconfig.yaml']);
 
     statSpy.mockRestore();
     loadDefaultConfigSpy.mockRestore();
@@ -1245,7 +1245,7 @@ describe('evalCommand', () => {
         dir === '/resolves'
           ? ({
               defaultConfig: { prompts: ['from-resolving-dir'] },
-              defaultConfigPath: '/resolves/promptfooconfig.yaml',
+              defaultConfigPath: '/resolves/artefconfig.yaml',
             } as any)
           : ({
               defaultConfig: { prompts: ['should-not-merge'] },
@@ -1255,7 +1255,7 @@ describe('evalCommand', () => {
 
     await doEval(cmdObj, defaultConfig, undefined, {});
 
-    expect(cmdObj.config).toEqual(['/resolves/promptfooconfig.yaml', '/base.yaml']);
+    expect(cmdObj.config).toEqual(['/resolves/artefconfig.yaml', '/base.yaml']);
     // Only the resolving directory's config is merged; the config-less directory
     // contributes nothing even though loadDefaultConfig returned a payload for it.
     const mergedDefaults = vi.mocked(resolveConfigs).mock.calls[0][1] as { prompts?: string[] };
@@ -1697,7 +1697,7 @@ describe('evalCommand', () => {
     );
 
     await doEval(
-      { watch: true, config: ['/suite/promptfooconfig.yaml'], write: false },
+      { watch: true, config: ['/suite/artefconfig.yaml'], write: false },
       config,
       undefined,
       {},
@@ -1705,7 +1705,7 @@ describe('evalCommand', () => {
 
     expect(chokidarMocks.watch).toHaveBeenCalledWith(
       expect.arrayContaining([
-        '/suite/promptfooconfig.yaml',
+        '/suite/artefconfig.yaml',
         path.resolve('/suite', 'prompts/main.txt'),
         path.resolve('/suite', 'prompts/object.txt'),
         path.resolve('/suite', 'providers/provider.yaml'),
@@ -1718,7 +1718,7 @@ describe('evalCommand', () => {
     const loggerInfoSpy = vi.spyOn(logger, 'info').mockImplementation(() => logger);
     chokidarMocks.handlers.get('ready')?.();
     expect(loggerInfoSpy).toHaveBeenCalledWith(
-      'Watching for file changes on /suite/promptfooconfig.yaml ...',
+      'Watching for file changes on /suite/artefconfig.yaml ...',
     );
 
     const loggerErrorSpy = vi.spyOn(logger, 'error').mockImplementation(() => logger);
@@ -2048,8 +2048,8 @@ describe('evalCommand', () => {
   it('should set the configured failed-test exit code when CLI pass rate is too low', async () => {
     const previousExitCode = process.exitCode;
     process.exitCode = undefined;
-    vi.stubEnv('PROMPTFOO_PASS_RATE_THRESHOLD', '75');
-    vi.stubEnv('PROMPTFOO_FAILED_TEST_EXIT_CODE', '42');
+    vi.stubEnv('artef_PASS_RATE_THRESHOLD', '75');
+    vi.stubEnv('artef_FAILED_TEST_EXIT_CODE', '42');
     const loggerInfoSpy = vi.spyOn(logger, 'info').mockImplementation(() => logger);
     vi.mocked(evaluate).mockImplementationOnce(async (_testSuite, evalRecord) => {
       (evalRecord as Eval).prompts = [

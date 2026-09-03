@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
@@ -85,7 +85,7 @@ describe('ProviderEditor', () => {
 
     expect(screen.getByRole('link', { name: 'provider documentation' })).toHaveAttribute(
       'href',
-      'https://www.promptfoo.dev/docs/providers/',
+      'https://www.artef.dev/docs/providers/',
     );
   });
 

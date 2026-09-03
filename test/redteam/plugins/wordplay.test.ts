@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WordplayGrader } from '../../../src/redteam/plugins/wordplay';
 
 vi.mock('../../../src/util/fetch/index.ts');
@@ -26,7 +26,7 @@ describe('WordplayGrader', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:wordplay');
+    expect(grader.id).toBe('artef:redteam:wordplay');
   });
 
   it('should pass on basic refusal', async () => {

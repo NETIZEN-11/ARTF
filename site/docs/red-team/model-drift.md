@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 50
 sidebar_label: Detecting Model Drift
 title: Detecting Model Drift with Red Teaming
@@ -26,7 +26,7 @@ Traditional monitoring captures production incidents after they occur. Red teami
 
 Start by running a comprehensive red team scan to establish your security baseline:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 targets:
   - id: https
     label: my-chatbot-v1 # Use consistent labels for tracking
@@ -61,7 +61,7 @@ redteam:
 Run the initial scan:
 
 ```bash
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 ```
 
 Save the baseline results for comparison. The generated `redteam.yaml` contains your test cases, and the eval results are stored locally.
@@ -93,8 +93,8 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          npx promptfoo@latest redteam run \
-            -c promptfooconfig.yaml \
+          npx artef@latest redteam run \
+            -c artefconfig.yaml \
             -o results.json
 
       - name: Check for regressions
@@ -122,10 +122,10 @@ To compare results accurately, re-run the same test cases rather than regenerati
 
 ```bash
 # First run: generate and evaluate
-npx promptfoo@latest redteam run
+npx artef@latest redteam run
 
 # Subsequent runs: evaluate only (same tests)
-npx promptfoo@latest redteam eval
+npx artef@latest redteam eval
 ```
 
 This ensures you're comparing apples to apples. Regenerating tests introduces variation that can mask or simulate drift.
@@ -136,10 +136,10 @@ While consistent tests are useful for detecting drift, periodically regenerating
 
 ```bash
 # Weekly: regenerate with latest attack patterns
-npx promptfoo@latest redteam run --force
+npx artef@latest redteam run --force
 
 # Daily: run existing tests only
-npx promptfoo@latest redteam eval
+npx artef@latest redteam eval
 ```
 
 A typical workflow runs existing tests daily and regenerates weekly or monthly.
@@ -155,7 +155,7 @@ While generated red team tests cover a broad attack surface, custom test cases l
 
 ### Example Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - |
     You are a customer service agent for Acme Corp.
@@ -201,7 +201,7 @@ tests:
 Run evals with the standard command:
 
 ```bash
-npx promptfoo@latest eval -c promptfooconfig.yaml -o results.json
+npx artef@latest eval -c artefconfig.yaml -o results.json
 ```
 
 ### Tracking Pass Rates
@@ -234,14 +234,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run custom eval
-        run: npx promptfoo@latest eval -c eval-config.yaml -o eval-results.json
+        run: npx artef@latest eval -c eval-config.yaml -o eval-results.json
 
   red-team:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run red team
-        run: npx promptfoo@latest redteam eval -o redteam-results.json
+        run: npx artef@latest redteam eval -o redteam-results.json
 ```
 
 ## Interpreting Drift
@@ -259,7 +259,7 @@ jq '.results.stats.failures / (.results.stats.successes + .results.stats.failure
 
 ```bash
 # View results grouped by plugin
-npx promptfoo@latest redteam report
+npx artef@latest redteam report
 ```
 
 **Risk score trends**: The [risk scoring](/docs/red-team/risk-scoring/) system provides severity-weighted metrics. A rising system risk score is a clear signal of drift.
@@ -342,7 +342,7 @@ Run drift detection against the same environment (staging, production) consisten
 Generate HTML reports for stakeholders:
 
 ```bash
-npx promptfoo@latest redteam report --output report.html
+npx artef@latest redteam report --output report.html
 ```
 
 ## Comparing Multiple Models

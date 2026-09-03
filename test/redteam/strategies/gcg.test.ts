@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { type FetchWithCacheResult, fetchWithCache } from '../../../src/cache';
 import { getUserEmail, isLoggedIntoCloud } from '../../../src/globalConfig/accounts';
 import logger from '../../../src/logger';
@@ -104,7 +104,7 @@ describe('gcg strategy', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-promptfoo-silent': 'true',
+          'x-artef-silent': 'true',
         },
         body: JSON.stringify({
           task: 'gcg',
@@ -202,7 +202,7 @@ describe('gcg strategy', () => {
       'http://test-url',
       expect.objectContaining({
         headers: expect.objectContaining({
-          'x-promptfoo-silent': 'true',
+          'x-artef-silent': 'true',
         }),
       }),
       expect.any(Number),
@@ -241,7 +241,7 @@ describe('gcg strategy', () => {
       'http://test-url',
       expect.objectContaining({
         headers: expect.objectContaining({
-          'x-promptfoo-silent': 'true',
+          'x-artef-silent': 'true',
         }),
       }),
       expect.any(Number),
@@ -288,7 +288,7 @@ describe('gcg strategy', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-promptfoo-silent': 'true',
+          'x-artef-silent': 'true',
         },
         body: JSON.stringify({
           task: 'gcg',

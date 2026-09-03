@@ -1,4 +1,4 @@
-import search from '@inquirer/search';
+﻿import search from '@inquirer/search';
 import { Command } from 'commander';
 import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { authCommand } from '../../src/commands/auth';
@@ -100,7 +100,7 @@ describe('auth command', () => {
     it('should prompt for browser opening when no API key is provided in interactive environment', async () => {
       // Mock interactive environment
       vi.mocked(isNonInteractive).mockReturnValue(false);
-      vi.mocked(cloudConfig.getAppUrl).mockReturnValue('https://www.promptfoo.app');
+      vi.mocked(cloudConfig.getAppUrl).mockReturnValue('https://www.artef.app');
 
       const loginCmd = program.commands
         .find((cmd) => cmd.name() === 'auth')
@@ -108,8 +108,8 @@ describe('auth command', () => {
       await loginCmd?.parseAsync(['node', 'test']);
 
       expect(openAuthBrowser).toHaveBeenCalledWith(
-        'https://www.promptfoo.app/',
-        'https://www.promptfoo.app/welcome',
+        'https://www.artef.app/',
+        'https://www.artef.app/welcome',
         0, // BrowserBehavior.ASK
       );
     });
@@ -117,7 +117,7 @@ describe('auth command', () => {
     it('should exit with error when no API key is provided in non-interactive environment', async () => {
       // Mock non-interactive environment (CI, cron, SSH without TTY, etc.)
       vi.mocked(isNonInteractive).mockReturnValue(true);
-      vi.mocked(cloudConfig.getAppUrl).mockReturnValue('https://www.promptfoo.app');
+      vi.mocked(cloudConfig.getAppUrl).mockReturnValue('https://www.artef.app');
 
       const loginCmd = program.commands
         .find((cmd) => cmd.name() === 'auth')
@@ -125,7 +125,7 @@ describe('auth command', () => {
       await loginCmd?.parseAsync(['node', 'test']);
 
       expect(logger.error).toHaveBeenCalledWith(
-        'Authentication required. Please set PROMPTFOO_API_KEY environment variable or run `promptfoo auth login` in an interactive environment.',
+        'Authentication required. Please set artef_API_KEY environment variable or run `artef auth login` in an interactive environment.',
       );
       // Check that both info calls were made
       const infoCalls = vi.mocked(logger.info).mock.calls;
@@ -134,12 +134,12 @@ describe('auth command', () => {
 
       expect(
         infoMessages.some((message) =>
-          message.includes('Manual login URL: https://www.promptfoo.app/'),
+          message.includes('Manual login URL: https://www.artef.app/'),
         ),
       ).toBe(true);
       expect(
         infoMessages.some((message) =>
-          message.includes('After login, get your API token at: https://www.promptfoo.app/welcome'),
+          message.includes('After login, get your API token at: https://www.artef.app/welcome'),
         ),
       ).toBe(true);
       expect(process.exitCode).toBe(1);
@@ -149,7 +149,7 @@ describe('auth command', () => {
     it('should use custom host for browser opening when provided in interactive environment', async () => {
       // Mock interactive environment
       vi.mocked(isNonInteractive).mockReturnValue(false);
-      const customHost = 'https://custom.promptfoo.com';
+      const customHost = 'https://custom.artef.com';
 
       const loginCmd = program.commands
         .find((cmd) => cmd.name() === 'auth')
@@ -157,8 +157,8 @@ describe('auth command', () => {
       await loginCmd?.parseAsync(['node', 'test', '--host', customHost]);
 
       expect(openAuthBrowser).toHaveBeenCalledWith(
-        'https://custom.promptfoo.com/',
-        'https://custom.promptfoo.com/welcome',
+        'https://custom.artef.com/',
+        'https://custom.artef.com/welcome',
         0, // BrowserBehavior.ASK
       );
     });
@@ -191,13 +191,13 @@ describe('auth command', () => {
         '--api-key',
         'test-key',
         '--auth-header-name',
-        'X-Promptfoo-Api-Key',
+        'X-artef-Api-Key',
       ]);
 
       expect(cloudConfig.validateApiToken).toHaveBeenCalledWith(
         'test-key',
         undefined,
-        'X-Promptfoo-Api-Key',
+        'X-artef-Api-Key',
       );
       expect(cloudConfig.saveValidatedApiToken).toHaveBeenCalledWith(
         'test-key',
@@ -205,7 +205,7 @@ describe('auth command', () => {
         mockCloudUser,
         mockApp,
         false,
-        'X-Promptfoo-Api-Key',
+        'X-artef-Api-Key',
       );
     });
 
@@ -234,7 +234,7 @@ describe('auth command', () => {
       );
     });
 
-    it('should persist the auth header name resolved from PROMPTFOO_CLOUD_AUTH_HEADER when --auth-header-name is omitted', async () => {
+    it('should persist the auth header name resolved from artef_CLOUD_AUTH_HEADER when --auth-header-name is omitted', async () => {
       // cloudConfig is fully mocked in this file, so getAuthHeaderName() doesn't run the
       // real resolveAuthHeaderName() env-var fallback — mock it to return what that
       // fallback would resolve to, reproducing an env-var-only (no --auth-header-name flag)
@@ -381,7 +381,7 @@ describe('auth command', () => {
     });
 
     it('should use the custom host when resolving --team before saving API key login', async () => {
-      const customHost = 'https://api.promptfoo.example';
+      const customHost = 'https://api.artef.example';
       const mockTeams = [
         {
           id: 'team-1',
@@ -805,7 +805,7 @@ describe('auth command', () => {
       // Verify it contains our expected text
       expect(infoMessages).toHaveLength(1);
       expect(infoMessages[0]).toContain('Not logged in');
-      expect(infoMessages[0]).toContain('promptfoo auth login');
+      expect(infoMessages[0]).toContain('artef auth login');
 
       // No telemetry is recorded in this case (as per implementation)
     });

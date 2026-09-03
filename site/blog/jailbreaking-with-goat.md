@@ -1,8 +1,8 @@
----
+﻿---
 sidebar_label: Introducing GOAT
-title: Introducing GOAT—Promptfoo's Latest Strategy
+title: Introducing GOAT—artef's Latest Strategy
 description: 'Meet GOAT: our advanced multi-turn jailbreaking strategy that uses AI attackers to break AI defenders. See how gradient-based optimization makes jailbreaks more sophisticated.'
-image: /img/blog/goat/promptfoo_panda_harnessing_goat.png
+image: /img/blog/goat/artef_panda_harnessing_goat.png
 keywords:
   [
     GOAT jailbreak,
@@ -26,7 +26,7 @@ import RedTeamDemo from './goat/components/RedTeamDemo';
 
 # Introduction
 
-We're excited to announce the deployment of Promptfoo's latest strategy, [GOAT](https://www.promptfoo.dev/docs/red-team/strategies/goat/), to jailbreak multi-turn conversations.
+We're excited to announce the deployment of artef's latest strategy, [GOAT](https://www.artef.dev/docs/red-team/strategies/goat/), to jailbreak multi-turn conversations.
 
 <!-- truncate -->
 
@@ -45,13 +45,13 @@ Meta's research suggests that multi-turn, agentic attacks are highly effective i
 <figure>
   <div style={{ textAlign: 'center' }}>
     <img
-      src="/img/blog/goat/promptfoo_panda_harnessing_goat.png"
-      alt="Promptfoo Panda on GOAT"
+      src="/img/blog/goat/artef_panda_harnessing_goat.png"
+      alt="artef Panda on GOAT"
       style={{ width: '70%' }}
     />
   </div>
   <figcaption style={{ textAlign: 'center', fontStyle: 'italic' }}>
-    The Promptfoo Panda, even more powerful with her GOAT.
+    The artef Panda, even more powerful with her GOAT.
   </figcaption>
 </figure>
 
@@ -63,7 +63,7 @@ To make it easier, we provide a list of red teaming commands that will transform
 
 <ChatInterface />
 
-You probably noticed how you kept changing techniques to adapt to the model's responses. Many of these techniques can be automated using Promptfoo's latest strategy.
+You probably noticed how you kept changing techniques to adapt to the model's responses. Many of these techniques can be automated using artef's latest strategy.
 
 ## Why GOAT?
 
@@ -116,6 +116,6 @@ Try it yourself below!
 
 The GOAT strategy will be most impactful for LLM applications leveraging conversational AI, such as chatbots with RAG and agentic systems.
 
-Ready to try it out? Schedule a time with our team today to learn how Promptfoo's latest strategy can protect your applications at scale.
+Ready to try it out? Schedule a time with our team today to learn how artef's latest strategy can protect your applications at scale.
 
 <CTAButton />

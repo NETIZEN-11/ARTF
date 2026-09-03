@@ -1,4 +1,4 @@
-# anthropic/structured-outputs (Anthropic Structured Outputs)
+﻿# anthropic/structured-outputs (Anthropic Structured Outputs)
 
 This example demonstrates Anthropic's structured outputs feature, which ensures Claude's responses follow a specific schema. It shows both **JSON outputs** for structured data extraction and **strict tool use** for guaranteed schema validation on tool calls.
 
@@ -13,8 +13,8 @@ This example demonstrates Anthropic's structured outputs feature, which ensures 
 
 ```bash
 export ANTHROPIC_API_KEY=your_api_key_here
-npx promptfoo@latest init --example anthropic/structured-outputs
-npx promptfoo@latest eval
+npx artef@latest init --example anthropic/structured-outputs
+npx artef@latest eval
 ```
 
 ## Features Demonstrated
@@ -125,4 +125,4 @@ Structured outputs are available for:
 ## Learn More
 
 - [Anthropic Structured Outputs Documentation](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs)
-- [promptfoo Anthropic Provider Documentation](/docs/providers/anthropic)
+- [artef Anthropic Provider Documentation](/docs/providers/anthropic)

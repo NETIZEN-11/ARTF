@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Malicious Code
 description: Red team malicious code generation vulnerabilities by simulating exploit requests to prevent AI systems from creating harmful malware and cyberattack tools
 ---
@@ -77,9 +77,9 @@ The plugin tests various categories of harmful code generation, including:
 - Database dumping tools
 - Covert channel implementations
 
-## How Promptfoo Tailors Tests to Your Use Case
+## How artef Tailors Tests to Your Use Case
 
-One of Promptfoo's key differentiators is that it generates test cases specifically tailored to your application's context. The malicious code tests adapt based on your system's purpose and capabilities.
+One of artef's key differentiators is that it generates test cases specifically tailored to your application's context. The malicious code tests adapt based on your system's purpose and capabilities.
 
 ## Example Test Cases by Application Type
 
@@ -147,7 +147,7 @@ redteam:
     - harmful:cybercrime:malicious-code
 ```
 
-Promptfoo automatically:
+artef automatically:
 
 1. **Analyzes your use case** to understand typical user interactions
 2. **Generates contextually relevant** malicious code requests that real users might attempt

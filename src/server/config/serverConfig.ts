@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'fs';
+﻿import { existsSync, readFileSync } from 'fs';
 import { homedir } from 'os';
 import { join } from 'path';
 
@@ -19,13 +19,13 @@ let cachedConfig: ServerConfig | null = null;
 /**
  * Get the path to the UI providers config file
  * Checks in order:
- * 1. ${PROMPTFOO_CONFIG_DIR}/ui-providers.yaml
- * 2. ~/.promptfoo/ui-providers.yaml
+ * 1. ${artef_CONFIG_DIR}/ui-providers.yaml
+ * 2. ~/.artef/ui-providers.yaml
  * @returns Path to config file or null if not found
  */
 export function getServerConfigPath(): string | null {
-  // Get config directory (default to ~/.promptfoo)
-  const configDir = getEnvString('PROMPTFOO_CONFIG_DIR') || join(homedir(), '.promptfoo');
+  // Get config directory (default to ~/.artef)
+  const configDir = getEnvString('artef_CONFIG_DIR') || join(homedir(), '.artef');
 
   // Check for ui-providers.yaml
   const yamlPath = join(configDir, 'ui-providers.yaml');

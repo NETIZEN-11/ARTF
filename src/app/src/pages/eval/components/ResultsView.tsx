@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -20,9 +20,9 @@ import { EVAL_ROUTES, ROUTES } from '@app/constants/routes';
 import { useToast } from '@app/hooks/useToast';
 import { useStore as useMainStore } from '@app/stores/evalConfig';
 import { callApi } from '@app/utils/api';
-import { displayNameOverrides } from '@promptfoo/redteam/constants/metadata';
-import { formatPolicyIdentifierAsMetric } from '@promptfoo/redteam/plugins/policy/utils';
-import invariant from '@promptfoo/util/invariant';
+import { displayNameOverrides } from '@artef/redteam/constants/metadata';
+import { formatPolicyIdentifierAsMetric } from '@artef/redteam/plugins/policy/utils';
+import invariant from '@artef/util/invariant';
 import { BarChart, Copy, Edit, Eye, Play, Settings, Share, Trash2, X } from 'lucide-react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce';
@@ -44,8 +44,8 @@ import ShareModal from './ShareModal';
 import { useResultsViewSettingsStore, useTableStore } from './store';
 import SettingsModal from './TableSettings/TableSettingsModal';
 import { buildEvalUrlWithSearchParams, hashVarSchema, setEvalDetailsHash } from './utils';
-import type { EvalResultsFilterMode, ResultLightweightWithLabel } from '@promptfoo/types';
-import type { CopyEvalResponse } from '@promptfoo/types/api/eval';
+import type { EvalResultsFilterMode, ResultLightweightWithLabel } from '@artef/types';
+import type { CopyEvalResponse } from '@artef/types/api/eval';
 import type { VisibilityState } from '@tanstack/table-core';
 
 import type { ActiveView } from './EvalHeader';

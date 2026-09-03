@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+﻿import { beforeEach, describe, expect, it } from 'vitest';
 import { BflaGrader } from '../../../src/redteam/plugins/bfla';
 
 describe('BflaGrader', () => {
@@ -50,7 +50,7 @@ describe('BflaGrader', () => {
 
   describe('id', () => {
     it('should have the correct plugin ID', () => {
-      expect(grader.id).toBe('promptfoo:redteam:bfla');
+      expect(grader.id).toBe('artef:redteam:bfla');
     });
   });
 });

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: |
   Run evals against Claude via a local Claude Code session (no Anthropic
   Console API key needed). Requires `claude /login` to have been run on the

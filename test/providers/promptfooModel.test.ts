@@ -1,10 +1,10 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cloudConfig } from '../../src/globalConfig/cloud';
 import logger from '../../src/logger';
-import { PromptfooModelProvider } from '../../src/providers/promptfooModel';
+import { artefModelProvider } from '../../src/providers/artefModel';
 import type { Mock } from 'vitest';
 
-describe('PromptfooModelProvider', () => {
+describe('artefModelProvider', () => {
   let mockFetch: Mock;
   let mockCloudConfig: ReturnType<typeof vi.spyOn>;
   const mockLogger = vi.spyOn(logger, 'debug').mockImplementation(function () {});
@@ -21,16 +21,16 @@ describe('PromptfooModelProvider', () => {
   });
 
   it('should initialize with model name', () => {
-    const provider = new PromptfooModelProvider('test-model');
-    expect(provider.id()).toBe('promptfoo:model:test-model');
+    const provider = new artefModelProvider('test-model');
+    expect(provider.id()).toBe('artef:model:test-model');
   });
 
   it('should throw error if model name is not provided', () => {
-    expect(() => new PromptfooModelProvider('')).toThrow('Model name is required');
+    expect(() => new artefModelProvider('')).toThrow('Model name is required');
   });
 
   it('should call API with string prompt', async () => {
-    const provider = new PromptfooModelProvider('test-model');
+    const provider = new artefModelProvider('test-model');
     const mockResponse = {
       ok: true,
       json: () =>
@@ -61,7 +61,7 @@ describe('PromptfooModelProvider', () => {
   });
 
   it('should handle JSON array messages', async () => {
-    const provider = new PromptfooModelProvider('test-model');
+    const provider = new artefModelProvider('test-model');
     const messages = JSON.stringify([
       { role: 'user', content: 'Hello' },
       { role: 'assistant', content: 'Hi' },
@@ -93,37 +93,37 @@ describe('PromptfooModelProvider', () => {
 
   it('should throw error if no auth token', async () => {
     mockCloudConfig.mockReturnValue(undefined);
-    const provider = new PromptfooModelProvider('test-model');
+    const provider = new artefModelProvider('test-model');
 
-    await expect(provider.callApi('test')).rejects.toThrow('No Promptfoo auth token available');
+    await expect(provider.callApi('test')).rejects.toThrow('No artef auth token available');
   });
 
   it('should handle API errors', async () => {
-    const provider = new PromptfooModelProvider('test-model');
+    const provider = new artefModelProvider('test-model');
     mockFetch.mockResolvedValue({
       ok: false,
       status: 500,
       text: () => Promise.resolve('Internal server error'),
     });
 
-    await expect(provider.callApi('test')).rejects.toThrow('PromptfooModel task API error: 500');
+    await expect(provider.callApi('test')).rejects.toThrow('artefModel task API error: 500');
   });
 
   it('should handle invalid API responses', async () => {
-    const provider = new PromptfooModelProvider('test-model');
+    const provider = new artefModelProvider('test-model');
     mockFetch.mockResolvedValue({
       ok: true,
       json: () => Promise.resolve({}),
     });
 
     await expect(provider.callApi('test')).rejects.toThrow(
-      'Invalid response from PromptfooModel task API',
+      'Invalid response from artefModel task API',
     );
   });
 
   it('should use config from options', async () => {
     const config = { temperature: 0.7 };
-    const provider = new PromptfooModelProvider('test-model', { model: 'test-model', config });
+    const provider = new artefModelProvider('test-model', { model: 'test-model', config });
 
     const mockResponse = {
       ok: true,

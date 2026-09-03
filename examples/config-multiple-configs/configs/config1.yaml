@@ -1,6 +1,6 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # This configuration compares LLM output of 2 prompts x 2 GPT models across 3 test cases.
-# Learn more: https://promptfoo.dev/docs/configuration/guide
+# Learn more: https://artef.dev/docs/configuration/guide
 description: 'My first eval'
 
 prompts:
@@ -17,7 +17,7 @@ tests:
   - vars:
       topic: avocado toast
     assert:
-      # For more information on assertions, see https://promptfoo.dev/docs/configuration/expected-outputs
+      # For more information on assertions, see https://artef.dev/docs/configuration/expected-outputs
       - type: icontains
         value: avocado
       - type: javascript

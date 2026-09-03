@@ -1,4 +1,4 @@
-export interface AttributeSanitizationOptions {
+﻿export interface AttributeSanitizationOptions {
   redactAttributes?: string[];
   sanitizeSensitiveAttributes?: boolean;
   truncateValues?: boolean;
@@ -27,10 +27,10 @@ const SAFE_TOKEN_ATTRIBUTE_KEYS = new Set([
   'gen_ai.usage.reasoning.output_tokens',
   'gen_ai.usage.cache_read.input_tokens',
   'gen_ai.usage.cache_creation.input_tokens',
-  'promptfoo.usage.total_tokens',
-  'promptfoo.usage.cached_response_tokens',
-  'promptfoo.usage.accepted_prediction_tokens',
-  'promptfoo.usage.rejected_prediction_tokens',
+  'artef.usage.total_tokens',
+  'artef.usage.cached_response_tokens',
+  'artef.usage.accepted_prediction_tokens',
+  'artef.usage.rejected_prediction_tokens',
   // Preserve token counts from externally instrumented LLM applications.
   'llm.usage.prompt_tokens',
   'llm.usage.completion_tokens',

@@ -1,4 +1,4 @@
-// Event Types
+﻿// Event Types
 export type EventStatus = 'upcoming' | 'past';
 export type EventType = 'conference' | 'webinar' | 'workshop' | 'party';
 
@@ -116,7 +116,7 @@ export const events: Event[] = [
   {
     id: 'bsides-seattle-2026',
     slug: 'bsides-seattle-2026',
-    name: 'Promptfoo at BSides Seattle 2026',
+    name: 'artef at BSides Seattle 2026',
     shortName: 'BSides Seattle 2026',
     status: getEventStatus('2026-02-28T18:00:00-08:00'),
     type: 'conference',
@@ -131,7 +131,7 @@ export const events: Event[] = [
     description:
       'We ran hands-on AI red teaming demos at BSides Seattle, traded hallway-track threat intel, and worked through practical ways to harden LLM apps.',
     fullDescription:
-      'Promptfoo joined BSides Seattle for live demos of AI red teaming: prompt injection, jailbreaks, and data exfiltration against real-world LLM apps. People brought their own use cases and left with a testing plan they could run in CI.',
+      'artef joined BSides Seattle for live demos of AI red teaming: prompt injection, jailbreaks, and data exfiltration against real-world LLM apps. People brought their own use cases and left with a testing plan they could run in CI.',
     cardImage: '/img/events/bsides-seattle-2026.jpg',
     heroImage: '/img/events/bsides-seattle-2026.jpg',
     highlights: [
@@ -156,7 +156,7 @@ export const events: Event[] = [
   {
     id: 'rsa-2026',
     slug: 'rsa-2026',
-    name: 'Promptfoo at RSA Conference 2026',
+    name: 'artef at RSA Conference 2026',
     shortName: 'RSA 2026',
     status: getEventStatus('2026-03-26T18:00:00-07:00'),
     type: 'conference',
@@ -171,7 +171,7 @@ export const events: Event[] = [
     description:
       'We brought executive-ready AI security to RSAC: red teaming, guardrails, and reporting security leadership can act on.',
     fullDescription:
-      'Promptfoo was at RSA Conference 2026 showing how security teams build an AI security program that scales: continuous red teaming, runtime guardrails, and reporting that tracks risk reduction over time.',
+      'artef was at RSA Conference 2026 showing how security teams build an AI security program that scales: continuous red teaming, runtime guardrails, and reporting that tracks risk reduction over time.',
     cardImage: '/img/events/rsa-2026.jpg',
     heroImage: '/img/events/rsa-2026.jpg',
     highlights: [
@@ -188,7 +188,7 @@ export const events: Event[] = [
       {
         icon: '🎁',
         title: 'Swag',
-        description: 'Limited edition Promptfoo gear',
+        description: 'Limited edition artef gear',
       },
     ],
     customPageUrl: '/events/rsa-2026',
@@ -196,7 +196,7 @@ export const events: Event[] = [
   {
     id: 'bsides-sf-2026',
     slug: 'bsides-sf-2026',
-    name: 'Promptfoo at BSides SF 2026',
+    name: 'artef at BSides SF 2026',
     shortName: 'BSides SF 2026',
     status: getEventStatus('2026-03-22T18:00:00-07:00'),
     type: 'conference',
@@ -236,7 +236,7 @@ export const events: Event[] = [
   {
     id: 'humanx-2026',
     slug: 'humanx-2026',
-    name: 'Promptfoo at HumanX 2026',
+    name: 'artef at HumanX 2026',
     shortName: 'HumanX 2026',
     status: getEventStatus('2026-04-09T18:00:00-07:00'),
     type: 'conference',
@@ -251,7 +251,7 @@ export const events: Event[] = [
     description:
       'For AI leaders shipping real products: how to evaluate and secure LLM apps and agents without slowing teams down.',
     fullDescription:
-      'AI is moving fast. Security and evaluation have to keep up. Promptfoo ran live demos on testing and securing LLM features across copilots, RAG, and agents, before launch and continuously in production.',
+      'AI is moving fast. Security and evaluation have to keep up. artef ran live demos on testing and securing LLM features across copilots, RAG, and agents, before launch and continuously in production.',
     cardImage: '/img/events/humanx-2026.jpg',
     heroImage: '/img/events/humanx-2026.jpg',
     highlights: [
@@ -276,7 +276,7 @@ export const events: Event[] = [
   {
     id: 'gartner-security-2026',
     slug: 'gartner-security-2026',
-    name: 'Promptfoo at Gartner Security & Risk Management Summit 2026',
+    name: 'artef at Gartner Security & Risk Management Summit 2026',
     shortName: 'Gartner Security 2026',
     status: getEventStatus('2026-06-03T18:00:00-04:00'),
     type: 'conference',
@@ -316,7 +316,7 @@ export const events: Event[] = [
   {
     id: 'blackhat-2026',
     slug: 'blackhat-2026',
-    name: 'Promptfoo at Black Hat USA 2026',
+    name: 'artef at Black Hat USA 2026',
     shortName: 'Black Hat 2026',
     status: getEventStatus('2026-08-06T16:00:00-07:00'),
     type: 'conference',
@@ -330,9 +330,9 @@ export const events: Event[] = [
     },
     booth: 'Booth #2967',
     description:
-      'Promptfoo demonstrated AI agent attacks, full transcripts, and regression tests at OpenAI booth #2967 in the Black Hat Business Hall, Aug 4-6.',
+      'artef demonstrated AI agent attacks, full transcripts, and regression tests at OpenAI booth #2967 in the Black Hat Business Hall, Aug 4-6.',
     fullDescription:
-      'Black Hat USA 2026 ran Aug 1-6. Promptfoo, part of OpenAI, demonstrated AI application attacks, confirmed findings, and regression tests at OpenAI booth #2967 in the Business Hall, Aug 4-6.',
+      'Black Hat USA 2026 ran Aug 1-6. artef, part of OpenAI, demonstrated AI application attacks, confirmed findings, and regression tests at OpenAI booth #2967 in the Business Hall, Aug 4-6.',
     cardImage: '/img/events/blackhat-2026.jpg',
     heroImage: '/img/events/blackhat-2026.jpg',
     customPageUrl: '/events/blackhat-2026',
@@ -340,7 +340,7 @@ export const events: Event[] = [
   {
     id: 'defcon-2026',
     slug: 'defcon-2026',
-    name: 'Promptfoo at DEF CON 34',
+    name: 'artef at DEF CON 34',
     shortName: 'DEF CON 34',
     status: getEventStatus('2026-08-09T16:00:00-07:00'),
     type: 'conference',
@@ -354,9 +354,9 @@ export const events: Event[] = [
     },
     booth: 'Booth #1412',
     description:
-      'Promptfoo demonstrated AI agent red teaming at OpenAI booth #1412 in West Hall, Aug 7-9, including prompt injection and tool misuse.',
+      'artef demonstrated AI agent red teaming at OpenAI booth #1412 in West Hall, Aug 7-9, including prompt injection and tool misuse.',
     fullDescription:
-      'DEF CON 34 ran Aug 6-9 with the theme Agency. Promptfoo, part of OpenAI, demonstrated agent permissions, tool misuse, memory poisoning, and prompt injection at OpenAI booth #1412 in West Hall, Aug 7-9.',
+      'DEF CON 34 ran Aug 6-9 with the theme Agency. artef, part of OpenAI, demonstrated agent permissions, tool misuse, memory poisoning, and prompt injection at OpenAI booth #1412 in West Hall, Aug 7-9.',
     cardImage: '/img/events/defcon-2026.jpg',
     heroImage: '/img/events/defcon-2026.jpg',
     customPageUrl: '/events/defcon-2026',
@@ -366,7 +366,7 @@ export const events: Event[] = [
   {
     id: 'scaleup-ai-2025',
     slug: 'scaleup-ai-2025',
-    name: 'Promptfoo at ScaleUp:AI 2025',
+    name: 'artef at ScaleUp:AI 2025',
     shortName: 'ScaleUp:AI 2025',
     status: 'past',
     type: 'webinar',
@@ -379,9 +379,9 @@ export const events: Event[] = [
       country: 'USA',
     },
     description:
-      "Featured in Insight Partners' ScaleUp:AI 2025 Partner Series. CEO Ian Webster discusses how Promptfoo is restoring trust and security in generative AI.",
+      "Featured in Insight Partners' ScaleUp:AI 2025 Partner Series. CEO Ian Webster discusses how artef is restoring trust and security in generative AI.",
     fullDescription:
-      "Ian Webster, CEO and co-founder of Promptfoo, was featured in Insight Partners' ScaleUp:AI 2025 Partner Series, discussing how Promptfoo is defining the standard for enterprise AI security. The feature explores the company's journey from open-source tool to serving 200,000+ developers and 80+ Fortune 500 companies.",
+      "Ian Webster, CEO and co-founder of artef, was featured in Insight Partners' ScaleUp:AI 2025 Partner Series, discussing how artef is defining the standard for enterprise AI security. The feature explores the company's journey from open-source tool to serving 200,000+ developers and 80+ Fortune 500 companies.",
     cardImage: '/img/events/scaleup-ai-2025.jpg',
     heroImage: '/img/events/scaleup-ai-2025.jpg',
     highlights: [
@@ -405,14 +405,14 @@ export const events: Event[] = [
     externalLinks: [
       {
         label: 'Read Full Article',
-        url: 'https://www.insightpartners.com/ideas/promptfoo-scale-up-ai/',
+        url: 'https://www.insightpartners.com/ideas/artef-scale-up-ai/',
       },
     ],
   },
   {
     id: 'blackhat-2025',
     slug: 'blackhat-2025',
-    name: 'Promptfoo at Black Hat USA 2025',
+    name: 'artef at Black Hat USA 2025',
     shortName: 'Black Hat 2025',
     status: getEventStatus('2025-08-07T18:00:00-07:00'),
     type: 'conference',
@@ -427,7 +427,7 @@ export const events: Event[] = [
     booth: 'Booth #4712',
     description: 'We ran live AI red teaming demos and security consultations at booth #4712.',
     fullDescription:
-      'Promptfoo was at Black Hat USA 2025 with live AI red teaming demos, security consultations, and the latest in LLM vulnerability research. We showed how Fortune 500 companies protect their AI applications.',
+      'artef was at Black Hat USA 2025 with live AI red teaming demos, security consultations, and the latest in LLM vulnerability research. We showed how Fortune 500 companies protect their AI applications.',
     cardImage: '/img/events/blackhat-2025.jpg',
     heroImage: '/img/events/blackhat-2025.jpg',
     highlights: [
@@ -444,7 +444,7 @@ export const events: Event[] = [
       {
         icon: '🎁',
         title: 'Swag',
-        description: 'Limited edition Promptfoo gear',
+        description: 'Limited edition artef gear',
       },
     ],
     demos: [
@@ -458,11 +458,11 @@ export const events: Event[] = [
     externalLinks: [
       {
         label: 'Arsenal Labs - Aug 6',
-        url: 'https://www.blackhat.com/us-25/arsenal/schedule/index.html#promptfoo-44648',
+        url: 'https://www.blackhat.com/us-25/arsenal/schedule/index.html#artef-44648',
       },
       {
         label: 'Arsenal Labs - Aug 7',
-        url: 'https://www.blackhat.com/us-25/arsenal/schedule/#promptfoo-47875',
+        url: 'https://www.blackhat.com/us-25/arsenal/schedule/#artef-47875',
       },
     ],
     customPageUrl: '/events/blackhat-2025',
@@ -470,7 +470,7 @@ export const events: Event[] = [
   {
     id: 'defcon-2025',
     slug: 'defcon-2025',
-    name: 'Promptfoo Party at DEF CON 33',
+    name: 'artef Party at DEF CON 33',
     shortName: 'DEF CON 33',
     status: getEventStatus('2025-08-09T23:59:00-07:00'),
     type: 'party',
@@ -511,7 +511,7 @@ export const events: Event[] = [
   {
     id: 'rsa-2025',
     slug: 'rsa-2025',
-    name: 'Promptfoo at RSA Conference 2025',
+    name: 'artef at RSA Conference 2025',
     shortName: 'RSA 2025',
     status: 'past',
     type: 'conference',
@@ -527,7 +527,7 @@ export const events: Event[] = [
     description:
       'We showcased AI red teaming capabilities and security solutions at RSA Conference 2025.',
     fullDescription:
-      'Promptfoo was at RSA Conference 2025 on the Expo Floor. We demonstrated our AI red teaming platform and connected with security professionals about protecting LLM applications.',
+      'artef was at RSA Conference 2025 on the Expo Floor. We demonstrated our AI red teaming platform and connected with security professionals about protecting LLM applications.',
     cardImage: '/img/events/rsa-2025.jpg',
     heroImage: '/img/events/rsa-2025.jpg',
     highlights: [
@@ -552,7 +552,7 @@ export const events: Event[] = [
   {
     id: 'bsides-sf-2025',
     slug: 'bsides-sf-2025',
-    name: 'Promptfoo at BSides SF 2025',
+    name: 'artef at BSides SF 2025',
     shortName: 'BSides SF 2025',
     status: 'past',
     type: 'conference',
@@ -566,7 +566,7 @@ export const events: Event[] = [
     },
     description: 'We connected with the security community at BSides SF 2025 during RSA week.',
     fullDescription:
-      'Promptfoo joined the BSides SF 2025 community event during RSA week. We participated in security discussions and connected with researchers working on AI security challenges.',
+      'artef joined the BSides SF 2025 community event during RSA week. We participated in security discussions and connected with researchers working on AI security challenges.',
     cardImage: '/img/events/bsides-sf-2025.jpg',
     heroImage: '/img/events/bsides-sf-2025.jpg',
     highlights: [
@@ -586,7 +586,7 @@ export const events: Event[] = [
   {
     id: 'bsides-seattle-2025',
     slug: 'bsides-seattle-2025',
-    name: 'Promptfoo at BSides Seattle 2025',
+    name: 'artef at BSides Seattle 2025',
     shortName: 'BSides Seattle 2025',
     status: 'past',
     type: 'conference',
@@ -600,7 +600,7 @@ export const events: Event[] = [
     },
     description: 'We engaged with the Pacific Northwest security community at BSides Seattle 2025.',
     fullDescription:
-      'Promptfoo participated in BSides Seattle 2025 at Building 92, engaging with the Pacific Northwest security community and discussing the latest in AI security threats and mitigations.',
+      'artef participated in BSides Seattle 2025 at Building 92, engaging with the Pacific Northwest security community and discussing the latest in AI security threats and mitigations.',
     cardImage: '/img/events/bsides-seattle-2025.jpg',
     heroImage: '/img/events/bsides-seattle-2025.jpg',
     highlights: [
@@ -620,7 +620,7 @@ export const events: Event[] = [
   {
     id: 'telecom-talks-2025',
     slug: 'telecom-talks-2025',
-    name: 'Promptfoo at Telecom Talks 2025',
+    name: 'artef at Telecom Talks 2025',
     shortName: 'Telecom Talks 2025',
     status: 'past',
     type: 'conference',
@@ -635,7 +635,7 @@ export const events: Event[] = [
     description:
       'Ian Webster joined Swisscom Outpost on stage to discuss AI security in telecommunications.',
     fullDescription:
-      'Promptfoo CEO Ian Webster joined Swisscom Outpost on stage at Telecom Talks 2025 to discuss the unique challenges of securing AI systems in telecommunications infrastructure.',
+      'artef CEO Ian Webster joined Swisscom Outpost on stage at Telecom Talks 2025 to discuss the unique challenges of securing AI systems in telecommunications infrastructure.',
     cardImage: '/img/events/telecom-talks-2025.jpg',
     heroImage: '/img/events/telecom-talks-2025.jpg',
     highlights: [
@@ -655,7 +655,7 @@ export const events: Event[] = [
   {
     id: 'sector-2025',
     slug: 'sector-2025',
-    name: 'Promptfoo at SecTor 2025',
+    name: 'artef at SecTor 2025',
     shortName: 'SecTor 2025',
     status: getEventStatus('2025-10-02T18:00:00-04:00'),
     type: 'conference',
@@ -670,7 +670,7 @@ export const events: Event[] = [
     description:
       "Canada's largest IT security conference. Arsenal demos and enterprise AI security discussions.",
     fullDescription:
-      "Promptfoo was selected for the SecTor Arsenal, showcasing open-source AI security tools to Canada's enterprise security community at Canada's largest IT security conference.",
+      "artef was selected for the SecTor Arsenal, showcasing open-source AI security tools to Canada's enterprise security community at Canada's largest IT security conference.",
     cardImage: '/img/events/sector-2025.jpg',
     heroImage: '/img/events/sector-2025.jpg',
     highlights: [
@@ -690,7 +690,7 @@ export const events: Event[] = [
   {
     id: 'ai-security-summit-2025',
     slug: 'ai-security-summit-2025',
-    name: 'Promptfoo at AI Security Summit 2025',
+    name: 'artef at AI Security Summit 2025',
     shortName: 'AI Security Summit 2025',
     status: getEventStatus('2025-10-23T18:00:00-07:00'),
     type: 'conference',

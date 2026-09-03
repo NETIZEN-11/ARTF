@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ElevenLabs Conversational Agents Provider
  *
  * Test and evaluate voice AI agents with LLM backends
@@ -204,7 +204,7 @@ export class ElevenLabsAgentsProvider implements ApiProvider {
 
     const config = this.config.agentConfig;
     const agentCreationRequest = {
-      name: config?.name || `promptfoo-agent-${Date.now()}`,
+      name: config?.name || `artef-agent-${Date.now()}`,
       conversation_config: {
         agent: {
           prompt: {

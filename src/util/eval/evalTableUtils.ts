@@ -1,4 +1,4 @@
-import { stringify as csvStringify } from 'csv-stringify/sync';
+﻿import { stringify as csvStringify } from 'csv-stringify/sync';
 import { ResultFailureReason } from '../../types/index';
 
 import type Eval from '../../models/eval';
@@ -446,7 +446,7 @@ export function tableRowToCsvValues(
 /**
  * Escape every cell of a CSV row matrix (headers + body) against spreadsheet
  * formula injection (CWE-1236), unless disabled via
- * `PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING`. Numbers and booleans pass through
+ * `artef_DISABLE_CSV_FORMULA_ESCAPING`. Numbers and booleans pass through
  * untouched; only string cells are inspected. Applied at the `csvStringify`
  * boundary so `buildCsvHeaders`/`tableRowToCsvValues` stay pure and re-importable
  * CSVs are never produced from un-escaped data.
@@ -456,11 +456,11 @@ function escapeCsvRowsForFormulaInjection(
   env?: EnvOverrides,
 ): (string | number | boolean)[][] {
   // Resolve the persisted evaluation config before process.env, matching the
-  // environment precedence used by the rest of promptfoo without importing the
+  // environment precedence used by the rest of artef without importing the
   // legacy runtime environment module into this node-layer export path.
   const configuredValue =
-    env?.PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING ??
-    process.env.PROMPTFOO_DISABLE_CSV_FORMULA_ESCAPING;
+    env?.artef_DISABLE_CSV_FORMULA_ESCAPING ??
+    process.env.artef_DISABLE_CSV_FORMULA_ESCAPING;
   const disableEscaping = ['1', 'true', 'yes', 'yup', 'yeppers'].includes(
     configuredValue?.toLowerCase() ?? '',
   );
@@ -755,7 +755,7 @@ export interface StreamCsvOptions {
  * This is more memory-efficient for large evaluations as it processes
  * results in batches rather than loading everything into memory.
  *
- * Used by the CLI export (`promptfoo eval -o output.csv`) to maintain
+ * Used by the CLI export (`artef eval -o output.csv`) to maintain
  * consistent CSV format with WebUI exports while handling large datasets.
  *
  * @param eval_ - The evaluation to export

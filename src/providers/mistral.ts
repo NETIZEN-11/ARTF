@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+﻿import { createHmac } from 'crypto';
 
 import { fetchWithCache, getCache, getScopedCacheKey, isCacheEnabled } from '../cache';
 import { getEnvString } from '../envars';
@@ -277,7 +277,7 @@ interface MistralChatCompletionOptions {
   outputCost?: number;
 }
 
-const MISTRAL_CACHE_HASH_KEY = 'promptfoo:mistral:cache-key:v1';
+const MISTRAL_CACHE_HASH_KEY = 'artef:mistral:cache-key:v1';
 const MISTRAL_INFLIGHT_REQUESTS = new Map<string, Promise<MistralFetchResult>>();
 
 type MistralFetchResult = { data: any; cached: boolean };
@@ -675,7 +675,7 @@ export class MistralChatCompletionProvider implements ApiProvider {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'x-promptfoo-silent': 'true',
+              'x-artef-silent': 'true',
               Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify(params),
@@ -883,7 +883,7 @@ export class MistralEmbeddingProvider implements ApiProvider {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'x-promptfoo-silent': 'true',
+                'x-artef-silent': 'true',
                 Authorization: `Bearer ${apiKey}`,
               },
               body: JSON.stringify(body),

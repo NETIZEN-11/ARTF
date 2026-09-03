@@ -1,4 +1,4 @@
-import { AbortPromptError, ExitPromptError } from '@inquirer/core';
+﻿import { AbortPromptError, ExitPromptError } from '@inquirer/core';
 import chalk from 'chalk';
 import { getDefaultPort } from '../../constants';
 import { getEnvString } from '../../envars';
@@ -7,7 +7,7 @@ import { redteamInit } from '../../redteam/commands/init';
 import { startServer } from '../../server/server';
 import telemetry from '../../telemetry';
 import { setupEnv } from '../../util/index';
-import { promptfooCommand } from '../../util/promptfooCommand';
+import { artefCommand } from '../../util/artefCommand';
 import { BrowserBehavior, checkServerRunning, openBrowser } from '../../util/server';
 import type { Command } from 'commander';
 
@@ -54,11 +54,11 @@ export function initCommand(program: Command) {
                 chalk.blue(
                   'Red team initialization paused. To continue setup later, use the command: ',
                 ) +
-                chalk.bold(promptfooCommand('redteam init')),
+                chalk.bold(artefCommand('redteam init')),
             );
             logger.info(
               chalk.blue('For help or feedback, visit ') +
-                chalk.green('https://www.promptfoo.dev/contact/'),
+                chalk.green('https://www.artef.dev/contact/'),
             );
             telemetry.record('funnel', { type: 'redteam onboarding', step: 'early exit' });
             process.exitCode = 130;

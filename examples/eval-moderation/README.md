@@ -1,9 +1,9 @@
-# eval-moderation (Moderation)
+﻿# eval-moderation (Moderation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-moderation
+npx artef@latest init --example eval-moderation
 cd eval-moderation
 ```
 
@@ -11,12 +11,12 @@ cd eval-moderation
 
 To get started, set your OPENAI_API_KEY and REPLICATE_API_KEY environment variables.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

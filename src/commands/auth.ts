@@ -1,4 +1,4 @@
-import search from '@inquirer/search';
+﻿import search from '@inquirer/search';
 import chalk from 'chalk';
 import dedent from 'dedent';
 import { isNonInteractive } from '../envars';
@@ -158,7 +158,7 @@ async function setupTeamContext(
             `\n⚠️  You have access to ${organizationTeams.length} teams. Using '${selectedTeam.name}'.`,
           ),
         );
-        logger.info(chalk.dim(`   Use --team flag to specify: promptfoo auth login --team <name>`));
+        logger.info(chalk.dim(`   Use --team flag to specify: artef auth login --team <name>`));
       } else {
         logger.info('');
         try {
@@ -268,7 +268,7 @@ async function loginWithBrowser(cmdObj: LoginCommandOptions): Promise<void> {
 
   if (isNonInteractive()) {
     logger.error(
-      'Authentication required. Please set PROMPTFOO_API_KEY environment variable or run `promptfoo auth login` in an interactive environment.',
+      'Authentication required. Please set artef_API_KEY environment variable or run `artef auth login` in an interactive environment.',
     );
     logger.info(`Manual login URL: ${chalk.green(authUrl.toString())}`);
     logger.info(`After login, get your API token at: ${chalk.green(welcomeUrl.toString())}`);
@@ -288,7 +288,7 @@ export function authCommand(program: Command) {
     .option('-o, --org <orgId>', 'The organization id to login to.')
     .option(
       '-h, --host <host>',
-      'The host of the promptfoo instance. This needs to be the url of the API if different from the app url.',
+      'The host of the artef instance. This needs to be the url of the API if different from the app url.',
     )
     .option('-k, --api-key <apiKey>', 'Login using an API key.')
     .option(
@@ -348,7 +348,7 @@ export function authCommand(program: Command) {
         const apiKey = cloudConfig.getApiKey();
 
         if (!email || !apiKey) {
-          logger.info(`Not logged in. Run ${chalk.bold('promptfoo auth login')} to login.`);
+          logger.info(`Not logged in. Run ${chalk.bold('artef auth login')} to login.`);
           return;
         }
 
@@ -396,7 +396,7 @@ export function authCommand(program: Command) {
       try {
         if (!cloudConfig.isEnabled()) {
           logger.info(
-            chalk.yellow('PromptFoo Cloud is not enabled, run `promptfoo auth login` to enable it'),
+            chalk.yellow('artef Cloud is not enabled, run `artef auth login` to enable it'),
           );
           return;
         }
@@ -425,7 +425,7 @@ export function authCommand(program: Command) {
       try {
         if (!cloudConfig.isEnabled()) {
           logger.info(
-            chalk.yellow('PromptFoo Cloud is not enabled, run `promptfoo auth login` to enable it'),
+            chalk.yellow('artef Cloud is not enabled, run `artef auth login` to enable it'),
           );
           return;
         }
@@ -467,7 +467,7 @@ export function authCommand(program: Command) {
       try {
         if (!cloudConfig.isEnabled()) {
           logger.info(
-            chalk.yellow('PromptFoo Cloud is not enabled, run `promptfoo auth login` to enable it'),
+            chalk.yellow('artef Cloud is not enabled, run `artef auth login` to enable it'),
           );
           return;
         }
@@ -502,7 +502,7 @@ export function authCommand(program: Command) {
       try {
         if (!cloudConfig.isEnabled()) {
           logger.info(
-            chalk.yellow('PromptFoo Cloud is not enabled, run `promptfoo auth login` to enable it'),
+            chalk.yellow('artef Cloud is not enabled, run `artef auth login` to enable it'),
           );
           return;
         }

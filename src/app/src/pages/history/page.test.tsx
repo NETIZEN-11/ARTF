@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { EvalHistoryProvider } from '@app/contexts/EvalHistoryContext';
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
@@ -66,7 +66,7 @@ describe('HistoryPage', () => {
     renderWithProviders(<HistoryPage />);
 
     await waitFor(() => {
-      expect(document.title).toBe('History | promptfoo');
+      expect(document.title).toBe('History | artef');
     });
 
     const descriptionMetaTag = document.querySelector('meta[name="description"]');

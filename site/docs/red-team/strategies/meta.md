@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Meta-Agent Jailbreaks
 title: Meta-Agent Jailbreaks Strategy
 description: Strategic jailbreak testing with adaptive decision-making to test system resilience
@@ -12,9 +12,9 @@ Unlike standard iterative approaches that refine a single prompt, the meta-agent
 
 ## Implementation
 
-Add it to your `promptfooconfig.yaml`:
+Add it to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   # Basic usage
   - jailbreak:meta
@@ -29,11 +29,11 @@ strategies:
 You can also override the number of iterations via an environment variable:
 
 ```bash
-PROMPTFOO_NUM_JAILBREAK_ITERATIONS=5
+artef_NUM_JAILBREAK_ITERATIONS=5
 ```
 
 :::info Cloud Required
-This strategy requires Promptfoo Cloud to maintain persistent memory and strategic reasoning across iterations. Set `PROMPTFOO_REMOTE_GENERATION_URL` or log into Promptfoo Cloud.
+This strategy requires artef Cloud to maintain persistent memory and strategic reasoning across iterations. Set `artef_REMOTE_GENERATION_URL` or log into artef Cloud.
 :::
 
 ## How It Works

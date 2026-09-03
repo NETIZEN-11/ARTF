@@ -1,4 +1,4 @@
-import { spawnSync } from 'child_process';
+﻿import { spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -15,8 +15,8 @@ function findPythonPath(): string | undefined {
   const probe = 'import sys; print(sys.executable)';
   const candidates: Array<[string, string[]]> = [];
 
-  if (process.env.PROMPTFOO_PYTHON) {
-    candidates.push([process.env.PROMPTFOO_PYTHON, ['-c', probe]]);
+  if (process.env.artef_PYTHON) {
+    candidates.push([process.env.artef_PYTHON, ['-c', probe]]);
   }
   if (process.platform === 'win32') {
     candidates.push(['py', ['-3', '-c', probe]]);
@@ -63,7 +63,7 @@ class _FakeChain:
         return self
 
     def invoke(self, _payload):
-        if os.getenv("PROMPTFOO_LANGCHAIN_STUB_ERROR"):
+        if os.getenv("artef_LANGCHAIN_STUB_ERROR"):
             raise RuntimeError("stubbed invocation failure")
         return "stubbed answer"
 
@@ -93,7 +93,7 @@ class PromptTemplate:
 
     const childEnv = { ...process.env };
     delete childEnv.OPENAI_API_KEY;
-    delete childEnv.PROMPTFOO_LANGCHAIN_STUB_ERROR;
+    delete childEnv.artef_LANGCHAIN_STUB_ERROR;
     childEnv.PYTHONPATH = [stubRoot, childEnv.PYTHONPATH].filter(Boolean).join(path.delimiter);
 
     const result = spawnSync(PYTHON_PATH, [EXAMPLE_PATH, ...args], {
@@ -133,7 +133,7 @@ class PromptTemplate:
   itPy('reports invocation failures on stderr and exits non-zero', () => {
     const result = runExample(['What is 2 + 2?'], {
       OPENAI_API_KEY: 'test-key',
-      PROMPTFOO_LANGCHAIN_STUB_ERROR: 'true',
+      artef_LANGCHAIN_STUB_ERROR: 'true',
     });
 
     expect(result.status).toBe(1);

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Utilities for matching provider configs and extracting displayable information.
  *
  * The problem: CompletedPrompt.provider is just a string (e.g., "google:gemini-3-flash-preview"),
@@ -12,7 +12,7 @@
  * 2. Extraction of key config fields for display as badges
  */
 
-import type { ProviderOptions } from '@promptfoo/types';
+import type { ProviderOptions } from '@artef/types';
 
 // Provider definitions can be strings, ProviderOptions objects, or record-style
 export type ProviderDef = string | ProviderOptions | Record<string, unknown>;

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import logger from '../logger';
 import Eval from '../models/eval';
 import { generateTable, wrapTable } from '../table';
@@ -71,10 +71,10 @@ export async function handlePrompt(id: string) {
   logger.info(wrapTable(table) as string);
   printBorder();
   logger.info(
-    `Run ${chalk.green('promptfoo show eval <id>')} to see details of a specific evaluation.`,
+    `Run ${chalk.green('artef show eval <id>')} to see details of a specific evaluation.`,
   );
   logger.info(
-    `Run ${chalk.green('promptfoo show dataset <id>')} to see details of a specific dataset.`,
+    `Run ${chalk.green('artef show dataset <id>')} to see details of a specific dataset.`,
   );
 }
 
@@ -82,7 +82,7 @@ export async function handleEval(id: string) {
   const eval_ = await Eval.findById(id);
   if (!eval_) {
     logger.error(`No evaluation found with ID ${id}`);
-    logger.info(`Run ${chalk.green('promptfoo list evals')} to see available evaluation IDs.`);
+    logger.info(`Run ${chalk.green('artef list evals')} to see available evaluation IDs.`);
     process.exitCode = 1;
     return;
   }
@@ -164,10 +164,10 @@ export async function handleDataset(id: string) {
   logger.info(wrapTable(table) as string);
   printBorder();
   logger.info(
-    `Run ${chalk.green('promptfoo show prompt <id>')} to see details of a specific prompt.`,
+    `Run ${chalk.green('artef show prompt <id>')} to see details of a specific prompt.`,
   );
   logger.info(
-    `Run ${chalk.green('promptfoo show eval <id>')} to see details of a specific evaluation.`,
+    `Run ${chalk.green('artef show eval <id>')} to see details of a specific evaluation.`,
   );
 }
 
@@ -185,7 +185,7 @@ export async function showCommand(program: Command) {
           return handleEval(latestEval.id);
         }
         logger.error('No eval found');
-        logger.info(`Run ${chalk.green('promptfoo eval')} to create one.`);
+        logger.info(`Run ${chalk.green('artef eval')} to create one.`);
         process.exitCode = 1;
         return;
       }
@@ -207,7 +207,7 @@ export async function showCommand(program: Command) {
 
       logger.error(`No resource found with ID ${id}`);
       logger.info(
-        `Run ${chalk.green('promptfoo list evals')}, ${chalk.green('promptfoo list prompts')}, or ${chalk.green('promptfoo list datasets')} to see available IDs.`,
+        `Run ${chalk.green('artef list evals')}, ${chalk.green('artef list prompts')}, or ${chalk.green('artef list datasets')} to see available IDs.`,
       );
       process.exitCode = 1;
     });
@@ -222,7 +222,7 @@ export async function showCommand(program: Command) {
           return handleEval(latestEval.id);
         }
         logger.error('No eval found');
-        logger.info(`Run ${chalk.green('promptfoo eval')} to create one.`);
+        logger.info(`Run ${chalk.green('artef eval')} to create one.`);
         process.exitCode = 1;
         return;
       }

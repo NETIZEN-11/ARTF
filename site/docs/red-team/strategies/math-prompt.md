@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Math Prompt
 title: Math Prompt Strategy
 description: Probe AI vulnerabilities using mathematical notation, LaTeX formatting, and set theory to encode and disguise harmful content
@@ -10,9 +10,9 @@ The Math Prompt strategy tests an AI system's ability to handle harmful inputs u
 
 ## Implementation
 
-Use it in your promptfooconfig.yaml like this:
+Use it in your artefconfig.yaml like this:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - math-prompt
 ```

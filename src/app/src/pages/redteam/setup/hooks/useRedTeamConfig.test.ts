@@ -1,4 +1,4 @@
-import { mockBrowserProperty, restoreBrowserMocks } from '@app/tests/browserMocks';
+﻿import { mockBrowserProperty, restoreBrowserMocks } from '@app/tests/browserMocks';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useRedTeamConfig } from './useRedTeamConfig';
 import {
@@ -4796,7 +4796,7 @@ describe('useRedTeamConfig', () => {
 
   it('converges two local-storage tabs when stale invalid events arrive around a corrected target', async () => {
     type TargetConfigWindow = Window & {
-      __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+      __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
     };
 
     vi.resetModules();
@@ -4816,7 +4816,7 @@ describe('useRedTeamConfig', () => {
     const queuedInvalid = window.localStorage.getItem('redTeamTargetConfigValidation');
     expect(queuedInvalid).toMatch(/^invalid-json:[a-z0-9-]+$/);
     const staleTabListener = (window as TargetConfigWindow)
-      .__promptfooTargetConfigValidationStorageListener!;
+      .__artefTargetConfigValidationStorageListener!;
 
     vi.resetModules();
     const { useRedTeamConfig: correctingTabConfig } = await import('./useRedTeamConfig');
@@ -4824,7 +4824,7 @@ describe('useRedTeamConfig', () => {
       './useRedTeamTargetConfigValidation'
     );
     const correctingTabListener = (window as TargetConfigWindow)
-      .__promptfooTargetConfigValidationStorageListener!;
+      .__artefTargetConfigValidationStorageListener!;
     expect(correctingTabValidation.getState().targetConfigError).toBe('Invalid JSON configuration');
 
     correctingTabConfig.getState().setFullConfig({
@@ -4854,7 +4854,7 @@ describe('useRedTeamConfig', () => {
 
   it('keeps an independent draft blocked when its queued newer invalid storage event arrives after another tab clears', async () => {
     type TargetConfigWindow = Window & {
-      __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+      __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
     };
 
     vi.resetModules();
@@ -4875,7 +4875,7 @@ describe('useRedTeamConfig', () => {
     const firstMarker = window.localStorage.getItem('redTeamTargetConfigValidation');
     expect(firstMarker).toMatch(/^invalid-json:[a-z0-9-]+$/);
     const staleTabListener = (window as TargetConfigWindow)
-      .__promptfooTargetConfigValidationStorageListener!;
+      .__artefTargetConfigValidationStorageListener!;
 
     vi.resetModules();
     const { useRedTeamConfig: correctingTabConfig } = await import('./useRedTeamConfig');
@@ -4915,7 +4915,7 @@ describe('useRedTeamConfig', () => {
     'preserves an independent malformed target draft when another tab corrects its draft over %s',
     async (delivery) => {
       type TargetConfigWindow = Window & {
-        __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+        __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
       };
       const peers = new Set<MockBroadcastChannel>();
       const sent: string[] = [];
@@ -4975,7 +4975,7 @@ describe('useRedTeamConfig', () => {
         tabAValidation.getState().setTargetConfigError('Invalid JSON configuration');
         const tokenA = window.localStorage.getItem('redTeamTargetConfigValidation');
         const tabAListener = (window as TargetConfigWindow)
-          .__promptfooTargetConfigValidationStorageListener!;
+          .__artefTargetConfigValidationStorageListener!;
 
         vi.resetModules();
         const { useRedTeamConfig: tabBConfig } = await import('./useRedTeamConfig');
@@ -4984,7 +4984,7 @@ describe('useRedTeamConfig', () => {
           useRedTeamTargetConfigValidation: tabBValidation,
         } = await import('./useRedTeamTargetConfigValidation');
         const tabBListener = (window as TargetConfigWindow)
-          .__promptfooTargetConfigValidationStorageListener!;
+          .__artefTargetConfigValidationStorageListener!;
         expect(tabBValidation.getState().targetConfigError).toBe('Invalid JSON configuration');
         tabBValidation.getState().setTargetConfigDraft('{"sandbox_mode":"tab-b",}');
         const tokenB = getTabBInvalidMarker();
@@ -5042,7 +5042,7 @@ describe('useRedTeamConfig', () => {
           'Invalid JSON configuration',
         );
         const reloadedTabAListener = (window as TargetConfigWindow)
-          .__promptfooTargetConfigValidationStorageListener!;
+          .__artefTargetConfigValidationStorageListener!;
         reloadedTabAListener(createStorageEvent('redTeamTargetConfigValidation', clearB));
         expect(window.localStorage.getItem('redTeamTargetConfigValidation')).toBe(clearB);
         expect(tabBValidation.getState().targetConfigError).toBeNull();
@@ -5054,7 +5054,7 @@ describe('useRedTeamConfig', () => {
 
   it('preserves an isolated target-draft token when its tab reloads beside another invalid tab', async () => {
     type TargetConfigWindow = Window & {
-      __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+      __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
     };
     type SessionStorage = Pick<Storage, 'getItem' | 'setItem' | 'removeItem' | 'clear'>;
     const createSessionStorage = (): SessionStorage => {
@@ -5096,7 +5096,7 @@ describe('useRedTeamConfig', () => {
         .setTargetConfigError('Invalid JSON configuration');
       const markerA = tabAValidation.getCurrentTargetConfigInvalidMarker();
       const listenerA = (window as TargetConfigWindow)
-        .__promptfooTargetConfigValidationStorageListener!;
+        .__artefTargetConfigValidationStorageListener!;
 
       selectSession(sessionB);
       vi.resetModules();
@@ -5194,7 +5194,7 @@ describe('useRedTeamConfig', () => {
     'keeps a competing target draft isolated when a %s clear write races with another target update',
     async (storage) => {
       type TargetConfigWindow = Window & {
-        __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+        __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
       };
       const targetA = {
         id: 'openinterpreter',
@@ -5223,7 +5223,7 @@ describe('useRedTeamConfig', () => {
       tabAValidation.getState().setTargetConfigError('Invalid JSON configuration');
       const tokenA = window.localStorage.getItem('redTeamTargetConfigValidation');
       const tabAListener = (window as TargetConfigWindow)
-        .__promptfooTargetConfigValidationStorageListener!;
+        .__artefTargetConfigValidationStorageListener!;
 
       vi.resetModules();
       const { useRedTeamConfig: tabBConfig } = await import('./useRedTeamConfig');
@@ -5232,7 +5232,7 @@ describe('useRedTeamConfig', () => {
         useRedTeamTargetConfigValidation: tabBValidation,
       } = await import('./useRedTeamTargetConfigValidation');
       const tabBListener = (window as TargetConfigWindow)
-        .__promptfooTargetConfigValidationStorageListener!;
+        .__artefTargetConfigValidationStorageListener!;
       tabBValidation.getState().setTargetConfigDraft('{"sandbox_mode":"tab-b",}');
       const tokenB = getTabBInvalidMarker();
       tabAListener(createStorageEvent('redTeamTargetConfigValidation', tokenB));
@@ -5308,7 +5308,7 @@ describe('useRedTeamConfig', () => {
 
   it('fails closed for independent malformed target drafts when session isolation cannot be persisted', async () => {
     type TargetConfigWindow = Window & {
-      __promptfooTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
+      __artefTargetConfigValidationStorageListener?: (event: StorageEvent) => void;
     };
 
     vi.resetModules();
@@ -5328,7 +5328,7 @@ describe('useRedTeamConfig', () => {
     tabAValidation.getState().setTargetConfigError('Invalid JSON configuration');
     const tokenA = window.localStorage.getItem('redTeamTargetConfigValidation');
     const tabAListener = (window as TargetConfigWindow)
-      .__promptfooTargetConfigValidationStorageListener!;
+      .__artefTargetConfigValidationStorageListener!;
 
     vi.resetModules();
     const { useRedTeamConfig: tabBConfig } = await import('./useRedTeamConfig');
@@ -5337,7 +5337,7 @@ describe('useRedTeamConfig', () => {
       useRedTeamTargetConfigValidation: tabBValidation,
     } = await import('./useRedTeamTargetConfigValidation');
     const tabBListener = (window as TargetConfigWindow)
-      .__promptfooTargetConfigValidationStorageListener!;
+      .__artefTargetConfigValidationStorageListener!;
     tabBValidation.getState().setTargetConfigDraft('{"sandbox_mode":"tab-b",}');
     const tokenB = getTabBInvalidMarker();
     expect(tokenB).not.toBe(tokenA);

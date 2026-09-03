@@ -1,7 +1,7 @@
----
+﻿---
 title: Custom Plugins
 sidebar_label: Custom Plugins
-description: Build custom red team plugins with file-based generators and graders for risks that built-in Promptfoo plugins do not cover.
+description: Build custom red team plugins with file-based generators and graders for risks that built-in artef plugins do not cover.
 ---
 
 # Custom Plugins
@@ -11,7 +11,7 @@ Custom plugins let you define both the attack generator and the grader for risks
 Custom plugins are file-based. Add the plugin definition to a YAML or JSON file, then reference that file from your red team config with a `file://` path.
 
 :::note
-The Promptfoo setup UI has dedicated tabs for [custom policies](policy.md#add-policies-in-the-ui) and [custom intents](intent.md#add-intents-in-the-ui). Custom plugins are configured in your YAML or JSON config because they include generator and grader templates.
+The artef setup UI has dedicated tabs for [custom policies](policy.md#add-policies-in-the-ui) and [custom intents](intent.md#add-intents-in-the-ui). Custom plugins are configured in your YAML or JSON config because they include generator and grader templates.
 :::
 
 ## Quick Start
@@ -47,7 +47,7 @@ grader: |
 
 Reference it from your red team config:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 targets:
   - id: openai:gpt-4.1-mini
 
@@ -64,7 +64,7 @@ redteam:
 Run the red team:
 
 ```bash
-promptfoo redteam run -c promptfooconfig.yaml
+artef redteam run -c artefconfig.yaml
 ```
 
 ## Plugin File Schema
@@ -73,7 +73,7 @@ The custom plugin file is strict: extra fields fail schema validation. Supported
 
 | Field       | Required | Description                                                                                      |
 | ----------- | -------- | ------------------------------------------------------------------------------------------------ |
-| `generator` | Yes      | Nunjucks template Promptfoo sends to the generation provider to create adversarial test prompts. |
+| `generator` | Yes      | Nunjucks template artef sends to the generation provider to create adversarial test prompts. |
 | `grader`    | Yes      | Nunjucks template used as an `llm-rubric` assertion for every generated test case.               |
 | `threshold` | No       | Minimum score required for the rubric assertion to pass.                                         |
 | `metric`    | No       | Metric name shown in results. Defaults to `custom`.                                              |
@@ -83,21 +83,21 @@ The `generator` template receives:
 
 - `{{ n }}`: number of prompts requested for the current generation batch.
 - `{{ purpose }}`: the red team purpose from your config.
-- `{{ outputFormat }}`: the parser instruction Promptfoo expects for generated prompts.
+- `{{ outputFormat }}`: the parser instruction artef expects for generated prompts.
 - `{{ hasCustomOutputFormat }}`: boolean that is true when multi-input fields are active.
 - `{{ examples }}`: optional examples from the plugin's config.
 
-The `grader` template receives `{{ purpose }}`. Promptfoo renders it into an `llm-rubric` assertion and applies it to each generated test case.
+The `grader` template receives `{{ purpose }}`. artef renders it into an `llm-rubric` assertion and applies it to each generated test case.
 
 Generated configs and result metadata keep the configured plugin path, such as `file://./refund-exception-plugin.yaml`, as the plugin ID. Use `metric` for the human-readable score label you want reviewers to see.
 
 ## Output Format
 
-For single-input targets, make the generator output one prompt per line with `Prompt:`. The safest approach is to include `{{ outputFormat }}` at the end of the generator, as shown above, so Promptfoo tells the generator the exact parseable format.
+For single-input targets, make the generator output one prompt per line with `Prompt:`. The safest approach is to include `{{ outputFormat }}` at the end of the generator, as shown above, so artef tells the generator the exact parseable format.
 
-For multi-input targets, declare `inputs` on the target. Promptfoo passes those input fields into custom plugins and expects generated test cases as JSON objects wrapped in `<Prompt>` tags. If your target cannot declare `inputs`, put the same `inputs` map under the plugin's `config`.
+For multi-input targets, declare `inputs` on the target. artef passes those input fields into custom plugins and expects generated test cases as JSON objects wrapped in `<Prompt>` tags. If your target cannot declare `inputs`, put the same `inputs` map under the plugin's `config`.
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 targets:
   - id: https
     inputs:
@@ -162,7 +162,7 @@ redteam:
 | `testGenerationInstructions` | `redteam`                          | Appended to the generation prompt as an additional modifier.                                                      |
 | `severity`                   | plugin entry                       | Stored in generated test metadata and shown in results.                                                           |
 
-Custom plugin file fields and plugin config fields are separate. Keep `generator`, `grader`, `metric`, `threshold`, and `id` in the plugin file. Put runtime controls such as `examples`, `language`, `modifiers`, and `inputs` under the plugin's `config` in `promptfooconfig.yaml`.
+Custom plugin file fields and plugin config fields are separate. Keep `generator`, `grader`, `metric`, `threshold`, and `id` in the plugin file. Put runtime controls such as `examples`, `language`, `modifiers`, and `inputs` under the plugin's `config` in `artefconfig.yaml`.
 
 ## How Grading Works
 

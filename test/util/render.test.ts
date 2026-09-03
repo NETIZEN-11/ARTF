@@ -1,15 +1,15 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderEnvOnlyInObject, renderVarsInObject } from '../../src/util/render';
 import { mockProcessEnv } from './utils';
 
 describe('renderVarsInObject', () => {
   beforeEach(() => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
+    mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
   });
 
   afterEach(() => {
     mockProcessEnv({ TEST_ENV_VAR: undefined });
-    mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
+    mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
   });
 
   it('should render environment variables in objects', async () => {
@@ -32,8 +32,8 @@ describe('renderVarsInObject', () => {
     expect(rendered).toEqual({ text: '', number: 42 });
   });
 
-  it('should return object unchanged when PROMPTFOO_DISABLE_TEMPLATING is true', async () => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'true' });
+  it('should return object unchanged when artef_DISABLE_TEMPLATING is true', async () => {
+    mockProcessEnv({ artef_DISABLE_TEMPLATING: 'true' });
     const obj = { text: '{{ variable }}' };
     const vars = { variable: 'test_value' };
     const rendered = renderVarsInObject(obj, vars);
@@ -191,7 +191,7 @@ describe('renderEnvOnlyInObject', () => {
     mockProcessEnv({ BASE_URL: undefined });
     mockProcessEnv({ EMPTY_VAR: undefined });
     mockProcessEnv({ SPECIAL_CHARS: undefined });
-    mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
+    mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
   });
 
   afterEach(() => {
@@ -203,7 +203,7 @@ describe('renderEnvOnlyInObject', () => {
     mockProcessEnv({ BASE_URL: undefined });
     mockProcessEnv({ EMPTY_VAR: undefined });
     mockProcessEnv({ SPECIAL_CHARS: undefined });
-    mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: undefined });
+    mockProcessEnv({ artef_DISABLE_TEMPLATING: undefined });
   });
 
   describe('Basic rendering', () => {
@@ -441,15 +441,15 @@ describe('renderEnvOnlyInObject', () => {
     });
   });
 
-  describe('PROMPTFOO_DISABLE_TEMPLATING flag', () => {
+  describe('artef_DISABLE_TEMPLATING flag', () => {
     it('should return unchanged when flag is set', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'true' });
+      mockProcessEnv({ artef_DISABLE_TEMPLATING: 'true' });
       mockProcessEnv({ TEST_ENV_VAR: 'env_value' });
       expect(renderEnvOnlyInObject('{{ env.TEST_ENV_VAR }}')).toBe('{{ env.TEST_ENV_VAR }}');
     });
 
     it('should return unchanged objects when flag is set', async () => {
-      mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'true' });
+      mockProcessEnv({ artef_DISABLE_TEMPLATING: 'true' });
       mockProcessEnv({ TEST: 'value' });
       const obj = { key: '{{ env.TEST }}' };
       expect(renderEnvOnlyInObject(obj)).toEqual({ key: '{{ env.TEST }}' });

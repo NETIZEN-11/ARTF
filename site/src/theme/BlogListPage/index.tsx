@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import Link from '@docusaurus/Link';
 import { HtmlClassNameProvider, PageMetadata, ThemeClassNames } from '@docusaurus/theme-common';
@@ -36,7 +36,7 @@ function BlogListPageMetadata(props: Props): React.ReactElement {
   const isBlogOnlyMode = permalink === '/';
   const title = isBlogOnlyMode ? siteTitle : blogTitle;
   const image =
-    props.items[0]?.content.frontMatter?.image || 'https://www.promptfoo.dev/img/thumbnail.png';
+    props.items[0]?.content.frontMatter?.image || 'https://www.artef.dev/img/thumbnail.png';
   return (
     <>
       <PageMetadata title={title} description={blogDescription} image={image} />

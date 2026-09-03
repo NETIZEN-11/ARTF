@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Red Team Your LLM with BeaverTails'
 description: 'Evaluate LLM safety using BeaverTails dataset with 700+ harmful prompts spanning harassment, violence, and deception categories'
 image: /img/blog/beavertails/beaver-coding.jpg
@@ -21,9 +21,9 @@ tags: [research-analysis]
 
 # Red Team Your LLM with BeaverTails
 
-Ensuring your LLM can safely handle harmful content is critical for production deployments. This guide shows you how to use open-source [Promptfoo](https://github.com/promptfoo/promptfoo) to run standardized red team evaluations using the [BeaverTails dataset](https://huggingface.co/datasets/PKU-Alignment/BeaverTails-Evaluation), which tests models against harmful inputs.
+Ensuring your LLM can safely handle harmful content is critical for production deployments. This guide shows you how to use open-source [artef](https://github.com/artef/artef) to run standardized red team evaluations using the [BeaverTails dataset](https://huggingface.co/datasets/PKU-Alignment/BeaverTails-Evaluation), which tests models against harmful inputs.
 
-Promptfoo allows you to run these evaluations on your **actual application** rather than just the base model, which is important because behavior can vary significantly based on your system prompts and safety layers.
+artef allows you to run these evaluations on your **actual application** rather than just the base model, which is important because behavior can vary significantly based on your system prompts and safety layers.
 
 We'll use PKU-Alignment's BeaverTails dataset to test models against harmful content across multiple categories including discrimination, violence, drug abuse, and more. The evaluation helps identify where your model might need additional guardrails or safety measures.
 
@@ -32,7 +32,7 @@ The end result is a report that shows you how well your model handles different 
 ![BeaverTails results](/img/blog/beavertails/beavertails-eval.png)
 
 :::info
-To jump straight to the code, [click here](https://github.com/promptfoo/promptfoo/tree/main/examples/redteam-beavertails).
+To jump straight to the code, [click here](https://github.com/artef/artef/tree/main/examples/redteam-beavertails).
 :::
 
 <!-- truncate -->
@@ -67,7 +67,7 @@ Each test case includes:
 Before starting, make sure you have:
 
 - **Node.js**: `>=22.22.0` (Node.js 24 LTS recommended; [download](https://nodejs.org/))
-- **Promptfoo**: We'll use `npx` to run commands, so no separate installation is needed
+- **artef**: We'll use `npx` to run commands, so no separate installation is needed
 - **Model Access**: API keys or local setup for the models you want to test
 
 ## Quick Start
@@ -87,7 +87,7 @@ First, let's create a `prompt.yaml` file that contains our system prompt and tes
   content: '{{prompt}}'
 ```
 
-Next, create a `promptfooconfig.yaml` file that contains our configuration.
+Next, create a `artefconfig.yaml` file that contains our configuration.
 
 ```yaml
 description: 'BeaverTails evaluation'
@@ -144,7 +144,7 @@ ollama pull llama4
 ollama pull mistral
 ```
 
-Then configure them in your `promptfooconfig.yaml`:
+Then configure them in your `artefconfig.yaml`:
 
 ```yaml
 providers:
@@ -202,33 +202,33 @@ To run BeaverTails on your application instead of a model, use the [HTTP Provide
 
 ## Loading the Dataset
 
-Promptfoo can directly load test cases from HuggingFace datasets using the `huggingface://` prefix. This is pulled in dynamically from HuggingFace.
+artef can directly load test cases from HuggingFace datasets using the `huggingface://` prefix. This is pulled in dynamically from HuggingFace.
 
 ## Running the Evaluation
 
 Run the evaluation:
 
 ```bash
-npx promptfoo@latest eval
+npx artef@latest eval
 ```
 
 Since BeaverTails contains over 700 test cases (50 per category), you might want to start with a smaller sample:
 
 ```bash
-npx promptfoo@latest eval --filter-sample 50
+npx artef@latest eval --filter-sample 50
 ```
 
 View the results:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 ## Understanding the Results
 
 This basic eval shows how well your model handles harmful content across 14 categories. It measures the rejection rate of harmful content.
 
-For each test case in the BeaverTails dataset, Promptfoo will show you the prompt, the model's response, and a score for each category:
+For each test case in the BeaverTails dataset, artef will show you the prompt, the model's response, and a score for each category:
 
 ![BeaverTails results](/img/blog/beavertails/beavertails-eval.png)
 
@@ -249,7 +249,7 @@ For each test case in the BeaverTails dataset, Promptfoo will show you the promp
 
 ## Next Steps
 
-Running BeaverTails evaluations with Promptfoo provides a standardized way to assess how your model handles harmful content. Regular testing is crucial for maintaining safe AI systems, especially as models and attack vectors evolve.
+Running BeaverTails evaluations with artef provides a standardized way to assess how your model handles harmful content. Regular testing is crucial for maintaining safe AI systems, especially as models and attack vectors evolve.
 
 Remember to:
 

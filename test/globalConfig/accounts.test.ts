@@ -1,4 +1,4 @@
-import input from '@inquirer/input';
+﻿import input from '@inquirer/input';
 import chalk from 'chalk';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { getEnvString, isCI } from '../../src/envars';
@@ -52,7 +52,7 @@ vi.mock('../../src/logger');
 
 describe('accounts', () => {
   beforeEach(() => {
-    vi.stubEnv('PROMPTFOO_API_KEY', undefined);
+    vi.stubEnv('artef_API_KEY', undefined);
     vi.clearAllMocks();
   });
 
@@ -176,7 +176,7 @@ describe('accounts', () => {
     });
 
     it('should use the environment API key when cloud config has no API key', () => {
-      vi.stubEnv('PROMPTFOO_API_KEY', 'env-api-key');
+      vi.stubEnv('artef_API_KEY', 'env-api-key');
       vi.mocked(readGlobalConfig).mockReturnValue({
         id: 'test-id',
         account: { email: 'test@example.com' },
@@ -493,13 +493,13 @@ describe('accounts', () => {
       await expect(checkEmailStatusAndMaybeExit()).rejects.toThrowError(
         new EmailValidationError(
           'exceeded_limit',
-          'You have exceeded the maximum cloud inference limit. Please contact inquiries@promptfoo.dev to upgrade your account.',
+          'You have exceeded the maximum cloud inference limit. Please contact inquiries@artef.dev to upgrade your account.',
         ),
       );
 
       expect(process.exitCode).toBeUndefined();
       expect(logger.error).toHaveBeenCalledWith(
-        'You have exceeded the maximum cloud inference limit. Please contact inquiries@promptfoo.dev to upgrade your account.',
+        'You have exceeded the maximum cloud inference limit. Please contact inquiries@artef.dev to upgrade your account.',
       );
     });
 
@@ -627,7 +627,7 @@ describe('accounts', () => {
       expect(result).toEqual({
         status: 'ok',
         hasEmail: true,
-        email: 'ci-placeholder@promptfoo.dev',
+        email: 'ci-placeholder@artef.dev',
         message: undefined,
       });
     });
@@ -732,7 +732,7 @@ describe('accounts', () => {
         expect(result).toEqual({
           status: 'ok',
           hasEmail: true,
-          email: 'ci-placeholder@promptfoo.dev',
+          email: 'ci-placeholder@artef.dev',
           message: undefined,
         });
       });
@@ -816,14 +816,14 @@ describe('accounts', () => {
       expect(fetchWithTimeout).toHaveBeenCalledTimes(1);
       const calledUrl = vi.mocked(fetchWithTimeout).mock.calls[0][0] as string;
       expect(calledUrl).toContain(`${ONPREM_HOST}/api/users/status`);
-      expect(calledUrl).not.toContain('api.promptfoo.app');
+      expect(calledUrl).not.toContain('api.artef.app');
     });
 
-    it('does not consult getApiHost and uses PROMPTFOO_CLOUD_API_URL when cloud is not enabled', async () => {
+    it('does not consult getApiHost and uses artef_CLOUD_API_URL when cloud is not enabled', async () => {
       vi.spyOn(cloudConfig, 'isEnabled').mockReturnValue(false);
       const getApiHostSpy = vi.spyOn(cloudConfig, 'getApiHost');
       vi.mocked(getEnvString).mockImplementation((key: string, fallback?: any) =>
-        key === 'PROMPTFOO_CLOUD_API_URL' ? 'https://env-cloud.example.com' : fallback,
+        key === 'artef_CLOUD_API_URL' ? 'https://env-cloud.example.com' : fallback,
       );
 
       await checkEmailStatus();
@@ -833,10 +833,10 @@ describe('accounts', () => {
       expect(getApiHostSpy).not.toHaveBeenCalled();
     });
 
-    it('strips a trailing slash from PROMPTFOO_CLOUD_API_URL on the non-cloud path', async () => {
+    it('strips a trailing slash from artef_CLOUD_API_URL on the non-cloud path', async () => {
       vi.spyOn(cloudConfig, 'isEnabled').mockReturnValue(false);
       vi.mocked(getEnvString).mockImplementation((key: string, fallback?: any) =>
-        key === 'PROMPTFOO_CLOUD_API_URL' ? 'https://env-cloud.example.com/' : fallback,
+        key === 'artef_CLOUD_API_URL' ? 'https://env-cloud.example.com/' : fallback,
       );
 
       await checkEmailStatus();

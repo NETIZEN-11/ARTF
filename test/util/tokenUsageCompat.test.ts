@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { TokenUsageTracker } from '../../src/util/tokenUsage';
 import {
   aggregateUsageFromSpans,
@@ -130,13 +130,13 @@ describe('tokenUsageCompat', () => {
         'gen_ai.usage.cache_creation.input_tokens',
         { completionDetails: { cacheCreationInputTokens: 17 } },
       ],
-      ['promptfoo.usage.cached_response_tokens', { cached: 17 }],
+      ['artef.usage.cached_response_tokens', { cached: 17 }],
       [
-        'promptfoo.usage.accepted_prediction_tokens',
+        'artef.usage.accepted_prediction_tokens',
         { completionDetails: { acceptedPrediction: 17 } },
       ],
       [
-        'promptfoo.usage.rejected_prediction_tokens',
+        'artef.usage.rejected_prediction_tokens',
         { completionDetails: { rejectedPrediction: 17 } },
       ],
       ['gen_ai.usage.cached_tokens', { cached: 17 }],
@@ -165,7 +165,7 @@ describe('tokenUsageCompat', () => {
       expect(extractUsageFromSpan(span)).toEqual({ numRequests: 1, ...expectedUsage });
     });
 
-    it('reads current OpenTelemetry and Promptfoo token-usage attributes', () => {
+    it('reads current OpenTelemetry and artef token-usage attributes', () => {
       const span: SpanData = {
         spanId: 'span-1',
         name: 'test',
@@ -173,13 +173,13 @@ describe('tokenUsageCompat', () => {
         attributes: {
           'gen_ai.usage.input_tokens': 100,
           'gen_ai.usage.output_tokens': 50,
-          'promptfoo.usage.total_tokens': 150,
-          'promptfoo.usage.cached_response_tokens': 25,
+          'artef.usage.total_tokens': 150,
+          'artef.usage.cached_response_tokens': 25,
           'gen_ai.usage.reasoning.output_tokens': 20,
           'gen_ai.usage.cache_read.input_tokens': 70,
           'gen_ai.usage.cache_creation.input_tokens': 30,
-          'promptfoo.usage.accepted_prediction_tokens': 10,
-          'promptfoo.usage.rejected_prediction_tokens': 5,
+          'artef.usage.accepted_prediction_tokens': 10,
+          'artef.usage.rejected_prediction_tokens': 5,
         },
       };
 
@@ -286,9 +286,9 @@ describe('tokenUsageCompat', () => {
         attributes: {
           'gen_ai.usage.input_tokens': 100,
           'gen_ai.usage.output_tokens': 50,
-          'promptfoo.usage.total_tokens': 150,
+          'artef.usage.total_tokens': 150,
           'gen_ai.usage.total_tokens': 999,
-          'promptfoo.usage.cached_response_tokens': 25,
+          'artef.usage.cached_response_tokens': 25,
           'gen_ai.usage.cached_tokens': 999,
           'gen_ai.usage.reasoning.output_tokens': 20,
           'gen_ai.usage.reasoning_tokens': 999,
@@ -647,7 +647,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 0,
           attributes: {
-            'promptfoo.provider.id': 'openai:gpt-4',
+            'artef.provider.id': 'openai:gpt-4',
             'gen_ai.usage.input_tokens': 100,
             'gen_ai.usage.output_tokens': 50,
             'gen_ai.usage.total_tokens': 150,
@@ -658,7 +658,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 1000,
           attributes: {
-            'promptfoo.provider.id': 'openai:gpt-4',
+            'artef.provider.id': 'openai:gpt-4',
             'gen_ai.usage.input_tokens': 100,
             'gen_ai.usage.output_tokens': 50,
             'gen_ai.usage.total_tokens': 150,
@@ -669,7 +669,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat claude-3',
           startTime: 2000,
           attributes: {
-            'promptfoo.provider.id': 'anthropic:claude-3-opus',
+            'artef.provider.id': 'anthropic:claude-3-opus',
             'gen_ai.usage.input_tokens': 200,
             'gen_ai.usage.output_tokens': 100,
             'gen_ai.usage.total_tokens': 300,
@@ -705,7 +705,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 1000,
           attributes: {
-            'promptfoo.provider.id': 'openai:gpt-4',
+            'artef.provider.id': 'openai:gpt-4',
             'gen_ai.usage.input_tokens': 200,
             'gen_ai.usage.output_tokens': 100,
             'gen_ai.usage.total_tokens': 300,
@@ -730,7 +730,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 0,
           attributes: {
-            'promptfoo.test.index': 0,
+            'artef.test.index': 0,
             'gen_ai.usage.input_tokens': 100,
             'gen_ai.usage.output_tokens': 50,
             'gen_ai.usage.total_tokens': 150,
@@ -741,7 +741,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 1000,
           attributes: {
-            'promptfoo.test.index': 0,
+            'artef.test.index': 0,
             'gen_ai.usage.input_tokens': 100,
             'gen_ai.usage.output_tokens': 50,
             'gen_ai.usage.total_tokens': 150,
@@ -752,7 +752,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 2000,
           attributes: {
-            'promptfoo.test.index': 1,
+            'artef.test.index': 1,
             'gen_ai.usage.input_tokens': 200,
             'gen_ai.usage.output_tokens': 100,
             'gen_ai.usage.total_tokens': 300,
@@ -788,7 +788,7 @@ describe('tokenUsageCompat', () => {
           name: 'chat gpt-4',
           startTime: 1000,
           attributes: {
-            'promptfoo.test.index': 0,
+            'artef.test.index': 0,
             'gen_ai.usage.input_tokens': 200,
             'gen_ai.usage.output_tokens': 100,
             'gen_ai.usage.total_tokens': 300,

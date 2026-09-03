@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+﻿import React, { useContext } from 'react';
 
 import { UserContext } from '@app/contexts/UserContextDef';
 
@@ -23,7 +23,7 @@ const PylonChat = () => {
   const userContext = useContext(UserContext);
 
   React.useEffect(() => {
-    if (import.meta.env.VITE_PROMPTFOO_NO_CHAT) {
+    if (import.meta.env.VITE_artef_NO_CHAT) {
       return;
     }
 

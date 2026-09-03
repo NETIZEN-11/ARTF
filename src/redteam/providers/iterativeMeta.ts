@@ -1,8 +1,8 @@
-import { getEnvInt } from '../../envars';
+﻿import { getEnvInt } from '../../envars';
 import { renderPrompt } from '../../evaluatorHelpers';
 import { isLoggedIntoCloud } from '../../globalConfig/accounts';
 import logger from '../../logger';
-import { PromptfooChatCompletionProvider } from '../../providers/promptfoo';
+import { artefChatCompletionProvider } from '../../providers/artef';
 import {
   extractTraceIdFromTraceparent,
   fetchTraceContext,
@@ -713,7 +713,7 @@ class RedteamIterativeMetaProvider implements ApiProvider {
     this.inputs = config.inputs as Inputs | undefined;
 
     const configuredIterations =
-      Number(config.numIterations) || getEnvInt('PROMPTFOO_NUM_JAILBREAK_ITERATIONS', 10);
+      Number(config.numIterations) || getEnvInt('artef_NUM_JAILBREAK_ITERATIONS', 10);
     this.numIterations = isLoggedIntoCloud()
       ? configuredIterations
       : Math.min(configuredIterations, 10);
@@ -732,13 +732,13 @@ class RedteamIterativeMetaProvider implements ApiProvider {
       );
     }
 
-    this.gradingProvider = new PromptfooChatCompletionProvider({
+    this.gradingProvider = new artefChatCompletionProvider({
       task: 'judge',
       jsonOnly: true,
       preferSmallModel: false,
       ...remoteGenerationContextPayload(config.targetId),
     });
-    this.agentProvider = new PromptfooChatCompletionProvider({
+    this.agentProvider = new artefChatCompletionProvider({
       task: 'meta-agent-decision',
       jsonOnly: true,
       preferSmallModel: false,
@@ -749,7 +749,7 @@ class RedteamIterativeMetaProvider implements ApiProvider {
   }
 
   id() {
-    return 'promptfoo:redteam:iterative:meta';
+    return 'artef:redteam:iterative:meta';
   }
 
   async callApi(

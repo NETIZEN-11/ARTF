@@ -1,19 +1,19 @@
-import { HIDDEN_METADATA_KEYS } from '@app/constants';
+﻿import { HIDDEN_METADATA_KEYS } from '@app/constants';
 import { callApi } from '@app/utils/api';
-import { Severity } from '@promptfoo/redteam/constants';
+import { Severity } from '@artef/redteam/constants';
 import {
   isPolicyMetric,
   isValidPolicyObject,
   makeDefaultPolicyName,
   makeInlinePolicyId,
-} from '@promptfoo/redteam/plugins/policy/utils';
-import { getRiskCategorySeverityMap } from '@promptfoo/redteam/sharedFrontend';
-import { convertResultsToTable } from '@promptfoo/util/convertEvalResultsToTable';
+} from '@artef/redteam/plugins/policy/utils';
+import { getRiskCategorySeverityMap } from '@artef/redteam/sharedFrontend';
+import { convertResultsToTable } from '@artef/util/convertEvalResultsToTable';
 import { create } from 'zustand';
 import { persist, subscribeWithSelector } from 'zustand/middleware';
 import logger from '../../../../../logger';
 import { hasHumanRating } from './utils';
-import type { Policy, PolicyObject } from '@promptfoo/redteam/types';
+import type { Policy, PolicyObject } from '@artef/redteam/types';
 import type {
   EvalResultsFilterMode,
   EvalTableDTO,
@@ -24,7 +24,7 @@ import type {
   RedteamPluginObject,
   ResultsFile,
   UnifiedConfig,
-} from '@promptfoo/types';
+} from '@artef/types';
 import type { VisibilityState } from '@tanstack/table-core';
 
 function computeHighlightCount(table: EvaluateTable | null): number {

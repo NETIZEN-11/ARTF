@@ -1,4 +1,4 @@
-import { mockWindowOpen } from '@app/tests/browserMocks';
+﻿import { mockWindowOpen } from '@app/tests/browserMocks';
 import { callApi } from '@app/utils/api';
 import { renderWithProviders } from '@app/utils/testutils';
 import { act, screen, waitFor } from '@testing-library/react';
@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import ResultsView from './ResultsView';
 import { useResultsViewSettingsStore, useTableStore } from './store';
-import type { ResultLightweightWithLabel } from '@promptfoo/types';
+import type { ResultLightweightWithLabel } from '@artef/types';
 
 // Mock all the required modules - use vi.hoisted to ensure these are available in vi.mock factories
 const { mockShowToast, mockNavigate, mockUpdateConfig } = vi.hoisted(() => ({
@@ -34,13 +34,13 @@ vi.mock('@app/utils/api', () => ({
   updateEvalAuthor: vi.fn().mockResolvedValue({}),
 }));
 
-// Mock useCustomPoliciesMap - it imports from @promptfoo/redteam/types which loads heavy constants
+// Mock useCustomPoliciesMap - it imports from @artef/redteam/types which loads heavy constants
 vi.mock('@app/hooks/useCustomPoliciesMap', () => ({
   useCustomPoliciesMap: vi.fn().mockReturnValue({}),
 }));
 
 // Mock policy utils - FilterChips imports these which pull in heavy redteam constants
-vi.mock('@promptfoo/redteam/plugins/policy/utils', () => ({
+vi.mock('@artef/redteam/plugins/policy/utils', () => ({
   isPolicyMetric: vi.fn().mockReturnValue(false),
   deserializePolicyIdFromMetric: vi.fn().mockReturnValue(''),
   formatPolicyIdentifierAsMetric: vi.fn((id: string) => id),

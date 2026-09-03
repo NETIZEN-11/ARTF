@@ -1,6 +1,6 @@
-# Public Contracts
+﻿# Public Contracts
 
-Portable Zod schemas and types exported through the published `promptfoo/contracts` subpath.
+Portable Zod schemas and types exported through the published `artef/contracts` subpath.
 
 ## Rules
 

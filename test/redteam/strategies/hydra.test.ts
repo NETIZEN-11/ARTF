@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { addHydra } from '../../../src/redteam/strategies/hydra';
 
 import type { TestCase } from '../../../src/types/index';
@@ -28,7 +28,7 @@ describe('addHydra', () => {
     expect(result[0].description).toBe('Test case 1');
     expect(result[0].vars).toEqual({ input: 'test input' });
     expect(result[0].provider).toMatchObject({
-      id: 'promptfoo:redteam:hydra',
+      id: 'artef:redteam:hydra',
       config: {
         injectVar: 'input',
         maxTurns: 5,
@@ -62,7 +62,7 @@ describe('addHydra', () => {
     expect(result).toHaveLength(1);
     expect(result[0].assert).toBeUndefined();
     expect(result[0].provider).toMatchObject({
-      id: 'promptfoo:redteam:hydra',
+      id: 'artef:redteam:hydra',
       config: {
         injectVar: 'input',
         scanId: expect.any(String),
@@ -97,7 +97,7 @@ describe('addHydra', () => {
       vars: { input: 'test' },
       otherProp: 'should be preserved',
       provider: {
-        id: 'promptfoo:redteam:hydra',
+        id: 'artef:redteam:hydra',
         config: {
           injectVar: 'input',
           scanId: expect.any(String),

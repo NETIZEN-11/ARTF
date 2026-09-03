@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Shared logic for generating update commands based on environment
  */
 
@@ -21,7 +21,7 @@ export function getUpdateCommands(options: UpdateCommandOptions): UpdateCommandR
   // Preserve compatibility with existing official images, where the official marker is sufficient.
   if (isOfficialDockerImage) {
     return {
-      primary: 'docker pull ghcr.io/promptfoo/promptfoo:latest',
+      primary: 'docker pull ghcr.io/artef/artef:latest',
       alternative: null,
       commandType: 'docker',
     };
@@ -39,8 +39,8 @@ export function getUpdateCommands(options: UpdateCommandOptions): UpdateCommandR
   }
 
   return {
-    primary: isNpx ? 'npx promptfoo@latest' : 'npm install -g promptfoo@latest',
-    alternative: isNpx ? 'npm install -g promptfoo@latest' : 'npx promptfoo@latest',
+    primary: isNpx ? 'npx artef@latest' : 'npm install -g artef@latest',
+    alternative: isNpx ? 'npm install -g artef@latest' : 'npx artef@latest',
     commandType: isNpx ? 'npx' : 'npm',
   };
 }

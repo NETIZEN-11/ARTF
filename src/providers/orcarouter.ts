@@ -1,4 +1,4 @@
-import { type EnvVarKey, getEnvString } from '../envars';
+﻿import { type EnvVarKey, getEnvString } from '../envars';
 import { renderVarsInObject } from '../util';
 import { OpenAiChatCompletionProvider } from './openai/chat';
 
@@ -46,8 +46,8 @@ export class OrcaRouterProvider extends OpenAiChatCompletionProvider {
         apiKeyEnvar: providerOptions.config?.apiKeyEnvar || 'ORCAROUTER_API_KEY',
         headers: {
           // User-supplied headers win — `??=` is set inline below via spread order.
-          'HTTP-Referer': 'https://promptfoo.dev/',
-          'X-Title': 'promptfoo',
+          'HTTP-Referer': 'https://artef.dev/',
+          'X-Title': 'artef',
           ...providerOptions.config?.headers,
         },
         passthrough: {

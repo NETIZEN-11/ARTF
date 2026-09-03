@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import ReactMarkdown from 'react-markdown';
 import MarkdownErrorBoundary from './MarkdownErrorBoundary';
@@ -19,7 +19,7 @@ interface VariableMarkdownCellProps {
  *
  * Uses stable REMARK_PLUGINS constant to prevent prop instability.
  *
- * @see https://github.com/promptfoo/promptfoo/issues/969
+ * @see https://github.com/artef/artef/issues/969
  */
 const VariableMarkdownCell = React.memo(function VariableMarkdownCell({
   value,

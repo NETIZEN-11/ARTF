@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+﻿import { describe, expect, it, vi } from 'vitest';
 import { clearCache, enableCache, fetchWithCache } from '../../src/cache';
 import cliState from '../../src/cliState';
 import { loadClaudeCodeCredential } from '../../src/providers/anthropic/claudeCodeAuth';
@@ -347,7 +347,7 @@ describe('MetaProvider request body shaping', () => {
     try {
       const provider = asChat(createMetaProvider('meta:chat:muse-spark-1.1'));
       const { body } = await provider.getOpenAiBody('Hello');
-      expect(body.temperature).toBe(0); // promptfoo's config default, not the env value
+      expect(body.temperature).toBe(0); // artef's config default, not the env value
       expect(body.top_p).toBeUndefined();
       expect(body.presence_penalty).toBeUndefined();
       expect(body.frequency_penalty).toBeUndefined();

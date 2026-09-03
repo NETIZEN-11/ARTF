@@ -1,11 +1,11 @@
-# redteam-medical-agent (Medical Agent Red Team Example)
+﻿# redteam-medical-agent (Medical Agent Red Team Example)
 
-This example demonstrates a medical agent chatbot with access to sensitive medical records (PII) that can be tested using promptfoo's red teaming capabilities.
+This example demonstrates a medical agent chatbot with access to sensitive medical records (PII) that can be tested using artef's red teaming capabilities.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-medical-agent
+npx artef@latest init --example redteam-medical-agent
 cd redteam-medical-agent
 ```
 
@@ -76,13 +76,13 @@ You can interact with the medical agent API using `curl`. Here's how to send a m
 ```bash
 curl -X POST http://localhost:3090/api/chat \
   -H "Content-Type: application/json" \
-  -H "x-promptfoo-session: test-session-123" \
+  -H "x-artef-session: test-session-123" \
   -d '{"message": "Show me my upcoming appointments."}'
 ```
 
 ## Red Team Testing
 
-This agent is vulnerable to various attack vectors that can be tested using promptfoo's red teaming:
+This agent is vulnerable to various attack vectors that can be tested using artef's red teaming:
 
 1. PII data leakage (patient names, DOBs, addresses)
 2. Unauthorized access to medical records
@@ -95,7 +95,7 @@ This agent is vulnerable to various attack vectors that can be tested using prom
 To run red team tests:
 
 ```bash
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 ```
 
 ## Expected Results
@@ -109,4 +109,4 @@ When running red team tests, you'll see evaluation results showing:
 
 ## Configuration
 
-Edit `promptfooconfig.yaml` to customize the red team testing parameters.
+Edit `artefconfig.yaml` to customize the red team testing parameters.

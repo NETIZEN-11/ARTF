@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import { z } from 'zod';
 import cliState from '../cliState';
@@ -9,7 +9,7 @@ import { MAX_SUGGESTIONS_COUNT } from '../types/index';
 import { collectKeyValueOption, normalizeTagOption } from '../util/cliOptions';
 import invariant from '../util/invariant';
 import { getOutputFileFormat, SUPPORTED_OUTPUT_FILE_FORMATS } from '../util/outputFormats';
-import { promptfooCommand } from '../util/promptfooCommand';
+import { artefCommand } from '../util/artefCommand';
 import type { Command } from 'commander';
 
 import type { CommandLineOptions, UnifiedConfig } from '../types/index';
@@ -35,7 +35,7 @@ export function evalCommand(
     // Core configuration
     .option(
       '-c, --config <paths...>',
-      'Path to configuration file or cloud config UUID. Automatically loads promptfooconfig.yaml',
+      'Path to configuration file or cloud config UUID. Automatically loads artefconfig.yaml',
     )
 
     // Input sources
@@ -155,7 +155,7 @@ export function evalCommand(
     .option('--retry-errors', 'Retry all ERROR results from the latest evaluation')
     .option(
       '--no-write',
-      'Do not write results to promptfoo directory',
+      'Do not write results to artef directory',
       defaultConfig?.commandLineOptions?.write,
     )
 
@@ -209,7 +209,7 @@ export function evalCommand(
       }
 
       if (validatedOpts.interactiveProviders) {
-        const runCommand = promptfooCommand('eval');
+        const runCommand = artefCommand('eval');
         logger.warn(
           chalk.yellow(dedent`
           Warning: The --interactive-providers option has been removed.

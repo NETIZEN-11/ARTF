@@ -1,11 +1,11 @@
-# xai/chat (xAI Grok Models Evaluation)
+﻿# xai/chat (xAI Grok Models Evaluation)
 
 This example demonstrates how to evaluate xAI's Grok models across their main capabilities: text generation with reasoning, image creation, and server-side search tools.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example xai/chat
+npx artef@latest init --example xai/chat
 cd xai/chat
 ```
 
@@ -22,39 +22,39 @@ This example requires the following environment variable:
 export XAI_API_KEY=your_api_key_here
 
 # Run the main evaluation (EU-safe defaults)
-promptfoo eval
+artef eval
 
 # View results in the web interface
-promptfoo view
+artef view
 ```
 
 ## What's Tested
 
 This example includes configurations to test different Grok capabilities:
 
-- **Text Generation** (`promptfooconfig.yaml`) - Mathematical reasoning with Grok 4.3 and Grok 4.20, plus an opt-in Grok 4.5 provider
-- **Image Generation** (`promptfooconfig.images.yaml`) - Artistic image creation using Grok's image models
-- **Search Tools** (`promptfooconfig.search.yaml`) - Real-time web and X search using the Responses API
-- **Agent Tools (Responses API)** (`promptfooconfig.responses.yaml`) - Autonomous web and X search using Agent Tools
-- **Search Demo** (`promptfooconfig.promptfoo-search.yaml`) - Responses API search with assertions example
+- **Text Generation** (`artefconfig.yaml`) - Mathematical reasoning with Grok 4.3 and Grok 4.20, plus an opt-in Grok 4.5 provider
+- **Image Generation** (`artefconfig.images.yaml`) - Artistic image creation using Grok's image models
+- **Search Tools** (`artefconfig.search.yaml`) - Real-time web and X search using the Responses API
+- **Agent Tools (Responses API)** (`artefconfig.responses.yaml`) - Autonomous web and X search using Agent Tools
+- **Search Demo** (`artefconfig.artef-search.yaml`) - Responses API search with assertions example
 
 ## Run Individual Tests
 
 ```bash
 # Text generation with mathematical reasoning
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 
 # Image generation with artistic styles
-promptfoo eval -c promptfooconfig.images.yaml
+artef eval -c artefconfig.images.yaml
 
 # Search tools with web and X sources
-promptfoo eval -c promptfooconfig.search.yaml
+artef eval -c artefconfig.search.yaml
 
 # Agent Tools with Responses API (recommended)
-promptfoo eval -c promptfooconfig.responses.yaml
+artef eval -c artefconfig.responses.yaml
 
 # Search demo with assertions
-promptfoo eval -c promptfooconfig.promptfoo-search.yaml
+artef eval -c artefconfig.artef-search.yaml
 ```
 
 ## Featured Models
@@ -67,7 +67,7 @@ xAI's flagship model for coding, agentic tasks, and knowledge work (500K context
 - `reasoning_effort` - Supports `low`, `medium`, and `high` in chat configs (defaults to `high`; `none` is not accepted)
 - `xai:responses:grok-4.5` - Recommended form for server-side tools
 
-xAI currently excludes Grok 4.5 from the EU API Console, so its provider block is commented out by default. Non-EU users can opt in by uncommenting that block in `promptfooconfig.yaml`; EU users can run the example unchanged with the included Grok 4.3 and Grok 4.20 providers.
+xAI currently excludes Grok 4.5 from the EU API Console, so its provider block is commented out by default. Non-EU users can opt in by uncommenting that block in `artefconfig.yaml`; EU users can run the example unchanged with the included Grok 4.3 and Grok 4.20 providers.
 
 ### Grok 4.3
 

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { mockClipboard, mockObjectUrl } from '@app/tests/browserMocks';
 import { render, screen } from '@testing-library/react';
@@ -100,7 +100,7 @@ describe('YamlEditor', () => {
     expect(screen.getByRole('button', { name: /Discard Changes/ })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Download YAML/ })).toBeInTheDocument();
     expect(screen.getByText('Run in CLI')).toBeInTheDocument();
-    expect(screen.getByText('promptfoo eval -c promptfooconfig.yaml')).toBeInTheDocument();
+    expect(screen.getByText('artef eval -c artefconfig.yaml')).toBeInTheDocument();
 
     const editor = screen.getByTestId('yaml-editor') as HTMLTextAreaElement;
     expect(editor.disabled).toBe(false);
@@ -119,7 +119,7 @@ describe('YamlEditor', () => {
     expect(global.URL.createObjectURL).toHaveBeenCalledWith(expect.any(Blob));
     expect(clickSpy).toHaveBeenCalled();
     expect(global.URL.revokeObjectURL).toHaveBeenCalledWith('blob:yaml-editor-test');
-    expect(mockShowToast).toHaveBeenCalledWith('Downloaded promptfooconfig.yaml', 'success');
+    expect(mockShowToast).toHaveBeenCalledWith('Downloaded artefconfig.yaml', 'success');
   });
 
   it('saves YAML with Control+S', async () => {

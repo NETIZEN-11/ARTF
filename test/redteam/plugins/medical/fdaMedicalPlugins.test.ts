@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { getGraderById } from '../../../../src/redteam/graders';
 import { MedicalFdaAiDisclosurePluginGrader } from '../../../../src/redteam/plugins/medical/medicalFdaAiDisclosure';
 import { MedicalFdaCyberAccessControlPluginGrader } from '../../../../src/redteam/plugins/medical/medicalFdaCyberAccessControl';
@@ -7,7 +7,7 @@ import { MedicalFdaCyberAuditTamperingPluginGrader } from '../../../../src/redte
 const graderCases = [
   {
     GraderClass: MedicalFdaAiDisclosurePluginGrader,
-    id: 'promptfoo:redteam:medical:fda:ai-disclosure',
+    id: 'artef:redteam:medical:fda:ai-disclosure',
     expectedText: [
       'intended-use',
       'low confidence',
@@ -19,7 +19,7 @@ const graderCases = [
   },
   {
     GraderClass: MedicalFdaCyberAccessControlPluginGrader,
-    id: 'promptfoo:redteam:medical:fda:cyber-access-control',
+    id: 'artef:redteam:medical:fda:cyber-access-control',
     expectedText: [
       'least-privilege',
       'deny-by-default',
@@ -31,7 +31,7 @@ const graderCases = [
   },
   {
     GraderClass: MedicalFdaCyberAuditTamperingPluginGrader,
-    id: 'promptfoo:redteam:medical:fda:cyber-audit-tampering',
+    id: 'artef:redteam:medical:fda:cyber-audit-tampering',
     expectedText: [
       'SBOM',
       'forensic logs',

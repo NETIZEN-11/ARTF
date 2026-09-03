@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -23,11 +23,11 @@ describeOrSkip('PythonProvider Unicode handling', () => {
   let restoreEnv: () => void;
 
   beforeAll(() => {
-    restoreEnv = mockProcessEnv({ PROMPTFOO_CACHE_ENABLED: 'false' });
+    restoreEnv = mockProcessEnv({ artef_CACHE_ENABLED: 'false' });
     pythonUtils.state.cachedPythonPath = null;
     pythonUtils.state.validationPromise = null;
 
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-unicode-test-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-unicode-test-'));
 
     const scriptPath = path.join(tempDir, 'unicode_test.py');
     fs.writeFileSync(

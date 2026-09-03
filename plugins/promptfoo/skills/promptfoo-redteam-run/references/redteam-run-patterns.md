@@ -1,4 +1,4 @@
-# Redteam Run Patterns
+﻿# Redteam Run Patterns
 
 ## Stable Eval From Generated Tests
 
@@ -14,11 +14,11 @@ Use this for drift checks and repeated scans. It preserves the generated probes.
 ## Generate And Evaluate
 
 `redteam run` has no `--no-share` flag (see `src/redteam/commands/run.ts`), so
-set `PROMPTFOO_DISABLE_SHARING=true` when scanning internal targets:
+set `artef_DISABLE_SHARING=true` when scanning internal targets:
 
 ```bash
 source ~/.nvm/nvm.sh && nvm use
-PROMPTFOO_DISABLE_SHARING=true npm run local -- redteam run -c promptfooconfig.yaml --force --no-cache --no-progress-bar --strict
+artef_DISABLE_SHARING=true npm run local -- redteam run -c artefconfig.yaml --force --no-cache --no-progress-bar --strict
 ```
 
 Use this after changing target purpose, plugins, strategies, or generation
@@ -124,18 +124,18 @@ npm run local -- redteam eval -c redteam.yaml --filter-errors-only /tmp/redteam-
 ```
 
 `--filter-failing` creates a new eval containing previous failures. Use
-`promptfoo retry <evalId>` when you want to repair ERROR rows in place.
+`artef retry <evalId>` when you want to repair ERROR rows in place.
 If `--filter-errors-only` prints that it returned no tests, inspect the source
 JSON first; it may have failures but no `errors`.
 
 ## CI Gate
 
 ```bash
-PROMPTFOO_FAILED_TEST_EXIT_CODE=0 npm run local -- redteam eval -c redteam.yaml -o redteam-results.json --no-cache --no-share --no-progress-bar
+artef_FAILED_TEST_EXIT_CODE=0 npm run local -- redteam eval -c redteam.yaml -o redteam-results.json --no-cache --no-share --no-progress-bar
 node -e "const r=require('./redteam-results.json').results.stats; const denom=r.successes+r.failures; const asr=denom?r.failures/denom:0; if (asr > 0.15 || r.errors > 0) process.exit(1)"
 ```
 
-Use `PROMPTFOO_FAILED_TEST_EXIT_CODE=0` only when the follow-up gate script owns
+Use `artef_FAILED_TEST_EXIT_CODE=0` only when the follow-up gate script owns
 the failure decision.
 
 ## Report UI
@@ -144,6 +144,6 @@ the failure decision.
 npm run local -- redteam report
 ```
 
-This starts or reuses the local Promptfoo UI and opens the redteam report. In
+This starts or reuses the local artef UI and opens the redteam report. In
 this codebase, `redteam report` does not export HTML from the CLI; use JSON
 exports from `redteam eval` for CI artifacts.

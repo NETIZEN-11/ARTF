@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import cliState from '../../src/cliState';
 import { matchesSimilarity } from '../../src/matchers/similarity';
 import { DefaultEmbeddingProvider } from '../../src/providers/openai/defaults';
@@ -125,7 +125,7 @@ describe('matchesSimilarity', () => {
 
   it('should include Cloud target context in remote similarity requests', async () => {
     (cliState as any).config = {
-      providers: ['promptfoo://provider/cloud-target-123'],
+      providers: ['artef://provider/cloud-target-123'],
       redteam: {},
     };
     vi.spyOn(remoteGeneration, 'shouldGenerateRemote').mockReturnValue(true);
@@ -149,10 +149,10 @@ describe('matchesSimilarity', () => {
 
   it('should prefer filtered providers when building remote similarity context', async () => {
     cliState.config = {
-      providers: ['promptfoo://provider/excluded-target'],
+      providers: ['artef://provider/excluded-target'],
       redteam: {},
     };
-    cliState.selectedProviderConfigs = ['promptfoo://provider/selected-target'];
+    cliState.selectedProviderConfigs = ['artef://provider/selected-target'];
     vi.spyOn(remoteGeneration, 'shouldGenerateRemote').mockReturnValue(true);
     vi.spyOn(remoteGrading, 'doRemoteGrading').mockResolvedValue({
       pass: true,
@@ -281,8 +281,8 @@ describe('matchesSimilarity', () => {
     }).rejects.toThrow('API call failed');
   });
 
-  it('should use Nunjucks templating when PROMPTFOO_DISABLE_TEMPLATING is set', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_DISABLE_TEMPLATING: 'true' });
+  it('should use Nunjucks templating when artef_DISABLE_TEMPLATING is set', async () => {
+    const restoreEnv = mockProcessEnv({ artef_DISABLE_TEMPLATING: 'true' });
     try {
       const expected = 'Expected {{ var }}';
       const output = 'Output {{ var }}';

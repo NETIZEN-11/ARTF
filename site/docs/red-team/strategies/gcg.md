@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: GCG
 title: Greedy Coordinate Gradient Strategy
 description: Generate adversarial prompts using Greedy Coordinate Gradient optimization to systematically bypass LLM safety guardrails
@@ -18,9 +18,9 @@ Due to these intensive requirements, GCG is better suited for dedicated research
 
 ## Implementation
 
-Add it to your `promptfooconfig.yaml`:
+Add it to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: gcg
     config:

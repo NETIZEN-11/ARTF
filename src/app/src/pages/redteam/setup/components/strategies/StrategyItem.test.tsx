@@ -1,4 +1,4 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -206,7 +206,7 @@ describe('StrategyItem', () => {
       await user.hover(screen.getByText('ENTERPRISE'));
 
       const enterpriseTooltips = await screen.findAllByText(
-        'This strategy is available in Promptfoo Enterprise',
+        'This strategy is available in artef Enterprise',
       );
       expect(enterpriseTooltips.length).toBeGreaterThan(0);
     });

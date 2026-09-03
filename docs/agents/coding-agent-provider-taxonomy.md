@@ -1,6 +1,6 @@
-# Coding Agent Provider Taxonomy
+﻿# Coding Agent Provider Taxonomy
 
-This document summarizes how promptfoo should think about coding-agent providers,
+This document summarizes how artef should think about coding-agent providers,
 what has been implemented so far, and what should come next. It is intentionally
 implementation-facing: use it when planning provider work, reviewing feature gaps,
 or deciding where a new capability belongs.
@@ -35,19 +35,19 @@ stateful coding-agent runtime.
 
 ### 1. Runtime Boundary
 
-The first question is where promptfoo stops and the agent runtime starts.
+The first question is where artef stops and the agent runtime starts.
 
 | Boundary                 | Meaning                                                       | Current examples                         |
 | ------------------------ | ------------------------------------------------------------- | ---------------------------------------- |
-| In-process SDK           | promptfoo calls a package API directly.                       | Codex SDK, Claude Agent SDK              |
-| Managed local server     | promptfoo starts a server, then talks to it through a client. | OpenCode when `baseUrl` is unset         |
-| Existing server          | promptfoo connects to a runtime it does not configure.        | OpenCode with `baseUrl`                  |
-| Local app-server process | promptfoo starts a rich-client protocol server over stdio.    | Codex app-server                         |
+| In-process SDK           | artef calls a package API directly.                       | Codex SDK, Claude Agent SDK              |
+| Managed local server     | artef starts a server, then talks to it through a client. | OpenCode when `baseUrl` is unset         |
+| Existing server          | artef connects to a runtime it does not configure.        | OpenCode with `baseUrl`                  |
+| Local app-server process | artef starts a rich-client protocol server over stdio.    | Codex app-server                         |
 | Desktop UI process       | Human-facing native app process.                              | Codex Desktop app, not directly attached |
 
-This distinction matters because it controls what promptfoo can guarantee. If
-promptfoo starts the runtime, it can set env vars, working directories, sandbox
-options, tracing, and cleanup behavior. If promptfoo attaches to an existing server,
+This distinction matters because it controls what artef can guarantee. If
+artef starts the runtime, it can set env vars, working directories, sandbox
+options, tracing, and cleanup behavior. If artef attaches to an existing server,
 that server owns authentication, installed tools, app connectors, and runtime state.
 
 ### 2. Session and Thread State
@@ -82,7 +82,7 @@ vars. Each surface should have its own option and its own tests.
 
 ### 4. Permission and Interaction Model
 
-Promptfoo evals are non-interactive by default. Agent runtimes often expect a human
+artef evals are non-interactive by default. Agent runtimes often expect a human
 to answer approval prompts, permission requests, or clarification questions.
 Providers should convert those into deterministic policies.
 
@@ -116,7 +116,7 @@ than crashing an eval row, unless the provider docs promise strict input parsing
 
 ### 6. Outputs and Metadata
 
-All coding-agent providers should return a normal promptfoo provider result:
+All coding-agent providers should return a normal artef provider result:
 
 - `output`: final assistant-facing text.
 - `sessionId`: session/thread id when available.
@@ -156,7 +156,7 @@ OpenTelemetry env vars into a child process.
 
 The coding-agent providers already share several practical patterns:
 
-- Optional dependencies are loaded lazily so normal promptfoo installs do not need
+- Optional dependencies are loaded lazily so normal artef installs do not need
   every agent SDK.
 - Working directories are validated or created before the agent call.
 - Temporary workspaces are cleaned up after evals.
@@ -207,7 +207,7 @@ Important limits:
 - It is the right default for CI and automation, but it does not expose every rich
   app-server protocol event.
 - Skill detection is heuristic.
-- Promptfoo still receives a final provider response, not live partial output in
+- artef still receives a final provider response, not live partial output in
   assertions.
 
 Docs and examples:
@@ -265,7 +265,7 @@ Implemented capabilities:
   cleanup, aborts, and process failure handling.
 - Supports deep tracing by creating a fresh app-server process per row and injecting
   OpenTelemetry env vars.
-- Differentiates the app-server protocol from the Codex Desktop app: promptfoo
+- Differentiates the app-server protocol from the Codex Desktop app: artef
   starts its own app-server child process and does not attach to a running Desktop
   app UI process.
 
@@ -309,7 +309,7 @@ Implemented capabilities:
 
 Important limits:
 
-- The SDK owns many semantics, so promptfoo must keep docs aligned with SDK changes.
+- The SDK owns many semantics, so artef must keep docs aligned with SDK changes.
 - Side-effectful modes require external workspace reset discipline.
 
 Docs and examples:
@@ -337,14 +337,14 @@ Implemented capabilities:
 - Supports write/edit/bash tools with explicit permission config.
 - Supports JSON Schema structured output through OpenCode `format`.
 - Supports sessions and persistent session caching.
-- Supports MCP configuration and optional MCP caching when promptfoo starts the
+- Supports MCP configuration and optional MCP caching when artef starts the
   server.
 
 Important limits:
 
 - When using `baseUrl`, the existing server owns auth, MCP setup, installed agents,
   and server-side configuration.
-- OpenCode model support is delegated to OpenCode/models.dev rather than promptfoo's
+- OpenCode model support is delegated to OpenCode/models.dev rather than artef's
   normal provider model tables.
 
 Docs and examples:
@@ -360,7 +360,7 @@ Use provider IDs that encode the runtime boundary, not just the model vendor.
   best default for automation.
 - `openai:codex-app-server` should mean the app-server JSON-RPC protocol.
 - `openai:codex-desktop` should remain an alias for app-server behavior unless or
-  until promptfoo can actually attach to the Desktop app process.
+  until artef can actually attach to the Desktop app process.
 - `anthropic:claude-code` should remain an alias for Claude Agent SDK because the
   SDK is still built on Claude Code.
 - `opencode` can remain a convenience alias for `opencode:sdk`.
@@ -507,7 +507,7 @@ Candidates:
 - `turn/steer` and `turn/interrupt` tests for cancellation and mid-turn control.
 - Optional WebSocket transport only if upstream stabilizes it.
 - Better raw event snapshots for protocol regression tests.
-- Stronger docs around Desktop alias semantics and why promptfoo starts a separate
+- Stronger docs around Desktop alias semantics and why artef starts a separate
   app-server process.
 
 Acceptance criteria:
@@ -577,13 +577,13 @@ Before merging a provider in this family, verify:
 
 ## Open Questions
 
-- Should promptfoo expose one public `metadata.agent` schema now, or keep it internal
+- Should artef expose one public `metadata.agent` schema now, or keep it internal
   until at least two providers use it in docs examples?
 - Should Codex app-server discovery operations be exposed as provider metadata on
   every call, or only behind an explicit config flag?
 - Should any provider support a hard "no side effects" verifier that snapshots the
   workspace and fails if files changed?
-- Should remote/existing-server modes be marked as less reproducible in promptfoo
+- Should remote/existing-server modes be marked as less reproducible in artef
   output metadata?
 - Should top-level aliases like `codex:app-server` wait for a broader provider naming
   cleanup?

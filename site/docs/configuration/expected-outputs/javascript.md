@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 50
 sidebar_label: Javascript
 description: Build sophisticated JavaScript validators for LLM outputs with async operations, scoring logic, and comprehensive error handling
@@ -324,7 +324,7 @@ module.exports = (output, context) => {
 
 ## Inline assertions
 
-If you are using promptfoo as a JS package, you can build your assertion inline:
+If you are using artef as a JS package, you can build your assertion inline:
 
 ```js
 {
@@ -435,7 +435,7 @@ if (context.trace && maxDepth(context.trace.spans) > 5) {
 
 ### ES modules
 
-ES modules are supported, but must have a `.mjs` file extension. Alternatively, if you are transpiling Javascript or Typescript, we recommend pointing promptfoo to the transpiled plain Javascript output.
+ES modules are supported, but must have a `.mjs` file extension. Alternatively, if you are transpiling Javascript or Typescript, we recommend pointing artef to the transpiled plain Javascript output.
 
 ## Negation
 

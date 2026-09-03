@@ -1,14 +1,14 @@
-import request from 'supertest';
+﻿import request from 'supertest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../../src/updates');
 vi.mock('../../../src/updates/updateCommands');
-vi.mock('../../../src/util/promptfooCommand');
+vi.mock('../../../src/util/artefCommand');
 
 import { createApp } from '../../../src/server/server';
 import { getLatestVersion } from '../../../src/updates';
 import { getUpdateCommands } from '../../../src/updates/updateCommands';
-import { isRunningUnderNpx } from '../../../src/util/promptfooCommand';
+import { isRunningUnderNpx } from '../../../src/util/artefCommand';
 import { mockProcessEnv } from '../../util/utils';
 
 const mockedGetLatestVersion = vi.mocked(getLatestVersion);
@@ -22,8 +22,8 @@ describe('Version Route', () => {
     vi.resetAllMocks();
     mockedIsRunningUnderNpx.mockReturnValue(false);
     mockedGetUpdateCommands.mockReturnValue({
-      primary: 'npm install -g promptfoo@latest',
-      alternative: 'npx promptfoo@latest',
+      primary: 'npm install -g artef@latest',
+      alternative: 'npx artef@latest',
       commandType: 'npm',
     });
     app = createApp();
@@ -58,8 +58,8 @@ describe('Version Route', () => {
       selfHosted: false,
       isNpx: false,
       updateCommands: {
-        primary: 'npm install -g promptfoo@latest',
-        alternative: 'npx promptfoo@latest',
+        primary: 'npm install -g artef@latest',
+        alternative: 'npx artef@latest',
         commandType: 'npm',
       },
       commandType: 'npm',
@@ -120,7 +120,7 @@ describe('Version Route', () => {
   });
 
   it('should skip upstream update checks when they are disabled', async () => {
-    const restoreEnv = mockProcessEnv({ PROMPTFOO_DISABLE_UPDATE: 'true' });
+    const restoreEnv = mockProcessEnv({ artef_DISABLE_UPDATE: 'true' });
 
     try {
       const response = await request(app).get('/api/version');
@@ -136,8 +136,8 @@ describe('Version Route', () => {
 
   it('should not classify generic self-hosted mode as Docker', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_OFFICIAL_DOCKER_IMAGE: undefined,
-      PROMPTFOO_SELF_HOSTED: 'true',
+      artef_OFFICIAL_DOCKER_IMAGE: undefined,
+      artef_SELF_HOSTED: 'true',
     });
     mockedGetLatestVersion.mockResolvedValue('99.0.0');
 
@@ -158,9 +158,9 @@ describe('Version Route', () => {
 
   it('should use Docker guidance only when the official-image marker is set', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_OFFICIAL_DOCKER_IMAGE: 'true',
-      PROMPTFOO_RUNNING_IN_DOCKER: 'true',
-      PROMPTFOO_SELF_HOSTED: 'true',
+      artef_OFFICIAL_DOCKER_IMAGE: 'true',
+      artef_RUNNING_IN_DOCKER: 'true',
+      artef_SELF_HOSTED: 'true',
     });
     mockedGetLatestVersion.mockResolvedValue('99.0.0');
 
@@ -181,9 +181,9 @@ describe('Version Route', () => {
 
   it('should distinguish custom containers from official images', async () => {
     const restoreEnv = mockProcessEnv({
-      PROMPTFOO_OFFICIAL_DOCKER_IMAGE: undefined,
-      PROMPTFOO_RUNNING_IN_DOCKER: 'true',
-      PROMPTFOO_SELF_HOSTED: 'true',
+      artef_OFFICIAL_DOCKER_IMAGE: undefined,
+      artef_RUNNING_IN_DOCKER: 'true',
+      artef_SELF_HOSTED: 'true',
     });
     mockedGetLatestVersion.mockResolvedValue('99.0.0');
     mockedGetUpdateCommands.mockReturnValue({
@@ -219,7 +219,7 @@ describe('Version Route', () => {
   it('should include all required fields matching UpdateCommandResult shape', async () => {
     mockedGetLatestVersion.mockResolvedValue('99.0.0');
     mockedGetUpdateCommands.mockReturnValue({
-      primary: 'docker pull promptfoo/promptfoo:latest',
+      primary: 'docker pull artef/artef:latest',
       alternative: null,
       commandType: 'docker',
     });
@@ -240,8 +240,8 @@ describe('Version Route', () => {
     mockedGetLatestVersion.mockResolvedValue('99.0.0');
     // Return an invalid shape that will cause VersionSchemas.Response.parse() to throw
     mockedGetUpdateCommands.mockReturnValue({
-      primary: 'npm install -g promptfoo@latest',
-      alternative: 'npx promptfoo@latest',
+      primary: 'npm install -g artef@latest',
+      alternative: 'npx artef@latest',
       commandType: 'invalid-type' as any,
     });
 

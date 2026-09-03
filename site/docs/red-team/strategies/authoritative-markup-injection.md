@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Authoritative Markup Injection
 title: Authoritative Markup Injection Strategy
 description: Test LLM vulnerability to authoritative formatting by embedding prompts in structured markup that exploits trust in formatted content
@@ -25,9 +25,9 @@ This technique is distinct from simple prompt injection because it focuses speci
 
 ## Implementation
 
-Add it to your `promptfooconfig.yaml`:
+Add it to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   # Basic usage
   - authoritative-markup-injection
@@ -42,7 +42,7 @@ The `injectVar` parameter specifies which variable in your prompt template shoul
 
 Combine with red team plugins to test specific vulnerability categories:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 redteam:
   plugins:
     - harmful

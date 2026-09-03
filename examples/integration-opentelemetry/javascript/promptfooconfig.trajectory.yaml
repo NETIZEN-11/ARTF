@@ -1,7 +1,7 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Trajectory assertions with OpenTelemetry traces
 
-# Promptfoo accepts generic tool span attributes like tool.name/tool.arguments
+# artef accepts generic tool span attributes like tool.name/tool.arguments
 # and Vercel AI SDK telemetry attributes like ai.toolCall.name/ai.toolCall.args.
 
 prompts:

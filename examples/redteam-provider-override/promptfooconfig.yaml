@@ -1,6 +1,6 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Red teaming configuration
-# Docs: https://promptfoo.dev/docs/red-team/configuration
+# Docs: https://artef.dev/docs/red-team/configuration
 
 description: 'My first red team'
 
@@ -8,16 +8,16 @@ prompts:
   - "You are a helpful concise assistant. User query: {{query}}\n"
   # You can also reference external prompts, e.g.
   # - file:///path/to/prompt.json
-  # Learn more: https://promptfoo.dev/docs/configuration/prompts/
+  # Learn more: https://artef.dev/docs/configuration/prompts/
 
 targets:
   # Providers are red team targets. To talk directly to your application, use a custom provider.
-  # See https://promptfoo.dev/docs/red-team/configuration/#providers
+  # See https://artef.dev/docs/red-team/configuration/#providers
   - openrouter:qwen/qwen3-32b
 
 redteam:
   # Override the provider for the red team attack generation
-  # See https://promptfoo.dev/docs/red-team/configuration/#providers
+  # See https://artef.dev/docs/red-team/configuration/#providers
   provider: openrouter:meta-llama/llama-3.3-70b-instruct
 
   # Default number of inputs to generate for each plugin.

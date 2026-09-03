@@ -1,9 +1,9 @@
-# provider-meta (Meta Model API)
+﻿# provider-meta (Meta Model API)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-meta
+npx artef@latest init --example provider-meta
 cd provider-meta
 ```
 
@@ -14,10 +14,10 @@ Set your `MODEL_API_KEY` environment variable — Meta's official variable, the 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-View the results with `promptfoo view`.
+View the results with `artef view`.
 
 ## What this shows
 
@@ -25,4 +25,4 @@ View the results with `promptfoo view`.
 - Cost is computed automatically from Meta's published pricing, including the cheaper cached-input rate for prompt-cache hits.
 - Plain `icontains` / `icontains-any` assertions, so the example runs with nothing but a `MODEL_API_KEY`.
 
-`meta:<model>` targets Meta's Responses API by default, so search grounding with inline citations is one config line away: add `tools: [{ type: web_search }]` to a provider. See the [provider docs](https://www.promptfoo.dev/docs/providers/meta/) for the chat completions (`meta:chat:`) and Anthropic-compatible (`meta:messages:`) surfaces.
+`meta:<model>` targets Meta's Responses API by default, so search grounding with inline citations is one config line away: add `tools: [{ type: web_search }]` to a provider. See the [provider docs](https://www.artef.dev/docs/providers/meta/) for the chat completions (`meta:chat:`) and Anthropic-compatible (`meta:messages:`) surfaces.

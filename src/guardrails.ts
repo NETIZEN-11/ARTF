@@ -1,4 +1,4 @@
-import { fetchWithCache } from './cache';
+﻿import { fetchWithCache } from './cache';
 import { getShareApiBaseUrl } from './constants';
 import { getEnvString } from './envars';
 import { cloudConfig } from './globalConfig/cloud';
@@ -7,12 +7,12 @@ import logger from './logger';
 function resolveGuardrailsApi(): { baseUrl: string; headers: Record<string, string> } {
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };
 
-  // An explicit PROMPTFOO_REMOTE_API_BASE_URL override always wins, so users who
+  // An explicit artef_REMOTE_API_BASE_URL override always wins, so users who
   // point guardrails at a private endpoint keep that behavior even when logged in.
   // Otherwise prefer the configured cloud host (incl. on-prem), falling back to the
   // public share host.
   let base: string;
-  const override = getEnvString('PROMPTFOO_REMOTE_API_BASE_URL');
+  const override = getEnvString('artef_REMOTE_API_BASE_URL');
   if (override) {
     base = override;
   } else if (cloudConfig.isEnabled()) {

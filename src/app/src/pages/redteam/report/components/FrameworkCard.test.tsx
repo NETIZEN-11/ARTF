@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 
 import { renderWithProviders } from '@app/utils/testutils';
-import { Severity, severityDisplayNames } from '@promptfoo/redteam/constants';
+import { Severity, severityDisplayNames } from '@artef/redteam/constants';
 import { screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import FrameworkCard from './FrameworkCard';

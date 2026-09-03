@@ -1,4 +1,4 @@
-import { HUMAN_ASSERTION_TYPE } from '@promptfoo/providers/constants';
+﻿import { HUMAN_ASSERTION_TYPE } from '@artef/providers/constants';
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
@@ -13,7 +13,7 @@ import {
   setEvalDetailsHash,
   useEvalDetailsHash,
 } from './utils';
-import type { EvaluateTableOutput, PromptMetrics } from '@promptfoo/types';
+import type { EvaluateTableOutput, PromptMetrics } from '@artef/types';
 
 // Helper to create a base output object with all required properties
 const createBaseOutput = (): EvaluateTableOutput => ({

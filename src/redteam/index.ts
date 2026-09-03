@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 
 import async from 'async';
 import chalk from 'chalk';
@@ -72,7 +72,7 @@ import type {
   SynthesizeOptions,
 } from './types';
 
-const MATERIALIZED_MULTI_INPUT_PROMPT_METADATA_KEY = '__promptfooMaterializedMultiInputPrompt';
+const MATERIALIZED_MULTI_INPUT_PROMPT_METADATA_KEY = '__artefMaterializedMultiInputPrompt';
 
 function getMaterializedMultiInputPromptSnapshot(
   metadata: TestCase['metadata'] | undefined,
@@ -1307,7 +1307,7 @@ export async function synthesize({
   if (shouldGenerateRemote()) {
     const healthUrl = getRemoteHealthUrl();
     if (healthUrl) {
-      logger.debug(`Checking Promptfoo API health at ${healthUrl}...`);
+      logger.debug(`Checking artef API health at ${healthUrl}...`);
       const healthResult = await checkRemoteHealth(healthUrl);
       if (healthResult.status !== 'OK') {
         throw new Error(

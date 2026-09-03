@@ -1,6 +1,6 @@
----
+﻿---
 title: 'Open-Sourcing ModelAudit: Security Scanner for ML Model Files'
-description: 'Promptfoo ModelAudit scans 42+ ML model formats for unsafe loading behaviors, known CVEs, and suspicious artifacts. Now MIT-licensed and open source.'
+description: 'artef ModelAudit scans 42+ ML model formats for unsafe loading behaviors, known CVEs, and suspicious artifacts. Now MIT-licensed and open source.'
 image: /img/blog/open-sourcing-modelaudit/hero.jpg
 keywords:
   [
@@ -30,9 +30,9 @@ tags: [company-update, model-security, open-source, ai-security]
 
 # Open-Sourcing ModelAudit
 
-Before joining Promptfoo, I worked on model scanning at Databricks. Teams pulled models from public registries, ran `torch.load()`, and treated the artifact like inert data. Model files are executable at load time.
+Before joining artef, I worked on model scanning at Databricks. Teams pulled models from public registries, ran `torch.load()`, and treated the artifact like inert data. Model files are executable at load time.
 
-Since joining Promptfoo last September, I've been building ModelAudit, a static security scanner for ML model files. We filed 7 GHSAs against existing scanners, including a CVSS 10.0 universal bypass, and validated against thousands of real models with zero false positives. Last week we released it as an MIT-licensed open-source project.
+Since joining artef last September, I've been building ModelAudit, a static security scanner for ML model files. We filed 7 GHSAs against existing scanners, including a CVSS 10.0 universal bypass, and validated against thousands of real models with zero false positives. Last week we released it as an MIT-licensed open-source project.
 
 <!-- truncate -->
 
@@ -40,7 +40,7 @@ Since joining Promptfoo last September, I've been building ModelAudit, a static 
 
 ModelAudit is a static scanner for ML model files. It flags unsafe loading behaviors (deserialization RCE, archive tricks), known CVEs, and suspicious artifacts across [42+ formats](/docs/model-audit/scanners/), without executing the model or importing ML frameworks.
 
-[ModelAudit](https://github.com/promptfoo/modelaudit) is the open-source engine (Python, MIT). `promptfoo scan-model` is a CLI wrapper; you can also run `modelaudit scan` directly.
+[ModelAudit](https://github.com/artef/modelaudit) is the open-source engine (Python, MIT). `artef scan-model` is a CLI wrapper; you can also run `modelaudit scan` directly.
 
 ```bash
 pip install modelaudit
@@ -95,8 +95,8 @@ modelaudit scan hf://microsoft/DialoGPT-medium
 # SARIF output for GitHub Code Scanning / GitLab SAST
 modelaudit scan model.pt --format sarif --output results.sarif
 
-# Via the Promptfoo CLI wrapper (requires Node)
-npx promptfoo scan-model model.pt
+# Via the artef CLI wrapper (requires Node)
+npx artef scan-model model.pt
 ```
 
 Python 3.10–3.13. Linux, macOS, Windows. No ML framework dependencies.
@@ -155,9 +155,9 @@ Hugging Face hosts over two million models. Most organizations pull from public 
 
 ## How we got here
 
-### Building at Promptfoo
+### Building at artef
 
-When I joined Promptfoo, the team was building [AI red teaming](https://www.promptfoo.dev/docs/red-team/) and [code scanning](https://www.promptfoo.dev/code-scanning/) capabilities. We could test how an LLM application _behaves_ at runtime, but had no visibility into whether the models themselves were safe to load. If a model file triggers code execution on deserialization, runtime defenses don't matter. The compromise happens before the application starts.
+When I joined artef, the team was building [AI red teaming](https://www.artef.dev/docs/red-team/) and [code scanning](https://www.artef.dev/code-scanning/) capabilities. We could test how an LLM application _behaves_ at runtime, but had no visibility into whether the models themselves were safe to load. If a model file triggers code execution on deserialization, runtime defenses don't matter. The compromise happens before the application starts.
 
 The team had already built an early version of the scanner with the core architecture in place. When I joined, we expanded it significantly - adding opcode-level bypass detection, growing format coverage to the 42+ formats we support today, and introducing an allowlist-first approach with systematic false positive elimination. The goal was a modern, lightweight scanner with no ML framework dependencies - something you could drop into any CI pipeline without pulling in PyTorch or TensorFlow.
 
@@ -169,7 +169,7 @@ We ran several rounds of false positive elimination against real Hugging Face mo
 
 The maturity milestone: 1,000+ models scanned across 14 formats, 5,000+ security checks, zero false positives on the final 100-model regression run. Since then, we've expanded to 42+ formats with 12 new scanners and validated against an additional 200+ models - all clean. That result triggered the open-source decision.
 
-ModelAudit started as an internal capability within the Promptfoo platform ([promptfoo.dev/model-security](https://www.promptfoo.dev/model-security/)). Today's release is the standalone extraction of that scanning engine.
+ModelAudit started as an internal capability within the artef platform ([artef.dev/model-security](https://www.artef.dev/model-security/)). Today's release is the standalone extraction of that scanning engine.
 
 ## Existing scanners and where they break
 
@@ -355,7 +355,7 @@ ModelAudit is not a replacement for these tools - they've all contributed to mak
 
 ## Get started
 
-The entire scanning engine is in the [open-source repository](https://github.com/promptfoo/modelaudit). All scanners, all CVE detection rules, all output formats.
+The entire scanning engine is in the [open-source repository](https://github.com/artef/modelaudit). All scanners, all CVE detection rules, all output formats.
 
 ```bash
 pip install modelaudit
@@ -366,10 +366,10 @@ modelaudit scan your_model.pkl
 - [Scanner reference](/docs/model-audit/scanners/)
 - [CI/CD integration guide](/docs/model-audit/ci-cd)
 - [Advanced usage](/docs/model-audit/usage)
-- [Contribution guide](https://github.com/promptfoo/modelaudit/blob/main/CONTRIBUTING.md)
+- [Contribution guide](https://github.com/artef/modelaudit/blob/main/CONTRIBUTING.md)
 
 If you find a bypass, we follow coordinated disclosure and will credit you.
 
-Promptfoo also offers ModelAudit with a hosted UI and managed integrations in the [platform](https://www.promptfoo.dev/model-security/). The engine is the same open-source code.
+artef also offers ModelAudit with a hosted UI and managed integrations in the [platform](https://www.artef.dev/model-security/). The engine is the same open-source code.
 
-[Open issues](https://github.com/promptfoo/modelaudit/issues) on GitHub or reach out directly.
+[Open issues](https://github.com/artef/modelaudit/issues) on GitHub or reach out directly.

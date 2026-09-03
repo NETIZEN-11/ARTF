@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { generateEvalSummary } from '../../../src/util/eval/summary';
 import { accumulateTokenUsage, createEmptyTokenUsage } from '../../../src/util/tokenUsageUtils';
@@ -96,7 +96,7 @@ describe('generateEvalSummary', () => {
         evalId: 'eval-789',
         isRedteam: false,
         writeToDatabase: true,
-        shareableUrl: 'https://promptfoo.app/eval/abc123',
+        shareableUrl: 'https://artef.app/eval/abc123',
         wantsToShare: true,
         hasExplicitDisable: false,
         cloudEnabled: false,
@@ -112,7 +112,7 @@ describe('generateEvalSummary', () => {
       const lines = generateEvalSummary(params);
       const output = stripAnsi(lines.join('\n'));
 
-      expect(output).toContain('✓ Eval complete: https://promptfoo.app/eval/abc123');
+      expect(output).toContain('✓ Eval complete: https://artef.app/eval/abc123');
       expect(output).not.toContain('eval-789');
     });
 
@@ -875,9 +875,9 @@ describe('generateEvalSummary', () => {
       const lines = generateEvalSummary(params);
       const output = stripAnsi(lines.join('\n'));
 
-      expect(output).toContain('» View results: promptfoo view');
-      expect(output).toContain('» Share with your team: https://promptfoo.app');
-      expect(output).toContain('» Feedback: https://promptfoo.dev/feedback');
+      expect(output).toContain('» View results: artef view');
+      expect(output).toContain('» Share with your team: https://artef.app');
+      expect(output).toContain('» Feedback: https://artef.dev/feedback');
     });
 
     it('should show share guidance with cloud enabled', () => {
@@ -901,9 +901,9 @@ describe('generateEvalSummary', () => {
       const lines = generateEvalSummary(params);
       const output = stripAnsi(lines.join('\n'));
 
-      expect(output).toContain('» View results: promptfoo view');
-      expect(output).toContain('» Create shareable URL: promptfoo share');
-      expect(output).not.toContain('https://promptfoo.app');
+      expect(output).toContain('» View results: artef view');
+      expect(output).toContain('» Create shareable URL: artef share');
+      expect(output).not.toContain('https://artef.app');
     });
 
     it('should NOT show share guidance when explicitly disabled (--no-share)', () => {
@@ -927,7 +927,7 @@ describe('generateEvalSummary', () => {
       const lines = generateEvalSummary(params);
       const output = stripAnsi(lines.join('\n'));
 
-      expect(output).toContain('» View results: promptfoo view');
+      expect(output).toContain('» View results: artef view');
       expect(output).not.toContain('» Share with your team');
       expect(output).not.toContain('» Create shareable URL');
     });
@@ -963,7 +963,7 @@ describe('generateEvalSummary', () => {
         evalId: 'eval-with-url',
         isRedteam: false,
         writeToDatabase: true,
-        shareableUrl: 'https://promptfoo.app/eval/abc123',
+        shareableUrl: 'https://artef.app/eval/abc123',
         wantsToShare: true,
         hasExplicitDisable: false,
         cloudEnabled: true,

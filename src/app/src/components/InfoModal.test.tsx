@@ -1,4 +1,4 @@
-import { renderWithProviders } from '@app/utils/testutils';
+﻿import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -13,23 +13,23 @@ describe('InfoModal', () => {
 
   it('does not render when closed', () => {
     renderWithProviders(<InfoModal open={false} onClose={mockOnClose} />);
-    expect(screen.queryByText('About Promptfoo')).not.toBeInTheDocument();
+    expect(screen.queryByText('About artef')).not.toBeInTheDocument();
   });
 
   it('displays the correct title', () => {
     renderWithProviders(<InfoModal open={true} onClose={mockOnClose} />);
-    expect(screen.getByText('About Promptfoo')).toBeInTheDocument();
+    expect(screen.getByText('About artef')).toBeInTheDocument();
   });
 
   it('displays the correct version', () => {
-    vi.stubEnv('VITE_PROMPTFOO_VERSION', '1.0.0');
+    vi.stubEnv('VITE_artef_VERSION', '1.0.0');
     renderWithProviders(<InfoModal open={true} onClose={mockOnClose} />);
     expect(screen.getByText('Version 1.0.0')).toBeInTheDocument();
   });
 
   it('displays the correct description', () => {
     renderWithProviders(<InfoModal open={true} onClose={mockOnClose} />);
-    expect(screen.getByText(/Promptfoo is a MIT licensed open-source tool/)).toBeInTheDocument();
+    expect(screen.getByText(/artef is a MIT licensed open-source tool/)).toBeInTheDocument();
   });
 
   it('renders all links correctly', () => {
@@ -58,7 +58,7 @@ describe('InfoModal', () => {
   it('has accessible dialog with title', () => {
     renderWithProviders(<InfoModal open={true} onClose={mockOnClose} />);
     const dialog = screen.getByRole('dialog');
-    expect(dialog).toHaveAccessibleName('About Promptfoo');
+    expect(dialog).toHaveAccessibleName('About artef');
   });
 
   it('has correct link targets', () => {
@@ -72,10 +72,10 @@ describe('InfoModal', () => {
   it('has correct link hrefs', () => {
     renderWithProviders(<InfoModal open={true} onClose={mockOnClose} />);
     const links = [
-      { text: 'Documentation', href: 'https://www.promptfoo.dev/docs/intro' },
-      { text: 'GitHub Repository', href: 'https://github.com/promptfoo/promptfoo' },
-      { text: 'File an Issue', href: 'https://github.com/promptfoo/promptfoo/issues' },
-      { text: 'Join Our Discord Community', href: 'https://discord.gg/promptfoo' },
+      { text: 'Documentation', href: 'https://www.artef.dev/docs/intro' },
+      { text: 'GitHub Repository', href: 'https://github.com/artef/artef' },
+      { text: 'File an Issue', href: 'https://github.com/artef/artef/issues' },
+      { text: 'Join Our Discord Community', href: 'https://discord.gg/artef' },
     ];
 
     links.forEach(({ text, href }) => {

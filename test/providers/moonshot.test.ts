@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+﻿import { describe, expect, it, vi } from 'vitest';
 import { fetchWithCache } from '../../src/cache';
 import { calculateMoonshotCost, createMoonshotProvider } from '../../src/providers/moonshot';
 import { mockProcessEnv } from '../util/utils';
@@ -151,7 +151,7 @@ describe('MoonshotProvider key resolution', () => {
 });
 
 describe('MoonshotProvider sampling-param handling', () => {
-  it('omits promptfoo default sampling/token params for Kimi models', async () => {
+  it('omits artef default sampling/token params for Kimi models', async () => {
     const provider = asChat(createMoonshotProvider('moonshot:kimi-k2.6'));
     const { body } = await provider.getOpenAiBody('Hello');
     // Kimi rejects any non-default temperature and needs the 32k server budget.
@@ -206,7 +206,7 @@ describe('MoonshotProvider sampling-param handling', () => {
     }
   });
 
-  it('omits promptfoo default sampling/token params for kimi-k3 as well', async () => {
+  it('omits artef default sampling/token params for kimi-k3 as well', async () => {
     const provider = asChat(createMoonshotProvider('moonshot:kimi-k3'));
     const { body } = await provider.getOpenAiBody('Hello');
     expect(body.temperature).toBeUndefined();
@@ -302,7 +302,7 @@ describe('MoonshotProvider sampling-param handling', () => {
     expect(body.reasoning_effort).toBe('max');
   });
 
-  it('keeps promptfoo deterministic defaults for moonshot-v1 generation models', async () => {
+  it('keeps artef deterministic defaults for moonshot-v1 generation models', async () => {
     const provider = asChat(createMoonshotProvider('moonshot:moonshot-v1-8k'));
     const { body } = await provider.getOpenAiBody('Hello');
     // moonshot-v1 accepts arbitrary sampling, so the deterministic default stays.
@@ -432,7 +432,7 @@ describe('MoonshotProvider callApi cost', () => {
     expect(result.cost).toBeUndefined();
   });
 
-  it('leaves cost undefined for promptfoo cache hits even when pricing is configured', async () => {
+  it('leaves cost undefined for artef cache hits even when pricing is configured', async () => {
     vi.mocked(fetchWithCache).mockResolvedValueOnce({ ...okResponse, cached: true } as any);
     const provider = createMoonshotProvider('moonshot:moonshot-v1-8k', {
       config: { apiKey: 'k', inputCost: 0.000002, outputCost: 0.000004 },

@@ -1,9 +1,9 @@
-# redteam-mcp-auth (Red Team MCP Authentication)
+﻿# redteam-mcp-auth (Red Team MCP Authentication)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-mcp-auth
+npx artef@latest init --example redteam-mcp-auth
 cd redteam-mcp-auth
 ```
 
@@ -17,7 +17,7 @@ When running red team evaluations against protected MCP servers, you need to con
 
 ### OAuth Authentication
 
-The `promptfooconfig.oauth.yaml` file demonstrates OAuth 2.0 client credentials flow:
+The `artefconfig.oauth.yaml` file demonstrates OAuth 2.0 client credentials flow:
 
 ```yaml
 targets:
@@ -26,13 +26,13 @@ targets:
     config:
       enabled: true
       server:
-        url: https://example-app.promptfoo.app/mcp/minnow?auth_type=bearer
+        url: https://example-app.artef.app/mcp/minnow?auth_type=bearer
         auth:
           type: oauth
           grantType: client_credentials
-          clientId: '{{env.PROMPTFOO_TARGET_CLIENT_ID}}'
-          clientSecret: '{{env.PROMPTFOO_TARGET_CLIENT_SECRET}}'
-          tokenUrl: https://example-app.promptfoo.app/oauth/token
+          clientId: '{{env.artef_TARGET_CLIENT_ID}}'
+          clientSecret: '{{env.artef_TARGET_CLIENT_SECRET}}'
+          tokenUrl: https://example-app.artef.app/oauth/token
           scopes: []
 ```
 
@@ -40,8 +40,8 @@ targets:
 
 This example requires the following environment variables:
 
-- `PROMPTFOO_TARGET_CLIENT_ID` - Your OAuth client ID
-- `PROMPTFOO_TARGET_CLIENT_SECRET` - Your OAuth client secret
+- `artef_TARGET_CLIENT_ID` - Your OAuth client ID
+- `artef_TARGET_CLIENT_SECRET` - Your OAuth client secret
 
 NOTE: The values for these environment variables are available upon request.
 
@@ -50,20 +50,20 @@ NOTE: The values for these environment variables are available upon request.
 1. **Set up environment variables:**
 
 ```bash
-export PROMPTFOO_TARGET_CLIENT_ID=your-client-id
-export PROMPTFOO_TARGET_CLIENT_SECRET=your-client-secret
+export artef_TARGET_CLIENT_ID=your-client-id
+export artef_TARGET_CLIENT_SECRET=your-client-secret
 ```
 
 2. **Run the red team evaluation:**
 
 ```bash
-promptfoo redteam run -c promptfooconfig.oauth.yaml
+artef redteam run -c artefconfig.oauth.yaml
 ```
 
 3. **View the results:**
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## How It Works

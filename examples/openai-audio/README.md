@@ -1,20 +1,20 @@
-# openai-audio (OpenAI Audio Example)
+﻿# openai-audio (OpenAI Audio Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-audio
+npx artef@latest init --example openai-audio
 cd openai-audio
 ```
 
-This example demonstrates how to use promptfoo to test OpenAI's audio capabilities using audio-capable models. The example focuses on audio input processing (speech-to-text) and audio output generation (speech-to-speech).
+This example demonstrates how to use artef to test OpenAI's audio capabilities using audio-capable models. The example focuses on audio input processing (speech-to-text) and audio output generation (speech-to-speech).
 
 ## Quick Start
 
 You can initialize this example in a new directory using:
 
 ```bash
-npx promptfoo@latest init --example openai-audio
+npx artef@latest init --example openai-audio
 ```
 
 This will create all necessary files and folder structure to get started quickly.
@@ -33,13 +33,13 @@ export OPENAI_API_KEY=your-api-key-here
 
 ## Files
 
-- `promptfooconfig.yaml`: Configuration file defining the providers and tests
+- `artefconfig.yaml`: Configuration file defining the providers and tests
 - `audio-input.json`: JSON template for the audio input prompt
 
 ## Running the Example
 
-From the root directory of promptfoo, run:
+From the root directory of artef, run:
 
 ```bash
-npx promptfoo eval -c examples/openai-audio/promptfooconfig.yaml
+npx artef eval -c examples/openai-audio/artefconfig.yaml
 ```

@@ -1,9 +1,9 @@
-# provider-http/tls (HTTP Provider with TLS Certificates)
+﻿# provider-http/tls (HTTP Provider with TLS Certificates)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-http/tls
+npx artef@latest init --example provider-http/tls
 cd provider-http/tls
 ```
 
@@ -129,7 +129,7 @@ Then copy the content (excluding the BEGIN/END headers) to use as the `pfx` valu
    ```
 3. Run the evaluation:
    ```bash
-   promptfoo eval
+   artef eval
    ```
 
 ## TLS Configuration Options
@@ -177,5 +177,5 @@ If certificate verification fails:
 
 ## Related Documentation
 
-- [HTTP Provider Documentation](https://promptfoo.com/docs/providers/http)
-- [TLS/HTTPS Configuration](https://promptfoo.com/docs/providers/http#tlshttps-configuration)
+- [HTTP Provider Documentation](https://artef.com/docs/providers/http)
+- [TLS/HTTPS Configuration](https://artef.com/docs/providers/http#tlshttps-configuration)

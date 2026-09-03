@@ -1,4 +1,4 @@
-import { APIError } from '@anthropic-ai/sdk';
+﻿import { APIError } from '@anthropic-ai/sdk';
 import dedent from 'dedent';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
@@ -641,8 +641,8 @@ describe('AnthropicMessagesProvider', () => {
       expect(create).toHaveBeenCalledTimes(3);
     });
 
-    it('expires unlabeled message cache entries using PROMPTFOO_CACHE_TTL', async () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_CACHE_TTL: '1' });
+    it('expires unlabeled message cache entries using artef_CACHE_TTL', async () => {
+      const restoreEnv = mockProcessEnv({ artef_CACHE_TTL: '1' });
       const now = vi.spyOn(Date, 'now').mockReturnValue(1_000);
       const provider = new AnthropicMessagesProvider('claude-3-5-sonnet-20241022', {
         config: { apiKey: 'sk-ant-tenant-a' },
@@ -702,8 +702,8 @@ describe('AnthropicMessagesProvider', () => {
       expect(create).toHaveBeenCalledTimes(2);
     });
 
-    it('keeps unlabeled message cache entries when PROMPTFOO_CACHE_TTL is zero', async () => {
-      const restoreEnv = mockProcessEnv({ PROMPTFOO_CACHE_TTL: '0' });
+    it('keeps unlabeled message cache entries when artef_CACHE_TTL is zero', async () => {
+      const restoreEnv = mockProcessEnv({ artef_CACHE_TTL: '0' });
       const now = vi.spyOn(Date, 'now').mockReturnValue(1_000);
       const provider = new AnthropicMessagesProvider('claude-3-5-sonnet-20241022', {
         config: { apiKey: 'sk-ant-tenant-a' },
@@ -4032,7 +4032,7 @@ describe('AnthropicMessagesProvider', () => {
       const headers = (requestOptions?.headers ?? {}) as Record<string, string>;
       expect(headers['anthropic-beta']).toContain('claude-code-20250219');
       expect(headers['anthropic-beta']).toContain('oauth-2025-04-20');
-      expect(headers['user-agent']).toBe('claude-cli/1.0.0 (external, promptfoo)');
+      expect(headers['user-agent']).toBe('claude-cli/1.0.0 (external, artef)');
       expect(headers['x-app']).toBe('cli');
     });
 
@@ -4210,7 +4210,7 @@ describe('AnthropicMessagesProvider', () => {
 
       const [, requestOptions] = createSpy.mock.calls[0];
       const headers = (requestOptions?.headers ?? {}) as Record<string, string>;
-      expect(headers['user-agent']).toBe('claude-cli/1.0.0 (external, promptfoo)');
+      expect(headers['user-agent']).toBe('claude-cli/1.0.0 (external, artef)');
       expect(headers['x-app']).toBe('cli');
     });
 
@@ -4237,7 +4237,7 @@ describe('AnthropicMessagesProvider', () => {
       const headers = (requestOptions?.headers ?? {}) as Record<string, string>;
       expect(headers['anthropic-beta']).toContain('claude-code-20250219');
       expect(headers['anthropic-beta']).toContain('oauth-2025-04-20');
-      expect(headers['user-agent']).toBe('claude-cli/1.0.0 (external, promptfoo)');
+      expect(headers['user-agent']).toBe('claude-cli/1.0.0 (external, artef)');
       expect(headers['x-app']).toBe('cli');
     });
   });

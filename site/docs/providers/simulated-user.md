@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Simulated User
 description: 'Simulate realistic user interactions and behaviors for comprehensive testing of conversational AI systems and chatbots'
 ---
@@ -13,12 +13,12 @@ It is inspired by [Tau-bench](https://github.com/sierra-research/tau-bench), a b
 
 ## Configuration
 
-To use the Simulated User Provider, set the provider `id` to `promptfoo:simulated-user` and provide configuration options:
+To use the Simulated User Provider, set the provider `id` to `artef:simulated-user` and provide configuration options:
 
 ```yaml
 tests:
   - provider:
-      id: 'promptfoo:simulated-user'
+      id: 'artef:simulated-user'
       config:
         maxTurns: 10
         instructions: 'You are mia_li_3668. You want to fly from New York to Seattle on May 20 (one way). You do not want to fly before 11am EST. You want to fly in economy. You prefer direct flights but one stopover is also fine. If there are multiple options, you prefer the one with the lowest price. You have 3 bags. You do not want insurance. You want to use your two certificates to pay. If only one certificate can be used, you prefer using the larger one, and pay the rest with your 7447 card. You are reactive to the agent and will not say anything that is not asked. Your birthday is in your user profile so you do not prefer to provide it.'
@@ -29,7 +29,7 @@ You may also find it easiest to set the provider on `defaultTest`, which turns e
 ```yaml
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 10
 
@@ -42,7 +42,7 @@ tests:
 
 The Simulated User Provider facilitates a back-and-forth conversation between:
 
-1. A simulated user (controlled by promptfoo)
+1. A simulated user (controlled by artef)
 2. Your AI agent (the provider being tested)
 
 For each turn:
@@ -71,7 +71,7 @@ Use variables to template messages and avoid duplication:
 ```yaml
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 3
       initialMessages:
@@ -133,7 +133,7 @@ This allows you to control how much new interaction happens while testing from a
 
 Here's a simple example testing a customer service agent:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 prompts:
   - You are a helpful customer service agent. Answer questions politely and try to resolve issues.
 
@@ -142,7 +142,7 @@ providers:
 
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 5
 
@@ -202,7 +202,7 @@ tests:
 
 This enables automatic evaluation of whether your agent successfully handles different customer types and scenarios.
 
-For a complete working example with 31 customer personas and comprehensive assertions, see the [Simulated User example](https://github.com/promptfoo/promptfoo/tree/main/examples/integration-tau).
+For a complete working example with 31 customer personas and comprehensive assertions, see the [Simulated User example](https://github.com/artef/artef/tree/main/examples/integration-tau).
 
 ### Using with Custom Providers
 
@@ -216,7 +216,7 @@ providers:
 
 defaultTest:
   provider:
-    id: 'promptfoo:simulated-user'
+    id: 'artef:simulated-user'
     config:
       maxTurns: 5
 
@@ -250,13 +250,13 @@ This enables sophisticated testing scenarios where your custom provider can:
 
 ## Using as a Library
 
-When using promptfoo as a Node library, provide the equivalent configuration:
+When using artef as a Node library, provide the equivalent configuration:
 
 ```js
 {
   providers: [
     {
-      id: 'promptfoo:simulated-user',
+      id: 'artef:simulated-user',
       config: {
         instructions: 'You are a customer with the following problem: {{problem}}',
         maxTurns: 5,
@@ -278,9 +278,9 @@ The `###STOP###` marker is useful for agents that can determine when a conversat
 
 ## Remote Generation
 
-By default, SimulatedUser uses Promptfoo's hosted conversation models. Your target model always runs locally - only simulated user responses are generated remotely.
+By default, SimulatedUser uses artef's hosted conversation models. Your target model always runs locally - only simulated user responses are generated remotely.
 
-To disable remote generation, set `PROMPTFOO_DISABLE_REMOTE_GENERATION=true`. See the [Privacy Notice](/privacy/) for details on what data is sent.
+To disable remote generation, set `artef_DISABLE_REMOTE_GENERATION=true`. See the [Privacy Notice](/privacy/) for details on what data is sent.
 
 ## Limitations
 
@@ -300,5 +300,5 @@ The original prompt is sent as a system message to initialize the agent's behavi
 Set the environment variable `LOG_LEVEL=debug` to see detailed logs of the conversation flow, including each message sent between the agent and simulated user.
 
 ```bash
-LOG_LEVEL=debug promptfoo eval
+LOG_LEVEL=debug artef eval
 ```

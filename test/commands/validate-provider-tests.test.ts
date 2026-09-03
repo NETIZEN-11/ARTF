@@ -1,4 +1,4 @@
-import { Command } from 'commander';
+﻿import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import { doValidate, doValidateTarget, validateCommand } from '../../src/commands/validate';
 import logger from '../../src/logger';
@@ -91,7 +91,7 @@ describe('Validate Command Provider Tests', () => {
             config: {
               maxRetries: 1,
               headers: {
-                'x-promptfoo-silent': 'true',
+                'x-artef-silent': 'true',
               },
             },
           },
@@ -502,8 +502,8 @@ describe('Validate Command Provider Tests', () => {
 
     it('should preserve config resolution warning level when loading config fails', async () => {
       vi.mocked(resolveConfigs).mockRejectedValue(
-        new ConfigResolutionError('No promptfooconfig found', {
-          cliMessage: 'No promptfooconfig found in this directory.',
+        new ConfigResolutionError('No artefconfig found', {
+          cliMessage: 'No artefconfig found in this directory.',
           logLevel: 'warn',
         }),
       );
@@ -511,7 +511,7 @@ describe('Validate Command Provider Tests', () => {
       await doValidateTarget({ config: 'missing.yaml' }, defaultConfig);
 
       expect(logger.warn).toHaveBeenCalledWith(
-        'Failed to load configuration: No promptfooconfig found in this directory.',
+        'Failed to load configuration: No artefconfig found in this directory.',
       );
       expect(logger.error).not.toHaveBeenCalledWith(
         expect.stringContaining('Failed to load configuration'),

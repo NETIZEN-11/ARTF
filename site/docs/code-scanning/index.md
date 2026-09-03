@@ -1,4 +1,4 @@
----
+﻿---
 title: Code Scanning - LLM Security Vulnerability Scanner
 description: Scan code changes for LLM security vulnerabilities using AI-powered analysis. Find prompt injection, PII exposure, and other security risks in pull requests.
 keywords:
@@ -23,7 +23,7 @@ sidebar_position: 1
 
 # Code Scanning
 
-Promptfoo Code Scanning uses AI agents to find LLM-related vulnerabilities in your codebase and helps you fix them before you merge. By focusing specifically on LLM-related vulnerabilities, it finds issues that more general security scanners might miss.
+artef Code Scanning uses AI agents to find LLM-related vulnerabilities in your codebase and helps you fix them before you merge. By focusing specifically on LLM-related vulnerabilities, it finds issues that more general security scanners might miss.
 
 ## How It Works
 
@@ -77,11 +77,11 @@ guidance: |
 
 ## Cloud and Enterprise
 
-Scans run on Promptfoo Cloud by default. For organizations that need to run scans on their own infrastructure, code scanning is available in [Promptfoo Enterprise On-Prem.](../enterprise)
+Scans run on artef Cloud by default. For organizations that need to run scans on their own infrastructure, code scanning is available in [artef Enterprise On-Prem.](../enterprise)
 
 ## See Also
 
 - [GitHub Action](./github-action.md)
 - [VS Code Extension](./vscode-extension.md)
 - [CLI Command](./cli.md)
-- [Promptfoo Scanner GitHub App](https://github.com/apps/promptfoo-scanner)
+- [artef Scanner GitHub App](https://github.com/apps/artef-scanner)

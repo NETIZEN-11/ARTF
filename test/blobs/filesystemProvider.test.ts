@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+﻿import { afterEach, describe, expect, it } from 'vitest';
 import { FilesystemBlobStorageProvider } from '../../src/blobs/filesystemProvider';
 import { createTempDir, removeTempDir } from '../util/utils';
 
@@ -11,7 +11,7 @@ describe('FilesystemBlobStorageProvider', () => {
   });
 
   it('stores and retrieves blobs by hash', async () => {
-    tempDir = createTempDir('promptfoo-blobs-');
+    tempDir = createTempDir('artef-blobs-');
     const provider = new FilesystemBlobStorageProvider({ basePath: tempDir });
 
     const data = Buffer.from('blob-data');
@@ -22,7 +22,7 @@ describe('FilesystemBlobStorageProvider', () => {
   });
 
   it('deduplicates identical blobs', async () => {
-    tempDir = createTempDir('promptfoo-blobs-');
+    tempDir = createTempDir('artef-blobs-');
     const provider = new FilesystemBlobStorageProvider({ basePath: tempDir });
 
     const data = Buffer.from('same');
@@ -34,7 +34,7 @@ describe('FilesystemBlobStorageProvider', () => {
   });
 
   it('rejects invalid hashes and prevents path traversal', async () => {
-    tempDir = createTempDir('promptfoo-blobs-');
+    tempDir = createTempDir('artef-blobs-');
     const provider = new FilesystemBlobStorageProvider({ basePath: tempDir });
 
     await expect(provider.exists('../../etc/passwd')).resolves.toBe(false);

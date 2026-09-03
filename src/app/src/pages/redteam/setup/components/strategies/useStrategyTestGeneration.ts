@@ -1,7 +1,7 @@
-import { useCallback, useMemo } from 'react';
+﻿import { useCallback, useMemo } from 'react';
 
-import { type Plugin, type Strategy } from '@promptfoo/redteam/constants';
-import { type RedteamStrategyObject, type StrategyConfig } from '@promptfoo/redteam/types';
+import { type Plugin, type Strategy } from '@artef/redteam/constants';
+import { type RedteamStrategyObject, type StrategyConfig } from '@artef/redteam/types';
 import { useRedTeamConfig } from '../../hooks/useRedTeamConfig';
 import { useTestCaseGeneration } from '../TestCaseGenerationProvider';
 

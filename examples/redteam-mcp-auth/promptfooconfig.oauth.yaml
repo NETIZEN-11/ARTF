@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: MCP Server with OAuth Authentication
 
 targets:
@@ -7,13 +7,13 @@ targets:
     config:
       enabled: true
       server:
-        url: https://example-app.promptfoo.app/mcp/minnow?auth_type=bearer
+        url: https://example-app.artef.app/mcp/minnow?auth_type=bearer
         auth:
           type: oauth
           grantType: client_credentials
-          clientId: '{{env.PROMPTFOO_TARGET_CLIENT_ID}}'
-          clientSecret: '{{env.PROMPTFOO_TARGET_CLIENT_SECRET}}'
-          tokenUrl: https://example-app.promptfoo.app/oauth/token
+          clientId: '{{env.artef_TARGET_CLIENT_ID}}'
+          clientSecret: '{{env.artef_TARGET_CLIENT_SECRET}}'
+          tokenUrl: https://example-app.artef.app/oauth/token
           scopes: []
 
 redteam:

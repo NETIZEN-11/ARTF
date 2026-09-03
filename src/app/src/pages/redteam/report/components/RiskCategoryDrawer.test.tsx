@@ -1,11 +1,11 @@
-import { mockWindowOpen } from '@app/tests/browserMocks';
+﻿import { mockWindowOpen } from '@app/tests/browserMocks';
 import { renderWithProviders } from '@app/utils/testutils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useNavigate } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import RiskCategoryDrawer from './RiskCategoryDrawer';
-import type { AtomicTestCase, EvaluateResult, ResultFailureReason } from '@promptfoo/types';
+import type { AtomicTestCase, EvaluateResult, ResultFailureReason } from '@artef/types';
 
 // Mock dependencies
 vi.mock('react-router-dom', () => ({

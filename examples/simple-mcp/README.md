@@ -1,4 +1,4 @@
-# simple-mcp (Simple MCP Provider)
+﻿# simple-mcp (Simple MCP Provider)
 
 This example demonstrates how to use the MCP provider for evaluating MCP servers. The MCP provider is designed for direct tool calling evaluation rather than text generation, making it ideal for testing tool behavior, security vulnerabilities, and edge cases.
 
@@ -7,7 +7,7 @@ This example demonstrates how to use the MCP provider for evaluating MCP servers
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example simple-mcp
+npx artef@latest init --example simple-mcp
 cd simple-mcp
 ```
 
@@ -16,7 +16,7 @@ cd simple-mcp
 1. Initialize the example:
 
    ```bash
-   npx promptfoo@latest init --example simple-mcp
+   npx artef@latest init --example simple-mcp
    ```
 
 2. Navigate to the example directory:
@@ -31,11 +31,11 @@ cd simple-mcp
    npm install
    ```
 
-4. Configure your MCP server in `promptfooconfig.yaml`
+4. Configure your MCP server in `artefconfig.yaml`
 
 5. Run the evaluation:
    ```bash
-   npx promptfoo eval
+   npx artef eval
    ```
 
 ## Configuration Examples
@@ -114,7 +114,7 @@ providers:
 ### Custom Response Parsing
 
 The example also includes `response-parser.js`, which reads `structuredContent` from the raw MCP
-tool result and falls back to Promptfoo's normalized `content` string:
+tool result and falls back to artef's normalized `content` string:
 
 ```yaml
 providers:
@@ -138,7 +138,7 @@ The `get_user_profile` test proves the parser is reading structured MCP output b
 Function and file-based transforms may also be async when parsing requires additional work.
 
 Relative file reads in `example-server.js` are resolved from the example directory, so the bundled
-tests behave the same whether you run them from the copied example folder or from the promptfoo repo
+tests behave the same whether you run them from the copied example folder or from the artef repo
 root during local development.
 
 ## Example MCP Servers

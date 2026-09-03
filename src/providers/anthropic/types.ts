@@ -1,4 +1,4 @@
-import type Anthropic from '@anthropic-ai/sdk';
+﻿import type Anthropic from '@anthropic-ai/sdk';
 
 import type { MCPConfig } from '../mcp/types';
 import type { OpenAIToolChoice } from '../shared';
@@ -90,7 +90,7 @@ export interface AnthropicBaseOptions {
   apiKey?: string;
   apiBaseUrl?: string;
   /**
-   * When `false`, skip promptfoo's upfront API key check and authenticate
+   * When `false`, skip artef's upfront API key check and authenticate
    * through a local Claude Code session (OAuth credential from the macOS
    * keychain or `$HOME/.claude/.credentials.json`). Lets Claude.ai Max /
    * Pro subscribers run evals — including `llm-rubric` grading — without a
@@ -129,7 +129,7 @@ export interface AnthropicMessageOptions extends AnthropicBaseOptions {
   mcp?: MCPConfig;
   /**
    * Maximum number of MCP tool executions across Anthropic Messages
-   * continuations. Defaults to 8. This is enforced locally by promptfoo and is
+   * continuations. Defaults to 8. This is enforced locally by artef and is
    * not sent to Anthropic.
    */
   max_tool_calls?: number;

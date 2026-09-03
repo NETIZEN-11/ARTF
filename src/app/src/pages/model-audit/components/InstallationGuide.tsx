@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
@@ -100,7 +100,7 @@ export default function InstallationGuide({
           </Button>
           <Button variant="outline" asChild>
             <a
-              href="https://www.promptfoo.dev/docs/model-audit/"
+              href="https://www.artef.dev/docs/model-audit/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -120,13 +120,13 @@ export default function InstallationGuide({
             <code className="bg-muted px-1 rounded">pip</code> doesn't work
           </li>
           <li>If using a virtual environment, ensure it's activated</li>
-          <li>After installation, you may need to restart the Promptfoo server</li>
+          <li>After installation, you may need to restart the artef server</li>
         </ul>
 
         <div className="mt-6 pt-4 border-t border-border/50 text-sm text-muted-foreground">
           Need help?{' '}
           <a
-            href="https://github.com/promptfoo/promptfoo/issues"
+            href="https://github.com/artef/artef/issues"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
@@ -135,7 +135,7 @@ export default function InstallationGuide({
           </a>{' '}
           or check the{' '}
           <a
-            href="https://www.promptfoo.dev/docs/model-audit/installation/"
+            href="https://www.artef.dev/docs/model-audit/installation/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"

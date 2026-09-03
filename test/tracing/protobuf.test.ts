@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import protobuf from 'protobufjs';
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
@@ -119,7 +119,7 @@ describe('Protobuf decoding', () => {
         resourceSpans: [
           {
             resource: {
-              attributes: [{ key: 'service.name', value: { stringValue: 'promptfoo' } }],
+              attributes: [{ key: 'service.name', value: { stringValue: 'artef' } }],
             },
             scopeSpans: [
               {

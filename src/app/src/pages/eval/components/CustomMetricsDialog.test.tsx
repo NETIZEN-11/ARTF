@@ -1,10 +1,10 @@
-import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
+﻿import { useCustomPoliciesMap } from '@app/hooks/useCustomPoliciesMap';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import CustomMetricsDialog from './CustomMetricsDialog';
 import { useTableStore } from './store';
-import type { EvaluateTable } from '@promptfoo/types';
+import type { EvaluateTable } from '@artef/types';
 
 vi.mock('./store', () => ({
   useTableStore: vi.fn(),

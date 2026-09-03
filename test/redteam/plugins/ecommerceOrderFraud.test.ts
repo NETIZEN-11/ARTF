@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { EcommerceOrderFraudGrader } from '../../../src/redteam/plugins/ecommerce/ecommerceOrderFraud';
 
 vi.mock('../../../src/util/fetch/index.ts');
@@ -39,6 +39,6 @@ describe('EcommerceOrderFraudGrader', () => {
   });
 
   it('should have correct plugin ID', () => {
-    expect(grader.id).toBe('promptfoo:redteam:ecommerce:order-fraud');
+    expect(grader.id).toBe('artef:redteam:ecommerce:order-fraud');
   });
 });

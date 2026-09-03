@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+﻿import { describe, expect, it } from 'vitest';
 import { hasSarifReportableFindings, scanResponseToSarif } from '../../../src/codeScan/util/sarif';
 import { CodeScanSeverity, type Comment, type ScanResponse } from '../../../src/types/codeScan';
 
@@ -19,7 +19,7 @@ function makeFindingResponse(overrides: Partial<Comment> = {}): ScanResponse {
 }
 
 function fingerprintOf(response: ScanResponse): string {
-  return scanResponseToSarif(response).runs[0].results[0].partialFingerprints.promptfooFindingHash;
+  return scanResponseToSarif(response).runs[0].results[0].partialFingerprints.artefFindingHash;
 }
 
 describe('scanResponseToSarif', () => {
@@ -54,17 +54,17 @@ describe('scanResponseToSarif', () => {
         {
           tool: {
             driver: {
-              name: 'Promptfoo Code Scan',
+              name: 'artef Code Scan',
               rules: [
                 {
-                  id: 'promptfoo/code-scan-finding',
+                  id: 'artef/code-scan-finding',
                 },
               ],
             },
           },
           results: [
             {
-              ruleId: 'promptfoo/code-scan-finding',
+              ruleId: 'artef/code-scan-finding',
               level: 'error',
               message: {
                 text: 'User input reaches the model prompt without sanitization.',
@@ -89,7 +89,7 @@ describe('scanResponseToSarif', () => {
               },
             },
             {
-              ruleId: 'promptfoo/code-scan-finding',
+              ruleId: 'artef/code-scan-finding',
               level: 'warning',
               message: {
                 text: 'Model output is rendered as raw HTML.',
@@ -111,7 +111,7 @@ describe('scanResponseToSarif', () => {
         },
       ],
     });
-    expect(sarif.runs[0].results[0].partialFingerprints.promptfooFindingHash).toMatch(
+    expect(sarif.runs[0].results[0].partialFingerprints.artefFindingHash).toMatch(
       /^[a-f0-9]{64}$/,
     );
   });
@@ -175,7 +175,7 @@ describe('scanResponseToSarif', () => {
     };
 
     const hashes = scanResponseToSarif(response).runs[0].results.map(
-      (result) => result.partialFingerprints.promptfooFindingHash,
+      (result) => result.partialFingerprints.artefFindingHash,
     );
 
     expect(new Set(hashes).size).toBe(3);
@@ -225,7 +225,7 @@ describe('scanResponseToSarif', () => {
   it('exposes the docs URL via tool.driver.informationUri', () => {
     const sarif = scanResponseToSarif(makeFindingResponse());
     expect(sarif.runs[0].tool.driver.informationUri).toBe(
-      'https://www.promptfoo.dev/docs/code-scanning/cli/',
+      'https://www.artef.dev/docs/code-scanning/cli/',
     );
   });
 
@@ -245,13 +245,13 @@ describe('scanResponseToSarif', () => {
     expect(sarif.runs[0].results).toEqual([]);
   });
 
-  it('preserves the scan review summary under properties.promptfoo', () => {
+  it('preserves the scan review summary under properties.artef', () => {
     const sarif = scanResponseToSarif({
       success: true,
       comments: [],
       review: 'No issues found in this PR.',
     });
-    expect(sarif.runs[0].properties?.promptfoo?.review).toBe('No issues found in this PR.');
+    expect(sarif.runs[0].properties?.artef?.review).toBe('No issues found in this PR.');
   });
 
   it('omits run.properties when there is no review summary to carry', () => {

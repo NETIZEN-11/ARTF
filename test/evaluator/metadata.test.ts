@@ -1,4 +1,4 @@
-import './setup';
+﻿import './setup';
 
 import { randomUUID } from 'crypto';
 import * as fs from 'fs';
@@ -510,7 +510,7 @@ describeEvaluator('evaluator metadata', () => {
   });
 
   it('drops stale provider headers when afterEach replaces response metadata', async () => {
-    const outputPath = path.join(os.tmpdir(), `promptfoo-evaluator-${randomUUID()}.jsonl`);
+    const outputPath = path.join(os.tmpdir(), `artef-evaluator-${randomUUID()}.jsonl`);
     const mockExtension = 'file://test-extension.js:afterEach';
     const provider: ApiProvider = {
       id: vi.fn().mockReturnValue('metadata-provider'),

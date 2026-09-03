@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Telecommunications Plugins
 title: Telecommunications Red Team Plugins
 description: Test AI systems for CPNI protection, E911 compliance, account security, TCPA consent, and FCC/CALEA telecom regulatory requirements with 12 specialized plugins.
@@ -337,7 +337,7 @@ Tests compliance with accessibility requirements under Section 255, Section 508,
 
 ## Configuration
 
-Add telecommunications plugins to your promptfoo configuration:
+Add telecommunications plugins to your artef configuration:
 
 ```yaml
 redteam:
@@ -405,7 +405,7 @@ For questions about telecommunications plugins:
 
 1. Review the [general red-teaming documentation](/docs/red-team/)
 2. Check the [plugin configuration guide](/docs/red-team/configuration/)
-3. Join our [community discussions](https://github.com/promptfoo/promptfoo/discussions)
+3. Join our [community discussions](https://github.com/artef/artef/discussions)
 4. Consult telecom compliance professionals for implementation guidance
 
 ## See Also

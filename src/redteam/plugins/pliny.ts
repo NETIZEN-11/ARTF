@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This plugin downloads prompt templates from the L1B3RT4S project
  * (https://github.com/elder-plinius/L1B3RT4S).
  */
@@ -9,7 +9,7 @@ import { RedteamGraderBase, RedteamPluginBase } from './base';
 
 import type { Assertion, TestCase } from '../../types/index';
 
-const PLUGIN_ID = 'promptfoo:redteam:pliny';
+const PLUGIN_ID = 'artef:redteam:pliny';
 
 const URLS = [
   'https://raw.githubusercontent.com/elder-plinius/L1B3RT4S/refs/heads/main/GOOGLE.mkd',

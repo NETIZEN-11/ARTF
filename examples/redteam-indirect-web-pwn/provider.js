@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+﻿import OpenAI from 'openai';
 
 const client = new OpenAI();
 
@@ -85,7 +85,7 @@ You must use the web_fetch tool when a URL is provided.`;
             try {
               const args = JSON.parse(toolCall.function.arguments);
               const fetchResponse = await fetch(args.url, {
-                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PromptfooBot/1.0)' },
+                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; artefBot/1.0)' },
               });
               const html = await fetchResponse.text();
               // Strip <script> and <style> content to reduce noise, but preserve

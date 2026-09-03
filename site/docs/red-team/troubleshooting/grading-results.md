@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Configuring the Grader
 description: Red team LLM grading systems by validating output classification to prevent false negatives and ensure accurate vulnerability detection in AI security assessments
 ---
 
 # About the Grader
 
-When you run a red team scan against a target, Promptfoo will evaluate the results of the output and determine whether the result passes or fails. These results are determined by a model, which is `gpt-5` by default. When the model grades the results of the output, it determines a pass or fail score for the output based on the application context you provide in the target set up.
+When you run a red team scan against a target, artef will evaluate the results of the output and determine whether the result passes or fails. These results are determined by a model, which is `gpt-5` by default. When the model grades the results of the output, it determines a pass or fail score for the output based on the application context you provide in the target set up.
 
 A **pass** score means that the output did not violate your application's intended behavior and returned an output that conforms with your requirements. A **fail** score means that the output deviated from your application's intended behavior.
 
@@ -13,7 +13,7 @@ Pass and fail scores are separate from **errors**, where the output could not be
 
 ## Configuring the Grader
 
-Configuring your grader starts when you create a new target within Promptfoo and outline details about the application in the "Usage Details" section. The `purpose` that you provide in the target setup, as well as any additional context about external system access if applicable, informs the grader. The more information you provide, the better the red team attacks will be.
+Configuring your grader starts when you create a new target within artef and outline details about the application in the "Usage Details" section. The `purpose` that you provide in the target setup, as well as any additional context about external system access if applicable, informs the grader. The more information you provide, the better the red team attacks will be.
 
 For custom `llm-rubric` assertions, see [Pass vs. Score Semantics](/docs/configuration/expected-outputs/model-graded/llm-rubric#pass-vs-score-semantics) if you encounter unexpected PASS results.
 
@@ -45,7 +45,7 @@ The user should not have access to:
 
 ## Overriding the Grader
 
-You can override the grader model within your `promptfooconfig.yaml` file through modifying the `defaultTest`:
+You can override the grader model within your `artefconfig.yaml` file through modifying the `defaultTest`:
 
 ```yaml
 defaultTest:
@@ -66,7 +66,7 @@ defaultTest:
 
 ### Using Local Providers for Grading
 
-The `redteam.provider` configuration controls both attack generation and grading. When you configure a local provider (like Ollama), promptfoo uses it for generating attacks and evaluating results:
+The `redteam.provider` configuration controls both attack generation and grading. When you configure a local provider (like Ollama), artef uses it for generating attacks and evaluating results:
 
 ```yaml
 redteam:
@@ -80,26 +80,26 @@ This configuration:
 
 - Generates adversarial inputs using `ollama:chat:llama3.2`
 - Grades results with the same provider
-- Runs entirely locally when combined with `PROMPTFOO_DISABLE_REMOTE_GENERATION=true`
+- Runs entirely locally when combined with `artef_DISABLE_REMOTE_GENERATION=true`
 
 :::tip Fully Local Testing
 
 To run redteam tests without any remote API calls:
 
 1. Configure a local provider: `redteam.provider: ollama:chat:llama3.2`
-2. Disable remote generation: `PROMPTFOO_DISABLE_REMOTE_GENERATION=true`
+2. Disable remote generation: `artef_DISABLE_REMOTE_GENERATION=true`
 
 Both attack generation and grading will use your local model.
 
 :::
 
-**Balancing quality and cost:** Remote generation produces significantly better attacks than local models, while grading works well locally. To reduce API costs without sacrificing attack quality, configure `redteam.provider` for local grading but leave `PROMPTFOO_DISABLE_REMOTE_GENERATION` unset (default).
+**Balancing quality and cost:** Remote generation produces significantly better attacks than local models, while grading works well locally. To reduce API costs without sacrificing attack quality, configure `redteam.provider` for local grading but leave `artef_DISABLE_REMOTE_GENERATION` unset (default).
 
 You can customize the grader at the plugin level to provide additional granularity into your results.
 
-### Customizing Graders for Specific Plugins in Promptfoo Enterprise
+### Customizing Graders for Specific Plugins in artef Enterprise
 
-Within Promptfoo Enterprise, you can customize the grader at the plugin level. Provide an example output that you would consider a pass or fail, then elaborate on the reason why. Including more concrete examples gives additional context to the LLM grader, improving the efficacy of grading.
+Within artef Enterprise, you can customize the grader at the plugin level. Provide an example output that you would consider a pass or fail, then elaborate on the reason why. Including more concrete examples gives additional context to the LLM grader, improving the efficacy of grading.
 
 <div align="center">
   <img src="/img/docs/grading/customize_grader.png" alt="Customize grader" width="900" />
@@ -107,12 +107,12 @@ Within Promptfoo Enterprise, you can customize the grader at the plugin level. P
 
 ### Customizing Graders for Specific Plugins in the Open Source
 
-You can also configure grader examples in open source by modifying your `promptfooconfig.yaml` file.
+You can also configure grader examples in open source by modifying your `artefconfig.yaml` file.
 
 - Use `redteam.graderExamples` for global examples that apply to all plugins.
 - Use `plugins[].config.graderExamples` for plugin-specific examples.
 
-When both are set, Promptfoo merges them in this order: global examples first, then plugin-specific examples.
+When both are set, artef merges them in this order: global examples first, then plugin-specific examples.
 
 ```yaml
 redteam:
@@ -206,6 +206,6 @@ Inside the evals view, you can review the grader reasoning for each result, modi
 
 ### Addressing False Positives
 
-False positives are when a test case is marked as passing when it should have been marked as failing or vice versa. A common cause of false positives is when the Promptfoo graders don't know enough about the target to make an accurate assessment.
+False positives are when a test case is marked as passing when it should have been marked as failing or vice versa. A common cause of false positives is when the artef graders don't know enough about the target to make an accurate assessment.
 
 The best way to reduce false positives is by adding additional context to your target `Purpose`. If you find that false positives are higher for specific plugins, then consider creating custom graders at the plugin level to specify your requirements.

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * OpenAI ChatKit Provider
  *
  * Evaluates ChatKit workflows deployed via Agent Builder using Playwright
@@ -216,7 +216,7 @@ function generateChatKitHTML(
                 'Authorization': 'Bearer ${apiKey}',
                 'Content-Type': 'application/json',
                 'OpenAI-Beta': 'chatkit_beta=v1',
-                'X-OpenAI-Originator': 'promptfoo'
+                'X-OpenAI-Originator': 'artef'
               },
               body: JSON.stringify({
                 workflow: { id: '${workflowId}'${versionClause} },
@@ -740,7 +740,7 @@ export class OpenAiChatKitProvider extends OpenAiGenericProvider {
   private static getDefaultUserId(): string {
     if (!OpenAiChatKitProvider.defaultUserId) {
       // Generate once per process to ensure template consistency
-      OpenAiChatKitProvider.defaultUserId = `promptfoo-eval-${Date.now()}`;
+      OpenAiChatKitProvider.defaultUserId = `artef-eval-${Date.now()}`;
     }
     return OpenAiChatKitProvider.defaultUserId;
   }
@@ -750,9 +750,9 @@ export class OpenAiChatKitProvider extends OpenAiGenericProvider {
     options: { config?: OpenAiChatKitOptions; id?: string; env?: EnvOverrides } = {},
   ) {
     super(workflowId, options);
-    // Default poolSize to PROMPTFOO_MAX_CONCURRENCY env var if set, otherwise DEFAULT_POOL_SIZE
-    const envPoolSize = process.env.PROMPTFOO_MAX_CONCURRENCY
-      ? parseInt(process.env.PROMPTFOO_MAX_CONCURRENCY, 10)
+    // Default poolSize to artef_MAX_CONCURRENCY env var if set, otherwise DEFAULT_POOL_SIZE
+    const envPoolSize = process.env.artef_MAX_CONCURRENCY
+      ? parseInt(process.env.artef_MAX_CONCURRENCY, 10)
       : NaN;
     const defaultPoolSize = Number.isNaN(envPoolSize) ? DEFAULT_POOL_SIZE : envPoolSize;
 

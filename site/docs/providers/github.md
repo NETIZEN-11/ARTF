@@ -1,4 +1,4 @@
----
+﻿---
 title: GitHub Models Provider
 description: 'Leverage GitHub Models API to access OpenAI, Anthropic, Google, and xAI models with unified OpenAI-compatible formatting'
 keywords:
@@ -65,7 +65,7 @@ providers:
 
 ### With Configuration
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: github:anthropic/claude-4-opus # Uses GITHUB_TOKEN env var
     config:
@@ -76,7 +76,7 @@ providers:
 
 ### Multiple Models
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 providers:
   - id: github-fast
     provider: github:openai/gpt-5-nano
@@ -184,10 +184,10 @@ Examples:
 ## Example Usage in Code
 
 ```javascript title="example.js"
-import promptfoo from 'promptfoo';
+import artef from 'artef';
 
 // Basic usage
-const evalRecord = await promptfoo.evaluate({
+const evalRecord = await artef.evaluate({
   providers: ['github:openai/gpt-5', 'github:anthropic/claude-4-opus'],
   prompts: ['Write a function to {{task}}'],
   tests: [
@@ -205,7 +205,7 @@ const evalRecord = await promptfoo.evaluate({
 const results = await evalRecord.toEvaluateSummary();
 
 // Using specialized models
-const specializedModelsEvalRecord = await promptfoo.evaluate({
+const specializedModelsEvalRecord = await artef.evaluate({
   providers: [
     'github:azureml-mistral/Codestral-2501', // Code generation
     'github:deepseek/deepseek-r1', // Advanced reasoning

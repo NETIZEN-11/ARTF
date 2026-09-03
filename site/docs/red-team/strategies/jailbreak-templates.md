@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Jailbreak Templates
 title: Jailbreak Templates Strategy
 description: Test LLM resistance to known jailbreak techniques using a curated library of static templates
@@ -42,9 +42,9 @@ For comprehensive prompt injection testing, consider using:
 
 ## Configuration
 
-Add to your `promptfooconfig.yaml`:
+Add to your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - jailbreak-templates
 ```
@@ -53,7 +53,7 @@ strategies:
 
 By default, one template is applied per test case. To test multiple templates:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: jailbreak-templates
     config:
@@ -66,7 +66,7 @@ This has a **multiplicative effect** on test count. Each test case × sample cou
 
 To save time and cost, limit to harmful plugins only:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 strategies:
   - id: jailbreak-templates
     config:

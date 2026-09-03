@@ -1,13 +1,13 @@
-# config-websockets/basic (Websockets Provider Example)
+﻿# config-websockets/basic (Websockets Provider Example)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-websockets/basic
+npx artef@latest init --example config-websockets/basic
 cd config-websockets/basic
 ```
 
-This example shows how to connect promptfoo to a WebSocket-based LLM service.
+This example shows how to connect artef to a WebSocket-based LLM service.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ node server.js
 2. In a new terminal, run the evaluation:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 ## Expected Results
@@ -37,7 +37,7 @@ promptfoo eval
 This example will:
 
 - Start a mock WebSocket server that simulates an LLM service
-- Connect promptfoo to the WebSocket server using the custom provider
+- Connect artef to the WebSocket server using the custom provider
 - Run evaluations through the WebSocket connection
-- Demonstrate how to integrate promptfoo with custom WebSocket-based APIs
-- Save results that can be viewed with `promptfoo view`
+- Demonstrate how to integrate artef with custom WebSocket-based APIs
+- Save results that can be viewed with `artef view`

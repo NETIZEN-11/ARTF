@@ -1,6 +1,6 @@
-import useApiConfig from '@app/stores/apiConfig';
-import type { GetUserIdResponse, GetUserResponse } from '@promptfoo/contracts';
-import type { UpdateEvalAuthorResponse } from '@promptfoo/types/api/eval';
+﻿import useApiConfig from '@app/stores/apiConfig';
+import type { GetUserIdResponse, GetUserResponse } from '@artef/contracts';
+import type { UpdateEvalAuthorResponse } from '@artef/types/api/eval';
 
 export function getApiBaseUrl(): string {
   const { apiBaseUrl } = useApiConfig.getState();

@@ -1,4 +1,4 @@
-import { createHash, randomUUID } from 'node:crypto';
+﻿import { createHash, randomUUID } from 'node:crypto';
 
 import { getUserEmail } from '../../globalConfig/accounts';
 import logger from '../../logger';
@@ -354,7 +354,7 @@ function transformForStandaloneMode(
 ): TestCase[] {
   logger.debug('[IndirectWebPwn] Using standalone mode (setting provider)');
 
-  const providerName = 'promptfoo:redteam:indirect-web-pwn';
+  const providerName = 'artef:redteam:indirect-web-pwn';
   const metricSuffix = 'IndirectWebPwn';
   const strategyId = 'indirect-web-pwn';
   const scanId = randomUUID();

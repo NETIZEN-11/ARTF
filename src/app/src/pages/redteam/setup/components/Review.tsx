@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+﻿import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Alert, AlertContent, AlertDescription } from '@app/components/ui/alert';
 import { Badge } from '@app/components/ui/badge';
@@ -32,13 +32,13 @@ import { cn } from '@app/lib/utils';
 import YamlEditor from '@app/pages/eval-creator/components/YamlEditor';
 import { useRedteamJobStore } from '@app/stores/redteamJobStore';
 import { callApi } from '@app/utils/api';
-import { isFoundationModelProvider } from '@promptfoo/providers/constants';
-import { REDTEAM_DEFAULTS, strategyDisplayNames } from '@promptfoo/redteam/constants';
+import { isFoundationModelProvider } from '@artef/providers/constants';
+import { REDTEAM_DEFAULTS, strategyDisplayNames } from '@artef/redteam/constants';
 import {
   isValidPolicyObject,
   makeDefaultPolicyName,
-} from '@promptfoo/redteam/plugins/policy/utils';
-import { getUnifiedConfig } from '@promptfoo/redteam/sharedFrontend';
+} from '@artef/redteam/plugins/policy/utils';
+import { getUnifiedConfig } from '@artef/redteam/sharedFrontend';
 import isEqual from 'fast-deep-equal';
 import { BarChart2, ChevronDown, Eye, Info, Play, Save, Search, Sliders, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -51,8 +51,8 @@ import EstimationsDisplay from './EstimationsDisplay';
 import { LogViewer } from './LogViewer';
 import PageWrapper from './PageWrapper';
 import { RunOptionsContent } from './RunOptions';
-import type { PluginConfig, Policy, PolicyObject, RedteamPlugin } from '@promptfoo/redteam/types';
-import type { Job, RedteamRunOptions } from '@promptfoo/types';
+import type { PluginConfig, Policy, PolicyObject, RedteamPlugin } from '@artef/redteam/types';
+import type { Job, RedteamRunOptions } from '@artef/types';
 
 import type { ProviderOptions } from '../types';
 
@@ -363,7 +363,7 @@ export default function Review({
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'promptfooconfig.yaml';
+    link.download = 'artefconfig.yaml';
     link.click();
     URL.revokeObjectURL(url);
     recordEvent('feature_used', {
@@ -468,11 +468,11 @@ export default function Review({
 
     switch (apiHealthStatus) {
       case 'blocked':
-        return 'Cannot connect to Promptfoo Cloud. Please check your network connection or API settings.';
+        return 'Cannot connect to artef Cloud. Please check your network connection or API settings.';
       case 'disabled':
-        return 'Remote generation is disabled. Running red team evaluations requires connection to Promptfoo Cloud.';
+        return 'Remote generation is disabled. Running red team evaluations requires connection to artef Cloud.';
       case 'unknown':
-        return 'Checking connection to Promptfoo Cloud...';
+        return 'Checking connection to artef Cloud...';
       default:
         return undefined;
     }
@@ -625,7 +625,7 @@ export default function Review({
 
     if (
       latestConfig.target.id === 'http' &&
-      latestConfig.target.config?.url?.includes('promptfoo.app')
+      latestConfig.target.config?.url?.includes('artef.app')
     ) {
       // Track report export
       recordEvent('webui_action', {
@@ -1048,7 +1048,7 @@ export default function Review({
                             className="underline"
                             target="_blank"
                             rel="noopener noreferrer"
-                            to="https://www.promptfoo.dev/docs/red-team/troubleshooting/best-practices/#1-provide-comprehensive-application-details"
+                            to="https://www.artef.dev/docs/red-team/troubleshooting/best-practices/#1-provide-comprehensive-application-details"
                           >
                             Learn more about red team best practices.
                           </Link>
@@ -1234,7 +1234,7 @@ export default function Review({
               Save your configuration and run it from the command line. Full control over the
               evaluation process, good for larger scans:
             </p>
-            <Code>promptfoo redteam run</Code>
+            <Code>artef redteam run</Code>
             <div className="mt-4 flex gap-3">
               <Button
                 onClick={handleSaveYaml}
@@ -1269,7 +1269,7 @@ export default function Review({
                 <AlertContent>
                   <AlertDescription>
                     {apiHealthStatus === 'blocked'
-                      ? 'Cannot connect to Promptfoo Cloud. The "Run Now" option requires a connection to Promptfoo Cloud.'
+                      ? 'Cannot connect to artef Cloud. The "Run Now" option requires a connection to artef Cloud.'
                       : apiHealthStatus === 'disabled'
                         ? 'Remote generation is disabled. The "Run Now" option is not available.'
                         : 'Checking connection status...'}

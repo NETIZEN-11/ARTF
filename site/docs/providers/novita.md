@@ -1,13 +1,13 @@
----
+﻿---
 title: Novita Provider
 sidebar_label: Novita
 sidebar_position: 57
-description: Use Novita's OpenAI-compatible API in Promptfoo to evaluate chat, completion, and embedding models with authenticated, configurable provider endpoints.
+description: Use Novita's OpenAI-compatible API in artef to evaluate chat, completion, and embedding models with authenticated, configurable provider endpoints.
 ---
 
 # Novita
 
-The `novita` provider routes Promptfoo's OpenAI-compatible provider stack to [Novita](https://novita.ai).
+The `novita` provider routes artef's OpenAI-compatible provider stack to [Novita](https://novita.ai).
 
 ## Setup
 
@@ -32,8 +32,8 @@ The shorthand form defaults to chat mode.
 
 ## Configuration
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: novita:chat:meta-llama/llama-3.3-70b-instruct
     config:
@@ -49,7 +49,7 @@ tests:
 ```
 
 Standard OpenAI-compatible provider options such as `temperature`, `max_tokens`,
-and `top_p` are forwarded through the shared provider implementation. Promptfoo
+and `top_p` are forwarded through the shared provider implementation. artef
 uses Novita's documented `https://api.novita.ai/openai/v1` base URL by default.
 For an OpenAI-compatible proxy or test server, set `apiBaseUrl` explicitly:
 
@@ -72,7 +72,7 @@ and [list models API](https://novita.ai/docs/api-reference/model-apis-llm-list-m
 Initialize the bundled example:
 
 ```bash
-npx promptfoo@latest init --example provider-novita
+npx artef@latest init --example provider-novita
 ```
 
 The example checks a short factual response from a Novita chat model and is a

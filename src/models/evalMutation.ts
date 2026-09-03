@@ -1,4 +1,4 @@
-import { updateSignalFile, updateSignalFileForDeletedEvals } from '../database/signal';
+﻿import { updateSignalFile, updateSignalFileForDeletedEvals } from '../database/signal';
 import { clearStandaloneEvalCache } from '../util/standaloneEvalCache';
 import { clearCountCache } from './evalPerformance';
 
@@ -27,7 +27,7 @@ export function invalidateEvaluationCaches(evalIds: string[]): void {
 
 /**
  * Call after creating or mutating an eval's data (results, prompts, ratings). Invalidates
- * this process's caches and writes a scoped update signal so a running `promptfoo view`
+ * this process's caches and writes a scoped update signal so a running `artef view`
  * server refreshes clients viewing this eval (and the root route, which follows the latest).
  */
 export function notifyEvaluationChanged(evalId?: string): void {

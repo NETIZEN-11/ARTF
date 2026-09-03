@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+﻿import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 // Entry-point files that resolve a provider ID to a factory. Per-provider
-// implementation files (e.g. src/providers/promptfoo.ts) may still import
+// implementation files (e.g. src/providers/artef.ts) may still import
 // redteam utilities for unrelated reasons — the invariant this test protects
 // is specifically that the *dispatch* path stays free of static redteam
 // imports, so it is enumerated rather than globbed.

@@ -1,13 +1,13 @@
-# integration-opentelemetry/built-in (OpenTelemetry Built-in Tracing)
+﻿# integration-opentelemetry/built-in (OpenTelemetry Built-in Tracing)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example integration-opentelemetry/built-in
+npx artef@latest init --example integration-opentelemetry/built-in
 cd integration-opentelemetry/built-in
 ```
 
-This example demonstrates promptfoo's built-in OpenTelemetry tracing for LLM provider calls.
+This example demonstrates artef's built-in OpenTelemetry tracing for LLM provider calls.
 
 ## Quick Start
 
@@ -23,13 +23,13 @@ export ANTHROPIC_API_KEY=sk-ant-...
 2. **Run the evaluation:**
 
 ```bash
-npx promptfoo eval -c promptfooconfig.yaml
+npx artef eval -c artefconfig.yaml
 ```
 
 3. **View traces in the UI:**
 
 ```bash
-npx promptfoo view
+npx artef view
 ```
 
 Navigate to the Traces tab to see detailed span information.
@@ -40,9 +40,9 @@ Tracing is enabled by default. Configure via environment variables:
 
 | Variable                      | Default     | Description                            |
 | ----------------------------- | ----------- | -------------------------------------- |
-| `PROMPTFOO_DISABLE_TRACING`   | `false`     | Set to `true` to disable tracing       |
+| `artef_DISABLE_TRACING`   | `false`     | Set to `true` to disable tracing       |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | -           | Export traces to external OTLP backend |
-| `OTEL_SERVICE_NAME`           | `promptfoo` | Service name in traces                 |
+| `OTEL_SERVICE_NAME`           | `artef` | Service name in traces                 |
 
 ## Viewing Traces Externally
 
@@ -61,7 +61,7 @@ docker run -d --name jaeger \
 2. Run eval with OTLP export:
 
 ```bash
-OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 npx promptfoo eval
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 npx artef eval
 ```
 
 3. View at http://localhost:16686
@@ -71,7 +71,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 npx promptfoo eval
 ```bash
 OTEL_EXPORTER_OTLP_ENDPOINT=https://api.honeycomb.io \
 OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=YOUR_API_KEY" \
-npx promptfoo eval
+npx artef eval
 ```
 
 ## Trace Attributes
@@ -94,14 +94,14 @@ Each LLM call span includes:
 - `gen_ai.response.id` - Provider response ID
 - `gen_ai.response.finish_reasons` - Finish reasons
 
-### Promptfoo Attributes
+### artef Attributes
 
-- `promptfoo.provider.id` - Provider identifier
-- `promptfoo.usage.total_tokens` - Total tokens
-- `promptfoo.usage.cached_response_tokens` - Tokens served from the Promptfoo response cache
-- `promptfoo.eval.id` - Evaluation run ID
-- `promptfoo.test.index` - Test case index
-- `promptfoo.prompt.label` - Prompt label
+- `artef.provider.id` - Provider identifier
+- `artef.usage.total_tokens` - Total tokens
+- `artef.usage.cached_response_tokens` - Tokens served from the artef response cache
+- `artef.eval.id` - Evaluation run ID
+- `artef.test.index` - Test case index
+- `artef.prompt.label` - Prompt label
 
 ## Supported Providers
 

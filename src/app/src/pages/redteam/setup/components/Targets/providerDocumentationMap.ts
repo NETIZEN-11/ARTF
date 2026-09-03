@@ -1,8 +1,8 @@
-/**
+﻿/**
  * Maps provider types to their specific documentation URLs
  */
 
-const BASE_DOCS_URL = 'https://www.promptfoo.dev/docs/providers';
+const BASE_DOCS_URL = 'https://www.artef.dev/docs/providers';
 
 /**
  * Provider type to documentation URL mapping

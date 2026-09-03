@@ -1,8 +1,8 @@
-import { useCallback } from 'react';
+﻿import { useCallback } from 'react';
 
 import { Alert, AlertContent, AlertDescription, AlertTitle } from '@app/components/ui/alert';
 import { Button } from '@app/components/ui/button';
-import { SpanData } from '@promptfoo/tracing/store';
+import { SpanData } from '@artef/tracing/store';
 import { Download } from 'lucide-react';
 import TraceTimeline from './TraceTimeline';
 

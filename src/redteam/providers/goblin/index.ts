@@ -1,4 +1,4 @@
-import { type HydraConfig, HydraProvider } from '../hydra/index';
+﻿import { type HydraConfig, HydraProvider } from '../hydra/index';
 
 /**
  * Goblin intentionally reuses Hydra's mature multi-turn execution path.
@@ -10,7 +10,7 @@ export class GoblinProvider extends HydraProvider {
     super(config, {
       strategyName: 'Goblin',
       strategyId: 'goblin',
-      providerId: 'promptfoo:redteam:goblin',
+      providerId: 'artef:redteam:goblin',
       taskId: 'goblin-decision',
       metadataPrefix: 'goblin',
     });

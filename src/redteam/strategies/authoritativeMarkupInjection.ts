@@ -1,4 +1,4 @@
-import logger from '../../logger';
+﻿import logger from '../../logger';
 
 import type { TestCase, TestCaseWithPlugin } from '../../types/index';
 
@@ -13,7 +13,7 @@ export async function addAuthoritativeMarkupInjectionTestCases(
     return {
       ...testCase,
       provider: {
-        id: 'promptfoo:redteam:authoritative-markup-injection',
+        id: 'artef:redteam:authoritative-markup-injection',
         config: {
           injectVar,
           ...config,

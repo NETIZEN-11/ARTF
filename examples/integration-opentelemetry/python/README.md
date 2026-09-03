@@ -1,11 +1,11 @@
-# integration-opentelemetry/python (Python OpenTelemetry Tracing Example)
+﻿# integration-opentelemetry/python (Python OpenTelemetry Tracing Example)
 
-This example demonstrates how to use OpenTelemetry with Python to trace the internal operations of your LLM providers during Promptfoo evaluations. It uses the **protobuf format** for trace export, which is the default and most efficient format for the Python OpenTelemetry SDK.
+This example demonstrates how to use OpenTelemetry with Python to trace the internal operations of your LLM providers during artef evaluations. It uses the **protobuf format** for trace export, which is the default and most efficient format for the Python OpenTelemetry SDK.
 
 ## Quick Start
 
 ```bash
-npx promptfoo@latest init --example integration-opentelemetry/python
+npx artef@latest init --example integration-opentelemetry/python
 cd integration-opentelemetry/python
 
 # Create and activate a virtual environment
@@ -16,8 +16,8 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 # Run the evaluation
-npx promptfoo@latest eval
-npx promptfoo@latest view
+npx artef@latest eval
+npx artef@latest view
 ```
 
 ## Environment Variables
@@ -30,23 +30,23 @@ This example showcases:
 
 - **Python OpenTelemetry SDK** - Using the official Python SDK for tracing
 - **Protobuf format** - The `opentelemetry-exporter-otlp-proto-http` package sends traces in protobuf format (`application/x-protobuf`), which is more efficient than JSON
-- **Distributed tracing** - Parsing W3C Trace Context from Promptfoo and creating child spans
+- **Distributed tracing** - Parsing W3C Trace Context from artef and creating child spans
 - **Trace assertions** - Validating trace structure and performance
 
 ## How It Works
 
-1. **Promptfoo starts the OTLP receiver** on port 4318
-2. **Promptfoo generates a trace context** for each test case (W3C Trace Context format)
-3. **The Python provider receives the trace context** via `promptfoo_context['traceparent']`
+1. **artef starts the OTLP receiver** on port 4318
+2. **artef generates a trace context** for each test case (W3C Trace Context format)
+3. **The Python provider receives the trace context** via `artef_context['traceparent']`
 4. **The provider creates child spans** using the OpenTelemetry Python SDK
-5. **Traces are exported in protobuf format** to Promptfoo's OTLP endpoint
-6. **Promptfoo correlates traces** with test cases for analysis
+5. **Traces are exported in protobuf format** to artef's OTLP endpoint
+6. **artef correlates traces** with test cases for analysis
 
 ## Files in This Example
 
 | File                   | Description                                        |
 | ---------------------- | -------------------------------------------------- |
-| `promptfooconfig.yaml` | Evaluation config with tracing enabled             |
+| `artefconfig.yaml` | Evaluation config with tracing enabled             |
 | `provider.py`          | Python provider with OpenTelemetry instrumentation |
 | `requirements.txt`     | Python dependencies (OpenTelemetry SDK)            |
 
@@ -120,8 +120,8 @@ def parse_traceparent(traceparent: str) -> SpanContext | None:
 ```python
 from opentelemetry.trace import SpanKind, Status, StatusCode
 
-def call_api(prompt: str, options: dict, promptfoo_context: dict) -> dict:
-    traceparent = promptfoo_context.get("traceparent")
+def call_api(prompt: str, options: dict, artef_context: dict) -> dict:
+    traceparent = artef_context.get("traceparent")
 
     if traceparent:
         span_context = parse_traceparent(traceparent)
@@ -170,7 +170,7 @@ assert:
 After running an evaluation, view traces in the web UI:
 
 ```bash
-npx promptfoo@latest view
+npx artef@latest view
 ```
 
 Click on any test result to see the "Trace Timeline" section.
@@ -191,7 +191,7 @@ Click on any test result to see the "Trace Timeline" section.
 1. Verify `tracing.enabled: true` in config
 2. Check OTLP receiver is running (look for port 4318 in logs)
 3. Ensure `processor.force_flush()` is called before returning
-4. Check the trace context is properly parsed from `promptfoo_context['traceparent']`
+4. Check the trace context is properly parsed from `artef_context['traceparent']`
 
 ### Import Errors
 
@@ -203,9 +203,9 @@ pip install -r requirements.txt
 
 ### Connection Refused
 
-Ensure Promptfoo's OTLP receiver is running on port 4318. The receiver starts automatically when `tracing.enabled: true` is set in your config.
+Ensure artef's OTLP receiver is running on port 4318. The receiver starts automatically when `tracing.enabled: true` is set in your config.
 
 ## See Also
 
 - [OpenTelemetry Tracing (JavaScript)](../javascript/) - JavaScript version using JSON format
-- [Promptfoo Tracing Documentation](https://promptfoo.dev/docs/tracing/)
+- [artef Tracing Documentation](https://artef.dev/docs/tracing/)

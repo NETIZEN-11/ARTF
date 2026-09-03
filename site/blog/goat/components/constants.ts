@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'https://api.promptfoo.dev';
+﻿export const API_BASE_URL = 'https://api.artef.dev';

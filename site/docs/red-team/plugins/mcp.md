@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: MCP Plugin
 description: Red team MCP implementations by testing function exploits and tool manipulation to prevent unauthorized AI agent access
 ---
@@ -44,7 +44,7 @@ The plugin tests for the following MCP-specific attack vectors:
 
 ## Configuration
 
-Add the following to your promptfoo configuration:
+Add the following to your artef configuration:
 
 ```yaml
 redteam:
@@ -85,7 +85,7 @@ These plugins target the most common security vulnerabilities in systems that ex
 Here's an example configuration for testing an MCP-enabled customer support agent:
 
 ```yaml
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Red Teaming MCP with tool use
 
 providers:
@@ -156,4 +156,4 @@ To protect against MCP-specific attacks:
 - [Tool Discovery](/docs/red-team/plugins/tool-discovery)
 - [Prompt Extraction](/docs/red-team/plugins/prompt-extraction)
 - [Indirect Prompt Injection](/docs/red-team/plugins/indirect-prompt-injection)
-- [MCP Configuration in Promptfoo](/docs/integrations/mcp)
+- [MCP Configuration in artef](/docs/integrations/mcp)

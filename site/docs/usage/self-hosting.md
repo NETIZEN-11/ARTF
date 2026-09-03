@@ -1,7 +1,7 @@
----
+﻿---
 sidebar_position: 50
 title: Self-hosting
-description: Learn how to self-host promptfoo using Docker, Docker Compose, or Helm. This comprehensive guide walks you through setup, configuration, and troubleshooting.
+description: Learn how to self-host artef using Docker, Docker Compose, or Helm. This comprehensive guide walks you through setup, configuration, and troubleshooting.
 keywords:
   - AI testing
   - configuration
@@ -11,15 +11,15 @@ keywords:
   - Kubernetes
   - LLM eval
   - LLM evaluation
-  - promptfoo
+  - artef
   - self-hosting
   - setup guide
   - team collaboration
 ---
 
-# Self-hosting Promptfoo
+# Self-hosting artef
 
-Promptfoo provides a basic Docker image that allows you to host a server that stores evals. This guide covers various deployment methods.
+artef provides a basic Docker image that allows you to host a server that stores evals. This guide covers various deployment methods.
 
 Self-hosting enables you to:
 
@@ -55,13 +55,13 @@ Pull the latest image or pin to a specific version (e.g., `0.109.1`):
 
 ```bash
 # Pull latest
-docker pull ghcr.io/promptfoo/promptfoo:latest
+docker pull ghcr.io/artef/artef:latest
 
 # Or pull a specific version
-# docker pull ghcr.io/promptfoo/promptfoo:0.109.1
+# docker pull ghcr.io/artef/artef:0.109.1
 
 # You can verify image authenticity with:
-# gh attestation verify oci://ghcr.io/promptfoo/promptfoo:latest --owner promptfoo
+# gh attestation verify oci://ghcr.io/artef/artef:latest --owner artef
 ```
 
 ### 2. Run the Container
@@ -70,23 +70,23 @@ Run the container, mapping a local directory for data persistence:
 
 ```bash
 docker run -d \
-  --name promptfoo_container \
+  --name artef_container \
   -p 3000:3000 \
-  -v /path/to/local_promptfoo:/home/promptfoo/.promptfoo \
+  -v /path/to/local_artef:/home/artef/.artef \
   -e OPENAI_API_KEY=sk-abc123 \
-  ghcr.io/promptfoo/promptfoo:latest
+  ghcr.io/artef/artef:latest
 ```
 
 :::info
-`~/.promptfoo/` is the default data directory.
+`~/.artef/` is the default data directory.
 :::
 
 **Key Parameters:**
 
 - **`-d`**: Run in detached mode (background).
-- **`--name promptfoo_container`**: Assign a name to the container.
+- **`--name artef_container`**: Assign a name to the container.
 - **`-p 3000:3000`**: Map host port 3000 to container port 3000.
-- **`-v /path/to/local_promptfoo:/home/promptfoo/.promptfoo`**: **Crucial for persistence.** Maps the container's data directory (`/home/promptfoo/.promptfoo`, containing `promptfoo.db`) to your local filesystem. Replace `/path/to/local_promptfoo` with your preferred host path (e.g., `./promptfoo_data`). **Data will be lost if this volume mapping is omitted.**
+- **`-v /path/to/local_artef:/home/artef/.artef`**: **Crucial for persistence.** Maps the container's data directory (`/home/artef/.artef`, containing `artef.db`) to your local filesystem. Replace `/path/to/local_artef` with your preferred host path (e.g., `./artef_data`). **Data will be lost if this volume mapping is omitted.**
 - **`-e OPENAI_API_KEY=sk-abc123`**: Example of setting an environment variable. Add necessary API keys here so users can run evals directly from the web UI. Replace `sk-abc123` with your actual key.
 
 Access the UI at `http://localhost:3000`.
@@ -103,40 +103,40 @@ Create a `docker-compose.yml` file in your project directory:
 version: '3.8'
 
 services:
-  promptfoo_container: # Consistent service and container name
-    image: ghcr.io/promptfoo/promptfoo:latest # Or pin to a specific version tag
+  artef_container: # Consistent service and container name
+    image: ghcr.io/artef/artef:latest # Or pin to a specific version tag
     ports:
       - '3000:3000' # Map host port 3000 to container port 3000
     volumes:
       # Map host directory to container data directory for persistence
-      # Create ./promptfoo_data on your host first!
-      - ./promptfoo_data:/home/promptfoo/.promptfoo
+      # Create ./artef_data on your host first!
+      - ./artef_data:/home/artef/.artef
     environment:
       # Optional: Adjust chunk size for large evals (See Troubleshooting)
-      - PROMPTFOO_SHARE_CHUNK_SIZE=10
+      - artef_SHARE_CHUNK_SIZE=10
       # Add other necessary environment variables (e.g., API keys)
       - OPENAI_API_KEY=your_key_here
       # Example: Google API Key
       # - GOOGLE_API_KEY=your_google_key_here
 # Optional: Define a named volume managed by Docker (alternative to host path mapping)
 # volumes:
-#   promptfoo_data:
+#   artef_data:
 #     driver: local
 # If using a named volume, change the service volume mapping to:
 #     volumes:
-#       - promptfoo_data:/home/promptfoo/.promptfoo
+#       - artef_data:/home/artef/.artef
 ```
 
 :::info Using Host Paths vs. Named Volumes
-The example above uses a host path mapping (`./promptfoo_data:/home/promptfoo/.promptfoo`) which clearly maps to a directory you create. Alternatively, you can use Docker named volumes (uncomment the `volumes:` section and adjust the service `volumes:`).
+The example above uses a host path mapping (`./artef_data:/home/artef/.artef`) which clearly maps to a directory you create. Alternatively, you can use Docker named volumes (uncomment the `volumes:` section and adjust the service `volumes:`).
 :::
 
 ### 2. Create Host Directory (if using host path)
 
-If you used `./promptfoo_data` in the `volumes` mapping, create it:
+If you used `./artef_data` in the `volumes` mapping, create it:
 
 ```bash
-mkdir -p ./promptfoo_data
+mkdir -p ./artef_data
 ```
 
 ### 3. Run with Docker Compose
@@ -147,7 +147,7 @@ Start the container in detached mode:
 docker compose up -d
 ```
 
-Stop the container (data remains in `./promptfoo_data` or the named volume):
+Stop the container (data remains in `./artef_data` or the named volume):
 
 ```bash
 docker compose stop
@@ -165,7 +165,7 @@ docker compose down
 Helm support is currently experimental. Please report any issues you encounter.
 :::
 
-Deploy promptfoo to Kubernetes using the provided Helm chart located within the main promptfoo repository.
+Deploy artef to Kubernetes using the provided Helm chart located within the main artef repository.
 
 :::info
 Keep `replicaCount: 1` (the default) as the self-hosted server uses a local SQLite database and in-memory job queue that cannot be shared across multiple replicas.
@@ -180,24 +180,24 @@ Keep `replicaCount: 1` (the default) as the self-hosted server uses a local SQLi
 
 ### Installation
 
-1. **Clone the promptfoo Repository:**
-   If you haven't already, clone the main promptfoo repository:
+1. **Clone the artef Repository:**
+   If you haven't already, clone the main artef repository:
 
    ```bash
-   git clone https://github.com/promptfoo/promptfoo.git
-   cd promptfoo
+   git clone https://github.com/artef/artef.git
+   cd artef
    ```
 
 2. **Install the Chart:**
-   From the root of the cloned repository, install the chart using its local path. Provide a release name (e.g., `my-promptfoo`):
+   From the root of the cloned repository, install the chart using its local path. Provide a release name (e.g., `my-artef`):
    ```bash
    # Install using the default values
-   helm install my-promptfoo ./helm/chart/promptfoo
+   helm install my-artef ./helm/chart/artef
    ```
 
 ### Configuration
 
-The Helm chart uses PersistentVolumeClaims (PVCs) for data persistence. By default, it creates a PVC named `promptfoo` requesting 1Gi of storage using the default StorageClass.
+The Helm chart uses PersistentVolumeClaims (PVCs) for data persistence. By default, it creates a PVC named `artef` requesting 1Gi of storage using the default StorageClass.
 
 Customize the installation using a `values.yaml` file or `--set` flags.
 
@@ -208,7 +208,7 @@ image:
   tag: v0.54.0 # Pin to a specific version
 
 persistentVolumeClaims:
-  - name: promptfoo
+  - name: artef
     size: 10Gi # Increase storage size
     # Optional: Specify a StorageClass if the default is not suitable
     # storageClassName: my-ssd-storage
@@ -222,33 +222,33 @@ service:
 #   enabled: true
 #   className: "nginx" # Or your ingress controller class
 #   hosts:
-#     - host: promptfoo.example.com
+#     - host: artef.example.com
 #       paths:
 #         - path: /
 #           pathType: ImplementationSpecific
 #   tls: []
-#   #  - secretName: promptfoo-tls
+#   #  - secretName: artef-tls
 #   #    hosts:
-#   #      - promptfoo.example.com
+#   #      - artef.example.com
 ```
 
 Install with custom values:
 
 ```bash
-# Ensure you are in the root of the cloned promptfoo repository
-helm install my-promptfoo ./helm/chart/promptfoo -f my-values.yaml
+# Ensure you are in the root of the cloned artef repository
+helm install my-artef ./helm/chart/artef -f my-values.yaml
 ```
 
 Or use `--set` for quick changes:
 
 ```bash
-# Ensure you are in the root of the cloned promptfoo repository
-helm install my-promptfoo ./helm/chart/promptfoo \
+# Ensure you are in the root of the cloned artef repository
+helm install my-artef ./helm/chart/artef \
   --set image.tag=0.109.1 \
   --set service.type=NodePort
 ```
 
-Refer to the [chart's `values.yaml`](https://github.com/promptfoo/promptfoo/blob/main/helm/chart/promptfoo/values.yaml) for all available options.
+Refer to the [chart's `values.yaml`](https://github.com/artef/artef/blob/main/helm/chart/artef/values.yaml) for all available options.
 
 ### Persistence Considerations
 
@@ -261,45 +261,45 @@ If you want to build the image yourself:
 ### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/promptfoo/promptfoo.git
-cd promptfoo
+git clone https://github.com/artef/artef.git
+cd artef
 ```
 
 ### 2. Build the Docker Image
 
 ```sh
 # Build for your current architecture
-docker build -t promptfoo:custom .
+docker build -t artef:custom .
 
 # Or build for a specific platform like linux/amd64
-# docker build --platform linux/amd64 -t promptfoo:custom .
+# docker build --platform linux/amd64 -t artef:custom .
 ```
 
-Images built from this Dockerfile are marked as custom containers. To apply a Promptfoo update,
+Images built from this Dockerfile are marked as custom containers. To apply a artef update,
 first advance the checkout to the desired release, then rebuild and redeploy. Use a Node.js
 `22.22.0` or newer base image (24 LTS recommended). Use `docker build --pull` when a
-tagged parent image must be refreshed. An unchanged build context produces the same Promptfoo
+tagged parent image must be refreshed. An unchanged build context produces the same artef
 version.
 
-Custom Dockerfiles that bake Promptfoo into another base image should identify themselves so update
+Custom Dockerfiles that bake artef into another base image should identify themselves so update
 notices do not suggest a host-level `npm` or `npx` command:
 
 ```dockerfile
-ENV PROMPTFOO_RUNNING_IN_DOCKER=1
-ENV PROMPTFOO_OFFICIAL_DOCKER_IMAGE=0
+ENV artef_RUNNING_IN_DOCKER=1
+ENV artef_OFFICIAL_DOCKER_IMAGE=0
 ```
 
-If your Dockerfile derives from the official Promptfoo image, reset the upstream-image marker while
+If your Dockerfile derives from the official artef image, reset the upstream-image marker while
 keeping container detection enabled. This prevents update notices from suggesting that users replace
 your customized image with the upstream image:
 
 ```dockerfile
-FROM ghcr.io/promptfoo/promptfoo:latest
-ENV PROMPTFOO_OFFICIAL_DOCKER_IMAGE=0
+FROM ghcr.io/artef/artef:latest
+ENV artef_OFFICIAL_DOCKER_IMAGE=0
 ```
 
 Existing derived images that inherit the marker receive safe fallback guidance to refresh the
-Promptfoo base, rebuild the customized image, and then redeploy it.
+artef base, rebuild the customized image, and then redeploy it.
 
 ### 3. Run the Custom Docker Container
 
@@ -307,36 +307,36 @@ Use the same `docker run` command as in Method 1, but replace the image name:
 
 ```bash
 docker run -d \
-  --name promptfoo_custom_container \
+  --name artef_custom_container \
   -p 3000:3000 \
-  -v /path/to/local_promptfoo:/home/promptfoo/.promptfoo \
-  promptfoo:custom
+  -v /path/to/local_artef:/home/artef/.artef \
+  artef:custom
 ```
 
 Remember to include the volume mount (`-v`) for data persistence.
 
 ## Configuring the CLI
 
-When self-hosting, configure the `promptfoo` CLI to communicate with your instance instead of the default cloud service. This is necessary for commands like `promptfoo share`.
+When self-hosting, configure the `artef` CLI to communicate with your instance instead of the default cloud service. This is necessary for commands like `artef share`.
 
-Set these environment variables before running `promptfoo` commands:
+Set these environment variables before running `artef` commands:
 
 ```sh
-export PROMPTFOO_REMOTE_API_BASE_URL=http://your-server-address:3000
-export PROMPTFOO_REMOTE_APP_BASE_URL=http://your-server-address:3000
+export artef_REMOTE_API_BASE_URL=http://your-server-address:3000
+export artef_REMOTE_APP_BASE_URL=http://your-server-address:3000
 ```
 
 Replace `http://your-server-address:3000` with the actual URL of your self-hosted instance (e.g., `http://localhost:3000` if running locally).
 
 After configuring the CLI, you need to explicitly upload eval results to your self-hosted instance:
 
-1. Run `promptfoo eval` to execute your eval
-2. Run `promptfoo share` to upload the results
-3. Or use `promptfoo eval --share` to do both in one command
+1. Run `artef eval` to execute your eval
+2. Run `artef share` to upload the results
+3. Or use `artef eval --share` to do both in one command
 
-Alternatively, configure these URLs permanently in your `promptfooconfig.yaml`:
+Alternatively, configure these URLs permanently in your `artefconfig.yaml`:
 
-```yaml title="promptfooconfig.yaml"
+```yaml title="artefconfig.yaml"
 # Configure sharing to your self-hosted instance
 sharing:
   apiBaseUrl: http://your-server-address:3000
@@ -352,12 +352,12 @@ providers:
 
 ### Configuration Priority
 
-promptfoo resolves the sharing target URL in this order (highest priority first):
+artef resolves the sharing target URL in this order (highest priority first):
 
 1. Config file (`sharing.apiBaseUrl` and `sharing.appBaseUrl`)
-2. Environment variables (`PROMPTFOO_REMOTE_API_BASE_URL`, `PROMPTFOO_REMOTE_APP_BASE_URL`)
-3. Cloud configuration (set via `promptfoo auth login`)
-4. Default promptfoo cloud URLs
+2. Environment variables (`artef_REMOTE_API_BASE_URL`, `artef_REMOTE_APP_BASE_URL`)
+3. Cloud configuration (set via `artef auth login`)
+4. Default artef cloud URLs
 
 ### Expected URL Format
 
@@ -370,13 +370,13 @@ When configured correctly, your self-hosted server handles requests like:
 
 ### Eval Storage Path
 
-By default, promptfoo stores its SQLite database (`promptfoo.db`) in `/home/promptfoo/.promptfoo` _inside the container_. Ensure this directory is mapped to persistent storage using volumes (as shown in the Docker and Docker Compose examples) to save your evals across container restarts.
+By default, artef stores its SQLite database (`artef.db`) in `/home/artef/.artef` _inside the container_. Ensure this directory is mapped to persistent storage using volumes (as shown in the Docker and Docker Compose examples) to save your evals across container restarts.
 
-By default, promptfoo externalizes large binary outputs (for example, images/audio) to the local filesystem under `/home/promptfoo/.promptfoo/blobs` and replaces inline base64 with lightweight references. To keep media inline (legacy behavior), set `PROMPTFOO_INLINE_MEDIA=true`. Make sure your volume mapping includes `/home/promptfoo/.promptfoo/blobs` so media persists across restarts.
+By default, artef externalizes large binary outputs (for example, images/audio) to the local filesystem under `/home/artef/.artef/blobs` and replaces inline base64 with lightweight references. To keep media inline (legacy behavior), set `artef_INLINE_MEDIA=true`. Make sure your volume mapping includes `/home/artef/.artef/blobs` so media persists across restarts.
 
 ### Custom Config Directory
 
-You can override the default internal configuration directory (`/home/promptfoo/.promptfoo`) using the `PROMPTFOO_CONFIG_DIR` environment variable. If set, promptfoo uses this path _inside the container_ for both configuration files and the `promptfoo.db` database. You still need to map this custom path to a persistent volume.
+You can override the default internal configuration directory (`/home/artef/.artef`) using the `artef_CONFIG_DIR` environment variable. If set, artef uses this path _inside the container_ for both configuration files and the `artef.db` database. You still need to map this custom path to a persistent volume.
 
 **Example:** Store data in `/app/data` inside the container, mapped to `./my_custom_data` on the host.
 
@@ -385,17 +385,17 @@ You can override the default internal configuration directory (`/home/promptfoo/
 mkdir -p ./my_custom_data
 
 # Run container
-docker run -d --name promptfoo_container -p 3000:3000 \
+docker run -d --name artef_container -p 3000:3000 \
   -v ./my_custom_data:/app/data \
-  -e PROMPTFOO_CONFIG_DIR=/app/data \
-  ghcr.io/promptfoo/promptfoo:latest
+  -e artef_CONFIG_DIR=/app/data \
+  ghcr.io/artef/artef:latest
 ```
 
 ### Provider Customization
 
 Customize which LLM providers appear in the eval creator UI for cost control, compliance, or routing through internal gateways.
 
-Place a `ui-providers.yaml` file in your `.promptfoo` directory (same location as `promptfoo.db`). When this file exists, only listed providers appear in the UI.
+Place a `ui-providers.yaml` file in your `.artef` directory (same location as `artef.db`). When this file exists, only listed providers appear in the UI.
 
 **Example configuration:**
 
@@ -425,14 +425,14 @@ providers:
 
 ```bash
 docker run -d \
-  --name promptfoo_container \
+  --name artef_container \
   -p 3000:3000 \
-  -v ./promptfoo_data:/home/promptfoo/.promptfoo \
+  -v ./artef_data:/home/artef/.artef \
   -e INTERNAL_API_KEY=your-key \
-  ghcr.io/promptfoo/promptfoo:latest
+  ghcr.io/artef/artef:latest
 
-# Place ui-providers.yaml in ./promptfoo_data/
-cp ui-providers.yaml ./promptfoo_data/
+# Place ui-providers.yaml in ./artef_data/
+cp ui-providers.yaml ./artef_data/
 ```
 
 **Kubernetes ConfigMap:**
@@ -441,7 +441,7 @@ cp ui-providers.yaml ./promptfoo_data/
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: promptfoo-providers
+  name: artef-providers
 data:
   ui-providers.yaml: |
     providers:
@@ -451,21 +451,21 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: promptfoo
+  name: artef
 spec:
   template:
     spec:
       containers:
-        - name: promptfoo
-          image: ghcr.io/promptfoo/promptfoo:latest
+        - name: artef
+          image: ghcr.io/artef/artef:latest
           volumeMounts:
             - name: config
-              mountPath: /home/promptfoo/.promptfoo/ui-providers.yaml
+              mountPath: /home/artef/.artef/ui-providers.yaml
               subPath: ui-providers.yaml
       volumes:
         - name: config
           configMap:
-            name: promptfoo-providers
+            name: artef-providers
 ```
 
 :::info Behavior Changes
@@ -474,7 +474,7 @@ When `ui-providers.yaml` exists:
 
 - Only configured providers shown (replaces default ~600 providers)
 - "Reference Local Provider" button hidden in eval creator
-- Configuration is cached - restart required after changes: `docker restart promptfoo_container`
+- Configuration is cached - restart required after changes: `docker restart artef_container`
 
 :::
 
@@ -531,15 +531,15 @@ See [Provider Documentation](/docs/providers/) for complete list.
 **Providers not updating:** Restart required after config changes.
 
 ```bash
-docker restart promptfoo_container
+docker restart artef_container
 # or: docker compose restart
-# or: kubectl rollout restart deployment/promptfoo
+# or: kubectl rollout restart deployment/artef
 ```
 
 **Providers missing:** Check logs for validation errors:
 
 ```bash
-docker logs promptfoo_container | grep "Invalid provider"
+docker logs artef_container | grep "Invalid provider"
 ```
 
 Common issues: missing `id` field, invalid provider ID format, YAML syntax errors.
@@ -547,26 +547,26 @@ Common issues: missing `id` field, invalid provider ID format, YAML syntax error
 **Config not detected:** Verify file location and permissions:
 
 ```bash
-docker exec promptfoo_container ls -la /home/promptfoo/.promptfoo/
-docker exec promptfoo_container cat /home/promptfoo/.promptfoo/ui-providers.yaml
+docker exec artef_container ls -la /home/artef/.artef/
+docker exec artef_container cat /home/artef/.artef/ui-providers.yaml
 ```
 
 File must be named `ui-providers.yaml` or `ui-providers.yml` (case-sensitive on Linux).
 
 ## Deploying Behind a Reverse Proxy with Base Path
 
-To serve promptfoo at a URL prefix (e.g., `https://example.com/promptfoo/`), rebuild the Docker image with `VITE_PUBLIC_BASENAME` and configure your reverse proxy to strip the prefix.
+To serve artef at a URL prefix (e.g., `https://example.com/artef/`), rebuild the Docker image with `VITE_PUBLIC_BASENAME` and configure your reverse proxy to strip the prefix.
 
 ### Build the Image
 
 ```bash
-docker build --build-arg VITE_PUBLIC_BASENAME=/promptfoo -t my-promptfoo .
+docker build --build-arg VITE_PUBLIC_BASENAME=/artef -t my-artef .
 ```
 
 ### Nginx Configuration
 
 ```nginx
-location /promptfoo/ {
+location /artef/ {
     proxy_pass http://localhost:3000/;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
@@ -581,28 +581,28 @@ location /promptfoo/ {
 ```yaml
 http:
   routers:
-    promptfoo:
-      rule: 'PathPrefix(`/promptfoo`)'
+    artef:
+      rule: 'PathPrefix(`/artef`)'
       middlewares:
-        - strip-promptfoo
-      service: promptfoo
+        - strip-artef
+      service: artef
   middlewares:
-    strip-promptfoo:
+    strip-artef:
       stripPrefix:
         prefixes:
-          - '/promptfoo'
+          - '/artef'
   services:
-    promptfoo:
+    artef:
       loadBalancer:
         servers:
-          - url: 'http://promptfoo:3000'
+          - url: 'http://artef:3000'
 ```
 
 The `VITE_PUBLIC_BASENAME` build argument configures the frontend to use the correct paths for routing, API calls, and WebSocket connections.
 
 ## Specifications
 
-### Client Requirements (Running `promptfoo` CLI)
+### Client Requirements (Running `artef` CLI)
 
 - **OS**: Linux, macOS, Windows
 - **CPU**: 2+ cores, 2.0GHz+ recommended
@@ -628,39 +628,39 @@ The server component is optional; you can run evals locally or in CI/CD without 
 
 **Problem**: Evals disappear after `docker compose down` or container restarts.
 
-**Solution**: This indicates missing or incorrect volume mapping. Ensure your `docker run` command or `docker-compose.yml` correctly maps a host directory or named volume to `/home/promptfoo/.promptfoo` (or your `PROMPTFOO_CONFIG_DIR` if set) inside the container. Review the `volumes:` section in the examples above.
+**Solution**: This indicates missing or incorrect volume mapping. Ensure your `docker run` command or `docker-compose.yml` correctly maps a host directory or named volume to `/home/artef/.artef` (or your `artef_CONFIG_DIR` if set) inside the container. Review the `volumes:` section in the examples above.
 
 ### Results Not Appearing in Self-Hosted UI
 
-**Problem**: Running `promptfoo eval` stores results locally instead of showing them in the self-hosted UI.
+**Problem**: Running `artef eval` stores results locally instead of showing them in the self-hosted UI.
 
 **Solution**:
 
-1. By default, `promptfoo eval` stores results locally (run `promptfoo view` to view them)
-2. To upload results to your self-hosted instance, run `promptfoo share` after eval
+1. By default, `artef eval` stores results locally (run `artef view` to view them)
+2. To upload results to your self-hosted instance, run `artef share` after eval
 3. Configure your self-hosted instance using ONE of these methods:
 
    **Option A: Environment Variables (temporary)**
 
    ```bash
-   export PROMPTFOO_REMOTE_API_BASE_URL=http://your-server:3000
-   export PROMPTFOO_REMOTE_APP_BASE_URL=http://your-server:3000
+   export artef_REMOTE_API_BASE_URL=http://your-server:3000
+   export artef_REMOTE_APP_BASE_URL=http://your-server:3000
    ```
 
    **Option B: Config File (permanent - recommended)**
 
-   ```yaml title="promptfooconfig.yaml"
+   ```yaml title="artefconfig.yaml"
    sharing:
      apiBaseUrl: http://your-server:3000
      appBaseUrl: http://your-server:3000
    ```
 
-   Replace `your-server` with your actual server address (e.g., `192.168.1.100`, `promptfoo.internal.company.com`, etc.)
+   Replace `your-server` with your actual server address (e.g., `192.168.1.100`, `artef.internal.company.com`, etc.)
 
-4. Then run: `promptfoo eval` followed by `promptfoo share`
+4. Then run: `artef eval` followed by `artef share`
 
 :::tip What to Expect
-After running `promptfoo share`, you should see output like:
+After running `artef share`, you should see output like:
 
 ```
 View results: http://192.168.1.100:3000/eval/abc-123-def

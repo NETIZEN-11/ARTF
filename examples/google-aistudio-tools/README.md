@@ -1,11 +1,11 @@
-# google-aistudio-tools (Google AI Studio Tools)
+﻿# google-aistudio-tools (Google AI Studio Tools)
 
-This example demonstrates how to use Google AI Studio's function calling, search capabilities, code execution, and URL context features with promptfoo.
+This example demonstrates how to use Google AI Studio's function calling, search capabilities, code execution, and URL context features with artef.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example google-aistudio-tools
+npx artef@latest init --example google-aistudio-tools
 cd google-aistudio-tools
 ```
 
@@ -24,7 +24,7 @@ This example shows how to:
 
 ## Function Calling Example
 
-The function calling configuration (`promptfooconfig.yaml`) demonstrates:
+The function calling configuration (`artefconfig.yaml`) demonstrates:
 
 - Defining a weather function in `tools.json`
 - Validating that Gemini models correctly produce structured function calls
@@ -33,12 +33,12 @@ The function calling configuration (`promptfooconfig.yaml`) demonstrates:
 Run with:
 
 ```bash
-promptfoo eval -c promptfooconfig.yaml
+artef eval -c artefconfig.yaml
 ```
 
 ## Search Grounding Example
 
-The search grounding configuration (`promptfooconfig.search.yaml`) demonstrates:
+The search grounding configuration (`artefconfig.search.yaml`) demonstrates:
 
 - Using Gemini 2.5 Flash with Google Search as a tool
 - Using Gemini 2.5 Pro with thinking capabilities and Search grounding
@@ -49,12 +49,12 @@ The search grounding configuration (`promptfooconfig.search.yaml`) demonstrates:
 Run with:
 
 ```bash
-promptfoo eval -c promptfooconfig.search.yaml
+artef eval -c artefconfig.search.yaml
 ```
 
 ## Code Execution Example
 
-The code execution configuration (`promptfooconfig.codeexecution.yaml`) demonstrates:
+The code execution configuration (`artefconfig.codeexecution.yaml`) demonstrates:
 
 - Testing computational problems that require code to solve
 - Verifying that the answer is correct from the code execution
@@ -62,12 +62,12 @@ The code execution configuration (`promptfooconfig.codeexecution.yaml`) demonstr
 Run with:
 
 ```bash
-promptfoo eval -c promptfooconfig.codeexecution.yaml
+artef eval -c artefconfig.codeexecution.yaml
 ```
 
 ## URL Context Example
 
-The URL context configuration (`promptfooconfig.urlcontext.yaml`) demonstrates:
+The URL context configuration (`artefconfig.urlcontext.yaml`) demonstrates:
 
 - Using Gemini to extract and analyze content from web URLs
 - Combining URL context with search capabilities
@@ -75,15 +75,15 @@ The URL context configuration (`promptfooconfig.urlcontext.yaml`) demonstrates:
 Run with:
 
 ```bash
-promptfoo eval -c promptfooconfig.urlcontext.yaml
+artef eval -c artefconfig.urlcontext.yaml
 ```
 
 ## Example Files
 
-- `promptfooconfig.yaml`: Function calling configuration
-- `promptfooconfig.search.yaml`: Search grounding configuration
-- `promptfooconfig.codeexecution.yaml`: Code execution configuration
-- `promptfooconfig.urlcontext.yaml`: URL context configuration
+- `artefconfig.yaml`: Function calling configuration
+- `artefconfig.search.yaml`: Search grounding configuration
+- `artefconfig.codeexecution.yaml`: Code execution configuration
+- `artefconfig.urlcontext.yaml`: URL context configuration
 - `tools.json`: Function definition for the weather example
 
 ## Notes on Google Search Integration
@@ -125,4 +125,4 @@ This example demonstrates three approaches to search:
 
 - [Google AI Studio Function Calling documentation](https://ai.google.dev/docs/function_calling)
 - [Google AI Studio Search Grounding documentation](https://ai.google.dev/docs/gemini_api/grounding)
-- [promptfoo Google Provider documentation](/docs/providers/google)
+- [artef Google Provider documentation](/docs/providers/google)

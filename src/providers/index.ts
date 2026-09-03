@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+﻿import chalk from 'chalk';
 import dedent from 'dedent';
 import cliState from '../cliState';
 import logger from '../logger';
@@ -108,7 +108,7 @@ export async function loadApiProvider(
     env: mergedEnv,
   };
 
-  // Validate linkedTargetId if present (Promptfoo Cloud feature)
+  // Validate linkedTargetId if present (artef Cloud feature)
   if (providerOptions.config?.linkedTargetId) {
     await validateLinkedTargetId(providerOptions.config.linkedTargetId);
   }
@@ -214,7 +214,7 @@ export async function loadApiProvider(
     ${chalk.white(dedent`
       Please check your configuration and ensure the provider is correctly specified.
 
-      For more information on supported providers, visit: `)} ${chalk.cyan('https://promptfoo.dev/docs/providers/')}
+      For more information on supported providers, visit: `)} ${chalk.cyan('https://artef.dev/docs/providers/')}
   `;
   logger.error(errorMessage);
   throw new Error(errorMessage);

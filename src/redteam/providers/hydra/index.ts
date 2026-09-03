@@ -1,9 +1,9 @@
-import { isBlobStorageEnabled } from '../../../blobs/extractor';
+﻿import { isBlobStorageEnabled } from '../../../blobs/extractor';
 import { shouldAttemptRemoteBlobUpload } from '../../../blobs/remoteUpload';
 import { renderPrompt } from '../../../evaluatorHelpers';
 import { isLoggedIntoCloud } from '../../../globalConfig/accounts';
 import logger from '../../../logger';
-import { PromptfooChatCompletionProvider } from '../../../providers/promptfoo';
+import { artefChatCompletionProvider } from '../../../providers/artef';
 import {
   extractTraceIdFromTraceparent,
   fetchTraceContext,
@@ -144,7 +144,7 @@ export interface HydraProviderOptions {
 const DEFAULT_HYDRA_PROVIDER_OPTIONS: HydraProviderOptions = {
   strategyName: 'Hydra',
   strategyId: 'hydra',
-  providerId: 'promptfoo:redteam:hydra',
+  providerId: 'artef:redteam:hydra',
   taskId: 'hydra-decision',
   metadataPrefix: 'hydra',
 };
@@ -237,7 +237,7 @@ export class HydraProvider implements ApiProvider {
       );
     }
 
-    this.agentProvider = new PromptfooChatCompletionProvider({
+    this.agentProvider = new artefChatCompletionProvider({
       task: this.providerOptions.taskId,
       jsonOnly: true,
       preferSmallModel: false,
@@ -456,7 +456,7 @@ export class HydraProvider implements ApiProvider {
         continue;
       }
 
-      // PromptfooChatCompletionProvider usually extracts data.result as a string, but
+      // artefChatCompletionProvider usually extracts data.result as a string, but
       // task-specific handlers may return a structured response instead.
       const nextMessage = extractAgentMessage(agentResp.output);
 
@@ -616,7 +616,7 @@ export class HydraProvider implements ApiProvider {
           // Build hybrid payload with conversation history + current transformed turn
           const historyWithoutCurrentTurn = this.conversationHistory.slice(0, -1);
           const hybridPayload = {
-            _promptfoo_audio_hybrid: true,
+            _artef_audio_hybrid: true,
             history: historyWithoutCurrentTurn,
             currentTurn: {
               role: 'user' as const,

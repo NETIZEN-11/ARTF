@@ -1,8 +1,8 @@
----
+﻿---
 sidebar_position: 21
 sidebar_label: Dataset generation
 title: Dataset Generation - Automated Test Data Creation
-description: Generate comprehensive test datasets automatically using promptfoo. Create diverse test cases, personas, and edge cases for thorough LLM evaluation.
+description: Generate comprehensive test datasets automatically using artef. Create diverse test cases, personas, and edge cases for thorough LLM evaluation.
 keywords:
   [
     dataset generation,
@@ -21,7 +21,7 @@ pagination_next: configuration/huggingface-datasets
 
 Your dataset is the heart of your LLM eval. To the extent possible, it should closely represent true inputs into your LLM app.
 
-promptfoo can extend existing datasets and help make them more comprehensive and diverse using the `promptfoo generate dataset` command. This guide will walk you through the process of generating datasets using `promptfoo`.
+artef can extend existing datasets and help make them more comprehensive and diverse using the `artef generate dataset` command. This guide will walk you through the process of generating datasets using `artef`.
 
 ### Prepare your prompts
 
@@ -57,14 +57,14 @@ prompt
 "I want you to act as a travel guide. I will write you my location and you will suggest a place to visit near my location. In some cases, I will also give you the type of places I will visit. You will also suggest me places of similar type that are close to my first location. My current location is {{location}}"
 ```
 
-### Run `promptfoo generate dataset`
+### Run `artef generate dataset`
 
 Dataset generation uses your prompts and any existing test cases to generate new, unique test cases that can be used for evaluation.
 
 Run the command in the same directory as your config:
 
 ```sh
-promptfoo generate dataset
+artef generate dataset
 ```
 
 This will output the `tests` YAML to your terminal.
@@ -72,19 +72,19 @@ This will output the `tests` YAML to your terminal.
 If you want to write the new dataset to a YAML:
 
 ```sh
-promptfoo generate dataset -o tests.yaml
+artef generate dataset -o tests.yaml
 ```
 
 a CSV:
 
 ```sh
-promptfoo generate dataset -o tests.csv
+artef generate dataset -o tests.csv
 ```
 
 Or if you want to edit the existing config in-place:
 
 ```sh
-promptfoo generate dataset -w
+artef generate dataset -w
 ```
 
 ### Loading from output files
@@ -112,7 +112,7 @@ tests:
 
 ### Customize the generation process
 
-You can customize the dataset generation process by providing additional options to the `promptfoo generate dataset` command. Below is a table of supported parameters:
+You can customize the dataset generation process by providing additional options to the `artef generate dataset` command. Below is a table of supported parameters:
 
 | Parameter                  | Description                                                             |
 | -------------------------- | ----------------------------------------------------------------------- |
@@ -127,7 +127,7 @@ You can customize the dataset generation process by providing additional options
 For example:
 
 ```sh
-promptfoo generate dataset --config path_to_config.yaml --output path_to_output.yaml --instructions "Consider edge cases related to international travel"
+artef generate dataset --config path_to_config.yaml --output path_to_output.yaml --instructions "Consider edge cases related to international travel"
 ```
 
 ### Using a custom provider
@@ -142,13 +142,13 @@ export AZURE_OPENAI_API_KEY=your-key
 export AZURE_API_HOST=your-host.openai.azure.com
 export AZURE_OPENAI_DEPLOYMENT_NAME=your-deployment
 
-promptfoo generate dataset
+artef generate dataset
 ```
 
 Alternatively, use the `--provider` flag with any supported provider:
 
 ```bash
-promptfoo generate dataset --provider openai:chat:gpt-5-mini
+artef generate dataset --provider openai:chat:gpt-5-mini
 ```
 
 For more control, create a provider config file:
@@ -162,11 +162,11 @@ config:
 ```
 
 ```bash
-promptfoo generate dataset --provider file://synthesis-provider.yaml
+artef generate dataset --provider file://synthesis-provider.yaml
 ```
 
 You can also use a Python provider:
 
 ```bash
-promptfoo generate dataset --provider file://synthesis-provider.py
+artef generate dataset --provider file://synthesis-provider.py
 ```

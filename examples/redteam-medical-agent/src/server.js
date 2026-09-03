@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Express server for the medical agent
  */
 
@@ -21,7 +21,7 @@ const router = express.Router();
 
 router.post('/chat', async (req, res) => {
   const { message } = req.body;
-  const sessionId = req.headers['x-promptfoo-session'];
+  const sessionId = req.headers['x-artef-session'];
 
   console.debug({ type: 'request', sessionId, message });
 
@@ -166,7 +166,7 @@ const htmlContent = `
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            'x-promptfoo-session': sessionId
+            'x-artef-session': sessionId
           },
           body: JSON.stringify({ message })
         });

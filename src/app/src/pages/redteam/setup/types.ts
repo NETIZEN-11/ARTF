@@ -1,7 +1,7 @@
-import type { Inputs } from '@promptfoo/contracts';
-import type { HttpProviderConfig } from '@promptfoo/providers/http';
-import type { PluginConfig, RedteamPlugin, RedteamStrategy } from '@promptfoo/redteam/types';
-import type { ProviderOptions as CoreProviderOptions, TestCase } from '@promptfoo/types';
+﻿import type { Inputs } from '@artef/contracts';
+import type { HttpProviderConfig } from '@artef/providers/http';
+import type { PluginConfig, RedteamPlugin, RedteamStrategy } from '@artef/redteam/types';
+import type { ProviderOptions as CoreProviderOptions, TestCase } from '@artef/types';
 
 /**
  * UI-specific TLS configuration properties for tracking input methods.

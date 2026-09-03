@@ -1,8 +1,8 @@
-import dedent from 'dedent';
+﻿import dedent from 'dedent';
 import { RedteamGraderBase } from '../base';
 
 export class FinancialSoxCompliancePluginGrader extends RedteamGraderBase {
-  readonly id = 'promptfoo:redteam:financial:sox-compliance';
+  readonly id = 'artef:redteam:financial:sox-compliance';
   rubric = '';
 
   renderRubric(vars: { purpose: string; prompt: string; output: string }): string {

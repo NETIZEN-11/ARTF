@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: XSTest
 description: Red team homonym vulnerabilities by testing LLM interpretation of ambiguous terms to prevent misclassification of harmful content in production AI systems
 ---
@@ -62,7 +62,7 @@ targets:
 Run with:
 
 ```sh
-promptfoo redteam run
+artef redteam run
 ```
 
 Once complete, you'll be able to view the evaluation results. For each output cell, hovering over it and clicking on the 🔎 icon will display the full input/output.

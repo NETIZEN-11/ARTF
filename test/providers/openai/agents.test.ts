@@ -1,4 +1,4 @@
-import { EventEmitter } from 'node:events';
+﻿import { EventEmitter } from 'node:events';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -1045,7 +1045,7 @@ describe('OpenAiAgentsProvider', () => {
         sandbox: {
           type: 'unix-local',
           clientOptions: {
-            workspaceBaseDir: '/tmp/promptfoo-agents-sdk',
+            workspaceBaseDir: '/tmp/artef-agents-sdk',
           },
         },
         runOptions: {
@@ -1100,7 +1100,7 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockRun.mock.calls[0][2].model).toBeUndefined();
   });
 
-  it('passes Promptfoo vars through the SDK local run context', async () => {
+  it('passes artef vars through the SDK local run context', async () => {
     const provider = new OpenAiAgentsProvider('gpt-5-mini', {
       config: {
         agent: {
@@ -1288,7 +1288,7 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockRun.mock.calls[0][2].sessionInputCallback).toBe(sessionInputCallback);
   });
 
-  it('adds the Promptfoo trace exporter without replacing existing processors', async () => {
+  it('adds the artef trace exporter without replacing existing processors', async () => {
     vi.resetModules();
     const { OpenAiAgentsProvider: IsolatedOpenAiAgentsProvider } = await import(
       '../../../src/providers/openai/agents'
@@ -1339,7 +1339,7 @@ describe('OpenAiAgentsProvider', () => {
       metadata: {
         'evaluation.id': 'eval-1',
         'test.case.id': 'case-1',
-        'promptfoo.parent_span_id': '0123456789abcdef',
+        'artef.parent_span_id': '0123456789abcdef',
       },
     });
   });
@@ -1367,8 +1367,8 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockGetOrCreateTrace).toHaveBeenCalledWith(expect.any(Function), {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
       metadata: {
-        'promptfoo.parent_span_id': '0123456789abcdef',
-        'promptfoo.otlp_endpoint': 'http://127.0.0.2:14318',
+        'artef.parent_span_id': '0123456789abcdef',
+        'artef.otlp_endpoint': 'http://127.0.0.2:14318',
       },
     });
   });
@@ -1393,7 +1393,7 @@ describe('OpenAiAgentsProvider', () => {
     expect(addTraceProcessor).not.toHaveBeenCalled();
     expect(mockGetOrCreateTrace).toHaveBeenCalledWith(expect.any(Function), {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
-      metadata: { 'promptfoo.parent_span_id': '0123456789abcdef' },
+      metadata: { 'artef.parent_span_id': '0123456789abcdef' },
     });
   });
 
@@ -1419,8 +1419,8 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockGetOrCreateTrace).toHaveBeenCalledWith(expect.any(Function), {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
       metadata: {
-        'promptfoo.parent_span_id': '0123456789abcdef',
-        'promptfoo.otlp_endpoint': 'https://collector.example.com:4318',
+        'artef.parent_span_id': '0123456789abcdef',
+        'artef.otlp_endpoint': 'https://collector.example.com:4318',
       },
     });
   });
@@ -1450,9 +1450,9 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockGetOrCreateTrace).toHaveBeenCalledWith(expect.any(Function), {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
       metadata: {
-        'promptfoo.parent_span_id': '0123456789abcdef',
-        'promptfoo.otlp_endpoint': 'http://127.0.0.2:14318',
-        'promptfoo.otlp_format': 'protobuf',
+        'artef.parent_span_id': '0123456789abcdef',
+        'artef.otlp_endpoint': 'http://127.0.0.2:14318',
+        'artef.otlp_format': 'protobuf',
       },
     });
   });
@@ -1477,8 +1477,8 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockGetOrCreateTrace).toHaveBeenCalledWith(expect.any(Function), {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
       metadata: {
-        'promptfoo.parent_span_id': '0123456789abcdef',
-        'promptfoo.request_model': 'customer-model-alias',
+        'artef.parent_span_id': '0123456789abcdef',
+        'artef.request_model': 'customer-model-alias',
       },
     });
   });
@@ -1508,8 +1508,8 @@ describe('OpenAiAgentsProvider', () => {
     expect(mockGetOrCreateTrace).toHaveBeenCalledWith(expect.any(Function), {
       traceId: 'trace_0123456789abcdef0123456789abcdef',
       metadata: {
-        'promptfoo.parent_span_id': '0123456789abcdef',
-        'promptfoo.model_provider': 'anthropic',
+        'artef.parent_span_id': '0123456789abcdef',
+        'artef.model_provider': 'anthropic',
       },
     });
   });

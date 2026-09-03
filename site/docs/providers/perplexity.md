@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Perplexity
 description: "Integrate Perplexity's online LLMs with real-time web search for fact-checking, current events, and knowledge-grounded responses"
 ---
@@ -7,7 +7,7 @@ description: "Integrate Perplexity's online LLMs with real-time web search for f
 
 The [Perplexity API](https://blog.perplexity.ai/blog/introducing-pplx-api) provides chat completion models with built-in search capabilities, citations, and structured output support. Perplexity models retrieve information from the web in real-time, enabling up-to-date responses with source citations.
 
-Perplexity follows OpenAI's chat completion API format - see our [OpenAI documentation](https://promptfoo.dev/docs/providers/openai) for the base API details.
+Perplexity follows OpenAI's chat completion API format - see our [OpenAI documentation](https://artef.dev/docs/providers/openai) for the base API details.
 
 ## Setup
 
@@ -141,7 +141,7 @@ providers:
 
 ### Cost Tracking
 
-promptfoo includes built-in cost calculation for Perplexity models based on their official pricing. You can specify the usage tier with the `usage_tier` parameter:
+artef includes built-in cost calculation for Perplexity models based on their official pricing. You can specify the usage tier with the `usage_tier` parameter:
 
 ```yaml
 providers:
@@ -222,17 +222,17 @@ providers:
 
 ## Example Configurations
 
-Check our [perplexity.ai-example](https://github.com/promptfoo/promptfoo/tree/main/examples/provider-perplexity) with multiple configurations showcasing Perplexity's capabilities:
+Check our [perplexity.ai-example](https://github.com/artef/artef/tree/main/examples/provider-perplexity) with multiple configurations showcasing Perplexity's capabilities:
 
-- **promptfooconfig.yaml**: Basic model comparison
-- **promptfooconfig.structured-output.yaml**: JSON schema and regex patterns
-- **promptfooconfig.search-filters.yaml**: Date and location-based filters
-- **promptfooconfig.research-reasoning.yaml**: Specialized research and reasoning models
+- **artefconfig.yaml**: Basic model comparison
+- **artefconfig.structured-output.yaml**: JSON schema and regex patterns
+- **artefconfig.search-filters.yaml**: Date and location-based filters
+- **artefconfig.research-reasoning.yaml**: Specialized research and reasoning models
 
 You can initialize these examples with:
 
 ```bash
-npx promptfoo@latest init --example provider-perplexity
+npx artef@latest init --example provider-perplexity
 ```
 
 ## Pricing and Rate Limits

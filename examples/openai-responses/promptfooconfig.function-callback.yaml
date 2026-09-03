@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Function Calling with Callbacks in OpenAI Responses API
 prompts:
   - 'Please add these numbers: {{a}} and {{b}}'

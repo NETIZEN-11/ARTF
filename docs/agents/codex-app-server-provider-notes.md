@@ -1,6 +1,6 @@
-# Codex App Server Provider Notes
+﻿# Codex App Server Provider Notes
 
-These notes track the planned Promptfoo integration for the Codex app-server protocol.
+These notes track the planned artef integration for the Codex app-server protocol.
 They are intentionally implementation-facing: keep them current as the provider, docs,
 examples, and verification expand.
 
@@ -9,7 +9,7 @@ For the broader coding-agent provider taxonomy, see
 
 ## Objective
 
-Add an experimental Promptfoo provider that drives `codex app-server` directly. The
+Add an experimental artef provider that drives `codex app-server` directly. The
 provider should complement, not replace, the existing OpenAI Codex SDK provider:
 
 - Codex SDK provider: best default for CI and automation.
@@ -51,7 +51,7 @@ Transport:
 
 Handshake:
 
-1. Send `initialize` with Promptfoo client metadata.
+1. Send `initialize` with artef client metadata.
 2. Send `initialized` notification.
 3. Start or resume a thread.
 4. Start a turn.
@@ -102,7 +102,7 @@ Core server notifications:
 - `thread/tokenUsage/updated`
 - `error`
 
-Core server requests requiring deterministic Promptfoo responses:
+Core server requests requiring deterministic artef responses:
 
 - `item/commandExecution/requestApproval`
 - `item/fileChange/requestApproval`
@@ -115,7 +115,7 @@ Core server requests requiring deterministic Promptfoo responses:
 
 ### Inputs
 
-Promptfoo prompt strings remain the default. The provider should also accept a JSON
+artef prompt strings remain the default. The provider should also accept a JSON
 array of Codex input items:
 
 ```json
@@ -148,12 +148,12 @@ The provider response should include:
 - `metadata.skillCalls` / `metadata.attemptedSkillCalls`: heuristic skill usage
   where available.
 - `tokenUsage`: from `thread/tokenUsage/updated` if emitted.
-- `cost`: estimated from Promptfoo's Codex pricing table when model is known.
+- `cost`: estimated from artef's Codex pricing table when model is known.
 
 ### Config
 
 Provider-level config should be strict. Prompt-level merged config should strip unknown
-keys so generic Promptfoo prompt config does not break rows.
+keys so generic artef prompt config does not break rows.
 
 Core config:
 
@@ -206,7 +206,7 @@ Default stance should favor repeatable evals over convenience:
 Rationale:
 
 - The app-server exposes shell, filesystem, app connector, plugin, and config surfaces.
-- Promptfoo evals should be deterministic and should not block on human approval.
+- artef evals should be deterministic and should not block on human approval.
 - Eval prompts and target behavior can be adversarial.
 
 ## Implementation Phases
@@ -321,14 +321,14 @@ Rationale:
   - user input request policy
   - dynamic tool static response policy
   - metadata sanitization
-- Ran a real local smoke eval through `npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml --no-cache -o /tmp/promptfoo-codex-app-server-example.json`.
+- Ran a real local smoke eval through `npm run local -- eval -c examples/openai-codex-app-server/artefconfig.yaml --no-cache -o /tmp/artef-codex-app-server-example.json`.
   - Result: pass.
   - Provider returned Codex app-server `sessionId`, token usage, item counts, thread id,
     turn id, and structured JSON output.
 - Ran docs build:
   - `cd site && SKIP_OG_GENERATION=true npm run build`
   - Result: pass.
-- First dogfood review through `examples/openai-codex-app-server/review-diff/promptfooconfig.yaml`
+- First dogfood review through `examples/openai-codex-app-server/review-diff/artefconfig.yaml`
   found four actionable provider issues:
   - startup timeout could leak a spawned app-server and leave a rejected reusable
     connection promise cached
@@ -350,7 +350,7 @@ Rationale:
   - `npm run tsc -- --pretty false`
   - `npx vitest run test/providers/openai-codex-app-server.test.ts --sequence.shuffle=false`
   - Result: pass, 13 provider tests.
-- Second dogfood review passed the Promptfoo eval and returned valid JSON, but still
+- Second dogfood review passed the artef eval and returned valid JSON, but still
   reported two provider comments:
   - legacy `execCommandApproval` / `applyPatchApproval` requests identify the active
     thread with `conversationId` and expect legacy review decisions
@@ -444,7 +444,7 @@ Rationale:
   - `npx vitest run test/providers/openai-codex-app-server.test.ts --sequence.shuffle=false`
   - Result: pass, 24 provider tests.
 - Eighth dogfood review:
-  - `npm run local -- eval -c examples/openai-codex-app-server/review-diff/promptfooconfig.yaml --no-cache --no-share -o /tmp/promptfoo-codex-app-server-review.json`
+  - `npm run local -- eval -c examples/openai-codex-app-server/review-diff/artefconfig.yaml --no-cache --no-share -o /tmp/artef-codex-app-server-review.json`
   - Result: pass.
   - Provider output: `{"comments":[],"summary":"No actionable findings; TypeScript and focused provider tests passed."}`
   - This confirms the provider can be used to review the current git diff and return
@@ -458,7 +458,7 @@ Rationale:
     pass, 2 registry tests
   - `npm run l`: pass with existing complexity warnings only
   - `cd site && SKIP_OG_GENERATION=true npm run build`: pass
-  - `npm run local -- eval -c examples/openai-codex-app-server/promptfooconfig.yaml --no-cache --no-share -o /tmp/promptfoo-codex-app-server-example.json`:
+  - `npm run local -- eval -c examples/openai-codex-app-server/artefconfig.yaml --no-cache --no-share -o /tmp/artef-codex-app-server-example.json`:
     pass
 
 ## QA Matrix
@@ -504,7 +504,7 @@ Required docs/examples checks:
 ## Open Questions
 
 - Whether to expose WebSocket transport in the first public version. Stdio is enough for
-  Promptfoo-managed app-server processes; WebSocket is useful for external clients but
+  artef-managed app-server processes; WebSocket is useful for external clients but
   adds auth and lifecycle complexity.
 - Whether to support top-level `codex:*` aliases immediately or keep all new IDs under
   `openai:*` for consistency with the existing Codex SDK provider.
@@ -572,5 +572,5 @@ Latest focused verification after these fixes:
 
 - `npx vitest run test/providers/openai-codex-app-server.test.ts --sequence.shuffle=false`:
   pass, 35 provider tests.
-- `npm run local -- eval -c examples/openai-codex-app-server/review-diff/promptfooconfig.yaml --no-cache --no-share`:
+- `npm run local -- eval -c examples/openai-codex-app-server/review-diff/artefconfig.yaml --no-cache --no-share`:
   pass with `{"comments":[],"summary":"No actionable issues found in the current diff."}`.

@@ -1,9 +1,9 @@
-# eval-sql-validation (Sql Validation)
+﻿# eval-sql-validation (Sql Validation)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example eval-sql-validation
+npx artef@latest init --example eval-sql-validation
 cd eval-sql-validation
 ```
 
@@ -11,12 +11,12 @@ cd eval-sql-validation
 
 To get started, set your OPENAI_API_KEY environment variable and `npm i node-sql-parser` to install the peer dependency.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

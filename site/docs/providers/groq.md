@@ -1,11 +1,11 @@
----
+﻿---
 sidebar_label: Groq
 description: Configure Groq's ultra-fast LLM inference API for high-performance LLM testing and evaluation with reasoning models, tool use, and vision capabilities
 ---
 
 # Groq
 
-[Groq](https://groq.com) is an extremely fast inference API compatible with all the options provided by Promptfoo's [OpenAI provider](/docs/providers/openai/). See openai specific documentation for configuration details.
+[Groq](https://groq.com) is an extremely fast inference API compatible with all the options provided by artef's [OpenAI provider](/docs/providers/openai/). See openai specific documentation for configuration details.
 
 Groq provides access to a wide range of models including reasoning models with chain-of-thought capabilities, compound models with built-in tools, and standard chat models. See the [Groq Models documentation](https://console.groq.com/docs/models) for the current list of available models.
 
@@ -48,10 +48,10 @@ Alternatively, you can specify the `apiKey` in the provider configuration (see b
 
 ## Configuration
 
-Configure the Groq provider in your promptfoo configuration file:
+Configure the Groq provider in your artef configuration file:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: groq:openai/gpt-oss-120b
     config:
@@ -112,7 +112,7 @@ Preview models are intended for evaluation and may be discontinued at short noti
 
 Groq hosts additional models that use audio or classification endpoints, so they aren't reachable through the `groq:` chat provider:
 
-- **Speech-to-text:** `whisper-large-v3`, `whisper-large-v3-turbo`. Use promptfoo's [OpenAI](/docs/providers/openai/) `transcription` provider pointed at Groq — e.g. `openai:transcription:whisper-large-v3` with `apiBaseUrl: https://api.groq.com/openai/v1` and `apiKeyEnvar: GROQ_API_KEY`.
+- **Speech-to-text:** `whisper-large-v3`, `whisper-large-v3-turbo`. Use artef's [OpenAI](/docs/providers/openai/) `transcription` provider pointed at Groq — e.g. `openai:transcription:whisper-large-v3` with `apiBaseUrl: https://api.groq.com/openai/v1` and `apiKeyEnvar: GROQ_API_KEY`.
 - **Text-to-speech:** `canopylabs/orpheus-v1-english`, `canopylabs/orpheus-arabic-saudi`.
 - **Prompt-safety classifiers:** `meta-llama/llama-prompt-guard-2-86m`, `meta-llama/llama-prompt-guard-2-22m`.
 
@@ -145,8 +145,8 @@ Check the [Groq Console](https://console.groq.com/docs/models) for the full list
 
 Groq supports tool use, allowing models to call predefined functions. Configure tools in your provider settings:
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: groq:openai/gpt-oss-120b
     config:
@@ -187,7 +187,7 @@ Groq's multimodal lineup changes frequently. `qwen/qwen3.6-27b` is the current v
 - **Base64 Encoded Images:** Maximum allowed size is 4MB
 - **Multiple Images:** Check model documentation for image limits per request
 
-### How to Use Vision in Promptfoo
+### How to Use Vision in artef
 
 Specify a vision model ID in your provider configuration and include images in OpenAI-compatible format:
 
@@ -201,8 +201,8 @@ Specify a vision model ID in your provider configuration and include images in O
         url: '{{url}}'
 ```
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 prompts: file://openai-compatible-prompt-format.yaml
 providers:
   - id: groq:qwen/qwen3.6-27b
@@ -222,8 +222,8 @@ tests:
 
 Groq provides access to reasoning models that excel at complex problem-solving tasks requiring step-by-step analysis. These include GPT-OSS variants and Qwen models. Check the [Groq Models documentation](https://console.groq.com/docs/models) for current reasoning model availability.
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 description: Groq reasoning model example
 prompts:
   - |
@@ -412,8 +412,8 @@ Groq's compound models combine language models with pre-enabled built-in tools t
 
 **Basic Configuration:**
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: groq:groq/compound
     config:
@@ -524,8 +524,8 @@ Some reasoning models on Groq support a browser search tool that must be explici
 
 **Configuration:**
 
-```yaml title="promptfooconfig.yaml"
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+```yaml title="artefconfig.yaml"
+# yaml-language-server: $schema=https://artef.dev/config-schema.json
 providers:
   - id: groq:openai/gpt-oss-120b # or other reasoning models with browser_search support
     config:

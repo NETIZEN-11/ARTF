@@ -1,4 +1,4 @@
-import async from 'async';
+﻿import async from 'async';
 import { Presets, SingleBar } from 'cli-progress';
 import { isLoggedIntoCloud } from '../../globalConfig/accounts';
 import logger from '../../logger';
@@ -65,7 +65,7 @@ async function generateGcgPrompts(
         payload,
         runtimeContext,
         {
-          headers: { 'x-promptfoo-silent': 'true' },
+          headers: { 'x-artef-silent': 'true' },
           bustCache: true,
         },
       );
@@ -146,7 +146,7 @@ export async function addGcgTestCases(
 ): Promise<TestCase[]> {
   if (!isLoggedIntoCloud()) {
     throw new Error(
-      'The GCG strategy requires authentication. Run `promptfoo auth login` to use this strategy.',
+      'The GCG strategy requires authentication. Run `artef auth login` to use this strategy.',
     );
   }
 

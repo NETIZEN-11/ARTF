@@ -1,9 +1,9 @@
-# compare-claude-vs-gpt (Claude Vs Gpt)
+﻿# compare-claude-vs-gpt (Claude Vs Gpt)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example compare-claude-vs-gpt
+npx artef@latest init --example compare-claude-vs-gpt
 cd compare-claude-vs-gpt
 ```
 
@@ -11,12 +11,12 @@ cd compare-claude-vs-gpt
 
 To get started, set your OPENAI_API_KEY and ANTHROPIC_API_KEY environment variables.
 
-Next, edit promptfooconfig.yaml.
+Next, edit artefconfig.yaml.
 
 Then run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
-Afterwards, you can view the results by running `promptfoo view`
+Afterwards, you can view the results by running `artef view`

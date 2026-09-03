@@ -1,9 +1,9 @@
-# redteam-tracing-example (Red Team Tracing)
+﻿# redteam-tracing-example (Red Team Tracing)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example redteam-tracing-example
+npx artef@latest init --example redteam-tracing-example
 cd redteam-tracing-example
 ```
 
@@ -27,7 +27,7 @@ This starts an HTTP server on port 3110 that:
 
 - Accepts chat requests
 - Generates OTLP trace spans (LLM calls, guardrails, tools)
-- Sends spans to promptfoo's OTLP receiver
+- Sends spans to artef's OTLP receiver
 
 **3. Test the server (optional):**
 
@@ -40,7 +40,7 @@ This starts an HTTP server on port 3110 that:
 
 ```bash
 # In another terminal (from the project root)
-npm run local -- eval -c examples/redteam-tracing-example/promptfooconfig.yaml
+npm run local -- eval -c examples/redteam-tracing-example/artefconfig.yaml
 ```
 
 **5. View the results:**
@@ -72,7 +72,7 @@ curl -X POST http://localhost:3110/chat \
 **No traces appearing?**
 
 - Make sure the server is emitting to the correct OTLP endpoint (check server logs)
-- Verify promptfoo's OTLP receiver is enabled in config (`tracing.enabled: true`)
+- Verify artef's OTLP receiver is enabled in config (`tracing.enabled: true`)
 - Check that `traceparent` headers are being passed (set in provider context)
 
 ## What is Red Team Tracing?
@@ -94,7 +94,7 @@ This information can help:
 
 ### Basic Configuration
 
-Enable tracing in your `promptfooconfig.yaml`:
+Enable tracing in your `artefconfig.yaml`:
 
 ```yaml
 redteam:
@@ -323,7 +323,7 @@ To minimize impact:
 ### Enable Debug Logging
 
 ```bash
-PROMPTFOO_LOG_LEVEL=debug npm run local -- eval -c redteam.yaml
+artef_LOG_LEVEL=debug npm run local -- eval -c redteam.yaml
 ```
 
 ### Check Trace Store
@@ -351,9 +351,9 @@ console.log(trace);
 
 See the example configurations:
 
-- `promptfooconfig.yaml` - Basic tracing setup
-- `promptfooconfig.advanced.yaml` - Advanced configuration
-- `promptfooconfig-simple.yaml` - Simplified configuration
+- `artefconfig.yaml` - Basic tracing setup
+- `artefconfig.advanced.yaml` - Advanced configuration
+- `artefconfig-simple.yaml` - Simplified configuration
 
 ## Troubleshooting
 

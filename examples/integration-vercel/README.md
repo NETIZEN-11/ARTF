@@ -1,6 +1,6 @@
-# integration-vercel (Vercel)
+﻿# integration-vercel (Vercel)
 
-Examples for using promptfoo with Vercel AI services.
+Examples for using artef with Vercel AI services.
 
 ## Examples
 

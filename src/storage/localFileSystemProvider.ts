@@ -1,7 +1,7 @@
-/**
+﻿/**
  * Local filesystem storage provider for media files.
  *
- * Stores media in the local promptfoo data directory (~/.promptfoo/media).
+ * Stores media in the local artef data directory (~/.artef/media).
  * Uses content-based hashing for deduplication.
  */
 

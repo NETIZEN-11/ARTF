@@ -1,4 +1,4 @@
-/**
+﻿/**
  * HuggingFace metadata utilities for fetching model revision information.
  * Used for deduplication of model scans.
  */
@@ -83,7 +83,7 @@ export async function fetchHuggingFaceMetadata(modelId: string): Promise<Hugging
       {
         method: 'GET',
         headers: {
-          'User-Agent': 'promptfoo-cli',
+          'User-Agent': 'artef-cli',
         },
       },
       10000, // 10 second timeout

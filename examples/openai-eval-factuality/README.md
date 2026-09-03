@@ -1,9 +1,9 @@
-# openai-eval-factuality (Openai Eval Factuality)
+﻿# openai-eval-factuality (Openai Eval Factuality)
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example openai-eval-factuality
+npx artef@latest init --example openai-eval-factuality
 cd openai-eval-factuality
 ```
 
@@ -11,8 +11,8 @@ cd openai-eval-factuality
 
 This example uses the factuality and closed QA evaluation method from OpenAI.
 
-It is pre-configured in `promptfooconfig.yaml`. That means you can just run:
+It is pre-configured in `artefconfig.yaml`. That means you can just run:
 
 ```bash
-promptfoo eval
+artef eval
 ```

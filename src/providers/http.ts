@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
 import fs from 'fs/promises';
 import http from 'http';
 import https from 'https';
@@ -63,7 +63,7 @@ import type {
   TokenUsage,
 } from '../types/index';
 
-const AUTH_TOKEN_CACHE_HMAC_CONTEXT = 'promptfoo:http-auth-token-cache-key';
+const AUTH_TOKEN_CACHE_HMAC_CONTEXT = 'artef:http-auth-token-cache-key';
 const AUTH_TOKEN_CACHE_HMAC_KEY = crypto.randomBytes(32);
 const MAX_AUTH_TOKEN_CACHE_ENTRIES = 256;
 
@@ -81,7 +81,7 @@ export function escapeJsonVariables(vars: Record<string, any>): Record<string, a
 }
 
 /**
- * Maps promptfoo-cloud certificate fields to type-specific fields based on the certificate type.
+ * Maps artef-cloud certificate fields to type-specific fields based on the certificate type.
  * This handles certificates stored in the database with generic field names.
  *
  * @param signatureAuth - The signature authentication configuration
@@ -426,11 +426,11 @@ export async function generateSignature(
         const keystorePassword =
           signatureAuth.keystorePassword ||
           signatureAuth.certificatePassword ||
-          getEnvString('PROMPTFOO_JKS_PASSWORD');
+          getEnvString('artef_JKS_PASSWORD');
 
         if (!keystorePassword) {
           throw new Error(
-            'JKS keystore password is required. Provide it via config keystorePassword/certificatePassword or PROMPTFOO_JKS_PASSWORD environment variable',
+            'JKS keystore password is required. Provide it via config keystorePassword/certificatePassword or artef_JKS_PASSWORD environment variable',
           );
         }
 
@@ -505,11 +505,11 @@ export async function generateSignature(
           const pfxPassword =
             signatureAuth.pfxPassword ||
             signatureAuth.certificatePassword ||
-            getEnvString('PROMPTFOO_PFX_PASSWORD');
+            getEnvString('artef_PFX_PASSWORD');
 
           if (!pfxPassword) {
             throw new Error(
-              'PFX certificate password is required. Provide it via config pfxPassword/certificatePassword or PROMPTFOO_PFX_PASSWORD environment variable',
+              'PFX certificate password is required. Provide it via config pfxPassword/certificatePassword or artef_PFX_PASSWORD environment variable',
             );
           }
 
@@ -1803,11 +1803,11 @@ async function createHttpsAgent(
       const keystorePassword =
         (tlsConfig as any).keystorePassword ||
         tlsConfig.passphrase ||
-        getEnvString('PROMPTFOO_JKS_PASSWORD');
+        getEnvString('artef_JKS_PASSWORD');
 
       if (!keystorePassword) {
         throw new Error(
-          'JKS keystore password is required for TLS. Provide it via passphrase or PROMPTFOO_JKS_PASSWORD environment variable',
+          'JKS keystore password is required for TLS. Provide it via passphrase or artef_JKS_PASSWORD environment variable',
         );
       }
 

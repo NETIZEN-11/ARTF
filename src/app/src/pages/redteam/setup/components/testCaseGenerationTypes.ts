@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Shared types for test case generation.
  *
  * This file exists to prevent circular dependencies between:
@@ -9,8 +9,8 @@
  * from here without creating import cycles.
  */
 
-import type { Plugin, Strategy } from '@promptfoo/redteam/constants';
-import type { PluginConfig, StrategyConfig } from '@promptfoo/redteam/types';
+import type { Plugin, Strategy } from '@artef/redteam/constants';
+import type { PluginConfig, StrategyConfig } from '@artef/redteam/types';
 
 export interface GeneratedTestCase {
   prompt: string;

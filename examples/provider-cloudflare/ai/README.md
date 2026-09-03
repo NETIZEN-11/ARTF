@@ -1,4 +1,4 @@
-# provider-cloudflare/ai (Cloudflare Workers AI)
+﻿# provider-cloudflare/ai (Cloudflare Workers AI)
 
 Cloudflare Workers AI evaluation with OpenAI-compatible endpoints.
 
@@ -7,7 +7,7 @@ Cloudflare Workers AI evaluation with OpenAI-compatible endpoints.
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-cloudflare/ai
+npx artef@latest init --example provider-cloudflare/ai
 cd provider-cloudflare/ai
 ```
 
@@ -91,4 +91,4 @@ npm run local -- eval -c examples/provider-cloudflare/ai/chat_config.yaml
 - [Cloudflare Workers AI Models](https://developers.cloudflare.com/workers-ai/models/) - Complete model catalog
 - [Cloudflare Workers AI Documentation](https://developers.cloudflare.com/workers-ai/) - Platform overview
 - [OpenAI Compatibility](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/) - API details
-- [promptfoo Cloudflare AI Provider](../../../site/docs/providers/cloudflare-ai.md) - Provider documentation
+- [artef Cloudflare AI Provider](../../../site/docs/providers/cloudflare-ai.md) - Provider documentation

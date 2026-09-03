@@ -1,17 +1,17 @@
-# provider-http/streaming (HTTP Provider Streaming Example)
+﻿# provider-http/streaming (HTTP Provider Streaming Example)
 
 This example shows how to use OpenAI's streaming API via HTTP provider.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example provider-http/streaming
+npx artef@latest init --example provider-http/streaming
 cd provider-http/streaming
 ```
 
 ⚠️ **Streaming is not recommended for evaluations**
 
-Promptfoo supports streaming HTTP targets, but evals wait for full responses before scoring. That means:
+artef supports streaming HTTP targets, but evals wait for full responses before scoring. That means:
 
 - No progressive display during evals
 - Extra parsing complexity for streaming formats (SSE/chunked)
@@ -38,13 +38,13 @@ OPENAI_API_KEY=your-openai-api-key
 2. Run the evaluation (recommended):
 
    ```bash
-   npx promptfoo@latest eval -c examples/provider-http/streaming/promptfooconfig.yaml
+   npx artef@latest eval -c examples/provider-http/streaming/artefconfig.yaml
    ```
 
 3. View results (optional):
 
    ```bash
-   npx promptfoo@latest view
+   npx artef@latest view
    ```
 
-For more HTTP provider configuration options, see the docs: `https://promptfoo.dev/docs/providers/http`.
+For more HTTP provider configuration options, see the docs: `https://artef.dev/docs/providers/http`.

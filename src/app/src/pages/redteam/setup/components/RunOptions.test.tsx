@@ -1,5 +1,5 @@
-import { TooltipProvider } from '@app/components/ui/tooltip';
-import { REDTEAM_DEFAULTS } from '@promptfoo/redteam/constants';
+﻿import { TooltipProvider } from '@app/components/ui/tooltip';
+import { REDTEAM_DEFAULTS } from '@artef/redteam/constants';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -12,7 +12,7 @@ import {
   RUNOPTIONS_TEXT,
   RunOptionsContent,
 } from './RunOptions';
-import type { RedteamRunOptions } from '@promptfoo/types';
+import type { RedteamRunOptions } from '@artef/types';
 
 const renderWithTooltipProvider = (component: React.ReactNode) => {
   return render(<TooltipProvider>{component}</TooltipProvider>);

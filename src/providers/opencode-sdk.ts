@@ -1,4 +1,4 @@
-import { createRequire } from 'node:module';
+﻿import { createRequire } from 'node:module';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
 import os from 'os';
@@ -146,7 +146,7 @@ export interface OpenCodePermissionConfig {
  * Single permission rule passed to OpenCode v2 `session.create`.
  *
  * The v2 SDK types permission as `PermissionRuleset = Array<PermissionRule>`,
- * so promptfoo converts the user-facing `OpenCodePermissionConfig` object
+ * so artef converts the user-facing `OpenCodePermissionConfig` object
  * shape into this rule-array shape before calling the server.
  */
 export interface OpenCodePermissionRule {
@@ -393,7 +393,7 @@ export interface OpenCodeSDKConfig {
 }
 
 /**
- * Check if promptfoo is in debug mode
+ * Check if artef is in debug mode
  */
 function isDebugMode(): boolean {
   return getLogLevel() === 'debug';
@@ -826,7 +826,7 @@ async function loadOpenCodeSDK(): Promise<LoadedOpenCodeSDKModule> {
     To use the OpenCode SDK provider, install it with:
       npm install @opencode-ai/sdk
 
-    For more information, see: https://www.promptfoo.dev/docs/providers/opencode-sdk/`,
+    For more information, see: https://www.artef.dev/docs/providers/opencode-sdk/`,
   );
 }
 
@@ -1075,7 +1075,7 @@ export class OpenCodeSDKProvider implements ApiProvider {
 
     if (config.log_level === 'debug' || isDebugMode()) {
       serverEnv.DEBUG = serverEnv.DEBUG || 'opencode:*';
-      logger.debug('[OpenCode SDK] Debug mode enabled, synced from promptfoo log level');
+      logger.debug('[OpenCode SDK] Debug mode enabled, synced from artef log level');
     }
 
     const homeDir = os.homedir();
@@ -1250,7 +1250,7 @@ export class OpenCodeSDKProvider implements ApiProvider {
 
     if (config.apiKey && !config.provider_id && !config.baseUrl) {
       logger.warn(
-        '[OpenCode SDK] apiKey is set without provider_id. Prefer setting provider_id so promptfoo can wire the credential into the spawned OpenCode server.',
+        '[OpenCode SDK] apiKey is set without provider_id. Prefer setting provider_id so artef can wire the credential into the spawned OpenCode server.',
       );
     }
 
@@ -1285,7 +1285,7 @@ export class OpenCodeSDKProvider implements ApiProvider {
     return {
       config,
       isTempDir: true,
-      workingDir: fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-opencode-sdk-')),
+      workingDir: fs.mkdtempSync(path.join(os.tmpdir(), 'artef-opencode-sdk-')),
     };
   }
 
@@ -1371,7 +1371,7 @@ export class OpenCodeSDKProvider implements ApiProvider {
       JSON.stringify(this.buildEffectivePermissionRules(this.config));
     if (config.baseUrl || config.session_id || !staticPolicyMatches) {
       throw new Error(
-        'OpenCode SDK v1 supports permission rules only for provider-level configuration on sessions started by Promptfoo; use tools for remote, resumed, or per-prompt policies.',
+        'OpenCode SDK v1 supports permission rules only for provider-level configuration on sessions started by artef; use tools for remote, resumed, or per-prompt policies.',
       );
     }
   }
@@ -1500,7 +1500,7 @@ export class OpenCodeSDKProvider implements ApiProvider {
       permission?: OpenCodePermissionRule[];
       parentID?: string;
     } = {
-      title: `promptfoo-${Date.now()}`,
+      title: `artef-${Date.now()}`,
     };
     // OpenCode treats legacy `tools` as permission sugar, then merges explicit
     // permissions over it. Mirror that ordering in the v2 rule-array contract.

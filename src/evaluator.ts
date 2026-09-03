@@ -1,4 +1,4 @@
-import readline from 'readline';
+﻿import readline from 'readline';
 import { isDeepStrictEqual } from 'util';
 
 import async from 'async';
@@ -27,7 +27,7 @@ import { nodeEvaluatorRuntime } from './node/evaluatorRuntime';
 import { CIProgressReporter } from './progress/ciProgressReporter';
 import { maybeEmitAzureOpenAiWarning } from './providers/azure/warnings';
 import { providerRegistry } from './providers/providerRegistry';
-import { isPromptfooSampleTarget } from './providers/shared';
+import { isartefSampleTarget } from './providers/shared';
 import { maybeWrapMcpProviderForRedteam } from './redteam/mcpTargetProvider';
 import { redteamProviderManager } from './redteam/providers/shared';
 import { throwIfTargetPromptExceedsMaxChars } from './redteam/shared/promptLength';
@@ -435,7 +435,7 @@ export function isAllowedPrompt(prompt: Prompt, allowedPrompts: string[] | undef
 }
 
 function isGeneratedRedteamAssertion(assertion: { type?: string }): boolean {
-  return typeof assertion.type === 'string' && assertion.type.startsWith('promptfoo:redteam:');
+  return typeof assertion.type === 'string' && assertion.type.startsWith('artef:redteam:');
 }
 
 type NestedAssertion = {
@@ -797,7 +797,7 @@ function attachConversationVar({
 }) {
   const usesConversation = promptUsesConversationVariable(prompt);
   if (
-    !getEnvBool('PROMPTFOO_DISABLE_CONVERSATION_VAR') &&
+    !getEnvBool('artef_DISABLE_CONVERSATION_VAR') &&
     !test.options?.disableConversationVar &&
     usesConversation
   ) {
@@ -1625,7 +1625,7 @@ async function runEvalInternal({
   providerCallQueue,
   rateLimitRegistry,
 }: RunEvalOptions): Promise<EvaluateResult[]> {
-  provider.delay ??= delay ?? getEnvInt('PROMPTFOO_DELAY_MS', 0);
+  provider.delay ??= delay ?? getEnvInt('artef_DELAY_MS', 0);
   invariant(
     typeof provider.delay === 'number',
     `Provider delay should be set for ${provider.label}`,
@@ -2658,7 +2658,7 @@ function appendRunEvalOptionsForTestCase({
   const promptPrefix = testCase.options?.prefix || getDefaultTest(testSuite)?.options?.prefix || '';
   const promptSuffix = testCase.options?.suffix || getDefaultTest(testSuite)?.options?.suffix || '';
   const varCombinations =
-    getEnvBool('PROMPTFOO_DISABLE_VAR_EXPANSION') || testCase.options?.disableVarExpansion
+    getEnvBool('artef_DISABLE_VAR_EXPANSION') || testCase.options?.disableVarExpansion
       ? [testCase.vars]
       : generateVarCombinations(testCase.vars || {});
 
@@ -2914,7 +2914,7 @@ function createRunEvalTest(
 }
 
 function isTracingEnabledForTest(testSuite: TestSuite, testCase: AtomicTestCase) {
-  const tracingEnvEnabled = getEnvBool('PROMPTFOO_TRACING_ENABLED', false);
+  const tracingEnvEnabled = getEnvBool('artef_TRACING_ENABLED', false);
   const tracingEnabled =
     tracingEnvEnabled ||
     testCase.metadata?.tracingEnabled === true ||
@@ -3332,7 +3332,7 @@ function usesExampleProvider(testSuite: TestSuite) {
   return testSuite.providers.some((provider) => {
     const url = typeof provider.config?.url === 'string' ? provider.config.url : '';
     const label = provider.label || '';
-    return url.includes('promptfoo.app') || label.toLowerCase().includes('example');
+    return url.includes('artef.app') || label.toLowerCase().includes('example');
   });
 }
 
@@ -4731,7 +4731,7 @@ class Evaluator<TEvaluation extends EvaluationRecord, TResult extends Evaluation
       usesTransforms: usesTransforms(testSuite, tests),
       usesScenarios: Boolean(testSuite.scenarios?.length),
       usesExampleProvider: usesExampleProvider(testSuite),
-      isPromptfooSampleTarget: testSuite.providers.some(isPromptfooSampleTarget),
+      isartefSampleTarget: testSuite.providers.some(isartefSampleTarget),
       isRedteam: Boolean(options.isRedteam),
       hasOpenAiProviders: testSuite.providers.some((p) => isOpenAiProvider(p.id())),
       hasAnthropicProviders: testSuite.providers.some((p) => isAnthropicProvider(p.id())),
@@ -5013,7 +5013,7 @@ class Evaluator<TEvaluation extends EvaluationRecord, TResult extends Evaluation
     // Initialize OTEL SDK if tracing is enabled
     // Check env flag, test suite level, and default test metadata
     const tracingEnabled =
-      getEnvBool('PROMPTFOO_TRACING_ENABLED', false) ||
+      getEnvBool('artef_TRACING_ENABLED', false) ||
       this.testSuite.tracing?.enabled === true ||
       (typeof this.testSuite.defaultTest === 'object' &&
         this.testSuite.defaultTest?.metadata?.tracingEnabled === true) ||

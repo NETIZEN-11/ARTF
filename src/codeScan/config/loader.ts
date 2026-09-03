@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Configuration Loader
  *
  * Loads and validates configuration from YAML files.
@@ -186,5 +186,5 @@ export interface ApiHostOptions {
  * @returns API host URL
  */
 export function resolveApiHost(options: ApiHostOptions, config: Config): string {
-  return options.apiHost || config.apiHost || 'https://api.promptfoo.app';
+  return options.apiHost || config.apiHost || 'https://api.artef.app';
 }

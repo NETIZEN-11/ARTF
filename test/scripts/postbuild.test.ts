@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -198,7 +198,7 @@ describe('postbuild integration', () => {
 
     // Wrapper files should also exist at dist/src/server/{type}/ for bundled server builds
     // These paths are used when import.meta.url points to dist/src/server/index.js (Docker)
-    // See: https://github.com/promptfoo/promptfoo/issues/7139
+    // See: https://github.com/artef/artef/issues/7139
     const serverWrapperPaths = [
       path.join(serverDir, 'python', 'wrapper.py'),
       path.join(serverDir, 'python', 'persistent_wrapper.py'),

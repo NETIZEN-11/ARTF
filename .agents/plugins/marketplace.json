@@ -1,14 +1,14 @@
-{
-  "name": "promptfoo",
+﻿{
+  "name": "artef",
   "interface": {
-    "displayName": "Promptfoo"
+    "displayName": "artef"
   },
   "plugins": [
     {
-      "name": "promptfoo",
+      "name": "artef",
       "source": {
         "source": "local",
-        "path": "./plugins/promptfoo"
+        "path": "./plugins/artef"
       },
       "policy": {
         "installation": "AVAILABLE",

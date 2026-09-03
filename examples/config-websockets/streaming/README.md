@@ -1,22 +1,22 @@
-# config-websockets/streaming (WebSocket Streaming)
+﻿# config-websockets/streaming (WebSocket Streaming)
 
 This example shows how to configure a websocket application that streams its responses. It includes a small Node.js server that exposes two WebSocket endpoints:
 
 - A non-streaming endpoint (`/ws`) that returns a single message when the model finishes.
 - A streaming endpoint (`/ws-stream`) that sends incremental deltas and a final message.
 
-You’ll run the server locally and use promptfoo’s eval command to test the quality of the application.
+You’ll run the server locally and use artef’s eval command to test the quality of the application.
 
 You can run this example with:
 
 ```bash
-npx promptfoo@latest init --example config-websockets/streaming
+npx artef@latest init --example config-websockets/streaming
 cd config-websockets/streaming
 ```
 
 ## What’s in this folder
 
-- `promptfooconfig.yaml` – Configures a target pointing at the local WebSocket server using the streaming endpoint
+- `artefconfig.yaml` – Configures a target pointing at the local WebSocket server using the streaming endpoint
 - `server/` – Minimal Express + WebSocket server that calls the OpenAI Responses API and exposes the two endpoints
 
 ## Prerequisites
@@ -58,7 +58,7 @@ WebSocket Endpoints:
 
 ## 2) How the WebSocket configuration works
 
-In `promptfooconfig.yaml`, the websocket endpoint is configured under the websocket endpoint id:
+In `artefconfig.yaml`, the websocket endpoint is configured under the websocket endpoint id:
 
 ```yaml
 - id: 'ws://localhost:3300/ws-stream'
@@ -103,7 +103,7 @@ Tip: If you need to concatenate partials for UX, you can return an accumulator o
 With the server running, open a new terminal at this example directory and run:
 
 ```bash
-promptfoo eval
+artef eval
 ```
 
 This will evaluate the test cases against the streaming WebSocket endpoint.
@@ -111,7 +111,7 @@ This will evaluate the test cases against the streaming WebSocket endpoint.
 View results in the browser UI:
 
 ```bash
-promptfoo view
+artef view
 ```
 
 ## Troubleshooting

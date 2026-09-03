@@ -1,6 +1,6 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 
-# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+# Learn more about building a configuration: https://artef.dev/docs/configuration/guide
 
 description: 'Function calling demonstration'
 
@@ -8,7 +8,7 @@ prompts:
   - What is the weather in {{location}}?
 
 providers:
-  # See https://www.promptfoo.dev/docs/providers/vertex/
+  # See https://www.artef.dev/docs/providers/vertex/
   - id: 'vertex:gemini-2.5-flash-002'
     config:
       tools: file://tools.json

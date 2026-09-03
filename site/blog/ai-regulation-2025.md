@@ -1,4 +1,4 @@
----
+﻿---
 title: 'How AI Regulation Changed in 2025'
 description: 'Why AI compliance questions multiplied in 2025. A field guide to federal procurement, state laws, EU AI Act deadlines, and what practitioners need to prepare.'
 image: /img/blog/ai-regulation-2025/hero.jpg
@@ -248,7 +248,7 @@ The compliance implication: regulations written for text-in-text-out systems don
 
 **Documentation is now structural.** Whether you're responding to a federal RFP, complying with a state law, or filling out an enterprise security questionnaire, you'll be asked for documentation about how your system works and how you tested it. Model cards, evaluation results, acceptable use policies, incident response processes. If this exists but is scattered across internal wikis and Slack threads, you'll need to consolidate it.
 
-**Testing needs to cover deployed systems.** Regulatory requirements focus on use cases and deployments, the combination of model, prompts, tools, retrieval, and guardrails that users interact with. If your application uses retrieval, test retrieval quality. If it uses tools, test tool selection and error handling. If it maintains context across turns, test behavior at different context lengths. If it reads untrusted input, test adversarial conditions, not just cooperative ones. We built [Promptfoo](/) for exactly this: system-level red teaming and evaluation that produces the artifacts regulators and procurement officers now ask for: exportable results, regression tests, and audit trails that document what you tested and what you found.
+**Testing needs to cover deployed systems.** Regulatory requirements focus on use cases and deployments, the combination of model, prompts, tools, retrieval, and guardrails that users interact with. If your application uses retrieval, test retrieval quality. If it uses tools, test tool selection and error handling. If it maintains context across turns, test behavior at different context lengths. If it reads untrusted input, test adversarial conditions, not just cooperative ones. We built [artef](/) for exactly this: system-level red teaming and evaluation that produces the artifacts regulators and procurement officers now ask for: exportable results, regression tests, and audit trails that document what you tested and what you found.
 
 **If your AI can take actions, regulators will evaluate the actions.** If your system can issue refunds, send emails, modify records, or execute code, compliance requirements apply to the action path, not just the text output. This is why agentic systems need testing that covers tool selection, error handling, and rollback behavior.
 

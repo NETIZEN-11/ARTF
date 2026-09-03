@@ -1,4 +1,4 @@
-import logger from '../logger';
+﻿import logger from '../logger';
 import {
   createSecureTempDirectory,
   removeSecureTempDirectory,
@@ -20,7 +20,7 @@ export async function runRubyCode<T = unknown>(
 ): Promise<T> {
   let tempDirectory: string | undefined;
   try {
-    tempDirectory = await createSecureTempDirectory('promptfoo-ruby-code-');
+    tempDirectory = await createSecureTempDirectory('artef-ruby-code-');
     const tempFilePath = await writeSecureTempFile(tempDirectory, 'script.rb', code);
     // Necessary to await so temp file doesn't get deleted.
     const result = await runRuby<T>(tempFilePath, method, args);

@@ -1,4 +1,4 @@
-import { pathToFileURL } from 'node:url';
+﻿import { pathToFileURL } from 'node:url';
 import fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -16,10 +16,10 @@ describe('database WAL mode', () => {
   beforeEach(() => {
     vi.resetModules();
     mockProcessEnv({ ...ORIGINAL_ENV }, { clear: true });
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'promptfoo-dbtest-'));
-    mockProcessEnv({ PROMPTFOO_CONFIG_DIR: tempDir });
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'artef-dbtest-'));
+    mockProcessEnv({ artef_CONFIG_DIR: tempDir });
     mockProcessEnv({ IS_TESTING: undefined });
-    mockProcessEnv({ PROMPTFOO_DISABLE_WAL_MODE: undefined });
+    mockProcessEnv({ artef_DISABLE_WAL_MODE: undefined });
   });
 
   afterEach(async () => {
@@ -84,7 +84,7 @@ describe('database WAL mode', () => {
   it('opens database paths with URL-reserved characters', async () => {
     const configDir = path.join(tempDir, 'nested#config');
     fs.mkdirSync(configDir);
-    mockProcessEnv({ PROMPTFOO_CONFIG_DIR: configDir });
+    mockProcessEnv({ artef_CONFIG_DIR: configDir });
 
     const database = await import('../src/database');
     await database.getDb();
@@ -92,8 +92,8 @@ describe('database WAL mode', () => {
     expect(fs.existsSync(database.getDbPath())).toBe(true);
   });
 
-  it('skips WAL mode when PROMPTFOO_DISABLE_WAL_MODE is set', async () => {
-    mockProcessEnv({ PROMPTFOO_DISABLE_WAL_MODE: 'true' });
+  it('skips WAL mode when artef_DISABLE_WAL_MODE is set', async () => {
+    mockProcessEnv({ artef_DISABLE_WAL_MODE: 'true' });
 
     const database = await import('../src/database');
     await database.getDb();

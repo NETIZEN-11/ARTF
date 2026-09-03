@@ -1,10 +1,10 @@
-{
+﻿{
   "mcpServers": {
-    "promptfoo": {
+    "artef": {
       "command": "npx",
       "args": ["tsx", "src/main.ts", "mcp", "--transport", "stdio"],
       "cwd": ".",
-      "description": "Promptfoo MCP server for LLM evaluation and testing"
+      "description": "artef MCP server for LLM evaluation and testing"
     }
   }
 }

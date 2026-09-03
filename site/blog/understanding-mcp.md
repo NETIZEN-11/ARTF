@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_label: Understanding MCP
 title: 'Inside MCP: A Protocol for AI Integration'
 description: 'A hands-on exploration of Model Context Protocol - the standard that connects AI systems with real-world tools and data'
@@ -232,13 +232,13 @@ As more tools adopt MCP, we're moving toward a future where AI assistants can:
 - Maintain consistent context and capabilities
 - Adapt to new tools and services as they emerge
 
-## Using MCP with Promptfoo
+## Using MCP with artef
 
-Want to try MCP in your own projects? Promptfoo makes it easy to experiment with MCP-enabled AI models. Here's how to get started:
+Want to try MCP in your own projects? artef makes it easy to experiment with MCP-enabled AI models. Here's how to get started:
 
 ### Basic Setup
 
-Add MCP support to any provider in your `promptfooconfig.yaml`:
+Add MCP support to any provider in your `artefconfig.yaml`:
 
 ```yaml
 providers:
@@ -260,7 +260,7 @@ This configuration:
 
 ### Advanced Usage
 
-Promptfoo supports sophisticated MCP setups:
+artef supports sophisticated MCP setups:
 
 1. **Multiple Servers**: Connect one model to many MCP servers
 2. **Remote Servers**: Use hosted MCP services via HTTP

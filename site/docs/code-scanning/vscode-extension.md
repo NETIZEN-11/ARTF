@@ -1,4 +1,4 @@
----
+﻿---
 title: VS Code Extension
 sidebar_label: VS Code Extension
 sidebar_position: 4
@@ -17,12 +17,12 @@ keywords:
 
 # VS Code Extension
 
-The Promptfoo Security Scanner for VS Code detects LLM security vulnerabilities directly in your editor. It finds prompt injection risks, jailbreak vulnerabilities, PII exposure, and other security issues as you code—before they reach your CI pipeline or production.
+The artef Security Scanner for VS Code detects LLM security vulnerabilities directly in your editor. It finds prompt injection risks, jailbreak vulnerabilities, PII exposure, and other security issues as you code—before they reach your CI pipeline or production.
 
 ![VS Code extension showing inline security diagnostics](/img/docs/code-scanning/vscode-extension.png)
 
 :::info Enterprise Feature
-The VS Code extension is available for Promptfoo Enterprise customers. [Contact us](/contact) to get access for your organization.
+The VS Code extension is available for artef Enterprise customers. [Contact us](/contact) to get access for your organization.
 :::
 
 ## Features
@@ -39,7 +39,7 @@ The VS Code extension is available for Promptfoo Enterprise customers. [Contact 
 
 1. [Contact us](/contact) to get the extension package (`.vsix` file)
 2. Install in VS Code: Extensions → ⋯ → Install from VSIX
-3. Configure your API key: Cmd+Shift+P → **Promptfoo: Configure API Key**
+3. Configure your API key: Cmd+Shift+P → **artef: Configure API Key**
 
 ## Usage
 
@@ -47,11 +47,11 @@ The VS Code extension is available for Promptfoo Enterprise customers. [Contact 
 
 **Manual scanning**: Use the Command Palette (Cmd+Shift+P):
 
-- **Promptfoo: Scan Current File** — Scan the active file
-- **Promptfoo: Scan Selection** — Scan selected code
-- **Promptfoo: Scan Git Changes** — Scan all changed files in your branch
-- **Promptfoo: Clear All Scan Results** — Clear all diagnostics
-- **Promptfoo: Show Output** — Show the extension's output channel
+- **artef: Scan Current File** — Scan the active file
+- **artef: Scan Selection** — Scan selected code
+- **artef: Scan Git Changes** — Scan all changed files in your branch
+- **artef: Clear All Scan Results** — Clear all diagnostics
+- **artef: Show Output** — Show the extension's output channel
 
 ### Keyboard Shortcuts
 
@@ -72,22 +72,22 @@ Configure the extension in VS Code Settings or in your `settings.json`:
 
 | Setting                          | Description                      | Default                     |
 | -------------------------------- | -------------------------------- | --------------------------- |
-| `promptfoo.apiHost`              | Promptfoo API host URL           | `https://api.promptfoo.app` |
-| `promptfoo.minimumSeverity`      | Minimum severity to display      | `low`                       |
-| `promptfoo.scanOnSave`           | Auto-scan files on save          | `true`                      |
-| `promptfoo.scanOnSaveDebounceMs` | Debounce delay for auto-scan     | `1500`                      |
-| `promptfoo.diffsOnly`            | Only analyze code diffs          | `true`                      |
-| `promptfoo.showCodeLens`         | Show inline CodeLens annotations | `true`                      |
-| `promptfoo.enabledLanguages`     | Languages to scan                | See below                   |
+| `artef.apiHost`              | artef API host URL           | `https://api.artef.app` |
+| `artef.minimumSeverity`      | Minimum severity to display      | `low`                       |
+| `artef.scanOnSave`           | Auto-scan files on save          | `true`                      |
+| `artef.scanOnSaveDebounceMs` | Debounce delay for auto-scan     | `1500`                      |
+| `artef.diffsOnly`            | Only analyze code diffs          | `true`                      |
+| `artef.showCodeLens`         | Show inline CodeLens annotations | `true`                      |
+| `artef.enabledLanguages`     | Languages to scan                | See below                   |
 
 ### Example settings.json
 
 ```json
 {
-  "promptfoo.minimumSeverity": "medium",
-  "promptfoo.scanOnSave": true,
-  "promptfoo.scanOnSaveDebounceMs": 2000,
-  "promptfoo.showCodeLens": true
+  "artef.minimumSeverity": "medium",
+  "artef.scanOnSave": true,
+  "artef.scanOnSaveDebounceMs": 2000,
+  "artef.showCodeLens": true
 }
 ```
 
@@ -105,7 +105,7 @@ By default, the extension scans:
 - C#
 - C/C++
 
-Customize with the `promptfoo.enabledLanguages` setting. An empty array enables scanning for all languages.
+Customize with the `artef.enabledLanguages` setting. An empty array enables scanning for all languages.
 
 ## Severity Levels
 
@@ -118,11 +118,11 @@ Findings are classified by severity:
 | Medium   | 🟡   | Moderate concern             |
 | Low      | 🔵   | Minor issue or best practice |
 
-Use the `promptfoo.minimumSeverity` setting to filter out lower-severity findings.
+Use the `artef.minimumSeverity` setting to filter out lower-severity findings.
 
 ## Privacy
 
-Code is sent to Promptfoo's servers for analysis and is not stored after analysis completes. For organizations that need to run scans on their own infrastructure, the extension works with [Promptfoo Enterprise On-Prem](/docs/enterprise/).
+Code is sent to artef's servers for analysis and is not stored after analysis completes. For organizations that need to run scans on their own infrastructure, the extension works with [artef Enterprise On-Prem](/docs/enterprise/).
 
 ## See Also
 

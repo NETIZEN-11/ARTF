@@ -1,16 +1,16 @@
-# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+﻿# yaml-language-server: $schema=https://artef.dev/config-schema.json
 # Strands Agents SDK Example - Weather Assistant Evaluation
 #
 # This configuration evaluates a Strands agent that provides weather information
 # and temperature conversions. It demonstrates:
 # - Using a Python provider (file://) to integrate custom agents
-#   https://promptfoo.dev/docs/providers/python/
+#   https://artef.dev/docs/providers/python/
 # - Testing tool usage with contains-any assertions
-#   https://promptfoo.dev/docs/configuration/expected-outputs/#contains
+#   https://artef.dev/docs/configuration/expected-outputs/#contains
 # - Using llm-rubric for semantic evaluation of responses
-#   https://promptfoo.dev/docs/configuration/expected-outputs/model-graded/
+#   https://artef.dev/docs/configuration/expected-outputs/model-graded/
 # - Performance assertions (latency, cost)
-#   https://promptfoo.dev/docs/configuration/expected-outputs/#latency
+#   https://artef.dev/docs/configuration/expected-outputs/#latency
 #
 # Strands Agents SDK by AWS: https://github.com/strands-agents/sdk-python
 # Strands Documentation: https://strandsagents.com/
@@ -22,7 +22,7 @@ prompts:
   - '{{query}}'
 
 # Provider configuration pointing to our Python agent
-# The file:// prefix tells promptfoo to load a Python module
+# The file:// prefix tells artef to load a Python module
 # Format: file://<script>:<function>
 providers:
   - id: 'file://agent_provider.py:call_api'
@@ -32,7 +32,7 @@ providers:
       model_id: 'gpt-4o-mini'
 
 # Default assertions applied to all test cases
-# https://promptfoo.dev/docs/configuration/guide/#default-test-cases
+# https://artef.dev/docs/configuration/guide/#default-test-cases
 defaultTest:
   assert:
     # Performance: Response should complete within 30 seconds
@@ -61,7 +61,7 @@ tests:
       - type: contains-any
         value: ['London', 'Cloudy', '58']
       # Verify response mentions temperature (custom JavaScript assertion)
-      # https://promptfoo.dev/docs/configuration/expected-outputs/#javascript
+      # https://artef.dev/docs/configuration/expected-outputs/#javascript
       - type: javascript
         value: 'output.includes("°F") || output.includes("degrees")'
 

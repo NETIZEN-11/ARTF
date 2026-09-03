@@ -1,6 +1,6 @@
-// For TypeScript users:
+﻿// For TypeScript users:
 // To get type checking, uncomment the following line and Promise<TestCase[]> below
-// import type { TestCase } from 'promptfoo';
+// import type { TestCase } from 'artef';
 
 interface MockTranslation {
   input: string;

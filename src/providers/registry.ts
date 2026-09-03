@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 
 import dedent from 'dedent';
 import { getEnvString } from '../envars';
@@ -89,7 +89,7 @@ import { createOrcaRouterProvider } from './orcarouter';
 import { parsePackageProvider } from './packageParser';
 import { createPerplexityProvider } from './perplexity';
 import { PortkeyChatCompletionProvider } from './portkey';
-import { PromptfooModelProvider } from './promptfooModel';
+import { artefModelProvider } from './artefModel';
 import { PythonProvider } from './pythonCompletion';
 import {
   ReplicateImageProvider,
@@ -398,7 +398,7 @@ export const providerMap: ProviderFactory[] = [
           throw new Error(
             deploymentName === 'gpt-realtime-whisper'
               ? 'azure:realtime:gpt-realtime-whisper is transcription-only. Use it as input_audio_transcription.model in a conversational Azure Realtime deployment.'
-              : `azure:realtime:${deploymentName} is translation-only and requires a separate Realtime translation-session endpoint not yet supported by promptfoo.`,
+              : `azure:realtime:${deploymentName} is translation-only and requires a separate Realtime translation-session endpoint not yet supported by artef.`,
           );
         }
         return new AzureRealtimeProvider(deploymentName, providerOptions);
@@ -415,7 +415,7 @@ export const providerMap: ProviderFactory[] = [
     test: (providerPath: string) => providerPath.startsWith('bam:'),
     create: async () => {
       throw new Error(
-        'IBM BAM provider has been deprecated. The service was sunset in March 2025. Please use the WatsonX provider instead. See https://promptfoo.dev/docs/providers/watsonx for migration instructions.',
+        'IBM BAM provider has been deprecated. The service was sunset in March 2025. Please use the WatsonX provider instead. See https://artef.dev/docs/providers/watsonx for migration instructions.',
       );
     },
   },
@@ -1540,7 +1540,7 @@ export const providerMap: ProviderFactory[] = [
     },
   },
   {
-    test: (providerPath: string) => providerPath === 'promptfoo:manual-input',
+    test: (providerPath: string) => providerPath === 'artef:manual-input',
     create: async (
       _providerPath: string,
       providerOptions: ProviderOptions,
@@ -1550,7 +1550,7 @@ export const providerMap: ProviderFactory[] = [
     },
   },
   {
-    test: (providerPath: string) => providerPath === 'promptfoo:simulated-user',
+    test: (providerPath: string) => providerPath === 'artef:simulated-user',
     create: async (
       _providerPath: string,
       providerOptions: ProviderOptions,
@@ -1560,14 +1560,14 @@ export const providerMap: ProviderFactory[] = [
     },
   },
   {
-    test: (providerPath: string) => providerPath.startsWith('promptfoo:model:'),
+    test: (providerPath: string) => providerPath.startsWith('artef:model:'),
     create: async (
       providerPath: string,
       providerOptions: ProviderOptions,
       _context: LoadApiProviderContext,
     ) => {
       const modelName = providerPath.split(':')[2];
-      return new PromptfooModelProvider(modelName, {
+      return new artefModelProvider(modelName, {
         ...providerOptions,
         model: modelName,
       });
@@ -1751,7 +1751,7 @@ export const providerMap: ProviderFactory[] = [
 
 function isRedteamProviderPath(providerPath: string): boolean {
   return (
-    providerPath === 'agentic:memory-poisoning' || providerPath.startsWith('promptfoo:redteam:')
+    providerPath === 'agentic:memory-poisoning' || providerPath.startsWith('artef:redteam:')
   );
 }
 

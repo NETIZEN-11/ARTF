@@ -1,20 +1,20 @@
----
-title: Integrate Promptfoo with SonarQube
-description: Integrate Promptfoo security findings into SonarQube for centralized vulnerability tracking and CI/CD quality gates
+﻿---
+title: Integrate artef with SonarQube
+description: Integrate artef security findings into SonarQube for centralized vulnerability tracking and CI/CD quality gates
 sidebar_label: SonarQube
 ---
 
-This guide demonstrates how to integrate Promptfoo's scanning results into SonarQube, allowing red team findings to appear in your normal "Issues" view, participate in Quality Gates, and block pipelines when they breach security policies.
+This guide demonstrates how to integrate artef's scanning results into SonarQube, allowing red team findings to appear in your normal "Issues" view, participate in Quality Gates, and block pipelines when they breach security policies.
 
 :::info
 
-This feature is available in [Promptfoo Enterprise](/docs/enterprise/).
+This feature is available in [artef Enterprise](/docs/enterprise/).
 
 :::
 
 ## Overview
 
-The integration uses SonarQube's Generic Issue Import feature to import Promptfoo findings without requiring any custom plugins. This approach:
+The integration uses SonarQube's Generic Issue Import feature to import artef findings without requiring any custom plugins. This approach:
 
 - Surfaces LLM security issues alongside traditional code quality metrics
 - Enables Quality Gate enforcement for prompt injection and other LLM vulnerabilities
@@ -26,16 +26,16 @@ The integration uses SonarQube's Generic Issue Import feature to import Promptfo
 - SonarQube server (Community Edition or higher)
 - SonarQube Scanner installed in your CI/CD environment
 - Node.js installed in your CI/CD environment
-- A Promptfoo configuration file
+- A artef configuration file
 
 ## Configuration Steps
 
 ### 1. Basic CI/CD Integration
 
-Here's an example GitHub Actions workflow that runs Promptfoo and imports results into SonarQube:
+Here's an example GitHub Actions workflow that runs artef and imports results into SonarQube:
 
 ```yaml
-name: SonarQube Analysis with Promptfoo
+name: SonarQube Analysis with artef
 
 on:
   push:
@@ -57,13 +57,13 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Promptfoo
-        run: npm install -g promptfoo
+      - name: Install artef
+        run: npm install -g artef
 
-      - name: Run Promptfoo scan
+      - name: Run artef scan
         run: |
-          promptfoo eval \
-            --config promptfooconfig.yaml \
+          artef eval \
+            --config artefconfig.yaml \
             --output pf-sonar.json \
             --output-format sonarqube
 
@@ -94,7 +94,7 @@ on:
     - cron: '0 2 * * *' # Daily security scan
 
 jobs:
-  promptfoo-security-scan:
+  artef-security-scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -107,32 +107,32 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Cache promptfoo
+      - name: Cache artef
         uses: actions/cache@v4
         with:
-          path: ~/.cache/promptfoo
-          key: ${{ runner.os }}-promptfoo-${{ hashFiles('**/promptfooconfig.yaml') }}
+          path: ~/.cache/artef
+          key: ${{ runner.os }}-artef-${{ hashFiles('**/artefconfig.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-promptfoo-
+            ${{ runner.os }}-artef-
 
       - name: Install dependencies
         run: |
-          npm install -g promptfoo
+          npm install -g artef
           npm install -g jsonschema
 
-      - name: Validate promptfoo config
+      - name: Validate artef config
         run: |
           # Validate configuration before running
-          promptfoo validate --config promptfooconfig.yaml
+          artef validate --config artefconfig.yaml
 
       - name: Run red team evaluation
         id: redteam
         env:
-          PROMPTFOO_CACHE_PATH: ~/.cache/promptfoo
+          artef_CACHE_PATH: ~/.cache/artef
         run: |
           # Run with failure threshold
-          promptfoo eval \
-            --config promptfooconfig.yaml \
+          artef eval \
+            --config artefconfig.yaml \
             --output pf-results.json \
             --output-format json \
             --max-concurrency 5 \
@@ -142,15 +142,15 @@ jobs:
         if: always()
         run: |
           # Generate SonarQube format
-          promptfoo eval \
-            --config promptfooconfig.yaml \
+          artef eval \
+            --config artefconfig.yaml \
             --output pf-sonar.json \
             --output-format sonarqube \
             --no-cache
 
           # Also generate HTML report for artifacts
-          promptfoo eval \
-            --config promptfooconfig.yaml \
+          artef eval \
+            --config artefconfig.yaml \
             --output pf-results.html \
             --output-format html \
             --no-cache
@@ -179,7 +179,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: promptfoo-reports
+          name: artef-reports
           path: |
             pf-results.json
             pf-results.html
@@ -195,7 +195,7 @@ jobs:
             const results = JSON.parse(fs.readFileSync('pf-results.json', 'utf8'));
             const stats = results.results.stats;
 
-            const comment = `## 🔒 Promptfoo Security Scan Results
+            const comment = `## 🔒 artef Security Scan Results
 
             - **Total Tests**: ${stats.successes + stats.failures}
             - **Passed**: ${stats.successes} ✅
@@ -215,7 +215,7 @@ jobs:
 
 ### 3. Configure SonarQube
 
-To properly display and track promptfoo findings in SonarQube:
+To properly display and track artef findings in SonarQube:
 
 1. **Create Custom Rules** (optional):
 
@@ -234,7 +234,7 @@ To properly display and track promptfoo findings in SonarQube:
    - Navigate to Quality Gates in SonarQube
    - Add condition: "Security Rating is worse than A"
    - Add condition: "Security Hotspots Reviewed is less than 100%"
-   - Add custom condition: "Issues from promptfoo > 0" (for critical findings)
+   - Add custom condition: "Issues from artef > 0" (for critical findings)
 
 3. **Set Up Notifications**:
    - Configure webhooks to notify on Quality Gate failures
@@ -259,12 +259,12 @@ pipeline {
             }
         }
 
-        stage('Run Promptfoo') {
+        stage('Run artef') {
             steps {
                 sh '''
-                    npm install -g promptfoo
-                    promptfoo eval \
-                        --config promptfooconfig.yaml \
+                    npm install -g artef
+                    artef eval \
+                        --config artefconfig.yaml \
                         --output pf-sonar.json \
                         --output-format sonarqube
                 '''
@@ -303,4 +303,4 @@ pipeline {
 
 ## Next Steps
 
-For more information on Promptfoo configuration and red team testing, refer to the [red team documentation](/docs/red-team/).
+For more information on artef configuration and red team testing, refer to the [red team documentation](/docs/red-team/).

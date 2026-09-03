@@ -1,4 +1,4 @@
-import { and, desc, eq, type SQL, sql } from 'drizzle-orm';
+﻿import { and, desc, eq, type SQL, sql } from 'drizzle-orm';
 import { DEFAULT_QUERY_LIMIT, HUMAN_ASSERTION_TYPE } from '../constants';
 import { deleteTraceRecordsForEvals } from '../database/evalDeletion';
 import { getDb } from '../database/index';
@@ -60,7 +60,7 @@ import {
 } from './evalPerformance';
 import EvalResult, {
   getResultIndexKey,
-  PROMPTFOO_METADATA_KEY,
+  artef_METADATA_KEY,
   persistTraceMetadata,
   stripTraceLinkageFromMetadata,
 } from './evalResult';
@@ -244,9 +244,9 @@ export class EvalQueries {
         LIMIT 1000
       `;
       const results = await db.all<MetadataKeyResult>(query);
-      // `__promptfoo` is a reserved internal namespace (e.g. trace linkage). Don't expose
+      // `__artef` is a reserved internal namespace (e.g. trace linkage). Don't expose
       // it through the metadata-keys API — pair this with the value-side filter below.
-      return results.map((r) => r.key).filter((key) => key !== PROMPTFOO_METADATA_KEY);
+      return results.map((r) => r.key).filter((key) => key !== artef_METADATA_KEY);
     } catch (error) {
       // Log error but return empty array to prevent breaking the UI
       logger.error(
@@ -268,11 +268,11 @@ export class EvalQueries {
     if (!trimmedKey) {
       return [];
     }
-    // `__promptfoo` is a reserved internal namespace (e.g. trace linkage). Don't expose
+    // `__artef` is a reserved internal namespace (e.g. trace linkage). Don't expose
     // it through the metadata-values API even though it lives in the same JSON column.
     if (
-      trimmedKey === PROMPTFOO_METADATA_KEY ||
-      trimmedKey.startsWith(`${PROMPTFOO_METADATA_KEY}.`)
+      trimmedKey === artef_METADATA_KEY ||
+      trimmedKey.startsWith(`${artef_METADATA_KEY}.`)
     ) {
       return [];
     }
@@ -1131,9 +1131,9 @@ export default class Eval {
         sql`json_extract(grading_result, '$.reason') LIKE ${searchPattern}`,
         sql`json_extract(grading_result, '$.comment') LIKE ${searchPattern}`,
         sql`json_extract(named_scores, '$') LIKE ${searchPattern}`,
-        // Search user-visible metadata only — drop the reserved `__promptfoo` namespace
+        // Search user-visible metadata only — drop the reserved `__artef` namespace
         // (trace linkage) so a query can't match on internal data the UI never shows.
-        sql`json_remove(metadata, ${`$.${PROMPTFOO_METADATA_KEY}`}) LIKE ${searchPattern}`,
+        sql`json_remove(metadata, ${`$.${artef_METADATA_KEY}`}) LIKE ${searchPattern}`,
         sql`json_extract(test_case, '$.vars') LIKE ${searchPattern}`,
         sql`json_extract(test_case, '$.metadata') LIKE ${searchPattern}`,
       ];
@@ -1442,7 +1442,7 @@ export default class Eval {
     }
 
     const stats = await this.getStats();
-    const shouldStripPromptText = getEnvBool('PROMPTFOO_STRIP_PROMPT_TEXT', false);
+    const shouldStripPromptText = getEnvBool('artef_STRIP_PROMPT_TEXT', false);
 
     const prompts = shouldStripPromptText
       ? this.prompts.map((p) => ({
