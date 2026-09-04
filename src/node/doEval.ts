@@ -23,7 +23,9 @@ import logger, { getLogLevel } from '../logger';
 import { runDbMigrations } from '../migrate';
 import Eval from '../models/eval';
 import { loadApiProvider } from '../providers/index';
+import { evaluateQualityGates, QualityGateEngine } from '../qualityGate';
 import { neverGenerateRemote } from '../redteam/remoteGeneration';
+import { createReleaseReadinessCalculator, ReleaseReadinessCalculator } from '../releaseReadiness';
 import { createShareableUrl, isSharingEnabled } from '../share';
 import { generateTable } from '../table';
 import telemetry from '../telemetry';
@@ -1287,26 +1289,87 @@ export async function doEval(
           );
       }
     } else {
-      const passRateThreshold = getEnvFloat('artef_PASS_RATE_THRESHOLD', 100);
-      const failedTestExitCode = getEnvInt('artef_FAILED_TEST_EXIT_CODE', 100);
+      // Evaluate quality gates
+      const qualityGateResult = await evaluateQualityGates(ret, config as UnifiedConfig);
 
-      if (
-        isCliInvocation &&
-        passRate < (Number.isFinite(passRateThreshold) ? passRateThreshold : 100)
-      ) {
+      // Determine exit code based on quality gate results
+      const failedTestExitCode = getEnvInt('artef_FAILED_TEST_EXIT_CODE', 100);
+      const shouldFail = qualityGateResult.overall === 'failed';
+
+      if (shouldFail && isCliInvocation) {
+        // Log quality gate failures
+        for (const check of qualityGateResult.checks) {
+          if (!check.passed && ['critical', 'high'].includes(check.severity)) {
+            logger.info(chalk.white(`Quality gate ${chalk.red.bold('FAILED')}: ${check.message}`));
+          }
+        }
+
+        const passRateThreshold = getEnvFloat('artef_PASS_RATE_THRESHOLD', 100);
         if (getEnvFloat('artef_PASS_RATE_THRESHOLD') !== undefined) {
-          logger.info(
-            chalk.white(
-              `Pass rate ${chalk.red.bold(passRate.toFixed(2))}${chalk.red('%')} is below the threshold of ${chalk.red.bold(passRateThreshold)}${chalk.red('%')}`,
-            ),
-          );
+          const passRateCheck = qualityGateResult.checks.find((c) => c.name === 'passRate');
+          if (passRateCheck) {
+            logger.info(
+              chalk.white(
+                `Pass rate ${chalk.red.bold(passRate.toFixed(2))}${chalk.red('%')} is below the threshold of ${chalk.red.bold(passRateThreshold)}${chalk.red('%')}`,
+              ),
+            );
+          }
         }
         process.exitCode = Number.isSafeInteger(failedTestExitCode) ? failedTestExitCode : 100;
         return ret;
+      } else if (qualityGateResult.overall === 'warning' && isCliInvocation) {
+        // Log warnings but don't fail
+        for (const check of qualityGateResult.checks) {
+          if (!check.passed && ['medium', 'low'].includes(check.severity)) {
+            logger.warn(
+              chalk.yellow(`Quality gate ${chalk.yellow.bold('WARNING')}: ${check.message}`),
+            );
+          }
+        }
       }
     }
     if (testSuite.redteam) {
       showRedteamProviderLabelMissingWarning(testSuite);
+    }
+
+    // Calculate release readiness
+    if (!cmdObj.watch && cmdObj.write !== false) {
+      const releaseReadinessCalculator = createReleaseReadinessCalculator();
+      const releaseReadiness = await releaseReadinessCalculator.calculate(ret);
+
+      // Display release readiness status
+      const statusColor =
+        releaseReadiness.status === 'ready'
+          ? chalk.green
+          : releaseReadiness.status === 'ready-with-warning'
+            ? chalk.yellow
+            : releaseReadiness.status === 'needs-review'
+              ? chalk.hex('#FFA500')
+              : chalk.red;
+
+      logger.info(
+        chalk.bold('\n📋 Release Readiness: ') +
+          statusColor.bold(releaseReadiness.status.toUpperCase()),
+      );
+      logger.info(
+        chalk.dim(`   ${ReleaseReadinessCalculator.getStatusDescription(releaseReadiness.status)}`),
+      );
+
+      if (releaseReadiness.criticalFindingsCount > 0) {
+        logger.info(
+          chalk.red(`   ⚠ ${releaseReadiness.criticalFindingsCount} critical finding(s)`),
+        );
+      }
+      if (releaseReadiness.humanReviewPending) {
+        logger.info(chalk.yellow(`   ⏳ Human review pending`));
+      }
+      if (releaseReadiness.baselineComparison?.isRegression) {
+        logger.info(
+          chalk.red(
+            `   📉 Regression detected vs baseline ${releaseReadiness.baselineComparison.baselineEvalId}`,
+          ),
+        );
+      }
     }
 
     // Clean up any WebSocket connections

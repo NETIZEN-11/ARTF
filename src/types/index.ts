@@ -1397,11 +1397,35 @@ export const TestSuiteConfigSchema = z.object({
 
 export type TestSuiteConfig = z.infer<typeof TestSuiteConfigSchema>;
 
+export const QualityGateThresholdsSchema = z.object({
+  minPassRate: z.number().min(0).max(100).optional(),
+  maxFailureRate: z.number().min(0).max(100).optional(),
+  minOverallScore: z.number().min(0).max(1).optional(),
+  maxCriticalFindings: z.number().int().nonnegative().optional(),
+  maxHighSeverityFindings: z.number().int().nonnegative().optional(),
+  minSafetyScore: z.number().min(0).max(100).optional(),
+  minSecurityScore: z.number().min(0).max(100).optional(),
+  maxRegressionScore: z.number().min(0).max(100).optional(),
+  maxLatencyMs: z.number().int().nonnegative().optional(),
+  maxCostUsd: z.number().nonnegative().optional(),
+  requireHumanReviewCompletion: z.boolean().optional(),
+});
+
+export type QualityGateThresholds = z.infer<typeof QualityGateThresholdsSchema>;
+
+export const QualityGateConfigSchema = z.object({
+  thresholds: QualityGateThresholdsSchema.optional(),
+  enabled: z.boolean().optional().default(true),
+});
+
+export type QualityGateConfig = z.infer<typeof QualityGateConfigSchema>;
+
 export const UnifiedConfigSchema = TestSuiteConfigSchema.extend({
   evaluateOptions: EvaluateOptionsSchema.optional(),
   commandLineOptions: CommandLineOptionsSchema.partial().optional(),
   providers: ProvidersSchema.optional(),
   targets: ProvidersSchema.optional(),
+  qualityGate: QualityGateConfigSchema.optional(),
 })
   .refine(
     (data) => {
@@ -1570,3 +1594,98 @@ export const EvalResultsFilterMode = z.enum([
 ]);
 
 export type EvalResultsFilterMode = z.infer<typeof EvalResultsFilterMode>;
+
+export const ReleaseReadinessStatusSchema = z.enum([
+  'ready',
+  'ready-with-warning',
+  'needs-review',
+  'blocked',
+]);
+
+export type ReleaseReadinessStatus = z.infer<typeof ReleaseReadinessStatusSchema>;
+
+export interface ReleaseReadinessInfo {
+  status: ReleaseReadinessStatus;
+  qualityGateResult: QualityGateEvaluationResult;
+  baselineComparison?: BaselineComparisonResult;
+  criticalFindingsCount: number;
+  humanReviewPending: boolean;
+  timestamp: string;
+}
+
+export interface QualityGateCheckResult {
+  passed: boolean;
+  severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
+  message: string;
+  details?: Record<string, unknown>;
+  metricValue?: number;
+  thresholdValue?: number;
+}
+
+export interface QualityGateEvaluationResult {
+  overall: 'passed' | 'failed' | 'warning';
+  checks: QualityGateCheckResult[];
+  summary: {
+    total: number;
+    passed: number;
+    failed: number;
+    warnings: number;
+  };
+}
+
+export interface BaselineComparisonResult {
+  baselineEvalId: string;
+  currentEvalId: string;
+  newFailures: number;
+  resolvedFailures: number;
+  scoreChange: number;
+  safetyChange: number;
+  securityChange: number;
+  performanceChange: number;
+  costChange: number;
+  regressedTests: string[];
+  improvedTests: string[];
+  isRegression?: boolean;
+  regressionDetails?: Record<string, boolean>;
+}
+
+export interface HumanReviewItem {
+  id: string;
+  evalId: string;
+  testIdx: number;
+  promptIdx: number;
+  reason: string;
+  status: 'pending' | 'completed' | 'dismissed';
+  reviewer?: string;
+  decision?: HumanReviewDecision;
+  comment?: string;
+  createdAt: string;
+  completedAt?: string;
+  metadata?: Record<string, unknown>;
+}
+
+export type HumanReviewDecision =
+  | 'confirmed-failure'
+  | 'false-positive'
+  | 'needs-investigation'
+  | 'accepted-risk';
+
+export type ReleaseReadinessOptions = {
+  qualityGateConfig?: Partial<{
+    thresholds: Record<string, number>;
+    enabled: boolean;
+  }>;
+  regressionConfig?: Partial<{
+    scoreThreshold: number;
+    passRateThreshold: number;
+    safetyThreshold: number;
+    securityThreshold: number;
+    latencyThreshold: number;
+    costThreshold: number;
+  }>;
+  humanReviewConfig?: Partial<{
+    autoRouteLowConfidence: boolean;
+    confidenceThreshold: number;
+    autoRouteCriticalFindings: boolean;
+  }>;
+};
