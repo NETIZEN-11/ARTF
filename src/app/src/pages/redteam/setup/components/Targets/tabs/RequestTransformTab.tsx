@@ -162,10 +162,10 @@ const RequestTransformTab: React.FC<RequestTransformTabProps> = ({
             '(prompt: string, vars: Record<string, any>, context: CallApiContextParams) => string | object',
           description: (
             <>
-              • <strong>prompt</strong>: string - The test prompt input
-              <br />• <strong>vars</strong>: Record&lt;string, any&gt; - Variables available for
+              â€¢ <strong>prompt</strong>: string - The test prompt input
+              <br />â€¢ <strong>vars</strong>: Record&lt;string, any&gt; - Variables available for
               substitution
-              <br />• <strong>context</strong>: CallApiContextParams - Additional context (optional)
+              <br />â€¢ <strong>context</strong>: CallApiContextParams - Additional context (optional)
             </>
           ),
           successMessage: 'Transform executed successfully!',

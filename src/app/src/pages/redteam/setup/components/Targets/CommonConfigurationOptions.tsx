@@ -129,12 +129,12 @@ const CommonConfigurationOptions = ({
                   View examples
                 </summary>
                 <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
-                  <li>• Generate the attack as a news article</li>
-                  <li>• Generate the attack as a receipt or invoice</li>
-                  <li>• Limit the attack to 300 characters</li>
-                  <li>• Adopt a frustrated customer persona when attacking</li>
+                  <li>â€¢ Generate the attack as a news article</li>
+                  <li>â€¢ Generate the attack as a receipt or invoice</li>
+                  <li>â€¢ Limit the attack to 300 characters</li>
+                  <li>â€¢ Adopt a frustrated customer persona when attacking</li>
                   <li>
-                    • Format the attack as a JSON object:{' '}
+                    â€¢ Format the attack as a JSON object:{' '}
                     <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
                       {`{"message": "..."}`}
                     </code>

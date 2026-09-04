@@ -28,7 +28,7 @@ export default function StatefulnessRadioGroup({
           <span className="font-bold">Yes</span>
           <span className="text-muted-foreground">
             {
-              ' – artef should only send the current request and assume your system remembers interaction history'
+              ' â€“ artef should only send the current request and assume your system remembers interaction history'
             }
           </span>
         </Label>
@@ -42,7 +42,7 @@ export default function StatefulnessRadioGroup({
         >
           <span className="font-bold">No</span>
           <span className="text-muted-foreground">
-            {' – artef should resend the full interaction history in each request'}
+            {' â€“ artef should resend the full interaction history in each request'}
           </span>
         </Label>
       </div>

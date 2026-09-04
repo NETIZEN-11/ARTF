@@ -522,7 +522,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Number of iterations to try (more iterations increase chance of success)
-          {!isCloudEnabled && ' — sign in for higher limits'}
+          {!isCloudEnabled && ' â€” sign in for higher limits'}
         </p>
       </div>
     </div>
@@ -674,7 +674,7 @@ export default function StrategyConfigDialog({
           />
           <p className="text-xs text-muted-foreground">
             Maximum number of back-and-forth exchanges with the model
-            {!isCloudEnabled && ' — sign in for higher limits'}
+            {!isCloudEnabled && ' â€” sign in for higher limits'}
           </p>
         </div>
 
@@ -726,7 +726,7 @@ export default function StrategyConfigDialog({
           />
           <p className="text-xs text-muted-foreground">
             Maximum number of back-and-forth exchanges with the target model.
-            {!isCloudEnabled && ' — sign in for higher limits'}
+            {!isCloudEnabled && ' â€” sign in for higher limits'}
           </p>
         </div>
 
@@ -781,7 +781,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Maximum number of back-and-forth exchanges with the model (default: 5)
-          {!isCloudEnabled && ' — sign in for higher limits'}
+          {!isCloudEnabled && ' â€” sign in for higher limits'}
         </p>
       </div>
 
@@ -793,8 +793,8 @@ export default function StrategyConfigDialog({
           className="mt-0.5"
         />
         <Label htmlFor="multi-turn-stateful" className="text-sm font-normal">
-          When enabled, artef should only send the current request and assume your system
-          remembers interaction history
+          When enabled, artef should only send the current request and assume your system remembers
+          interaction history
         </Label>
       </div>
     </div>
@@ -826,7 +826,7 @@ export default function StrategyConfigDialog({
         <p className="text-xs text-muted-foreground">
           Number of iterations for the meta-agent to attempt. Agent builds attack taxonomy and makes
           strategic decisions.
-          {!isCloudEnabled && ' — sign in for higher limits'}
+          {!isCloudEnabled && ' â€” sign in for higher limits'}
         </p>
       </div>
     </div>
@@ -857,7 +857,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Maximum depth of the search tree
-          {!isCloudEnabled && ' — sign in for higher limits'}
+          {!isCloudEnabled && ' â€” sign in for higher limits'}
         </p>
       </div>
 
@@ -880,7 +880,7 @@ export default function StrategyConfigDialog({
         />
         <p className="text-xs text-muted-foreground">
           Maximum number of attempts to try (note: higher values are more expensive)
-          {!isCloudEnabled && ' — sign in for higher limits'}
+          {!isCloudEnabled && ' â€” sign in for higher limits'}
         </p>
       </div>
 
